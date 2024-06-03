@@ -1,0 +1,708 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type=checkbox] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C""\201D""\2018""\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555; 
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position:relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size:24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText, .commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size:24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+    font-size: 38px;
+    line-height: 1.5;
+    color: white;
+}
+
+.selfPostContainer * {
+    color: white;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/nba/comments/1d7h4l1/top_250_players_careers_peaks_3021_oc/"><p>Top 250 Players (Careers + Peaks): #30-21 (OC)</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <p>Previous posts</p>
+
+<p><a href="https://www.reddit.com/r/nba/comments/14kf4vy/top_250_players_careers_peaks_introduction_oc/?utm_source=share&amp;utm_medium=web2x&amp;context=3" target="_blank">Introduction/Methodology</a></p>
+
+<p><a href="https://www.reddit.com/r/nba/comments/14ymtj9/250_greatest_players_careers_peaks_236250_oc/?utm_source=share&amp;utm_medium=web2x&amp;context=3" target="_blank">236-250</a></p>
+
+<p><a href="https://www.reddit.com/r/nba/comments/15271q0/top_250_players_careers_peaks_221235_oc/?utm_source=share&amp;utm_medium=web2x&amp;context=3" target="_blank">221-235</a></p>
+
+<p><a href="https://www.reddit.com/r/nba/comments/159j5vk/top_250_players_careers_peaks_206220_oc/?utm_source=share&amp;utm_medium=web2x&amp;context=3" target="_blank">206-220</a></p>
+
+<p><a href="https://www.reddit.com/r/nba/comments/15i2iy2/top_250_players_careers_peaks_191205_oc/?utm_source=share&amp;utm_medium=web2x&amp;context=3" target="_blank">191-205</a></p>
+
+<p><a href="https://www.reddit.com/r/nba/comments/15z69td/top_250_players_careers_peaks_176190_oc/?utm_source=share&amp;utm_medium=web2x&amp;context=3" target="_blank">176-190</a></p>
+
+<p><a href="https://www.reddit.com/r/nba/comments/16bkvsk/top_250_players_careers_peaks_164175_oc/?utm_source=share&amp;utm_medium=web2x&amp;context=3" target="_blank">164-175</a></p>
+
+<p><a href="https://www.reddit.com/r/nba/comments/16ik06m/top_250_players_careers_peaks_155163_oc/?utm_source=share&amp;utm_medium=web2x&amp;context=3" target="_blank">155-163</a></p>
+
+<p><a href="https://www.reddit.com/r/nba/comments/16nw6od/top_250_players_careers_peaks_140154_oc/" target="_blank">140-154</a></p>
+
+<p><a href="https://www.reddit.com/user/Naismythology/comments/16yrwog/top_250_players_careers_peaks_131139_oc/?utm_source=share&amp;utm_medium=web2x&amp;context=3" target="_blank">131-139</a></p>
+
+<p><a href="https://www.reddit.com/r/nba/comments/17g7n9s/top_250_players_careers_peaks_130121_oc/?utm_source=share&amp;utm_medium=web2x&amp;context=3" target="_blank">121-130</a></p>
+
+<p><a href="https://www.reddit.com/r/nba/comments/180pcox/top_250_players_careers_peaks_120111_oc/?utm_source=share&amp;utm_medium=web2x&amp;context=3" target="_blank">111-120</a></p>
+
+<p><a href="https://www.reddit.com/r/nba/comments/18mydwe/top_250_players_careers_peaks_110101_oc/?utm_source=share&amp;utm_medium=web2x&amp;context=3" target="_blank">110-101</a></p>
+
+<p><a href="https://www.reddit.com/r/nba/comments/18sy71s/top_250_players_careers_peaks_10091_oc/?utm_source=share&amp;utm_medium=web2x&amp;context=3" target="_blank">100-91</a></p>
+
+<p><a href="https://www.reddit.com/r/nba/comments/1ajqa02/top_250_players_careers_peaks_9081_oc/" target="_blank">90-81</a></p>
+
+<p><a href="https://www.reddit.com/r/nba/comments/1b6gcvu/top_250_players_careers_peaks_8071_oc/?utm_source=share&amp;utm_medium=web2x&amp;context=3" target="_blank">80-71</a></p>
+
+<p><a href="https://www.reddit.com/r/nba/comments/1btebs5/top_250_players_careers_peaks_7061_oc/?utm_source=share&amp;utm_medium=web3x&amp;utm_name=web3xcss&amp;utm_term=1&amp;utm_content=share_button" target="_blank">70-61</a></p>
+
+<p><a href="https://www.reddit.com/r/nba/comments/1c7cur2/top_250_players_careers_peaks_6051_oc/?utm_source=share&amp;utm_medium=web3x&amp;utm_name=web3xcss&amp;utm_term=1&amp;utm_content=share_button" target="_blank">60-51</a></p>
+
+<p><a href="https://www.reddit.com/r/nba/comments/1chonbm/comment/l23v7vn/?utm_source=share&amp;utm_medium=web3x&amp;utm_name=web3xcss&amp;utm_term=1&amp;utm_content=share_button" target="_blank">50-41</a></p>
+
+<p><a href="https://www.reddit.com/r/nba/comments/1cu6a27/top_250_players_careers_peaks_4031_oc/" target="_blank">40-31</a></p>
+
+<p><a href="https://www.reddit.com/user/Naismythology/comments/1534ty1/top_250_players_careers_peaks_master_list/?utm_source=share&amp;utm_medium=web2x&amp;context=3" target="_blank">Master List</a></p>
+
+<p><em>All stats and info through the 2023 season.</em></p>
+
+<p>If the formatting on this gets all janky, I apologize and I&rsquo;ll try to fix it later. I&rsquo;m finishing up this section on a Mac and apparently it hates reddit&rsquo;s RTF editor. No idea why, I&rsquo;m not very tech savvy. I research basketball from the 1950s, so that probably shouldn&rsquo;t be a surprise.</p>
+
+<p>Anyway, here&rsquo;s the last bunch where there may be surprises in terms of who is in the group of ten. I&rsquo;m guessing after this you can deduce who is in the top ten, and therefore 11-20.</p>
+
+<ul>
+<li><p><strong>30. John Havlicek - 402.4</strong></p>
+
+<ul>
+<li>Career - 383.1
+
+<ul>
+<li>1963-1978</li>
+<li>BOS</li>
+<li>131.7 Win Shares</li>
+<li>0.432 Adjusted MVP Award Shares (2 top five finishes: 1972 - 4th, 1973 - 5th)</li>
+<li>4x All-NBA First Team Selection (1971, 1972, 1973, 1974)</li>
+<li>7x All-NBA Second Team Selection (1964, 1966, 1968, 1969, 1970, 1975, 1976)</li>
+<li>13x All-Star Selection (1966, 1967, 1968, 1969, 1970, 1971, 1972, 1973, 1974, 1975, 1976, 1977, 1978)</li>
+<li>5x All-Defensive First Team Selection (1972, 1973, 1974, 1975, 1976)</li>
+<li>13.3 Championship Win Shares (8 titles - 1963 BOS, 1964 BOS, 1965 BOS, 1966 BOS, 1968 BOS, 1969 BOS, 1974 BOS, 1976 BOS)</li>
+<li>5.6 Conference Finals Win Shares (4 Conf. Finals losses - 1967 BOS, 1972 BOS, 1973 BOS, 1975 BOS)</li>
+<li>1x Finals MVP (1974)</li>
+</ul></li>
+<li>Peak - 421.8
+
+<ul>
+<li>1970-1974</li>
+</ul></li>
+<li>Other achievements
+
+<ul>
+<li>NCAA champion (1960)</li>
+<li>3x All-Defensive Second Team Selection (1969, 1970, 1971)</li>
+<li>20,000 Point Club (26,395; 18th all-time)</li>
+<li>5,000 Assist Club (6,114; 37th all-time)</li>
+<li>17 retired by the Boston Celtics</li>
+<li>College Basketball Hall of Fame Inductee (2006)</li>
+</ul></li>
+<li>Havlicek had an interesting career which I don&rsquo;t think has yet been quite replicated. He was drafted onto a super successful team (the Russell-era Celtics) and was the sixth man there for most of the rest of Russell&rsquo;s run, resulting in six titles. Then after all of the old guard retired, he became the focal point and made several conference finals as well is winning one title, in really his last really good season. Then he was kind of the old guard/veteran presence for a few more years with another conference finals and another Finals win. The closest I can think would be someone like Tim Duncan who took more of a backseat in his twilight years, but Duncan came out of the gate as a superstar, so that part of the equation doesn&rsquo;t really work (even if you want to say David Robinson was already there.)</li>
+<li>It&rsquo;s just a bit weird because it&rsquo;s kind of how you would expect a successful career arc to look, but it rarely ever does.</li>
+</ul></li>
+
+<li><p><strong>29. Elgin Baylor - 407.7</strong></p>
+
+<ul>
+<li>Career - 356.9
+
+<ul>
+<li>1959-1972</li>
+<li>MNL/LAL</li>
+<li>104.2 Win Shares</li>
+<li>2.442 Adjusted MVP Award Shares (7 top five finishes: 1959 - 3rd, 1960 - 5th, 1961 - 3rd, 1962 - 4th, 1963 - 2nd, 1968 - 3rd, 1969 - 5th)</li>
+<li>10x All-NBA First Team Selection (1959, 1960, 1961, 1962, 1963, 1964, 1965, 1967, 1968, 1969)</li>
+<li>11x All-Star Selection (1959, 1960, 1961, 1962, 1963, 1964, 1965, 1967, 1968, 1969, 1970)</li>
+<li>10.6 Finals Win Shares (7 Finals losses - 1959 MNL, 1962 LAL, 1963 LAL, 1966 LAL, 1968 LAL, 1969 LAL, 1970 LAL)</li>
+<li>5.0 Conference Finals Win Shares (3 Conf. Finals losses - 1960 MNL, 1961 LAL, 1965 LAL)</li>
+</ul></li>
+<li>Peak - 458.4
+
+<ul>
+<li>1959-1963</li>
+</ul></li>
+<li>Other achievements
+
+<ul>
+<li>NCAA Final Four Most Outstanding Player (1958)</li>
+<li>Rookie of the Year (1959)</li>
+<li>1x All-Star Game MVP (1959)</li>
+<li>20,000 Point Club (23,149; 33rd all-time)</li>
+<li>10,000 Rebound Club (11,463; 27th all-time)</li>
+<li>22 retired by the Los Angeles Lakers</li>
+<li>1x Executive of the Year (2006)</li>
+<li>College Basketball Hall of Fame Inductee (2006)</li>
+</ul></li>
+<li>For my money, Elgin Baylor is the best player to never win a title, with all due respect to Charles Barkley (which is a lot) and Karl Malone (which is none).</li>
+<li>I would also say Baylor is the second-best player to never win MVP, after Jerry West. (I&rsquo;m not counting George Mikan because the MVP only existed for his final season. And I know Scottie Pippen, who also never won an MVP, is the next guy on the list, but he&rsquo;s only slightly higher points-wise, and I&rsquo;d rather build a team around Baylor - which is no slight to Pippen.)</li>
+<li>Baylor&rsquo;s 1962 season is the stuff of legends. He was on active duty in the military, stationed at Fort Lewis in Washington State. He only got to play with the Lakers on weekends, where he would just have to fly coach to wherever they were playing (including home games). He managed to play in 48 games, where he averaged 38.<sup>3</sup>&frasl;<sub>18</sub>.<sup>6</sup>&frasl;<sub>4</sub>.6 for the season, and finished fourth in MVP voting and made the All-NBA First Team. (This is the official story I&rsquo;ve gotten from multiple sources, however if you go through Baylor&rsquo;s game log, it looks like he was able to play most of November and December, while having to do the weekend thing for January-March, so it&rsquo;s possible his &ldquo;active duty&rdquo; status didn&rsquo;t kick in until January 1962. I&rsquo;m still trying to dig further into that, but either way, quite an impressive year.)</li>
+<li>Side note: 1962 was an absolutely wild year with the MVP voting - Bill Russell won averaging 18.<sup>9</sup>&frasl;<sub>23</sub>.<sup>6</sup>&frasl;<sub>4</sub>.5 for a 60-win Celtics team. Wilt Chamberlain finished second with 50.<sup>6</sup>&frasl;<sub>25</sub>.<sup>7</sup>&frasl;<sub>2</sub>.4 while playing 48.5 minutes per game (none of those are typos). Oscar Robertson recorded the first ever triple-double for a season with 30.<sup>8</sup>&frasl;<sub>12</sub>.<sup>5</sup>&frasl;<sub>11</sub>.4 and finished third. Baylor was fourth while serving active duty in the military. Jerry West was fifth with 30.<sup>8</sup>&frasl;<sub>7</sub>.<sup>9</sup>&frasl;<sub>5</sub>.4. Every guy was between 23 and 27 years old. Oh, and 29-year-old Bob Pettit finished sixth with 31.<sup>1</sup>&frasl;<sub>18</sub>.<sup>7</sup>&frasl;<sub>3</sub>.1 for an abysmal Hawks team. (This is why I use MVP Award Shares rather than MVP wins in this formula. Every one of those seasons deserves some sort of extra credit.)</li>
+</ul></li>
+
+<li><p><strong>28. Scottie Pippen - 413.1</strong></p>
+
+<ul>
+<li>Career - 338.0
+
+<ul>
+<li>1988-2004</li>
+<li>CHI, HOU, POR, CHI</li>
+<li>125.1 Win Shares</li>
+<li>0.715 Adjusted MVP Award Shares (2 top five finishes: 1994 - 3rd, 1996 - 5th)</li>
+<li>3x All-NBA First Team Selection (1994, 1995, 1996)</li>
+<li>2x All-NBA Second Team Selection (1992, 1997)</li>
+<li>2x All-NBA Third Team Selection (1993, 1998)</li>
+<li>7x All-Star Selection (1990, 1992, 1993, 1994, 1995, 1996, 1997)</li>
+<li>8x All-Defensive First Team Selection (1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999)</li>
+<li>15.6 Championship Win Shares (6 titles - 1991 CHI, 1992 CHI, 1993 CHI, 1996 CHI, 1997 CHI, 1998 CHI)</li>
+<li>5.0 Conference Finals Win Shares (3 Conf. Finals losses - 1989 CHI, 1990 CHI, 2000 POR)</li>
+</ul></li>
+<li>Peak - 488.2
+
+<ul>
+<li>1994-1998</li>
+</ul></li>
+<li>Other achievements
+
+<ul>
+<li>2x All-Defensive Second Team Selection (1991, 2000)</li>
+<li>1x All-Star Game MVP (1994)</li>
+<li>2x Olympic Gold Medalist (1992, 1996)</li>
+<li>5,000 Assist Club (6,135; 35th all-time)</li>
+<li>33 retired by the Chicago Bulls</li>
+</ul></li>
+<li>Pippen, just by virtue of his most famous teammate, is never going to get the full credit he deserves for just how good he was: a legtimate MVP candidate, All-NBA First Team-caliber player who routinely finished top five in Defensive Player of the Year voting. (He was top five five times and finished second twice in 1995 and 1996 - behind Dikembe Mutombo and Gary Payton, respectively.)</li>
+<li>Let me put it this way, and this is solely to praise Pippen and not to put any weight in the &ldquo;GOAT debate,&rdquo; but Jordan doesn&rsquo;t win all six of those titles without him. Does he win like three or four of them with an average player in place of Pippen? Yeah. Maybe even five. But I think the 1993 Suns would&rsquo;ve been almost impossible to beat without him.</li>
+<li>Another way to put it (and I guess you can put this in the GOAT argument if you want), but I don&rsquo;t think LeBron ever consistently played with anyone who was as good as Pippen at his peak. It&rsquo;s a little tougher to quantify because Pippen&rsquo;s best statistical seasons are 1994-1995 when Jordan wasn&rsquo;t playing (obviously). In 1994 he averaged 22.0/8.<sup>7</sup>&frasl;<sub>5</sub>.6 with 2.9 steals and 0.8 blocks while leading the Bulls to 55 wins and finishing third in MVP voting and fourth in DPOY voting. But let&rsquo;s just use his 1996 numbers as an example then: 19.<sup>4</sup>&frasl;<sub>6</sub>.<sup>4</sup>&frasl;<sub>5</sub>.9 with 1.7 steals and 0.7 blocks, finishing fifth for MVP and second for DPOY. Dwyane Wade&rsquo;s 2011 Heat is probably the closest - 25.<sup>5</sup>&frasl;<sub>6</sub>.<sup>4</sup>&frasl;<sub>5</sub>.6 with 1.5 steals and 1.1 blocks, finishing seventh in MVP voting. That&rsquo;s pretty close, but Jordan got roughly five seasons of that type of Pippen play, while LeBron had maybe two or three from Wade. Anthony Davis in 2020 was also a monster (26.<sup>1</sup>&frasl;<sub>9</sub>.<sup>3</sup>&frasl;<sub>3</sub>.<sup>2</sup>&frasl;<sub>1</sub>.<sup>5</sup>&frasl;<sub>2</sub>.3, 6th in MVP, 2nd in DPOY), but he also didn&rsquo;t really sustain that for multiple years.</li>
+<li>Pippen&rsquo;s post-Bulls years though, are the most fascinating to me. He was on the 1999 Rockets with Charles Barkley and Hakeem Olajuwon, and I always wonder if that might have worked out differently with a full season for them. (But maybe not, as they were all getting fairly old by then.) Buth the 2000 Trail Blazers was an absolutely stacked team who I think would&rsquo;ve won the title if not for an epic Game 7 implosion in the Conference Finals where the lost a 15 point lead to the Shaq-Kobe Lakers in the fourth quarter. That team&rsquo;s starting lineup was Damon Stoudamire-Steve Smith-Pippen-Rasheed Wallace-Arvydas Sabonis, and they were bringing Detlef Schrempf, Jermaine O&rsquo;Neal, Brian Grant, and Greg Anthony off the bench. That is an absolutely loaded team. I think we&rsquo;d all feel quite a bit differently about Pippen if he&rsquo;d managed to snag a title that year, even if it was more of a 2004 Pistons type title.</li>
+</ul></li>
+
+<li><p><strong>27. Charles Barkley - 420.7</strong></p>
+
+<ul>
+<li>Career - 372.3
+
+<ul>
+<li>1985-2000</li>
+<li>PHI, PHO, HOU</li>
+<li>177.2 Win Shares</li>
+<li>2.437 Adjusted MVP Award Shares (4 top five finishes, 1 win: 1988 - 4th, 1990 - 2nd, 1991 - 4th, 1993 - 1st)</li>
+<li>5x All-NBA First Team Selection (1988, 1989, 1990, 1991, 1993)</li>
+<li>5x All-NBA Second Team Selection (1986, 1987, 1992, 1994, 1995)</li>
+<li>1x All-NBA Third Team Selection (1996)</li>
+<li>11x All-Star Selection (1987, 1988, 1989, 1990, 1991, 1992, 1993, 1994, 1995, 1996, 1997)</li>
+<li>4.6 Finals Win Shares (1 Finals loss - 1993 PHO)</li>
+<li>3.5 Conference Finals Win Shares (2 Conf. Finals losses - 1985 PHI, 1997 HOU)</li>
+</ul></li>
+<li>Peak - 469.0
+
+<ul>
+<li>1989-1993</li>
+</ul></li>
+<li>Other achievements
+
+<ul>
+<li>SEC Player of the Year (1984)</li>
+<li>1x All-Star Game MVP (1991)</li>
+<li>2x Olympic Gold Medalist (1992, 1996)</li>
+<li>20,000 Point Club (23,757; 29th all-time)</li>
+<li>10,000 Rebound Club (12,546; 19th all-time)</li>
+<li>34 retired by the Philadelphia 76ers</li>
+<li>34 retired by the Phoenix Suns</li>
+<li>College Basketball Hall of Fame Inductee (2006)</li>
+</ul></li>
+<li>One quick note before I go on a super long ramble: Barkley is officially listed at 6&rsquo;6&rdquo;, but I&rsquo;ve seen several sources say he&rsquo;s closer to 6&rsquo;4&rdquo;. Regardless, he&rsquo;s the shortest player in the top 20 in rebounds in NBA history. Wes Unseld is listed at 6&rsquo;7&rdquo;, Buck Williams and Jerry Lucas are listed at 6&rsquo;8&rdquo;, everyone else is 6&rsquo;9&rdquo; or taller.</li>
+<li>I know I&rsquo;ve mentioned this in bits and pieces before, but here&rsquo;s my full Unified Theory of Understanding Modern Basketball through the Lens of Charles Barkley.</li>
+<li>Alright, so Barkley gets drafted in 1984, has an incredibly successful career, and retires at the end of the 2000 season. At that point in time, he&rsquo;s really undeniable one of the top 20 players of all time. Shaq, Kobe, and Duncan all had just one title each. Garnett and Nowitzki had no titles. The next generation of stars who would pass him (LeBron, Curry, Durant) were in high school or middle school. Jokic was five years old. You could probably make an argument Barkley was top 15 at that point. (One of my long term goals for this project is to do a progressive/year-by-year ranking, but we&rsquo;ll see how long that takes if it actually ends up a reality.)</li>
+<li>Barkley then immediately begins his broadcasting career, where he is hired by Turner Sports/TNT. &ldquo;Inside the NBA&rdquo; was an already existing show with Ernie Johnson as the host and Kenny Smith as an analyst, but adding Barkley instantly caught lightning in a bottle and it immediately became the &ldquo;go-to&rdquo; show for anyone who wanted to watch basketball, see highlights, and hear insightful and hilarious discussion. Literally anyone who had any interest in basketball watched this show from 2000-onwards.</li>
+<li>Now, due to the nature of the show, and Barkley&rsquo;s congeniality, a lot of good-natured ribbing took place, especially between Kenny and Charles (or any guests and Charles). Kenny, who I would say has something of an ego (not like a crazy amount, but he&rsquo;s a prideful guy) didn&rsquo;t always take it well when he&rsquo;d talk about his accomplishments and Chuck would follow up with &ldquo;Like what? Getting Hakeem water on the bench?&rdquo; And the only comeback to that (like, literally, the only thing you can criticize Barkley for in his entire career) was &ldquo;well you ain&rsquo;t got no rings!&rdquo;</li>
+<li>Barkley, on the other hand, seems very secure in his career - he seems to embody that Captain Picard quote: &ldquo;It is possible to commit no errors and still lose. That is not a weakness. That is life.&rdquo; Barkley did his best against Michael Jordan and Hakeem Olajuwon, came up short, and still held his head high because there really isn&rsquo;t a lot of shame in losing to those guys.</li>
+<li>However, what did everyone see? One of the all time greats, getting roasted by Kenny Smith, of all people, a sixth man on a couple title teams who never made an All-Star Game. This goes on for ten years (Shaq joined the broadcast crew in 2011, which only exacerbated the problem because he had no insight to provide and backed up everything he said with &ldquo;ringz Erneh&rdquo;).</li>
+<li>Remember, LeBron, Curry, Durant, Bosh, Anthony&hellip; I mean, every  star of that generation was watching that show at an impressionable age and thinking &ldquo;the worst thing that could ever happen to me is not winning a title. I&rsquo;ll be damned if I&rsquo;m going to get insulted by the likes of my generation&rsquo;s Kenny Smith after I retire.&rdquo;</li>
+<li>Suddenly, it&rsquo;s not just about winning a ring being the most important goal. It is the only goal worth pursuing, every other accolade or &ldquo;legacy&rdquo; consideration be damned. And that&rsquo;s how we ended up with the Heatles and Durant on the Warriors. (There&rsquo;s a bit more to psychoanalyze with the Durant move(s), but I&rsquo;ll leave that for his entry.)</li>
+<li>And there you have it, the last 25 years of basketball history, summed up because Charles Barkley became a TV broadcaster.</li>
+</ul></li>
+
+<li><p><em>26. Nikola Jokic - 431.2</em></p>
+
+<ul>
+<li>Career - 285.1
+
+<ul>
+<li>2016-2023</li>
+<li>DEN</li>
+<li>94.5 Win Shares</li>
+<li>2.738 Adjusted MVP Award Shares (4 top five finishes, 2 wins: 2019 - 4th, 2021 - 1st, 2022 - 1st, 2023 - 2nd)</li>
+<li>3x All-NBA First Team Selection (2019, 2021, 2022)</li>
+<li>2x All-NBA Second Team Selection (2020, 2023)</li>
+<li>5x All-Star Selection (2019, 2020, 2021, 2022, 2023)</li>
+<li>5.0 Championship Win Shares (1 title - 2023 DEN)</li>
+<li>2.5 Conference Finals Win Shares (1 Conf. Finals loss - 2020 DEN)</li>
+<li>1x Finals MVP (2023)</li>
+</ul></li>
+<li>Peak - 577.2
+
+<ul>
+<li>2019-2023</li>
+</ul></li>
+<li>Other achievements
+
+<ul>
+<li>1x Adriatic League MVP (2015)</li>
+<li>1x Olympic Silver Medalist (2016)</li>
+<li>1x Western Conference Finals MVP (2023)</li>
+</ul></li>
+<li>I haven&rsquo;t crunched all the numbers yet for this season - I have the career scores currently figured, but the peak scores are too complicated to keep track of until the actual offseason. But with another MVP and All-NBA First Team and just all-around stellar season, I can tell you Jokic has moved into at least 22nd place, and I&rsquo;m guessing he&rsquo;ll probably be closer to 20th once I calculate everything.</li>
+<li>I think there are three basic qualities that a player needs to have to be successful at the highest levels of basketball: height, athleticism, and intelligence. And I&rsquo;m talking like, top 1% of the top 1% of the human population in those things. You can get by for a little bit with just one, but you&rsquo;ll probably max out in college. A good NBA player has at least two of the three. The greatest NBA players have all three. Jokic is obviously insanely smart and very tall, but he&rsquo;s also deceptively athletic. I don&rsquo;t think he can jump at all, but I once saw him play a four-overtime game. The guy has crazy endurance. Anyway, all that is to say, of all the currently active non-LeBron players, I think he&rsquo;s got the best chance of cracking the top ten. Though I don&rsquo;t think he&rsquo;ll ever be in the GOAT conversation, just because we&rsquo;ll never see him do like a windmill dunk, and it&rsquo;s hard to imagine the best basketball player ever not having superhuman athleticism.</li>
+</ul></li>
+
+<li><p><strong>25. George Mikan - 435.5</strong></p>
+
+<ul>
+<li>Career - 302.9
+
+<ul>
+<li>1949-1954, 1956</li>
+<li>MNL</li>
+<li>108.7 Win Shares</li>
+<li>6x All-BAA/NBA First Team Selection (1949, 1950, 1951, 1952, 1953, 1954)</li>
+<li>4x All-Star Selection (1951, 1952, 1953, 1954)</li>
+<li>15.8 Championship Win Shares (5 titles - 1949 MNL, 1950 MNL, 1952 MNL, 1953 MNL, 1954 MNL)</li>
+<li>1.1 Conference Finals Win Shares (1 Conf. Finals loss - 1951 MNL)</li>
+</ul></li>
+<li>Peak - 568.1
+
+<ul>
+<li>1949-1953</li>
+</ul></li>
+<li>Other achievements
+
+<ul>
+<li>1x College Player of the Year (1944)</li>
+<li>1x Consensus College Player of the Year (1945)</li>
+<li>2x NBL champion (1947, 1948)</li>
+<li>2x All-NBL First Team Selection (1947, 1948)</li>
+<li>1x NBL MVP (1948)</li>
+<li>1x All-Star Game MVP (1953)</li>
+<li>99 retired by the Los Angeles Lakers</li>
+<li>College Basketball Hall of Fame Inductee (2006)</li>
+</ul></li>
+<li>Keep in mind, Mikan is this high and he doesn&rsquo;t garner any points from MVP votes <em>because the MVP didn&rsquo;t exist until his final season</em>. He definitely would have had at least two wins, and almost certainly six top-five finishes if it had existed for his entire career. He also did all of this in a seven-season career.</li>
+<li>Mikan also doesn&rsquo;t get any credit for his NBL feats, which included an MVP and two titles in his three seasons there. (Mikan was originally on the Chicago American Gears, but after a complicated story which I&rsquo;m just not going to get into here, the team folded and the players were dispersed to the other NBL teams, and the Lakers got Mikan. They would win the NBL title in 1947 and 1948, jump to the BAA in 1949 and win the title, and then get folded into the newly formed NBA and won titles in 1950, 1952, 1953, and 1954.)</li>
+<li>Essentially, Mikan four-peated, lost in the Conference Finals, and then three-peated. If it were up to me, I&rsquo;d put this guy no lower than 12 on any list, but since I&rsquo;m doing a math-based list and want to be fair, he can&rsquo;t get credit for things I don&rsquo;t have stats for.</li>
+</ul></li>
+
+<li><p><strong>24. Dirk Nowitzki - 440.3</strong></p>
+
+<ul>
+<li>Career - 403.5
+
+<ul>
+<li>1999-2019</li>
+<li>DAL</li>
+<li>206.3 Win Shares</li>
+<li>1.809 Adjusted MVP Award Shares (3 top five finishes, 1 win: 2005 - 3rd, 2006 - 3rd, 2007 - 1st)</li>
+<li>4x All-NBA First Team Selection (2005, 2006, 2007, 2009)</li>
+<li>5x All-NBA Second Team Selection (2002, 2003, 2008, 2010, 2011)</li>
+<li>3x All-NBA Third Team Selection (2001, 2004, 2012)</li>
+<li>14x All-Star Selection (2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2014, 2015, 2019)</li>
+<li>3.6 Championship Win Shares (1 title - 2011 DAL)</li>
+<li>5.4 Finals Win Shares (1 Finals loss - 2006 DAL)</li>
+<li>2.6 Conference Finals Win Shares (1 Conf. Finals loss - 2003 DAL)</li>
+<li>1x Finals MVP (2011)</li>
+</ul></li>
+<li>Peak - 477.1
+
+<ul>
+<li>2005-2009</li>
+</ul></li>
+<li>Other achievements
+
+<ul>
+<li>German Bundesliga MVP (1999)</li>
+<li>1x Teammate of the Year (2017)</li>
+<li>1x World Cup Bronze Medalist (2002)</li>
+<li>1x World Cup MVP (2002)</li>
+<li>1x EuroBasket Silver Medalist (2005)</li>
+<li>1x EuroBasket MVP (2005)</li>
+<li>20,000 Point Club (31,560; 6th all-time)</li>
+<li>10,000 Rebound Club (11,489; 26th all-time)</li>
+<li>41 retired by the Dallas Mavericks</li>
+</ul></li>
+<li>Dirk rightfully gets a ton of credit for hauling a &ldquo;no-business-being-there&rdquo; team to the title in 2011 against an absolutely stacked Heat team. He was helped by an all-time choke job from LeBron James that year, but still, his best teammates were Tyson Chandler, Jason Terry, and a 37-year-old Jason Kidd.</li>
+<li>And good god, did that man need that title to bump up his legacy. Before 2011, all Dirk had was blowing a 2-0 Finals lead in 2006 (which he was absolutely masterful in for that playoff run, by the way: his 5.4 win shares that postseason are the third-most of any single postseason, behind Tim Duncan in 2003 and LeBron James in 2012), followed by a 67-win MVP season the next year, where he promptly got &ldquo;We Believe&rsquo;d&rdquo; by the Warriors in the first round in the first round in six games. Then a first round loss, a second round loss, and a first round loss the next three years. However, since he got his one ring, all of that is forgiven and forgotten and he gets to be a champion forever.</li>
+<li>One thing that never gets mentioned with Dirk, though, is how he&rsquo;s in the 30,000 point club and sixth all-time on that leaderboard. LeBron, Kareem, Karl Malone, Kobe, Jordan, Dirk, Wilt. That&rsquo;s the 30,000 club. Durant will likely join next season as he only needs 1,076 more, but it&rsquo;s going to be a while before we see anyone else hit that mark. Harden and Westbrook are 4000+ away and not getting any younger. Curry and DeRozan are 6000+ away. Chris Paul and Lillard are 8000+ away. And that&rsquo;s every active 20,000+ point scorer. The next closest is Giannis at 18,502 points. Could he score 11,500 more in his career? Sure, but it&rsquo;s hardly a guarantee at this point.</li>
+</ul></li>
+
+<li><p><strong>23. Kevin Garnett - 462.1</strong></p>
+
+<ul>
+<li>Career - 415.3
+
+<ul>
+<li>1996-2016</li>
+<li>MIN, BOS, BRK, MIN</li>
+<li>2.752 Adjusted MVP Award Shares (5 top five finishes, 1 win: 2000 - 2nd, 2001 - 5th, 2003 - 2nd, 2004 - 1st, 2008 - 3rd)</li>
+<li>4x All-NBA First Team Selection (2000, 2003, 2004, 2008)</li>
+<li>3x All-NBA Second Team Selection (2001, 2002, 2005)</li>
+<li>2x All-NBA Third Team Selection (1999, 2007)</li>
+<li>15x All-Star Selection (1997, 1998, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2013)</li>
+<li>1x Defensive Player of the Year (2008)</li>
+<li>9x All-Defensive First Team Selection (2000, 2001, 2002, 2003, 2004, 2005, 2008, 2009, 2011)</li>
+<li>4.1 Championship Win Shares (1 title - 2008 BOS)</li>
+<li>2.4 Finals Win Shares (1 Finals loss - 2010 BOS)</li>
+<li>5.0 Conference Finals Win Shares (2 Conf. Finals losses - 2004 MIN, 2012 BOS)</li>
+</ul></li>
+<li>Peak - 508.9
+
+<ul>
+<li>2004-2008</li>
+</ul></li>
+<li>Other achievements
+
+<ul>
+<li>2x All-Defensive Second Team Selection (2006, 2007, 2012)</li>
+<li>1x All-Star Game MVP (2003)</li>
+<li>1x Citizenship Award (2006)</li>
+<li>1x Olympic Gold Medalist (2000)</li>
+<li>20,000 Point Club (26,071; 19th all-time)</li>
+<li>10,000 Rebound Club (14,662; 9th all-time)</li>
+<li>5,000 Assist Club (5,445; 55th all-time)</li>
+<li>5 retired by the Boston Celtics</li>
+</ul></li>
+<li>Garnett is somewhat similar to Nowitzki in that they&rsquo;re all time greats who only won it all once, but that one win is all they needed because now they&rsquo;re champions and that&rsquo;s all we care about when we think of them.</li>
+<li>Garnett, however, unlike Nowitzki, had absolutely abysmal teams in Minnesota. Nowitzki had a few pretty good squads/teammates in Dallas, but Garnett&rsquo;s Minnesota years were rough.</li>
+<li>Here&rsquo;s the list of Hall of Famers Garnett played with during 14 seasons in Minnesota. Ready? Ok, here we go&hellip; it was newly-inducted Chauncey Billups. For two seasons. That&rsquo;s it.</li>
+<li>Want to know the All-Stars Garnett played with during his time there? And I&rsquo;m talking where they were a current All-Star (not future or former) in a season with Garnett as a teammate: Tom Gugliotta in 1997, Wally Szczerbiak in 2002, and Sam Cassell in 2004.</li>
+<li>The instant he was put on a team with other Hall of Fame level players, he immediately won a title.</li>
+</ul></li>
+
+<li><p><em>22. James Harden - 467.3</em></p>
+
+<ul>
+<li>Career - 372.2
+
+<ul>
+<li>2010-2023</li>
+<li>OKC, HOU, BRK, PHI</li>
+<li>158.0 Win Shares</li>
+<li>3.655 Adjusted MVP Award Shares (6 top five finishes, 1 win: 2014 - 5th, 2015 - 2nd, 2017 - 2nd, 2018 - 1st, 2019 - 2nd, 2020 - 3rd)</li>
+<li>6x All-NBA First Team Selection (2014, 2015, 2017, 2018, 2019, 2020)</li>
+<li>1x All-NBA Third Team Selection (2013)</li>
+<li>10x All-Star Selection (2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022)</li>
+<li>2.4 Finals Win Shares (1 Finals loss - 2012 OKC)</li>
+<li>7.0 Conference Finals Win Shares (3 Conf. Finals losses - 2011 OKC, 2015 HOU, 2018 HOU)</li>
+</ul></li>
+<li>Peak - 562.3
+
+<ul>
+<li>2015-2019</li>
+</ul></li>
+<li>Other achievements
+
+<ul>
+<li>1x Sixth Man of the Year (2012)</li>
+<li>1x Olympic Gold Medalist (2012)</li>
+<li>1x World Cup Gold Medalist (2014)</li>
+<li>20,000 Point Club (24,693; 25th all-time)</li>
+<li>5,000 Assist Club (7,015; 20th all-time)</li>
+</ul></li>
+<li>Look, this seems oddly high to me too, and I&rsquo;m not exactly happy about it, but it&rsquo;s the direct result of half a decade of sportswriters saying, &ldquo;look, this seems oddly high to me, and I&rsquo;m not exactly happy about it, but this guy is a top 3 MVP candidate.&rdquo;</li>
+<li>Harden was on an absolute bender of snagging MVP votes from 2014-2020. In those seven seasons, he finished top five six times, and of those six times, five of them were third place or better.</li>
+<li>I get not wanting to put him this high because of how he generally leaves teams (although that is usually hilarious), but it&rsquo;s hard to ignore his impact on the game for half a decade and beyond.</li>
+</ul></li>
+
+<li><p><strong>21. David Robinson - 470.7</strong></p>
+
+<ul>
+<li>Career - 396.0
+
+<ul>
+<li>1990-2003</li>
+<li>SAS</li>
+<li>178.7 Win Shares</li>
+<li>3.123 Adjusted MVP Award Shares (5 top five finishes, 1 win: 1991 - 3rd, 1992 - 3rd, 1994 - 2nd, 1995 - 1st, 1996 - 2nd)</li>
+<li>4x All-NBA First Team Selection (1991, 1992, 1995, 1996)</li>
+<li>2x All-NBA Second Team Selection (1994, 1998)</li>
+<li>4x All-NBA Third Team Selection (1990, 1993, 2000, 2001)</li>
+<li>10x All-Star Selection (1990, 1991, 1992, 1993, 1994, 1995, 1996, 1998, 2000, 2001)</li>
+<li>1x Defensive Player of the Year (1992)</li>
+<li>4x All-Defensive First Team Selection (1991, 1992, 1995, 1996)</li>
+<li>5.3 Championship Win Shares (2 titles - 1999 SAS, 2003 SAS)</li>
+<li>4.1 Conference Finals Win Shares (2 Conf. Finals losses - 1995 SAS, 2001 SAS)</li>
+</ul></li>
+<li>Peak - 545.4
+
+<ul>
+<li>1992-1996</li>
+</ul></li>
+<li>Other achievements
+
+<ul>
+<li>3x CAA Player of the Year (1985, 1986, 1987)</li>
+<li>1x Consensus College Player of the Year (1987)</li>
+<li>Rookie of the Year (1990)</li>
+<li>4x All-Defensive Second Team Selection (1990, 1993, 1994, 1998)</li>
+<li>1x Sportsmanship Award (2001)</li>
+<li>1x Citizenship Award (2003)</li>
+<li>2x Olympic Gold Medalist (1992, 1996)</li>
+<li>1x Olympic Bronze Medalist (1988)</li>
+<li>1x World Cup Gold Medalist (1986)</li>
+<li>20,000 Point Club (20,790; 44th all-time)</li>
+<li>10,000 Rebound Club (10,497; 33rd all-time)</li>
+<li>50 retired by the San Antonio Spurs</li>
+<li>FIBA Hall of Fame Inductee (2013)</li>
+</ul></li>
+<li>Okay, so, for those who weren&rsquo;t around from about 1990-1995, David Robinson was <em>the</em> exemplar for what we thought basketball was going to become in the coming decade plus. I cannot stress that enough. He was huge. He was ripped. He was likeable. He was doing things like putting up a quadruple-double. (A 34-10-10-10 with 2 steals to be exact.)</li>
+<li>Robinson won Rookie of the Year in 1990, Defensive Player of the Year in 1992, finishes second in MVP voting to Hakeem Olajuwon in 1994, and then wins MVP in 1995. And there was a lot of talk in 1994 that Robinson deserved it over Hakeem - it was a very close call. This is to go along with a World Cup Gold Medal and an Olympic Gold Medal by 1992 (first player to ever get both).</li>
+<li>And then, tragedy for the Admiral: he leads the Spurs to Western Conference Finals in 1995 as the #1 seed, and comes up against the 6th seeded Houston Rockets, where Hakeem proceeds to absolutely destroy him. Remember, they&rsquo;re guarding each other, so this is reflective of both their offense and defense, but in that series, Hakeem averages 35.<sup>3</sup>&frasl;<sub>12</sub>.<sup>5</sup>&frasl;<sub>5</sub>.0 with 1.3 steals and 4.5 blocks on 56% shooting. Robinson averages 23.<sup>8</sup>&frasl;<sub>11</sub>.<sup>3</sup>&frasl;<sub>2</sub>.7 with 1.5 steals and 2.2 blocks. Rockets win in six, and basically definitively shut down the conversation on who was better once and for all.</li>
+<li>1996 was another typically stellar season by Robinson&rsquo;s standards (he finished second in MVP voting), but goes out early in the playoffs again. Then he gets hurt six games into the 1997 campaign, and the second worst thing that could&rsquo;ve happened to his legacy does: the Spurs absolutely tank, and then draft an even better player than him with the #1 pick in Tim Duncan.</li>
+<li>Now, don&rsquo;t get me wrong, I&rsquo;m sure Robinson is thrilled he has two rings. But he was a role player for the second ring, and he was very much option B for the first one. With the lockout, 1999 was a weird year to draw any conclusions from, but ultimately, we remember that as the ascendance of Duncan, not Robinson finally getting one.</li>
+<li>I guess what I&rsquo;m saying is, it&rsquo;s a little strange that he&rsquo;s clearly a top 25 player of all time, and yet we rarely think of him, because he was beaten by a better opponent, and because he was outshone by a better teammate.</li>
+</ul></li>
+</ul>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="l6z9k8e" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>brncct</div>
+        <div>1 | 13 minutes ago </div>
+      </div>
+      <label for="l6z9k8e" class="commentText"><p>Wow</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="l6z9nze" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Bouldershoulders12 | Celtics</div>
+        <div>1 | 13 minutes ago </div>
+      </div>
+      <label for="l6z9nze" class="commentText"><p>I’d still take KG over Harden on an all time list. MVP, DPOY, best player on a championship team. Multiple runner up for MVP + DPOY as well.</p>
+
+<p>KG is around 15-20 all time most people usually have harden around 30 because he never made it over the hump in his prime while playing with multiple HOF players</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="l6zagn4" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>iCE_P0W3R | Thunder</div>
+        <div>1 | 8 minutes ago </div>
+      </div>
+      <label for="l6zagn4" class="commentText"><p>Not having Jokic in the top 20 feels wrong to me</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
