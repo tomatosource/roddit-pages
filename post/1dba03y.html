@@ -1,0 +1,924 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type=checkbox] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C""\201D""\2018""\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555; 
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position:relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size:24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText, .commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size:24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+    font-size: 38px;
+    line-height: 1.5;
+    color: white;
+}
+
+.selfPostContainer * {
+    color: white;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/nba/comments/1dba03y/i_love_this_chart_helps_to_visualize_how_long_and/"><p>I love this chart. Helps to visualize how long and consistently each player dominated at his position. It shows All-NBA 1st Team selections, but groups the selections by player.</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <p>Here&rsquo;s an <a href="https://imgur.com/a/ptZ8sRT" target="_blank">IMGUR album</a> of the charts.</p>
+
+<p>I&rsquo;ve tried copying/pasting the info into a Reddit Table below, but it cuts the info off after a certain number of rows/columns. The <a href="https://imgur.com/a/ptZ8sRT" target="_blank">IMGUR album</a> is complete, though.</p>
+
+<p>All info from <a href="https://www.basketball-reference.com/awards/all_league.html" target="_blank">basketball-reference.com</a></p>
+
+<table>
+<thead>
+<tr>
+<th align="right" colspan="111"><strong>Year</strong></th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="right">2024</td>
+<td align="left">Nikola Jokić C</td>
+<td align="left">Giannis Antetokounmpo F</td>
+<td align="left">Jayson Tatum F</td>
+<td align="left">Luka Dončić G</td>
+<td align="left" colspan="106">Shai Gilgeous-Alexander G</td>
+</tr>
+
+<tr>
+<td align="right" colspan="2">2023</td>
+<td align="left">Giannis Antetokounmpo F</td>
+<td align="left">Jayson Tatum F</td>
+<td align="left">Luka Dončić G</td>
+<td align="left">Shai Gilgeous-Alexander G</td>
+<td align="left" colspan="105">Joel Embiid C</td>
+</tr>
+
+<tr>
+<td align="right">2022</td>
+<td align="left">Nikola Jokić C</td>
+<td align="left">Giannis Antetokounmpo F</td>
+<td align="left">Jayson Tatum F</td>
+<td align="left" colspan="3">Luka Dončić G</td>
+<td align="left" colspan="104">Devin Booker G</td>
+</tr>
+
+<tr>
+<td align="right">2021</td>
+<td align="left">Nikola Jokić C</td>
+<td align="left" colspan="2">Giannis Antetokounmpo F</td>
+<td align="left" colspan="4">Luka Dončić G</td>
+<td align="left">Stephen Curry G</td>
+<td align="left" colspan="102">Kawhi Leonard F</td>
+</tr>
+
+<tr>
+<td align="right" colspan="2">2020</td>
+<td align="left" colspan="2">Giannis Antetokounmpo F</td>
+<td align="left" colspan="6">Luka Dončić G</td>
+<td align="left">James Harden G</td>
+<td align="left">LeBron James F</td>
+<td align="left" colspan="99">Anthony Davis C</td>
+</tr>
+
+<tr>
+<td align="right">2019</td>
+<td align="left">Nikola Jokić C</td>
+<td align="left" colspan="6">Giannis Antetokounmpo F</td>
+<td align="left" colspan="2">Stephen Curry G</td>
+<td align="left" colspan="3">James Harden G</td>
+<td align="left" colspan="98">Paul George F</td>
+</tr>
+
+<tr>
+<td align="right" colspan="10">2018</td>
+<td align="left">James Harden G</td>
+<td align="left">LeBron James F</td>
+<td align="left" colspan="2">Anthony Davis C</td>
+<td align="left">Kevin Durant F</td>
+<td align="left" colspan="96">Damian Lillard G</td>
+</tr>
+
+<tr>
+<td align="right" colspan="9">2017</td>
+<td align="left">Kawhi Leonard F</td>
+<td align="left">James Harden G</td>
+<td align="left">LeBron James F</td>
+<td align="left" colspan="4">Anthony Davis C</td>
+<td align="left" colspan="95">Russell Westbrook G</td>
+</tr>
+
+<tr>
+<td align="right" colspan="8">2016</td>
+<td align="left">Stephen Curry G</td>
+<td align="left" colspan="2">Kawhi Leonard F</td>
+<td align="left" colspan="5">LeBron James F</td>
+<td align="left">Russell Westbrook G</td>
+<td align="left" colspan="94">DeAndre Jordan C</td>
+</tr>
+
+<tr>
+<td align="right" colspan="8">2015</td>
+<td align="left" colspan="2">Stephen Curry G</td>
+<td align="left">James Harden G</td>
+<td align="left">LeBron James F</td>
+<td align="left" colspan="6">Anthony Davis F</td>
+<td align="left" colspan="93">Marc Gasol C</td>
+</tr>
+
+<tr>
+<td align="right" colspan="10">2014</td>
+<td align="left">James Harden G</td>
+<td align="left" colspan="3">LeBron James F</td>
+<td align="left" colspan="5">Kevin Durant F</td>
+<td align="left">Chris Paul G</td>
+<td align="left" colspan="91">Joakim Noah C</td>
+</tr>
+
+<tr>
+<td align="right" colspan="11">2013</td>
+<td align="left" colspan="3">LeBron James F</td>
+<td align="left" colspan="5">Kevin Durant F</td>
+<td align="left" colspan="2">Chris Paul G</td>
+<td align="left">Kobe Bryant G</td>
+<td align="left" colspan="89">Tim Duncan C</td>
+</tr>
+
+<tr>
+<td align="right" colspan="11">2012</td>
+<td align="left" colspan="3">LeBron James F</td>
+<td align="left" colspan="5">Kevin Durant F</td>
+<td align="left" colspan="2">Chris Paul G</td>
+<td align="left" colspan="2">Kobe Bryant G</td>
+<td align="left" colspan="88">Dwight Howard C</td>
+</tr>
+
+<tr>
+<td align="right" colspan="11">2011</td>
+<td align="left" colspan="3">LeBron James F</td>
+<td align="left" colspan="7">Kevin Durant F</td>
+<td align="left" colspan="2">Kobe Bryant G</td>
+<td align="left">Dwight Howard C</td>
+<td align="left" colspan="87">Derrick Rose G</td>
+</tr>
+
+<tr>
+<td align="right" colspan="11">2010</td>
+<td align="left" colspan="3">LeBron James F</td>
+<td align="left" colspan="7">Kevin Durant F</td>
+<td align="left" colspan="2">Kobe Bryant G</td>
+<td align="left" colspan="2">Dwight Howard C</td>
+<td align="left" colspan="86">Dwyane Wade G</td>
+</tr>
+
+<tr>
+<td align="right" colspan="11">2009</td>
+<td align="left" colspan="10">LeBron James F</td>
+<td align="left" colspan="2">Kobe Bryant G</td>
+<td align="left" colspan="2">Dwight Howard C</td>
+<td align="left">Dwyane Wade G</td>
+<td align="left" colspan="85">Dirk Nowitzki F</td>
+</tr>
+
+<tr>
+<td align="right" colspan="11">2008</td>
+<td align="left" colspan="8">LeBron James F</td>
+<td align="left" colspan="2">Chris Paul G</td>
+<td align="left" colspan="2">Kobe Bryant G</td>
+<td align="left" colspan="4">Dwight Howard C</td>
+<td align="left" colspan="84">Kevin Garnett F</td>
+</tr>
+
+<tr>
+<td align="right" colspan="21">2007</td>
+<td align="left">Kobe Bryant G</td>
+<td align="left" colspan="4">Tim Duncan F</td>
+<td align="left" colspan="2">Dirk Nowitzki F</td>
+<td align="left">Steve Nash G</td>
+<td align="left" colspan="82">Amar&rsquo;e Stoudemire C</td>
+</tr>
+
+<tr>
+<td align="right" colspan="11">2006</td>
+<td align="left" colspan="10">LeBron James F</td>
+<td align="left" colspan="5">Kobe Bryant G</td>
+<td align="left" colspan="2">Dirk Nowitzki F</td>
+<td align="left" colspan="2">Steve Nash G</td>
+<td align="left" colspan="81">Shaquille O&rsquo;Neal C</td>
+</tr>
+
+<tr>
+<td align="right" colspan="22">2005</td>
+<td align="left" colspan="4">Tim Duncan F</td>
+<td align="left" colspan="2">Dirk Nowitzki F</td>
+<td align="left" colspan="2">Steve Nash G</td>
+<td align="left">Shaquille O&rsquo;Neal C</td>
+<td align="left" colspan="80">Allen Iverson G</td>
+</tr>
+
+<tr>
+<td align="right" colspan="21">2004</td>
+<td align="left">Kobe Bryant G</td>
+<td align="left" colspan="5">Tim Duncan F</td>
+<td align="left" colspan="3">Kevin Garnett F</td>
+<td align="left" colspan="2">Shaquille O&rsquo;Neal C</td>
+<td align="left" colspan="79">Jason Kidd G</td>
+</tr>
+
+<tr>
+<td align="right" colspan="21">2003</td>
+<td align="left">Kobe Bryant G</td>
+<td align="left" colspan="5">Tim Duncan F</td>
+<td align="left" colspan="3">Kevin Garnett F</td>
+<td align="left" colspan="3">Shaquille O&rsquo;Neal C</td>
+<td align="left" colspan="78">Tracy McGrady G</td>
+</tr>
+
+<tr>
+<td align="right" colspan="21">2002</td>
+<td align="left">Kobe Bryant G</td>
+<td align="left" colspan="8">Tim Duncan F</td>
+<td align="left" colspan="2">Shaquille O&rsquo;Neal C</td>
+<td align="left">Jason Kidd G</td>
+<td align="left" colspan="78">Tracy McGrady F</td>
+</tr>
+
+<tr>
+<td align="right" colspan="22">2001</td>
+<td align="left" colspan="8">Tim Duncan F</td>
+<td align="left">Shaquille O&rsquo;Neal C</td>
+<td align="left">Allen Iverson G</td>
+<td align="left" colspan="2">Jason Kidd G</td>
+<td align="left" colspan="77">Chris Webber F</td>
+</tr>
+
+<tr>
+<td align="right" colspan="22">2000</td>
+<td align="left" colspan="5">Tim Duncan F</td>
+<td align="left" colspan="3">Kevin Garnett F</td>
+<td align="left" colspan="2">Shaquille O&rsquo;Neal C</td>
+<td align="left" colspan="3">Jason Kidd G</td>
+<td align="left" colspan="76">Gary Payton G</td>
+</tr>
+
+<tr>
+<td align="right" colspan="22">1999</td>
+<td align="left" colspan="9">Tim Duncan F</td>
+<td align="left">Allen Iverson G</td>
+<td align="left" colspan="4">Jason Kidd G</td>
+<td align="left">Alonzo Mourning C</td>
+<td align="left" colspan="74">Karl Malone F</td>
+</tr>
+
+<tr>
+<td align="right" colspan="22">1998</td>
+<td align="left" colspan="8">Tim Duncan F</td>
+<td align="left" colspan="5">Shaquille O&rsquo;Neal C</td>
+<td align="left" colspan="2">Gary Payton G</td>
+<td align="left">Karl Malone F</td>
+<td align="left" colspan="73">Michael Jordan G</td>
+</tr>
+
+<tr>
+<td align="right" colspan="37">1997</td>
+<td align="left">Karl Malone F</td>
+<td align="left">Michael Jordan G</td>
+<td align="left">Hakeem Olajuwon C</td>
+<td align="left">Grant Hill F</td>
+<td align="left" colspan="70">Tim Hardaway G</td>
+</tr>
+
+<tr>
+<td align="right" colspan="37">1996</td>
+<td align="left">Karl Malone F</td>
+<td align="left" colspan="4">Michael Jordan G</td>
+<td align="left">Anfernee Hardaway G</td>
+<td align="left">Scottie Pippen F</td>
+<td align="left" colspan="67">David Robinson C</td>
+</tr>
+
+<tr>
+<td align="right" colspan="37">1995</td>
+<td align="left" colspan="5">Karl Malone F</td>
+<td align="left">Anfernee Hardaway G</td>
+<td align="left">Scottie Pippen F</td>
+<td align="left">David Robinson C</td>
+<td align="left" colspan="66">John Stockton G</td>
+</tr>
+
+<tr>
+<td align="right" colspan="37">1994</td>
+<td align="left" colspan="2">Karl Malone F</td>
+<td align="left" colspan="4">Hakeem Olajuwon C</td>
+<td align="left" colspan="2">Scottie Pippen F</td>
+<td align="left">John Stockton G</td>
+<td align="left" colspan="65">Latrell Sprewell G</td>
+</tr>
+
+<tr>
+<td align="right" colspan="37">1993</td>
+<td align="left">Karl Malone F</td>
+<td align="left">Michael Jordan G</td>
+<td align="left" colspan="8">Hakeem Olajuwon C</td>
+<td align="left">Charles Barkley F</td>
+<td align="left" colspan="63">Mark Price G</td>
+</tr>
+
+<tr>
+<td align="right" colspan="37">1992</td>
+<td align="left">Karl Malone F</td>
+<td align="left" colspan="6">Michael Jordan G</td>
+<td align="left" colspan="5">David Robinson C</td>
+<td align="left">Clyde Drexler G</td>
+<td align="left" colspan="61">Chris Mullin F</td>
+</tr>
+
+<tr>
+<td align="right" colspan="37">1991</td>
+<td align="left">Karl Malone F</td>
+<td align="left" colspan="6">Michael Jordan G</td>
+<td align="left" colspan="3">David Robinson C</td>
+<td align="left" colspan="4">Charles Barkley F</td>
+<td align="left" colspan="60">Magic Johnson G</td>
+</tr>
+
+<tr>
+<td align="right" colspan="37">1990</td>
+<td align="left">Karl Malone F</td>
+<td align="left" colspan="9">Michael Jordan G</td>
+<td align="left" colspan="4">Charles Barkley F</td>
+<td align="left">Magic Johnson G</td>
+<td align="left" colspan="59">Patrick Ewing C</td>
+</tr>
+
+<tr>
+<td align="right" colspan="37">1989</td>
+<td align="left">Karl Malone F</td>
+<td align="left">Michael Jordan G</td>
+<td align="left" colspan="8">Hakeem Olajuwon C</td>
+<td align="left" colspan="4">Charles Barkley F</td>
+<td align="left" colspan="60">Magic Johnson G</td>
+</tr>
+
+<tr>
+<td align="right" colspan="38">1988</td>
+<td align="left">Michael Jordan G</td>
+<td align="left" colspan="8">Hakeem Olajuwon C</td>
+<td align="left" colspan="4">Charles Barkley F</td>
+<td align="left" colspan="2">Magic Johnson G</td>
+<td align="left" colspan="58">Larry Bird F</td>
+</tr>
+
+<tr>
+<td align="right" colspan="38">1987</td>
+<td align="left">Michael Jordan G</td>
+<td align="left" colspan="12">Hakeem Olajuwon C</td>
+<td align="left" colspan="2">Magic Johnson G</td>
+<td align="left">Larry Bird F</td>
+<td align="left" colspan="57">Kevin McHale F</td>
+</tr>
+
+<tr>
+<td align="right" colspan="51">1986</td>
+<td align="left" colspan="2">Magic Johnson G</td>
+<td align="left" colspan="2">Larry Bird F</td>
+<td align="left">Kareem Abdul-Jabbar C</td>
+<td align="left">Dominique Wilkins F</td>
+<td align="left" colspan="54">Isiah Thomas G</td>
+</tr>
+
+<tr>
+<td align="right" colspan="51">1985</td>
+<td align="left" colspan="2">Magic Johnson G</td>
+<td align="left" colspan="4">Larry Bird F</td>
+<td align="left">Isiah Thomas G</td>
+<td align="left">Moses Malone C</td>
+<td align="left" colspan="52">Bernard King F</td>
+</tr>
+
+<tr>
+<td align="right" colspan="51">1984</td>
+<td align="left" colspan="2">Magic Johnson G</td>
+<td align="left" colspan="2">Larry Bird F</td>
+<td align="left" colspan="2">Kareem Abdul-Jabbar C</td>
+<td align="left" colspan="2">Isiah Thomas G</td>
+<td align="left" colspan="52">Bernard King F</td>
+</tr>
+
+<tr>
+<td align="right" colspan="51">1983</td>
+<td align="left" colspan="2">Magic Johnson G</td>
+<td align="left" colspan="7">Larry Bird F</td>
+<td align="left">Moses Malone C</td>
+<td align="left">Julius Erving F</td>
+<td align="left" colspan="49">Sidney Moncrief G</td>
+</tr>
+
+<tr>
+<td align="right" colspan="53">1982</td>
+<td align="left" colspan="7">Larry Bird F</td>
+<td align="left">Moses Malone C</td>
+<td align="left" colspan="2">Julius Erving F</td>
+<td align="left">George Gervin G</td>
+<td align="left" colspan="47">Gus Williams G</td>
+</tr>
+
+<tr>
+<td align="right" colspan="53">1981</td>
+<td align="left" colspan="2">Larry Bird F</td>
+<td align="left" colspan="6">Kareem Abdul-Jabbar C</td>
+<td align="left" colspan="2">Julius Erving F</td>
+<td align="left" colspan="2">George Gervin G</td>
+<td align="left" colspan="46">Dennis Johnson G</td>
+</tr>
+
+<tr>
+<td align="right" colspan="53">1980</td>
+<td align="left" colspan="2">Larry Bird F</td>
+<td align="left" colspan="6">Kareem Abdul-Jabbar C</td>
+<td align="left" colspan="2">Julius Erving F</td>
+<td align="left" colspan="3">George Gervin G</td>
+<td align="left" colspan="45">Paul Westphal G</td>
+</tr>
+
+<tr>
+<td align="right" colspan="58">1979</td>
+<td align="left" colspan="5">Moses Malone C</td>
+<td align="left" colspan="3">George Gervin G</td>
+<td align="left">Paul Westphal G</td>
+<td align="left">Elvin Hayes F</td>
+<td align="left" colspan="43">Marques Johnson F</td>
+</tr>
+
+<tr>
+<td align="right" colspan="61">1978</td>
+<td align="left" colspan="2">Julius Erving F</td>
+<td align="left" colspan="6">George Gervin G</td>
+<td align="left">Bill Walton C</td>
+<td align="left">Truck Robinson F</td>
+<td align="left" colspan="40">David Thompson G</td>
+</tr>
+
+<tr>
+<td align="right" colspan="55">1977</td>
+<td align="left" colspan="11">Kareem Abdul-Jabbar C</td>
+<td align="left">Paul Westphal G</td>
+<td align="left" colspan="4">Elvin Hayes F</td>
+<td align="left">David Thompson F</td>
+<td align="left" colspan="39">Pete Maravich G</td>
+</tr>
+
+<tr>
+<td align="right" colspan="55">1976</td>
+<td align="left" colspan="8">Kareem Abdul-Jabbar C</td>
+<td align="left" colspan="10">George McGinnis F</td>
+<td align="left">Rick Barry F</td>
+<td align="left">Tiny Archibald G</td>
+<td align="left" colspan="36">Pete Maravich G</td>
+</tr>
+
+<tr>
+<td align="right" colspan="67">1975</td>
+<td align="left" colspan="6">Elvin Hayes F</td>
+<td align="left">Rick Barry F</td>
+<td align="left" colspan="2">Tiny Archibald G</td>
+<td align="left">Bob McAdoo C</td>
+<td align="left" colspan="34">Walt Frazier G</td>
+</tr>
+
+<tr>
+<td align="right" colspan="55">1974</td>
+<td align="left" colspan="18">Kareem Abdul-Jabbar C</td>
+<td align="left" colspan="4">Rick Barry F</td>
+<td align="left">Walt Frazier G</td>
+<td align="left">Gail Goodrich G</td>
+<td align="left" colspan="32">John Havlicek F</td>
+</tr>
+
+<tr>
+<td align="right" colspan="55">1973</td>
+<td align="left" colspan="19">Kareem Abdul-Jabbar C</td>
+<td align="left" colspan="5">Tiny Archibald G</td>
+<td align="left">John Havlicek F</td>
+<td align="left">Spencer Haywood F</td>
+<td align="left" colspan="30">Jerry West G</td>
+</tr>
+
+<tr>
+<td align="right" colspan="55">1972</td>
+<td align="left" colspan="22">Kareem Abdul-Jabbar C</td>
+<td align="left" colspan="2">Walt Frazier G</td>
+<td align="left">John Havlicek F</td>
+<td align="left">Spencer Haywood F</td>
+<td align="left" colspan="30">Jerry West G</td>
+</tr>
+
+<tr>
+<td align="right" colspan="55">1971</td>
+<td align="left" colspan="24">Kareem Abdul-Jabbar C</td>
+<td align="left" colspan="2">John Havlicek F</td>
+<td align="left">Jerry West G</td>
+<td align="left">Dave Bing G</td>
+<td align="left" colspan="28">Billy Cunningham F</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+</tbody>
+</table>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="l7po6tk" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>im____new____here | Nets</div>
+        <div>1 | 23 minutes ago </div>
+      </div>
+      <label for="l7po6tk" class="commentText"><p>confirms my theory that |||||||||||||||||||||||| is truly the GOAT</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="l7pr09x" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ThinkSoftware | ATL</div>
+        <div>1 | 5 minutes ago </div>
+      </div>
+      <label for="l7pr09x" class="commentText"><p>I’m tired of you |||||||||||||||||||||||| stans</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="l7po1qs" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>rabid89 | Celtics</div>
+        <div>1 | 24 minutes ago </div>
+      </div>
+      <label for="l7po1qs" class="commentText"><p>Help, I think I just got eye cancer.</p>
+
+<p>9-uj9-03ui5j09-1iu3-=5ui1953uij1-=9jd91jmnicodsxnnfgeda</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="l7pogvd" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>RenPaulable | Lakers</div>
+        <div>1 | 21 minutes ago </div>
+      </div>
+      <label for="l7pogvd" class="commentText"><p>this is so funny</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="l7powgg" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Sartheking | Warriors</div>
+        <div>1 | 18 minutes ago </div>
+      </div>
+      <label for="l7powgg" class="commentText"><p>I’m lost</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="l7pqt7e" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Dunlocke | Bulls</div>
+        <div>1 | 6 minutes ago </div>
+      </div>
+      <label for="l7pqt7e" class="commentText"><p>Have you never seen a spreadsheet before?</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
