@@ -1,0 +1,1037 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type=checkbox] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C""\201D""\2018""\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555; 
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position:relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size:24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText, .commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size:24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+    font-size: 38px;
+    line-height: 1.5;
+    color: white;
+}
+
+.selfPostContainer * {
+    color: white;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/nba/comments/1dp6m6e/oc_the_difference_between_good_and_bad_nba_draft/"><p>[OC] The difference between good and bad NBA draft classes is huge (x-post from /r/nbadiscussion)</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <p>We&rsquo;ve all heard that this year&rsquo;s NBA draft class is not supposed to be good. But what does that mean? If the analysts are right, how much worse will this year&rsquo;s draft class than the draft class from an average or even a great class?</p>
+
+<p>TLDR: <em>The difference is enormous (or at least larger than I expected it to be).</em> A top-5 pick from a terrible draft is less valuable, on average, than a top-30 pick from a fantastic draft.</p>
+
+<p><em><a href="https://quantimschmitz.com/2024/06/25/the-gap-between-good-and-bad-nba-draft-classes-is-huge/" target="_blank">You can find my full writeup here, if you crave all the details.</a></em></p>
+
+<p>#Measuring Draft Class Quality</p>
+
+<p>I&rsquo;m using total Win Shares to measure draft quality. Win Shares aren&rsquo;t an infallible all-in-one metric by any means, but they roughly capture the kinds of things an all-in-one metric should capture, and they have a very intuitive meaning: total win shares = total wins a player&rsquo;s presence added for his team.</p>
+
+<p>Win shares gave reasonable and intuitive results when I had looked at <a href="https://quantimschmitz.com/2023/04/02/how-valuable-is-each-nba-draft-pick/" target="_blank">how valuable each NBA draft pick is</a> and <a href="https://quantimschmitz.com/2022/11/01/have-nba-teams-gotten-better-at-drafting/" target="_blank">whether NBA teams have gotten worse at drafting</a>, which is why I&rsquo;m sticking with them for now.</p>
+
+<p>I looked at the average win shares for players picked in the Top 5, Top 10, and Top 30 of each NBA draft since 1979.</p>
+
+<p><strong><a href="https://quantimschmitz.com/2024/06/25/the-gap-between-good-and-bad-nba-draft-classes-is-huge/" target="_blank">The result is a pretty wild ride,</a></strong> especially if you look at the top 5, who have zagged between fantastic and terrible from year to year.</p>
+
+<p>#How Much Better is a Good Draft Than a Bad One?</p>
+
+<p>Since recent draft classes haven&rsquo;t had time to earn win shares, I looked at just the draft classes before 2014, so they all had at least a decade of results. I divided these into percentiles, so a 20th percentile draft is better than 20% of drafts and worse than 80%, etc.</p>
+
+<p><strong><a href="https://i0.wp.com/quantimschmitz.com/wp-content/uploads/2024/06/image-1.png?w=415&amp;ssl=1" target="_blank">Here&rsquo;s a table of the results.</a></strong></p>
+
+<p>The gap between good and bad draft classes can be massive, especially early in the draft.</p>
+
+<ul>
+<li><p>The top 5 picks in a fantastic (95th percentile, think 1984 or 2003) draft produce about <strong>four times</strong> as many win shares as the top five in a terrible (5th percentile) draft</p></li>
+
+<li><p>The top 5 in a good (80th percentile) draft are about <strong>twice</strong> as productive as the top five in a poor (20th percentile) draft.</p></li>
+
+<li><p>Even a “normal” 50th percentile draft’s top five is <strong>more than twice</strong> as impactful as a terrible draft’s top five.</p></li>
+
+<li><p>This flattens out a bit as we get later in the draft. For the entire top 30, the picks in an excellent 95th percentile draft produce about twice as many win shares as the picks from a terrible 5th percentile draft.</p></li>
+
+<li><p>A top 30 pick from a great draft is more valuable on average <em>than even a top 5 pick</em> from a bad draft.</p></li>
+</ul>
+
+<p>If this draft class really ends up being as terrible as some are saying, then it could be quickly overshadowed by the classes before and after it.</p>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="laenlya" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>jotayeh | Nets</div>
+        <div>18 | 3 hours ago </div>
+      </div>
+      <label for="laenlya" class="commentText"><p>This fits my agenda so I&rsquo;m running with it</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="laetc4e" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Flareon7 | Nets</div>
+        <div>16 | 2 hours ago </div>
+      </div>
+      <label for="laetc4e" class="commentText"><p>I think the more important question is how good are analysts at actually predicting the quality of a draft?</p>
+
+<p>I think most people just throw shit at the wall. Like how everyone says this year’s class is “super deep” just based on vibes, and because the top end of the draft is seen as weaker than usual so there has to be something to compensate</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="laexhys" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>quantims</div>
+        <div>7 | an hour ago </div>
+      </div>
+      <label for="laexhys" class="commentText"><p>I agree, but I don&rsquo;t know how to measure this. Analysts are usually pretty vague about what they mean when they say a draft is &ldquo;good&rdquo; or &ldquo;bad&rdquo;.</p>
+
+<p>I&rsquo;ve heard several analysts say that this draft class is like a normal draft class but without the top several players, which <em>is</em> something I can quantify, but we&rsquo;ll need to wait years to see if that turns out to be true.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="laez3ie" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>nowhathappenedwas | NBA</div>
+        <div>5 | an hour ago </div>
+      </div>
+      <label for="laez3ie" class="commentText"><blockquote>
+<p>Analysts are usually pretty vague about what they mean when they say a draft is &ldquo;good&rdquo; or &ldquo;bad&rdquo;.</p>
+</blockquote>
+
+<p>Some analysts (like Kevin Pelton) have published WAR projections for top draft prospects for years.</p>
+
+<p>I&rsquo;d be curious whether those projections (i) have been accurate at projecting class quality, and (ii) agree with the general consensus that this class sucks.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="laf26p2" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>quantims</div>
+        <div>4 | an hour ago </div>
+      </div>
+      <label for="laf26p2" class="commentText"><p>That&rsquo;s great, I&rsquo;ll look into how he&rsquo;s done.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="laf9iv8" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Capital-Advantage560</div>
+        <div>1 | 23 minutes ago </div>
+      </div>
+      <label for="laf9iv8" class="commentText"><p>You could play around with Google Trends and look at &ldquo;weak draft&rdquo; and &ldquo;deep draft.&rdquo; I&rsquo;ve been curious about this for years. Send me a message if you want to discuss more.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="lafdfw4" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>jeremicci | Spurs</div>
+        <div>1 | a minute ago </div>
+      </div>
+      <label for="lafdfw4" class="commentText"><p>This. Drafts always have at least 3 all-stars, and to hear people talk about this years draft the picks are worthless.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="laeppxz" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>amidon1130 | Hawks</div>
+        <div>11 | 3 hours ago </div>
+      </div>
+      <label for="laeppxz" class="commentText"><p>Great :/</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="laetmg9" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>thedrcubed | Grizzlies</div>
+        <div>9 | 2 hours ago </div>
+      </div>
+      <label for="laetmg9" class="commentText"><p>You never know man.  I was so pissed when we got the 2nd pick in &ldquo;The Zion draft&rdquo; and it worked out.  The gap between Zion and everyone else was seen as massive but Ja ended up being on the same level as Zion.  Sarr could end up being AD with a better shot.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="laetrq2" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ihateeuge | Lakers</div>
+        <div>6 | 2 hours ago </div>
+      </div>
+      <label for="laetrq2" class="commentText"><blockquote>
+<p>Sarr could end up being AD with a better shot.</p>
+</blockquote>
+
+<p>yeah man thats not happening</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="laeuumy" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>thedrcubed | Grizzlies</div>
+        <div>3 | 2 hours ago </div>
+      </div>
+      <label for="laeuumy" class="commentText"><p>99% chance but it still could happen.  He&rsquo;s got size, moves well and has good defensive instincts.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="laf1tl3" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>CatsBeerCoffeeGarden</div>
+        <div>2 | an hour ago </div>
+      </div>
+      <label for="laf1tl3" class="commentText"><p>It could.</p>
+
+<p>Honestly wondering if you have watched any significant amount of Sarrs footage or are you just going based off of what everyone is saying here.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="laf4r88" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>BillowingPillows</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="laf4r88" class="commentText"><p>Sarr goes between pick 7-12 in the 2019 draft or some shit.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="laf6gjt" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>thedrcubed | Grizzlies</div>
+        <div>3 | 40 minutes ago </div>
+      </div>
+      <label for="laf6gjt" class="commentText"><p>I agree but some superstar players get drafted in that range sometimes like Booker and Donovan Mitchell</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="laf6r18" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>BillowingPillows</div>
+        <div>1 | 38 minutes ago </div>
+      </div>
+      <label for="laf6r18" class="commentText"><p>I mean sure ya, you can find good players at any point in the draft. I personally don&rsquo;t think Sarr is gonna be very good, esp with expectations as a top 3 pick, if thats where he goes.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="laf7n79" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>thedrcubed | Grizzlies</div>
+        <div>2 | 33 minutes ago </div>
+      </div>
+      <label for="laf7n79" class="commentText"><p>This is just not a good draft at the top end.  Risacher has 0 handle and a near negative wingspan, Reed Sheppard has the same type of wingspan and he&rsquo;s undersized, Castle&rsquo;s shot chart is horrific, Dillingham only weighs half a redditor and Clingan only played half the game last year and has no offensive game.  Any of these guys could be great but no one in this draft is a sure thing</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="laf8ndw" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>BillowingPillows</div>
+        <div>1 | 28 minutes ago </div>
+      </div>
+      <label for="laf8ndw" class="commentText"><p>Ya the few good players that come out of this class are essentially impossible to predict. I like Tristan Da Silva and Matas Buzelis. Clingan and Edey are worthwhile picks too IMO on the premise that if either one develops a catch n shoot shot you could have Brook Lopez 2.0 on your hands.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="laeqegx" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Traaaaaaaaap | Nuggets Bandwagon</div>
+        <div>5 | 3 hours ago </div>
+      </div>
+      <label for="laeqegx" class="commentText"><p>How would you quantify expected draft class quality</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="laewa2j" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>orange_orange13</div>
+        <div>1 | 2 hours ago </div>
+      </div>
+      <label for="laewa2j" class="commentText"><p>Is that just the average WS of every player drafted?</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="laes2gc" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>amr1992 | NBA</div>
+        <div>6 | 2 hours ago </div>
+      </div>
+      <label for="laes2gc" class="commentText"><p>The craziest is still the 2013 draft to me. 2 guys in Giannis and Gobert who are already top 80 in win shares for their careers. Then the top 5 of the class ended up struggling. I&rsquo;d imagine there are at least a few All-Stars from this draft. We&rsquo;ve gone decades with at least 3 from each class. Just figuring out who those players will be is the toughest part.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="laeqf8b" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>OrganicHunt952 | Mavericks</div>
+        <div>4 | 3 hours ago </div>
+      </div>
+      <label for="laeqf8b" class="commentText"><p>Clingan would’ve went late 20s or 2nd round in last years draft. This year he’s projected to be top 5 even maybe 1. Which is crazy last year by all boards/ threads he was considered a late 1st early 2nd prospect.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="laetojt" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>beefJeRKy-LB | Lebanon</div>
+        <div>2 | 2 hours ago </div>
+      </div>
+      <label for="laetojt" class="commentText"><p>He has grown compared to last year and also had improved health so it&rsquo;s not an easy 1 to 1 comparison. If he stayed in last year, he probably would have gone in the 20s.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="laeuspr" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Carcrusher3 | Trail Blazers</div>
+        <div>1 | 2 hours ago </div>
+      </div>
+      <label for="laeuspr" class="commentText"><p>He improved on areas of his game and got more minutes to showcase himself. He 100% would&rsquo;ve gone in the lottery if current prospect him was placed in last years draft.</p>
+
+<p>Although he very much is not as good as lively in hindsight, as a prospect he might&rsquo;ve gone before him if the current version of him was in last years draft.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="laexa8d" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>OrganicHunt952 | Mavericks</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="laexa8d" class="commentText"><p>Yeah but if lively stayed one more year he’d be a better player too. Even current prospect him in last year draft. He prob goes pick 13-15</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="laextz4" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Carcrusher3 | Trail Blazers</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="laextz4" class="commentText"><p>Not too bad of a projection. I personally think Sarr, Clingan, and Risacher all go somewhere between 5-10 in last years draft. But to each their own.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="laeuwoh" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Good_NewsEveryone | Pelicans</div>
+        <div>2 | 2 hours ago </div>
+      </div>
+      <label for="laeuwoh" class="commentText"><p>My question would be: are the results found here different than the results you would get if you just randomly sorted all of the studied prospects into arbitrary classes?</p>
+
+<p>If you run the sim 1000 times how many include a class as good as 1984?</p>
+
+<p>I’m just curious if there is meaningful effect of individual classes. But this is excellent analysis</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="laewcq6" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>quantims</div>
+        <div>3 | 2 hours ago </div>
+      </div>
+      <label for="laewcq6" class="commentText"><p>I think this is a good question, and maybe the right way to think about draft classes is that players <em>have</em> been randomly sorted into them just by being born at different times.</p>
+
+<p>This is the main reason why I think draft classes will even out over time. If the talent pool is larger, then the effect of noise gets less. Maybe there isn&rsquo;t a star coming out of college, but there could still be one coming from an overseas league or the G-League.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="laewwsp" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Good_NewsEveryone | Pelicans</div>
+        <div>2 | 2 hours ago </div>
+      </div>
+      <label for="laewwsp" class="commentText"><p>I think there’s maybe some effect like if the class is expected to be bad then fringe players will declare when they otherwise wouldn’t have. Or a lot of these players having come up through the ranks together caused increased development in each other. Etc.</p>
+
+<p>But I don’t have a great gauge on how that actually bears out. If I’m just seeing causes where there is randomness.</p>
+
+<p>For sure agree that the global reach of the talent pool has and will continue to change things though.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="laewla3" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ConditionFree9879 | Jazz</div>
+        <div>2 | 2 hours ago </div>
+      </div>
+      <label for="laewla3" class="commentText"><p>I was wondering if 84 would be an example of a really high quality draft</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="laexrhq" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>quantims</div>
+        <div>2 | an hour ago </div>
+      </div>
+      <label for="laexrhq" class="commentText"><p>84 is the best ever (by Win Shares, at least)!</p>
+
+<p>2003 isn&rsquo;t too far behind.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="lafcbgn" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ConditionFree9879 | Jazz</div>
+        <div>1 | 8 minutes ago </div>
+      </div>
+      <label for="lafcbgn" class="commentText"><p>I&rsquo;m not an expert, but I just thought that it spawned three HoF as from what I remember</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="laezh8c" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>LotharBot</div>
+        <div>2 | an hour ago </div>
+      </div>
+      <label for="laezh8c" class="commentText"><p>I appreciate this analysis, but I think the presentation can mislead people because of the specific stat you&rsquo;re using.  Specifically, when you talk about a &ldquo;top 30 pick&rdquo; in a good draft versus a &ldquo;top 5 pick&rdquo; in a bad draft, what that means in a technical sense in your analysis is that the sum of values of a good draft&rsquo;s picks 1-30, divided by 30, can beat out the sum of a bad draft picks 1-5 divided by 5 &ndash; but that doesn&rsquo;t mean that picks in the 26-30 range from a good draft are anywhere close to the value of a top 5 pick from a bad draft; the overall value is being driven mostly by really good picks which are still mostly near the top of those legendary drafts.</p>
+
+<p>For example, the 2000 draft was bad (the top 5 players averaged ~28 win shares), while the 1984 draft was legendary (Jordan, Stockton, Barkley, Hakeem, and Thorpe alone had so many WS that if the other 25 picks had been pure busts the top 30 still would have averaged 28 win shares.)  In 1984, even picks 11-20 averaged over 51 win shares, which blows away the value of the top 5 in 2000 &ndash; but picks 21-30 in 1984 averaged 3.1 win shares (almost entirely from Ron Anderson being a solid player), so having a pick in the 20s in that draft wasn&rsquo;t anywhere close to the value of a top 5 pick in 2000.  In fact, picks 21-30 in 2000 actually averaged higher value than picks 21-30 in 1984 (mostly because Mo Pete had a good career.)</p>
+
+<p>I think it&rsquo;d be more effective to look at the average win shares produced by 5 or 10 pick buckets (1-5, 6-10, &hellip;, 26-30 or 1-10, 11-20, 21-30) in good/average/bad drafts.  Like, in a great overall draft, picks 1-5 have X average, picks 6-10 have Y average, and so on.  And then figure out which buckets &ldquo;bad draft top 5&rdquo; match up with, which I suspect would be more like &ldquo;great draft picks 11-15&rdquo; rather than great draft picks 26-30.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="laesupc" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>SasquatchDoobie | Trail Blazers</div>
+        <div>1 | 2 hours ago </div>
+      </div>
+      <label for="laesupc" class="commentText"><p>you spelled quantum wrong in your link to your article</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="laewfd2" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>quantims</div>
+        <div>1 | 2 hours ago </div>
+      </div>
+      <label for="laewfd2" class="commentText"><p>It&rsquo;s a pun on my name!</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="laetbhc" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>InternCautious | Pistons</div>
+        <div>1 | 2 hours ago </div>
+      </div>
+      <label for="laetbhc" class="commentText"><p>This is just a hindsight measurement though, not indicative of anything that would impact this draft. Theres no reason to think this draft will be as bad as 2013 because we honestly don&rsquo;t know.</p>
+
+<p>IF it is as bad, then yes, the difference is pretty massive.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="lafaq6p" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>baseketball | Celtics</div>
+        <div>1 | 16 minutes ago </div>
+      </div>
+      <label for="lafaq6p" class="commentText"><p>How are you comparing career win shares across different years when players from recent years haven&rsquo;t played as long? At least add some adjustment to extrapolate what their total win shares would be for a full career. Also Lebron is doing a lot of work sending the 2003 datapoint to the stratosphere.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="laesxe8" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>TheyCallMeTheWizard | Thunder</div>
+        <div>0 | 2 hours ago </div>
+      </div>
+      <label for="laesxe8" class="commentText"><p>But what does this mean for Lebron’s legacy?</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="laew1m2" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Dat_Boi_John | Mavericks</div>
+        <div>0 | 2 hours ago </div>
+      </div>
+      <label for="laew1m2" class="commentText"><p>Problem is this is all in hind sight. Who is to say there won&rsquo;t be a Brunson in the second round or an All Star 3&amp;D wing in late first round?</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="laezf1r" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Plies- | Celtics</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="laezf1r" class="commentText"><p>Probability.</p>
+
+<p>Who&rsquo;s to say that Alexandre Sarr won&rsquo;t develop the handles of Kyrie Irving, the shooting of Steph Curry, the post moves of Hakeem, the mid range pull ups of Jordan, the touch of Nikola Jokic, the playmaking of Magic Johnson, the rim protection of Bill Russell and grow to the height and wingspan of Manute Bol?</p>
+
+<p>Jokes aside, there&rsquo;s pretty much always at least a couple of all stars even in really bad drafts.</p>
+
+<p>Then there&rsquo;s 2000, which had &ldquo;3 all stars&rdquo; but they all only made it once lol.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="laevgs0" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>CliffBoof</div>
+        <div>-2 | 2 hours ago </div>
+      </div>
+      <label for="laevgs0" class="commentText"><p>Your discovery isnt even really about basketball. The difference between tall and short is also massive. The difference between rich and poor. Fat and slim….</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
