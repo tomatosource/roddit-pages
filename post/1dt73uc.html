@@ -1,0 +1,976 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type=checkbox] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C""\201D""\2018""\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555; 
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position:relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size:24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText, .commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size:24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+    font-size: 38px;
+    line-height: 1.5;
+    color: white;
+}
+
+.selfPostContainer * {
+    color: white;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/nba/comments/1dt73uc/we_basketball_reference_have_found_the_missing/"><p>We (Basketball Reference) have found the missing Elgin Baylor triple-double!</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <p>We know that <a href="https://www.basketball-reference.com/players/b/bayloel01.html?utm_medium=linker&amp;utm_source=www.sports-reference.com&amp;utm_campaign=2024-07-01_bbr&amp;__hstc=213859787.38492422e1943fbee3995216c1f1d656.1713649278683.1719336978388.1719875422780.28&amp;__hssc=213859787.1.1719875422780&amp;__hsfp=3530606189" target="_blank">Elgin Baylor</a> had 26 triple-doubles in his regular-season NBA career. However, for many years we have only known the particulars around 25 of the 26. We knew we were missing details on one in the 1962-63 season, but we weren&rsquo;t certain which one. We are happy to announce that we have discovered that this &lsquo;missing&rsquo; triple-double occurred on <a href="https://www.basketball-reference.com/boxscores/196303010CHZ.html?__hstc=213859787.38492422e1943fbee3995216c1f1d656.1713649278683.1719336978388.1719875422780.28&amp;__hssc=213859787.1.1719875422780&amp;__hsfp=3530606189" target="_blank">March 1, 1963</a>. Baylor finished the game with 33 points, 15 rebounds and 10 assists.</p>
+
+<p>With the addition of this data, we now have the details on 3,450 of the 3,475 known triple-doubles in NBA history. Of the 25 triple-doubles we are missing details on, 14 of them belong to <a href="https://www.basketball-reference.com/players/c/cousybo01.html?utm_medium=linker&amp;utm_source=www.sports-reference.com&amp;utm_campaign=2024-07-01_bbr&amp;__hstc=213859787.38492422e1943fbee3995216c1f1d656.1713649278683.1719336978388.1719875422780.28&amp;__hssc=213859787.1.1719875422780&amp;__hsfp=3530606189" target="_blank">Bob Cousy</a>. We know Cousy had 33 triple-doubles, but we have details on just 19 of them.</p>
+
+<p><a href="https://www.sports-reference.com/blog/2024/07/missing-elgin-baylor-triple-double-found/" target="_blank">Head here for an image of the official scorer&rsquo;s report!</a></p>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="lb7f10l" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>imamistake420 | Raptors</div>
+        <div>121 | 3 hours ago </div>
+      </div>
+      <label for="lb7f10l" class="commentText"><p>Side note:  I’ve been using basketball-reference.com for 20 years now… what a great website.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="lb7f7rp" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>soooogullible | Jazz</div>
+        <div>34 | 3 hours ago </div>
+      </div>
+      <label for="lb7f7rp" class="commentText"><p>Literally a god send</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="lb7dhby" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>sercialinho | Mavericks</div>
+        <div>105 | 3 hours ago </div>
+      </div>
+      <label for="lb7dhby" class="commentText"><p>Nice! Can you give more of a background of how you obtained the box score? I&rsquo;m sure it&rsquo;s an exciting story!</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="lb7dnkg" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Basketball_Reference | Basketball Reference</div>
+        <div>67 | 3 hours ago </div>
+      </div>
+      <label for="lb7dnkg" class="commentText"><p>I&rsquo;ll see what I can dig up!</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="lb7wd9d" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Jamarcus316</div>
+        <div>1 | 19 minutes ago </div>
+      </div>
+      <label for="lb7wd9d" class="commentText"><p>Just to say your website is really awesome. One of them it is justified to pay a premium, top quality.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="lb7de5u" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>grinderbinder | Nuggets</div>
+        <div>72 | 3 hours ago </div>
+      </div>
+      <label for="lb7de5u" class="commentText"><p>Man! That must feel so cool when your stats team has these sort of a-ha moments!</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="lb7dupy" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Basketball_Reference | Basketball Reference</div>
+        <div>49 | 3 hours ago </div>
+      </div>
+      <label for="lb7dupy" class="commentText"><p>Most definitely!</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="lb7e3wd" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>CanWeCleanIt | Lakers</div>
+        <div>-62 | 3 hours ago </div>
+      </div>
+      <label for="lb7e3wd" class="commentText"><p>You think one of them just woke up one day and was like, “I know where one of the missing triple doubles is!” That’s not what happened lol</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="lb7fcqh" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>dustinharm | Lakers</div>
+        <div>48 | 3 hours ago </div>
+      </div>
+      <label for="lb7fcqh" class="commentText"><p>What are you even trying to shit on him about lol, he’s just referring to how cool it must have been for them to discover the scoresheet with the missing triple double. I don’t think he’s suggesting they had a random epiphany.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="lb7g47k" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>CanWeCleanIt | Lakers</div>
+        <div>-50 | 3 hours ago </div>
+      </div>
+      <label for="lb7g47k" class="commentText"><p>Did we read the same comment?</p>
+
+<blockquote>
+<p>“Man! That must feel so cool when your stats team has these sort of a-ha moments!”</p>
+</blockquote>
+
+<p>This wasn’t a random a-ha moment, lmao. Im sure it took a shit ton of research to track this game down.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="lb7hbhw" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>HoopsHistoryHubb</div>
+        <div>45 | 2 hours ago </div>
+      </div>
+      <label for="lb7hbhw" class="commentText"><p>You should research being likeable</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="lb7iwiu" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>CanWeCleanIt | Lakers</div>
+        <div>-41 | 2 hours ago </div>
+      </div>
+      <label for="lb7iwiu" class="commentText"><p>Good one! I’ll have a random aha moment about it soon!!!</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="lb7tj9a" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Amazing_Owl3026 | Hornets</div>
+        <div>4 | 38 minutes ago </div>
+      </div>
+      <label for="lb7tj9a" class="commentText"><p>Yes and what they found it they&rsquo;d have that moment</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="lb7dm5o" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>BayonettaBasher | DAL</div>
+        <div>11 | 3 hours ago </div>
+      </div>
+      <label for="lb7dm5o" class="commentText"><p>How are there missing triple doubles? Is it like, someone kept track of how many he had during his career, published the number in a a fact book or something after he retired, but no one preserved the actual box scores so people didn&rsquo;t know which games the triple doubles were from? How were these missing box scores tracked down, and how did they end up missing in the first place?</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="lb7eyec" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>junkit33</div>
+        <div>28 | 3 hours ago </div>
+      </div>
+      <label for="lb7eyec" class="commentText"><p>Older NBA records are difficult to find. A box score might have existed only in the random local newspaper one morning, or even not at all. There may be no film, or the film isn’t great. Records could have been destroyed. Etc, etc. Like finding it may require hunting through microfiche buried in library archives at some random town library.</p>
+
+<p>They may know the number because some big respected journalist counted/reported it in their career retrospect or something. But don’t necessarily have the game records for when it happened.</p>
+
+<p>Basketball reference has done an insanely incredible job of searching far and wide for all these old records. Before them there was a hell of a lot more history missing.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="lb7fa1s" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>2b_squared | Finland</div>
+        <div>4 | 3 hours ago </div>
+      </div>
+      <label for="lb7fa1s" class="commentText"><blockquote>
+<p>They may know the number because some big respected journalist counted/reported it in their career retrospect or something.</p>
+</blockquote>
+
+<p>This doesn&rsquo;t seem all too reliable but who am I to go against this.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="lb7ltkt" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>junkit33</div>
+        <div>15 | an hour ago </div>
+      </div>
+      <label for="lb7ltkt" class="commentText"><p>Journalists used to be pretty damn reliable. They’d verify things six ways before putting it into print. Not like today where everything is about speed and errors are easily correctable (or ignored).</p>
+
+<p>Besides - as OP just showed, their records have proven pretty damn accurate.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="lb7en23" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>GoForAGap | Nuggets</div>
+        <div>5 | 3 hours ago </div>
+      </div>
+      <label for="lb7en23" class="commentText"><p>It’s hard to track down a box score really. Film is lost, so you’re relying on a piece of paper from years and years ago</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="lb7gnoa" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>2b_squared | Finland</div>
+        <div>2 | 3 hours ago </div>
+      </div>
+      <label for="lb7gnoa" class="commentText"><p>You would imagine that even back then it would be important to archive these for record keeping and to validate the scores and eventual champion. But I guess different times and a different league.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="lb7is0d" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>AlexB9598W | 76ers</div>
+        <div>3 | 2 hours ago </div>
+      </div>
+      <label for="lb7is0d" class="commentText"><p>Oh yeah, you have stories from the ABA in the 70s where the official league scorekeeper would have to scramble to get box score info on the ground and in some cases had to make inferences based on season averages up to that point because of how lackadaisical team scorers could be sometimes.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="lb7jlw1" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>2b_squared | Finland</div>
+        <div>0 | 2 hours ago </div>
+      </div>
+      <label for="lb7jlw1" class="commentText"><p>I can imagine it being like that but at the same time it just feels so strange given how bureaucratic it all must be today.</p>
+
+<p>I hate the comment Redick blurted out about Cousy playing against plumbers, but honestly the league was ran almost like an amateur league so is he sorta kinda right with that comment&hellip; yeah?</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="lb7fqd8" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>WarPuig | Celtics</div>
+        <div>1 | 3 hours ago </div>
+      </div>
+      <label for="lb7fqd8" class="commentText"><p>Much of the data from the Reference websites originate from newspaper sports sections or sports almanacs. If the stats weren’t put to print or if no copies of the game film game survive, there will be gaps in the record.</p>
+
+<p>In this case they tracked down the official scorer&rsquo;s report for the game in question.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="lb7gb2g" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>tiorteD_snotsiP | Pistons</div>
+        <div>10 | 3 hours ago </div>
+      </div>
+      <label for="lb7gb2g" class="commentText"><p>I use your site so fucking much I have made a shortcut on my iPhone screen to get to it, and college basketball. It’s such a gold mine. Thank you for all the work you do! I will be sitting down at work, and wonder what Hakeem Olajuwons playoffs numbers were and I know in 5 seconds, think I want to relive any of the sekou doumboya era in DET? fuck no, but I still look up his numbers to remind me how bad he was lmao. <sup>10</sup>&frasl;<sub>10</sub> site</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="lb7fetm" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Neither-Ad81 | Nuggets</div>
+        <div>9 | 3 hours ago </div>
+      </div>
+      <label for="lb7fetm" class="commentText"><p>Daaaaaaamn, not to take away from Elgin&rsquo;s achievement, but Walt Bellamy balled out in that game as well, 38pt and 20rb, very impressive</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="lb7dfo5" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Dmanning2 | Lakers</div>
+        <div>4 | 3 hours ago </div>
+      </div>
+      <label for="lb7dfo5" class="commentText"><p>Amazing. Great find.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="lb7f4q5" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>soooogullible | Jazz</div>
+        <div>6 | 3 hours ago </div>
+      </div>
+      <label for="lb7f4q5" class="commentText"><p>Great stuff, nerds 🥰</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="lb7fy9d" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>BounceMan | Rockets</div>
+        <div>5 | 3 hours ago </div>
+      </div>
+      <label for="lb7fy9d" class="commentText"><p>Basketball Reference is probably the best run of the stat tracking sites I frequent and it&rsquo;s cool thar you&rsquo;re still working on stuff like this.  Thanks for your efforts!</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="lb7nl7l" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Neptune28</div>
+        <div>4 | an hour ago </div>
+      </div>
+      <label for="lb7nl7l" class="commentText"><p>The format is especially tremendous, better than ESPN and the official NBA site</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="lb7eixn" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>dustinharm | Lakers</div>
+        <div>4 | 3 hours ago </div>
+      </div>
+      <label for="lb7eixn" class="commentText"><p>This is dope. I wonder how accurate those score sheets generally were. The margin of error has to be huge when it’s all paper and pencil tracking based on eyesight in real time.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="lb7h0o4" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Jeffthebarbarian | 76ers</div>
+        <div>2 | 2 hours ago </div>
+      </div>
+      <label for="lb7h0o4" class="commentText"><p>What about evidence of Wilts 100 point game?</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="lb7mfgk" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>2b_squared | Finland</div>
+        <div>3 | an hour ago </div>
+      </div>
+      <label for="lb7mfgk" class="commentText"><p>Can you imagine the absolute scenes if it turned out that Wilt actually only scored 99 points? I bet they would hide that immediately.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="lb7ugna" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Motorata</div>
+        <div>1 | 31 minutes ago </div>
+      </div>
+      <label for="lb7ugna" class="commentText"><p>Bro there is audio from the radio of when It happened.
+It is in Youtube</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="lb7urqu" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>HouseOfLowlights | Nets</div>
+        <div>1 | 29 minutes ago </div>
+      </div>
+      <label for="lb7urqu" class="commentText"><p>Is there not literally radio evidence on YouTube?</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="lb7mqe9" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>grandmasterfunk | Rockets</div>
+        <div>2 | an hour ago </div>
+      </div>
+      <label for="lb7mqe9" class="commentText"><p>That&rsquo;s awesome. Thanks for your hard work in preserving the game&rsquo;s history!</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="lb7f0pk" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>nitrousconsumed | Lakers</div>
+        <div>1 | 3 hours ago </div>
+      </div>
+      <label for="lb7f0pk" class="commentText"><p>What&rsquo;s the investigative process like? How&rsquo;s your work progressing with the 14 Cousy trip dubs?</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="lb7f3ai" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>2b_squared | Finland</div>
+        <div>1 | 3 hours ago </div>
+      </div>
+      <label for="lb7f3ai" class="commentText"><p>Interesting that you are certain about the amount of triple-doubles but still missing the one thing that one would normally use to prove such a thing. How does that happen?</p>
+
+<p>Also, is it at all plausible to expand the stats from eras that didn&rsquo;t record certain things? Like, is there footage that could be used to update some statistics? Probably not, right?</p>
+
+<p>Edit: that official box score looks really really sharp as an image. Doesn&rsquo;t seem like something someone wrote at the scorer&rsquo;s table in 1963. Is there a picture of the actual report?</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="lb7l6kw" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>zedrix_ | Bulls</div>
+        <div>1 | 2 hours ago </div>
+      </div>
+      <label for="lb7l6kw" class="commentText"><p>The true reference of basketball. Godspeed.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="lb7h90k" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>BrandonXavierIngram | Lakers</div>
+        <div>-1 | 2 hours ago </div>
+      </div>
+      <label for="lb7h90k" class="commentText"><p>can you please find my dad next</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="lb7dz8f" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>countycoder</div>
+        <div>-5 | 3 hours ago </div>
+      </div>
+      <label for="lb7dz8f" class="commentText"><p>I guess I can delay ending it all for at least 17 more days.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="lb7f4rd" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>LeMickeyMice | Bucks</div>
+        <div>1 | 3 hours ago </div>
+      </div>
+      <label for="lb7f4rd" class="commentText"><p>Me since I was like 11 years old thinking about the next pokemon game coming out</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
