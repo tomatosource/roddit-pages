@@ -1,0 +1,572 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type=checkbox] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C""\201D""\2018""\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555; 
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position:relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size:24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText, .commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size:24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+    font-size: 38px;
+    line-height: 1.5;
+    color: white;
+}
+
+.selfPostContainer * {
+    color: white;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/nba/comments/1dw7rf2/the_2024_boston_celtics_had_more_victories_by_at/"><p>The 2024 Boston Celtics had more victories by at least 25 points than games where they had a &amp;gt;10 point deficit at least once</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <p><a href="https://www.statmuse.com/nba/ask/how-many-games-did-the-2024-boston-celtics-win-by-at-least-25-points" target="_blank">The 2024 Celtics won 17 games by at least 25 points</a>, they had 15 games where they at one point were down by more than 10 points. They are:</p>
+
+<p><a href="https://www.basketball-reference.com/boxscores/202310270BOS.html" target="_blank">Celtics vs Heat</a> 10/27/23 (Celtics win 119-112)</p>
+
+<p><a href="https://www.basketball-reference.com/boxscores/202311080PHI.html" target="_blank">Celtics @ 76ers</a> 11/8/23 (Celtics lose 103-106)</p>
+
+<p><a href="https://www.basketball-reference.com/boxscores/202311240ORL.html" target="_blank">Celtics @ Magic</a> 11/24/23 (Celtics lose 96-113)</p>
+
+<p><a href="https://www.basketball-reference.com/boxscores/202312120BOS.html" target="_blank">Celtics vs Cavaliers</a> 12/12/23 (Celtics win 120-113)</p>
+
+<p><a href="https://www.basketball-reference.com/boxscores/202312200SAC.html" target="_blank">Celtics @ Kings</a> 12/20/23 (Celtics win 144-119)</p>
+
+<p><a href="https://www.basketball-reference.com/boxscores/202312280BOS.html" target="_blank">Celtics vs Pistons</a> 12/28/23 (Celtics win 128-122)</p>
+
+<p><a href="https://www.basketball-reference.com/boxscores/202401020OKC.html" target="_blank">Celtics @ Thunder</a> 1/2/24 (Celtics lose 123-127)</p>
+
+<p><a href="https://www.basketball-reference.com/boxscores/202401110MIL.html" target="_blank">Celtics @ Bucks</a> 1/11/24 (Celtics lose 102-135)</p>
+
+<p><a href="https://www.basketball-reference.com/boxscores/202401270BOS.html" target="_blank">Celtics vs Clippers</a> 1/27/24 (Celtics lose 96-115)</p>
+
+<p><a href="https://www.basketball-reference.com/boxscores/202401290BOS.html" target="_blank">Celtics vs Pelicans</a> 1/29/24 (Celtics win 118-112)</p>
+
+<p><a href="https://www.basketball-reference.com/boxscores/202402010BOS.html" target="_blank">Celtics vs Lakers</a> 2/1/24 (Celtics lose 105-114)</p>
+
+<p><a href="https://www.basketball-reference.com/boxscores/202403070DEN.html" target="_blank">Celtics @ Nuggets</a> 3/7/24 (Celtics lose 109-115)</p>
+
+<p><a href="https://www.basketball-reference.com/boxscores/202403300NOP.html" target="_blank">Celtics @ Pelicans</a> 3/30/24 (Celtics win 104-92)</p>
+
+<p><a href="https://www.basketball-reference.com/boxscores/202404090MIL.html" target="_blank">Celtics @ Bucks</a> 4/9/24 (Celtics lose 91-104)</p>
+
+<p><a href="https://www.basketball-reference.com/boxscores/202404110BOS.html" target="_blank">Celtics vs Knicks</a> 4/11/24 (Celtics lose 109-118)</p>
+
+<p><a href="https://stathead.com/tiny/f6jR3" target="_blank">Stathead link</a></p>
+
+<p>Celtics record in games they at one point were losing by more than 10: 6-9</p>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="lbss2ay" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>OrangeKookie | BOS</div>
+        <div>23 | 42 minutes ago </div>
+      </div>
+      <label for="lbss2ay" class="commentText"><p>Denver was the one team that was a shit matchup for Boston. Winning the chip was a done deal as soon as Minnesota eliminated Denver</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="lbst2dz" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>JoJonesy | Celtics</div>
+        <div>15 | 36 minutes ago </div>
+      </div>
+      <label for="lbst2dz" class="commentText"><p>even then, I think that&rsquo;s probably a 6 or 7 game series that goes either way. Jokic is a matchup nightmare for us, but our regular-season games were both <em>really</em> close</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="lbssx8b" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>neuroticsmurf | Celtics</div>
+        <div>4 | 37 minutes ago </div>
+      </div>
+      <label for="lbssx8b" class="commentText"><p>Thank you, Minny.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="lbsu4g1" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>SaintsNick94 | Celtics</div>
+        <div>1 | 30 minutes ago </div>
+      </div>
+      <label for="lbsu4g1" class="commentText"><p>Gave us KG and beat Denver for us. That’s 2 titles. Thanks Minnesota.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="lbsui0r" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Severe-Emu-8703 | Celtics</div>
+        <div>1 | 28 minutes ago </div>
+      </div>
+      <label for="lbsui0r" class="commentText"><p>All this time we thought it was the Nets that gifted us the title, but it was Minny the whole time</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="lbsvr38" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>KyrieLS777 | Celtics</div>
+        <div>1 | 20 minutes ago </div>
+      </div>
+      <label for="lbsvr38" class="commentText"><p>Would’ve been interesting to see them play each other in the finals. Denver didn’t look as strong or focused in the playoffs this year. The two regular season games were so close and the deciding factor was closing out which the Celtics figured out by the end of the season and proved it in the playoffs. Would have been a great series.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="lbsw2cq" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>junkit33</div>
+        <div>1 | 18 minutes ago </div>
+      </div>
+      <label for="lbsw2cq" class="commentText"><p>Jokic creates a mismatch but he does for everybody. Ultimately Celtics just had bad shooting games against Denver. Celts would have won that series in 5 but I do think it would have been a lot tighter games than Dallas. More like the Pacers series.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="lbsrjkd" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Adorable_Scar_9695 | Trail Blazers</div>
+        <div>11 | an hour ago </div>
+      </div>
+      <label for="lbsrjkd" class="commentText"><p>Talk to me when they go 80-20</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="lbstodq" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Savahoodie | Nuggets</div>
+        <div>4 | 32 minutes ago </div>
+      </div>
+      <label for="lbstodq" class="commentText"><p>Daily Celtics net rating thread</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="lbsv1tf" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>jakefitz603 | Celtics</div>
+        <div>1 | 24 minutes ago </div>
+      </div>
+      <label for="lbsv1tf" class="commentText"><p>And you’re gonna like it!!!</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="lbst1d4" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>TimothyN | Pelicans</div>
+        <div>3 | 36 minutes ago </div>
+      </div>
+      <label for="lbst1d4" class="commentText"><p>Pelicans twice, Willie-ball in action.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="lbsuwv5" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>srstone71 | Celtics</div>
+        <div>1 | 25 minutes ago </div>
+      </div>
+      <label for="lbsuwv5" class="commentText"><p>Not only that, the both Pelicans games came at a time when the Celtics weren’t playing well. In January they had lost two straight home games and were most recently coming off a blowout loss to the Clippers.</p>
+
+<p>Then they played the Pels and trailed by as many as 17 points. They were down at least double digits for most of the first three quarters. People were wondering what was wrong with the Celtics. Then they turned it on won a great game.</p>
+
+<p>In March, they had a disastrous B2B in Atlanta, choking away both games, and were finishing the road trip in New Orleans. When they got down big in the first quarter, fans were expressing concern that they were playing their worst basketball of the season heading into the playoffs. Then they dominated the rest of the game.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="lbsyexa" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ConstantineMonroe | Warriors</div>
+        <div>1 | 4 minutes ago </div>
+      </div>
+      <label for="lbsyexa" class="commentText"><p>The 2024 Celtics are an odd team in how the public responds to them.  In 5 years, people are gonna talk about the 2024 season like everyone knew the Celtics were the most dominant team and it was no surprise they won.  Overtime people are gonna forget people were doubting them the entire season and had written them off as champions when they lost game 2 to Miami.  Has there ever been a team like this?  I feel like there are other examples I just can’t think of right now</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="lbsu5y9" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>yaaanevaknow | United States</div>
+        <div>1 | 29 minutes ago </div>
+      </div>
+      <label for="lbsu5y9" class="commentText"><p>We know</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="lbsy26k" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Green_Hunt_1776</div>
+        <div>1 | 7 minutes ago </div>
+      </div>
+      <label for="lbsy26k" class="commentText"><p>Boston Celtics have 18 NBA championships and 2 since the Reagan administration</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="lbsuysk" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Answer70 | Rockets</div>
+        <div>1 | 25 minutes ago </div>
+      </div>
+      <label for="lbsuysk" class="commentText"><p>Cool. They had a loaded roster in a historically bad East (and that&rsquo;s saying something). Congrats, I guess.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="lbsvapy" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>KyrieLS777 | Celtics</div>
+        <div>1 | 23 minutes ago </div>
+      </div>
+      <label for="lbsvapy" class="commentText"><p>While I do find these type of posts annoying at this point, they dominated both the west and the east this year.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="lbswdwn" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>JBKicks_2 | Celtics</div>
+        <div>1 | 16 minutes ago </div>
+      </div>
+      <label for="lbswdwn" class="commentText"><p>having a loaded roster is actually a bad thing
+-rockets fan</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
