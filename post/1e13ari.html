@@ -1,0 +1,939 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type=checkbox] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C""\201D""\2018""\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555; 
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position:relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size:24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText, .commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size:24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+    font-size: 38px;
+    line-height: 1.5;
+    color: white;
+}
+
+.selfPostContainer * {
+    color: white;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/nba/comments/1e13ari/the_last_41_years_of_the_gap_between_the/"><p>The last 41 years of the gap between the championship betting favorites and 2nd place, per Basketball Reference</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <p>Sports Odds History is what Basketball Reference uses as their Preseason Odds. Here is a table of the odds on favorite to win the championship along with the second-best odds, ordered by largest gap to smallest:</p>
+
+<table>
+<thead>
+<tr>
+<th align="left">Season</th>
+<th align="left">Favorites</th>
+<th align="left">Next Best Odds</th>
+<th align="left">Gap</th>
+<th align="left">Outcome of Favorite</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">2018-19</td>
+<td align="left">Warriors (-168)</td>
+<td align="left">Celtics (+620)</td>
+<td align="left">788</td>
+<td align="left">57-25, Lost Finals</td>
+</tr>
+
+<tr>
+<td align="left">2017-18</td>
+<td align="left">Warriors (-187)</td>
+<td align="left">Cavaliers (+515)</td>
+<td align="left">702</td>
+<td align="left">58-24, Won Finals</td>
+</tr>
+
+<tr>
+<td align="left">2016-17</td>
+<td align="left">Warriors (-128)</td>
+<td align="left">Cavaliers (+385)</td>
+<td align="left">513</td>
+<td align="left">67-15, Won Finals</td>
+</tr>
+
+<tr>
+<td align="left">1997-98</td>
+<td align="left">Bulls (+140)</td>
+<td align="left">Jazz (+600)</td>
+<td align="left">460</td>
+<td align="left">62-20, Won Finals</td>
+</tr>
+
+<tr>
+<td align="left">2024-25</td>
+<td align="left">Celtics (+300)</td>
+<td align="left">Knicks (+725)</td>
+<td align="left">425</td>
+<td align="left">TBD</td>
+</tr>
+
+<tr>
+<td align="left">2000-01</td>
+<td align="left">Lakers (+180)</td>
+<td align="left">Blazers (+600)</td>
+<td align="left">420</td>
+<td align="left">56-26, Won Finals</td>
+</tr>
+
+<tr>
+<td align="left">1996-97</td>
+<td align="left">Bulls (+100)</td>
+<td align="left">Lakers (+500)</td>
+<td align="left">400</td>
+<td align="left">69-13, Won Finals</td>
+</tr>
+
+<tr>
+<td align="left">2013-14</td>
+<td align="left">Heat (+200)</td>
+<td align="left">Thunder (+550)</td>
+<td align="left">350</td>
+<td align="left">54-28, Lost Finals</td>
+</tr>
+
+<tr>
+<td align="left">2001-02</td>
+<td align="left">Lakers (+200)</td>
+<td align="left">Spurs (+500)</td>
+<td align="left">300</td>
+<td align="left">58-24, Won Finals</td>
+</tr>
+
+<tr>
+<td align="left">2020-21</td>
+<td align="left">Lakers (+275)</td>
+<td align="left">Bucks (+550)</td>
+<td align="left">275</td>
+<td align="left">42-30, Lost 1st Round</td>
+</tr>
+
+<tr>
+<td align="left">2003-04</td>
+<td align="left">Lakers (+140)</td>
+<td align="left">Spurs (+400)</td>
+<td align="left">260</td>
+<td align="left">56-26, Lost Finals</td>
+</tr>
+
+<tr>
+<td align="left">1992-93</td>
+<td align="left">Bulls (+120)</td>
+<td align="left">Blazers (+350)</td>
+<td align="left">230</td>
+<td align="left">57-25, Won Finals</td>
+</tr>
+
+<tr>
+<td align="left">1987-88</td>
+<td align="left">Lakers (+120)</td>
+<td align="left">Celtics (+350)</td>
+<td align="left">230</td>
+<td align="left">62-20, Won Finals</td>
+</tr>
+
+<tr>
+<td align="left">2011-12</td>
+<td align="left">Heat (+225)</td>
+<td align="left">Lakers (+450)</td>
+<td align="left">225</td>
+<td align="left">46-20, Won Finals</td>
+</tr>
+
+<tr>
+<td align="left">2015-16</td>
+<td align="left">Cavaliers (+280)</td>
+<td align="left">Warriors (+480)</td>
+<td align="left">200</td>
+<td align="left">57-25, Won Finals</td>
+</tr>
+
+<tr>
+<td align="left">1989-90</td>
+<td align="left">Pistons (+300)</td>
+<td align="left">Suns (+500)</td>
+<td align="left">200</td>
+<td align="left">59-23, Won Finals</td>
+</tr>
+
+<tr>
+<td align="left">1986-87</td>
+<td align="left">Celtics (+160)</td>
+<td align="left">Rockets (+350)</td>
+<td align="left">190</td>
+<td align="left">59-23, Lost Finals</td>
+</tr>
+
+<tr>
+<td align="left">2021-22</td>
+<td align="left">Nets (+240)</td>
+<td align="left">Lakers (+400)</td>
+<td align="left">160</td>
+<td align="left">44-38, Lost 1st Round</td>
+</tr>
+
+<tr>
+<td align="left">1991-92</td>
+<td align="left">Bulls (+250)</td>
+<td align="left">Blazers (+400)</td>
+<td align="left">150</td>
+<td align="left">67-15, Won Finals</td>
+</tr>
+
+<tr>
+<td align="left">2002-03</td>
+<td align="left">Lakers (+180)</td>
+<td align="left">Kings (+300)</td>
+<td align="left">120</td>
+<td align="left">50-32, Lost 2nd Round</td>
+</tr>
+
+<tr>
+<td align="left">2022-23</td>
+<td align="left">Celtics (+500)</td>
+<td align="left">Warriors (+600)</td>
+<td align="left">100</td>
+<td align="left">57-25, Lost ECF</td>
+</tr>
+
+<tr>
+<td align="left">2005-06</td>
+<td align="left">Spurs (+250)</td>
+<td align="left">Heat (+350)</td>
+<td align="left">100</td>
+<td align="left">63-19, Lost 2nd Round</td>
+</tr>
+
+<tr>
+<td align="left">2004-05</td>
+<td align="left">Spurs (+400)</td>
+<td align="left">Kings (+500)</td>
+<td align="left">100</td>
+<td align="left">59-23, Won Finals</td>
+</tr>
+
+<tr>
+<td align="left">1994-95</td>
+<td align="left">Suns (+350)</td>
+<td align="left">4 Teams (+450)</td>
+<td align="left">100</td>
+<td align="left">59-23, Lost 2nd Round</td>
+</tr>
+
+<tr>
+<td align="left">1993-94</td>
+<td align="left">Knicks (+200)</td>
+<td align="left">Suns (+300)</td>
+<td align="left">100</td>
+<td align="left">57-25, Lost Finals</td>
+</tr>
+
+<tr>
+<td align="left">1990-91</td>
+<td align="left">Pistons (+350)</td>
+<td align="left">Lakers (+450)</td>
+<td align="left">100</td>
+<td align="left">50-32, Lost ECF</td>
+</tr>
+
+<tr>
+<td align="left">1985-86</td>
+<td align="left">Lakers (+160)</td>
+<td align="left">Celtics (+250)</td>
+<td align="left">90</td>
+<td align="left">62-20, Lost WCF</td>
+</tr>
+
+<tr>
+<td align="left">2014-15</td>
+<td align="left">Cavaliers (+275)</td>
+<td align="left">Spurs (+350)</td>
+<td align="left">75</td>
+<td align="left">53-29, Lost Finals</td>
+</tr>
+
+<tr>
+<td align="left">2010-11</td>
+<td align="left">Heat (+175)</td>
+<td align="left">Lakers (+250)</td>
+<td align="left">75</td>
+<td align="left">58-24, Lost Finals</td>
+</tr>
+
+<tr>
+<td align="left">2009-10</td>
+<td align="left">Lakers (+225)</td>
+<td align="left">Cavaliers (+350)</td>
+<td align="left">75</td>
+<td align="left">57-25, Won Finals</td>
+</tr>
+
+<tr>
+<td align="left">2012-13</td>
+<td align="left">Heat (+225)</td>
+<td align="left">Lakers (+275)</td>
+<td align="left">50</td>
+<td align="left">66-16, Won Finals</td>
+</tr>
+
+<tr>
+<td align="left">2006-07</td>
+<td align="left">Mavericks (+400)</td>
+<td align="left">Spurs (+450)</td>
+<td align="left">50</td>
+<td align="left">67-15, Lost 1st Round</td>
+</tr>
+
+<tr>
+<td align="left">1999-00</td>
+<td align="left">Blazers (+350)</td>
+<td align="left">Lakers (+400)</td>
+<td align="left">50</td>
+<td align="left">59-23, Lost WCF</td>
+</tr>
+
+<tr>
+<td align="left">1998-99</td>
+<td align="left">Lakers (+300)</td>
+<td align="left">Jazz (+350)</td>
+<td align="left">50</td>
+<td align="left">31-19, Lost 2nd Round</td>
+</tr>
+
+<tr>
+<td align="left">1995-96</td>
+<td align="left">Bulls (+350)</td>
+<td align="left">Magic (+400)</td>
+<td align="left">50</td>
+<td align="left">72-10, Won Finals</td>
+</tr>
+
+<tr>
+<td align="left">1988-89</td>
+<td align="left">Lakers (+350)</td>
+<td align="left">Pistons (+400)</td>
+<td align="left">50</td>
+<td align="left">57-25, Lost Finals</td>
+</tr>
+
+<tr>
+<td align="left">2019-20</td>
+<td align="left">Clippers (+425)</td>
+<td align="left">Lakers (+450)</td>
+<td align="left">25</td>
+<td align="left">49-23, Lost 2nd Round</td>
+</tr>
+
+<tr>
+<td align="left">2023-24</td>
+<td align="left">Celtics (+450)</td>
+<td align="left">Nuggets (+450)</td>
+<td align="left">0</td>
+<td align="left">64-18, Won Finals / 57-25, Lost 2nd Round</td>
+</tr>
+
+<tr>
+<td align="left">2008-09</td>
+<td align="left">Lakers (+350)</td>
+<td align="left">Celtics (+350)</td>
+<td align="left">0</td>
+<td align="left">65-17, Won Finals / 62-20, Lost 2nd Round</td>
+</tr>
+
+<tr>
+<td align="left">2007-08</td>
+<td align="left">Spurs (+450)</td>
+<td align="left">Mavericks (+450)</td>
+<td align="left">0</td>
+<td align="left">56-26, Lost WCF / 51-31, Lost 1st Round</td>
+</tr>
+
+<tr>
+<td align="left">1984-85</td>
+<td align="left">Lakers (+200)</td>
+<td align="left">Celtics (+200)</td>
+<td align="left">0</td>
+<td align="left">62-20, Won Finals / 63-19, Lost Finals</td>
+</tr>
+</tbody>
+</table>
+<p>Some extra notes:</p>
+
+<ul>
+<li>The odds on favorite ended up in the finals <sup>28</sup>&frasl;<sub>44</sub> times (counting the 4 co-favorites twice), winning 19 and losing 9.</li>
+<li>None missed the post-season, and only 4 favorites lost in the 1st round of the playoffs</li>
+<li>The 2021-22 Nets had the lowest winning percentage of a favorite at .537 (44-38) and are the only favorite to not win a single playoff game, making them statistically the most disappointing favorite of the last 41 years.</li>
+<li>The upcoming season with the 2nd best odds Knicks at +725 would be the lowest odds of the team leading &ldquo;the field&rdquo;</li>
+<li>The 2017-2019 Warriors are the only teams to be minus favorites, making them the most foregone conclusions in history, and it&rsquo;s not really close.</li>
+<li>The 2022-23 Celtics at +500 were the &ldquo;worst&rdquo; favorites in the last 41 years</li>
+</ul>
+
+<p>What stands out to you?</p>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="lcr8v7r" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>rabid89 | Celtics</div>
+        <div>33 | 2 hours ago </div>
+      </div>
+      <label for="lcr8v7r" class="commentText"><p>This is actually pretty interesting. Good work.</p>
+
+<p>In the trash heap of rankings posts and the stupidest hypothetical questions, some people on this sub actually put up quality content.</p>
+
+<p>2021 Lakers losing in the 1st round stands out; the other 15 of top 17 all made the Finals (except the 2021 Lakers and 2025 Celtics who are TBD)</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="lcr9zxa" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>msf97</div>
+        <div>9 | 2 hours ago </div>
+      </div>
+      <label for="lcr9zxa" class="commentText"><p>The Lakers blowing up that roster because AD went down is still unserious. 2-0 up on the eventual finalists.</p>
+
+<p>Then again, the Nets had everybody worried going into 21-22 if we are to believe Zach Lowe and co. They were going to win a few titles unless something crazy happened…</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="lcrasf9" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>NoAWP | United States</div>
+        <div>6 | 2 hours ago </div>
+      </div>
+      <label for="lcrasf9" class="commentText"><p>It was 2-1 up against the Suns but your point stands</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="lcrb6te" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>markmyredd | Minneapolis Lakers</div>
+        <div>1 | 2 hours ago </div>
+      </div>
+      <label for="lcrb6te" class="commentText"><p>Combination of panic mode by that new Big 3 and the stars wanting a 3rd star.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="lcrbh1z" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>rabid89 | Celtics</div>
+        <div>1 | 2 hours ago </div>
+      </div>
+      <label for="lcrbh1z" class="commentText"><p>Facts. That 2021 Lakers roster was actually decent had they just kept it together and built around them.</p>
+
+<p>That Russ trade set the Lakers back like 3 years.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="lcrj98c" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>rabid89 | Celtics</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="lcrj98c" class="commentText"><p>LePanic LeSpecial</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="lcraenh" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>princeofzilch</div>
+        <div>6 | 2 hours ago </div>
+      </div>
+      <label for="lcraenh" class="commentText"><p>Jordan is 5 for 5 on winning the championship entering the season as the favorite.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="lcrolkc" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>SportsNMore1453</div>
+        <div>1 | 12 minutes ago </div>
+      </div>
+      <label for="lcrolkc" class="commentText"><p>Jordan is the goat for a reason. By far the best clutch player&hellip;he won 6 straight titles when on a team by Feb and did so with 3peats from 2 nearly entirely different teams.</p>
+
+<p>In addition, using either pre-playoff odds or pre-finals odds, Jordan&rsquo;s 6 titles in those 6 title years is about equal to if Bron won 6.5 to 7 titles in his 10 title years&hellip;he won on 4. Really puts things into context</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="lcrdlrr" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>moonshadow50 | Spurs</div>
+        <div>4 | an hour ago </div>
+      </div>
+      <label for="lcrdlrr" class="commentText"><p>What I kind of already knew. That the Spurs seemed to do better with a chip on their shoulder (usually against the Lakers, and then the Heat) rather than being told they were favourite:</p>
+
+<p>4 of the 5 rings were from not being the favourite.</p>
+
+<p>And they were 1 of 3 when being the favourite. (Actually 1 of 2, coz the 3rd one they were even with the Mavs)</p>
+
+<p>(And yes - I know the outright stats wouldn&rsquo;t fully support this. Because it&rsquo;s <sup>1</sup>&frasl;<sub>2</sub> titles when favourite, and <sup>4</sup>&frasl;<sub>15</sub> in the years they weren&rsquo;t the favourite&hellip; but the numbers are still interesting).</p>
+
+<p>I also think this is a counterpoint to (the few) people who still try to argue against Pop and Timmy&rsquo;s standing in the game by saying they were on these stacked super teams. Only being considered the outright favourite 2 times over 15 years doesnt really shout superteam to me.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="lcravyg" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Noah__Webster | Thunder</div>
+        <div>1 | 2 hours ago </div>
+      </div>
+      <label for="lcravyg" class="commentText"><p>The thing that stands out the most to me is how accurate they are. I would be interested in seeing this for other sports.</p>
+
+<p>I would have assumed basketball would vary the most from the expected odds of the major sports, aside from maybe baseball. Maybe it does, but I can&rsquo;t imagine being much more accurate than this.</p>
+
+<p>Basketball in general has a lot of variance. It&rsquo;s kind of like baseball in that you can &ldquo;fail&rdquo; more than not and still be great, particularly with the increase in volume of 3 point shooting. A basketball player that hits 40% of their threes or a baseball player that gets on base 40% of the time are probably all-stars. A quarterback who completes 40% of his passes would be historically bad.</p>
+
+<p>Sometimes a team just comes out hot and wins. Sometimes the best team in the league is cold and loses. There were 23 playoff games this year with a team shooting over 45% from three. Those teams went 22-1. 11 of those 22 wins, or exactly half, were the team that went on to lose the series.</p>
+
+<p>And this is only taking into account shooting variance. With only 5 guys out there, I feel like smaller variance in player&rsquo;s play aside from shooting that you can&rsquo;t really measure is amplified. It&rsquo;s also harder to hide people who are slumping or having an off night.</p>
+
+<p>I wonder if it&rsquo;s just a case of the NBA typically generating a clear cut favorite or upper echelon that supersedes the variance you would expect to see. Or maybe I&rsquo;m just overestimating the variance some how.</p>
+
+<p>I would be very interesting how well oddsmakers predict outcomes of middle-low seeded playoff teams. If that&rsquo;s way less accurate, maybe that lends some credibility to my idea of the league being top heavy offsetting the variance?</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="lcrcch6" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>rabid89 | Celtics</div>
+        <div>8 | 2 hours ago </div>
+      </div>
+      <label for="lcrcch6" class="commentText"><blockquote>
+<p>I would have assumed basketball would vary the most from the expected odds of the major sports,</p>
+</blockquote>
+
+<p>Why lol? It&rsquo;s one of the team sports with the least amount of variance due to points not being so valuable (compared to goals in NHL/Soccer, runs in MLB, points in NFL, etc&hellip;). The best (and healthiest) teams usually win 7 game series in the NBA.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="lcrnngn" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>SportsNMore1453</div>
+        <div>1 | 18 minutes ago </div>
+      </div>
+      <label for="lcrnngn" class="commentText"><p>It&rsquo;s more reasons that just that why NBA has the least variance. Of the top of my head:</p>
+
+<ol>
+<li><p>A single player has far more impact on the game&hellip;and two or three players just multiply that effect.</p></li>
+
+<li><p>The best players on a team generally are in the game about 80% of the game time. In football it&rsquo;s 50%, hockey 33%, and baseball the best hitter usually has about 11-15% of the plate appearances while a pitcher represents 50% when they are playing but generally play 66% of the game and every 4-5 games so about 8% of a series.</p></li>
+
+<li><p>Lots of scoring and often driven through the top player or two. So the other players contributing on occasion have relative low impact compared to say the 6th best player on a hockey team that can have a goal and that could represent 33% of the teams scoring.</p></li>
+</ol>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="lcrnz8b" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>SportsNMore1453</div>
+        <div>1 | 16 minutes ago </div>
+      </div>
+      <label for="lcrnz8b" class="commentText"><blockquote>
+<p>The best (and healthiest) teams usually win 7 game series in the NBA.</p>
+</blockquote>
+
+<p>I agree though I would add the caveat that it&rsquo;s the best team in that match-up.  One team can be the best team in the league but that doesn&rsquo;t necessarily mean they are better than every team in a head to head match-ups.</p>
+
+<p>For example, I think the Twolves were better than the Mavs but the Mavs were a terrible match-up for the TWolves and Mavs matched up better.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="lcrcxab" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Thehelloman0 | Spurs</div>
+        <div>3 | an hour ago </div>
+      </div>
+      <label for="lcrcxab" class="commentText"><blockquote>
+<p>I would have assumed basketball would vary the most from the expected odds of the major sports, aside from maybe baseball. Maybe it does, but I can&rsquo;t imagine being much more accurate than this.</p>
+</blockquote>
+
+<p>Basketball has the least variation of any of the major sports in the US by far lol</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="lcrgvm1" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>mickeyj623 | Celtics</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="lcrgvm1" class="commentText"><p>If anything basketball probably has the least variance out of the major 4 sports</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="lcrjxl0" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>HolyRomanPrince | Lakers</div>
+        <div>1 | 43 minutes ago </div>
+      </div>
+      <label for="lcrjxl0" class="commentText"><p>I’d love to know how badly people got their assess kicked in 2019.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="lcrl9bp" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>DuckDucks</div>
+        <div>1 | 34 minutes ago </div>
+      </div>
+      <label for="lcrl9bp" class="commentText"><p>Knicks have the second best odds next year? I mean I appreciate it but it&rsquo;s gotta be the thunder imo. That amazingly deep team got deeper plus an extra year of experience for Shai Chet and JDub? They&rsquo;re gonna be killer.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="lcrmg2z" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>SportsNMore1453</div>
+        <div>1 | 26 minutes ago </div>
+      </div>
+      <label for="lcrmg2z" class="commentText"><p>Jordan is the goat for a reason.  These odds already factor in the impact the player has and Jordan&rsquo;s teams 5 times was pre-season favorites and he delivered all 5 times. He&rsquo;s by far the best clutch player ever&hellip;&amp; he won 6 straight titles when on a team by Feb&ndash; doing so with 3peats from 2 nearly entirely different teams.</p>
+
+<p>In addition, using either pre-playoff odds or pre-finals odds, Jordan&rsquo;s 6 titles in those 6 title years is about equal to if Bron won 6.5 to 7 titles in his 10 title years&hellip;he won on 4. Really puts things into context</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
