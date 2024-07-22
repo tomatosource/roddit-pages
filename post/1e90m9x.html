@@ -1,0 +1,1438 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type=checkbox] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C""\201D""\2018""\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555; 
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position:relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size:24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText, .commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size:24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+    font-size: 38px;
+    line-height: 1.5;
+    color: white;
+}
+
+.selfPostContainer * {
+    color: white;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/nba/comments/1e90m9x/oc_creating_a_zscore_relative_ts_zts_metric_that/"><p>[OC] Creating a Z-Score relative TS% (zTS%) Metric that allows for easier comparisons across eras and how it&rsquo;s an improvement over existing measures of TS%, TS+% and rTS%.</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <p><strong>Existing TS% Metrics in the NBA</strong></p>
+
+<p>In the NBA, efficiency metrics like True Shooting Percentage (TS%), Relative True Shooting Percentage (rTS), and True Shooting Plus (TS+) have been ubiquitous for evaluating player performance. However, these metrics have limitations that a Z-score normalized metric can address.</p>
+
+<p>But before I get to these limitations, a brief review for what these metrics set to achieve -</p>
+
+<p><strong>True Shooting Percentage (TS%)</strong>:</p>
+
+<p>TS% is a shooting efficiency metric that accounts for field goals, three-point field goals, and free throws.</p>
+
+<p><strong>Limitations</strong></p>
+
+<ul>
+<li>TS% is a raw percentage and does not account for the context within the league or the variability among players. Nor does it account for league-wide growth</li>
+<li>It treats all players equally without considering how they compare to the league average.</li>
+</ul>
+
+<p><strong>Relative True Shooting Percentage (rTS%):</strong></p>
+
+<p>rTS% measures a player&rsquo;s TS% relative to the league average TS%.</p>
+
+<p><strong>Limitations</strong></p>
+
+<ul>
+<li>While it contextualizes a player&rsquo;s performance, it does not account for the distribution or variability of TS% within the league.</li>
+<li>It can be influenced by extreme values (outliers), skewing the perception of a player&rsquo;s efficiency based on outliers.</li>
+<li>Harder to interpret due to the lack of a normalized metric.</li>
+</ul>
+
+<p><strong>True Shooting Plus (TS+):</strong></p>
+
+<p>TS+ is an index where 100 represents the league average, and values above or below 100 indicate better or worse performance, respectively. It is widely considered the gold standard for comparing efficiency metrics across NBA eras, although it has similar limitations to the rTS%, it does normalize to some extent.</p>
+
+<p><strong>Creating the Z-score normalized TS%</strong></p>
+
+<p>Z-score normalization converts individual data points into a measure of standard deviations away from the mean which accounts for the distribution of scores and the variability.</p>
+
+<p>Z-scores are a superior method for normalizing efficiency metrics in the NBA due to their ability to provide contextual relevance, robustness to outliers, enhanced comparability across eras, and clearer interpretation. While traditional metrics like TS%, rTS, and TS+ are valuable, they lack the depth and robustness that Z-scores offer. By adopting Z-score normalization, we can achieve a much more accurate and comprehensive understanding of player performance across eras with ease of interpretation.</p>
+
+<p>To understand the process behind the estimation of the metric, here&rsquo;s a stepwise list -</p>
+
+<ol>
+<li><p>All TS% scores filtered ordered and the top 90% based on the possession&rsquo;s played were filtered for further analysis to remove smaller sample sizes and extreme outliers.</p></li>
+
+<li><p>All filtered TS% scores were scaled and centred based on the gaussian(normal) distribution. To examine how well the scores distributed, Shapiro-Wilk test for normality was conducted across 32 seasons. (NOTE: Shapiro-Wilk is fairly flawed but still a good rudimentary judge for examining the distribution).</p></li>
+
+<li><p>All the Z-scores were converted back to percentile norms for ease of comparison using the normal distribution. You can refer to the probabilities of a standard normal distribution to get a better idea for the conversion.</p></li>
+
+<li><p>The final output was a new zTS% metric that allows easier comparison across eras.</p></li>
+</ol>
+
+<p><strong>How is it an improvement?</strong></p>
+
+<ul>
+<li><strong>Robustness to Outliers</strong>:
+
+<ul>
+<li>Outliers are extreme values that can disproportionately affect statistical analyses.</li>
+<li>Z-scores reduce the impact of outliers by contextualizing each player&rsquo;s performance within the league&rsquo;s overall variability. Extreme values have less influence on the mean and standard deviation compared to how they would skew simple averages or ratios.</li>
+</ul></li>
+<li><strong>Enhanced Interpretability</strong>:
+
+<ul>
+<li>Z-scores standardize the scale of measurement, making it easier to compare performances across different seasons or contexts. A Z-score of 1.0, for example, consistently indicates one standard deviation above the mean, regardless of the underlying distribution&rsquo;s specifics.</li>
+</ul></li>
+<li><strong>Translating Z-Scores into Percentiles</strong>:
+
+<ul>
+<li>By converting Z-scores to percentiles, we provide an intuitive measure of performance. A player with a zTS% of 85% is more easily understood as being in the top 15% of efficient players in the league.</li>
+</ul></li>
+</ul>
+
+<p><strong>Kobe, an inefficient chucker or a product of his era?</strong></p>
+
+<p>The only thing left was to put this new method to the test using the most controversial player of the modern era - Kobe Bryant. Kobe, who&rsquo;s often considered an inefficient player compared to several stars.</p>
+
+<table>
+<thead>
+<tr>
+<th align="left">PLAYER_NAME</th>
+<th align="left">NICKNAME</th>
+<th align="right">GP</th>
+<th align="right">MIN</th>
+<th align="right">POSS</th>
+<th align="left">year</th>
+<th align="right">TS_PCT</th>
+<th align="right">TS_PCT_Z</th>
+<th align="right">TS_PERC</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">Kobe Bryant</td>
+<td align="left">Kobe</td>
+<td align="right">71</td>
+<td align="right">15.5</td>
+<td align="right">2211</td>
+<td align="left">1996-97</td>
+<td align="right">0.54</td>
+<td align="right">0.37</td>
+<td align="right">64.48</td>
+</tr>
+
+<tr>
+<td align="left">Kobe Bryant</td>
+<td align="left">Kobe</td>
+<td align="right">79</td>
+<td align="right">26.1</td>
+<td align="right">4157</td>
+<td align="left">1997-98</td>
+<td align="right">0.55</td>
+<td align="right">0.73</td>
+<td align="right">76.79</td>
+</tr>
+
+<tr>
+<td align="left">Kobe Bryant</td>
+<td align="left">Kobe</td>
+<td align="right">50</td>
+<td align="right">37.9</td>
+<td align="right">3676</td>
+<td align="left">1998-99</td>
+<td align="right">0.55</td>
+<td align="right">0.83</td>
+<td align="right">79.61</td>
+</tr>
+
+<tr>
+<td align="left">Kobe Bryant</td>
+<td align="left">Kobe</td>
+<td align="right">66</td>
+<td align="right">38.2</td>
+<td align="right">5047</td>
+<td align="left">1999-00</td>
+<td align="right">0.55</td>
+<td align="right">0.70</td>
+<td align="right">75.87</td>
+</tr>
+
+<tr>
+<td align="left">Kobe Bryant</td>
+<td align="left">Kobe</td>
+<td align="right">68</td>
+<td align="right">41.0</td>
+<td align="right">5460</td>
+<td align="left">2000-01</td>
+<td align="right">0.55</td>
+<td align="right">0.91</td>
+<td align="right">81.93</td>
+</tr>
+
+<tr>
+<td align="left">Kobe Bryant</td>
+<td align="left">Kobe</td>
+<td align="right">80</td>
+<td align="right">38.3</td>
+<td align="right">5991</td>
+<td align="left">2001-02</td>
+<td align="right">0.54</td>
+<td align="right">0.72</td>
+<td align="right">76.47</td>
+</tr>
+
+<tr>
+<td align="left">Kobe Bryant</td>
+<td align="left">Kobe</td>
+<td align="right">82</td>
+<td align="right">41.5</td>
+<td align="right">6699</td>
+<td align="left">2002-03</td>
+<td align="right">0.55</td>
+<td align="right">0.88</td>
+<td align="right">81.00</td>
+</tr>
+
+<tr>
+<td align="left">Kobe Bryant</td>
+<td align="left">Kobe</td>
+<td align="right">65</td>
+<td align="right">37.7</td>
+<td align="right">4853</td>
+<td align="left">2003-04</td>
+<td align="right">0.55</td>
+<td align="right">0.94</td>
+<td align="right">82.72</td>
+</tr>
+
+<tr>
+<td align="left">Kobe Bryant</td>
+<td align="left">Kobe</td>
+<td align="right">66</td>
+<td align="right">40.8</td>
+<td align="right">5196</td>
+<td align="left">2004-05</td>
+<td align="right">0.56</td>
+<td align="right">0.90</td>
+<td align="right">81.63</td>
+</tr>
+
+<tr>
+<td align="left">Kobe Bryant</td>
+<td align="left">Kobe</td>
+<td align="right">80</td>
+<td align="right">41.0</td>
+<td align="right">6371</td>
+<td align="left">2005-06</td>
+<td align="right">0.56</td>
+<td align="right">0.74</td>
+<td align="right">77.06</td>
+</tr>
+
+<tr>
+<td align="left">Kobe Bryant</td>
+<td align="left">Kobe</td>
+<td align="right">77</td>
+<td align="right">40.8</td>
+<td align="right">6263</td>
+<td align="left">2006-07</td>
+<td align="right">0.58</td>
+<td align="right">0.94</td>
+<td align="right">82.65</td>
+</tr>
+
+<tr>
+<td align="left">Kobe Bryant</td>
+<td align="left">Kobe</td>
+<td align="right">82</td>
+<td align="right">38.9</td>
+<td align="right">6488</td>
+<td align="left">2007-08</td>
+<td align="right">0.58</td>
+<td align="right">0.92</td>
+<td align="right">82.04</td>
+</tr>
+
+<tr>
+<td align="left">Kobe Bryant</td>
+<td align="left">Kobe</td>
+<td align="right">82</td>
+<td align="right">36.1</td>
+<td align="right">5911</td>
+<td align="left">2008-09</td>
+<td align="right">0.56</td>
+<td align="right">0.59</td>
+<td align="right">72.31</td>
+</tr>
+
+<tr>
+<td align="left">Kobe Bryant</td>
+<td align="left">Kobe</td>
+<td align="right">73</td>
+<td align="right">38.8</td>
+<td align="right">5570</td>
+<td align="left">2009-10</td>
+<td align="right">0.54</td>
+<td align="right">0.23</td>
+<td align="right">59.12</td>
+</tr>
+
+<tr>
+<td align="left">Kobe Bryant</td>
+<td align="left">Kobe</td>
+<td align="right">82</td>
+<td align="right">33.9</td>
+<td align="right">5361</td>
+<td align="left">2010-11</td>
+<td align="right">0.55</td>
+<td align="right">0.33</td>
+<td align="right">62.82</td>
+</tr>
+
+<tr>
+<td align="left">Kobe Bryant</td>
+<td align="left">Kobe</td>
+<td align="right">58</td>
+<td align="right">38.5</td>
+<td align="right">4332</td>
+<td align="left">2011-12</td>
+<td align="right">0.53</td>
+<td align="right">0.21</td>
+<td align="right">58.42</td>
+</tr>
+
+<tr>
+<td align="left">Kobe Bryant</td>
+<td align="left">Kobe</td>
+<td align="right">78</td>
+<td align="right">38.6</td>
+<td align="right">6020</td>
+<td align="left">2012-13</td>
+<td align="right">0.57</td>
+<td align="right">0.85</td>
+<td align="right">80.23</td>
+</tr>
+
+<tr>
+<td align="left">Kobe Bryant</td>
+<td align="left">Kobe</td>
+<td align="right">35</td>
+<td align="right">34.5</td>
+<td align="right">2434</td>
+<td align="left">2014-15</td>
+<td align="right">0.48</td>
+<td align="right">-0.94</td>
+<td align="right">17.42</td>
+</tr>
+
+<tr>
+<td align="left">Kobe Bryant</td>
+<td align="left">Kobe</td>
+<td align="right">66</td>
+<td align="right">28.2</td>
+<td align="right">3820</td>
+<td align="left">2015-16</td>
+<td align="right">0.47</td>
+<td align="right">-1.34</td>
+<td align="right">9.07</td>
+</tr>
+</tbody>
+</table>
+<p>Based on the above, you can say that Kobe has always been around 80th percentile in terms of league efficiency across most of his prime, or you can simply state that he was more efficient than 80% of the league during his prime.</p>
+
+<p>Similarly for Lebron -</p>
+
+<table>
+<thead>
+<tr>
+<th align="left">PLAYER_NAME</th>
+<th align="left">NICKNAME</th>
+<th align="right">GP</th>
+<th align="right">MIN</th>
+<th align="right">POSS</th>
+<th align="left">year</th>
+<th align="right">TS_PCT</th>
+<th align="right">TS_PCT_Z</th>
+<th align="right">TS_PERC</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">LeBron James</td>
+<td align="left">LeBron</td>
+<td align="right">79</td>
+<td align="right">39.6</td>
+<td align="right">6053</td>
+<td align="left">2003-04</td>
+<td align="right">0.49</td>
+<td align="right">-0.36</td>
+<td align="right">35.85</td>
+</tr>
+
+<tr>
+<td align="left">LeBron James</td>
+<td align="left">LeBron</td>
+<td align="right">80</td>
+<td align="right">42.3</td>
+<td align="right">6423</td>
+<td align="left">2004-05</td>
+<td align="right">0.55</td>
+<td align="right">0.72</td>
+<td align="right">76.45</td>
+</tr>
+
+<tr>
+<td align="left">LeBron James</td>
+<td align="left">LeBron</td>
+<td align="right">79</td>
+<td align="right">42.5</td>
+<td align="right">6404</td>
+<td align="left">2005-06</td>
+<td align="right">0.57</td>
+<td align="right">0.92</td>
+<td align="right">82.08</td>
+</tr>
+
+<tr>
+<td align="left">LeBron James</td>
+<td align="left">LeBron</td>
+<td align="right">78</td>
+<td align="right">40.9</td>
+<td align="right">6124</td>
+<td align="left">2006-07</td>
+<td align="right">0.55</td>
+<td align="right">0.40</td>
+<td align="right">65.67</td>
+</tr>
+
+<tr>
+<td align="left">LeBron James</td>
+<td align="left">LeBron</td>
+<td align="right">75</td>
+<td align="right">40.4</td>
+<td align="right">5831</td>
+<td align="left">2007-08</td>
+<td align="right">0.57</td>
+<td align="right">0.77</td>
+<td align="right">78.06</td>
+</tr>
+
+<tr>
+<td align="left">LeBron James</td>
+<td align="left">LeBron</td>
+<td align="right">81</td>
+<td align="right">37.7</td>
+<td align="right">5769</td>
+<td align="left">2008-09</td>
+<td align="right">0.59</td>
+<td align="right">1.18</td>
+<td align="right">88.17</td>
+</tr>
+
+<tr>
+<td align="left">LeBron James</td>
+<td align="left">LeBron</td>
+<td align="right">76</td>
+<td align="right">39.0</td>
+<td align="right">5728</td>
+<td align="left">2009-10</td>
+<td align="right">0.60</td>
+<td align="right">1.40</td>
+<td align="right">91.94</td>
+</tr>
+
+<tr>
+<td align="left">LeBron James</td>
+<td align="left">LeBron</td>
+<td align="right">79</td>
+<td align="right">38.8</td>
+<td align="right">5916</td>
+<td align="left">2010-11</td>
+<td align="right">0.59</td>
+<td align="right">1.23</td>
+<td align="right">89.03</td>
+</tr>
+
+<tr>
+<td align="left">LeBron James</td>
+<td align="left">LeBron</td>
+<td align="right">62</td>
+<td align="right">37.5</td>
+<td align="right">4533</td>
+<td align="left">2011-12</td>
+<td align="right">0.60</td>
+<td align="right">1.60</td>
+<td align="right">94.53</td>
+</tr>
+
+<tr>
+<td align="left">LeBron James</td>
+<td align="left">LeBron</td>
+<td align="right">76</td>
+<td align="right">37.9</td>
+<td align="right">5549</td>
+<td align="left">2012-13</td>
+<td align="right">0.64</td>
+<td align="right">2.16</td>
+<td align="right">98.48</td>
+</tr>
+
+<tr>
+<td align="left">LeBron James</td>
+<td align="left">LeBron</td>
+<td align="right">77</td>
+<td align="right">37.7</td>
+<td align="right">5634</td>
+<td align="left">2013-14</td>
+<td align="right">0.65</td>
+<td align="right">2.28</td>
+<td align="right">98.86</td>
+</tr>
+
+<tr>
+<td align="left">LeBron James</td>
+<td align="left">LeBron</td>
+<td align="right">69</td>
+<td align="right">36.1</td>
+<td align="right">4889</td>
+<td align="left">2014-15</td>
+<td align="right">0.58</td>
+<td align="right">0.98</td>
+<td align="right">83.66</td>
+</tr>
+
+<tr>
+<td align="left">LeBron James</td>
+<td align="left">LeBron</td>
+<td align="right">76</td>
+<td align="right">35.6</td>
+<td align="right">5344</td>
+<td align="left">2015-16</td>
+<td align="right">0.59</td>
+<td align="right">1.10</td>
+<td align="right">86.44</td>
+</tr>
+
+<tr>
+<td align="left">LeBron James</td>
+<td align="left">LeBron</td>
+<td align="right">74</td>
+<td align="right">37.8</td>
+<td align="right">5655</td>
+<td align="left">2016-17</td>
+<td align="right">0.62</td>
+<td align="right">1.48</td>
+<td align="right">93.11</td>
+</tr>
+
+<tr>
+<td align="left">LeBron James</td>
+<td align="left">LeBron</td>
+<td align="right">82</td>
+<td align="right">36.9</td>
+<td align="right">6250</td>
+<td align="left">2017-18</td>
+<td align="right">0.62</td>
+<td align="right">1.41</td>
+<td align="right">92.11</td>
+</tr>
+
+<tr>
+<td align="left">LeBron James</td>
+<td align="left">LeBron</td>
+<td align="right">55</td>
+<td align="right">35.2</td>
+<td align="right">4218</td>
+<td align="left">2018-19</td>
+<td align="right">0.59</td>
+<td align="right">0.70</td>
+<td align="right">75.76</td>
+</tr>
+
+<tr>
+<td align="left">LeBron James</td>
+<td align="left">LeBron</td>
+<td align="right">67</td>
+<td align="right">34.6</td>
+<td align="right">4910</td>
+<td align="left">2019-20</td>
+<td align="right">0.58</td>
+<td align="right">0.32</td>
+<td align="right">62.68</td>
+</tr>
+
+<tr>
+<td align="left">LeBron James</td>
+<td align="left">LeBron</td>
+<td align="right">45</td>
+<td align="right">33.4</td>
+<td align="right">3145</td>
+<td align="left">2020-21</td>
+<td align="right">0.60</td>
+<td align="right">0.67</td>
+<td align="right">74.88</td>
+</tr>
+
+<tr>
+<td align="left">LeBron James</td>
+<td align="left">LeBron</td>
+<td align="right">56</td>
+<td align="right">37.2</td>
+<td align="right">4380</td>
+<td align="left">2021-22</td>
+<td align="right">0.62</td>
+<td align="right">1.04</td>
+<td align="right">85.11</td>
+</tr>
+</tbody>
+</table>
+<p>You can see that he&rsquo;s hovered around the 90th percentile during his prime and that number jumps up to 98th percentile during 2012-13 and 2013-14.</p>
+
+<p>Finally, for my favourite player Nikola Jokic -</p>
+
+<table>
+<thead>
+<tr>
+<th align="left">PLAYER_NAME</th>
+<th align="left">NICKNAME</th>
+<th align="right">GP</th>
+<th align="right">MIN</th>
+<th align="right">POSS</th>
+<th align="left">year</th>
+<th align="right">TS_PCT</th>
+<th align="right">TS_PCT_Z</th>
+<th align="right">TS_PERC</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">Nikola Jokic</td>
+<td align="left">Nikola</td>
+<td align="right">80</td>
+<td align="right">21.7</td>
+<td align="right">3488</td>
+<td align="left">2015-16</td>
+<td align="right">0.58</td>
+<td align="right">0.98</td>
+<td align="right">83.58</td>
+</tr>
+
+<tr>
+<td align="left">Nikola Jokic</td>
+<td align="left">Nikola</td>
+<td align="right">73</td>
+<td align="right">27.9</td>
+<td align="right">4264</td>
+<td align="left">2016-17</td>
+<td align="right">0.64</td>
+<td align="right">1.90</td>
+<td align="right">97.10</td>
+</tr>
+
+<tr>
+<td align="left">Nikola Jokic</td>
+<td align="left">Nikola</td>
+<td align="right">75</td>
+<td align="right">32.6</td>
+<td align="right">4983</td>
+<td align="left">2017-18</td>
+<td align="right">0.60</td>
+<td align="right">1.05</td>
+<td align="right">85.43</td>
+</tr>
+
+<tr>
+<td align="left">Nikola Jokic</td>
+<td align="left">Nikola</td>
+<td align="right">80</td>
+<td align="right">31.3</td>
+<td align="right">5140</td>
+<td align="left">2018-19</td>
+<td align="right">0.59</td>
+<td align="right">0.72</td>
+<td align="right">76.37</td>
+</tr>
+
+<tr>
+<td align="left">Nikola Jokic</td>
+<td align="left">Nikola</td>
+<td align="right">73</td>
+<td align="right">32.0</td>
+<td align="right">4733</td>
+<td align="left">2019-20</td>
+<td align="right">0.60</td>
+<td align="right">0.80</td>
+<td align="right">78.91</td>
+</tr>
+
+<tr>
+<td align="left">Nikola Jokic</td>
+<td align="left">Nikola</td>
+<td align="right">72</td>
+<td align="right">34.6</td>
+<td align="right">5084</td>
+<td align="left">2020-21</td>
+<td align="right">0.65</td>
+<td align="right">1.47</td>
+<td align="right">92.93</td>
+</tr>
+
+<tr>
+<td align="left">Nikola Jokic</td>
+<td align="left">Nikola</td>
+<td align="right">74</td>
+<td align="right">33.5</td>
+<td align="right">5136</td>
+<td align="left">2021-22</td>
+<td align="right">0.66</td>
+<td align="right">1.77</td>
+<td align="right">96.18</td>
+</tr>
+
+<tr>
+<td align="left">Nikola Jokic</td>
+<td align="left">Nikola</td>
+<td align="right">69</td>
+<td align="right">33.7</td>
+<td align="right">4873</td>
+<td align="left">2022-23</td>
+<td align="right">0.70</td>
+<td align="right">2.14</td>
+<td align="right">98.40</td>
+</tr>
+
+<tr>
+<td align="left">Nikola Jokic</td>
+<td align="left">Nikola</td>
+<td align="right">79</td>
+<td align="right">34.6</td>
+<td align="right">5599</td>
+<td align="left">2023-24</td>
+<td align="right">0.65</td>
+<td align="right">1.42</td>
+<td align="right">92.17</td>
+</tr>
+</tbody>
+</table>
+<p>He&rsquo;s an efficiency god, with multiple seasons in the 90th percentile.</p>
+
+<p><strong>How to Access the data</strong></p>
+
+<p>Unfortunately, I am still in the process of creating the app so all the data is publicly available but in the meantime if you&rsquo;re interested in data for a single player, I created a hacky solution for you - <a href="https://codepen.io/Gareth-Bale-the-bashful/pen/qBzZejW" target="_blank">https://codepen.io/Gareth-Bale-the-bashful/pen/qBzZejW</a></p>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="leb4w1v" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>CloudSkyGaze</div>
+        <div>29 | an hour ago </div>
+      </div>
+      <label for="leb4w1v" class="commentText"><p>I don’t really understand but I’m upvoting because this seemed like a lot of effort and want people who understand this stuff to see</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="leb5hld" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>SomborDouble95</div>
+        <div>12 | an hour ago </div>
+      </div>
+      <label for="leb5hld" class="commentText"><p>I just put the methodology for those interested.</p>
+
+<p>Simply put, it&rsquo;s telling you the percentage of players you are more efficient than in a given season adjusting for outliers, eras and variance. Kobe who is considered an inefficient chucker was in the 80th percentile for the majority of his career (more efficient than 80% of the players). Dirk, who hovered around 55 to 60% TS for his entire career had multiple seasons in the 90th percentile.</p>
+
+<p>It&rsquo;s just an easy way to see how efficient a player is relative to their own eras and to compare efficiency metrics across eras.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="leb5mzs" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>NotManyBuses | Charlotte Bobcats</div>
+        <div>9 | an hour ago </div>
+      </div>
+      <label for="leb5mzs" class="commentText"><p>Any way you could do this for playoff data?</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="leb6gf1" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>SomborDouble95</div>
+        <div>5 | an hour ago </div>
+      </div>
+      <label for="leb6gf1" class="commentText"><p>Yeah, should be very easy to implement!</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="leb5yjj" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>twinberwolf | Timberwolves</div>
+        <div>6 | an hour ago </div>
+      </div>
+      <label for="leb5yjj" class="commentText"><p>So basically you are trying to work on a WAR for basketball?</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="leb74e5" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>mxnoob983 | NBA</div>
+        <div>4 | an hour ago </div>
+      </div>
+      <label for="leb74e5" class="commentText"><p>Always loved standardisations</p>
+
+<p>But, I think you should include RTS or TS+ (either or) alongside the Z score. I’m interested in your reasonings for not valuing it, if you have examples of it’s outliers that would be interesting to see.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="leb8mh3" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>SomborDouble95</div>
+        <div>2 | an hour ago </div>
+      </div>
+      <label for="leb8mh3" class="commentText"><p>Yeah, I should&rsquo;ve included it! The main advantage is the ease of interpretation compared to other metrics and robustness.</p>
+
+<p>But the reasoning behind it was as follows -</p>
+
+<p>Z-score percentiles are superior to mean based (rTS% and TS+%) comparisons because they provide a more nuanced understanding of a a player&rsquo;s relative standing within a single season. The mean comparisons can indicate whether a value is above or below the average TS% for the season but the average does not account for the  variability or potential outliers. The biggest problem was not weighing the efficiency metrics based on shots attempted.</p>
+
+<p>Z-scores, on the other hand, standardize values by converting them into the number of standard deviations they are from the mean, allowing for a clearer assessment of how extreme or typical a value is within the context of the entire dataset. They also facilitate the comparison of players from different seasons or conditions, which makes them more robust.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="lebd2ak" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>mxnoob983 | NBA</div>
+        <div>1 | 25 minutes ago </div>
+      </div>
+      <label for="lebd2ak" class="commentText"><p>Sorry yeah didn’t mean to open up a larger discussion my view is that TS+ or rTS already do a good job standardising these comparisons that going a step deeper isn’t as necessary if that makes sense</p>
+
+<p>I’m also rusty on my statistics but with a sample size of the whole NBA (ie when we compare to league average) isn’t the effect of outliers/variance likely to be diminished?</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="lebdmoj" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>SomborDouble95</div>
+        <div>1 | 21 minutes ago </div>
+      </div>
+      <label for="lebdmoj" class="commentText"><p>I think it&rsquo;s easier to explain by listing the formulas to show where they are flawed -</p>
+
+<p>TS = points / (2 * fga + 0.88 * fta)</p>
+
+<p>rTS = playerTS - leagueTS</p>
+
+<p>TS+ = 100 * (playerTS / leagueTS)</p>
+
+<p>You can see that none of these formulas incorporate variability. Some NBA seasons have more variability around the mean, some have less. That information is not being incorporated at all within the estimation. It&rsquo;s simply a deviation from the mean (which is the simplest form of deviation).</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="leb7foj" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Wondering_Nova</div>
+        <div>2 | an hour ago </div>
+      </div>
+      <label for="leb7foj" class="commentText"><p>Hey man you did great work! I really enjoyed reading it and seeing it put into effect. You also used my favorite player (Kobe) to show how the metric works! Keep up the great OC</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="leb8ubv" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>SomborDouble95</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="leb8ubv" class="commentText"><p>Thanks! I often saw people suggesting that Kobe is an inefficient chucker and using rTS% or TS% as why. It always annoyed me haha.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="lebably" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>RKT23</div>
+        <div>2 | 44 minutes ago </div>
+      </div>
+      <label for="lebably" class="commentText"><p>Great job OP, love this.</p>
+
+<p>Would incorporating some position based normalisation serve as an improvement ?</p>
+
+<p>Or do we only care about absolute efficiency instead of efficiency relative to your own position ?</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="lebayqq" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>SomborDouble95</div>
+        <div>3 | 39 minutes ago </div>
+      </div>
+      <label for="lebayqq" class="commentText"><p>Great suggestion btw!</p>
+
+<p>I was actually going to improve it further by using shot difficulty using average shot distances to incorporate more relative features. That&rsquo;s the next goal anyways. I figured guys like Dirk/KD shouldn&rsquo;t be penalized for size/position based corrections because of their shot diet. The plan is to incorporate each players individual shot distance average and deviation in the normalization process.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="lebd5oi" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>RKT23</div>
+        <div>1 | 24 minutes ago </div>
+      </div>
+      <label for="lebd5oi" class="commentText"><p>That would be great !</p>
+
+<p>Though I guess that data is only available for the Play-by-Play era.</p>
+
+<p>I wonder if you could incorporate shot quality, based on distance from a defender, into this.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="lebdolf" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>OKCDraftPick2028 | Lakers</div>
+        <div>1 | 20 minutes ago </div>
+      </div>
+      <label for="lebdolf" class="commentText"><p>Sorting by Stephen Curry and Kevin Durant is wild</p>
+
+<p>consistent high 90th percentage. imagine if they become teammates</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="lebc7zj" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>yapyd | Minneapolis Lakers</div>
+        <div>1 | 31 minutes ago </div>
+      </div>
+      <label for="lebc7zj" class="commentText"><p>Q: Does the new statistic take into account volume?</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="lebccyh" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>DentistFun2776</div>
+        <div>1 | 30 minutes ago </div>
+      </div>
+      <label for="lebccyh" class="commentText"><p>This is great, good look on further work with it</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="lebdr54" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>LaMelonBallz | Hornets</div>
+        <div>1 | 20 minutes ago </div>
+      </div>
+      <label for="lebdr54" class="commentText"><p>Thank you for making me feel like I finally have a purpose for all that stats I took in grad school, lol.</p>
+
+<p>This is super cool, and it&rsquo;s always impressive seeing someone put this much work/thought into developing a metric.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="lebefb7" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Doten1 | Bucks</div>
+        <div>1 | 15 minutes ago </div>
+      </div>
+      <label for="lebefb7" class="commentText"><p>Tbh after learning today that you couldn’t double team off the ball in 90s my entire world view has shattered. I can not and will not compare eras ever again, sht is stupid.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="lebekmx" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ardx</div>
+        <div>1 | 14 minutes ago </div>
+      </div>
+      <label for="lebekmx" class="commentText"><p>I just want to note the hilarity of running Shapiro-Wilk (which involves ordering the observations which allows you to read off percentiles directly) just so you can derive a less accurate percentile.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="lebfsil" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>SomborDouble95</div>
+        <div>1 | 6 minutes ago </div>
+      </div>
+      <label for="lebfsil" class="commentText"><p>It&rsquo;s just a test for normality, it wasn&rsquo;t used in derivation of the efficiency metric. Instead of manually examining each distribution for each season, it&rsquo;s just simpler to do it this way.</p>
+
+<p>I did mention it&rsquo;s not the best way, but the CLT is enough justification to use normal quantiles.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="lebf8qe" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>PonkMcSquiggles</div>
+        <div>1 | 10 minutes ago </div>
+      </div>
+      <label for="lebf8qe" class="commentText"><p>Something that’s always bothered me about rTS% is that while correcting for eras having different scoring environments is a good idea, at least <em>some</em> of the recent spike in shooting percentages is due to improved decision making, right?</p>
+
+<p>If two players have the same rTS%, but the first guy did it back when his competition was regularly shooting contested 20 footers, isn’t the second guy still marginally better?</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="lebfhpj" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>justmefishes | NBA</div>
+        <div>1 | 8 minutes ago </div>
+      </div>
+      <label for="lebfhpj" class="commentText"><p>You write in a couple of places that z-scores are more robust to outliers than other methods that measure relative to mean and standard deviation, but that&rsquo;s not true. z-scores are defined relative to straightforward calculations of population or sample means and standard deviations, without any adjustments for outliers. For instance, z-scores for TS% in a given season would be centered around the mean TS% in that season, same as for rTS% or any other method that computes the mean.</p>
+
+<p>Your method does seem to take outliers into account in a way that other measures might not, since you exclude data from players in the bottom 10% in terms of possessions played. But that has nothing to do with z-scores per se. Any other method, such as rTS%, could be adjusted to do something similar.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="lebfl66" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>bullowl | Magic</div>
+        <div>1 | 7 minutes ago </div>
+      </div>
+      <label for="lebfl66" class="commentText"><p>Does this only go back to 96-97? I was curious about how MJ, Bird, Magic, and Kareem fared for their careers.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="leb30dd" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>FeedbackSmart2162 | NBA</div>
+        <div>-8 | 2 hours ago </div>
+      </div>
+      <label for="leb30dd" class="commentText"><p>Nerd</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="leb3hut" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Select-Fuel-3621</div>
+        <div>6 | an hour ago </div>
+      </div>
+      <label for="leb3hut" class="commentText"><p>Pfp does not check out</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
