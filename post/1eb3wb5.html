@@ -1,0 +1,684 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type=checkbox] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C""\201D""\2018""\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555; 
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position:relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size:24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText, .commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size:24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+    font-size: 38px;
+    line-height: 1.5;
+    color: white;
+}
+
+.selfPostContainer * {
+    color: white;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/nba/comments/1eb3wb5/most_nba_wins_since_20102011_1_warriors_2/"><p>Most NBA wins since 2010-2011: 1. Warriors 2. Clippers 3. Celtics 4. Heat 5. Spurs 6.Thunder 7. Nuggets List continued in post.</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <table>
+<thead>
+<tr>
+<th align="left">Rank</th>
+<th align="left">Team</th>
+<th align="left">Wins</th>
+<th align="left">Win%</th>
+<th align="left">Losses</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">1</td>
+<td align="left">Warriors</td>
+<td align="left">676</td>
+<td align="left">.612</td>
+<td align="left">429</td>
+</tr>
+
+<tr>
+<td align="left">2</td>
+<td align="left">Clippers</td>
+<td align="left">668</td>
+<td align="left">.601</td>
+<td align="left">444</td>
+</tr>
+
+<tr>
+<td align="left">3</td>
+<td align="left">Celtics</td>
+<td align="left">662</td>
+<td align="left">.596</td>
+<td align="left">449</td>
+</tr>
+
+<tr>
+<td align="left">4</td>
+<td align="left">Heat</td>
+<td align="left">660</td>
+<td align="left">.593</td>
+<td align="left">453</td>
+</tr>
+
+<tr>
+<td align="left">5</td>
+<td align="left">Spurs</td>
+<td align="left">652</td>
+<td align="left">.587</td>
+<td align="left">459</td>
+</tr>
+
+<tr>
+<td align="left">6</td>
+<td align="left">Thunder</td>
+<td align="left">652</td>
+<td align="left">.586</td>
+<td align="left">460</td>
+</tr>
+
+<tr>
+<td align="left">7</td>
+<td align="left">Nuggets</td>
+<td align="left">635</td>
+<td align="left">.571</td>
+<td align="left">478</td>
+</tr>
+
+<tr>
+<td align="left">8</td>
+<td align="left">Bucks</td>
+<td align="left">599</td>
+<td align="left">.538</td>
+<td align="left">514</td>
+</tr>
+
+<tr>
+<td align="left">9</td>
+<td align="left">Raptors</td>
+<td align="left">594</td>
+<td align="left">.534</td>
+<td align="left">518</td>
+</tr>
+
+<tr>
+<td align="left">10</td>
+<td align="left">Grizzlies</td>
+<td align="left">594</td>
+<td align="left">.534</td>
+<td align="left">519</td>
+</tr>
+
+<tr>
+<td align="left">11</td>
+<td align="left">Pacers</td>
+<td align="left">591</td>
+<td align="left">.531</td>
+<td align="left">521</td>
+</tr>
+
+<tr>
+<td align="left">12</td>
+<td align="left">Rockets</td>
+<td align="left">590</td>
+<td align="left">.531</td>
+<td align="left">522</td>
+</tr>
+
+<tr>
+<td align="left">13</td>
+<td align="left">Mavericks</td>
+<td align="left">590</td>
+<td align="left">.529</td>
+<td align="left">525</td>
+</tr>
+
+<tr>
+<td align="left">14</td>
+<td align="left">Jazz</td>
+<td align="left">583</td>
+<td align="left">.524</td>
+<td align="left">529</td>
+</tr>
+
+<tr>
+<td align="left">15</td>
+<td align="left">Bulls</td>
+<td align="left">565</td>
+<td align="left">.511</td>
+<td align="left">540</td>
+</tr>
+
+<tr>
+<td align="left">16</td>
+<td align="left">Trail Blazers</td>
+<td align="left">559</td>
+<td align="left">.502</td>
+<td align="left">555</td>
+</tr>
+
+<tr>
+<td align="left">17</td>
+<td align="left">Hawks</td>
+<td align="left">551</td>
+<td align="left">.498</td>
+<td align="left">556</td>
+</tr>
+
+<tr>
+<td align="left">18</td>
+<td align="left">76ers</td>
+<td align="left">532</td>
+<td align="left">.478</td>
+<td align="left">581</td>
+</tr>
+
+<tr>
+<td align="left">19</td>
+<td align="left">Lakers</td>
+<td align="left">523</td>
+<td align="left">.471</td>
+<td align="left">588</td>
+</tr>
+
+<tr>
+<td align="left">20</td>
+<td align="left">Suns</td>
+<td align="left">515</td>
+<td align="left">.463</td>
+<td align="left">598</td>
+</tr>
+
+<tr>
+<td align="left">21</td>
+<td align="left">Cavaliers</td>
+<td align="left">511</td>
+<td align="left">.462</td>
+<td align="left">594</td>
+</tr>
+
+<tr>
+<td align="left">22</td>
+<td align="left">Pelicans</td>
+<td align="left">506</td>
+<td align="left">.455</td>
+<td align="left">606</td>
+</tr>
+
+<tr>
+<td align="left">23</td>
+<td align="left">Nets</td>
+<td align="left">492</td>
+<td align="left">.442</td>
+<td align="left">620</td>
+</tr>
+
+<tr>
+<td align="left">24</td>
+<td align="left">Knicks</td>
+<td align="left">491</td>
+<td align="left">.444</td>
+<td align="left">615</td>
+</tr>
+
+<tr>
+<td align="left">25</td>
+<td align="left">Wizards</td>
+<td align="left">471</td>
+<td align="left">.424</td>
+<td align="left">641</td>
+</tr>
+
+<tr>
+<td align="left">26</td>
+<td align="left">Timberwolves</td>
+<td align="left">459</td>
+<td align="left">.416</td>
+<td align="left">645</td>
+</tr>
+
+<tr>
+<td align="left">27</td>
+<td align="left">Kings</td>
+<td align="left">448</td>
+<td align="left">.403</td>
+<td align="left">664</td>
+</tr>
+
+<tr>
+<td align="left">28</td>
+<td align="left">Magic</td>
+<td align="left">445</td>
+<td align="left">.400</td>
+<td align="left">668</td>
+</tr>
+
+<tr>
+<td align="left">29</td>
+<td align="left">Hornets</td>
+<td align="left">444</td>
+<td align="left">.402</td>
+<td align="left">661</td>
+</tr>
+
+<tr>
+<td align="left">30</td>
+<td align="left">Pistons</td>
+<td align="left">400</td>
+<td align="left">.362</td>
+<td align="left">706</td>
+</tr>
+</tbody>
+</table>
+<p>Source: <a href="https://www.statmuse.com/nba/ask?q=most+team+nba+wins+since+2010-11+and+win+percentage+and+losses" target="_blank">https://www.statmuse.com/nba/ask?q=most+team+nba+wins+since+2010-11+and+win+percentage+and+losses</a></p>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="lepx6kf" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Ronshol | 76ers</div>
+        <div>1 | 14 minutes ago </div>
+      </div>
+      <label for="lepx6kf" class="commentText"><p>Pistons have probably had the biggest fall from grace in league history.</p>
+
+<p>3 championships and 6 straight conference finals appearances to not winning a playoff game in 17 years.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="lepzb27" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>AirJordan6124 | Celtics</div>
+        <div>1 | 3 minutes ago </div>
+      </div>
+      <label for="lepzb27" class="commentText"><p>That Billups for Iverson trade really had a domino effect. Joe Dumars was eyeing for that cap space.. and be used them for Ben Gordon and Charlie Villanueva</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="lepwvub" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Winlessta08 | Nuggets</div>
+        <div>1 | 16 minutes ago </div>
+      </div>
+      <label for="lepwvub" class="commentText"><p>After losing for a decade straight they are now known as the Detroit Piss tons</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="lepyzhn" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>CazOnReddit | Raptors</div>
+        <div>1 | 5 minutes ago </div>
+      </div>
+      <label for="lepyzhn" class="commentText"><p>Sad Boy Pistons</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="lepx2hw" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>WEMBYF4N | Spurs</div>
+        <div>1 | 15 minutes ago </div>
+      </div>
+      <label for="lepx2hw" class="commentText"><p>Spurs have missed the playoffs the last 5 years and actively tanked for the last 2 and they’re still top 5 lol</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="lepx8qn" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>StrategyTop7612 | Clippers</div>
+        <div>1 | 14 minutes ago </div>
+      </div>
+      <label for="lepx8qn" class="commentText"><p>The 1998-2017 Spurs were just built different.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="lepx6fa" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Bonesawisready5 | Spurs</div>
+        <div>1 | 14 minutes ago </div>
+      </div>
+      <label for="lepx6fa" class="commentText"><p>Spurs literally being rebuilding for years and are still top 5</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="lepxg7r" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>fckthisite2 | Nuggets</div>
+        <div>1 | 13 minutes ago </div>
+      </div>
+      <label for="lepxg7r" class="commentText"><p>My takeaways: Clippers, Thunder and Grizzlies the only teams in the top 10 without a ring during this time. Cavs the only team in the bottom 10 with a ring. Lakers are worse than I thought over this time period</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="lepxhe2" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>DynamixRo | Clippers</div>
+        <div>1 | 13 minutes ago </div>
+      </div>
+      <label for="lepxhe2" class="commentText"><p>There has to be some sort of banner we can hang for this achievement.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="lepxn0e" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>StrategyTop7612 | Clippers</div>
+        <div>1 | 12 minutes ago </div>
+      </div>
+      <label for="lepxn0e" class="commentText"><p>2nd best team since 2010 banner?</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="lepxr81" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>rumblegod | Thunder</div>
+        <div>1 | 11 minutes ago </div>
+      </div>
+      <label for="lepxr81" class="commentText"><p>Rebuild is going to up those wins for OKC. having a gm that can think about the future instead of being mediocre forever is nice.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="lepzhd5" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>xyzyxzy | San Diego Clippers</div>
+        <div>1 | 2 minutes ago </div>
+      </div>
+      <label for="lepzhd5" class="commentText"><p>Clips the only team in the top 5 without a ring.  Only team in the top 9 that doesn&rsquo;t even have a Finals appearance.  7 teams in the top 9 have won at least one ring.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
