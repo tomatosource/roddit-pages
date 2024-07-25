@@ -1,0 +1,975 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type=checkbox] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C""\201D""\2018""\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555; 
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position:relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size:24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText, .commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size:24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+    font-size: 38px;
+    line-height: 1.5;
+    color: white;
+}
+
+.selfPostContainer * {
+    color: white;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/nba/comments/1ebuddi/luka_doncic_was_by_far_the_most_hunted_player_in/"><p>Luka Doncic was by far the most hunted player in isolation in the post-season, he also ranked 4th in most possessions defended in isolation in the regular season.</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <p>According to NBA tracking stats, Luka Doncic defended by far the most possessions in isolation compared to other players. He also defended the 4th most possessions in isolation in the regular season.</p>
+
+<p>Despite all this, he only gave up 0.66 points per possession in the playoffs.</p>
+
+<table>
+<thead>
+<tr>
+<th align="left">PLAYER_NAME</th>
+<th align="right">GP</th>
+<th align="right">POSS</th>
+<th align="right">TOV_POSS_PCT</th>
+<th align="right">PPP</th>
+<th align="right">FT_POSS_PCT</th>
+<th align="right">posessions_per_game</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">Luka Doncic</td>
+<td align="right">22</td>
+<td align="right">70</td>
+<td align="right">0.11</td>
+<td align="right">0.66</td>
+<td align="right">0.06</td>
+<td align="right">3.18</td>
+</tr>
+
+<tr>
+<td align="left">Evan Mobley</td>
+<td align="right">12</td>
+<td align="right">29</td>
+<td align="right">0.03</td>
+<td align="right">0.86</td>
+<td align="right">0.07</td>
+<td align="right">2.42</td>
+</tr>
+
+<tr>
+<td align="left">Al Horford</td>
+<td align="right">19</td>
+<td align="right">45</td>
+<td align="right">0.04</td>
+<td align="right">0.82</td>
+<td align="right">0.02</td>
+<td align="right">2.37</td>
+</tr>
+
+<tr>
+<td align="left">P.J. Washington</td>
+<td align="right">22</td>
+<td align="right">52</td>
+<td align="right">0.04</td>
+<td align="right">1.29</td>
+<td align="right">0.19</td>
+<td align="right">2.36</td>
+</tr>
+
+<tr>
+<td align="left">Jayson Tatum</td>
+<td align="right">19</td>
+<td align="right">40</td>
+<td align="right">0.15</td>
+<td align="right">0.90</td>
+<td align="right">0.12</td>
+<td align="right">2.11</td>
+</tr>
+
+<tr>
+<td align="left">Aaron Nesmith</td>
+<td align="right">17</td>
+<td align="right">35</td>
+<td align="right">0.03</td>
+<td align="right">1.11</td>
+<td align="right">0.20</td>
+<td align="right">2.06</td>
+</tr>
+
+<tr>
+<td align="left">Max Strus</td>
+<td align="right">12</td>
+<td align="right">23</td>
+<td align="right">0.04</td>
+<td align="right">0.56</td>
+<td align="right">0.09</td>
+<td align="right">1.92</td>
+</tr>
+
+<tr>
+<td align="left">Andrew Nembhard</td>
+<td align="right">17</td>
+<td align="right">31</td>
+<td align="right">0.06</td>
+<td align="right">1.48</td>
+<td align="right">0.10</td>
+<td align="right">1.82</td>
+</tr>
+
+<tr>
+<td align="left">Nikola Jokic</td>
+<td align="right">12</td>
+<td align="right">21</td>
+<td align="right">0.05</td>
+<td align="right">0.95</td>
+<td align="right">0.05</td>
+<td align="right">1.75</td>
+</tr>
+
+<tr>
+<td align="left">Aaron Gordon</td>
+<td align="right">12</td>
+<td align="right">21</td>
+<td align="right">0.05</td>
+<td align="right">0.95</td>
+<td align="right">0.14</td>
+<td align="right">1.75</td>
+</tr>
+
+<tr>
+<td align="left">Rudy Gobert</td>
+<td align="right">15</td>
+<td align="right">26</td>
+<td align="right">0.12</td>
+<td align="right">0.92</td>
+<td align="right">0.12</td>
+<td align="right">1.73</td>
+</tr>
+
+<tr>
+<td align="left">Derrick Jones Jr.</td>
+<td align="right">22</td>
+<td align="right">33</td>
+<td align="right">0.00</td>
+<td align="right">0.85</td>
+<td align="right">0.18</td>
+<td align="right">1.50</td>
+</tr>
+
+<tr>
+<td align="left">Kyrie Irving</td>
+<td align="right">22</td>
+<td align="right">32</td>
+<td align="right">0.22</td>
+<td align="right">0.53</td>
+<td align="right">0.19</td>
+<td align="right">1.45</td>
+</tr>
+
+<tr>
+<td align="left">Sam Hauser</td>
+<td align="right">19</td>
+<td align="right">25</td>
+<td align="right">0.04</td>
+<td align="right">1.08</td>
+<td align="right">0.08</td>
+<td align="right">1.32</td>
+</tr>
+
+<tr>
+<td align="left">Derrick White</td>
+<td align="right">19</td>
+<td align="right">24</td>
+<td align="right">0.04</td>
+<td align="right">0.62</td>
+<td align="right">0.08</td>
+<td align="right">1.26</td>
+</tr>
+
+<tr>
+<td align="left">Josh Green</td>
+<td align="right">21</td>
+<td align="right">26</td>
+<td align="right">0.04</td>
+<td align="right">1.50</td>
+<td align="right">0.12</td>
+<td align="right">1.24</td>
+</tr>
+
+<tr>
+<td align="left">Ben Sheppard</td>
+<td align="right">17</td>
+<td align="right">21</td>
+<td align="right">0.24</td>
+<td align="right">0.81</td>
+<td align="right">0.00</td>
+<td align="right">1.24</td>
+</tr>
+
+<tr>
+<td align="left">Obi Toppin</td>
+<td align="right">17</td>
+<td align="right">21</td>
+<td align="right">0.05</td>
+<td align="right">1.19</td>
+<td align="right">0.05</td>
+<td align="right">1.24</td>
+</tr>
+
+<tr>
+<td align="left">Dereck Lively II</td>
+<td align="right">21</td>
+<td align="right">25</td>
+<td align="right">0.20</td>
+<td align="right">0.64</td>
+<td align="right">0.08</td>
+<td align="right">1.19</td>
+</tr>
+
+<tr>
+<td align="left">Daniel Gafford</td>
+<td align="right">22</td>
+<td align="right">26</td>
+<td align="right">0.04</td>
+<td align="right">1.04</td>
+<td align="right">0.04</td>
+<td align="right">1.18</td>
+</tr>
+</tbody>
+</table>
+<p>In the regular season, he was ranked 4th in possessions per game in isolation. The numbers yet again are very favourable as to how well he holds up in terms of points per possession. Giving up a mere 0.76 ppp in isolation.</p>
+
+<table>
+<thead>
+<tr>
+<th align="left">PLAYER_NAME</th>
+<th align="right">GP</th>
+<th align="right">POSS</th>
+<th align="right">TOV_POSS_PCT</th>
+<th align="right">PPP</th>
+<th align="right">FT_POSS_PCT</th>
+<th align="right">posessions_per_game</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">Isaiah Stewart</td>
+<td align="right">45</td>
+<td align="right">89</td>
+<td align="right">0.06</td>
+<td align="right">1.07</td>
+<td align="right">0.14</td>
+<td align="right">1.98</td>
+</tr>
+
+<tr>
+<td align="left">Jabari Smith Jr.</td>
+<td align="right">76</td>
+<td align="right">127</td>
+<td align="right">0.09</td>
+<td align="right">0.95</td>
+<td align="right">0.11</td>
+<td align="right">1.67</td>
+</tr>
+
+<tr>
+<td align="left">Al Horford</td>
+<td align="right">64</td>
+<td align="right">106</td>
+<td align="right">0.05</td>
+<td align="right">0.92</td>
+<td align="right">0.10</td>
+<td align="right">1.66</td>
+</tr>
+
+<tr>
+<td align="left">Luka Doncic</td>
+<td align="right">70</td>
+<td align="right">108</td>
+<td align="right">0.13</td>
+<td align="right">0.76</td>
+<td align="right">0.12</td>
+<td align="right">1.54</td>
+</tr>
+
+<tr>
+<td align="left">Deandre Ayton</td>
+<td align="right">54</td>
+<td align="right">81</td>
+<td align="right">0.06</td>
+<td align="right">0.94</td>
+<td align="right">0.07</td>
+<td align="right">1.50</td>
+</tr>
+
+<tr>
+<td align="left">Grayson Allen</td>
+<td align="right">74</td>
+<td align="right">111</td>
+<td align="right">0.06</td>
+<td align="right">0.80</td>
+<td align="right">0.05</td>
+<td align="right">1.50</td>
+</tr>
+
+<tr>
+<td align="left">Keegan Murray</td>
+<td align="right">76</td>
+<td align="right">113</td>
+<td align="right">0.12</td>
+<td align="right">0.68</td>
+<td align="right">0.14</td>
+<td align="right">1.49</td>
+</tr>
+
+<tr>
+<td align="left">Karl-Anthony Towns</td>
+<td align="right">61</td>
+<td align="right">90</td>
+<td align="right">0.07</td>
+<td align="right">1.08</td>
+<td align="right">0.23</td>
+<td align="right">1.48</td>
+</tr>
+
+<tr>
+<td align="left">Jabari Walker</td>
+<td align="right">70</td>
+<td align="right">97</td>
+<td align="right">0.07</td>
+<td align="right">1.00</td>
+<td align="right">0.23</td>
+<td align="right">1.39</td>
+</tr>
+
+<tr>
+<td align="left">Tyler Herro</td>
+<td align="right">41</td>
+<td align="right">56</td>
+<td align="right">0.04</td>
+<td align="right">0.93</td>
+<td align="right">0.12</td>
+<td align="right">1.37</td>
+</tr>
+
+<tr>
+<td align="left">Precious Achiuwa</td>
+<td align="right">46</td>
+<td align="right">61</td>
+<td align="right">0.05</td>
+<td align="right">0.95</td>
+<td align="right">0.16</td>
+<td align="right">1.33</td>
+</tr>
+
+<tr>
+<td align="left">Maxi Kleber</td>
+<td align="right">43</td>
+<td align="right">57</td>
+<td align="right">0.04</td>
+<td align="right">0.88</td>
+<td align="right">0.05</td>
+<td align="right">1.33</td>
+</tr>
+
+<tr>
+<td align="left">Myles Turner</td>
+<td align="right">74</td>
+<td align="right">98</td>
+<td align="right">0.03</td>
+<td align="right">1.06</td>
+<td align="right">0.11</td>
+<td align="right">1.32</td>
+</tr>
+
+<tr>
+<td align="left">Harrison Barnes</td>
+<td align="right">81</td>
+<td align="right">105</td>
+<td align="right">0.09</td>
+<td align="right">1.06</td>
+<td align="right">0.10</td>
+<td align="right">1.30</td>
+</tr>
+
+<tr>
+<td align="left">Kristaps Porzingis</td>
+<td align="right">57</td>
+<td align="right">73</td>
+<td align="right">0.10</td>
+<td align="right">0.85</td>
+<td align="right">0.08</td>
+<td align="right">1.28</td>
+</tr>
+
+<tr>
+<td align="left">Dorian Finney-Smith</td>
+<td align="right">68</td>
+<td align="right">86</td>
+<td align="right">0.09</td>
+<td align="right">0.74</td>
+<td align="right">0.08</td>
+<td align="right">1.26</td>
+</tr>
+
+<tr>
+<td align="left">Jamal Murray</td>
+<td align="right">59</td>
+<td align="right">74</td>
+<td align="right">0.03</td>
+<td align="right">0.89</td>
+<td align="right">0.15</td>
+<td align="right">1.25</td>
+</tr>
+
+<tr>
+<td align="left">James Harden</td>
+<td align="right">72</td>
+<td align="right">90</td>
+<td align="right">0.14</td>
+<td align="right">0.76</td>
+<td align="right">0.06</td>
+<td align="right">1.25</td>
+</tr>
+
+<tr>
+<td align="left">Onyeka Okongwu</td>
+<td align="right">53</td>
+<td align="right">66</td>
+<td align="right">0.09</td>
+<td align="right">0.79</td>
+<td align="right">0.08</td>
+<td align="right">1.25</td>
+</tr>
+
+<tr>
+<td align="left">Sam Hauser</td>
+<td align="right">78</td>
+<td align="right">97</td>
+<td align="right">0.09</td>
+<td align="right">0.91</td>
+<td align="right">0.06</td>
+<td align="right">1.24</td>
+</tr>
+
+<tr>
+<td align="left">Clint Capela</td>
+<td align="right">67</td>
+<td align="right">83</td>
+<td align="right">0.11</td>
+<td align="right">1.17</td>
+<td align="right">0.14</td>
+<td align="right">1.24</td>
+</tr>
+
+<tr>
+<td align="left">Rudy Gobert</td>
+<td align="right">75</td>
+<td align="right">92</td>
+<td align="right">0.09</td>
+<td align="right">0.73</td>
+<td align="right">0.06</td>
+<td align="right">1.23</td>
+</tr>
+
+<tr>
+<td align="left">Evan Mobley</td>
+<td align="right">50</td>
+<td align="right">61</td>
+<td align="right">0.03</td>
+<td align="right">0.75</td>
+<td align="right">0.08</td>
+<td align="right">1.22</td>
+</tr>
+
+<tr>
+<td align="left">Deni Avdija</td>
+<td align="right">75</td>
+<td align="right">90</td>
+<td align="right">0.11</td>
+<td align="right">1.02</td>
+<td align="right">0.14</td>
+<td align="right">1.20</td>
+</tr>
+
+<tr>
+<td align="left">Giannis Antetokounmpo</td>
+<td align="right">72</td>
+<td align="right">86</td>
+<td align="right">0.10</td>
+<td align="right">1.00</td>
+<td align="right">0.17</td>
+<td align="right">1.19</td>
+</tr>
+
+<tr>
+<td align="left">Jakob Poeltl</td>
+<td align="right">47</td>
+<td align="right">56</td>
+<td align="right">0.04</td>
+<td align="right">1.07</td>
+<td align="right">0.09</td>
+<td align="right">1.19</td>
+</tr>
+
+<tr>
+<td align="left">Kevin Durant</td>
+<td align="right">74</td>
+<td align="right">88</td>
+<td align="right">0.12</td>
+<td align="right">0.77</td>
+<td align="right">0.10</td>
+<td align="right">1.19</td>
+</tr>
+
+<tr>
+<td align="left">Spencer Dinwiddie</td>
+<td align="right">48</td>
+<td align="right">57</td>
+<td align="right">0.09</td>
+<td align="right">1.00</td>
+<td align="right">0.17</td>
+<td align="right">1.19</td>
+</tr>
+
+<tr>
+<td align="left">Julius Randle</td>
+<td align="right">45</td>
+<td align="right">53</td>
+<td align="right">0.07</td>
+<td align="right">1.17</td>
+<td align="right">0.11</td>
+<td align="right">1.18</td>
+</tr>
+
+<tr>
+<td align="left">Bam Adebayo</td>
+<td align="right">69</td>
+<td align="right">81</td>
+<td align="right">0.09</td>
+<td align="right">0.76</td>
+<td align="right">0.11</td>
+<td align="right">1.17</td>
+</tr>
+
+<tr>
+<td align="left">Pascal Siakam</td>
+<td align="right">41</td>
+<td align="right">48</td>
+<td align="right">0.06</td>
+<td align="right">0.88</td>
+<td align="right">0.12</td>
+<td align="right">1.17</td>
+</tr>
+
+<tr>
+<td align="left">Dyson Daniels</td>
+<td align="right">60</td>
+<td align="right">70</td>
+<td align="right">0.13</td>
+<td align="right">0.91</td>
+<td align="right">0.07</td>
+<td align="right">1.17</td>
+</tr>
+
+<tr>
+<td align="left">Max Strus</td>
+<td align="right">70</td>
+<td align="right">81</td>
+<td align="right">0.07</td>
+<td align="right">0.75</td>
+<td align="right">0.06</td>
+<td align="right">1.16</td>
+</tr>
+
+<tr>
+<td align="left">Dillon Brooks</td>
+<td align="right">72</td>
+<td align="right">83</td>
+<td align="right">0.05</td>
+<td align="right">0.94</td>
+<td align="right">0.17</td>
+<td align="right">1.15</td>
+</tr>
+</tbody>
+</table>
+<p>The following players experienced the largest jump in defending possessions per game in isolation in the playoffs compared to the regular season.</p>
+
+<table>
+<thead>
+<tr>
+<th align="left">PLAYER_NAME</th>
+<th align="right">diff</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">Nikola Jovic</td>
+<td align="right">2.31</td>
+</tr>
+
+<tr>
+<td align="left">Tyler Herro</td>
+<td align="right">2.23</td>
+</tr>
+
+<tr>
+<td align="left">Trey Murphy III</td>
+<td align="right">2.09</td>
+</tr>
+
+<tr>
+<td align="left">Eric Gordon</td>
+<td align="right">1.95</td>
+</tr>
+
+<tr>
+<td align="left">Brandon Ingram</td>
+<td align="right">1.83</td>
+</tr>
+
+<tr>
+<td align="left">Luka Doncic</td>
+<td align="right">1.64</td>
+</tr>
+
+<tr>
+<td align="left">Ivica Zubac</td>
+<td align="right">1.56</td>
+</tr>
+
+<tr>
+<td align="left">Amir Coffey</td>
+<td align="right">1.35</td>
+</tr>
+
+<tr>
+<td align="left">Tyrese Maxey</td>
+<td align="right">1.31</td>
+</tr>
+
+<tr>
+<td align="left">Mitchell Robinson</td>
+<td align="right">1.31</td>
+</tr>
+
+<tr>
+<td align="left">P.J. Washington</td>
+<td align="right">1.27</td>
+</tr>
+
+<tr>
+<td align="left">Jayson Tatum</td>
+<td align="right">1.25</td>
+</tr>
+
+<tr>
+<td align="left">Evan Mobley</td>
+<td align="right">1.20</td>
+</tr>
+
+<tr>
+<td align="left">Terance Mann</td>
+<td align="right">1.17</td>
+</tr>
+
+<tr>
+<td align="left">Caleb Martin</td>
+<td align="right">1.14</td>
+</tr>
+
+<tr>
+<td align="left">Andrew Nembhard</td>
+<td align="right">1.09</td>
+</tr>
+
+<tr>
+<td align="left">James Harden</td>
+<td align="right">1.08</td>
+</tr>
+
+<tr>
+<td align="left">Nikola Jokic</td>
+<td align="right">1.01</td>
+</tr>
+
+<tr>
+<td align="left">Paul George</td>
+<td align="right">0.99</td>
+</tr>
+
+<tr>
+<td align="left">Paolo Banchero</td>
+<td align="right">0.96</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Conclusion</strong></p>
+
+<p><strong>Note:</strong> Points per possession number is rather flawed since it doesn&rsquo;t account for the blowbys or where a team sent a double team to protect Luka. The main goal behind this post is to get a rough idea to as to which players are being attacked the most in isolation.</p>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="lev6dsv" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>slimmymcnutty | Wizards</div>
+        <div>1 | 22 minutes ago </div>
+      </div>
+      <label for="lev6dsv" class="commentText"><p>That is interesting that he held up despite what your eyes would tell you. Wonder if teams knew he wasn’t necessarily a safety cone out there but saw those iso possessions as body blows to wear his offense out.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="lev74ry" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>SomborDouble95</div>
+        <div>1 | 17 minutes ago </div>
+      </div>
+      <label for="lev74ry" class="commentText"><p>I think one of the major thing tracking data here fails at is that the possession isn&rsquo;t considered an isolation if Luka gets blown by and Lively is standing in the paint to dissuade the offensive player.</p>
+
+<p>What it does capture is how many possessions Luka was left alone in isolation without help. And in these situations he did really well.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="lev90l6" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Est-Tech79</div>
+        <div>1 | 5 minutes ago </div>
+      </div>
+      <label for="lev90l6" class="commentText"><p>They don’t count they “blow by’s we see consistently while watching Luka. Defensive analytics are lacking.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="lev91xo" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>armandocalvinisius | Mavericks</div>
+        <div>1 | 5 minutes ago </div>
+      </div>
+      <label for="lev91xo" class="commentText"><p>that&rsquo;s why changing from DJJ to Klay doesnt really matter much at least in reg.season</p>
+
+<p>Luka will get hunted either way LMAO</p>
+
+<p>at least our backline still intact (PJ-Lively, Naji-Gaff-Maxi)</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
