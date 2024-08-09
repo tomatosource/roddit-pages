@@ -1,0 +1,652 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type=checkbox] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C""\201D""\2018""\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555; 
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position:relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size:24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText, .commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size:24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+    font-size: 38px;
+    line-height: 1.5;
+    color: white;
+}
+
+.selfPostContainer * {
+    color: white;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/nba/comments/1eo53ay/oc_the_most_consistent_3point_shooters_in_the_nba/"><p>[OC] The Most Consistent 3-Point Shooters in the NBA</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <p>When it comes to shooting specialists in today’s NBA, there are plenty. It seems every young 3-point specialist is an instant lottery pick, and every other lottery pick is “a 3-point shot away from being an all-star”. The Warriors pioneered this behind-the-arc barrage, and this year’s Celtics showcased another great example of spacing and shooting.</p>
+
+<p>When analyzing the best shooters, overall 3-point percentage is pretty hard to argue with. How many shots did you take, and how many did you make? Over the course of the season, or even many seasons, this percentage can reveal a lot about a player. In general, it’s a pretty good representation of their ability too! But I want to focus in on one less often aspect of 3-point specialists: catching fire and getting cold. 3-point slumps are no rarity, and even the best shooters have cold spells (for example, Duncan Robinson). Similarly, there are also times when it feels like a player just can’t miss.</p>
+
+<p>3-point volatility was an interesting idea brought up to me in a recent conversation: I know this guy can shoot, but how consistent is he? Is he going to be lights-out one night and then chucking bricks the next? Coaches and teams want consistency: someone who won’t disappear in the middle of a playoff push (or even worse in the playoffs themselves). In this analysis, I’ll explore week-by-week 3-point consistency in the 2023-24 NBA Season, and discuss how teams could use this to their benefit. I’ve also included an interactive table and charts, that I hope can allow you to do some self-exploration if you’re interested too!</p>
+
+<p><strong>Data: Reasoning and Preparation</strong></p>
+
+<p>When considering volatility, it was quickly apparent that a game-by-game basis was too small of a sample size. Players just don’t shoot enough to get an accurate representation of volatility at this narrow of an observation. Weekly data on the other hand is a small enough timeframe to capture hot and cold streaks, but large enough to justify using a percentage. For this data, I include players who took at least 100 3-point shots in the 2023-24 regular season, and only include weeks where they took at least five 3-pointers. This gave me a sample greater than 250 players, which was plenty big for this use.</p>
+
+<p>To prepare the data for this analysis, I had three main steps. First, I used NBA Stats’ API to access the regular season data using python. I next cleaned the data in R, and finally created charts using <a href="http://datawrapper.de" target="_blank">Datawrapper</a>. If you’re not interested in the data analysis side of things, feel free to skip this section! If you want to know some more details, read on.</p>
+
+<p>My hope for the data was simple: aggregate box scores into weekly totals, and then create distributions for each player. I found a <a href="https://www.kaggle.com/datasets/albi9702/nba-boxscore-season-2023-2024?phase=FinishSSORegistration&amp;returnUrl=%2Fdatasets%2Falbi9702%2Fnba-boxscore-season-2023-2024%2Fversions%2F10%3Fresource%3Ddownload&amp;SSORegistrationToken=CfDJ8Li1e-GA90hNldzIP3u2GqDMYjxoOMG5PJ1UBS95SvYyZ7qrg9GjRZfiQbJOL2Dzj8W1a3fD0Zzyf5gJqD213jqCfDcKAXhDPmMxPgX6E5OincQtnptHCFtIvh5_jI4XF6ZF_GVbAKeP7szQUUPsiE6DTZorA3QfhOLiWVgoWlar_ZS1Mrxu12P8Ge0JRD581giNhxHEXfvsg86-zR5QB4SwwPOInBLav8ykTzQcjl8p3dKIPihvYlUQeQtAnEMU-z8Ff0dnYIPIXy7ao6zA69LXa6xOm1k8kD74Rrjhmv9ET5KStueCluTHIYoXIKnuysdfnDvrrfMHVOZ_bp_-8iCG4Ew&amp;DisplayName=Vaughn+Hajra" target="_blank">Kaggle dataset</a> that had 99% of what I looked for, but unfortunately didn’t actually include the game date, just the game ID. Luckily though, the creator of the data had also posted their python code on Kaggle, and it was fairly simple to modify that code in a script of my own. The only change I made was to add the game date into the box score statistics.</p>
+
+<p>I then had a dataset of each player’s stat line from every game of the season. Next I created a “week” variable (starting on the first date of the season) and collapsing to get aggregated weekly shooting splits. From there I pivoted the table wide so each observation was a unique player, and the data included their 3-point data from each week of the season. This final data frame allowed me to calculate each player’s mean and standard deviation of those weekly shooting splits. I also include the season-long 3pt stats for reference, as there is some slight variation between average of the weekly splits and overall average. If any of this is unclear, leave a comment and I’d be happy to explain!</p>
+
+<p><a href="https://preview.redd.it/g3armdeu5ohd1.png?width=841&amp;format=png&amp;auto=webp&amp;s=80bb9814cefe78e7bc4adf0d1880c5bfa3654f22" target="_blank">https://preview.redd.it/g3armdeu5ohd1.png?width=841&amp;format=png&amp;auto=webp&amp;s=80bb9814cefe78e7bc4adf0d1880c5bfa3654f22</a></p>
+
+<p><em>HTML tables aren&rsquo;t compatible reddit. For a full, searchable table you can read the</em> <a href="https://statsurge.substack.com/p/the-most-consistent-3-point-shooters" target="_blank"><em>same article here</em></a><em>. I don&rsquo;t make any money off of this and don&rsquo;t benefit from you viewing it. Purely for fun!</em></p>
+
+<p>When investigating the above table, it quickly becomes apparent that the best shooters are also very consistent. Some of this may come from a large sample size (I’ll get into that in the future improvements section) but overall I’d say that consistency is worth valuing. There are of course consistently bad 3-point shooters too, and the following graph explores this relationship:</p>
+
+<p><a href="https://preview.redd.it/pbucc7kl6ohd1.png?width=999&amp;format=png&amp;auto=webp&amp;s=655e6dbd2926edc1ebb1ce8427463c4bf4bbc6cc" target="_blank">https://preview.redd.it/pbucc7kl6ohd1.png?width=999&amp;format=png&amp;auto=webp&amp;s=655e6dbd2926edc1ebb1ce8427463c4bf4bbc6cc</a></p>
+
+<p>Regions of the above graph are shaded at the median, with more consistent (lower SD) being in yellow/green and better shooters being in green/blue. You can of course explore this graph on your own (put your mouse or tap on dots to see individual players) as well as searching the above table for specific numbers.</p>
+
+<p>Steph Curry, Michael Porter Jr., Grayson Allen, and CJ McCollum are all some of the most consistent, high-quality shooters in the league. Porter Jr. especially stands out as he is sometimes considered inconsistent but this data may argue otherwise. Simone Fontecchio and Desmond Bane also stand out as lesser-known but ultra-dependable shooters. Generally speaking, the green-shaded region are solid, consistent 3-point shooters.</p>
+
+<p>The top right on the other hand consists of good, yet inconsistent, 3-point shooters. A lot of these players don’t take threes as often, and aren’t quite known as specialists behind the arc. I’d be hesitant to sign these players as a 3-point specialist (save Luke Kennard and a few others) but if they brought other skills to the table, inconsistency wouldn’t be a deal-breaker.</p>
+
+<p>The top left (unshaded) region is where you start to get worried. These are players who are both inconsistent and low-quality shooters behind the arc. Josh Hart, Cristian Wood, and more are all great players in their own respect, but improving their 3-point consistency could add value to their game. Russel Westbrook is another interesting one here, and I’d like to see previous seasons data: was he more consistent in the past?</p>
+
+<p>The bottom left is made up of low-quality shooters behind the arc, but at least you know what to expect. Ausar Thompson is a terribly poor 3-point shooter, but at least it’s consistent? I’d say representative players of this group include Marcus Smart, Jaren Jackson Jr., and Kyle Kuzma.</p>
+
+<p><strong>How could this be used?</strong></p>
+
+<p>When it comes to practical applications, there are two primary uses. The first is identifying undervalued consistent shooter (an ultra-consistent 36% 3-point shooter can add a lot more value than you’d expect). The second would be for an internal team to identify current shortcomings and address them.</p>
+
+<p>My guess is that most of the inconsistent high-volume guys struggle from poor shot selection more than anything else, and being able to track that would be really useful. Being able to identify areas for improvement within the current roster is an often-overlooked strategy for improvement. Player development is key!</p>
+
+<p><strong>Shortcomings of the metric:</strong></p>
+
+<p>As with any analysis, there is clear room for improvement. The first and most important note is that there is <strong>no</strong> formal hypothesis testing being done. Obviously I could, but I’d prefer to use this as a starting point for discussion instead of trying to make a bold claim.</p>
+
+<p>The other obvious issue with this study is sample size. Good shooters will take more threes and there’s something to be said for that. For players who don’t shoot as much though, sample size can be a legit issue. Here’s a graph of the same volatility metric on the Y-axis, but this time with 3-point volume on the X-axis:</p>
+
+<p><a href="https://preview.redd.it/lsfy4wxp6ohd1.png?width=1001&amp;format=png&amp;auto=webp&amp;s=c8a0f75667675cd35201497cde9bb6ca05921d16" target="_blank">https://preview.redd.it/lsfy4wxp6ohd1.png?width=1001&amp;format=png&amp;auto=webp&amp;s=c8a0f75667675cd35201497cde9bb6ca05921d16</a></p>
+
+<p>As you can see, standard deviation depends on volume, and that clearly makes sense. If you’re only taking 5-6 threes per week, there’s a lot more room for weekly variation compared to someone who takes upwards of 5-6 in a night. It’s a clear shortcoming but I’d argue the analysis still passes the eye test.</p>
+
+<p>Another way to look at this would to classify players based on fitting a trendline and taking that residual (projected vs actual Week-SD). You could then use that residual to classify players into three groups and compare those groups. That might also reveal new insights and is one potential solution to control for volume.</p>
+
+<p><strong>Conclusions</strong></p>
+
+<p>If there’s one takeaway from this, it’s that consistency should be further investigated. Over the course of multiple years, teams want to depend on their best players and know they can trust them to not disappear in an important series. Obviously, consistency between the regular season and playoffs is a whole different analysis, but this write-up serves as a good starting point. If you have any advice for improvement, as always, please leave a comment! I benefit from new perspectives and advice. If there’s anything else you’d be interested in seeing, let me know too.</p>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="lhayj0z" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>MegaVaughn13 | Pistons</div>
+        <div>11 | an hour ago </div>
+      </div>
+      <label for="lhayj0z" class="commentText"><p>Thanks for giving this a read! If you have any areas of improvement for this analysis, or ideas for future analysis please let me know and I&rsquo;d be more than happy to consider them.</p>
+
+<p>Also for the charts, I put screenshots in the Reddit post. That should do the trick but if you want an interactive chart or searchable table, the same exact write-up can be found <a href="https://statsurge.substack.com/p/the-most-consistent-3-point-shooters" target="_blank">here</a>.</p>
+
+<p>I don&rsquo;t make any money off of this and it&rsquo;s purely for fun. Thanks for reading!</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="lhbc5tj" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ithinkiknowball | Celtics</div>
+        <div>1 | 19 minutes ago </div>
+      </div>
+      <label for="lhbc5tj" class="commentText"><p>great stuff man.</p>
+
+<p>something I’ve been curious about is if 3P efficiency is affected by game situation. like it’s widely accepted that an open 3 is a good shot, but is it a “less” good shot later in a game when guys have more fatigue on their legs?</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="lhazm3i" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>HowzaBowdat</div>
+        <div>4 | an hour ago </div>
+      </div>
+      <label for="lhazm3i" class="commentText"><p>Wow an actual substantive post around here</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="lhb0mxq" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>MegaVaughn13 | Pistons</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="lhb0mxq" class="commentText"><p>Haha doing my best! Hope you enjoy and please do let me know if there’s anything I should consider doing differently for better analysis.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="lhay48p" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ChiRaider</div>
+        <div>3 | 2 hours ago </div>
+      </div>
+      <label for="lhay48p" class="commentText"><p>Thompson twins really are generational lol</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="lhayrih" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>MegaVaughn13 | Pistons</div>
+        <div>3 | an hour ago </div>
+      </div>
+      <label for="lhayrih" class="commentText"><p>Ausar is a legit defender, but as a Pistons fan even I was shocked at how bad that 3-point clip really is</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="lhb1ebx" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Classics22 | Trail Blazers</div>
+        <div>3 | an hour ago </div>
+      </div>
+      <label for="lhb1ebx" class="commentText"><p>This is interesting!  Definitely could use more of this. There&rsquo;s a lot of shooters that are perceived as hot and cold (like MPJ or Klay), I wonder how many of them actually are</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="lhb7ssz" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>MegaVaughn13 | Pistons</div>
+        <div>1 | 41 minutes ago </div>
+      </div>
+      <label for="lhb7ssz" class="commentText"><p>Yeah was interesting to see! If there was more data game-by-game (on even quarter to quarter) available that might show some different results too. The issue is people just don’t take enough threes to have meaningful takeaways.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="lhb1pay" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>LeBroentgen | Mavericks</div>
+        <div>3 | an hour ago </div>
+      </div>
+      <label for="lhb1pay" class="commentText"><p>Really hoping Luka&rsquo;s 3 point shooting is here to stay.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="lhb7zla" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>MegaVaughn13 | Pistons</div>
+        <div>1 | 40 minutes ago </div>
+      </div>
+      <label for="lhb7zla" class="commentText"><p>Yeah it really elevates the entire team when teams can’t go under every screen. It’ll be interesting to see how it continues to develop in coming years, he has a long career ahead of him still!</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="lhb1vmf" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>EsotericPotato | Timberwolves</div>
+        <div>3 | an hour ago </div>
+      </div>
+      <label for="lhb1vmf" class="commentText"><p>This is such a well done post, OP. I’ve always been curious about parsing the idea of efficiency even further and trying to quantify the most low-variance shooters in the league. Awesome stuff. I hope this gets the recognition it deserves because you clearly put a lot of thought and time into these analyses.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="lhb8uxa" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>MegaVaughn13 | Pistons</div>
+        <div>1 | 36 minutes ago </div>
+      </div>
+      <label for="lhb8uxa" class="commentText"><p>Thank you very much! I appreciate you giving it a read. Anything else you’d want to see in future write-ups?</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="lhb4f4o" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Hovi_Bryant | Pistons</div>
+        <div>2 | an hour ago </div>
+      </div>
+      <label for="lhb4f4o" class="commentText"><p>I remember highlighting how shooting percentages taken at face value do not account for variance and was downvoted to oblivion. 😂</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="lhb8nth" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>MegaVaughn13 | Pistons</div>
+        <div>1 | 37 minutes ago </div>
+      </div>
+      <label for="lhb8nth" class="commentText"><p>Yeah it’s pretty hard to back up without the data but I’d argue really important to consider. Among other stats, it could help paint a much better picture of shooting ability!</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="lhb5r16" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>im_coolest | MIA</div>
+        <div>2 | an hour ago </div>
+      </div>
+      <label for="lhb5r16" class="commentText"><p>A good way to measure consistency might be to measure deviation from season average in small sets of consecutive attempts (maybe a number between 10-20)</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="lhb890w" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>MegaVaughn13 | Pistons</div>
+        <div>1 | 39 minutes ago </div>
+      </div>
+      <label for="lhb890w" class="commentText"><p>Great idea. I think with play-by-play data it’d be possible to do this! Do you think it’d be worth looking at shot distance too?</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="lhb9erg" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>im_coolest | MIA</div>
+        <div>1 | 33 minutes ago </div>
+      </div>
+      <label for="lhb9erg" class="commentText"><p>I personally don&rsquo;t think shot distance should matter (other than maybe eliminating heaves or possibly last-second shots) simply because shot selection is a real factor in consistency.<br>
+Great work, by the way!</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="lhb4sis" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>2coolcaterpillar | Canada</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="lhb4sis" class="commentText"><p>Aaron Wiggins</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="lhb6xaj" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ardx</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="lhb6xaj" class="commentText"><p>Some comments about the analysis:</p>
+
+<ul>
+<li><p>What do you consider a &ldquo;cold spell&rdquo;? This notion can vary wildly from person to person, and there&rsquo;s not really one answer. Your analysis is somewhat pushing a definition of around one week, looking at the time frames of analysis and also implicitly defining a week of no shooting as you unable to be in any &ldquo;spell&rdquo;. One advantage of a longer time frame is you throw out less data.</p></li>
+
+<li><p>If you stick to the definition of one week (or this applies to any grouping based on hard cutoffs), one nice final check to do is rerun the analysis, but starting the week on Monday/Tuesday/Wednesday/etc. instead of Sunday (or whichever day you started on). If the final results don&rsquo;t change much, it gives you more confidence in your results.</p></li>
+
+<li><p>Some other approaches to consider can involve looking at the cumulative 3PTs made over time or the raw vector of [(shot 1, made), (shot 2, made), (shot 3, missed), &hellip;]. You can look at the cumulative graph and ask how much does this line resemble the line y=(3P%)*x, how often is the slope of this line (after some smoothing) close to (3P%), does it exhibit autocorrelation, and so on. You mentioned hypothesis testing, since you are presenting data as opposed to making claims you don&rsquo;t really need hypothesis testing, but these are avenues you could consider if you wanted to add in some sort of testing to your analysis.</p></li>
+</ul>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="lhbf1i9" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>WasDavid | Celtics</div>
+        <div>1 | 4 minutes ago </div>
+      </div>
+      <label for="lhbf1i9" class="commentText"><p>Very well done OP. One of the better reads in recent times.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
