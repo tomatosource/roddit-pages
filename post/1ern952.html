@@ -1,0 +1,563 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type=checkbox] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C""\201D""\2018""\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555; 
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position:relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size:24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText, .commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size:24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+    font-size: 38px;
+    line-height: 1.5;
+    color: white;
+}
+
+.selfPostContainer * {
+    color: white;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/nba/comments/1ern952/awarding_clutch_players_of_the_year_from_1997/"><p>Awarding Clutch Players of the Year from 1997 through 2022</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <p>With the Jerry West Clutch POTY Award only being two seasons old, I thought it’d be interesting to figure out the best clutch players of seasons past. Thanks to the work at <a href="http://inpredictable.com" target="_blank">inpredictable.com</a>, we have some really great ways to measure clutch performance. Mike Buoy, who runs <a href="https://www.inpredictable.com/2014/03/measuring-clutch-play-in-nba.html" target="_blank">Inpredictable, created a Clutch Win Probably Added metric</a> that goes back to the 1996-97 NBA season. <a href="https://www.inpredictable.com/2016/01/heroes-goats-and-garbage-men-new-clutch.html" target="_blank">Here’s more of an explanation from inpredictable.com</a>:</p>
+
+<p><a href="http://NBA.com" target="_blank">NBA.com</a> has a &ldquo;Player Clutch&rdquo; section in which they define clutch as the last five minutes of a game in which the point differential is 5 or less. While this is a straightforward and reasonable definition of clutch situations, it can clearly be improved. A three point basket with your team down by two and five seconds to play is far more clutch than a two pointer with 3:50 on the clock and up by three.</p>
+
+<p>Let&rsquo;s take one of the most famous clutch shots in recent memory: <a href="https://www.youtube.com/watch?v=tr6XsZVb-ZE" target="_blank">Ray Allen&rsquo;s game tying three pointer from game 6 of the 2013 Finals</a>. That shot was worth +35% in win probability added. On average, three point shots are worth +4.6% in WPA. So, one way to breakdown Ray Allen&rsquo;s WPA for that shot is that about 5% is &ldquo;normal basketball&rdquo; WPA and 30% is &ldquo;clutch WPA&rdquo;.</p>
+
+<p>I can breakdown a player&rsquo;s WPA contributions into three numbers:</p>
+
+<p><strong>expected WPA (eWPA)</strong>: the win probability added one would expect from just looking at a player&rsquo;s box score stats</p>
+
+<p><strong>clutch WPA (clWPA)</strong>: excess WPA (either plus or minus) due to WPA contributions during crucial game situations</p>
+
+<p><strong>garbage time WPA (gbWPA)</strong>: WPA a player would have been credited with had their contributions come at more meaningful points in the game</p>
+
+<p>And here is the equation:</p>
+
+<p><strong>WPA = eWPA + clWPA - gbWPA</strong></p>
+
+<p>The win probability difference between the two potential outcomes, the &ldquo;swing&rdquo; factor, tells you how important the shot is. A shot as time expires when trailing by one will leave the team with a win probability of 100% if successful, and 0% if unsuccessful - a maximum swing of 100%.</p>
+
+<p>The table below summarizes how the four situational categories are defined in terms of win probability swing:</p>
+
+<p>||
+||
+||<strong>Win probability swing</strong>||
+|<strong>situation</strong>|<strong>2 Point Shot</strong>|<strong>3 Point Shot</strong>|<strong>% of Shots</strong>|
+|garbage time|&amp;gt;=0% and &amp;lt;2%|&amp;gt;=0% and &amp;lt;3%|15.5%|
+|normal basketball|&amp;gt;=2% and &amp;lt;7%|&amp;gt;=3% and &amp;lt;11%|75.7%|
+|Clutch situations|&amp;gt;=7% and &amp;lt;18%|&amp;gt;=11% and &amp;lt;32%|7.9%|
+|Clutch squared|&amp;gt;=18%|&amp;gt;=32%|0.9%|</p>
+
+<p>The main stats I’ll be looking at are:</p>
+
+<p><strong>Clutch FG WPA</strong>: Win Probability Added due to clutch shooting (makes and misses)</p>
+
+<p><strong>Total Clutch %</strong>: eFG% on all clutch shots</p>
+
+<p><strong>Clutch% vs Normal%:</strong> eFG% on Clutch shots minus eFG% on Normal shots</p>
+
+<p><strong>Clutch shot attempts/game</strong></p>
+
+<p><strong>% of team clutch shots taken by player</strong> (% Tm Clutch)</p>
+
+<p><strong>Clutch2 (clutch squared):</strong> Clutch shots that are in the top 1% of potential win probability added</p>
+
+<p>Here are my top 3 for each season with numbers I thought were especially impressive in bold. You can also <a href="https://lookerstudio.google.com/reporting/9062ca9d-eef0-4437-86fc-9231b2ced083" target="_blank">take an interactive look at these numbers on a career and single season basis using this report</a>.</p>
+
+<p><strong>1997</strong></p>
+
+<p><a href="https://preview.redd.it/r4h76ww1siid1.png?width=1069&amp;format=png&amp;auto=webp&amp;s=6cbf83bafcccc5914a48c9bbc4be2828f62a52d1" target="_blank">https://preview.redd.it/r4h76ww1siid1.png?width=1069&amp;format=png&amp;auto=webp&amp;s=6cbf83bafcccc5914a48c9bbc4be2828f62a52d1</a></p>
+
+<p><strong>1998</strong></p>
+
+<p><a href="https://preview.redd.it/gz8pv2b4siid1.png?width=1069&amp;format=png&amp;auto=webp&amp;s=3f16fa5a71bca40a749d4abc940825608fb8ecf9" target="_blank">https://preview.redd.it/gz8pv2b4siid1.png?width=1069&amp;format=png&amp;auto=webp&amp;s=3f16fa5a71bca40a749d4abc940825608fb8ecf9</a></p>
+
+<p><strong>2000</strong></p>
+
+<p><a href="https://preview.redd.it/anhqcf15siid1.png?width=1069&amp;format=png&amp;auto=webp&amp;s=ac5717e9861d515c691b375beda660406463df38" target="_blank">https://preview.redd.it/anhqcf15siid1.png?width=1069&amp;format=png&amp;auto=webp&amp;s=ac5717e9861d515c691b375beda660406463df38</a></p>
+
+<p><strong>2001</strong></p>
+
+<p><a href="https://preview.redd.it/5wm4tvu5siid1.png?width=1069&amp;format=png&amp;auto=webp&amp;s=f0ae23a1b678cebd900f1b5b99cec9afd89506ba" target="_blank">https://preview.redd.it/5wm4tvu5siid1.png?width=1069&amp;format=png&amp;auto=webp&amp;s=f0ae23a1b678cebd900f1b5b99cec9afd89506ba</a></p>
+
+<p><strong>2002</strong></p>
+
+<p><a href="https://preview.redd.it/w855pp6esiid1.png?width=1069&amp;format=png&amp;auto=webp&amp;s=807f7ab13cada9e95ece6e3f0f8a16246f2803a1" target="_blank">https://preview.redd.it/w855pp6esiid1.png?width=1069&amp;format=png&amp;auto=webp&amp;s=807f7ab13cada9e95ece6e3f0f8a16246f2803a1</a></p>
+
+<p><strong>2003</strong></p>
+
+<p><a href="https://preview.redd.it/9ke6vw8gsiid1.png?width=1069&amp;format=png&amp;auto=webp&amp;s=4beae1f64c98722279059827484e1431bc091251" target="_blank">https://preview.redd.it/9ke6vw8gsiid1.png?width=1069&amp;format=png&amp;auto=webp&amp;s=4beae1f64c98722279059827484e1431bc091251</a></p>
+
+<p><strong>2004</strong></p>
+
+<p><a href="https://preview.redd.it/892h0csgsiid1.png?width=1069&amp;format=png&amp;auto=webp&amp;s=9b89933e25d11847142b9a0c687e877e8be2780b" target="_blank">https://preview.redd.it/892h0csgsiid1.png?width=1069&amp;format=png&amp;auto=webp&amp;s=9b89933e25d11847142b9a0c687e877e8be2780b</a></p>
+
+<p><strong>2005</strong></p>
+
+<p><a href="https://preview.redd.it/dlk84pehsiid1.png?width=1069&amp;format=png&amp;auto=webp&amp;s=dbce462bd65f9cf862c1da29c3da720fbe08cff0" target="_blank">https://preview.redd.it/dlk84pehsiid1.png?width=1069&amp;format=png&amp;auto=webp&amp;s=dbce462bd65f9cf862c1da29c3da720fbe08cff0</a></p>
+
+<p><strong>2006</strong></p>
+
+<p><a href="https://preview.redd.it/qcho3xxhsiid1.png?width=1069&amp;format=png&amp;auto=webp&amp;s=7081e3268f7d5b25449856f918189501205359e5" target="_blank">https://preview.redd.it/qcho3xxhsiid1.png?width=1069&amp;format=png&amp;auto=webp&amp;s=7081e3268f7d5b25449856f918189501205359e5</a></p>
+
+<p><strong>2007</strong></p>
+
+<p><a href="https://preview.redd.it/469zg4lisiid1.png?width=1069&amp;format=png&amp;auto=webp&amp;s=d57254f0f5e41841a36c94884e4169a66ab25a18" target="_blank">https://preview.redd.it/469zg4lisiid1.png?width=1069&amp;format=png&amp;auto=webp&amp;s=d57254f0f5e41841a36c94884e4169a66ab25a18</a></p>
+
+<p><strong>2008</strong></p>
+
+<p><a href="https://preview.redd.it/gn4f335jsiid1.png?width=1069&amp;format=png&amp;auto=webp&amp;s=69a4009658647fec8eeb24a5d5fb657f2ec4a96c" target="_blank">https://preview.redd.it/gn4f335jsiid1.png?width=1069&amp;format=png&amp;auto=webp&amp;s=69a4009658647fec8eeb24a5d5fb657f2ec4a96c</a></p>
+
+<p><strong>2009</strong></p>
+
+<p><a href="https://preview.redd.it/69acevnjsiid1.png?width=1069&amp;format=png&amp;auto=webp&amp;s=1caccd87d074418a9cc21ae346b62fe6d9f8742a" target="_blank">https://preview.redd.it/69acevnjsiid1.png?width=1069&amp;format=png&amp;auto=webp&amp;s=1caccd87d074418a9cc21ae346b62fe6d9f8742a</a></p>
+
+<p><strong>2010</strong></p>
+
+<p><a href="https://preview.redd.it/5uhdktrnsiid1.png?width=1069&amp;format=png&amp;auto=webp&amp;s=d73853f06a78eb5cfdecb8522c5d37e712e17d96" target="_blank">https://preview.redd.it/5uhdktrnsiid1.png?width=1069&amp;format=png&amp;auto=webp&amp;s=d73853f06a78eb5cfdecb8522c5d37e712e17d96</a></p>
+
+<p><strong>2011</strong></p>
+
+<p><a href="https://preview.redd.it/vg6k4kgosiid1.png?width=1069&amp;format=png&amp;auto=webp&amp;s=0481b405aa40da6f866bc37b38c98e4bbe0d10f2" target="_blank">https://preview.redd.it/vg6k4kgosiid1.png?width=1069&amp;format=png&amp;auto=webp&amp;s=0481b405aa40da6f866bc37b38c98e4bbe0d10f2</a></p>
+
+<p><strong>2012</strong></p>
+
+<p><a href="https://preview.redd.it/mi0rrt1psiid1.png?width=1069&amp;format=png&amp;auto=webp&amp;s=31d5b3bf356e8e039d007950226dde7c40a77ac5" target="_blank">https://preview.redd.it/mi0rrt1psiid1.png?width=1069&amp;format=png&amp;auto=webp&amp;s=31d5b3bf356e8e039d007950226dde7c40a77ac5</a></p>
+
+<p><strong>2013</strong></p>
+
+<p><a href="https://preview.redd.it/10rnamkpsiid1.png?width=1069&amp;format=png&amp;auto=webp&amp;s=2425191d620a0269367faa83172071bf3fa5796c" target="_blank">https://preview.redd.it/10rnamkpsiid1.png?width=1069&amp;format=png&amp;auto=webp&amp;s=2425191d620a0269367faa83172071bf3fa5796c</a></p>
+
+<p><strong>2014</strong></p>
+
+<p><a href="https://preview.redd.it/uvrc864qsiid1.png?width=1069&amp;format=png&amp;auto=webp&amp;s=c60e4513ca8d8f197c1df2e3d3dfd47dc48f1ace" target="_blank">https://preview.redd.it/uvrc864qsiid1.png?width=1069&amp;format=png&amp;auto=webp&amp;s=c60e4513ca8d8f197c1df2e3d3dfd47dc48f1ace</a></p>
+
+<p><strong>2015</strong></p>
+
+<p><a href="https://preview.redd.it/ajaqidmqsiid1.png?width=1069&amp;format=png&amp;auto=webp&amp;s=9ccfc79edfc6d44db7a665e95644c6cd84908e49" target="_blank">https://preview.redd.it/ajaqidmqsiid1.png?width=1069&amp;format=png&amp;auto=webp&amp;s=9ccfc79edfc6d44db7a665e95644c6cd84908e49</a></p>
+
+<p><strong>2016</strong></p>
+
+<p><a href="https://preview.redd.it/7u9rtu6rsiid1.png?width=1069&amp;format=png&amp;auto=webp&amp;s=4c5981eeb2d6b082ba800b0e132d7335a9d7b630" target="_blank">https://preview.redd.it/7u9rtu6rsiid1.png?width=1069&amp;format=png&amp;auto=webp&amp;s=4c5981eeb2d6b082ba800b0e132d7335a9d7b630</a></p>
+
+<p><strong>2017</strong></p>
+
+<p><a href="https://preview.redd.it/byyo7mprsiid1.png?width=1069&amp;format=png&amp;auto=webp&amp;s=3e0e03f86295e8387e5b4498305927c1c1dbade5" target="_blank">https://preview.redd.it/byyo7mprsiid1.png?width=1069&amp;format=png&amp;auto=webp&amp;s=3e0e03f86295e8387e5b4498305927c1c1dbade5</a></p>
+
+<p><strong>2018-2024 and Other notable seasons in comments.</strong></p>
+
+<p><strong>Top 3 appearances</strong></p>
+
+<p>1.      LeBron James (6)</p>
+
+<p>2.      Stephen Curry (5)</p>
+
+<p>3.      Damian Lillard (4)</p>
+
+<p>4.      Kobe Bryant (4)</p>
+
+<p>5.      Ray Allen (4)</p>
+
+<p>6.      Steve Nash (3)</p>
+
+<p>7.      DeMar DeRozan (3)</p>
+
+<p>8.      Shaquille O’Neal (3)</p>
+
+<p>9.      Giannis Antetokounmpo (3)</p>
+
+<p>10.   Anthony Davis (2)</p>
+
+<p>11.   James Harden (2)</p>
+
+<p>12.   Jason Terry (2)</p>
+
+<p>13.   Kevin Durant (2)</p>
+
+<p>14.   Shawn Marion (2)</p>
+
+<p>15.   Nikola Jokic (2)</p>
+
+<p>16.   Paul Pierce (2)</p>
+
+<p>17.   Dirk Nowitzki (2)</p>
+
+<p>18.   Kevin Garnett (2)</p>
+
+<p>19.   Manu Ginobili (2)</p>
+
+<p>Any qualms with my picks? Anything else you’re interested in seeing?</p>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="lhztt92" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>dustinharm | Lakers</div>
+        <div>11 | 2 hours ago </div>
+      </div>
+      <label for="lhztt92" class="commentText"><p>I fear no man. But that thing (2011 Jason Terry)…it scares me.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="li01brg" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Jack_M_Steel | Lakers</div>
+        <div>2 | an hour ago </div>
+      </div>
+      <label for="li01brg" class="commentText"><p>The Jet!</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="lhzzu2p" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>alexski55</div>
+        <div>6 | an hour ago </div>
+      </div>
+      <label for="lhzzu2p" class="commentText"><p><strong>I&rsquo;m too lazy to format tables in this comment for seasons 2018-24. Other notable seasons</strong></p>
+
+<p>In 2017, Westbrook could shoot the ball whenever he damn well pleased. This resulted in the highest percentage of a team’s clutch shots taken by a single player that I could find at nearly 43%.</p>
+
+<p>I’m sure many people are interested in Michael Jordan. Well, he took a big chunk of his teams’ clutch shots, but he was pretty mediocre in his last four seasons. His 1998 season was probably his best clutch season. Of the 367 seasons I have, his total Clutch eFG% ranked 311^(th). His Clutch Shooting WPA ranked 166^(th).</p>
+
+<p>Then were just these truly terrible clutch shooting seasons, with the worst probably being Chris Webber’s 2001 campaign. His clutch shooting was good for -1.8 win probability. He shot 15.6% eFG on 32 (which is a lot) Clutch squared shots. And his eFG% in the clutch was 15 percentage points worse than his Normal eFG%. Extra shoutout to DeMarcus Cousins in 2011 for missing all 13 of his Clutch squared attempts.</p>
+
+<p><strong>Chris Webber, 2001</strong>: -1.79 Clutch WPA, 34.1 Total Clutch eFG% on 194 attempts<br>
+<strong>Cousins, 2011</strong>: -1.36 Clutch WPA, 31.4, Clutch eFG% on 102 attempts<br>
+<strong>Westbrook, 2010</strong>: -1.42 Clutch WPA, 35.1 Clutch eFG% on 138 attempts<br>
+<strong>Iverson, 2000</strong>: -1.10 Clutch WPA, 34.5 Clutch eFG% on 194 attempts</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="lhzyeni" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>tonypearcern | HOU</div>
+        <div>5 | an hour ago </div>
+      </div>
+      <label for="lhzyeni" class="commentText"><p>Why did you stop at 2017?</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="li002gn" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>alexski55</div>
+        <div>3 | an hour ago </div>
+      </div>
+      <label for="li002gn" class="commentText"><p>Stupid reddit won&rsquo;t let me attach more than 20 images and formatting tables is a nightmare.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="li03fx8" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>OddBank9124</div>
+        <div>0 | 35 minutes ago </div>
+      </div>
+      <label for="li03fx8" class="commentText"><p>You can post them on imgur.</p>
+
+<blockquote>
+<p>There is an upload limit of 50 images per hour. There is no upload limit per account, so upload to your heart&rsquo;s desire! </p>
+</blockquote>
+
+<p>Unrelated but Magic of Rahat&rsquo;s life got ruined by a homeless guy he helped accused him of stealing his gofundme funds. Everyone was outraged, he went suicidal, and quit YouTube. He came back a couple of years later and posted a whole bunch of receipts on Imgur disproving the claim that he stole. ( <a href="https://imgur.com/a/magic-of-rahats-proof-ZkfIDh1" target="_blank">https://imgur.com/a/magic-of-rahats-proof-ZkfIDh1</a> ) . Then when I realized Imgur is useful for uploading lots of images.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="lhzxnkn" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>diipp2k | Jordan</div>
+        <div>3 | an hour ago </div>
+      </div>
+      <label for="lhzxnkn" class="commentText"><p>Shawn Marion was clutch dang</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="li02npi" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>AllTimeBallKnower | Bucks</div>
+        <div>1 | 40 minutes ago </div>
+      </div>
+      <label for="li02npi" class="commentText"><p>Giannis finished top 3, 3 times? Funny, I was always told he’s not clutch</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="li069u9" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>eschatonx</div>
+        <div>1 | 18 minutes ago </div>
+      </div>
+      <label for="li069u9" class="commentText"><p>Social media and even the media will say the wildest shit unchecked.</p>
+
+<p>Then you got clowns like Skip Bayless who wakes up trying to figure out how to diminish his accomplishments.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
