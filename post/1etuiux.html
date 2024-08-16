@@ -1,0 +1,726 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type=checkbox] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C""\201D""\2018""\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555; 
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position:relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size:24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText, .commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size:24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+    font-size: 38px;
+    line-height: 1.5;
+    color: white;
+}
+
+.selfPostContainer * {
+    color: white;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/nba/comments/1etuiux/lebron_needs_1364_points_to_reach_50000_total/"><p>LeBron needs 1,364 points to reach 50,000 total points (regular season + playoffs).</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <table>
+<thead>
+<tr>
+<th>Player</th>
+<th>Total Points</th>
+<th>Total Assists</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>LeBron James</td>
+<td>48,636</td>
+<td>13,076</td>
+</tr>
+
+<tr>
+<td>Kareem Abdul-Jabbar</td>
+<td>44,149</td>
+<td>6,427</td>
+</tr>
+
+<tr>
+<td>Karl Malone</td>
+<td>41,689</td>
+<td>5,858</td>
+</tr>
+
+<tr>
+<td>Kobe Bryant</td>
+<td>39,283</td>
+<td>7,346</td>
+</tr>
+
+<tr>
+<td>Michael Jordan</td>
+<td>38,279</td>
+<td>6,655</td>
+</tr>
+
+<tr>
+<td>Dirk Nowitzki</td>
+<td>35,223</td>
+<td>4,011</td>
+</tr>
+
+<tr>
+<td>Wilt Chamberlain</td>
+<td>35,026</td>
+<td>5,316</td>
+</tr>
+
+<tr>
+<td>Julius Erving (ABA inclu)</td>
+<td>34,606</td>
+<td>6,017</td>
+</tr>
+
+<tr>
+<td>Kevin Durant</td>
+<td>33,909</td>
+<td>5,354</td>
+</tr>
+
+<tr>
+<td>Shaquille O’Neal</td>
+<td>33,846</td>
+<td>3,608</td>
+</tr>
+</tbody>
+</table>
+<p>You’re probably wondering why did I put their total assists on there. Well for one I like stats and two because to show how insane LeBron’s assist totals are to go along with his already prolific scoring totals. It’s up there in the Wayne Gretzky/Jerry Rice/Barry Bonds type of absurd career stats you can’t help but just be in awe of.</p>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="lifqhna" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>mmaguy123</div>
+        <div>21 | an hour ago </div>
+      </div>
+      <label for="lifqhna" class="commentText"><p>I don’t think we’ll ever see a physical specimen like lebron again.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="lifry0e" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>agent-bagent | Bulls</div>
+        <div>17 | an hour ago </div>
+      </div>
+      <label for="lifry0e" class="commentText"><p>Not just the physicality/pure talent. He has all of that and a clean history. Like, zero scandals. Married to his high school sweet heart. Just an all-around perfect professional at the absolute peak of his sport.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="lifvkei" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>imsurethisoneistaken | Rockets</div>
+        <div>4 | an hour ago </div>
+      </div>
+      <label for="lifvkei" class="commentText"><p>It is wild just how little shit lebron got in despite being the most famous player in the social media age. Like, he’s had non stop media coverage since he was a teenage and his biggest scandals are his old ass saying goofy things about politics and faking reading books.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="lifyc9v" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>FartrelCluggins | BOS</div>
+        <div>1 | 31 minutes ago </div>
+      </div>
+      <label for="lifyc9v" class="commentText"><p>The China stuff comes to mind too even if it&rsquo;s very overblown, but yes there&rsquo;s plenty of dudes on rookie contracts with way more scandalous careers than LeBron haha</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="lifyqml" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Smok3dSalmon | Heat</div>
+        <div>1 | 29 minutes ago </div>
+      </div>
+      <label for="lifyqml" class="commentText"><p>He called JJ Reddick a butt fucker recently.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="lig17ij" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>mmaguy123</div>
+        <div>1 | 15 minutes ago </div>
+      </div>
+      <label for="lig17ij" class="commentText"><p>Yea I mean there’s a few things I don’t enjoy about lebron off the court, but nobody is perfect. Dude was a great ambassador for the sport of basketball for the last two decades.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="lig0yli" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>RaggasYMezcal</div>
+        <div>1 | 17 minutes ago </div>
+      </div>
+      <label for="lig0yli" class="commentText"><p>It&rsquo;s the mental aspect that blows me away. Being homeless at a kid? The way he apologized for giving Bronny his name, because of the impact on Bronny? That&rsquo;s not PR, even if it&rsquo;s polished by them.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="lig1cbk" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>mmaguy123</div>
+        <div>1 | 15 minutes ago </div>
+      </div>
+      <label for="lig1cbk" class="commentText"><p>When did that happen?</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="lifr1vk" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>dustinharm | Lakers</div>
+        <div>6 | an hour ago </div>
+      </div>
+      <label for="lifr1vk" class="commentText"><p>The playoffs point total alone will be untouchable for a long time. He’s got over 8k and the next is Jordan at less than 6k. Gonna take a Luka-type player reaching the Finals every year of his entire career to touch that.</p>
+
+<p>(also I’d add a source link if you want post to stay up)</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="lifrnwi" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>LeBronRaymoneJamesSr</div>
+        <div>3 | an hour ago </div>
+      </div>
+      <label for="lifrnwi" class="commentText"><p>Shame that LeBron has kinda lacked the playoff volume post-2020 that he really could’ve had. Numbers would be even more absurd.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="lifvdev" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>imsurethisoneistaken | Rockets</div>
+        <div>2 | an hour ago </div>
+      </div>
+      <label for="lifvdev" class="commentText"><p>Even if you don’t think Lebron is the goat, his longevity of exceptional scoring will not be topped.</p>
+
+<p>If someone just shot nothing but 3s, they need to make over 16,500 to hit 50k points. That’s over 800 a season if you played 20 years.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="lig0xly" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>blues-brother90</div>
+        <div>1 | 17 minutes ago </div>
+      </div>
+      <label for="lig0xly" class="commentText"><p>Absolute mindfuck</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="lig3qm8" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>erog84 | Suns</div>
+        <div>1 | 2 minutes ago </div>
+      </div>
+      <label for="lig3qm8" class="commentText"><p>It’s possible Lebron could end up in top 5 for 3 point makes, which is crazy.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="lifu0dr" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ProfessionalFar6519</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="lifu0dr" class="commentText"><p>This is GOAT shit</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="lifvm72" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Majestic-Net-7799</div>
+        <div>-6 | an hour ago </div>
+      </div>
+      <label for="lifvm72" class="commentText"><p>This is just playing forever </p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="lifzcrf" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>LeCastle2306</div>
+        <div>1 | 25 minutes ago </div>
+      </div>
+      <label for="lifzcrf" class="commentText"><p>Right!? Anybody could average 27 ppg over a 21 year career. Practically a dime a dozen.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="lifzzwt" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Fallofmen10 | Supersonics</div>
+        <div>1 | 22 minutes ago </div>
+      </div>
+      <label for="lifzzwt" class="commentText"><p>Lolo, any arguing it&rsquo;s just playing forever is such a hater. Yah it takes playing 20 years to do stuff like this. But it takes twenty years of HIGH level play</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="lifu5vl" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>PicturingYouNaked</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="lifu5vl" class="commentText"><p>Humans have trouble fully contextualizing large numbers and that&rsquo;s basically LeBron&rsquo;s legacy. Inconceivably large numbers.</p>
+
+<p>I mean, Kevin Durant is arguably one of the greatest players of his generation, and in league history. You&rsquo;d have to add Jayson Tatum&rsquo;s career to KD&rsquo;s and you&rsquo;d still be ~200 points behind LeBron.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="lig2mkk" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Saucy_Totchie | Knicks</div>
+        <div>1 | 8 minutes ago </div>
+      </div>
+      <label for="lig2mkk" class="commentText"><p>This in an 82 game full season works out to ~16ppg.  Even with last year&rsquo;s total of 71 regular season games, that&rsquo;s ~19ppg.  If he maintains his 25.7ppg from last year, he should get this in about 53-54 games.  Basically, barring any wild drop off or injury, Lebron should get 50k well into the season.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="lig3fqn" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>erog84 | Suns</div>
+        <div>1 | 4 minutes ago </div>
+      </div>
+      <label for="lig3fqn" class="commentText"><p>Add the other main stats like rebounds, steals, blocks.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="liftlv2" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>majavic | Hawks</div>
+        <div>0 | an hour ago </div>
+      </div>
+      <label for="liftlv2" class="commentText"><p>the gap in points and assists between #1 and #10 on this list could probably make the HOF</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="lig21so" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>IAmTotallyNotSatan | Warriors</div>
+        <div>1 | 11 minutes ago </div>
+      </div>
+      <label for="lig21so" class="commentText"><p>I mean, that&rsquo;s putting up <sup>17</sup>&frasl;<sub>12</sub> for a decade&hellip; honestly, maybe lmao</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="lig2ppj" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>BoogerSugarSovereign | IND</div>
+        <div>1 | 7 minutes ago </div>
+      </div>
+      <label for="lig2ppj" class="commentText"><p>I love LeBron but not even the King should be compared to Gretzky&rsquo;s statistical dominance relative to his peers. Still my GOAT but gotta give The Great One his just due too</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="lifua7o" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>GroupNo2261</div>
+        <div>-1 | an hour ago </div>
+      </div>
+      <label for="lifua7o" class="commentText"><p>Long game wins</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
