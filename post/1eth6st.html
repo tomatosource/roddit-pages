@@ -1,0 +1,858 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type=checkbox] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C""\201D""\2018""\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555; 
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position:relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size:24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText, .commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size:24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+    font-size: 38px;
+    line-height: 1.5;
+    color: white;
+}
+
+.selfPostContainer * {
+    color: white;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/nba/comments/1eth6st/every_nba_seasons_mvp_if_the_title_was_awarded_to/"><p>Every NBA season&rsquo;s MVP if the title was awarded to the player with the most counting stats</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <p>I recently saw a tweet comparing Monta Ellis and Derrick Rose in 2011, arguing that Ellis averaged one less point per game than Rose that season but is not talked about at all. Of course, it&rsquo;s a dumb argument because stats don&rsquo;t tell the whole story (especially on defense) but it made me curious to see which players would benefit the most if MVPs were just given out to whoever had the most counting stats. Here is a table of each season since the merger. Each season&rsquo;s counting stat leader (points, rebounds, assists, steals and blocks)</p>
+
+<p>The MVP is determined by the sum of all their counting stats. The numbers in the brackets are the sum of the stats</p>
+
+<table>
+<thead>
+<tr>
+<th align="left">Season</th>
+<th align="left">STAT MVP</th>
+<th align="left">Averages</th>
+<th align="left">Voted MVP</th>
+<th align="left">Voted MVP averages</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">1976-1977</td>
+<td align="left">Kareem Abdul Jabbar</td>
+<td align="left">26.2 PTS 13.3 REBS 3.9 ASTS 1.2 STLS 3.2 BLKS [48.2]</td>
+<td align="left">id.</td>
+<td align="left">id.</td>
+</tr>
+
+<tr>
+<td align="left">1977-1978</td>
+<td align="left">Kareem Abdul Jabbar</td>
+<td align="left">25.8 PTS 12.9 REBS 4.3 ASTS 1.7 ASTS 3.0 BLKS [47.7]</td>
+<td align="left">Bill Walton</td>
+<td align="left">18.9 PTS 13.2 REBS 5.0 ASTS 1.0 STLS 2.5 BLKS [40.6]</td>
+</tr>
+
+<tr>
+<td align="left">1978-1979</td>
+<td align="left">Kareem Abdul Jabbar</td>
+<td align="left">23.8 PTS 12.8 REBS 5.4 ASTS 1.0 STLS 4.0 BLKS [47.0]</td>
+<td align="left">Moses Malone</td>
+<td align="left">24.8 PTS 17.6 REBS 1.8 ASTS 1.0 STLS 1.5 BLKS [46.7]</td>
+</tr>
+
+<tr>
+<td align="left">1979-1980</td>
+<td align="left">Kareem Abdul Jabbar</td>
+<td align="left">24.8 PTS 10.8 REBS 4.5 ASTS 1.0 STLS 3.4 BLKS [44.5]</td>
+<td align="left">id.</td>
+<td align="left">id.</td>
+</tr>
+
+<tr>
+<td align="left">1980-1981</td>
+<td align="left">Moses Malone</td>
+<td align="left">27.8 PTS 14.8 REBS 1.8 ASTS 1.0 STLS 1.9 BLKS [47.3]</td>
+<td align="left">Julius Irving</td>
+<td align="left">24.6 PTS 8.0 REBS 4.4 ASTS 2.1 STLS 1.8 BLKS [40.9]</td>
+</tr>
+
+<tr>
+<td align="left">1981-1982</td>
+<td align="left">Moses Malone</td>
+<td align="left">31.1 PTS 14.7 REBS 1.8 ASTS 0.9 STLS 1.5 BLKS  [50.0]</td>
+<td align="left">id.</td>
+<td align="left">id.</td>
+</tr>
+
+<tr>
+<td align="left">1983-1984</td>
+<td align="left">Larry Bird</td>
+<td align="left">24.2 PTS 10.1 REBS 6.6 ASTS 1.8 STLS 0.9 BLKS [43.6]</td>
+<td align="left">id.</td>
+<td align="left">id.</td>
+</tr>
+
+<tr>
+<td align="left">1984-1985</td>
+<td align="left">Larry Bird</td>
+<td align="left">28.7 PTS 10.5 REBS 6.6 ASTS 1.6 STLS 1.2 BLKS [48.6]</td>
+<td align="left">id.</td>
+<td align="left">id.</td>
+</tr>
+
+<tr>
+<td align="left">1985-1986</td>
+<td align="left">Larry Bird</td>
+<td align="left">25.5 PTS 9.8 REBS 6.8 ASTS 2.0 STLS 0.6 BLKS [45.0]</td>
+<td align="left">id.</td>
+<td align="left">id.</td>
+</tr>
+
+<tr>
+<td align="left">1986-1987</td>
+<td align="left">Michael Jordan</td>
+<td align="left">37.1 PTS 5.2 REBS 4.6 ASTS 2.9 STLS 1.5 BLKS [51.3]</td>
+<td align="left">Magic Johnson</td>
+<td align="left">23.9 PTS 6.3 REBS 12.2 ASTS 1.7 STLS 0.5 BLKS [44.6]</td>
+</tr>
+
+<tr>
+<td align="left">1987-1988</td>
+<td align="left">Michael Jordan</td>
+<td align="left">35.0 PTS 5.5 REBS 5.9 ASTS 3.2 STLS 1.6 BLKS [51.2]</td>
+<td align="left">id.</td>
+<td align="left">id.</td>
+</tr>
+
+<tr>
+<td align="left">1988-1989</td>
+<td align="left">Michael Jordan</td>
+<td align="left">32.5 PTS 8.0 REBS 8.0 ASTS 2.9 STLS 0.8 BLKS [52.2]</td>
+<td align="left">Magic Johnson</td>
+<td align="left">22.5 PTS 7.9 REBS 12.8 ASTS 1.8 STLS 0.3 BLKS [45.3]</td>
+</tr>
+
+<tr>
+<td align="left">1989-1990</td>
+<td align="left">Michael Jordan</td>
+<td align="left">33.6 PTS 6.9 REBS 6.3 ASTS 2.8 STLS 0.7 BLKS [50.3]</td>
+<td align="left">Magic Johnson</td>
+<td align="left">22.3 PTS 6.6 REBS 11.5 ASTS 1.7 STLS 0.4 BLKS [42.5]</td>
+</tr>
+
+<tr>
+<td align="left">1990-1991</td>
+<td align="left">Michael Jordan</td>
+<td align="left">31.5 PTS 6.0 REBS 5.5 ASTS 2.7 STLS 1.0 BLKS [46.7]</td>
+<td align="left">id.</td>
+<td align="left">id.</td>
+</tr>
+
+<tr>
+<td align="left">1991-1992</td>
+<td align="left">Michael Jordan</td>
+<td align="left">30.1 PTS 6.4 REBS 6.1 ASTS 2.3 STLS 0.9 BLKS [45.8]</td>
+<td align="left">id.</td>
+<td align="left">id.</td>
+</tr>
+
+<tr>
+<td align="left">1992-1993</td>
+<td align="left">Hakeem Olajuwon</td>
+<td align="left">26.1 PTS 13.0 REBS 3.5 ASTS 1.8 STLS 4.2 BLKS [48.6]</td>
+<td align="left">Charles Barkley</td>
+<td align="left">25.6 PTS 12.2 REBS 5.1 ASTS 1.6 STLS 1.0 BLKS [45.5]</td>
+</tr>
+
+<tr>
+<td align="left">1993-1994</td>
+<td align="left">David Robinson</td>
+<td align="left">29.8 PTS 10.7 REBS 4.8 ASTS 1.7 STLS 3.3 BLKS [50.3]</td>
+<td align="left">Hakeem Olajuwon</td>
+<td align="left">27.3 PTS 11.9 REBS 3.6 ASTS 1.6 STLS 3.7 BLKS [48.1]</td>
+</tr>
+
+<tr>
+<td align="left">1994-1995</td>
+<td align="left">Hakeem Olajuwon</td>
+<td align="left">27.8 PTS 10.8 REBS 3.5 ASTS 1.8 STLS 3.4 BLKS [47.3]</td>
+<td align="left">David Robinson</td>
+<td align="left">27.6 PTS 10.8 REBS 2.9 ASTS 1.7 STLS 3.2 BLKS [46.2]</td>
+</tr>
+
+<tr>
+<td align="left">1995-1996</td>
+<td align="left">Hakeem Olajuwon</td>
+<td align="left">26.9 PTS 10.9 REBS 3.6 ASTS 1.6 STLS 2.9 BLKS [45.9]</td>
+<td align="left">Michael Jordan</td>
+<td align="left">30.4 PTS 6.6 REBS 4.3 ASTS 2.2 STLS 0.5 BLKS [44]</td>
+</tr>
+
+<tr>
+<td align="left">1996-1997</td>
+<td align="left">Karl Malone</td>
+<td align="left">27.4 PTS 9.9 REBS 4.5 ASTS 1.4 STLS 0.6 BLKS [43.6]</td>
+<td align="left">id.</td>
+<td align="left">id.</td>
+</tr>
+
+<tr>
+<td align="left">1997-1998</td>
+<td align="left">Shaquille O&rsquo;Neal</td>
+<td align="left">28.3 PTS 11.4 REBS 2.4 ASTS 0.7 STLS 2.4 BLKS [45.2]</td>
+<td align="left">Michael Jordan</td>
+<td align="left">28.7 PTS 5.8 REBS 3.5 ASTS 1.7 STLS 0.5 BLKS [40.2]</td>
+</tr>
+
+<tr>
+<td align="left">1998-1999</td>
+<td align="left">Shaquille O&rsquo;Neal</td>
+<td align="left">26.3 PTS 10.7 REBS 2.3 ASTS 0.7 STLS 1.7 BLKS [41.7]</td>
+<td align="left">Karl Malone</td>
+<td align="left">23.8 PTS 9.4 REBS 4.1 ASTS 1.3 STLS 0.6 BLKS [39.2]</td>
+</tr>
+
+<tr>
+<td align="left">1999-2000</td>
+<td align="left">Shaquille O&rsquo;Neal</td>
+<td align="left">29.7 PTS 13.6 REBS 3.8 ASTS 0.5 STLS 3.0 BLKS  [50.6]</td>
+<td align="left">id.</td>
+<td align="left">id.</td>
+</tr>
+
+<tr>
+<td align="left">2000-2001</td>
+<td align="left">Shaquille O&rsquo;Neal</td>
+<td align="left">28.7 PTS 12.7 REBS 3.7 REBS 0.6 STLS 2.8 BLKS [48.5]</td>
+<td align="left">Allen Iverson</td>
+<td align="left">31.1 PTS 3.8 REBS  4.6 ASTS 2.5 STLS 0.3 BLKS [42.3]</td>
+</tr>
+
+<tr>
+<td align="left">2001-2002</td>
+<td align="left">Tim Duncan</td>
+<td align="left">25.5 PTS 12.7 REBS 3.7 ASTS 0.7 STLS 2.5 BLKS [45.1]</td>
+<td align="left">id.</td>
+<td align="left">id.</td>
+</tr>
+
+<tr>
+<td align="left">2002-2003 -tied-</td>
+<td align="left">Tracy McGrady</td>
+<td align="left">32.1 PTS 6.5 REBS 5.5 ASTS 1.7 STLS 0.8 BLKS [45.8]</td>
+<td align="left">Tim Duncan</td>
+<td align="left">23.3 PTS 12.9 REBS 3.9 ASTS 0.7 STLS 2.9 BLKS [43.9]</td>
+</tr>
+
+<tr>
+<td align="left">2002-2003 -tied-</td>
+<td align="left">Kobe Bryant</td>
+<td align="left" colspan="3">30.0 PTS 6.9 REBS 5.9 ASTS 2.2 STLS 0.8 BLKS [45.8]</td>
+</tr>
+
+<tr>
+<td align="left">2003-2004</td>
+<td align="left">Kevin Garnett</td>
+<td align="left">24.2 PTS 13.9 REBS 5.0 ASTS 1.5 STLS 2.2 BLKS [46.8]</td>
+<td align="left">id.</td>
+<td align="left">id.</td>
+</tr>
+
+<tr>
+<td align="left">2004-2005</td>
+<td align="left">Allen Iverson</td>
+<td align="left">30.7 PTS 4.0 REBS 7.9 ASTS 2.4 STLS 0.1 BLKS [45.1]</td>
+<td align="left">Steve Nash</td>
+<td align="left">15.5 PTS 3.3 REBS 11.5 ASTS 1.0 STLS 0.1 BLKS [31.4]</td>
+</tr>
+
+<tr>
+<td align="left">2005-2006 -tied-</td>
+<td align="left">Kobe Bryant</td>
+<td align="left">35.4 PTS 5.3 REBS 4.5 ASTS 1.8 STLS 0.4 BLKS [47.4]</td>
+<td align="left">Steve Nash</td>
+<td align="left">18.8 PTS 4.2 REBS 10.5 ASTS 0.8 STLS 0.2 BLKS [34.5]</td>
+</tr>
+
+<tr>
+<td align="left">2005-2006 -tied-</td>
+<td align="left">LeBron James</td>
+<td align="left" colspan="3">31.4 PTS 7.0 REBS 6.6 ASTS 1.6 STLS 0.8 BLKS [47.4]</td>
+</tr>
+
+<tr>
+<td align="left">2006-2007</td>
+<td align="left">Kobe Bryant</td>
+<td align="left">31.6 PTS 5.7 REBS 5.4 ASTS 1.4 STLS 0.5 BLKS [44.6]</td>
+<td align="left">Dirk Nowitzki</td>
+<td align="left">24.6 PTS 8.9 REBS 3.4 ASTS 0.7 STLS 0.8 BLKS [38.4]</td>
+</tr>
+
+<tr>
+<td align="left">2007-2008</td>
+<td align="left">LeBron James</td>
+<td align="left">30.0 PTS 7.9 REBS 7.2 ASTS 1.8 STLS 1.1 BLKS [48.0]</td>
+<td align="left">Kobe Bryant</td>
+<td align="left">28.3 PTS 6.3 REBS 5.4 ASTS 1.8 STLS 0.5 BLKS [42.3]</td>
+</tr>
+
+<tr>
+<td align="left">2008-2009</td>
+<td align="left">Dwyane Wade</td>
+<td align="left">30.2 PTS 5.0 REBS 7.5 ASTS 2.2 STLS 1.3 BLKS [46.2]</td>
+<td align="left">LeBron James</td>
+<td align="left">28.4 PTS 7.6 REBS 7.2 ASTS 1.7 STLS 1.1 BLKS [46.0]</td>
+</tr>
+
+<tr>
+<td align="left">2009-2010</td>
+<td align="left">LeBron James</td>
+<td align="left">29.7 PTS 7.3 REBS 8.6 ASTS 1.6 STLS 1.0 BLKS [48.2]</td>
+<td align="left">id.</td>
+<td align="left">id.</td>
+</tr>
+
+<tr>
+<td align="left">2010-2011</td>
+<td align="left">LeBron James</td>
+<td align="left">26.7 PTS 7.5 REBS 7.0 ASTS 1.6 STLS 0.6 BLKS [43.4]</td>
+<td align="left">Derrick Rose</td>
+<td align="left">25.0 PTS 4.1 REBS 7.7 ASTS 1.0 STLS 0.6 BLKS [38.4]</td>
+</tr>
+
+<tr>
+<td align="left">2011-2012</td>
+<td align="left">LeBron James</td>
+<td align="left">27.1 PTS 7.9 REBS 6.2 ASTS 1.9 STLS 0.8 BLKS [43.9]</td>
+<td align="left">id.</td>
+<td align="left">id.</td>
+</tr>
+
+<tr>
+<td align="left">2012-2013</td>
+<td align="left">LeBron James</td>
+<td align="left">26.8 PTS 8.0 REBS 7.3 ASTS 1.7 STLS 0.9 BLKS [44.7]</td>
+<td align="left">id.</td>
+<td align="left">id.</td>
+</tr>
+
+<tr>
+<td align="left">2013-2014</td>
+<td align="left">Kevin Durant</td>
+<td align="left">32.0 PTS 7.4 REBS 5.5 ASTS 1.3 STLS 0.7 BLKS [46.9]</td>
+<td align="left">id.</td>
+<td align="left">id.</td>
+</tr>
+
+<tr>
+<td align="left">2014-2015</td>
+<td align="left">Russell Westbrook</td>
+<td align="left">28.1 PTS 7.3 REBS 8.6 ASTS 2.1 STLS 0.2 BLKS [46.3]</td>
+<td align="left">Stephen Curry</td>
+<td align="left">23.8 PTS 4.3 REBS 7.7 ASTS 2.0 STLS 0.2 BLKS [38.0]</td>
+</tr>
+
+<tr>
+<td align="left">2015-2016</td>
+<td align="left">James Harden</td>
+<td align="left">29.0 PTS 6.1 REBS 7.5 ASTS 1.7 STLS 0.6 BLKS [44.9]</td>
+<td align="left">Stephen Curry</td>
+<td align="left">30.1 PTS 5.4 REBS 6.7 ASTS 2.1 STLS 0.2 BLKS [44.5]</td>
+</tr>
+
+<tr>
+<td align="left">2016-2017</td>
+<td align="left">Russell Westbrook</td>
+<td align="left">31.6 PTS 10.7 REBS 10.4 ASTS 1.6 STLS 0.4 BLKS [54.7]</td>
+<td align="left">id.</td>
+<td align="left">id.</td>
+</tr>
+
+<tr>
+<td align="left">2017-2018</td>
+<td align="left">LeBron James</td>
+<td align="left">27.5 PTS 8.6 REBS 9.1 ASTS 1.4 STLS 0.9 BLKS [47.5]</td>
+<td align="left">James Harden</td>
+<td align="left">30.4 PTS 5.4 REBS 8.8 ASTS 1.8 STLS 0.7 BLKS [47.1]</td>
+</tr>
+
+<tr>
+<td align="left">2018-2019</td>
+<td align="left">James Harden</td>
+<td align="left">36.1 PTS 6.6 REBS 7.5 ASTS 2.0 STLS 0.7 BLKS [52.9]</td>
+<td align="left">Giannis Antetokounmpo</td>
+<td align="left">27.7 PTS 12.5 REBS 5.9 ASTS 1.3 STLS 1.5 BLKS [48.9]</td>
+</tr>
+
+<tr>
+<td align="left">2019-2020</td>
+<td align="left">James Harden</td>
+<td align="left">34.3 PTS 6.6 REBS 7.5 ASTS 1.8 STLS 0.9 BLKS [51.1]</td>
+<td align="left">Giannis Antetokounmpo</td>
+<td align="left">29.5 PTS 13.6 REBS 5.6 ASTS 1.0 STLS 1.0 BLKS [50.7]</td>
+</tr>
+
+<tr>
+<td align="left">2020-2021</td>
+<td align="left">Luka Dončić</td>
+<td align="left">27.7 PTS 8.0 REBS 8.6 ASTS 1.0 STLS 0.5 BLKS [45.8]</td>
+<td align="left">Nikola Jokić</td>
+<td align="left">26.4 PTS 10.8 REBS 8.3 ASTS 1.3 STLS 0.7 BLKS [47.5]</td>
+</tr>
+
+<tr>
+<td align="left">2021-2022</td>
+<td align="left">Nikola Jokić</td>
+<td align="left">27.1 PTS 13.8 REBS 7.9 REBS 1.5 STLS 0.9 BLKS [51.2]</td>
+<td align="left">id.</td>
+<td align="left">id.</td>
+</tr>
+
+<tr>
+<td align="left">2022-2023</td>
+<td align="left">Luka Dončić</td>
+<td align="left">32.4 PTS 8.6 REBS 8.0 ASTS 1.4 STLS 0.5 BLKS [50.9]</td>
+<td align="left">Joel Embiid</td>
+<td align="left">33.1 PTS 10.2 REBS 4.2 ASTS 1.0 STLS 1.7 BLKS [50.2]</td>
+</tr>
+
+<tr>
+<td align="left">2023-2024</td>
+<td align="left">Luka Dončić</td>
+<td align="left">33.9 PTS 9.2 REBS 9.8 ASTS 1.4 STLS 0.5 BLKS [54.8]</td>
+<td align="left">Nikola Jokić</td>
+<td align="left">26.4 PTS 12.4 REBS 9.0 ASTS 1.4 STLS 0.9 BLKS [50.1]</td>
+</tr>
+</tbody>
+</table>
+<p>Interesting statistical observations:</p>
+
+<p>- 40% of voted MVPs (<sup>19</sup>&frasl;<sub>47</sub>) were that seasons counting stat average total sum leaders</p>
+
+<p>- LeBron James would have the most MVPs since the merger. He would have seven (one tied with Kobe in 2006) MVPs if the award was given to the counting stat leader. Michael Jordan is second at six.</p>
+
+<p>- MJ would have the longest stat MVP streak. He would have gotten all his MVPs six times consecutively</p>
+
+<p>- The highest record counting stat average sum is held by Luka Dončić in the most recent NBA season at 54.8, higher than Russell Westbrooks triple double MVP season (54.7)</p>
+
+<p>- Kevin Love was second in average counting stat sum twice in 2012 and 2014</p>
+
+<p>- Over half the STAT MVP winners were centers pre 2000. From 2001-2024, there were only two (Shaq and Jokic)</p>
+
+<p>- The players who would have zero MVPs if the league had adopted this system are: Bill Walton, Julius Irving, Magic Johnson, Charles Barkley, Karl Malone, Steve Nash, Dirk Nowitzki, Derrick Rose, Stephen Curry, Giannis Antetokounmpo and Joel Embiid</p>
+
+<p>- Giannis has the highest counting stat sum to not get the STAT MVP (50.7)</p>
+
+<p>- The players who would gain their first MVP if the league had adopted this system are: Tracy McGrady, Dwyane Wade and Luka Dončić (x3)</p>
+
+<p>- Pre-2000, the stat MVP favored players that averaged high rebounds. Post-2000, most of the stat MVPs were players that had a good balance of both assists and rebounds. Steals and blocks have become less and less of a factor when it comes to finding the stat MVP winners each season</p>
+
+<p>If you guys find any errors in the sums or player stats, please let me know</p>
+
+<p><a href="https://www.basketball-reference.com/" target="_blank">All data and stats are from basketball reference</a></p>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="lid4qa9" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>dustinharm | Lakers</div>
+        <div>3 | 40 minutes ago </div>
+      </div>
+      <label for="lid4qa9" class="commentText"><p>Orlando T-Mac was different</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="lid4yh2" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>KarrotMovies | LAL</div>
+        <div>1 | 38 minutes ago </div>
+      </div>
+      <label for="lid4yh2" class="commentText"><p>He was so good that season, that he got some MIP votes when he won MIP two seasons prior</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="lid5590" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>DXLXIII | NBA</div>
+        <div>2 | 36 minutes ago </div>
+      </div>
+      <label for="lid5590" class="commentText"><p>2016 Steph Curry averaged 30 points (led the league) on 50/45/90 shooting and 5 rebounds 7 assists 2 steals (led the league) and this stupid system says that wasn’t the best statistically seasons that year lol.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="lid5e5i" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>KarrotMovies | LAL</div>
+        <div>2 | 34 minutes ago </div>
+      </div>
+      <label for="lid5e5i" class="commentText"><p>The list would most likely be very accurate if efficiency was also taken into account</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="lid6jbz" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ScholarImpossible121 | 76ers</div>
+        <div>1 | 22 minutes ago </div>
+      </div>
+      <label for="lid6jbz" class="commentText"><p>If using counting stats shouldn&rsquo;t you use the totals?  I was expecting o see Trae Young somewhere in here.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="lid6pq0" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>KarrotMovies | LAL</div>
+        <div>1 | 21 minutes ago </div>
+      </div>
+      <label for="lid6pq0" class="commentText"><p>I recognized that totals would have been better halfway through the 90s. I was just too lazy to go back. I think it&rsquo;s fine because most NBA fans don&rsquo;t talk about totals. Only averages, even if a player averaged more but played less games</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="lid7wq8" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>shittydotamorph | Australia</div>
+        <div>1 | 9 minutes ago </div>
+      </div>
+      <label for="lid7wq8" class="commentText"><p>Probably losing out on blocks and rebounds </p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="lid5b0i" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Level_Ad_6372 | Pistons</div>
+        <div>1 | 35 minutes ago </div>
+      </div>
+      <label for="lid5b0i" class="commentText"><p>Tangentially related, but it&rsquo;s kind of funny how equally terrible AI and Westbrook were at shooting. Per game AI shot 1.2-3.7 from 3 in his career and Russ shot 1.1-3.6</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="lid5q04" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>DXLXIII | NBA</div>
+        <div>1 | 31 minutes ago </div>
+      </div>
+      <label for="lid5q04" class="commentText"><p>Yes but their volume more than makes up for any inefficiencies.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="lid759k" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Ethangains07 | Heat</div>
+        <div>1 | 16 minutes ago </div>
+      </div>
+      <label for="lid759k" class="commentText"><p>Luka would become the GOAT with like 2 rings if this is how it worked</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="lid8j8y" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>KarrotMovies | LAL</div>
+        <div>1 | 2 minutes ago </div>
+      </div>
+      <label for="lid8j8y" class="commentText"><p>These are regular season awards, so it wouldn&rsquo;t boost him in the postseason. He would have three MVPs if this is how it worked, yes.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="lid7ae4" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Ok-Society4123</div>
+        <div>1 | 15 minutes ago </div>
+      </div>
+      <label for="lid7ae4" class="commentText"><p>Lebron is basketball God</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
