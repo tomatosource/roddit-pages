@@ -1,0 +1,239 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type=checkbox] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C""\201D""\2018""\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555; 
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position:relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size:24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText, .commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size:24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+    font-size: 38px;
+    line-height: 1.5;
+    color: white;
+}
+
+.selfPostContainer * {
+    color: white;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/nba/comments/1ewawx0/i_built_a_tool_you_can_use_to_visualize_minutes/"><p>I built a tool you can use to visualize minutes distributions by position for your favorite NBA team!</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <p><strong>MinzViz</strong> | <em>The Basketball Minutes Distribution Visualizer</em></p>
+
+<p>As a Kangz fan, we are constantly speculating on our sub about how we&rsquo;re going to get 40 wins this year, and a lot of times that involves some kind of conversation about minutes distributions. In fact, it was <a href="https://np.reddit.com/r/kings/comments/1dzg85b/rotationminutes_predictions_for_the_current_roster/" target="_blank">this excellent post</a> from our very own u/vNocturnus that inspired me to put something together around the constraints they laid out so succinctly:</p>
+
+<blockquote>
+<p><strong>There are 240 total minutes per team in a normal, non-OT NBA game.</strong> In very broad strokes you could divide that into 96 guard minutes, 96 forward minutes, and 48 center minutes</p>
+</blockquote>
+
+<p>The <a href="http://minzviz.com" target="_blank">MinzViz tool</a> allows you to play around with hypothetical scenarios — by selecting your team, a player, and then clicking on the position(s) you expect them to play and dragging the slider to populate their minutes, you can cosplay the league&rsquo;s best (or worst, if you so desire) coaches.</p>
+
+<p>Click &ldquo;Add Slot&rdquo; to create additional slots for each position, then repeat the process of selecting another player and clicking on the empty slot to add their minutes in. The tool will automatically constrain you and issue a warning if the rules stated above are broken.</p>
+
+<p>I&rsquo;ve tried to pre-populate the rosters as best as I can for now, but you can also add custom players by clicking &ldquo;Add Custom Player&rdquo; and entering their name if you notice someone is missing. This feature can also be useful for speculating about potential trades, signings or other roster changes if you like daydreaming about unrealistic dream scenarios like me lol.</p>
+
+<p>Finally, you can view the summary section for a breakdown of minutes distribution per player across positions in the form of interactive donut charts. Click &ldquo;Export as Image&rdquo; to save your MinzViz as a PNG file, or use the &ldquo;Generate Shareable Link&rdquo; button to create a URL that&rsquo;s shareable on Reddit or elsewhere for others to view or edit your lineup.</p>
+
+<p>Hope you&rsquo;re able to use and enjoy the tool! I sort of did this as a side project on a whim so apologies if it&rsquo;s not perfect. I&rsquo;ll be working to expand and improve it whenever I get more free time, but until then, I&rsquo;ll be back shitposting with y&rsquo;all once the season gets underway :) Cheers!</p>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="lix9xe3" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Good_NewsEveryone | Pelicans</div>
+        <div>2 | an hour ago </div>
+      </div>
+      <label for="lix9xe3" class="commentText"><p>Very cool shit. Good work</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
