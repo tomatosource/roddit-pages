@@ -1,0 +1,721 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type=checkbox] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C""\201D""\2018""\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555; 
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position:relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size:24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText, .commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size:24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+    font-size: 38px;
+    line-height: 1.5;
+    color: white;
+}
+
+.selfPostContainer * {
+    color: white;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/nba/comments/1ex3xlz/players_in_the_playoffs_with_20_ppg_on_600_efg/"><p>Players in the playoffs with 20+ ppg on .600 eFG% (min. 5 games) since 2000</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <p>A friend once told me they thought Klay Thompson was a better shooter in the postseason than Stephen Curry. I started reading over some postseason stats to see if there was any validity to it, and was mildly surprised that Curry <em>never</em> averaged above 60 percent eFG in a postseason run. It&rsquo;s not as if that&rsquo;s a mark against him, more so an indicator of how difficult of a benchmark that is to achieve. I then got sidetracked with this and catalogued exactly what the title says. Here are the results:</p>
+
+<p>K. Middleton ‘18 (MIL) - .710 (7g)</p>
+
+<p>Yao M. ‘05 (HOU) - .655 (7g)</p>
+
+<p>D. Booker ‘23 (PHO) - .649 (11g)</p>
+
+<p>D. Hunter ‘22 (ATL) - .643 (5g)</p>
+
+<p>A. Houston ‘01 (NYK) - .641 (5g)</p>
+
+<p>B. Wells ‘06 (SAC) - .638 (6g)</p>
+
+<p>A. Davis ‘24 (LAL - .634 (5g)</p>
+
+<p>D. Mitchell ‘20 (UTA) - .634 (7g)</p>
+
+<p>D. Wade ‘10 (MIA) - .632 (5g)</p>
+
+<p>D. Howard ‘11 (ORL) - .630 (6g)</p>
+
+<p>K. Leonard ‘21 (LAC) - .629 (11g)</p>
+
+<p>K. Durant ‘17 (GSW) - .627 (15g)</p>
+
+<p>L. James ‘17 (CLE) - .622 (18 g)</p>
+
+<p>A. Nocioni ‘06 (CHI) - .619 (6g)</p>
+
+<p>L. James ‘20 (LAL) - .618 (21g)</p>
+
+<p>L. James ‘24 (LAL) - .616 (5g)</p>
+
+<p>L. James ‘14 (MIA) - .616 (20g)</p>
+
+<p>C. Paul ‘11 (NOH) - .604 (6g)</p>
+
+<p>A. Davis ‘20 (LAL) - . 603 (21g)</p>
+
+<p>D. Howard ‘09 (ORL) - .601 (23g)</p>
+
+<p>What does this data mean? I don&rsquo;t know. Other than a few random role players in the mix, none of the people here are too surprising. It makes me lament Khris Middleton&rsquo;s and Yao Ming&rsquo;s injuries a ton that&rsquo;s for sure.</p>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="lj35r8d" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>-Drink_More_Water- | Bucks</div>
+        <div>9 | 3 hours ago </div>
+      </div>
+      <label for="lj35r8d" class="commentText"><p>Middleton was an aimbot</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="lj37931" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Robinsonirish | Finland</div>
+        <div>8 | 3 hours ago </div>
+      </div>
+      <label for="lj37931" class="commentText"><p>You need to press enter twice to go to a new line. This is completely unreadable.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="lj39xlz" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Picklesbedamned</div>
+        <div>2 | 3 hours ago </div>
+      </div>
+      <label for="lj39xlz" class="commentText"><p>Gotcha</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="lj3ak44" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Robinsonirish | Finland</div>
+        <div>3 | 2 hours ago </div>
+      </div>
+      <label for="lj3ak44" class="commentText"><p>Well done.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="lj3aekv" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Far-Asparagus6416 | Celtics</div>
+        <div>2 | 2 hours ago </div>
+      </div>
+      <label for="lj3aekv" class="commentText"><p>Thanks for fixing it, much easier to read now</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="lj36vxq" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>RKT23</div>
+        <div>6 | 3 hours ago </div>
+      </div>
+      <label for="lj36vxq" class="commentText"><p>2014 LeBron is a bit underrated among the LeBron seasons. He was hyper focused on efficiency that year and was much more particular about his shot-selection, foregoing the midrange.</p>
+
+<p>In the Regular Season 27.1 points on 64.9 TS%.</p>
+
+<p>In the Playoffs 27.4 points on 66.8 TS%.</p>
+
+<p>League Average was 54.1 TS%.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="lj37dtv" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>AllTimeBallKnower | Bucks</div>
+        <div>4 | 3 hours ago </div>
+      </div>
+      <label for="lj37dtv" class="commentText"><p>L. James seems to be a decent player</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="lj3fvx4" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>FoamyMuffins</div>
+        <div>3 | 2 hours ago </div>
+      </div>
+      <label for="lj3fvx4" class="commentText"><p>Klay was getting wide open shots while Curry was seeing double and triple teams. Not that surprising really.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="lj3kpjs" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Picklesbedamned</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="lj3kpjs" class="commentText"><p>It also wasn&rsquo;t very accurate. Klay did have a little better eFG in 2018 and 2019 on a few less field goal attempts, but that&rsquo;s it. </p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="lj3g4rf" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Far-Asparagus6416 | Celtics</div>
+        <div>5 | an hour ago </div>
+      </div>
+      <label for="lj3g4rf" class="commentText"><p>Some pre-2000 examples I could find:</p>
+
+<p>Kevin McHale &lsquo;88 (BOS) - 25.4 points on 60.5% EFG (17g)<br>
+Kevin McHale &lsquo;90 (BOS) - 22.0 points on 61.6% EFG (5g)<br>
+Shaquille O&rsquo;Neal &lsquo;96 (ORL) - 25.8 points on 60.6% EFG (12g)<br>
+Shaquille O&rsquo;Neal &lsquo;98 (LAL) - 30.5 points on 61.2% EFG (13g)<br>
+Charles Barkley &lsquo;91 (PHI) - 24.9 points on 60.0% EFG (8g)<br>
+Hakeem Olajuwon &lsquo;87 (HOU) - 29.2 points on 61.5% EFG (10g)<br>
+Kareem Abdul Jabbar &lsquo;77 (LAL) - 34.6 points on 60.7% EFG (11g)<br>
+James Worthy &lsquo;85 (LAL) - 21.5 points on 62.4% EFG (19g)<br>
+Mark Price &lsquo;88 (CLE) - 21.0 points on 61.4% EFG (5g)<br>
+*Moses Malone &lsquo;75 (UTS) - 22.7 points on 63.8% EFG (6g)<br>
+*Artis Gilmore &lsquo;76 (KEN) 24.2 points on 60.8% EFG (10g)</p>
+
+<p>&rdquo;*&rdquo; = ABA</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="lj3l396" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Picklesbedamned</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="lj3l396" class="commentText"><p>Thanks! Kevin McHale was a beast. Mark Price is a little surprising. </p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="lj3j2ct" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Far-Asparagus6416 | Celtics</div>
+        <div>4 | an hour ago </div>
+      </div>
+      <label for="lj3j2ct" class="commentText"><p>Interestingly of all the 50-40-90 club members, Kevin Durant and Mark Price are the only ones to achieve this feat.</p>
+
+<p>Larry Bird, Reggie Miller, Steve Nash, Dirk Nowitzki, Steph Curry, Malcolm Brogdon and Kyrie Irving have all never done it</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="lj37z7z" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>yerr2477</div>
+        <div>3 | 3 hours ago </div>
+      </div>
+      <label for="lj37z7z" class="commentText"><p>my brother in christ does that say Nocioni?</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="lj3fzkb" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>pokexchespin | BOS</div>
+        <div>1 | 2 hours ago </div>
+      </div>
+      <label for="lj3fzkb" class="commentText"><p>weird coincidence that he and bonzi wells, the two worst players on this list, did it the same year</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="lj3fs9w" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>pokexchespin | BOS</div>
+        <div>2 | 2 hours ago </div>
+      </div>
+      <label for="lj3fs9w" class="commentText"><p>can’t say i’m surprised to see ‘23 booker there, he was insane in the wins over the nuggets</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="lj3lh3w" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>mmaguy123</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="lj3lh3w" class="commentText"><p>KD unlocked a different level in him that year.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="lj3k956" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Jonesalot</div>
+        <div>2 | an hour ago </div>
+      </div>
+      <label for="lj3k956" class="commentText"><p>LeBron and Davis doing it as teammates twice</p>
+
+<p>Not bad</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="lj3mee3" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Picklesbedamned</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="lj3mee3" class="commentText"><p>LeBron &amp; AD gets underrated I feel as an all-time overpowered duo. </p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="lj39zsv" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>EbenezerAD | Suns</div>
+        <div>1 | 3 hours ago </div>
+      </div>
+      <label for="lj39zsv" class="commentText"><p>Bro this is completely unreadable. Cmon man</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="lj3bomv" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Picklesbedamned</div>
+        <div>1 | 2 hours ago </div>
+      </div>
+      <label for="lj3bomv" class="commentText"><p>Fixed</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="lj3j891" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>EbenezerAD | Suns</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="lj3j891" class="commentText"><p>Thank you</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="lj3hv8o" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>CP3sHamstring</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="lj3hv8o" class="commentText"><p>this isn&rsquo;t really a good representation of who&rsquo;s a better shooter. interior guys will get an advantage, as will guys who are are catch and shoot/spot up guys</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="lj3o7qi" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>SenorBuduardo</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="lj3o7qi" class="commentText"><p>Shout out to Eric &ldquo;Sleepy&rdquo; Floyd&hellip;look it up mf&rsquo;ets</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="lj3uy0c" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>shelvino | Trail Blazers</div>
+        <div>1 | 12 minutes ago </div>
+      </div>
+      <label for="lj3uy0c" class="commentText"><p>2021 Dame was at .593 EFG in 6 heartbreaker games</p>
+
+<p>(34ppg 10ast on 46/45/94 a 66TS )</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
