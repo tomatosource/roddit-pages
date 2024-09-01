@@ -1,0 +1,419 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type=checkbox] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C""\201D""\2018""\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555; 
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position:relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size:24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText, .commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size:24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+    font-size: 38px;
+    line-height: 1.5;
+    color: white;
+}
+
+.selfPostContainer * {
+    color: white;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/nba/comments/1f682md/best_statistical_playoff_scorers_based_on_exact/"><p>Best statistical playoff scorers based on exact possession counts and defense adjustment (2001-24)</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <p>pbpstats.com offers exact possession counts and exact TS% calculations - sources like basketball reference estimate both figures. The nice thing about basketball reference is those estimates go back to the pre-play by play era, but in this case we&rsquo;ll just look at recent NBA history.</p>
+
+<p>Using this data, I calculated the following metrics for each player&rsquo;s postseason career:</p>
+
+<ul>
+<li><strong>Points Per 75 Possessions</strong>: Simply the total points they scored divided by the total possessions they were on the court for, multiplied by 75 to give us a nice looking number. Why are we adjusting for possessions? Different teams play at different paces, different years had different average paces, players might get fewer minutes because of a blowout or because of an injury, etc&hellip; all this stuff impacts PPG. For this, I am interested in what happens at a posession level.</li>
+<li><strong>Defense-Adjusted rTS%</strong>: Relative true shooting is typically calculated as a player&rsquo;s TS% minus league average TS%. This is practical for the regular season, but with limited opponents in the postseason, I think the TS% allowed by the teams you faced is more important. So for this study, we calculate rTS% as a player&rsquo;s TS% minus the TS% allowed by the opponent in the regular season. If you Player A plays a playoff series against an elite defense and Player B plays a playoff series against a trash defense, this should be accounted for.</li>
+</ul>
+
+<p>This was mostly automated but I had to pick players one-by-one to do the calculations for. Of the players I chose, here are those with <strong>at least 5000 possessions played</strong>, sorted by PP75.</p>
+
+<table>
+<thead>
+<tr>
+<th align="left">Player</th>
+<th align="left">GP</th>
+<th align="left">PP75</th>
+<th align="left">rTS%</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">Nikola Jokic</td>
+<td align="left">80</td>
+<td align="left">27.76</td>
+<td align="left">+5.18%</td>
+</tr>
+
+<tr>
+<td align="left">LeBron James</td>
+<td align="left">287</td>
+<td align="left">27.67</td>
+<td align="left">+5.37%</td>
+</tr>
+
+<tr>
+<td align="left">Giannis Antetokounmpo</td>
+<td align="left">79</td>
+<td align="left">27.51</td>
+<td align="left">+1.86%</td>
+</tr>
+
+<tr>
+<td align="left">Kevin Durant</td>
+<td align="left">170</td>
+<td align="left">27.49</td>
+<td align="left">+5.47%</td>
+</tr>
+
+<tr>
+<td align="left">Kobe Bryant</td>
+<td align="left">170</td>
+<td align="left">27.00</td>
+<td align="left">+2.38%</td>
+</tr>
+
+<tr>
+<td align="left">Stephen Curry</td>
+<td align="left">147</td>
+<td align="left">26.52</td>
+<td align="left">+5.98%</td>
+</tr>
+
+<tr>
+<td align="left">Dirk Nowitzki</td>
+<td align="left">145</td>
+<td align="left">24.52</td>
+<td align="left">+5.00%</td>
+</tr>
+
+<tr>
+<td align="left">Russell Westbrook</td>
+<td align="left">122</td>
+<td align="left">24.42</td>
+<td align="left">-3.46%</td>
+</tr>
+
+<tr>
+<td align="left">Damian Lillard</td>
+<td align="left">65</td>
+<td align="left">24.19</td>
+<td align="left">+1.82%</td>
+</tr>
+
+<tr>
+<td align="left">James Harden</td>
+<td align="left">166</td>
+<td align="left">23.94</td>
+<td align="left">+4.33%</td>
+</tr>
+
+<tr>
+<td align="left">Dwyane Wade</td>
+<td align="left">183</td>
+<td align="left">23.79</td>
+<td align="left">+2.02%</td>
+</tr>
+
+<tr>
+<td align="left">Jayson Tatum</td>
+<td align="left">113</td>
+<td align="left">23.47</td>
+<td align="left">-0.38%</td>
+</tr>
+
+<tr>
+<td align="left">Kawhi Leonard</td>
+<td align="left">139</td>
+<td align="left">23.30</td>
+<td align="left">+7.40%</td>
+</tr>
+
+<tr>
+<td align="left">Tim Duncan</td>
+<td align="left">225</td>
+<td align="left">22.42</td>
+<td align="left">+1.82%</td>
+</tr>
+
+<tr>
+<td align="left">Jimmy Butler</td>
+<td align="left">119</td>
+<td align="left">21.78</td>
+<td align="left">+1.95%</td>
+</tr>
+
+<tr>
+<td align="left">Chris Paul</td>
+<td align="left">149</td>
+<td align="left">21.24</td>
+<td align="left">+3.67%</td>
+</tr>
+
+<tr>
+<td align="left">Paul Pierce</td>
+<td align="left">170</td>
+<td align="left">20.54</td>
+<td align="left">+2.89%</td>
+</tr>
+
+<tr>
+<td align="left">Kevin Garnett</td>
+<td align="left">127</td>
+<td align="left">20.29</td>
+<td align="left">+0.50%</td>
+</tr>
+
+<tr>
+<td align="left">Steve Nash</td>
+<td align="left">112</td>
+<td align="left">18.67</td>
+<td align="left">+5.43%</td>
+</tr>
+</tbody>
+</table>
+<p>Here&rsquo;s <a href="https://i.imgur.com/QgKHHrJ.png" target="_blank">a plot to go with it because that might be too many numbers tbh</a>.</p>
+
+<p>Here are the players I initially chose who didn&rsquo;t meet the 5000 possession minimum, but I thought were notable enough players to check. Completely arbitrary selection, though. Let me know if you want someone else’s numbers and I may deliver.</p>
+
+<table>
+<thead>
+<tr>
+<th align="left">Player</th>
+<th align="left">GP</th>
+<th align="left">PP75</th>
+<th align="left">rTS%</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">Luka Doncic</td>
+<td align="left">50</td>
+<td align="left">30.67</td>
+<td align="left">+1.50%</td>
+</tr>
+
+<tr>
+<td align="left">Donovan Mitchell</td>
+<td align="left">54</td>
+<td align="left">28.57</td>
+<td align="left">-0.79%</td>
+</tr>
+
+<tr>
+<td align="left">Allen Iverson</td>
+<td align="left">53</td>
+<td align="left">27.49</td>
+<td align="left">-2.49%</td>
+</tr>
+
+<tr>
+<td align="left">Joel Embiid</td>
+<td align="left">59</td>
+<td align="left">26.94</td>
+<td align="left">+1.44%</td>
+</tr>
+
+<tr>
+<td align="left">Anthony Davis</td>
+<td align="left">60</td>
+<td align="left">25.58</td>
+<td align="left">+6.08%</td>
+</tr>
+
+<tr>
+<td align="left">Jamal Murray</td>
+<td align="left">65</td>
+<td align="left">24.07</td>
+<td align="left">-0.08%</td>
+</tr>
+</tbody>
+</table>
+<p>Note that for older players like Kobe Bryant, full postseason careers are not included because the earliest season with this data is 2000-01. I excluded some great players like Shaquille O&rsquo;Neal because too much of their prime would&rsquo;ve been excluded for it to really be fair - I think everyone here has their prime fairly captured, though.</p>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+    </div>
+  </body>
+</html>
