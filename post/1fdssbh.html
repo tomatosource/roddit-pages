@@ -1,0 +1,805 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type=checkbox] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C""\201D""\2018""\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555; 
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position:relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size:24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText, .commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size:24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+    font-size: 38px;
+    line-height: 1.5;
+    color: white;
+}
+
+.selfPostContainer * {
+    color: white;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/nba/comments/1fdssbh/most_ethical_50piece_of_all_time_jamal_murray_50/"><p>Most ethical™ 50-piece of all time: Jamal Murray - 50 points on <sup>21</sup>&frasl;<sub>25</sub> FG, <sup>8</sup>&frasl;<sub>10</sub> 3PT and not a single attempted free throw. Least ethical™: James Harden - 50 points on <sup>11</sup>&frasl;<sub>37</sub> FG, <sup>4</sup>&frasl;<sub>20</sub> 3PT, <sup>24</sup>&frasl;<sub>24</sub> FT</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <p>Jamal Murray (February 19th, 2021 vs CLE) <a href="https://www.basketball-reference.com/boxscores/202102190CLE.html" target="_blank">(full box score)</a><br>
+50 pts, 6 reb, 2 ast, 2 stl, 1 tov, +24<br>
+<sup>21</sup>&frasl;<sub>25</sub> FG, <sup>8</sup>&frasl;<sub>10</sub> 3PT, 0/0 FT (84% FG, 80% 3PT, 0% FT, 100% TS)</p>
+
+<p>James Harden (December 3rd, 2019 vs SAS) <a href="https://www.basketball-reference.com/boxscores/201912030SAS.html" target="_blank">(full box score)</a><br>
+50 pts, 9 reb, 6 ast, 4 stl, 5 tov, -3<br>
+<sup>11</sup>&frasl;<sub>37</sub> FG, <sup>4</sup>&frasl;<sub>20</sub> 3PT, <sup>24</sup>&frasl;<sub>24</sub> FT (29.7% FG, 20% 3PT, 100% FT, 52.6% TS)</p>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="lmi24l2" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>OctopusNation2024</div>
+        <div>1 | 22 minutes ago </div>
+      </div>
+      <label for="lmi24l2" class="commentText"><p>I can&rsquo;t believe that Harden and Embiid were on the same team lol</p>
+
+<p>The MJ and LeBron of foul baiting playing together</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="lmi3l15" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Justin_FieldsisElite</div>
+        <div>1 | 14 minutes ago </div>
+      </div>
+      <label for="lmi3l15" class="commentText"><p>It was a really bad fit. The pick and roll concerns were true. Look at what harden did with Zubac vs the mavs.</p>
+
+<p>Embiid is easily a top 5 player right now but it does show fit wise he does not always work with other players.</p>
+
+<p>Same goes for harden.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="lmi3sci" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>AgadorFartacus | Celtics</div>
+        <div>1 | 13 minutes ago </div>
+      </div>
+      <label for="lmi3sci" class="commentText"><p>Embiid is more like 10-15 because of durability, conditioning, and the versatility/portability issues you mention (on both ends).</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="lmi51ps" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Robinsonirish</div>
+        <div>1 | 6 minutes ago </div>
+      </div>
+      <label for="lmi51ps" class="commentText"><p>Yes, yes. Get it out. Again.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="lmi58q3" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>AgadorFartacus | Celtics</div>
+        <div>1 | 5 minutes ago </div>
+      </div>
+      <label for="lmi58q3" class="commentText"><p>Huh?</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="lmi59hq" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>dmavs11 | Mavericks</div>
+        <div>1 | 5 minutes ago </div>
+      </div>
+      <label for="lmi59hq" class="commentText"><p>Does the same go for Harden? He made it work with Kyrie and KD. In Houston, when Westbrook started the season ass, they completely changed the roster makeup to go 5 out and created a situation where Russ could thrive (he fell apart in the playoffs though while Harden played amazing)</p>
+
+<p>Every center Harden has played with thrived next to him. I wouldn’t necessarily say Zubac was known as an elite PnR center before either. Harden ended up the best player on the clippers in the playoffs.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="lmi4kd9" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>CP3sHamstring</div>
+        <div>1 | 9 minutes ago </div>
+      </div>
+      <label for="lmi4kd9" class="commentText"><p>what</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="lmi10id" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Nessfull | Suns</div>
+        <div>1 | 28 minutes ago </div>
+      </div>
+      <label for="lmi10id" class="commentText"><p>I’ll defend harden forever but goddamn does he make it hard</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="lmi2ngt" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>LeBronRaymoneJamesSr</div>
+        <div>1 | 19 minutes ago </div>
+      </div>
+      <label for="lmi2ngt" class="commentText"><p>FVV had some interesting comments on Harden’s foul drawing</p>
+
+<blockquote>
+<p>“I got League Pass, so I watch the games every night and James is always a draw,” VanVleet said. “You try to learn and take stuff from him, and every player dreams of drawing fouls the way he does &hellip; He’s pretty special.”</p>
+
+<p>“No, because I’m a basketball player,” he replied when asked if he understood why Harden’s approach has proven so divisive. “I haven’t met a basketball player that doesn’t appreciate it. It’s the casual people that watch the game or (are) tied into some fantasy of what they think the game is about.”</p>
+</blockquote>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="lmi3wk8" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ThingsAreAfoot | Wizards</div>
+        <div>1 | 12 minutes ago </div>
+      </div>
+      <label for="lmi3wk8" class="commentText"><p>My arch nemesis, we agree on this fully.</p>
+
+<p>I always loved that shit too. If you actually watch prime Harden especially, like actually watch the games and not meme on reddit, the reason he was so often fouled is because he was impossible to guard.</p>
+
+<p>He would kill people off the dribble in such a way they had absolutely no idea if he was going to or fro, because he could just as well launch himself backwards for a step back as launch himself to the rim for either a layup or a lob (especially to Capela those days).</p>
+
+<p>And Harden disguised his lobs and floaters as well as any player probably ever has, you didn’t know what he was gonna do even at the rim.</p>
+
+<p>So yeah, that’s going to automatically garner a lot of fouls, because defenses have no idea how to actually guard you, you’re dangerous not only scoring from everywhere but a significant passing threat <em>to</em> everywhere.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="lmi4wlw" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Nessfull | Suns</div>
+        <div>1 | 7 minutes ago </div>
+      </div>
+      <label for="lmi4wlw" class="commentText"><p>I’d say I agree with some of that. The players definitely respect him and you can see his influence throughout the league.</p>
+
+<p>But what the players think basketball is about and isn’t necessarily more valid than what casuals think the game is about. The players want to succeed and make money; the casual viewer wants to be entertained.</p>
+
+<p>I feel like I can’t really disagree with someone who dislikes watching harden when I see a stat line like this. Maybe they’ll express it in a more aggressive way, but I think usually the core of the issue is that it’s not really fun to watch James Harden play with or against your team when he shoots 20 free throws. How can I disagree with that?</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="lmi2h8m" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ThingsAreAfoot | Wizards</div>
+        <div>1 | 20 minutes ago </div>
+      </div>
+      <label for="lmi2h8m" class="commentText"><p>He doesn’t really, only if you’re dumb enough to think free throws don’t count as points, which is how we get to the point where TS% is an excellent shooting metric for everybody in NBA history but James Harden.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="lmi4muu" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>fattest-fatwa | Spurs</div>
+        <div>1 | 8 minutes ago </div>
+      </div>
+      <label for="lmi4muu" class="commentText"><p>They count as points when he gets them. His big problem is that when the refs start swallowing whistles in the playoffs (which they don’t just do to him), he doesn’t have a terrific plan B for making up 25% of his scoring. And he will retire without a ring for it.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="lmi404q" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Justin_FieldsisElite</div>
+        <div>1 | 12 minutes ago </div>
+      </div>
+      <label for="lmi404q" class="commentText"><p>Yep and drawing fts is how you know a player is more likely to be able to keep scoring even in the playoffs. High volume scorers like kyrie and jamal are amazing and look unstoppable when they are on and their shots are falling but when they aren’t it’s ugly. Meanwhile harden always will have his fts to fall back on even when nothing is falling.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="lmi4njy" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>CP3sHamstring</div>
+        <div>1 | 8 minutes ago </div>
+      </div>
+      <label for="lmi4njy" class="commentText"><p>i mean id say the shitty defenders he was picking on with ISO&rsquo;s all game long are what made it hard lol</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="lmi2bzu" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Vegetable-Chance9033</div>
+        <div>1 | 21 minutes ago </div>
+      </div>
+      <label for="lmi2bzu" class="commentText"><p>Under 30% from the field plus 20% from 3 equals over 50% true shooting.</p>
+
+<p>Harden is a grift god</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="lmi52om" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>PensiveinNJ | 76ers</div>
+        <div>1 | 6 minutes ago </div>
+      </div>
+      <label for="lmi52om" class="commentText"><p>4 for 20 from three reminds me of Kobe talking about how he wouldn&rsquo;t ever stop shooting even on an off night. That would be a lot of threes for a game where you&rsquo;re on fire.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="lmi4e4e" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>LamboJoeRecs | Nuggets</div>
+        <div>1 | 9 minutes ago </div>
+      </div>
+      <label for="lmi4e4e" class="commentText"><p>Stop FT Merchanting merch for sale. Link in bio</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="lmi573o" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>thy_armageddon | Knicks</div>
+        <div>1 | 5 minutes ago </div>
+      </div>
+      <label for="lmi573o" class="commentText"><p>Literally Hitler.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="lmi5blb" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>VeniceRapture | Spurs</div>
+        <div>1 | 4 minutes ago </div>
+      </div>
+      <label for="lmi5blb" class="commentText"><p>Insurance fraud basketball</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="lmi19g1" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>AnomolousAbberationJ</div>
+        <div>1 | 26 minutes ago </div>
+      </div>
+      <label for="lmi19g1" class="commentText"><p>If you really think about it Harden’s is the most ethical cause he’s taking advantage of every rule he can to get his 50. So he’s being extremely ethical about his craft</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="lmi2wti" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Mochrie1713 | HOU</div>
+        <div>1 | 17 minutes ago </div>
+      </div>
+      <label for="lmi2wti" class="commentText"><p>What does taking advantage of every rule have to do with being ethical?</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="lmi1c8z" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>nibbinoo8 | Celtics</div>
+        <div>1 | 26 minutes ago </div>
+      </div>
+      <label for="lmi1c8z" class="commentText"><p><sup>4</sup>&frasl;<sub>20</sub> is nasty work</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="lmi1rgt" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>JAhoops</div>
+        <div>1 | 24 minutes ago </div>
+      </div>
+      <label for="lmi1rgt" class="commentText"><p>Tour Date Harden was goated</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="lmi4q50" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>QUEST50012</div>
+        <div>1 | 8 minutes ago </div>
+      </div>
+      <label for="lmi4q50" class="commentText"><p>What date is <sup>11</sup>&frasl;<sub>37</sub></p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="lmi2inn" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>LaandheereKage | Brazil</div>
+        <div>1 | 20 minutes ago </div>
+      </div>
+      <label for="lmi2inn" class="commentText"><p>Murray &amp;gt; prime harden in the playoffs for this reason. One relies on FTs while the other relies on pure skill and finesse.</p>
+
+<p>Harden will always have way more accolades than Murray but if I’m building a contender give me Murray any day of the week because playoffs &amp;gt;&amp;gt; RS</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="lmi2qf3" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Guppster64 | Mavericks</div>
+        <div>1 | 18 minutes ago </div>
+      </div>
+      <label for="lmi2qf3" class="commentText"><p>Get some psychiatric evaluation</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="lmi3mm5" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>WeirdWorld42 | Clippers</div>
+        <div>1 | 14 minutes ago </div>
+      </div>
+      <label for="lmi3mm5" class="commentText"><p>Comparing a first option to a second option. Had Murray played as the first option on those Rocket teams, they don&rsquo;t even make playoffs and his pure skill/finesse will be cooked!</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="lmi4ggx" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Justin_FieldsisElite</div>
+        <div>1 | 9 minutes ago </div>
+      </div>
+      <label for="lmi4ggx" class="commentText"><p>Pts are pts. This is an asinine take. Jamal Murray wouldn’t even make the playoffs with most of the rosters harden was given.</p>
+
+<p>You don’t get bonus pts because you scored with “skill”. A tough jamal Murray fadeaway 3 is the same as a harden step back 3. A tough jamal Murray acrobatic layup is the same as harden getting a defender to slap his arm on a shot and draw a foul for 2 fts.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="lmi4ra7" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>CP3sHamstring</div>
+        <div>1 | 7 minutes ago </div>
+      </div>
+      <label for="lmi4ra7" class="commentText"><p>murray isnt even close to the same playoff performer as harden.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="lmi5ktx" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>LaandheereKage | Brazil</div>
+        <div>1 | 3 minutes ago </div>
+      </div>
+      <label for="lmi5ktx" class="commentText"><p>You’re right it’s not even close. Murray is way better.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
