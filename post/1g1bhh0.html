@@ -1,0 +1,946 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type=checkbox] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C""\201D""\2018""\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555; 
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position:relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size:24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText, .commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size:24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+    font-size: 38px;
+    line-height: 1.5;
+    color: white;
+}
+
+.selfPostContainer * {
+    color: white;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/nba/comments/1g1bhh0/jason_terry_and_nonsuperstars_playing_1200_games/"><p>Jason Terry and non-superstars playing 1200 games</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <p>Jason Terry averaged 74 games over 19 seasons as he played until he was 40 (or, more accurately, teams thought he was worth paying money to play until he was 40). That was a 1,410 game career which just edged out the longevity for players like Tim Duncan and Jason Kidd (who actually could&rsquo;ve played more games if not for the strike-shortened 1999 season). Duncan and Kidd combined for 25 All-Star appearances (and dozens of other accolades). Jason Terry one 6th Man of the Year once. How rare is it for a non-superstar to be able to stay effective enough to play 1200 games (and be in the top-50 of all time)?</p>
+
+<table>
+<thead>
+<tr>
+<th align="left">Player</th>
+<th align="left">Games</th>
+<th align="left">All-Stars</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">Robert Parish</td>
+<td align="left">1611</td>
+<td align="left">9</td>
+</tr>
+
+<tr>
+<td align="left">Kareem Abdul-Jabbar</td>
+<td align="left">1560</td>
+<td align="left">19</td>
+</tr>
+
+<tr>
+<td align="left">Vince Carter</td>
+<td align="left">1541</td>
+<td align="left">8</td>
+</tr>
+
+<tr>
+<td align="left">Dirk Nowitzki</td>
+<td align="left">1522</td>
+<td align="left">14</td>
+</tr>
+
+<tr>
+<td align="left">John Stockton</td>
+<td align="left">1504</td>
+<td align="left">10</td>
+</tr>
+
+<tr>
+<td align="left">LeBron James</td>
+<td align="left">1492</td>
+<td align="left">20</td>
+</tr>
+
+<tr>
+<td align="left">Karl Malone</td>
+<td align="left">1476</td>
+<td align="left">14</td>
+</tr>
+
+<tr>
+<td align="left">Kevin Garnett</td>
+<td align="left">1462</td>
+<td align="left">15</td>
+</tr>
+
+<tr>
+<td align="left">Moses Malone</td>
+<td align="left">1455</td>
+<td align="left">13</td>
+</tr>
+
+<tr>
+<td align="left">Kevin Willis</td>
+<td align="left">1424</td>
+<td align="left">1</td>
+</tr>
+
+<tr>
+<td align="left">Jason Terry</td>
+<td align="left">1410</td>
+<td align="left">0</td>
+</tr>
+
+<tr>
+<td align="left">Tim Duncan</td>
+<td align="left">1392</td>
+<td align="left">15</td>
+</tr>
+
+<tr>
+<td align="left">Jason Kidd</td>
+<td align="left">1391</td>
+<td align="left">10</td>
+</tr>
+
+<tr>
+<td align="left">Reggie Miller</td>
+<td align="left">1389</td>
+<td align="left">5</td>
+</tr>
+
+<tr>
+<td align="left">Clifford Robinson</td>
+<td align="left">1380</td>
+<td align="left">1</td>
+</tr>
+
+<tr>
+<td align="left">Kobe Bryant</td>
+<td align="left">1346</td>
+<td align="left">18</td>
+</tr>
+
+<tr>
+<td align="left">Paul Pierce</td>
+<td align="left">1343</td>
+<td align="left">10</td>
+</tr>
+
+<tr>
+<td align="left">Gary Payton</td>
+<td align="left">1335</td>
+<td align="left">9</td>
+</tr>
+
+<tr>
+<td align="left">Artis Gilmore</td>
+<td align="left">1329</td>
+<td align="left">11</td>
+</tr>
+
+<tr>
+<td align="left">Jamal Crawford</td>
+<td align="left">1327</td>
+<td align="left">0</td>
+</tr>
+
+<tr>
+<td align="left">Buck Williams</td>
+<td align="left">1307</td>
+<td align="left">3</td>
+</tr>
+
+<tr>
+<td align="left">Andre Miller</td>
+<td align="left">1304</td>
+<td align="left">0</td>
+</tr>
+
+<tr>
+<td align="left">Elvin Hayes</td>
+<td align="left">1303</td>
+<td align="left">10</td>
+</tr>
+
+<tr>
+<td align="left">Ray Allen</td>
+<td align="left">1300</td>
+<td align="left">12</td>
+</tr>
+
+<tr>
+<td align="left">Caldwell Jones</td>
+<td align="left">1299</td>
+<td align="left">1</td>
+</tr>
+
+<tr>
+<td align="left">Mark Jackson</td>
+<td align="left">1296</td>
+<td align="left">1</td>
+</tr>
+
+<tr>
+<td align="left">Derek Fisher</td>
+<td align="left">1287</td>
+<td align="left">0</td>
+</tr>
+
+<tr>
+<td align="left">Sam Perkins</td>
+<td align="left">1286</td>
+<td align="left">0</td>
+</tr>
+
+<tr>
+<td align="left">Charles Oakley</td>
+<td align="left">1282</td>
+<td align="left">1</td>
+</tr>
+
+<tr>
+<td align="left">A.C. Green</td>
+<td align="left">1278</td>
+<td align="left">1</td>
+</tr>
+
+<tr>
+<td align="left">Joe Johnson</td>
+<td align="left">1277</td>
+<td align="left">7</td>
+</tr>
+
+<tr>
+<td align="left">Terry Porter</td>
+<td align="left">1274</td>
+<td align="left">2</td>
+</tr>
+
+<tr>
+<td align="left">Chris Paul</td>
+<td align="left">1272</td>
+<td align="left">12</td>
+</tr>
+
+<tr>
+<td align="left">John Havlicek</td>
+<td align="left">1270</td>
+<td align="left">13</td>
+</tr>
+
+<tr>
+<td align="left">Carmelo Anthony</td>
+<td align="left">1260</td>
+<td align="left">10</td>
+</tr>
+
+<tr>
+<td align="left">Otis Thorpe</td>
+<td align="left">1257</td>
+<td align="left">1</td>
+</tr>
+
+<tr>
+<td align="left">Tony Parker</td>
+<td align="left">1254</td>
+<td align="left">6</td>
+</tr>
+
+<tr>
+<td align="left">Paul Silas</td>
+<td align="left">1254</td>
+<td align="left">2</td>
+</tr>
+
+<tr>
+<td align="left">Julius Erving</td>
+<td align="left">1243</td>
+<td align="left">16</td>
+</tr>
+
+<tr>
+<td align="left">Dwight Howard</td>
+<td align="left">1242</td>
+<td align="left">8</td>
+</tr>
+
+<tr>
+<td align="left">Hakeem Olajuwon</td>
+<td align="left">1238</td>
+<td align="left">12</td>
+</tr>
+
+<tr>
+<td align="left">Kyle Korver</td>
+<td align="left">1232</td>
+<td align="left">1</td>
+</tr>
+
+<tr>
+<td align="left">Andre Iguodala</td>
+<td align="left">1231</td>
+<td align="left">1</td>
+</tr>
+
+<tr>
+<td align="left">Pau Gasol</td>
+<td align="left">1226</td>
+<td align="left">6</td>
+</tr>
+
+<tr>
+<td align="left">Dan Issel</td>
+<td align="left">1218</td>
+<td align="left">7</td>
+</tr>
+
+<tr>
+<td align="left">Steve Nash</td>
+<td align="left">1217</td>
+<td align="left">8</td>
+</tr>
+
+<tr>
+<td align="left">Dale Ellis</td>
+<td align="left">1209</td>
+<td align="left">1</td>
+</tr>
+
+<tr>
+<td align="left">Juwan Howard</td>
+<td align="left">1208</td>
+<td align="left">1</td>
+</tr>
+
+<tr>
+<td align="left">Shaquille O&rsquo;Neal</td>
+<td align="left">1207</td>
+<td align="left">15</td>
+</tr>
+
+<tr>
+<td align="left">Derek Harper</td>
+<td align="left">1199</td>
+<td align="left">0</td>
+</tr>
+
+<tr>
+<td align="left">Eddie Johnson</td>
+<td align="left">1199</td>
+<td align="left">0</td>
+</tr>
+</tbody>
+</table>
+<p>I am not sure what you were expecting, but out of the 50 longest careers, 40% are not superstars. If that sounds impressive, great. If that doesn&rsquo;t sound impressive, 30% of the top 100 players of all time make up 60% of the top 50 players in terms of career games played.</p>
+
+<p>Here&rsquo;s a frequency table..</p>
+
+<p>||
+||
+|# of All-Star Appearances|# of Players|
+|0|7|
+|1|11|
+|2|2|
+|3|1|
+|4|0|
+|5|1|
+|6|2|
+|7|2|
+|8|3|
+|9|2|
+|10|5|
+|11|1|
+|12|3|
+|13|2|
+|14|2|
+|15|3|
+|16|1|
+|17|0|
+|18|1|
+|19|1|
+|20|1|</p>
+
+<p>There are a lot of people with one or none all-star appearances (the Kevin Willis and Derek Fishers of the world - it seems being a big body or a heady point guard gives you a slight edge at keeping in the league). Terry Porter and Buck Williams seem to be the best players on the sub-4 side which is kind of funny since they were both on the 92 Blazers helping Drexler lose to MJ. They are both hall of good (also, it&rsquo;s kind of crazy Porter stuck so long as he was never a starting point guard after he turned 30). For those with more than 4 All-Star appearances, everyone is in the Hall of Fame (or will be) and in the top 100 players of all time except Joe Johnson&hellip; deservingly (he was never a top 10 player or a playoff riser).</p>
+
+<p>||
+||
+|Jeff Green|1185|0|
+|Thaddeus Young|1172|0|
+|Russell Westbrook|1162|9|
+|Kyle Lowry|1138|6|
+|DeMar DeRozan|1110|6|
+|Mike Conley|1101|1|
+|Al Horford|1078|5|
+|James Harden|1072|10|
+|Kevin Durant|1061|14|
+|DeAndre Jordan|1055|1|
+|Nicolas Batum|1053|0|
+|Brook Lopez|1025|1|</p>
+
+<p>That&rsquo;s the list of current players over 1000 games. Lowry, DeRozan, and Horford aren&rsquo;t top 100 players, but will they be Hall of Famers or join Joe Johnson&rsquo;s club?</p>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="lrf7a28" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ClydeAndKeith | Knicks</div>
+        <div>8 | 6 hours ago </div>
+      </div>
+      <label for="lrf7a28" class="commentText"><p>Kevin Willis was hilarious. He was ripped, had a silly little mustache, and would toss up weird one handed jumpers with his short ass arms</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="lrfdecm" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>GameDayBeliever | Raptors</div>
+        <div>2 | 5 hours ago </div>
+      </div>
+      <label for="lrfdecm" class="commentText"><p>This is a perfect description of him 😂. My brother and I had an ongoing joke about his little hook shots</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="lrg5f43" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>PastStructure7836</div>
+        <div>1 | 3 hours ago </div>
+      </div>
+      <label for="lrg5f43" class="commentText"><p>15RPG says he was fairly effective with those arms, though.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="lrg67wc" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ClydeAndKeith | Knicks</div>
+        <div>1 | 3 hours ago </div>
+      </div>
+      <label for="lrg67wc" class="commentText"><p>He could play but his style was unique and he stood out</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="lrf8ufd" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Igoritzaa</div>
+        <div>7 | 6 hours ago </div>
+      </div>
+      <label for="lrf8ufd" class="commentText"><p>Just here to say -</p>
+
+<p>If 2011 was Dirk&rsquo;s Chip, It&rsquo;s then 30% Dirk, 25% Terry the Jet, and rest of the team (Kidd, Marion, Chandler, Stojakovic, etc) 45%</p>
+
+<p>One of the most underrated facts is Jason Terry&rsquo;s 2011 Play-Off performance. Dude was unstoppable + on fire. Early intro into what will GSW become with 3pt shooting.</p>
+
+<p>His shot was <a href="https://www.youtube.com/watch?v=XiMLjAbuMmI" target="_blank">Automatic</a> those 2011 playoffs.</p>
+
+<p>He may not be a super-star but he was one heck of a player</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="lrf9bwb" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Kball4177 | Mavericks</div>
+        <div>4 | 6 hours ago </div>
+      </div>
+      <label for="lrf9bwb" class="commentText"><p>Fun fact - J Terry went from shooting 42/35/82 (52% TS) in his last year in Atlanta to shooting 50/42/84 (61% TS) in his first year in Dallas. That is the impact Dirk had on guards who played with him.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="lrg52tx" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>freshprince44</div>
+        <div>2 | 3 hours ago </div>
+      </div>
+      <label for="lrg52tx" class="commentText"><p>Carlisle/Nelson deserves plenty of that credit too. Nash and Harris both broke out their first season without Dirk, so there is noise both ways with this.</p>
+
+<p>JJ Barea was just as good on those bad/mediocre minnesota teams as he was in Dallas</p>
+
+<p>Looks like Terry moving down the defense&rsquo;s attention is just as likely of a factor as well, good story though lol</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="lrg9st9" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Kball4177 | Mavericks</div>
+        <div>0 | 2 hours ago </div>
+      </div>
+      <label for="lrg9st9" class="commentText"><p>For sure - but the schemes they utilized would not have worked nearly as well without Dirk. The gravity he created opened up so much space for the guards he played with. Defenders were terrified of leaving Dirk open.</p>
+
+<p>JJ actually saw about a 3% decrease in TS when he went to Minny despite playing with a good shooting big man in Love. He was at 47% TS in his last year there and at 50% TS when he came back to Dallas in 2015.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="lrgbtsu" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>freshprince44</div>
+        <div>0 | 2 hours ago </div>
+      </div>
+      <label for="lrgbtsu" class="commentText"><p>terrified? lol, they just didn&rsquo;t leave Dirk open much at all, I don&rsquo;t remember matt barnes being terrified</p>
+
+<p>both Nash and Harris made huge leaps going into different schemes not tailored to Dirk, so that is the murky bit I was talking about, The Dirk system is obviously great offensively too</p>
+
+<p>JJ had a bigger role in minnesota, 3% drop (on literally just a one year comparison) with higher production is nothing, all of his counting stats took a nice bump</p>
+
+<p>Dirk was an offensive beast and always had good guards on his team that played well with him and without him. Glad we can agree that Nelson and Carlisle pushed their offensive identity along with Dirk&rsquo;s strengths on offense</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="lrgd7j9" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Kball4177 | Mavericks</div>
+        <div>-1 | 2 hours ago </div>
+      </div>
+      <label for="lrgd7j9" class="commentText"><p>Yes&hellip;that is the point - it was very difficult to defend a Dirk pic n pop bc teams did not want to send help against the ball handler out of fear of leaving Dirk open.</p>
+
+<p>That Warriors series was like 1 of maybe 3 bad series in Dirk&rsquo;s entire 21 year career - it is hardly representative of him as a playoff performer. In fact he is one of the best playoff players of all time.</p>
+
+<p>Regarding JJ - he only saw a decrease of 1 minute and 1 point per game from his last year in Minny to his first year in Dallas. He really did benefit tremendously from playing with Dirk. Same with Monta who saw a big increase in efficiency when he came to Dallas.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="lrge349" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>freshprince44</div>
+        <div>1 | 2 hours ago </div>
+      </div>
+      <label for="lrge349" class="commentText"><p>you are ignoring everything that doesn&rsquo;t fit your story, cheers</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="lrgf9g0" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Kball4177 | Mavericks</div>
+        <div>0 | 2 hours ago </div>
+      </div>
+      <label for="lrgf9g0" class="commentText"><p>What am I ignoring? I have already aknowledged that Nelly &amp; Rick had good schemes, but schemes mean nothing if you don&rsquo;t have the players necessary to impliment those schemes.</p>
+
+<p>Rick&rsquo;s teams in Detroit &amp; Indiana teams were never very good ofenses, in fact they were consistently at the bottom of the league in terms of offensive efficiency. Rick&rsquo;s offensive accumen only became aknowledged when he started coaching Dirk. I think Rick is one of the best coaches of all time, but Dirk was the primary reason for the success of so many guards in Dallas.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="lrgh9ge" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>freshprince44</div>
+        <div>2 | an hour ago </div>
+      </div>
+      <label for="lrgh9ge" class="commentText"><p>Rick&rsquo;s teams always unlocked small guards&hellip;. that is his offense everywhere.</p>
+
+<p>Nelson was running the show in Dallas and was THE modern offensive mind in basketball, you guys built offense-heavy teams almost every year</p>
+
+<p>Pretending that JJ&rsquo;s worst year compared with a singular year in Dallas after with a tiny % drop and a bigger role actually means something besides noise. I&rsquo;m pretty sure JJ was banged up that last year in minnesota too, his stats were better every year in Minnesota but the one you are using a single stat for, his counting stats went up in similar minutes, again, you ignore this part of reality to cling to a singular statistical comparison</p>
+
+<p>Nash and Harris are direct contradictions to your position of Dirk being the primary reason for guards having success. Both made huge leaps the season they left Dirk and schemes built around him.</p>
+
+<p>Van Exel wasn&rsquo;t magically better, Finley was good elsewhere, Kidd was still elite with and not with Dirk</p>
+
+<p>If anything Dirk getting to play most of his career with two of the best point guards of alltime setting him up along with JET as an excellent secondary scorer might be a bigger part of his success than most would like to acknowledge</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="lrf8c25" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>dvs1978</div>
+        <div>2 | 6 hours ago </div>
+      </div>
+      <label for="lrf8c25" class="commentText"><p>Patty mills getting close - 892 regular and 101 postseason games, not a star but perfect role player &hellip;</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="lrfdnuv" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>supra555</div>
+        <div>2 | 5 hours ago </div>
+      </div>
+      <label for="lrfdnuv" class="commentText"><p>Think he is a very reliable scorer that made him play so long.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="lrf4hog" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>TLakes</div>
+        <div>1 | 6 hours ago </div>
+      </div>
+      <label for="lrf4hog" class="commentText"><p>That&rsquo;s an awesome career</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="lrfj4e1" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>pifhluk | Bucks</div>
+        <div>1 | 5 hours ago </div>
+      </div>
+      <label for="lrfj4e1" class="commentText"><p>Lebron is going for that record too I bet. This year and next 60 games each he&rsquo;s got it.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="lrg7lyy" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>montecarlo92 | Heat</div>
+        <div>1 | 3 hours ago </div>
+      </div>
+      <label for="lrg7lyy" class="commentText"><p>It’s even crazier that only two of these players are still active NBA players</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
