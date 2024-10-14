@@ -1,0 +1,501 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type=checkbox] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C""\201D""\2018""\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555; 
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position:relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size:24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText, .commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size:24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+    font-size: 38px;
+    line-height: 1.5;
+    color: white;
+}
+
+.selfPostContainer * {
+    color: white;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/nba/comments/1g36cpy/there_are_only_20_nba_players_left_who_played_in/"><p>There are only 20 NBA players left who played in the league before 2010</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <p>With the season starting in two days, I was curious (i.e. bored) and did some BBRef research. Out of the ~400 players currently signed to a team, only 20 players played at least one NBA game before 01/01/10. The oldest is (of course) LeBron, at 39. The youngest is Jrue Holiday, at 34.</p>
+
+<p>If you&rsquo;re counting those on a team before 01/01/10, the number goes up to 21 - Patty Mills, currently on the Jazz, was drafted by Portland in 2009 but only played his first game on 01/04/10.</p>
+
+<p>Also of note are Garrett Temple and Joe Ingles, who both went undrafted in 2009 but played their first NBA games after 2010 (02/09/10 and 10/29/14 respectively). And of course there are a couple free agents like Robin Lopez who could be signed this season that would up the number.</p>
+
+<p>(FWIW: There are a couple Euros who played overseas before 2010 as well, such as Jonas Valančiūnas. Mentioning these so pedants don&rsquo;t act like I forgot them)</p>
+
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>First Game</th>
+<th>Drafted</th>
+<th>Current Team</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>Lebron James</td>
+<td>10/29/03</td>
+<td>2003</td>
+<td>Lakers</td>
+</tr>
+
+<tr>
+<td>Chris Paul</td>
+<td>11/01/05</td>
+<td>2005</td>
+<td>Spurs</td>
+</tr>
+
+<tr>
+<td>Kyle Lowry</td>
+<td>11/01/06</td>
+<td>2006</td>
+<td>76ers</td>
+</tr>
+
+<tr>
+<td>PJ Tucker</td>
+<td>11/01/06</td>
+<td>2006</td>
+<td>Clippers</td>
+</tr>
+
+<tr>
+<td>Kevin Durant</td>
+<td>10/31/07</td>
+<td>2007</td>
+<td>Suns</td>
+</tr>
+
+<tr>
+<td>Jeff Green</td>
+<td>10/31/07</td>
+<td>2007</td>
+<td>Rockets</td>
+</tr>
+
+<tr>
+<td>Al Horford</td>
+<td>11/02/07</td>
+<td>2007</td>
+<td>Celtics</td>
+</tr>
+
+<tr>
+<td>Mike Conley</td>
+<td>11/07/07</td>
+<td>2007</td>
+<td>Timberwolves</td>
+</tr>
+
+<tr>
+<td>Brook Lopez</td>
+<td>10/28/08</td>
+<td>2008</td>
+<td>Bucks</td>
+</tr>
+
+<tr>
+<td>Kevin Love</td>
+<td>10/28/08</td>
+<td>2008</td>
+<td>Heat</td>
+</tr>
+
+<tr>
+<td>Nicholas Batum</td>
+<td>10/28/08</td>
+<td>2008</td>
+<td>Clippers</td>
+</tr>
+
+<tr>
+<td>James Harden</td>
+<td>10/28/08</td>
+<td>2008</td>
+<td>Clippers</td>
+</tr>
+
+<tr>
+<td>Eric Gordon</td>
+<td>10/29/08</td>
+<td>2008</td>
+<td>76ers</td>
+</tr>
+
+<tr>
+<td>Russell Westbrook</td>
+<td>10/28/09</td>
+<td>2008</td>
+<td>Nuggets</td>
+</tr>
+
+<tr>
+<td>DeAndre Jordan</td>
+<td>10/28/09</td>
+<td>2008</td>
+<td>Nuggets</td>
+</tr>
+
+<tr>
+<td>Stephen Curry</td>
+<td>10/28/09</td>
+<td>2009</td>
+<td>Warriors</td>
+</tr>
+
+<tr>
+<td>DeMar DeRozan</td>
+<td>10/28/09</td>
+<td>2009</td>
+<td>Kings</td>
+</tr>
+
+<tr>
+<td>Taj Gibson</td>
+<td>10/29/09</td>
+<td>2009</td>
+<td>Hornets</td>
+</tr>
+
+<tr>
+<td>Jrue Holiday</td>
+<td>10/30/09</td>
+<td>2009</td>
+<td>Celtics</td>
+</tr>
+
+<tr>
+<td>James Johnson</td>
+<td>10/30/09</td>
+<td>2009</td>
+<td>Pacers</td>
+</tr>
+</tbody>
+</table>
+<p>Obviously it&rsquo;s been nearly 15 years since 2010, so it makes sense there aren&rsquo;t many left. Even still, it&rsquo;s wild how little remain are still playing. Will the last player from the 2000s to leave please turn off the lights?</p>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="lrtpg10" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>No_Refrigerator6996 | Spurs</div>
+        <div>1 | 26 minutes ago </div>
+      </div>
+      <label for="lrtpg10" class="commentText"><p>TIL pj tucker got drafted in 06 wtffffff</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="lrtpqh2" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>sm_liam | Lakers</div>
+        <div>1 | 23 minutes ago </div>
+      </div>
+      <label for="lrtpqh2" class="commentText"><p>yeah he was waived by the raptors in 2007 and spent like a good half decade playing internationally before he got picked up by the suns in 2012</p>
+
+<p>dude put in the work lol</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="lrtpiaw" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Effective_Swimming70</div>
+        <div>1 | 25 minutes ago </div>
+      </div>
+      <label for="lrtpiaw" class="commentText"><p>7 of them played for Okc at one point or another</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="lrtlb39" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>poundtowndikahoedown</div>
+        <div>-2 | an hour ago </div>
+      </div>
+      <label for="lrtlb39" class="commentText"><p>the 4 OG members of OKC still in the league</p>
+
+<p>so glad KD left that  cheap ass franchise who squandered his prime to save on taxes</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="lrtn6tr" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>sm_liam | Lakers</div>
+        <div>2 | 42 minutes ago </div>
+      </div>
+      <label for="lrtn6tr" class="commentText"><p>Only Serge is left playing internationally too (unless you count Sonics draft pick Walter Sharpe, who was playing in Taiwan earlier this year and afaik hasn&rsquo;t officially retired)</p>
+
+<p>That era&rsquo;s over lol</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="lrtmj90" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>FriendOfBrutus | CLE</div>
+        <div>-3 | an hour ago </div>
+      </div>
+      <label for="lrtmj90" class="commentText"><p>KD’s prime started his first year with golden state</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="lrtmqa2" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Fluffy_Worker_5700</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="lrtmqa2" class="commentText"><p>Uhuh</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
