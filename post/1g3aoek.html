@@ -1,0 +1,495 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type=checkbox] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C""\201D""\2018""\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555; 
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position:relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size:24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText, .commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size:24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+    font-size: 38px;
+    line-height: 1.5;
+    color: white;
+}
+
+.selfPostContainer * {
+    color: white;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/nba/comments/1g3aoek/finding_power_finishers_and_foul_merchants_fun/"><p>Finding Power Finishers and Foul Merchants &ndash; Fun With NBA Data</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <p>So here&rsquo;s what I did:</p>
+
+<p>I went on<a href="http://basketball-reference.com" target="_blank"> basketball-reference.com</a> (all credit to them) and looked at three statistics they have started keeping track of since play-by-play charting began in the 1996-97 season:</p>
+
+<p>&ndash; And-1s</p>
+
+<p>&ndash; Shooting fouls drawn</p>
+
+<p>&ndash; Attempts blocked</p>
+
+<p>What I was curious about was how players reacted to contact &ndash; which ones were the most likely to power through a foul and get the finish and which ones were more likely to bounce harmlessly off a defender in hopes of drawing a whistle.</p>
+
+<p>I want to make it very clear I&rsquo;m not coming into this from a place of judgment. When I would watch the Cavaliers in the second LeBron era, I was of course impressed by the way LeBron would shrug off defenders in mid-air en route to finishing with the whistle.</p>
+
+<p>However, I was almost equally impressed by the way Kevin Love would manage to strategically tangle his arms around a defender&rsquo;s and go up for a &ldquo;shot&rdquo; attempt that had no real chance of going in but gave the referee no choice but to blow a whistle. (It also helped that when Love, who shot 82.2%, 87.1%, and 88.0% from the line in his three seasons with LeBron, went to the line, I was confident the free throws were going in. This was&hellip;not always the case when LeBron went to the line.)</p>
+
+<p>I started with just taking down how many And-1s and shooting fouls drawn each player drew, then I later went back and added &ldquo;attempts blocked&rdquo; as a kind of a control &ndash; I figure if an and-1 is a clear win for the offensive player, a blocked attempt would be its defensive counterpart.</p>
+
+<p>(Quick aside &ndash; yes, it is important that &ldquo;shooting fouls drawn&rdquo; were used instead of &ldquo;total free throws.&rdquo; Technical fouls, and much more importantly, non-shooting fouls drawn when a player&rsquo;s team is in the bonus, can throw total free throw numbers WAY off what you&rsquo;d expect. An extreme example: Chris Paul, who is kind of the god of drawing those fouls, has 5,487 career free throw attempts to Amar&rsquo;e Stoudemire&rsquo;s 5,444, even though Stoudemire has drawn 2,695 shooting fouls to Paul&rsquo;s 1,266.)</p>
+
+<p>In any case, I took those three numbers for:</p>
+
+<p>&ndash; All the top 100 players in total free throw attempts who played at least a statistically significant portion of their careers after the 1996-97 season (For some players, such as Michael Jordan, this means we&rsquo;re only counting a few seasons they played, so react to the data as such &ndash; when I remembered to, I marked all players who played some portion of their career before the 96-97 season with an asterisk.)</p>
+
+<p>&ndash; All remaining players in the top 250 I thought could be interesting</p>
+
+<p>&ndash; A selection of top current players who haven&rsquo;t had time to make it into the top 250, for a final total of 118 players</p>
+
+<p>This took a long time, because I hand-entered it into google sheets, which I have no experience with whatsoever. If anyone knows how to do a mass CSV dump of basketball-reference sites, let me know please.</p>
+
+<p>I then sorted the players into bigs, wings, and guards &ndash; there were a few judgment calls on that but I like it better than sorting by &ldquo;traditional&rdquo; 1-5 positions.</p>
+
+<p>The first thing I did was rank each player by And-1s/Shooting fouls drawn, Fouls Drawn/Attempts Blocked, and And-1s/Blocks, then added those ranks up for an overall &ldquo;power&rdquo; rating. After a quick aside, here are the top and bottom 5s for each category of player:</p>
+
+<p>(Quick aside #2: I am aware that jump shots can result in shooting fouls, can get blocked, and can even occasionally result in and-1s. However, I mainly think of this as reflective of &ldquo;finishing strength&rdquo; for the following reasons:</p>
+
+<ol>
+<li><p>Jump shot shooting fouls, blocks, and and-1s make up, relatively speaking, a very small amount of all those things compared to attempts at the rim.</p></li>
+
+<li><p>Fouls drawn on jump shots, by their nature, tend to be a bit more &ldquo;manufactured&rdquo; or &ldquo;weaker&rdquo; than fouls drawn on attempts at the rim – in general, there’s more effort put in by the shooter to draw these fouls, because fouling a jump shooter is just such a bad outcome for a defender, even compared to fouling a player driving for a layup. At the very least, that’s my opinion, and I&rsquo;m the one who had to punch in all this freaking data.</p></li>
+
+<li><p>This is the best I could figure out how to do with the data available to me.</p></li>
+</ol>
+
+<p>So without further ado:</p>
+
+<p><strong>Bigs:</strong></p>
+
+<ol>
+<li><p>Shaquille O&rsquo;Neal* &ndash; 30.52% And-1/Foul Ratio (#2), 15.25% Blocked/Fouled Ratio (#1), 200.18% And-1/Blocked ratio (#1)</p></li>
+
+<li><p>Victor Wembanyama &ndash; 26.01% And-1/Foul (#10), 15.61% Blk/Foul (#2),166.67% And-1/Blk (#2)</p></li>
+
+<li><p>DeAndre Jordan &ndash; 24.72% And-1/Foul (#17), 25.59% Blk/Foul (#3), 96.62% And-1/Blk (#5)</p></li>
+
+<li><p>Anthony Davis &ndash; 25.52% And-1/Foul (#14), 27.03% Blk/Foul (#4), 94.4% And-1/Blk (#9)</p></li>
+
+<li><p>Marc Gasol &ndash; 25.68% And-1/Foul (#12), 28.65% Blk/Foul (#5), 89.63% And-1/Blk (#14)</p></li>
+</ol>
+
+<p><em>Notes:</em></p>
+
+<p>Yeesh, Shaq. It&rsquo;s one thing to hear that he was &ldquo;the most dominant player ever,&rdquo; and the eye test certainly doesn&rsquo;t refute it, but to see the numbers bear it out this clearly is wild. (Remember that Shaq&rsquo;s career started in 92-93 and these numbers didn&rsquo;t start getting collected until 96-97, so we&rsquo;re missing four years of data. Still, the data from the years we do have tells a pretty compelling story. He had 1,093 recorded and-1s, the second-highest total of any player I looked at, and that&rsquo;s with at least a few hundred missing. His shot was only blocked 546 times. That&rsquo;s&hellip;not supposed to be a thing. That&rsquo;s not remotely supposed to be a thing.</p>
+
+<p>This does take out &ldquo;hack-a-Shaq&rdquo; fouls, because they weren&rsquo;t shooting fouls, but when you consider how many of the &ldquo;legit&rdquo; fouls he took were flat-out tackles because of how much more preferable it was to have him at the line instead of taking a shot at the rim, him having the second-highest and-1 rate of any big man is insane.</p>
+
+<p>(The highest and-1 rate among bigs, by the way, belongs to a Mr. Nikola Jokic. Just one more thing he&rsquo;s a savant at, apparently.)</p>
+
+<p>Then there&rsquo;s Wemby, right up there with Shaq. Big paws on &lsquo;le puppy. Clearly his skinny frame didn&rsquo;t keep him from being dominant at the hoop &ndash; 8-foot arms help. (It also helps he has a left hand, which Shaq never really did.)</p>
+
+<p>DeAndre and AD being next to each other is interesting, with the former being a power big who most certainly did not enjoy shooting free throws and the latter being a more skilled big who isn&rsquo;t afraid to let his pterodactyl-like frame go flying just a bit more than may be necessary if it nets him free throws, which he&rsquo;s pretty good at for a big man.</p>
+
+<p><em>The Bottom 5:</em></p>
+
+<ol>
+<li><p>Chet Holmgren</p></li>
+
+<li><p>Shareef Abdur-Rahim</p></li>
+
+<li><p>Kevin Love</p></li>
+
+<li><p>Jermaine O&rsquo;Neal</p></li>
+
+<li><p>Shawn Kemp</p></li>
+</ol>
+
+<p><em>Notes:</em></p>
+
+<p>Interesting to see Chet down here and Wemby up there &ndash; evidently there&rsquo;s more than one way for giant rookie phenoms to skin a cat.</p>
+
+<p>Hi Kevin Love! I remember you from the intro to this piece!</p>
+
+<p><strong>Wings:</strong></p>
+
+<ol>
+<li><p>LeBron James &ndash; 29.14% And-1/Foul (#1), 21.6% Blk/Foul (#2), 134.9% And-1/Blk (#1)</p></li>
+
+<li><p>Luka Doncic &ndash; 26.56% And-1/Foul (#4), 21.36% Blk/Foul (#1), 124.35% (#1)</p></li>
+
+<li><p>Giannis Antetokoumpo &ndash; 25.39% And-1/Foul (#8), Blk/Foul 24.94% (#5), 101.81% (#3)</p></li>
+
+<li><p>Kawhi Leonard &ndash; 26.19% And-1/Foul (#6), Blk/Foul 27.0% (#11), 96.98% (#7)</p></li>
+
+<li><p>Andre Iguodala &ndash; 25.71% And-1/Foul (#7), Blk/Foul 28.79%, (#14), And-1/Blk 89.29% (#11)</p></li>
+</ol>
+
+<p>Notes:</p>
+
+<p>It should not come as a great shock that LeBron James is a very strong basketball gentleman. He has 1,500 and-1s to date, which is easily the highest of any player I looked at &ndash; Shaq is second with 1,093, although remember Shaq has four years of and-1s missing. (Shaq averaged 1.2 And-1s per game for the games with the appropriate data, and played 295 games before the data started being collected, so that would have put him at 1,447, but remember those years that weren’t recorded were him at his most athletic, so it would have been close.) But for now, that&rsquo;s another (unofficial) record for LeBron, and I&rsquo;m not sure who else other than Shaq would really be close &ndash; I&rsquo;d love to see what Wilt and Kareem&rsquo;s and-1 numbers looked like, but past that I have no other real candidates.</p>
+
+<p>As the result of his ability finish through contact and the fact refs have always been a bit hesitant to call ticky-tacky fouls on him, it shouldn&rsquo;t be a surprise LeBron leads all players in And-1/Foul ratio &ndash; if shooting dirty looks at referees and the occasional Shawn Michaels-esque oversell on the perimeter was all there was to the art of drawing fouls, LeBron would have few peers in that department, but he&rsquo;s never really understood how to properly get himself tangled up and force a &ldquo;cheap&rdquo; whistle.</p>
+
+<p>Hey, it&rsquo;s four NBA Finals MVPs and Luka Doncic! Doncic does stand out here, not just because of his lack of an NBA Finals MVP but because of his lack of athleticism relative to the other four players. This does show just how devastating Luka is at the rim despite him not being particularly fast or much of a leaper. (For a point of comparison, Luka has 71 career dunks &ndash; Giannis has 1,934. Giannis has been in the league for longer, but that&rsquo;s a lot more dunks.)</p>
+
+<p>Nothing really to say about the rest &ndash; Giannis, Kawhi, and Iguodala are noted strong basketball gentlemen, and this reflects that. And yes, the full list of players with more And-1s than attempts blocked is Shaq, Wemby, LeBron, Luka, and Giannis.</p>
+
+<p>Shaq: 1,093 And-1s/546 attempts blocked</p>
+
+<p>Wemby: 45 And-1s/27 attempts blocked</p>
+
+<p>LeBron: 1,500 And-1s/1,112 attempts blocked</p>
+
+<p>Luka: 383 And-1s/308 attempts blocked</p>
+
+<p>Giannis: 788 And-1s/774 attempts blocked</p>
+
+<p>Shaq and LeBron are just on another planet in terms of finishing power, with Wemby coming right up in the rearview mirror. </p>
+
+<p><em>The Bottom 5:</em></p>
+
+<ol>
+<li><p>Carmelo Anthony</p></li>
+
+<li><p>Metta World Peace</p></li>
+
+<li><p>Joe Johnson</p></li>
+
+<li><p>Rudy Gay</p></li>
+
+<li><p>Jerry Stackhouse</p></li>
+</ol>
+
+<p><strong>Guards:</strong> </p>
+
+<ol>
+<li><p>Anthony Edwards – 27.99% And-1/Foul (#2), 32.21% Blk/Foul (#4), And-1/Blk 86.90% (#10) </p></li>
+
+<li><p>Jalen Brunson – 32.68% And-1/Foul (#1), 36.60% Blk/Foul (#18), And-1/Blk 89.29% (#3)</p></li>
+
+<li><p>Dwyane Wade – 22.12% And-1/Foul (#22), 23.26% Blk/Foul (#1), And-1/Blk 95.08% (#1)</p></li>
+
+<li><p>De’Aaron Fox – 24.92% And-1/Foul (#6), 34.24% Blk/Foul (#11), And-1/Blk 72.77% (#9)</p></li>
+
+<li><p>Kobe Bryant – 22.23% And-1/Foul (#19), 30.26% Blk/Foul (#6), And-1/Blk 73.44% (#7)</p></li>
+</ol>
+
+<p><em>Notes:</em></p>
+
+<p>Lotta interesting stuff here. Edwards not so much – he’s just a hulk of a shooting guard with some of the most ludicrous in-game hops ever seen. Brunson is interesting too – he’s great at drawing And-1s, but gets his shot blocked a lot more than you’d expect. </p>
+
+<p>Wade is one of the guys I had in mind when I thought of players who had mastered the art of drawing the foul – I have distinct memories of him getting a defender moving to contest him at the rim, then euro-stepping directly into their chest after he’d gotten their feet moving to draw the whistle. His data reflects that. Just like he was a historically great guard when it came to blocking shots, he was great at not getting his shot blocked, but his And-1/Foul ratio is much lower than you’d think it would be. </p>
+
+<p>Fox is interesting because I think about him more for his speed than his power around the rim, even for a guard. </p>
+
+<p>As for Kobe, his size and role in the offense would probably have made him a wing in today’s game, but he lined up at shooting guard during his career, so he goes with the guards. Hard to argue that he was a fantastic finisher, and his wide array of floaters and ability to finish with either hand made blocking his shot particularly tough. </p>
+
+<p>I also have to mention Tyrese Haliburton, who had a higher And-1/Foul ratio than <em>any</em> other player I got data on – Shaq, LeBron, Jokic, everyone – but was also the only player I looked at who had his shot blocked more often than he drew a shooting foul. Just a crazy outlier on both ends. </p>
+
+<p>*The Bottom 5:* </p>
+
+<ol>
+<li><p>Chauncey Billups</p></li>
+
+<li><p>Trae Young</p></li>
+
+<li><p>Andre Miller*</p></li>
+
+<li><p>Tyler Herro</p></li>
+
+<li><p>Richard Hamilton</p></li>
+</ol>
+
+<p><strong><em>Finding the Foul Merchants</em></strong><em>:</em></p>
+
+<p>So that’s how we found the power finishers – strong finishers get a lot of and-1s and don’t get their shots blocked often relative to how often they got fouled, and vice versa for the “weaker” finishers. (I really don’t like any sort of negative connotation applied to anyone on this list – like I tried to say in the opening, guys get their points how they get their points and good on them for it. I’m a firm believer that it doesn’t matter if the cat is black or white as long as it catches mice. I hope this is the best NBA statistical analysis that quotes Deng Xiaoping you’ll read today.)</p>
+
+<p>There was something else that really interested me – who were the guys who didn’t get a lot of and-1s but <em>also</em> didn’t get their shots blocked that often? In theory, at least, those would be the “foul merchants” – the guys who didn’t power through contact with their eyes on the rim as much as their peers, but also knew how to maneuver themselves to the line without having to risk getting their shot sent into the third row. </p>
+
+<p>To find this, I divided fouls/blocks by and-1s/blocks to come up with what I’m hastily calling a “foul creation factor.” Here were my top 20 names, with their corresponding factor:</p>
+
+<ol>
+<li><p>Chauncey Billups – 6.40</p></li>
+
+<li><p>Jamal Crawford – 6.19</p></li>
+
+<li><p>Detlef Schrempf* – 6.11</p></li>
+
+<li><p>Kevin Love – 6.11</p></li>
+
+<li><p>Sam Cassell* – 6.03</p></li>
+
+<li><p>Jerry Stackhouse* – 5.98</p></li>
+
+<li><p>Corey Maggette – 5.84</p></li>
+
+<li><p>Kevin Martin – 5.79</p></li>
+
+<li><p>James Harden  – 5.47</p></li>
+
+<li><p>Lou Williams – 5.36</p></li>
+
+<li><p>Reggie Miller* – 5.23</p></li>
+
+<li><p>Shawn Kemp* – 5.12</p></li>
+
+<li><p>Jimmy Butler – 5.12</p></li>
+
+<li><p>Trae Young – 5.12</p></li>
+
+<li><p>Chris Bosh – 5.09</p></li>
+
+<li><p>Dikembe Mutombo* – 5.08</p></li>
+
+<li><p>Richard Hamilton	– 5.01</p></li>
+
+<li><p>Allen Iverson – 4.99</p></li>
+
+<li><p>Alonzo Mourning* – 4.98</p></li>
+
+<li><p>Rudy Gay – 4.94</p></li>
+
+<li><p>Jayson Tatum – 4.93</p></li>
+
+<li><p>Damian Lillard – 4.93</p></li>
+
+<li><p>Vince Carter – 4.93</p></li>
+
+<li><p>David Robinson* – 4.92</p></li>
+
+<li><p>Kyle Lowry – 4.91</p></li>
+
+<li><p>Jason Kidd*– 4.87</p></li>
+
+<li><p>Steve Francis – 4.87</p></li>
+
+<li><p>Andre Miller* – 4.87</p></li>
+
+<li><p>Joel Embiid – 4.86</p></li>
+
+<li><p>Patrick Ewing* – 4.86</p></li>
+</ol>
+
+<p>I don’t think this is a perfect measurement by any stretch of the imagination – I’m not a professional statistical analyst or even a very good amateur one, and I have very little confidence in all these factors being properly weighted. Still, I definitely see some noted foul creators on that list! That makes me think there’s at least something of interest here – hopefully y’all feel the same way. </p>
+
+<p>Please keep in mind that this is a very incomplete list of data that mostly only talks about very high-usage guys, and that this is meant to be a jumping-off point for discussion than any sort of definitive list. Hope you have a wonderful rest of your day, and thank you very much for reading. </p>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="lrui4oj" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Majestic-Net-7799 | Timberwolves</div>
+        <div>1 | 18 minutes ago </div>
+      </div>
+      <label for="lrui4oj" class="commentText"><p>Nice work </p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="lruj4hr" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>cookomputer | Spurs</div>
+        <div>1 | 5 minutes ago </div>
+      </div>
+      <label for="lruj4hr" class="commentText"><p>This was a nice read, was not expecting Wemby to be up there but it makes sense he is just too tall so he can finish over the fouls lol</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
