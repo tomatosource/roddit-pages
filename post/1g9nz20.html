@@ -1,0 +1,847 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type=checkbox] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C""\201D""\2018""\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555; 
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position:relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size:24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText, .commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size:24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+    font-size: 38px;
+    line-height: 1.5;
+    color: white;
+}
+
+.selfPostContainer * {
+    color: white;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/nba/comments/1g9nz20/for_the_past_40_years_nearly_every_nba_champ_had/"><p>For the past 40 years, nearly every NBA champ had one thing in common. A look at if your team has a realistic shot. (<sup>24</sup>&frasl;<sub>25</sub> Edition)</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <p>Last season, <a href="https://www.reddit.com/r/nba/comments/17cj93d/for_the_past_40_years_nearly_every_championship/?utm_source=share&amp;utm_medium=web3x&amp;utm_name=web3xcss&amp;utm_term=1&amp;utm_content=share_button" target="_blank">I made a post</a> looking at which teams had a real shot at the title based on this metric: <strong>over the past 40 years, nearly every NBA championship team has had at least one player who was a 1st-Team All-NBA selection before their title year.</strong> And once again, last season held true — The Celtics and Mavericks made the Finals.</p>
+
+<p>(Please take a look at last years post if you want more details about this metric. I&rsquo;m excluding players like Chris Paul who are so far outside of their prime window that they don&rsquo;t really qualify.)</p>
+
+<p>So, who checks that box this year?</p>
+
+<p><strong>Teams with at least one player previously selected 1st team All-NBA (in no particular order):</strong></p>
+
+<ol>
+<li>76ers</li>
+<li>Warriors</li>
+<li>Clippers</li>
+<li>Lakers</li>
+<li>Suns</li>
+<li>Bucks</li>
+<li>Celtics</li>
+<li>Nuggets</li>
+<li>Thunder (OKC)</li>
+<li>Mavericks</li>
+</ol>
+
+<p>We can break it down a little more with some additional (but not quite as reliable) details.</p>
+
+<p><strong>Roster Age Weighted by Minutes Played:</strong></p>
+
+<p>The average age of championship teams, weighted for minutes played, is 28.234 years (Boston was 28.6 last season). Here are the teams that fall in the general range (:</p>
+
+<ol>
+<li>76ers</li>
+<li>Celtics</li>
+<li>Mavericks</li>
+<li>Lakers (It&rsquo;s surprising for obvious reasons)</li>
+<li>Nuggets</li>
+</ol>
+
+<p><strong>Teams with 2+ 1st Team All-NBA Stars:</strong></p>
+
+<p>Teams with two or more 1st team players win almost 50% of titles in the past 40 years. This is trend that is breaking in the past decade, so not nearly as reliable but still worth looking at.</p>
+
+<ul>
+<li>Lakers (Bron+AD)</li>
+<li>76ers (Embiid+PG)</li>
+</ul>
+
+<p><strong>Teams with 2+ 1st Team players, but who&rsquo;s rosters are outside of the age window:</strong></p>
+
+<ul>
+<li>Bucks (Giannis+Dame)</li>
+<li>Suns (KD+Book)</li>
+<li>Clips (Kawhi+Harden)</li>
+</ul>
+
+<p><strong>Conclusion:</strong></p>
+
+<p>Anything can happen (shoutout to my 2004 Pistons), but it&rsquo;s very unlikely any team other than the ones listed above will win it all this season. This means teams that seem like contenders are probably not as close as they appear. NYK, Clevland, Wolves, Pacers, etc&hellip;</p>
+
+<p><strong>My 2024-2025 Predictions:</strong></p>
+
+<ul>
+<li><strong>Celtics</strong>: No surprises here. They check 2 of the 3 boxes and are one of the best-assembled rosters in years.</li>
+<li><strong>Nuggets</strong>: They still have arguably the best player in the league. If you have “that” guy and even just a competent roster, you can win a title.</li>
+<li><strong>Mavericks</strong>: Luka is now entering his prime. He and Kyrie figured out how to play together. They showed they can play defense in the playoffs. Also, Luka is in his prime. Prime Luka. </li>
+<li><strong>76ers</strong>: Emotionally, I’m not buying it because of health issues, but they check a lot of boxes. If somehow they find themselves healthy in the playoffs, this team poses significant issues for defenses.</li>
+<li><strong>OKC</strong>: My not-so-dark horse pick. They fall outside of the average age, but their shooting was insanely good last year and they upgraded the roster without losing much.</li>
+</ul>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="lt7fag0" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>thesch | Bulls</div>
+        <div>29 | 2 hours ago </div>
+      </div>
+      <label for="lt7fag0" class="commentText"><p>Well, looks like it might not be the Bulls year.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="lt7jhud" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>dogpoopandbees | Bulls</div>
+        <div>10 | an hour ago </div>
+      </div>
+      <label for="lt7jhud" class="commentText"><p>Maybe</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="lt7jliu" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>AlpacaDC | Suns</div>
+        <div>5 | an hour ago </div>
+      </div>
+      <label for="lt7jliu" class="commentText"><p>Have faith bro</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="lt7hknq" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Little_Obligation_90</div>
+        <div>10 | 2 hours ago </div>
+      </div>
+      <label for="lt7hknq" class="commentText"><p>No Timberwolves and Knicks is interesting.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="lt7j4nw" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Nillavuh | Timberwolves</div>
+        <div>3 | an hour ago </div>
+      </div>
+      <label for="lt7j4nw" class="commentText"><p>shhhh</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="lt7qhkj" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>UndrehandDrummond</div>
+        <div>3 | an hour ago </div>
+      </div>
+      <label for="lt7qhkj" class="commentText"><p>Because neither has a player that’s been selected to 1st team all-NBA. Aside from the 04 Pistons, no team has won a title in decades without such a player.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="lt7tt0g" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>sevs</div>
+        <div>3 | 32 minutes ago </div>
+      </div>
+      <label for="lt7tt0g" class="commentText"><p>We&rsquo;re both making the finals this year, fuck op</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="lt7fnw6" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>SquimJim | Celtics</div>
+        <div>5 | 2 hours ago </div>
+      </div>
+      <label for="lt7fnw6" class="commentText"><p>The 5 teams you have are the 5 teams I think have an actual shot if their team is healthy. I truly do think the 76ers could win if fully healthy, but I just think there&rsquo;s a 0% chance they are fully healthy throughout the playoffs.</p>
+
+<p>I&rsquo;m not a betting man, but I am very confident the champion will probably be one of Boston, OKC, Dallas, or Denver.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="lt7kk9l" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ItsLe0n</div>
+        <div>2 | an hour ago </div>
+      </div>
+      <label for="lt7kk9l" class="commentText"><p>Bold take. </p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="lt7qlt6" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>SquimJim | Celtics</div>
+        <div>2 | an hour ago </div>
+      </div>
+      <label for="lt7qlt6" class="commentText"><p>The purpose wasn&rsquo;t to be bold, just realistic.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="lt7z15v" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Krillin113 | 76ers</div>
+        <div>1 | 5 minutes ago </div>
+      </div>
+      <label for="lt7z15v" class="commentText"><p>I dont buy the Dallas hype. I think everything went their way last year, and then they got severely outgunned by you.</p>
+
+<p>For me the west is OKC, followed by a lot of teams that I don’t like something about (minny - KAT -&amp;gt; Randle + Donte, Denver thin squad + Murray/MPJ complete wildcards, Dallas I don’t see it unless Edey is actually a super valuable big, their defence will be ass with Luka/kyrie/Klay in the clutch). East imo is yours to lose (we and the bucks have health concerns, Knicks are weird, and they’ll get eaten if they play KAT at the 5, but lose a lot of his value if he’s at the 4), Cavs and Magic too young. Pacers I don’t believe in</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="lt7fmlr" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ImGonnaObamaYou | CLE</div>
+        <div>3 | 2 hours ago </div>
+      </div>
+      <label for="lt7fmlr" class="commentText"><p>Wizards snubbed</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="lt7j6z0" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Nillavuh | Timberwolves</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="lt7j6z0" class="commentText"><p>If it&rsquo;s in &ldquo;no particular order&rdquo;, that is what bullet points are for.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="lt7qbjw" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>UndrehandDrummond</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="lt7qbjw" class="commentText"><p>I love the random petty grievances on the internet. I just wrote down the teams in a list. It’s not deeper than that.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="lt7r7jx" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Nillavuh | Timberwolves</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="lt7r7jx" class="commentText"><p>Nor was my comment a &ldquo;grievance&rdquo;.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="lt7reyg" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>UndrehandDrummond</div>
+        <div>-3 | an hour ago </div>
+      </div>
+      <label for="lt7reyg" class="commentText"><p>What is the purpose of your initial comment?</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="lt7sqoi" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Nillavuh | Timberwolves</div>
+        <div>3 | 38 minutes ago </div>
+      </div>
+      <label for="lt7sqoi" class="commentText"><p>To offer a bit of advice on how to convey a list as being &ldquo;in no particular order&rdquo;.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="lt7t7qk" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>UndrehandDrummond</div>
+        <div>-2 | 35 minutes ago </div>
+      </div>
+      <label for="lt7t7qk" class="commentText"><p>Do I just word salad the list? Raw dog it with no commas or bullets? I see you</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="lt7u5e7" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Nillavuh | Timberwolves</div>
+        <div>1 | 30 minutes ago </div>
+      </div>
+      <label for="lt7u5e7" class="commentText"><p>You convert the numbers into bullets. This isn&rsquo;t complicated.</p>
+
+<ul>
+<li>76ers</li>
+<li>Warriors</li>
+<li>Clippers</li>
+</ul>
+
+<p>and so on.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="lt7y28z" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>UndrehandDrummond</div>
+        <div>1 | 10 minutes ago </div>
+      </div>
+      <label for="lt7y28z" class="commentText"><p>It’s also painfully uncomplicated to look at the note that says “in no particular order”, register that in your consciousness, and then proceed to reading the list.</p>
+
+<p>What makes it complicated is, after having done that step, coming into the comment section to complain that you’re unsatisfied with the list that you had no problem understanding. Your original comment acknowledges that you understood it was in no particular order.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="lt7ykro" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Nillavuh | Timberwolves</div>
+        <div>1 | 7 minutes ago </div>
+      </div>
+      <label for="lt7ykro" class="commentText"><p>If you say &ldquo;in no particular order&rdquo;, and then proceed to put them IN a particular order, it&rsquo;s not irrational to come away from that still a bit confused about your intent.</p>
+
+<p>It was just a suggestion, dude. At this point it&rsquo;s far less work to just say &ldquo;okay thanks&rdquo; at a minimum and probably about 10 seconds of effort to adjust the list. Do it or don&rsquo;t do it. I really don&rsquo;t give a shit at this point, but I&rsquo;m sure as fuck not discussing this further.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="lt7rp8g" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>DowngoezFrasier215</div>
+        <div>1 | 43 minutes ago </div>
+      </div>
+      <label for="lt7rp8g" class="commentText"><p>lmao so annoying dude. thanks for putting in the effort for this list. i think its cool and interesting and anyone nitpicking should just stfu</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="lt7sl16" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>UndrehandDrummond</div>
+        <div>2 | 38 minutes ago </div>
+      </div>
+      <label for="lt7sl16" class="commentText"><p>Thanks man! Appreciate you taking a look</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="lt7f0sk" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>herbjonesmybeloved</div>
+        <div>1 | 2 hours ago </div>
+      </div>
+      <label for="lt7f0sk" class="commentText"><p>well the only reason we&rsquo;re not here is cause herb jones got snubbed last year</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="lt7qs7m" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>King_ofCanada</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="lt7qs7m" class="commentText"><p>Damn it, if Brunson had only been put on 1st team last season.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="lt7rbg4" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>UndrehandDrummond</div>
+        <div>2 | an hour ago </div>
+      </div>
+      <label for="lt7rbg4" class="commentText"><p>If Brunson was better than the players that made 1st team, you’d have a shot. Championships really are dictated by the top tier talent.</p>
+
+<p>The Heat got close to pulling an 04 Pistons. Maybe the Knicks could too. Someone will break the rule eventually</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="lt7r4ys" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ryanm37 | Lakers</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="lt7r4ys" class="commentText"><p>So you&rsquo;re saying there&rsquo;s a chance.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="lt7t0fa" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>UndrehandDrummond</div>
+        <div>1 | 36 minutes ago </div>
+      </div>
+      <label for="lt7t0fa" class="commentText"><p>Can’t rule out Bron… ever. Somehow that dude was the best player at the Olympics.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="lt7xkmq" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>dorkaxe | NBA</div>
+        <div>1 | 13 minutes ago </div>
+      </div>
+      <label for="lt7xkmq" class="commentText"><p>I predict OKC vs BOS, so this is validating.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="lt7f7m6" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>DocTheYounger | Celtics</div>
+        <div>-1 | 2 hours ago </div>
+      </div>
+      <label for="lt7f7m6" class="commentText"><p>Can cross out half that list right off the bat too.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
