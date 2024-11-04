@@ -1,0 +1,471 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type=checkbox] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C""\201D""\2018""\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555; 
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position:relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size:24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText, .commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size:24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+    font-size: 38px;
+    line-height: 1.5;
+    color: white;
+}
+
+.selfPostContainer * {
+    color: white;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/nba/comments/1gji9oo/entering_this_season_only_one_player_had_ever/"><p>Entering this season, only one player had ever made 30+ threes in the first 6 games of a season: Steph Curry (x5). This season, 3 players have joined him: Buddy Hield, Anthony Edwards, and LaMelo Ball</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <p>Most 3P made through 6 games:</p>
+
+<table>
+<thead>
+<tr>
+<th align="right">Rk</th>
+<th align="left">Player</th>
+<th align="right">3P</th>
+<th align="left">Season</th>
+<th align="right">3P%</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="right">1</td>
+<td align="left">Stephen Curry</td>
+<td align="right">39</td>
+<td align="left">2018-19</td>
+<td align="right">.527</td>
+</tr>
+
+<tr>
+<td align="right">2</td>
+<td align="left">Stephen Curry</td>
+<td align="right">36</td>
+<td align="left">2015-16</td>
+<td align="right">.514</td>
+</tr>
+
+<tr>
+<td align="right">3</td>
+<td align="left">Stephen Curry</td>
+<td align="right">33</td>
+<td align="left">2023-24</td>
+<td align="right">.465</td>
+</tr>
+
+<tr>
+<td align="right">4</td>
+<td align="left">Anthony Edwards</td>
+<td align="right">32</td>
+<td align="left">2024-25</td>
+<td align="right">.432</td>
+</tr>
+
+<tr>
+<td align="right">5</td>
+<td align="left">Stephen Curry</td>
+<td align="right">31</td>
+<td align="left">2021-22</td>
+<td align="right">.388</td>
+</tr>
+
+<tr>
+<td align="right">6</td>
+<td align="left">LaMelo Ball</td>
+<td align="right">30</td>
+<td align="left">2024-25</td>
+<td align="right">.405</td>
+</tr>
+
+<tr>
+<td align="right">7</td>
+<td align="left">Stephen Curry</td>
+<td align="right">30</td>
+<td align="left">2022-23</td>
+<td align="right">.417</td>
+</tr>
+
+<tr>
+<td align="right">8</td>
+<td align="left">Buddy Hield</td>
+<td align="right">30</td>
+<td align="left">2024-25</td>
+<td align="right">.517</td>
+</tr>
+</tbody>
+</table>
+<p>Provided by <a href="https://www.sports-reference.com/sharing.html?utm_source=direct&amp;utm_medium=Share&amp;utm_campaign=ShareTool" target="_blank">Stathead.com</a>: <a href="https://stathead.com/basketball/player-game-finder.cgi?utm_source=direct&amp;utm_medium=Share&amp;utm_campaign=ShareTool" target="_blank">Found with Stathead. See Full Results.</a>
+Generated 11/4/2024.</p>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="lvda9jq" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>SquimJim | Celtics</div>
+        <div>18 | an hour ago </div>
+      </div>
+      <label for="lvda9jq" class="commentText"><p>Some of the shots Lamelo was hitting this weekend were insane.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="lvdabul" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>k1ngkoala | Lakers</div>
+        <div>8 | an hour ago </div>
+      </div>
+      <label for="lvdabul" class="commentText"><p>As volume and skill increases, this will continue to happen</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="lvda26d" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>JAhoops</div>
+        <div>7 | an hour ago </div>
+      </div>
+      <label for="lvda26d" class="commentText"><p>Has Ant improved as a shooter or will he fall back to the mean?</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="lvdbt9v" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>EsotericPotato | Timberwolves</div>
+        <div>6 | an hour ago </div>
+      </div>
+      <label for="lvdbt9v" class="commentText"><p>The coaching staff has been pushing him to be increase his 3 point volume and he evidently spent his entire summer working on 3s, including off-ball shooting, and  it looks like he’s refined his mechanics a little bit. I’d be shocked if he stayed THIS hot from three. But every offseason, Ant comes back having mastered some new skill over the summer, wouldn’t be surprised if he’s like 39-40% by the end of the season.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="lvdenrd" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>colosusx1</div>
+        <div>5 | 39 minutes ago </div>
+      </div>
+      <label for="lvdenrd" class="commentText"><p>If he keeps the same shot diet, I don’t think he’ll stay at 39-40% either.  3 point shooting isn’t something you master in a summer.  And he’s taking some of the toughest 3s available akin to what guys like harden and luka take.  I think he’s much more likely to drop back down to 36% than be near 40%.  And 36% on this volume and difficulty is still efficient offense, I just don’t think he’s going to be shooting at a pace only seen before by the likes of Steph.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="lvdfgl8" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Vicentesteb | Timberwolves</div>
+        <div>4 | 35 minutes ago </div>
+      </div>
+      <label for="lvdfgl8" class="commentText"><p>He wont shoot 43% but hes a much better shooter, his motion looks way cleaner and his release is proper. He&rsquo;ll probably be around 38% on his volume, which is still amazing.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="lvdddmr" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>AetherealDe | Lakers</div>
+        <div>4 | an hour ago </div>
+      </div>
+      <label for="lvdddmr" class="commentText"><p>Totally incredible. Stuff like this really makes historical comparisons harder and harder to really get right, like Ray Allen isn&rsquo;t gonna be on a lot of historical lists Buddy Hield will be on</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="lvdeel6" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>gigglios</div>
+        <div>2 | 40 minutes ago </div>
+      </div>
+      <label for="lvdeel6" class="commentText"><p>Still not that hard to get right.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="lvdm3bn" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>AetherealDe | Lakers</div>
+        <div>1 | 3 minutes ago </div>
+      </div>
+      <label for="lvdm3bn" class="commentText"><p>Yeah, for those two, my point isn&rsquo;t Ray Allen vs Buddy Hield, we&rsquo;ll all know Allen was better than Hield, it&rsquo;s that stats are inflated, norms are changing, and not just based off of pace. We&rsquo;re adjusting TS relative to the season, but how do you adjust for offensive load, or point inflation, and is it even fair to do so? Trae Young averaged 29.<sup>6</sup>&frasl;<sub>9</sub>.3 as a sophomore and we all just move on, changing our understanding on intuition, but I don&rsquo;t know how to quantitatively compare that to, say, Deron Williams averaging <sup>19</sup>&frasl;<sub>11</sub> in &lsquo;08. Or how to compare Giannis&rsquo; passing to KG/Hakeem/Other bigs. Impact metrics are one route, but those are flawed, especially going back in time. The offensive explosion and change in the norms of the game are really dramatic</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="lvdj437" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>dearth_karmic | Warriors</div>
+        <div>1 | 17 minutes ago </div>
+      </div>
+      <label for="lvdj437" class="commentText"><p>Steph doing it 5X is wild!!! Probably would have been 6 if he didn&rsquo;t get hurt and our first 2 games weren&rsquo;t blowouts.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
