@@ -1,0 +1,605 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type=checkbox] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C""\201D""\2018""\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555; 
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position:relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size:24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText, .commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size:24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+    font-size: 38px;
+    line-height: 1.5;
+    color: white;
+}
+
+.selfPostContainer * {
+    color: white;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/nba/comments/1gmirds/stephen_curry_is_151_in_playoff_series_when_he/"><p>Stephen Curry is 15-1 in playoff series when he shoots at least 40% from 3. The only loss is from Cleveland Cavaliers in the 2016 finals</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <table>
+<thead>
+<tr>
+<th align="left">Shoo</th>
+<th align="right"></th>
+<th align="left"></th>
+<th align="left"></th>
+<th align="left"></th>
+<th align="right"></th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">Year</td>
+<td align="right">Lg</td>
+<td align="left">Round</td>
+<td align="left">W/L</td>
+<td align="left">Opp</td>
+<td align="right">3P%V</td>
+</tr>
+
+<tr>
+<td align="left">2019</td>
+<td align="right">2019</td>
+<td align="left">WC1</td>
+<td align="left">W (4-2)</td>
+<td align="left">LAC</td>
+<td align="right">.500</td>
+</tr>
+
+<tr>
+<td align="left">2015</td>
+<td align="right">2015</td>
+<td align="left">WCF</td>
+<td align="left">W (4-1)</td>
+<td align="left">HOU</td>
+<td align="right">.491</td>
+</tr>
+
+<tr>
+<td align="left">2017</td>
+<td align="right">2017</td>
+<td align="left">WCF</td>
+<td align="left">W (4-0)</td>
+<td align="left">SAS</td>
+<td align="right">.467</td>
+</tr>
+
+<tr>
+<td align="left">2013</td>
+<td align="right">2013</td>
+<td align="left">WC1</td>
+<td align="left">W (4-2)</td>
+<td align="left">DEN</td>
+<td align="right">.442</td>
+</tr>
+
+<tr>
+<td align="left">2018</td>
+<td align="right">2018</td>
+<td align="left">WCS</td>
+<td align="left">W (4-1)</td>
+<td align="left">NOP</td>
+<td align="right">.441</td>
+</tr>
+
+<tr>
+<td align="left">2022</td>
+<td align="right">2022</td>
+<td align="left">WCF</td>
+<td align="left">W (4-1)</td>
+<td align="left">DAL</td>
+<td align="right">.439</td>
+</tr>
+
+<tr>
+<td align="left">2022</td>
+<td align="right">2022</td>
+<td align="left">FIN</td>
+<td align="left">W (4-2)</td>
+<td align="left">BOS</td>
+<td align="right">.437</td>
+</tr>
+
+<tr>
+<td align="left">2016</td>
+<td align="right">2016</td>
+<td align="left">WC1</td>
+<td align="left">W (4-1)</td>
+<td align="left">HOU</td>
+<td align="right">.429</td>
+</tr>
+
+<tr>
+<td align="left">2019</td>
+<td align="right">2019</td>
+<td align="left">WCF</td>
+<td align="left">W (4-0)</td>
+<td align="left">POR</td>
+<td align="right">.426</td>
+</tr>
+
+<tr>
+<td align="left">2017</td>
+<td align="right">2017</td>
+<td align="left">WC1</td>
+<td align="left">W (4-0)</td>
+<td align="left">POR</td>
+<td align="right">.422</td>
+</tr>
+
+<tr>
+<td align="left">2015</td>
+<td align="right">2015</td>
+<td align="left">WC1</td>
+<td align="left">W (4-0)</td>
+<td align="left">NOP</td>
+<td align="right">.417</td>
+</tr>
+
+<tr>
+<td align="left">2016</td>
+<td align="right">2016</td>
+<td align="left">WCF</td>
+<td align="left">W (4-3)</td>
+<td align="left">OKC</td>
+<td align="right">.416</td>
+</tr>
+
+<tr>
+<td align="left">2018</td>
+<td align="right">2018</td>
+<td align="left">FIN</td>
+<td align="left">W (4-0)</td>
+<td align="left">CLE</td>
+<td align="right">.415</td>
+</tr>
+
+<tr>
+<td align="left">2015</td>
+<td align="right">2015</td>
+<td align="left">WCS</td>
+<td align="left">W (4-2)</td>
+<td align="left">MEM</td>
+<td align="right">.406</td>
+</tr>
+
+<tr>
+<td align="left">2022</td>
+<td align="right">2022</td>
+<td align="left">WC1</td>
+<td align="left">W (4-1)</td>
+<td align="left">DEN</td>
+<td align="right">.404</td>
+</tr>
+
+<tr>
+<td align="left">2016</td>
+<td align="right">2016</td>
+<td align="left">FIN</td>
+<td align="left">L (3-4)</td>
+<td align="left">CLE</td>
+<td align="right">.400</td>
+</tr>
+</tbody>
+</table>
+<p>Provided by <a href="https://www.sports-reference.com/sharing.html?utm_source=direct&amp;utm_medium=Share&amp;utm_campaign=ShareTool" target="_blank">Basketball-Reference.com</a>: <a href="https://www.basketball-reference.com/players/c/curryst01.html?sr&amp;utm_source=direct&amp;utm_medium=Share&amp;utm_campaign=ShareTool#playoffs-series" target="_blank">View Original Table</a>
+Generated 11/8/2024.</p>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="lw2t0kt" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Hernois17</div>
+        <div>15 | 2 hours ago </div>
+      </div>
+      <label for="lw2t0kt" class="commentText"><p>What&rsquo;s the record in series below 40% from 3</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="lw2uakf" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>PolposBanana</div>
+        <div>17 | 2 hours ago </div>
+      </div>
+      <label for="lw2uakf" class="commentText"><p>8-4</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="lw2wval" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>rox_123</div>
+        <div>7 | an hour ago </div>
+      </div>
+      <label for="lw2wval" class="commentText"><p>Welp. He&rsquo;s a winner DAMN.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="lw3a7vc" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Mukbeth | PHI</div>
+        <div>1 | 6 minutes ago </div>
+      </div>
+      <label for="lw3a7vc" class="commentText"><p>4 losses. What a scrub</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="lw2sgiq" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Expensive-Inside-426</div>
+        <div>7 | 2 hours ago </div>
+      </div>
+      <label for="lw2sgiq" class="commentText"><p>just goes to show how dominant he is when his shots are falling. absolute masterclass.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="lw32klo" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Fresh_Inflation_2430</div>
+        <div>6 | an hour ago </div>
+      </div>
+      <label for="lw32klo" class="commentText"><p>This just in, players play well when they make their shots</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="lw31m21" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>TemporaryValue5755</div>
+        <div>6 | an hour ago </div>
+      </div>
+      <label for="lw31m21" class="commentText"><p>My favorite stat is Curry has never lost a playoff series in less than 6 games. Never been swept or gentleman’s swept. Shaq got swept 6 times.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="lw33gak" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>shanmustafa</div>
+        <div>3 | 41 minutes ago </div>
+      </div>
+      <label for="lw33gak" class="commentText"><p>it&rsquo;s a cool stat for sure</p>
+
+<p>but it&rsquo;s also about opportunity</p>
+
+<p>two? seasons where his teams were play-in teams and didn&rsquo;t make it because he lost the final game, that&rsquo;s kinda worse than making the playoffs and getting swept, but narratively lmao i guess it isn&rsquo;t</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="lw38s3v" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>BetweenTheBuzzAndMe | Charlotte Bobcats</div>
+        <div>1 | 13 minutes ago </div>
+      </div>
+      <label for="lw38s3v" class="commentText"><p>Steph and the Warriors have had very unique arcs, where after their first 2 playoff runs, they were either title contenders or missed the playoffs entirely (Steph&rsquo;s early years, and then 2020, 2021, and 2024, the latter two losing in the play-in). So not many chances to get swept or lose in 5. Not many teams have meteoric rises like them, and most will fizzle out rather than completely crash and burn like the injuries they suffered after 2019.</p>
+
+<p>Meanwhile a few of those Shaq sweeps were by the eventual champs (1995 Finals to Houston, 1996 ECF to Bulls, 1999 WCSF to Spurs). Much better than not making it at all. He also made the playoffs in <sup>17</sup>&frasl;<sub>19</sub> seasons, and the other two were:</p>
+
+<ul>
+<li><p>once as a rookie where the Magic lost a tiebreaker for the 8th/9th seed, worth noting he still turned a 21-61 team the previous year into a 41-41 team.</p></li>
+
+<li><p>once in 2009 with the Suns who went 46-36 and missed the playoffs by two games, despite losing Stoudemire for the back half of that season.</p></li>
+</ul>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="lw34k3r" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>nowhathappenedwas | NBA</div>
+        <div>3 | 35 minutes ago </div>
+      </div>
+      <label for="lw34k3r" class="commentText"><p>Warriors are 22-3 in playoff series when Klay shoots below 50% on threes and 2-2 in playoff series when Klay shoots 50% or better.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="lw36ud3" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>bobbdac7894</div>
+        <div>1 | 23 minutes ago </div>
+      </div>
+      <label for="lw36ud3" class="commentText"><p>Shooting 40+ percent from 3 is his norm. A player not performing at his norm means he&rsquo;s choking. The fact he shot less than his norm in a lot of playoff series means he has choked a ton in the playoffs.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="lw380dp" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>tjl297 | Cavaliers</div>
+        <div>1 | 17 minutes ago </div>
+      </div>
+      <label for="lw380dp" class="commentText"><p>Cavs 2016 title mentioned</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
