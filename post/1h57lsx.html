@@ -1,0 +1,688 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type=checkbox] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C""\201D""\2018""\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555; 
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position:relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size:24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText, .commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size:24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+    font-size: 38px;
+    line-height: 1.5;
+    color: white;
+}
+
+.selfPostContainer * {
+    color: white;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/nba/comments/1h57lsx/donovan_mitchell_has_joined_michael_jordan_as_the/"><p>Donovan Mitchell has joined Michael Jordan as the only players in NBA history to average 30+ PPG against the Celtics</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <p>Source: Literally us, <a href="https://www.basketball-reference.com/" target="_blank">Basketball Reference</a>!</p>
+
+<p>Below is the Top-10 Leaderboard, no minimum number of games played:</p>
+
+<table>
+<thead>
+<tr>
+<th align="left">Player</th>
+<th align="left">Games</th>
+<th align="left">Points Per Game</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">1. <a href="https://www.basketball-reference.com/players/j/jordami01/splits/" target="_blank">Michael Jordan</a></td>
+<td align="left">56</td>
+<td align="left">30.7</td>
+</tr>
+
+<tr>
+<td align="left">2. <a href="https://www.basketball-reference.com/players/m/mitchdo01/splits/" target="_blank">Donovan Mitchell</a></td>
+<td align="left">18</td>
+<td align="left">30.2</td>
+</tr>
+
+<tr>
+<td align="left">3.  <a href="https://www.basketball-reference.com/players/d/doncilu01/splits/" target="_blank">Luka Dončić</a></td>
+<td align="left">11</td>
+<td align="left">28.9</td>
+</tr>
+
+<tr>
+<td align="left">4.  <a href="https://www.basketball-reference.com/players/a/abdulka01/splits/" target="_blank">Kareem Abdul-Jabbar</a></td>
+<td align="left">62</td>
+<td align="left">28.9</td>
+</tr>
+
+<tr>
+<td align="left">5. <a href="https://www.basketball-reference.com/players/j/jamesle01/splits/" target="_blank">LeBron James</a></td>
+<td align="left">59</td>
+<td align="left">28.8</td>
+</tr>
+
+<tr>
+<td align="left">6. <a href="https://www.basketball-reference.com/players/c/chambwi01/splits/" target="_blank">Wilt Chamberlain</a></td>
+<td align="left">112</td>
+<td align="left">28.7</td>
+</tr>
+
+<tr>
+<td align="left">7. <a href="https://www.basketball-reference.com/players/e/edwaran01/splits/" target="_blank">Anthony Edwards</a></td>
+<td align="left">8</td>
+<td align="left">28.0</td>
+</tr>
+
+<tr>
+<td align="left">8. <a href="https://www.basketball-reference.com/players/e/embiijo01/splits/" target="_blank">Joel Embiid</a></td>
+<td align="left">24</td>
+<td align="left">27.6</td>
+</tr>
+
+<tr>
+<td align="left">9. <a href="https://www.basketball-reference.com/players/p/pettibo01/splits/" target="_blank">Bob Pettit</a></td>
+<td align="left">91</td>
+<td align="left">27.6</td>
+</tr>
+
+<tr>
+<td align="left">10. <a href="https://www.basketball-reference.com/players/b/ballla01/splits/" target="_blank">LaMelo Ball</a></td>
+<td align="left">10</td>
+<td align="left">27.6</td>
+</tr>
+</tbody>
+</table>
+<p>Note: Each players&rsquo; career splits pages are linked in the chart above!</p>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="m03vo3f" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ThinkSoftware | Hawks</div>
+        <div>48 | an hour ago </div>
+      </div>
+      <label for="m03vo3f" class="commentText"><p>I&rsquo;m tired of scrubs like MJ, Kareem and LeBron being compared to legends like LaMelo, ANT and Donovan Mitchell</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="m03zrw7" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Sijols | Knicks</div>
+        <div>12 | 42 minutes ago </div>
+      </div>
+      <label for="m03zrw7" class="commentText"><p>How many instagram followers does Bob Pettit have?   Checkmate</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="m040prr" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>waffle-spouse | Lakers</div>
+        <div>6 | 37 minutes ago </div>
+      </div>
+      <label for="m040prr" class="commentText"><p>You joke, but it’s probably worth a mention that Donovan Mitchell is just as, if not more skilled than the average “star” shooting guard in the 90s. I’d reckon this Cavs team would give the 96’ Bulls a good run for their money.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="m043gm3" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>bouyent | Minneapolis Lakers</div>
+        <div>1 | 21 minutes ago </div>
+      </div>
+      <label for="m043gm3" class="commentText"><p>The only reason I give this any credit is because the Bulls have Bill Cartwright as their starting center. He gonna get violated by Allen and Mobely.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="m044eac" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>waffle-spouse | Lakers</div>
+        <div>1 | 15 minutes ago </div>
+      </div>
+      <label for="m044eac" class="commentText"><p>I don’t know who any of those players are (I only watch LeGOAT games) but I agree with you just from the names. Bill Cartwright sounds like he should be delivering mail.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="m03vi5p" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>healthy_obsession_ | 76ers</div>
+        <div>43 | an hour ago </div>
+      </div>
+      <label for="m03vi5p" class="commentText"><p>most meaningful stat posted on r/nba</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="m03z6ob" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>CardiologistBig7983</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="m03z6ob" class="commentText"><p>Wasn&rsquo;t Christmas yesterday?</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="m03ybea" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>SenorMcNuggets | Cavaliers</div>
+        <div>42 | an hour ago </div>
+      </div>
+      <label for="m03ybea" class="commentText"><p>Wilt being 6th on that list says so much about Bill Russell’s all-time defense.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="m043jo7" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>considertheoctopus | Celtics</div>
+        <div>1 | 20 minutes ago </div>
+      </div>
+      <label for="m043jo7" class="commentText"><p>Man, 112 games for Wilt too. He must have been so sick of playing Bill Russell every year and every playoffs for like a decade.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="m045b4d" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Plies- | Celtics</div>
+        <div>1 | 10 minutes ago </div>
+      </div>
+      <label for="m045b4d" class="commentText"><p><a href="https://imgur.com/a/NtdbuX3" target="_blank">This says it all.</a></p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="m03vw75" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Background-Piece4387</div>
+        <div>11 | an hour ago </div>
+      </div>
+      <label for="m03vw75" class="commentText"><p>I LOVE DONOVAN MITCHELL ‼️‼️</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="m03yog6" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Impossible-Group8553</div>
+        <div>5 | an hour ago </div>
+      </div>
+      <label for="m03yog6" class="commentText"><p>He’ll probably fall off the list tbh, players’ career averages drop as they decline physically. Still impressive tho</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="m041ojg" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>spanther96 | Celtics</div>
+        <div>1 | 31 minutes ago </div>
+      </div>
+      <label for="m041ojg" class="commentText"><p>Donovan has always been electric but dude has been absolutely nasty in the Cavs. I feel like in the Jazz he was more of a one move and explode kind of guy, with a good jumpshot. But now it feels like his bag has become crazy and he&rsquo;s shooting Dame tier tough shots. I swear a few weeks ago this dude did a Shamgod snatch back into a three and swished it. He&rsquo;s still retained a lot of his explosiveness from his younger days and is still really strong and agile as a finisher. He absolutely deserves an All NBA 1st or 2nd team this season based on his play so far.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="m046gz8" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>SomeFatherFigure | Cavaliers</div>
+        <div>1 | 3 minutes ago </div>
+      </div>
+      <label for="m046gz8" class="commentText"><p>Having other guys capable of carrying the offensive load has done wonders for him. It’s taken a while for him to adjust to playing off-ball more, but he just looks so fresh and rested going into the 4th quarters of games compared to the other guys on the court.</p>
+
+<p>It’s definitely helped his defensive intensity as well. He’s not always locked in like Okoro or Wade, but he is smothering guys and flying over screens when he has to.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="m042lzu" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Warthog9198</div>
+        <div>1 | 26 minutes ago </div>
+      </div>
+      <label for="m042lzu" class="commentText"><p>Wilt having those stats against that stacked Celtics squad is impressive.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="m03x9h8" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>101bannedaccounts | Lakers</div>
+        <div>3 | an hour ago </div>
+      </div>
+      <label for="m03x9h8" class="commentText"><p>Thanks for that</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="m03y8lp" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>everyoneneedsaherro | NBA</div>
+        <div>2 | an hour ago </div>
+      </div>
+      <label for="m03y8lp" class="commentText"><p>Does this include playoffs and regular season or just regular season?</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="m03yqk7" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Basketball_Reference | Basketball Reference</div>
+        <div>9 | an hour ago </div>
+      </div>
+      <label for="m03yqk7" class="commentText"><p>This is regular season only!</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="m03zqtq" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>DestrosSilverHammer</div>
+        <div>6 | 42 minutes ago </div>
+      </div>
+      <label for="m03zqtq" class="commentText"><p>As a Celtics fan looking for a gotcha, I was annoyed to find that Mitchell’s playoff scoring average against Boston is actually slightly higher. (Only over three games played, though.)</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="m03z10u" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>everyoneneedsaherro | NBA</div>
+        <div>2 | an hour ago </div>
+      </div>
+      <label for="m03z10u" class="commentText"><p>Gotcha. I was wondering if Jordan’s 63 point game was contributing to this. Thanks!</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="m0436yg" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>matzan | NBA</div>
+        <div>1 | 22 minutes ago </div>
+      </div>
+      <label for="m0436yg" class="commentText"><p>Who are the players that averaged fewer than 2 PPG?</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="m044kbf" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>lolguyzpog | 76ers</div>
+        <div>1 | 14 minutes ago </div>
+      </div>
+      <label for="m044kbf" class="commentText"><p>suprised about embiid and ant</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
