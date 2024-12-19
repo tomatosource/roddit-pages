@@ -1,0 +1,2481 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type=checkbox] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C""\201D""\2018""\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555; 
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position:relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size:24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText, .commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size:24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+    font-size: 38px;
+    line-height: 1.5;
+    color: white;
+}
+
+.selfPostContainer * {
+    color: white;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/nba/comments/1hi2p2d/the_phoenix_suns_4089_million_have_the_second/"><p>The Phoenix Suns (<span class="math inline">\(408.9 million) have the second highest payroll of any American pro sports team, behind only the New York Mets (\)</span>446.8 million), and ahead of the Los Angeles Dodgers (<span class="math inline">\(408.7 million), New York Yankees (\)</span>373.7 million), and Minnesota Timberwolves ($299.5 million).</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <table>
+<thead>
+<tr>
+<th align="right">Rk</th>
+<th align="left">Lg</th>
+<th align="right">Lg Rk</th>
+<th align="left">Team</th>
+<th align="right">Player Salaries</th>
+<th align="left">Luxury Tax</th>
+<th align="right">Total Payroll</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="right">1</td>
+<td align="left">MLB</td>
+<td align="right">1</td>
+<td align="left">NYM</td>
+<td align="right">$348,624,656</td>
+<td align="left">$98,187,122</td>
+<td align="right">$446,811,778</td>
+</tr>
+
+<tr>
+<td align="right">2</td>
+<td align="left">NBA</td>
+<td align="right">1</td>
+<td align="left">PHX</td>
+<td align="right">$220,403,340</td>
+<td align="left">$188,488,239</td>
+<td align="right">$408,891,579</td>
+</tr>
+
+<tr>
+<td align="right">3</td>
+<td align="left">MLB</td>
+<td align="right">2</td>
+<td align="left">LAD</td>
+<td align="right">$330,492,509</td>
+<td align="left">$78,241,760</td>
+<td align="right">$408,734,269</td>
+</tr>
+
+<tr>
+<td align="right">4</td>
+<td align="left">MLB</td>
+<td align="right">3</td>
+<td align="left">NYY</td>
+<td align="right">$313,827,091</td>
+<td align="left">$59,909,800</td>
+<td align="right">$373,736,891</td>
+</tr>
+
+<tr>
+<td align="right">5</td>
+<td align="left">NBA</td>
+<td align="right">2</td>
+<td align="left">MIN</td>
+<td align="right">$203,528,447</td>
+<td align="left">$95,963,024</td>
+<td align="right">$299,491,471</td>
+</tr>
+
+<tr>
+<td align="right">6</td>
+<td align="left">MLB</td>
+<td align="right">4</td>
+<td align="left">ATL</td>
+<td align="right">$278,538,793</td>
+<td align="left">$15,554,095</td>
+<td align="right">$294,092,888</td>
+</tr>
+
+<tr>
+<td align="right">7</td>
+<td align="left">MLB</td>
+<td align="right">5</td>
+<td align="left">PHI</td>
+<td align="right">$261,572,758</td>
+<td align="left">$10,000,000</td>
+<td align="right">$271,572,758</td>
+</tr>
+
+<tr>
+<td align="right">8</td>
+<td align="left">NBA</td>
+<td align="right">4</td>
+<td align="left">MIL</td>
+<td align="right">$193,097,305</td>
+<td align="left">$74,838,427</td>
+<td align="right">$267,935,732</td>
+</tr>
+
+<tr>
+<td align="right">9</td>
+<td align="left">MLB</td>
+<td align="right">6</td>
+<td align="left">HOU</td>
+<td align="right">$260,683,706</td>
+<td align="left">$4,000,000</td>
+<td align="right">$264,683,706</td>
+</tr>
+
+<tr>
+<td align="right">10</td>
+<td align="left">NBA</td>
+<td align="right">3</td>
+<td align="left">BOS</td>
+<td align="right">$196,574,991</td>
+<td align="left">$65,596,446</td>
+<td align="right">$262,171,437</td>
+</tr>
+
+<tr>
+<td align="right">11</td>
+<td align="left">NFL</td>
+<td align="right">1</td>
+<td align="left">CAR</td>
+<td align="right" colspan="2">$260,892,115</td>
+<td align="left">$260,892,115</td>
+</tr>
+
+<tr>
+<td align="right">12</td>
+<td align="left">NFL</td>
+<td align="right">2</td>
+<td align="left">CIN</td>
+<td align="right" colspan="2">$259,471,336</td>
+<td align="left">$259,471,336</td>
+</tr>
+
+<tr>
+<td align="right">13</td>
+<td align="left">NFL</td>
+<td align="right">3</td>
+<td align="left">LAC</td>
+<td align="right" colspan="2">$259,462,611</td>
+<td align="left">$259,462,611</td>
+</tr>
+
+<tr>
+<td align="right">14</td>
+<td align="left">NFL</td>
+<td align="right">4</td>
+<td align="left">NYG</td>
+<td align="right" colspan="2">$258,004,692</td>
+<td align="left">$258,004,692</td>
+</tr>
+
+<tr>
+<td align="right">15</td>
+<td align="left">NFL</td>
+<td align="right">5</td>
+<td align="left">BUF</td>
+<td align="right" colspan="2">$255,555,905</td>
+<td align="left">$255,555,905</td>
+</tr>
+
+<tr>
+<td align="right">16</td>
+<td align="left">NFL</td>
+<td align="right">6</td>
+<td align="left">NYJ</td>
+<td align="right" colspan="2">$255,380,926</td>
+<td align="left">$255,380,926</td>
+</tr>
+
+<tr>
+<td align="right">17</td>
+<td align="left">NFL</td>
+<td align="right">7</td>
+<td align="left">NO</td>
+<td align="right" colspan="2">$254,962,352</td>
+<td align="left">$254,962,352</td>
+</tr>
+
+<tr>
+<td align="right">18</td>
+<td align="left">NFL</td>
+<td align="right">8</td>
+<td align="left">LAR</td>
+<td align="right" colspan="2">$254,455,112</td>
+<td align="left">$254,455,112</td>
+</tr>
+
+<tr>
+<td align="right">19</td>
+<td align="left">NFL</td>
+<td align="right">9</td>
+<td align="left">CHI</td>
+<td align="right" colspan="2">$254,437,073</td>
+<td align="left">$254,437,073</td>
+</tr>
+
+<tr>
+<td align="right">20</td>
+<td align="left">NFL</td>
+<td align="right">10</td>
+<td align="left">ARI</td>
+<td align="right" colspan="2">$253,450,990</td>
+<td align="left">$253,450,990</td>
+</tr>
+
+<tr>
+<td align="right">21</td>
+<td align="left">NFL</td>
+<td align="right">11</td>
+<td align="left">ATL</td>
+<td align="right" colspan="2">$253,207,380</td>
+<td align="left">$253,207,380</td>
+</tr>
+
+<tr>
+<td align="right">22</td>
+<td align="left">NFL</td>
+<td align="right">12</td>
+<td align="left">HOU</td>
+<td align="right" colspan="2">$252,969,029</td>
+<td align="left">$252,969,029</td>
+</tr>
+
+<tr>
+<td align="right">23</td>
+<td align="left">NFL</td>
+<td align="right">13</td>
+<td align="left">SEA</td>
+<td align="right" colspan="2">$252,925,397</td>
+<td align="left">$252,925,397</td>
+</tr>
+
+<tr>
+<td align="right">24</td>
+<td align="left">NFL</td>
+<td align="right">14</td>
+<td align="left">BAL</td>
+<td align="right" colspan="2">$252,418,262</td>
+<td align="left">$252,418,262</td>
+</tr>
+
+<tr>
+<td align="right">25</td>
+<td align="left">NFL</td>
+<td align="right">15</td>
+<td align="left">MIN</td>
+<td align="right" colspan="2">$252,387,867</td>
+<td align="left">$252,387,867</td>
+</tr>
+
+<tr>
+<td align="right">26</td>
+<td align="left">NFL</td>
+<td align="right">16</td>
+<td align="left">JAX</td>
+<td align="right" colspan="2">$252,235,244</td>
+<td align="left">$252,235,244</td>
+</tr>
+
+<tr>
+<td align="right">27</td>
+<td align="left">NFL</td>
+<td align="right">17</td>
+<td align="left">DEN</td>
+<td align="right" colspan="2">$252,229,214</td>
+<td align="left">$252,229,214</td>
+</tr>
+
+<tr>
+<td align="right">28</td>
+<td align="left">NFL</td>
+<td align="right">18</td>
+<td align="left">GB</td>
+<td align="right" colspan="2">$251,385,310</td>
+<td align="left">$251,385,310</td>
+</tr>
+
+<tr>
+<td align="right">29</td>
+<td align="left">NFL</td>
+<td align="right">19</td>
+<td align="left">IND</td>
+<td align="right" colspan="2">$250,583,325</td>
+<td align="left">$250,583,325</td>
+</tr>
+
+<tr>
+<td align="right">30</td>
+<td align="left">NFL</td>
+<td align="right">20</td>
+<td align="left">PHI</td>
+<td align="right" colspan="2">$250,472,576</td>
+<td align="left">$250,472,576</td>
+</tr>
+
+<tr>
+<td align="right">31</td>
+<td align="left">NFL</td>
+<td align="right">21</td>
+<td align="left">KC</td>
+<td align="right" colspan="2">$249,496,142</td>
+<td align="left">$249,496,142</td>
+</tr>
+
+<tr>
+<td align="right">32</td>
+<td align="left">NFL</td>
+<td align="right">22</td>
+<td align="left">CLE</td>
+<td align="right" colspan="2">$248,751,341</td>
+<td align="left">$248,751,341</td>
+</tr>
+
+<tr>
+<td align="right">33</td>
+<td align="left">NFL</td>
+<td align="right">23</td>
+<td align="left">PIT</td>
+<td align="right" colspan="2">$247,812,491</td>
+<td align="left">$247,812,491</td>
+</tr>
+
+<tr>
+<td align="right">34</td>
+<td align="left">NFL</td>
+<td align="right">24</td>
+<td align="left">SF</td>
+<td align="right" colspan="2">$246,234,087</td>
+<td align="left">$246,234,087</td>
+</tr>
+
+<tr>
+<td align="right">35</td>
+<td align="left">MLB</td>
+<td align="right">7</td>
+<td align="left">SF</td>
+<td align="right">$244,097,846</td>
+<td align="left">$1,419,569</td>
+<td align="right">$245,517,415</td>
+</tr>
+
+<tr>
+<td align="right">36</td>
+<td align="left">MLB</td>
+<td align="right">8</td>
+<td align="left">TEX</td>
+<td align="right">$243,463,936</td>
+<td align="left">$1,939,181</td>
+<td align="right">$245,403,117</td>
+</tr>
+
+<tr>
+<td align="right">37</td>
+<td align="left">NFL</td>
+<td align="right">25</td>
+<td align="left">TEN</td>
+<td align="right" colspan="2">$245,335,678</td>
+<td align="left">$245,335,678</td>
+</tr>
+
+<tr>
+<td align="right">38</td>
+<td align="left">NFL</td>
+<td align="right">26</td>
+<td align="left">TB</td>
+<td align="right" colspan="2">$243,896,056</td>
+<td align="left">$243,896,056</td>
+</tr>
+
+<tr>
+<td align="right">39</td>
+<td align="left">NBA</td>
+<td align="right">6</td>
+<td align="left">LAL</td>
+<td align="right">$188,200,999</td>
+<td align="left">$53,223,230</td>
+<td align="right">$241,424,229</td>
+</tr>
+
+<tr>
+<td align="right">40</td>
+<td align="left">NFL</td>
+<td align="right">27</td>
+<td align="left">WAS</td>
+<td align="right" colspan="2">$240,914,997</td>
+<td align="left">$240,914,997</td>
+</tr>
+
+<tr>
+<td align="right">41</td>
+<td align="left">NFL</td>
+<td align="right">28</td>
+<td align="left">DAL</td>
+<td align="right" colspan="2">$239,751,316</td>
+<td align="left">$239,751,316</td>
+</tr>
+
+<tr>
+<td align="right">42</td>
+<td align="left">NFL</td>
+<td align="right">29</td>
+<td align="left">MIA</td>
+<td align="right" colspan="2">$238,298,999</td>
+<td align="left">$238,298,999</td>
+</tr>
+
+<tr>
+<td align="right">43</td>
+<td align="left">MLB</td>
+<td align="right">9</td>
+<td align="left">TOR</td>
+<td align="right" colspan="2">$235,094,214</td>
+<td align="left">$235,094,214</td>
+</tr>
+
+<tr>
+<td align="right">44</td>
+<td align="left">MLB</td>
+<td align="right">10</td>
+<td align="left">CHC</td>
+<td align="right" colspan="2">$234,798,044</td>
+<td align="left">$234,798,044</td>
+</tr>
+
+<tr>
+<td align="right">45</td>
+<td align="left">NFL</td>
+<td align="right">30</td>
+<td align="left">DET</td>
+<td align="right" colspan="2">$233,985,012</td>
+<td align="left">$233,985,012</td>
+</tr>
+
+<tr>
+<td align="right">46</td>
+<td align="left">NFL</td>
+<td align="right">31</td>
+<td align="left">NE</td>
+<td align="right" colspan="2">$230,519,739</td>
+<td align="left">$230,519,739</td>
+</tr>
+
+<tr>
+<td align="right">47</td>
+<td align="left">MLB</td>
+<td align="right">11</td>
+<td align="left">SD</td>
+<td align="right" colspan="2">$227,744,889</td>
+<td align="left">$227,744,889</td>
+</tr>
+
+<tr>
+<td align="right">48</td>
+<td align="left">NFL</td>
+<td align="right">32</td>
+<td align="left">LV</td>
+<td align="right" colspan="2">$226,989,897</td>
+<td align="left">$226,989,897</td>
+</tr>
+
+<tr>
+<td align="right">49</td>
+<td align="left">NBA</td>
+<td align="right">5</td>
+<td align="left">NYK</td>
+<td align="right">$188,350,128</td>
+<td align="left">$36,320,901</td>
+<td align="right">$224,671,029</td>
+</tr>
+
+<tr>
+<td align="right">50</td>
+<td align="left">MLB</td>
+<td align="right">12</td>
+<td align="left">BOS</td>
+<td align="right" colspan="2">$222,741,592</td>
+<td align="left">$222,741,592</td>
+</tr>
+
+<tr>
+<td align="right">51</td>
+<td align="left">MLB</td>
+<td align="right">13</td>
+<td align="left">ARI</td>
+<td align="right" colspan="2">$219,017,048</td>
+<td align="left">$219,017,048</td>
+</tr>
+
+<tr>
+<td align="right">52</td>
+<td align="left">MLB</td>
+<td align="right">14</td>
+<td align="left">STL</td>
+<td align="right" colspan="2">$215,778,782</td>
+<td align="left">$215,778,782</td>
+</tr>
+
+<tr>
+<td align="right">53</td>
+<td align="left">NBA</td>
+<td align="right">7</td>
+<td align="left">MIA</td>
+<td align="right">$183,128,008</td>
+<td align="left">$21,741,232</td>
+<td align="right">$204,869,240</td>
+</tr>
+
+<tr>
+<td align="right">54</td>
+<td align="left">NBA</td>
+<td align="right">8</td>
+<td align="left">DEN</td>
+<td align="right">$182,574,315</td>
+<td align="left">$20,356,999</td>
+<td align="right">$202,931,314</td>
+</tr>
+
+<tr>
+<td align="right">55</td>
+<td align="left">NBA</td>
+<td align="right">9</td>
+<td align="left">PHI</td>
+<td align="right">$180,979,548</td>
+<td align="left">$16,497,738</td>
+<td align="right">$197,477,286</td>
+</tr>
+
+<tr>
+<td align="right">56</td>
+<td align="left">NBA</td>
+<td align="right">10</td>
+<td align="left">GSW</td>
+<td align="right">$176,801,591</td>
+<td align="left">$15,173,903</td>
+<td align="right">$191,975,494</td>
+</tr>
+
+<tr>
+<td align="right">57</td>
+<td align="left">MLB</td>
+<td align="right">15</td>
+<td align="left">LAA</td>
+<td align="right" colspan="2">$189,110,226</td>
+<td align="left">$189,110,226</td>
+</tr>
+
+<tr>
+<td align="right">58</td>
+<td align="left">NBA</td>
+<td align="right">11</td>
+<td align="left">DAL</td>
+<td align="right">$176,105,780</td>
+<td align="left">$7,968,644</td>
+<td align="right">$184,074,424</td>
+</tr>
+
+<tr>
+<td align="right">59</td>
+<td align="left">NBA</td>
+<td align="right">12</td>
+<td align="left">LAC</td>
+<td align="right">$173,279,116</td>
+<td align="left">$6,162,788</td>
+<td align="right">$179,441,904</td>
+</tr>
+
+<tr>
+<td align="right">60</td>
+<td align="left">NBA</td>
+<td align="right">13</td>
+<td align="left">NOP</td>
+<td align="right">$172,925,937</td>
+<td align="left">$3,167,904</td>
+<td align="right">$176,093,841</td>
+</tr>
+
+<tr>
+<td align="right">61</td>
+<td align="left">NBA</td>
+<td align="right">14</td>
+<td align="left">CLE</td>
+<td align="right">$172,499,118</td>
+<td align="left">$2,527,676</td>
+<td align="right">$175,026,794</td>
+</tr>
+
+<tr>
+<td align="right">62</td>
+<td align="left">NBA</td>
+<td align="right">15</td>
+<td align="left">IND</td>
+<td align="right">$171,247,486</td>
+<td align="left">$650,228</td>
+<td align="right">$171,897,714</td>
+</tr>
+
+<tr>
+<td align="right">63</td>
+<td align="left">NBA</td>
+<td align="right">16</td>
+<td align="left">ATL</td>
+<td align="right" colspan="2">$169,529,070</td>
+<td align="left">$169,529,070</td>
+</tr>
+
+<tr>
+<td align="right">64</td>
+<td align="left">NBA</td>
+<td align="right">17</td>
+<td align="left">MEM</td>
+<td align="right" colspan="2">$169,013,098</td>
+<td align="left">$169,013,098</td>
+</tr>
+
+<tr>
+<td align="right">65</td>
+<td align="left">NBA</td>
+<td align="right">18</td>
+<td align="left">SAC</td>
+<td align="right" colspan="2">$168,729,541</td>
+<td align="left">$168,729,541</td>
+</tr>
+
+<tr>
+<td align="right">66</td>
+<td align="left">NBA</td>
+<td align="right">19</td>
+<td align="left">BKN</td>
+<td align="right" colspan="2">$168,204,009</td>
+<td align="left">$168,204,009</td>
+</tr>
+
+<tr>
+<td align="right">67</td>
+<td align="left">NBA</td>
+<td align="right">20</td>
+<td align="left">POR</td>
+<td align="right" colspan="2">$167,086,613</td>
+<td align="left">$167,086,613</td>
+</tr>
+
+<tr>
+<td align="right">68</td>
+<td align="left">MLB</td>
+<td align="right">16</td>
+<td align="left">COL</td>
+<td align="right" colspan="2">$166,782,732</td>
+<td align="left">$166,782,732</td>
+</tr>
+
+<tr>
+<td align="right">69</td>
+<td align="left">NBA</td>
+<td align="right">21</td>
+<td align="left">CHI</td>
+<td align="right" colspan="2">$166,275,570</td>
+<td align="left">$166,275,570</td>
+</tr>
+
+<tr>
+<td align="right">70</td>
+<td align="left">MLB</td>
+<td align="right">17</td>
+<td align="left">SEA</td>
+<td align="right" colspan="2">$163,104,238</td>
+<td align="left">$163,104,238</td>
+</tr>
+
+<tr>
+<td align="right">71</td>
+<td align="left">MLB</td>
+<td align="right">18</td>
+<td align="left">KC</td>
+<td align="right" colspan="2">$161,635,939</td>
+<td align="left">$161,635,939</td>
+</tr>
+
+<tr>
+<td align="right">72</td>
+<td align="left">NBA</td>
+<td align="right">22</td>
+<td align="left">CHA</td>
+<td align="right" colspan="2">$161,609,879</td>
+<td align="left">$161,609,879</td>
+</tr>
+
+<tr>
+<td align="right">73</td>
+<td align="left">NBA</td>
+<td align="right">23</td>
+<td align="left">TOR</td>
+<td align="right" colspan="2">$161,530,186</td>
+<td align="left">$161,530,186</td>
+</tr>
+
+<tr>
+<td align="right">74</td>
+<td align="left">NBA</td>
+<td align="right">24</td>
+<td align="left">OKC</td>
+<td align="right" colspan="2">$161,235,704</td>
+<td align="left">$161,235,704</td>
+</tr>
+
+<tr>
+<td align="right">75</td>
+<td align="left">NBA</td>
+<td align="right">25</td>
+<td align="left">HOU</td>
+<td align="right" colspan="2">$160,287,067</td>
+<td align="left">$160,287,067</td>
+</tr>
+
+<tr>
+<td align="right">76</td>
+<td align="left">MLB</td>
+<td align="right">19</td>
+<td align="left">MIN</td>
+<td align="right" colspan="2">$159,419,574</td>
+<td align="left">$159,419,574</td>
+</tr>
+
+<tr>
+<td align="right">77</td>
+<td align="left">NBA</td>
+<td align="right">26</td>
+<td align="left">WAS</td>
+<td align="right" colspan="2">$158,768,239</td>
+<td align="left">$158,768,239</td>
+</tr>
+
+<tr>
+<td align="right">78</td>
+<td align="left">MLB</td>
+<td align="right">20</td>
+<td align="left">MIL</td>
+<td align="right" colspan="2">$156,404,429</td>
+<td align="left">$156,404,429</td>
+</tr>
+
+<tr>
+<td align="right">79</td>
+<td align="left">NBA</td>
+<td align="right">27</td>
+<td align="left">ORL</td>
+<td align="right" colspan="2">$150,359,238</td>
+<td align="left">$150,359,238</td>
+</tr>
+
+<tr>
+<td align="right">80</td>
+<td align="left">NBA</td>
+<td align="right">28</td>
+<td align="left">SAS</td>
+<td align="right" colspan="2">$149,748,208</td>
+<td align="left">$149,748,208</td>
+</tr>
+
+<tr>
+<td align="right">81</td>
+<td align="left">NBA</td>
+<td align="right">29</td>
+<td align="left">UTA</td>
+<td align="right" colspan="2">$143,653,620</td>
+<td align="left">$143,653,620</td>
+</tr>
+
+<tr>
+<td align="right">82</td>
+<td align="left">MLB</td>
+<td align="right">21</td>
+<td align="left">CLE</td>
+<td align="right" colspan="2">$140,326,962</td>
+<td align="left">$140,326,962</td>
+</tr>
+
+<tr>
+<td align="right">83</td>
+<td align="left">MLB</td>
+<td align="right">22</td>
+<td align="left">WSH</td>
+<td align="right" colspan="2">$133,946,396</td>
+<td align="left">$133,946,396</td>
+</tr>
+
+<tr>
+<td align="right">84</td>
+<td align="left">MLB</td>
+<td align="right">23</td>
+<td align="left">BAL</td>
+<td align="right" colspan="2">$131,134,102</td>
+<td align="left">$131,134,102</td>
+</tr>
+
+<tr>
+<td align="right">85</td>
+<td align="left">NBA</td>
+<td align="right">30</td>
+<td align="left">DET</td>
+<td align="right" colspan="2">$126,571,331</td>
+<td align="left">$126,571,331</td>
+</tr>
+
+<tr>
+<td align="right">86</td>
+<td align="left">MLB</td>
+<td align="right">24</td>
+<td align="left">CHW</td>
+<td align="right" colspan="2">$124,020,879</td>
+<td align="left">$124,020,879</td>
+</tr>
+
+<tr>
+<td align="right">87</td>
+<td align="left">MLB</td>
+<td align="right">25</td>
+<td align="left">PIT</td>
+<td align="right" colspan="2">$117,007,405</td>
+<td align="left">$117,007,405</td>
+</tr>
+
+<tr>
+<td align="right">88</td>
+<td align="left">MLB</td>
+<td align="right">26</td>
+<td align="left">MIA</td>
+<td align="right" colspan="2">$116,440,454</td>
+<td align="left">$116,440,454</td>
+</tr>
+
+<tr>
+<td align="right">89</td>
+<td align="left">MLB</td>
+<td align="right">27</td>
+<td align="left">CIN</td>
+<td align="right" colspan="2">$114,791,211</td>
+<td align="left">$114,791,211</td>
+</tr>
+
+<tr>
+<td align="right">90</td>
+<td align="left">MLB</td>
+<td align="right">28</td>
+<td align="left">DET</td>
+<td align="right" colspan="2">$105,967,313</td>
+<td align="left">$105,967,313</td>
+</tr>
+
+<tr>
+<td align="right">91</td>
+<td align="left">NHL</td>
+<td align="right">1</td>
+<td align="left">WAS</td>
+<td align="right" colspan="2">$99,661,159</td>
+<td align="left">$99,661,159</td>
+</tr>
+
+<tr>
+<td align="right">92</td>
+<td align="left">NHL</td>
+<td align="right">2</td>
+<td align="left">COL</td>
+<td align="right" colspan="2">$95,639,931</td>
+<td align="left">$95,639,931</td>
+</tr>
+
+<tr>
+<td align="right">93</td>
+<td align="left">NHL</td>
+<td align="right">3</td>
+<td align="left">PIT</td>
+<td align="right" colspan="2">$94,470,846</td>
+<td align="left">$94,470,846</td>
+</tr>
+
+<tr>
+<td align="right">94</td>
+<td align="left">NHL</td>
+<td align="right">4</td>
+<td align="left">TOR</td>
+<td align="right" colspan="2">$93,229,032</td>
+<td align="left">$93,229,032</td>
+</tr>
+
+<tr>
+<td align="right">95</td>
+<td align="left">NHL</td>
+<td align="right">5</td>
+<td align="left">NYI</td>
+<td align="right" colspan="2">$91,375,982</td>
+<td align="left">$91,375,982</td>
+</tr>
+
+<tr>
+<td align="right">96</td>
+<td align="left">NHL</td>
+<td align="right">6</td>
+<td align="left">STL</td>
+<td align="right" colspan="2">$91,069,584</td>
+<td align="left">$91,069,584</td>
+</tr>
+
+<tr>
+<td align="right">97</td>
+<td align="left">NHL</td>
+<td align="right">7</td>
+<td align="left">MIN</td>
+<td align="right" colspan="2">$90,231,560</td>
+<td align="left">$90,231,560</td>
+</tr>
+
+<tr>
+<td align="right">98</td>
+<td align="left">MLB</td>
+<td align="right">29</td>
+<td align="left">TB</td>
+<td align="right" colspan="2">$90,121,304</td>
+<td align="left">$90,121,304</td>
+</tr>
+
+<tr>
+<td align="right">99</td>
+<td align="left">NHL</td>
+<td align="right">8</td>
+<td align="left">SEA</td>
+<td align="right" colspan="2">$89,409,024</td>
+<td align="left">$89,409,024</td>
+</tr>
+
+<tr>
+<td align="right">100</td>
+<td align="left">NHL</td>
+<td align="right">9</td>
+<td align="left">MTL</td>
+<td align="right" colspan="2">$89,241,925</td>
+<td align="left">$89,241,925</td>
+</tr>
+
+<tr>
+<td align="right">101</td>
+<td align="left">NHL</td>
+<td align="right">10</td>
+<td align="left">CAR</td>
+<td align="right" colspan="2">$88,995,397</td>
+<td align="left">$88,995,397</td>
+</tr>
+
+<tr>
+<td align="right">102</td>
+<td align="left">NHL</td>
+<td align="right">11</td>
+<td align="left">VGK</td>
+<td align="right" colspan="2">$88,679,151</td>
+<td align="left">$88,679,151</td>
+</tr>
+
+<tr>
+<td align="right">103</td>
+<td align="left">NHL</td>
+<td align="right">12</td>
+<td align="left">OTT</td>
+<td align="right" colspan="2">$88,479,200</td>
+<td align="left">$88,479,200</td>
+</tr>
+
+<tr>
+<td align="right">104</td>
+<td align="left">NHL</td>
+<td align="right">13</td>
+<td align="left">VAN</td>
+<td align="right" colspan="2">$88,216,958</td>
+<td align="left">$88,216,958</td>
+</tr>
+
+<tr>
+<td align="right">105</td>
+<td align="left">NHL</td>
+<td align="right">14</td>
+<td align="left">LAK</td>
+<td align="right" colspan="2">$88,167,506</td>
+<td align="left">$88,167,506</td>
+</tr>
+
+<tr>
+<td align="right">106</td>
+<td align="left">NHL</td>
+<td align="right">15</td>
+<td align="left">BOS</td>
+<td align="right" colspan="2">$88,162,272</td>
+<td align="left">$88,162,272</td>
+</tr>
+
+<tr>
+<td align="right">107</td>
+<td align="left">NHL</td>
+<td align="right">16</td>
+<td align="left">WPG</td>
+<td align="right" colspan="2">$88,075,613</td>
+<td align="left">$88,075,613</td>
+</tr>
+
+<tr>
+<td align="right">108</td>
+<td align="left">NHL</td>
+<td align="right">17</td>
+<td align="left">FLA</td>
+<td align="right" colspan="2">$87,816,453</td>
+<td align="left">$87,816,453</td>
+</tr>
+
+<tr>
+<td align="right">109</td>
+<td align="left">NHL</td>
+<td align="right">18</td>
+<td align="left">TBL</td>
+<td align="right" colspan="2">$87,421,665</td>
+<td align="left">$87,421,665</td>
+</tr>
+
+<tr>
+<td align="right">110</td>
+<td align="left">NHL</td>
+<td align="right">19</td>
+<td align="left">EDM</td>
+<td align="right" colspan="2">$86,792,296</td>
+<td align="left">$86,792,296</td>
+</tr>
+
+<tr>
+<td align="right">111</td>
+<td align="left">NHL</td>
+<td align="right">20</td>
+<td align="left">NJD</td>
+<td align="right" colspan="2">$86,757,942</td>
+<td align="left">$86,757,942</td>
+</tr>
+
+<tr>
+<td align="right">112</td>
+<td align="left">NHL</td>
+<td align="right">21</td>
+<td align="left">PHI</td>
+<td align="right" colspan="2">$86,402,786</td>
+<td align="left">$86,402,786</td>
+</tr>
+
+<tr>
+<td align="right">113</td>
+<td align="left">NHL</td>
+<td align="right">22</td>
+<td align="left">CHI</td>
+<td align="right" colspan="2">$86,208,608</td>
+<td align="left">$86,208,608</td>
+</tr>
+
+<tr>
+<td align="right">114</td>
+<td align="left">NHL</td>
+<td align="right">23</td>
+<td align="left">DET</td>
+<td align="right" colspan="2">$85,123,043</td>
+<td align="left">$85,123,043</td>
+</tr>
+
+<tr>
+<td align="right">115</td>
+<td align="left">NHL</td>
+<td align="right">24</td>
+<td align="left">NSH</td>
+<td align="right" colspan="2">$84,798,294</td>
+<td align="left">$84,798,294</td>
+</tr>
+
+<tr>
+<td align="right">116</td>
+<td align="left">NHL</td>
+<td align="right">25</td>
+<td align="left">DAL</td>
+<td align="right" colspan="2">$84,564,252</td>
+<td align="left">$84,564,252</td>
+</tr>
+
+<tr>
+<td align="right">117</td>
+<td align="left">NHL</td>
+<td align="right">26</td>
+<td align="left">UTA</td>
+<td align="right" colspan="2">$83,512,325</td>
+<td align="left">$83,512,325</td>
+</tr>
+
+<tr>
+<td align="right">118</td>
+<td align="left">NHL</td>
+<td align="right">27</td>
+<td align="left">BUF</td>
+<td align="right" colspan="2">$83,034,554</td>
+<td align="left">$83,034,554</td>
+</tr>
+
+<tr>
+<td align="right">119</td>
+<td align="left">NHL</td>
+<td align="right">28</td>
+<td align="left">NYR</td>
+<td align="right" colspan="2">$80,994,932</td>
+<td align="left">$80,994,932</td>
+</tr>
+
+<tr>
+<td align="right">120</td>
+<td align="left">MLB</td>
+<td align="right">30</td>
+<td align="left">OAK</td>
+<td align="right" colspan="2">$80,211,544</td>
+<td align="left">$80,211,544</td>
+</tr>
+
+<tr>
+<td align="right">121</td>
+<td align="left">NHL</td>
+<td align="right">29</td>
+<td align="left">SJS</td>
+<td align="right" colspan="2">$80,009,984</td>
+<td align="left">$80,009,984</td>
+</tr>
+
+<tr>
+<td align="right">122</td>
+<td align="left">NHL</td>
+<td align="right">30</td>
+<td align="left">ANA</td>
+<td align="right" colspan="2">$70,841,647</td>
+<td align="left">$70,841,647</td>
+</tr>
+
+<tr>
+<td align="right">123</td>
+<td align="left">NHL</td>
+<td align="right">31</td>
+<td align="left">CGY</td>
+<td align="right" colspan="2">$70,573,139</td>
+<td align="left">$70,573,139</td>
+</tr>
+
+<tr>
+<td align="right">124</td>
+<td align="left">NHL</td>
+<td align="right">32</td>
+<td align="left">CBJ</td>
+<td align="right" colspan="2">$66,700,909</td>
+<td align="left">$66,700,909</td>
+</tr>
+
+<tr>
+<td align="right">125</td>
+<td align="left">MLS</td>
+<td align="right">1</td>
+<td align="left">MIA</td>
+<td align="right" colspan="2">$42,056,681</td>
+<td align="left">$42,056,681</td>
+</tr>
+
+<tr>
+<td align="right">126</td>
+<td align="left">MLS</td>
+<td align="right">2</td>
+<td align="left">TOR</td>
+<td align="right" colspan="2">$32,711,198</td>
+<td align="left">$32,711,198</td>
+</tr>
+
+<tr>
+<td align="right">127</td>
+<td align="left">MLS</td>
+<td align="right">3</td>
+<td align="left">CHI</td>
+<td align="right" colspan="2">$25,377,012</td>
+<td align="left">$25,377,012</td>
+</tr>
+
+<tr>
+<td align="right">128</td>
+<td align="left">MLS</td>
+<td align="right">4</td>
+<td align="left">CIN</td>
+<td align="right" colspan="2">$23,457,442</td>
+<td align="left">$23,457,442</td>
+</tr>
+
+<tr>
+<td align="right">129</td>
+<td align="left">MLS</td>
+<td align="right">5</td>
+<td align="left">LAFC</td>
+<td align="right" colspan="2">$23,373,257</td>
+<td align="left">$23,373,257</td>
+</tr>
+
+<tr>
+<td align="right">130</td>
+<td align="left">MLS</td>
+<td align="right">6</td>
+<td align="left">NSH</td>
+<td align="right" colspan="2">$22,196,316</td>
+<td align="left">$22,196,316</td>
+</tr>
+
+<tr>
+<td align="right">131</td>
+<td align="left">MLS</td>
+<td align="right">7</td>
+<td align="left">LA</td>
+<td align="right" colspan="2">$22,164,091</td>
+<td align="left">$22,164,091</td>
+</tr>
+
+<tr>
+<td align="right">132</td>
+<td align="left">MLS</td>
+<td align="right">8</td>
+<td align="left">HOU</td>
+<td align="right" colspan="2">$20,400,643</td>
+<td align="left">$20,400,643</td>
+</tr>
+
+<tr>
+<td align="right">133</td>
+<td align="left">MLS</td>
+<td align="right">9</td>
+<td align="left">ATX</td>
+<td align="right" colspan="2">$20,293,333</td>
+<td align="left">$20,293,333</td>
+</tr>
+
+<tr>
+<td align="right">134</td>
+<td align="left">MLS</td>
+<td align="right">10</td>
+<td align="left">ATL</td>
+<td align="right" colspan="2">$19,952,671</td>
+<td align="left">$19,952,671</td>
+</tr>
+
+<tr>
+<td align="right">135</td>
+<td align="left">MLS</td>
+<td align="right">11</td>
+<td align="left">NE</td>
+<td align="right" colspan="2">$19,150,233</td>
+<td align="left">$19,150,233</td>
+</tr>
+
+<tr>
+<td align="right">136</td>
+<td align="left">MLS</td>
+<td align="right">12</td>
+<td align="left">CLT</td>
+<td align="right" colspan="2">$19,133,170</td>
+<td align="left">$19,133,170</td>
+</tr>
+
+<tr>
+<td align="right">137</td>
+<td align="left">MLS</td>
+<td align="right">13</td>
+<td align="left">RBNY</td>
+<td align="right" colspan="2">$18,516,049</td>
+<td align="left">$18,516,049</td>
+</tr>
+
+<tr>
+<td align="right">138</td>
+<td align="left">MLS</td>
+<td align="right">14</td>
+<td align="left">VAN</td>
+<td align="right" colspan="2">$18,156,857</td>
+<td align="left">$18,156,857</td>
+</tr>
+
+<tr>
+<td align="right">139</td>
+<td align="left">MLS</td>
+<td align="right">15</td>
+<td align="left">MIN</td>
+<td align="right" colspan="2">$17,439,255</td>
+<td align="left">$17,439,255</td>
+</tr>
+
+<tr>
+<td align="right">140</td>
+<td align="left">MLS</td>
+<td align="right">16</td>
+<td align="left">DAL</td>
+<td align="right" colspan="2">$17,314,991</td>
+<td align="left">$17,314,991</td>
+</tr>
+
+<tr>
+<td align="right">141</td>
+<td align="left">MLS</td>
+<td align="right">17</td>
+<td align="left">DC</td>
+<td align="right" colspan="2">$17,305,439</td>
+<td align="left">$17,305,439</td>
+</tr>
+
+<tr>
+<td align="right">142</td>
+<td align="left">MLS</td>
+<td align="right">18</td>
+<td align="left">CLB</td>
+<td align="right" colspan="2">$17,282,399</td>
+<td align="left">$17,282,399</td>
+</tr>
+
+<tr>
+<td align="right">143</td>
+<td align="left">MLS</td>
+<td align="right">19</td>
+<td align="left">COL</td>
+<td align="right" colspan="2">$17,256,580</td>
+<td align="left">$17,256,580</td>
+</tr>
+
+<tr>
+<td align="right">144</td>
+<td align="left">MLS</td>
+<td align="right">20</td>
+<td align="left">SKC</td>
+<td align="right" colspan="2">$17,213,266</td>
+<td align="left">$17,213,266</td>
+</tr>
+
+<tr>
+<td align="right">145</td>
+<td align="left">MLS</td>
+<td align="right">21</td>
+<td align="left">ORL</td>
+<td align="right" colspan="2">$17,051,531</td>
+<td align="left">$17,051,531</td>
+</tr>
+
+<tr>
+<td align="right">146</td>
+<td align="left">MLS</td>
+<td align="right">22</td>
+<td align="left">SEA</td>
+<td align="right" colspan="2">$16,670,315</td>
+<td align="left">$16,670,315</td>
+</tr>
+
+<tr>
+<td align="right">147</td>
+<td align="left">MLS</td>
+<td align="right">23</td>
+<td align="left">RSL</td>
+<td align="right" colspan="2">$16,660,817</td>
+<td align="left">$16,660,817</td>
+</tr>
+
+<tr>
+<td align="right">148</td>
+<td align="left">MLS</td>
+<td align="right">24</td>
+<td align="left">NYC</td>
+<td align="right" colspan="2">$16,470,703</td>
+<td align="left">$16,470,703</td>
+</tr>
+
+<tr>
+<td align="right">149</td>
+<td align="left">MLS</td>
+<td align="right">25</td>
+<td align="left">POR</td>
+<td align="right" colspan="2">$16,252,958</td>
+<td align="left">$16,252,958</td>
+</tr>
+
+<tr>
+<td align="right">150</td>
+<td align="left">MLS</td>
+<td align="right">26</td>
+<td align="left">STL</td>
+<td align="right" colspan="2">$16,022,785</td>
+<td align="left">$16,022,785</td>
+</tr>
+
+<tr>
+<td align="right">151</td>
+<td align="left">MLS</td>
+<td align="right">27</td>
+<td align="left">PHI</td>
+<td align="right" colspan="2">$15,919,204</td>
+<td align="left">$15,919,204</td>
+</tr>
+
+<tr>
+<td align="right">152</td>
+<td align="left">MLS</td>
+<td align="right">28</td>
+<td align="left">SJ</td>
+<td align="right" colspan="2">$14,738,128</td>
+<td align="left">$14,738,128</td>
+</tr>
+
+<tr>
+<td align="right">153</td>
+<td align="left">MLS</td>
+<td align="right">29</td>
+<td align="left">MTL</td>
+<td align="right" colspan="2">$12,028,788</td>
+<td align="left">$12,028,788</td>
+</tr>
+
+<tr>
+<td align="right">154</td>
+<td align="left">WNBA</td>
+<td align="right">1</td>
+<td align="left">DAL</td>
+<td align="right" colspan="2">$1,486,123</td>
+<td align="left">$1,486,123</td>
+</tr>
+
+<tr>
+<td align="right">155</td>
+<td align="left">WNBA</td>
+<td align="right">2</td>
+<td align="left">SEA</td>
+<td align="right" colspan="2">$1,462,496</td>
+<td align="left">$1,462,496</td>
+</tr>
+
+<tr>
+<td align="right">156</td>
+<td align="left">WNBA</td>
+<td align="right">3</td>
+<td align="left">NY</td>
+<td align="right" colspan="2">$1,458,716</td>
+<td align="left">$1,458,716</td>
+</tr>
+
+<tr>
+<td align="right">157</td>
+<td align="left">WNBA</td>
+<td align="right">4</td>
+<td align="left">CON</td>
+<td align="right" colspan="2">$1,456,480</td>
+<td align="left">$1,456,480</td>
+</tr>
+
+<tr>
+<td align="right">158</td>
+<td align="left">WNBA</td>
+<td align="right">5</td>
+<td align="left">MIN</td>
+<td align="right" colspan="2">$1,455,929</td>
+<td align="left">$1,455,929</td>
+</tr>
+
+<tr>
+<td align="right">159</td>
+<td align="left">WNBA</td>
+<td align="right">6</td>
+<td align="left">ATL</td>
+<td align="right" colspan="2">$1,450,114</td>
+<td align="left">$1,450,114</td>
+</tr>
+
+<tr>
+<td align="right">160</td>
+<td align="left">WNBA</td>
+<td align="right">7</td>
+<td align="left">PHX</td>
+<td align="right" colspan="2">$1,448,396</td>
+<td align="left">$1,448,396</td>
+</tr>
+
+<tr>
+<td align="right">161</td>
+<td align="left">WNBA</td>
+<td align="right">8</td>
+<td align="left">LV</td>
+<td align="right" colspan="2">$1,435,261</td>
+<td align="left">$1,435,261</td>
+</tr>
+
+<tr>
+<td align="right">162</td>
+<td align="left">WNBA</td>
+<td align="right">9</td>
+<td align="left">IND</td>
+<td align="right" colspan="2">$1,396,695</td>
+<td align="left">$1,396,695</td>
+</tr>
+
+<tr>
+<td align="right">163</td>
+<td align="left">WNBA</td>
+<td align="right">10</td>
+<td align="left">LA</td>
+<td align="right" colspan="2">$1,395,457</td>
+<td align="left">$1,395,457</td>
+</tr>
+
+<tr>
+<td align="right">164</td>
+<td align="left">WNBA</td>
+<td align="right">11</td>
+<td align="left">WAS</td>
+<td align="right" colspan="2">$1,340,809</td>
+<td align="left">$1,340,809</td>
+</tr>
+
+<tr>
+<td align="right">165</td>
+<td align="left">WNBA</td>
+<td align="right">12</td>
+<td align="left">CHI</td>
+<td align="right" colspan="2">$1,329,479</td>
+<td align="left">$1,329,479​</td>
+</tr>
+</tbody>
+</table>
+
+<ul>
+<li>All data from Spotrac.com, using either 2024 or 2024-25 payroll figures.</li>
+</ul>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="m2vo942" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>shoshannahthewarlock</div>
+        <div>44 | 35 minutes ago </div>
+      </div>
+      <label for="m2vo942" class="commentText"><p>How else could we have gotten Royce O&rsquo;Neal to stay without signing him to a 7yr. 600 mil contract? </p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="m2vqdyr" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>tree_pose</div>
+        <div>1 | 24 minutes ago </div>
+      </div>
+      <label for="m2vqdyr" class="commentText"><p>Royce catching strays while Beal has a $57 million player option in 26-27 is crazy</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="m2vqrzi" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>shoshannahthewarlock</div>
+        <div>1 | 22 minutes ago </div>
+      </div>
+      <label for="m2vqrzi" class="commentText"><p>The real craziest part is that Royce has been as if not more impactful for winning as Brad has been this year. </p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="m2vrfe1" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>tree_pose</div>
+        <div>1 | 18 minutes ago </div>
+      </div>
+      <label for="m2vrfe1" class="commentText"><p>Beal threw a fit for not making all-nba in a year the wizards won 25 games. dude was a talented scorer and I&rsquo;m glad he got his but I have a hard time believing Beal or the team that traded for him are serious about winning.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="m2vsbag" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>shoshannahthewarlock</div>
+        <div>1 | 13 minutes ago </div>
+      </div>
+      <label for="m2vsbag" class="commentText"><p>Mat Ishbia had to make some sort of call because CP3, despite being great for his age and size, wasn&rsquo;t going to lead the team to a title. Trading for KD was the right move cause Cam and Mikal had reached their peak (effectively), but in retrospect and even at the time trading for Beal was very impatient and shortsighted for sure.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="m2vtw9s" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>tree_pose</div>
+        <div>1 | 5 minutes ago </div>
+      </div>
+      <label for="m2vtw9s" class="commentText"><p>yeah seems we&rsquo;re aligned. KD was a top 20 all-time player with plenty left in the tank, if you can get that guy, you do it every time. Beal is where they lost me.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="m2vqcij" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ajteitel | Suns</div>
+        <div>1 | 24 minutes ago </div>
+      </div>
+      <label for="m2vqcij" class="commentText"><p>How much deferred</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="m2vofzu" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>pyn209 | Lakers</div>
+        <div>21 | 34 minutes ago </div>
+      </div>
+      <label for="m2vofzu" class="commentText"><p>I don&rsquo;t watch NFL. Why do they take up 11-35 but none of the top 10 spots?</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="m2vounc" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>lovo17 | Lakers</div>
+        <div>45 | 32 minutes ago </div>
+      </div>
+      <label for="m2vounc" class="commentText"><p>NFL has a hard cap.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="m2voptc" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>arashtp | TOR</div>
+        <div>30 | 33 minutes ago </div>
+      </div>
+      <label for="m2voptc" class="commentText"><p>Hard cap.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="m2vp0n8" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>SkittlesAreYum</div>
+        <div>1 | 31 minutes ago </div>
+      </div>
+      <label for="m2vp0n8" class="commentText"><p>And a floor as well</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="m2vovfe" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>TrentArneSlot | Mavericks</div>
+        <div>5 | 32 minutes ago </div>
+      </div>
+      <label for="m2vovfe" class="commentText"><p>unlike the NBA, they have used salary cap to limit player power with a hard ceiling. no tax. nothing. They also have a high roster count so salary floor is not even a conversation. baseball has no floor. just NBA comparable ceiling.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="m2vp14j" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Fire_Demon-215</div>
+        <div>1 | 31 minutes ago </div>
+      </div>
+      <label for="m2vp14j" class="commentText"><p>What other expenses are added besides the player salaries and taxes? $408 million is crazy</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="m2vqb7a" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>masterpierround | Grizzlies</div>
+        <div>1 | 24 minutes ago </div>
+      </div>
+      <label for="m2vqb7a" class="commentText"><p>None. That&rsquo;s just player salary and luxury tax. Phoenix is well over the tax line and is paying the repeater tax, so it adds up fast.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="m2vsliq" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Fire_Demon-215</div>
+        <div>1 | 12 minutes ago </div>
+      </div>
+      <label for="m2vsliq" class="commentText"><p>Just saw their paying 216 million in just salary payroll. Being taxed 89% is wild</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="m2vqxgr" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>BiggestDweebonReddit | Suns</div>
+        <div>1 | 21 minutes ago </div>
+      </div>
+      <label for="m2vqxgr" class="commentText"><p>Finally got an owner willing to spend at the same time the league decided to fuck over big spending teams.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="m2vtqcy" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>facundo-campazzo | Jordan</div>
+        <div>1 | 6 minutes ago </div>
+      </div>
+      <label for="m2vtqcy" class="commentText"><p>Sarver rolling in his grave</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="m2vpu74" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>printerpaperwaste</div>
+        <div>1 | 27 minutes ago </div>
+      </div>
+      <label for="m2vpu74" class="commentText"><p>What about the Celtics?</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="m2vq88w" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>International-Chef33 | Celtics</div>
+        <div>1 | 25 minutes ago </div>
+      </div>
+      <label for="m2vq88w" class="commentText"><p>$262M #10</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="m2vsftg" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>King_Thirteen</div>
+        <div>1 | 13 minutes ago </div>
+      </div>
+      <label for="m2vsftg" class="commentText"><p>For now</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="m2vsl42" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>DocTheYounger | Celtics</div>
+        <div>1 | 12 minutes ago </div>
+      </div>
+      <label for="m2vsl42" class="commentText"><p>If they keep everyone they will have a record tax bill next year but this year and in general their tax concerns have been overblown a bit by the media and fans</p>
+
+<p>Even with that record year a handful of teams will pay far more in tax on a 3-5 year time scale</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="m2vruoe" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>commandrr | Suns</div>
+        <div>1 | 16 minutes ago </div>
+      </div>
+      <label for="m2vruoe" class="commentText"><p>and our owner still made hot dogs $2</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="m2vpzkl" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>magic_spam</div>
+        <div>1 | 26 minutes ago </div>
+      </div>
+      <label for="m2vpzkl" class="commentText"><p>Say what you will about lack of success under Ishbia. Any franchise would be lucky to have an owner as crazy as him. Dude literally doesn’t care about anything but winning. </p>
+
+<p>The Suns may never win a chip with him as an owner but it won’t be because he isn’t willing to do everything he can </p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="m2vq1u9" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Sijols | Knicks</div>
+        <div>1 | 26 minutes ago </div>
+      </div>
+      <label for="m2vq1u9" class="commentText"><p>Does that dodgers figure count all the deferred money on their books from shady 30 year deals</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="m2vrfo7" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ositola | Lakers</div>
+        <div>1 | 18 minutes ago </div>
+      </div>
+      <label for="m2vrfo7" class="commentText"><p>It has to, the cap number for the dodgers was mid 300s, they must be counting the full value of the ohtani deal including the deferred amount </p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="m2vs6xt" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>arashtp | TOR</div>
+        <div>1 | 14 minutes ago </div>
+      </div>
+      <label for="m2vs6xt" class="commentText"><p>All MLB data from this table: <a href="https://www.spotrac.com/mlb/tax/_/year/2024/sort/tax_total" target="_blank">https://www.spotrac.com/mlb/tax/_/year/2024/sort/tax_total</a></p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="m2vspha" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>MikeyBastard1 | Spurs</div>
+        <div>1 | 11 minutes ago </div>
+      </div>
+      <label for="m2vspha" class="commentText"><p>Man.. why did I have to be born 5&rsquo;7&rdquo;</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="m2vt5s4" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>arashtp | TOR</div>
+        <div>1 | 9 minutes ago </div>
+      </div>
+      <label for="m2vt5s4" class="commentText"><p>Spud Webb would like a word&hellip;</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="m2vtyjy" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>VantaPuma | Grizzlies</div>
+        <div>1 | 5 minutes ago </div>
+      </div>
+      <label for="m2vtyjy" class="commentText"><p>Luxury tax shouldn’t be considered payroll because the money is ultimately revenue sharing. It is not going to the players.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="m2vsewb" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Unstep-in-Time</div>
+        <div>1 | 13 minutes ago </div>
+      </div>
+      <label for="m2vsewb" class="commentText"><p>That&rsquo;s a lot of luxury tax for a 1st round sweep.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="m2vuh4f" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>SportsBettingRef | Brazil</div>
+        <div>1 | 2 minutes ago </div>
+      </div>
+      <label for="m2vuh4f" class="commentText"><p>there&rsquo;s no way they don&rsquo;t implode this team next year.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="m2votkm" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>BigDc5121</div>
+        <div>0 | 32 minutes ago </div>
+      </div>
+      <label for="m2votkm" class="commentText"><p>Mlb where the money at</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="m2vp6px" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>arashtp | TOR</div>
+        <div>1 | 30 minutes ago </div>
+      </div>
+      <label for="m2vp6px" class="commentText"><p>MLB has higher payroll, but more players, so lower average salary per player.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="m2vpsew" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>BigDc5121</div>
+        <div>1 | 27 minutes ago </div>
+      </div>
+      <label for="m2vpsew" class="commentText"><p>Look at what Ohtani n Soto make the money is in mlb</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="m2vs9f9" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ReignMan616 | Lakers</div>
+        <div>1 | 14 minutes ago </div>
+      </div>
+      <label for="m2vs9f9" class="commentText"><p>Jaylen Brown makes more per year than Juan Soto, the money is still in the NBA.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="m2vtfgg" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>BigDc5121</div>
+        <div>1 | 8 minutes ago </div>
+      </div>
+      <label for="m2vtfgg" class="commentText"><p>Nba can’t even get viewership numbers it’s on the decline unless players start trying in regular season</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="m2vrgqt" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>GoldTheLegend | Raptors</div>
+        <div>1 | 18 minutes ago </div>
+      </div>
+      <label for="m2vrgqt" class="commentText"><p>Look at the average. Or even the top 10% NBA is more. Also, those two are locked in for 15 years while nba salaries keep going up, up up. Of course, MLB salaries will as well, but that won&rsquo;t help the aforementioned two.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="m2vs8rc" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>welmoe | Lakers</div>
+        <div>1 | 14 minutes ago </div>
+      </div>
+      <label for="m2vs8rc" class="commentText"><p>Kind of crazy how MLS is all towards the bottom. I’ve always heard “US soccer is up and coming” but it just doesn’t seem like the money is there. How can you ever catch up to Premier League or European soccer?</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="m2vu2xo" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>SignificantMoose6482</div>
+        <div>1 | 4 minutes ago </div>
+      </div>
+      <label for="m2vu2xo" class="commentText"><p>They can’t</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="m2vosm3" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Little_Obligation_90</div>
+        <div>-2 | 32 minutes ago </div>
+      </div>
+      <label for="m2vosm3" class="commentText"><p>All to be swept in the playoffs!</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
