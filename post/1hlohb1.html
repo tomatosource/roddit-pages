@@ -1,0 +1,534 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/nba/comments/1hlohb1/oc_the_greatest_solo_scoring_runs_in_nba_history/"><p>[OC] The Greatest Solo Scoring Runs in NBA History: I tracked every unassisted scoring streak since 1996.</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <p>I recently analysed regular-season data from <strong>1996</strong> to <strong>2024</strong> to explore the NBA’s greatest <strong>unassisted scoring streaks</strong>—where players continue scoring without receiving a single assisted basket. This post examines the biggest names, highlights the key stats, and shows how these streaks evolved over time.</p>
+
+<h1 id="1-what-is-an-unassisted-scoring-streak">1. What Is an “Unassisted Scoring Streak”?</h1>
+
+<ul>
+<li><strong>Definition</strong>: A stretch of consecutive points by a single player where <strong>no made shots</strong> are assisted by a teammate.</li>
+<li><strong>Data Source</strong>: NBA Stats API (play-by-play logs). Only game IDs starting with “002” (i.e. <strong>regular season</strong>).</li>
+<li><strong>Approach</strong>:
+
+<ol>
+<li>Identified every scoring play (including free throws).</li>
+<li>Filtered out any basket recorded as “assisted.”</li>
+<li>Joined consecutive unassisted shots across multiple games until an assisted shot ended the streak.</li>
+</ol></li>
+</ul>
+
+<h1 id="2-leading-unassisted-scorers">2. Leading Unassisted Scorers</h1>
+
+<p>These six players stand out for their <strong>high-frequency</strong> unassisted streaks (40+ or 50+ points) and memorable peak runs.</p>
+
+<h1 id="lebron-james">LeBron James</h1>
+
+<ul>
+<li><strong>Peak Achievement</strong>: 80 unassisted points across 3 games</li>
+<li><strong>High-Volume Streaks</strong>: 11 streaks of 50+ points; 29 streaks of 40+ points</li>
+<li><strong>Peak Season</strong>: 2009–10 (80-point streak)</li>
+</ul>
+
+<h1 id="russell-westbrook">Russell Westbrook</h1>
+
+<ul>
+<li><strong>Peak Achievement</strong>: 123 unassisted points across 6 games</li>
+<li><strong>High-Volume Streaks</strong>: 29 streaks of 50+ points; 55 streaks of 40+ points</li>
+<li><strong>Peak Season</strong>: 2010–11 (123-point streak)</li>
+</ul>
+
+<h1 id="james-harden">James Harden</h1>
+
+<ul>
+<li><strong>Peak Achievement</strong>: 313 unassisted points across 8 games</li>
+<li><strong>High-Volume Streaks</strong>: 59 streaks of 50+ points; 93 streaks of 40+ points</li>
+<li><strong>Peak Season</strong>: 2018–19 (<strong>313-point streak</strong>), famously known as part of his <strong>“Unguardable Tour”</strong></li>
+</ul>
+
+<h1 id="chris-paul">Chris Paul</h1>
+
+<ul>
+<li><strong>Peak Achievement</strong>: 105 unassisted points across 7 games</li>
+<li><strong>High-Volume Streaks</strong>: 64 streaks of 50+ points; 110 streaks of 40+ points</li>
+<li><strong>Peak Season</strong>: 2016–17 (105-point streak)</li>
+</ul>
+
+<h1 id="kobe-bryant">Kobe Bryant</h1>
+
+<ul>
+<li><strong>Peak Achievement</strong>: 68 unassisted points across 3 games</li>
+<li><strong>High-Volume Streaks</strong>: 10 streaks of 50+ points; 18 streaks of 40+ points</li>
+<li><strong>Peak Season</strong>: 2011–12 (68-point streak)</li>
+</ul>
+
+<h1 id="dwyane-wade">Dwyane Wade</h1>
+
+<ul>
+<li><strong>Peak Achievement</strong>: 77 unassisted points across 5 games</li>
+<li><strong>High-Volume Streaks</strong>: 11 streaks of 50+ points; 32 streaks of 40+ points</li>
+<li><strong>Peak Season</strong>: 2006–07 (77-point streak)</li>
+</ul>
+
+<h1 id="3-mount-rushmore-of-unassisted-offence">3. Mount Rushmore of Unassisted Offence</h1>
+
+<p>If we carved out a “Mount Rushmore” of this style of scoring, these four players have the most remarkable peak totals and consistent volume:</p>
+
+<ol>
+<li><strong>LeBron James</strong>
+
+<ul>
+<li>Peak: 80 points</li>
+<li>29 x 40+ streaks, <strong>~49.8</strong> average points in those runs</li>
+</ul></li>
+<li><strong>Russell Westbrook</strong>
+
+<ul>
+<li>Peak: 123 points</li>
+<li>55 x 40+ streaks, <strong>~53.5</strong> average points in those runs</li>
+</ul></li>
+<li><strong>James Harden</strong>
+
+<ul>
+<li>Peak: 313 points</li>
+<li>93 x 40+ streaks, <strong>~61.2</strong> average points in those runs</li>
+</ul></li>
+<li><strong>Chris Paul</strong>
+
+<ul>
+<li>Peak: 105 points</li>
+<li>110 x 40+ streaks, <strong>~56.8</strong> average points in those runs</li>
+</ul></li>
+</ol>
+
+<h1 id="4-quick-facts-figures">4. Quick Facts &amp; Figures</h1>
+
+<ul>
+<li><strong>James Harden’s 3 Greatest Streaks</strong> totalled <strong>560 points</strong> combined.</li>
+<li>The NBA has seen only <strong>623</strong> unassisted streaks of 50+ points since 1996.</li>
+<li><strong>Most Efficient 40+ Point Run</strong>: Damian Lillard had 50 points in the most efficient streak for one game.</li>
+</ul>
+
+<h1 id="5-visual-1-biggest-streaks-player-field-goals-points">5. Visual 1: Biggest Streaks (Player, Field Goals, Points)</h1>
+
+<p>Below is a <strong>horizontal bar chart</strong> that shows each player’s <strong>top unassisted streak</strong>, including the split between field goals and free throws. It highlights just how intensely they can score without any direct help</p>
+
+<p><a href="https://i.imgur.com/F98DhXg.png" target="_blank">Visual 1: Biggest Streaks</a></p>
+
+<h1 id="6-additional-standout-analyses">6. Additional Standout Analyses</h1>
+
+<h1 id="1-legendary-efficiency">1) Legendary Efficiency</h1>
+
+<ul>
+<li>Chris Paul: 65 points in 31 plays (2.10 pts/play)</li>
+<li>Chris Paul: 50 points in 24 plays (2.08 pts/play)</li>
+<li>Damian Lillard: 60 points in 29 plays (2.07 pts/play)</li>
+</ul>
+
+<h1 id="2-heat-check-kings">2) Heat Check Kings</h1>
+
+<ul>
+<li>Steve Nash: 26 straight field goals (57 points)</li>
+<li>Reggie Jackson: 20 straight field goals (43 points)</li>
+<li>J.J. Barea: 16 straight field goals (41 points)</li>
+</ul>
+
+<h1 id="3-marathon-men">3) Marathon Men</h1>
+
+<ul>
+<li>James Harden: 313 points over 8 games (39.1 ppg)</li>
+<li>Steve Nash: 137 points over 9 games (15.2 ppg)</li>
+<li>Trae Young: 131 points over 6 games (21.8 ppg)</li>
+</ul>
+
+<h1 id="4-clutch-excellence">4) Clutch Excellence</h1>
+
+<ul>
+<li>James Harden: 19 FGs for 46 points in 4th/OT</li>
+<li>Will Bynum: 17 FGs for 37 points in 4th/OT</li>
+<li>Steve Nash: 16 FGs for 36 points in 4th/OT</li>
+</ul>
+
+<h1 id="5-signature-scoring-bursts">5) Signature Scoring Bursts</h1>
+
+<ul>
+<li>James Harden: 17 points in ~2 minutes (72-point streak)</li>
+<li>James Harden: 17 points in ~2 minutes (66-point streak)</li>
+<li>Spencer Dinwiddie: 17 points in ~2 minutes (45-point streak)</li>
+</ul>
+
+<h1 id="7-visual-2-evolution-of-unassisted-scoring-over-the-years">7. Visual 2: Evolution of Unassisted Scoring Over the Years</h1>
+
+<p>To see how these streaks have shifted across eras, here’s a chart of the <strong>average streak length</strong> and <strong>peak streak</strong> by season:</p>
+
+<ul>
+<li><strong>Early Era (1999–2006)</strong>
+
+<ul>
+<li>Avg streak: ~4.8 pts</li>
+<li>Peak streak: 90 (Steve Nash, 2005)</li>
+<li>108 streaks ≥50 pts, 304 streaks ≥40 pts</li>
+</ul></li>
+<li><strong>Middle Era (2007–2014)</strong>
+
+<ul>
+<li>Avg streak: ~5.0 pts</li>
+<li>Peak streak: 137 (Steve Nash, 2010)</li>
+<li>169 streaks ≥50 pts, 461 streaks ≥40 pts</li>
+</ul></li>
+<li><strong>Modern Era (2015–2022)</strong>
+
+<ul>
+<li>Avg streak: ~4.9 pts</li>
+<li>Peak streak: 313 (James Harden, 2018, aka <strong>“Unguardable Tour”</strong>)</li>
+<li>298 streaks ≥50 pts, 622 streaks ≥40 pt</li>
+</ul></li>
+</ul>
+
+<p><a href="https://i.imgur.com/w3CZeLz.png" target="_blank">Visual 2: Evolution of Scoring</a></p>
+
+<h1 id="8-unstoppable-in-the-clutch">8. Unstoppable in the Clutch</h1>
+
+<h1 id="most-impressive-clutch-performances-single-streak">Most Impressive Clutch Performances (Single Streak)</h1>
+
+<ol>
+<li>James Harden: 64 clutch points (20.4% of 313 total)</li>
+<li>Ryan Rollins: 40 clutch points (83.3% of 48 total)</li>
+<li>Russell Westbrook: 36 clutch points (59.0% of 61 total)</li>
+<li>Steve Nash: 34 clutch points (24.8% of 137 total)</li>
+<li>De’Aaron Fox: 33 clutch points (55.0% of 60 total)</li>
+</ol>
+
+<h1 id="all-time-clutch-masters-total-unassisted-clutch-points">All-Time Clutch Masters (Total Unassisted Clutch Points)</h1>
+
+<ol>
+<li>LeBron James: 3,293 points across 605 streaks</li>
+<li>Chris Paul: 2,942 points across 450 streaks</li>
+<li>Kobe Bryant: 2,747 points across 514 streaks</li>
+<li>Russell Westbrook: 2,742 points across 496 streaks</li>
+<li>James Harden: 2,535 points across 423 streaks</li>
+</ol>
+
+<h1 id="perfect-clutch-games-100-in-clutch-20-points">Perfect Clutch Games (100% in Clutch, ≥20 Points)</h1>
+
+<ul>
+<li>Bobby Brown: 33 points</li>
+<li>Michael Jordan: 25 points</li>
+<li>Russell Westbrook: 21 points</li>
+<li>Wade Baldwin IV: 21 points</li>
+<li>Yaroslav Korolev: 21 point</li>
+</ul>
+
+<p><a href="https://i.imgur.com/O5vJe3j.png" target="_blank">Visual 3: Clutch Performance</a></p>
+
+<h1 id="9-harden-s-unguardable-tour-2018-19">9. Harden’s “Unguardable Tour” (2018–19)</h1>
+
+<ul>
+<li>The single <strong>highest</strong> unassisted streak on record: <strong>313 points</strong> across 8 games.</li>
+<li>This showcases Harden’s scoring surge of step-back jumpers, isolation sets, and free throws, thus earning the “Unguardable Tour” nickname.</li>
+</ul>
+
+<h1 id="10-conclusion">10. Conclusion</h1>
+
+<p><strong>Key Takeaways</strong></p>
+
+<ul>
+<li>Stars like Harden, Westbrook, and LeBron have each made a <strong>substantial</strong> mark in unassisted scoring.</li>
+<li>Clutch scenarios are often dominated by these top names, though there are unexpected appearances (e.g. Ryan Rollins, Bobby Brown).</li>
+<li>Even in modern, ball-movement-heavy offences, individual scorers continue to excel through sheer isolation play.</li>
+</ul>
+
+<p><strong>Open Questions</strong></p>
+
+<ul>
+<li>Will the <strong>next generation</strong> (Luka Dončić, Devin Booker, Trae Young, etc.) ever surpass Harden’s 313-point streak?</li>
+<li>How do changing defences and game pace affect unassisted scoring over the next decade?</li>
+</ul>
+
+<p><strong>TL;DR</strong></p>
+
+<ul>
+<li><strong>James Harden</strong> holds the top unassisted streak: <strong>313 points</strong> in 2018–19.</li>
+<li><strong>Russell Westbrook</strong>, <strong>Chris Paul</strong>, and <strong>LeBron James</strong> also rank among the most prolific.</li>
+<li>Streaks across eras show a stable <strong>average</strong> but a few explosive peaks.</li>
+<li>Clutch data reveals superstars like LeBron, Chris Paul, and Kobe Bryant thrive under pressure.</li>
+</ul>
+
+<p>Thanks for checking out this analysis! If you have questions, insights, or your own favourite streak to highlight, feel free to comment below. I will most likely being doing a similar analysis for the playoffs.</p>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="m3nv31w" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Thick_Philosophy_701 | Mavericks</div>
+        <div>1 | 21 minutes ago </div>
+      </div>
+      <label for="m3nv31w" class="commentText"><p>Great post! Amazing research, I love to see it. Not sure why my main thing on my mind is WILL BYNUM 🤣</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="m3nw7w7" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>iamgreeneggsandsam</div>
+        <div>1 | 13 minutes ago </div>
+      </div>
+      <label for="m3nw7w7" class="commentText"><p>Awesome stuff! I hope this gets way more love. This sub needs more of this and less drama and bait posts.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="m3nx7vo" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Ariusa95 | Timberwolves</div>
+        <div>1 | 6 minutes ago </div>
+      </div>
+      <label for="m3nx7vo" class="commentText"><p>r/nba does not deserve this level of effort man. Great job.</p>
+
+<p>As for the open question, I don’t see harden’s 313 streak being beaten anytime soon. You really need your team to beat the other team now, and on a total hunch I’d say considering the value of Catch and shoot 3s (which count as assisted, I imagine) I don’t see the younger stars going that long without a C&amp;S 3 somewhere along the way</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="m3nxqtg" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Afrikiwi</div>
+        <div>1 | 2 minutes ago </div>
+      </div>
+      <label for="m3nxqtg" class="commentText"><p>Awesome content. Somewhat predictable outcome of who the top players for this have been.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
