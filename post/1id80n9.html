@@ -1,0 +1,805 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/nba/comments/1id80n9/oc_the_4020_rule_predicting_this_seasons_true/"><p>[OC] The <sup>40</sup>&frasl;<sub>20</sub> Rule: Predicting This Season’s True Title Contenders</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <p>We&rsquo;re now past the halfway point of the season, and the true contenders are starting to separate from the pack.</p>
+
+<p>Legendary coach <strong>Phil Jackson</strong> once proposed a simple yet powerful rule to identify elite championship contenders: If a team reaches <strong>40 wins before losing 20</strong> (meaning at least <strong>40 wins in their first 59 games</strong>), they should be considered a legitimate title threat.</p>
+
+<p>But does this rule actually hold up? Let’s dive into the numbers:</p>
+
+<ul>
+<li>Since the <strong>1983-84 season</strong> (when the NBA expanded to a <strong>16-team playoff format</strong>), <strong>656 teams</strong> have made the playoffs.<br>
+</li>
+<li><strong>27%</strong> of all playoff teams have hit the <strong><sup>40</sup>&frasl;<sub>20</sub> mark</strong>.<br>
+</li>
+<li><strong>47%</strong> of <strong>conference semifinalists</strong> met the rule.<br>
+</li>
+<li><strong>68%</strong> of <strong>conference finalists</strong> met the rule.<br>
+</li>
+<li><strong>76%</strong> of <strong>NBA Finalists</strong> met the rule.<br>
+</li>
+<li>And most importantly—<strong>90% of NBA Champions</strong> have passed the <strong><sup>40</sup>&frasl;<sub>20</sub> test</strong>.<br>
+</li>
+</ul>
+
+<p><a href="https://imgur.com/a/3rs2uDk" target="_blank">OC data / infographic here</a></p>
+
+<p>While not a perfect predictor, it’s clear that the <strong><sup>40</sup>&frasl;<sub>20</sub> rule is a strong indicator of elite teams capable of making deep playoff runs</strong>.</p>
+
+<h3 id="how-i-calculated-the-odds">How I Calculated the Odds</h3>
+
+<p>To estimate each team&rsquo;s chances of hitting <strong>40 wins before 20 losses</strong>, I calculated the probability of them winning each remaining game based on their winning percentage and the strength of their opponents.</p>
+
+<p>Then, I <strong>simulated 10,000 scenarios</strong> to see how often each team would reach the <strong>40-win mark in 59 games</strong>.</p>
+
+<p>Of course, this isn’t perfect—it doesn’t factor in momentum, injuries, or specific matchups—but it gives us a <strong>directional look</strong> at which teams are most likely to hit this elite milestone.</p>
+
+<p>So, which teams are on track to meet this milestone? And what are the odds that the league’s best squads will hit the <strong>40-win</strong> mark before taking their <strong>20th loss</strong>?</p>
+
+<p>Let’s break it down!</p>
+
+<table>
+<thead>
+<tr>
+<th>Team</th>
+<th>W</th>
+<th>L</th>
+<th>W/L%</th>
+<th>Games Remaining</th>
+<th>Games Required to Win</th>
+<th>Chance of Achieving <sup>40</sup>&frasl;<sub>20</sub> Rule</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>Cleveland Cavaliers (1)</td>
+<td>37</td>
+<td>9</td>
+<td>0.804</td>
+<td>13</td>
+<td>3</td>
+<td>99.97%</td>
+</tr>
+
+<tr>
+<td>Boston Celtics (2)</td>
+<td>32</td>
+<td>15</td>
+<td>0.681</td>
+<td>12</td>
+<td>8</td>
+<td>40.85%</td>
+</tr>
+
+<tr>
+<td>New York Knicks (3)</td>
+<td>31</td>
+<td>16</td>
+<td>0.660</td>
+<td>12</td>
+<td>9</td>
+<td>11.78%</td>
+</tr>
+
+<tr>
+<td>Oklahoma City Thunder (1)</td>
+<td>37</td>
+<td>8</td>
+<td>0.822</td>
+<td>14</td>
+<td>3</td>
+<td>99.96%</td>
+</tr>
+
+<tr>
+<td>Houston Rockets (2)</td>
+<td>32</td>
+<td>14</td>
+<td>0.696</td>
+<td>13</td>
+<td>8</td>
+<td>58.16%</td>
+</tr>
+
+<tr>
+<td>Memphis Grizzlies (3)</td>
+<td>31</td>
+<td>16</td>
+<td>0.660</td>
+<td>12</td>
+<td>9</td>
+<td>11.20%</td>
+</tr>
+
+<tr>
+<td>Denver Nuggets (4)</td>
+<td>28</td>
+<td>18</td>
+<td>0.609</td>
+<td>13</td>
+<td>12</td>
+<td>1.06%</td>
+</tr>
+</tbody>
+</table>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="m9wzu98" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>SickSaricDario | San Francisco Warriors</div>
+        <div>23 | an hour ago </div>
+      </div>
+      <label for="m9wzu98" class="commentText"><p>after watching that Houston vs. Boston game, i wouldn&rsquo;t mind this as a finals matchup. that game was hype</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="m9x0d2b" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>frankievejle | Rockets</div>
+        <div>6 | an hour ago </div>
+      </div>
+      <label for="m9x0d2b" class="commentText"><p>I often think how loud the crowd is adds so much to how lit the game is. A close game is a good game, but a close game with a lit crowd is the stuff of dreams. Boston fans always bring the noise.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="m9x1jdy" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>TatumBrownWhite | Celtics</div>
+        <div>4 | an hour ago </div>
+      </div>
+      <label for="m9x1jdy" class="commentText"><blockquote>
+<p>Boston fans always bring the noise</p>
+</blockquote>
+
+<p>I feel like they do something on the national TV broadcasts to tone it down because it’s never as loud watching on TV as it is in person when I go there.</p>
+
+<p>There’s a lot of games where I watch on TV and think wow the crowd’s flat and it sounds like a library.</p>
+
+<p>But then when I went for the Knicks and Cavs game, the place was on fire.</p>
+
+<p>Part of it is this crowd is also somewhat entitled this year and isn’t loud unless we’re winning because they expect us to win. The only exception to this is when Pritchard gets hot, then shit gets LOUD.</p>
+
+<p>Excited to see the crowd for the Rockets in the playoffs this year, Houston loves this team.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="m9x0hz6" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>parallelfutures</div>
+        <div>5 | an hour ago </div>
+      </div>
+      <label for="m9x0hz6" class="commentText"><p>Its wild to me the rockets have a better chance of meeting the <sup>40</sup>&frasl;<sub>20</sub> rule</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="m9x5mte" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>IndependentWear6297</div>
+        <div>3 | 32 minutes ago </div>
+      </div>
+      <label for="m9x5mte" class="commentText"><p>If the employee that Udoka harassed has a restraining order against him, can the Celtics sit her courtside every game so that Udoka has to coach from outside the building?</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="m9x0jgp" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>BBallHunter | Thunder</div>
+        <div>16 | an hour ago </div>
+      </div>
+      <label for="m9x0jgp" class="commentText"><p>I&rsquo;d love for OKC to get 40 before 10.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="m9x0wvp" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>frankievejle | Rockets</div>
+        <div>4 | an hour ago </div>
+      </div>
+      <label for="m9x0wvp" class="commentText"><p>Lmao it’s wild that that is possible.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="m9x5k0a" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>sexland69 | Cavaliers</div>
+        <div>3 | 32 minutes ago </div>
+      </div>
+      <label for="m9x5k0a" class="commentText"><p>still possible for cavs too, though we’d have to beat the heat hawks and mavs our next 3 games</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="m9wzufr" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>dameplsrunfromgrind</div>
+        <div>9 | an hour ago </div>
+      </div>
+      <label for="m9wzufr" class="commentText"><p>Clippers are breaking this rule</p>
+
+<p>Kawhi was just resting up for the 6 month grind between January and the end of the Finals</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="m9x3kzt" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>HenrikCrown | Pelicans</div>
+        <div>2 | 42 minutes ago </div>
+      </div>
+      <label for="m9x3kzt" class="commentText"><p>Honestly could see it</p>
+
+<p>Clippers win a lot of <sup>50</sup>&frasl;<sub>50</sub> balls with their effort and their defensive rating was surprisingly pretty high even without Kawhi </p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="m9x1k8p" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>gradedonacurve | Knicks</div>
+        <div>9 | an hour ago </div>
+      </div>
+      <label for="m9x1k8p" class="commentText"><p>A lot of work for something Phil just pulled out of his ass lol</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="m9x2e3t" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>drrgary</div>
+        <div>5 | an hour ago </div>
+      </div>
+      <label for="m9x2e3t" class="commentText"><p>Solid work, this is what I come to this sub for. More of this, less of the inane twitter screenshots!</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="m9x1asm" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Number333 | Heat</div>
+        <div>3 | an hour ago </div>
+      </div>
+      <label for="m9x1asm" class="commentText"><p>Who were the 4 Champions who didn&rsquo;t hit the <sup>40</sup>&frasl;<sub>20</sub> mark?</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="m9x23de" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ClockWeak</div>
+        <div>5 | an hour ago </div>
+      </div>
+      <label for="m9x23de" class="commentText"><p>95 Rockets, 04 Pistons, 06 Heat, and 21 Bucks</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="m9x6r58" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>YSLAnunoby | Raptors</div>
+        <div>1 | 26 minutes ago </div>
+      </div>
+      <label for="m9x6r58" class="commentText"><p>Notably the 04 Pistons made a big swing and got Sheed mid season so we&rsquo;re better at the end of the year than their record</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="m9x1z7o" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>TatumBrownWhite | Celtics</div>
+        <div>3 | an hour ago </div>
+      </div>
+      <label for="m9x1z7o" class="commentText"><p>I don’t know the others off the top of my head but the 2021 Bucks are the only team in recent history to not do it.</p>
+
+<p>Worth noting that that season is extremely weird due to the super late start to the year and everybody was missing games every other day due to COVID.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="m9x1ucg" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>National_Singer_3122 | Grizzlies</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="m9x1ucg" class="commentText"><p>2004 Pistons and Bucks for sure. Don&rsquo;t know the other two.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="m9x0bq3" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>redditstealsyours | NBA</div>
+        <div>2 | an hour ago </div>
+      </div>
+      <label for="m9x0bq3" class="commentText"><p>don’t matter for the thunder, if they face mj washington in the playoffs, it’s ova</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="m9x0frl" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>YoungDetective | Lakers</div>
+        <div>2 | an hour ago </div>
+      </div>
+      <label for="m9x0frl" class="commentText"><p>Lakers erasure</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="m9x1c6c" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>National_Singer_3122 | Grizzlies</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="m9x1c6c" class="commentText"><p>You forgot the Lakers</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="m9x1sgt" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>parallelfutures</div>
+        <div>9 | an hour ago </div>
+      </div>
+      <label for="m9x1sgt" class="commentText"><p>less than 1% chance didnt feel necessary ;)</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="m9x2b20" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>grudgepacker | Bucks</div>
+        <div>5 | an hour ago </div>
+      </div>
+      <label for="m9x2b20" class="commentText"><p>So you&rsquo;re saying there&rsquo;s a chance?</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="m9x2ldg" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>National_Singer_3122 | Grizzlies</div>
+        <div>3 | an hour ago </div>
+      </div>
+      <label for="m9x2ldg" class="commentText"><p>Ok..why is 1% necessary then? And the Lakers couldn&rsquo;t have been that far off from the Nuggets anyways? I figured it was just an oversight so I was just pointing it out. Weird not to include it in a disclaimer at least but whatever ;)</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="m9x8pka" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>be__bright | Trail Blazers</div>
+        <div>1 | 15 minutes ago </div>
+      </div>
+      <label for="m9x8pka" class="commentText"><p>So probably a Thunder and Cavs finals with a chance the Rockets or Celtics sneak in. Any combination of those would be a good series.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="m9xb2qo" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>lawschoolthrowaway36 | Mavericks</div>
+        <div>1 | 3 minutes ago </div>
+      </div>
+      <label for="m9xb2qo" class="commentText"><p>And just like last year, the Mavs won’t pass the <sup>40</sup>&frasl;<sub>20</sub> rule but will make the Finals due to not having their complete roster until like March 😂</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
