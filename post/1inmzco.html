@@ -1,0 +1,658 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/PathOfExile2/comments/1inmzco/minion_gemling_legionnaire_guide/"><p>Minion Gemling Legionnaire Guide</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <h1 id="showcase">Showcase</h1>
+
+<p>vs Simualcrum +4 <a href="https://youtu.be/L2lHu7_FCQU" target="_blank">https://youtu.be/L2lHu7_FCQU</a></p>
+
+<p>vs Xesht +4 <a href="https://youtu.be/PTTwDBqxFMw" target="_blank">https://youtu.be/PTTwDBqxFMw</a></p>
+
+<h1 id="why-play-minion-gemling">Why Play Minion Gemling</h1>
+
+<ul>
+<li>Minion gameplay is beginner friendly. You can focus on evading while your Minions deal all the damage.</li>
+<li>Very simple and easy to understand.</li>
+<li>You like the Mercenary&rsquo;s voice lines.</li>
+<li>Flexible and linear gearing progression means you&rsquo;ll have an easier time in SSF or you can easily bag cheaper deals from trade.</li>
+<li>Chaos Inoculation allows you to not worry about Chaos Resistance.</li>
+<li>Minion Level 37 is easy to achieve which allows you to clear Endgame content sooner.</li>
+</ul>
+
+<h1 id="minion-gemling-cons">Minion Gemling Cons</h1>
+
+<ul>
+<li>You don&rsquo;t like playing with minions.</li>
+<li>Limited to Skeletal Snipers as of 0.1.1c due to other summons&rsquo; gem quality not really providing anything</li>
+<li>The build uses Ghostwrithe, Chaos Innoculation, and Grim Feast as crutches. It won&rsquo;t teach you much about defensively gearing other builds.</li>
+<li>Not as flexible as Infernalist in terms of Minions that it can use for now.</li>
+<li>Needs a lot of specific stats you can only get from Corruption.</li>
+</ul>
+
+<h1 id="skill-tree-https-poe2-ninja-pob-696-https-poe2-ninja-pob-696">Skill Tree - <a href="https://poe2.ninja/pob/696" target="_blank">https://poe2.ninja/pob/696</a></h1>
+
+<ul>
+<li>If you&rsquo;re having trouble with attributes, you can opt to have less Jewel Sockets and path towards Polymathy for the meantime.</li>
+<li>Implanted Gems (+1 Skill Gem Level) provides really value for the power it provides. Prism of Belief Skeletal Sniper +1-&amp;gt;+2 is around 50 Divines and +2-&amp;gt;+3 is around 100 Divines difference.</li>
+<li>Has access to other weapons&rsquo; higher level skill gems due to Adaptive Capability.</li>
+</ul>
+
+<h1 id="budget-gear">Budget Gear</h1>
+
+<ul>
+<li>Make sure you only trade for socketed corrupted gear. Quality isn&rsquo;t as important earlier into the game.</li>
+<li>Your main goal is to have as much minion levels as possible.</li>
+<li>Any Minion +3 on your Amulet with no Spirit before saving up your first Divine or two to purchase a Corrupted Fireflower with the correct Anoint is perfectly fine.</li>
+<li>Any +4 Minion Sceptre is practically free in Trade League.</li>
+<li>Don&rsquo;t worry too much about Spirit on your first +5 Minion Sceptre as it will provide you 120 Spirit with 20% Quality. Each 20 increase in total Spirit your Sceptre provides only one minion (not factoring in Bones of Ullr) and increases the price exponentially.</li>
+<li>Skill Levels +3 From Weapon, +5 from Sceptre, +3 from Helmet, +5 from Amulet, and +1 from Ascendancy already nets you a level 36 Skeletal Sniper at only Level 19 Skill Gem.</li>
+</ul>
+
+<table>
+<thead>
+<tr>
+<th align="left">Gear</th>
+<th align="left">Name</th>
+<th align="left">Stats</th>
+<th align="left">Corruption</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">Weapon</td>
+<td align="left"><strong>TRENCHTIMBRE</strong></td>
+<td align="left">+3 Minion Skill</td>
+<td align="left">Any</td>
+</tr>
+
+<tr>
+<td align="left">Offhand</td>
+<td align="left"><strong>ANY SCEPTRE</strong></td>
+<td align="left">+5 Minion Skill</td>
+<td align="left">Any</td>
+</tr>
+
+<tr>
+<td align="left">Helmet</td>
+<td align="left"><strong>ANY HELMET</strong></td>
+<td align="left">+2 Minion Skill</td>
+<td align="left">+1 Minion Skill</td>
+</tr>
+
+<tr>
+<td align="left">Armour</td>
+<td align="left"><strong>GHOSTWRITHE</strong></td>
+<td align="left">Any</td>
+<td align="left">3 Sockets</td>
+</tr>
+
+<tr>
+<td align="left">Gloves</td>
+<td align="left"><strong>ANY GLOVE</strong></td>
+<td align="left">Resistances</td>
+<td align="left">Any</td>
+</tr>
+
+<tr>
+<td align="left">Boots</td>
+<td align="left"><strong>ANY BOOTS</strong></td>
+<td align="left">Movement Speed and Resistances</td>
+<td align="left">Any</td>
+</tr>
+
+<tr>
+<td align="left">Belt</td>
+<td align="left"><strong>ANY BELT</strong></td>
+<td align="left">Resistances</td>
+<td align="left">Any</td>
+</tr>
+
+<tr>
+<td align="left">Amulet</td>
+<td align="left"><strong>FIREFLOWER</strong></td>
+<td align="left">+4 Fire Skills with Dark Entries Anoint</td>
+<td align="left">Any Corrupt is cheap off Trade</td>
+</tr>
+
+<tr>
+<td align="left">Rings</td>
+<td align="left"><strong>ANY RING</strong></td>
+<td align="left">Resistances</td>
+<td align="left">Any</td>
+</tr>
+
+<tr>
+<td align="left">Life Flask</td>
+<td align="left" colspan="3"><strong>ANY LIFE FLASK</strong></td>
+</tr>
+
+<tr>
+<td align="left">Mana Flask</td>
+<td align="left" colspan="3"><strong>ANY MANA FLASK</strong></td>
+</tr>
+
+<tr>
+<td align="left">Charms</td>
+<td align="left" colspan="3"><strong>THAWING CHARM</strong></td>
+</tr>
+</tbody>
+</table>
+
+<h1 id="endgame-gear">Endgame Gear</h1>
+
+<ul>
+<li>When you reach this point, each Minion Level cost increases drastically. The cheapest ones you can get are the 5-Link Level 21 Skeletal Sniper Gem and +1 Level to Skeletal Sniper. After getting those two, the cost increases to around roughly 50 Divine and the final two from Fireflower is valued at around 500 Divines (100 Corrupts).</li>
+<li>You can transition to Evasion once you get Alpha&rsquo;s Howl and Heroic Tragedy Timeless Jewel Olroth.</li>
+<li>Use Bones of Ullr for content that doesn&rsquo;t need you to move around too much like Simulacrum. It should net you around 30% more Skeletal Snipers.</li>
+<li>Fireflower +6 should be final upgrade since most Fireflower +6s on the market doesn&rsquo;t have the correct anoint, you will be making one yourself.</li>
+</ul>
+
+<table>
+<thead>
+<tr>
+<th align="left">Gear</th>
+<th align="left">Name</th>
+<th align="left">Stats</th>
+<th align="left">Corruption</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">Weapon</td>
+<td align="left"><strong>TRENCHTIMBRE</strong></td>
+<td align="left">+3 Minion Skill, Soul Core of Azcapa</td>
+<td align="left">+1 Minion Skill (+4 Total)</td>
+</tr>
+
+<tr>
+<td align="left">Offhand</td>
+<td align="left"><strong>RATTLING SCEPTRE</strong></td>
+<td align="left">+5 Minion Skill, % Increased Spirit, Allies In Your Presence Deal % Increased Damage</td>
+<td align="left">% Spirit</td>
+</tr>
+
+<tr>
+<td align="left">Helmet</td>
+<td align="left"><strong>ALPHA&rsquo;S HOWL</strong></td>
+<td align="left">95%+ Evasion, 65%+ Cold Resistance, 1 Socket and +20% Quality.</td>
+<td align="left">+1 Minion Skill</td>
+</tr>
+
+<tr>
+<td align="left">Armour</td>
+<td align="left"><strong>GHOSTWRITHE</strong></td>
+<td align="left">2 Sockets</td>
+<td align="left">61% Life life Energy Shield</td>
+</tr>
+
+<tr>
+<td align="left">Gloves</td>
+<td align="left"><strong>EVASION GLOVE</strong></td>
+<td align="left">Magic Find, Double Resistance, Max Life and Evasion</td>
+<td align="left">2 Sockets</td>
+</tr>
+
+<tr>
+<td align="left">Boots</td>
+<td align="left"><strong>EVASION BOOTS</strong></td>
+<td align="left">Movement Speed, Magic Find, Double Resistances, Max Life and Evasion</td>
+<td align="left">2 Sockets</td>
+</tr>
+
+<tr>
+<td align="left">Boots 2</td>
+<td align="left"><strong>BONES OF ULLR</strong></td>
+<td align="left">40 Maximum Life</td>
+<td align="left">2 Sockets</td>
+</tr>
+
+<tr>
+<td align="left">Belt</td>
+<td align="left"><strong>INGENUITY</strong></td>
+<td align="left">At least 50% Increased Bonuses From Equipped Rings</td>
+<td align="left">Any Elemental Resistance</td>
+</tr>
+
+<tr>
+<td align="left">Amulet</td>
+<td align="left"><strong>FIREFLOWER</strong></td>
+<td align="left">+4 Fire Skills with Dark Entries Anoint, 20% Fire Quality Modifier</td>
+<td align="left">+1 Fire Skills (+6 total with Quality)</td>
+</tr>
+
+<tr>
+<td align="left">Rings</td>
+<td align="left"><strong>VENTOR&rsquo;S GAMBLE</strong></td>
+<td align="left">18-20 Spirit, High Magic Find and Max Life. Resistances depend on your other gears.</td>
+<td align="left">Too Scared to Corrupt</td>
+</tr>
+
+<tr>
+<td align="left">Life Flask</td>
+<td align="left" colspan="3"><strong>ANY LIFE FLASK</strong></td>
+</tr>
+
+<tr>
+<td align="left">Mana Flask</td>
+<td align="left" colspan="3"><strong>ANY MANA FLASK</strong></td>
+</tr>
+
+<tr>
+<td align="left">Charms</td>
+<td align="left" colspan="3"><strong>THAWING CHARM</strong></td>
+</tr>
+</tbody>
+</table>
+
+<h1 id="jewels">Jewels</h1>
+
+<ul>
+<li>Level 96+ Skill Tree has 12 Jewel Sockets.</li>
+<li>Get Sapphire 1s for simplicity&rsquo;s sake when starting out. Even getting only 15% Minion Damage helps a lot.</li>
+<li>Once you get to Sapphire 2-4s, you can start removing Minion Elem res from the skill tree which allows you to allocate other nodes.</li>
+<li>Heroic Tragedy Timeless Jewel Olroth converts a keystone in range into every 2 INT provides 1% Evasion instead.</li>
+<li>If you don&rsquo;t know what you want yet, I would advise just getting another Sapphire. Megalomaniac depends on your budget or what&rsquo;s currently on the market. A few obvious ones would be Evasion nodes from the Ranger side. Anything that saves precious skill points are good too!</li>
+</ul>
+
+<table>
+<thead>
+<tr>
+<th align="left">Jewel</th>
+<th align="left">Stat 1</th>
+<th align="left">Stat 2</th>
+<th align="left">Stat 3</th>
+<th align="left">Stat 4</th>
+<th align="left">Corruption</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">Sapphire 1</td>
+<td align="left">Minions Deal 14-15% Increased Damage</td>
+<td align="left" colspan="3">10%-20% Increased Energy Shield</td>
+<td align="left">Any Attribute Increase</td>
+</tr>
+
+<tr>
+<td align="left">Sapphire 2</td>
+<td align="left">Minions Deal 14-15% Increased Damage</td>
+<td align="left">10%-20% Increased Energy Shield</td>
+<td align="left" colspan="2">Minions Have +9-10% To All Elemental Resistance</td>
+<td align="left">Any Attribute Increase</td>
+</tr>
+
+<tr>
+<td align="left">Sapphire 3</td>
+<td align="left">Minions Deal 14-15% Increased Damage</td>
+<td align="left">10%-20% Increased Energy Shield</td>
+<td align="left" colspan="2">Minions Have +11-13% To Chaos Resistance</td>
+<td align="left">Any Attribute Increase</td>
+</tr>
+
+<tr>
+<td align="left">Sapphire 4</td>
+<td align="left">Minions Deal 14-15% Increased Damage</td>
+<td align="left">10%-20% Increased Energy Shield</td>
+<td align="left">Minions Have +9-10% To All Elemental Resistance</td>
+<td align="left">Minions Have +11-13% To Chaos Resistance</td>
+<td align="left">Any Attribute Increase</td>
+</tr>
+
+<tr>
+<td align="left">Grand Spectrum Emerald</td>
+<td align="left" colspan="4">2% Increased Spirit Per Socketed Grand Spectrum</td>
+<td align="left">Any Attribute Increase</td>
+</tr>
+
+<tr>
+<td align="left">Against the Darkness Time Lost Diamond</td>
+<td align="left">Notable Passive Skills in Radius Also Grant +12 to Spirit</td>
+<td align="left" colspan="4">Notable Passive Skills in Radius Also Grant 4% Increased Strength</td>
+</tr>
+
+<tr>
+<td align="left">Prism of Belief Diamond</td>
+<td align="left" colspan="5">+1-3 To All Levels of Skeletal Sniper Skills</td>
+</tr>
+
+<tr>
+<td align="left">Megalomaniac Diamond</td>
+<td align="left" colspan="5">Any Nodes that grant Attributes, Energy Shield, or Evasion</td>
+</tr>
+
+<tr>
+<td align="left">Heroic Tragedy Timeless Jewel</td>
+<td align="left">Remembrancing 2448 songworthy deeds by the line of Olroth</td>
+<td align="left" colspan="4">Passives in radius are Conquered by the Kalguur</td>
+</tr>
+</tbody>
+</table>
+
+<h1 id="against-the-darkness-layout">Against the Darkness Layout</h1>
+
+<p><a href="https://preview.redd.it/gly5em2dqnie1.png?width=440&amp;format=png&amp;auto=webp&amp;s=4b8a08a7941f87a1f7a33d89b3a28f247dd1f451" target="_blank">https://preview.redd.it/gly5em2dqnie1.png?width=440&amp;format=png&amp;auto=webp&amp;s=4b8a08a7941f87a1f7a33d89b3a28f247dd1f451</a></p>
+
+<h1 id="skill-gems">Skill Gems</h1>
+
+<ul>
+<li>A Level 36 Skeletal Sniper with 34% Gem Quality costs only 19 Spirit Per Summon.</li>
+<li>You can corrupt a 4 Link Level 19 and below Skeletal Sniper Gem to try to get +1 Link or +1 Skill level then upgrade it to Level 20. This boosts your power by quite a bit before getting your 5 Link Level 21 Gem.</li>
+<li>If you&rsquo;re at Skeletal Sniper Level 38, use Chaos Skill +1 or Fire Skill +1 for Link 4 and 5 on your Snipers. You&rsquo;ll have less clear speed and DPS but your minions will be much tankier which is important in content like Simulacrum.</li>
+<li>Martial Tempo isn&rsquo;t really needed because Pain Offering gives your minion a lot of Attack Speed. I recommend using it only when your Skeletal Sniper is at level 40.</li>
+<li>Scattershot is not that good because the two extra arrows doesn&rsquo;t really always hit and reduces total DPS by a lot. Fork is by far a better choice and can hit targets off-screen.</li>
+<li>If you have at least 25% Minion Revive Speed from your nodes, you can opt to not use Persistence Link from Pain Offering. Inspiration Link is for lowering mana costs for when you have Heroic Tragedy Timeless Jewel Equipped.</li>
+<li>Ancestral Warrior Totem with Armour Breaker well, uh, breaks Armour and provides 2% HP Regen for our Minions via Font of Blood. Any level 5 Link can be bought cheap from Trade since there are players gambling for +1 Gem Level Corrupt.</li>
+<li>Grim Feast is broken as it effectively doubles your Energy Shield and removes the need for ES% Regen. I think it&rsquo;s going to be nerfed in the future.</li>
+<li>Use Wind Dancer only when you switch to Evasion.</li>
+<li>Blink is nice for Trial of the Sekhemas. Steal Ingenuity Link from Skeletal Cleric.</li>
+</ul>
+
+<table>
+<thead>
+<tr>
+<th align="left">Skill Gem</th>
+<th align="left">Link 1</th>
+<th align="left">Link 2</th>
+<th align="left">Link 3</th>
+<th align="left">Link 4</th>
+<th align="left">Link 5</th>
+<th align="left">Corruption</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">Skeletal Warrior</td>
+<td align="left">Maim</td>
+<td align="left">Blind</td>
+<td align="left" colspan="4">Culling Strike</td>
+</tr>
+
+<tr>
+<td align="left">Skeletal Sniper</td>
+<td align="left">Heft</td>
+<td align="left">Brutality</td>
+<td align="left">Feeding Frenzy</td>
+<td align="left">Martial Tempo</td>
+<td align="left">Fork</td>
+<td align="left">Level +1</td>
+</tr>
+
+<tr>
+<td align="left">Pain Offering</td>
+<td align="left">Ablation</td>
+<td align="left">Danse Macabre</td>
+<td align="left">Font of Rage</td>
+<td align="left">Persistence</td>
+<td align="left">Inspiration</td>
+<td align="left">Link +1</td>
+</tr>
+
+<tr>
+<td align="left">Skeletal Cleric</td>
+<td align="left">Minion Mastery</td>
+<td align="left">Last Gasp</td>
+<td align="left">Meat Shield</td>
+<td align="left" colspan="3">Ingenuity</td>
+</tr>
+
+<tr>
+<td align="left">Ancestral Warrior Totem</td>
+<td align="left">Armour Breaker (Skill Gem)</td>
+<td align="left">Demolisher</td>
+<td align="left">Ancestral Urgency</td>
+<td align="left">Overabundance</td>
+<td align="left">Font of Blood</td>
+<td align="left">Any</td>
+</tr>
+
+<tr>
+<td align="left" colspan="7">Grim Feast</td>
+</tr>
+
+<tr>
+<td align="left" colspan="7">Wind Dancer</td>
+</tr>
+
+<tr>
+<td align="left">Blink</td>
+<td align="left" colspan="6">Ingenuity</td>
+</tr>
+</tbody>
+</table>
+
+<h1 id="faqs">FAQs</h1>
+
+<ul>
+<li><strong>Why no Raging Spirits?</strong> Because we are using Fireflower amulet. Fire Wall needs Brutality in order to not Ignite and we already have our Armour Break Source from Ancestral Warrior Totem.</li>
+<li>WIP</li>
+</ul>
+
+<h1 id="links">Links</h1>
+
+<p><a href="https://www.youtube.com/@Formana" target="_blank">https://www.youtube.com/@Formana</a><br>
+<a href="https://www.twitch.tv/formana" target="_blank">https://www.twitch.tv/formana</a></p>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mccee4y" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>cjeysen</div>
+        <div>1 | 4 minutes ago </div>
+      </div>
+      <label for="mccee4y" class="commentText"><p>I won&rsquo;t be using this but thank you in advance for the people you gonna help, this is a very clear and detailled guide.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
