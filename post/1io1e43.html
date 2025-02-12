@@ -1,0 +1,330 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/PathOfExile2/comments/1io1e43/poe2_stash_search_guide_for_noobs_no_regex/"><p>POE2 Stash Search Guide for Noobs (No Regex)</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <p>You don&rsquo;t need to know advanced Regex. In fact I don&rsquo;t even know what this is (too lazy to look it up, maybe it is lite regex or something lol). Also sorry the formatting is &ldquo;just get it done&rdquo; style. &amp;lt;3<br>
+Basically, stash search in POE 2 has some very logical syntax that you can use on the fly to look up a bunch of stuff. Here are the ones I&rsquo;ve figured out so far and how they work.<br>
+Instead of a guide I will write out the queries and explain what they do and your brilliant minds will see the patterns. :)</p>
+
+<p>The examples I&rsquo;m giving are in the context of searching through waystones in order to filter in thingies I want or filter out duds that have thingies I don&rsquo;t want as I juice them to 6 affixes.</p>
+
+<p>Basics:</p>
+
+<ol>
+<li>Put each part of a query in quotes. You can have 1 or many parts to a query.</li>
+<li>Use words to match those words exactly (like &ldquo;burn&rdquo;) or use keywords with a colon like &ldquo;Tier: 14&rdquo; or &ldquo;Rarity: Normal&rdquo; to match tiers or rarities etc. I&rsquo;ll update this as I discover more.</li>
+</ol>
+
+<p>Follow these examples in order to understand&hellip;</p>
+
+<p><code>&quot;tier: 14&quot;</code> will find all tier 14 waystones.</p>
+
+<p><code>&quot;tier: 14&quot; &quot;rarity: normal&quot;</code> will find all T14 waystones that are of the rarity &ldquo;normal&rdquo; (the white ones).</p>
+
+<p><code>&quot;tier: 14&quot; &quot;!rarity: normal&quot;</code> will find all T14 waystones are are NOT of the rarity &ldquo;normal&rdquo; (so it will return all T14 waystones that are blue and yellow). TIP: ! is the NOT operator.</p>
+
+<p><code>&quot;tier: 14&quot; &quot;rarity: rare&quot; &quot;burn&quot;</code> will find all T14 waystones that are yellow with the word burn anywhere in them (which happens to only be found in burning ground affix).</p>
+
+<p><strong>OPERATOR SYNTAX TABLE</strong></p>
+
+<table>
+<thead>
+<tr>
+<th align="left">Operator</th>
+<th align="left">Syntax</th>
+<th align="left">Example</th>
+<th align="left">Notes</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">NOT</td>
+<td align="left"><code>!</code></td>
+<td align="left"><code>&quot;!burn&quot;</code></td>
+<td align="left">Can be used with keywords as well like &ldquo;!rarity: normal&rdquo;</td>
+</tr>
+
+<tr>
+<td align="left">OR</td>
+<td align="left" colspan="2">won&rsquo;t let me type it in reddit</td>
+<td align="left">will return burn solo, ailment solo, or both together.</td>
+</tr>
+
+<tr>
+<td align="left">AND</td>
+<td align="left">Just use more <code>&quot; &quot;</code> in the same query.</td>
+<td align="left"><code>&quot;burn&quot; &quot;ailment&quot;</code></td>
+<td align="left">will only return items with both &ldquo;burn&rdquo; and &ldquo;ailment&rdquo; together.</td>
+</tr>
+
+<tr>
+<td align="left">Wildcard</td>
+<td align="left"><code>.</code></td>
+<td align="left"><code>&quot;6..&quot;</code></td>
+<td align="left">Would find 600 to 699 or 66% since it is simply a wildcard</td>
+</tr>
+</tbody>
+</table>
+<p><strong>KEYWORD TABLE</strong></p>
+
+<table>
+<thead>
+<tr>
+<th align="left">Keyword</th>
+<th align="left">Variable</th>
+<th align="left">Example</th>
+<th align="left">Notes</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">Tier</td>
+<td align="left">An Integer</td>
+<td align="left" colspan="2"><code>&quot;Tier: 15&quot;</code></td>
+</tr>
+
+<tr>
+<td align="left">Rarity</td>
+<td align="left">Normal, Magic, Rare, Unique</td>
+<td align="left" colspan="2"><code>&quot;Rarity: Magic&quot;</code></td>
+</tr>
+
+<tr>
+<td align="left">Class</td>
+<td align="left">Quarterstaves, Bows, Rings, Amulets, Jewels, Gloves, etc. etc. etc.</td>
+<td align="left"><code>&quot;Class: Gloves&quot;</code></td>
+<td align="left">seems to work like LootFilter classes</td>
+</tr>
+
+<tr>
+<td align="left">Item Level</td>
+<td align="left">An Integer</td>
+<td align="left"><code>&quot;Item Level: 75&quot;</code></td>
+<td align="left">Looking for an item level 70 to 79? Use the wildcard operator above and you get &ldquo;Item Level: 7.&rdquo;</td>
+</tr>
+</tbody>
+</table>
+<p>I&rsquo;ll update both of these tables as I learn about more. Thanks for coming to my TED Talk.</p>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mcfmduk" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Grimmix_</div>
+        <div>1 | 25 minutes ago </div>
+      </div>
+      <label for="mcfmduk" class="commentText"><p>Wow thanks for information.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
