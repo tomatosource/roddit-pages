@@ -1,0 +1,348 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/PathOfExile2/comments/1iru8sw/creating_a_poe_auctionstyle_trade_tool/"><p>Creating a PoE Auction-Style Trade Tool</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <p><a href="https://preview.redd.it/8maf0tlvgrje1.png?width=1920&amp;format=png&amp;auto=webp&amp;s=ce8ec135477a346877fcb3035903f610466ce3a3" target="_blank">https://preview.redd.it/8maf0tlvgrje1.png?width=1920&amp;format=png&amp;auto=webp&amp;s=ce8ec135477a346877fcb3035903f610466ce3a3</a></p>
+
+<p>Here&rsquo;s a quick concise overview:</p>
+
+<ul>
+<li><strong>Purpose</strong>: I&rsquo;m experimenting with an <strong>auction-style approach</strong> to Path of Exile trading to <strong>build my programming skills</strong>.</li>
+<li><strong>How it works</strong>:
+
+<ul>
+<li>It’s a <strong>Python script</strong> with a <code>tkinter</code> <strong>GUI</strong>.</li>
+<li><strong>Monitors</strong> the Path of Exile 2,<code>client.txt</code>file (which contains your chat history) in real time.</li>
+<li>When someone sends a message (e.g., “@From Username: &hellip; 5 div”), the script:
+
+<ul>
+<li>Parses the line to identify the user, item, and offer amount.</li>
+<li><strong>Matches</strong> the user to the item they previously inquired about.</li>
+<li><strong>Updates</strong> the bid if it’s higher:</li>
+<li>Notifies the <strong>previous highest bidder</strong> that they’ve been outbid,</li>
+<li>Tells the <strong>new highest bidder</strong> that their offer is now on top.</li>
+</ul></li>
+<li><strong>Displays</strong> all this information in two lists:
+
+<ul>
+<li>Items and their highest offers,</li>
+<li>Users and their most recent offers.</li>
+</ul></li>
+</ul></li>
+<li><strong>No game files are modified</strong>: the script <strong>only reads</strong> the <code>client.txt</code> chat log; it does <strong>not</strong> inject code or alter any other PoE files.</li>
+<li><strong>Current messaging</strong>: It <strong>simulates</strong> replying by printing instructions (like “Press ENTER, paste message, press ENTER”), but does <strong>not</strong> auto-send anything in-game.</li>
+<li><strong>Question</strong>: I’m curious if a fully automated sending approach (auto-typing, macros, etc.) is possible or allowed—would love feedback on that</li>
+</ul>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mdbc4c5" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>KhmunTheoOrion</div>
+        <div>5 | 4 hours ago </div>
+      </div>
+      <label for="mdbc4c5" class="commentText"><p>You made an auto self ignore tool, very impressive.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mdbefzn" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>chaos-spawn91</div>
+        <div>5 | 4 hours ago </div>
+      </div>
+      <label for="mdbefzn" class="commentText"><p>Seems like a good way to improving coding skills as well as getting banned</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mdb8kw1" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>poetticphenom</div>
+        <div>3 | 4 hours ago </div>
+      </div>
+      <label for="mdb8kw1" class="commentText"><p>You may want to take this down or write to support. I’m not certain but this may in fact violate TOS</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mdbmkq4" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>vid_23</div>
+        <div>3 | 3 hours ago </div>
+      </div>
+      <label for="mdbmkq4" class="commentText"><p>Full automation is against tos, macros aren&rsquo;t. You&rsquo;re basically making a bot</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mdby42j" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>___Worm__</div>
+        <div>2 | 2 hours ago </div>
+      </div>
+      <label for="mdby42j" class="commentText"><p>If it furthers your coding knowledge, keep it up. just don&rsquo;t use an account you have stuff on because who knows.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mdc30c4" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Innocult18</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="mdc30c4" class="commentText"><p>Giving a secondary program that does autotext the printed message is worthy as a &ldquo;mod&rdquo; of the original program - &ldquo;use at your own discretion, might be ToS&rdquo; type warning on launch. Should cover you proper.</p>
+
+<p>The big thing about this idea to me is reading a sale offer even one of sold or bought. You could just make a seperate listing on like a website that can tell &ldquo;Offer Price Items&rdquo;, where people go there to see the number of same/different price/escalating up/down of items livididly getting interest. Kind of like a torrent seed of network prices across buyers/sellers that report on offers their making/watching.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
