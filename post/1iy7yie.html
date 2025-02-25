@@ -1,0 +1,2033 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/nba/comments/1iy7yie/oc_nikola_jokic_trae_young_the_only_two_players/"><p>[OC] Nikola Jokic &amp; Trae Young: The Only Two Players in 30 Years Without An All-Star Teammate - An Analysis</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <h3 id="background">Background</h3>
+
+<p>(This post will focus on Trae Young as I’m a Hawks fan but I think it shouldn’t be lost on anyone that two of the best playmakers of this generation have never had an All-Star teammate while they were also on the roster.)</p>
+
+<p>&amp;nbsp;</p>
+
+<p>As an aforementioned Hawks fan, I’ve watched and appreciated Trae Young since he&rsquo;s stepped foot into the league. Watching last night&rsquo;s game v. the Miami Heat where his starting teammates were a 19-year old rookie, a 21-year old defensive stalwart with a shaky (but growing!) offensive game, a player who was in the G-League last month and making his 7th career NBA start, and an undersized but decent center, Trae Young has rarely had the help needed to push his teams to contender status.</p>
+
+<p>&amp;nbsp;</p>
+
+<p>Despite less-than-ideal rosters, Trae Young has increased his assist per game every single year of his career, leading the league in assists every year since 2022 except for one (2024) due to injury. Yes, he has his flaws like any other player but I don&rsquo;t think most fans understand how much he&rsquo;s doing, with so much less than his peers. Contemporaries such as Doncic, Haliburton, Brunson, and Maxey get to play with perennial All-Stars such as Kyrie, KAT, Embiid (when available lol), Siakam, etc. All who have been voted All-NBA before, <em>nonetheless an All-Star</em>. Prior to this year, the best teammate Trae has ever had was Dejounte Murray, a replacement All-Star, who&rsquo;s never been back to the game again and John Collins who&rsquo;s never made it at all. I knew that Trae and Jokic had never had All-Star teammates before but wanted to investigate whether or not anyone else in recent memory had such a stark lack of teammate star power.</p>
+
+<p>&amp;nbsp;</p>
+
+<h3 id="data">Data</h3>
+
+<p>Ran a simple query through StatHead to return all players who have been named to the All-Star Team at least 3 times since the 1994-1995 season, which returned a total of 101 players. I chose a minimum of 3 All-Star selections to reduce the noise of players who were not regularly considered All-Stars, first-time All-Stars like Cade Cunningham and Victor Wembanyama, and other noisy data. Once I had the list, I manually checked every single player for when they played with someone who was selected as an All-Star, while both players were rostered on the team. Players who were voted an All-Star before being on the same roster do not count, such as Dejounte Murray. This exercise is to investigate fellow All-Star teammates. As someone who&rsquo;s pretty knowledgeable of NBA history, some teammates were easy confirmations throughout my fact-checking: Westbrook as Durant&rsquo;s first All-Star teammate or Pippen as MJ&rsquo;s first. Others were more obscure, and surprising, given it was these players first and only All-Star selection: Tom Gugliotta for Kevin Garnett or Antonio Davis for Vince Carter.</p>
+
+<p>&amp;nbsp;</p>
+
+<p><a href="https://stathead.com/tiny/Nar9w" target="_blank">StatHead Output</a>
+&amp;nbsp;</p>
+
+<table>
+<thead>
+<tr>
+<th align="left">Player</th>
+<th align="left">AS Appearances</th>
+<th align="left">Team</th>
+<th align="left">All-Star Teammate</th>
+<th align="left">Year</th>
+<th align="left">Same Selection?</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">Trae Young</td>
+<td align="left">4</td>
+<td align="left">N/A</td>
+<td align="left">N/A</td>
+<td align="left">N/A</td>
+<td align="left">N/A</td>
+</tr>
+
+<tr>
+<td align="left">Deron Williams</td>
+<td align="left">3</td>
+<td align="left">UTA</td>
+<td align="left">Carlos Boozer</td>
+<td align="left">2008</td>
+<td align="left">No</td>
+</tr>
+
+<tr>
+<td align="left">Russell Westbrook</td>
+<td align="left">9</td>
+<td align="left">OKC</td>
+<td align="left">Kevin Durant</td>
+<td align="left">2010</td>
+<td align="left">No</td>
+</tr>
+
+<tr>
+<td align="left">Chris Webber</td>
+<td align="left">5</td>
+<td align="left">SAC</td>
+<td align="left">Vlade Divac</td>
+<td align="left">2001</td>
+<td align="left">Yes</td>
+</tr>
+
+<tr>
+<td align="left">Rasheed Wallace</td>
+<td align="left">4</td>
+<td align="left">DET</td>
+<td align="left">Ben Wallace</td>
+<td align="left">2006</td>
+<td align="left">Yes</td>
+</tr>
+
+<tr>
+<td align="left">Ben Wallace</td>
+<td align="left">4</td>
+<td align="left">DET</td>
+<td align="left">Chauncey Billups</td>
+<td align="left">2006</td>
+<td align="left">Yes</td>
+</tr>
+
+<tr>
+<td align="left">John Wall</td>
+<td align="left">5</td>
+<td align="left">WAS</td>
+<td align="left">Bradley Beal</td>
+<td align="left">2018</td>
+<td align="left">Yes</td>
+</tr>
+
+<tr>
+<td align="left">Kemba Walker</td>
+<td align="left">4</td>
+<td align="left">BOS</td>
+<td align="left">Jayson Tatum</td>
+<td align="left">2020</td>
+<td align="left">Yes</td>
+</tr>
+
+<tr>
+<td align="left">Antoine Walker</td>
+<td align="left">3</td>
+<td align="left">BOS</td>
+<td align="left">Paul Pierce</td>
+<td align="left">2002</td>
+<td align="left">Yes</td>
+</tr>
+
+<tr>
+<td align="left">Dwyane Wade</td>
+<td align="left">13</td>
+<td align="left">MIA</td>
+<td align="left">Shaquille O&rsquo;Neal</td>
+<td align="left">2005</td>
+<td align="left">Yes</td>
+</tr>
+
+<tr>
+<td align="left">Karl-Anthony Towns</td>
+<td align="left">5</td>
+<td align="left">MIN</td>
+<td align="left">Jimmy Butler</td>
+<td align="left">2018</td>
+<td align="left">Yes</td>
+</tr>
+
+<tr>
+<td align="left">Klay Thompson</td>
+<td align="left">5</td>
+<td align="left">GSW</td>
+<td align="left">Stephen Curry</td>
+<td align="left">2014</td>
+<td align="left">No</td>
+</tr>
+
+<tr>
+<td align="left">Jayson Tatum</td>
+<td align="left">6</td>
+<td align="left">BOS</td>
+<td align="left">Kemba Walker</td>
+<td align="left">2020</td>
+<td align="left">Yes</td>
+</tr>
+
+<tr>
+<td align="left">Amar&rsquo;e Stoudemire</td>
+<td align="left">6</td>
+<td align="left">PHO</td>
+<td align="left">Shawn Marion</td>
+<td align="left">2005</td>
+<td align="left">No</td>
+</tr>
+
+<tr>
+<td align="left">Peja Stojaković</td>
+<td align="left">3</td>
+<td align="left">SAC</td>
+<td align="left">Chris Webber</td>
+<td align="left">2002</td>
+<td align="left">Yes</td>
+</tr>
+
+<tr>
+<td align="left">John Stockton</td>
+<td align="left">4</td>
+<td align="left">UTA</td>
+<td align="left">Karl Malone</td>
+<td align="left">1989</td>
+<td align="left">Yes</td>
+</tr>
+
+<tr>
+<td align="left">Latrell Sprewell</td>
+<td align="left">3</td>
+<td align="left">NYK</td>
+<td align="left">Allan Houston</td>
+<td align="left">2011</td>
+<td align="left">Yes</td>
+</tr>
+
+<tr>
+<td align="left">Ben Simmons</td>
+<td align="left">3</td>
+<td align="left">PHI</td>
+<td align="left">Joel Embiid</td>
+<td align="left">2019</td>
+<td align="left">Yes</td>
+</tr>
+
+<tr>
+<td align="left">Pascal Siakam</td>
+<td align="left">3</td>
+<td align="left">TOR</td>
+<td align="left">Kawhi Leonard</td>
+<td align="left">2019</td>
+<td align="left">No</td>
+</tr>
+
+<tr>
+<td align="left">Domantas Sabonis</td>
+<td align="left">3</td>
+<td align="left">SAC</td>
+<td align="left">De-Aaron Fox</td>
+<td align="left">2023</td>
+<td align="left">Yes</td>
+</tr>
+
+<tr>
+<td align="left">Derrick Rose</td>
+<td align="left">3</td>
+<td align="left">CHI</td>
+<td align="left">Luol Deng</td>
+<td align="left">2012</td>
+<td align="left">Yes</td>
+</tr>
+
+<tr>
+<td align="left">Rajon Rondo</td>
+<td align="left">4</td>
+<td align="left">BOS</td>
+<td align="left">Kevin Garnett</td>
+<td align="left">2008</td>
+<td align="left">No</td>
+</tr>
+
+<tr>
+<td align="left">David Robinson</td>
+<td align="left">5</td>
+<td align="left">SAS</td>
+<td align="left">Sean Elliott</td>
+<td align="left">1993</td>
+<td align="left">Yes</td>
+</tr>
+
+<tr>
+<td align="left">Mitch Richmond</td>
+<td align="left">4</td>
+<td align="left">LAL</td>
+<td align="left">Shaquille O&rsquo;Neal</td>
+<td align="left">2002</td>
+<td align="left">No</td>
+</tr>
+
+<tr>
+<td align="left">Glen Rice</td>
+<td align="left">3</td>
+<td align="left">LAL</td>
+<td align="left">Shaquille O&rsquo;Neal</td>
+<td align="left">1999</td>
+<td align="left">No</td>
+</tr>
+
+<tr>
+<td align="left">Julius Randle</td>
+<td align="left">3</td>
+<td align="left">NOP</td>
+<td align="left">Anthony Davis</td>
+<td align="left">2019</td>
+<td align="left">No</td>
+</tr>
+
+<tr>
+<td align="left">Scottie Pippen</td>
+<td align="left">3</td>
+<td align="left">CHI</td>
+<td align="left">Michael Jordan</td>
+<td align="left">1990</td>
+<td align="left">Yes</td>
+</tr>
+
+<tr>
+<td align="left">Paul Pierce</td>
+<td align="left">10</td>
+<td align="left">BOS</td>
+<td align="left">Antoine Walker</td>
+<td align="left">2002</td>
+<td align="left">Yes</td>
+</tr>
+
+<tr>
+<td align="left">Gary Payton</td>
+<td align="left">8</td>
+<td align="left">SEA</td>
+<td align="left">Shawn Kemp</td>
+<td align="left">1994</td>
+<td align="left">Yes</td>
+</tr>
+
+<tr>
+<td align="left">Chris Paul</td>
+<td align="left">12</td>
+<td align="left">NOH</td>
+<td align="left">David West</td>
+<td align="left">2008</td>
+<td align="left">Yes</td>
+</tr>
+
+<tr>
+<td align="left">Tony Parker</td>
+<td align="left">6</td>
+<td align="left">SAS</td>
+<td align="left">Tim Duncan</td>
+<td align="left">2001</td>
+<td align="left">No</td>
+</tr>
+
+<tr>
+<td align="left">Hakeem Olajuwon</td>
+<td align="left">3</td>
+<td align="left">HOU</td>
+<td align="left">Clyde Drexler</td>
+<td align="left">1996</td>
+<td align="left">Yes</td>
+</tr>
+
+<tr>
+<td align="left">Shaquille O&rsquo;Neal</td>
+<td align="left">13</td>
+<td align="left">ORL</td>
+<td align="left">Penny Hardaway</td>
+<td align="left">1995</td>
+<td align="left">Yes</td>
+</tr>
+
+<tr>
+<td align="left">Jermaine O&rsquo;Neal</td>
+<td align="left">6</td>
+<td align="left">IND</td>
+<td align="left">Brad Miller</td>
+<td align="left">2003</td>
+<td align="left">Yes</td>
+</tr>
+
+<tr>
+<td align="left">Dirk Nowitzki</td>
+<td align="left">14</td>
+<td align="left">DAL</td>
+<td align="left">Steve Nash</td>
+<td align="left">2002</td>
+<td align="left">Yes</td>
+</tr>
+
+<tr>
+<td align="left">Steve Nash</td>
+<td align="left">8</td>
+<td align="left">DAL</td>
+<td align="left">Dirk Nowitzki</td>
+<td align="left">2002</td>
+<td align="left">Yes</td>
+</tr>
+
+<tr>
+<td align="left">Dikembe Mutombo</td>
+<td align="left">7</td>
+<td align="left">ATL</td>
+<td align="left">Christian Laettner</td>
+<td align="left">1997</td>
+<td align="left">Yes</td>
+</tr>
+
+<tr>
+<td align="left">Alonzo Mourning</td>
+<td align="left">6</td>
+<td align="left">MIA</td>
+<td align="left">Tim Hardaway</td>
+<td align="left">1997</td>
+<td align="left">Yes</td>
+</tr>
+
+<tr>
+<td align="left">Donovan Mitchell</td>
+<td align="left">6</td>
+<td align="left">UTA</td>
+<td align="left">Rudy Gobert</td>
+<td align="left">2020</td>
+<td align="left">Yes</td>
+</tr>
+
+<tr>
+<td align="left">Yao Ming</td>
+<td align="left">8</td>
+<td align="left">HOU</td>
+<td align="left">Steve Francis</td>
+<td align="left">2003</td>
+<td align="left">Yes</td>
+</tr>
+
+<tr>
+<td align="left">Paul Millsap</td>
+<td align="left">4</td>
+<td align="left">ATL</td>
+<td align="left">Al Horford</td>
+<td align="left">2015</td>
+<td align="left">Yes</td>
+</tr>
+
+<tr>
+<td align="left">Reggie Miller</td>
+<td align="left">4</td>
+<td align="left">IND</td>
+<td align="left">Detlef Schrempf</td>
+<td align="left">1998</td>
+<td align="left">No</td>
+</tr>
+
+<tr>
+<td align="left">Khris Middleton</td>
+<td align="left">3</td>
+<td align="left">MIL</td>
+<td align="left">Giannis Antetokounmpo</td>
+<td align="left">2017</td>
+<td align="left">No</td>
+</tr>
+
+<tr>
+<td align="left">Tracy McGrady</td>
+<td align="left">7</td>
+<td align="left">ORL</td>
+<td align="left">Grant Hill</td>
+<td align="left">2001</td>
+<td align="left">Yes</td>
+</tr>
+
+<tr>
+<td align="left">Shawn Marion</td>
+<td align="left">4</td>
+<td align="left">PHO</td>
+<td align="left">Stephon Marbury</td>
+<td align="left">2003</td>
+<td align="left">Yes</td>
+</tr>
+
+<tr>
+<td align="left">Karl Malone</td>
+<td align="left">7</td>
+<td align="left">UTA</td>
+<td align="left">John Stockton</td>
+<td align="left">1989</td>
+<td align="left">Yes</td>
+</tr>
+
+<tr>
+<td align="left">Kyle Lowry</td>
+<td align="left">6</td>
+<td align="left">HOU</td>
+<td align="left">Yao Ming</td>
+<td align="left">2011</td>
+<td align="left">No</td>
+</tr>
+
+<tr>
+<td align="left">Kevin Love</td>
+<td align="left">5</td>
+<td align="left">CLE</td>
+<td align="left">LeBron James</td>
+<td align="left">2015</td>
+<td align="left">No</td>
+</tr>
+
+<tr>
+<td align="left">Damian Lillard</td>
+<td align="left">9</td>
+<td align="left">POR</td>
+<td align="left">LaMarcus Aldridge</td>
+<td align="left">2014</td>
+<td align="left">Yes</td>
+</tr>
+
+<tr>
+<td align="left">Kawhi Leonard</td>
+<td align="left">6</td>
+<td align="left">SAS</td>
+<td align="left">Tony Parker</td>
+<td align="left">2012</td>
+<td align="left">No</td>
+</tr>
+
+<tr>
+<td align="left">Jason Kidd</td>
+<td align="left">10</td>
+<td align="left">DAL</td>
+<td align="left">Chris Gatling</td>
+<td align="left">1997</td>
+<td align="left">No</td>
+</tr>
+
+<tr>
+<td align="left">Shawn Kemp</td>
+<td align="left">4</td>
+<td align="left">SEA</td>
+<td align="left">Gary Payton</td>
+<td align="left">1994</td>
+<td align="left">Yes</td>
+</tr>
+
+<tr>
+<td align="left">Michael Jordan</td>
+<td align="left">5</td>
+<td align="left">CHI</td>
+<td align="left">Scottie Pippen</td>
+<td align="left">1990</td>
+<td align="left">Yes</td>
+</tr>
+
+<tr>
+<td align="left">Eddie Jones</td>
+<td align="left">3</td>
+<td align="left">LAL</td>
+<td align="left">Shaquille O&rsquo;Neal</td>
+<td align="left">1998</td>
+<td align="left">Yes</td>
+</tr>
+
+<tr>
+<td align="left">Nikola Jokić</td>
+<td align="left">7</td>
+<td align="left">DEN</td>
+<td align="left">N/A</td>
+<td align="left">N/A</td>
+<td align="left">N/A</td>
+</tr>
+
+<tr>
+<td align="left">Joe Johnson</td>
+<td align="left">7</td>
+<td align="left">ATL</td>
+<td align="left">Shawn Marion</td>
+<td align="left">2003</td>
+<td align="left">No</td>
+</tr>
+
+<tr>
+<td align="left">LeBron James</td>
+<td align="left">21</td>
+<td align="left">CLE</td>
+<td align="left">Zydrunas Ilgauskas</td>
+<td align="left">2005</td>
+<td align="left">Yes</td>
+</tr>
+
+<tr>
+<td align="left">Allen Iverson</td>
+<td align="left">11</td>
+<td align="left">PHI</td>
+<td align="left">Theo Ratliff</td>
+<td align="left">2001</td>
+<td align="left">Yes</td>
+</tr>
+
+<tr>
+<td align="left">Kyrie Irving</td>
+<td align="left">9</td>
+<td align="left">CLE</td>
+<td align="left">LeBron James</td>
+<td align="left">2015</td>
+<td align="left">Yes</td>
+</tr>
+
+<tr>
+<td align="left">Dwight Howard</td>
+<td align="left">8</td>
+<td align="left">ORL</td>
+<td align="left">Rashard Lewis</td>
+<td align="left">2009</td>
+<td align="left">Yes</td>
+</tr>
+
+<tr>
+<td align="left">Al Horford</td>
+<td align="left">5</td>
+<td align="left">ATL</td>
+<td align="left">Joe Johnson</td>
+<td align="left">2009</td>
+<td align="left">No</td>
+</tr>
+
+<tr>
+<td align="left">Grant Hill</td>
+<td align="left">7</td>
+<td align="left">DET</td>
+<td align="left">Joe Dumars</td>
+<td align="left">1995</td>
+<td align="left">Yes</td>
+</tr>
+
+<tr>
+<td align="left">James Harden</td>
+<td align="left">11</td>
+<td align="left">OKC</td>
+<td align="left">Kevin Durant</td>
+<td align="left">2011</td>
+<td align="left">No</td>
+</tr>
+
+<tr>
+<td align="left">Anfernee Hardaway</td>
+<td align="left">4</td>
+<td align="left">ORL</td>
+<td align="left">Shaquille O&rsquo;Neal</td>
+<td align="left">1995</td>
+<td align="left">Yes</td>
+</tr>
+
+<tr>
+<td align="left">Richard Hamilton</td>
+<td align="left">3</td>
+<td align="left">WAS</td>
+<td align="left">Michael Jordan</td>
+<td align="left">2002</td>
+<td align="left">No</td>
+</tr>
+
+<tr>
+<td align="left">Blake Griffin</td>
+<td align="left">6</td>
+<td align="left">LAC</td>
+<td align="left">Chris Paul</td>
+<td align="left">2012</td>
+<td align="left">Yes</td>
+</tr>
+
+<tr>
+<td align="left">Draymond Green</td>
+<td align="left">4</td>
+<td align="left">GSW</td>
+<td align="left">Stephen Curry</td>
+<td align="left">2014</td>
+<td align="left">No</td>
+</tr>
+
+<tr>
+<td align="left">Rudy Gobert</td>
+<td align="left">3</td>
+<td align="left">UTA</td>
+<td align="left">Donovan Mitchell</td>
+<td align="left">2020</td>
+<td align="left">Yes</td>
+</tr>
+
+<tr>
+<td align="left">Shai Gilgeous-Alexander</td>
+<td align="left">3</td>
+<td align="left">OKC</td>
+<td align="left">Chris Paul</td>
+<td align="left">2020</td>
+<td align="left">No</td>
+</tr>
+
+<tr>
+<td align="left">Paul George</td>
+<td align="left">9</td>
+<td align="left">IND</td>
+<td align="left">Roy Hibbert</td>
+<td align="left">2014</td>
+<td align="left">Yes</td>
+</tr>
+
+<tr>
+<td align="left">Pau Gasol</td>
+<td align="left">6</td>
+<td align="left">LAL</td>
+<td align="left">Kobe Bryant</td>
+<td align="left">2009</td>
+<td align="left">Yes</td>
+</tr>
+
+<tr>
+<td align="left">Marc Gasol</td>
+<td align="left">3</td>
+<td align="left">TOR</td>
+<td align="left">Kawhi Leonard</td>
+<td align="left">2019</td>
+<td align="left">No</td>
+</tr>
+
+<tr>
+<td align="left">Kevin Garnett</td>
+<td align="left">15</td>
+<td align="left">MIN</td>
+<td align="left">Tom Gugliotta</td>
+<td align="left">1997</td>
+<td align="left">Yes</td>
+</tr>
+
+<tr>
+<td align="left">Steve Francis</td>
+<td align="left">3</td>
+<td align="left">HOU</td>
+<td align="left">Yao Ming</td>
+<td align="left">2003</td>
+<td align="left">Yes</td>
+</tr>
+
+<tr>
+<td align="left">Patrick Ewing</td>
+<td align="left">3</td>
+<td align="left">NYK</td>
+<td align="left">Mark Jackson</td>
+<td align="left">1989</td>
+<td align="left">Yes</td>
+</tr>
+
+<tr>
+<td align="left">Joel Embiid</td>
+<td align="left">7</td>
+<td align="left">PHI</td>
+<td align="left">Ben Simmons</td>
+<td align="left">2019</td>
+<td align="left">Yes</td>
+</tr>
+
+<tr>
+<td align="left">Anthony Edwards</td>
+<td align="left">3</td>
+<td align="left">MIN</td>
+<td align="left">Karl-Anthony Towns</td>
+<td align="left">2024</td>
+<td align="left">Yes</td>
+</tr>
+
+<tr>
+<td align="left">Kevin Durant</td>
+<td align="left">15</td>
+<td align="left">OKC</td>
+<td align="left">Russell Westbrook</td>
+<td align="left">2011</td>
+<td align="left">Yes</td>
+</tr>
+
+<tr>
+<td align="left">Tim Duncan</td>
+<td align="left">15</td>
+<td align="left">SAS</td>
+<td align="left">David Robinson</td>
+<td align="left">1998</td>
+<td align="left">Yes</td>
+</tr>
+
+<tr>
+<td align="left">Luka Dončić</td>
+<td align="left">5</td>
+<td align="left">DAL</td>
+<td align="left">Kyrie Irving</td>
+<td align="left">2023</td>
+<td align="left">Yes</td>
+</tr>
+
+<tr>
+<td align="left">DeMar DeRozan</td>
+<td align="left">6</td>
+<td align="left">TOR</td>
+<td align="left">Chris Bosh</td>
+<td align="left">2011</td>
+<td align="left">No</td>
+</tr>
+
+<tr>
+<td align="left">Anthony Davis</td>
+<td align="left">10</td>
+<td align="left">NOP</td>
+<td align="left">Demarcus Cousins</td>
+<td align="left">2018</td>
+<td align="left">Yes</td>
+</tr>
+
+<tr>
+<td align="left">Stephen Curry</td>
+<td align="left">11</td>
+<td align="left">GSW</td>
+<td align="left">Klay Thompson</td>
+<td align="left">2015</td>
+<td align="left">Yes</td>
+</tr>
+
+<tr>
+<td align="left">DeMarcus Cousins</td>
+<td align="left">4</td>
+<td align="left">NOP</td>
+<td align="left">Anthony Davis</td>
+<td align="left">2018</td>
+<td align="left">Yes</td>
+</tr>
+
+<tr>
+<td align="left">Vince Carter</td>
+<td align="left">8</td>
+<td align="left">TOR</td>
+<td align="left">Antonio Davis</td>
+<td align="left">2001</td>
+<td align="left">Yes</td>
+</tr>
+
+<tr>
+<td align="left">Jimmy Butler</td>
+<td align="left">6</td>
+<td align="left">CHI</td>
+<td align="left">Derrick Rose</td>
+<td align="left">2012</td>
+<td align="left">No</td>
+</tr>
+
+<tr>
+<td align="left">Kobe Bryant</td>
+<td align="left">18</td>
+<td align="left">LAL</td>
+<td align="left">Shaquille O&rsquo;Neal</td>
+<td align="left">1998</td>
+<td align="left">Yes</td>
+</tr>
+
+<tr>
+<td align="left">Jaylen Brown</td>
+<td align="left">4</td>
+<td align="left">BOS</td>
+<td align="left">Jayson Tatum</td>
+<td align="left">2020</td>
+<td align="left">No</td>
+</tr>
+
+<tr>
+<td align="left">Chris Bosh</td>
+<td align="left">11</td>
+<td align="left">MIA</td>
+<td align="left">Lebron James</td>
+<td align="left">2011</td>
+<td align="left">Yes</td>
+</tr>
+
+<tr>
+<td align="left">Devin Booker</td>
+<td align="left">4</td>
+<td align="left">PHO</td>
+<td align="left">Chris Paul</td>
+<td align="left">2021</td>
+<td align="left">Yes</td>
+</tr>
+
+<tr>
+<td align="left">Chauncey Billups</td>
+<td align="left">5</td>
+<td align="left">DET</td>
+<td align="left">Ben Wallace</td>
+<td align="left">2003</td>
+<td align="left">No</td>
+</tr>
+
+<tr>
+<td align="left">Bradley Beal</td>
+<td align="left">3</td>
+<td align="left">WAS</td>
+<td align="left">John Wall</td>
+<td align="left">2018</td>
+<td align="left">Yes</td>
+</tr>
+
+<tr>
+<td align="left">Charles Barkley</td>
+<td align="left">3</td>
+<td align="left">PHO</td>
+<td align="left">Dan Majele</td>
+<td align="left">1993</td>
+<td align="left">Yes</td>
+</tr>
+
+<tr>
+<td align="left">Vin Baker</td>
+<td align="left">4</td>
+<td align="left">SEA</td>
+<td align="left">Gary Payton</td>
+<td align="left">2000</td>
+<td align="left">No</td>
+</tr>
+
+<tr>
+<td align="left">Gilbert Arenas</td>
+<td align="left">3</td>
+<td align="left">WAS</td>
+<td align="left">Antawn Jamison</td>
+<td align="left">2005</td>
+<td align="left">Yes</td>
+</tr>
+
+<tr>
+<td align="left">Carmelo Anthony</td>
+<td align="left">10</td>
+<td align="left">DEN</td>
+<td align="left">Allen Iverson</td>
+<td align="left">2007</td>
+<td align="left">Yes</td>
+</tr>
+
+<tr>
+<td align="left">Giannis Antetokounmpo</td>
+<td align="left">9</td>
+<td align="left">MIL</td>
+<td align="left">Khris Middleton</td>
+<td align="left">2019</td>
+<td align="left">Yes</td>
+</tr>
+
+<tr>
+<td align="left">Ray Allen</td>
+<td align="left">10</td>
+<td align="left">MIL</td>
+<td align="left">Glenn Robinson</td>
+<td align="left">2000</td>
+<td align="left">Yes</td>
+</tr>
+
+<tr>
+<td align="left">LaMarcus Aldridge</td>
+<td align="left">7</td>
+<td align="left">POR</td>
+<td align="left">Brandon Roy</td>
+<td align="left">2008</td>
+<td align="left">No</td>
+</tr>
+
+<tr>
+<td align="left">Bam Adebayo</td>
+<td align="left">3</td>
+<td align="left">MIA</td>
+<td align="left">Jimmy Butler</td>
+<td align="left">2020</td>
+<td align="left">Yes</td>
+</tr>
+</tbody>
+</table>
+<p>&amp;nbsp;</p>
+
+<p>And my hypothesis was confirmed: Trae Young and Nikola Jokic are the only NBA players in at <strong>least</strong> the last 30 years to never have a teammate voted as an All-Star. Of the 101 players, <strong>over 70%</strong> shared an All-Star selection in the same year. Trae &amp; Jokic haven&rsquo;t gotten even close to that level of star-level production from their teammates.</p>
+
+<p>(Technically Brandon Roy never played with an All-Star as well. Lamarcus Aldridge didn’t get his first All-Star nod in Portland until after Roy retired and Kevin Love was not selected as an All-Star in the one season Roy played in Minnesota. I chose to omit Roy in this analysis because his career was cut so short (6 years) and both Jokic and Trae have both already eclipsed his number of years played (10 and 7 respectively)).</p>
+
+<p>&amp;nbsp;</p>
+
+<h3 id="conclusion">Conclusion</h3>
+
+<p>This analysis may hold true <em>even past</em> 30 years but that&rsquo;s where my off-hand NBA history knowledge is less comprehensive. I’m not a Denver fan so I can’t speak for them (at least have a championship to show for it) but for Atlanta, it’s disheartening to see how the Hawks organization has failed (up to this point) to maximize their point guard. Whether it&rsquo;s injuries, poor gambles (going all in on a flawed 2021 roster, underwhelming draft picks such as Cam Reddish, the Dejounte Murray trade), or lack of ownership direction and buy-in to put forth a contender. 2025 was almost the last year Trae would be on this list as Jalen Johnson showed promise and budding stardom, being 1 of 4 players averaging at least 18/10/5 per game before his season-ending injury. Despite it all, Trae Young still produces. He&rsquo;s the most underappreciated player in the NBA.</p>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mes9f4k" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>gigglios</div>
+        <div>24 | an hour ago </div>
+      </div>
+      <label for="mes9f4k" class="commentText"><p>Trae is an impressive and underrated player. If that ref doesnt injire trae, hawks would&rsquo;ve made the finals lol</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mesfnko" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Funny-Transition7869 | Pacers</div>
+        <div>1 | 16 minutes ago </div>
+      </div>
+      <label for="mesfnko" class="commentText"><p>they wouldntve beat the bucks bruh</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mesgjsb" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>stdfan | Hawks</div>
+        <div>1 | 11 minutes ago </div>
+      </div>
+      <label for="mesgjsb" class="commentText"><p>Pretty sure we were up when his ankle was rolled and won another without him.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="mesgod6" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Emotional-Main9403</div>
+        <div>1 | 11 minutes ago </div>
+      </div>
+      <label for="mesgod6" class="commentText"><p>They were up 9 with like 10 minutes left before that injury. Won game 4 without him and were up 10 on Bucks when Giannis got hurt</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mesbppv" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Bukana999 | Lakers</div>
+        <div>15 | 37 minutes ago </div>
+      </div>
+      <label for="mesbppv" class="commentText"><p>Dude, the year Denver win, their players Gordon, Murray, and Porter were all star caliber.  That’s a stacked roster any way you look at it.  I know some of them had of years because of severe injuries (Murray and Porter).  But those guys are not scrubs.</p>
+
+<p>Is there a win above replacement metric for basketball?</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mesetcr" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>cahpahkah | Nuggets</div>
+        <div>1 | 21 minutes ago </div>
+      </div>
+      <label for="mesetcr" class="commentText"><p>&ldquo;All of the Nuggets other than Jokic are bad&rdquo; is not an honest argument, though people do make it sometimes to try to make him seem even better.</p>
+
+<p>But &ldquo;Jokic has never had an All-Star teammate&rdquo; is objectively true.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="mese5r6" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Shot_Bank_5843 | Mavericks</div>
+        <div>1 | 24 minutes ago </div>
+      </div>
+      <label for="mese5r6" class="commentText"><p>Murray had one of the best second option playoff performances of all time the year Denver won.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mesfbk1" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Bukana999 | Lakers</div>
+        <div>1 | 18 minutes ago </div>
+      </div>
+      <label for="mesfbk1" class="commentText"><p>He was for in 2020, but got injured with a turn ACL. He definitely would have been an all star if not for that nasty injury.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="meshpsr" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Upstairs_Addendum587</div>
+        <div>1 | 5 minutes ago </div>
+      </div>
+      <label for="meshpsr" class="commentText"><p>Sure and I think it&rsquo;s telling. Give Joker one all-star/all-nba caliber teammate and they walked to the title. But other than that year and the bubble, Murray has been far off from being an all-star. IIRC he&rsquo;s averaged under 20 points more than over it, and his career high is like 21.2ppg in the regular season. Credit to him for that playoff run, it was remarkable. He&rsquo;s just not consistently that player.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="mese8i9" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>HenrikCrown | Pelicans</div>
+        <div>1 | 24 minutes ago </div>
+      </div>
+      <label for="mese8i9" class="commentText"><p>Agreed that the roster has fringe all star talent </p>
+
+<p>People act like all the key role players under Jokic are all bums lol </p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mesg16h" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>abredar | Nuggets</div>
+        <div>1 | 14 minutes ago </div>
+      </div>
+      <label for="mesg16h" class="commentText"><p>No one (in their right mind) says that they’re bums, at least not the current supporting cast. Before 2022-23 they were absolutely bums (Facu, Barton, Austin Rivers, etc.).</p>
+
+<p>What people do say is that the Nuggets supporting cast <em>outside</em> of the top 4 are bums which they absolutely have been outside of ‘23 and maybe this season.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="mesfh8d" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Bukana999 | Lakers</div>
+        <div>1 | 17 minutes ago </div>
+      </div>
+      <label for="mesfh8d" class="commentText"><p>I really thought Gordon had been an all star.  I guess he was only in the dunk contest.  I swear he was carrying the magic during those years.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="mesgplu" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Clemsontigger16</div>
+        <div>1 | 11 minutes ago </div>
+      </div>
+      <label for="mesgplu" class="commentText"><p>This year it’s more true than the title year</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="mesen24" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Jeroen_Jrn | Cavaliers</div>
+        <div>1 | 21 minutes ago </div>
+      </div>
+      <label for="mesen24" class="commentText"><p>Murray, sure. Porter, no.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="meshj7r" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>dave__autista</div>
+        <div>1 | 6 minutes ago </div>
+      </div>
+      <label for="meshj7r" class="commentText"><p>Which player should have Murray replaced in the all-star game?</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="mesfw7z" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>IcyMeat7</div>
+        <div>1 | 15 minutes ago </div>
+      </div>
+      <label for="mesfw7z" class="commentText"><p><a href="https://en.wikipedia.org/wiki/2023_NBA_All-Star_Game" target="_blank">https://en.wikipedia.org/wiki/2023_NBA_All-Star_Game</a></p>
+
+<p>Which western players are being replaced by any of those players?</p>
+
+<p>Murray had a great great playoff performance and that&rsquo;s why they won. None of them are consistent all-star level players</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mesg89g" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Bukana999 | Lakers</div>
+        <div>1 | 13 minutes ago </div>
+      </div>
+      <label for="mesg89g" class="commentText"><p>Once Murray got the acl injury, the promise of the 20-21 season is gone.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="meshdnd" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>dave__autista</div>
+        <div>1 | 7 minutes ago </div>
+      </div>
+      <label for="meshdnd" class="commentText"><blockquote>
+<p>Dude, the year Denver win, their players Gordon, Murray, and Porter were all star caliber.</p>
+</blockquote>
+
+<p>So they were robbed? Please tell me which players undeservedly got to the all-star game over Gordon, Murray and Porter.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="mesi0fx" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>WolverineLong1430</div>
+        <div>1 | 4 minutes ago </div>
+      </div>
+      <label for="mesi0fx" class="commentText"><p>I think majority can agree, not making all star appearance (votes mainly due to popularity) doesn’t mean you don’t have all star level players. Trae has a legit case.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mes9jie" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Davethisisntcool | Hawks</div>
+        <div>14 | an hour ago </div>
+      </div>
+      <label for="mes9jie" class="commentText"><p>They’d complement each other’s game so well if they were on the same team</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mesgzdk" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>matzan | NBA</div>
+        <div>1 | 9 minutes ago </div>
+      </div>
+      <label for="mesgzdk" class="commentText"><p>Trade them both to Lakers.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mesi178" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>JackedFactory</div>
+        <div>1 | 4 minutes ago </div>
+      </div>
+      <label for="mesi178" class="commentText"><p>Naw nobody wants jokers slow a$$ in LA. Dudes washed</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mesbz1r" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Dizzydsmith | Hawks</div>
+        <div>10 | 35 minutes ago </div>
+      </div>
+      <label for="mesbz1r" class="commentText"><p>TRA3 is vastly underrated. I’ve never gotten why he gets so much hate. Lloyd Pierce is a BUM!</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="meseaqw" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>FireworkFuse | Hawks</div>
+        <div>1 | 23 minutes ago </div>
+      </div>
+      <label for="meseaqw" class="commentText"><p>FUCK EL PEE</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mesf2t8" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>New_Essay_4869 | Thunder</div>
+        <div>1 | 19 minutes ago </div>
+      </div>
+      <label for="mesf2t8" class="commentText"><p>Jalen Johnson will end that for Trae soon</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mesf7md" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>[deleted]</div>
+        <div>1 | 19 minutes ago </div>
+      </div>
+      <label for="mesf7md" class="commentText"><p>[deleted]</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mesfh39" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Cool_Affect3966 | Nuggets</div>
+        <div>1 | 17 minutes ago </div>
+      </div>
+      <label for="mesfh39" class="commentText"><p>And how are they using him wrong</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mes9kqp" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Fuxk808s</div>
+        <div>0 | an hour ago </div>
+      </div>
+      <label for="mes9kqp" class="commentText"><p>Never had a player voted 3 times to the all star game you mean ?</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mesc2mx" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>IAmKevinDurantAMA | Warriors</div>
+        <div>1 | 35 minutes ago </div>
+      </div>
+      <label for="mesc2mx" class="commentText"><p>that&rsquo;s cute, what about KD?</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mesguse" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>jumboponcho | Hawks</div>
+        <div>1 | 10 minutes ago </div>
+      </div>
+      <label for="mesguse" class="commentText"><p>Murray was avging <sup>27</sup>&frasl;<sub>7</sub> for the postseason that year, you legit can’t win a ring without at least 2 guys playing at a star level</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="meshs08" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>rickeyethebeerguy</div>
+        <div>1 | 5 minutes ago </div>
+      </div>
+      <label for="meshs08" class="commentText"><p>I mean they traded for Dejounte the year after he was an all star in the west. Could be Trae doesn’t make his teammates or team better. So they had an all star level player who couldn’t make the all star team in the east</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mesda7l" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>homiez | Nuggets</div>
+        <div>1 | 29 minutes ago </div>
+      </div>
+      <label for="mesda7l" class="commentText"><p>Jokic doing this without an all star teammate and a Refs whistle is insane. No other player can produce his numbers with these limitations.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mesgjn6" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Clemsontigger16</div>
+        <div>1 | 11 minutes ago </div>
+      </div>
+      <label for="mesgjn6" class="commentText"><p>Counter point, if you make the arbitrary cut off 5 all star games, then only Jokic fits this category.</p>
+
+<p>Also Jalen Johnson had a strong case for one of the final all star spots before his injury, so feels disingenuous to say Trae has never had “anywhere close to that level of production from his teammates”. Also, Murray has also been very close to that level for years too.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mesdtzq" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>NotManyBuses | Charlotte Bobcats</div>
+        <div>1 | 26 minutes ago </div>
+      </div>
+      <label for="mesdtzq" class="commentText"><p>LaMelo Ball is another example of someone who never had an all star teammate.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="meseqxu" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>urbanjer | Hawks</div>
+        <div>1 | 21 minutes ago </div>
+      </div>
+      <label for="meseqxu" class="commentText"><p>LaMelo played with Gordon Hayward so by your thought process, he would have played with an All-Star and you&rsquo;d be incorrect. If I didn&rsquo;t limit to 3x All-Stars or All-Star selections before being on the same team, you run into noise like this.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mesfeqh" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>NotManyBuses | Charlotte Bobcats</div>
+        <div>1 | 17 minutes ago </div>
+      </div>
+      <label for="mesfeqh" class="commentText"><p>So why not put LaMelo in the post alongside Jokic and Trae? Cherry picking to favor your guy</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mesg643" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>urbanjer | Hawks</div>
+        <div>1 | 13 minutes ago </div>
+      </div>
+      <label for="mesg643" class="commentText"><p>Let me know when LaMelo is a 3x All-Star. Did you read anything in the post lmaoo?</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mesgd5f" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>NotManyBuses | Charlotte Bobcats</div>
+        <div>1 | 12 minutes ago </div>
+      </div>
+      <label for="mesgd5f" class="commentText"><p>He would be already if not for the biased media</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="meshrj8" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>awntawn | Lakers</div>
+        <div>1 | 5 minutes ago </div>
+      </div>
+      <label for="meshrj8" class="commentText"><p>If you want to count that, then Jokic is currently playing with a former MVP in Westbrook.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mesfc6f" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Nuclearsunburn | Heat</div>
+        <div>1 | 18 minutes ago </div>
+      </div>
+      <label for="mesfc6f" class="commentText"><p>Dirty floor lollipop guy is a superb passer, wish we had someone like that</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mescqr6" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>NotManyBuses | Charlotte Bobcats</div>
+        <div>1 | 31 minutes ago </div>
+      </div>
+      <label for="mescqr6" class="commentText"><p>DeJounte Murray was an all star</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mesde4t" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>GangGreen7729 | Hawks</div>
+        <div>1 | 28 minutes ago </div>
+      </div>
+      <label for="mesde4t" class="commentText"><p>I understand its a long read but if you&rsquo;re gonna comment at least read the body of the post</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="mesdqe9" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>urbanjer | Hawks</div>
+        <div>1 | 26 minutes ago </div>
+      </div>
+      <label for="mesdqe9" class="commentText"><p>&ldquo;Players who were voted an All-Star before being on the roster together do not count.&rdquo; This analysis was about players and their teammates being All-Stars while on the same team.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mese0fv" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>NotManyBuses | Charlotte Bobcats</div>
+        <div>1 | 25 minutes ago </div>
+      </div>
+      <label for="mese0fv" class="commentText"><p>Your analysis is incredibly cherry picked to intentionally favour Trae</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mesg0pe" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Dilbert205 | Hawks</div>
+        <div>1 | 14 minutes ago </div>
+      </div>
+      <label for="mesg0pe" class="commentText"><p>The Murray gripe is legit but I think the intent was to weed out players like Vince Carter who was an all star and played with Trae but was nowhere near all star caliber at the time.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mesgw6f" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>urbanjer | Hawks</div>
+        <div>1 | 10 minutes ago </div>
+      </div>
+      <label for="mesgw6f" class="commentText"><p>Exactly. VC, Rondo, and the like for Trae and all other players who played with &ldquo;All-Stars&rdquo; well beyond their prime.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="mesha88" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Clemsontigger16</div>
+        <div>1 | 8 minutes ago </div>
+      </div>
+      <label for="mesha88" class="commentText"><p>The intent with almost the whole exercise was to make sure the criteria included Trae. If you consider Murray and what Jalen Johnson was doing this year and last, he had definitely had all star level teammates.</p>
+
+<p>I can guarantee there are plenty of guys in this data set who had guys get selected as fringe or replacement all stars, or because of positional scarcity etc that would be comparable to Murray or Jalen.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
