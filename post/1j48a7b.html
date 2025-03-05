@@ -1,0 +1,633 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/nba/comments/1j48a7b/the_average_championship_head_coach_wins_their/"><p>The average championship head coach wins their first title after just 2-3 seasons with a new team. Michael Malone is the only one that had more than 6 seasons with a team before winning his first championship.</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <p>Going back to the NBA/ABA merger, there have been 22 different head coaches that have won their first title. Here&rsquo;s how many years they were with that team before winning a title:</p>
+
+<table>
+<thead>
+<tr>
+<th align="center">Year</th>
+<th align="center">Champion</th>
+<th align="center">Head Coach</th>
+<th align="center">Years with Team</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="center">2024</td>
+<td align="center">Boston Celtics</td>
+<td align="center">Joe Mazzulla</td>
+<td align="center">2</td>
+</tr>
+
+<tr>
+<td align="center">2023</td>
+<td align="center">Denver Nuggets</td>
+<td align="center">Michael Malone</td>
+<td align="center">8</td>
+</tr>
+
+<tr>
+<td align="center">2021</td>
+<td align="center">Milwaukee Bucks</td>
+<td align="center">Mike Budenholzer</td>
+<td align="center">3</td>
+</tr>
+
+<tr>
+<td align="center">2020</td>
+<td align="center">Los Angeles Lakers</td>
+<td align="center">Frank Vogel</td>
+<td align="center">1</td>
+</tr>
+
+<tr>
+<td align="center">2019</td>
+<td align="center">Toronto Raptors</td>
+<td align="center">Nick Nurse</td>
+<td align="center">1</td>
+</tr>
+
+<tr>
+<td align="center">2016</td>
+<td align="center">Cleveland Cavaliers</td>
+<td align="center">Tyronn Lue</td>
+<td align="center">1</td>
+</tr>
+
+<tr>
+<td align="center">2015</td>
+<td align="center">Golden State Warriors</td>
+<td align="center">Steve Kerr</td>
+<td align="center">1</td>
+</tr>
+
+<tr>
+<td align="center">2012</td>
+<td align="center">Miami Heat</td>
+<td align="center">Erik Spoelstra</td>
+<td align="center">4</td>
+</tr>
+
+<tr>
+<td align="center">2011</td>
+<td align="center">Dallas Mavericks</td>
+<td align="center">Rick Carlisle</td>
+<td align="center">3</td>
+</tr>
+
+<tr>
+<td align="center">2008</td>
+<td align="center">Boston Celtics</td>
+<td align="center">Doc Rivers</td>
+<td align="center">4</td>
+</tr>
+
+<tr>
+<td align="center">2004</td>
+<td align="center">Detroit Pistons</td>
+<td align="center">Larry Brown</td>
+<td align="center">1</td>
+</tr>
+
+<tr>
+<td align="center">1999</td>
+<td align="center">San Antonio Spurs</td>
+<td align="center">Gregg Popovich</td>
+<td align="center">3</td>
+</tr>
+
+<tr>
+<td align="center">1994</td>
+<td align="center">Houston Rockets</td>
+<td align="center">Rudy Tomjanovich</td>
+<td align="center">3</td>
+</tr>
+
+<tr>
+<td align="center">1991</td>
+<td align="center">Chicago Bulls</td>
+<td align="center">Phil Jackson</td>
+<td align="center">2</td>
+</tr>
+
+<tr>
+<td align="center">1989</td>
+<td align="center">Detroit Pistons</td>
+<td align="center">Chuck Daly</td>
+<td align="center">6</td>
+</tr>
+
+<tr>
+<td align="center">1984</td>
+<td align="center">Boston Celtics</td>
+<td align="center">KC Jones</td>
+<td align="center">1</td>
+</tr>
+
+<tr>
+<td align="center">1983</td>
+<td align="center">Philadelphia 76ers</td>
+<td align="center">Billy Cunningham</td>
+<td align="center">6</td>
+</tr>
+
+<tr>
+<td align="center">1982</td>
+<td align="center">Los Angeles Lakers</td>
+<td align="center">Pat Riley</td>
+<td align="center">1</td>
+</tr>
+
+<tr>
+<td align="center">1981</td>
+<td align="center">Boston Celtics</td>
+<td align="center">Bill Fitch</td>
+<td align="center">2</td>
+</tr>
+
+<tr>
+<td align="center">1980</td>
+<td align="center">Los Angeles Lakers</td>
+<td align="center">Paul Westhead</td>
+<td align="center">1</td>
+</tr>
+
+<tr>
+<td align="center">1979</td>
+<td align="center">Seattle SuperSonics</td>
+<td align="center">Lenny Wilkens*</td>
+<td align="center">2</td>
+</tr>
+
+<tr>
+<td align="center">1978</td>
+<td align="center">Washington Bullets</td>
+<td align="center">Dick Motta</td>
+<td align="center">2</td>
+</tr>
+
+<tr>
+<td align="center">1977</td>
+<td align="center">Portland Trail Blazers</td>
+<td align="center">Jack Ramsay</td>
+<td align="center">1</td>
+</tr>
+</tbody>
+</table>
+<p>*Wilkens was a player/coach for his last 3 years in Seattle early 70&rsquo;s. He then coached Portland before being hired by Seattle again as just the head coach. In his 2nd stint, he won a title in just his 2nd year, and that&rsquo;s the one I counted here.</p>
+
+<p>60% of these coaches won their first title in either 1st or 2nd season as head coach with a new team, with the average coach accomplishing it in just 2.5 seasons with a new team. Only 3 coaches took more than 4 seasons to win their first title (Chuck Daly, Billy Cunningham, and Malone)</p>
+
+<p>Here are the head coaches that have been with their current team for at least 3 seasons, and have never won a title in their career. This isn&rsquo;t to say these coaches can&rsquo;t win a title with their current team, but every year from here on where they don&rsquo;t win a title, it becomes increasingly less likely they&rsquo;ll ever win one at their current stop:</p>
+
+<p>Taylor Jenkins</p>
+
+<p>Tom Thibodeau</p>
+
+<p>Billy Donovan</p>
+
+<p>Mark Daigneault</p>
+
+<p>Chris Finch</p>
+
+<p>Chauncey Billups</p>
+
+<p>Jason Kidd</p>
+
+<p>Jamahl Mosley</p>
+
+<p>Willie Green</p>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mg6gbys" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>musicnothing | Jazz</div>
+        <div>21 | an hour ago </div>
+      </div>
+      <label for="mg6gbys" class="commentText"><p>Hypothesis: coaches don&rsquo;t get fired as easily if the players aren&rsquo;t very good. Once the team has good players, coaches are much more likely to be fired quickly so as not to &ldquo;waste&rdquo; the time the team has with those players.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mg6h36t" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Human_mind | Lakers</div>
+        <div>19 | an hour ago </div>
+      </div>
+      <label for="mg6h36t" class="commentText"><p>I saw a stat for the Lakers a few days ago that said new head coaches win the title in their first year with the franchise, <em>or they never win one at all</em>.</p>
+
+<p>That is fucking wild to me.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mg6jo8n" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>RecordReviewer | NBA</div>
+        <div>13 | an hour ago </div>
+      </div>
+      <label for="mg6jo8n" class="commentText"><p>100% true. John Kundla, Bill Sharman, Paul Westhead, Pat Riley, Phil Jackson, Frank Vogel are the 6 coaches in the history of the Lakers that ever won a title, and they all did it in their first year.</p>
+
+<p>The other 23 head coaches in Lakers history never won a title.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="mg6p10z" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>lanParker</div>
+        <div>1 | 24 minutes ago </div>
+      </div>
+      <label for="mg6p10z" class="commentText"><p>Oh well. Best of luck JJ</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mg6gnth" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>nowhathappenedwas | NBA</div>
+        <div>13 | an hour ago </div>
+      </div>
+      <label for="mg6gnth" class="commentText"><blockquote>
+<p>every year from here on where they don&rsquo;t win a title, it becomes increasingly less likely they&rsquo;ll ever win one at their current stop</p>
+</blockquote>
+
+<p>descriptive ≠ predictive</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mg6klzp" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>HarryOttoman | Nuggets</div>
+        <div>9 | 44 minutes ago </div>
+      </div>
+      <label for="mg6klzp" class="commentText"><p>Michael Malone has his faults (can be stubborn in not playing bench players to help their development) but he is absolutely a good coach for the Denver Nuggets and it’d be hard to find a better one for the franchise</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mg6r4ep" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>MatchAffectionate951</div>
+        <div>1 | 14 minutes ago </div>
+      </div>
+      <label for="mg6r4ep" class="commentText"><p>I’m not sure he’s the reason but he deserves credit for the ball movement system around jokic. at its best is amazing. Not many would enable a big man like that</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mg6g1vr" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Severe-Rope-3026 | Spurs</div>
+        <div>5 | an hour ago </div>
+      </div>
+      <label for="mg6g1vr" class="commentText"><p>maybe 6+ seasons is long enough for a team with championship aspirations to move on from a coach</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mg6hfix" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>masteraleph</div>
+        <div>5 | an hour ago </div>
+      </div>
+      <label for="mg6hfix" class="commentText"><p>I think your last point is a really good and important one. Coaches don&rsquo;t last long. Pop has been around forever, Spo was hired in 2008 and has had the advantage of doing better with any given roster than you&rsquo;d expect (and of course of basically coming in for the Heatles), and then Kerr was hired in 2014. Malone, who was hired in 2015, is the odd duck at being given a longer shot.</p>
+
+<p>After them it&rsquo;s Taylor Jenkins from 2019 and then everyone else is 2020 or after.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mg6keqe" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ThePlainWhiteTees | Nuggets</div>
+        <div>2 | an hour ago </div>
+      </div>
+      <label for="mg6keqe" class="commentText"><p>Jokic merchant</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mg6mqwc" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>IdRatherBeLurkingToo | Nuggets</div>
+        <div>1 | 34 minutes ago </div>
+      </div>
+      <label for="mg6mqwc" class="commentText"><p>&ldquo;Dude who develops championship team benefits from them being good&rdquo;</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="mg6pzs5" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>foofighter1351 | Raptors</div>
+        <div>1 | 19 minutes ago </div>
+      </div>
+      <label for="mg6pzs5" class="commentText"><p>That merchant won a ri- oh you&rsquo;re a Nuggets flair, is Malone sentiment not doin great?</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
