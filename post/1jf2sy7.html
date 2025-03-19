@@ -1,0 +1,753 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.selfPostImage {
+  width: 100%;
+  height: auto;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/nba/comments/1jf2sy7/a_statistical_comparison_of_the_top_5_dpoy/"><p>A statistical comparison of the top 5 DPOY candidates for 2024-2025</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <p>The 2024-2025 NBA season is nearing a close and we are again entering awards season. The DPOY award consistently draws debate, particularly because of the lack of reliable statistical measures that can accurately delineate one player&rsquo;s defensive impact. We therefore often rely on the &lsquo;eye test&rsquo; and team defensive impact.</p>
+
+<p>This season, the eye test told us that this DPOY award was locked for Victor Wembanyama, and as you&rsquo;ll see below, the few stats we do have available back that up. Historically, the DPOY award has generally gone to the best defensive player (usually a rim protecting big, or &lsquo;defensive anchor&rsquo;), on one of the best defensive teams. Indeed, the last 10 DPOY winners have all been on a top 3 team defensive rating:</p>
+
+<p>&amp;nbsp;</p>
+
+<table>
+<thead>
+<tr>
+<th>Year</th>
+<th>Winner</th>
+<th>Team DRTG Rank</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>2024</td>
+<td>Rudy Gobert</td>
+<td>1st</td>
+</tr>
+
+<tr>
+<td>2023</td>
+<td>Jaren Jackson Jr</td>
+<td>3rd</td>
+</tr>
+
+<tr>
+<td>2022</td>
+<td>Marcus Smart</td>
+<td>1st</td>
+</tr>
+
+<tr>
+<td>2021</td>
+<td>Rudy Gobert</td>
+<td>3rd</td>
+</tr>
+
+<tr>
+<td>2020</td>
+<td>Giannis Antetokounmpo</td>
+<td>1st</td>
+</tr>
+
+<tr>
+<td>2019</td>
+<td>Rudy Gobert</td>
+<td>2nd</td>
+</tr>
+
+<tr>
+<td>2018</td>
+<td>Rudy Gobert</td>
+<td>1st</td>
+</tr>
+
+<tr>
+<td>2017</td>
+<td>Draymond Green</td>
+<td>2nd</td>
+</tr>
+
+<tr>
+<td>2016</td>
+<td>Kawhi Leonard</td>
+<td>1st</td>
+</tr>
+
+<tr>
+<td>2015</td>
+<td>Kawhi Leonard</td>
+<td>3rd</td>
+</tr>
+</tbody>
+</table>
+<p>&amp;nbsp;</p>
+
+<p>Unfortunately, Wemby suffered an upper extremity DVT that has ruled him out for the remainder of the season, leaving the DPOY field wide open. However, none of the main remaining candidates that have been mentioned meet prior team defense criteria, namely: Evan Mobley (<strong>Team DRTG #8</strong>), Jaren Jackson Jr (<strong>Team DRTG #11</strong>), Dyson Daniels (<strong>Team DRTG #17</strong>), and now Draymond Green (<strong>Team DRTG #7</strong>). Outside of these main candidates, the only players mentioned on a top 3 defense include Lu Dort (<strong>Team DRTG #1</strong>) and Ivica Zubac (<strong>Team DRTG #3</strong>).</p>
+
+<p>For that reason, I&rsquo;m going to make an attempt at drawing an individual defensive statistical comparison between the leading candidates. <strong>Please note, these defensive statistics are meant as a fun exercise and to guide the discussion, and are notably not individually reliable indicators of defensive impact</strong>. Here are the up-to-date defensive stats listed in the table below:</p>
+
+<p>&amp;nbsp;</p>
+
+<table>
+<thead>
+<tr>
+<th>Player</th>
+<th>Def EPM</th>
+<th>Def BPM</th>
+<th>Def FG%</th>
+<th>Rim DFG%</th>
+<th>Def RTG / 100 poss</th>
+<th>Blk/ 100 poss</th>
+<th>Stl / 100 poss</th>
+<th>Mean rank</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>Evan Mobley</td>
+<td>+1.7 (25)</td>
+<td>1.5 (19)</td>
+<td>44.3% (15)</td>
+<td>54.5% (34)</td>
+<td>108 (13)</td>
+<td>2.4 (19)</td>
+<td>1.3 (158)</td>
+<td>40</td>
+</tr>
+
+<tr>
+<td>Draymond Green</td>
+<td>+2.2 (10)</td>
+<td>2.9 (3)</td>
+<td>42.2% (6)</td>
+<td>53.2% (18)</td>
+<td>109 (14)</td>
+<td>1.8 (30)</td>
+<td>2.3 (18)</td>
+<td>14</td>
+</tr>
+
+<tr>
+<td>Dyson Daniels</td>
+<td>+2.0 (13)</td>
+<td>2.6 (6)</td>
+<td>49.8% (78)</td>
+<td>63.4% (273)</td>
+<td>111 (29)</td>
+<td>1.0 (72)</td>
+<td>4.2 (1)</td>
+<td>67</td>
+</tr>
+
+<tr>
+<td>Jaren Jackson Jr</td>
+<td>+1.7 (25)</td>
+<td>1.0 (30)</td>
+<td>41.4% (2)</td>
+<td>49.8% (7)</td>
+<td>110 (19)</td>
+<td>2.6 (14)</td>
+<td>2.0 (42)</td>
+<td>19</td>
+</tr>
+
+<tr>
+<td>Luguentz Dort</td>
+<td>+1.2 (54)</td>
+<td>0.7 (47)</td>
+<td>41.4% (2)</td>
+<td>55.3% (60)</td>
+<td>110 (18)</td>
+<td>1.0 (72)</td>
+<td>1.8 (74)</td>
+<td>47</td>
+</tr>
+
+<tr>
+<td>Ivica Zubac</td>
+<td>+2.3 (8)</td>
+<td>0.6 (50)</td>
+<td>45.8% (27)</td>
+<td>55.1% (49)</td>
+<td>108 (12)</td>
+<td>1.8 (30)</td>
+<td>1.1 (197)</td>
+<td>53</td>
+</tr>
+
+<tr>
+<td>Victor Wembanyama</td>
+<td>+3.2 (4)</td>
+<td>2.8 (4)</td>
+<td>42.7% (7)</td>
+<td>50.8% (11)</td>
+<td>108 (8)</td>
+<td>5.6 (1)</td>
+<td>1.6 (97)</td>
+<td>19</td>
+</tr>
+</tbody>
+</table>
+<p><em>all values listed as: &lsquo;metric score (league rank)&rsquo;</em></p>
+
+<p>*Sources: bbref.com ; stats.nba.com ; dunksandthrees.com ; craftednba.com</p>
+
+<p>**Note: mean rank is average rank of all categories and can be easily skewed by one outlier, e.g:</p>
+
+<ul>
+<li>Dyson Daniels&rsquo; mean rank would be (33) when excluding Rim DFG%</li>
+<li>Wemby&rsquo;s mean rank would be (6) when excluding steals/100 poss</li>
+</ul>
+
+<p>&amp;nbsp;</p>
+
+<p>Overall, an exciting DPOY race with many deserving candidates, which would have unquestionably gone to Victor Wembanyama had he not suffered a season-ending injury. The last two weeks of the season will be huge for narratives and how they affect voter&rsquo;s point of view. <strong>Reminder: these defensive statistics are meant as a fun exercise and to guide the discussion, and are notably not individually reliable indicators of defensive impact</strong></p>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="minlcve" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>dvasquez93 | Warriors</div>
+        <div>13 | 44 minutes ago </div>
+      </div>
+      <label for="minlcve" class="commentText"><p>At this point I wanna see Draymond win it more for the insane vitriol it would provoke than for his own sake.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="minr1k3" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>primepierce34 | BOS</div>
+        <div>1 | 17 minutes ago </div>
+      </div>
+      <label for="minr1k3" class="commentText"><p>Same i think itd be so funny seeing so many people mad because of it</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="minrvi5" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>jjmmyponytail | Celtics</div>
+        <div>1 | 13 minutes ago </div>
+      </div>
+      <label for="minrvi5" class="commentText"><p>as someone who rlly doesn’t like him i would like this</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="minman3" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Ilikesporks_ | Lakers</div>
+        <div>8 | 39 minutes ago </div>
+      </div>
+      <label for="minman3" class="commentText"><p>wemby having the best DRTG per 100 possessions out of those guys despite playing with defensive bums is very impressive. also 5.6 bpg lol</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="minlikw" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>nowhathappenedwas | NBA</div>
+        <div>6 | 43 minutes ago </div>
+      </div>
+      <label for="minlikw" class="commentText"><p>Another one to consider is <a href="https://www.bball-index.com/lebron-application/" target="_blank">D-LEBRON</a> (rank among players with 1500+ minutes):</p>
+
+<ul>
+<li>1) Wemby, +2.2</li>
+<li>3) Draymond, +2.1</li>
+<li>4) Mobley, +1.9</li>
+<li>7) Zubac, +1.7</li>
+<li>9) Daniels, +1.5</li>
+<li>25) JJJ, +0.8</li>
+<li>33) Dort, +0.6</li>
+</ul>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="minljs2" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ParkingSignature7057</div>
+        <div>3 | 43 minutes ago </div>
+      </div>
+      <label for="minljs2" class="commentText"><p>So the lower the mean rank the better?</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="minlwgv" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Nilanjan_Kundu | Mavericks</div>
+        <div>1 | 41 minutes ago </div>
+      </div>
+      <label for="minlwgv" class="commentText"><p>I mean that&rsquo;s how ranking works</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="minnejc" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ParkingSignature7057</div>
+        <div>3 | 34 minutes ago </div>
+      </div>
+      <label for="minnejc" class="commentText"><p>It’s not always true. Didn’t want to assume.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="minnjn0" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>nba2k11er | Warriors</div>
+        <div>3 | 33 minutes ago </div>
+      </div>
+      <label for="minnjn0" class="commentText"><p>If the voters were still allowed to vote for him, how would Wemby do? Unlike MVP, there have been 3 DPOYs in recent history that would now be &ldquo;illegal&rdquo; under the 65-game requirement. Here they are, plus the top vote-getters who met it.</p>
+
+<ul>
+<li><p>Jackson 2022-23, 63 (Brook Lopez 78)</p></li>
+
+<li><p>Gobert 2017-18, 56 (Anthony Davis 75)</p></li>
+
+<li><p>Leonard 2014-15, 64 (Draymond Green 79)</p></li>
+</ul>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="minoiai" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>random-50</div>
+        <div>1 | 29 minutes ago </div>
+      </div>
+      <label for="minoiai" class="commentText"><p>Given the overall numbers seem similar, doesn&rsquo;t it make more sense for a defensive anchor and/or coordinator to get the award?  I&rsquo;m assuming Dyson is neither of those things (but correct me if I&rsquo;m wrong)</p>
+
+<p>Draymond again?  Though it will make him even more insufferable.  Or JJJ.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="minq3le" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>GuestBadge | Warriors</div>
+        <div>1 | 21 minutes ago </div>
+      </div>
+      <label for="minq3le" class="commentText"><p>Good post. It&rsquo;s good to see a statistical comparison of all these players.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="minr1ts" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>bringbackpologrounds</div>
+        <div>1 | 17 minutes ago </div>
+      </div>
+      <label for="minr1ts" class="commentText"><p>I think Caruso would&rsquo;ve been a top contender as well if he had the minutes.</p>
+
+<p>JJJ will become the MSU Spartan with the most DPOYs, passing Donkey.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="minrcte" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>CarBallAlex | Celtics</div>
+        <div>1 | 15 minutes ago </div>
+      </div>
+      <label for="minrcte" class="commentText"><p>The last DPOY’s to not be on a top 5 defense team were Marcus Camby in 2007 and Ben Wallace in 2002, who both averaged over 3 blocks per game.</p>
+
+<p>Top 5 defenses this year are the Thunder, Magic, Rockets, Clippers and Celtics</p>
+
+<p>Historically, someone on the Thunder should win it with how good their defense has been this year, but I understand it’s an individual award and it deserves more nuance than it’s been given.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mintcvr" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>BoisterousBrigand | 76ers</div>
+        <div>1 | 6 minutes ago </div>
+      </div>
+      <label for="mintcvr" class="commentText"><p>Mobley is gonna win imo. I feel like it was gonna be a Mobley/JJJ race down the stretch, and I was already leaning towards Mobley getting it for narrative reasons (not that he&rsquo;s undeserving I just thought that&rsquo;s what would tip a close race), but recently things have been rougher for Memphis and the Cavs are still rolling.</p>
+
+<p>Jaren missed a few games, Grizz defense has fallen off a cliff since the deadline (not really on Jaren but it&rsquo;s still factored in), and to top it off Mobley had a huge game when the Cavs played the Grizz last week. It was Jaren&rsquo;s first game back from injury but again, gonna be factored in regardless.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="minlstf" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>A_Omega_73</div>
+        <div>0 | 42 minutes ago </div>
+      </div>
+      <label for="minlstf" class="commentText"><p>so Dyson Daniels is the front-runner now without Wemby</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="minpy9n" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>GuestBadge | Warriors</div>
+        <div>1 | 22 minutes ago </div>
+      </div>
+      <label for="minpy9n" class="commentText"><p>It&rsquo;s Draymond if you go by the mean rank.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="minpyqm" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>thy_armageddon | Knicks</div>
+        <div>1 | 22 minutes ago </div>
+      </div>
+      <label for="minpyqm" class="commentText"><p>The numbers Mason, what do they mean?</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
