@@ -1,0 +1,415 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.selfPostImage {
+  width: 100%;
+  height: auto;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/PathOfExile2/comments/1jne1rq/an_analysis_of_critical_strike_ascendancy_node/"><p>An Analysis of &lsquo;Critical Strike&rsquo; Ascendancy Node from Amazon|Huntress</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <h1 id="introduction">Introduction</h1>
+
+<p>Hello r/PathOfExile2, I am sure all of you saw the new Amazon ascendancy for the Huntress and a particular node within piqued my interest. The so called Critical Strike (Terrible name by the way, I hope it is just a placeholder). Here is the node for those unable to recall:</p>
+
+<blockquote>
+<p><strong>Critical Strike</strong><br>
+Chance to hit with Attacks can exceed 100%<br>
+Gain additional Critical Hit Chance equal to 25% of excess chance to hit with Attacks</p>
+</blockquote>
+
+<h1 id="the-accuracy-formula">The Accuracy Formula</h1>
+
+<p>According to Path of Exile 2 Wiki the accuracy formula is^([1]):</p>
+
+<blockquote>
+<p><strong>Uncapped Chance to Hit</strong> = (Attacker&rsquo;s Accuracy * 1.5) / (Attacker&rsquo;s Accuracy + Defender&rsquo;s Evasion) * (1 - Accuracy Penalty) * 100<br>
+<strong>Capped Chance To Hit</strong> = max(min(<strong>Uncapped Chance to Hit</strong>, 100), 5)</p>
+</blockquote>
+
+<p>Where accuracy penalty starts applying after <em>2</em> meters and reaches its maximum <em>0.9</em> at <em>12</em> meters. The correctness of this formula is backed by Path of Building 2^([2]):</p>
+
+<pre><code>function calcs.hitChance(evasion, accuracy)
+	if accuracy &amp;lt; 0 then
+		return 5
+	end
+	local rawChance = ( accuracy * 1.5 ) / ( accuracy + evasion ) * 100
+	return m_max(m_min(round(rawChance), 100), 5)
+end
+</code></pre>
+
+<p><em>Path of Building 2 does not yet support hit chance calculations based on distance. Moving forward all of the assumptions will be made according to this formula with no accuracy penalty.</em></p>
+
+<p>The <strong><em>Critical Strike</em></strong> node removes the second part and allows you to exceed <em>100%</em> hit chance. If we assume enemy&rsquo;s evasion as constant then the formula can be simplified into:</p>
+
+<blockquote>
+<p>Uncapped Chance to Hit = (Attacker&rsquo;s Accuracy * 1.5) / (Attacker&rsquo;s Accuracy + ε)</p>
+</blockquote>
+
+<p>which approaches <em>150%</em> as the accuracy approaches infinity. This gives us a theoretical upper limit of <em>50%</em> extra chance to hit which is then converted into <em>12.5%</em> additional critical hit chance. But to calculate it&rsquo;s practical benefits we need to take enemy&rsquo;s evasion into account. According to Path of Building 2 a level 85 enemy (An Uber Pinnacle Boss) has a base evasion of <em>724</em>^([3]):</p>
+
+<pre><code>local data = ...
+-- From DefaultMonsterStats.dat
+data.monsterEvasionTable = { 11, 14, 17, 20, 24, 27, 31, 35, 38, 42, 46, 50, 54, 59, 63, 67, 72, 76, 81, 86, 91, 96, 101, 106, 111, 117, 122, 128, 134, 140, 146, 152, 158, 165, 171, 178, 185, 191, 199, 206, 213, 221, 228, 236, 244, 252, 261, 269, 278, 286, 295, 304, 314, 323, 333, 343, 353, 363, 373, 384, 395, 406, 417, 429, 440, 452, 464, 477, 489, 502, 515, 528, 542, 556, 570, 584, 598, 613, 628, 644, 659, 675, 691, 708, 724, 742, 759, 777, 795, 813, 832, 850, 870, 889, 909, 930, 951, 972, 993, 1015, }
+</code></pre>
+
+<p>*This value is further backed by PoE2DB<strong>^([5])* *yet according to Path of Building 2 developers this table is off by 0.5% in some cases</strong>^([4])* <em>but the difference is insignificant enough that I won&rsquo;t do the correction.</em></p>
+
+<p>This <em>724</em> base evasion is then further scaled by the specific evasion multipliers of uber bosses. Unfortunately for now these values are unknown however in Path of Exile 1 these ranged from <em>1</em> (for Maven, Sirus, etc.) to <em>1.5</em> (for Searing Exarch) and I will assume Path of Exile 2 bosses have similar ranges. Assuming a <em>1.5</em> multiplier our final evasion becomes <em>1086</em>. Here is a table that shows the additional critical hit chance granted at specific intervals:</p>
+
+<table>
+<thead>
+<tr>
+<th align="left">Accuracy Rating</th>
+<th align="left">Hit Chance</th>
+<th align="left">Additional Critical Hit Chance</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">500</td>
+<td align="left">47.29%</td>
+<td align="left">0%</td>
+</tr>
+
+<tr>
+<td align="left">1000</td>
+<td align="left">71.91%</td>
+<td align="left">0%</td>
+</tr>
+
+<tr>
+<td align="left">2000</td>
+<td align="left">97.21%</td>
+<td align="left">0%</td>
+</tr>
+
+<tr>
+<td align="left">2172</td>
+<td align="left">100.0%</td>
+<td align="left">0%</td>
+</tr>
+
+<tr>
+<td align="left">4000</td>
+<td align="left">117.97%</td>
+<td align="left">4.49%</td>
+</tr>
+
+<tr>
+<td align="left">8000</td>
+<td align="left">132.07%</td>
+<td align="left">8.02%</td>
+</tr>
+
+<tr>
+<td align="left">16000</td>
+<td align="left">140.47%</td>
+<td align="left">10.12%</td>
+</tr>
+
+<tr>
+<td align="left">32000</td>
+<td align="left">145.07%</td>
+<td align="left">11.27%</td>
+</tr>
+</tbody>
+</table>
+
+<h1 id="discussion">Discussion</h1>
+
+<p>As you can see after <em>≈12.000</em> accuracy rating the additional critical hit chance granted by the <strong>Critical Strike</strong> node has diminishing returns. A build which heavily invests into Accuracy can reach <em>≈16.000</em> accuracy without much problem thanks to dexterity stacking (+5 accuracy rating per dexterity). This number can go as high as <em>≈32.000</em> if min-maxing every point of dexterity and accuracy rating.</p>
+
+<p>Now that we have established how much additional critical hit chance from the <strong>Critical Strike</strong> node we should talk about what &lsquo;Additional Critical Hit Chance&rsquo; even is. I see 4 options as to what it means, these are from the mostly powerful to the least:</p>
+
+<h1 id="1-added-critical-hit-chance">1. Added Critical Hit Chance</h1>
+
+<p>Additional critical hit chance acts additively with other base critical hit chance modifiers. This behaviour is supported by Path of Exile 1 Wiki&rsquo;s Critical Strike^([6]) and Brittle^([7]) entries.  Technical jargon could change between games but I personally don&rsquo;t see any reason for this to be the case.</p>
+
+<h1 id="2-on-top-critical-hit-chance">2. &lsquo;On Top&rsquo; Critical Hit Chance</h1>
+
+<p>Additional critical hit chance acts &lsquo;on top&rsquo; of your critical hit chance after all other modifiers have been applied. So if you have <em>10%</em> additional critical hit chance then you only needs to reach <em>90%</em> critical hit chance to guarantee a critical hit. I don&rsquo;t believe there is an item/modifier that acts like this but it is possible it&rsquo;s new.</p>
+
+<h1 id="3-more-critical-hit-chance">3. More Critical Hit Chance</h1>
+
+<p>Additional critical hit chance acts as a more multiplier to your critical hit chance after all other modifiers have been applied. So if you have 10% additional critical hit chance and 90% critical hit chance then you have a <em>99%</em> final critical hit chance.</p>
+
+<h1 id="4-increased-critical-hit-chance">4. Increased Critical Hit Chance</h1>
+
+<p>Additional critical hit chance acts as a increase to your base critical hit chance. This  being the case seem impossible to me as a ascendancy point granting only <em>12.5%</em> increased critical hit chance when investing into it heavily is simply weak. Especially considering small nodes in the passive skill tree grant <em>10-15%</em> critical hit chance.</p>
+
+<h1 id="conclusion">Conclusion</h1>
+
+<p>I believe this node can be a very powerful tool if it acts as a base critical hit chance modifier. Especially considering stacking <em>16000</em> accuracy rating and <em>900</em> dexterity gives you 124% increased attacks speed through Falcon Dive and Falcon Technique notables.</p>
+
+<h1 id="references">References</h1>
+
+<p>[1] <a href="https://www.poe2wiki.net/wiki/Accuracy" target="_blank">https://www.poe2wiki.net/wiki/Accuracy</a><br>
+[2] <a href="https://github.com/PathOfBuildingCommunity/PathOfBuilding-PoE2/blob/dev/src/Modules/CalcDefence.lua#L31" target="_blank">https://github.com/PathOfBuildingCommunity/PathOfBuilding-PoE2/blob/dev/src/Modules/CalcDefence.lua#L31</a><br>
+[3] <a href="https://github.com/PathOfBuildingCommunity/PathOfBuilding-PoE2/blob/dev/src/Data/Misc.lua#L5" target="_blank">https://github.com/PathOfBuildingCommunity/PathOfBuilding-PoE2/blob/dev/src/Data/Misc.lua#L5</a><br>
+[4] <a href="https://github.com/PathOfBuildingCommunity/PathOfBuilding-PoE2/blob/dev/src/Export/Scripts/miscdata.lua#L28" target="_blank">https://github.com/PathOfBuildingCommunity/PathOfBuilding-PoE2/blob/dev/src/Export/Scripts/miscdata.lua#L28</a><br>
+[5] <a href="https://poe2db.tw/us/Xesht%2C_We_That_Are_One#XeshtWeThatAreOneItThatReturned" target="_blank">https://poe2db.tw/us/Xesht%2C_We_That_Are_One#XeshtWeThatAreOneItThatReturned</a><br>
+[6] <a href="https://www.poewiki.net/wiki/Critical_strike#Mechanics" target="_blank">https://www.poewiki.net/wiki/Critical_strike#Mechanics</a><br>
+[7] <a href="https://www.poewiki.net/wiki/Brittle" target="_blank">https://www.poewiki.net/wiki/Brittle</a></p>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mkiykx0" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Ravp1</div>
+        <div>1 | 30 minutes ago </div>
+      </div>
+      <label for="mkiykx0" class="commentText"><p>Hmm, yea, it can actually be „On top” crit hit chance. Isn’t it smth like Critical Weakness from Eye of Winter?</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mkj26sh" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ihateveryonebutme</div>
+        <div>1 | 11 minutes ago </div>
+      </div>
+      <label for="mkj26sh" class="commentText"><p>Critical weakness adds base critical, not &lsquo;on top&rsquo;. This node will almost definitely add base critical based on wording.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mkj2r1m" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Ravp1</div>
+        <div>1 | 8 minutes ago </div>
+      </div>
+      <label for="mkj2r1m" class="commentText"><p>Ok, thx for answer</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
