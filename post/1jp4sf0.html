@@ -1,0 +1,455 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.selfPostImage {
+  width: 100%;
+  height: auto;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/nba/comments/1jp4sf0/over_the_past_3_seasons_steph_curry_has_drawn_60/"><p>Over the past 3 seasons, Steph Curry has drawn 60 fouls on three point attempts. He&rsquo;s made the three on 26 of those 60 attempts, good for a 3P% of 43.3. Over that same time period, he&rsquo;s shooting 40.2% on threes when <em>not</em> being fouled.</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <p>Leaders in 3P fouls drawn over the past 3 seasons and how they&rsquo;ve done converting the threes they&rsquo;ve been fouled on:</p>
+
+<table>
+<thead>
+<tr>
+<th align="right">Rk</th>
+<th align="left">Player</th>
+<th align="right">3P Fouls</th>
+<th align="right">3PM</th>
+<th align="left">Conv%</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="right">1</td>
+<td align="left">Harden</td>
+<td align="right">121</td>
+<td align="right">26</td>
+<td align="left">21.5%</td>
+</tr>
+
+<tr>
+<td align="right">2</td>
+<td align="left">Lillard</td>
+<td align="right">91</td>
+<td align="right">14</td>
+<td align="left">15.4%</td>
+</tr>
+
+<tr>
+<td align="right">3</td>
+<td align="left">Tatum</td>
+<td align="right">69</td>
+<td align="right">8</td>
+<td align="left">11.6%</td>
+</tr>
+
+<tr>
+<td align="right">4</td>
+<td align="left">Curry</td>
+<td align="right">60</td>
+<td align="right">26</td>
+<td align="left">43.3%</td>
+</tr>
+
+<tr>
+<td align="right">5</td>
+<td align="left">Hardaway</td>
+<td align="right">45</td>
+<td align="right">12</td>
+<td align="left">26.7%</td>
+</tr>
+
+<tr>
+<td align="right">6</td>
+<td align="left">Mitchell</td>
+<td align="right">45</td>
+<td align="right">8</td>
+<td align="left">17.8%</td>
+</tr>
+
+<tr>
+<td align="right">7</td>
+<td align="left">Clarkson</td>
+<td align="right">45</td>
+<td align="right">6</td>
+<td align="left">13.3%</td>
+</tr>
+
+<tr>
+<td align="right">8</td>
+<td align="left">Grant</td>
+<td align="right">41</td>
+<td align="right">15</td>
+<td align="left">36.6%</td>
+</tr>
+
+<tr>
+<td align="right">9</td>
+<td align="left">Booker</td>
+<td align="right">41</td>
+<td align="right">7</td>
+<td align="left">17.1%</td>
+</tr>
+
+<tr>
+<td align="right">10</td>
+<td align="left">Young</td>
+<td align="right">40</td>
+<td align="right">4</td>
+<td align="left">10.0%</td>
+</tr>
+</tbody>
+</table>
+<p>(<a href="https://www.pbpstats.com/totals/nba/player?Season=2024-25,2022-23,2023-24&amp;SeasonType=Regular+Season&amp;Type=Player&amp;StatType=Totals&amp;Table=FTs" target="_blank">source</a>)</p>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mkwps8g" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Confident-Teach-3154 | Hawks</div>
+        <div>21 | 42 minutes ago </div>
+      </div>
+      <label for="mkwps8g" class="commentText"><p>This is a foul baiting statistic. If you’re looking for the foul on those threes, your conversion rate will be low. That’s why Lillard and Trae have such low rates. A higher rate indicates you’re actually shooting it.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mkwrgzc" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>nowhathappenedwas | NBA</div>
+        <div>3 | 34 minutes ago </div>
+      </div>
+      <label for="mkwrgzc" class="commentText"><p>Yup.</p>
+
+<p>Lillard yeets it every time he feels a hand on him as he navigates around a screen. And complains when they (correctly) call it a non-shooting foul.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="mkwvhoh" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>WolverineLong1430</div>
+        <div>1 | 13 minutes ago </div>
+      </div>
+      <label for="mkwvhoh" class="commentText"><p>Great point that a lot here overlooked.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="mkwv9l3" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>aeronacht | Celtics</div>
+        <div>1 | 15 minutes ago </div>
+      </div>
+      <label for="mkwv9l3" class="commentText"><p>Somewhat true I’d guess. Tatum I don’t think is foul baiting though and his conversion rate is a bit shite. I think part of it is his fouls don’t really come from the side, it’s mainly people jumping into him from the front and either knocking him down or undercutting him. Lots of it also comes when he’s being guarded close and they step in while shooting. I think he does try to make them but the nature of the fouls probably makes his on the tougher side.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mkwpd25" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>nowhathappenedwas | NBA</div>
+        <div>8 | 44 minutes ago </div>
+      </div>
+      <label for="mkwpd25" class="commentText"><p>It apparently runs in the family: Seth Curry has drawn 15 fouls on 3PA over the past 3 seasons, and he&rsquo;s made 9 of them!</p>
+
+<p>Andrew Wiggins has converted 10 of 23.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mkwqxia" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Hopsalong | Nuggets</div>
+        <div>2 | 36 minutes ago </div>
+      </div>
+      <label for="mkwqxia" class="commentText"><p>Too small a sample size to make any sort of assessment.  It&rsquo;s likely he does worse when fouled shooting more 3s.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mkwsov3" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>pokexchespin | BOS</div>
+        <div>1 | 28 minutes ago </div>
+      </div>
+      <label for="mkwsov3" class="commentText"><p>insane. shoutout (presumably) jerami grant for the very solid 36.6%</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mkwtudy" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>nowontons | Warriors</div>
+        <div>1 | 22 minutes ago </div>
+      </div>
+      <label for="mkwtudy" class="commentText"><p>Why doesn&rsquo;t Steph just get fouled on all his 3PA? Is he stupid?</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
