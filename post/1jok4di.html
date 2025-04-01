@@ -1,0 +1,999 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.selfPostImage {
+  width: 100%;
+  height: auto;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/nba/comments/1jok4di/through_6_nba_seasons_zion_williamson_has_played/"><p>Through 6 NBA seasons, Zion Williamson has played in 45% of his possible career games. How does that stack up against every other #1 pick since 2000?</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <p>With the news that Zion is going to miss the remainder of the season, I was curious to see how much this dude has actually played in the NBA throughout his first 6 professional seasons and how that stacks up to every #1 pick through the same timeframe since Year 2000:</p>
+
+<p>Caveats:</p>
+
+<ul>
+<li><p>Have to be a #1 pick</p></li>
+
+<li><p>Have to have played at least 6 seasons in the NBA</p></li>
+</ul>
+
+<p>2000: Kenyon Martin - 83% (409 games out of 492 possible)</p>
+
+<p>2001: Kwame Brown - 74% (366 games out of 492 possible)</p>
+
+<p>2002: Yao Ming - 82% (404 games out of 492 possible)</p>
+
+<p>2003: LeBron James - 96% (472 games out of 492 possible)</p>
+
+<p>2004: Dwight Howard - 99% (489 games out of 492 possible)</p>
+
+<p>2005: Andrew Bogut - 80% (396 games out of 492 possible)</p>
+
+<p>2006: Andrea Bargnani - 81% (398 games out of 492 possible)</p>
+
+<p>2007: Greg Oden - 17% (82 games out of 492 possible) I would say this one doesn’t really qualify however Oden did play 23 games in what would have technically been his 7th season. He missed 4 full seasons in his first 6 with injury</p>
+
+<p>2008: Derrick Rose - 59% (289 games out of 492 possible)</p>
+
+<p>2009: Blake Griffin - 75% (375 games out of 492 possible)</p>
+
+<p>2010: John Wall - 70% (345 games out of 492 possible)</p>
+
+<p>2011: Kyrie Irving - 77% (381 games out of 492 possible)</p>
+
+<p>2012: Anthony Davis - 83% (410 games out of 492 possible)</p>
+
+<p>2013: Anthony Bennett - Does not qualify. Only played 4 NBA seasons. In those seasons, he played 46% of his team’s games (151 out of 328)</p>
+
+<p>2014: Andrew Wiggins - 94% (454 games out of 485 possible) - shortened Covid season factored in</p>
+
+<p>2015: KAT - 88% (408 games out of 464 possible) - shortened covid seasons escorted in</p>
+
+<p>2016: Ben Simmons - 58% (275 games out of 473 possible) - shortened covid seasons factored in</p>
+
+<p>2017: Markelle Fultz - 40% (191 games out of 473 possible) - shortened covid seasons factored in</p>
+
+<p>2018: DeAndre Ayton - 76% (358 games out of 473 possible) - shortened covid seasons factored in</p>
+
+<p>2019: Zion Williamson - 45% (214 games out of 472 possible) - shortened covid seasons factored in</p>
+
+<p>Fun fact: Drafted 1 year later and with a full season of fewer possible games, Anthony Edwards has already played 160 more career regular season games than Zion.</p>
+
+<p>Other things I took from crunching these numbers, Dwight Howard was an absolute monster only missing 3 regular season games in his first 6 years</p>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mkseary" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>grandmastakew | Raptors</div>
+        <div>47 | an hour ago </div>
+      </div>
+      <label for="mkseary" class="commentText"><p>Dwight was an absolute specimen</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mksevty" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>HenrikCrown | Pelicans</div>
+        <div>14 | an hour ago </div>
+      </div>
+      <label for="mksevty" class="commentText"><p>Out of high school as well</p>
+
+<p>He put the Emeka Okafor debate to bed in just a couple seasons </p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mkshs7y" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>TheThingsIdoatNight | Nuggets</div>
+        <div>5 | an hour ago </div>
+      </div>
+      <label for="mkshs7y" class="commentText"><p>Not like Okafor put up much of a fight lol</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mksklyv" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>salacioussalamolover</div>
+        <div>5 | 34 minutes ago </div>
+      </div>
+      <label for="mksklyv" class="commentText"><p>That’s former Rookie of the Year Emeka Okafor to you</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="mksk0vn" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>TheRealestGayle | Magic</div>
+        <div>1 | 38 minutes ago </div>
+      </div>
+      <label for="mksk0vn" class="commentText"><p>His shoulders are crazy in real life</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mksetsa" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Ok_Possible_5702</div>
+        <div>13 | an hour ago </div>
+      </div>
+      <label for="mksetsa" class="commentText"><blockquote>
+<p>2015: KAT - 88% (408 games out of 464 possible) - shortened covid seasons escorted in</p>
+</blockquote>
+
+<p>Why is KAT the only one for whom the COVID seasons are <strong>escorted</strong> in? lol</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mksf2h7" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>kingjamesthethird4</div>
+        <div>8 | an hour ago </div>
+      </div>
+      <label for="mksf2h7" class="commentText"><p>That was a typo lol my bad but I’ll leave it cause it’s funny</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mkseybj" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>halfwaifhome</div>
+        <div>9 | an hour ago </div>
+      </div>
+      <label for="mkseybj" class="commentText"><p>Crazy that Anthony Davis is tied for 5th highest with how much shit he gets.  </p>
+
+<p>Equally absurd that Zion is worse than  D-rose and Ben Simmons.  </p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mksfsb0" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Ok-Tree4365</div>
+        <div>9 | an hour ago </div>
+      </div>
+      <label for="mksfsb0" class="commentText"><p>Simmons, Wall, Griffin, and Rose all had multiple serious injuries and surgeries. It&rsquo;s hard to imagine Zion making up enough games to match even those guys&rsquo; availability.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mksgpjn" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>CO_PC_Parts | Timberwolves</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="mksgpjn" class="commentText"><p>I’m actually impressed with Blake’s numbers after missing the entire first year.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mksfdyx" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>itsme32</div>
+        <div>6 | an hour ago </div>
+      </div>
+      <label for="mksfdyx" class="commentText"><p>Great work OP!! Sorry ESPN gonna steal all your research. Hope it&rsquo;s not stupid Kendrick Perkins cuz we all know he&rsquo;s not doing any research.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mksfexr" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>crassick</div>
+        <div>5 | an hour ago </div>
+      </div>
+      <label for="mksfexr" class="commentText"><p>I see your Zion and raise you Greg Oden</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mkshyvo" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>TheThingsIdoatNight | Nuggets</div>
+        <div>3 | an hour ago </div>
+      </div>
+      <label for="mkshyvo" class="commentText"><p>Oh my God do I cry</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="mksmlke" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>BlazerBeav | Trail Blazers</div>
+        <div>1 | 21 minutes ago </div>
+      </div>
+      <label for="mksmlke" class="commentText"><p>I will never recover.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mksfgig" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>thy_armageddon | Knicks</div>
+        <div>5 | an hour ago </div>
+      </div>
+      <label for="mksfgig" class="commentText"><p>People talk about Zion a lot but man it’s actually crazy how Fultz kinda just fell into obscurity.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mksfl49" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>MatchAffectionate951</div>
+        <div>4 | an hour ago </div>
+      </div>
+      <label for="mksfl49" class="commentText"><p>Dwight couldn’t get injured. He was too busy injuring ppl with his shoulders</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mksheby" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>RelativeHand4753</div>
+        <div>3 | an hour ago </div>
+      </div>
+      <label for="mksheby" class="commentText"><p>Insane how he went from Iron Man to journeyman back-up. Back injuries will fuck your entire career up.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mkskcwg" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>bringbackpologrounds</div>
+        <div>1 | 36 minutes ago </div>
+      </div>
+      <label for="mkskcwg" class="commentText"><p>His aging curve was just shifted 3 years earlier than the typical star.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mksfu4z" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Rich2364</div>
+        <div>4 | an hour ago </div>
+      </div>
+      <label for="mksfu4z" class="commentText"><p>I didn&rsquo;t expect Ad to be that high. Also, shout out to Dwight with 99 percent.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mksgj22" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Fucked-Guy | Pacers</div>
+        <div>4 | an hour ago </div>
+      </div>
+      <label for="mksgj22" class="commentText"><p>I feel like LeBron has gotten some shit this year for sitting out the occasional game, but this really puts it into perspective. Man deserves some rest.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mksksjs" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Jmills14</div>
+        <div>2 | 33 minutes ago </div>
+      </div>
+      <label for="mksksjs" class="commentText"><p>His first 11 years (Cavs + Miami) he missed 44 regular season games. Factor in that he played in 5 NBA finals, 3 Olympics &amp; 6 conference finals runs (never missed any of those games) and you’re talking about most HOF careers.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mksepi4" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Original-Durian-2392</div>
+        <div>2 | an hour ago </div>
+      </div>
+      <label for="mksepi4" class="commentText"><p>Zion is an absolute enigma</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mksg4p0" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>OldSweepy</div>
+        <div>2 | an hour ago </div>
+      </div>
+      <label for="mksg4p0" class="commentText"><p>What&rsquo;s enigmatic about him?</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mksj3fs" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>jefe_hook</div>
+        <div>0 | 44 minutes ago </div>
+      </div>
+      <label for="mksj3fs" class="commentText"><p>His appetite</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mksm7df" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>OldSweepy</div>
+        <div>1 | 24 minutes ago </div>
+      </div>
+      <label for="mksm7df" class="commentText"><p>What&rsquo;s enigmatic about his appetite?</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mksfhm1" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>MinePlay512</div>
+        <div>2 | an hour ago </div>
+      </div>
+      <label for="mksfhm1" class="commentText"><p>That 2000 class was the worst.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mkseh5n" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Vegetable_Kale_1331 | Thunder</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="mkseh5n" class="commentText"><p>IR merchant</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mksekr4" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>RapsareChamps_Suckit | Clippers</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="mksekr4" class="commentText"><p>that 2000 draft class was terrible, I could&rsquo;ve been drafted</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mksenpi" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>TheRealBrownPudding | Clippers</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="mksenpi" class="commentText"><p>Holy shit Dwight</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mkseony" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>BoogerSugarSovereign | IND</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="mkseony" class="commentText"><p>How does it compare to Ja Morant?</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mksfg9e" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>hatsofftoroyharper41</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="mksfg9e" class="commentText"><p>The good ones bad
+The bad ones good</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mksfnuu" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Unlucky-Two-2834 | Thunder</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="mksfnuu" class="commentText"><p>Greg Oden 😔</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mksfukn" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Most-Artichoke6184 | Bulls</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="mksfukn" class="commentText"><p>Derrick Rose at 59% makes me wanna cry.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mksg9xt" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Top-Address-8870 | Bulls</div>
+        <div>2 | an hour ago </div>
+      </div>
+      <label for="mksg9xt" class="commentText"><p>I am impressed with Blake Griffin considering he missed an entire season…not really as injury prone as I had expected.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mksghni" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Klaw95 | Thunder</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="mksghni" class="commentText"><p>Ben Simmons, Markel Fultz, and Zion Williamson. Nuff Said.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mksha8c" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>DerekSmallsCourgette | Pistons</div>
+        <div>2 | an hour ago </div>
+      </div>
+      <label for="mksha8c" class="commentText"><p>Striking to me that Yao, who I always feel like got a bad rap for being injured a lot, is near the top quartile of the list. </p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mksjun9" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>jefe_hook</div>
+        <div>1 | 39 minutes ago </div>
+      </div>
+      <label for="mksjun9" class="commentText"><p>He played 82, 82, 80 games in his first three seasons. International games and weight gained (to counter Shaq) starts breaking his body down.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mkshmky" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Jay_Shadow | Cavaliers</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="mkshmky" class="commentText"><p>Anthony Bennett playing 4d chess to not qualify cause he knew someone would obviously make a list like this in the future.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mksngot" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>gobucs1756</div>
+        <div>1 | 16 minutes ago </div>
+      </div>
+      <label for="mksngot" class="commentText"><p>At least he&rsquo;s good</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>

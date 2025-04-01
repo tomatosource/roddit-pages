@@ -1,0 +1,961 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.selfPostImage {
+  width: 100%;
+  height: auto;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/nba/comments/1jol56n/the_thunder_are_now_6312_just_8_other_teams_in/"><p>The Thunder are now 63-12. Just 8 other teams in NBA history have ever been 63-12. 6 of 8 (75%) won the championship. The other ones: 2015-16 Spurs, 2015-16 Warriors.</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <p>The Thunder have gone 63-12 this season.</p>
+
+<table>
+<thead>
+<tr>
+<th align="left">Team</th>
+<th align="left">Record after 75</th>
+<th align="left">Playoffs</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">1966-67 76ers</td>
+<td align="left">63-12</td>
+<td align="left">Won Finals</td>
+</tr>
+
+<tr>
+<td align="left">1970-71 Bucks</td>
+<td align="left">64-11</td>
+<td align="left">Won Finals</td>
+</tr>
+
+<tr>
+<td align="left">1971-72 Lakers</td>
+<td align="left">63-12</td>
+<td align="left">Won Finals</td>
+</tr>
+
+<tr>
+<td align="left">1995-96 Bulls</td>
+<td align="left">66-9</td>
+<td align="left">Won Finals</td>
+</tr>
+
+<tr>
+<td align="left">1996-97 Bulls</td>
+<td align="left">65-10</td>
+<td align="left">Won Finals</td>
+</tr>
+
+<tr>
+<td align="left">1999-00 Lakers</td>
+<td align="left">63-12</td>
+<td align="left">Won Finals</td>
+</tr>
+
+<tr>
+<td align="left">2015-16 Spurs</td>
+<td align="left">63-12</td>
+<td align="left">Lost Second Round</td>
+</tr>
+
+<tr>
+<td align="left">2015-16 Warriors</td>
+<td align="left">68-7</td>
+<td align="left">Lost Finals</td>
+</tr>
+</tbody>
+</table>
+<p>The Thunder have gone 28-1 against the East this season, which is the NBA record for best record against the opposing conference. The lone loss was to the Cavs in Cleveland. The Thunder have the best Margin of Victory of all time by a large margin, and the second-best net rating of all time just behind the 1995-96 Bulls.</p>
+
+<p>6 of 8 of these teams also had the MVP on their roster for that season. The ones who didn&rsquo;t were the 2015-16 Spurs who couldn&rsquo;t have had the MVP because he was on the other team that started 63-12 or better. The other was the 1996-97 Bulls where Karl Malone robbed Jordan of another MVP.</p>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mksmiye" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Dhr7468 | Thunder</div>
+        <div>1 | 22 minutes ago </div>
+      </div>
+      <label for="mksmiye" class="commentText"><p>2016 was the most exciting playoffs of my lifetime man…most consequential too</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mksn1nt" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ClevelandDrunks1999</div>
+        <div>1 | 18 minutes ago </div>
+      </div>
+      <label for="mksn1nt" class="commentText"><p>I wanted to see an OKC vs Cleveland finals that year was disappointing ending for us in the WCF but Cleveland made me a happy fan</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mkso1ia" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Klaw95 | Thunder</div>
+        <div>1 | 12 minutes ago </div>
+      </div>
+      <label for="mkso1ia" class="commentText"><p>Legit the only time I have ever actively rooted for LeBron James to win.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="mksno2h" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Robinsonirish</div>
+        <div>1 | 14 minutes ago </div>
+      </div>
+      <label for="mksno2h" class="commentText"><p>Those superteam years had some great playoff series but terrible regular seasons. Glad we are in an era of parity now. They were great for ratings but not very fun for hardcore fans.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="mksnx5c" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Klaw95 | Thunder</div>
+        <div>1 | 13 minutes ago </div>
+      </div>
+      <label for="mksnx5c" class="commentText"><p>I still hate KD. Always will. 4th of July will never be the same.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mksoulq" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>TheGreatForehead | Celtics</div>
+        <div>1 | 7 minutes ago </div>
+      </div>
+      <label for="mksoulq" class="commentText"><p>If OKC falls short this year, I’m curious if Thunder fans would be open to trading for KD in the off season? I think a trio of SGA, KD, and Chet would be tuff</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mkspiue" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>thepeachgod | Celtics</div>
+        <div>1 | 2 minutes ago </div>
+      </div>
+      <label for="mkspiue" class="commentText"><p>That would be incredibly dumb short of JDub having a complete meltdown. He’ll be better than KD in the next 2-3 years and he’s way younger, cheaper and beloved by his teammates</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="mkspkln" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Klaw95 | Thunder</div>
+        <div>1 | a minute ago </div>
+      </div>
+      <label for="mkspkln" class="commentText"><p>I personally want nothing to do with KD. I’d say most other fans probably agree. Even if we lose this year which is very possible, I feel like the team we have is it. Time and development will only help. Many make small improvements where we can and clear any cap space possible for large contracts, but Shai, JDub, and Chet are it.</p>
+
+<p>KD is obviously still a great player, but I’m not sure it’s wise to trade away any young blooming stars for a very old about to retire Durant. No way in hell.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mksmrup" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Low-Blackberry-2690</div>
+        <div>1 | 20 minutes ago </div>
+      </div>
+      <label for="mksmrup" class="commentText"><p>OKC was extremely close to beating both of the Warriors and Spurs in 2016. So close to an absolutely all time western conference title run.</p>
+
+<p>Also the 2016 postseason in general was just absolute cinema</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mksmo36" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Charliebitme1234 | Clippers</div>
+        <div>1 | 21 minutes ago </div>
+      </div>
+      <label for="mksmo36" class="commentText"><p>no excuses now, anything but a finals run will be disappointing</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mksmtp2" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>dimeast | Thunder</div>
+        <div>1 | 20 minutes ago </div>
+      </div>
+      <label for="mksmtp2" class="commentText"><p>Facts</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="mkso6b9" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Vegetable_Kale_1331 | Thunder</div>
+        <div>1 | 11 minutes ago </div>
+      </div>
+      <label for="mkso6b9" class="commentText"><p>Good problem to have tbh</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="mkso8ci" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>shanmustafa</div>
+        <div>1 | 11 minutes ago </div>
+      </div>
+      <label for="mkso8ci" class="commentText"><p>disappointing for sure, but not like oh we have to make changes disappointing</p>
+
+<p>Chet, Cason, Jalen, Jaylin, they&rsquo;re all 23 and under still</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mksornw" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Dhr7468 | Thunder</div>
+        <div>1 | 7 minutes ago </div>
+      </div>
+      <label for="mksornw" class="commentText"><p>Nope gotta blow it up and fire everyone</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="mkspkw1" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Charliebitme1234 | Clippers</div>
+        <div>1 | a minute ago </div>
+      </div>
+      <label for="mkspkw1" class="commentText"><p>yeah true but they all need to get paid at some point and i bet OKC doesnt want another russ/kd/harden situation</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mksmkin" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>renhaoasuka</div>
+        <div>1 | 22 minutes ago </div>
+      </div>
+      <label for="mksmkin" class="commentText"><p>It really feels like Thunder Celtics finals is inevitable</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mksoa2v" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>jer113 | Rockets</div>
+        <div>1 | 10 minutes ago </div>
+      </div>
+      <label for="mksoa2v" class="commentText"><p>West is wayyyy too loaded for this to be a cakewalk for OKC, the West is definitely up for grabs.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="mksn6y7" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>RapsareChamps_Suckit | Clippers</div>
+        <div>1 | 18 minutes ago </div>
+      </div>
+      <label for="mksn6y7" class="commentText"><p>we&rsquo;ll stop it</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mkso708" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Klaw95 | Thunder</div>
+        <div>1 | 11 minutes ago </div>
+      </div>
+      <label for="mkso708" class="commentText"><p><em>Laughs in Kawhi</em></p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="mkso4z6" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>BadlaLehnWala</div>
+        <div>1 | 11 minutes ago </div>
+      </div>
+      <label for="mkso4z6" class="commentText"><p>Rockets will be waiting for you in the WCF</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="mksp0zo" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>TheGreatForehead | Celtics</div>
+        <div>1 | 5 minutes ago </div>
+      </div>
+      <label for="mksp0zo" class="commentText"><p>Cavs are definitely a threat, but I favor us over them for sure. It feels like everytime the Celtics lose to the Cavs, Mitchell had to go completely nuts.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mksmgq7" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Unlucky-Two-2834 | Thunder</div>
+        <div>1 | 22 minutes ago </div>
+      </div>
+      <label for="mksmgq7" class="commentText"><p>Pretty solid team</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mksmxya" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Yodudewhatsupmanbruh | OKC</div>
+        <div>1 | 19 minutes ago </div>
+      </div>
+      <label for="mksmxya" class="commentText"><p>Imagine beating both of those teams in a single playoff run haha fml.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mksmxwe" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>DeadDay | OKC</div>
+        <div>1 | 19 minutes ago </div>
+      </div>
+      <label for="mksmxwe" class="commentText"><p>I watched the 2016 warriors lose. I&rsquo;m so stoked win or lose. These guy&rsquo;s are amazing.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mksnhs6" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Melonballs__</div>
+        <div>1 | 16 minutes ago </div>
+      </div>
+      <label for="mksnhs6" class="commentText"><p>And their 2nd best player has only played 25 games. </p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mksoc7h" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>jslee0034 | Thunder</div>
+        <div>1 | 10 minutes ago </div>
+      </div>
+      <label for="mksoc7h" class="commentText"><p>man i know i&rsquo;ll be downvoted but im so upset. i genuinely believe chet was closer to all nba than all star. i was super excited for him to win dpoy (he was actually leading dpoy candidate before he went down, and with wemby being out he would&rsquo;ve won imo if he played 65+), and get all star + all nba.</p>
+
+<p>obviously im glad he&rsquo;s still playing this season but chet is that caliber of player. he was really good. now he&rsquo;s maybe 75% of what he was. still has some flashes like vs celtics without jdub where he torched kornet but yeah</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mksnnql" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Mkaayy1986 | Warriors</div>
+        <div>1 | 14 minutes ago </div>
+      </div>
+      <label for="mksnnql" class="commentText"><p>I know you guys are excited (rightfully so) but don’t jinx it lol. The way these posts are going, anything short of a championship will be considered a failure (which is a lot of pressure for a young team)</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mkso6ll" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Skank_hunt42 | Thunder</div>
+        <div>1 | 11 minutes ago </div>
+      </div>
+      <label for="mkso6ll" class="commentText"><p>*Anything short of a finals run.</p>
+
+<p>That would be a failure.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mkspij8" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>HurryAdorable1327 | Supersonics</div>
+        <div>1 | 2 minutes ago </div>
+      </div>
+      <label for="mkspij8" class="commentText"><p>Nah. I’ll die on this hill. It’s literally the second year of SGA leading a team. Core avg less than 24. Everyone knew last year that they were ahead of schedule.</p>
+
+<p>The Celtics team took - what? Like 5-6 seasons to win it with Tatum and brown? Fans gotta have more patience. Window is wide open for at least 2–4 seasons.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="mkso318" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>rabidbot | Thunder</div>
+        <div>1 | 12 minutes ago </div>
+      </div>
+      <label for="mkso318" class="commentText"><p>Theyve only got themselves to blame by being so damn good</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mksnv7z" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>js00_</div>
+        <div>1 | 13 minutes ago </div>
+      </div>
+      <label for="mksnv7z" class="commentText"><p>A rematch 7 game series against Luka Mavs (+ Klay) would have been absolute cinema.</p>
+
+<p>The level of toxicity in the threads would have been nuclear.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mksohog" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>jslee0034 | Thunder</div>
+        <div>1 | 9 minutes ago </div>
+      </div>
+      <label for="mksohog" class="commentText"><p>i wanted okc mavs wcf so bad. if okc were to make it to the finals i wanted to beat mavs in wcf because it would&rsquo;ve been legendary (and toxic). nico ruined an all time rivalry lol</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="mksogv5" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>EpicGamesStoreSucks | Thunder</div>
+        <div>1 | 9 minutes ago </div>
+      </div>
+      <label for="mksogv5" class="commentText"><p>FIRE NICO!</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mksnuu6" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>solarscopez | Celtics</div>
+        <div>1 | 13 minutes ago </div>
+      </div>
+      <label for="mksnuu6" class="commentText"><p>They also have like a metric fuck-ton of picks too, someone like Giannis asks out, they&rsquo;ll be the first team Milwaukee calls lol.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mkspjwj" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>JustdoitJules</div>
+        <div>1 | 2 minutes ago </div>
+      </div>
+      <label for="mkspjwj" class="commentText"><p>Well then, I guess theyll be the 7th team to fail this year</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mksmvi3" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>stingerfingerr</div>
+        <div>1 | 20 minutes ago </div>
+      </div>
+      <label for="mksmvi3" class="commentText"><p>Which would make it even more enjoyable to see them unravel in the postseason</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mkso9ks" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ahelm15 | Thunder</div>
+        <div>1 | 10 minutes ago </div>
+      </div>
+      <label for="mkso9ks" class="commentText"><p>Why?</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
