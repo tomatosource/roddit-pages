@@ -1,0 +1,260 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.selfPostImage {
+  width: 100%;
+  height: auto;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/PathOfExile2/comments/1jpn4si/why_ignites_numbers_need_a_rework/"><p>Why Ignite&rsquo;s numbers need a rework</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <p>I don&rsquo;t mind the philosophy behind ailment scaling discussed on the recent Tavern Talk, it does get a little difficult to explain to even experienced players in poe1 sometimes.</p>
+
+<p>However. Let&rsquo;s set out on a quest to &ldquo;kill a white mob with meaningful damage from Ignite&rdquo; to see why the current maths just does not work. Addendum: the Ignite must come from a source that isn&rsquo;t guaranteed (no boots, no flame wall, no perfect strike). We are trying to make the base elemental chance work.</p>
+
+<p>Baseline stats:
+1% chance to Ignite per 4% of monster ailment threshold dealt by the hit.
+Ignite deals 20% of the hit per second for 4 seconds
+White mob ailment threshold is their HP
+Mob resistance is 0% (we curse or something, just to make calculations easier)</p>
+
+<p>Passive tree: we take basically all ignite but not crit-ignite related clusters on the Warrior, Templar and Witch area of the tree, ~95 points. High commitment to doing Ignite stuff. This gets us:
+215% increased chance to Ignite, 45% increased Ignite duration, 99% increased magnitude of Ignite</p>
+
+<p>Support gems: we use the 100% more chance to Ignite gem and do not use the one that gives less chance for more duration. You&rsquo;ll see why.
+Spirit gems: optionally, we use level 20 20 quality Overwhelming Presence to reduce enemy ailment threshold by 29%.</p>
+
+<p>So, what size of hit do we need to deal to guarantee an Ignite on the enemy? Remember, we have 215% increased chance from the tree and 100% more from a support. (1+2.15)x2 = 6.3% chance to Ignite per 4% of enemy ailment threshold dealt. Meaning, to get to 100% chance to Ignite we need <sup>100</sup>&frasl;<sub>6</sub>.4x4= 63.5% of the enemy&rsquo;s health dealt as hit. If using a maxed out Overwhelming Presence, the enemy has 71% of it&rsquo;s normal ailment threshold, so we only need 45% of its health as the initial hit. Might as well try to kill them outright, but stay with me.
+Pretty bad, but let&rsquo;s now look at how much value we are getting out of Ignite as a status effect!</p>
+
+<p>Reminder, it lasts 4s dealing 20% of the original hit as baseline. We have 99% magnitude so let&rsquo;s round that up to 40% per sec. We also collected 45% duration on the way so it lasts 4x1.45=5.8s
+Without OWP, the 63.5% HP hit will ignite for 25.4% of the monster&rsquo;s HP per second, killing it in 1.43 seconds. Meaning that <strong>we got less than 25% of the Ignite&rsquo;s potential damage value</strong> (we can pick up faster ignite expiration but that doesn&rsquo;t change the potential value just the rate at which we get it).</p>
+
+<p>Surely it gets better with Overwhelming Presence? Well&hellip; We still need to deal 45% of the mob&rsquo;s hp as damage to guarantee igniting it, and so we get 18% of the mob&rsquo;s hp per second as damage on the Ignite. (100-45)/18=3.05 seconds of burning till the mob dies. We have an Ignite duration of 5.8 though. We get 52.5% of the Ignite&rsquo;s damage potential only.</p>
+
+<p>Even in the most ideal case, with a maxed spirit gem supporting the playstyle, a double chance to Ignite support gem, and very heavy tree investment, it is not possible to make Ignite a meaningful part of killing monster packs. Any of the points invested here could be made to scale the hit instead and kill the monster outright. But maybe if the baseline chance to Ignite was doubled, we&rsquo;d not have to waste half the damage it could do on white mobs. At least poison and bleed have a flat chance to occur.</p>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ml0glv8" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>NoBluebird5889</div>
+        <div>1 | 7 minutes ago </div>
+      </div>
+      <label for="ml0glv8" class="commentText"><p>my guy, thats a lot of words to say &ldquo;ignite bad&rdquo; (bleed btw. also bad)</p>
+
+<p>which everyone knew at EA start already</p>
+
+<p>One notable exception is using it with HotG on bosses</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
