@@ -1,0 +1,714 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.selfPostImage {
+  width: 100%;
+  height: auto;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/nba/comments/1jpeu14/stephen_curry_has_scored_50_points_10_times_since/"><p>Stephen Curry has scored 50+ points 10 times since turning 30. That&rsquo;s the most in NBA history. It&rsquo;s as many as Jordan and James, combined.</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <p>Most 50+ games after turning 30:</p>
+
+<table>
+<thead>
+<tr>
+<th align="right">Rk</th>
+<th align="left">Player</th>
+<th align="right">Count</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="right">1</td>
+<td align="left">Stephen Curry</td>
+<td align="right">10</td>
+</tr>
+
+<tr>
+<td align="right">2</td>
+<td align="left">Wilt Chamberlain</td>
+<td align="right">7</td>
+</tr>
+
+<tr>
+<td align="right">3</td>
+<td align="left">Michael Jordan</td>
+<td align="right">6</td>
+</tr>
+
+<tr>
+<td align="right">4</td>
+<td align="left">James Harden</td>
+<td align="right">6</td>
+</tr>
+
+<tr>
+<td align="right">5</td>
+<td align="left">Damian Lillard</td>
+<td align="right">6</td>
+</tr>
+
+<tr>
+<td align="right">6</td>
+<td align="left">James</td>
+<td align="right">4</td>
+</tr>
+
+<tr>
+<td align="right">7</td>
+<td align="left">Kevin Durant</td>
+<td align="right">4</td>
+</tr>
+
+<tr>
+<td align="right">8</td>
+<td align="left">Rick Barry</td>
+<td align="right">3</td>
+</tr>
+
+<tr>
+<td align="right">9</td>
+<td align="left">Alex English</td>
+<td align="right">2</td>
+</tr>
+
+<tr>
+<td align="right">10</td>
+<td align="left">Tom Chambers</td>
+<td align="right">2</td>
+</tr>
+
+<tr>
+<td align="right">11</td>
+<td align="left">Bernard King</td>
+<td align="right">2</td>
+</tr>
+
+<tr>
+<td align="right">12</td>
+<td align="left">Karl Malone</td>
+<td align="right">2</td>
+</tr>
+
+<tr>
+<td align="right">13</td>
+<td align="left">Allan Houston</td>
+<td align="right">2</td>
+</tr>
+
+<tr>
+<td align="right">14</td>
+<td align="left">Allen Iverson</td>
+<td align="right">2</td>
+</tr>
+
+<tr>
+<td align="right">15</td>
+<td align="left">Kobe Bryant</td>
+<td align="right">2</td>
+</tr>
+</tbody>
+</table>
+<p>Provided by <a href="https://www.sports-reference.com/sharing.html?utm_source=direct&amp;utm_medium=Share&amp;utm_campaign=ShareTool" target="_blank">Stathead.com</a>: <a href="https://stathead.com/basketball/player-game-finder.cgi?utm_source=direct&amp;utm_medium=Share&amp;utm_campaign=ShareTool" target="_blank">Found with Stathead. See Full Results.</a>
+Generated 4/1/2025.</p>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mkytabl" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>feelnoways2020</div>
+        <div>1 | 25 minutes ago </div>
+      </div>
+      <label for="mkytabl" class="commentText"><p>Now that’s a great stat.</p>
+
+<p>🐐</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mkyufem" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>pzrapnbeast | Warriors</div>
+        <div>1 | 17 minutes ago </div>
+      </div>
+      <label for="mkyufem" class="commentText"><p>Damn now imagine if the refs could actually see him</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mkyw2fo" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>fantasyoutsider | Warriors</div>
+        <div>1 | 5 minutes ago </div>
+      </div>
+      <label for="mkyw2fo" class="commentText"><p>Steph &ldquo;John Cena&rdquo; Curry</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mkytid5" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>nowhathappenedwas | NBA</div>
+        <div>1 | 23 minutes ago </div>
+      </div>
+      <label for="mkytid5" class="commentText"><p>Jordan closes the gap some if you include the playoffs:</p>
+
+<table>
+<thead>
+<tr>
+<th align="right">Rk</th>
+<th align="left">Player</th>
+<th align="right">Count</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="right">1</td>
+<td align="left">Stephen Curry</td>
+<td align="right">11</td>
+</tr>
+
+<tr>
+<td align="right">2</td>
+<td align="left">Michael Jordan</td>
+<td align="right">9</td>
+</tr>
+
+<tr>
+<td align="right">3</td>
+<td align="left">Wilt Chamberlain</td>
+<td align="right">7</td>
+</tr>
+
+<tr>
+<td align="right">4</td>
+<td align="left">Damian Lillard</td>
+<td align="right">7</td>
+</tr>
+
+<tr>
+<td align="right">5</td>
+<td align="left">James Harden</td>
+<td align="right">6</td>
+</tr>
+
+<tr>
+<td align="right">6</td>
+<td align="left">L. James</td>
+<td align="right">5</td>
+</tr>
+
+<tr>
+<td align="right">7</td>
+<td align="left">Kevin Durant</td>
+<td align="right">5</td>
+</tr>
+
+<tr>
+<td align="right">8</td>
+<td align="left">Rick Barry</td>
+<td align="right">3</td>
+</tr>
+
+<tr>
+<td align="right">9</td>
+<td align="left">Karl Malone</td>
+<td align="right">3</td>
+</tr>
+
+<tr>
+<td align="right">10</td>
+<td align="left">Sam Jones</td>
+<td align="right">2</td>
+</tr>
+
+<tr>
+<td align="right">11</td>
+<td align="left">Alex English</td>
+<td align="right">2</td>
+</tr>
+
+<tr>
+<td align="right">12</td>
+<td align="left">Tom Chambers</td>
+<td align="right">2</td>
+</tr>
+
+<tr>
+<td align="right">13</td>
+<td align="left">Bernard King</td>
+<td align="right">2</td>
+</tr>
+
+<tr>
+<td align="right">14</td>
+<td align="left">Allan Houston</td>
+<td align="right">2</td>
+</tr>
+
+<tr>
+<td align="right">15</td>
+<td align="left">Allen Iverson</td>
+<td align="right">2</td>
+</tr>
+
+<tr>
+<td align="right">16</td>
+<td align="left">Ray Allen</td>
+<td align="right">2</td>
+</tr>
+
+<tr>
+<td align="right">17</td>
+<td align="left">Kobe Bryant</td>
+<td align="right">2</td>
+</tr>
+</tbody>
+</table>
+<p>Provided by <a href="https://www.sports-reference.com/sharing.html?utm_source=direct&amp;utm_medium=Share&amp;utm_campaign=ShareTool" target="_blank">Stathead.com</a>: <a href="https://stathead.com/basketball/player-game-finder.cgi?utm_source=direct&amp;utm_medium=Share&amp;utm_campaign=ShareTool" target="_blank">Found with Stathead. See Full Results.</a>
+Generated 4/1/2025.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mkyv3tp" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Salamander1221</div>
+        <div>1 | 12 minutes ago </div>
+      </div>
+      <label for="mkyv3tp" class="commentText"><p>Unreal you would think Kobe or some of these other goats would have more games over 50 after 30</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mkytu9d" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>BestCruiser | Hawks</div>
+        <div>1 | 21 minutes ago </div>
+      </div>
+      <label for="mkytu9d" class="commentText"><p>Wow James Jones was really built different, huh?</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mkyvah3" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>SerenadeSwift | Supersonics</div>
+        <div>1 | 10 minutes ago </div>
+      </div>
+      <label for="mkyvah3" class="commentText"><p>Nah they talking about Big James. Don’t ya’ll know Big James?</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mkyu2qa" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>DollarLate_DayShort | WAS</div>
+        <div>1 | 19 minutes ago </div>
+      </div>
+      <label for="mkyu2qa" class="commentText"><p>Okay… I see why number 6 is the only person on this list listed by last name… lmfaooo 😭</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mkyuu5b" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Sartheking | Warriors</div>
+        <div>1 | 14 minutes ago </div>
+      </div>
+      <label for="mkyuu5b" class="commentText"><p>Pretty funny if these posts end up being linked people will wonder why people avoided talking about him for a day.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="mkyuc9y" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>nowhathappenedwas | NBA</div>
+        <div>1 | 17 minutes ago </div>
+      </div>
+      <label for="mkyuc9y" class="commentText"><p>Mods banned using his first name in posts for the day.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mkyunom" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>DollarLate_DayShort | WAS</div>
+        <div>1 | 15 minutes ago </div>
+      </div>
+      <label for="mkyunom" class="commentText"><p>As I typed my comment with his name, the message appeared</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mkyu8ux" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>0hN0SheD1dnt</div>
+        <div>1 | 18 minutes ago </div>
+      </div>
+      <label for="mkyu8ux" class="commentText"><p>Who’s gonna be considered a better scorer when it’s all said and done? KD or Steph?</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mkyvftk" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Salamander1221</div>
+        <div>1 | 9 minutes ago </div>
+      </div>
+      <label for="mkyvftk" class="commentText"><p>KD is more of a bucket getter whenever you absolutely need one. Steph is an absolute threat as soon as he crosses half court. Crazy to think a 6’2” guard is being compared to one of the most lethal skilled scoring  7 footers of all time.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="mkyvm6l" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>OverallGeneral7129 | Cavaliers</div>
+        <div>1 | 8 minutes ago </div>
+      </div>
+      <label for="mkyvm6l" class="commentText"><p>KD probably, he has higher averages (26 vs 24 this season) he just doesn’t explode for monster games like this as often as Steph and KD has 4 scoring titles and Steph has 2</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mkyvpcw" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>oKillua</div>
+        <div>1 | 7 minutes ago </div>
+      </div>
+      <label for="mkyvpcw" class="commentText"><p>And his overall stat line in this game was disgusting. 10 boards, 8 assists, 5 steals, 1 block, and only 2 turnovers. Man was putting in work and then some tonight 🥶🥶</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
