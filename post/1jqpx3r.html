@@ -1,0 +1,315 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.selfPostImage {
+  width: 100%;
+  height: auto;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/PathOfExile2/comments/1jqpx3r/poe2_dps_meter_a_tool_to_measure_your_ingame_dps/"><p>POE2 DPS Meter - A tool to measure your in-game DPS against bosses!</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <p>Hello exiles!</p>
+
+<p>After a few months of on-and-off development, I am finally releasing POE2 DPS Meter! This tool takes advantage of the damage numbers on boss life-bars to determine how much DPS you are dealing.</p>
+
+<p>Check it out <a href="https://github.com/AndyWilliams682/poe2_dps_meter" target="_blank">here</a>!</p>
+
+<p><a href="https://preview.redd.it/1my2kjc6wnse1.png?width=246&amp;format=png&amp;auto=webp&amp;s=1eb7e8a044cbf074248d64d51f02d8d512718bff" target="_blank">This tool can track your overall DPS (since starting a recording), your recent DPS (4-second window)</a></p>
+
+<p><a href="https://preview.redd.it/bb3cqyy7wnse1.png?width=587&amp;format=png&amp;auto=webp&amp;s=dd4cb890a82422e23320b233f24a26f2d9505234" target="_blank">It also saves previous recordings so you can compare different values (this is useful for swapping items or support gems, or trying new combos).</a></p>
+
+<p>Let me know what you think! If you happen to give it a shot, please leave a comment or github issue with any bugs or other problems you run into. I am also happy to hear feedback about new features. Thank you!</p>
+
+<p>Disclaimers:</p>
+
+<ul>
+<li>This is not affiliated with GGG in any way. It does not directly interact with the game in any way. It&rsquo;s just aggregating some information that&rsquo;s already available to you.</li>
+<li>The damage numbers only count up when dealing damage to life (not energy shield), so be mindful of that.</li>
+<li>It will probably break when fighting two bosses, or if there is any other text near the damage number.</li>
+<li>This is my first release like this, and I am not really a front-end developer. I imagine some things will be wonky on different machines (as I could only test on a handful).</li>
+</ul>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ml8qhkp" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>xFFehn</div>
+        <div>2 | an hour ago </div>
+      </div>
+      <label for="ml8qhkp" class="commentText"><p>Thanks. I will try it later</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ml8rs6c" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>kestononline</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="ml8rs6c" class="commentText"><p>This is interesting.</p>
+
+<p>I had an idea for this, for those who don&rsquo;t have the capability to run the app locally. Is something like this possible through processing a video clip? Like pointing it a YT clip or URL etc?</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="ml8t5h0" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Chlorine_Trifluoride</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="ml8t5h0" class="commentText"><p>Something like that should be doable, but it&rsquo;s not currently setup for that. The main issue I&rsquo;d see with that is video compression making the numbers harder to read (it currently isn&rsquo;t compressing the screenshots it takes)</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="ml8u7ii" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>kestononline</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="ml8u7ii" class="commentText"><blockquote>
+<p><em>The main issue I&rsquo;d see with that is video compression making the numbers harder to read</em></p>
+</blockquote>
+
+<p>Ah yes, that is a good point. Usually it&rsquo;s pretty sharp for an HQ vid, but I can see it having problems for those that have more compression artefacting.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
