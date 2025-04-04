@@ -1,0 +1,1235 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.selfPostImage {
+  width: 100%;
+  height: auto;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/nba/comments/1jrekqx/the_mvp_best_player_on_the_best_team/"><p>The MVP - Best Player on the Best Team</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <p>Tyrese Haliburton recently said &ldquo;When I was growing up, the MVP went to the best player on the best team&rdquo;. So I went back to the merger and retroactively awarded MVP to the player on the team with the best record each season that had the highest WinShares (according to Basketball Reference) to see how much history would be changed. This is how it looks:</p>
+
+<p><strong>We can debate how to measure what the best team was or who the best player was all night. I picked a simple metric to keep things simple. It’s not meant to be a serious “this is who I think should have won MVP” post</strong></p>
+
+<table>
+<thead>
+<tr>
+<th align="left">Year</th>
+<th align="left">Actual Winner</th>
+<th align="left">New winner</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">1977</td>
+<td align="left">Kareem Abdul-Jabbar (LAL)</td>
+<td align="left">Kareem Abdul-Jabbar (LAL)</td>
+</tr>
+
+<tr>
+<td align="left">1978</td>
+<td align="left">Bill Walton (POR)</td>
+<td align="left">Bill Walton (POR)</td>
+</tr>
+
+<tr>
+<td align="left">1979</td>
+<td align="left">Moses Malone (HOU)</td>
+<td align="left">Elvin Hayes (WAS)</td>
+</tr>
+
+<tr>
+<td align="left">1980</td>
+<td align="left">Kareem Abdul-Jabbar (LAL)</td>
+<td align="left">Cedric Maxwell (BOS)</td>
+</tr>
+
+<tr>
+<td align="left">1981</td>
+<td align="left">Julius Erving (PHI)</td>
+<td align="left">Julius Erving (PHI)</td>
+</tr>
+
+<tr>
+<td align="left">1982</td>
+<td align="left">Moses Malone (HOU)</td>
+<td align="left">Larry Bird (BOS)</td>
+</tr>
+
+<tr>
+<td align="left">1983</td>
+<td align="left">Moses Malone (PHI)</td>
+<td align="left">Moses Malone (PHI)</td>
+</tr>
+
+<tr>
+<td align="left">1984</td>
+<td align="left">Larry Bird (BOS)</td>
+<td align="left">Larry Bird (BOS)</td>
+</tr>
+
+<tr>
+<td align="left">1985</td>
+<td align="left">Larry Bird (BOS)</td>
+<td align="left">Larry Bird (BOS)</td>
+</tr>
+
+<tr>
+<td align="left">1986</td>
+<td align="left">Larry Bird (BOS)</td>
+<td align="left">Larry Bird (BOS)</td>
+</tr>
+
+<tr>
+<td align="left">1987</td>
+<td align="left">Magic Johnson (LAL)</td>
+<td align="left">Magic Johnson (LAL)</td>
+</tr>
+
+<tr>
+<td align="left">1988</td>
+<td align="left">Michael Jordan (CHI)</td>
+<td align="left">Magic Johnson (LAL)</td>
+</tr>
+
+<tr>
+<td align="left">1989</td>
+<td align="left">Magic Johnson (LAL)</td>
+<td align="left">Bill Laimbeer (DET)</td>
+</tr>
+
+<tr>
+<td align="left">1990</td>
+<td align="left">Magic Johnson (LAL)</td>
+<td align="left">Magic Johnson (LAL)</td>
+</tr>
+
+<tr>
+<td align="left">1991</td>
+<td align="left">Michael Jordan (CHI)</td>
+<td align="left">Terry Porter (POR)</td>
+</tr>
+
+<tr>
+<td align="left">1992</td>
+<td align="left">Michael Jordan (CHI)</td>
+<td align="left">Michael Jordan (CHI)</td>
+</tr>
+
+<tr>
+<td align="left">1993</td>
+<td align="left">Charles Barkley (PHX)</td>
+<td align="left">Charles Barkley (PHX)</td>
+</tr>
+
+<tr>
+<td align="left">1994</td>
+<td align="left">Hakeem Olajuwon (HOU)</td>
+<td align="left">Shawn Kemp (SEA)</td>
+</tr>
+
+<tr>
+<td align="left">1995</td>
+<td align="left">David Robinson (SAS)</td>
+<td align="left">David Robinson (SAS)</td>
+</tr>
+
+<tr>
+<td align="left">1996</td>
+<td align="left">Michael Jordan (CHI)</td>
+<td align="left">Michael Jordan (CHI)</td>
+</tr>
+
+<tr>
+<td align="left">1997</td>
+<td align="left">Karl Malone (UTA)</td>
+<td align="left">Michael Jordan (CHI)</td>
+</tr>
+
+<tr>
+<td align="left">1998</td>
+<td align="left">Michael Jordan (CHI)</td>
+<td align="left">Karl Malone (UTA)</td>
+</tr>
+
+<tr>
+<td align="left">1999</td>
+<td align="left">Karl Malone (UTA)</td>
+<td align="left">Karl Malone (UTA)</td>
+</tr>
+
+<tr>
+<td align="left">2000</td>
+<td align="left">Shaquille O&rsquo;Neal (LAL)</td>
+<td align="left">Shaquille O&rsquo;Neal (LAL)</td>
+</tr>
+
+<tr>
+<td align="left">2001</td>
+<td align="left">Allen Iverson (PHI)</td>
+<td align="left">Tim Duncan (SAS)</td>
+</tr>
+
+<tr>
+<td align="left">2002</td>
+<td align="left">Tim Duncan (SAS)</td>
+<td align="left">Peja Stojakovic (SAC)</td>
+</tr>
+
+<tr>
+<td align="left">2003</td>
+<td align="left">Tim Duncan (SAS)</td>
+<td align="left">Tim Duncan (SAS)</td>
+</tr>
+
+<tr>
+<td align="left">2004</td>
+<td align="left">Kevin Garnett (MIN)</td>
+<td align="left">Jermaine O&rsquo;Neal (IND)</td>
+</tr>
+
+<tr>
+<td align="left">2005</td>
+<td align="left">Steve Nash (PHX)</td>
+<td align="left">Amar&rsquo;e Stoudemire (PHX)</td>
+</tr>
+
+<tr>
+<td align="left">2006</td>
+<td align="left">Steve Nash (PHX)</td>
+<td align="left">Chauncey Billups (DET)</td>
+</tr>
+
+<tr>
+<td align="left">2007</td>
+<td align="left">Dirk Nowitzki (DAL)</td>
+<td align="left">Dirk Nowitzki (DAL)</td>
+</tr>
+
+<tr>
+<td align="left">2008</td>
+<td align="left">Kobe Bryant (LAL)</td>
+<td align="left">Kevin Garnett (BOS)</td>
+</tr>
+
+<tr>
+<td align="left">2009</td>
+<td align="left">LeBron James (CLE)</td>
+<td align="left">LeBron James (CLE)</td>
+</tr>
+
+<tr>
+<td align="left">2010</td>
+<td align="left">LeBron James (CLE)</td>
+<td align="left">LeBron James (CLE)</td>
+</tr>
+
+<tr>
+<td align="left">2011</td>
+<td align="left">Derrick Rose (CHI)</td>
+<td align="left">Derrick Rose (CHI)</td>
+</tr>
+
+<tr>
+<td align="left">2012</td>
+<td align="left">LeBron James (MIA)</td>
+<td align="left">Joakim Noah (CHI)</td>
+</tr>
+
+<tr>
+<td align="left">2013</td>
+<td align="left">LeBron James (MIA)</td>
+<td align="left">LeBron James (MIA)</td>
+</tr>
+
+<tr>
+<td align="left">2014</td>
+<td align="left">Kevin Durant (OKC)</td>
+<td align="left">Kawhi Leonard (SAS)</td>
+</tr>
+
+<tr>
+<td align="left">2015</td>
+<td align="left">Steph Curry (GSW)</td>
+<td align="left">Steph Curry (GSW)</td>
+</tr>
+
+<tr>
+<td align="left">2016</td>
+<td align="left">Steph Curry (GSW)</td>
+<td align="left">Steph Curry (GSW)</td>
+</tr>
+
+<tr>
+<td align="left">2017</td>
+<td align="left">Russell Westbrook (OKC)</td>
+<td align="left">Steph Curry (GSW)</td>
+</tr>
+
+<tr>
+<td align="left">2018</td>
+<td align="left">James Harden (HOU)</td>
+<td align="left">James Harden (HOU)</td>
+</tr>
+
+<tr>
+<td align="left">2019</td>
+<td align="left">Giannis Ant. (MIL)</td>
+<td align="left">Giannis Ant. (MIL)</td>
+</tr>
+
+<tr>
+<td align="left">2020</td>
+<td align="left">Giannis Ant. (MIL)</td>
+<td align="left">Giannis Ant. (MIL)</td>
+</tr>
+
+<tr>
+<td align="left">2021</td>
+<td align="left">Nikola Jokic (DEN)</td>
+<td align="left">Rudy Gobert (UTA)</td>
+</tr>
+
+<tr>
+<td align="left">2022</td>
+<td align="left">Nikola Jokic (DEN)</td>
+<td align="left">Chris Paul (PHX)</td>
+</tr>
+
+<tr>
+<td align="left">2023</td>
+<td align="left">Joel Embiid (PHI)</td>
+<td align="left">Giannis Ant. (MIL)</td>
+</tr>
+
+<tr>
+<td align="left">2024</td>
+<td align="left">Nikola Jokic (DEN)</td>
+<td align="left">Jayson Tatum (BOS)</td>
+</tr>
+</tbody>
+</table>
+<p>In all, there are a few changes but some fun new MVPs (like Stojakovic in 2002). As far as multiple MVPs goes:</p>
+
+<p>4 - Larry Bird</p>
+
+<p>3 - Magic Johnson, Michael Jordan, LeBron James, Steph Curry, Giannis</p>
+
+<p>2 - Karl Malone, Tim Duncan</p>
+
+<p>Idk I&rsquo;m bored and I made this so I&rsquo;m making you read it. Enjoy!</p>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mle0wih" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>youjuanfrieswiththat | Thunder</div>
+        <div>31 | 2 hours ago </div>
+      </div>
+      <label for="mle0wih" class="commentText"><p>Rudy Gobert and CP3 back to back MVPs in this decade??</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mldzuwr" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>dvasquez93 | Warriors</div>
+        <div>31 | 3 hours ago </div>
+      </div>
+      <label for="mldzuwr" class="commentText"><p>A world in which Gobert wins an MVP before Jokic is one I want to live in, because I’d probably be a billionaire with a 14 inch penis going by that reverse world logic. </p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mleiooy" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Goombercules | Thunder</div>
+        <div>1 | 27 minutes ago </div>
+      </div>
+      <label for="mleiooy" class="commentText"><p>Damn, how&rsquo;s that 28 inch penis treating you now?</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mle04ig" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>WalrusInMySheets | LAL</div>
+        <div>10 | 2 hours ago </div>
+      </div>
+      <label for="mle04ig" class="commentText"><p>Are you talking about Tyrese Halliburton</p>
+
+<p>Edit: this is actually a pretty fun list, thanks OP</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mle0mzu" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Worried_Suggestion59 | Celtics</div>
+        <div>3 | 2 hours ago </div>
+      </div>
+      <label for="mle0mzu" class="commentText"><p>Maybe? I can&rsquo;t remember I just saw it on instagram a couple days ago so if he said that, then probably yes</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mle0xgg" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>WalrusInMySheets | LAL</div>
+        <div>3 | 2 hours ago </div>
+      </div>
+      <label for="mle0xgg" class="commentText"><p><a href="https://www.reddit.com/r/nba/comments/1jng0o3/tyrese_haliburton_on_why_shai_gilgeousalexander/" target="_blank">https://www.reddit.com/r/nba/comments/1jng0o3/tyrese_haliburton_on_why_shai_gilgeousalexander/</a></p>
+
+<p>I think that’s what you’re referring to yeah</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mle17eo" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Worried_Suggestion59 | Celtics</div>
+        <div>0 | 2 hours ago </div>
+      </div>
+      <label for="mle17eo" class="commentText"><p>Yeah that looks like the one. I think Jokic is the MVP though for what it&rsquo;s worth</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mle1dep" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>WalrusInMySheets | LAL</div>
+        <div>2 | 2 hours ago </div>
+      </div>
+      <label for="mle1dep" class="commentText"><p>I’d be happy with either. Both are having fantastic seasons.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mle2dpj" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>DJ_B0B | Bucks</div>
+        <div>5 | 2 hours ago </div>
+      </div>
+      <label for="mle2dpj" class="commentText"><p>Good list imo</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mle33yz" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>overweighttardigrade</div>
+        <div>5 | 2 hours ago </div>
+      </div>
+      <label for="mle33yz" class="commentText"><p>You earned yourself some up votes here bud</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mle4jd4" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Affectionate_Bit3132</div>
+        <div>4 | 2 hours ago </div>
+      </div>
+      <label for="mle4jd4" class="commentText"><p>The primary factor in determining the MVP should be who the best player in the league is. Secondary factors like team record matter if there&rsquo;s two (or more) players that could arguably be the best player in the league.</p>
+
+<p>But this is not one of those years.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mle5nf2" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Worried_Suggestion59 | Celtics</div>
+        <div>4 | 2 hours ago </div>
+      </div>
+      <label for="mle5nf2" class="commentText"><p>I agree. I think Jokic is the MVP, this was just more of a fun thought exercise</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mle38gp" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>A_Omega_73 | Lakers</div>
+        <div>1 | 2 hours ago </div>
+      </div>
+      <label for="mle38gp" class="commentText"><p>this motherfucker is just pushing his celtics agenda</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mle5u9a" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Sniffy4 | South Sudan</div>
+        <div>2 | 2 hours ago </div>
+      </div>
+      <label for="mle5u9a" class="commentText"><p>Bill Laimbeer?   That metric needs to be fired into the sun</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mle7r39" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>GoatmontWaters</div>
+        <div>2 | an hour ago </div>
+      </div>
+      <label for="mle7r39" class="commentText"><p>||
+||
+|1980|Kareem Abdul-Jabbar (LAL)|Cedric Maxwell (BOS)|</p>
+
+<p>Can you explain this? Is it a typo?</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mle8avg" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Worried_Suggestion59 | Celtics</div>
+        <div>4 | an hour ago </div>
+      </div>
+      <label for="mle8avg" class="commentText"><p>In 1979-80 the Lakers went 60-22, the Celtics went 61-21. Cedric Maxwell led the Celtics in WS (12.2). So according to “MVP goes to best player on best team” Maxwell was the MVP</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mle8jia" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>IMovedYourCheese | Warriors</div>
+        <div>2 | an hour ago </div>
+      </div>
+      <label for="mle8jia" class="commentText"><p>I think it&rsquo;s safe to change &ldquo;best team&rdquo; to &ldquo;top 2-3 teams that are clearly above the rest&rdquo;. This is season dependent, of course, but for example a Shai-like performance on Cavs or Celtics would still be MVP worthy.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mle95kv" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>GloryEnthusiast | Bulls</div>
+        <div>2 | an hour ago </div>
+      </div>
+      <label for="mle95kv" class="commentText"><p>Not a big change except Jokic would have 0 mvps. lol this subreddit would explode if Jokic had 0 and remained mvpless this year as well.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mlecdc7" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>junkit33</div>
+        <div>2 | an hour ago </div>
+      </div>
+      <label for="mlecdc7" class="commentText"><p>Win Shares can be bonkers, not sure this is the best way to go about it.</p>
+
+<p>Like Maxwell was the 4th best player on the 1980 Celtics.  Bird was clearly the best already.</p>
+
+<p>Or putting Porter over Drexler on 91 Blazers&hellip;</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mle133p" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>WanderingWarrior860</div>
+        <div>1 | 2 hours ago </div>
+      </div>
+      <label for="mle133p" class="commentText"><p>Jason Tatum</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mle7olr" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>GoatmontWaters</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="mle7olr" class="commentText"><p>||
+||
+|1980|Kareem Abdul-Jabbar (LAL)|Cedric Maxwell (BOS)|</p>
+
+<p>Can you explain this? Is it a typo?</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mle9a1w" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>chicagospenpal | Bulls</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="mle9a1w" class="commentText"><p>I like a world where Rose and Noah win B2B MVPs.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mlefw2p" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>magnetman47 | Magic</div>
+        <div>1 | 41 minutes ago </div>
+      </div>
+      <label for="mlefw2p" class="commentText"><p>Gobert winning MVP would be funny as fuck just for Shaq&rsquo;s meltdown alone</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mleg1zq" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>AleroRatking | Vancouver Grizzlies</div>
+        <div>1 | 40 minutes ago </div>
+      </div>
+      <label for="mleg1zq" class="commentText"><p>I was against this til I saw MVP Stojakovic</p>
+
+<p>I&rsquo;m now all for it</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mleg8ko" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Timeformayo</div>
+        <div>1 | 39 minutes ago </div>
+      </div>
+      <label for="mleg8ko" class="commentText"><p>A world in which Bill Laimbeer has an MVP may be the worst possible timeline.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mleimw4" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>insanezain | Raptors</div>
+        <div>1 | 27 minutes ago </div>
+      </div>
+      <label for="mleimw4" class="commentText"><p>Stoudemire over Nash on the same team is crazy work lmao this is awesome though thanks for making it</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mle4f4e" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Funny-Puzzleheaded</div>
+        <div>-10 | 2 hours ago </div>
+      </div>
+      <label for="mle4f4e" class="commentText"><p>This is a cool concept but a lot of these picks you made are really really bad and I&rsquo;m not sure why</p>
+
+<p>Bill Lambeer over Isiah and Dumars?</p>
+
+<p>Past prime Rudy over insane scoring ultra driving Donovan Mitchell</p>
+
+<p>Suns Chris paul over booker!?!?!?</p>
+
+<p>Like lol if this is engagement bait you got me&hellip; if it wasn&rsquo;t engagement bait go back and re-do this list</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mle58nt" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Worried_Suggestion59 | Celtics</div>
+        <div>14 | 2 hours ago </div>
+      </div>
+      <label for="mle58nt" class="commentText"><p>…did you not read my description? I picked the player with the highest WinShares on that team for that season. Yes you can debate who the best player was but I was going for a simple and analytical approach.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mleegv3" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>DoctorStove | Pistons</div>
+        <div>2 | an hour ago </div>
+      </div>
+      <label for="mleegv3" class="commentText"><p>I would love a world where Laimbeer was an MVP</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="mle5k9i" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Funny-Puzzleheaded</div>
+        <div>-8 | 2 hours ago </div>
+      </div>
+      <label for="mle5k9i" class="commentText"><p>What I&rsquo;m saying is that it&rsquo;s clearly wrong and led to nonsense outcomes</p>
+
+<p>Because of that using one stat to do this is either engagement baiting or you should go back and find a better way to do it</p>
+
+<p>&ldquo;Highest mvp vote getter on thr best team&rdquo; would likely get rid of most of this</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mle5ub3" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Worried_Suggestion59 | Celtics</div>
+        <div>12 | 2 hours ago </div>
+      </div>
+      <label for="mle5ub3" class="commentText"><p>Man you go do it then lmao</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mle5zir" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Funny-Puzzleheaded</div>
+        <div>-7 | 2 hours ago </div>
+      </div>
+      <label for="mle5zir" class="commentText"><p>I did at least for the clearly bad years that&rsquo;s why I said it</p>
+
+<p>It fixed it</p>
+
+<p>Tou should do that so this post is less&hellip; bad!</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="mle62xi" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>youjuanfrieswiththat | Thunder</div>
+        <div>8 | 2 hours ago </div>
+      </div>
+      <label for="mle62xi" class="commentText"><p>Or you could just have fun for once maybe? It’s a fun list which carries no weight outside of this post, stop crying</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mle6jwd" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Funny-Puzzleheaded</div>
+        <div>-2 | an hour ago </div>
+      </div>
+      <label for="mle6jwd" class="commentText"><p>Not crying and making the list better makes it more fun lol</p>
+
+<p>Best player on best team is more fun to talk about then best in one stat on best team 🤷🏻‍♀️</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="mleck2q" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>junkit33</div>
+        <div>2 | an hour ago </div>
+      </div>
+      <label for="mleck2q" class="commentText"><p>Win Share is just flawed.  His data is correct, Win Shares just gets a little random some times.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mled1dw" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Funny-Puzzleheaded</div>
+        <div>-2 | an hour ago </div>
+      </div>
+      <label for="mled1dw" class="commentText"><p>Yes correct</p>
+
+<p>Hence why i said the post is bad</p>
+
+<p>Doing &ldquo;moat mvp votes on best team&rdquo; is better and just as easy</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
