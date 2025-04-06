@@ -1,0 +1,529 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.selfPostImage {
+  width: 100%;
+  height: auto;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/PathOfExile2/comments/1jt0s7i/path_of_building_community_poe_2_v060_import_from/"><p>Path of Building Community PoE 2 v0.6.0 - Import from your characters + 0.2 Skills and Tree + more</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <p>Hey everyone, PoB can now finally import your build from the game with 1 click. No more manual copy-pasting every item! We&rsquo;ll most likely have some issues with this, so let us know if something isn&rsquo;t working</p>
+
+<p>This update also includes support for the new 0.2 tree and gems. I added support for all the new active skill gems, but we still have a bunch of ascendancies, support gems and uniques to support. Those will be coming in smaller updates over the coming weeks.</p>
+
+<p>Majochem added proper support for all the crossbow skills, so you can actually get a good idea of your DPS.<br>
+It properly takes into account your ammo capacity and reload speed to figure out your actual uptime firing shots, so it is a great addition.</p>
+
+<h1 id="known-issues">Known Issues</h1>
+
+<ul>
+<li>Importing items that grant skills isn&rsquo;t working properly</li>
+<li>Converting your 0.1 tree to 0.2 changes your ascendancy / class</li>
+</ul>
+
+<h1 id="new-to-path-of-building">&mdash; New to Path of Building &mdash;</h1>
+
+<ul>
+<li>Support importing characters from PoE API (Wires77, trompetin17)</li>
+<li>Add 0.2 Passive Tree (trompetin17)</li>
+<li>Add support for all new active gems (LocalIdentity)</li>
+<li>Add some new 0.2 Uniques (mods are not supported yet) (Blitz54)</li>
+<li>Update existing uniques with changes from 0.2 (Blitz54, Wires77)</li>
+</ul>
+
+<h1 id="mechanics">&mdash; Mechanics &mdash;</h1>
+
+<ul>
+<li>Implement Rare item templates (Blitz54)</li>
+<li>Add support for various Crossbow mechanics (DPS, Reload Time, Additional Projectiles, Bolt Count) (majochem)</li>
+<li>Added support for break armour on hit (MrHB212)</li>
+<li>Add Damage Buff for fully broken enemy armour (lucs66)</li>
+<li>Add support for Soul Core stat requirement conversion (haugenc)</li>
+<li>Add support for Minion Revival Time (Blitz54)</li>
+<li>Add support for Ice Crystal life (Blitz54)</li>
+<li>Add support for Parried Recently (Blitz54)</li>
+<li>Update Pinned enemy conditions (lucs66)</li>
+<li>Update Charge Duration, Unarmed Speed, and Cruel Ogham Manor reward (Blitz54)</li>
+<li>Update Sceptre Auras to apply to Self (Blitz54)</li>
+</ul>
+
+<h1 id="ascendancy">&mdash; Ascendancy &mdash;</h1>
+
+<ul>
+<li>Add support for Break Enemy Armour Below 0 - &ldquo;Imploding Impacts&rdquo; Warbringer (majochem)</li>
+<li>Add support for &ldquo;Price Of Power&rdquo; (Lich Ascendancy Notable) (majochem)</li>
+<li>Add support for &ldquo;Rupture The Soul&rdquo; (Lich Ascendancy Notable) (majochem)</li>
+<li>Add support for &ldquo;Eldritch Empowerment&rdquo; (Lich Ascendancy Notable) (majochem)</li>
+<li>Add Support for &ldquo;Necromantic Conduit&rdquo; and &ldquo;Blackened Heart&rdquo; (Lich Ascendancy Notables) (majochem)</li>
+<li>Add support for &ldquo;A Solid Plan&rdquo; - (Tactition Notable) (Blitz54)</li>
+<li>Add support for &ldquo;Critical Strike&rdquo; (Amazon Ascendancy Notable) (majochem)</li>
+<li>Add support for &ldquo;Soulless Form&rdquo; (Lich Ascendancy Notable) (majochem)</li>
+<li>Adds Support for Unfurled Finger and Mystic Attunement (Nostrademous)</li>
+</ul>
+
+<h1 id="skills">&mdash; Skills &mdash;</h1>
+
+<ul>
+<li>Add support for Discipline (Blitz54)</li>
+<li>Add support for Bidding support gem (Blitz54)</li>
+<li>Add support for Sigil of Power (Blitz54)</li>
+<li>Add support for Attrition (Blitz54)</li>
+<li>Add support for Berserk Gem (Blitz54)</li>
+<li>Add support for Excoriate and Adhere (Blitz54)</li>
+<li>Add support for Mysticism, Enormity, Strong Hearted, Loyalty, Overextend (Blitz54)</li>
+<li>Add support for 15 new Support gems (LocalIdentity)</li>
+<li>Add support for Skeletal Warrior gem quality (Blitz54)</li>
+<li>Add support for Enfeeble &ldquo;enemies deal less damage&rdquo; mods (Blitz54)</li>
+<li>Add Base Attack Damage for Stomping Ground support (Blitz54)</li>
+<li>Add support for Ailment part of Overwhelming Presence skill (mauriliogenovese)</li>
+<li>Add support for Siege Cascade dmg vs Immobilised enemy (Blitz54)</li>
+<li>Add support for Blasphemy&rsquo;s &ldquo;Socketed Skills have +1 metres to base radius&rdquo; (lutharous)</li>
+<li>Add support for Blasphemy less curse effect (Blitz54)</li>
+</ul>
+
+<h1 id="uniques">&mdash; Uniques &mdash;</h1>
+
+<ul>
+<li>Add support for Megalomaniac (Blitz54)</li>
+<li>Add support for Candlemaker &ldquo;chance to ignite is doubled&rdquo; (Blitz54)</li>
+<li>Add support for Saffel&rsquo;s Frame &ldquo;max block mods apply to max resist&rdquo; (Blitz54)</li>
+<li>Add support for Perfidy &ldquo;% chance to avoid chaos damage from hits&rdquo; (Blitz54)</li>
+<li>Add support for Bones of Ullr mod and fix Lord of Horrors (Blitz54)</li>
+</ul>
+
+<h1 id="tree">&mdash; Tree &mdash;</h1>
+
+<ul>
+<li>Add support for Grenadier tree node (Blitz54)</li>
+<li>Add support for &ldquo;enemies in your presence have resistance equal to yours&rdquo; (Blitz54)</li>
+<li>Add parsing for some new mods (Paliak)</li>
+<li>Add support for basic Companion nodes (Blitz54)</li>
+</ul>
+
+<h1 id="user-interface">&mdash; User Interface &mdash;</h1>
+
+<ul>
+<li>Toggle Attribute Nodes with Right Click (Kylixen)</li>
+<li>Only show bleed/ignite/poison options when needed (deathbeam)</li>
+</ul>
+
+<h1 id="fixed-calculations">&mdash; Fixed Calculations &mdash;</h1>
+
+<ul>
+<li>Fix unleash seal gain time depends on base cast speed (mauriliogenovese)</li>
+<li>Fix Blasphemy logic applying to Trigger Spells (Blitz54)</li>
+<li>Fix Burden of Shadows Life cost calculation (LocalIdentity)</li>
+<li>Fix warcry speed scaled by cast speed instead of warcry speed (mauriliogenovese)</li>
+<li>Add support for Elemental Storm and Solar Orb hit rate (Blitz54)</li>
+</ul>
+
+<h1 id="fixed-behaviours">&mdash; Fixed Behaviours &mdash;</h1>
+
+<ul>
+<li>Fix Weapon comparison with Giant&rsquo;s Blood (mauriliogenovese)</li>
+<li>Fix node search not updating when switching between Sorceress and Witch (Blitz54)</li>
+<li>Fix &ldquo;Exploit Weakness&rdquo; Support not applying for &ldquo;ArmourFullyBroken&rdquo; (majochem)</li>
+<li>Fix Shockwave tree node not applying to all AoE skills (mauriliogenovese)</li>
+<li>Fix Unholy Might to use PoE 2 version (majochem)</li>
+</ul>
+
+<h1 id="other-changes">&mdash; Other changes &mdash;</h1>
+
+<ul>
+<li>Fix skill tree textures not displaying correctly on old hardware (Zao)</li>
+</ul>
+
+<p>Resources If you find an issue, report it here<br>
+<a href="https://github.com/PathOfBuildingCommunity/PathOfBuilding-PoE2/issues" target="_blank">https://github.com/PathOfBuildingCommunity/PathOfBuilding-PoE2/issues</a></p>
+
+<p>If you&rsquo;d like to spread the word about our project, link to our website: <a href="https://pathofbuilding.community/" target="_blank">https://pathofbuilding.community/</a></p>
+
+<p>If you want to download our fork, head here: <a href="https://github.com/PathOfBuildingCommunity/PathOfBuilding-PoE2/releases" target="_blank">https://github.com/PathOfBuildingCommunity/PathOfBuilding-PoE2/releases</a></p>
+
+<p>If you&rsquo;re interested in contributing to the fork, head here: <a href="https://github.com/PathOfBuildingCommunity/PathOfBuilding-PoE2/blob/dev/CONTRIBUTING.md" target="_blank">https://github.com/PathOfBuildingCommunity/PathOfBuilding-PoE2/blob/dev/CONTRIBUTING.md</a></p>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mlqkn6p" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Every-Intern5554</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="mlqkn6p" class="commentText"><p>Great work, thank you!</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mlqkps7" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>raresrap</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="mlqkps7" class="commentText"><p>Thank you</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mlqltvo" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>impohito | maven uwu</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="mlqltvo" class="commentText"><p>UNZIP NOW KING</p>
+
+<p><a href="https://preview.redd.it/s8jvuka7d9te1.png?width=128&amp;format=png&amp;auto=webp&amp;s=d256051528c6e2b2053f89f435b03ee3df12005d" target="_blank">https://preview.redd.it/s8jvuka7d9te1.png?width=128&amp;format=png&amp;auto=webp&amp;s=d256051528c6e2b2053f89f435b03ee3df12005d</a></p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mlqm6ai" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Nippy_Username</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="mlqm6ai" class="commentText"><p>About to have more fun than in the league itself</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mlqkvbk" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Semarin</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="mlqkvbk" class="commentText"><p>Absolutely gods, the lot of you!</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mlql44x" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ExMoogle</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="mlql44x" class="commentText"><p>Thank you all!</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mlqmf5e" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Far_Base5417</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="mlqmf5e" class="commentText"><p>Thanks</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mlqnj20" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>drub4n_dev</div>
+        <div>1 | 44 minutes ago </div>
+      </div>
+      <label for="mlqnj20" class="commentText"><p>Thanks !!!</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mlqoj5b" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>JohnSmithSand</div>
+        <div>1 | 38 minutes ago </div>
+      </div>
+      <label for="mlqoj5b" class="commentText"><p>can I import my character from ps5?</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mlqokn3" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>jpylol</div>
+        <div>1 | 38 minutes ago </div>
+      </div>
+      <label for="mlqokn3" class="commentText"><p>Amazing, thanks</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
