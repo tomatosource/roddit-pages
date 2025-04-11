@@ -1,0 +1,480 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.selfPostImage {
+  width: 100%;
+  height: auto;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/nba/comments/1jx0roi/western_conference_playoff_tiebreakers/"><p>Western Conference Playoff Tiebreakers</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <p>With Minnesota’s win over Memphis last night, the Western conference standings now stand thus (source: <a href="https://www.nba.com/standings):" target="_blank">https://www.nba.com/standings):</a></p>
+
+<ol>
+<li>Thunder (66-14)</li>
+<li>Rockets (52-28)</li>
+<li>Lakers (49-31)</li>
+<li>Nuggets (48-32)</li>
+<li>Clippers (48-32)</li>
+<li>Warriors (48-32)</li>
+<li>Grizzlies (47-33)</li>
+<li>Wolves (47-33)</li>
+</ol>
+
+<p>Notably, the possibility of 6 teams (seeds 3 through 8) all ending up tied at 33 losses is still in play. This would require:</p>
+
+<ul>
+<li>Lakers to lose out</li>
+<li>Nuggets lose to Grizzlies on Friday, win vs. Rockets on Sunday</li>
+<li>Clippers and Warriors going 1-1 (they play each other Sunday)</li>
+<li>Grizzlies and Wolves winning out</li>
+</ul>
+
+<p>This would result in a <em>6-way</em> tie. The NBA’s tiebreaker procedures (<a href="https://ak-static-int.nba.com/wp-content/uploads/sites/2/2017/06/NBA_Tiebreaker_Procedures.pdf" target="_blank">https://ak-static-int.nba.com/wp-content/uploads/sites/2/2017/06/NBA_Tiebreaker_Procedures.pdf</a>) are as follows:</p>
+
+<ol>
+<li>Division winners</li>
+<li>Win % among tied teams</li>
+<li>Division win % (only if teams are in the same division)</li>
+<li>Conference win %</li>
+<li>Win % vs playoff teams in conference</li>
+<li>Total point differential</li>
+</ol>
+
+<p>Once a team is taken out of the tie, the tiebreaker criteria starts over from the top with the remaining.</p>
+
+<p>Now let’s apply this tiebreak procedure to this 6-way tie:</p>
+
+<ol>
+<li><p>First we need to figure out the Pacific division winner, since the 3 candidates (Lakers, Clippers, Warriors) are in this clump. Among them, the <em>Lakers</em> have the best H2H (6-2 vs. the other 2 teams), so they get the Pacific division crown and end up as the <em>3rd seed</em>.</p></li>
+
+<li><p>Now let’s repeat with the remaining 5 teams. The <em>Wolves</em> have the best H2H record here, going a combined 9-5 vs. the others (the Clippers can also go 9-5 if they win vs. the Warriors, but they lose in the H2H tiebreaker against the Wolves, having gone 0-3 against them this year). This means they’re the <em>4th seed</em>.</p></li>
+
+<li><p>Now let’s repeat with the remaining 4 teams. Here the <em>Clippers</em> get the nod, going either 9-2 or 8-3 vs. the others (depending on the vs. Warriors result on Sunday, which doesn’t end up mattering for this tiebreaker). They get the <em>5th seed</em>.</p></li>
+
+<li><p>Rinse and repeat with the remaining 3 teams. The <em>Warriors</em> have the best H2H, at 4-3, so they get the <em>6th seed</em>.</p></li>
+
+<li><p>Finally, our play-in teams are the Nuggets and the Grizzlies, who both have coincidentally fired their coaches recently. The <em>Grizzlies</em> end up <em>7th</em> due to their 2-1 season series vs. the Nuggets. This means the <em>Nuggets</em> are <em>8th</em>.</p></li>
+</ol>
+
+<p>The end of season standings would then be:</p>
+
+<ol>
+<li>Thunder</li>
+<li>Rockets</li>
+<li>Lakers</li>
+<li>Wolves</li>
+<li>Clippers</li>
+<li>Warriors</li>
+<li>Grizzlies</li>
+<li>Nuggets</li>
+</ol>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mmmqwgp" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Italian_Bedtime | Bucks</div>
+        <div>10 | 3 hours ago </div>
+      </div>
+      <label for="mmmqwgp" class="commentText"><p>I find it funny that the Lakers have tie breakers over all these teams and a conference record that good but still are at 49-31.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mmmro6j" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>iRockaflame | NBA</div>
+        <div>16 | 3 hours ago </div>
+      </div>
+      <label for="mmmro6j" class="commentText"><p>They have quite a lot of brutal losses to lower seeded east teams iirc</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="mmmsgv9" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>VGJunky | Lakers</div>
+        <div>13 | 3 hours ago </div>
+      </div>
+      <label for="mmmsgv9" class="commentText"><p>Getting trashed by &amp;lt;.500 is Lakers speciality</p>
+
+<p>Opposition plays up/return from injury/suspends the tank for a game</p>
+
+<p>Lakers play down/get sloppy/get outpaced by the whippersnappers</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="mmnc29g" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>naive-dragon | LAL</div>
+        <div>1 | 8 minutes ago </div>
+      </div>
+      <label for="mmnc29g" class="commentText"><p>What losing to Josh Giddey does to a m&rsquo;fer</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mmmtjzq" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Firebomb525</div>
+        <div>7 | 2 hours ago </div>
+      </div>
+      <label for="mmmtjzq" class="commentText"><p>Rockets are resting every one of their core but Jalen. So Lakers gonna lock up the 3 seed tonight</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mmmu2ez" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>JaqM31st3R</div>
+        <div>3 | 2 hours ago </div>
+      </div>
+      <label for="mmmu2ez" class="commentText"><p>You must not know the 2025 Lakers. Theyre great at beating good teams and absolutely suck against crap ones.</p>
+
+<p>Since the Rockets are restng most of their starters tonight, they could lose lol</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mmn0gt9" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>KarrotMovies | LAL</div>
+        <div>4 | an hour ago </div>
+      </div>
+      <label for="mmn0gt9" class="commentText"><p>Someone tell Bron to lock in so his son can play 35 minutes on Sunday</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="mmn1agp" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>lcmc</div>
+        <div>0 | an hour ago </div>
+      </div>
+      <label for="mmn1agp" class="commentText"><p>You can remove the 2025, that’s just the post Kobe Lakers special, they love playing down to teams. Most likely because of age/injury concerns it’s harder to get up for lay-ups. </p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mmn3q3f" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>JaqM31st3R</div>
+        <div>3 | an hour ago </div>
+      </div>
+      <label for="mmn3q3f" class="commentText"><p>I dont know about age though. Outside of Bron, theyre a pretty young team.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mmn4tli" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>lcmc</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="mmn4tli" class="commentText"><p>Yeah, next year it should be better, but post 2020, and even in 2020, the offense relied so heavily on Bron and AD, and both of them would give 0 effort against “bad” teams. And when the rest of the team saw those 2 giving no effort, everyone else would just give up too because so much of the offense was built around those 2. Hopefully with Luka and Reeves picking up the reins and Bron taking a step back the team will get more consistent next season. </p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="mmn6dej" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>KarrotMovies | LAL</div>
+        <div>1 | 41 minutes ago </div>
+      </div>
+      <label for="mmn6dej" class="commentText"><p>Kinda off topic, but Luka is younger than Reaves. That is so crazy. Luka is so young</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
