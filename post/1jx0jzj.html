@@ -1,0 +1,1015 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.selfPostImage {
+  width: 100%;
+  height: auto;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/PathOfExile2/comments/1jx0jzj/they_said_they_wanted_to_know_whats_wrong_with/"><p>They said they wanted to know what&rsquo;s wrong with Armour before they could fix it. Well, I&rsquo;ll just tell you!</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <p>Before I start, if for some reason you think Armour is OK even after I explain what&rsquo;s wrong with it, I don&rsquo;t know what to say. It&rsquo;s so completely objectively indefensible that saying it&rsquo;s OK just communicates to me that you&rsquo;re extremely susceptible to Stockholm Syndrome or something. Feel free to do so, I don&rsquo;t want to shut down any critiques of my take here, but just know that&rsquo;s how I&rsquo;m going to perceive it.</p>
+
+<p>ANYWAY, Amour has <strong>two major problems</strong>.</p>
+
+<p>Problem 1: <strong>It doesn&rsquo;t work linearly enough to be viable in hybrid</strong>.</p>
+
+<p>For those that don&rsquo;t know, the Armour formula in PoE 2 works exactly the same as it does in Dark Souls / Elden Ring, where it&rsquo;s called Defense. People usually misinterpret it as a &ldquo;flat damage reduction&rdquo; but it&rsquo;s actually not.</p>
+
+<p>The basic summary is that it&rsquo;s designed to either punish small hits, or reward larger hits, depending on your perspective. Basically Armour reduces the damage of a hit by a larger percentage the smaller the hit is.</p>
+
+<p>The issue is that it&rsquo;s very exponential and works more on a breakpoint. A hit will do basically zero damage until a certain point where the formula will basically &ldquo;let it go&rdquo; and stops affecting it by much at all. (The formula is actually MORE than exponential.)</p>
+
+<p>So a hit from 1 to 100 damage might be reduced by 99%, basically nullifying it, but then a hit that&rsquo;s 120 damage might only have 65% taken off. So 120 damage seems like 20% more damage from 100, but in reality it&rsquo;s nearly 42 TIMES LARGER. Then at 200 damage hit basically has 1% or less is reduced.</p>
+
+<p>In practice, when a player is using it, it&rsquo;s designed around reducing tons of tiny little mosquito bites.</p>
+
+<p>The result is it working more on a breakpoint system, where either you have enough Armour to reduce the mosquito bites for the area you are in after heavy investment, or you don&rsquo;t. Meaning a <strong>hybrid</strong> character is far more likely to never hit that breakpoint, rendering it useless even in the context of mosquito bites.</p>
+
+<p>Compare this to Energy Shield and Evasion. Let&rsquo;s say a robe has 400 ES and a leather tunic has 40% Evasion. If a hybrid piece has 200 ES and 20% evasion, you can see how those values are linearly scaling and it&rsquo;s easy to wrap your head around how you&rsquo;ll be protected.</p>
+
+<p><strong>4 out of the 6 characters using Armour will use it in hybrid.</strong></p>
+
+<p>(Another note on this, the developers have already said that the mosquito bite tier of enemy in PoE 2 almost doesn&rsquo;t even exist, contributing to Armour being almost totally useless everywhere anyway.)</p>
+
+<p>Problem 2: <strong>All the little conditionals add up.</strong></p>
+
+<p>Not only is Armour ONLY <em>physical damage</em>, and ONLY <em>mosquito bites</em>, and ONLY after <em>heavy investment</em> to reach that breakpoint, it ALSO gives you a <em>MOVEMENT SPEED PENALTY</em>.</p>
+
+<p>Obviously switching to a more linearly scaling formula will solve most of those issues, but it being only physical hits with a movement speed penalty still make it too conditional.</p>
+
+<p><strong>Here&rsquo;s my solution to reworking Armour:</strong></p>
+
+<p>Make the formula more linear. It can interact with accuracy in some way like Evasion if that&rsquo;s desired. Then, add some kind of bleed and poison resistance to it, kind of like the inverse of Energy Shield.</p>
+
+<p>You make it like that, where people can understand what the heck it&rsquo;s doing and are confident it will work on their hybrid character, and also make it not so conditional with the extra chaos help, and I think people are going to be really happy with it.</p>
+
+<p>Ultimately half the characters are going to use Armour at a baseline, and a casual player is going to look at the passive tree and see &ldquo;more Armour&rdquo; and think that node will make them die less, when in reality it&rsquo;s one of the most convoluted and complex defensive layers in the entire game.</p>
+
+<p>(And stop saying we need more defensive layers as a fix for Armour. More defensive layers just means ES and Evasion characters get extra defensive layers to choose from and Armour characters require them. Armour is a core defensive layer than needs to be fixed first. Also it HAS a second defensive layer in the form of BLOCK.)</p>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mmmp5gr" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Ruby2312</div>
+        <div>19 | 5 hours ago </div>
+      </div>
+      <label for="mmmp5gr" class="commentText"><p>The worst problem with armour is there are no life. Armour provide DR so it rely much more on raw hp than the other 2. Getting rid of life make the worst defense out of the basic 3 to be even worse</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mmmzab3" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>PurpleRazzmatazz2137</div>
+        <div>2 | 4 hours ago </div>
+      </div>
+      <label for="mmmzab3" class="commentText"><p>Yup, not being able to scale your max hit makes armor significantly worse in poe2 vs poe1.
+If you could scale life, armor would work well to reduce your average white mob pack to nothing while leaving the big slams to your life pool to soak up.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mmnbyef" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>RecoverParticular741</div>
+        <div>5 | 3 hours ago </div>
+      </div>
+      <label for="mmnbyef" class="commentText"><p>No, being able to scale max hp would make evasion EVEN BETTER than armor, more than it already is. In a t16 map, armor isn&rsquo;t even preventing damage from whites.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="mmnbphm" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>RecoverParticular741</div>
+        <div>1 | 3 hours ago </div>
+      </div>
+      <label for="mmnbphm" class="commentText"><p>Even if there were life nodes. Your armor would still be useless. Your missing the point that the armor vector doesn&rsquo;t actually reduce meaningful damage.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mmmtfol" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Helpful_Program_5473</div>
+        <div>5 | 5 hours ago </div>
+      </div>
+      <label for="mmmtfol" class="commentText"><p>I dont know why armor doesnt just provde DR for all hits. Thats how you scale it to being good in poe 1 anyway. Nerf the values if you have to or whatever</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mmnmg78" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>MasterSargeYT</div>
+        <div>1 | 2 hours ago </div>
+      </div>
+      <label for="mmnmg78" class="commentText"><p>100% of armor applies to elemental and chaos baseline LETS GO</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mmn18ja" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Available_West_9425</div>
+        <div>5 | 4 hours ago </div>
+      </div>
+      <label for="mmn18ja" class="commentText"><p>At this point scrap armor and have gear give Physical Reduction % like we have for elemental dmg. </p>
+
+<p>It is way easier to implement, to understand and to build around. </p>
+
+<p>&ldquo;I have 50% physical damage resistance, that means I only take half the dmg&rdquo;</p>
+
+<p>Easy, simple. </p>
+
+<p>Bonus point: GGG can balance it better by having a set max value and nodes to increase the cap. Tankier classes have &ldquo;+x physical reduction cap&rdquo; closer to them. Easy, simple.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mmn2ack" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Greasy-Chungus</div>
+        <div>3 | 4 hours ago </div>
+      </div>
+      <label for="mmn2ack" class="commentText"><p>Last Epoch just treats physical res like elemental.</p>
+
+<p>You get your caps and you&rsquo;re done.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mmmurwk" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Methodic_</div>
+        <div>2 | 5 hours ago </div>
+      </div>
+      <label for="mmmurwk" class="commentText"><p>Pardon, as bleeding is based off 15% of the proccing hit&rsquo;s physical damage, doesn&rsquo;t armor by design affect bleeding by lessening the damage of the original hit that applied it?</p>
+
+<p>See the following:</p>
+
+<p><a href="https://preview.redd.it/mgj3x794z9ue1.png?width=822&amp;format=png&amp;auto=webp&amp;s=27dd4f890c43e07d99ae9eeb1902a43941708232" target="_blank">https://preview.redd.it/mgj3x794z9ue1.png?width=822&amp;format=png&amp;auto=webp&amp;s=27dd4f890c43e07d99ae9eeb1902a43941708232</a></p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mmmveez" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Greasy-Chungus</div>
+        <div>2 | 5 hours ago </div>
+      </div>
+      <label for="mmmveez" class="commentText"><p>Bleeding scaling off the size of the hit means Armour will similarly do nothing to the bleed after it gets outside of the mosquito range.</p>
+
+<p>I guess making it linear would automatically make it better against chaos damage applied via physical hits, but that&rsquo;s not all chaos damage and scaling those things with hits sucks and need to change anyway, lol.</p>
+
+<p>But I see what you&rsquo;re saying.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mmmwr0q" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Soliloquesm</div>
+        <div>2 | 5 hours ago </div>
+      </div>
+      <label for="mmmwr0q" class="commentText"><p>Armour is  the way it is because of they do not want people to be immortal.  If you could ever get enough armour to save you from any and all hits you would be effectively immortal due to how life flasks and regen work.  This is why a complete rework is necessary as opposed to just buffing the amount of dr it gives you.  I agree hybrid armour is in a very bad spot, but pure armour in Poe 2 is actually quite strong as it is.  A pure armour char can tank 90% of hits in the game at 4k hp</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mmmy37p" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Greasy-Chungus</div>
+        <div>1 | 5 hours ago </div>
+      </div>
+      <label for="mmmy37p" class="commentText"><p>Buffing armour as it is would break the game. That&rsquo;s why they won&rsquo;t do it.</p>
+
+<p>The last time they did it nerfed the hell out of physical damage, as enemies ALSO have armour, and an attack that converts 80% damage to elemental basically left that remaining 20% physical in mosquito tier.</p>
+
+<p>That&rsquo;s why armour on enemies was reduced by 30% across the board in 0.2.0.</p>
+
+<p>The formula for armour IS THE ISSUE.</p>
+
+<p>It&rsquo;s not the way it is because they don&rsquo;t want people to be immortal either. ES is entirely linear, so explain why the philosophy on ES is somehow different?</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mmn4pvi" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Soliloquesm</div>
+        <div>2 | 4 hours ago </div>
+      </div>
+      <label for="mmn4pvi" class="commentText"><p>ES isnt dr, it’s more life, it isnt multiplicative with life, it’s additive.  DR (armour) is multiplicative with es and life.  If they have armour linear scaling it would mean you’d be immortal.  If larger hits couldn’t kill you, you will literally never die.  Small and medium hits aren’t noticeable at all on a armour build, making it very strong as that’s what most hits are.  Evasion and armour are actually more similar than you’d think, at 90% evasion you are pretty much guaranteed to die every <sup>1</sup>&frasl;<sub>10</sub> medium to big hits.  With large investments in armour less than 10% of the monsters in the game are going to be able to kill you.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mmn6h5g" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Greasy-Chungus</div>
+        <div>0 | 4 hours ago </div>
+      </div>
+      <label for="mmn6h5g" class="commentText"><p>It&rsquo;s all EHP. You can split hairs about the semantic but It&rsquo;s all the same.</p>
+
+<p>You can also make it linearly scale in a way that doesn&rsquo;t go up to 100% hahaha. Every other percentage layer has a cap, why not armour?</p>
+
+<p>I mean just look at what the EHP given by Evasion and ES on its highest base and then just match it in a linear way. Simple as.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mmnl0jc" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Soliloquesm</div>
+        <div>1 | 2 hours ago </div>
+      </div>
+      <label for="mmnl0jc" class="commentText"><p>In order to make a hit kill someone with a hard capped armour at say a conservative 75% it’d have to do so much damage that no es or evasion build would ever have a chance, thereby nerfing those defensive options hard.  Yes armour increases your ehp just like es does, but it is not the same.  If you add 4000 es to 4000 life that’s 8000 ehp, and every added point of life or es is 1 added ehp.  If you have 50% DR and 4000 life that’s also 8000 ehp, but every 1 added point of life or es after is greater than 1 ehp due to DR being multiplicative with life and es.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="mmncsyq" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>RecoverParticular741</div>
+        <div>0 | 3 hours ago </div>
+      </div>
+      <label for="mmncsyq" class="commentText"><p>OP isn&rsquo;t asking for linear scaling, something more akin to evasion.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mmnmkqg" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Soliloquesm</div>
+        <div>1 | 2 hours ago </div>
+      </div>
+      <label for="mmnmkqg" class="commentText"><p>Evasion is avoidance not mitigation and has different things to worry about.  It only affects ehp for attacks that would not kill you if you are getting attacked quickly enough for your health to drop faster than it is regenerating.  for any attack that has the ability to kill you in one shot evasion either gives you infinite ehp or gives you zero.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mmnvsjk" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>RecoverParticular741</div>
+        <div>1 | 37 minutes ago </div>
+      </div>
+      <label for="mmnvsjk" class="commentText"><ol>
+<li><p>evasion follows a non linear curve that armor could just as easily follow instead being significantly more exponential.</p></li>
+
+<li><p>if it makes you take less overall damage it is mitigation lol.</p></li>
+</ol>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="mmn55fz" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>MehNoob</div>
+        <div>1 | 4 hours ago </div>
+      </div>
+      <label for="mmn55fz" class="commentText"><p>Ironically the way to basically become immortal in PoE2 is through ES - but yeah if they would tweak the armor formula it would be much more trivially easier for a large population to become semi immortal thus killing the game</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mmn41qi" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>yepterrr</div>
+        <div>2 | 4 hours ago </div>
+      </div>
+      <label for="mmn41qi" class="commentText"><p>Stacking es makes you unkillable. Stacking evasion makes you unhittable. Armour should make you unstoppable. At least give armour some stun threshold for fucks sake.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mmn9lt0" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>moal09</div>
+        <div>2 | 3 hours ago </div>
+      </div>
+      <label for="mmn9lt0" class="commentText"><p>The other issue is that armour applies BEFORE resists in 2 whereas it was after resists in 1.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mmnb53k" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>AgoAndAnon</div>
+        <div>1 | 3 hours ago </div>
+      </div>
+      <label for="mmnb53k" class="commentText"><p>You really don&rsquo;t understand armour or evasion. They are both still bad and I don&rsquo;t necessarily disagree, but&hellip;</p>
+
+<p>Armour caps out at 90% in PoE.</p>
+
+<p>Evasion is a similar rating system, not direct percentages, and it caps out at 95%.</p>
+
+<p>Bleed scales off of pre-mitigation damage, so armour has no effect on bleeds you take from enemies.</p>
+
+<p>Armour was better in PoE1 for a lot of reasons. We had more of it, and I believe that they changed a constant in the formula to be even more logarithmic against the player in PoE2. Also, you&rsquo;re less likely to get hit a billion times all at once in PoE2 than in PoE1, which is what armour is good at.</p>
+
+<p>Historically, large, unavoidable physical hits are what PoE uses as &ldquo;you die now&rdquo; buttons. That is why they make it so hard to get phys mitigation.</p>
+
+<p>One more thing - armour is made much much better by &ldquo;phys taken as elemental&rdquo;, because it makes the physical part of the hit smaller. So until something changes a lot, Cloak of Flame will be best-in-slot for characters using armour.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mmnle57" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Greasy-Chungus</div>
+        <div>1 | 2 hours ago </div>
+      </div>
+      <label for="mmnle57" class="commentText"><p>Hopefully they come up with something where we can just take armour and feel like we&rsquo;re doing something.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mmmsbjh" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ChuckWorx</div>
+        <div>1 | 5 hours ago </div>
+      </div>
+      <label for="mmmsbjh" class="commentText"><p>My biggest issue with armor is their defense of needing to have multiple layers to defend. The problem is if I rotate a single peice of armor out for a hybrid peice or full Evasion/ES peice it reduces my armor percentage substantially. By adding another layer of defense I&rsquo;ve compromised my armor breakpoint heavily. I think armor could work as is, if it was buffed heavily enough to be viable. The fact that I need a full set, with good rolls, upgraded, and passive bonuses is an extremely large cost and not easy to scale while leveling. Full block is way more justifiable, and can be almost capped by the single item itself. This requires way less investment for the pay out. Just my two cents.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mmndgoy" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>RecoverParticular741</div>
+        <div>1 | 3 hours ago </div>
+      </div>
+      <label for="mmndgoy" class="commentText"><p>This. Compared to someone with the 3 hybrid evasion pieces hitting 70% and the poor guys trying a little bit of armor are sitting at 20% (might as well be 0)</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mmmwl7p" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Hopeful-Bill6725</div>
+        <div>1 | 5 hours ago </div>
+      </div>
+      <label for="mmmwl7p" class="commentText"><p>I just want to know where I’m fortify is. Every. Single. Arpg I’ve played in 20 years had fortify.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mmn03lk" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>skull48211</div>
+        <div>1 | 4 hours ago </div>
+      </div>
+      <label for="mmn03lk" class="commentText"><p>Get down</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mmnj20i" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>YamiDes1403</div>
+        <div>0 | 2 hours ago </div>
+      </div>
+      <label for="mmnj20i" class="commentText"><p>its simple tbh<br>
+both eva and ES worked with ANY damage defend. armor only defend against physical<br>
+makes its applied to all damage and its literally solved</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mmnk8d1" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Greasy-Chungus</div>
+        <div>1 | 2 hours ago </div>
+      </div>
+      <label for="mmnk8d1" class="commentText"><p>It would still only affect mosquito bites.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mmnm5t8" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>TGPhlegyas</div>
+        <div>1 | 2 hours ago </div>
+      </div>
+      <label for="mmnm5t8" class="commentText"><p>Just make it like WoW Classic where you get percentage based on your comparative level of what you&rsquo;re fighting but you could even scale it another way since we start outleveling monsters at a certain point.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mmnsul7" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Bill_Door_8</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="mmnsul7" class="commentText"><p>My first character on 0.1 was armor based. It was fine and all until I got to maps and bosses started one-shotting me left right and center.</p>
+
+<p>It was painful, but i switched to Evade and ES and suddenly I could run all the content without issue.</p>
+
+<p>Armor sucks, it&rsquo;s that simple.</p>
+
+<p>80% DR from arnor should reduce all physical damage by 80% full stop. If it isn&rsquo;t,  then it should pump your HP by your DR%.</p>
+
+<p>I started with Diablo 1 where a warrior could take a beating while delivering one. An armored character in POE should be able to do the same.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mmntfj4" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>wolfhound1793</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="mmntfj4" class="commentText"><p>Honestly, we have solved this in countless other games using diminishing return formulas.</p>
+
+<p>Post mitigation damage = (Pre Mit damage) / (1 + (Armor/Magnitude))</p>
+
+<p>There, done, I&rsquo;ve fixed armour in POE2. Most games set magnitude at 100 which means 100 armor = 50% damage reduction, aka 1 armor = 1% increased effective HP, but you can set magnitude to whatever arbitrary number you want to scale your damage resistance function.</p>
+
+<p>Only thing you would need to do is find a way to communicate that lower magnitude = better and higher magnitude = worse. From there, you can even have magnitude have a zone penalty like elemental resistances and have nodes on the passive tree and jewels to reduce it. With POE2 base damage numbers, you could set magnitude to 500 and increase it by 500 every act. And if those numbers don&rsquo;t end up being balanced, just adjust them, but the formula gives you greater flexibility and gives hybrid characters effective defense against damage.</p>
+
+<p>Honestly, you could even do something similar with elemental resistances if you wanted to, though that current system works well enough.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mmnu5mx" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>lane4</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="mmnu5mx" class="commentText"><p>Block might need a nerf if armor gets buffed. The fact that you can avoid so many hits on a class that is meant to have higher damage reduction is limiting the design space.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mmo0b8a" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Proletarian92</div>
+        <div>1 | 8 minutes ago </div>
+      </div>
+      <label for="mmo0b8a" class="commentText"><p>Everytime I see this discussion I can&rsquo;t help but think about Josh Sawyers video on the topic. he talks in context of traditional RPGs but it&rsquo;s still the same.</p>
+
+<p><a href="https://youtu.be/ug_0zCIwYZM?si=ZNdJqtn9jkPEkZYd" target="_blank">https://youtu.be/ug_0zCIwYZM?si=ZNdJqtn9jkPEkZYd</a></p>
+
+<p>Basically you need to pick you&rsquo;re poison because flat/linear scaling gives one feel and exponential scaling gives another. Neither is perfect but you have to decide on the flavour that best suits the game</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mmmq5do" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Patient-Chance-3109</div>
+        <div>-2 | 5 hours ago </div>
+      </div>
+      <label for="mmmq5do" class="commentText"><p>No doubt there is a lot of math to explain why armor is bad or sub optimal, but the biggest issue I have with armour is it&rsquo;s boring. It&rsquo;s a very passive thing that doesn&rsquo;t feel fun.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mmn4xu9" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>velkhar</div>
+        <div>1 | 4 hours ago </div>
+      </div>
+      <label for="mmn4xu9" class="commentText"><p>How’s ES or Evasion different? They’re all passive.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mmnd7kv" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>RecoverParticular741</div>
+        <div>1 | 3 hours ago </div>
+      </div>
+      <label for="mmnd7kv" class="commentText"><p>I think he means boring as in you can&rsquo;t see it working. Evasion you can see that you got hit or not, es you can see how much you&rsquo;re losing&hellip;. With armor &ndash; you never have any clue that actually did something, then you play a character without armor, and realize they take the exact same amount of damage.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
