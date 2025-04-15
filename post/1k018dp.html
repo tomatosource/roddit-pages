@@ -1,0 +1,442 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.selfPostImage {
+  width: 100%;
+  height: auto;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/PathOfExile2/comments/1k018dp/psa_dont_use_doomfletch/"><p>PSA: Don&rsquo;t use Doomfletch</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <p><strong>TL;DR:</strong><br>
+Doomfletch gives <code>Attacks with this Weapon gain 50% of Physical Damage as Extra Damage of each Element</code>, which sounds great. Until you realize that <strong>skill conversion happens before gain</strong>. Most elemental bow skills convert physical to elemental, meaning <strong>you gain nothing</strong>. Leveling sucks, gear support is limited, and unless you&rsquo;re rich or a masochist, it&rsquo;s not worth the effort.</p>
+
+<p>To preface i loved playing Doomfletch in poe1</p>
+
+<h1 id="how-damage-mechanics-screw-doomfletch">🚧 How Damage Mechanics Screw Doomfletch</h1>
+
+<p>The core issue is this:</p>
+
+<p><strong>skill conversion happens before gain</strong></p>
+
+<p>If a skill converts 100% of your physical to elemental (which a lot of bow skills do), then there’s <strong>0 physical left</strong> for Doomfletch to gain extra damage from.</p>
+
+<h1 id="example-1-lightning-rod">Example 1: Lightning Rod</h1>
+
+<ul>
+<li>Converts <strong>100% physical → lightning</strong></li>
+<li>Result: 0% physical left</li>
+<li>Gain = <code>0% × 50% × 3 elements = 0% gained damage</code></li>
+</ul>
+
+<h1 id="example-2-lightning-arrow">Example 2: Lightning Arrow</h1>
+
+<ul>
+<li>Converts <strong>40% physical → lightning</strong></li>
+<li>60% physical remains</li>
+<li>Gain = <code>60% × 50% × 3 = 90% gained damage</code></li>
+</ul>
+
+<p>To get <strong>the full 150% extra damage</strong>, you need a skill that doesn’t convert any physical. Sounds easy, right? Well…</p>
+
+<h1 id="skills-that-actually-work">🎯 Skills That Actually Work</h1>
+
+<p>Only <strong>10 skills</strong> avoid converting physical altogether. But:</p>
+
+<ul>
+<li>4 of them are meant to scale with <strong>poison</strong>, not elemental:
+
+<ul>
+<li>Poisonburst Arrow (1 / level 0)</li>
+<li>Vine Arrow (3 / level 6)</li>
+<li>Toxic Growth (5 / level 14)</li>
+<li>Gas Arrow (7 / level 22) — which also doesn’t benefit from the fire explosion</li>
+</ul></li>
+</ul>
+
+<p>Now you&rsquo;re down to <strong>6 usable skills</strong>, and <strong>none of them are good for early wave clear</strong>.</p>
+
+<p>The first decent one? Theoretically <strong>Spiral Volley</strong> at <strong>gem level 13 / character level 52</strong>.<br>
+Also Herald of Thunder/Ice convert physical to their elements so you deal no damage there either</p>
+
+<p>So what are you using until then?</p>
+
+<h1 id="bow-shot">🏹 Bow Shot.</h1>
+
+<p>You’re stuck using <strong>Bow Shot</strong> for everything:</p>
+
+<ul>
+<li>Wave clear? Bow Shot.</li>
+<li>Bosses? Still Bow Shot.</li>
+<li>Why not Snip or Detonating Arrow?
+
+<ul>
+<li>they felt great, but against quite a few bosses and rare&rsquo;s, you just dont get the time needed to use them.</li>
+</ul></li>
+</ul>
+
+<h1 id="gearing-is-a-nightmare-too">💸 Gearing is a Nightmare Too</h1>
+
+<p>Even if you <em>wanted</em> to make this work:</p>
+
+<ul>
+<li>You must constantly upgrade <strong>rings, gloves, and quiver</strong> for better <em>&ldquo;Added Physical Damage to Attacks&rdquo;</em></li>
+<li>These mods gain new tiers every ~9 levels. Miss an upgrade? You fall behind <em>fast</em></li>
+<li>If you have the currency, congrats. now you’re in <strong>Trade Chat Simulator 2025</strong>
+
+<ul>
+<li>Whispering +20 people to buy a ring</li>
+<li>Spending more time trading than playing</li>
+</ul></li>
+</ul>
+
+<h1 id="usable-skill-list-that-actually-works-with-doomfletch">🗒️ Usable Skill List (That Actually Works with Doomfletch):</h1>
+
+<ul>
+<li><strong>Bow Shot (0 / level 0)</strong></li>
+<li><strong>Snipe (3 / level 6)</strong></li>
+<li><strong>Detonating Arrow (9 / level 31)</strong></li>
+<li><strong>Rain of Arrows (9 / level 31)</strong></li>
+<li><strong>Tornado Shot (11 / level 41)</strong></li>
+<li><strong>Spiral Volley (13 / level 52)</strong></li>
+</ul>
+
+<p>I abandoned the build at <strong>level 37</strong>. Maybe it gets better later, but based on what I’ve experienced and the time I’ve wasted. I seriously doubt it.</p>
+
+<p>If 3-4 shotting white mobs for 3 levels, followed by an hour and a half of trading every 9 levels sounds fun, go for it. Otherwise just play something else.</p>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mnakmhi" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Anomulus0</div>
+        <div>7 | 3 hours ago </div>
+      </div>
+      <label for="mnakmhi" class="commentText"><p>*damage conversion built into skills happens before gains, global conversion happens at the same time as gains</p>
+
+<p>(just a footnote, the rest of the post doesn&rsquo;t change as it only talks about skills with or without in built conversion)</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mnallnx" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>V_FoS</div>
+        <div>1 | 3 hours ago </div>
+      </div>
+      <label for="mnallnx" class="commentText"><p>Thanks for adding that, ill update it</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mnaksaj" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>caddph</div>
+        <div>3 | 3 hours ago </div>
+      </div>
+      <label for="mnaksaj" class="commentText"><blockquote>
+<p>Until you realize that damage conversion happens before gain</p>
+</blockquote>
+
+<p>Incredibly slight nit, but to clarify, only &ldquo;skill&rdquo; damage conversion happens before gain (e.g., skills that inherently convert damage from one type to another). Other types of damage conversion happens simultaneously with gain after skill conversion, allowing for things like Burning Strikes and Avatar of Fire to work together.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mnayfew" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>OddMeansToAnEnd</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="mnayfew" class="commentText"><p>What skills convert 100%? Lightning arrow doesn&rsquo;t nor does lightning rod.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mnb2ujy" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>V_FoS</div>
+        <div>1 | 35 minutes ago </div>
+      </div>
+      <label for="mnb2ujy" class="commentText"><p>for Doomfletch all that it cares about is physical damage conversion on skills since it scales off of physical.</p>
+
+<p>Escape shot<br>
+- 100% physical to cold</p>
+
+<p>Lightning Arrow<br>
+- 40% physical to lightning<br>
+- (Beam) 100% physical to lightning</p>
+
+<p>Lightning Rod<br>
+- 100% physical to lightning</p>
+
+<p>Stormcaller Arrow<br>
+- 20% physical to lightning<br>
+- (Bolt) 100% physical to lightning</p>
+
+<p>Ice Shot<br>
+- 70% physical to cold<br>
+- (Shards) 100% physical to cold</p>
+
+<p>Shockchain Arrow<br>
+- 20% physical to lightning<br>
+- (Beam, Shockwave) 100% physical to lightning</p>
+
+<p>Electrocuting Arrow<br>
+- 50% physical to lightning</p>
+
+<p>Freezing Salvo<br>
+- 80% physical to cold</p>
+
+<p>Magnetic Salvo<br>
+- 80% physical to lightning</p>
+
+<p>there isnt a skill that converts 100% all damage types to x damage type</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
