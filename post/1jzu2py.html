@@ -1,0 +1,744 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.selfPostImage {
+  width: 100%;
+  height: auto;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/PathOfExile2/comments/1jzu2py/poe_2_patch_020_guide_to_recombinators_part_1/"><p>POE 2, Patch 0.2.0 Guide to Recombinators, Part 1: Foundations and how to reverse engineer every mod weight in Path of Exile</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <p>#TLDR: The new recombinator allows us to reverse engineer all item weight mods which have been hidden in the POE 2 game files thus far. There are some nuances in how you should select your mods in the recombinator to maximize your chances.</p>
+
+<hr>
+
+<h3 id="summary">Summary</h3>
+
+<ol>
+<li><p>Base selection is not <sup>50</sup>&frasl;<sub>50</sub> (it&rsquo;s likely tied to mod weights)</p></li>
+
+<li><p>Suggestions for recombinating fractured bases. (Note: Fractured modifiers are kept if the fractured base remains after recombination. Fractured modifiers cannot be selected but do not change your recombination odds.)</p></li>
+
+<li><p>Item weights can be reverse engineered (<strong>spears</strong> <a href="https://docs.google.com/spreadsheets/d/1COxbPTZnyB2iSYfpI9jKOZYoUScVdHFLM91smxFTT40/edit?usp=sharing" target="_blank">are done</a>)</p></li>
+
+<li><p>Item level differences between your input items can introduce problems</p></li>
+
+<li><p>The recombination formula for two-mod combines has been figured out. Does not immediately extrapolate to recombinations involving 3 or more modifiers.</p></li>
+</ol>
+
+<hr>
+
+<h2 id="introduction">Introduction</h2>
+
+<p>Hello Reddit, welcome to the first edition of the recombinator guide for Path of Exile 2, patch 0.2.0. I’m one of the original co-authors on the first recombinator guide back when it was released in POE 1 <a href="https://www.reddit.com/r/pathofexile/comments/v0nm0c/the_complete_guide_to_recombinators/" target="_blank">sentinel league</a>, as well as the author of the <a href="https://www.reddit.com/r/pathofexile/comments/1exyavx/325_updated_guide_to_recombinators/" target="_blank">updated recombinator guide</a> from the Settlers league. Some might say I love recombinators (or I&rsquo;m a masochist for data collection). Whether or not you’ve had experience with the recombinator back in POE 1, buckle yourself in and continue scrolling if you want to learn how the new recombinator works!</p>
+
+<p>Many thanks to my hardworking and passionate colleagues in the Prohibited library discord for their help; Pattable and Rusty in particular (they have contributed as much as I have), as well as nmaku, nerdyjoe, seinaru, sirgog and others.</p>
+
+<p>Note that figuring out recombinators is still an ongoing area of research and they are nowhere close to being solved. We have largely figured out two-mod combines and their consequences, and will post additional updates on more complicated combines once we have more information.</p>
+
+<p>Any formulas included will be accompanied by examples. Some longer formulas will be pasted as imgur links due to difficulty in formatting otherwise.</p>
+
+<p>Without further ado. Let’s proceed.</p>
+
+<hr>
+
+<h1 id="table-of-contents">Table of Contents.</h1>
+
+<h4 id="1-notation">1. Notation</h4>
+
+<h4 id="2-what-is-the-recombinator">2. What is the recombinator?</h4>
+
+<h4 id="3-two-mod-recombination-formula">3. Two-mod recombination formula</h4>
+
+<h4 id="4-the-item-level-discrepancy-and-non-native-modifiers">4. The item-level discrepancy and non-native modifiers</h4>
+
+<h4 id="5-base-picking-probability-and-single-mod-transfers">5. Base picking probability and single mod transfers</h4>
+
+<h4 id="6-fractured-modifiers">6. Fractured modifiers</h4>
+
+<h4 id="7-reverse-engineering-mod-weights">7. Reverse-engineering mod weights</h4>
+
+<h4 id="8-data-acquisition-and-sourcing">8. Data Acquisition and sourcing</h4>
+
+<h4 id="9-wrapping-up">9. Wrapping up</h4>
+
+<hr>
+
+<p>#1. Notation
+To make things easier to read, we’ll start off with the following definitions.</p>
+
+<p><strong>Modifier</strong>: This is a line on any magic or rare item that randomly rolls. You can have up to 3 modifiers from a &ldquo;prefix&rdquo; pool, and up to 3 modifiers from a &ldquo;suffix&rdquo; pool.</p>
+
+<p><strong>Tier</strong>: This is a number associated with a small range of values for a given modifier. The higher the tier, the higher the value. Maximum tiers of certain mods are highly valuable for many builds. This starts from 1, and can get as high as 13 currently. Modifiers can have a different maximum tier number.</p>
+
+<p><code>SC(mod)</code>: This stands for <strong>success contribution</strong> of a specific mod. More context will be provided in Section 3.</p>
+
+<p><code>W(mod)</code>: This is the <strong>standard weight</strong> of a modifier from POE 1. This means if a modifier has 100 weight, and the total of other mods available on the item is 900, the chance of augmenting this mod onto the item is 100/(100+900) = <sup>1</sup>&frasl;<sub>10</sub>. Weights are unitless and relative, but GGG reliably uses integer weights in their item tables.</p>
+
+<p><code>M</code>: This represents the set of all possible modifiers in a given context. For example, M for spear prefixes represents all possible prefixes available on an item at a given item level. See <a href="https://poe2db.tw/us/Modifiers" target="_blank">poe2db</a> for more details.</p>
+
+<p><code>RS</code>: Recombinator success chance. This is the number percentage that you see in the recombinator window when you select 2 or more modifiers. This represents the chance that your recombination succeeds. 100% – RS represents the chance your item is destroyed.</p>
+
+<p><strong>ilvl</strong>: Item level. An item attribute that depends on the area level where it dropped from. This limits the availability of modifiers from the pool. Some of the most highly sought after modifiers in the game are found at high item levels (typically 81+).</p>
+
+<p><strong>NNN</strong>: Non-native natural modifiers. These are modifiers that show up on certain types of items but are forbidden from existing on others. For example, dexterity cannot be found on pure intelligence body armours. This also includes item level restrictions. A mod with item level 80+ required level is a NNN mod for a base item with ilvl 79.</p>
+
+<p><strong>Equivalent Ilvl (EI)</strong>: This represents an ilvl range where there are no new modifiers. Items in this range are effectively equivalent in the context of most game mechanics.</p>
+
+<hr>
+
+<h1 id="2-what-is-the-recombinator-1">2. What is the recombinator?</h1>
+
+<p>The recombinator is a crafting bench where you put in two items. You <strong>must</strong> select at least one modifier on each item, and the game will give you a success probability (ranging from 0% to 100%) in the center. You can select up to 6 modifiers total across both items. The same kind of modifier can’t be selected twice (e.g. 2 x lightning damage). Then you click recombine.</p>
+
+<p>When recombined, you have three outcomes (but <strong>not with equal probabilities</strong>)</p>
+
+<ol>
+<li>The left item shows up with all the modifiers you selected</li>
+<li>The right item shows up with all the modifiers you selected</li>
+<li>You get nothing (failed recombination, both items are destroyed)</li>
+</ol>
+
+<p>Only the modifiers you selected will be on the final item (except for fractured modifiers, which are an exception).</p>
+
+<hr>
+
+<h1 id="3-two-mod-recombinator-formula-for-ei-equivalent-ilvls">3. Two-mod recombinator formula for EI (Equivalent ilvls)</h1>
+
+<p>When combining two mods, both mods <strong>contribute independently</strong> to the overall recombination success chance. This rule will be referred to repeatedly in this document, so try to remember this. We define the individual contribution as SC (success contribution), and this is a percentage.</p>
+
+<h3 id="example-dexterity-body-armours-both-ilvl-79">Example: Dexterity body armours (both ilvl 79)</h3>
+
+<p><code>Tier 7 fire resistance (36-40%)</code>: SC value of 8.3%.</p>
+
+<p><code>Tier 7 lightning res (36-40%)</code>: SC value of  8.3%.</p>
+
+<p><code>RS = SC(T7 fire) + SC(T7 light)</code> = 8.3% + 8.3% = 16.6%.</p>
+
+<p>Ok great! Now that we understand the role of item mod SC, how do we calculate this SC value? The following is a simplified formula of how you calculate the <code>SC</code> value of <a href="https://imgur.com/a/JoVsIxN" target="_blank">any given mod</a>. Note that this version of the formula is only valid when both your items have EI, but greatly aids in understanding. We&rsquo;ll also explain what &ldquo;Unbounded&rdquo; means. We will also move on to the more general case where your item levels are no longer equivalent in the next section.</p>
+
+<p>Once we calculate the SC value of both mods, we simply add them together to get the <code>RS</code></p>
+
+<h2 id="explaining-the-equation">Explaining the equation</h2>
+
+<p>Let’s break down this formula. We can simply ignore the value A, as it’s some arbitrary scaling constant that gives us our valuable SC percentage we see in game. <strong>What’s more important</strong> are the terms involving weights.</p>
+
+<p>In the denominator (the bottom of the fraction), we have the sum of all <em>modifier weights</em>; specifically the sum of all <strong>relevant</strong> weights. If your selected modifier is a prefix, this is the sum of all possible standard prefix weights at the item ilvl. If your selected modifier is a suffix, this is the sum of all possible standard suffix weights at the item ilvl. This means you don’t include movement speed weights (these are prefixes) if you’re trying to do a calculation for all boot suffixes, for example.</p>
+
+<p>The term in the right bracket is a bit confusing as well, but let’s walk through it. What this means is that we have to <strong>sum</strong> the <em>weight</em> of the selected mod and the weight of all mods (of the same type) of higher tiers that are available on the base item, restricted by item level. For example, if we are recombining T5 fire resistance from an <em>ilvl</em> 79 base, you add up the standard weights of <strong>T5, T6, and T7</strong> fire resist, but <strong>not T8</strong> as that requires <em>ilvl</em> 81. We then take that sum and scale it with a scaling factor, which gives us <code>SC(Tier 5 fire res)</code>.</p>
+
+<p>In POE, higher tier weights always have equal or lower weights compared to the tiers below them (this is because higher tier means higher values, i.e. better). This means SC is always decreased when using a higher tier mod than lower tier version of the same mod on the same base.</p>
+
+<p>Note that <strong>the weights do not change based on item level. They are static, fixed constants</strong>.</p>
+
+<p>An intuitive way to think about this is: If I’m looking at a specific modifier tier, all the modifier tiers above it are helping to <em>boost</em> my success chance. The <em>higher tier</em> I’m at, the fewer modifiers are “helping me”, therefore my success chance from this modifier is <em>lower</em>.</p>
+
+<h3 id="example-spears-both-ilvl-79">Example: Spears (both ilvl 79)</h3>
+
+<p>Note that the weight values have already been scaled to SC percentages using the scaling constant.</p>
+
+<p><code>SC(Tier 8 flat physical) = 3.66% (T8) + 1.82% (T9) = 5.48%</code></p>
+
+<p><code>SC(Tier 6 Physical %) = 1.81% (T6) + 0.91% (T7) = 2.72%</code> T8 omitted because that requires ilvl &amp;gt; 79</p>
+
+<p><code>RS = SC(Tier 8 flat physical) + SC(Tier 6 Physical %) = 5.48% + 2.72% = 8.2%</code></p>
+
+<h2 id="multiple-modifiers-and-bounded-sc">Multiple modifiers and bounded SC</h2>
+
+<p>Remember that this SC term is only for <em>one modifier</em>. We need to repeat this for the other modifier. For more mathematical folk, here is an <a href="https://imgur.com/a/0dhezwI" target="_blank">abridged version of the formula</a>.</p>
+
+<p>Note that I specifically called these terms <code>Unbounded SC</code>, not to be confused with <code>SC</code>. For those astute readers, you might realize that <code>Unbounded SC</code>, defined above, can even exceed 100%! In reality, for <strong>two-mod combines</strong> this term is limited to 50% per mod, for a total of 100% when added together as <code>RS</code>.</p>
+
+<p>This means that any additional <code>SC</code> contributions from lower/higher tier weights greater than 50% will not affect its final SC value. For example, <code>SC(T1 flat lightning) = SC(T5 flat lightning)</code> on spears. This means for endgame relevant item levels(i.e. 75+), there is no functional change in recombination chance if you pick T5 flat lightning over T1 flat lightning! Correcting the above formula:</p>
+
+<p>####<code>SC(mod) = minimum(Unbounded SC, 50%)</code></p>
+
+<h3 id="example-spears-both-ilvl-79-1">Example: Spears (both ilvl 79)</h3>
+
+<p>Note that the weight values have already been scaled to SC percentages using the scaling constant.</p>
+
+<p><code>SC(Tier 8 flat physical) = 3.66% (T8) + 1.82% (T9) = 5.48%</code></p>
+
+<p><code>SC(Tier 2 flat lightning) = 20.11% (T2) + 20.11% (T3) + ... = 50% (capped)</code></p>
+
+<p><code>RS = SC(Tier 8 flat physical) + SC(Tier 2 flat lightning%) = 55.48%</code></p>
+
+<p>&amp;nbsp;</p>
+
+<p>Due to the cap on SC, a simple consequence and the most important thing to remember is:</p>
+
+<h5 id="maximize-the-tiers-of-your-mods-until-your-success-chance-starts-dropping-in-the-recombinator-window"><strong>Maximize the tiers of your mods until your success chance starts dropping in the recombinator window</strong>.</h5>
+
+<hr>
+
+<h1 id="3-how-to-find-the-sc-of-a-modifier">3. How to find the SC of a modifier</h1>
+
+<p>There are two main ways to find the SC of a modifier.</p>
+
+<ol>
+<li><p>Use a weight lookup table (this only exists for a few bases that we&rsquo;ve compiled, more will become available as we work through them). Other tools <strong>may or may not adapt these weights</strong>.</p></li>
+
+<li><p>i) Find <strong>two common mods</strong> that produce <strong>100% <code>RS</code></strong> together. Therefore each one has <code>SC</code> = 50%. These are overcapped <code>SC</code> values and the baseline we will measure against.</p>
+
+<p>ii)	Ensure both items are EI. Check recombination odds of your target mod against one of these two mods.</p>
+
+<p>iii) <strong>Subtract 50%</strong> from the result. The <strong>answer is your mod’s <code>SC</code></strong>.</p></li>
+</ol>
+
+<hr>
+
+<h1 id="4-the-item-level-discrepancy-and-non-native-modifiers-1">4. The item-level discrepancy and non-native modifiers</h1>
+
+<p>Okay, so now we’ve read and understood (hopefully) how the recombinator formula works for two-mod combines. Now let’s talk about how item level and NNN mods factor into this.</p>
+
+<h2 id="item-level-ilvl">Item level (ilvl)</h2>
+
+<p>The main role of ilvl is to restrict or expand the number of possible modifiers available on the item. In effect, this can change both the denominator term and numerator term in the <a href="https://imgur.com/a/JoVsIxN" target="_blank">formula</a>.</p>
+
+<p>If I pick the same two modifiers to recombine at a higher level, it’s possible I <em>open up another tier</em> of that modifier, which “helps” me by <em>adding additional <code>SC</code> chance</em> to <code>SC(current tier of modifier)</code>.</p>
+
+<p>However, by adding additional weight, the <em>denominator term</em> (sum of all available modifier weights) <em>also increases</em>. This <strong>hurts</strong> your chances, if no additional tier opens up.</p>
+
+<p>This is <strong>highly case-by-case</strong>, so unfortunately I can’t give a rule of thumb for this. I’m certain the community will develop better general heuristics to remember as recombinator technology matures.</p>
+
+<p>The best way to check this is by checking the same mod combine in game, varying the item levels of your input items between modifier breakpoints. By breakpoints, this means new levels where modifiers are introduced. These breakpoints can be seen on resources such as <a href="https://poe2db.tw/us/Modifiers" target="_blank">poe2db</a>.</p>
+
+<h3 id="example-spears-ilvl-79-gt-82">Example: Spears (ilvl 79 -&amp;gt; 82)</h3>
+
+<p><code>SC (T9 flat phys): 1.82% (ilvl 79) -&amp;gt; 1.79% (ilvl 82)</code></p>
+
+<p>This happens because no new tiers of flat phys are introduced, but the denominator (sum of all modifier weights) has increased due to addition of new tiers of flat elemental, accuracy, etc. Therefore, this number goes down. This shrinkage is more drastic the larger the base <code>SC</code> value is.</p>
+
+<h2 id="change-to-the-sc-formula">Change to the SC formula</h2>
+
+<p>Surprisingly (intentionally, or unintentionally), the <code>SC</code> formula also changes when you no longer have <em>EI</em>. Namely, the modifiers from the left item <strong>uses the ilvl from the right item</strong> to calculate <code>SC</code>, and vice versa. Here is a formula for the <a href="https://imgur.com/a/8CepgvI" target="_blank"><code>RS</code></a>.</p>
+
+<p>For items with EI, this change in formula makes no difference, which is why the formula is simpler to understand (see above). Let&rsquo;s walk through an example where there <strong>is</strong> a difference</p>
+
+<h3 id="example-non-ei-rs">Example: Non-EI RS</h3>
+
+<p>Note that the max fire res for <em>ilvl</em> 84 is T8, and the max lightning res for <em>ilvl</em> 78 is T7</p>
+
+<p><code>T5 Fire Res (ilvl 84) + T3 Lightning res (ilvl 78). RS = 71.4% (in-game)</code></p>
+
+<h4 id="ei-sc-formula-below-weights-are-standardized-to-units-of-1-for-simplicity">EI SC Formula below. Weights are standardized to units of 1 for simplicity.</h4>
+
+<p><strong>In this case, note all tiers of resistance have the same weight</strong>.</p>
+
+<p><code>SC(T5 Fire Res) = Scaling Factor(ilvl 84) * [W(T5) + W(T6) + W(T7) + W(T8)] = 7.75% * 4 = 31%</code></p>
+
+<p><code>SC(T3 Light Res) = Scaling Factor(ilvl 78) * [W(T3) + W(T4) + ... W(T7)] = 8.3% * 5 = 41.5%</code></p>
+
+<p><code>RS = SC(T5 Fire Res) + SC(T3 Light Res) = 72.5% (Wrong!)</code></p>
+
+<h4 id="non-ei-sc-formula-below-weights-are-standardized-to-units-of-1">Non-EI SC Formula below. Weights are standardized to units of 1.</h4>
+
+<p><code>SC(T5 Fire Res) = Scaling Factor(ilvl 78) * [W(T5) + W(T6) + W(T7)] = 8.3% * 3 = 46.5%</code></p>
+
+<p><code>SC(T3 Light res) = Scaling Factor(ilvl 84) * [W(T3) + W(T4) + ... W(T8)] = 7.75% * 6 = 24.9%</code></p>
+
+<p><code>RS = 46.5% + 24.9% = 71.4% (Right!)</code></p>
+
+<p>&amp;nbsp;</p>
+
+<p>Note that this <strong>heavily</strong> penalizes items that are EI, because you will likely just lower your odds.</p>
+
+<h2 id="nnn-non-natural-native-modifiers">NNN (Non-natural, native modifiers)</h2>
+
+<p>If you try transferring an <em>NNN</em> mod (see definition above) and the outcome results in an illegal item (one that can&rsquo;t be generated due to <em>ilvl</em> or <em>NNN</em> rules) then it is destroyed, and this destruction scenario is accounted for in the <code>RS</code>.</p>
+
+<p>What this means, is that if only one of your bases is a viable home for both modifiers, your success chance will be <strong>hurt accordingly</strong>. In fact, the <strong>chance the viable base is picked</strong> is <em>baked</em> into the recombination formula itself. This means that, under these conditions, the percentage the game is telling you reflects the chance you:</p>
+
+<ul>
+<li>Succeed in your recombination</li>
+<li>Get the viable base</li>
+</ul>
+
+<h3 id="example-effects-of-nnn-on-success-chance">Example: Effects of NNN on success chance</h3>
+
+<p><code>T13 life (ilvl 82) + T5 fire res(ilvl 79)</code></p>
+
+<p>With the Non-EI formula, T13 life uses ilvl 79 to calculate <code>SC</code>. However, T13 life does not exist on ilvl 79, and so <code>SC(T13 life on ilvl 79) = 0</code></p>
+
+<p><code>SC(T13 life)</code> = 0%</p>
+
+<p><code>SC(T5 fire res)</code> = 4 * 7.75% = 31% (again, all tiers have equal weighting)</p>
+
+<p><code>RS</code> = 0% + 31% (lines up in game!)</p>
+
+<p>Note that if an item is not a valid base for the outcome of recombination because of a NNN mod, the <code>SC</code> from the <strong>other item</strong> will be used for all modifiers, even the modifier that isn&rsquo;t on the base to start with. (e.g. fire res from this example originated from ilvl 79 with <code>SC=24.9%</code>, but the <code>SC</code> was calculated using ilvl 82 instead).</p>
+
+<p>&amp;nbsp;</p>
+
+<p>The takeaway from this section :</p>
+
+<ul>
+<li>You <strong>cannot transfer certain mods</strong> onto other bases. Double check your ilvl and basetypes to ensure you’re not violating this</li>
+<li>Additionally, <em>mixing and matching item levels</em> can be <strong>disastrous</strong> for your odds if one of your items cannot host both modifiers.</li>
+<li>The SC formula penalizes non-EI. <strong>Attempt to maximize your ilvls if possible!</strong></li>
+</ul>
+
+<hr>
+
+<p>#5. Base picking probability and single mod transfers</p>
+
+<h2 id="mod-transfer">Mod Transfer</h2>
+
+<p>It often happens where you might drop a really good modifier on a shitty base, and want to transfer it to a good base (say, 160% physical damage on a striking spear, which only has lightning base damage, making this mod useless). In this case, you’d also want to know: <em>How likely is it that my recombination results in my mod on the good base</em>? A few caveats:</p>
+
+<ol>
+<li>Recombination is <strong>definitely not <sup>50</sup>&frasl;<sub>50</sub></strong> for base selection. The base selection is likely influenced by the modifiers you select on each item.</li>
+<li>You can’t transfer a modifier onto a base that can’t naturally generate it (base type and ilvl restrictions apply), see the NNN section.</li>
+<li>You can’t select a fractured modifier. However, if recombination succeeds and <strong>the fractured base is kept, the fractured mod stays</strong>. <strong>Fractures do not affect success rate</strong>.</li>
+</ol>
+
+<p>Note that much of the math below is conjecture, and has some agreement with what has been observed. However, <strong>much more testing</strong> needs to be done to figure out the exact odds of choosing either base.  All we can say for certain currently is that the odds are not <sup>50</sup>&frasl;<sub>50</sub>.</p>
+
+<h3 id="conjecture-base-selection-probability-informed-speculation">Conjecture: Base selection probability (Informed Speculation!)</h3>
+
+<p>We can use the ideas built up in the last section (especially NNN) to interpret what SC actually is. Let&rsquo;s call the mod from the left item &ldquo;left&rdquo;, and the mod from the right item &ldquo;right&rdquo;:</p>
+
+<ul>
+<li><p><code>SC(left)</code> = Probability both mods -&amp;gt; right base. Calculated by using ilvl of right item with left mod.</p></li>
+
+<li><p><code>SC(right)</code> = Probability both mods -&amp;gt; left base. Calculated by using ilvl of left item with right mod</p></li>
+
+<li><p><code>1 - RS = 1 - SC(left) - SC(right)</code> = Probability you get neither (recomb failed)</p></li>
+</ul>
+
+<p>This interpretation lines up with what we see in NNN. Going further, if we condition on only a successful recombination:</p>
+
+<ul>
+<li><p>Left base probability on successful recomb ~= <code>SC(right) / ( SC(left) + SC(right) )</code></p></li>
+
+<li><p>Right base probability on successful recomb ~= <code>SC(left) / ( SC(left) + SC(right) )</code></p></li>
+</ul>
+
+<p>This lines up with general testing in game (thanks to @Seinaru), who attempted to transfer T9 accuracy (<code>SC=3.58</code>) to a base with a low tier mod (<code>SC=50</code>) for a recombination with <code>RS=53.58</code>, and observed 1 in 12 to 1 in 13 odds with multiple quad tabs of transfers. This is close enough to <code>53.58/3.58 = 14.9</code> to warrant some notice.</p>
+
+<h5 id="tldr-this-inherently-means-it-s-difficult-to-transfer-low-weight-mods-onto-good-bases-because-the-chance-is-likely-proportional-to-the-sc-or-weight-of-the-low-weight-mod">TLDR; <strong>This inherently means it&rsquo;s difficult to transfer low weight mods onto good bases because the chance is likely proportional to the SC or weight of the low weight mod!!.</strong></h5>
+
+<h3 id="consequences-speculation">Consequences (Speculation!)</h3>
+
+<p>IF the above formulae are true, the maximum transfer probability (accounting for recursion) is <code>2 * SC(transfer mod)</code>. You achieve this by picking a low tier modifier on the good base to recombinate with the <em>good mod</em> on the <em>bad base</em>. If you fail, you repeat until you get your result or both items vanish. Here is a <a href="https://imgur.com/ygYFSqw" target="_blank">short proof</a> of why this is the case. Assume that the left item has the transfer mod, while the right item is the good base. P(win) denotes the chance at getting the transfer mod on the good base. The proof also requires showing that <a href="https://imgur.com/a/IIblH1L" target="_blank">your one shot success is just equal to <code>SC(left)</code></a></p>
+
+<p>Because the SC is capped at 50%, the most we can increase the odds of winning, <code>P(win)</code>, is by a factor of 2. This means making <code>SC(right)</code> as large as possible (i.e. picking a low tier).</p>
+
+<p>&amp;nbsp;</p>
+
+<p>Much additional work needs to be put in to fully understand this, and will require many more funds/datapoints to fully nail down. We would like to crowdsource more data in order to do this.</p>
+
+<hr>
+
+<h1 id="6-fractured-modifiers-work-in-progress">6. Fractured modifiers (work in progress)</h1>
+
+<p>As mentioned above, fractured modifiers (as far as we know) <strong>do not affect the recombination success chance</strong> shown in the recombinator window. If the fractured base is picked, <strong>the fracture mod will come along for free</strong>, alongside the recombinated mods.</p>
+
+<h5 id="tldr-this-means-that-it-may-often-be-a-better-choice-to-recombinate-two-mods-on-a-fractured-base-to-get-3-mods-1-of-them-being-fractured-instead-of-recombinating-3-mods">TLDR; This means that it may often be a better choice to <em>recombinate two mods</em> on a <strong>fractured base</strong> to get 3 mods (1 of them being fractured), <em>instead</em> of <em>recombinating 3 mods</em>.</h5>
+
+<p>There are currently reports that the fracture itself strongly biases the base choice, but this is something we’ll investigate and update the post as we get new information.</p>
+
+<p>The most important consequence for fractured bases is that the weight of the chosen mod on the fractured base should have little bearing on the odds of &ldquo;winning&rdquo; your recombination; if you pick a high weight mod, your recombination has great odds, but extremely low likelihood of picking the fractured base (see conjecture above). If you pick a low weight mod, your recombination has bad odds, but you&rsquo;re much more likely to pick the fractured base.</p>
+
+<p>If our proposed formula is true, these two odds perfectly cancel, which makes the choice of the selected mod on the fractured base irrelevant (weight-wise).</p>
+
+<h3 id="building-off-the-base-selection-conjecture-speculation">Building off the base selection conjecture (Speculation!!!)</h3>
+
+<p>If the base selection probability is <strong>equal</strong> to the SC chance of the other mod, you would have exact equal odds of getting (assuming flaring is on the non-fractured item):</p>
+
+<ol>
+<li><em>Fractured</em> 179% physical damage (T8 phys), Flaring (T9 flat phys) and <strong>Dictators (T8 hybid phys)</strong></li>
+<li><em>Fractured</em> 179% physical damage (T8 phys), Flaring (T9 flat phys) and <strong>Humming (T1 flat lightning)</strong></li>
+</ol>
+
+<p>So in this case, getting dictators on the fractured Merciless base has no downside (besides the cost of rolling the mod itself). This is because the weight of the modifier on the good (fractured item) is removed in the equation (see above). The probability of success is simply <code>SC(Flaring)</code>.</p>
+
+<p>This means that getting a valuable mod on your fracture comes at almost 0 cost.</p>
+
+<p>&amp;nbsp;</p>
+
+<p>This statement needs additional testing but could have large ramifications if proven true.</p>
+
+<hr>
+
+<h1 id="7-reverse-engineering-mod-weights-1">7. Reverse-engineering mod weights</h1>
+
+<p>A result of the formula in section 3 is that we can use the <code>SC</code> to deterministically calculate the mod weights.</p>
+
+<p>We fix one mod and vary the other, while keeping both items at <em>EI</em>. The tier of the fixed mod does not matter, but the higher the better in general. When you subtract <code>RS(tier n) – RS (tier n + 1)</code>, all the additional weighted tier terms cancel out, leaving behind <code>W(tier n)</code> weighted by the constant <code>A</code> and divided by the total mod weight <code>W(all mods)</code>.</p>
+
+<p><code>W(max tier)</code> cannot be found this way, but can be found by looking at <code>RS</code> when combined with a mod having <code>SC(low tier) = 50</code>. <strong>Subtracting 50</strong> gives us <code>W(max tier)</code>, again <em>weighted by the same factor</em>.</p>
+
+<p>Once we’ve collected the scaled weights for all mods in a given item class, we can simply pick any one of the scaled weights as a baseline, and divide all <code>W(mods)</code> by this value, cancelling the scaling factor.</p>
+
+<p>For example, <a href="https://imgur.com/a/Jnv54Kh" target="_blank">here are the scaled weights for spears</a>. When dividing by a common factor 18.28, we get an <a href="https://imgur.com/a/zDtRTkx" target="_blank">extremely satisfying weight table reminiscent of POE 1 values</a>.</p>
+
+<p>We can then use the solved weights to compute the scaling factor <code>A</code>. Surprisingly, when using the most frequent scaled weights to normalize for body armours, the constant <code>A</code> (see section 3) is <strong>exactly 500,000</strong> for both prefixes and suffixes (assuming weights are in units of 1000). This scaling constant stays the same across different <em>ilvls</em>.</p>
+
+<p>For spears, renormalizing <em>prefixes</em> with <em>WED</em> and <em>suffixes</em> with the <em>most common scaled weight</em> (e.g. stun duration) gives <strong>exactly 800,000</strong> each when spears are lower <em>ilvl</em>. This breaks down at ilvl 79, with spears having a weird A value of around 817,000.</p>
+
+<p><strong>Important Note</strong>: Despite this beautiful symmetry, we decided, based on POE 1 intuition, to normalize spear (martial weapon) prefixes with the physical damage value. This gave much more reasonable weights in line with what we expect from POE 1 values. It remains to be shown whether or not this normalization is correct when we cross-compare prefix/suffix weights. This will be explored more in the future.</p>
+
+<p>Something extremely surprising you may notice is that <strong>all elemental damage weights</strong> are different. We were also very surprised and had to triple down/question our own methodology, but we&rsquo;re confident that our results are correct.</p>
+
+<hr>
+
+<h1 id="8-data-acquisition-for-those-interested-and-sourcing">8. Data Acquisition (for those interested) and sourcing</h1>
+
+<p>For this project, I ended up developing a simple computer vision model to extract and parse out the mods as well as recombination success chance and put the results in an small sql database. There were some difficulties (including reading greyed out mods and hybrid mods), but the pipeline is pretty robust now for all types of items. This pipeline was crucial to automate data collection, speeding up our experimental feedback loop.</p>
+
+<p>From here we were able to do initial trend/pattern recognition and then design more informative experiments. I will make that repo available publically soon (if you want to know how this was done)</p>
+
+<p>Tables extracted from this database are <a href="https://docs.google.com/spreadsheets/d/1K6ok_1Pans6d3NV-LhPQfu9maCbhxsk8/edit?usp=sharing&amp;ouid=115992460285960708012&amp;rtpof=true&amp;sd=true" target="_blank">available here</a> for a few different bases. All data was taken on standard, since none of the researchers had much currency in-league.</p>
+
+<p>Additionally, here is a <a href="https://docs.google.com/spreadsheets/d/1COxbPTZnyB2iSYfpI9jKOZYoUScVdHFLM91smxFTT40/edit?usp=sharing" target="_blank">small spreadsheet</a> for fully extracted item weights. I assume most weights can be extended to other martial weapons (where there&rsquo;s overlap). We&rsquo;ve only done spears and body armours so far.</p>
+
+<p><strong>We’re looking for additional volunteers</strong> to help extend this to other bases. The methodology is easy, but it’s time consuming.</p>
+
+<hr>
+
+<h1 id="9-wrapping-up-1">9. Wrapping up</h1>
+
+<p>While recombinators aren’t as powerful as they are in POE 1, they still have some applicable use cases and can be optimized to maximize your chances at <sup>2</sup>&frasl;<sub>3</sub> mod combines (with fractures). More importantly, they’ve allowed us to <strong>lift the veil on modifier weights</strong>, setting a powerful foundation for more informed crafting as GGG adds new crafting mechanics into the game.</p>
+
+<p>I expect the <em>modifier weight discovery</em>, moreso than recombinators themselves, to have a sizable economic impact as people can determine, without uncertainty, the EV of slamming their own items, as well as buying half-finished items to finish. It will also affect the mirror item market, allowing crafters to better determine their crafting costs for exceedingly expensive projects.</p>
+
+<p>Over the coming weeks, expect to see additional posts on recombinators as we discover more about how they work on 3+ mod combines, fractures, and mod transfer outcomes, as well as updates to POE tooling as we “discover” the mod weights for more bases.</p>
+
+<p><strong>Note</strong>: We would very much like help in this endeavour, as this is a highly time consuming process. Funds/data collected would be highly appreciated. Please see the poe-2-recombinator channel on the <a href="https://discord.gg/58TBBkZb" target="_blank">Prohibited Library discord</a>.</p>
+
+<p>Thank you for reading and we hope you find this as satisfying as we did.</p>
+
+<p>&amp;nbsp;</p>
+
+<p>AV, Rusty and Pattable</p>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mn8yg7i" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>WolverineFun9416</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="mn8yg7i" class="commentText"><p>and here i was just looking for a shitpost while taking a dump :/</p>
+
+<p>👏 bravo</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mn92akr" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>nuzin</div>
+        <div>1 | 39 minutes ago </div>
+      </div>
+      <label for="mn92akr" class="commentText"><p>Thank for putting these together. Just 2 questions:</p>
+
+<ol>
+<li>Where can i find this bench? Been doing t15 maps and still couldn’t find it.</li>
+<li>Do the 2 weapons need to have same amounts of mods or same name to fuse?</li>
+</ol>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mn932us" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>tazdraperm</div>
+        <div>1 | 35 minutes ago </div>
+      </div>
+      <label for="mn932us" class="commentText"><ol>
+<li>Complete any expedition encounter<br>
+</li>
+<li>No and No</li>
+</ol>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mn935mb" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Sjeg84</div>
+        <div>1 | 35 minutes ago </div>
+      </div>
+      <label for="mn935mb" class="commentText"><p>Nice!!</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mn9741k" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>coltjen</div>
+        <div>1 | 15 minutes ago </div>
+      </div>
+      <label for="mn9741k" class="commentText"><p>Props to you for doing all this work. Though, I think a lot of us tried the system once or twice, immediately lost items, and gave up on it.</p>
+
+<p>I do apologize for being blunt, but I’d actually rather watch paint dry than farm bases to recomb stuff to help this project. There’s no fun in finding specifics of crafting weights for a system that isn’t accessible by crafting. If the recomb system was interesting and powerful, I imagine this would get a lot more traction.</p>
+
+<p>Good luck!</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mn979s5" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>LucywiththeDiamonds</div>
+        <div>1 | 14 minutes ago </div>
+      </div>
+      <label for="mn979s5" class="commentText"><p>Aawww shit. Here we go again</p>
+
+<p>Lovely work mate, was waiting for this</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
