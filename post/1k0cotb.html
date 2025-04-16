@@ -1,0 +1,2671 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.selfPostImage {
+  width: 100%;
+  height: auto;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/nba/comments/1k0cotb/oc_since_the_2025_nba_trade_deadline_the_golden/"><p>[OC] Since the 2025 NBA trade deadline, the Golden State Warriors are #2 in free throw disparity</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <p>Sources: <a href="https://www.nba.com/stats/teams/traditional?DateFrom=02/06/2025&amp;dir=A&amp;sort=TEAM_NAME" target="_blank">NBA Traditional Stats</a>, <a href="https://www.nba.com/stats/teams/opponent?DateFrom=02/06/2025&amp;dir=A&amp;sort=TEAM_NAME" target="_blank">NBA Opponent Stats</a>, and combined with Excel</p>
+
+<table>
+<thead>
+<tr>
+<th align="left">RANK</th>
+<th align="left">TEAM</th>
+<th align="left">FTA</th>
+<th align="left">OPPFTA</th>
+<th align="left">DIF</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">1</td>
+<td align="left">Milwaukee Bucks</td>
+<td align="left">24.8</td>
+<td align="left">19.4</td>
+<td align="left">5.4</td>
+</tr>
+
+<tr>
+<td align="left">2</td>
+<td align="left">Golden State Warriors</td>
+<td align="left">24.7</td>
+<td align="left">21.2</td>
+<td align="left">3.5</td>
+</tr>
+
+<tr>
+<td align="left">3</td>
+<td align="left">Dallas Mavericks</td>
+<td align="left">22.5</td>
+<td align="left">20.3</td>
+<td align="left">2.2</td>
+</tr>
+
+<tr>
+<td align="left">4</td>
+<td align="left">Indiana Pacers</td>
+<td align="left">22.2</td>
+<td align="left">20.4</td>
+<td align="left">1.8</td>
+</tr>
+
+<tr>
+<td align="left">5</td>
+<td align="left">Cleveland Cavaliers</td>
+<td align="left">23.4</td>
+<td align="left">21.6</td>
+<td align="left">1.8</td>
+</tr>
+
+<tr>
+<td align="left">6</td>
+<td align="left">LA Clippers</td>
+<td align="left">22.3</td>
+<td align="left">20.8</td>
+<td align="left">1.5</td>
+</tr>
+
+<tr>
+<td align="left">7</td>
+<td align="left">San Antonio Spurs</td>
+<td align="left">20.6</td>
+<td align="left">19.2</td>
+<td align="left">1.4</td>
+</tr>
+
+<tr>
+<td align="left">8</td>
+<td align="left">Minnesota Timberwolves</td>
+<td align="left">23</td>
+<td align="left">21.7</td>
+<td align="left">1.3</td>
+</tr>
+
+<tr>
+<td align="left">9</td>
+<td align="left">Portland Trail Blazers</td>
+<td align="left">23.1</td>
+<td align="left">21.8</td>
+<td align="left">1.3</td>
+</tr>
+
+<tr>
+<td align="left">10</td>
+<td align="left">Denver Nuggets</td>
+<td align="left">23</td>
+<td align="left">22.1</td>
+<td align="left">0.9</td>
+</tr>
+
+<tr>
+<td align="left">11</td>
+<td align="left">Los Angeles Lakers</td>
+<td align="left">23.7</td>
+<td align="left">22.9</td>
+<td align="left">0.8</td>
+</tr>
+
+<tr>
+<td align="left">12</td>
+<td align="left">Miami Heat</td>
+<td align="left">18.1</td>
+<td align="left">17.3</td>
+<td align="left">0.8</td>
+</tr>
+
+<tr>
+<td align="left">13</td>
+<td align="left">Philadelphia 76ers</td>
+<td align="left">21.7</td>
+<td align="left">21</td>
+<td align="left">0.7</td>
+</tr>
+
+<tr>
+<td align="left">14</td>
+<td align="left">Houston Rockets</td>
+<td align="left">21.4</td>
+<td align="left">20.8</td>
+<td align="left">0.6</td>
+</tr>
+
+<tr>
+<td align="left">15</td>
+<td align="left">Orlando Magic</td>
+<td align="left">23.2</td>
+<td align="left">22.7</td>
+<td align="left">0.5</td>
+</tr>
+
+<tr>
+<td align="left">16</td>
+<td align="left">Boston Celtics</td>
+<td align="left">16.4</td>
+<td align="left">16.3</td>
+<td align="left">0.1</td>
+</tr>
+
+<tr>
+<td align="left">17</td>
+<td align="left">Chicago Bulls</td>
+<td align="left">21.7</td>
+<td align="left">21.7</td>
+<td align="left">0</td>
+</tr>
+
+<tr>
+<td align="left">18</td>
+<td align="left">Utah Jazz</td>
+<td align="left">21.7</td>
+<td align="left">22.2</td>
+<td align="left">-0.5</td>
+</tr>
+
+<tr>
+<td align="left">19</td>
+<td align="left">New York Knicks</td>
+<td align="left">19.9</td>
+<td align="left">20.5</td>
+<td align="left">-0.6</td>
+</tr>
+
+<tr>
+<td align="left">20</td>
+<td align="left">Oklahoma City Thunder</td>
+<td align="left">21.9</td>
+<td align="left">22.6</td>
+<td align="left">-0.7</td>
+</tr>
+
+<tr>
+<td align="left">21</td>
+<td align="left">Detroit Pistons</td>
+<td align="left">25.1</td>
+<td align="left">26.1</td>
+<td align="left">-1</td>
+</tr>
+
+<tr>
+<td align="left">22</td>
+<td align="left">Charlotte Hornets</td>
+<td align="left">18.7</td>
+<td align="left">19.9</td>
+<td align="left">-1.2</td>
+</tr>
+
+<tr>
+<td align="left">23</td>
+<td align="left">Sacramento Kings</td>
+<td align="left">20.2</td>
+<td align="left">22.1</td>
+<td align="left">-1.9</td>
+</tr>
+
+<tr>
+<td align="left">24</td>
+<td align="left">Washington Wizards</td>
+<td align="left">20.7</td>
+<td align="left">22.8</td>
+<td align="left">-2.1</td>
+</tr>
+
+<tr>
+<td align="left">25</td>
+<td align="left">Memphis Grizzlies</td>
+<td align="left">21.8</td>
+<td align="left">24.2</td>
+<td align="left">-2.4</td>
+</tr>
+
+<tr>
+<td align="left">26</td>
+<td align="left">Atlanta Hawks</td>
+<td align="left">21.6</td>
+<td align="left">24.1</td>
+<td align="left">-2.5</td>
+</tr>
+
+<tr>
+<td align="left">27</td>
+<td align="left">New Orleans Pelicans</td>
+<td align="left">21.4</td>
+<td align="left">23.9</td>
+<td align="left">-2.5</td>
+</tr>
+
+<tr>
+<td align="left">28</td>
+<td align="left">Toronto Raptors</td>
+<td align="left">21</td>
+<td align="left">23.6</td>
+<td align="left">-2.6</td>
+</tr>
+
+<tr>
+<td align="left">29</td>
+<td align="left">Phoenix Suns</td>
+<td align="left">18</td>
+<td align="left">21</td>
+<td align="left">-3</td>
+</tr>
+
+<tr>
+<td align="left">30</td>
+<td align="left">Brooklyn Nets</td>
+<td align="left">19.9</td>
+<td align="left">24.5</td>
+<td align="left">-4.6</td>
+</tr>
+</tbody>
+</table>
+<p>As usual, the Milwaukee Bucks are also high, due to Giannis&rsquo; very rim-heavy style of play and excellent defensive capabilities that help him from contesting without fouling. Since the acquisition of Luka Doncic, the Lakers have moved from leading the league to #11 as they&rsquo;ve switched to a more three-point heavy style of play.</p>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mnd1h3v" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>rpars18 | Warriors</div>
+        <div>171 | an hour ago </div>
+      </div>
+      <label for="mnd1h3v" class="commentText"><p>Jimmy turned us from one of the lowest in this stat to one of the highest lmao</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mnd28p4" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>TheSalmonRoll | Warriors</div>
+        <div>99 | an hour ago </div>
+      </div>
+      <label for="mnd28p4" class="commentText"><p>Free throw attempts for the Warriors in the regular season:</p>
+
+<ul>
+<li><p>Steph Curry: 299 (1st)</p></li>
+
+<li><p>Jimmy Butler: 231 (3rd)</p></li>
+</ul>
+
+<p>Games played for the Warriors in the regular season:</p>
+
+<ul>
+<li><p>Steph Curry: 70</p></li>
+
+<li><p>Jimmy Butler: 30</p></li>
+</ul>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mnd3o6h" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>BeautifulLeather6671 | Warriors</div>
+        <div>26 | an hour ago </div>
+      </div>
+      <label for="mnd3o6h" class="commentText"><p>Holy shit lol</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mnd4853" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>rdong | Knicks</div>
+        <div>13 | an hour ago </div>
+      </div>
+      <label for="mnd4853" class="commentText"><p>I guess this is balanced? Curry getting little to no whistle but Jimmy getting way too much whistle.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="mnd474i" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>CazOnReddit | Raptors</div>
+        <div>8 | an hour ago </div>
+      </div>
+      <label for="mnd474i" class="commentText"><p>Jimmy (Unethical) Buckets</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mnd7eo2" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Miserable-Tree-637 | Warriors</div>
+        <div>1 | 20 minutes ago </div>
+      </div>
+      <label for="mnd7eo2" class="commentText"><p>At least he’s not a blatant flopper. He’s an ethical unethical hooper.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="mnd293z" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Beneficial-Rub9090 | Timberwolves</div>
+        <div>24 | an hour ago </div>
+      </div>
+      <label for="mnd293z" class="commentText"><p>Someone posted a graph and it was insane how little the warriors got, at the top it was Lakers by a wide margin, another team a bit down, and a bit more down was the 27 other teams at about the same amount, and at the bottom was the Warriors, as low from the rest as the Lakers were high, genuinely crazy</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mnd64c8" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>sbenfsonwFFiF</div>
+        <div>-1 | 33 minutes ago </div>
+      </div>
+      <label for="mnd64c8" class="commentText"><p>Made sense for the warriors, they foul a ton and they shoot a lot so don’t get as many free throws.</p>
+
+<p>Boston shoots as many 3s as they do but are much more disciplined on defense</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="mnd2dqq" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Deathraz3 | Warriors</div>
+        <div>16 | an hour ago </div>
+      </div>
+      <label for="mnd2dqq" class="commentText"><p>Thank fuck we got proper terror ball merchant to offset all this BS other teams do to Curry.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mnd3gjp" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>gerardguey | Bulls</div>
+        <div>-3 | an hour ago </div>
+      </div>
+      <label for="mnd3gjp" class="commentText"><p>Draymond gets diplomatic immunity with moving screens and screaming at the refs, its part of the deal</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mnd96rw" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>GoldenStateWizards | Warriors</div>
+        <div>1 | 3 minutes ago </div>
+      </div>
+      <label for="mnd96rw" class="commentText"><p>I&rsquo;m still not sure who decided that, but I&rsquo;d rather cancel the deal and take Steph free throws over illegal screens tbh</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="mnd2l5b" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>oftenevil | San Francisco Warriors</div>
+        <div>7 | an hour ago </div>
+      </div>
+      <label for="mnd2l5b" class="commentText"><p><a href="https://i.imgur.com/iKbpQ7e.jpeg" target="_blank">This</a> is from a few weeks ago.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="mnd271t" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>[deleted]</div>
+        <div>-2 | an hour ago </div>
+      </div>
+      <label for="mnd271t" class="commentText"><p>[deleted]</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mnd29y2" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Akipella</div>
+        <div>18 | an hour ago </div>
+      </div>
+      <label for="mnd29y2" class="commentText"><p>The other players also started getting more FTs after Jimmy joined IIRC</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mnd2uht" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>[deleted]</div>
+        <div>-5 | an hour ago </div>
+      </div>
+      <label for="mnd2uht" class="commentText"><p>[deleted]</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mnd3a8w" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>csthrowaway6543 | Warriors</div>
+        <div>8 | an hour ago </div>
+      </div>
+      <label for="mnd3a8w" class="commentText"><p>I’m pretty sure they actually were near the bottom before the Jimmy trade but idk we need some stat sleuth to pull it up. You also have to account for the Warriors being in the bonus more due to Jimmy -&amp;gt; more free throws for everyone</p>
+
+<p>edit: <a href="https://www.threads.net/@thebasketballnation__/post/DG0wUo0yxWC?xmt=AQGzK2q6FSss0B15JOxtgWIZtZVLnBO7aZJxhRckCSzr4g" target="_blank">this graphic</a> had them at 28th in FTA per game before getting Jimmy, and the NBA website had them also at <a href="https://www.nba.com/stats/teams/four-factors?DateFrom=&amp;DateTo=02/07/2025&amp;dir=D&amp;sort=FTA_RATE" target="_blank">28th in FTA rate</a> (FTA/FGA)</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="mnd3ave" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>P_l_M_P | Warriors</div>
+        <div>7 | an hour ago </div>
+      </div>
+      <label for="mnd3ave" class="commentText"><p>You would be wrong.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mnd3ge9" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>[deleted]</div>
+        <div>-1 | an hour ago </div>
+      </div>
+      <label for="mnd3ge9" class="commentText"><p>[deleted]</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mnd3w4w" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>P_l_M_P | Warriors</div>
+        <div>5 | an hour ago </div>
+      </div>
+      <label for="mnd3w4w" class="commentText"><p><a href="https://www.teamrankings.com/nba/stat/free-throws-attempted-per-game?date=2025-02-02" target="_blank">https://www.teamrankings.com/nba/stat/free-throws-attempted-per-game?date=2025-02-02</a></p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mnd1ho6" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ashtonjeantygoat | Warriors</div>
+        <div>119 | an hour ago </div>
+      </div>
+      <label for="mnd1ho6" class="commentText"><p>How about other teams drive more 🤓</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mnd1k57" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>jawadhaque089</div>
+        <div>63 | an hour ago </div>
+      </div>
+      <label for="mnd1k57" class="commentText"><p>&lsquo;All they do is shoot 3s&rsquo;</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="mnd27eq" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Mother_Let_9026 | Warriors</div>
+        <div>23 | an hour ago </div>
+      </div>
+      <label for="mnd27eq" class="commentText"><p>Yeah dude it&rsquo;s a part of the game, they need to learn how to do it..</p>
+
+<p>fucking hypocrites man.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mnd5utj" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>yuuyuyy099</div>
+        <div>8 | 35 minutes ago </div>
+      </div>
+      <label for="mnd5utj" class="commentText"><p>Weren’t warriors fans the main ones crying about the lakers fts disparity?</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mnd68ie" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>qazkop</div>
+        <div>1 | 31 minutes ago </div>
+      </div>
+      <label for="mnd68ie" class="commentText"><p>Exactly, it’s hilarious how Warrior fans try to defend their free throw disparity now.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="mnd6bcz" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Mother_Let_9026 | Warriors</div>
+        <div>1 | 31 minutes ago </div>
+      </div>
+      <label for="mnd6bcz" class="commentText"><p>yeah we were and for years we got told &ldquo;you are a 3pt team that&rsquo;s why you get no calls, deal with it&rdquo;</p>
+
+<p>well guess what we dealt with it and people are still salty lol.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mnd76yb" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>qazkop</div>
+        <div>1 | 22 minutes ago </div>
+      </div>
+      <label for="mnd76yb" class="commentText"><p>It’s more like you guys are being the hypocrites here. This just shows how dumb the initial complaining about ft disparity was.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="mnd8pn7" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Tiredasheckrn | Celtics</div>
+        <div>1 | 7 minutes ago </div>
+      </div>
+      <label for="mnd8pn7" class="commentText"><p>So you complained about for years, everyone explained why, then recruited a guy that doesn’t shoot 3’s but gets FT’s and you think that proves your fans original point?</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mnd90x2" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Mother_Let_9026 | Warriors</div>
+        <div>1 | 4 minutes ago </div>
+      </div>
+      <label for="mnd90x2" class="commentText"><p>Not that, just that people are complaining about us getting too many FTs now lol. Like pick a lane.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="mnd2c3i" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Repulsive-Throat5068 | Minneapolis Lakers</div>
+        <div>12 | an hour ago </div>
+      </div>
+      <label for="mnd2c3i" class="commentText"><p>/r/nba when generational foul baiter makes team get more FtS 🤯</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="mnd51k3" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>MuchAbouAboutNothing | Thunder</div>
+        <div>6 | 43 minutes ago </div>
+      </div>
+      <label for="mnd51k3" class="commentText"><p>Post all star break the warriors are third last in drives per game unless I&rsquo;m reading this incorrectly: <a href="https://www.nba.com/stats/teams/drives?SeasonSegment=Post%20All-Star&amp;dir=D&amp;sort=DRIVES" target="_blank">https://www.nba.com/stats/teams/drives?SeasonSegment=Post%20All-Star&amp;dir=D&amp;sort=DRIVES</a></p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="mnd66n4" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>sbenfsonwFFiF</div>
+        <div>2 | 32 minutes ago </div>
+      </div>
+      <label for="mnd66n4" class="commentText"><p>Nobody gets a Jimmy level whistle (except maybe SGA) on drives</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mnd1j9o" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>IMadeThisOn6-28-2015 | Lakers</div>
+        <div>43 | an hour ago </div>
+      </div>
+      <label for="mnd1j9o" class="commentText"><p>AD was the real reason Lakers were so high, he dictated the style of basketball the team had to play as a unit which is why in past years we were always so low on 3PA</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mnd2io3" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>yOjiMbOoOs | Warriors</div>
+        <div>20 | an hour ago </div>
+      </div>
+      <label for="mnd2io3" class="commentText"><p>AD was also the main reason why we always played like shit vs the lakers the last few years.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mnd3tvn" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>IMadeThisOn6-28-2015 | Lakers</div>
+        <div>12 | an hour ago </div>
+      </div>
+      <label for="mnd3tvn" class="commentText"><p>Not really, you&rsquo;ve lost games even when AD was out. This season you lost 2 AD-less games</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mnd42a0" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Peter510</div>
+        <div>8 | an hour ago </div>
+      </div>
+      <label for="mnd42a0" class="commentText"><p>The ghost of AD spooked us</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="mnd3f45" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Basic_Commercial_806</div>
+        <div>4 | an hour ago </div>
+      </div>
+      <label for="mnd3f45" class="commentText"><p>Nico fueling a Warriors WCF run would piss me off</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="mnd5dic" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Gagabubu777</div>
+        <div>3 | 40 minutes ago </div>
+      </div>
+      <label for="mnd5dic" class="commentText"><p>Lebron James is the reason yall played bad. How many games we gotta bring up</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mnd1fd4" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>MALE_STORK | Nuggets</div>
+        <div>35 | an hour ago </div>
+      </div>
+      <label for="mnd1fd4" class="commentText"><p>Ok lakers fan lol</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mnd1j0x" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>swords_devil | Lakers</div>
+        <div>12 | an hour ago </div>
+      </div>
+      <label for="mnd1j0x" class="commentText"><p>Nuggets is higher than Lakers in free throw parity now</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mnd22ps" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>yesracoons</div>
+        <div>30 | an hour ago </div>
+      </div>
+      <label for="mnd22ps" class="commentText"><p>It&rsquo;s almost like maybe there isn&rsquo;t a hidden agenda.</p>
+
+<p>Lakers had a crazy FT diff mostly because of AD, elite speed and shotblocking so they don&rsquo;t have to foul in the paint. Now they don&rsquo;t.</p>
+
+<p>Warriors with the worst FT diff for ages used to have almost no rim pressure. Now they have Butler.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mnd82p1" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>DwightKurtShrute69 | Supersonics</div>
+        <div>1 | 14 minutes ago </div>
+      </div>
+      <label for="mnd82p1" class="commentText"><p>People are just dumb as fuck and would rather believe there is some league wide conspiracy instead of it just mostly being about personnel and scheme.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="mnd2bul" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>imDaGoatnocap | Lakers</div>
+        <div>12 | an hour ago </div>
+      </div>
+      <label for="mnd2bul" class="commentText"><p>According to r/nba users the Darvin ham seasons are more relevant than the actual current season</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mnd4mca" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>National-Fold-2375</div>
+        <div>2 | an hour ago </div>
+      </div>
+      <label for="mnd4mca" class="commentText"><p>Why couldnt they just simply go HARD ON THEM DUDES</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="mnd1vrl" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>1manadeal2btw | Nuggets</div>
+        <div>0 | an hour ago </div>
+      </div>
+      <label for="mnd1vrl" class="commentText"><p>Largely cause of Russ who can’t even make his FTs 😭. At least he gets us in the bonus.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mnd2num" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>vmpafq</div>
+        <div>6 | an hour ago </div>
+      </div>
+      <label for="mnd2num" class="commentText"><p>No the games are rigged for Denver</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="mnd68f7" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>sbenfsonwFFiF</div>
+        <div>1 | 32 minutes ago </div>
+      </div>
+      <label for="mnd68f7" class="commentText"><p>Largely because of losing AD who got hacked a ton but didn’t foul much while having high quality contests</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mnd1hi2" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>shaheedmalik | Mavericks</div>
+        <div>34 | an hour ago </div>
+      </div>
+      <label for="mnd1hi2" class="commentText"><p>FTMMY BUTLER</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mnd1eo3" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ImTheBestNerd | San Francisco Warriors</div>
+        <div>23 | an hour ago </div>
+      </div>
+      <label for="mnd1eo3" class="commentText"><p>Jimmy is my goat</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mnd1prv" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Salty_Watermelon | Clippers</div>
+        <div>22 | an hour ago </div>
+      </div>
+      <label for="mnd1prv" class="commentText"><p>No surprises to see Memphis with a negative differential considering that their star defender has a passion for committing unnecessary fouls.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mnd1nkk" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>lordgrim_009</div>
+        <div>13 | an hour ago </div>
+      </div>
+      <label for="mnd1nkk" class="commentText"><p>People say playoff whistle gets more strict but it&rsquo;s opposite for butler, he always gets more whistles than anyone in the league and his whistle improves. U can&rsquo;t even say he drives more coz he gets some of the bs whistles ever</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mnd1xzs" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>the_next_core | Warriors</div>
+        <div>12 | an hour ago </div>
+      </div>
+      <label for="mnd1xzs" class="commentText"><p>He makes it obvious when he gets hit and then the refs sort of just get into a groove and can’t stop blowing the whistle</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mnd25k8" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>lordgrim_009</div>
+        <div>9 | an hour ago </div>
+      </div>
+      <label for="mnd25k8" class="commentText"><p>Nah it&rsquo;s not only him so many players does it but they don&rsquo;t give them whistle like that.</p>
+
+<p>Curry, LeBron,  jokic makes it obvious as well but they don&rsquo;t even get 10% of butler&rsquo;s whistle</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="mnd3r5o" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>gerardguey | Bulls</div>
+        <div>4 | an hour ago </div>
+      </div>
+      <label for="mnd3r5o" class="commentText"><p>I love Jimmy but he&rsquo;s the flopper that Jokic MVP propagandists insist that SGA is</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="mnd4jp8" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Acceptable_Scale_379</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="mnd4jp8" class="commentText"><p>I think that&rsquo;s less due to any sort of whistle and more due to Butler. The playoffs, or play ins, start and his aggressiveness goes from 2 to 20. And he is strong, he can body right past you, but he&rsquo;s also fast and agile enough to get in your way.</p>
+
+<p>It&rsquo;s less that he&rsquo;s getting lucky and a favorable whistle and more that the way he plays the game is just non-stop foul bait. You need to either completely stay away from him, or he&rsquo;s going to put you in his way.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="mnd28iw" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Man_On-The_Moon | Warriors</div>
+        <div>-4 | an hour ago </div>
+      </div>
+      <label for="mnd28iw" class="commentText"><p>Jimmy pump fakes and jump stops more than anyone in the league.</p>
+
+<p>He doesn’t do the defender arm grab or head flail that often doesn’t get called in the playoffs</p>
+
+<p>He’s the most ethical free throw grifter</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mnd2ol3" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Zanad14 | LAL</div>
+        <div>11 | an hour ago </div>
+      </div>
+      <label for="mnd2ol3" class="commentText"><p>He hooked the defenders arm like twice against the clippers lol</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mnd1t94" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Acceptable_Scale_379</div>
+        <div>13 | an hour ago </div>
+      </div>
+      <label for="mnd1t94" class="commentText"><p>I mean, kind of makes the Jimmy trade seem even more fantastic, right?</p>
+
+<p>Because the eye test still holds true, curry can get damn near manhandled and if it ain&rsquo;t in the final minute of game he probably won&rsquo;t get the call.. Butler is just on that 06 D Wade shit. Too fast, too strong, too agile&hellip; And he doesn&rsquo;t play fast, he plays slow and then goes fast.</p>
+
+<p>Most of his fouls are actual fouls, It&rsquo;s not like nothing is happening, he just plays a game that is non-stop foulbate</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mnd1iyt" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>yerr2477</div>
+        <div>7 | an hour ago </div>
+      </div>
+      <label for="mnd1iyt" class="commentText"><p>Lakers fans talking about rigging i need you to take a cold shower OP</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mnd2m7j" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Repulsive-Throat5068 | Minneapolis Lakers</div>
+        <div>21 | an hour ago </div>
+      </div>
+      <label for="mnd2m7j" class="commentText"><p>Nah this is exactly how you clowns sound when talking about ft disparity</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="mnd1p5z" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>MullingHollysDrive | Lakers</div>
+        <div>10 | an hour ago </div>
+      </div>
+      <label for="mnd1p5z" class="commentText"><p>Didn&rsquo;t say anything about rigging? I actually think it&rsquo;s about style of play.</p>
+
+<p>I don&rsquo;t think the league is rigging it for &ldquo;Milwaukee&rdquo; for example, I just think their drop coverage defense + Giannis and co being disciplined leads to not as many FTAs</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mnd1kji" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>kicampoon123</div>
+        <div>11 | an hour ago </div>
+      </div>
+      <label for="mnd1kji" class="commentText"><p>That&rsquo;s what you get when you bring in one of the all time foul baiters</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mnd3nj9" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Basic_Commercial_806</div>
+        <div>8 | an hour ago </div>
+      </div>
+      <label for="mnd3nj9" class="commentText"><p>AD was really the engine behind Lakers free throws disparity. Guy scored a bunch in the paint while rarely ever fouling on defense.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mnd1s9s" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>wardellsklay | Warriors</div>
+        <div>6 | an hour ago </div>
+      </div>
+      <label for="mnd1s9s" class="commentText"><p>I used to pray for times like this</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mnd234f" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Sudden_Salary_7523</div>
+        <div>6 | an hour ago </div>
+      </div>
+      <label for="mnd234f" class="commentText"><p>we can finally use those reasons the lakers use all the time lol. how bout y&rsquo;all drive more and see if you wont get fouled lol</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mnd2e99" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Yevips | Warriors</div>
+        <div>6 | an hour ago </div>
+      </div>
+      <label for="mnd2e99" class="commentText"><p>all ive heard for the past 5 years is that the warriors dont deserve foul calls because they dont drive enough and theyre a jump shooting team. now that they are driving more and actually playing for fouls, there is some sort of ref bias towards them? which one is it?</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mnd35af" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>alisj99 | Lakers</div>
+        <div>8 | an hour ago </div>
+      </div>
+      <label for="mnd35af" class="commentText"><p>OP didn&rsquo;t even allude to ref bias at all, talking about play style strictly.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mnd4xt2" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Yevips | Warriors</div>
+        <div>-2 | 44 minutes ago </div>
+      </div>
+      <label for="mnd4xt2" class="commentText"><p>yes because this was certainly posted right after a high profile game where the refs were very controversial because OP wanted to talk abuot play style right? pull your head out of your ass</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mnd7asf" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>lakers_ftw24 | Lakers</div>
+        <div>1 | 21 minutes ago </div>
+      </div>
+      <label for="mnd7asf" class="commentText"><p>Warriors are 3rd to last in drives per game since the Jimmy trade. Nice try though.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="mnd411q" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Jazzyyyyyyyyyyy</div>
+        <div>-2 | an hour ago </div>
+      </div>
+      <label for="mnd411q" class="commentText"><p>If OP was not alluding to bias, why did he put warriors in the title then not talk about the warriors’ play style? With the context of the game today and how bad the reffing was across the board it’s pretty clear what the purpose of this post was</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="mnd3s9m" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>MullingHollysDrive | Lakers</div>
+        <div>6 | an hour ago </div>
+      </div>
+      <label for="mnd3s9m" class="commentText"><p>Never mentioned ref bias in my post</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mnd56s4" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Yevips | Warriors</div>
+        <div>-2 | 41 minutes ago </div>
+      </div>
+      <label for="mnd56s4" class="commentText"><p>you knew what you were doing.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mnd64bz" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Relatively_Cool | Lakers</div>
+        <div>4 | 33 minutes ago </div>
+      </div>
+      <label for="mnd64bz" class="commentText"><p>You’re projecting</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="mnd3o61" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>gerardguey | Bulls</div>
+        <div>4 | an hour ago </div>
+      </div>
+      <label for="mnd3o61" class="commentText"><p>I think the point of the post is that there is no bias, its playstyles like you said. Lakers lost AD, now they dropped in FTs</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mnd324i" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>avboden | Warriors</div>
+        <div>5 | an hour ago </div>
+      </div>
+      <label for="mnd324i" class="commentText"><p>I&rsquo;ve said it before and i&rsquo;ll say it again. This is proof the refs don&rsquo;t hate the warriors, they just hate Steph Curry</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mnd5g42" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Funny-Difficulty-750</div>
+        <div>2 | 39 minutes ago </div>
+      </div>
+      <label for="mnd5g42" class="commentText"><p>Hate steph curry yet half his 3s come off of moving screens?</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mnd1xs9" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>youblewwit</div>
+        <div>3 | an hour ago </div>
+      </div>
+      <label for="mnd1xs9" class="commentText"><blockquote>
+<p>As usual, the Milwaukee Bucks are also high, due to Giannis&rsquo; very rim-heavy style of play</p>
+</blockquote>
+
+<p>Ah yes, Giannis the anti-thesis to 3pt shooter Jimmy Butler</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mnd3nqb" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>jacobpltn | Lakers</div>
+        <div>2 | an hour ago </div>
+      </div>
+      <label for="mnd3nqb" class="commentText"><p>WAHHHH ITS A CONSPIRACY THE LEAGUE JUST WANTS TO PROTECT CURRY AND THEIR MOST POPULAR FRANCHISE WAHHHHH</p>
+
+<p>am I doing it right Warriors fans? :)</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mnd1klf" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>OnePossession2420</div>
+        <div>2 | an hour ago </div>
+      </div>
+      <label for="mnd1klf" class="commentText"><p>I&rsquo;m pretty sure Jimmy is like miles ahead of any other player when it comes to getting to the free throw line this makes sense.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mnd2pba" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>incredibleamadeuscho | Lakers</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="mnd2pba" class="commentText"><p>Unethical basketball at it’s finest!</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mnd4vlr" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Tiredasheckrn | Celtics</div>
+        <div>2 | 44 minutes ago </div>
+      </div>
+      <label for="mnd4vlr" class="commentText"><p>Refs at Celtics games don’t have whistles i guess</p>
+
+<p>(its because we bomb 3’s i know)</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mnd1hft" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>[deleted]</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="mnd1hft" class="commentText"><p>[deleted]</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mnd1lda" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>itssensei | Cavaliers</div>
+        <div>5 | an hour ago </div>
+      </div>
+      <label for="mnd1lda" class="commentText"><p>AD is gone, his great df and ftas are gone</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mnd1tqx" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>swords_devil | Lakers</div>
+        <div>0 | an hour ago </div>
+      </div>
+      <label for="mnd1tqx" class="commentText"><p>always the case</p>
+
+<p>in fact Lakers already trending down after letting go Ham&rsquo;s stupid defense scheme. And now AD one of greatest defender is gone Lakers back to mediocre defense who foul a lot</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="mnd27xb" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>KabirC | Warriors</div>
+        <div>2 | an hour ago </div>
+      </div>
+      <label for="mnd27xb" class="commentText"><p>Lakers don&rsquo;t have any semblance of a rim protector anymore. Going from AD who is elite defensively and doesn&rsquo;t foul much, to Jaxson Hayes is a huge difference</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mnd222f" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Sartheking | Warriors</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="mnd222f" class="commentText"><p>Even funnier when you compare it to where we were pre Butler trade.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mnd225u" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>dynorphin | Warriors</div>
+        <div>2 | an hour ago </div>
+      </div>
+      <label for="mnd225u" class="commentText"><p>Ethical basketball.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mnd3xq4" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>NuggetEagle | Nuggets</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="mnd3xq4" class="commentText"><p>Still feel we are way too low on the list, especially because we had by far the least 3PA per game this season. Also we do not play paint defense, how do we get called for so many fouls.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mnd44uj" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>CazOnReddit | Raptors</div>
+        <div>0 | an hour ago </div>
+      </div>
+      <label for="mnd44uj" class="commentText"><p>No surprise we&rsquo;re near the bottom</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mnd4i8t" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>NosebleedBananas | Warriors</div>
+        <div>2 | an hour ago </div>
+      </div>
+      <label for="mnd4i8t" class="commentText"><p>I LOVE ETHICAL HOOPS</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mnd5768" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>D4dbod</div>
+        <div>2 | 41 minutes ago </div>
+      </div>
+      <label for="mnd5768" class="commentText"><p>Lakers fans get in here!</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mnd937r" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>theinterestof | Pistons</div>
+        <div>1 | 4 minutes ago </div>
+      </div>
+      <label for="mnd937r" class="commentText"><p>The right idea, but slight correction here. You should be using FT rate (FTA/FGA) instead of raw FTAs in order to take pace and other factors (possessions that end in turnovers for example) out of the equation. Here&rsquo;s a better measure of how good of a free throw whistle teams have been getting (free throw attempts per 100 shots):</p>
+
+<p><strong>Since <sup>2</sup>&frasl;<sub>6</sub> (trade deadline):</strong></p>
+
+<table>
+<thead>
+<tr>
+<th align="left">Team</th>
+<th align="right">Differential</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left"><a href="https://www.nba.com/stats/team/1610612749/traditional" target="_blank">Milwaukee Bucks</a></td>
+<td align="right">7.8</td>
+</tr>
+
+<tr>
+<td align="left"><a href="https://www.nba.com/stats/team/1610612742/traditional" target="_blank">Dallas Mavericks</a></td>
+<td align="right">4</td>
+</tr>
+
+<tr>
+<td align="left"><a href="https://www.nba.com/stats/team/1610612744/traditional" target="_blank">Golden State Warriors</a></td>
+<td align="right">2.9</td>
+</tr>
+
+<tr>
+<td align="left"><a href="https://www.nba.com/stats/team/1610612754/traditional" target="_blank">Indiana Pacers</a></td>
+<td align="right">2.1</td>
+</tr>
+
+<tr>
+<td align="left"><a href="https://www.nba.com/stats/team/1610612739/traditional" target="_blank">Cleveland Cavaliers</a></td>
+<td align="right">2</td>
+</tr>
+
+<tr>
+<td align="left"><a href="https://www.nba.com/stats/team/1610612747/traditional" target="_blank">Los Angeles Lakers</a></td>
+<td align="right">1.9</td>
+</tr>
+
+<tr>
+<td align="left"><a href="https://www.nba.com/stats/team/1610612759/traditional" target="_blank">San Antonio Spurs</a></td>
+<td align="right">1.9</td>
+</tr>
+
+<tr>
+<td align="left"><a href="https://www.nba.com/stats/team/1610612743/traditional" target="_blank">Denver Nuggets</a></td>
+<td align="right">1.8</td>
+</tr>
+
+<tr>
+<td align="left"><a href="https://www.nba.com/stats/team/1610612746/traditional" target="_blank">LA Clippers</a></td>
+<td align="right">1.4</td>
+</tr>
+
+<tr>
+<td align="left"><a href="https://www.nba.com/stats/team/1610612750/traditional" target="_blank">Minnesota Timberwolves</a></td>
+<td align="right">1.1</td>
+</tr>
+
+<tr>
+<td align="left"><a href="https://www.nba.com/stats/team/1610612755/traditional" target="_blank">Philadelphia 76ers</a></td>
+<td align="right">1.1</td>
+</tr>
+
+<tr>
+<td align="left"><a href="https://www.nba.com/stats/team/1610612748/traditional" target="_blank">Miami Heat</a></td>
+<td align="right">0.9</td>
+</tr>
+
+<tr>
+<td align="left"><a href="https://www.nba.com/stats/team/1610612762/traditional" target="_blank">Utah Jazz</a></td>
+<td align="right">0.7</td>
+</tr>
+
+<tr>
+<td align="left"><a href="https://www.nba.com/stats/team/1610612757/traditional" target="_blank">Portland Trail Blazers</a></td>
+<td align="right">0.5</td>
+</tr>
+
+<tr>
+<td align="left"><a href="https://www.nba.com/stats/team/1610612741/traditional" target="_blank">Chicago Bulls</a></td>
+<td align="right">0.5</td>
+</tr>
+
+<tr>
+<td align="left"><a href="https://www.nba.com/stats/team/1610612738/traditional" target="_blank">Boston Celtics</a></td>
+<td align="right">0.2</td>
+</tr>
+
+<tr>
+<td align="left"><a href="https://www.nba.com/stats/team/1610612753/traditional" target="_blank">Orlando Magic</a></td>
+<td align="right">-0.1</td>
+</tr>
+
+<tr>
+<td align="left"><a href="https://www.nba.com/stats/team/1610612745/traditional" target="_blank">Houston Rockets</a></td>
+<td align="right">-0.4</td>
+</tr>
+
+<tr>
+<td align="left"><a href="https://www.nba.com/stats/team/1610612766/traditional" target="_blank">Charlotte Hornets</a></td>
+<td align="right">-0.5</td>
+</tr>
+
+<tr>
+<td align="left"><a href="https://www.nba.com/stats/team/1610612764/traditional" target="_blank">Washington Wizards</a></td>
+<td align="right">-1.1</td>
+</tr>
+
+<tr>
+<td align="left"><a href="https://www.nba.com/stats/team/1610612752/traditional" target="_blank">New York Knicks</a></td>
+<td align="right">-1.2</td>
+</tr>
+
+<tr>
+<td align="left"><a href="https://www.nba.com/stats/team/1610612765/traditional" target="_blank">Detroit Pistons</a></td>
+<td align="right">-1.6</td>
+</tr>
+
+<tr>
+<td align="left"><a href="https://www.nba.com/stats/team/1610612760/traditional" target="_blank">Oklahoma City Thunder</a></td>
+<td align="right">-1.6</td>
+</tr>
+
+<tr>
+<td align="left"><a href="https://www.nba.com/stats/team/1610612740/traditional" target="_blank">New Orleans Pelicans</a></td>
+<td align="right">-2.6</td>
+</tr>
+
+<tr>
+<td align="left"><a href="https://www.nba.com/stats/team/1610612758/traditional" target="_blank">Sacramento Kings</a></td>
+<td align="right">-2.9</td>
+</tr>
+
+<tr>
+<td align="left"><a href="https://www.nba.com/stats/team/1610612756/traditional" target="_blank">Phoenix Suns</a></td>
+<td align="right">-2.9</td>
+</tr>
+
+<tr>
+<td align="left"><a href="https://www.nba.com/stats/team/1610612763/traditional" target="_blank">Memphis Grizzlies</a></td>
+<td align="right">-3.1</td>
+</tr>
+
+<tr>
+<td align="left"><a href="https://www.nba.com/stats/team/1610612737/traditional" target="_blank">Atlanta Hawks</a></td>
+<td align="right">-3.5</td>
+</tr>
+
+<tr>
+<td align="left"><a href="https://www.nba.com/stats/team/1610612761/traditional" target="_blank">Toronto Raptors</a></td>
+<td align="right">-4.2</td>
+</tr>
+
+<tr>
+<td align="left"><a href="https://www.nba.com/stats/team/1610612751/traditional" target="_blank">Brooklyn Nets</a></td>
+<td align="right">-6.2​</td>
+</tr>
+</tbody>
+</table>
+<p>**And for the whole season: **</p>
+
+<table>
+<thead>
+<tr>
+<th align="left">Team</th>
+<th align="right">Differential</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left"><a href="https://www.nba.com/stats/team/1610612749/traditional" target="_blank">Milwaukee Bucks</a></td>
+<td align="right">4.6</td>
+</tr>
+
+<tr>
+<td align="left"><a href="https://www.nba.com/stats/team/1610612747/traditional" target="_blank">Los Angeles Lakers</a></td>
+<td align="right">4.1</td>
+</tr>
+
+<tr>
+<td align="left"><a href="https://www.nba.com/stats/team/1610612743/traditional" target="_blank">Denver Nuggets</a></td>
+<td align="right">3.7</td>
+</tr>
+
+<tr>
+<td align="left"><a href="https://www.nba.com/stats/team/1610612759/traditional" target="_blank">San Antonio Spurs</a></td>
+<td align="right">3.4</td>
+</tr>
+
+<tr>
+<td align="left"><a href="https://www.nba.com/stats/team/1610612742/traditional" target="_blank">Dallas Mavericks</a></td>
+<td align="right">3.3</td>
+</tr>
+
+<tr>
+<td align="left"><a href="https://www.nba.com/stats/team/1610612748/traditional" target="_blank">Miami Heat</a></td>
+<td align="right">3</td>
+</tr>
+
+<tr>
+<td align="left"><a href="https://www.nba.com/stats/team/1610612750/traditional" target="_blank">Minnesota Timberwolves</a></td>
+<td align="right">1.7</td>
+</tr>
+
+<tr>
+<td align="left"><a href="https://www.nba.com/stats/team/1610612738/traditional" target="_blank">Boston Celtics</a></td>
+<td align="right">1.4</td>
+</tr>
+
+<tr>
+<td align="left"><a href="https://www.nba.com/stats/team/1610612755/traditional" target="_blank">Philadelphia 76ers</a></td>
+<td align="right">1.2</td>
+</tr>
+
+<tr>
+<td align="left"><a href="https://www.nba.com/stats/team/1610612752/traditional" target="_blank">New York Knicks</a></td>
+<td align="right">0.9</td>
+</tr>
+
+<tr>
+<td align="left"><a href="https://www.nba.com/stats/team/1610612762/traditional" target="_blank">Utah Jazz</a></td>
+<td align="right">0.9</td>
+</tr>
+
+<tr>
+<td align="left"><a href="https://www.nba.com/stats/team/1610612739/traditional" target="_blank">Cleveland Cavaliers</a></td>
+<td align="right">0.9</td>
+</tr>
+
+<tr>
+<td align="left"><a href="https://www.nba.com/stats/team/1610612746/traditional" target="_blank">LA Clippers</a></td>
+<td align="right">0.6</td>
+</tr>
+
+<tr>
+<td align="left"><a href="https://www.nba.com/stats/team/1610612740/traditional" target="_blank">New Orleans Pelicans</a></td>
+<td align="right">0.2</td>
+</tr>
+
+<tr>
+<td align="left"><a href="https://www.nba.com/stats/team/1610612737/traditional" target="_blank">Atlanta Hawks</a></td>
+<td align="right">0.1</td>
+</tr>
+
+<tr>
+<td align="left"><a href="https://www.nba.com/stats/team/1610612756/traditional" target="_blank">Phoenix Suns</a></td>
+<td align="right">-0.1</td>
+</tr>
+
+<tr>
+<td align="left"><a href="https://www.nba.com/stats/team/1610612744/traditional" target="_blank">Golden State Warriors</a></td>
+<td align="right">-0.2</td>
+</tr>
+
+<tr>
+<td align="left"><a href="https://www.nba.com/stats/team/1610612745/traditional" target="_blank">Houston Rockets</a></td>
+<td align="right">-0.3</td>
+</tr>
+
+<tr>
+<td align="left"><a href="https://www.nba.com/stats/team/1610612754/traditional" target="_blank">Indiana Pacers</a></td>
+<td align="right">-0.4</td>
+</tr>
+
+<tr>
+<td align="left"><a href="https://www.nba.com/stats/team/1610612757/traditional" target="_blank">Portland Trail Blazers</a></td>
+<td align="right">-0.9</td>
+</tr>
+
+<tr>
+<td align="left"><a href="https://www.nba.com/stats/team/1610612741/traditional" target="_blank">Chicago Bulls</a></td>
+<td align="right">-1.2</td>
+</tr>
+
+<tr>
+<td align="left"><a href="https://www.nba.com/stats/team/1610612753/traditional" target="_blank">Orlando Magic</a></td>
+<td align="right">-1.8</td>
+</tr>
+
+<tr>
+<td align="left"><a href="https://www.nba.com/stats/team/1610612766/traditional" target="_blank">Charlotte Hornets</a></td>
+<td align="right">-1.8</td>
+</tr>
+
+<tr>
+<td align="left"><a href="https://www.nba.com/stats/team/1610612763/traditional" target="_blank">Memphis Grizzlies</a></td>
+<td align="right">-1.8</td>
+</tr>
+
+<tr>
+<td align="left"><a href="https://www.nba.com/stats/team/1610612758/traditional" target="_blank">Sacramento Kings</a></td>
+<td align="right">-2</td>
+</tr>
+
+<tr>
+<td align="left"><a href="https://www.nba.com/stats/team/1610612764/traditional" target="_blank">Washington Wizards</a></td>
+<td align="right">-2.6</td>
+</tr>
+
+<tr>
+<td align="left"><a href="https://www.nba.com/stats/team/1610612765/traditional" target="_blank">Detroit Pistons</a></td>
+<td align="right">-2.8</td>
+</tr>
+
+<tr>
+<td align="left"><a href="https://www.nba.com/stats/team/1610612751/traditional" target="_blank">Brooklyn Nets</a></td>
+<td align="right">-4</td>
+</tr>
+
+<tr>
+<td align="left"><a href="https://www.nba.com/stats/team/1610612760/traditional" target="_blank">Oklahoma City Thunder</a></td>
+<td align="right">-5.2</td>
+</tr>
+
+<tr>
+<td align="left"><a href="https://www.nba.com/stats/team/1610612761/traditional" target="_blank">Toronto Raptors</a></td>
+<td align="right">-5.4​</td>
+</tr>
+</tbody>
+</table>
+<p>Contrary to your post, the Lakers are actually 6th since the trade deadline and the Warriors are 3rd. Over the entire season the Lakers are 2nd and the Warriors are 17th.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mnd20xx" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>AmongstOurMidst | Warriors</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="mnd20xx" class="commentText"><p>What about from before the trade deadline?</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mnd3iem" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Particular_Factor563 | Heat</div>
+        <div>3 | an hour ago </div>
+      </div>
+      <label for="mnd3iem" class="commentText"><p>Yeah, let’s see butlers stats before trade! 😢</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mnd2td7" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>biedrins_free_throws | Supersonics</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="mnd2td7" class="commentText"><p>Marking this as OC is a joke lmao</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mnd1lm2" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>saideeps | San Francisco Warriors</div>
+        <div>-3 | an hour ago </div>
+      </div>
+      <label for="mnd1lm2" class="commentText"><p>Good</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mnd1s5e" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>extricableforsythia | NBA</div>
+        <div>-3 | an hour ago </div>
+      </div>
+      <label for="mnd1s5e" class="commentText"><p>*cries in lakers*</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mnd1uue" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Quality_Cucumber | GSW</div>
+        <div>-4 | an hour ago </div>
+      </div>
+      <label for="mnd1uue" class="commentText"><p>He’s not even selling contact or flopping. They just give it to him for legitimate fouls. It’s kind of funny. He forces defenders in recovery mode a LOT.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mnd28vt" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>SparkyForce | Warriors</div>
+        <div>-4 | an hour ago </div>
+      </div>
+      <label for="mnd28vt" class="commentText"><p>Warriors get calls for 30 games and everybody loses their minds.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mnd2g6l" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>chespiotta | Warriors</div>
+        <div>-4 | an hour ago </div>
+      </div>
+      <label for="mnd2g6l" class="commentText"><p>Knew it was a Lakers fan without even reading the flair</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mnd2g77" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>NoobPwnr | Warriors</div>
+        <div>-7 | an hour ago </div>
+      </div>
+      <label for="mnd2g77" class="commentText"><p>I choose to ignore this stat after years of convincing from Lakers flares 😎</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
