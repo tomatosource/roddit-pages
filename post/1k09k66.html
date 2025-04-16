@@ -1,0 +1,556 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.selfPostImage {
+  width: 100%;
+  height: auto;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/PathOfExile2/comments/1k09k66/poe_2_charms_info_for_patch_02/"><p>PoE 2 Charms Info for Patch 0.2</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <p><em>Updated for Patch 0.2.0f</em></p>
+
+<p>#Charm Mechanics</p>
+
+<p>Basic Explainer Image: <a href="https://i.imgur.com/mZwL9hR.png" target="_blank">https://i.imgur.com/mZwL9hR.png</a></p>
+
+<ol>
+<li><p>When a Charm&rsquo;s &ldquo;condition&rdquo; is met, the Charm will activate for a duration.</p></li>
+
+<li><p>Charm modifiers on charms apply <strong>locally</strong> (will be shown on the charm).</p></li>
+
+<li><p>Charm modifiers on belts apply <strong>globally</strong> (will not be shown on the charm).</p></li>
+
+<li><p>Charm modifiers on the passive tree apply <strong>globally</strong> (will not be shown on the charm).</p></li>
+
+<li><p><em>&ldquo;Increased Effect of Charms&rdquo;</em> on the passive tree only applies to Charm&rsquo;s primary &lsquo;conditional effect&rsquo;.  It does not apply to added prefix or suffix modifiers.</p></li>
+
+<li><p><em>(Patch 0.2.0f)</em> - Charm conditional effects now affect the conditional which activated the charm.</p></li>
+
+<li><p><em>(Patch 0.2.0f)</em> - Most Charms have a base maximum of 40 charges.  Golden Charm has a base maximum of 80 charges.</p></li>
+
+<li><p><em>(Patch 0.2.0f)</em> - Charms have a base cost of 20, 30, 40, or 80 charges.</p></li>
+
+<li><p>Resistance Charms have a 4 second base duration.</p></li>
+
+<li><p>Non-Stun Ailment Charms have a 3 second base duration.</p></li>
+
+<li><p><em>(Patch 0.2.0f)</em> - Stun-Block Charm has a 3 second base duration.</p></li>
+
+<li><p>Rarity Charm has a 1 second base duration.</p></li>
+
+<li><p><em>(Patch 0.2.0f)</em> - &ldquo;# Charm Slots&rdquo; is an implicit modifier on belts.</p></li>
+
+<li><p>The maximum number of Charm slots is 3, however GGG has stated that this will be increased to 6 in the future.</p></li>
+
+<li><p>You can get +1 Charm Slot from the passive tree. It costs 3x Distilled Paranoia to Anoint.</p></li>
+
+<li><p>Charms can possess a maximum of 1 prefix modifier and 1 suffix modifier (i.e. Magic quality item)</p></li>
+
+<li><p>Charm charges are refilled at the Well (same for Flasks).</p></li>
+
+<li><p>Unique Charms can be chanced using an Orb of Chance.</p></li>
+
+<li><p>A minimum item level (ilvl) of 83 is needed for a Charm to roll all possible modifiers.</p></li>
+
+<li><p>Charm effects such as Guard do not stack additively.</p></li>
+</ol>
+
+<blockquote>
+<ul>
+<li>If two Charms with Guard are both active simultaneously, the most recently activated Charm will overwrite the Guard of the previous Charm (Guard does not stack).</li>
+<li>Example: <a href="https://i.imgur.com/P2OOUy7.png" target="_blank">https://i.imgur.com/P2OOUy7.png</a></li>
+</ul>
+
+<p>&amp;gt;&amp;gt;&amp;gt;I am standing on Chilled Ground.  My Slow-Removal Charm activates, reducing Chill effect to 0% and providing me 197 Guard.  The 20% chance for a 2nd Charm activation (passive tree) is triggered and my Thawing Charm is activated at no charge cost.  My Thawing Charm overwrites the 197 Guard from my Slowing Charm, and gives me the 128 Guard from my Thawing Charm.  Notice that both Slowing and Thawing Charm are active, however my Guard is only 128&hellip;not 325.</p>
+</blockquote>
+
+<p>#Charms Overview</p>
+
+<p>Base Charms: <a href="https://poe2db.tw/us/Charms#CharmsItem" target="_blank">https://poe2db.tw/us/Charms#CharmsItem</a></p>
+
+<p>Base Charm modifiers: <a href="https://poe2db.tw/us/Charms#ModifiersCalc" target="_blank">https://poe2db.tw/us/Charms#ModifiersCalc</a></p>
+
+<p>Unique Charms: <a href="https://poe2db.tw/us/Charms#CharmsUnique" target="_blank">https://poe2db.tw/us/Charms#CharmsUnique</a></p>
+
+<p>#Charm Prefixes</p>
+
+<ul>
+<li>(16-40)% increased Charm Duration</li>
+<li>Recover (8-350) Life when Used (8 tiers)</li>
+<li>Recover (16-300) Mana when Used (8 tiers)</li>
+<li>Gain (44-500) Guard when Used (6 tiers)</li>
+</ul>
+
+<blockquote>
+<p>&amp;gt;&amp;gt;<strong>Note:</strong> Guard is a Buff that absorbs damage from Hits, taking the damage before your Life or Energy Shield until depleted.  Guard does not linger after the Charm effect ends!</p>
+</blockquote>
+
+<p>#Charm Suffixes</p>
+
+<ul>
+<li>(21-35)% Chance to gain a Charge when you Kill and Enemy</li>
+<li>(23-70)% increased Charges Gained</li>
+<li>(15-32)% reduced Charges per use</li>
+<li>(23-70)% increased Charges</li>
+<li>Gains (0.15-0.25) Charges per Second</li>
+</ul>
+
+<p>#Charm Effect</p>
+
+<p>Charms with numerical conditional effects benefit from increased Charm effect.  A total of 45% increased effect of Charms is available on the passive tree, which at maximum would provide:</p>
+
+<ul>
+<li>+36% Fire, Cold, or Lightning Resistance</li>
+<li>+26% Chaos Resistance</li>
+<li>+29% increased Rarity of Items found when Killing a Rare or Unique Enemy.</li>
+</ul>
+
+<p>#Charm Quality</p>
+
+<ul>
+<li><p>Quality on Charms increases their duration by the % quality listed <em>(20% quality = 20% inc. duration)</em></p></li>
+
+<li><p>Charms can drop with quality.</p></li>
+
+<li><p>Vaal Orbs can add quality.</p></li>
+
+<li><p>A 20% quality Charm with &ldquo;40% increased Charm Duration&rdquo; prefix and a perfect Vaal Orb can achieve 70% increased Charm Duration.</p></li>
+</ul>
+
+<p>#Unique Interactions with Charms</p>
+
+<ul>
+<li><a href="https://poe2db.tw/us/Pragmatism" target="_blank">Pragmatism</a> - &ldquo;Infinite&rdquo; Charm Charges</li>
+<li><a href="https://poe2db.tw/us/Elevore" target="_blank">Elevore</a> - +1 Charm Slot and adds passive Charm Charge Generation</li>
+<li><a href="https://poe2db.tw/us/Bijouborne" target="_blank">Bijouborne</a> - Grants &ldquo;Cast on Charm Use&rdquo; Meta Gem, Increased Charm Charge Generation, +2 Charm Slots, and Reduced Charm Charge Duration (enables faster triggers)</li>
+<li><a href="https://poe2db.tw/us/Zerphis_Genesis" target="_blank">Zerphi&rsquo;s Genesis</a> - When Charm Charges are used, your Life Flask is partially refilled.</li>
+<li><a href="https://poe2db.tw/us/Ingenuity" target="_blank">Ingenuity</a> - Can positively or negative affect Charm charge generation and expenditure.</li>
+</ul>
+
+<p>#Unique Charm Interactions</p>
+
+<ul>
+<li><a href="https://poe2db.tw/us/Nascent_Hope" target="_blank">Nascent Hope Thawing Charm</a> - ES Recharge starts when you are Frozen</li>
+<li><a href="https://poe2db.tw/us/Sanguis_Heroum" target="_blank">Sanguis Heroum Staunching Charm</a> - Creates Consecrated Ground when you are Bleeding</li>
+<li><a href="https://poe2db.tw/us/Sanguis_Heroum" target="_blank">Arakaali&rsquo;s Gift Antidote Charm</a> - Recover (15-20)% of Life &amp; Mana flask recovery amounts when Poisoned</li>
+<li><a href="https://poe2db.tw/us/Beiras_Anguish" target="_blank">Beira&rsquo;s Anguish Dousing Charm</a> - Ignite Enemies with Fire Damage equal to 500% Max Life when Ignited.</li>
+<li><a href="https://poe2db.tw/us/The_Black_Cat" target="_blank">The Black Cat Grounding Charm</a> - Lightning Hits against you are Unlucky when Shocked.</li>
+<li><a href="https://poe2db.tw/us/For_Utopia" target="_blank">For Utopia Stone Charm</a> - Defend with 200% Armour when Stunned.</li>
+<li><a href="https://poe2db.tw/us/The_Fall_of_the_Axe" target="_blank">The Fall of the Axe Silver Charm</a> - Gain Onslaught when Slowed.</li>
+<li><a href="https://poe2db.tw/us/Ngamahus_Chosen" target="_blank">Ngamahu&rsquo;s Chosen Ruby Charm</a> - Gain up to your maximum Rage when hit by Fire Damage.</li>
+<li><a href="https://poe2db.tw/us/Breath_of_the_Mountains" target="_blank">Breath of the Mountains Sapphire Charm</a> - Gain a Power Charge when hit by Cold Damage.</li>
+<li><a href="https://poe2db.tw/us/Valakos_Roar" target="_blank">Valako&rsquo;s Roar Topaz Charm</a> - Gain a Frenzy Charge when hit by Lightning Damage.</li>
+<li><a href="https://poe2db.tw/us/Forsaken_Bangle" target="_blank">Forsaken Bangle</a> - 50% of mitigated Chaos damage is Recouped as Life and Mana when hit by Chaos Damage.</li>
+<li><a href="https://poe2db.tw/us/Rite_of_Passage" target="_blank">Rite of Passage</a> - Gain 20% inc. maximum life, 60% inc. stun threshold, 60% inc. stun buildup, and 20% reduced damage taken for (10-20) seconds when you kill a Rare or Unique monster.</li>
+</ul>
+
+<p>#Passive Tree Interactions with Charms</p>
+
+<p>######Keystones</p>
+
+<ul>
+<li>Oasis - Cannot use Charms. 30% more Recovery from Flasks.</li>
+</ul>
+
+<p>######Notables</p>
+
+<ul>
+<li>Thicket Warding - Recover 5% max Mana on Charm activation.  20% chance to ignore Charge consumption.</li>
+<li>Primal Protection - 40% increased Charm Effect Duration, 40% increased Charm Charges gained.</li>
+<li>Efficient Alchemy - 40% increased Life and Mana Recovery from Flasks while a Charm is active.</li>
+<li>Vale Shelter - Charms gain 0.15 charges per Second.</li>
+<li>Hunter&rsquo;s Talisman - +1 Charm Slot.</li>
+<li>Woodland Aspect - 25% increased Charm effect.</li>
+<li>Lucky Rabbit Foot - 30% increased Damage and 6% increased Movement Speed while a Charm is active.</li>
+</ul>
+
+<p>######Ascendancies</p>
+
+<ul>
+<li>Intricate Sigils <em>(Ritualist)</em> - 20% more Charm Charges gained. +1 Charm Slot.</li>
+<li>Mind Phylacteries <em>(Ritualist)</em> - Can instead consume 25% of maximum Mana to trigger Charms with Insufficient Charges.</li>
+</ul>
+
+<p>#Charm Charges Used</p>
+
+<p>######Global modifiers:</p>
+
+<ul>
+<li><a href="https://poe2db.tw/us/Ornate_Belt" target="_blank">Ornate Belt</a> = (10-15)% reduced Charm Charges used</li>
+<li><a href="https://poe2db.tw/us/Belts#ModifiersCalc" target="_blank">Belt Suffix</a> = (8-25)% reduced Charm Charges used</li>
+<li>Passive Tree = up to 18% reduced Charm Charges used</li>
+</ul>
+
+<p>######Local modifiers:</p>
+
+<ul>
+<li><a href="https://poe2db.tw/us/Charms#ModifiersCalc" target="_blank">Charm Suffix</a> = (15-32)% reduced Charm Charges per use</li>
+</ul>
+
+<p>######Reduced Global and Local Modifier Equation:</p>
+
+<ul>
+<li>(# Charges per use) x (1 - local %) x (1 - sum(global %))</li>
+</ul>
+
+<p>######Example:</p>
+
+<p>In a perfect Charm setup using all of the above modifiers, a 20 charge Charm would cost only:</p>
+
+<ul>
+<li>20 x (1 - 0.32) x (1 - (0.15 + 0.25 + 0.18)) =</li>
+<li><strong>5.712 Charges per use.</strong><br>
+</li>
+</ul>
+
+<p>Given this Charm would have a maximum of 40 charges, you would have <strong>7 uses</strong> of this Charm in boss fights where no charges can be generated.</p>
+
+<p>######Charges Per Use</p>
+
+<table>
+<thead>
+<tr>
+<th align="center">Base Cost</th>
+<th align="center">0% reduced</th>
+<th align="center">perfect Charm suffix</th>
+<th align="center">all perfect (no passive tree)</th>
+<th align="center">all perfect + passive tree</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="center"><strong>20</strong></td>
+<td align="center">20</td>
+<td align="center">13.6</td>
+<td align="center">8.2</td>
+<td align="center">5.7</td>
+</tr>
+
+<tr>
+<td align="center"><strong>30</strong></td>
+<td align="center">30</td>
+<td align="center">20.4</td>
+<td align="center">12.2</td>
+<td align="center">8.6</td>
+</tr>
+
+<tr>
+<td align="center"><strong>40</strong></td>
+<td align="center">40</td>
+<td align="center">27.2</td>
+<td align="center">16.3</td>
+<td align="center">11.4</td>
+</tr>
+
+<tr>
+<td align="center"><strong>80</strong></td>
+<td align="center">80</td>
+<td align="center">54.4</td>
+<td align="center">32.6</td>
+<td align="center">22.9</td>
+</tr>
+</tbody>
+</table>
+<p>######Uses Until Charges are Depleted</p>
+
+<table>
+<thead>
+<tr>
+<th align="center">Base Cost</th>
+<th align="center">0% reduced</th>
+<th align="center">perfect Charm suffix</th>
+<th align="center">all perfect (no passive tree)</th>
+<th align="center">all perfect + passive tree</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="center"><strong>20</strong></td>
+<td align="center">2</td>
+<td align="center">2.94</td>
+<td align="center">4.90</td>
+<td align="center">7.00</td>
+</tr>
+
+<tr>
+<td align="center"><strong>30</strong></td>
+<td align="center">1.33</td>
+<td align="center">1.96</td>
+<td align="center">3.27</td>
+<td align="center">4.67</td>
+</tr>
+
+<tr>
+<td align="center"><strong>40</strong></td>
+<td align="center">1</td>
+<td align="center">1.47</td>
+<td align="center">2.45</td>
+<td align="center">3.50</td>
+</tr>
+
+<tr>
+<td align="center"><strong>80</strong></td>
+<td align="center">1</td>
+<td align="center">1.47</td>
+<td align="center">2.45</td>
+<td align="center">3.50</td>
+</tr>
+</tbody>
+</table>
+
+<h1 id="charm-effect-duration">Charm Effect Duration</h1>
+
+<p>######Global modifiers:</p>
+
+<ul>
+<li><a href="https://poe2db.tw/us/Long_Belt" target="_blank">Long Belt</a> = (15-20)% increased Charm Effect Duration</li>
+<li><a href="https://poe2db.tw/us/Belts#ModifiersCalc" target="_blank">Belt Prefix</a> = (4–33)% increased Charm Effect Duration</li>
+<li>Passive Tree = up to 60% increased Charm Effect Duration</li>
+</ul>
+
+<p>######Local modifiers:</p>
+
+<ul>
+<li><a href="https://poe2db.tw/us/Charms#ModifiersCalc" target="_blank">Charm Prefix</a> = (16-40)% increased Duration</li>
+</ul>
+
+<p>######Increased Global and Local Modifier Equation:</p>
+
+<ul>
+<li>(# Charges per use) x (1 + local %) x (1 + sum(global %))</li>
+</ul>
+
+<p>######Example:</p>
+
+<p>In a perfect Charm setup using all of the above modifiers, a 4 second base duration Charm would provide:</p>
+
+<ul>
+<li>4 x (1 + 0.40) x (1 + (0.20 + 0.33 + 0.60)) =</li>
+<li><strong>11.928 second Charge Duration.</strong></li>
+</ul>
+
+<p>#Charm Charge Sustain</p>
+
+<p>Sustaining your Charms comes down to a) slaying lots of monsters or b) charge regeneration.  You could use the Charm suffix &ldquo;#% Chance to gain a Charge when you Kill an Enemy&rdquo; or &ldquo;#% increased Charges gained&rdquo;, however these compete with the reducing Charm Charges used suffix.  Here are options which do not compete with this suffix:</p>
+
+<ul>
+<li><a href="https://poe2db.tw/us/Belts#ModifiersCalc" target="_blank">Belt Suffix</a> = (5-40)% increased Charm Charges gained</li>
+<li><a href="https://poe2db.tw/us/Double_Belt" target="_blank">Double Belt Implicit</a> = (20-30)% increased Charm Charges gained</li>
+<li>Normal Act 2 Valley of the Titans Idol = 30% increased Charm Charges gained</li>
+<li>Cruel Act 2 Valley of the Titans Idol = 30% increased Charm Charges gained</li>
+<li>Total on the passive tree = 76% increased Charm Charges gained</li>
+</ul>
+
+<p>There is also a Charm suffix which passively regenerates 0.15-0.25 Charm charges per second, a passive point (Vale Shelter) that gives 0.15 charges per second, and <a href="https://poe2db.tw/us/Elevore" target="_blank">Elevore</a> gives 0.5 charges per second.  If you had at least 100% increased Charm charges gained (not too high investment) and all sources of Charm charge regeneration, you would receive 2 * (0.5 + 0.15 + 0.25) = 1.8 charges per second, or 0.9 charges per second without Elevore.</p>
+
+<p>Permanent Charm uptime would require far more than 1.8 Charm Charges per second, so I currently do not see a method for passively maintaining Charm uptime without wearing <a href="https://poe2db.tw/us/Pragmatism" target="_blank">Pragmatism</a>.</p>
+
+<hr>
+
+<p>-Zenith_X1</p>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+    </div>
+  </body>
+</html>
