@@ -1,0 +1,892 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.selfPostImage {
+  width: 100%;
+  height: auto;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/nba/comments/1k1dnhq/the_results_are_in_for_lvp_least_valuable_player/"><p>the results are in for&hellip; LVP. LEAST Valuable Player.</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <p>While the media may focus on the MVP award and other prestigious honors, reddit has the distinct honor of awarding the LVP trophy. <a href="https://www.clarin.com/deportes/facundo-campazzo-real-madrid-nba-gabriel-deck-nicolas-laprovittola-leandro-bolmaro-barcelona-supercopa_0_eBo_hXxDN.html/" target="_blank"><strong>The LEAST Valuable Player</strong></a>. It&rsquo;s a tradition that dates back to 2017, with <a href="https://www.reddit.com/r/nba/comments/64yxyp/forget_mvp_who_should_win_least_valuable_player/" target="_blank">Monta Ellis</a> winning the trophy in what would be his last year in the league. Other winners include: <a href="https://www.reddit.com/r/nba/comments/8ai7pl/the_results_are_in_for_least_valuable_player/" target="_blank">Jamal Crawford</a> in 2018, <a href="https://www.reddit.com/r/nba/comments/b8xut2/the_results_are_in_for_least_valuable_player/" target="_blank">Solomon Hill</a> in 2019, <a href="https://www.reddit.com/r/nba/comments/hukwu8/the_results_are_in_for_least_valuable_player/" target="_blank">Isaiah Thomas</a> in 2020, <a href="https://www.reddit.com/r/nba/comments/nhp7j2/and_the_results_are_in_for_the_least_valuable/" target="_blank">Aron Baynes</a> in 2021, <a href="https://www.reddit.com/r/nba/comments/uiye0u/and_the_results_are_in_for_the_least_valuable/" target="_blank">Facu Campazzo</a> in 2022, <a href="https://www.reddit.com/r/nba/comments/132s7l3/oc_the_results_are_in_for_lvp_least_valuable/" target="_blank">Will Barton</a> in 2023, and <a href="https://www.reddit.com/r/nba/comments/1caaegq/oc_and_the_results_are_in_for_lvp_least_valuable/" target="_blank">Jordan Poole</a> last season. Notably, most of those players won the LVP and never saw meaningful minutes again. That said, Poole had a nice little season after his LVP so maybe that tide is turning on the trophy after all.</p>
+
+<p>Who will join our illustrious list? Before we get to that, let&rsquo;s remember the criteria and caveats:</p>
+
+<p>&mdash; Obviously, the worst players in the league are the ones who sit at the end of the bench and don&rsquo;t get any playing time. However, this award focuses on players who log a decent amount of minutes and consequently affected their team&rsquo;s play the most. Simply put: the more you play, the more damage you can do.</p>
+
+<p>&mdash; And that actual &ldquo;damage&rdquo; is important. If you&rsquo;re on a tanking team, no one cares about your poor play; it may even be a positive. We also tend to ignore young players (under 22) who are still developing and can&rsquo;t be expected to be solid players yet.</p>
+
+<p>&mdash; Similarly, we don&rsquo;t want to judge players within the context of their salary any more than the actual MVP does. We also don&rsquo;t weigh in injuries. If you want to factor in salary and injuries into <em>your</em> LVP ballots, there are no shortage of big name candidates to choose from this season. However, at the LVP offices, we focus on players&rsquo; on-court performance instead.</p>
+
+<p>&mdash; We also wanted to note that this yearly column can come across as a little mean spirited, which is not our intention. Even the worst player in the NBA is in the top 99% percentile at their sport and making more money than most of us could dream about. And to be fair, even the worst player in the league probably costs his team only a couple of games. Hardly anyone has a VORP (&ldquo;value over replacement player&rdquo;) worse than -2, so they shouldn&rsquo;t be the scapegoat for an entire organization. In many cases, they&rsquo;re simply played too much or played in the wrong role. But when the stakes are this high, it&rsquo;s fair to criticize players or their teams for that negative impact.</p>
+
+<hr>
+
+<p>######<strong>LEAST valuable player ballot</strong></p>
+
+<p><strong>(5) SG Kevin Huerter, Sacramento/Chicago</strong>: 24.3 minutes per game, - 2.0 box plus/minus</p>
+
+<p>Kevin Huerter has the nickname &ldquo;Red Velvet,&rdquo; which is fitting in two ways. It obviously describes the ginger&rsquo;s appearance, but it also coincides with his own career arc. Gourmet cupcakes have been <a href="https://www.businessinsider.com/the-rise-and-fall-of-cupcake-business-2013-4" target="_blank">on the decline</a> lately, and Huerter&rsquo;s stock has waned along with them.</p>
+
+<p>He peaked in 2023-24 in his first year with Sacramento. He started <sup>75</sup>&frasl;<sub>75</sub> games, averaging 15.2 points and hitting 40.2% from deep. He appeared to be exactly what you&rsquo;d want in a 5th starter. But since then, Huerter experienced a strangely abrupt drop-off (given his age, only 26). He hit a low water mark this year with Sactown, averaging just 7.9 points and hitting just 30.2% from three prior to a trade to Chicago. He&rsquo;s played better for the Bulls and helped them secure their annual goal of a play-in spot, but his stint with the Kings earns him a mention on this list.</p>
+
+<p>Because of those first few months, Huerter grades highly in terms of negative &ldquo;impact&rdquo; on the season. After Sacramento&rsquo;s slow start (stumbling out of the gates at 13-19), there was a sea change that swallowed up Coach Mike Brown and ended the De&rsquo;Aaron Fox era. Huerter couldn&rsquo;t have prevented all that by himself, but his struggles didn&rsquo;t help.</p>
+
+<hr>
+
+<p><strong>(4) PF Kyle Kuzma, Washington/Milwaukee</strong>: 29.8 minutes per game, - 4.9 BPM</p>
+
+<p>There&rsquo;s perhaps no bigger discrepancy between the &ldquo;eye test&rdquo; and the stats than in the case of Kyle Kuzma. When you see a 6&rsquo;9&rdquo; forward who can score (17.0 PPG in his career) and play some defense, you tend to think he&rsquo;s valuable. The advanced stats suggest he&rsquo;s been anything but that. His atrocious -5.3 box plus minus in Washington (which indicates a negative 5 point impact per 100 possessions) may have been excusable on a terrible team, but he&rsquo;s carried nearly that exact same mark over (- 4.7) to Milwaukee since his midseason trade. Based on most advanced stats formulas, he&rsquo;s been among the worst veterans in the NBA.</p>
+
+<p>So how can we explain it? It may be a matter of &ldquo;fit.&rdquo; Kuzma&rsquo;s always been best as a scoring 4 man closer to the basket (where he averaged 20+ PPG for Washington from 2022-24). When he has to play alongside bigger bodies and stretch out, his inconsistent shooting catches up with him. Sure enough, he&rsquo;s shot only 28.1% from three in Washington and only 33.3% in Milwaukee. Defensively, he can also struggle against dynamic wings as well, which explains how he&rsquo;s graded as a negative in BPM on defense this season &ndash; and in every season of his 9 year career.</p>
+
+<p>That said, it&rsquo;s hard to say Kuzma has been a major negative impact on the season at large. Washington was tanking from the get-go either way, and Milwaukee&rsquo;s record has been about the same with or without him.</p>
+
+<hr>
+
+<p><strong>(3) PF Patrick Williams, Chicago</strong>: 25.0 minutes per game, - 3.7 BPM</p>
+
+<p>If you want to get drafted in the NBA, you may want to change your surname to Williams. Marvin Williams came off the bench in his only year for UNC (averaging 11.3 PPG), but got the benefit of the doubt and got drafted # 2 overall. Fifteen years later, history repeated itself. Patrick Williams came off the bench in his only year for Florida State (averaging 9.2 PPG), but got the benefit of the doubt and got drafted # 4 overall.</p>
+
+<p>The cloning experiment turned out about the same the second time around. Previously, Marvin Williams was only OK &ndash; averaging 10.0 points per game in his career. Marv 2.0 Patrick Williams has been right around the same number, with career averages of 9.2, 9.0, 10.2, 10.0, and now 9.0 this year. The slight downtick is attributed to a decreased efficiency inside. Somehow, despite a 6&rsquo;7&rdquo; NBA frame, he&rsquo;s shot only 44.7% this season from two-point range (and only 39.7% from the field overall). As a result, he&rsquo;s logging a career-worst mark in VORP (-0.7) and BPM (-3.7). His defense is fine, but there aren&rsquo;t many starters doing this little on offense.</p>
+
+<hr>
+
+<p><strong>(2) C Jusuf Nurkic, Phoenix/Charlotte</strong>: 20.8 minutes per game, - 1.3 BPM</p>
+
+<p>Back in 2023, sports pundits had no problem with Phoenix trading 25-year-old Deandre Ayton for a 29-year-old Jusuf Nurkic. Nurkic may have been older, heavier, and less durable, sure, but at least he didn&rsquo;t loaf around like Ayton!</p>
+
+<p>Nurkic promptly proved that he could fill Ayton&rsquo;s shoes/loafers after all. The raw numbers in Phoenix this year looked OK &ndash; with averages of 8.6 points, 9.2 rebounds per game &ndash; but also came with a declining ability to score around the basket or protect the rim on defense (0.6 blocks per game). Partly as a result, the Suns ranked in the bottom 10 in rebounding and bottom 5 in defensive rating overall. To make matters worse, he pulled an &ldquo;Ayton&rdquo; and didn&rsquo;t get along with his teammates or <a href="https://www.espn.com/nba/story/_/id/43567084/suns-jusuf-nurkic-says-budenholzer-relationship" target="_blank">coaches</a> either. The Suns essentially had to attach assets just to shed him from their books. We don&rsquo;t factor in salary, but that&rsquo;s telling for a team that was (at the time) still trying to make the playoffs.</p>
+
+<p>In terms of &ldquo;impact,&rdquo; Nurkic&rsquo;s disappointing season weighs heavily. The Suns were among the biggest underachievers this year. Phoenix&rsquo;s front office bungled their roster balance in general, but some of that was due to a miscalculation about how much gas the Bosnian Beast had left in the tank.</p>
+
+<hr>
+
+<p><strong>(1) SG Terry Rozier, Miami</strong>: 25.9 minutes per game, - 3.7 BPM</p>
+
+<p>Although Terry Rozier is only 6&rsquo;1&rdquo;, he&rsquo;s always been seen as a viable combo guard given his ability to score and defend. The formula worked for the most part in Charlotte, where he started all 298 of his games played. He even averaged an even 20.0 PPG for the Hornets across his stint there.</p>
+
+<p>Given that, Charlotte was able to sell Rozier to Miami last season and bill him as a difference maker. It&rsquo;s been a bumpy ride ever since then &ndash; and it&rsquo;s hit a notable dip this year. The Heat already have Tyler Herro as a combo guard scorer &ndash; and he&rsquo;s simply better at it than Rozier is. That leaves Rozier without as much to do, illustrated by his inefficient offense (39.1% from the field, 29.5% from three, 49.7% true shooting). Defensively, his lack of size has led him to negative grades in DBPM and LEBRON as well. It&rsquo;s hard to tell why it&rsquo;s gone so wrong so quickly. A lingering effect of his neck injury? Or something <a href="https://www.wsj.com/sports/basketball/terry-rozier-illegal-betting-probe-nba-63a7170b" target="_blank">sketchier</a> behind the scenes?</p>
+
+<p>Either way, Miami eventually realized that Rozier is best suited to come off the bench at this stage of his career. The stats have confirmed that as well (51.7% TS off the bench, 47.1% TS as a starter). Unfortunately, a lot of the damage had already been done. Given Rozier&rsquo;s heavy workload, he ranks near the bottom of all volume advanced stats this season. The disappointment of Miami&rsquo;s season at large also increases his &ldquo;impact&rdquo; rankings on our list.</p>
+
+<p>Terry Rozier is still only 31, so we hope he gets his head and neck right for next year. But if he doesn&rsquo;t, then the Heat may have achieved a rare NBA feat &ndash; getting swindled by Charlotte.</p>
+
+<p>&ndash;</p>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mnl5t9j" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Vallerie_09 | Warriors</div>
+        <div>1 | 19 minutes ago </div>
+      </div>
+      <label for="mnl5t9j" class="commentText"><p>Terry Rozier is the name that came up in my mind as well, before I even started reading the post.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mnl6vvw" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>beklog | Celtics</div>
+        <div>1 | 14 minutes ago </div>
+      </div>
+      <label for="mnl6vvw" class="commentText"><p>As much as I like the scary Terry before&hellip; But he&rsquo;s been hot garbage and that betting news Abt him doesn&rsquo;t sounds far off</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mnl68ys" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>americanbeaver | Bucks</div>
+        <div>1 | 17 minutes ago </div>
+      </div>
+      <label for="mnl68ys" class="commentText"><p>Seems to me that Nurkić and Rozier are heads and shoulders worse than the rest.</p>
+
+<p>Good write up</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mnl6oc5" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ZandrickEllison</div>
+        <div>1 | 15 minutes ago </div>
+      </div>
+      <label for="mnl6oc5" class="commentText"><p>Absolutely. I almost put the others in &ldquo;dishonorable mention&rdquo; and focused on those two alone, but it felt too short that way.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="mnl753f" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>BetweenTheBuzzAndMe | Charlotte Bobcats</div>
+        <div>1 | 13 minutes ago </div>
+      </div>
+      <label for="mnl753f" class="commentText"><p>Nurkic hasn&rsquo;t been THAT bad for us since the deadline trade. Like he isn&rsquo;t good but he&rsquo;s alright in small doses if he&rsquo;s not matched up with anyone super athletic. I just really really really don&rsquo;t want to see him shoot a 3 ever again</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mnl60ym" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>garlic1231</div>
+        <div>1 | 18 minutes ago </div>
+      </div>
+      <label for="mnl60ym" class="commentText"><p>I remember when a lot of Reddit thought Huerter was better than Herro 😂 </p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mnl6kve" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>shaqfreethrow21</div>
+        <div>1 | 16 minutes ago </div>
+      </div>
+      <label for="mnl6kve" class="commentText"><p>mfs was telling me him and trae were the new splash bros lol</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mnl5qb9" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>DarkoDragicevic</div>
+        <div>1 | 20 minutes ago </div>
+      </div>
+      <label for="mnl5qb9" class="commentText"><p>Rozier</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mnl6m45" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>unitythrufaith | Celtics</div>
+        <div>1 | 15 minutes ago </div>
+      </div>
+      <label for="mnl6m45" class="commentText"><p>Always love a zandrick post. Can’t believe what happened to my boy scary terry but he earned this one</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mnl663r" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>whtge8 | Magic</div>
+        <div>1 | 18 minutes ago </div>
+      </div>
+      <label for="mnl663r" class="commentText"><p>I remember last season our team was so desperate for offense some people in our team sub suggested trading for Rozier…</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mnl6g14" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>BetweenTheBuzzAndMe | Charlotte Bobcats</div>
+        <div>1 | 16 minutes ago </div>
+      </div>
+      <label for="mnl6g14" class="commentText"><p>Rozier was legitimately having the best stretch of his career with us before the trade last year, so that was perfectly reasonable. His fall off is kinda shocking</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mnl75zw" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ZandrickEllison</div>
+        <div>1 | 13 minutes ago </div>
+      </div>
+      <label for="mnl75zw" class="commentText"><p>It&rsquo;s weird &ndash; we tend to think of bigs hitting a wall suddenly (like Roy Hibbert) but LVP history shows it&rsquo;s often these little scoring guards like Monta Ellis or Jamal Crawford.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mnl89jx" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>BetweenTheBuzzAndMe | Charlotte Bobcats</div>
+        <div>1 | 7 minutes ago </div>
+      </div>
+      <label for="mnl89jx" class="commentText"><p>except it happened in a weird way. Terry had a weird 2-month-long 3P% drought spanning from his last week as a Hornet to late March with the Heat (26.7% from three), had a little uptick before injuring his neck, and then never regained his shooting.</p>
+
+<p>Terry&rsquo;s value was always predicated on him shooting a high % from 3 on big volume. If he can&rsquo;t do that, he&rsquo;s a useless player.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mnl6myf" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Ilikesporks_ | Lakers</div>
+        <div>1 | 15 minutes ago </div>
+      </div>
+      <label for="mnl6myf" class="commentText"><p>i&rsquo;ve watched too many wizards games to not have kuzma as my vote. he made them somehow worse</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mnl6wh8" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ZandrickEllison</div>
+        <div>1 | 14 minutes ago </div>
+      </div>
+      <label for="mnl6wh8" class="commentText"><p>Funny enough they traded him away after winning a couple of games &ndash; presumably thinking he may be hurting the tank. Only without him, they got better and ended up losing the # 1 spot.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mnl6kbd" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>MeatEaterMeaBeater</div>
+        <div>1 | 16 minutes ago </div>
+      </div>
+      <label for="mnl6kbd" class="commentText"><p>My vote is for Nurkic, that dude is a 2 pack of ass.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mnl702v" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Schwalm | Suns</div>
+        <div>1 | 13 minutes ago </div>
+      </div>
+      <label for="mnl702v" class="commentText"><p>Suns got worse when they stopped playing Nurk and traded him</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mnl7eal" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ZandrickEllison</div>
+        <div>1 | 11 minutes ago </div>
+      </div>
+      <label for="mnl7eal" class="commentText"><p>Yeah to be honest, Nurkic was initially # 1 based partly on narrative but the stats didn&rsquo;t really back it up. He wasn&rsquo;t <em>terrible</em>.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mnl7aqt" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>MrBigWaffles | Lakers</div>
+        <div>1 | 12 minutes ago </div>
+      </div>
+      <label for="mnl7aqt" class="commentText"><p>Terry Rozier is too easy of an answer. Wasnt the joke going around that he was purposely shitting the bed for parlays to hit?</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mnl7pop" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ZandrickEllison</div>
+        <div>1 | 10 minutes ago </div>
+      </div>
+      <label for="mnl7pop" class="commentText"><p>I don&rsquo;t know if it was totally a joke&hellip; seems like a real investigation?</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mnl89sz" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>DontTedOnMe | MIN</div>
+        <div>1 | 7 minutes ago </div>
+      </div>
+      <label for="mnl89sz" class="commentText"><p>Great post! Here&rsquo;s the $$ side of it (2024-2025 salaries):</p>
+
+<ul>
+<li><p>Huerter: $16,830,357</p></li>
+
+<li><p>Kuzma: $23,522,727</p></li>
+
+<li><p>Williams: $18,000,000</p></li>
+
+<li><p>Nurkic: $18,125,000</p></li>
+
+<li><p>Rozier: $24,924,126</p></li>
+</ul>
+
+<p><strong>Total: $101,402,210</strong></p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mnl6bgg" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>urkish | Hornets</div>
+        <div>1 | 17 minutes ago </div>
+      </div>
+      <label for="mnl6bgg" class="commentText"><p>Marvin Williams went to UNC, not Duke.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mnl6ka2" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ZandrickEllison</div>
+        <div>1 | 16 minutes ago </div>
+      </div>
+      <label for="mnl6ka2" class="commentText"><p>Ah I have no clue how I f&rsquo;d that ! I liked that UNC team a lot.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mnl7400" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Frequent_Benefit_212</div>
+        <div>1 | 13 minutes ago </div>
+      </div>
+      <label for="mnl7400" class="commentText"><p>With the way he is talked about surprised Julius Randle isnt here.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mnl7866" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>kube_eat_now | Nuggets</div>
+        <div>1 | 12 minutes ago </div>
+      </div>
+      <label for="mnl7866" class="commentText"><p>Every season I&rsquo;m always lucky enough to see this post pop up.  And each time it makes me angry again over the Facu experience.  Facuuuuuuu!!</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mnl79og" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>TraderJake09</div>
+        <div>1 | 12 minutes ago </div>
+      </div>
+      <label for="mnl79og" class="commentText"><p>Dishonorable mention to Bradley Beal&rsquo;s no trade clause and overall lack of effort this season</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mnl7xql" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Aggravating_Plant_39 | Heat</div>
+        <div>1 | 9 minutes ago </div>
+      </div>
+      <label for="mnl7xql" class="commentText"><p>It&rsquo;s by far Terry Rozier I lost count of how many leads evaporated once he checked into the game.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mnl8374" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>hfusa</div>
+        <div>1 | 8 minutes ago </div>
+      </div>
+      <label for="mnl8374" class="commentText"><p>As a Heat fan this hurts&hellip; But Rozier&rsquo;s struggles are so crazy. Being a microwave scorer should earn you minutes on a team as starved for scoring like Miami but&hellip; We&rsquo;ve seen Coach Spo try everything to get Rozier going but nothing&rsquo;s worked!</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mnl8384" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>FireworkFuse | Hawks</div>
+        <div>1 | 8 minutes ago </div>
+      </div>
+      <label for="mnl8384" class="commentText"><p>Seeing Red Velvet on this list makes me sad but also totally understandable</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mnl8b7u" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>alphalobster200 | Nuggets</div>
+        <div>1 | 7 minutes ago </div>
+      </div>
+      <label for="mnl8b7u" class="commentText"><p>Reggie Jackson got robbed last year,  which should&rsquo;ve given  Malone a three-peat of overplaying and overvaluing LVPs. I wish Michael the best of luck in his new endeavours.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mnl8me7" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ZandrickEllison</div>
+        <div>1 | 5 minutes ago </div>
+      </div>
+      <label for="mnl8me7" class="commentText"><p>Yeah I don’t think Nuggets or LVP fans were as surprised by that firing as the rest of NBA fans.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mnl8dfc" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Rohkha | Heat</div>
+        <div>1 | 7 minutes ago </div>
+      </div>
+      <label for="mnl8dfc" class="commentText"><p>Let’s go Terry!!! You at least managed at being the best in being awful!!</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
