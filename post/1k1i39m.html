@@ -1,0 +1,835 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.selfPostImage {
+  width: 100%;
+  height: auto;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/nba/comments/1k1i39m/lebron_has_played_fewer_career_playoff_games_than/"><p>LeBron has played fewer career playoff games than the Bad Boys Pistons Big 3 of Isiah Thomas, Joe Dumars, and Bill Laimbeer. He still has more playoff points, rebounds, assists, steals, and blocks than all 3 combined.</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <p>Random somewhat cherry picked Lebron stat I found out today is that he&rsquo;s been more productive in the playoffs than the legendary big 3 from the Bad Boys Pistons (Thomas, Dumars, Laimbeer). Here are his career playoff stats compared to those 3 combined:</p>
+
+<table>
+<thead>
+<tr>
+<th align="center">Player</th>
+<th align="center">Games</th>
+<th align="center">Points</th>
+<th align="center">Rebounds</th>
+<th align="center">Assists</th>
+<th align="center">Steals</th>
+<th align="center">Blocks</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="center">LeBron James</td>
+<td align="center">287</td>
+<td align="center">8162</td>
+<td align="center">2583</td>
+<td align="center">2067</td>
+<td align="center">483</td>
+<td align="center">275</td>
+</tr>
+
+<tr>
+<td align="center">Pistons Big 3</td>
+<td align="center">336</td>
+<td align="center">5367</td>
+<td align="center">1878</td>
+<td align="center">1694</td>
+<td align="center">409</td>
+<td align="center">127</td>
+</tr>
+
+<tr>
+<td align="center">Difference</td>
+<td align="center">-49</td>
+<td align="center">2795</td>
+<td align="center">705</td>
+<td align="center">373</td>
+<td align="center">74</td>
+<td align="center">148</td>
+</tr>
+</tbody>
+</table>
+<p>If you include Rodman&rsquo;s career totals (who played the majority of his playoff minutes with the Spurs/Bulls), LeBron falls behind in rebounds by just over 900 and steals by 32. He&rsquo;d still be ahead in points, assists, and blocks. If you limit Rodman to just is playoff stats with the Pistons, LeBron is only behind by 61 rebounds and still ahead in every other category.</p>
+
+<p>Kinda crazy that the core players of one of the more legendary teams in NBA history, that squeezed in a mini-dynasty between the Lakers/Celtics in the 80&rsquo;s and Jordan&rsquo;s Bulls in the 90&rsquo;s, was less productive in their playoff careers than LeBron by himself.</p>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mnm8xte" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>urkish | Hornets</div>
+        <div>29 | an hour ago </div>
+      </div>
+      <label for="mnm8xte" class="commentText"><blockquote>
+<p>If you include Rodman&rsquo;s career totals&hellip;Lebron falls behind in rebounds by just over 900</p>
+</blockquote>
+
+<p>So Rodman had almost as many rebounds as Isiah, Dumars, and Laimbeer combined? Geez</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mnmaxzh" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>OverallGeneral7129 | Cavaliers</div>
+        <div>12 | an hour ago </div>
+      </div>
+      <label for="mnmaxzh" class="commentText"><p>LeBron will pass Rodman in career rebounds next year. LeBron’s 25th in rebounds (11,731) and is 223 behind 23rd Rodman (11,954) and he got 546 rebounds this season so barring injury he should safely pass him next season</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="mnmccj0" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>KingAnDrawD | Warriors</div>
+        <div>4 | an hour ago </div>
+      </div>
+      <label for="mnmccj0" class="commentText"><p>It makes sense honestly. Played many playoff games and was an absolute magnet on rebounds. I&rsquo;ve never seen a player so dedicated to the rebound than him. If LeBron passes him next season, it will have taken him 9 more seasons to equal Rodman&rsquo;s total.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mnme5kl" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>KingAnDrawD | Warriors</div>
+        <div>7 | an hour ago </div>
+      </div>
+      <label for="mnme5kl" class="commentText"><p>LeBron is a statistical anomaly. Played many seasons, most of which include lengthy post season stretches, and will be going into his 23rd career year. He&rsquo;s essentially this generation&rsquo;s Kareem but bigger numbers. I&rsquo;d be curious to see just his career playoff stats stacked up against every single players regular season career stats and see just how many players he surpasses.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mnmf1el" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>DerekMorganBAUxxi</div>
+        <div>-16 | 42 minutes ago </div>
+      </div>
+      <label for="mnmf1el" class="commentText"><p>Yet he still won less while playing with more HOF teammates/talent than any other top player</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mnmfpgt" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Bladeneo</div>
+        <div>7 | 39 minutes ago </div>
+      </div>
+      <label for="mnmfpgt" class="commentText"><p>Jesus give it a rest, can we have one conversation about a player that doesnt descend into &ldquo;YEAH BUT AKSHUALLY THEY WERENT THAT GOOD!&rdquo;</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mnmhg49" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>D_Simmons | Raptors</div>
+        <div>1 | 31 minutes ago </div>
+      </div>
+      <label for="mnmhg49" class="commentText"><p>The only thing that fucking loser contributes to the world is stale, idiotic statements.</p>
+
+<p>Bro&rsquo;s going to be sitting in a wheelchair, alone, wondering why his kids are rolling him into traffic as he argues about how Lebron wasn&rsquo;t as good as everyone thinks.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="mnmfvij" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Flovust | Lakers</div>
+        <div>4 | 38 minutes ago </div>
+      </div>
+      <label for="mnmfvij" class="commentText"><p>has also played the most HOF/Talented opponents than any other top player</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mnmmmqh" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>DerekMorganBAUxxi</div>
+        <div>1 | 6 minutes ago </div>
+      </div>
+      <label for="mnmmmqh" class="commentText"><p>In the East???</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="mnmguui" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>garyschronology | LAL</div>
+        <div>4 | 34 minutes ago </div>
+      </div>
+      <label for="mnmguui" class="commentText"><p>Agreed. Not many players have had the privilege of playing with All-Star point guard Mo Williams.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mnmmqog" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>DerekMorganBAUxxi</div>
+        <div>1 | 5 minutes ago </div>
+      </div>
+      <label for="mnmmqog" class="commentText"><p>Now we&rsquo;re being dense on purpose I see</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="mnmhv3k" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>OverallGeneral7129 | Cavaliers</div>
+        <div>1 | 29 minutes ago </div>
+      </div>
+      <label for="mnmhv3k" class="commentText"><p>You say this like he was playing with Kyrie, Wade, Bosh, and AD at the same time those were three different eras of his career</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mnmmu68" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>DerekMorganBAUxxi</div>
+        <div>1 | 5 minutes ago </div>
+      </div>
+      <label for="mnmmu68" class="commentText"><p>Still more than anyone else got</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="mnmmx4g" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Basic_Commercial_806</div>
+        <div>1 | 4 minutes ago </div>
+      </div>
+      <label for="mnmmx4g" class="commentText"><p>You mean to tell me the Cavs starting lineup in 2016 wasn’t Kyrie/Wade/Lebron/AD/Bosh?</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mnma0qw" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Noto987</div>
+        <div>3 | an hour ago </div>
+      </div>
+      <label for="mnma0qw" class="commentText"><p>Lebuilt different</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mnmgxhk" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Swing-Too-Hard</div>
+        <div>3 | 33 minutes ago </div>
+      </div>
+      <label for="mnmgxhk" class="commentText"><p>Y&rsquo;all know there is only 1 basketball being used in a game right? So like 3 players would be fighting over the ball for the same stats. LeBron has also played in an era where teams average more shot attempts and make field goals.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mnml817" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Kashmir33 | NBA</div>
+        <div>1 | 13 minutes ago </div>
+      </div>
+      <label for="mnml817" class="commentText"><blockquote>
+<p>So like 3 players would be fighting over the ball for the same stats.</p>
+</blockquote>
+
+<p>That makes no sense.</p>
+
+<blockquote>
+<p>LeBron has also played in an era where teams average more shot attempts and make field goals.</p>
+</blockquote>
+
+<p>Only for the past 7 years. 15 years of LeBron&rsquo;s career, which is where most of his playoff games are from, had (much) lower shot attempts than the 80s.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mnmi8od" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Sav10r</div>
+        <div>1 | 27 minutes ago </div>
+      </div>
+      <label for="mnmi8od" class="commentText"><p>Lebron has a million of these stats. Isn&rsquo;t there a stat that he has more playoff wins/playoff games played than a bunch of franchises?</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mnml4go" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>OverallGeneral7129 | Cavaliers</div>
+        <div>1 | 13 minutes ago </div>
+      </div>
+      <label for="mnml4go" class="commentText"><p>He would be 9th in franchise wins is the stat you’re thinking of</p>
+
+<p><a href="https://www.reddit.com/r/nba/s/ZXADNyRqOB" target="_blank">https://www.reddit.com/r/nba/s/ZXADNyRqOB</a></p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mnmiyi9" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>bobbacklund11235</div>
+        <div>1 | 24 minutes ago </div>
+      </div>
+      <label for="mnmiyi9" class="commentText"><p>He also has the league trade top 5 players to his team whenever he gets clowned in the first round</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mnm7z3l" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>nowhathappenedwas | NBA</div>
+        <div>-19 | an hour ago </div>
+      </div>
+      <label for="mnm7z3l" class="commentText"><p>Crazy that LeBron played almost as many playoff games and averaged more stats per game than 3 inferior players!</p>
+
+<p>The Pistons big 3 averaged 16/6/5 per playoff game. Those are entirely unremarkable playoff stats compared to modern players. That&rsquo;s pretty much Jrue Holiday&rsquo;s playoff averages: 17/6/5.</p>
+
+<p>It&rsquo;s not the least bit surprising that LeBron averaged 20% more than the average of those 3.</p>
+
+<p>The only crazy thing is that LeBron has played a shit load of playoff games, which everyone already knows.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mnm8782" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>StormSaniWater | Canada</div>
+        <div>22 | an hour ago </div>
+      </div>
+      <label for="mnm8782" class="commentText"><p>Isiah Thomas and Joe Dumars were first ballot hall of famers and Bill Laimbeer was a top 6-7 center in the league in his prime</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mnmdvsp" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>nowhathappenedwas | NBA</div>
+        <div>-6 | an hour ago </div>
+      </div>
+      <label for="mnmdvsp" class="commentText"><p>The Pistons big 3 averaged 16/6/5 per playoff game. Those are entirely unremarkable playoff stats compared to modern players. That&rsquo;s pretty much Jrue Holiday&rsquo;s playoff averages: 17/6/5.</p>
+
+<p>It&rsquo;s not the least bit surprising that LeBron averaged 20% more than the average of those 3.</p>
+
+<p>The only crazy thing is that LeBron has played a shit load of playoff games, which everyone already knows.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mnmg881" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>RecordReviewer | NBA</div>
+        <div>3 | 37 minutes ago </div>
+      </div>
+      <label for="mnmg881" class="commentText"><p>Not true at all. While with the Pistons, they collectively averaged 54/24/16 in the playoffs.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mnmkobj" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>nowhathappenedwas | NBA</div>
+        <div>1 | 15 minutes ago </div>
+      </div>
+      <label for="mnmkobj" class="commentText"><p>It would be amazing if LeBron averaged more than 20% per game than the three of them combined!</p>
+
+<p>But that&rsquo;s not what your post shows. You&rsquo;re using their combined total stats and their combined total games&ndash;which only shows that LeBron is averaging 20% more than the <em>average</em> of those 3.</p>
+
+<p>Again, the only interesting thing is that LeBron has played almost as many playoff games as the three of them, combined. But everyone already knows that LeBron played a shitload of playoff games, and everyone should know that the Bad Boy Pistons did nothing in the playoffs outside of their 1987-1991 run.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="mnm94uz" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>MeanLock6684</div>
+        <div>14 | an hour ago </div>
+      </div>
+      <label for="mnm94uz" class="commentText"><p>This don’t hit like you thought it would.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="mnm8ti7" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>sip-em_bears | NBA</div>
+        <div>9 | an hour ago </div>
+      </div>
+      <label for="mnm8ti7" class="commentText"><p>Those 3 players have a combined 6 rings and collectively were the best players on those championships.</p>
+
+<p>Also, he hasn’t “almost” played as many playoff games as they did. They’ve played almost 20% more games than he did. That’s a pretty significant gap for the playoffs.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mnmaanx" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>bVI-bVII-v-i</div>
+        <div>-9 | an hour ago </div>
+      </div>
+      <label for="mnmaanx" class="commentText"><p>The point is that it&rsquo;s still relatively close. Are we surprised lebron has significantly higher averages than Joe dumars? Lol.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mnmb4ge" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>sloppifloppi</div>
+        <div>3 | an hour ago </div>
+      </div>
+      <label for="mnmb4ge" class="commentText"><p>Do you know what &lsquo;combined&rsquo; means?</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
