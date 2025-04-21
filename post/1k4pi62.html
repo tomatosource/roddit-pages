@@ -1,0 +1,1833 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.selfPostImage {
+  width: 100%;
+  height: auto;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/nba/comments/1k4pi62/jonathan_kumingas_benching_is_about_fit_not_talent/"><p>Jonathan Kuminga&rsquo;s benching is about fit, not talent</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <p>The numbers tell a clear story: Kuminga is not a good fit with Jimmy Butler on the floor. The Butler-Kuminga pairing was -20 in 125 minutes during the regular season, <a href="https://www.nba.com/stats/lineups/traditional?CF=GROUP_NAME*R*Butler:MIN*GE*100&amp;GroupQuantity=2&amp;PerMode=Totals&amp;SeasonType=Regular%20Season&amp;TeamID=1610612744&amp;dir=A&amp;slug=traditional&amp;sort=PLUS_MINUS" target="_blank">by far the worst</a> of any pairing involving Butler:</p>
+
+<table>
+<thead>
+<tr>
+<th align="left">Lineup</th>
+<th align="left">Minutes</th>
+<th align="left">Total +/-</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">J. Butler III - B. Podziemski</td>
+<td align="left">651</td>
+<td align="left">+227</td>
+</tr>
+
+<tr>
+<td align="left">J. Butler III - D. Green</td>
+<td align="left">742</td>
+<td align="left">+154</td>
+</tr>
+
+<tr>
+<td align="left">J. Butler III - Q. Post</td>
+<td align="left">358</td>
+<td align="left">+85</td>
+</tr>
+
+<tr>
+<td align="left">J. Butler III - M. Moody</td>
+<td align="left">622</td>
+<td align="left">+82</td>
+</tr>
+
+<tr>
+<td align="left">J. Butler III - S. Curry</td>
+<td align="left">529</td>
+<td align="left">+80</td>
+</tr>
+
+<tr>
+<td align="left">J. Butler III - G. Santos</td>
+<td align="left">144</td>
+<td align="left">+66</td>
+</tr>
+
+<tr>
+<td align="left">J. Butler III - B. Hield</td>
+<td align="left">347</td>
+<td align="left">+47</td>
+</tr>
+
+<tr>
+<td align="left">J. Butler III - K. Looney</td>
+<td align="left">176</td>
+<td align="left">+29</td>
+</tr>
+
+<tr>
+<td align="left">J. Butler III - G. Payton II</td>
+<td align="left">196</td>
+<td align="left">+4</td>
+</tr>
+
+<tr>
+<td align="left"><strong>J. Butler III - J. Kuminga</strong></td>
+<td align="left"><strong>125</strong></td>
+<td align="left"><strong>-20</strong></td>
+</tr>
+</tbody>
+</table>
+<p>This matches the eye test &ndash; Butler operates best when surrounded by shooters, and adding another non-shooter to Butler-Draymond bench lineups stalls them out offensively. If butler&rsquo;s playing 40+ minutes, there&rsquo;s not a lot of room for Kuminga to get playing time.</p>
+
+<p>But what about the steph-only minutes, you ask? While the Kuminga-Steph minutes put up good numbers, <a href="https://www.nba.com/stats/lineups/traditional?CF=GP*GE*10:GROUP_NAME*R*Curry&amp;GroupQuantity=2&amp;PerMode=Per100Possessions&amp;SeasonSegment=Post%20All-Star&amp;SeasonType=Regular%20Season&amp;TeamID=1610612744&amp;dir=D&amp;slug=traditional&amp;sort=PLUS_MINUS" target="_blank">the Gui-Steph numbers are much better</a> on a per possession basis:</p>
+
+<table>
+<thead>
+<tr>
+<th align="left">Lineup</th>
+<th align="left">+/- per 100 Possessions</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left"><strong>S. Curry - G. Santos</strong></td>
+<td align="left"><strong>+22.7</strong></td>
+</tr>
+
+<tr>
+<td align="left">S. Curry - B. Podziemski</td>
+<td align="left">+15.6</td>
+</tr>
+
+<tr>
+<td align="left">S. Curry - B. Hield</td>
+<td align="left">+15.2</td>
+</tr>
+
+<tr>
+<td align="left">S. Curry - D. Green</td>
+<td align="left">+11.4</td>
+</tr>
+
+<tr>
+<td align="left"><strong>S. Curry - J. Kuminga</strong></td>
+<td align="left"><strong>+10.7</strong></td>
+</tr>
+
+<tr>
+<td align="left">S. Curry - Q. Post</td>
+<td align="left">+9.5</td>
+</tr>
+
+<tr>
+<td align="left">S. Curry - M. Moody</td>
+<td align="left">+9.2</td>
+</tr>
+
+<tr>
+<td align="left">S. Curry - J. Butler III</td>
+<td align="left">+8.3</td>
+</tr>
+
+<tr>
+<td align="left">S. Curry - K. Looney</td>
+<td align="left">+5.9</td>
+</tr>
+
+<tr>
+<td align="left">S. Curry - G. Payton II</td>
+<td align="left">+5.6</td>
+</tr>
+</tbody>
+</table>
+<p>So Kuminga isn&rsquo;t even the best PF to pair with Steph in the Steph-only minutes. Anecdotally, Gui seems to be better at navigating the organized chaos of Kerr&rsquo;s movement offense, which shifts into  overdrive whenever Butler is off the floor.</p>
+
+<p>Kuminga is clearly a talented player, but the warriors have pieces that fit better with their two stars.</p>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mobsnqn" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>mMounirM | Raptors</div>
+        <div>144 | 2 hours ago </div>
+      </div>
+      <label for="mobsnqn" class="commentText"><p>I didn&rsquo;t know Kuminga&rsquo;s agent was on reddit</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mobtg05" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>greenergarlic | Warriors</div>
+        <div>34 | 2 hours ago </div>
+      </div>
+      <label for="mobtg05" class="commentText"><p>chill, I&rsquo;m working here</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="mobtbp8" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>NewSunSeverian</div>
+        <div>31 | 2 hours ago </div>
+      </div>
+      <label for="mobtbp8" class="commentText"><p>Kuminga’s agent just said the man can’t shoot</p>
+
+<p>which is true, but not very agent-like </p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="mobz314" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>luniz420</div>
+        <div>3 | an hour ago </div>
+      </div>
+      <label for="mobz314" class="commentText"><p>I don&rsquo;t think that saying Kuminga is talented makes you his agent.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mobtk6v" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>jbrunsonfan</div>
+        <div>68 | 2 hours ago </div>
+      </div>
+      <label for="mobtk6v" class="commentText"><p>That’s okay and all, but I would not want my team to give 20% of their cap space to a player that will get dnps due to fit</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mobx6hn" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>504090 | Thunder</div>
+        <div>24 | an hour ago </div>
+      </div>
+      <label for="mobx6hn" class="commentText"><p>It’s the same thing with Josh Giddey. Very talented player and he’ll command a huge contract this offseason, but I couldn’t see him playing serious minutes for 13-14 of the 16 teams in this postseason. Ironically Josh was drafted 1 pick above Kuminga.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="moc16r6" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Marano94</div>
+        <div>4 | an hour ago </div>
+      </div>
+      <label for="moc16r6" class="commentText"><p>What playoff teams could use Kuminga?</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="moc4ccv" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>catoxaphy | Nuggets</div>
+        <div>3 | 39 minutes ago </div>
+      </div>
+      <label for="moc4ccv" class="commentText"><p>Denver</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="moc6edl" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>advancedmatt | Nuggets</div>
+        <div>1 | 27 minutes ago </div>
+      </div>
+      <label for="moc6edl" class="commentText"><p>When Jokic is on the floor, the Nuggets need a player who can rotate in for a starter, shoot 3s when Jokic is double and triple teamed, and shoot at a solid percentage. When Jokic is not on the floor, the Nuggets need someone who will get rebounds and be disruptive in the lane. The first player can also help when Jokic is not on the floor.</p>
+
+<p>I don&rsquo;t see Kuminga in either of those roles.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="moca137" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>oftenevil | San Francisco Warriors</div>
+        <div>1 | 7 minutes ago </div>
+      </div>
+      <label for="moca137" class="commentText"><blockquote>
+<p>the Nuggets need a player who can rotate in for a starter, shoot 3s when Jokic is double and triple teamed, and shoot at a solid percentage.</p>
+</blockquote>
+
+<p>I mean this as someone who is really rooting for Kuminga: he is not capable of shooting 3s at a reliable clip.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mocam5y" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>advancedmatt | Nuggets</div>
+        <div>1 | 4 minutes ago </div>
+      </div>
+      <label for="mocam5y" class="commentText"><p>agreed</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="moc7xc0" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>504090 | Thunder</div>
+        <div>1 | 19 minutes ago </div>
+      </div>
+      <label for="moc7xc0" class="commentText"><p>Yeah. I think he would still play 14-15mpg on Denver and soak up Peyton Watson’s minutes, but all-in-all Kuminga doesn’t solve any of Denver’s issues. You’d have to retool the roster a bit to make way for him playing real minutes.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="moc4ntt" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>acceptablerose99</div>
+        <div>3 | 37 minutes ago </div>
+      </div>
+      <label for="moc4ntt" class="commentText"><p>Nah kuminga is a terrible cutter which would limit jokics godlike passing abilities. </p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="moc6kmi" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>catoxaphy | Nuggets</div>
+        <div>1 | 26 minutes ago </div>
+      </div>
+      <label for="moc6kmi" class="commentText"><p>Maybe. But you would have to judge after he had time to practice with Jokic. AG would take most of the minutes with Jokic anyway, their chemistry is too good. I want JK more for non-Jokic minutes and to have someone else who can put pressure at the rim. </p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mocajk7" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>YovngSqvirrel | GSW</div>
+        <div>1 | 4 minutes ago </div>
+      </div>
+      <label for="mocajk7" class="commentText"><p>Good luck convincing JK to come off the bench</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="moc6y98" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>greenergarlic | Warriors</div>
+        <div>1 | 24 minutes ago </div>
+      </div>
+      <label for="moc6y98" class="commentText"><p>Kuminga is a solid cutter, that’s how he gets most of his dunks. The warriors’ just have insane standards for fit with their motion offense. Most role players who come through golden state can’t hack it.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="moc73vm" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>acceptablerose99</div>
+        <div>1 | 23 minutes ago </div>
+      </div>
+      <label for="moc73vm" class="commentText"><p>Not off ball. He is a good slasher with the ball but not a good cutter.  He has zero anticipation skills or ability to read defenses. </p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="moc5uuk" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Aidanj927 | Spurs</div>
+        <div>1 | 30 minutes ago </div>
+      </div>
+      <label for="moc5uuk" class="commentText"><p>Can he shoot? If so Orlando could use him</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="moc6835" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>greenergarlic | Warriors</div>
+        <div>1 | 28 minutes ago </div>
+      </div>
+      <label for="moc6835" class="commentText"><p>not really. he’s got solid percentages, but low volume.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="moc4zxq" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>504090 | Thunder</div>
+        <div>1 | 35 minutes ago </div>
+      </div>
+      <label for="moc4zxq" class="commentText"><p>The Grizz desperately need a wing and the Bucks are talent-starved (although the spacing would be murky), so most likely those two. Miami could work as well but I think he’d come off the bench there.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="mobvs3d" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>pmurt007</div>
+        <div>14 | an hour ago </div>
+      </div>
+      <label for="mobvs3d" class="commentText"><p>He&rsquo;s also just not a winning player.  He put up numbers because it was better to just dump the ball to him in the midpost and let him work rather than the alternative of dribbling out the shot clock and having someone throw up a grenade to beat the shotclock.</p>
+
+<p>Dude really was that hellbent on an extra <span class="math inline">\(5m AAV that he probably just threw away 50-70m because he's probably looking at 4/80 or if he's lucky some garbage team will give him \)</span>100m.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="mobylfs" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>abstract_contact | Trail Blazers</div>
+        <div>-1 | an hour ago </div>
+      </div>
+      <label for="mobylfs" class="commentText"><p>So trade him?</p>
+
+<p>But they didn’t. They’re tanking his value to retain him. Simple as.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mobzdyn" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Deep-Ad5028</div>
+        <div>15 | an hour ago </div>
+      </div>
+      <label for="mobzdyn" class="commentText"><p>Warriors didn&rsquo;t have Butler until the middle of this season.</p>
+
+<p>I do expect JK be traded this off-season.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="moc0iip" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Hotpotlord</div>
+        <div>6 | an hour ago </div>
+      </div>
+      <label for="moc0iip" class="commentText"><p>I have no idea who would bite on the sign and trade for Kuminga lol</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="moc3tni" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>IcyCat35</div>
+        <div>6 | 42 minutes ago </div>
+      </div>
+      <label for="moc3tni" class="commentText"><p>Kings feeling like a good fit right now.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="moc4tp1" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Hotpotlord</div>
+        <div>3 | 36 minutes ago </div>
+      </div>
+      <label for="moc4tp1" class="commentText"><p>Their owner do love ex-warriors.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="moc8g82" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>abstract_contact | Trail Blazers</div>
+        <div>1 | 16 minutes ago </div>
+      </div>
+      <label for="moc8g82" class="commentText"><p>That’s great except that he’s a restricted free agent, so their options are to let him walk or match his offer. Which is where the tanking his value comes in.</p>
+
+<p>If they match, they can’t trade him for 6 months.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="moc2nqt" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>jbrunsonfan</div>
+        <div>6 | an hour ago </div>
+      </div>
+      <label for="moc2nqt" class="commentText"><p>If the rumors are true and he declined that 5 yr $150M contract then I don’t really blame them tbh. If you’re gonna play hardball then at least hit your free throws.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="moc90el" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>abstract_contact | Trail Blazers</div>
+        <div>1 | 13 minutes ago </div>
+      </div>
+      <label for="moc90el" class="commentText"><p>My issue is not with the Warriors not wanting to sign that extension. My issue is with the reality that they’re tanking his value and are then going to match his offer, only to then trade him at the deadline. Refusing to let young players get minutes and also refusing to trade them is bullshit.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mobtcr8" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Expulsure | Nets</div>
+        <div>33 | 2 hours ago </div>
+      </div>
+      <label for="mobtcr8" class="commentText"><p>if you are getting benched due to fit then you clearly aren&rsquo;t worth a big contract</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mobuwr5" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>bigraptorr</div>
+        <div>34 | 2 hours ago </div>
+      </div>
+      <label for="mobuwr5" class="commentText"><p>Getting bench due to fit as a wing player is crazy. Thats the most versatile position in the league.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mobvay8" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Expulsure | Nets</div>
+        <div>14 | 2 hours ago </div>
+      </div>
+      <label for="mobvay8" class="commentText"><p>you basically just have to be able to shoot and/or defend at a decent level to get at least some minutes lol</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="moc5s7t" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>acceptablerose99</div>
+        <div>1 | 31 minutes ago </div>
+      </div>
+      <label for="moc5s7t" class="commentText"><p>Kuminga can guard 1 on 1 decently but gets utterly lost off ball and his 3 point shot is atrocious. He isn&rsquo;t even good at cutting to the basket which should be a easy skill for him to develop and shine with. </p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mobuv58" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>csthrowaway6543 | Warriors</div>
+        <div>31 | 2 hours ago </div>
+      </div>
+      <label for="mobuv58" class="commentText"><p>Those good stretches that JK had to end last season and before his injury this season, along with his poor performance since the Jimmy trade, show what some Warriors fans have been saying – he can be a decent scorer on a mediocre team where he’s force-fed possessions, but he doesn’t know how to play within his role on a good team where he isn’t needed to hold onto the ball and score as much.</p>
+
+<p>He should have focused on improving his shooting, rebounding, and decision making like Kerr’s been begging him to do instead of trying to force his mediocre ISO game. That’s what Moody did and now he’s a starter.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mobvzso" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Affectionate-Cap4981 | Warriors</div>
+        <div>18 | an hour ago </div>
+      </div>
+      <label for="mobvzso" class="commentText"><p>Look at Gui. We&rsquo;ve seen flashes of real talent from him (great shooting nights, insane passes), but his role on the team is just to defend and rebound. He focuses on that role and plays that role amazingly, and you can see by the stats provided by OP that Gui-Butler leads +/- per minute and Gui-Steph leads +/- per possesion, both by a mile.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="mobwtx8" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>TdotGdot | Timberwolves</div>
+        <div>11 | an hour ago </div>
+      </div>
+      <label for="mobwtx8" class="commentText"><blockquote>
+<p> he can be a decent scorer on a mediocre team where he’s force-fed possessions, but he doesn’t know how to play within his role on a good team where he isn’t needed to hold onto the ball and score as much</p>
+</blockquote>
+
+<p>Unused to say the same thing about Wiggins when he was on the wolves. Debatably still true about him except for that like 40 game title stretch with you guys. But regardless, that’s a good Kuminga description and I think true for a lot of players that are so talented but don’t seem to move the needle on winning very much. </p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="moc48gv" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>IcyCat35</div>
+        <div>7 | 39 minutes ago </div>
+      </div>
+      <label for="moc48gv" class="commentText"><p>Wiggins has been good ever since he left the wolves.  Not all-star level great, but pretty good.  Seems to be good on the heat too.</p>
+
+<p>17pts with great wing defense.  Most teams would kill for that.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="moc5kxc" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>acceptablerose99</div>
+        <div>2 | 32 minutes ago </div>
+      </div>
+      <label for="moc5kxc" class="commentText"><p>Yeah Wiggins embraced being a solid 2nd/3rd option with good defense. </p>
+
+<p>Kuminga still seems himself as a future star and bucket getter when it&rsquo;s clearly never going to be his game. </p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="moc67ck" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>IcyCat35</div>
+        <div>1 | 28 minutes ago </div>
+      </div>
+      <label for="moc67ck" class="commentText"><p>And he’s bad at defense and can’t play in the flow of an offense.  He’s athletic with some interesting skills but has the bbiq of a middle schooler</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="moc6qxv" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>acceptablerose99</div>
+        <div>1 | 25 minutes ago </div>
+      </div>
+      <label for="moc6qxv" class="commentText"><p>Which is exactly why Kerr doesn&rsquo;t trust him with minutes. Moody, on the other hand, worked on the skills that were limiting his minutes and improved over his 4 years with golden state. Kuminga has barely changed. </p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="mobx6it" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Letronika | Warriors</div>
+        <div>7 | an hour ago </div>
+      </div>
+      <label for="mobx6it" class="commentText"><p>Yep. We didn&rsquo;t get him to sit at the three point line and it bothers the living shit out of me that he basically never crashes the boards. Couple that with his inability to screen, box out, and just overall low bbiq with him being in his 4th year.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mobtxtm" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Inevitable-Paint-650 | Nuggets</div>
+        <div>16 | 2 hours ago </div>
+      </div>
+      <label for="mobtxtm" class="commentText"><p>Kuminga thinks he’s a star but he’s just a role player. He gotta accept that fact sooner or later</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="moby0xl" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Itchy-Face791 | Warriors</div>
+        <div>11 | an hour ago </div>
+      </div>
+      <label for="moby0xl" class="commentText"><p>He&rsquo;s 22 lol. He&rsquo;s the same age as Amen Thompson, its wayyy too early to call wraps on his development</p>
+
+<p>I doubt that development happens on the Warriors though</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="moc03lj" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>jrzalman | Pistons</div>
+        <div>10 | an hour ago </div>
+      </div>
+      <label for="moc03lj" class="commentText"><p>Think i&rsquo;ve seen this comment before&hellip;no, my bad, that was for Wiseman.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="moc18xq" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Itchy-Face791 | Warriors</div>
+        <div>7 | an hour ago </div>
+      </div>
+      <label for="moc18xq" class="commentText"><p>Kuminga averaged <sup>20</sup>&frasl;<sub>6</sub> and kept the team afloat for a couple of months before he sprained his ankle.</p>
+
+<p>Not comparable at all lol</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="moc5ilj" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Klunko52 | Warriors</div>
+        <div>4 | 32 minutes ago </div>
+      </div>
+      <label for="moc5ilj" class="commentText"><p>Ok Kuminga is a million times better than Wiseman lol</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="moc4iv2" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>IcyCat35</div>
+        <div>2 | 38 minutes ago </div>
+      </div>
+      <label for="moc4iv2" class="commentText"><p>He’s a four year vet going into year five.  Stop it.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="mobuqoi" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>los_blanco_14 | Warriors</div>
+        <div>3 | 2 hours ago </div>
+      </div>
+      <label for="mobuqoi" class="commentText"><p>He isnt even role player atm, he is closer to a G-League starter atm</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mobv8js" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>nbaistheworst</div>
+        <div>-14 | 2 hours ago </div>
+      </div>
+      <label for="mobv8js" class="commentText"><p>Kerr&rsquo;s fault.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="moc5v5y" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>acceptablerose99</div>
+        <div>1 | 30 minutes ago </div>
+      </div>
+      <label for="moc5v5y" class="commentText"><p>Lol showing your lack of brain cells right here. </p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mobztyu" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>princeofzilch</div>
+        <div>8 | an hour ago </div>
+      </div>
+      <label for="mobztyu" class="commentText"><p>If you can&rsquo;t fit with Jimmy or Steph, are you clearly a talented player? </p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mobu458" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Affectionate-Cap4981 | Warriors</div>
+        <div>6 | 2 hours ago </div>
+      </div>
+      <label for="mobu458" class="commentText"><p>Thank you for keeping his trade value up!</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mobshes" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>pachyloskagape | Timberwolves</div>
+        <div>4 | 2 hours ago </div>
+      </div>
+      <label for="mobshes" class="commentText"><p>Free kum</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mobswup" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ThunderAdams12 | Thunder</div>
+        <div>9 | 2 hours ago </div>
+      </div>
+      <label for="mobswup" class="commentText"><p>Are you saying set kum free or you’re giving it away free?</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mobuvxo" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Apart-Leadership1402</div>
+        <div>5 | 2 hours ago </div>
+      </div>
+      <label for="mobuvxo" class="commentText"><p>I bet both. Nice double entendre.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="mobte43" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>AcanthocephalaSad541 | Heat</div>
+        <div>3 | 2 hours ago </div>
+      </div>
+      <label for="mobte43" class="commentText"><p>Why not both?</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mobx1mt" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>wubiwuster | San Francisco Warriors</div>
+        <div>5 | an hour ago </div>
+      </div>
+      <label for="mobx1mt" class="commentText"><p>Non warriors fans, any team that would have interest in JoKu?</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mobzcrm" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>luniz420</div>
+        <div>4 | an hour ago </div>
+      </div>
+      <label for="mobzcrm" class="commentText"><p>Pistons</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="moc5z9j" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>acceptablerose99</div>
+        <div>1 | 30 minutes ago </div>
+      </div>
+      <label for="moc5z9j" class="commentText"><p>Rumor is Philly might be interested along with Brooklyn. </p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mobwkli" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Rakkuuuu | Raptors</div>
+        <div>4 | an hour ago </div>
+      </div>
+      <label for="mobwkli" class="commentText"><p>Kuminga is not good.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mobz2ty" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>iamjeseus | Knicks</div>
+        <div>3 | an hour ago </div>
+      </div>
+      <label for="mobz2ty" class="commentText"><p>If he was more talented, I doubt he would be getting benched</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="moc0yfz" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Marano94</div>
+        <div>3 | an hour ago </div>
+      </div>
+      <label for="moc0yfz" class="commentText"><p>Gui is a smarter player to play with Steph, better passer and better shooter too.</p>
+
+<p>The thing with Kuminga is he is much more athletic than anyone on the roster, you would think there should be some minutes for him no matter what.</p>
+
+<p>On a side note, the Jimmy + Podz pairing is insane lol.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="moc27re" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Helicase21 | GSW</div>
+        <div>3 | an hour ago </div>
+      </div>
+      <label for="moc27re" class="commentText"><p>The thing with JK is that you should be able to play him next to butler <em>or</em> Draymond but not both. Like Steph, Podz or Moody, Butler/Draymond, Kuminga, Post is probably enough spacing for him to be getting spot minutes. If we were back in 2022-23 and he was hitting 37% from 3 we&rsquo;d be having an entirely different conversation.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mobui9d" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Commercial-East4069 | Cavaliers</div>
+        <div>1 | 2 hours ago </div>
+      </div>
+      <label for="mobui9d" class="commentText"><p>Surely Santos played a ton right?</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mocat5u" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>baxmussman | Warriors</div>
+        <div>1 | 3 minutes ago </div>
+      </div>
+      <label for="mocat5u" class="commentText"><p>he&rsquo;s played 12 total minutes since JK got benched. but the minutes you&rsquo;d expect to go to JK have been going to Gui, Post, GP2, and to pretty noticeable extent over the last three games (LAC, play in vs MEM, and HOU game 1), just straight up Jimmy Butler. Jimmy has played 43mpg over those three games.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mobupjh" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>compoundinterest73</div>
+        <div>1 | 2 hours ago </div>
+      </div>
+      <label for="mobupjh" class="commentText"><p>I honestly feel bad for him. This is probably costing him ~50 million minimum.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="moc642x" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>acceptablerose99</div>
+        <div>1 | 29 minutes ago </div>
+      </div>
+      <label for="moc642x" class="commentText"><p>Then he should have listened to the coaches and developed the skills that would earn him minutes. </p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="moc4oxz" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>IcyCat35</div>
+        <div>1 | 37 minutes ago </div>
+      </div>
+      <label for="moc4oxz" class="commentText"><p>Try 100 million</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mobxe2y" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Spiritual_Wall_2309</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="mobxe2y" class="commentText"><p>Kuminga has too many ups and downs.  Hard to know what he can bring on any given night.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="moc0ec7" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Wavepops</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="moc0ec7" class="commentText"><p>If kuminga was Aaron Gordon he’d still be getting 35 mins. </p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="moc6cmd" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>acceptablerose99</div>
+        <div>1 | 27 minutes ago </div>
+      </div>
+      <label for="moc6cmd" class="commentText"><p>Because Aaron Gordon has extremely high basketball IQ which is why he fits right in next to Jokic. </p>
+
+<p>Kuminga has no timing or feel on when to cut or rotate on defense or anticipate a rebound. </p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="moc85ao" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Ok_Respond7928</div>
+        <div>1 | 17 minutes ago </div>
+      </div>
+      <label for="moc85ao" class="commentText"><p>I think it’s both. If Kuminga was talented enough they would make it work or he could make it work. But because he can’t shoot at a high level, isn’t a good enough defender and a low IQ player he can’t see the court. Yes before Jimmy was here they were able to use his talents as a slasher, downhill attacker and ISO skills but he wasn’t good enough at those things to help the team win.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="moc9fld" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>StefonDiggsHS | Mavericks</div>
+        <div>1 | 10 minutes ago </div>
+      </div>
+      <label for="moc9fld" class="commentText"><p>He also can’t shoot or dribble but ya know</p>
+
+<p>He’s Patrick Williams pls just admit it already</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="moc9ij3" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>youblewwit</div>
+        <div>1 | 10 minutes ago </div>
+      </div>
+      <label for="moc9ij3" class="commentText"><p>Kerr literally said this on one of the radio shows last week. He said JK and Jimmy don&rsquo;t fit, and since Jimmy is one of the best players in the league he&rsquo;ll be playing 40+mins and so their pairing just doesn&rsquo;t work.</p>
+
+<p>I guess he can play the 8 non-minutes Jimmy doesn&rsquo;t play, sure.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mobv2qg" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>nbaistheworst</div>
+        <div>-2 | 2 hours ago </div>
+      </div>
+      <label for="mobv2qg" class="commentText"><p>Now post Kuminga&rsquo;s +/- in the 3 games vs the Rockets.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mobwcs3" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Ok-Tree4365</div>
+        <div>-3 | an hour ago </div>
+      </div>
+      <label for="mobwcs3" class="commentText"><p>I think in the playoffs it is worth experimenting with Kuminga over Santos</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mobxkxb" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>notevenbro | Warriors</div>
+        <div>12 | an hour ago </div>
+      </div>
+      <label for="mobxkxb" class="commentText"><p>That’s exactly the opposite of the point of the post though. They did experiment with it, and gui is better in those minutes.</p>
+
+<p>The warriors offense is all about IQ, passing, moving, cutting, and making the right decision; which are all weak points for Kuminga.</p>
+
+<p>The team feels that having Gui’s hustle and IQ outweighs Kuminga’s raw talent.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="moc4r4f" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>IcyCat35</div>
+        <div>2 | 36 minutes ago </div>
+      </div>
+      <label for="moc4r4f" class="commentText"><p>Result: Kuminga bad</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
