@@ -1,0 +1,308 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.selfPostImage {
+  width: 100%;
+  height: auto;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/PathOfExile2/comments/1k69dnq/questions_and_testing_about_barbs_and_quill_burst/"><p>Questions and testing about Barbs and Quill Burst</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <p>I’ve been fooling around a bunch with Thorns stuff, and I have a bunch of questions about Barbs and Quill Burst. I’ve tried to test them myself, but haven’t been able to answer most of them.</p>
+
+<p>Full list of questions:</p>
+
+<ul>
+<li>Do Barbs and Quill Burst “snapshot” the Thorns damage you retaliate with when you trigger them, or are they based on your current Thorns damage when you use the supported skill? <strong>No snapshot, current Thorns damage.</strong></li>
+<li>Does Crackling Barrier still apply for Barbs and Quill Burst when “releasing” a supported channeling effect? <strong>Yes.</strong></li>
+<li>Does Barbs damage scale with the Attack Damage of the supported strike? *Uncertain, but I think “*<strong><em>Yes</em></strong><em>.”</em></li>
+<li>Does Barbs damage scale with other damage modifiers (e.g. from items or passives) that apply to the supported strike? <em>Unknown.</em></li>
+<li>Does Barbs damage scale with Thorns modifiers? <em>Unknown.</em></li>
+<li>Same questions as the last three, but for Quill Burst. <em>Unknown.</em></li>
+<li>Do Thorns Critical Hit Chance/Damage Bonus (e.g. Thornhide notable and the small nodes leading to it), or Thorns Damage Leeched as Life (e.g. Vengeance notable), have any effect on Barbs or Quill Burst? <em>Unknown.</em></li>
+</ul>
+
+<h1 id="testing-i-ve-tried">Testing I’ve tried:</h1>
+
+<blockquote>
+<p>Do Barbs and Quill Burst “snapshot” the Thorns damage you retaliate with when you trigger them, or are they based on your current Thorns when you use the supported skill?</p>
+</blockquote>
+
+<p><strong>Conclusion:</strong> Both support gems use your <em>current</em> Thorns damage. They do not “snapshot” the Thorns damage you retaliated with.</p>
+
+<p><strong>Setup:</strong></p>
+
+<ul>
+<li>Raise Shield–Crackling Barrier</li>
+<li>Boneshatter–Barbs–Quill Burst</li>
+<li>No other Thorns damage</li>
+<li>No other Lightning damage</li>
+<li>Take hit and retaliate with Lightning Thorns damage from Crackling Barrier.</li>
+<li>Attack with Boneshatter without taking another hit.</li>
+</ul>
+
+<p><strong>Result:</strong> The retaliation hit clearly shows the little “sparks” from dealing Lightning damage, the Boneshatter hit does not. Also Shocked a target several times with Raise Shield up, but never with Boneshatter.</p>
+
+<blockquote>
+<p>Does Crackling Barrier still apply for Barbs and Quill Burst when “releasing” a supported channeling effect?</p>
+</blockquote>
+
+<p><strong>Conclusion:</strong> Yes, Crackling Barrier is considered part of your Thorns damage in this scenario.</p>
+
+<p><strong>Setup:</strong></p>
+
+<ul>
+<li>Perfect Strike–Crackling Barrier–Barbs</li>
+<li>Trigger Barbs by retaliating</li>
+<li>No other Lightning damage</li>
+<li>Attack with Perfect Strike</li>
+<li>Repeat but with Quill Burst (I didn’t have a 4-support Perfect Strike handy)</li>
+</ul>
+
+<p><strong>Result:</strong> Clear “sparks” on the Perfect Strike hit, several Shocks observed from Perfect Strike.</p>
+
+<p><strong>Comment:</strong> It is truly stupid that Perfect Strike is the only melee channelling strike in the game.</p>
+
+<blockquote>
+<p>Does Barbs damage scale with the Attack Damage of the supported strike?</p>
+</blockquote>
+
+<p><strong>Conclusion:</strong> <em>Uncertain</em>, but I believe the answer is “Yes.”</p>
+
+<p><strong>Setup 1:</strong></p>
+
+<ul>
+<li>Boneshatter (L2)–Barbs</li>
+<li>10 stacks of Scavenged Plating</li>
+<li>Worst hammer Renly had for sale</li>
+<li>Trigger Barbs</li>
+<li>Attack boss with Boneshatter, note damage</li>
+<li>Boneshatter (L13)–Barbs</li>
+<li>10 stacks of Scavenged Plating</li>
+<li>Take hit and retaliate with Thorns damage</li>
+<li>Attack boss with Boneshatter, note damage</li>
+</ul>
+
+<p><strong>Result 2:</strong> A lot of variance in the damage, but typical damage values for the L2 Boneshatter were around 1k, while for L13 Boneshatter, they were around 2k.  Much of the variance might be explained as critical hits. I did not record damage consistently enough to attempt to do solid statistical analysis here, though.</p>
+
+<p><strong>Setup 2:</strong></p>
+
+<ul>
+<li>Perfect Strike (L13)–Crackling Barrier–Barbs</li>
+<li>~1000 Mana</li>
+<li>Worst hammer Renly had for sale</li>
+<li>Trigger Barbs</li>
+<li>Attack boss with imperfect Perfect Strike, note damage</li>
+<li>Attack boss with perfect Perfect Strike, note damage</li>
+</ul>
+
+<p><strong>Result 2:</strong> As expected, perfect hits seemed to do ~4× the damage. I’m not very good at timing perfect hits, though, and there’s a lot to juggle here, so I’m not super-confident in the results.</p>
+
+<p><strong>Comment:</strong> If I’m correct and the answer is Yes, it makes the usual approach of Rapid Assault more questionable. Though I see a lot of people talking about Rake now, anyway, so that might be irrelevant.</p>
+
+<p>The other questions, I was unable to test. It dawned on me as I wrote this that weapon swapped passive trees could allow for <em>relatively</em> easy testing of Thorns damage scaling vs. Attack damage scaling, but I haven’t tried it yet, and “relatively easy” is still going to be a pain.</p>
+
+<p>Does anyone have any solid answers on these? Especially anything pulled from the data would be great, since this “just try it and see” approach is fiddly and often inconclusive.</p>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+    </div>
+  </body>
+</html>
