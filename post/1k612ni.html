@@ -1,0 +1,238 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.selfPostImage {
+  width: 100%;
+  height: auto;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/PathOfExile2/comments/1k612ni/psaseo_reminder_use_the_community_wiki_block_the/"><p>PSA/SEO reminder: use the community wiki, block the other(s)</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <p>Have been doing some searching recently while I figure out how to make my build suck less, and realized I had ublock disabled and was seeing a lot of &ldquo;junk&rdquo; in my search results. Figured I&rsquo;d make a PSA post since I remember we had one when first transitioning away from fandom about how to clean them up to only show what you actually wanted to see. For example, right now on google, &ldquo;poe 2 wiki&rdquo; has fextralife as the top result despite that wiki being&hellip; disliked, shall we say.</p>
+
+<p>Thankfully the community wiki is not far below and it seems fandom hasn&rsquo;t tried to revive their grasp on poe, but still good to remind people to avoid links to bad wikis like the plague. Over time they&rsquo;ll fall in the rankings, but until then and to encourage that fall, here&rsquo;s a tip on how to avoid accidents.</p>
+
+<p>If you use ublock origin or an equivalent, you might want to consider adding some lines like these to your custom filters:</p>
+
+<pre><code>google.*###rso .MjjYud a[href*=&quot;fextralife.com&quot;]:upward(.MjjYud)
+duckduckgo.com##.react-results--main &amp;gt; li:has(a[href*=&quot;fextralife.com&quot;])
+</code></pre>
+
+<p>which will remove any sites linking to fextralife from your search results in google and duckduckgo. Additionally, you can add a line saying<br>
+<code>||fextralife.com^$all</code><br>
+which will pop up a full page warning if you do accidentally click a link to fextralife to let you return to safety.</p>
+
+<p>If you play other games that <em>only</em> have these bad wikis as options, first of all, my condolences, but you can change the above rules to be for the &ldquo;pathofexile2.wiki.fextralife.com&rdquo; site in particular instead of every &ldquo;fextralife.com&rdquo; result.</p>
+
+<p>This optional extra specification can also be useful if, for example, you don&rsquo;t want to see maxroll guides in results for looking up unique items or skill names, but still want maxroll to show up normally by having your filter be for<code>maxroll.gg/poe2/build-guides</code>. That way, a build guide isn&rsquo;t the top result when searching for &ldquo;poe 2 flicker strike&rdquo; while still letting you search &amp; find all the other parts of maxroll just fine and also won&rsquo;t interfere with visiting a maxroll build guide page. As an aside, major props to the maxroll team for their work on poe 2 community tools and guides. This is just a situation that I noticed while looking for gem level info that works well as an example of how to customize these filters for subpages.</p>
+
+<p>If you use some other search engine, you&rsquo;ll have to do some searching to find the right formatting. I know quenhus on github is runs a big search result filter for developer sites, so you can probably copy whatever they&rsquo;re doing?</p>
+
+<p>If you don&rsquo;t use ublock origin or would rather not create custom filters for whatever reason, I know there are browser extensions like indie wiki buddy (getindie.wiki) which are specifically made to rearrange search results to promote community wikis. I don&rsquo;t personally use that extension, so can&rsquo;t vouch for it myself, but I have heard good things and the reviews look decent. It may be worthwhile to use both it and ublock since it seems like the indie wiki buddy has it redirect rather than simply hiding the result, which may be nice.</p>
+
+<p>Honestly, most people on the subreddit probably already know to use the community wiki. We have a link to it on the sidebar, so decent chance I&rsquo;m preaching to the choir here. But there are a lot of new players, so maybe this will reach them and remind y&rsquo;all to spread the word to the fresh exiles you run into. Don&rsquo;t let them visit the wrong wiki; nobody deserves such a terrible fate. Plus this info can be useful for other games too, but I mostly have noticed it with poe 2 since it&rsquo;s new and the community wiki exists but hasn&rsquo;t hit the top of all the search results yet.</p>
+
+<p>Anyway&hellip; I hate fextralife &amp; fandom, and you should too. Tldr: don&rsquo;t click links to &ldquo;wrong&rdquo; wikis to slowly derank them in search results. Consider using blockers/other extensions to remove them completely.</p>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+    </div>
+  </body>
+</html>
