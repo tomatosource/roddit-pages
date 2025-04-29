@@ -1,0 +1,322 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.selfPostImage {
+  width: 100%;
+  height: auto;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/PathOfExile2/comments/1kafb6n/the_way_player_stun_threshold_is_functioning_in/"><p>The way player stun threshold is functioning in 0.2.0 feels seriously woeful to contend with</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <p>Haven&rsquo;t seen anyone really talking about this.</p>
+
+<p>Is anyone else being constantly light stunned 10+ times per map? I don&rsquo;t remember it being this oppressive in 0.1.0.</p>
+
+<p>It&rsquo;s kind of ridiculous and frankly I hate the way &ldquo;light&rdquo; stuns are currently functioning. Any pissant white mob that deals any damage to me at all can easily stun me. It only takes being hit by 1-2 instances of damage from any source, and both my movement and skill rotation will be interrupted for like &amp;lt;0.5s. My stun charm goes off but it really makes no difference because it&rsquo;s the interruption itself that feels so awful.</p>
+
+<p>This is how it currently works:</p>
+
+<blockquote>
+<p><em>Hits have a chance to stun to apply a Light Stun based on their damage compared to the target&rsquo;s maximum life. The chance to apply Light Stun scales up to 100% chance for hits that deal 100% of the target&rsquo;s maximum life. Any chance below 10% is discarded. Blocked hits still have a chance to Light Stun. Light Stun lasts a fraction of a second.</em></p>
+
+<p><em>Players have 50% more Light Stun Threshold per time they were Light Stunned in the past 4 seconds.</em></p>
+
+<p><em>For players, physical damage and melee hits have a 50% more chance to apply Light Stun compared to other damage types. These bonuses are multiplicative, meaning a physical melee hit is 125% more effective at stunning than damage types of neither.</em></p>
+</blockquote>
+
+<p>My opinion? I shouldn&rsquo;t be getting stunned by random projectiles or melee attacks unless the skill a monster used is telegraphed as a stun.</p>
+
+<p>They want combo gameplay, yet I take between 1-2 instances of damage from any hit, and I get stunned. My ability to combo a rotation is actively hindered because there are monsters around me. My Lich has 1.5KHP + 4.1K ES, not every build is going to want a ton of life on gear, you can&rsquo;t get it outside of attributes on passive tree, attributes which most builds are already starving for.</p>
+
+<p>It is seriously unfun to be constantly light stunned because I got clipped by a projectile and one monster got in a melee attack. The amount of shit flying at the player is so high, it is impossible to never get hit without clearing the entire screen instantly.</p>
+
+<p>I understand there are options to gain % of ES as stun threshold, I still think that the player stun buildup from hits feels unbalanced right now. It&rsquo;s an absolute joke to see a tiny white monster come up to me, hit me once and now I&rsquo;m stunned. Player stun threshold for light stuns could be 100%-300% higher than it is right now and it would feel better.</p>
+
+<p>I don&rsquo;t think it&rsquo;s far fetched to think that I should not be losing control of my character because I got hit once or twice by a white monster. If I allow myself to be surrounded and I take more than 4-5+ hits consecutively, sure I guess. 1-2? No, lol.</p>
+
+<p>It&rsquo;s not a fun problem to solve, it is the type of gameplay issue I question the reality of each time it happens.</p>
+
+<p>When you get stunned in a MOBA, you know you were stunned because you failed to avoid an ability with crowd control. When you get stunned in POE2, it&rsquo;s because you got auto attacked by a minion.</p>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mplu699" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>froobilicious</div>
+        <div>1 | 9 minutes ago </div>
+      </div>
+      <label for="mplu699" class="commentText"><p>Did you spec into stun threshold or not?</p>
+
+<p>I had issues with ailments and stun, specced into them/got a bit on gear, had no problems with either from then on</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mplv4j5" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>DripKing2k</div>
+        <div>1 | a minute ago </div>
+      </div>
+      <label for="mplv4j5" class="commentText"><p>I’ve specced into the nodes that give 30% and 18% increased threshold w 6k es and the problem does not get better lmao. That’s not the problem</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mplu924" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Bill_Door_8</div>
+        <div>1 | 8 minutes ago </div>
+      </div>
+      <label for="mplu924" class="commentText"><p>As a ranged player (deadeye) i haven&rsquo;t had any issues with stuns or ailments in general in 0.2</p>
+
+<p>But that&rsquo;s likely because of decent evade (83%) and because few mobs actually get close enough to land hits on me.</p>
+
+<p>I also dodge / roll when I see a giant guerilla charging at me and leap through the air to land a slam.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mplunbh" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>chaoskiller237</div>
+        <div>1 | 5 minutes ago </div>
+      </div>
+      <label for="mplunbh" class="commentText"><p>No need to worry about stun if you explode the screen in 1 button &ldquo;combo gameplay&rdquo;</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
