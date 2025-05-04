@@ -1,0 +1,2710 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.selfPostImage {
+  width: 100%;
+  height: auto;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/nba/comments/1kerrg8/longform_revisiting_hardens_reputation_as_a/"><p>[Longform] Revisiting Harden&rsquo;s reputation as a playoff choker: A detailed, numbers-driven analysis</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <h5 id="this-is-a-revisit-of-a-similar-post-i-made-a-few-days-ago-examining-harden-s-reputation-of-being-a-playoff-choker-i-received-a-lot-of-feedback-via-comments-on-various-changes-i-could-make-to-more-faithfully-tackle-the-question-plus-we-ve-got-an-extra-elimination-game-data-point-with-the-clippers-loss-last-night-so-i-figured-i-d-post-this-one-more-time-with-some-more-data-and-additional-changes">This is a revisit of a similar post I made a few days ago, examining Harden&rsquo;s reputation of being a &ldquo;playoff choker&rdquo;. I received a lot of feedback via comments on various changes I could make to more faithfully tackle the question, plus we&rsquo;ve got an extra elimination game data point with the Clippers loss last night, so I figured I&rsquo;d post this one more time with some more data and additional changes.</h5>
+
+<p>A very popular opinion - especially online - is that Harden is a <strong><em>massive</em></strong> playoff choker. It feels like this opinion really started to gain traction in 2016-17, at a time when the Rockets repeatedly ran into the buzzsaw that was the Golden State Warriors&rsquo; and their various superteams, and he&rsquo;s never been able to shake the label.</p>
+
+<p>#But is it fair to call him a choker?</p>
+
+<p>###Defining a choker:</p>
+
+<p>I&rsquo;ve seen a lot of different definitions, from numbers-driven (stats decreasing from regular season to playoffs), results-driven (never won a ring as &ldquo;the guy&rdquo; on a team), and vibes-driven (doesn&rsquo;t seem to have &ldquo;it&rdquo; in the big games). So which is it? What makes a player a choker? For the purposes of this breakdown, I&rsquo;ll stick with factors that we can measure:</p>
+
+<ol>
+<li>Significant counting stats decrease from regular season to playoffs.</li>
+<li>Consistent inability to perform in elimination games.</li>
+<li>Comparatively poor playoff performance relative to peers.</li>
+</ol>
+
+<p>So, with that in mind, let&rsquo;s take a look at the numbers&hellip;</p>
+
+<hr>
+
+<h1 id="comparing-counting-stats-and-averages-as-a-starter-in-regular-season-rs-versus-the-playoffs-po">Comparing counting stats and averages as a starter in regular season (RS) versus the playoffs (PO):</h1>
+
+<table>
+<thead>
+<tr>
+<th align="center">Season</th>
+<th align="center">Team</th>
+<th align="center">Points (RS)</th>
+<th align="center">Points (PO)</th>
+<th align="center">FG% (RS)</th>
+<th align="center">FG% (PO)</th>
+<th align="center">3P% (RS)</th>
+<th align="center">3P% (PO)</th>
+<th align="center">eFG% (RS)</th>
+<th align="center">eFG% (PO)</th>
+<th align="center">Reb (RS)</th>
+<th align="center">Reb (PO)</th>
+<th align="center">Ast (RS)</th>
+<th align="center">Ast (PO)</th>
+<th align="center">Stl (RS)</th>
+<th align="center">Stl (PO)</th>
+<th align="center">TO (RS)</th>
+<th align="center">TO (PO)</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="center">2013</td>
+<td align="center">HOU</td>
+<td align="center">25.9</td>
+<td align="center"><strong>26.3</strong></td>
+<td align="center">43.8%</td>
+<td align="center">39.1%</td>
+<td align="center">36.8%</td>
+<td align="center">34.1%</td>
+<td align="center">50.4%</td>
+<td align="center">45.7%</td>
+<td align="center">4.9</td>
+<td align="center"><strong>6.7</strong></td>
+<td align="center">5.8</td>
+<td align="center">4.5</td>
+<td align="center">1.8</td>
+<td align="center"><strong>2.0</strong></td>
+<td align="center">3.8</td>
+<td align="center">4.5</td>
+</tr>
+
+<tr>
+<td align="center">2014</td>
+<td align="center">HOU</td>
+<td align="center">25.4</td>
+<td align="center">26.8</td>
+<td align="center">45.6%</td>
+<td align="center">37.6%</td>
+<td align="center">36.6%</td>
+<td align="center">29.6%</td>
+<td align="center">52.9%</td>
+<td align="center">43.6%</td>
+<td align="center">4.7</td>
+<td align="center">4.7</td>
+<td align="center">6.1</td>
+<td align="center">5.8</td>
+<td align="center">1.6</td>
+<td align="center"><strong>2.0</strong></td>
+<td align="center">3.6</td>
+<td align="center"><strong>3.5</strong></td>
+</tr>
+
+<tr>
+<td align="center">2015</td>
+<td align="center">HOU</td>
+<td align="center">27.4</td>
+<td align="center">27.2</td>
+<td align="center">44.0%</td>
+<td align="center">43.9%</td>
+<td align="center">37.5%</td>
+<td align="center"><strong>38.3%</strong></td>
+<td align="center">51.1%</td>
+<td align="center">50.9%</td>
+<td align="center">5.7</td>
+<td align="center">5.7</td>
+<td align="center">7.0</td>
+<td align="center"><strong>7.5</strong></td>
+<td align="center">1.9</td>
+<td align="center">1.6</td>
+<td align="center">4.0</td>
+<td align="center">4.5</td>
+</tr>
+
+<tr>
+<td align="center">2016</td>
+<td align="center">HOU</td>
+<td align="center">29.0</td>
+<td align="center">26.6</td>
+<td align="center">43.9%</td>
+<td align="center">41.0%</td>
+<td align="center">35.9%</td>
+<td align="center">31.0%</td>
+<td align="center">51.2%</td>
+<td align="center">47.5%</td>
+<td align="center">6.1</td>
+<td align="center">5.2</td>
+<td align="center">7.5</td>
+<td align="center"><strong>7.6</strong></td>
+<td align="center">1.7</td>
+<td align="center"><strong>2.4</strong></td>
+<td align="center">4.6</td>
+<td align="center">5.2</td>
+</tr>
+
+<tr>
+<td align="center">2017</td>
+<td align="center">HOU</td>
+<td align="center">29.1</td>
+<td align="center">28.5</td>
+<td align="center">44.0%</td>
+<td align="center">41.3%</td>
+<td align="center">34.7%</td>
+<td align="center">27.8%</td>
+<td align="center">52.5%</td>
+<td align="center">48.6%</td>
+<td align="center">8.1</td>
+<td align="center">5.5</td>
+<td align="center">11.2</td>
+<td align="center">8.5</td>
+<td align="center">1.5</td>
+<td align="center"><strong>1.9</strong></td>
+<td align="center">5.7</td>
+<td align="center"><strong>5.4</strong></td>
+</tr>
+
+<tr>
+<td align="center">2018</td>
+<td align="center">HOU</td>
+<td align="center">30.4</td>
+<td align="center">28.6</td>
+<td align="center">44.9%</td>
+<td align="center">41.0%</td>
+<td align="center">36.7%</td>
+<td align="center">29.9%</td>
+<td align="center">54.1%</td>
+<td align="center">47.8%</td>
+<td align="center">5.4</td>
+<td align="center">5.2</td>
+<td align="center">8.8</td>
+<td align="center">6.8</td>
+<td align="center">1.8</td>
+<td align="center"><strong>2.2</strong></td>
+<td align="center">4.4</td>
+<td align="center"><strong>3.8</strong></td>
+</tr>
+
+<tr>
+<td align="center">2019</td>
+<td align="center">HOU</td>
+<td align="center">36.1</td>
+<td align="center">31.6</td>
+<td align="center">44.2%</td>
+<td align="center">41.3%</td>
+<td align="center">36.8%</td>
+<td align="center">35.0%</td>
+<td align="center">54.1%</td>
+<td align="center">50.4%</td>
+<td align="center">6.6</td>
+<td align="center"><strong>6.9</strong></td>
+<td align="center">7.5</td>
+<td align="center">7.5</td>
+<td align="center">2.0</td>
+<td align="center"><strong>2.2</strong></td>
+<td align="center">5.0</td>
+<td align="center"><strong>4.6</strong></td>
+</tr>
+
+<tr>
+<td align="center">2020</td>
+<td align="center">HOU</td>
+<td align="center">34.3</td>
+<td align="center">29.6</td>
+<td align="center">44.4%</td>
+<td align="center"><strong>47.8%</strong></td>
+<td align="center">35.5%</td>
+<td align="center">33.3%</td>
+<td align="center">54.3%</td>
+<td align="center"><strong>56.4%</strong></td>
+<td align="center">6.6</td>
+<td align="center">5.6</td>
+<td align="center">7.5</td>
+<td align="center"><strong>7.7</strong></td>
+<td align="center">1.8</td>
+<td align="center">1.5</td>
+<td align="center">4.5</td>
+<td align="center"><strong>3.8</strong></td>
+</tr>
+
+<tr>
+<td align="center">2021</td>
+<td align="center">HOU/BRK</td>
+<td align="center">24.6</td>
+<td align="center"><strong>27.9</strong></td>
+<td align="center">46.6%</td>
+<td align="center"><strong>55.0%</strong></td>
+<td align="center">36.2%</td>
+<td align="center"><strong>46.1%</strong></td>
+<td align="center">54.8%</td>
+<td align="center"><strong>67.8%</strong></td>
+<td align="center">7.9</td>
+<td align="center">7.2</td>
+<td align="center">10.8</td>
+<td align="center">10.6</td>
+<td align="center">1.2</td>
+<td align="center"><strong>2</strong></td>
+<td align="center">4.0</td>
+<td align="center"><strong>2.8</strong></td>
+</tr>
+
+<tr>
+<td align="center">2022</td>
+<td align="center">BRK/PHI</td>
+<td align="center">22.0</td>
+<td align="center">18.6</td>
+<td align="center">41.0%</td>
+<td align="center">40.5%</td>
+<td align="center">33.0%</td>
+<td align="center"><strong>36.8%</strong></td>
+<td align="center">48.5%</td>
+<td align="center"><strong>49.4%</strong></td>
+<td align="center">7.7</td>
+<td align="center">5.7</td>
+<td align="center">10.3</td>
+<td align="center">8.6</td>
+<td align="center">1.3</td>
+<td align="center">0.8</td>
+<td align="center">4.4</td>
+<td align="center"><strong>4.2</strong></td>
+</tr>
+
+<tr>
+<td align="center">2023</td>
+<td align="center">PHI</td>
+<td align="center">21.0</td>
+<td align="center">20.3</td>
+<td align="center">44.1%</td>
+<td align="center">39.3%</td>
+<td align="center">38.5%</td>
+<td align="center">37.8%</td>
+<td align="center">53.6%</td>
+<td align="center">47.8%</td>
+<td align="center">6.1</td>
+<td align="center"><strong>6.2</strong></td>
+<td align="center">10.7</td>
+<td align="center">8.3</td>
+<td align="center">1.2</td>
+<td align="center"><strong>1.8</strong></td>
+<td align="center">3.4</td>
+<td align="center"><strong>3.2</strong></td>
+</tr>
+
+<tr>
+<td align="center">2024</td>
+<td align="center">LAC</td>
+<td align="center">16.6</td>
+<td align="center"><strong>21.2</strong></td>
+<td align="center">42.8%</td>
+<td align="center"><strong>44.9%</strong></td>
+<td align="center">38.1%</td>
+<td align="center"><strong>38.3%</strong></td>
+<td align="center">54.1%</td>
+<td align="center"><strong>55.1%</strong></td>
+<td align="center">5.1</td>
+<td align="center">4.5</td>
+<td align="center">8.5</td>
+<td align="center">8.0</td>
+<td align="center">1.1</td>
+<td align="center">1.0</td>
+<td align="center">2.6</td>
+<td align="center"><strong>2.3</strong></td>
+</tr>
+
+<tr>
+<td align="center">2025</td>
+<td align="center">LAC</td>
+<td align="center">22.8</td>
+<td align="center">18.7</td>
+<td align="center">41.0%</td>
+<td align="center"><strong>43.6%</strong></td>
+<td align="center">35.2%</td>
+<td align="center"><strong>36.4%</strong></td>
+<td align="center">50.1%</td>
+<td align="center"><strong>51.5%</strong></td>
+<td align="center">5.8</td>
+<td align="center">5.4</td>
+<td align="center">8.7</td>
+<td align="center"><strong>9.1</strong></td>
+<td align="center">1.5</td>
+<td align="center">1.3</td>
+<td align="center">4.3</td>
+<td align="center"><strong>3.0</strong></td>
+</tr>
+</tbody>
+</table>
+<p>So above we have a table of Harden&rsquo;s counting stats and averages for each season he&rsquo;s been a starter, for both regular season and playoffs. I&rsquo;ve bolded the years/stats where his playoff averages were better than his regular season averages.</p>
+
+<p>Due to feedback in my previous post that the Nets vs. Bucks series in 2021 shouldn&rsquo;t count against Harden (he played through a Grade 2 hamstring injury), I&rsquo;ve modified the averages for the 2021 season to remove those 3 games.</p>
+
+<p>The exclusion of the three 2021 playoff games where Harden was hampered by the hamstring injury raises his 2021 playoff averages substantially:</p>
+
+<p>Points: from 20.2 → 27.9</p>
+
+<p>FG% from 47.2 → 55.0</p>
+
+<p>3P% from 36.4 → 46.1</p>
+
+<p>eFG% from 58.3 → 67.8</p>
+
+<p>Rebounds: from 6.3 → 7.2</p>
+
+<p>Assists: from 8.6 → 10.6</p>
+
+<p>Steals: from 1.7 → 2.0</p>
+
+<p>Turnovers: from 3.9 → 2.8</p>
+
+<p>The impact to his overall playoff averages was minimal, though.</p>
+
+<p>Anyway, there&rsquo;s good data in there, but let&rsquo;s distill it down a little further:</p>
+
+<table>
+<thead>
+<tr>
+<th align="center">Stat</th>
+<th align="center">Reg. Szn</th>
+<th align="center">Playoffs</th>
+<th align="center">Difference</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="center"><strong>Points</strong></td>
+<td align="center">26.5</td>
+<td align="center">25.5</td>
+<td align="center">-1.0</td>
+</tr>
+
+<tr>
+<td align="center"><strong>FG%</strong></td>
+<td align="center">43.87%</td>
+<td align="center">42.79%</td>
+<td align="center">-1.08%</td>
+</tr>
+
+<tr>
+<td align="center"><strong>3P%</strong></td>
+<td align="center">36.27%</td>
+<td align="center">34.95%</td>
+<td align="center">-1.32%</td>
+</tr>
+
+<tr>
+<td align="center"><strong>eFG%</strong></td>
+<td align="center">52.44%</td>
+<td align="center">50.96%</td>
+<td align="center">-1.48%</td>
+</tr>
+
+<tr>
+<td align="center"><strong>TS%</strong></td>
+<td align="center">60.15%</td>
+<td align="center">58.60%</td>
+<td align="center">-1.55%</td>
+</tr>
+
+<tr>
+<td align="center"><strong>Rebounds</strong></td>
+<td align="center">6.21</td>
+<td align="center">5.73</td>
+<td align="center">-0.48</td>
+</tr>
+
+<tr>
+<td align="center"><strong>Assists</strong></td>
+<td align="center">8.49</td>
+<td align="center">7.73</td>
+<td align="center">-0.76</td>
+</tr>
+
+<tr>
+<td align="center"><strong>Steals</strong></td>
+<td align="center">1.57</td>
+<td align="center">1.75</td>
+<td align="center">+0.18</td>
+</tr>
+
+<tr>
+<td align="center"><strong>Turnovers</strong></td>
+<td align="center">4.18</td>
+<td align="center">3.91</td>
+<td align="center">-0.27</td>
+</tr>
+</tbody>
+</table>
+<p>Alright, so just about across the board, Harden&rsquo;s stats do indeed take a dip in the playoffs. It&rsquo;s not a nosedive by any stretch of the imagination, but it&rsquo;s measurably worse. The drop off in efficiency is notable, though I&rsquo;d imagine that&rsquo;s pretty common across the league. The only traditional counting stats that Harden improves on in the playoffs are steals and - maybe surprisingly to some - turnovers. He averages 0.18 more steals per game in the playoffs, and a little over <sup>1</sup>&frasl;<sub>4</sub> fewer turnovers per game.</p>
+
+<p>#####So Harden&rsquo;s stats <em>do</em> decrease in the playoffs, though not significantly.</p>
+
+<hr>
+
+<p>#Let&rsquo;s take a look at the highs and lows of Harden in the playoffs (games that he&rsquo;s started and played &amp;gt;30 minutes).</p>
+
+<p>Previously I had focused solely on points to select the games we focused on here, but this time around I&rsquo;m going to select the games by John Hollinger&rsquo;s &ldquo;GameScore&rdquo;, which you can read more about <a href="https://www.basketball-reference.com/about/glossary.html#:~:text=GmSc%20%2D%20Game%20Score,average%20performance%2C%20etc." target="_blank">here</a>.).</p>
+
+<p>I&rsquo;m also throwing in two recent games to represent the current version of Harden: G6 and G7 of their series against Denver. I&rsquo;m still including points scored and the deviation from his playoff average (25.5 ppg) as a simple data point:</p>
+
+<table>
+<thead>
+<tr>
+<th align="center">Game #</th>
+<th align="left">Series/Game</th>
+<th align="center">GameScore</th>
+<th align="center">Result</th>
+<th align="center">Minutes Played</th>
+<th align="center">Points Scored</th>
+<th align="center">Deviation from Avg</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="center">135</td>
+<td align="left">2021 G5 ECSF Home</td>
+<td align="center">0.3</td>
+<td align="center">W</td>
+<td align="center">45.39</td>
+<td align="center">5</td>
+<td align="center">-20.5</td>
+</tr>
+
+<tr>
+<td align="center">72</td>
+<td align="left">2015 G5 WCF Road <strong>ELIM</strong></td>
+<td align="center">1</td>
+<td align="center">L</td>
+<td align="center">43.15</td>
+<td align="center">14</td>
+<td align="center">-11.5</td>
+</tr>
+
+<tr>
+<td align="center">88</td>
+<td align="left">2017 G6 WCSF Home <strong>ELIM</strong></td>
+<td align="center">1.4</td>
+<td align="center">L</td>
+<td align="center">36.36</td>
+<td align="center">10</td>
+<td align="center">-15.5</td>
+</tr>
+
+<tr>
+<td align="center">165</td>
+<td align="left">2024 G5 WC1 Home</td>
+<td align="center">1.9</td>
+<td align="center">L</td>
+<td align="center">32.54</td>
+<td align="center">7</td>
+<td align="center">-18.5</td>
+</tr>
+
+<tr>
+<td align="center">73</td>
+<td align="left">2016 G1 WC1 Road</td>
+<td align="center">2.6</td>
+<td align="center">L</td>
+<td align="center">32.03</td>
+<td align="center">17</td>
+<td align="center">-8.5</td>
+</tr>
+
+<tr>
+<td align="center">173</td>
+<td align="left">2025 G7 WC1 Road <strong>ELIM</strong></td>
+<td align="center">13.5</td>
+<td align="center">L</td>
+<td align="center">35.27</td>
+<td align="center">7</td>
+<td align="center">-18.5</td>
+</tr>
+
+<tr>
+<td align="center">172</td>
+<td align="left">2025 G6 WC1 Home <strong>ELIM</strong></td>
+<td align="center">23.3</td>
+<td align="center">W</td>
+<td align="center">46.35</td>
+<td align="center">28</td>
+<td align="center">2.5</td>
+</tr>
+
+<tr>
+<td align="center">133</td>
+<td align="left">2021 G5 EC1 Home</td>
+<td align="center">36.9</td>
+<td align="center">W</td>
+<td align="center">39.18</td>
+<td align="center">34</td>
+<td align="center">8.5</td>
+</tr>
+
+<tr>
+<td align="center">69</td>
+<td align="left">2015 G2 WCF Road</td>
+<td align="center">38.7</td>
+<td align="center">L</td>
+<td align="center">40.59</td>
+<td align="center">38</td>
+<td align="center">12.5</td>
+</tr>
+
+<tr>
+<td align="center">131</td>
+<td align="left">2021 G3 EC1 Road</td>
+<td align="center">40.5</td>
+<td align="center">L</td>
+<td align="center">39.14</td>
+<td align="center">41</td>
+<td align="center">15.5</td>
+</tr>
+
+<tr>
+<td align="center">71</td>
+<td align="left">2015 G4 WCF Home <strong>ELIM</strong></td>
+<td align="center">41</td>
+<td align="center">W</td>
+<td align="center">39.21</td>
+<td align="center">45</td>
+<td align="center">19.5</td>
+</tr>
+
+<tr>
+<td align="center">157</td>
+<td align="left">2023 G4 ESCF Home</td>
+<td align="center">43.9</td>
+<td align="center">W</td>
+<td align="center">47.24</td>
+<td align="center">42</td>
+<td align="center">16.5</td>
+</tr>
+</tbody>
+</table>
+<p>Selecting games using GameScore allows us to look at more than just points output, since Harden&rsquo;s game is admittedly much deeper than just dumping points on opposing teams. In the selection of games we&rsquo;re observing here, Harden is 4-2 at his best and 1-5 at his worst.</p>
+
+<p>Let&rsquo;s focus on the best and worst for a second:</p>
+
+<p>#####THE WORST
+In my previous post, I tabbed Harden&rsquo;s performance with the Nets in G5 of the Eastern Conference Semifinals against the Bucks as his worst game based on him only scoring 5 points in 45+ minutes. Commenters fairly pointed out that he played this series severely hampered by a grade 2 hamstring injury, so let&rsquo;s not focus on that game. Let&rsquo;s instead focus on the game that arguably cemented his reputation as a choker: G6 of the 2017 Western Conference Semifinals, against the Spurs. Honestly, it was between this one and G5 of the 2015 Western Conference Finals against the Warriors, but I gave the edge to the Spurs game because of its imfamy in basketball lore. Harden put up 10 points going 2-11 from the field (2-9 from three), had a paltry 3 rebounds, 6 turnovers, and fouled out with a little over 3 minutes left in the 4th with the game well out of reach. This was all against the Kawhi-less Spurs, at home, on the heels of a G5 that saw Harden&rsquo;s game tying three attempt in OT get stuffed by a 40 y/o Manu Ginobli - it was bad vibes all around entering this game. Harden was listless and passive all game, notching as many points as he had turnovers (5), allowing the Spurs to enter the half up 61-42. It was all downhill from there, as Harden would go on to score 5 points on 1-9 shooting in the 2nd half to go along with 3 fouls, 1 turnover; the Spurs would win by 39.</p>
+
+<p>#####THE BEST
+In the last post, I focused on Harden&rsquo;s 2015 G4 WCF performance against the &ldquo;Death Lineup&rdquo; Warriors. It was an admirable effort, considering it was an elimination game, but the Rockets would go on to lose the series 4-1 and there&rsquo;s another game with a higher GameScore we can look at: his 2023 Eastern Conference Semifinals performance with the Sixers against the Seltics. This was an OT thriller that ended 116-115, netting the series up 2-2, and Harden was a flamethrower: 42 points on .696/.<sup>667</sup>&frasl;<sub>1</sub>.00 shooting, with 8 rebounds, 9 assists, 4 steals, 1 block, and only 1 turnover. It was a vintage Harden performance, with gutty drives into the paint, clutch threes, impressive off-ball defense, and smart facilitating - it was everything you could&rsquo;ve wanted from him in a playoff game.</p>
+
+<p>######So which is more meaningful?</p>
+
+<p>What carries more weight here: his best games, or his worst? Curry only has 1 game that he&rsquo;s scored &amp;lt;10 points (9 against the Spurs in 2013) when he&rsquo;s played &amp;gt;30 minutes; LeBron has 1 (8 against the Mavs in 2011), and KD has none. By that measure, Harden&rsquo;s a step behind his peers in terms of consistent points contribution in the playoffs. His best games are impressive - I&rsquo;d say pretty on par with Steph and KD, though not to the level of LeBron. But when it comes to being labeled a choker, do we give more weight to the bad? Or does the good outweigh it, because he has far more 30+ point playoff games as a starter (49) than 15 or fewer (18).</p>
+
+<hr>
+
+<h1 id="let-s-continue-to-drill-down-and-focus-on-some-key-games-elimination-games">Let&rsquo;s continue to drill down and focus on some key games: ELIMINATION GAMES</h1>
+
+<p>This feels like a pretty big &ldquo;vibe check&rdquo; metric. A player that crumbles under pressure <em>has to</em> be labeled as a choker, right?</p>
+
+<p>###<a href="https://imgur.com/CqENZYv.jpg" target="_blank">Let&rsquo;s take a look at how Harden has performed in each of his 23 elimination games as a starter.</a></p>
+
+<p>The boxes highlighted in red denote numbers worse than his playoff average. We can see that he&rsquo;s had 11 games in which he&rsquo;s scored fewer points than his playoff average, including 1 single digit stinker against the Celtics during his tenure with the Sixers and - maybe more relevant - his recent 7 points performance in G7 against the Nuggets. Only 8 of his 23 elimination games have seen him pull down fewer rebounds than his playoff average, while he&rsquo;s had 9 games in which he&rsquo;s generated fewer assists than average. Turnovers are an issue, though, with a particularly gnarly stretch of 10 games in which he had 5 or more turnovers - brutal when you&rsquo;re talking about staving off elimination.</p>
+
+<p>His most recent performance against the Nuggets is to some proof-positive that he&rsquo;s a playoff choker. But that (admittedly awful) performance comes hot on the heels of a great one in G6. Do they cancel each other out? Harden played all but 1.5 minutes of G6 and - without his performance in <em>that</em> elimination game - there wouldn&rsquo;t have even <strong>been</strong> a Game 7.</p>
+
+<p>Zooming out slightly, let&rsquo;s direct our eyes to the bottom of the image: there we can see his averages in elimination games, and the delta between those averages and his average regular season stats (Δ x̄RS) and playoff stats (Δ x̄PO). Save for steals and turnovers, he is on average worse across the board in elimination games than he is in the regular season. Comparing to playoff averages it&rsquo;s about the same, though he does manage to pull down an extra 0.4 rebounds per elimination game, relative to non-elimination playoff games.</p>
+
+<p>Numbers aside, Harden has gone 9-14 in elimination games as a starter, and is 2-11 in such games going back to 2016. For their careers, LeBron is 15-14, Curry is 9-5, KD is 6-9, CP3 is 6-12, Westbrook is 6-13 Giannis is 4-9.</p>
+
+<h5 id="so-harden-on-average-performs-measurably-worse-in-elimination-games-than-he-does-in-non-elimination-playoff-games-and-regular-season-games-though-not-drastically-worse-his-record-in-such-games-is-worse-than-some-of-his-peers-but-is-overall-pretty-middle-of-the-road-his-recent-performance-since-2016-is-notably-poor-though">So Harden on average performs measurably worse in elimination games than he does in non-elimination playoff games and regular season games, though not <strong><em>drastically</em></strong> worse. His record in such games is worse than some of his peers, but is overall pretty middle-of-the-road. His recent performance (since 2016) is notably poor, though.</h5>
+
+<hr>
+
+<p>#Let&rsquo;s keep pulling back and take a look at Harden&rsquo;s regular season and playoff splits compared to his contemporaries:</p>
+
+<p>###A comparison of 7 stars&rsquo; regular season and playoff performances from 2013-2025 (where games are available):</p>
+
+<table>
+<thead>
+<tr>
+<th align="center">Player</th>
+<th align="center">Points (RS)</th>
+<th align="center">Points (PO)</th>
+<th align="center">FG% (RS)</th>
+<th align="center">FG% (PO)</th>
+<th align="center">3P% (RS)</th>
+<th align="center">3P% (PO)</th>
+<th align="center">eFG% (RS)</th>
+<th align="center">eFG% (PO)</th>
+<th align="center">TS% (RS)</th>
+<th align="center">TS% (PO)</th>
+<th align="center">Reb (RS)</th>
+<th align="center">Reb (PO)</th>
+<th align="center">Ast (RS)</th>
+<th align="center">Ast (PO)</th>
+<th align="center">Stl (RS)</th>
+<th align="center">Stl (PO)</th>
+<th align="center">TO (RS)</th>
+<th align="center">TO (PO)</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="center"><strong>Giannis</strong></td>
+<td align="center">23.4</td>
+<td align="center"><strong>26.7</strong></td>
+<td align="center">54.6%</td>
+<td align="center">53.5%</td>
+<td align="center">28.8%</td>
+<td align="center">28.8%</td>
+<td align="center">57.0%</td>
+<td align="center">56.3%</td>
+<td align="center">62.5%</td>
+<td align="center">58.0%</td>
+<td align="center">9.8</td>
+<td align="center"><strong>11.0</strong></td>
+<td align="center">4.9</td>
+<td align="center">4.7</td>
+<td align="center">1.1</td>
+<td align="center">1.1</td>
+<td align="center">3.1</td>
+<td align="center">3.4</td>
+</tr>
+
+<tr>
+<td align="center"><strong>Chris Paul</strong></td>
+<td align="center">17.5</td>
+<td align="center"><strong>20.5</strong></td>
+<td align="center">47.2%</td>
+<td align="center"><strong>47.8%</strong></td>
+<td align="center">36.8%</td>
+<td align="center">36.4%</td>
+<td align="center">52.1%</td>
+<td align="center"><strong>52.6%</strong></td>
+<td align="center">58.1%</td>
+<td align="center">57.0%</td>
+<td align="center">4.5</td>
+<td align="center"><strong>5.1</strong></td>
+<td align="center">9.4</td>
+<td align="center">8.3</td>
+<td align="center">2.1</td>
+<td align="center">2.1</td>
+<td align="center">2.4</td>
+<td align="center">2.6</td>
+</tr>
+
+<tr>
+<td align="center"><strong>Westbrook</strong></td>
+<td align="center">21.9</td>
+<td align="center"><strong>24.6</strong></td>
+<td align="center">43.7%</td>
+<td align="center">41.5%</td>
+<td align="center">30.6%</td>
+<td align="center">29.8%</td>
+<td align="center">46.8%</td>
+<td align="center">44.9%</td>
+<td align="center">52.6%</td>
+<td align="center">52.0%</td>
+<td align="center">7.1</td>
+<td align="center">7.1</td>
+<td align="center">8.6</td>
+<td align="center">7.9</td>
+<td align="center">1.7</td>
+<td align="center">1.7</td>
+<td align="center">4.1</td>
+<td align="center">4.2</td>
+</tr>
+
+<tr>
+<td align="center"><strong>Durant</strong></td>
+<td align="center">27.2</td>
+<td align="center"><strong>29.4</strong></td>
+<td align="center">50.5%</td>
+<td align="center">47.8%</td>
+<td align="center">38.6%</td>
+<td align="center">36.2%</td>
+<td align="center">54.7%</td>
+<td align="center">52.8%</td>
+<td align="center">60.0%</td>
+<td align="center">59.0%</td>
+<td align="center">7.0</td>
+<td align="center"><strong>7.8</strong></td>
+<td align="center">4.4</td>
+<td align="center">4.0</td>
+<td align="center">1.1</td>
+<td align="center">1.1</td>
+<td align="center">3.2</td>
+<td align="center">3.3</td>
+</tr>
+
+<tr>
+<td align="center"><strong>Curry</strong></td>
+<td align="center">24.7</td>
+<td align="center"><strong>26.6</strong></td>
+<td align="center">47.2%</td>
+<td align="center">45.2%</td>
+<td align="center">42.8%</td>
+<td align="center">40.1%</td>
+<td align="center">58.0%</td>
+<td align="center">55.2%</td>
+<td align="center">63.5%</td>
+<td align="center">61.0%</td>
+<td align="center">4.7</td>
+<td align="center"><strong>5.4</strong></td>
+<td align="center">6.4</td>
+<td align="center">6.2</td>
+<td align="center">1.7</td>
+<td align="center">1.6</td>
+<td align="center">3.1</td>
+<td align="center">3.3</td>
+</tr>
+
+<tr>
+<td align="center"><strong>LeBron</strong></td>
+<td align="center">27.1</td>
+<td align="center"><strong>28.4</strong></td>
+<td align="center">50.6%</td>
+<td align="center">49.5%</td>
+<td align="center">34.9%</td>
+<td align="center">33.7%</td>
+<td align="center">54.6%</td>
+<td align="center">54.0%</td>
+<td align="center">58.0%</td>
+<td align="center">56.0%</td>
+<td align="center">7.5</td>
+<td align="center"><strong>9.0</strong></td>
+<td align="center">7.4</td>
+<td align="center">7.2</td>
+<td align="center">1.5</td>
+<td align="center"><strong>1.7</strong></td>
+<td align="center">3.5</td>
+<td align="center">3.7</td>
+</tr>
+
+<tr>
+<td align="center"><strong>Harden</strong></td>
+<td align="center">26.5</td>
+<td align="center">25.5</td>
+<td align="center">43.9%</td>
+<td align="center">42.8%</td>
+<td align="center">36.3%</td>
+<td align="center">35.0%</td>
+<td align="center">52.4%</td>
+<td align="center">51.0%</td>
+<td align="center">60.2%</td>
+<td align="center">58.6%</td>
+<td align="center">6.2</td>
+<td align="center">5.7</td>
+<td align="center">8.5</td>
+<td align="center">7.7</td>
+<td align="center">1.6</td>
+<td align="center"><strong>1.7</strong></td>
+<td align="center">4.2</td>
+<td align="center"><strong>3.9</strong></td>
+</tr>
+</tbody>
+</table>
+<p>Right off the bat we can see that everybody but Harden tends to score <strong><em>more</em></strong> points in the playoffs, not fewer. So that&rsquo;s notable. Everybody but CP3 sees their shooting stats fall off a bit, which makes sense with playoffs typically seeing teams locking down more on defense and scheming around making it harder for the starts to get clean shots off. Harden&rsquo;s numbers dip here more than the others, though. Most players also see their rebound numbers increase in the playoffs, with Harden being the only player whose numbers drop off there. Harden is also unique in that his turnovers actually <em>decrease</em> in the playoffs, though he&rsquo;s still one of the worst offenders in that regard, ahead of only Westbrook.</p>
+
+<p>Speaking of Westbrook, his and Harden&rsquo;s stats are <em>very</em> similar, though Harden is much more efficient. Points, FG%, assists, steals, and turnovers are all very similar.</p>
+
+<p>All things considered here, I think you can draw a conclusion on how Harden stacks up against his contemporaries when it comes to regular season vs. playoff splits:</p>
+
+<p>###The best players tend to elevate their scoring and rebounding in the postseason, while seeing their shooting fall off slightly; Harden&rsquo;s scoring and rebounding dip, and his shooting stats decrease a bit more than his contemporary stars.</p>
+
+<hr>
+
+<p>#So where does that leave us?</p>
+
+<p>###^(AKA: Pretty much a TL;DR)</p>
+
+<p>Let&rsquo;s go back to our &ldquo;choker&rdquo; criteria from earlier:</p>
+
+<p>######1. Significant counting stats decrease from regular season to playoffs.</p>
+
+<p>His stats are worse in the playoffs, but not what I&rsquo;d consider <strong><em>significantly</em></strong> worse. That being said, most of his contemporaries actually <strong>improve</strong> their counting stats in the playoffs, so through this lens, <strong>I&rsquo;d say he meets the criteria here</strong>.</p>
+
+<p>######2. Consistent inability to perform in elimination games.</p>
+
+<p>Aside from steals and turnovers, Harden&rsquo;s numbers on average are measurably worse in elimination games than non-elimination games and regular season games. His overall record (9-14) in elimination games  - while not up to LeBron and Curry&rsquo;s standards - is on par with the rest of his contemporaries, but his record since 2016 (2-11) is notably poor. With all this in mind, <strong>I think there&rsquo;s an argument to be made that his performance in elimination games has been consistently poor - especially recently.</strong></p>
+
+<p>######3. Comparatively poor playoff performance relative to peers.</p>
+
+<p>Harden is the only player out of the selection of other modern stars whose points and rebounding output <em>decreases</em> in the playoffs. While neither decrease is particularly significant, it&rsquo;s notable in that everybody else <em>elevates</em> their game in the playoffs, while Harden largely does not. His turnovers decrease, but are still higher than most every other star he was compared to, and while his steals increase, the difference isn&rsquo;t significant enough to warrant much attention. <strong>He pretty plainly checks the box here.</strong></p>
+
+<h3 id="so-in-summary-harden-solidly-checks-2-of-the-3-boxes-necessary-to-be-labeled-a-playoff-choker-and-it-could-be-argued-that-he-checks-all-3">So in summary, Harden solidly checks 2 of the 3 boxes necessary to be labeled a playoff choker, and it could be argued that he checks all 3.</h3>
+
+<p>Since helping OKC reach the Finals as 6MOTY in 2012, Harden has been unable to return to big stage. He has made the Conference Finals twice as a starter (both with the Rockets) where he unfortunately ran into the buzzsaw that was the Warriors and their &ldquo;Hamptons Five&rdquo; and &ldquo;Death Lineup&rdquo; days. Can you fault him all that much for losing to a <strong><em>generationally stacked</em></strong> team? Personally, I&rsquo;d say no. I don&rsquo;t think that makes him a choker.</p>
+
+<p>But I do think there&rsquo;s an argument to be made when you look at his larger body of work. The poor performance in elimination games - especially recently - combined with an almost across the board decrease in performance in the playoffs (something other superstars don&rsquo;t suffer from) does call into question his ability to perform when the lights are brightest.</p>
+
+<p>So while I personally won&rsquo;t be calling Harden a choker, and I can at least understand where others are coming from when they do so.</p>
+
+<hr>
+
+<p>This was a fun little investigation. I had my own preconceived notions going into this, and I&rsquo;d say that the outcome surprised me in a few ways. I&rsquo;ve always pushed back against him being called a choker, but never had the numbers to back up that notion. After going through all of this, I can understand why people label him as one, though I think the full-throatedness that some people (especially in this sub) do so is a bit overblown. I think if we were being a little more nuanced here, we&rsquo;d say that Harden fails to elevate his game in the playoffs. The differences in his actual counting stats is a borderline rounding error in some cases - he&rsquo;s not doing <em>significantly</em> worse in the playoffs - but when you compare him to guys like Curry, LeBron, and KD, he just doesn&rsquo;t have that extra gear in the playoffs. Even his highest highs are outshined by Curry, KD, and LeBron, and his lows are worse than theirs.</p>
+
+<p>All that being said, I still believe he was a <em>transcendent</em> offensive talent at his peak. What he did in 2018-19 was absolute insanity. Is he clutch? Does he have whatever *it* is that elevates a superstar to that next level? No. But he&rsquo;s still a hell of a player, and I hope he gets his roses one day, despite his relatively lackluster playoff history.</p>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mql28zo" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>cl353 | Heat</div>
+        <div>48 | an hour ago </div>
+      </div>
+      <label for="mql28zo" class="commentText"><p>Lol guys just scroll down and read the last paragraph. The dude isn&rsquo;t even saying harden isn&rsquo;t a playoff choker</p>
+
+<p>It&rsquo;s not that hard to read a couple sentences</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mql2o6b" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>isomorphZeta | HOU</div>
+        <div>28 | an hour ago </div>
+      </div>
+      <label for="mql2o6b" class="commentText"><p>I mean, damn, thank you!</p>
+
+<p>I know 99% of people are just gonna scroll to the bottom, and there&rsquo;s a TL;DR right there for &lsquo;em.</p>
+
+<p>Never seen so many folks get mad at someone else taking time to put thought and effort into something.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mql5ix7" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>limark | Thunder</div>
+        <div>12 | an hour ago </div>
+      </div>
+      <label for="mql5ix7" class="commentText"><blockquote>
+<p>Never seen so many folks get mad at someone else taking time to put thought and effort into something.</p>
+</blockquote>
+
+<p>You&rsquo;ve been a Redditor for 13 years and this is surprising to you?</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="mql2ovh" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>[deleted]</div>
+        <div>-1 | an hour ago </div>
+      </div>
+      <label for="mql2ovh" class="commentText"><p>[deleted]</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mql3g6c" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>isomorphZeta | HOU</div>
+        <div>6 | an hour ago </div>
+      </div>
+      <label for="mql3g6c" class="commentText"><p>It is. I typed this up on old.reddit on PC, though, so I&rsquo;m not sure how formatting is carrying over on new Reddit.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mql2wkb" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Silent-Frame1452 | Jazz</div>
+        <div>43 | an hour ago </div>
+      </div>
+      <label for="mql2wkb" class="commentText"><p>Interesting read, thanks for putting it together!</p>
+
+<p>I think it’s definitely fair to say that Harden doesn’t raise his game in high pressure moments, even if people don’t like the choker label.</p>
+
+<p>Something I would be curious about though, particularly as it relates to the record based analysis: how often was his team actually a favorite in the elimination games? </p>
+
+<p>The play style of a lot of his teams suffers in the playoffs I think. A lot of his peers have had the benefit of teams where taking them away doesn’t cripple the team in the same way taking Harden away hurt Houston for most of his time there. Whether that’s Hardens fault or not is a separate argument of course. </p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mql3bb7" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>isomorphZeta | HOU</div>
+        <div>12 | an hour ago </div>
+      </div>
+      <label for="mql3bb7" class="commentText"><blockquote>
+<p>how often was his team actually a favorite in the elimination games? </p>
+</blockquote>
+
+<p>Oooh, that&rsquo;s a good question! I&rsquo;ll have to dig into that. I know during his tenure with the Rockets we were consistently the underdog when it came time to play GSW. The Spurs series, though - the one it seems is most often pointed out as when he earned the &ldquo;choker&rdquo; label - had us as favorites, I believe.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mql5cz0" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ZenMon88</div>
+        <div>4 | an hour ago </div>
+      </div>
+      <label for="mql5cz0" class="commentText"><p>Maybe just the mental side of the Game 7. Game 7s are grimey, most of the time shots aren&rsquo;t going in as often. It&rsquo;s just a grind it out battle that Harden can&rsquo;t really overcome.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="mqldolk" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>GayForJamie</div>
+        <div>1 | 10 minutes ago </div>
+      </div>
+      <label for="mqldolk" class="commentText"><p>How many times has he underperformed in a series they lost that they were favorites in?</p>
+
+<p>He&rsquo;s been in the playoffs 16 straight years, so that&rsquo;s 16 series losses. I would think that his teams weren&rsquo;t the favorites in most series they lost.</p>
+
+<p>OKC was favored in the 2012 finals. (I thought that was insane at the time, and they were only one game better than the heat in the regular season)</p>
+
+<p>On a quick look, other than that, I think his teams only lost to a lower seed against the 14 Blazers, and 21 Bucks. He was definitely hurt with a hamstring in 21, and kyrie was hurt too.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="mqlbfk3" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Stellewind | Warriors</div>
+        <div>1 | 21 minutes ago </div>
+      </div>
+      <label for="mqlbfk3" class="commentText"><p>Harden is known to be an high volume/mid efficiency scorer. If he at least keep the same style and goes out guns blazing in important playoffs games, like having <sup>8</sup>&frasl;<sub>25</sub> shooting or something and still lost, people might still criticize his big game performances, but it won&rsquo;t be nearly as bad as what it is right now.</p>
+
+<p>What contributes a lot to his choker narrative is how he just appears disengaged in these games. He would have those <sup>3</sup>&frasl;<sub>11</sub>, <sup>2</sup>&frasl;<sub>8</sub> shooting nights, where he looks not even trying when his teams needed him the most. That 2017 Spurs G6 is still a mystery to this day, like how is it even possible for a super star to just give up a game that easily for no reason?</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mql33kc" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>WishyWashy480 | Timberwolves</div>
+        <div>21 | an hour ago </div>
+      </div>
+      <label for="mql33kc" class="commentText"><p>Hey OP. Good Job on this, the fact that people only read the Title and not even the paragraph and stats of what you wrote shows that we as a society hate reading lol.</p>
+
+<p>We have attention spans like fish. I think it&rsquo;s insulting to the Fish</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mql5tmt" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Organic-Manner-2969 | NBA</div>
+        <div>8 | an hour ago </div>
+      </div>
+      <label for="mql5tmt" class="commentText"><p>Folks would want high quality posts, but then they don&rsquo;t bother to read anything within</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mql4nog" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>YouIsNotHim | Raptors</div>
+        <div>8 | an hour ago </div>
+      </div>
+      <label for="mql4nog" class="commentText"><p>He&rsquo;ll get his flowers when his career is over but his playoff performances are what will hold him back from being discussed in a brighter light.</p>
+
+<p>I&rsquo;ve seen lists of the top SGs of all-time and he&rsquo;s usually a consensus top 5, with some people ranking him higher than Dwyane Wade, but I wouldn&rsquo;t go so far simply because of Wade&rsquo;s playoff performances.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mqleyw8" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>KaSacha</div>
+        <div>1 | 3 minutes ago </div>
+      </div>
+      <label for="mqleyw8" class="commentText"><p>Apparently a regular season mvp is worth more than winning a chip as the best player in your 3rd season</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mql4arb" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>frostfeint3 | Heat</div>
+        <div>2 | an hour ago </div>
+      </div>
+      <label for="mql4arb" class="commentText"><p>James Harden arrived in game 6, but it’s just James on game 7.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mql5u1t" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Agitated-Mastodon153</div>
+        <div>2 | an hour ago </div>
+      </div>
+      <label for="mql5u1t" class="commentText"><p>This is some “fail to reject the null hypothesis” kinda work, nice work! I’d say Harden isn’t exactly a playoff choker as much as he is an elimination choker. He always seems to have a game or two per series when he either wins you the game alone or very close to it, but when you need him the most he falls apart.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mql6wt6" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Willing_Procedure242</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="mql6wt6" class="commentText"><p>It&rsquo;s very thorough, but as other posters have said, it&rsquo;s an intangible thing that, in my opinion, can&rsquo;t be quantified . He was running away from the ball last night. I&rsquo;m sorry there is a difference between being a prolific scorer and a winner.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mql70yn" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Annual_Elk929 | Thunder</div>
+        <div>1 | 44 minutes ago </div>
+      </div>
+      <label for="mql70yn" class="commentText"><p>Look at Chris Paul man.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mql7fug" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>AnalysisFit615 | Nuggets</div>
+        <div>1 | 42 minutes ago </div>
+      </div>
+      <label for="mql7fug" class="commentText"><p>Harden is one of the best pure regular season players of all time at his peak with the Rockets. I’d say Harden’s best years as a player happened to perfectly align with the Golden State buzz saw which is unfortunate.</p>
+
+<p>But he was absolutely elite on those Rockets teams in the regular season and that 2018 squad was so damn close to beating a healthy Warriors with KD. No other team, not Cleveland, not San Antonio, not OKC came that close.</p>
+
+<p>Were he not playing us yesterday I would have felt bad for him. It was clear that Braun and Westbrook were frustrating the shit out of him, but the Clippers as a whole were bad yesterday. Also a big part of his game is selling fouls and getting to the line. But in a playoff game, that’s going to be harder to do</p>
+
+<p>Edit: Fantastic job OP, it’s clear that you really took your time on this and presented the data in a way that wasn’t trying to push a narrative</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mql7hdd" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Aracion1</div>
+        <div>1 | 42 minutes ago </div>
+      </div>
+      <label for="mql7hdd" class="commentText"><p>Makes sense his stats drop a bit since well, he’s playing locked in playoffs teams and not the hornets.</p>
+
+<p>Good analysis</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mql7vym" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Artimusjones88 | Raptors</div>
+        <div>1 | 40 minutes ago </div>
+      </div>
+      <label for="mql7vym" class="commentText"><p>He was also bad in the NCAA tournament.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mql8f9p" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>0percentwinrate | Knicks</div>
+        <div>1 | 37 minutes ago </div>
+      </div>
+      <label for="mql8f9p" class="commentText"><p>Honestly you can argue he doesn’t check none of the three boxes. His counting stats and efficiency do dip but it’s nothing significant. Do we call Luka a choker just because his numbers dipped in 2023-24 playoffs? Comparing him to top-20 all timers like KD, Curry and LeBron isn’t fair. And comparing him to CP or the others isn’t either he because Harden’s RS production is far superior to them. Overall like you said the data doesn’t fully back his “choker” label.</p>
+
+<p>Context matters too. Team doubled or sent their best defender to him to take him out of the game, it’s then up to his teammates to excute 4v4 or momentarily 4v3 offense.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mql8yjk" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>MolicOnePGR | Raptors</div>
+        <div>1 | 34 minutes ago </div>
+      </div>
+      <label for="mql8yjk" class="commentText"><p>He’s a playoff choker and will never win a chip.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mql9os0" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Square_Reindeer239</div>
+        <div>1 | 30 minutes ago </div>
+      </div>
+      <label for="mql9os0" class="commentText"><p>I’d like to see someone argue that he isn’t a choker</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mqlb149" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>venice--beach</div>
+        <div>1 | 23 minutes ago </div>
+      </div>
+      <label for="mqlb149" class="commentText"><blockquote>
+<p>So while I personally won&rsquo;t be calling Harden a choker</p>
+</blockquote>
+
+<p>All I needed to read to tell that this &ldquo;analysis&rdquo; is dogshit</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mqlbgvg" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Stylish_Duck</div>
+        <div>1 | 21 minutes ago </div>
+      </div>
+      <label for="mqlbgvg" class="commentText"><p>Top tier post, OP. </p>
+
+<p>Thank you for an interesting read on the Harden choker conversation. </p>
+
+<p>Original analysis, qualitative comparisons, well written. A+</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mqlbssy" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>trav-senpai | Kings</div>
+        <div>1 | 19 minutes ago </div>
+      </div>
+      <label for="mqlbssy" class="commentText"><p>This is an incredibly long post and doesn’t even mention how much of a traffic cone he in on defense. Aka half the freaking game.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mqlcqrg" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>rocpilehardasfuk | Warriors</div>
+        <div>1 | 14 minutes ago </div>
+      </div>
+      <label for="mqlcqrg" class="commentText"><p>Elite post.</p>
+
+<p>One factor I&rsquo;d add about Harden is that his RS production is very high. And hence his playoff &lsquo;rise&rsquo; isn&rsquo;t really there</p>
+
+<p>He also has insanely high usage on big minutes in the RS: hence it&rsquo;s not easy for him to improve his stats very significantly..</p>
+
+<p>Steph, for instance, plays lower mins and lower usage in RS. Just increasing his usage and mins improves his PPG in playoffs</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mql1d8i" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>[deleted]</div>
+        <div>-3 | an hour ago </div>
+      </div>
+      <label for="mql1d8i" class="commentText"><p>[deleted]</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mql1g49" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>isomorphZeta | HOU</div>
+        <div>16 | an hour ago </div>
+      </div>
+      <label for="mql1g49" class="commentText"><blockquote>
+<p>No way in hell I’m reading all that.</p>
+</blockquote>
+
+<p>That&rsquo;s cool, man! Thanks for sharing.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mql1m0h" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>[deleted]</div>
+        <div>-15 | an hour ago </div>
+      </div>
+      <label for="mql1m0h" class="commentText"><p>[deleted]</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mql1xv4" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>isomorphZeta | HOU</div>
+        <div>20 | an hour ago </div>
+      </div>
+      <label for="mql1xv4" class="commentText"><p>Hey, no stress. That&rsquo;s why I put &ldquo;longform&rdquo; and &ldquo;a detailed, numbers-driven analysis&rdquo; in the title, but I guess it&rsquo;s probably asking too much for people to even read that.</p>
+
+<p>But I appreciate your feedback! And apologies for forcing you to click this post.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mql255r" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>[deleted]</div>
+        <div>-12 | an hour ago </div>
+      </div>
+      <label for="mql255r" class="commentText"><p>[deleted]</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mql2iex" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>isomorphZeta | HOU</div>
+        <div>22 | an hour ago </div>
+      </div>
+      <label for="mql2iex" class="commentText"><p>My guy, <strong><em>you</em></strong> clicked this post, and decided to waste <strong><em>your own</em></strong> time bitching about&hellip; me taking the time to write this?</p>
+
+<p>What are we doing here lol</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mql30em" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>DegraciasEh | Kings</div>
+        <div>6 | an hour ago </div>
+      </div>
+      <label for="mql30em" class="commentText"><p>They came here, were a dick for no reason, then claimed you were “hilariously condescending”. People are strange.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="mql2nme" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>bleghssed | Raptors</div>
+        <div>19 | an hour ago </div>
+      </div>
+      <label for="mql2nme" class="commentText"><p>buddy youre the one that comes off as an ass here. this guy did the research, typed it out, challenged his viewpoint.</p>
+
+<p>you literally refused to read it, insult him, and act as if youre the victim. touch grass</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mql30l9" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>TwoTalentedBastidz | Lakers</div>
+        <div>-13 | an hour ago </div>
+      </div>
+      <label for="mql30l9" class="commentText"><p>I’ll let you know when I give a shit about how I “come off” to you, internet stranger.</p>
+
+<p>Hint: don’t hold your breath</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mql4dkf" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>itsnotgoinghome</div>
+        <div>4 | an hour ago </div>
+      </div>
+      <label for="mql4dkf" class="commentText"><p>Lakers fan saying “I know what I see. Don’t tell me how to do my own research.” ☠️</p>
+
+<p>Sounds very reminiscent of a certain demographic</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mql4msk" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>TwoTalentedBastidz | Lakers</div>
+        <div>-3 | an hour ago </div>
+      </div>
+      <label for="mql4msk" class="commentText"><p>What</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="mql47qc" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>bleghssed | Raptors</div>
+        <div>3 | an hour ago </div>
+      </div>
+      <label for="mql47qc" class="commentText"><p>you might want to think about how you come off before you talk to a person in real life chief</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mql4ga6" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>TwoTalentedBastidz | Lakers</div>
+        <div>-3 | an hour ago </div>
+      </div>
+      <label for="mql4ga6" class="commentText"><p>Thanks for the advice. I really need it.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="mql2tj3" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Key-Geologist5370</div>
+        <div>4 | an hour ago </div>
+      </div>
+      <label for="mql2tj3" class="commentText"><p>I hope your eyes tell you that LeBron without AD is a liability as well . And Luka isn’t the player everyone thinks he is .</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mql3c54" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>TwoTalentedBastidz | Lakers</div>
+        <div>-6 | an hour ago </div>
+      </div>
+      <label for="mql3c54" class="commentText"><p>You’re a Clippers fan.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mql3l61" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Key-Geologist5370</div>
+        <div>3 | an hour ago </div>
+      </div>
+      <label for="mql3l61" class="commentText"><p>Didn’t deny what I said tho lmao</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mql3pi5" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>TwoTalentedBastidz | Lakers</div>
+        <div>-7 | an hour ago </div>
+      </div>
+      <label for="mql3pi5" class="commentText"><p>You’re a Clippers fan.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="mql3jj9" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>KindlyGuarantee3978</div>
+        <div>4 | an hour ago </div>
+      </div>
+      <label for="mql3jj9" class="commentText"><p>Are you okay?</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mql3nmt" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>TwoTalentedBastidz | Lakers</div>
+        <div>-3 | an hour ago </div>
+      </div>
+      <label for="mql3nmt" class="commentText"><p>Yes. Thanks for your concern.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mql5yq8" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>OfficialNPC</div>
+        <div>0 | an hour ago </div>
+      </div>
+      <label for="mql5yq8" class="commentText"><p>A choker isn&rsquo;t just about their own stats but how they cause their team to play worse. </p>
+
+<p>Putting their teammates in worse positions by playing worse isn&rsquo;t really something you can throw numbers at and this is a big thing when people <strong>see</strong> Harden choke. </p>
+
+<p>This can be that others have to step up or you can see the team get demoralized. </p>
+
+<p>Sometimes teammates will have inflated stats and it looks like they played better or picked up the slack but because the slacker was slacking on offense and defense the other team was running away.</p>
+
+<p>Kinda like last night. The score was like 100-120 but the game wasn&rsquo;t that close. Just looking at the statline will make it seem like the Clippers had multiple chances to come back but if you watched the game you knew the Clippers were demoralized, destroyed, and done.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mql6c4e" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Alex_O7</div>
+        <div>0 | an hour ago </div>
+      </div>
+      <label for="mql6c4e" class="commentText"><p>Interesting read but I think the most important thing to define Harden as a choker is to see his performances game 4 to 7, when the season is actually on the line.</p>
+
+<p>During games they were showing that Harden averages are much worse in that situations (but I think it was only game 5 to 7). So I think the case for Harde is so much worse, but would be nice to look what the other guy pointed out here (which I do not even know how they were chosen) did in those &ldquo;closing&rdquo; games, which should not only be elimination games in order not to restric too much the sample.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mql6mvr" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Easy-Philosopher-562 | Timberwolves</div>
+        <div>0 | an hour ago </div>
+      </div>
+      <label for="mql6mvr" class="commentText"><p>I read somewhere Harden has 54 games of 5 fgm or less. Dude is an expert choker.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mql7tju" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Fueledbythought</div>
+        <div>0 | 40 minutes ago </div>
+      </div>
+      <label for="mql7tju" class="commentText"><p>It&rsquo;s more checking out than it is choking</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mql5ohq" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>HokageEzio | Knicks</div>
+        <div>-1 | an hour ago </div>
+      </div>
+      <label for="mql5ohq" class="commentText"><blockquote>
+<p>I think if we were being a little more nuanced here, we&rsquo;d say that Harden fails to elevate his game in the playoffs.</p>
+</blockquote>
+
+<ol>
+<li><p>I would argue for a star of his caliber that is being a choker.</p></li>
+
+<li><p>I feel like that ignores some of the absolute backbreaking moments he&rsquo;s had in the midst of that and purely looking at the numbers.</p></li>
+</ol>
+
+<p>Personally Harden&rsquo;s playoff legacy to me will always be him getting his shit swatted by 87 year old Manu and then the next game playing so badly that people genuinely thought he had a concussion, just for him to end up in the club after the game. He has done absolutely nothing in the postseason since then for that to not be the first thing I think of when I think of his postseason career. He&rsquo;s a loser in the postseason, plain and simple.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mql9n9x" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Eat-Depay-Love</div>
+        <div>1 | 31 minutes ago </div>
+      </div>
+      <label for="mql9n9x" class="commentText"><p>That and sitting on the bench for the entire Rockets comeback against the Clippers. Or his first final run against the Heat. Him, KD, and Russ have such a fascinating career arc that someone should write a book about when they retire </p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mql5ru9" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Dopeez | Spurs</div>
+        <div>-1 | an hour ago </div>
+      </div>
+      <label for="mql5ru9" class="commentText"><p>Lots of text to prove that Harden is an overrated choker. Thank you, but when he scores 40 in random regular season game next year, people are gonna put him over Wade again lmao</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mql6s12" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>KhalRyan | 76ers</div>
+        <div>-1 | an hour ago </div>
+      </div>
+      <label for="mql6s12" class="commentText"><p>analytics don&rsquo;t matter just look at the results</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mql39j8" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Ok-Possession1765 | Lakers</div>
+        <div>-2 | an hour ago </div>
+      </div>
+      <label for="mql39j8" class="commentText"><p>So you’re agreeing with everyone who says that he’s a playoff choker</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mql3tc8" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>isomorphZeta | HOU</div>
+        <div>9 | an hour ago </div>
+      </div>
+      <label for="mql3tc8" class="commentText"><p>I think the numbers lend credence to that belief, yeah. I didn&rsquo;t previously agree with that label, but when you lay it all out there it&rsquo;s hard to refute it.</p>
+
+<p>At the absolute best, he fails to elevate his game in the playoffs, and falls off even more when the lights are brightest; if he&rsquo;s not an outright choker, he&rsquo;s pretty anti-clutch.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mql5xap" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>harden-back | LAC</div>
+        <div>0 | an hour ago </div>
+      </div>
+      <label for="mql5xap" class="commentText"><p>I’d say you should try to watch more of these games to see why his game adapts differently to schemes teams throw. Take yesterday’s game, he got trapped up the court made all the right reads and ended the first half with 10 assists. If a team just doubled you the whole game you’re supposed to make those reads. Not rlly sure how your stats could capture this however.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mql84zj" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>bbpopulardemand | Celtics</div>
+        <div>-2 | 39 minutes ago </div>
+      </div>
+      <label for="mql84zj" class="commentText"><p>That’s  a hell of a lot of words to say that he is in fact a choker.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mql1whh" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>VoxSerenade</div>
+        <div>-10 | an hour ago </div>
+      </div>
+      <label for="mql1whh" class="commentText"><p>Nephews out here writing essays on why people should think more deeply on something obvious that they clearly saw. Even if youre 100% right you&rsquo;re still trying to ice skate uphill.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mql2dsw" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>isomorphZeta | HOU</div>
+        <div>26 | an hour ago </div>
+      </div>
+      <label for="mql2dsw" class="commentText"><blockquote>
+<p>Nephews out here writing essays on why people should think more deeply on something obvious that they clearly saw.</p>
+</blockquote>
+
+<p>Y&rsquo;all are wild lol</p>
+
+<p>I&rsquo;m not trying to prove any kind of point, just trying to put numbers to the sentiment. Honestly, it&rsquo;s kinda sad that people seem to get offended at anything deeper than puddle-deep thought.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mql3b5c" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>vondawgg | Thunder</div>
+        <div>8 | an hour ago </div>
+      </div>
+      <label for="mql3b5c" class="commentText"><p>should post this on r/nbadiscussion half of the nba sub are drones</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mql7507" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>xXEliteEater500Xx</div>
+        <div>3 | 44 minutes ago </div>
+      </div>
+      <label for="mql7507" class="commentText"><p>Eh, that subs just r/nba in long form</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="mql4n52" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>isomorphZeta | HOU</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="mql4n52" class="commentText"><p>Damn, I always forget about that sub. Yeah, I&rsquo;ll X-post it over there.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="mql2k0f" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>TwoTalentedBastidz | Lakers</div>
+        <div>-5 | an hour ago </div>
+      </div>
+      <label for="mql2k0f" class="commentText"><p>Lmao</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mql5ytk" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>[deleted]</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="mql5ytk" class="commentText"><p>[removed]</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mql63o2" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>[deleted]</div>
+        <div>0 | an hour ago </div>
+      </div>
+      <label for="mql63o2" class="commentText"><p>[removed]</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mql7ghu" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>[deleted]</div>
+        <div>1 | 42 minutes ago </div>
+      </div>
+      <label for="mql7ghu" class="commentText"><p>[removed]</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mql7jnh" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>[deleted]</div>
+        <div>0 | 42 minutes ago </div>
+      </div>
+      <label for="mql7jnh" class="commentText"><p>[removed]</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mql88gm" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>[deleted]</div>
+        <div>2 | 38 minutes ago </div>
+      </div>
+      <label for="mql88gm" class="commentText"><p>[removed]</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mql953x" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>[deleted]</div>
+        <div>0 | 33 minutes ago </div>
+      </div>
+      <label for="mql953x" class="commentText"><p>[removed]</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mql9fze" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>[deleted]</div>
+        <div>1 | 32 minutes ago </div>
+      </div>
+      <label for="mql9fze" class="commentText"><p>[removed]</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mql3dha" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Disastrous_Flan_1494 | Clippers</div>
+        <div>-5 | an hour ago </div>
+      </div>
+      <label for="mql3dha" class="commentText"><p>We made it further than the lakers, all i rly care about tbh🤷🏽‍♂️</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mql3y53" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>TwoTalentedBastidz | Lakers</div>
+        <div>6 | an hour ago </div>
+      </div>
+      <label for="mql3y53" class="commentText"><p>Ya’ll literally lost in the same round lmfao. This is the most pathetic thing I’ve ever seen 😂</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mql4wyx" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Disastrous_Flan_1494 | Clippers</div>
+        <div>-4 | an hour ago </div>
+      </div>
+      <label for="mql4wyx" class="commentText"><p>yall last in five…..went home early 😭😭😭</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mql5cpf" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>TwoTalentedBastidz | Lakers</div>
+        <div>5 | an hour ago </div>
+      </div>
+      <label for="mql5cpf" class="commentText"><p>You’re the first person I’ve seen happy about a 1st rd loss and thinks yall “went further” despite losing in the same exact round lmao. I’d expect nothing less from a Clippers fan</p>
+
+<p>This is why we say every time yall beat us it’s the closest you’ll ever get to a championship lmaoooo</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="mql48nf" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Great-Engr</div>
+        <div>6 | an hour ago </div>
+      </div>
+      <label for="mql48nf" class="commentText"><p>You should hang a banner 😂</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="mql6x6r" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>BaullahBaullah87</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="mql6x6r" class="commentText"><p>lol honestly would pair nicely w the second round banners up top</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="mqlalpu" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>BrandonXavierIngram | Lakers</div>
+        <div>1 | 25 minutes ago </div>
+      </div>
+      <label for="mqlalpu" class="commentText"><p>Franchise so pathetic y’all had to cover up a Taylor Swift banner at Staples 😭</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mql3g54" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>fattyfondler | Warriors</div>
+        <div>-5 | an hour ago </div>
+      </div>
+      <label for="mql3g54" class="commentText"><p>Look man, the only category anyone cares about is elimination games, and that’s the category you did the absolute least analysis in comparing him to his peers</p>
+
+<p>This is a classic example of using stats to obscure rather than reveal. I am a scientist, so I see this alot - it never passes the smell test</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mql5ln6" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>SensitiveFee3936</div>
+        <div>5 | an hour ago </div>
+      </div>
+      <label for="mql5ln6" class="commentText"><p>he literally says harden stinks it up in elimination games. Really good analysis (especially compared to r/nba standards) and I partially agree with him in that Harden is a &lsquo;choker&rsquo;. However, I get ticked off by the word because it implies that they&rsquo;ve NEVER done anything &lsquo;clutch&rsquo;, which is simply not true.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="mql4k4b" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>isomorphZeta | HOU</div>
+        <div>4 | an hour ago </div>
+      </div>
+      <label for="mql4k4b" class="commentText"><blockquote>
+<p>Look man, the only category anyone cares about is elimination games</p>
+</blockquote>
+
+<p>That might be all you care about, but that&rsquo;s not all that matters. That&rsquo;s why there was more analysis than &ldquo;Is he bad in elimination games?&rdquo;.</p>
+
+<blockquote>
+<p>This is a classic example of using stats to obscure rather than reveal.</p>
+</blockquote>
+
+<p>Not really sure how you can think that when my conclusion affirms the belief that he&rsquo;s a choker.</p>
+
+<blockquote>
+<p>So in summary, Harden solidly checks 2 of the 3 boxes necessary to be labeled a playoff choker, and it could be argued that he checks all 3.</p>
+</blockquote>
+
+<p>That being said, I appreciate your feedback! I thought I provided sufficient comparisons for relative performance in elimination games (focusing mostly on record), but I supposed I could&rsquo;ve aggregated everybody else&rsquo;s stats/averages for elimination games? I don&rsquo;t feel that that would&rsquo;ve added significant value, but I guess it would&rsquo;ve just been another data point.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mqlb39m" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>fattyfondler | Warriors</div>
+        <div>1 | 23 minutes ago </div>
+      </div>
+      <label for="mqlb39m" class="commentText"><p>I dont even have a horse in this race. I just enjoy well-motivated stats</p>
+
+<p>Im saying that you KNOW that the narrative about harden being a choker comes specifically from his performance in elimination games</p>
+
+<p>So if you want to understand whether that narrative is valid, why not compare the change in his playoff stats in elimination games to his peers change in playoff stats in elimination games? That’s really the standard he is held against (right or wrong) - do steph, kd, lebron, kawhi, jokic, luka, giannis, etc. show similar changes in elim games or is he an outlier? you do that comparison all throughout your writeup but noticeably avoid doing so in this category. Thats what i mean when I say selectively applying stats in a way that muddies the waters rather than shining a light on a well motivated question</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
