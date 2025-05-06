@@ -1,0 +1,504 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.selfPostImage {
+  width: 100%;
+  height: auto;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/PathOfExile2/comments/1kg5193/how_to_properly_gather_data_if_you_are/"><p>How to properly gather data if you are experiencing performance such as FPS drop, stuttering or lag issues in-game and want help</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <h1 id="debugging-poe-performance-problems">Debugging PoE performance problems</h1>
+
+<p>I&rsquo;ve seen a lot of posts recently with people complaining they are getting low FPS in PoE2 while having decent computer configuration. While these people are trying to provide information and ask for help, sadly there is never sufficient information to objectively judge what could be the problem.</p>
+
+<p>I&rsquo;m your friendly neighbor IT guy and I could help finding causes of such things or finding the reason (if it&rsquo;s a problem with your computer), but a lot of the times the crucial information is lacking in these posts. And while wanting to help I feel like I would have to waste a lot of my personal time asking same questions from people and asking to provide specific data every time.</p>
+
+<p>For this reason I made this post which contains a guide on what information you need to gather and provide so any decent IT specialist will be able to help you find the problem that is causing you to have bad performance in PoE2. Or at the very minimum - guide you on where to look further in an educated way, especially remotely / over internet. While this data is not everything and not necessarily tell us what is the problem, it will point us in the right direction.</p>
+
+<p><strong>If you follow the steps in this guide to gather the information in this way, you will make it easy for anyone knowledgeable person to help you without making uneducated guesses.</strong> While it can seem like a lot to do - it will save time for others and will likely results you getting actual good advice, which isn&rsquo;t just anecdotal data based on unrelated experiences.</p>
+
+<p>The list of things that are needed are displayed in order. I<strong>f you skip parts or do them in the wrong order it will likely be not be sufficient or the data will not be good - so make sure to do them in that order, that&rsquo;s the least you can do, especially when asking for help from people online</strong>).</p>
+
+<p>If you skip some steps, make sure to mention them in the comments.</p>
+
+<h1 id="who-this-guide-is-for">Who this guide is for?</h1>
+
+<p>This guide is for players who feel like they have very bad performance in PoE compared to their hardware and who want to try fixing them themselves with help of me or other knowledgeable people on the internet. This is for problems such as:</p>
+
+<ul>
+<li>You have very bad performance in campaign or doing basic mapping (not giga-juicing delirium with breach while firing 10s forking/chaining/splitting projectiles multiple screens away)</li>
+<li>You have random stutters/fps drops while feeling like you have a decent CPU/GPU and not able to figure out what is causing them;</li>
+<li>Someone who knows that the game can run better with same/similar hardware (i.e. your friends have very similar configuration and run the game without these issues);</li>
+<li>Enthusiasts who would like to learn what bottlenecks PoE performance on their CPU.</li>
+<li>Someone who doesn&rsquo;t know jack shit but is stubborn enough to learn and can (learn to) follow instructions.</li>
+</ul>
+
+<p>Gathering data in such a way should help us determine the problem that is causing it without needing to be there physically. Or at the very least it should should allow us to make an educated decision on where to look further.</p>
+
+<h1 id="who-this-guide-is-not-for">Who this guide is not for?</h1>
+
+<ul>
+<li>If you are having lags when heavily juicing endgame maps, i.e. doing delirium+breach while also playing a build with tens of forking/chaining projectiles that fry across 2 screens, or using certain skills that are known to cause performance issues</li>
+<li>Someone with very old or outdated hardware that just expects to run a game like this without FPS drops. Keep in mind I have the game in a very playable state (to myself) while also running older GPU (1080 TI) and there are things you can usually optimize either at the software or OS or game settings level - the only way to fix running the game with very old/outdated hardware is to buy new hardware. The PoE client is still heavily reliant on your CPU when comparing it to most other modern games, so unless you have a top-end CPU, the CPU is most of the time the bottleneck. (the is a lot more the case with PoE1, but with PoE2 it still holds true in a lot of cases from my personal experience)</li>
+<li>For someone who finds the guide too complicated or not able to follow these instructions. While I&rsquo;ve tried my best to write everything as detailed and as clear as possible, I understand some of these steps might be too complicated for some. If you have questions regarding certain steps - please comment and I will be happy to clarify the post. Otherwise - I suggest you contact your local IT professional. While you will likely have to pay for the service you will not have to worry about such things besides showing them what is not working.</li>
+<li>It is also very likely not for someone playing the game on a laptop. Unless it&rsquo;s very high end laptop, and even in those situations - you will likely get issues due to thermal throttling (your hardware limiting power when reaching maximum temperatures that it&rsquo;s safe to operate for).</li>
+</ul>
+
+<h1 id="setting-up-software">Setting up software</h1>
+
+<p>Before you do anything, it&rsquo;s important to setup software that is needed to gather required information. Follow the steps below:</p>
+
+<ol>
+<li>Download and install HWInfo from here  <a href="https://www.hwinfo.com/download/" target="_blank">https://www.hwinfo.com/download/</a></li>
+</ol>
+
+<p>This is a free program that will track required information, from your hardware configuration, to core clocks of your CPU, GPU, their temperatures to your average FPS ingame.</p>
+
+<ol>
+<li>Setup Game recording so you can record your gameplay.</li>
+</ol>
+
+<p>Having recordings of gameplay (with in-game performance metrics on) while you experience performance problems is essential in figuring out the reason of poor performance.</p>
+
+<ul>
+<li><p>Easiest way is using Steam Game recording. Info is here: <a href="https://store.steampowered.com/gamerecording" target="_blank">https://store.steampowered.com/gamerecording</a> This will allow you not only easily record but also share such videos without needing to upload them to youtube or other sites manually. Steam will generate a share link that you can share with others. You can check Steam Game Recording FAQ here if you have any questions: <a href="https://help.steampowered.com/en/faqs/view/23B7-49AD-4A28-9590" target="_blank">https://help.steampowered.com/en/faqs/view/23B7-49AD-4A28-9590</a></p></li>
+
+<li><p>Alternatively, you can use OBS ( <a href="https://obsproject.com/" target="_blank">https://obsproject.com/</a> ) or Nvidia Shadowplay ( <a href="https://www.nvidia.com/en-ph/geforce/geforce-experience/shadowplay/" target="_blank">https://www.nvidia.com/en-ph/geforce/geforce-experience/shadowplay/</a> ) or any other software that you prefer, but you have to figure out the recording and sharing part yourself (just use steam game recording for ease of use).</p></li>
+</ul>
+
+<p>I suggest enabling and using Steam Game recording for this. You can set it to record i.e. 2 last hours of you gameplay and then go back and make clips from the 2 hour video to share. For now just make sure you can record.</p>
+
+<ol>
+<li>You will also need to make screenshots. For making screenshots you can just press Alt+Printscreen - this will put the screenshot active application to your clipboard. Then open an image editor (such as MS Paint) and click Ctrl+V to paste the screenshots. As an alternative you can use Win+Shift+S hotkey that works similar way but allows you to select an area you want to screenshot yourself.</li>
+</ol>
+
+<p>You will later be asked to make specific screenshots, just make sure you know how to make them and save them so you can share them later.</p>
+
+<p>There are tools that can make the process easier for you such as <a href="https://getgreenshot.org/" target="_blank">https://getgreenshot.org/</a> but they are not mandatory.</p>
+
+<ol>
+<li>Update your Windows (if there are any updates that you haven&rsquo;t done - now is the time to do so). While you don&rsquo;t have to install the latest feature update for windows (i.e. 24h2 for Win11) - you need to make sure you install the security updates and other critical/important updates as these can solve issues that are caused by Windows, Drivers or the like.</li>
+</ol>
+
+<p>If you are running anything but Windows 10 or Windows 11 - you are on your own and will likely run into various issues sooner or later. Surely Windows 7 or w/e version you are on was great, but they are no longer supported and if you are running them and needing such help - people will likely not be able to help you much as there are too many unknown variables. You choosing to run an old and no longer supported Windows version it&rsquo;s also you choosing to find and fix the issues yourself.</p>
+
+<p>If you feel like your windows is very bloated with apps you don&rsquo;t need or use or it&rsquo;s been 5+ years since you last reset/reinstalled it, then perhaps looking at doing Windows reset could be an option too, although I would only suggest that as a last resort.</p>
+
+<ol>
+<li>Update your GPU drivers:</li>
+</ol>
+
+<p>- For Nvidia GPU download drivers @ <a href="https://www.nvidia.com/en-us/drivers/" target="_blank">https://www.nvidia.com/en-us/drivers/</a><br>
+- For AMD GPU download drivers @ <a href="https://www.amd.com/en/support/download/drivers.html" target="_blank">https://www.amd.com/en/support/download/drivers.html</a></p>
+
+<ol>
+<li>Update your system (motherboard) drivers.</li>
+</ol>
+
+<p>While Windows can and will download a lot of these drivers automatically via Windows Update, there are times where it can download a lot older drivers (or even incorrect drivers). I&rsquo;ve seen problems which was fixed by newer driver but it can a lot of the times take very long time until they appear in Windows Update automatically. Only because you can turn on your computer and it works - it doesn&rsquo;t mean wrong drivers are not causing any issues.</p>
+
+<p>When installing the drivers, sometimes it can happen that you will have a newer driver already installed on your OS - if that happens the installer should warn you about that and ask you if you want to install an older version. Most of the time it is safe to just keep the newer version instead. This is especially relevant when trying to install things such as Audio or LAN/Wifi drivers (because Realtek which manufactures most Audio chips on most motherboard will push never driver through Windows Update first and your motherboard manufacturer won&rsquo;t bother updating newer one on their website;)</p>
+
+<p>If you are on Desktop - go to your Motherboard manufacturer&rsquo;s website, find &ldquo;Support &amp; Drivers&rdquo; page, enter your motherboard model, select your Windows OS version (Windows 11 or Windows 10) and download all the drivers. You DO NOT need to download and install any additional software, only the drivers.</p>
+
+<p>Some links to popular manufacturer&rsquo;s websites to download drivers from:</p>
+
+<ul>
+<li>ASUS <a href="https://www.asus.com/support/download-center/" target="_blank">https://www.asus.com/support/download-center/</a></li>
+<li>AsRock <a href="https://www.asrock.com/support/index.asp" target="_blank">https://www.asrock.com/support/index.asp</a></li>
+<li>MSI <a href="https://www.msi.com/support/download/" target="_blank">https://www.msi.com/support/download/</a> -</li>
+<li>Gigabyte <a href="https://www.gigabyte.com/Support/Consumer/Download" target="_blank">https://www.gigabyte.com/Support/Consumer/Download</a></li>
+</ul>
+
+<p><strong>NEVER USE AUTOMATIC DRIVER DOWNLOAD TOOLS</strong> unless they are provided by your motherboard&rsquo;s manufacturer. While these tools can download the right driver, they are error-prone and if they install the wrong driver it can cause issues. Even tools provided by manufacturer&rsquo;s can sometimes install the wrong driver. Manual method always works and always works best (as long as you driver the correct driver for your OS). Using automatic tools only leaves room for installing wrong driver causing weird issues that might not be noticeable at start.</p>
+
+<p>If you are on Laptop:</p>
+
+<p>- Go to your laptop&rsquo;s manufacturer website and download drivers from there</p>
+
+<p>Some links to popular manufacturer&rsquo;s websites to download drivers from:</p>
+
+<ul>
+<li>ASUS <a href="https://www.asus.com/support/download-center/" target="_blank">https://www.asus.com/support/download-center/</a></li>
+<li>Alienware or DELL <a href="https://www.dell.com/support/home/en-lt?app=drivers" target="_blank">https://www.dell.com/support/home/en-lt?app=drivers</a></li>
+<li>MSI <a href="https://www.msi.com/support/download" target="_blank">https://www.msi.com/support/download</a></li>
+<li>Lenovo <a href="https://support.lenovo.com/us/en" target="_blank">https://support.lenovo.com/us/en</a></li>
+<li>Acer <a href="https://www.acer.com/ee-en/support/drivers-and-manuals" target="_blank">https://www.acer.com/ee-en/support/drivers-and-manuals</a></li>
+</ul>
+
+<p><strong>NEVER USE AUTOMATIC DRIVER DOWNLOAD TOOLS</strong> unless they are provided by your motherboard&rsquo;s manufacturer. While these tools can download the right driver, they are error-prone and if they install the wrong driver it can cause issues. Even tools provided by manufacturer&rsquo;s can sometimes install the wrong driver. Manual method always works and always works best (as long as you driver the correct driver for your OS). Using automatic tools only leaves room for installing wrong driver causing weird issues that might not be noticeable at start.</p>
+
+<ol>
+<li>Make a screenshot (and save it) of Device Manager window with &ldquo;Other Devices&rdquo; expanded. To open device manager</li>
+</ol>
+
+<p>a) Press Start</p>
+
+<p>b) Type in: <strong>devmgmt.msc</strong></p>
+
+<p>c) Press enter</p>
+
+<p>Device Manager window will open. You have to make sure only &ldquo;Other Devices&rdquo; section is expanded (and visible) and take screenshot of the window like in the example below:</p>
+
+<p><a href="https://preview.redd.it/bi06s2xbp5ze1.png?width=781&amp;format=png&amp;auto=webp&amp;s=fdd7690b2063a98603896f45a7ea4496f9343cfa" target="_blank">Example Device Manager screenshot</a></p>
+
+<p>This will allow us to make sure you don&rsquo;t have important driver&rsquo;s missing</p>
+
+<h1 id="setting-up-poe-client">Setting up PoE Client</h1>
+
+<p>Before you start gathering data, it&rsquo;s important to setup PoE client so it does not impact the data negatively and reflects your gameplay more accurately. For that you need to do these steps (you should later revert them as they are only needed to gather data and should not be used otherwise):</p>
+
+<ol>
+<li>Disable Background FPS Cap</li>
+</ol>
+
+<p>This will keep the game running in full performance even while you alt-tab to either make screenshots or gather other data. If you do not do this, it will negatively impact the gathered data.</p>
+
+<p><a href="https://preview.redd.it/4d6w27og65ze1.png?width=1205&amp;format=png&amp;auto=webp&amp;s=49916c7b89394506b10dc0f7921549eed4ec1b77" target="_blank">Make sure Background FPS Cap is disabled (unchecked)</a></p>
+
+<p><strong>If for some reason you have issues with the background FPS cap disabled - set it to same value as &ldquo;Foreground FPS Cap&rdquo; (i.e. if your Foreground FPS cap is 90, set background fps cap to 90; if your Foreground FPS cap is 240, set background fps cap to 240 etc.).</strong></p>
+
+<ol>
+<li>Enable Advanced Performance metrics and all bars for in-game performance tracking</li>
+</ol>
+
+<p><a href="https://preview.redd.it/pnx5jms985ze1.png?width=1193&amp;format=png&amp;auto=webp&amp;s=135462bca5147ed0be5da6534dd39fe26c55d52d" target="_blank">Make sure \&ldquo;Graph Details\&rdquo; are set to \&ldquo;All Graphs\&rdquo; and Show Bars is Enabled (checked)</a></p>
+
+<ol>
+<li>Set convenient hotkey to enable advanced performance metrics:</li>
+</ol>
+
+<p><a href="https://preview.redd.it/fcmxh4h4b5ze1.png?width=1026&amp;format=png&amp;auto=webp&amp;s=441225b41c19a6c53e73fc4e30bc366490c8689b" target="_blank">https://preview.redd.it/fcmxh4h4b5ze1.png?width=1026&amp;format=png&amp;auto=webp&amp;s=441225b41c19a6c53e73fc4e30bc366490c8689b</a></p>
+
+<p>Clicking the set hotkey will toggle between performance metrics bar:</p>
+
+<p>- By default no bar is shown (we <strong>DO</strong> <strong>NOT</strong> want this)</p>
+
+<p>- Clicking hotkey once will toggle ON Advanced Performance Metrics Bar (we <strong>DO</strong> want this<strong>)</strong></p>
+
+<p>- Clicking hotkey again will toggle ON Simple Perfomance Bar (we <strong>DO</strong> <strong>NOT</strong> want this)</p>
+
+<p>You can keep clicking the set hotkey and it will toggle between the 3 modes.</p>
+
+<p>The example of how advanced performanc metric bar should look is in the image below:</p>
+
+<p><a href="https://preview.redd.it/fncwkyg4c5ze1.png?width=1389&amp;format=png&amp;auto=webp&amp;s=c3679113ab290189e380c7f81e200448e26a935e" target="_blank">Example of Advanced Metrics Performance Bar</a></p>
+
+<h1 id="gathering-the-data">Gathering the data</h1>
+
+<p>Now in this part we will actually start gathering the required data. If you provide all the data according to the steps in this guide - any competent IT person should be able to help you find the problem. <strong>Make sure you do everything as described in the steps</strong>.</p>
+
+<p><strong>MAKE SURE YOU HAVE DONE EVERYTHING MENTIONED IN THE SECTIONS ABOVE BEFORE PROCEEDING.</strong></p>
+
+<p><strong>DO NOT skip steps. DO the steps the specified order. If you skip something - start over from step 1.</strong></p>
+
+<ol>
+<li><p>Restart your computer. This will make sure we are starting from clean state. It doesn&rsquo;t matter if you restarted your computer 2 hours ago or think it&rsquo;s fine - just do it for the sake of gathering data on a clean state.</p></li>
+
+<li><p>Start HWInfo program that you installed previously. <strong>Keep it running, do not close any windows.</strong></p></li>
+
+<li><p>Start HWInfo Sensor monitoring so it monitors the temperatures and your FPS (min/max/avg) by clicking the Sensors button:</p></li>
+</ol>
+
+<p><a href="https://preview.redd.it/l7lnftng35ze1.png?width=896&amp;format=png&amp;auto=webp&amp;s=da2518ec469a0db84a3b674451a5b1e24f0b3908" target="_blank">Start Sensors monitoring in HWInfo</a></p>
+
+<p><strong>Keep it running, do not close any windows.</strong></p>
+
+<ol>
+<li>Start PoE client, login and enable Advanced Performance Metrics that we setup before by clicking the hotkey.</li>
+</ol>
+
+<p>Make sure these metrics are enabled all the time while you are playing (and recording). These performance metrics need to be enabled every time you restart the client (i.e. after you crash etc.).</p>
+
+<p><a href="https://preview.redd.it/ncmguc9yh5ze1.png?width=493&amp;format=png&amp;auto=webp&amp;s=22d4c81ec1c8591aaf06427e71a7cdeed1b2a32a" target="_blank">How Advanced Performance metrics look like - top right of your screen, enabled via hotkey we setup in previous section</a></p>
+
+<p><strong>KEEP THESE METRICS ON ALL THE TIME WHILE YOU ARE GATHERING DATA</strong></p>
+
+<ol>
+<li><p>Make sure your recording software is able to record your gameplay (or is recording last 1-2hours of your gameplay if you use Steam Game Recording).</p></li>
+
+<li><p>Now go play the game for 1-2 hours and either records clips of the game lagging while you experience the lags or make clips from the recorded video after. Make sure that advanced metrics is always shown.</p></li>
+</ol>
+
+<p>Start the game first, play it for 15minutes first, let your computer warm up. Then after 15minutes of gameplay record 1 video of 1min lenght while you are experiencing lag or other issues. Then play for 15minutes more, do another map, recording stuttering/lag or whatever you are experiencing again. The longer the periods between the videos, the better it is. As sometimes the lags can be caused by servers/ laggy instances, sometimes it can be your hardware/fps, sometimes it&rsquo;s just bad game optimization.</p>
+
+<p>After you played the game for 1+ hour and made 2-3 1min long videos (and save them), <strong>DO NOT CLOSE POE</strong>. Keep it running until all steps are finished.</p>
+
+<ol>
+<li>Make a screenshot (and save it) of HWINFO64 summary window</li>
+</ol>
+
+<p><strong>NOTE - If you didn&rsquo;t have background FPS cap disabled before - you have to start over from step1.</strong></p>
+
+<p><a href="https://preview.redd.it/46q8vig455ze1.png?width=1362&amp;format=png&amp;auto=webp&amp;s=2faaf5d0acaee4a2f1a55cc9675ea447227c14db" target="_blank">HWInfo Summary window</a></p>
+
+<ol>
+<li>Make a screenshot (and save it) of HWINFO64 sensors windows (alt+printscreen is here to help) - make sure to scroll down and capture everything - it is very important to:</li>
+</ol>
+
+<p>- You had the background FPS cap disabled before starting HWInfo - so it does not affect the results negatively</p>
+
+<p>- Expand &ldquo;Core Effective Clock&rdquo;, &ldquo;Core Usage&rdquo; and &ldquo;Core Utility&rdquo; sections manually so their data is exposed in the screenshots (as shown in image below):</p>
+
+<p><a href="https://preview.redd.it/0i40v6qls5ze1.png?width=2259&amp;format=png&amp;auto=webp&amp;s=27d2c60f945915f19f2e4fad84d6d47424d7c9dc" target="_blank">https://preview.redd.it/0i40v6qls5ze1.png?width=2259&amp;format=png&amp;auto=webp&amp;s=27d2c60f945915f19f2e4fad84d6d47424d7c9dc</a></p>
+
+<p><strong>NOTE - If you didn&rsquo;t have background FPS cap disabled before - you have to start over from step 1.</strong></p>
+
+<ol>
+<li>Make a screenshot (and save it) of HWInfo Video Adapter part. To do that expand &ldquo;Video Adapter&rdquo; on the left of the main window and click your GPU like shown in the video below and make a screenshot:</li>
+</ol>
+
+<p><a href="https://preview.redd.it/4xfudsybo5ze1.png?width=1906&amp;format=png&amp;auto=webp&amp;s=9d1dd9c47561c7b727d2133498984bac8b3fe6e2" target="_blank">https://preview.redd.it/4xfudsybo5ze1.png?width=1906&amp;format=png&amp;auto=webp&amp;s=9d1dd9c47561c7b727d2133498984bac8b3fe6e2</a></p>
+
+<ol>
+<li>Make a screenshot (and save it) of ALL of your Graphics settings that you use in-game, like this - <strong>DO NOT CHANGE ANY OF THEM</strong>:</li>
+</ol>
+
+<p><a href="https://preview.redd.it/yu794oclj5ze1.png?width=1930&amp;format=png&amp;auto=webp&amp;s=fdfd3b9d81fe7e29da73740bad86ca7b09bd890b" target="_blank">Example Graphics Settings screenshots - DO NOT COPY\/CHANGE THE SETTINGS only make screenshots</a></p>
+
+<p><strong>Make sure to include everything.</strong></p>
+
+<p><strong>DO NOT JUST COPY THE SETTINGS USED IN EXAMPLE SCREENSHOT</strong>. While one setting can work well for one hardware, the other settings can make things worse for other hardware. Just post your settings that you use, DO NOT start changing them mindlessly after you make a video as this will only over-complicate things.</p>
+
+<ol>
+<li>Make a screenshot (and save it) of your Sound settings that you use in-game, like this:</li>
+</ol>
+
+<p><a href="https://preview.redd.it/a81oemjak5ze1.png?width=579&amp;format=png&amp;auto=webp&amp;s=f3519090363c9e936ec7a50a6e395aeab1979cf7" target="_blank">Example Sound settings</a></p>
+
+<h1 id="sharing-the-data-you-have-gathered">Sharing the data you have gathered</h1>
+
+<p>So you have gathered all this data, now on the best ways of sharing it</p>
+
+<p>I suggest you structure your post/comment in such way:</p>
+
+<ol>
+<li>HWInfo Summary window screenshot.</li>
+<li>HWInfo Sensors window screenshot.</li>
+<li>Device Manager window screenshot (must have Other Devices expanded and visible in the screenshot)</li>
+<li>Links to videos of your gameplay (must have Advanced metrics enabled in the video)</li>
+<li>POE Graphics settings screenshots</li>
+<li>POE Audio settings screenshots</li>
+</ol>
+
+<p>To share screenshots - I suggest putting it to google drive or directly attaching it to reddit post so you can later delete it; alternatively you can use sites such as <a href="https://imgur.com/" target="_blank">https://imgur.com/</a> but some screenshots (especially HWInfo) might share serial numbers of some of your hardware parts and while it&rsquo;s not necessarily a bad thing - some people do not want to share that data with internet as a precaution. And you can&rsquo;t remove data from IMGUR afaik.</p>
+
+<p>If you made videos via Steam Game Recording (it&rsquo;s called Clips in Steam Game recording) - you can share them by generating a link that will work for a few days. If you made them by using other mean or want to upload Steam Game Recording Clips manually - I suggest uploading it either to Youtube and setting video to unlisted/private or using a cloud storage solution such as Google Drive (or alternatives)</p>
+
+<p>Once you share this data you will make it easy to helping you to find the cause of your problems.</p>
+
+<p>I suggest you structure your post/comment in such way:</p>
+
+<ol>
+<li>HWInfo Summary window screenshot.</li>
+<li>HWInfo Sensors window screenshot.</li>
+<li>Device Manager window screenshot (must have Other Devices expanded and visible in the screenshot)</li>
+<li>Links to videos of your gameplay (must have Advanced metrics enabled in the video)</li>
+<li>POE Graphics settings screenshots</li>
+<li>POE Audio settings screenshots</li>
+<li>Provide any other comments that you feel are relevant.</li>
+</ol>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+    </div>
+  </body>
+</html>
