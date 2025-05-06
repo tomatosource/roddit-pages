@@ -1,0 +1,353 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.selfPostImage {
+  width: 100%;
+  height: auto;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/PathOfExile2/comments/1kfsb86/performance_issue_rtx_5060_ti_i5_13600k_32gb_ram/"><p>[PERFORMANCE ISSUE] RTX 5060 Ti + i5 13600K + 32GB RAM = 40 FPS with 100% GPU Usage?</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <p>Hey all,</p>
+
+<p>I’m honestly confused and a bit annoyed.</p>
+
+<p>Here are my specs:</p>
+
+<ul>
+<li><strong>GPU:</strong> RTX 5060 Ti</li>
+<li><strong>CPU:</strong> Intel i5-13600K</li>
+<li><strong>RAM:</strong> 32GB DDR4</li>
+<li><strong>SSD:</strong> Gen4 NVMe I can run games like Cyberpunk, Helldivers 2, Elden Ring etc. totally fine. But then there&rsquo;s *Path of Exile 2*…</li>
+</ul>
+
+<h1 id="what-s-happening">🧯 What’s happening:</h1>
+
+<ul>
+<li>I’m getting <strong>40–45 FPS</strong> average, sometimes dropping to 30s</li>
+<li>GPU usage stays <strong>at 99–100% constantly</strong>, even when I’m just chilling in town</li>
+<li>Temps are <strong>~60°C</strong>, so it’s not thermal throttling</li>
+</ul>
+
+<h1 id="what-i-ve-tried">🎛 What I’ve tried:</h1>
+
+<ul>
+<li>Switched from DX12 to <strong>Vulkan</strong> → no difference</li>
+<li>Capped FPS to 60 via RTSS → still stutters</li>
+<li>Turned down <strong>every graphics setting</strong> to low → maybe gained 5 FPS</li>
+<li>Disabled <strong>dynamic resolution</strong> → worse overall</li>
+<li>Lowered all particle/ground effects → still not smooth in boss fights or crowded zones</li>
+</ul>
+
+<p>It feels like the game is <strong>overloading the GPU for no reason</strong>, especially with how hard it spikes during combat or skill spam. Shader loading is clearly not optimized — every new area lags like hell. Some boss fights are literally unplayable with all the effects flying around.</p>
+
+<h1 id="is-this-just-how-poe2-is-right-now">🤷‍♂️ Is this just how PoE2 is right now?</h1>
+
+<p>Am I missing something obvious, or is this just early build jank? Anyone else with similar specs getting better results? Is there anything else I can try?</p>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mqtuj3v" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Ninja9102</div>
+        <div>1 | 2 hours ago </div>
+      </div>
+      <label for="mqtuj3v" class="commentText"><p>I have a similar setup, minus a decent GPU.
+13600k, ddr4, 1060 6gb, windows 11.</p>
+
+<p>I do have over 60fps (vsync) in mostly empty maps and in hideout (towns with ppl can be very intense)</p>
+
+<p>But as a test, I get 90 fps if I turn off vsync in a Savannah, if I stand still.</p>
+
+<p>In juiced maps /w all base Atlas skill point, there are moments and packs my fps drops down to 10-15, and usually its around 30-40 fps in half a screen size packs, 40-50 fps with there is like 10 monsters. etc.</p>
+
+<p>My gpu is way weaker then yours and im pretty sure im gpu bottlenecked pretty hard.</p>
+
+<p>Now I don&rsquo;t know what resolution u are playing at, im at 1080p, dynamic resolution set to 53%, so it downscales it pretty hard.
+I run at adaptive vsync, Upscale (NIS)
+Currently I run Vulkan, since I kept getting DC&rsquo;d when I cast essence drain/Contangion on big packs with dx12
+But yeah your card should be doing DLSS, that would probably be better.</p>
+
+<p>I have everything else on Low, bloom 25%
+Engine Muiltithreading turned ON.</p>
+
+<p>I did have tons of stutters even in the starting zone at the start of this season, I went to User-&amp;gt;(your name)-&amp;gt;AppData-&amp;gt;Roaming-&amp;gt;Path of Exile 2
+and I deleted all shader cache folders, it fixed all micro stutters that was constantly happening due to shader compilling for me, but it might have been something PoE hotfixed, so I dont know what I did was the fix, but its worth testing, it will rebuild it anyway.</p>
+
+<p>Unfortunatly PoE 2 runs like a piece of crap, but I think u should be getting pretty decent framerate except for like rare screenwide clears perhaps due to shit optimasation on their part.</p>
+
+<p>Oh yeah I have 66% gpu load standing in Savannah with vsync ON (60fps)</p>
+
+<p>I unfortunately can&rsquo;t think of why you are having such low fps unless u are running the game at like 4k or 8k (if that even exist)
+But yeah maybe its a gpu driver issue? or some other drivers is out of date?
+Atleast you have some numbers to go on, so keep searching!</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mqtvblu" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>nbriles2000</div>
+        <div>1 | 2 hours ago </div>
+      </div>
+      <label for="mqtvblu" class="commentText"><p>I currently have a 9070 xt and a 5600x. I get 120-140 frames standing around in my hideout and around 80-100 in maps. 1440p widescreen. i just got this GPU a week or so ago, before I was using a 6800xt and that would only dip into 40s in juiced maps and it was thermal throttling hard</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mqtzt0p" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>todamach</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="mqtzt0p" class="commentText"><p>I have a similar issue, for me it fixes it if I restart the pc instead of using shutdown. Not sure where the exact issue is, fast boot up is disabled..</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mqu3q13" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Lunafet</div>
+        <div>1 | 32 minutes ago </div>
+      </div>
+      <label for="mqu3q13" class="commentText"><p>I&rsquo;m almost sure this is some sort of &ldquo;server&rdquo; side issue, even at the login screen i would sometimes get 99% gpu utilization while using dx12, but since 0.2 this is not happening to me anymore so i thought they finally found what the problem was but apparently not huh?</p>
+
+<p>In my case there was nothing i could do to circumvent that, i just waited until they fixed their &ldquo;server&rdquo;</p>
+
+<p>And by sever i mostly mean the problem isn&rsquo;t your pc or anything like that, it&rsquo;s a problem with the game itself</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
