@@ -235,11 +235,13 @@ body > .commentList {
     <div class="comment">
       <div class="commentHeader">
         <div>InterpretiveTrail</div>
-        <div>1 | 20 minutes ago </div>
+        <div>2 | an hour ago </div>
       </div>
       <label for="mrlkvdl" class="commentText"><p>You&rsquo;re doing something weird with your <code>&quot;</code>&rsquo;s. Quotes go around the entire regex for poe. Example: <code>&quot;movment|m life|energy&quot;</code> (there&rsquo;s shorter ways of making that regex, just an example)</p>
 
 <p>I like to also use this website ( <a href="https://poe2.re/" target="_blank">https://poe2.re/</a> ) as a &ldquo;base&rdquo; when making regex&rsquo;s: Doesn&rsquo;t have all modifiers that you might want, but you can also open Feature Requests if you&rsquo;ve a compelling enough one. (The website is the same person who made the PoE1 version of the regex helper).</p>
+
+<p>^(EDIT: Answered wrong question, following comment should correct it.)</p>
 </label>
     </div>
   </label>
@@ -252,7 +254,7 @@ body > .commentList {
     <div class="comment">
       <div class="commentHeader">
         <div>SmashenYT</div>
-        <div>1 | 12 minutes ago </div>
+        <div>2 | an hour ago </div>
       </div>
       <label for="mrlmaa0" class="commentText"><p>Hey I really appreciate you trying to help me!</p>
 
@@ -262,6 +264,154 @@ body > .commentList {
 </label>
     </div>
   </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mrlowaa" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>InterpretiveTrail</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="mrlowaa" class="commentText"><p>Sorry, I&rsquo;ve not finished my tea and answered wrong :)</p>
+
+<p>What you&rsquo;re look for is  (&amp;lt; literally a space). In PoE, the space character acts as an <code>AND</code>. And as you already know <code>|</code> is <code>OR</code>.</p>
+
+<p>Let me build up to the regex &hellip; if you&rsquo;re looking for: <code>(Movement Speed) or (Energey Shield AND Maximum Life)</code>, then it&rsquo;d be (<code>movement</code>) or (<code>energy</code> AND <code>m life</code>). Which in PoE regex is: <code>movement|energy &quot;m life&quot;</code>. Pretty sure that <code>energy</code> will have false positives in what it matches, but hopefully this gives you what you were actually looking for.</p>
+
+<p>Also to over explain, when you want to use an  (space) as part of what you&rsquo;re looking for you wrap it in double quotes. So saying <code>movement|energy &quot;m life&quot;</code> like a computer: Show me items with the string <code>movement</code> OR items with the string <code>energy</code> and the string <code>m life</code>.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mrlqn16" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>SmashenYT</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="mrlqn16" class="commentText"><p>This is exactly what I was also thinking! Thats why Im so tripple confused.</p>
+
+<p>Your regex is what I came up with as well. movement|energy &ldquo;m life&rdquo;</p>
+
+<p>This should like you said be:</p>
+
+<p><strong>Highlight items with movement speed.</strong></p>
+
+<p><strong>Highlight items with energy shield AND max life on it.</strong></p>
+
+<p>But as soon as I write movement|energy &ldquo;m li&rdquo; the movement speed boots arent highlighted anymore ???</p>
+
+<p><a href="https://i.imgur.com/bq2JaMx.png" target="_blank">https://i.imgur.com/bq2JaMx.png</a></p>
+
+<p>As you can see in the picture they have 10% movement speed, and all items with ES + max life are highlighted.. jesus im going insane with this xD *sips coffee*</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="mrlq8g4" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>wyrmise</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="mrlq8g4" class="commentText"><p>try <code>&quot;max life&quot; &quot;energy&quot;</code>, this functions as an AND meaning it would only match if the item has both max life and energy shield.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mrlsjqu" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>SmashenYT</div>
+        <div>1 | 40 minutes ago </div>
+      </div>
+      <label for="mrlsjqu" class="commentText"><p>&ldquo;max life&rdquo; sadly doesnt work but I know what you meant so I put it like this</p>
+
+<p>&ldquo;max.+ life&rdquo; &ldquo;energy&rdquo; this highlights all the energy items with max life. This is cool and all, this isnt fixing the issue I have because I want a smarter regex that also highlights boots with movement speed :( but thank you of course</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mrluz22" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>wyrmise</div>
+        <div>1 | 27 minutes ago </div>
+      </div>
+      <label for="mrluz22" class="commentText"><p>oh sorry, I misread your post. I actually looked into this myself a while back and sadly couldn&rsquo;t find a solution either. Poe actually does not use regex at all and it only implements a subset of the regex syntax so its quite limited. In the end I had to settle for using 2 separate queries.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mrlwhz1" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>SmashenYT</div>
+        <div>1 | 18 minutes ago </div>
+      </div>
+      <label for="mrlwhz1" class="commentText"><p>yea this is my only solution right now as well</p>
+
+<p>But I dont get it.. you can literally search for maps that dont have this and that modifier and be level xy also include this and that mod I really like !!</p>
+
+<p>But you cant make an easy vendor search for your SSF char? That highlights 3 important stats on an item? The only problem with this is the AND and OR clause.</p>
+
+<p>Because if I literally look for energy|&ldquo;m life&rdquo;|speed this completely works. Highlights all the energy items, max life and movement speed gear.</p>
+
+<p>But then I have to manually check each one if energy shield and max life are actually present on the same item.</p>
+
+<p>Edit: Sorry if I confuse you haha I think you know what I mean with all that</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
   
 </div>
 
