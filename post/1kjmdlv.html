@@ -1,0 +1,288 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.selfPostImage {
+  width: 100%;
+  height: auto;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/PathOfExile2/comments/1kjmdlv/performed_a_crazy_test_and_i_am_baffled_by_the/"><p>Performed a crazy test and I am baffled by the result</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <p>TLDR: performed two very time-expensive real-gameplay tests to investigate how armour breaking works on a boss. Ended up with two completely different and contraddicting results. Looking at the red tables below should suffice to get an idea.</p>
+
+<p><strong>INTRO</strong></p>
+
+<p>It all begun by doing some observational tests to compare different curses slotted into Hand of Chayula, and I ended up performing very time-expensive tests on the effectiveness of breaking armour on bosses.</p>
+
+<p>Basically I recorded some gameplay doing specific things, and then painstakingly went throgh the video carefully copying damage values from the boss&rsquo; healthbar after every hit into a spreadsheet.</p>
+
+<p><strong>TEST #1</strong></p>
+
+<p>I wanted to fully understand whether broken armour has a progressive effect on damage mitigation for the boss. In other words this is the stuff I was asking myself before the test:</p>
+
+<ul>
+<li>if I break 200 points on a target, am I &ldquo;actually&rdquo; removing 200 armour rating from it, hence hampering the target&rsquo;s physical-damage mitigation?</li>
+<li>if not: is it the case that &ldquo;partial&rdquo; armour-break has no effect but full armour-break does?</li>
+<li>if not, maybe it&rsquo;s not really stripping armour at all and it&rsquo;s abstracted with a flat +20% physical damage received when the target&rsquo;s armour is fully-broken? (as some sources mention).</li>
+</ul>
+
+<p>The test was performed on the Mighty Silverfist boss, act 3 non-cruel, at roughly appropriate level. The boss would get a fully broken armour at ~600 points. I used Thrown Spear with a Splinter support gem to break bits of armour until reaching the desired target, then performed a series of 10 Quarterstaff Strike attacks in that state. I also applied Vulnerability as a separate test, included in the table. Every single &ldquo;line&rdquo; in the table below is the average of 15 repeats (yes that means about 150 attacks each time, plus the necessary setup, yes I know, I am insane). Here are the results:</p>
+
+<p><a href="https://preview.redd.it/qt9znwi2110f1.png?width=1286&amp;format=png&amp;auto=webp&amp;s=8093f61db40f1fb0f14d5f246483adc39b8acb4d" target="_blank">Test #1</a></p>
+
+<p><strong>Test #1 Conclusions:</strong></p>
+
+<ul>
+<li>Breaking armour appears to have a progressive effect: baseline had an average damage of 5110, while the same series performed while the target had ~350 broken-armour resulted in an average of 5462.</li>
+<li>Vulnerability seems to actually work precisely like breaking armour, given that &ldquo;manually&rdquo; stripping ~350 points resulted in nearly-identical damage (well within margin of error) to ignoring roughly the same amount via Vulnerability. The result for 90% ignored armour (via the stronger Vulnerability applied directly instead through Hand of Chayula) also seems to roughly align with a reasonably expected result given how the armour formula is supposed to work.</li>
+</ul>
+
+<p>Everything was fine and peachy and made sense. Except then I did test #2&hellip;</p>
+
+<p><strong>TEST #2</strong></p>
+
+<p>With still some leftover missing answers, especially about Vulnerability, I decided to perform an even more rigorous test that spanned the entirety of a long boss fight, and I wanted to know:</p>
+
+<ul>
+<li>Would Vulnerability have any additional effect on a target that already has the fully broken armour debuff? In other words: can it make the target&rsquo;s physical-damage mitigation go negative?</li>
+<li>Can I reproduce the results with a boss that likely has a very large amount of armour?</li>
+</ul>
+
+<p>The test was performed on the Mektul Forgemaster boss, act3 non-cruel, at a slightly over-leveled state but nothing crazy (a couple levels). The boss would get a fully broken armour at ~1500 points. For this test I only used Thrown Spear with a Splinter support gem to break bits of armour, and Hand of Chayula to apply Vulnerability (damage numbers from HoC are properly ignored in the table). This time I tracked every, single, hit from the spear. Every, single, one. Note that in the table below, the lines labeled &ldquo;Before Armour Break&rdquo; do not refer to &ldquo;The target has all it&rsquo;s armour&rdquo;, rather it&rsquo;s every hit from 0 to 1500 broken armour points. Here are the results:</p>
+
+<p><a href="https://preview.redd.it/djzojts4410f1.png?width=862&amp;format=png&amp;auto=webp&amp;s=864862805c25fa2e978a675eee8a28b4ebe05362" target="_blank">https://preview.redd.it/djzojts4410f1.png?width=862&amp;format=png&amp;auto=webp&amp;s=864862805c25fa2e978a675eee8a28b4ebe05362</a></p>
+
+<p><strong>Test #2 Conclusions:</strong></p>
+
+<ul>
+<li>Ehm&hellip; WTF is going on, exactly? On this particular fight armour breaking had NO effect WHATSOEVER. As you can seethe average damage from Thrown Spear is identical before and after &ldquo;fully breaking&rdquo; armour, both with or without Vulnerability&hellip; this is beyond baffling.</li>
+<li>Possible explanations:
+
+<ul>
+<li>The boss has no actual armour at all, maybe the symbol represents all types of &ldquo;physical resistance&rdquo; and as such, the Forgemaster has a lot of raw physical damage resistance and no actual armour whatsoever.
+
+<ul>
+<li>But in that case, then why does Vulnerability clearly has an effect? A possible sub-explanation would be that Vulnerability CAN in fact &ldquo;go negative&rdquo;, which would explain the increased damage when it is active on the target vs when it&rsquo;s not.</li>
+</ul></li>
+<li>I messed something up in a colossal manner despite several re-watches and double-checks on the video and the data.</li>
+<li>I am missing something huge about all of this.</li>
+<li>I got unlucky enough to have picked a boss that has some enormous bug about it&rsquo;s armour.</li>
+</ul></li>
+</ul>
+
+<p><strong>Further analysis of Test #2:</strong></p>
+
+<p>Baffled and unsatisfied, especially about the fact that, as previously explained, I was averaging out all hits &ldquo;along the way&rdquo; to break armour into that &ldquo;before armour break&rdquo; line, I decided to make a chart of each hit with vulnerability applied. Maybe I would still see a progressive &ldquo;ramp&rdquo; up of the damage, and some incredibly lucky (or unlucky in this case) critical hit rolls were skewing the data somehow. Again: the following chart comes from aggregating groups of hits with vulnerability, in temporal order, starting from zero armour break, up to the very last before finishing the fight. What I would expect is to still see some &ldquo;ramp up&rdquo; of the damage up until armour is fully broken, then a plateau for the rest of the hits after that. Instead I got this, can you even spot where the armour was fully broken? I guess not eh?</p>
+
+<p><a href="https://preview.redd.it/vh8t5lam710f1.png?width=952&amp;format=png&amp;auto=webp&amp;s=e2cc0d964f4c6c22905412865c66798843a446e1" target="_blank">Red dot is where armour reached \&ldquo;fully broken\&rdquo;</a></p>
+
+<p>This makes no sense, it seems to completely contradict Test #1: breaking armour has NO effect whatsoever, neither progressively, nor after it&rsquo;s fully broken. None, my Thrown Spear was hitting for basically the same amount (statistically) regardless of armour on the target, you can see the crits hitting for roughly the same amounts, the unlucky min-damage-rolls being roughly similar, and the trendline&hellip; the trendline is hilarious, it&rsquo;s basically a horizontal line, even worse, hit damage is actually trending DOWN ever so slightly.</p>
+
+<p><strong>FINAL REMARKS</strong></p>
+
+<p>This is baffling, to say the least, and a bit disheartening.</p>
+
+<p>What do you think? Did I just pick the worst possible boss to test this? Is the methodology utterly idiotic? Am I missing something?</p>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+    </div>
+  </body>
+</html>
