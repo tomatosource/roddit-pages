@@ -1,0 +1,958 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.selfPostImage {
+  width: 100%;
+  height: auto;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/nba/comments/1kk3ucv/highest_playoff_bpms_ever_michael_jordan_1114/"><p>Highest playoff BPMs ever: Michael Jordan (11.14), Nikola Jokic (10.61), LeBron James (10.04), Luka Doncic (8.37), Giannis Antetokounmpo (8.36), Kawhi Leonard (8.07), Magic Johnson (7.62), Tracy McGrady (7.14), Stephen Curry (6.97), Hakeem Olajuwon (6.89)</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <p>BPM (Box Plus-Minus) takes into account these box score stats: Points, Assists, Rebounds, Steals, Blocks, Turnovers, Field goal attempts and makes, Three-point attempts and makes, Free throw attempts and makes, Minutes played, Personal fouls</p>
+
+<p>It’s also adjusted for era as it’s comparing it relative to the seasons they played in. Here’s the top 25</p>
+
+<table>
+<thead>
+<tr>
+<th align="left">Rank</th>
+<th align="left">Player</th>
+<th align="left">BPM</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">1.</td>
+<td align="left">Michael Jordan*</td>
+<td align="left">11.14</td>
+</tr>
+
+<tr>
+<td align="left">2.</td>
+<td align="left">Nikola Jokic</td>
+<td align="left">10.61</td>
+</tr>
+
+<tr>
+<td align="left">3.</td>
+<td align="left">LeBron James</td>
+<td align="left">10.04</td>
+</tr>
+
+<tr>
+<td align="left">4.</td>
+<td align="left">Luka Doncic</td>
+<td align="left">8.37</td>
+</tr>
+
+<tr>
+<td align="left">5.</td>
+<td align="left">Giannis Antetokounmpo</td>
+<td align="left">8.36</td>
+</tr>
+
+<tr>
+<td align="left">6.</td>
+<td align="left">Kawhi Leonard</td>
+<td align="left">8.07</td>
+</tr>
+
+<tr>
+<td align="left">7.</td>
+<td align="left">Magic Johnson*</td>
+<td align="left">7.62</td>
+</tr>
+
+<tr>
+<td align="left">8.</td>
+<td align="left">Tracy McGrady*</td>
+<td align="left">7.14</td>
+</tr>
+
+<tr>
+<td align="left">9.</td>
+<td align="left">Stephen Curry</td>
+<td align="left">6.97</td>
+</tr>
+
+<tr>
+<td align="left">10.</td>
+<td align="left">Hakeem Olajuwon*</td>
+<td align="left">6.89</td>
+</tr>
+
+<tr>
+<td align="left">11.</td>
+<td align="left">Anthony Davis</td>
+<td align="left">6.88</td>
+</tr>
+
+<tr>
+<td align="left">12.</td>
+<td align="left">Larry Bird*</td>
+<td align="left">6.86</td>
+</tr>
+
+<tr>
+<td align="left">13.</td>
+<td align="left">Kevin Durant</td>
+<td align="left">6.68</td>
+</tr>
+
+<tr>
+<td align="left">14.</td>
+<td align="left">Chris Paul</td>
+<td align="left">6.60</td>
+</tr>
+
+<tr>
+<td align="left">15.</td>
+<td align="left">Charles Barkley*</td>
+<td align="left">6.28</td>
+</tr>
+
+<tr>
+<td align="left">16.</td>
+<td align="left">James Harden</td>
+<td align="left">6.18</td>
+</tr>
+
+<tr>
+<td align="left">17.</td>
+<td align="left">David Robinson*</td>
+<td align="left">6.15</td>
+</tr>
+
+<tr>
+<td align="left">18.</td>
+<td align="left">Baron Davis</td>
+<td align="left">6.07</td>
+</tr>
+
+<tr>
+<td align="left">19.</td>
+<td align="left">Julius Erving*</td>
+<td align="left">6.03</td>
+</tr>
+
+<tr>
+<td align="left">20.</td>
+<td align="left">John Stockton*</td>
+<td align="left">6.01</td>
+</tr>
+
+<tr>
+<td align="left">21.</td>
+<td align="left">Isiah Thomas*</td>
+<td align="left">5.97</td>
+</tr>
+
+<tr>
+<td align="left">22.</td>
+<td align="left">Dirk Nowitzki*</td>
+<td align="left">5.93</td>
+</tr>
+
+<tr>
+<td align="left">23.</td>
+<td align="left">Tim Duncan*</td>
+<td align="left">5.86</td>
+</tr>
+
+<tr>
+<td align="left">24.</td>
+<td align="left">Anfernee Hardaway</td>
+<td align="left">5.85</td>
+</tr>
+
+<tr>
+<td align="left">25.</td>
+<td align="left">Jimmy Butler</td>
+<td align="left">5.72</td>
+</tr>
+</tbody>
+</table>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mrrj798" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Vivid_Walk_1405 | Nuggets</div>
+        <div>33 | an hour ago </div>
+      </div>
+      <label for="mrrj798" class="commentText"><p>As a nuggets fan this is almost certainly the best player I’m ever gonna watch play for us so I try to remember to enjoy the ride</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mrrm6c5" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>rand_mcnally_map</div>
+        <div>1 | 30 minutes ago </div>
+      </div>
+      <label for="mrrm6c5" class="commentText"><p>enjoy it because he&rsquo;s at the peak of his powers and it&rsquo;s a top 5 offensive peak of all time no question.</p>
+
+<p>i remember there was a user here called eg140000 or something, back in the day during Jokic first few seasons he would gas up Jokic in every thread. everyone thought he was annoying and doing a bit but he was actually a prophet. he saw something very few others saw.</p>
+
+<p>he got banned, i always felt after Jokic&rsquo;s first MVP the mods should have been forced to unban him</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mrrn81l" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Pumpoozle | Nuggets</div>
+        <div>1 | 25 minutes ago </div>
+      </div>
+      <label for="mrrn81l" class="commentText"><p>He has been unbanned. He’s a Hartenstein fan now </p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mrrnvg0" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Coolcat127 | Wizards</div>
+        <div>1 | 21 minutes ago </div>
+      </div>
+      <label for="mrrnvg0" class="commentText"><p>Oh…. so maybe he’s just a contrarian?</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mrrpxfy" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>BeneficialFinger</div>
+        <div>1 | 10 minutes ago </div>
+      </div>
+      <label for="mrrpxfy" class="commentText"><p>Nah he been a fan of IHart since he was playing poorly for the Nuggets. Dude has an eye for talent.</p>
+
+<p>He did say IHart would be better than Jokic though so he got that part way off, but he is a good player.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="mrronxi" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>rand_mcnally_map</div>
+        <div>1 | 17 minutes ago </div>
+      </div>
+      <label for="mrronxi" class="commentText"><p>you&rsquo;ve gotta be kidding me</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="mrrnbiv" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>palmettowhig | Hornets</div>
+        <div>1 | 24 minutes ago </div>
+      </div>
+      <label for="mrrnbiv" class="commentText"><p>Why would he get banned for giving his personal opinion on a player?</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mrrih3b" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>AnalysisFit615 | Nuggets</div>
+        <div>16 | an hour ago </div>
+      </div>
+      <label for="mrrih3b" class="commentText"><p>Getting to watch a historically great player night in and night out is honestly so incredible. As much as I want a second championship. He’s already delivered more than I ever thought possible for this franchise</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mrrjiud" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>The_NGUYENNER | DEN</div>
+        <div>5 | 44 minutes ago </div>
+      </div>
+      <label for="mrrjiud" class="commentText"><p>Exactly. Everything from here on out is just cherries on top</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mrrjprt" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>AnalysisFit615 | Nuggets</div>
+        <div>5 | 43 minutes ago </div>
+      </div>
+      <label for="mrrjprt" class="commentText"><p>Strangely it doesn’t feel like it if you’re on Nuggets social media.</p>
+
+<p>I honestly just think we’re hoping for a couple titles because all of this goes away, maybe for good, the second #15 calls it a career or asks out</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mrrpfxs" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Fine-Professional256</div>
+        <div>1 | 13 minutes ago </div>
+      </div>
+      <label for="mrrpfxs" class="commentText"><p>I think that’s just the age of social media. The general public will never be satisfied unless player x has the career of Jordan or Lebron. I’m 24 and there is no doubt that Jokic is the best player the nuggets will have for probably another 100 years, so let’s enjoy him lmao</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mrrigiy" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>No_Performance3342</div>
+        <div>3 | an hour ago </div>
+      </div>
+      <label for="mrrigiy" class="commentText"><p>How did Baron Davis get on here?</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mrrl0qu" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ositola | Lakers</div>
+        <div>3 | 36 minutes ago </div>
+      </div>
+      <label for="mrrl0qu" class="commentText"><p>Unrelated but baron Davis is the best hooper to come out of LA, Everytime he was playing, the whole city talked about it, dude was casually hitting logo threes from half court and his handles had ankles in slings every week</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mrrn0oi" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Miserable_Archer_769</div>
+        <div>1 | 26 minutes ago </div>
+      </div>
+      <label for="mrrn0oi" class="commentText"><p>I love some of the older but still young players talk about Baron Davis or Kidd. Im a weird history guy and weirdly love Cherryl Miller stories </p>
+
+<p>I remember Jason Williams talking about dominating college and his welcome to the NBA was Kidd and how shocked for the first time there is a dude bigger , stronger, and speed/quickness he could keep up.</p>
+
+<p>Crawford while he cant play defense also has slot of stories</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="mrros30" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>CoProgressOven</div>
+        <div>1 | 16 minutes ago </div>
+      </div>
+      <label for="mrros30" class="commentText"><p>50 playoff games.</p>
+
+<p>Missing the playoffs when he sucked.  Only played 4 playoff games after the I believe Warriors</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mrrkrl9" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Tangerine605</div>
+        <div>3 | 38 minutes ago </div>
+      </div>
+      <label for="mrrkrl9" class="commentText"><p>Jimmy is top 75 all time</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mrrp3uw" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>TheGamesGone_ | Celtics</div>
+        <div>1 | 15 minutes ago </div>
+      </div>
+      <label for="mrrp3uw" class="commentText"><p>No he’s not.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mrrkvgk" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>lotofhotdogs</div>
+        <div>4 | 37 minutes ago </div>
+      </div>
+      <label for="mrrkvgk" class="commentText"><p>Cool post. I’d be interested to see this comparing a players playoff peak (maybe like 5-6 best playoff stretch)</p>
+
+<p>Because someone like LeBron has probably slipped  a tiny bit the last few years as he’s gotten older. Or even Giannis/Harden could probably be a little higher since they weren’t primary options for their first playoffs.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mrrkanu" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>krg779</div>
+        <div>2 | 40 minutes ago </div>
+      </div>
+      <label for="mrrkanu" class="commentText"><p>Impressed to see Penny make the cut. Especially since there were at least two postseason series where he was basically a role player (one with the Suns and one with the Knicks).</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mrrlxjb" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>SensitiveFee3936</div>
+        <div>1 | 32 minutes ago </div>
+      </div>
+      <label for="mrrlxjb" class="commentText"><ol>
+<li><p>Tracy McGrady - never got out of the first round (at least not as the main guy)</p></li>
+
+<li><p>CP3 - Noted Playoff Choker</p></li>
+
+<li><p>Harden - The Greatest Playoff Choker in Basketball</p></li>
+
+<li><p>Baron Davis</p></li>
+
+<li><p>Jimmy Butler - Top 75?</p></li>
+</ol>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mrrog5d" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>TheGargageMan | Rockets</div>
+        <div>1 | 18 minutes ago </div>
+      </div>
+      <label for="mrrog5d" class="commentText"><p>Maybe wins and number of games should factor in somewhere.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mrrqgrr" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>SensitiveFee3936</div>
+        <div>1 | 7 minutes ago </div>
+      </div>
+      <label for="mrrqgrr" class="commentText"><p>ofcourse but we should also acknowledge guys who&rsquo;ve been constantly in the mix (it emphasizes how they were right there)</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mrrkql5" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>XthaNext | MIN</div>
+        <div>1 | 38 minutes ago </div>
+      </div>
+      <label for="mrrkql5" class="commentText"><p>No Julius Randle?</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mrro4ta" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>EightFortyDaysOf</div>
+        <div>1 | 20 minutes ago </div>
+      </div>
+      <label for="mrro4ta" class="commentText"><p>You know for him to prove everyone wrong this year, it meant that they expected bad games from him <em>because</em> he had bad playoff stats till now</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mrrocic" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>pritheebecareful_</div>
+        <div>1 | 19 minutes ago </div>
+      </div>
+      <label for="mrrocic" class="commentText"><p>What&rsquo;re the asterix for</p>
+
+<p>Edit: my one brain cell tells me it means they&rsquo;re retired</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mrrot5s" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Ok_Temporary5905</div>
+        <div>1 | 16 minutes ago </div>
+      </div>
+      <label for="mrrot5s" class="commentText"><p>Close. It’s hall of famer</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mrrptbb" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>PretendChef7513</div>
+        <div>1 | 11 minutes ago </div>
+      </div>
+      <label for="mrrptbb" class="commentText"><p>Is this career or for a single post season.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mrrpvw6" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>LivePear4283</div>
+        <div>1 | 10 minutes ago </div>
+      </div>
+      <label for="mrrpvw6" class="commentText"><p>The fact that LeBron has nearly triple the amount of games played while having that BPM shows just how GOATed is. It&rsquo;s really hard to argue against him being the best basketball player to ever live and and It&rsquo;ll be awhile before we see anyone come even near his level.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mrrqeil" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Rh0rny</div>
+        <div>1 | 8 minutes ago </div>
+      </div>
+      <label for="mrrqeil" class="commentText"><blockquote>
+<p>It&rsquo;s really hard to argue against him being the best basketball player to ever live</p>
+</blockquote>
+
+<p>yea if MJ didn&rsquo;t exist</p>
+
+<p>goes both ways</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
