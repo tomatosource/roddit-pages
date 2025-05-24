@@ -216,7 +216,7 @@ body > .commentList {
     <div class="comment">
       <div class="commentHeader">
         <div>Romping24</div>
-        <div>1 | 13 minutes ago </div>
+        <div>2 | an hour ago </div>
       </div>
       <label for="mu0qzkj" class="commentText"><p>You just made armor weaker. Sorry in advance for the math</p>
 
@@ -241,6 +241,110 @@ y + (1-y)* [x)/(x+10*(1-y)*dmg)]</p>
 <p>y + [x/((x/1-y)+ 10*dmg)]</p>
 
 <p>Given y is less than 1, the new formula is always going to be weaker than the original</p>
+
+<p>TLDR: Armour will only apply to a portion of the hit and negate less of the overall damage with your method. This is cause you need exponentially higher armour to negate each additional percent damage.</p>
+
+<p>E.g with 1000 armour you negate 50% of a 100 damage or 50 dmg. With 1000 armour you negate 55.5% of 80 damage or 44.4. So you negate less damage overall</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mu11q5y" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>exempt_fern</div>
+        <div>1 | 18 minutes ago </div>
+      </div>
+      <label for="mu11q5y" class="commentText"><p>I&rsquo;m not following. If armour is less effective against larger hits (which it is), then, if the hit size is reduced (via damage reduction) prior to the reduction from the armour, the hit is smaller, thus the armour is more effective.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mu14tt7" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Zen_Kaizen</div>
+        <div>1 | a few seconds ago </div>
+      </div>
+      <label for="mu14tt7" class="commentText"><p>I just did my own writeup that&rsquo;s significantly lengthier (probably for no good reason) before I saw this commenters one that went through effectively the same thing, but I talk a bit about this thing you&rsquo;re confused about.</p>
+
+<p>So here&rsquo;s my explanation: While you&rsquo;re correct that armour mitigates more from smaller hits, what you&rsquo;re missing is that things that reduce a value are better the more you have of it that can apply all at once, and that this effect ends up being more potent than if you were to make them apply separately, even if armour is the one applying second, and thus to a smaller starting hit.</p>
+
+<p>Take skill effect duration reductions as an example to demonstrate this concept. If you have a 50% <em>decreased</em> skill effect duration modifier, and a 20% <em>less</em> skill effect duration modifier, these two modifiers are applying at different stages in the calculation rather than at the same time (because one is a &lsquo;more/less&rsquo; type and one is an &lsquo;increase/decrease&rsquo; type). So a 10s duration skill would be reduced by 50% to 5s, then that 5s is reduced by 20% at a separate stage to get 4s as your final duration.</p>
+
+<p>Whereas if you had a 50% <em>decreased</em> modifier and another 20% <em>decreased</em> modifier, and thus they applied at the same time (since neither is a more/less type, which always applies separately), then you&rsquo;d just have one single 70% decrease modifier. So that 10s is reduced by 70% all at once, becoming 3s, which obviously is lower than 4s. Thus, skill effect duration reductions are more potent the more you can stack of the same <em>type</em>, which means the more of it you can apply altogether in the same stage of the calculation.</p>
+
+<p>The same thing is happening with armour and PDR. When they can combine all into the same pool, they have a stronger effect the more of it you can stack all at once. If you separate them to dif parts of the calculation, you lose that combinatory effect. Having a smaller starting number IS good for armour, but this combination effect I&rsquo;m describing will always have more of an impact than applying one value earlier in the calculation to get a smaller damage number for armour to apply to.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mu12gal" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Zen_Kaizen</div>
+        <div>1 | 14 minutes ago </div>
+      </div>
+      <label for="mu12gal" class="commentText"><p>Physical damage reduction currently applies at the same time as armour. They are effectively the same stat, but armour just calculates it based on the size of the incoming damage hit, and then PDR is added to that.</p>
+
+<p>What you are suggesting would actually make armour worse for everyone, because you are making something that benefits from combining additively instead combine multiplicatively. I understand the motivation here is to capitalize on armour doing better against smaller hits, but that is unfortunately offset by what I&rsquo;ve just explained.</p>
+
+<p>So let&rsquo;s demonstrate that, both for you and anyone else who stumbles upon this post and is curious about why that would be the case (brace yourself for math):</p>
+
+<p>Example -<br>
+3,000 damage incoming hit<br>
+30,000 armour<br>
+20% PDR from other sources<br>
+Armour formula: Armour / (Armour + [Damage taken * 10]) = Mitigation % (expressed as a decimal)</p>
+
+<p>Here&rsquo;s how it currently works:<br>
+30,000 / (30,000 + [3,000 * 10]) = 0.5, or 50% damage reduced by armour<br>
+50% from armour + 20% PDR from other sources = 70% total mitigation<br>
+3,000 * (1 - 0.7) = 900 final damage taken</p>
+
+<p>Here&rsquo;s how it would work if PDR applied <em>before</em> armour:<br>
+3,000 * (1 - 0.2) = 2,400 incoming damage after the 20% PDR is applied<br>
+30,000 * (30,000 + [2,400 * 10]) = 0.5555, or 55.55% damage reduced by armour<br>
+2,400 * (1 - 0.5555) = ~1,067 final incoming damage</p>
+
+<p>1,067 / 900 = 1.1855, or 18.55% higher incoming damage when you place PDR before armour in the formula, compared to the current state.</p>
+
+<p>How large that difference will be will change depending on the size of the hit vs your armour, but it will always be more with the proposed change than how it currently works.</p>
+
+<p>This is simply because damage reduction is more valuable for every extra point you have of it. You may have heard the terms multiplicative and additive in terms of scaling, and generally it is such that multiplicative means good. Well, multiplicative is only good when we&rsquo;re talking about &lsquo;increase&rsquo; type changes.</p>
+
+<p>For &lsquo;decrease&rsquo; type changes (another example would by skill effect duration reduction), additive is substantially stronger. Maybe it would be more appropriate to call them &lsquo;divisive&rsquo; and &lsquo;subtractive&rsquo; in these cases. Multiplicative and subtractive are ideal, additive and divisive are not as good.</p>
+
+<p>Armour and PDR are currently &lsquo;subtractive&rsquo;, and thus ideal, but if you were to take PDR and place it before armour in the calculation they would become &lsquo;divisive&rsquo;, which is not as strong.</p>
+
+<p><strong>Conclusion</strong> - PDR already scales armour to the maximal amount that it could scale armour. Your intuition was correct, but your suggestion was misguided. What we really need is just a lot more sources of PDR.</p>
+
+<p>Currently PDR only exists on a unique helm for 15% (18% with a perfect vaal roll) that you have to sacrifice armour you would be getting from a helm to use, on specifically tower shields up to 8%, and as a corruption enchantment on body armour for 3-5%. One of the biggest issues for Armour as a defense right now is lack of access to sources additional PDR.</p>
 </label>
     </div>
   </label>
