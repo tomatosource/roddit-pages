@@ -1,0 +1,1050 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.selfPostImage {
+  width: 100%;
+  height: auto;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/nba/comments/1kv1i7j/data_analysis_who_are_the_most_conventional_and/"><p>Data Analysis: Who are the most conventional and unconventional All NBA voters?</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <p>With the announcement of this season&rsquo;s awards concluded, the NBA also releases the full ballots of every voter from the media: <a href="https://ak-static.cms.nba.com/wp-content/uploads/sites/46/2025/05/2024-25-Kia-All-NBA-Team-Voter-Selections.pdf" target="_blank">https://ak-static.cms.nba.com/wp-content/uploads/sites/46/2025/05/2024-25-Kia-All-NBA-Team-Voter-Selections.pdf</a></p>
+
+<p>From this, we can determine roughly which votes and voters are the most unusual compared to the rest and which players are most &ldquo;controversial&rdquo; in terms of how many disagreements there are.</p>
+
+<p>To do this, we calculate the &ldquo;skew&rdquo; of every vote. This will be the difference between an individual voter&rsquo;s points and the average points the player received. Per NBA rules, 1st team votes are worth 5 points, 2nd team votes are worth 3 points, and 3rd team votes are worth 1 point.</p>
+
+<p>As an example, Donovan Mitchell received 414 points this year, giving him an average vote score of 4.14. Thus, any voter who voted him first team gets a skew of 5 - 4.14 or +.86. Any voter who voted him third team gets a skew of 1 - 4.14 or -3.14. Four players were unanimously first team this year, so all of those votes have a skew of 5-5 = 0.</p>
+
+<p>With this number, we can rank the most extreme votes, voters, and player evaluations.</p>
+
+<h1 id="biggest-hater-votes-and-omissions">Biggest &ldquo;Hater&rdquo; Votes and Omissions</h1>
+
+<table>
+<thead>
+<tr>
+<th>Voter</th>
+<th>Player</th>
+<th>Skew</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>Rod Boone</td>
+<td>Donovan Mitchell, Cleveland</td>
+<td>-3.14</td>
+</tr>
+
+<tr>
+<td>Ric Bucher</td>
+<td>Donovan Mitchell, Cleveland</td>
+<td>-3.14</td>
+</tr>
+
+<tr>
+<td>Bill Reiter</td>
+<td>Donovan Mitchell, Cleveland</td>
+<td>-3.14</td>
+</tr>
+
+<tr>
+<td>Stan Van Gundy</td>
+<td>Donovan Mitchell, Cleveland</td>
+<td>-3.14</td>
+</tr>
+
+<tr>
+<td>Steve McGehee</td>
+<td>LeBron James, Los Angeles Lakers</td>
+<td>-2.89</td>
+</tr>
+
+<tr>
+<td>Ric Bucher</td>
+<td>Evan Mobley, Cleveland</td>
+<td>-2.38</td>
+</tr>
+
+<tr>
+<td>Frank Isola</td>
+<td>Evan Mobley, Cleveland</td>
+<td>-2.38</td>
+</tr>
+
+<tr>
+<td>Shaun Powell</td>
+<td>Evan Mobley, Cleveland</td>
+<td>-2.38</td>
+</tr>
+
+<tr>
+<td>Duane Rankin</td>
+<td>Evan Mobley, Cleveland</td>
+<td>-2.38</td>
+</tr>
+
+<tr>
+<td>Yoko Miyaji</td>
+<td>Cade Cunningham, Detroit</td>
+<td>-2.23</td>
+</tr>
+</tbody>
+</table>
+<p>-3.14 for Donovan Mitchell in this context mean he was listed on the 3rd team compared to his first team finish. LeBron, Mobley, and Cunningham made the second team but were omitted from the listed voters&rsquo; ballots entirely.</p>
+
+<h1 id="biggest-homer-votes">Biggest &ldquo;Homer&rdquo; Votes</h1>
+
+<table>
+<thead>
+<tr>
+<th>Voter</th>
+<th>Player</th>
+<th>Skew</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>Ric Bucher</td>
+<td>Bam Adebayo, Miami</td>
+<td>2.97</td>
+</tr>
+
+<tr>
+<td>Ric Bucher</td>
+<td>Darius Garland, Cleveland</td>
+<td>2.94</td>
+</tr>
+
+<tr>
+<td>Ric Bucher</td>
+<td>Cade Cunningham, Detroit</td>
+<td>2.77</td>
+</tr>
+
+<tr>
+<td>Adam Lefkoe</td>
+<td>Cade Cunningham, Detroit</td>
+<td>2.77</td>
+</tr>
+
+<tr>
+<td>Sebastian Martinez-Christensen</td>
+<td>Cade Cunningham, Detroit</td>
+<td>2.77</td>
+</tr>
+
+<tr>
+<td>Kendrick Perkins</td>
+<td>Cade Cunningham, Detroit</td>
+<td>2.77</td>
+</tr>
+
+<tr>
+<td>Remi Reverchon</td>
+<td>Cade Cunningham, Detroit</td>
+<td>2.77</td>
+</tr>
+
+<tr>
+<td>Gary Washburn</td>
+<td>Cade Cunningham, Detroit</td>
+<td>2.77</td>
+</tr>
+
+<tr>
+<td>Tim Bontemps</td>
+<td>Jalen Brunson, New York</td>
+<td>2.68</td>
+</tr>
+
+<tr>
+<td>Rod Boone</td>
+<td>Jalen Brunson, New York</td>
+<td>2.68</td>
+</tr>
+</tbody>
+</table>
+<p>Ric Bucher voted Adebayo and Garland second team but they did not finish on any All NBA team. The other most positively skewed votes were first team votes for Cade Cunningham and Jalen Brunson, who finished on 3rd team and 2nd team respectively.</p>
+
+<h1 id="most-conventional-voters">Most Conventional Voters</h1>
+
+<table>
+<thead>
+<tr>
+<th>Voter</th>
+<th>Affiliation</th>
+<th>Skew Sum</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>Ryen Russillo</td>
+<td>The Ringer</td>
+<td>7.52</td>
+</tr>
+
+<tr>
+<td>Katie George</td>
+<td>ESPN/ABC</td>
+<td>7.68</td>
+</tr>
+
+<tr>
+<td>Vince Goodwill</td>
+<td>Yahoo! Sports</td>
+<td>7.68</td>
+</tr>
+
+<tr>
+<td>Jorge Sedano</td>
+<td>ESPN/ABC</td>
+<td>7.7</td>
+</tr>
+
+<tr>
+<td>Josh Robbins</td>
+<td>The Athletic</td>
+<td>7.7</td>
+</tr>
+
+<tr>
+<td>Brian Windhorst</td>
+<td>ESPN</td>
+<td>7.74</td>
+</tr>
+
+<tr>
+<td>Steve Popper</td>
+<td>Newsday</td>
+<td>7.76</td>
+</tr>
+
+<tr>
+<td>Tim Legler</td>
+<td>ESPN/ABC</td>
+<td>7.76</td>
+</tr>
+
+<tr>
+<td>Steve Smith</td>
+<td>WarnerMedia</td>
+<td>7.8</td>
+</tr>
+
+<tr>
+<td>Miguel Candeias</td>
+<td>A Bola</td>
+<td>7.82</td>
+</tr>
+</tbody>
+</table>
+<p>Note that the skew sum for voters is the sum of the absolute value of the skew of all their votes, including omissions.</p>
+
+<p>Russillo&rsquo;s ballot is closest to mirroring the actual results, getting the 1st team and 2nd team &ldquo;correct&rdquo; and with the only deviation from the results being a vote for Jaren Jackson Jr. on the third team over James Harden. His podcast partner Bill Simmons finished with a skew score of 9.74, which ranked 32nd in terms of most conventional.</p>
+
+<h1 id="most-unconventional-voters">Most Unconventional Voters</h1>
+
+<table>
+<thead>
+<tr>
+<th>Voter</th>
+<th>Affiliation</th>
+<th>Skew Sum</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>Ric Bucher</td>
+<td>FS1</td>
+<td>25.18</td>
+</tr>
+
+<tr>
+<td>Stan Van Gundy</td>
+<td>WarnerMedia</td>
+<td>18.14</td>
+</tr>
+
+<tr>
+<td>Law Murray</td>
+<td>The Athletic</td>
+<td>16.4</td>
+</tr>
+
+<tr>
+<td>Duane Rankin</td>
+<td>Arizona Republic</td>
+<td>15.74</td>
+</tr>
+
+<tr>
+<td>Steve McGehee</td>
+<td>News 9</td>
+<td>15.18</td>
+</tr>
+
+<tr>
+<td>Gary Washburn</td>
+<td>Boston Globe</td>
+<td>15.04</td>
+</tr>
+
+<tr>
+<td>Rod Boone</td>
+<td>Charlotte Observer</td>
+<td>14.3</td>
+</tr>
+
+<tr>
+<td>Steve Aschburner</td>
+<td><a href="http://NBA.com" target="_blank">NBA.com</a></td>
+<td>14.28</td>
+</tr>
+
+<tr>
+<td>Tim Reynolds</td>
+<td>Associated Press</td>
+<td>13.86</td>
+</tr>
+
+<tr>
+<td>John Schuhmann</td>
+<td><a href="http://NBA.com" target="_blank">NBA.com</a></td>
+<td>13.64</td>
+</tr>
+</tbody>
+</table>
+<p>Some of the more unconventional votes were already highlighted above. Other votes contributing to the standing here was Stan Van Gundy&rsquo;s vote for Tyrese Haliburton on 2nd team and Law Murray&rsquo;s vote for James Harden on 2nd team.</p>
+
+<h1 id="most-controversial-players">Most &ldquo;Controversial&rdquo; Players</h1>
+
+<table>
+<thead>
+<tr>
+<th>Player</th>
+<th>Skew Sum</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>Cade Cunningham, Detroit</td>
+<td>110.24</td>
+</tr>
+
+<tr>
+<td>Donovan Mitchell, Cleveland</td>
+<td>104.92</td>
+</tr>
+
+<tr>
+<td>Karl-Anthony Towns, New York</td>
+<td>102.4</td>
+</tr>
+
+<tr>
+<td>Jalen Brunson, New York</td>
+<td>95.04</td>
+</tr>
+
+<tr>
+<td>Evan Mobley, Cleveland</td>
+<td>90.8</td>
+</tr>
+
+<tr>
+<td>Stephen Curry, Golden State</td>
+<td>86.4</td>
+</tr>
+
+<tr>
+<td>LeBron James, Los Angeles Lakers</td>
+<td>85.16</td>
+</tr>
+
+<tr>
+<td>Tyrese Haliburton, Indiana</td>
+<td>67.94</td>
+</tr>
+
+<tr>
+<td>Alperen Sengun, Houston</td>
+<td>62.64</td>
+</tr>
+
+<tr>
+<td>James Harden, LA Clippers</td>
+<td>54.4</td>
+</tr>
+
+<tr>
+<td>Jaren Jackson Jr., Memphis</td>
+<td>51.7</td>
+</tr>
+
+<tr>
+<td>Jalen Williams, Oklahoma City</td>
+<td>51.1</td>
+</tr>
+
+<tr>
+<td>Anthony Edwards, Minnesota</td>
+<td>40.04</td>
+</tr>
+
+<tr>
+<td>Ivica Zubac, LA Clippers</td>
+<td>25.5</td>
+</tr>
+
+<tr>
+<td>Darius Garland, Cleveland</td>
+<td>11.52</td>
+</tr>
+
+<tr>
+<td>Domantas Sabonis, Sacramento</td>
+<td>7.68</td>
+</tr>
+
+<tr>
+<td>Pascal Siakam, Indiana</td>
+<td>7.68</td>
+</tr>
+
+<tr>
+<td>Bam Adebayo, Miami</td>
+<td>5.94</td>
+</tr>
+
+<tr>
+<td>Trae Young, Atlanta</td>
+<td>5.82</td>
+</tr>
+
+<tr>
+<td>Devin Booker, Phoenix</td>
+<td>3.92</td>
+</tr>
+
+<tr>
+<td>Giannis Antetokounmpo, Milwaukee</td>
+<td>0</td>
+</tr>
+
+<tr>
+<td>Shai Gilgeous-Alexander, Oklahoma City</td>
+<td>0</td>
+</tr>
+
+<tr>
+<td>Nikola Jokić, Denver</td>
+<td>0</td>
+</tr>
+
+<tr>
+<td>Jayson Tatum, Boston</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<p>Controversy here refers to the amount of disagreement about these players. At the low end, there was no disagreement about Tatum, Jokic, SGA, and Giannis about their status as first team players. On the high end, Cunningham was voted 1st team on some ballots and left off entirely on others.</p>
+
+<p>Raw Data: <a href="https://docs.google.com/spreadsheets/d/1uQXrUi17ewve-ZAf4_tyOtQ3Mll2AakSzgmCs83_zVk/edit?gid=0#gid=0" target="_blank">https://docs.google.com/spreadsheets/d/1uQXrUi17ewve-ZAf4_tyOtQ3Mll2AakSzgmCs83_zVk/edit?gid=0#gid=0</a></p>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mu60s8x" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>MrFishAndLoaves | Pelicans</div>
+        <div>23 | an hour ago </div>
+      </div>
+      <label for="mu60s8x" class="commentText"><p>Nice work OP</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mu61gvt" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>1manadeal2btw | Nuggets</div>
+        <div>12 | an hour ago </div>
+      </div>
+      <label for="mu61gvt" class="commentText"><p>This is really interesting. Thank you.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mu5wk28" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Qar_Quothe</div>
+        <div>6 | 2 hours ago </div>
+      </div>
+      <label for="mu5wk28" class="commentText"><p>Now rank the analysts who commentate on the media that ranks the players.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mu63shd" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>KontraEpsilon</div>
+        <div>6 | an hour ago </div>
+      </div>
+      <label for="mu63shd" class="commentText"><p>Please show r/billsimmons the Russillo score. It’s too good to pass up.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mu5x5ro" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Maleficent_Task_329 | Bucks</div>
+        <div>6 | 2 hours ago </div>
+      </div>
+      <label for="mu5x5ro" class="commentText"><p>More weirdo ballots! We should celebrate Ric Bucher for his madness! The voter with the most conventional ballot should lose it next year!</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mu61kvf" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Educational_Cover_16</div>
+        <div>5 | an hour ago </div>
+      </div>
+      <label for="mu61kvf" class="commentText"><p>This is great work. Too bad Lowe didn’t vote this year to see his stats because I think he’s the best example of someone who might show up “conventional” but actually the causality goes the other direction where a very influential voter helps influence other voters to have similar ballots. That might make someone look conventional or boring but in fact they are the trend setter and others follow them.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mu62s26" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>slammaster | Raptors</div>
+        <div>3 | an hour ago </div>
+      </div>
+      <label for="mu62s26" class="commentText"><p>You could calculate it from his ballot, he still published it as an article I think? Maybe he only went over it on podcasts, but you could still figure out who he voted for and calculate his skew</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mu64jjj" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>PenisMcBallsAllStars</div>
+        <div>5 | an hour ago </div>
+      </div>
+      <label for="mu64jjj" class="commentText"><p>Great work. Also I like the unconventional voters, provided they are voting honestly. The consensus is meant to be the overlap of everyone’s individual opinions, not a prescription that no one can individually deviate from. I trust some of the more unconventional voters bc they seem to be engaging with the game, rather than taking direction from media narratives.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mu64m6e" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>TheOneWhosCensored | Celtics</div>
+        <div>5 | an hour ago </div>
+      </div>
+      <label for="mu64m6e" class="commentText"><p>Mitchell 3rd team but Garland 2nd team is an insane take</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mu67ryb" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Nuclearsunburn | Heat</div>
+        <div>1 | 29 minutes ago </div>
+      </div>
+      <label for="mu67ryb" class="commentText"><p>Bam on any team is insane too lol</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mu6524f" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>OwnABMWImBetterThanU | Pistons</div>
+        <div>2 | an hour ago </div>
+      </div>
+      <label for="mu6524f" class="commentText"><p>Yoko Miyaji is a bum. Ignore flair.</p>
+
+<p>Seriously though JJJ and Sengun over Cade ON THIRD TEAM is absolutely wild</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mu6aqix" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>GoodfellaSeinfeld | Celtics</div>
+        <div>1 | 13 minutes ago </div>
+      </div>
+      <label for="mu6aqix" class="commentText"><p>Ryen Russillo is going to be so proud that he watched endless hours of basketball this year and was able to come to the most conventional conclusions</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mu664x7" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>OIWouldLeave</div>
+        <div>1 | 39 minutes ago </div>
+      </div>
+      <label for="mu664x7" class="commentText"><p>Damn MFs hate cleveland</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mu66i85" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Professional_Fly8241</div>
+        <div>1 | 37 minutes ago </div>
+      </div>
+      <label for="mu66i85" class="commentText"><p>Great content OP, thanks!</p>
+
+<p>Could totally see Cade as the darling, before reading the post. Didn&rsquo;t think I&rsquo;d see Mitchell as most &ldquo;hated&rdquo; or &ldquo;controversial&rdquo;, I thought it would probably be Evan Mobley.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mu68xo1" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>HeyItsChase | Pacers</div>
+        <div>1 | 23 minutes ago </div>
+      </div>
+      <label for="mu68xo1" class="commentText"><p>SVG I could kiss you.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mu6a5lb" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>papadondon | DAL</div>
+        <div>1 | 16 minutes ago </div>
+      </div>
+      <label for="mu6a5lb" class="commentText"><p>that gary washburn bum still has voting power? the same guy that denied lebron a unanimous mvp</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mu6ap2y" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>boogswald | CLE</div>
+        <div>1 | 13 minutes ago </div>
+      </div>
+      <label for="mu6ap2y" class="commentText"><p>Do note that we do want voters to be independent and it’s not like the choices someone like Ric Bucher made are egregious.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mu6ck8v" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>SquirrelMeta</div>
+        <div>1 | 3 minutes ago </div>
+      </div>
+      <label for="mu6ck8v" class="commentText"><p>I think the nba should remove the voting rights of someone who skews badly multiple years</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mu5vh2f" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>[deleted]</div>
+        <div>-14 | 2 hours ago </div>
+      </div>
+      <label for="mu5vh2f" class="commentText"><p>[deleted]</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mu60l70" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Clemsontigger16</div>
+        <div>9 | an hour ago </div>
+      </div>
+      <label for="mu60l70" class="commentText"><p>Go back to bed grandpa</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mu62rs2" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>purpleandverbal</div>
+        <div>2 | an hour ago </div>
+      </div>
+      <label for="mu62rs2" class="commentText"><p>I need to change my adult diaper first</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
