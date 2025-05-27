@@ -1,0 +1,762 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.selfPostImage {
+  width: 100%;
+  height: auto;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/nba/comments/1kwmff5/tom_thibodeau_is_the_nbas_oldest_coach_rick/"><p>Tom Thibodeau is the NBA&rsquo;s oldest coach. Rick Carlisle is the second oldest.</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <p>With Popovich officially stepping down from coaching several weeks ago, Thibs and Carlisle became the two oldest coaches in the league and are now facing each other in the Eastern Conference Finals. Here is a list of the current NBA coaches by age. The Suns have not hired a new coach yet but their most recent coach, Budenholzer, is 55.</p>
+
+<table>
+<thead>
+<tr>
+<th>Coach</th>
+<th>Team</th>
+<th>Age</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>Tom Thibodeau</td>
+<td>New York Knicks</td>
+<td>67</td>
+</tr>
+
+<tr>
+<td>Rick Carlisle</td>
+<td>Indiana Pacers</td>
+<td>65</td>
+</tr>
+
+<tr>
+<td>Doc Rivers</td>
+<td>Milwaukee Bucks</td>
+<td>63</td>
+</tr>
+
+<tr>
+<td>Billy Donovan</td>
+<td>Chicago Bulls</td>
+<td>59</td>
+</tr>
+
+<tr>
+<td>Steve Kerr</td>
+<td>Golden State Warriors</td>
+<td>59</td>
+</tr>
+
+<tr>
+<td>Quin Snyder</td>
+<td>Atlanta Hawks</td>
+<td>58</td>
+</tr>
+
+<tr>
+<td>Kenny Atkinson</td>
+<td>Cleveland Cavaliers</td>
+<td>57</td>
+</tr>
+
+<tr>
+<td>Nick Nurse</td>
+<td>Philadelphia 76ers</td>
+<td>57</td>
+</tr>
+
+<tr>
+<td>Chris Finch</td>
+<td>Minnesota Timberwolves</td>
+<td>55</td>
+</tr>
+
+<tr>
+<td>Doug Christie</td>
+<td>Sacramento Kings</td>
+<td>55</td>
+</tr>
+
+<tr>
+<td>Erik Spoelstra</td>
+<td>Miami Heat</td>
+<td>54</td>
+</tr>
+
+<tr>
+<td>Jason Kidd</td>
+<td>Dallas Mavericks</td>
+<td>52</td>
+</tr>
+
+<tr>
+<td>Brian Keefe</td>
+<td>Washington Wizards</td>
+<td>49</td>
+</tr>
+
+<tr>
+<td>Tyronn Lue</td>
+<td>Los Angeles Clippers</td>
+<td>48</td>
+</tr>
+
+<tr>
+<td>Chauncey Billups</td>
+<td>Portland Trail Blazers</td>
+<td>48</td>
+</tr>
+
+<tr>
+<td>Ime Udoka</td>
+<td>Houston Rockets</td>
+<td>47</td>
+</tr>
+
+<tr>
+<td>J. B. Bickerstaff</td>
+<td>Detroit Pistons</td>
+<td>46</td>
+</tr>
+
+<tr>
+<td>Jamahl Mosley</td>
+<td>Orlando Magic</td>
+<td>46</td>
+</tr>
+
+<tr>
+<td>Darko Rajaković</td>
+<td>Toronto Raptors</td>
+<td>46</td>
+</tr>
+
+<tr>
+<td>David Adelman</td>
+<td>Denver Nuggets</td>
+<td>44</td>
+</tr>
+
+<tr>
+<td>Willie Green</td>
+<td>New Orleans Pelicans</td>
+<td>43</td>
+</tr>
+
+<tr>
+<td>Jordi Fernández</td>
+<td>Brooklyn Nets</td>
+<td>42</td>
+</tr>
+
+<tr>
+<td>Tuomas Iisalo</td>
+<td>Memphis Grizzlies</td>
+<td>42</td>
+</tr>
+
+<tr>
+<td>Charles Lee</td>
+<td>Charlotte Hornets</td>
+<td>40</td>
+</tr>
+
+<tr>
+<td>JJ Redick</td>
+<td>Los Angeles Lakers</td>
+<td>40</td>
+</tr>
+
+<tr>
+<td>Mark Daigneault</td>
+<td>Oklahoma City Thunder</td>
+<td>40</td>
+</tr>
+
+<tr>
+<td>Mitch Johnson</td>
+<td>San Antonio Spurs</td>
+<td>38</td>
+</tr>
+
+<tr>
+<td>Will Hardy</td>
+<td>Utah Jazz</td>
+<td>37</td>
+</tr>
+
+<tr>
+<td>Joe Mazzulla</td>
+<td>Boston Celtics</td>
+<td>36</td>
+</tr>
+</tbody>
+</table>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="muico9y" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>DerekSmallsCourgette | Pistons</div>
+        <div>48 | an hour ago </div>
+      </div>
+      <label for="muico9y" class="commentText"><p>Had no idea he is that old. I know we all clown on his hairline (and yes, he should just take it off), but he looks fantastic for 67 — especially for someone who’s spent decades in a high-stress profession. </p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="muiedka" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>A_Destroyed_Soul</div>
+        <div>8 | an hour ago </div>
+      </div>
+      <label for="muiedka" class="commentText"><p>No wife or kids your whole life definitely helps with that. He’s also dying his hair and beard which makes him look much younger than he really is.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="muikdh2" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Savagevandal85 | Knicks</div>
+        <div>7 | 40 minutes ago </div>
+      </div>
+      <label for="muikdh2" class="commentText"><p>Or maybe each time his starters reach maximum minutes he gets minutes added onto his life span</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="muipcxq" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>abstract_contact | Trail Blazers</div>
+        <div>1 | 14 minutes ago </div>
+      </div>
+      <label for="muipcxq" class="commentText"><p>This is an incredible theory</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="muib70p" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Akanamisane | Nuggets</div>
+        <div>12 | 2 hours ago </div>
+      </div>
+      <label for="muib70p" class="commentText"><p>The Battle of the Boomers.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="muiduwo" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Sp_Gamer_Live | Timberwolves</div>
+        <div>2 | an hour ago </div>
+      </div>
+      <label for="muiduwo" class="commentText"><p>the Unction</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="muicf2z" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>mrtrollmaster | IND</div>
+        <div>8 | an hour ago </div>
+      </div>
+      <label for="muicf2z" class="commentText"><p>Feeling old after learning that Doug Christie, a player I watched growing up, is one of the top 10 oldest coaches in the league.</p>
+
+<p>I guess I watched Kerr play too but Christie feels like a whole different era in my memory but is only 4 years younger.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="muilcos" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>BoysenberryHappy2462</div>
+        <div>1 | 35 minutes ago </div>
+      </div>
+      <label for="muilcos" class="commentText"><p>and seeing a few coaches younger than me wtf</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="muie1t9" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>CamiloMarco | Lakers</div>
+        <div>8 | an hour ago </div>
+      </div>
+      <label for="muie1t9" class="commentText"><p>Wow, Carlisle looks a lot older than Thibs. Tom looks great, I thought he was in his 50s. </p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="muidlnk" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>mrsunshine1 | Knicks</div>
+        <div>6 | an hour ago </div>
+      </div>
+      <label for="muidlnk" class="commentText"><p>Carlisle already has a ring he should be nice and give Thibs a chance. </p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="muiehk9" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>burrito_abuse | Pacers</div>
+        <div>5 | an hour ago </div>
+      </div>
+      <label for="muiehk9" class="commentText"><p>Jokes aside, it seems like rick feels there is unfinished business in Indy after malice</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="muibrdu" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>SelectCampaign9771 | Spurs</div>
+        <div>6 | an hour ago </div>
+      </div>
+      <label for="muibrdu" class="commentText"><p><em>Sad Coyote noises</em> :(</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="muidtsy" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Sp_Gamer_Live | Timberwolves</div>
+        <div>5 | an hour ago </div>
+      </div>
+      <label for="muidtsy" class="commentText"><p>Finch is only 55?</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="muihuoo" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>WaxWingPigeon | Kings</div>
+        <div>4 | an hour ago </div>
+      </div>
+      <label for="muihuoo" class="commentText"><p>Holy hell, would have guessed Thibs was in his mid 50s or something, looks great</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="muie7oe" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>JNerdGaming | Knicks</div>
+        <div>2 | an hour ago </div>
+      </div>
+      <label for="muie7oe" class="commentText"><p>both have equally good hair</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="muiebm2" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>raylan_givens6 | Rockets</div>
+        <div>2 | an hour ago </div>
+      </div>
+      <label for="muiebm2" class="commentText"><p>He can get younger by going bald and adding an &ldquo;x&rdquo; to his last name Thibodeaux</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="muiq69j" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Dunlocke | Bulls</div>
+        <div>1 | 9 minutes ago </div>
+      </div>
+      <label for="muiq69j" class="commentText"><p>Someone free us</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="muidvz0" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>CactusHooping</div>
+        <div>0 | an hour ago </div>
+      </div>
+      <label for="muidvz0" class="commentText"><p>What&rsquo;s the youngest you could be to be a nba coach?Any requirements?</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="muinruv" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>The_Dok33</div>
+        <div>1 | 22 minutes ago </div>
+      </div>
+      <label for="muinruv" class="commentText"><p>Look at Mazulla. He was 35? Stevens before him was also young.</p>
+
+<p>The requirements would likely include either being an NBA player before, or having moves on the coaching chain quickly in highschool/college etc.</p>
+
+<p>You need to be good, and noticed.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
