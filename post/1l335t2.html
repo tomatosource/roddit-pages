@@ -1,0 +1,946 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.selfPostImage {
+  width: 100%;
+  height: auto;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/nba/comments/1l335t2/who_will_be_the_best_player_in_their_prime_paolo/"><p>Who will be the best player in their prime: Paolo, Cade, or Sengun?</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <p>To have an idea. These are their debut Playoffs stats</p>
+
+<p><strong>Paolo Banchero (2024 First Round VS Cavs)  (Lost in 7 games)</strong></p>
+
+<p>27 ppg</p>
+
+<p>8.6 rpg</p>
+
+<p>4.0 apg</p>
+
+<p>9.<sup>7</sup>&frasl;<sub>21</sub>.3 FG</p>
+
+<p>2.<sup>3</sup>&frasl;<sub>5</sub>.7 3pt FG</p>
+
+<p>5.<sup>3</sup>&frasl;<sub>7</sub>.0 FT</p>
+
+<p><strong>Alperen Sengun (2025 First Round VS Warriors) (Lost in 7 games)</strong></p>
+
+<p>20.9 ppg</p>
+
+<p>11.9 rpg</p>
+
+<p>5.3 apg</p>
+
+<p>8.<sup>4</sup>&frasl;<sub>18</sub>.7 FG</p>
+
+<p>0.<sup>4</sup>&frasl;<sub>1</sub>.1 3pt FG</p>
+
+<p>3.<sup>6</sup>&frasl;<sub>5</sub>.7 FT</p>
+
+<p><strong>Cade Cunningham (2025 First Round VS Knicks) (Lost in 6 games)</strong></p>
+
+<p>25.0 ppg</p>
+
+<p>8.3 rpg</p>
+
+<p>8.7 apg</p>
+
+<p>1.8 stls,</p>
+
+<p>1.3 blks</p>
+
+<p>9.<sup>2</sup>&frasl;<sub>21</sub>.5 FG,</p>
+
+<p>0.<sup>8</sup>&frasl;<sub>4</sub>.7 3pt FG,</p>
+
+<p>5.<sup>8</sup>&frasl;<sub>7</sub>.0 FT</p>
+
+<p>But who do you think will be the best player among these 3 in their primes?</p>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mvxmlcg" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>SitOnMeBjork</div>
+        <div>33 | an hour ago </div>
+      </div>
+      <label for="mvxmlcg" class="commentText"><p>Cade. is looking like the most rounded out player of these three so far, but they&rsquo;re all so young</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mvxmoib" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Funny-Transition7869 | Pacers</div>
+        <div>25 | an hour ago </div>
+      </div>
+      <label for="mvxmoib" class="commentText"><p>probably cade</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mvxnoxx" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>BurtRenoldsMustache</div>
+        <div>15 | an hour ago </div>
+      </div>
+      <label for="mvxnoxx" class="commentText"><p>Cade 100%</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mvxqwxs" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>TheThingsIdoatNight | Nuggets</div>
+        <div>1 | 31 minutes ago </div>
+      </div>
+      <label for="mvxqwxs" class="commentText"><p>Lmao even including Sengun in this list is disrespectful to Cade and Paolo</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mvxrsnr" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Hades2580</div>
+        <div>1 | 25 minutes ago </div>
+      </div>
+      <label for="mvxrsnr" class="commentText"><p>Why are people regarding Sengun so highly, he’s a top 30 players at best</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mvxsqxu" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>TheThingsIdoatNight | Nuggets</div>
+        <div>1 | 18 minutes ago </div>
+      </div>
+      <label for="mvxsqxu" class="commentText"><p>Even that is generous imo</p>
+
+<p>One of the most overrated players in the league</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mvxt2z9" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Marticyde</div>
+        <div>1 | 16 minutes ago </div>
+      </div>
+      <label for="mvxt2z9" class="commentText"><p>He&rsquo;s 22 and the best player on a really young 2nd seed team. </p>
+
+<p>I think he&rsquo;s pretty good. He&rsquo;s no Jokic but c&rsquo;mon, he&rsquo;s at least top 30</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mvxtdql" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>TheThingsIdoatNight | Nuggets</div>
+        <div>1 | 14 minutes ago </div>
+      </div>
+      <label for="mvxtdql" class="commentText"><p>That team relied much more on defense and contributions across the board than one player, just because a team is good doesn’t mean the best player is (also I’m not sure he’s the best player on that team)</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mvxtvbb" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Marticyde</div>
+        <div>1 | 11 minutes ago </div>
+      </div>
+      <label for="mvxtvbb" class="commentText"><p>Fair enough </p>
+
+<p>Who would you say is the best besides Sengun?</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mvxu178" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>TheThingsIdoatNight | Nuggets</div>
+        <div>1 | 10 minutes ago </div>
+      </div>
+      <label for="mvxu178" class="commentText"><p>Probably Amen Thompson, I admit it’s close though</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mvxu7jb" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>sentyprimus | Clippers</div>
+        <div>1 | 9 minutes ago </div>
+      </div>
+      <label for="mvxu7jb" class="commentText"><p>Loooooool</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="mvxtw35" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>free_reezy | Rockets</div>
+        <div>1 | 11 minutes ago </div>
+      </div>
+      <label for="mvxtw35" class="commentText"><p>If you’re not sure Sengun was our best player, your opinion isn’t to be regarded as an informed one.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mvxu4qm" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>TheThingsIdoatNight | Nuggets</div>
+        <div>1 | 10 minutes ago </div>
+      </div>
+      <label for="mvxu4qm" class="commentText"><p>By the end of the season Amen was better imo</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mvxu7zn" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>free_reezy | Rockets</div>
+        <div>1 | 9 minutes ago </div>
+      </div>
+      <label for="mvxu7zn" class="commentText"><p>Ah so a victim of recency bias. Understood, carry on.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mvxui17" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>allinghost</div>
+        <div>1 | 7 minutes ago </div>
+      </div>
+      <label for="mvxui17" class="commentText"><p>I’m not talking about whether or not you’re right but you’re just coming off as really pretentious and annoying</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mvxn8r1" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>2Blitz | Clippers</div>
+        <div>6 | an hour ago </div>
+      </div>
+      <label for="mvxn8r1" class="commentText"><p>Not Sengun</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mvxnd7a" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Icy-Lime-9760</div>
+        <div>6 | an hour ago </div>
+      </div>
+      <label for="mvxnd7a" class="commentText"><ol>
+<li><p>Paolo</p></li>
+
+<li><p>Cade</p></li>
+
+<li><p>Sengun</p></li>
+</ol>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mvxmvnu" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>CarterAC3 | Lakers</div>
+        <div>4 | an hour ago </div>
+      </div>
+      <label for="mvxmvnu" class="commentText"><p>If they all hit their ceiling or relatively close to it it&rsquo;s Paolo</p>
+
+<p>That&rsquo;s a big if but I think he clearly has the highest ceiling of the 3</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mvxotqb" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>IHateAdamSilver | Nets</div>
+        <div>4 | an hour ago </div>
+      </div>
+      <label for="mvxotqb" class="commentText"><p>Cade</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mvxobbs" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>NorthBook1383</div>
+        <div>3 | an hour ago </div>
+      </div>
+      <label for="mvxobbs" class="commentText"><p>Banchero’s 2024 season was better than his 2025?</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mvxr8s7" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Gamesgtd | Magic</div>
+        <div>1 | 28 minutes ago </div>
+      </div>
+      <label for="mvxr8s7" class="commentText"><p>Idk I think what Paolo did against the Celtics defense was more impressive than what he did against Cleveland&rsquo;s.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mvxqd03" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Specialist-Smoke-266</div>
+        <div>3 | 34 minutes ago </div>
+      </div>
+      <label for="mvxqd03" class="commentText"><p>I think very clearly Paolo. If not for injury, he probably would have been the best of the three this past season.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mvxr6no" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>CubanLinxRae | ORL</div>
+        <div>1 | 29 minutes ago </div>
+      </div>
+      <label for="mvxr6no" class="commentText"><p>Paolo has the highest ceiling but him and Cade are close, Cade the better player right now</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mvxry8x" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Karl151 | Cavaliers</div>
+        <div>1 | 24 minutes ago </div>
+      </div>
+      <label for="mvxry8x" class="commentText"><p>Paolo</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mvxo68v" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Dddddddfried | Knicks</div>
+        <div>2 | an hour ago </div>
+      </div>
+      <label for="mvxo68v" class="commentText"><p>Wemby</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mvxq59u" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>TheAgmis | Thunder</div>
+        <div>1 | 36 minutes ago </div>
+      </div>
+      <label for="mvxq59u" class="commentText"><p>Not Sengun</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mvxqdr0" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Commercial-East4069 | Cavaliers</div>
+        <div>1 | 34 minutes ago </div>
+      </div>
+      <label for="mvxqdr0" class="commentText"><p>Cade is likely the best right now. I don’t see an obvious reason that would change. Maybe, Paolo could pass him given his physicality and skill. I feel like consistent improvement out of Sengun is more Sabonis than Jokic, but it’s not impossible I guess.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mvxqhds" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Artimusjones88 | Raptors</div>
+        <div>1 | 33 minutes ago </div>
+      </div>
+      <label for="mvxqhds" class="commentText"><p>Cade</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mvxqr5r" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>kicampoon123</div>
+        <div>1 | 32 minutes ago </div>
+      </div>
+      <label for="mvxqr5r" class="commentText"><p>It&rsquo;s gonna be (like everything else) completely dependent on a whole range of things and it will be completely subjective.the one who wins a ring first will unquestionably get a huge boost in this convo which shows how irrelevant it all is</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mvxre28" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>archerarcher0</div>
+        <div>1 | 27 minutes ago </div>
+      </div>
+      <label for="mvxre28" class="commentText"><p>Sengun is gonna be a distant third here for me</p>
+
+<p>I’m personally higher on paolo because I think he’s gonna have easier ways to score the ball than Cade in the playoffs, but I could see Cade being better too if paolo’s shooting doesn’t stabilize at at least average</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mvxt9i1" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>noobnoobthedestroyer | Pacers</div>
+        <div>1 | 15 minutes ago </div>
+      </div>
+      <label for="mvxt9i1" class="commentText"><p>Sengun was a tough watch that series. Dude clearly needs to play next to an actual PG</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mvxufc3" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>denimjeg</div>
+        <div>1 | 8 minutes ago </div>
+      </div>
+      <label for="mvxufc3" class="commentText"><p>Cade</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mvxv6v6" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Zelanor | Pistons</div>
+        <div>1 | 3 minutes ago </div>
+      </div>
+      <label for="mvxv6v6" class="commentText"><p>Easily Cade.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mvxmqei" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>23x77 | Lakers</div>
+        <div>0 | an hour ago </div>
+      </div>
+      <label for="mvxmqei" class="commentText"><p>If I’d to stake my life I’d say Paolo</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mvxobcn" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Petit_Coeur_ | Pacers</div>
+        <div>0 | an hour ago </div>
+      </div>
+      <label for="mvxobcn" class="commentText"><p>Paolo</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mvxoeiw" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>TemplarParadox17 | Vancouver Grizzlies</div>
+        <div>-5 | an hour ago </div>
+      </div>
+      <label for="mvxoeiw" class="commentText"><p>Sengun is by far the worst.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
