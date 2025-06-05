@@ -1,0 +1,503 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.selfPostImage {
+  width: 100%;
+  height: auto;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/PathOfExile2/comments/1l4252b/poe2_cpu_lagg_spikes_possible_solution/"><p>PoE2 - CPU lagg spikes - possible solution</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <p>Hey guys!</p>
+
+<p>I&rsquo;m a programmer, yet it took me a while, but here is what I found out:</p>
+
+<p><strong>Cause:</strong><br>
+- Lagg spikes are caused by chat. Sounds impossible? Yeah, I know, but I will explain a probable cause.<br>
+- You get spikes whenever someone sends a message and you receive it. Even when your global/trade chat is &ldquo;disabled&rdquo;. Press F1 to see.</p>
+
+<p><strong>Solution:</strong><br>
+- There is no sane way to properly disable the global/trade chats.<br>
+- You need to change the channel to something that is not used. Example:<br>
+/global 300<br>
+/trade 300</p>
+
+<p>Additionally you can use /cls command to clear the chat log.</p>
+
+<p><strong>Underlying issue:</strong><br>
+- This is a guess, as I didn&rsquo;t really decompile the code (c&rsquo;mon, I have a life) - but from my experience I would say that PoE2 chat is maintained in a main thread.<br>
+So basically whenever the communication happens, the main thread just pauses for Xms, which causes the spike.</p>
+
+<p><strong>Possible solution for GGG team:</strong><br>
+- Move the chat logic code to a seperate thread and ensure it doesnt somehow pause the main thread.</p>
+
+<p>I posted it already on <a href="https://www.pathofexile.com/forum/view-thread/3786931" target="_blank">PoE2 forum thread</a>, but I thought that it might be a good idea to spread the word, so other people can use this fix!</p>
+
+<p>GL &amp; HF exiles!</p>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mw5gsc7" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>-Dargs</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="mw5gsc7" class="commentText"><blockquote>
+<p>I&rsquo;m a programmer, yet it took me a while&hellip;</p>
+</blockquote>
+
+<p>I&rsquo;m a programmer too, yet I don&rsquo;t assume to know how a game works under the hood based on high level observation, lol.</p>
+
+<p>Maybe you&rsquo;re right.</p>
+
+<p>But also, giant chat logs degrading performance has been a thing since 2012.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mw5jhz4" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>BanginNLeavin</div>
+        <div>1 | 41 minutes ago </div>
+      </div>
+      <label for="mw5jhz4" class="commentText"><p>Best guesses aren&rsquo;t always bad or ill-informed.</p>
+
+<p>-fellow programmer</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mw5i023" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Probably_Fishing</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="mw5i023" class="commentText"><p>This has been known for a while.</p>
+
+<p>Use /clear to help.</p>
+
+<p>Also reconnecting every hour.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mw5o249" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ultralowreal</div>
+        <div>1 | 20 minutes ago </div>
+      </div>
+      <label for="mw5o249" class="commentText"><p>Known by who? Probably a small fraction of the community knows about it. Maybe most ppl on reddit but that ain’t the majority. I wish ggg added a known issues ingame. Doesn’t take long to implement at all.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mw5rqk3" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Wielkimati</div>
+        <div>1 | 2 minutes ago </div>
+      </div>
+      <label for="mw5rqk3" class="commentText"><p>C&rsquo;mon, people talked about this issue whole week. I returned to POE2 last saturday and I found the same solution OP came up, with no problem, with few google clicks.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mw5g71o" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>TrashedPanda420</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="mw5g71o" class="commentText"><p>Don&rsquo;t act like you just figured this out after it&rsquo;s been spammed for the last week, &ldquo;I&rsquo;m a programmer&rdquo; lookin&rsquo; ass</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mw5ime4" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>felixnumberone</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="mw5ime4" class="commentText"><p>I had to reinstall windows to solve it as the  CPU lags were not only caused by global chat but also by a system that had aged a bit and  seemingly developed some flaws.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mw5jq4k" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Twisted_MC</div>
+        <div>1 | 40 minutes ago </div>
+      </div>
+      <label for="mw5jq4k" class="commentText"><p>Ironically I didn’t ever really experience this before I changed chat channels and tried to clear just to see if it would help performance at all…</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mw5k2p5" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Brock_Petrov</div>
+        <div>1 | 39 minutes ago </div>
+      </div>
+      <label for="mw5k2p5" class="commentText"><p>Typing /clear in chat fixes that for me.  It&rsquo;s kinda odd they don&rsquo;t just auto delete chat after like 10 pages.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mw5naty" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ultralowreal</div>
+        <div>1 | 23 minutes ago </div>
+      </div>
+      <label for="mw5naty" class="commentText"><p>I had to change channels, /clear was not enough. I am on Linux tho.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mw5q57p" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Brock_Petrov</div>
+        <div>1 | 10 minutes ago </div>
+      </div>
+      <label for="mw5q57p" class="commentText"><p>Brother!!  :D. I switched to Linux mint 2 weeks ago.</p>
+
+<p>I had to twerk a lot of the settings in game.   Turning off vsync made a big difference for me.  Also Nvidia DLSS seems to lower frames a bit but gives a smoother experience imo.    Raise target frame rate, increase foreground fps.</p>
+
+<p>I&rsquo;m on an amd cpu and a Nvidia GPU.  I&rsquo;m also running the official nvidia drivers that come with mint.</p>
+
+<p>If your struggling to find a trade addon I&rsquo;m running sidekick in docker.  Exiled Exchange worked but crashed the game for me randomly.  With sidekick you can just copy and paste items to ur browser to price check.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mw5pn5r" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>hilmigg</div>
+        <div>1 | 12 minutes ago </div>
+      </div>
+      <label for="mw5pn5r" class="commentText"><p>Now find a fix for the freeze + map fog reset pleaseeeee</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mw5rdjm" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Skaitavia</div>
+        <div>1 | 4 minutes ago </div>
+      </div>
+      <label for="mw5rdjm" class="commentText"><p>This gets posted in their discord or on forums several times a week lol doesn’t take a programmer to figure it out</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
