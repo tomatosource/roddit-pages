@@ -1,0 +1,728 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.selfPostImage {
+  width: 100%;
+  height: auto;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/nba/comments/1l3ursw/the_streak_continues_all_75_years_of_the_nba_have/"><p>The streak continues: all 75 years of the NBA have featured a Finals with at least one player who&rsquo;s a current, past, or future Knick.</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <p>The list:</p>
+
+<p>1950: Slater Martin</p>
+
+<p>1951: The Knicks played in the Finals</p>
+
+<p>1952: The Knicks played in the Finals</p>
+
+<p>1953: The Knicks played in the Finals</p>
+
+<p>1954: Slater Martin</p>
+
+<p>1955: Connie Simmons</p>
+
+<p>1956: Tom Gola</p>
+
+<p>1957: Slater Martin</p>
+
+<p>1958: Slater Martin</p>
+
+<p>1959: Gene Conley</p>
+
+<p>1960: Slater Martin</p>
+
+<p>1961: Gene Conley</p>
+
+<p>1962: Carl Braun</p>
+
+<p>1963: Dick Barnett</p>
+
+<p>1964: Willie Naulls</p>
+
+<p>1965: Willie Naulls </p>
+
+<p>1966: Willie Naulls</p>
+
+<p>1967: Art Heyman</p>
+
+<p>1968: Jim Barnes</p>
+
+<p>1969: Jim Barnes</p>
+
+<p>1970: The Knicks played in the Finals</p>
+
+<p>1971: Earl Monroe</p>
+
+<p>1972: The Knicks played in the Finals</p>
+
+<p>1973: The Knicks played in the Finals</p>
+
+<p>1974: Dick Garrett</p>
+
+<p>1975: Butch Beard</p>
+
+<p>1976: Dick Van Arsdale</p>
+
+<p>1977: Henry Bibby</p>
+
+<p>1978: Marvin Webster</p>
+
+<p>1979: Lonnie Shelton</p>
+
+<p>1980: Maurice Cheeks</p>
+
+<p>1981: Gerald Henderson</p>
+
+<p>1982: Maurice Cheeks</p>
+
+<p>1983: Maurice Cheeks</p>
+
+<p>1984: Greg Kite</p>
+
+<p>1985: Rick Carlisle</p>
+
+<p>1986: Rick Carlisle</p>
+
+<p>1987: Rick Carlisle</p>
+
+<p>1988: Tony Campbell</p>
+
+<p>1989: Tony Campbell</p>
+
+<p>1990: Buck Williams</p>
+
+<p>1991: Bill Cartwright</p>
+
+<p>1992: Buck Williams</p>
+
+<p>1993: Trent Tucker</p>
+
+<p>1994: The Knicks played in the Finals</p>
+
+<p>1995: Penny Hardaway</p>
+
+<p>1996: Luc Longley</p>
+
+<p>1997: Howard Eisley</p>
+
+<p>1998: Shandon Anderson</p>
+
+<p>1999: The Knicks played in the Finals</p>
+
+<p>2000: Glen Rice</p>
+
+<p>2001: Dikembe Mutombo</p>
+
+<p>2002: Jason Kidd</p>
+
+<p>2003: Malik Rose</p>
+
+<p>2004: Rasheed Wallace</p>
+
+<p>2005: Nazr Mohammad</p>
+
+<p>2006: Michael Doleac</p>
+
+<p>2007: Jackie Butler</p>
+
+<p>2008: Eddie House</p>
+
+<p>2009: Trevor Ariza</p>
+
+<p>2010: Nate Robinson</p>
+
+<p>2011: Tyson Chandler</p>
+
+<p>2012: Eddy Curry</p>
+
+<p>2013: Tracy McGrady</p>
+
+<p>2014: Toney Douglas</p>
+
+<p>2015: David Lee</p>
+
+<p>2016: Channing Frye</p>
+
+<p>2017: Matt Barnes</p>
+
+<p>2018: J. R. Smith</p>
+
+<p>2019: Jeremy Lin</p>
+
+<p>2020: J. R. Smith</p>
+
+<p>2021: Bobby Portis</p>
+
+<p>2022: Luke Kornet</p>
+
+<p>2023: DeAndre Jordan</p>
+
+<p>2024: Luke Kornet</p>
+
+<p>2025: Isaiah Hartenstein</p>
+
+<p>Wild stat.</p>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mw3th5i" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>jackarseofalltrades</div>
+        <div>31 | an hour ago </div>
+      </div>
+      <label for="mw3th5i" class="commentText"><p>No love for Obi Toppin?</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mw3tuw3" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Beneficial-Rub9090 | Timberwolves</div>
+        <div>5 | an hour ago </div>
+      </div>
+      <label for="mw3tuw3" class="commentText"><p>This stat would&rsquo;ve been true regardless of who won the CFs huh</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mw3wcxx" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Dav136 | Knicks</div>
+        <div>4 | 35 minutes ago </div>
+      </div>
+      <label for="mw3wcxx" class="commentText"><p>Yup, all 4 teams had Knicks from last year&rsquo;s roster</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mw3wjqq" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Aidanator800 | Hornets</div>
+        <div>1 | 33 minutes ago </div>
+      </div>
+      <label for="mw3wjqq" class="commentText"><p>One of those 4 also has Knicks from this year&rsquo;s roster</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="mw3tpd3" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>DarthNightnaricus | Thunder</div>
+        <div>2 | an hour ago </div>
+      </div>
+      <label for="mw3tpd3" class="commentText"><p>Hartenstein came to mind first</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mw3yvzy" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>pichukirby | Knicks</div>
+        <div>1 | 12 minutes ago </div>
+      </div>
+      <label for="mw3yvzy" class="commentText"><p>People really be downvoting for no reason</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="mw3uv8l" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Moist_Tap_6514</div>
+        <div>0 | an hour ago </div>
+      </div>
+      <label for="mw3uv8l" class="commentText"><p>So edit the post</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mw3w6sy" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>False_Pear1860</div>
+        <div>3 | 37 minutes ago </div>
+      </div>
+      <label for="mw3w6sy" class="commentText"><p>Why? Did Hartenstein not play for the Knicks?</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="mw3xrzx" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>twrs_29 | Thunder</div>
+        <div>1 | 22 minutes ago </div>
+      </div>
+      <label for="mw3xrzx" class="commentText"><p>Yes sir, right away sir</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mw3tgcs" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Basic-Employment3985</div>
+        <div>11 | an hour ago </div>
+      </div>
+      <label for="mw3tgcs" class="commentText"><p>Huh. Thats really cool. So weird.</p>
+
+<p>Also kinda a fun “remember some guys” when you go down the list. NBA Champion Nazr Mohammed</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mw3to8n" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>DarthNightnaricus | Thunder</div>
+        <div>2 | an hour ago </div>
+      </div>
+      <label for="mw3to8n" class="commentText"><p>Thunder legend</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mw3tkrg" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>cndynn96 | Washington Bullets</div>
+        <div>7 | an hour ago </div>
+      </div>
+      <label for="mw3tkrg" class="commentText"><p>Is there a similar streak with the Celtics?</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mw3xt0l" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>PaintingLegal7672</div>
+        <div>1 | 22 minutes ago </div>
+      </div>
+      <label for="mw3xt0l" class="commentText"><p>I would think so. Nesmith Thjs year. 2023 Max Strus. 2021 Max Strus. 2020 Rajon Rondo. 2019 Jonas Jerebko. 2018 Jeff Green. 2017 Kyrie Irving. 2016 Kyrie Irving. 2015 Kendrick Perkins. 2014 Aron Baynes. 2013 Ray Allen. 2012 Kendrick Perkins. 2011 Jason Terry. 2009 Courtney Lee. 2007 Scot Pollard. 2006 Shaq. 2005 Chauncey Billups. Then Shaq takes us back all the way to 2000</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mw3vzkj" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>SilentProtagonist_33 | Spurs</div>
+        <div>3 | 39 minutes ago </div>
+      </div>
+      <label for="mw3vzkj" class="commentText"><p>Kornet carrying the past 4 years. Hell yeah</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mw3ucr5" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Chessh2036 | Hawks</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="mw3ucr5" class="commentText"><p>Wow. This would be a fantastic trivia question</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mw3w0l2" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>SilentProtagonist_33 | Spurs</div>
+        <div>1 | 38 minutes ago </div>
+      </div>
+      <label for="mw3w0l2" class="commentText"><p>Kornet carrying the past 4 years. Hell yeah</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mw3xpcj" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Dawnshot_</div>
+        <div>1 | 23 minutes ago </div>
+      </div>
+      <label for="mw3xpcj" class="commentText"><blockquote>
+<p>Maurice Cheeks</p>
+</blockquote>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mw3yjzj" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>03_03_28 | Knicks</div>
+        <div>1 | 15 minutes ago </div>
+      </div>
+      <label for="mw3yjzj" class="commentText"><p>If you include the BAA years, it still holds up.</p>
+
+<p>1947: Ralph Kaplowitz</p>
+
+<p>1948: Ralph Kaplowitz</p>
+
+<p>1949: Sonny Hertzberg</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mw3yo7d" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>rydogs | Knicks</div>
+        <div>1 | 14 minutes ago </div>
+      </div>
+      <label for="mw3yo7d" class="commentText"><p>Wtf this is insane lol</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
