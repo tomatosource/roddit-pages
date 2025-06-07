@@ -1,0 +1,759 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.selfPostImage {
+  width: 100%;
+  height: auto;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/nba/comments/1l5or8v/everyone_is_shocked_by_the_pacers_clutch_playoff/"><p>Everyone is shocked by the Pacers&rsquo; clutch playoff performaces, but they have been preparing and practicing this all year.</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <p>It should be no shock that Indiana has much more experience playing in the clutch than the OKC Thunder. The Thunder have had a historic season, mostly by blowing out their opponents, which is why their net rating is in the double digits for both the regular season (12.7) and the playoffs (10.4). A drawback is obvioulsy that they don&rsquo;t have a lot of experience actually having to close out games with the clock running out. Looking at the clutch numbers for both teams:</p>
+
+<p>In the regular season:</p>
+
+<table>
+<thead>
+<tr>
+<th align="left">OKC</th>
+<th align="left">IND</th>
+<th align="left"></th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">Record</td>
+<td align="left">16-8</td>
+<td align="left">24-14</td>
+</tr>
+
+<tr>
+<td align="left">Total Clutch Minutes</td>
+<td align="left">66</td>
+<td align="left">169</td>
+</tr>
+
+<tr>
+<td align="left">Offensive Rating</td>
+<td align="left">121.2</td>
+<td align="left">119.3</td>
+</tr>
+
+<tr>
+<td align="left">Defensive Rating</td>
+<td align="left">108.5</td>
+<td align="left">98.3</td>
+</tr>
+
+<tr>
+<td align="left">Net Rating</td>
+<td align="left">12.6</td>
+<td align="left">20.9</td>
+</tr>
+</tbody>
+</table>
+<p>In the playoffs it&rsquo;s even more absurd:</p>
+
+<table>
+<thead>
+<tr>
+<th align="left">OKC</th>
+<th align="left">IND</th>
+<th align="left"></th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">Record</td>
+<td align="left">5-3</td>
+<td align="left">8-1</td>
+</tr>
+
+<tr>
+<td align="left">Total Clutch Minutes</td>
+<td align="left">30</td>
+<td align="left">33</td>
+</tr>
+
+<tr>
+<td align="left">Offensive Rating</td>
+<td align="left">109.6</td>
+<td align="left">141.8</td>
+</tr>
+
+<tr>
+<td align="left">Defensive Rating</td>
+<td align="left">104.8</td>
+<td align="left">101.4</td>
+</tr>
+
+<tr>
+<td align="left">Net Rating</td>
+<td align="left">4.8</td>
+<td align="left">40.4</td>
+</tr>
+</tbody>
+</table>
+<p>Everyone: How do you keep doing this???</p>
+
+<p>Pacers:</p>
+
+<p><a href="https://preview.redd.it/9mgijkq96j5f1.png?width=500&amp;format=png&amp;auto=webp&amp;s=3825c108df2d57d92f6516f62a01ce5f318755c8" target="_blank">https://preview.redd.it/9mgijkq96j5f1.png?width=500&amp;format=png&amp;auto=webp&amp;s=3825c108df2d57d92f6516f62a01ce5f318755c8</a></p>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mwii1sj" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>jeRskier | Raptors</div>
+        <div>17 | an hour ago </div>
+      </div>
+      <label for="mwii1sj" class="commentText"><p>They kind of just keep the game within striking range until the last 5 minutes and then run the team off the floor. If it’s within 15 in the 4th quarter, the pacers have the other team literally right where they want them.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mwij2qw" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Dontsaveme | Pacers</div>
+        <div>17 | 42 minutes ago </div>
+      </div>
+      <label for="mwij2qw" class="commentText"><p>We took the Celtics series to heart.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mwikgjy" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>TrailerParkBuddha | Pacers</div>
+        <div>14 | 35 minutes ago </div>
+      </div>
+      <label for="mwikgjy" class="commentText"><p>Celtics fans are about the only people besides Pacers fans that aren&rsquo;t surprised with how this run is turning out.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mwim7ej" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>BrotherSkeleton | Knicks</div>
+        <div>1 | 26 minutes ago </div>
+      </div>
+      <label for="mwim7ej" class="commentText"><p>Also you guys are just plain better this year than last year coaching and development wise</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mwig6bo" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>covote | Pacers</div>
+        <div>20 | an hour ago </div>
+      </div>
+      <label for="mwig6bo" class="commentText"><p>You can think this hyperbole, but they reach a level of intensity and hustle no one else does after 46 minutes of NBA basketball. Pacers in the last 7 minutes of game 1, looked like the Thunder did in the first 7 minutes.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mwiq0m0" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Obi2 | Pacers</div>
+        <div>1 | 6 minutes ago </div>
+      </div>
+      <label for="mwiq0m0" class="commentText"><p>I don’t know how deep the thunder go, but having the ability to go 12 deep is very helpful. Pritchard has put together this team very well.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mwightp" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Neinhaltt</div>
+        <div>15 | an hour ago </div>
+      </div>
+      <label for="mwightp" class="commentText"><p>Big buff from being the &ldquo;Nobody believes in us&rdquo; team.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mwip7oq" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>IllegitimateRisk | Nuggets</div>
+        <div>1 | 10 minutes ago </div>
+      </div>
+      <label for="mwip7oq" class="commentText"><p>they went from a fluke eastern conference finals team to a fluke finals team and now they have a fluke first game win. they might will themselves to a fluke nba champion</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mwinb62" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>eph13 | Pacers</div>
+        <div>1 | 20 minutes ago </div>
+      </div>
+      <label for="mwinb62" class="commentText"><p>I jokingly said after Hali&rsquo;s regular season 4pt shot to beat the bucks that we were so terrible in the clutch last year we decided to practice it every regular season game. maybe it wasn&rsquo;t a joke</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mwikrkk" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>rick5000 | Pacers</div>
+        <div>4 | 34 minutes ago </div>
+      </div>
+      <label for="mwikrkk" class="commentText"><p>Everyone just runs full speed down the court
+Absolute Hustle no stop intangibles that lead them to break down leads like the league hasn’t seen in decades.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mwiol7d" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Hovi_Bryant | Pistons</div>
+        <div>1 | 14 minutes ago </div>
+      </div>
+      <label for="mwiol7d" class="commentText"><p>I doubt many watch the post game interviews but this is what coach Carlisle has stated repeatedly. The team has essentially built and refined a muscle for remaining poised throughout an entire game.</p>
+
+<p>Others like to strongly suggest this is &ldquo;masterclass&rdquo; coaching performance, but 80% of the coaching was done well before the season started. The rest is on the players to hold themselves accountable and remain focused on the gameplan, and that&rsquo;s no small feat on their end either.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mwikd09" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Zeeron1 | Thunder</div>
+        <div>2 | 36 minutes ago </div>
+      </div>
+      <label for="mwikd09" class="commentText"><p>I think there&rsquo;s a difference between normal clutch shot making, and the Myles Turner step back banked 3 type of bullshit the Pacers have pulled off game after game.</p>
+
+<p>Once in a generation a team just goes on an all time miraculous run, and there&rsquo;s just nothing you can do except sit back and watch🤷🏽</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mwimkyi" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>StudiousLebronJames</div>
+        <div>1 | 24 minutes ago </div>
+      </div>
+      <label for="mwimkyi" class="commentText"><p>having a 141 offensive rating in the clutch is more than just a lucky bank shot, they are the best conditioned team in the league and keep going while the other team gets tired late in the 4th</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mwipas9" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Zeeron1 | Thunder</div>
+        <div>1 | 10 minutes ago </div>
+      </div>
+      <label for="mwipas9" class="commentText"><p>Again, that applies to a certain extent. But Nesmith hitting 6 3s in 3 minutes or whatever it was, Turner banking step backs, Nembhard(?) draining turnaround 3s, etc. has nothing to do with conditioning.</p>
+
+<p>It&rsquo;s not &ldquo;keep going&rdquo; when they don&rsquo;t do that before the 4th quarter, they have just been given a mandate by the basketball gods to win lmao</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="mwinfkq" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Cyanogen_117 | Thunder</div>
+        <div>1 | 20 minutes ago </div>
+      </div>
+      <label for="mwinfkq" class="commentText"><p>imo seeing 141 shows even more of how much an outlier they are. you wouldnt expect them to maintain that level across a longer period of time</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mwimq95" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>SlowlygettingtoFIRE</div>
+        <div>1 | 23 minutes ago </div>
+      </div>
+      <label for="mwimq95" class="commentText"><p>I’m just amazed at this Pacers team’s ability to problem solve.</p>
+
+<p>In the last quarter literally they just make sure they hit shot, make a stop, rinse and repeat. Like clockwork</p>
+
+<p>I told my friends they’re literally roaches, if they hang on within 15 in the final quarter, they are not going to die.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mwipgas" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>YoungTrece | Pacers</div>
+        <div>1 | 9 minutes ago </div>
+      </div>
+      <label for="mwipgas" class="commentText"><p>It’s so simple why doesn’t everyone have a 140 ORtg in the playoffs</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mwijypq" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Subredditcensorship | Nets</div>
+        <div>1 | 38 minutes ago </div>
+      </div>
+      <label for="mwijypq" class="commentText"><p>Obviously some teams will be better in the clutch than others, but there’s no way around it that clutch performance can be somewhat random. Data has consistently shown this. Would not be a surprise if the pacers are mediocre next year in the clutch.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mwiq6kk" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Mattrellen | Pacers</div>
+        <div>1 | 5 minutes ago </div>
+      </div>
+      <label for="mwiq6kk" class="commentText"><p>There will probably be some averaging out in the regular season, but the team is made for the postseason. Teams tighten up their rotation and let fewer players go for more minutes, while the Pacers run at a million miles per hour and demand 48 minutes of your best, both mentally and physically.</p>
+
+<p>Mentally, it&rsquo;s easier for them because they are the ones causing chaos, and physically, they just so obviously have amazing strength and conditioning coaches and never shorten their rotation to less than 10, so they aren&rsquo;t using as much energy during the game.</p>
+
+<p>That makes it a whole lot easier to pull out miracle wins as the opponents don&rsquo;t have the legs to put into their shots, or the energy to keep up on defense.</p>
+
+<p>That said, Tyrese just can&rsquo;t keep making <sup>50</sup>&frasl;<sub>50</sub> shots at the clip he has at the end of games either.</p>
+
+<p>So they probably won&rsquo;t be THIS good next year, but I&rsquo;d be shocked if they were just average, too.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mwiqkl3" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>itsyaboikuzma | Lakers</div>
+        <div>1 | 3 minutes ago </div>
+      </div>
+      <label for="mwiqkl3" class="commentText"><p>Kings in the fourth</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mwioh8h" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>SunIllustrious5695 | Clippers</div>
+        <div>1 | 14 minutes ago </div>
+      </div>
+      <label for="mwioh8h" class="commentText"><p>The pendulum has swung way too hard to Hali and Pacers hype, like it would not be at all surprising if this series ended 4-1 OKC</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mwikdbu" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>A_Omega_73 | Lakers</div>
+        <div>-4 | 36 minutes ago </div>
+      </div>
+      <label for="mwikdbu" class="commentText"><p>blah blah numbers numbers stats stats</p>
+
+<p>shut up bitch, no one picked the pacers to win any shit this year</p>
+
+<p>this is a underdog story</p>
+
+<p>enjoy the fucking playoffs and the Finals</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mwipkgp" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>knitwoolf | Raptors</div>
+        <div>1 | 9 minutes ago </div>
+      </div>
+      <label for="mwipkgp" class="commentText"><p>I ain&rsquo;t taking attendance ya fucking dweeb. Why are you even here?</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
