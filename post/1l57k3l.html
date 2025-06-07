@@ -1,0 +1,908 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.selfPostImage {
+  width: 100%;
+  height: auto;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/nba/comments/1l57k3l/stein_there_have_been_numerous_rumblings_about/"><p>[Stein] There have been numerous rumblings about the Raptors&rsquo; interest in joining the eventual Giannis Antetokounmpo trade sweepstakes provided that he actually asks out. Masai Ujiri&rsquo;s affinity for Antetokounmpo is an open secret, so rest assured that the Raptors have already registered interest.</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <p><a href="https://open.substack.com/pub/marcstein/p/the-kevin-durant-trade-landscape?r=1m9zg&amp;utm_medium=ios" target="_blank">Source</a></p>
+
+<blockquote>
+<p>There have been numerous rumblings about the Raptors&rsquo; interest in joining the eventual Giannis Antetokounmpo trade sweepstakes … provided that the Bucks&rsquo; perennial MVP candidate actually asks out of Milwaukee at some stage. Masai Ujiri&rsquo;s affinity for Antetokounmpo is an open secret around the league, so you can rest assured that the Raptors have already registered their interest.</p>
+
+<p>That said … “Every team has called Milwaukee,&rdquo; said one source close to the situation.</p>
+
+<p>But Toronto has likewise been painted by numerous NBA figures as a potential trade suitor for Durant … particularly if Antetokounmpo doesn&rsquo;t reach the open market. The Raptors, furthermore, would figure to have a more realistic shot at assembling a competitive trade offer for Durant compared to the mammoth offers that the Bucks would inevitably seek for Antetokounmpo&rsquo;s services. The Greek Freak also happens to be six years younger than Durant, is still playing at an MVP level and, most crucially, has two more guaranteed years left on his contract.</p>
+
+<p>The Raptors were in a different place as a franchise in the summer of 2018, but who can forget Ujiri&rsquo;s willingness to gamble on the one remaining guaranteed season on Kawhi Leonard&rsquo;s contract when Toronto traded for Leonard? The combination of Leonard&rsquo;s murky health status at the time and his close proximity to free agency certainly affected the trade return that the Spurs were able to command for their All-Star forward. When it comes to Durant, though, be advised that Toronto also pursued him during the 2022 offseason when he first sought a trade away from Brooklyn, according to league sources.</p>
+
+<p>There is a strong sense in some corners of the league that this Toronto front office is under some tangible pressure to take a significant step toward competitiveness in the far-less-imposing Eastern Conference … even after they just made a midseason splash to acquire Brandon Ingram from New Orleans. (There is also much curiosity, for that matter, about the recent interest Atlanta expressed in Ujiri for its ongoing president of basketball operations vacancy.)</p>
+
+<p>The Raptors, thanks to the aforementioned pressure, are generally expected to be active on this summer&rsquo;s trade market, which could establish RJ Barrett’s $27 million salary as a key element to any forthcoming salary cap math.</p>
+
+<p>Sources say Barrett was indeed discussed with New Orleans during the Raptors&rsquo; trade conversations that ultimately landed Ingram from the Pelicans for Bruce Brown, Kelly Olynyk and one future first- and second-round pick. Between Barrett and veteran center Jakob Poeltl this summer, Toronto could get to nearly $50 million in outgoing salary relatively easily.</p>
+</blockquote>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mwerelz" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>walterdog12 | ITA</div>
+        <div>1 | 29 minutes ago </div>
+      </div>
+      <label for="mwerelz" class="commentText"><p>&ldquo;Numerous rumblings&rdquo;, AKA anyone with common sense that&rsquo;s paid attention to literally anything relating to the Raptors since like 2017.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mwergc4" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>King_Thirteen</div>
+        <div>1 | 29 minutes ago </div>
+      </div>
+      <label for="mwergc4" class="commentText"><p>Raptors don&rsquo;t have enough assets to get Giannis &amp; build a strong contender around him</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mweuoes" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>bdvfgvvcffc</div>
+        <div>1 | 9 minutes ago </div>
+      </div>
+      <label for="mweuoes" class="commentText"><p>They can provide a compelling offer but I agree with the second point. Anything that’s appealing to the Bucks would decimate their depth and future draft picks.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="mwevaz6" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>the_interviewer_2021</div>
+        <div>1 | 5 minutes ago </div>
+      </div>
+      <label for="mwevaz6" class="commentText"><p>Who exactly is the competition?</p>
+
+<p>Barnes + 9th + multiple firsts + filler is much better than Stephon Castle + 2nd + firsts and filler OR whatever OKC offers (unless they include one of Chet or JDub). Jalen Green + firsts isn&rsquo;t that appealing</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mwerkf0" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Domainsetter</div>
+        <div>1 | 28 minutes ago </div>
+      </div>
+      <label for="mwerkf0" class="commentText"><p>This is why I think KD is way more likelier.</p>
+
+<p>He won’t cost Scottie.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mwevg56" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>kyle_993 | Raptors</div>
+        <div>1 | 4 minutes ago </div>
+      </div>
+      <label for="mwevg56" class="commentText"><p>KD would be a 1 year chance and would cost either Quickley or Poeltl, or both then we&rsquo;d have no PG or no Center and then we&rsquo;d have to go out and spend probably multiple picks to go get one of them. At that point I&rsquo;d rather keep Quickley and Poeltl and go get Giannis.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mwervzd" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>HeftyIsTheCrown | Celtics</div>
+        <div>1 | 26 minutes ago </div>
+      </div>
+      <label for="mwervzd" class="commentText"><p>If he goes to the west, the eastern conference will be literally NBA Team B</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mwesqsx" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Asleep_Ground1710 | Bulls</div>
+        <div>1 | 21 minutes ago </div>
+      </div>
+      <label for="mwesqsx" class="commentText"><p>Pacers hoping they can pull a Lebron and dominate the conference. Meanwhile the West would channel 2014-15 and be 55 wins is the 6th seed if Giannis went West</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mweuwuz" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Admiral_Tuvix | Wizards</div>
+        <div>1 | 7 minutes ago </div>
+      </div>
+      <label for="mweuwuz" class="commentText"><p>bron dominated the east when it was good.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="mweu6qx" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>bigraptorr</div>
+        <div>1 | 12 minutes ago </div>
+      </div>
+      <label for="mweu6qx" class="commentText"><p>Theres this guy Indiana</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="mweuoth" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>DiabeticAsymptote | Celtics</div>
+        <div>1 | 9 minutes ago </div>
+      </div>
+      <label for="mweuoth" class="commentText"><p>Celtics could honestly be a top 4 seed without Tatum next season lmao</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mwetmra" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>TippyTripod1040 | Lakers</div>
+        <div>1 | 15 minutes ago </div>
+      </div>
+      <label for="mwetmra" class="commentText"><p>Entire team is gonna be long armed skinny boys with a suspect outside shot</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mwergt0" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>xFalcade</div>
+        <div>1 | 29 minutes ago </div>
+      </div>
+      <label for="mwergt0" class="commentText"><p>The entire league is gonna go crazy when the Raptors trade for Giannis &amp; KD.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mwesm81" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>bigraptorr</div>
+        <div>1 | 22 minutes ago </div>
+      </div>
+      <label for="mwesm81" class="commentText"><p>KD hates Toronto after we cheered when he got injured</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mwesrjr" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>OverallGeneral7129 | Cavaliers</div>
+        <div>1 | 21 minutes ago </div>
+      </div>
+      <label for="mwesrjr" class="commentText"><p>Understandable (on KD’s part)</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="mwesvwh" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>mMounirM | Raptors</div>
+        <div>1 | 20 minutes ago </div>
+      </div>
+      <label for="mwesvwh" class="commentText"><p>wrong. he praised Toronto as a city in 2025</p>
+
+<blockquote>
+<p>I love Canada. I love Toronto. Has always been nothing but love and respect here. They appreciate the game of basketball to its core.</p>
+
+<p>They appreciate my journey as a player, so I always have fun coming here. Crowd is always on its feet all game. So they love basketball here so I enjoy coming up here.</p>
+</blockquote>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mwetk8g" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>yeezyman | WAS</div>
+        <div>1 | 16 minutes ago </div>
+      </div>
+      <label for="mwetk8g" class="commentText"><p>There’s the Drake connection too</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mweslus" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>OutsideTheServiceBox | Bucks</div>
+        <div>1 | 22 minutes ago </div>
+      </div>
+      <label for="mweslus" class="commentText"><p>Headline: Team would like to get a great player if he is available.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mwetqdm" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Broad_Chain3247</div>
+        <div>1 | 15 minutes ago </div>
+      </div>
+      <label for="mwetqdm" class="commentText"><p>If he gets traded to Toronto, he will leave to the Clippers in Free Agency</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mwercbf" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>jonsnowKITN | NBA</div>
+        <div>1 | 30 minutes ago </div>
+      </div>
+      <label for="mwercbf" class="commentText"><p>They have nothing that would interest Milwaukee.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mwesbcs" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Chrispaulisgarbage | Raptors</div>
+        <div>1 | 24 minutes ago </div>
+      </div>
+      <label for="mwesbcs" class="commentText"><p>they have all there picks, promising young players?</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mwestjt" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>mMounirM | Raptors</div>
+        <div>1 | 20 minutes ago </div>
+      </div>
+      <label for="mwestjt" class="commentText"><p>Milwaukee probably don&rsquo;t want picks from the team Giannis is joining</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mweregj" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>CumAssault | SAS</div>
+        <div>1 | 29 minutes ago </div>
+      </div>
+      <label for="mweregj" class="commentText"><p>It’ll be either OKC or the Spurs that get him if he does ask out</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mwery24" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>lionpenguin88</div>
+        <div>1 | 26 minutes ago </div>
+      </div>
+      <label for="mwery24" class="commentText"><p>I don&rsquo;t know what they could possibly have that Milwaukee would want to take</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mwesjip" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Chrispaulisgarbage | Raptors</div>
+        <div>1 | 22 minutes ago </div>
+      </div>
+      <label for="mwesjip" class="commentText"><p>Scottie? gradey? Ingram? all there picks including number 9</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mwesyog" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Aidanj927 | Spurs</div>
+        <div>1 | 20 minutes ago </div>
+      </div>
+      <label for="mwesyog" class="commentText"><p>If you trade Scottie then he’s in basically the exact same situation except in a new country</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="mwesa5q" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Domainsetter</div>
+        <div>1 | 24 minutes ago </div>
+      </div>
+      <label for="mwesa5q" class="commentText"><p>Only if he wants to go there</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="mwet0bn" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ColtCallahan</div>
+        <div>1 | 19 minutes ago </div>
+      </div>
+      <label for="mwet0bn" class="commentText"><p>And even if they did what do they have left? This roster couldn’t even make the play in. And that’s in the shitty East. They’ll just be in the same position as Milwaukee.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mwet5t0" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>lionpenguin88</div>
+        <div>1 | 18 minutes ago </div>
+      </div>
+      <label for="mwet5t0" class="commentText"><p>Yup, i agree.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mwetnd5" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ColtCallahan</div>
+        <div>1 | 15 minutes ago </div>
+      </div>
+      <label for="mwetnd5" class="commentText"><p>Also lol @ Giannis’ comments about playing in a state with no income tax in this scenario.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mwereew" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>RapsareChamps_Suckit | Clippers</div>
+        <div>1 | 29 minutes ago </div>
+      </div>
+      <label for="mwereew" class="commentText"><p>Masai is weird man</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mwerlme" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Icy-Lime-9760</div>
+        <div>1 | 28 minutes ago </div>
+      </div>
+      <label for="mwerlme" class="commentText"><p>Yea he really wants a top 5 player what a weirdo</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mwetfoz" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ColtCallahan</div>
+        <div>1 | 17 minutes ago </div>
+      </div>
+      <label for="mwetfoz" class="commentText"><p>They can’t even make the play-in in the shitty East. They have no business trading for a soon to be 31 year old. They’d just be paying a premium to be what Milwaukee is. Not a contender.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="mwerrpt" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>RapsareChamps_Suckit | Clippers</div>
+        <div>1 | 27 minutes ago </div>
+      </div>
+      <label for="mwerrpt" class="commentText"><p>I mean Gianni&rsquo;s is 31 years old and can&rsquo;t really shoot relying on his athleticism .. this will go well</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mweryxb" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>CumAssault | SAS</div>
+        <div>1 | 26 minutes ago </div>
+      </div>
+      <label for="mweryxb" class="commentText"><p>Giannis is 30 and it’s an era where he can potentially be elite for 4-5 more years</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mwes6d6" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>RapsareChamps_Suckit | Clippers</div>
+        <div>1 | 24 minutes ago </div>
+      </div>
+      <label for="mwes6d6" class="commentText"><p>31 next season tho. really at 35, you think he will still be really good??? that&rsquo;s a bold take</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
