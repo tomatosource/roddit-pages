@@ -1,0 +1,986 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.selfPostImage {
+  width: 100%;
+  height: auto;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/nba/comments/1l9ppmp/through_3_games_in_the_finals_tyrese_haliburton/"><p>Through 3 games in the Finals, Tyrese Haliburton leads the Pacers in mins played, FGAs, &amp; assists. Despite playing against a notoriously heavy ball pressuring defense, not only has he yet to attempt a single FTA, he&rsquo;s drawn just 2 fouls in 110 mins played, good for 14th in fouls drawn this series.</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <p>Combined player rankings through 3 games this series by fouls drawn with their FTAs and FGAs totals also included (min. 20 mins played):</p>
+
+<table>
+<thead>
+<tr>
+<th><strong>PLAYER</strong></th>
+<th><strong>MINS</strong></th>
+<th><strong>PFs DRAWN</strong></th>
+<th><strong>FTAs</strong></th>
+<th><strong>FGAs</strong></th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>Shai Gilgeous-Alexander</td>
+<td>118</td>
+<td>21</td>
+<td>26</td>
+<td>71</td>
+</tr>
+
+<tr>
+<td>Jalen Williams</td>
+<td>107</td>
+<td>17</td>
+<td>24</td>
+<td>51</td>
+</tr>
+
+<tr>
+<td>Pascal Siakam</td>
+<td>97</td>
+<td>15</td>
+<td>21</td>
+<td>40</td>
+</tr>
+
+<tr>
+<td>Bennedict Mathurin</td>
+<td>60</td>
+<td>12</td>
+<td>19</td>
+<td>24</td>
+</tr>
+
+<tr>
+<td>Andrew Nembhard</td>
+<td>98</td>
+<td>11</td>
+<td>11</td>
+<td>24</td>
+</tr>
+
+<tr>
+<td>Chet Holmgren</td>
+<td>86</td>
+<td>10</td>
+<td>13</td>
+<td>35</td>
+</tr>
+
+<tr>
+<td>Myles Turner</td>
+<td>85</td>
+<td>8</td>
+<td>10</td>
+<td>33</td>
+</tr>
+
+<tr>
+<td>Alex Caruso</td>
+<td>88</td>
+<td>7</td>
+<td>11</td>
+<td>24</td>
+</tr>
+
+<tr>
+<td>Lu Dort</td>
+<td>99</td>
+<td>6</td>
+<td>0</td>
+<td>21</td>
+</tr>
+
+<tr>
+<td>Isaiah Hartenstein</td>
+<td>57</td>
+<td>4</td>
+<td>5</td>
+<td>10</td>
+</tr>
+
+<tr>
+<td>Aaron Nesmith</td>
+<td>79</td>
+<td>3</td>
+<td>2</td>
+<td>26</td>
+</tr>
+
+<tr>
+<td>Obi Toppin</td>
+<td>72</td>
+<td>3</td>
+<td>0</td>
+<td>25</td>
+</tr>
+
+<tr>
+<td>Thomas Bryant</td>
+<td>23</td>
+<td>3</td>
+<td>2</td>
+<td>3</td>
+</tr>
+
+<tr>
+<td>Aaron Wiggins</td>
+<td>40</td>
+<td>2</td>
+<td>2</td>
+<td>15</td>
+</tr>
+
+<tr>
+<td>Cason Wallace</td>
+<td>80</td>
+<td>2</td>
+<td>2</td>
+<td>18</td>
+</tr>
+
+<tr>
+<td>T.J. McConnell</td>
+<td>50</td>
+<td>2</td>
+<td>4</td>
+<td>21</td>
+</tr>
+
+<tr>
+<td><strong>Tyrese Haliburton</strong></td>
+<td><strong>110</strong></td>
+<td><strong>2</strong></td>
+<td><strong>0</strong></td>
+<td><strong>43</strong></td>
+</tr>
+
+<tr>
+<td>Isaiah Joe</td>
+<td>22</td>
+<td>1</td>
+<td>0</td>
+<td>8</td>
+</tr>
+
+<tr>
+<td>Ben Sheppard</td>
+<td>41</td>
+<td>0</td>
+<td>0</td>
+<td>9</td>
+</tr>
+</tbody>
+</table>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mxee9mo" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>recollectionsmayvary | Nets</div>
+        <div>66 | 2 hours ago </div>
+      </div>
+      <label for="mxee9mo" class="commentText"><p>Thunder flairs are gonna tell us it’s because they’re such disciplined defenders, they’ve never fouled Hali once! </p>
+
+<p>(Yes, that includes the DOrTuRe elbow to Hali’s face!) </p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mxesoyv" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>chef_iblocka | Thunder</div>
+        <div>1 | 31 minutes ago </div>
+      </div>
+      <label for="mxesoyv" class="commentText"><p>He’s barely touched the paint and to be quite frank: he’s a mediocre shot creator. Mathurin has had no trouble getting to the line this series and that’s because he has a skill set that makes it hard to guard him without fouling, the same is not true for Hali.</p>
+
+<p>Spoiler alert: the refs are not favoring or trying to make one of the smallest markets in the country win.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="mxeh8m0" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>King_Thirteen</div>
+        <div>-16 | an hour ago </div>
+      </div>
+      <label for="mxeh8m0" class="commentText"><p>Well Haliburton doesn&rsquo;t even look at the basket most of the times, he either shoots long jumpers or just dribbles the ball &amp; passes it</p>
+
+<p>Siakam &amp; Mathurin are the ones pressuring the rim</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mxelzzj" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Coolcat127 | Wizards</div>
+        <div>18 | an hour ago </div>
+      </div>
+      <label for="mxelzzj" class="commentText"><p>This playoffs Haliburton has 217 drives and 20 FTA, 0.092 FTA/drive. For reference SGA has gotten 0.174 FTA/drive, Brunson has gotten 0.123 FTA/drive, JDub has gotten 0.192 FTA/drive, and Ant has gotten 0.192 FTA/drive. These are the top 5 in drives this playoffs. You can argue that Shai/Dub/Ant are more physical than Haliburton and therefore deserve more FTs but it&rsquo;s completely incorrect to say that Haliburton doesn&rsquo;t get FTs because he &ldquo;doesn&rsquo;t even look at the basket&rdquo;</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mxensmu" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Transky13 | Pacers</div>
+        <div>8 | an hour ago </div>
+      </div>
+      <label for="mxensmu" class="commentText"><p>People look at Hali in his bad games and think of that style of play as his regular play. It’s not. Those games are exceptions that yes, are somewhat more common than they should be, but that’s not his normal</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="mxeo0ld" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>King_Thirteen</div>
+        <div>-10 | an hour ago </div>
+      </div>
+      <label for="mxeo0ld" class="commentText"><p>Did you read the 1st sentence? When he drives he legit doesn&rsquo;t even look the rim most of the times</p>
+
+<p>You should watch the games instead of pulling this tiring statistical argument of &ldquo;he drives a lot so he should get more fts&rdquo;</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mxerlc4" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ND7020 | Supersonics</div>
+        <div>8 | 36 minutes ago </div>
+      </div>
+      <label for="mxerlc4" class="commentText"><p>lol you have like weeks of posts hating on just Haliburton</p>
+
+<p>Imagine being such a hater towards such a cool player.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mxes7s8" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>King_Thirteen</div>
+        <div>-6 | 33 minutes ago </div>
+      </div>
+      <label for="mxes7s8" class="commentText"><p>You should prolly get a hobby or something, tracking down people&rsquo;s activity on the internet is mental illness</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mxet9lm" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ND7020 | Supersonics</div>
+        <div>1 | 28 minutes ago </div>
+      </div>
+      <label for="mxet9lm" class="commentText"><p>lol I just clicked on your profile and spent 10 seconds scrolling down, and 80% of posts are about Haliburton. Who has the mental illness?</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mxewcb4" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>King_Thirteen</div>
+        <div>1 | 14 minutes ago </div>
+      </div>
+      <label for="mxewcb4" class="commentText"><p>You? You&rsquo;re the one stalking people&rsquo;s profiles?</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mxeheor" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>TimothyN | Pelicans</div>
+        <div>24 | an hour ago </div>
+      </div>
+      <label for="mxeheor" class="commentText"><p>Because the Thunder, especially Dort, get away with assault.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mxesdki" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>jimtrickington</div>
+        <div>3 | 32 minutes ago </div>
+      </div>
+      <label for="mxesdki" class="commentText"><p>Looks like a tinge of battery at times, too.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mxeeaoi" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>heat_fan_ | Raptors</div>
+        <div>9 | 2 hours ago </div>
+      </div>
+      <label for="mxeeaoi" class="commentText"><p>So glad he&rsquo;s proven the doubters wrong </p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mxeslsu" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Baseball12229</div>
+        <div>1 | 31 minutes ago </div>
+      </div>
+      <label for="mxeslsu" class="commentText"><p>God the fucking narrative shifts from game to game on here will never not be funny to me</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mxee5oy" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>AnotherAnonymousDog | Nuggets</div>
+        <div>5 | 2 hours ago </div>
+      </div>
+      <label for="mxee5oy" class="commentText"><p>A real tribute to the extremely clean defense (and offense) the Thunder play.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mxengxp" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>recollectionsmayvary | Nets</div>
+        <div>0 | an hour ago </div>
+      </div>
+      <label for="mxengxp" class="commentText"><p>(/s) this OKC team makes me sick and it began with what they got away with in your series and onwards. </p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mxeh4b4" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Chibow</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="mxeh4b4" class="commentText"><p>And he’s playing banged up. He’s crafting a pretty damn good story if the Pacers and pull this out</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mxer7cd" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>TrRa47 | NYK</div>
+        <div>2 | 38 minutes ago </div>
+      </div>
+      <label for="mxer7cd" class="commentText"><p>Pretty consistent with the other series, no? He doesn&rsquo;t get a lot, and his game doesn&rsquo;t really create that much contact. I&rsquo;d wager most of his free throws these playoffs came from the Cavs series.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mxess0c" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>jimtrickington</div>
+        <div>1 | 31 minutes ago </div>
+      </div>
+      <label for="mxess0c" class="commentText"><p>Hali had 22 FTA during the ECF (3.7 per game).</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mxeuo6s" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>TrRa47 | NYK</div>
+        <div>1 | 22 minutes ago </div>
+      </div>
+      <label for="mxeuo6s" class="commentText"><p>Oh, well I was wrong. That being said, I&rsquo;ve only seen maybe 1 or 2 plays that would dictate that he gets free throws and his game isn&rsquo;t really predicated on forcing contact.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mxevxld" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>jimtrickington</div>
+        <div>1 | 16 minutes ago </div>
+      </div>
+      <label for="mxevxld" class="commentText"><p>To paint the full picture, Hali had 18 FTA during the Cavs series (3.6/game) and 16 FTA vs the Bucks (3.2/ game).</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mxewtmg" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>MFmadchillin | Celtics</div>
+        <div>1 | 12 minutes ago </div>
+      </div>
+      <label for="mxewtmg" class="commentText"><p>Do people who actually watch games realize that fouls can happen outside of just driving to the basket or forcing 15 second ISO plays?</p>
+
+<p>I didn’t see a foul called for when HALIBURTON got smacked. Was he driving every single play? I didn’t know you HAD to be driving to get fouls called.</p>
+
+<p>Quit making excuses. The Thunder have a whistle there’s no question about it.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mxeyi3u" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Snafudumonde | Pacers</div>
+        <div>1 | 4 minutes ago </div>
+      </div>
+      <label for="mxeyi3u" class="commentText"><p>He absolutely should have been shooting free throws in the final minute on that drive</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mxeysqm" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>No_Caramel_1782</div>
+        <div>1 | 3 minutes ago </div>
+      </div>
+      <label for="mxeysqm" class="commentText"><p>Indy had home cooking from the refs last night. Hali isn’t getting to the line because he isn’t forcing any contact. I haven’t seen anything in these 3 games that would lead me to believe he should have more FTA.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mxetc58" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ilickedysharks | Raptors</div>
+        <div>1 | 28 minutes ago </div>
+      </div>
+      <label for="mxetc58" class="commentText"><p>I know this sub doesn&rsquo;t know ball at all and will just talk about free throws and reffing, but this isn&rsquo;t surprising at all. Hali unable to touch the paint from a live dribble consistently was one of the expected things about him going against this OKC defense. He has a sneaky limited handle so he has to use other tricks to simulate blow bys and stuff.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mxehtz7" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>nobody1568</div>
+        <div>-6 | an hour ago </div>
+      </div>
+      <label for="mxehtz7" class="commentText"><p>Yeah, Indy and Hali are notorious for forcing isos so it&rsquo;s a scandal of titanic proportions that he doesn&rsquo;t draw fouls.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mxele01" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>doomnutz | Warriors</div>
+        <div>12 | an hour ago </div>
+      </div>
+      <label for="mxele01" class="commentText"><p>Pretty wild to play 3 games and get no FTA’s regardless of forcing ISO’s or not driving very often </p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mxem2ga" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>nobody1568</div>
+        <div>-8 | an hour ago </div>
+      </div>
+      <label for="mxem2ga" class="commentText"><p>It is impressive but if there are players to whom it could happen without it being suspicious, Haliburton tops the list. Most of the crybabies would parrot lines like &ldquo;Hali plays the right way&rdquo; but will play dumb as to what this entails.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mxenj3c" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>StudiousLebronJames</div>
+        <div>9 | an hour ago </div>
+      </div>
+      <label for="mxenj3c" class="commentText"><p>there was 2 or 3 plays last night where hali clearly got smacked in the arm and no fts</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mxeo4xz" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>nobody1568</div>
+        <div>-4 | an hour ago </div>
+      </div>
+      <label for="mxeo4xz" class="commentText"><p>And quite possibly there were such instances for multiple other players too. Those who cry about it can just post the videos. Implying things through decontextualized stats are the way of losers.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mxeswtl" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Mattrellen | Pacers</div>
+        <div>1 | 30 minutes ago </div>
+      </div>
+      <label for="mxeswtl" class="commentText"><p>There are such instances for multiple players every time OKC plays. Strangely, it happens most regularly to their opponents.</p>
+
+<p>But a couple for Tyrese have been really notably egregious.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
