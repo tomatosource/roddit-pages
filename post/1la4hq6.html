@@ -1,0 +1,620 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.selfPostImage {
+  width: 100%;
+  height: auto;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/nba/comments/1la4hq6/okc_held_opponents_to_an_avg_513_efg_in_the_reg/"><p>OKC held opponents to an avg. 51.3 eFG% in the reg. season while averaging a 56 eFG% themselves. Through 3 games in the Finals, Pacers&rsquo; avg. eFG% is 56.4% while OKC&rsquo;s is 51.5 eFG%, effectively flipping the script by offensively eclipsing the OKC defense while forcing OKC-level defensive efficiency.</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <p><strong>For context for OKC:</strong></p>
+
+<p>Average eFG% of OKC’s opponents in their prior series:</p>
+
+<ul>
+<li>Timberwolves: 54.3% (notably, also above OKC&rsquo;s opp. reg. season average)<br>
+</li>
+<li>Nuggets: 48.1%<br>
+</li>
+<li>Grizzlies: 47.6%<br>
+</li>
+</ul>
+
+<p>OKC&rsquo;s average eFG% in their prior series:</p>
+
+<ul>
+<li>vs. Timberwolves: 56 eFG%<br>
+</li>
+<li>vs. Nuggets: 51.8 eFG%<br>
+</li>
+<li>vs. Grizzlies: 52.5 eFG%<br>
+</li>
+</ul>
+
+<p><strong>For context for Pacers:</strong></p>
+
+<p>Pacers&rsquo; opponents&rsquo; reg. season average eFG% - 54.6%<br>
+Pacers&rsquo; reg. season average eFG% - 56.2%</p>
+
+<p>Average eFG% of Pacers&rsquo; opponents in their prior series:</p>
+
+<ul>
+<li>Knicks: 53.8%</li>
+<li>Cavs: 49%<br>
+</li>
+<li>Bucks: 53.5%<br>
+</li>
+</ul>
+
+<p>Pacers&rsquo; average eFG% in their prior series:</p>
+
+<ul>
+<li>Knicks: 56.3%</li>
+<li>Cavs: 58.5%</li>
+<li>Bucks: 58.1%<br>
+</li>
+</ul>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mxhs3hi" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>heat_fan_ | Raptors</div>
+        <div>7 | an hour ago </div>
+      </div>
+      <label for="mxhs3hi" class="commentText"><p>The thing is Indiana actually made adjustments made by the Coach </p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mxhsdui" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>taygads</div>
+        <div>2 | an hour ago </div>
+      </div>
+      <label for="mxhsdui" class="commentText"><p>Which is a characteristic of a great, dare I say top, team and not a team that’s just lucky to be there…</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mxhuinc" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>wpmason</div>
+        <div>6 | an hour ago </div>
+      </div>
+      <label for="mxhuinc" class="commentText"><p>Pacers are good.</p>
+
+<p>Some of us have known for a while but no one listened.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mxhrmk2" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>SickSaricDario | Warriors</div>
+        <div>3 | an hour ago </div>
+      </div>
+      <label for="mxhrmk2" class="commentText"><p>OKC  built around the two big lineup during their regular season, and for some reason, their coach changed things to adjust to Indiana. think this is going to be their downfall&hellip; they can&rsquo;t force Indy, or don&rsquo;t know how to force Indy into matching their style. Cason Wallace is prolly more effective off the bench as a primary defender on Mathurin imo</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mxhw39x" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>jawadhaque089</div>
+        <div>6 | an hour ago </div>
+      </div>
+      <label for="mxhw39x" class="commentText"><p>I mean Chet missed so many games in the regular season it&rsquo;s hard to say that they build their season over the two big lineup</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="mxhxjsl" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>808Kuro</div>
+        <div>4 | an hour ago </div>
+      </div>
+      <label for="mxhxjsl" class="commentText"><p>I can’t tell if this is a bait comment. Have you watched the Pacers at all this year? They run off any two-men big line up with their transition offense. OKC wouldn’t have a chance at all this series if they started Chet-Hart and their coach knows this and is why he hasn’t done this line up</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="mxhs9gf" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>moby323 | 76ers</div>
+        <div>4 | an hour ago </div>
+      </div>
+      <label for="mxhs9gf" class="commentText"><p>If you watched Hartenstein play yesterday you should know why Daginault didn’t have faith in the two big lineup.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="mxi1b0u" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ReflectionEterna | Pacers</div>
+        <div>1 | 28 minutes ago </div>
+      </div>
+      <label for="mxi1b0u" class="commentText"><p>A two-big lineup over the course of several minutes would equal two tired big men and no size left at the end of the game when your bigs are gassed.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mxi4ce3" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>LJ8QB1</div>
+        <div>1 | 7 minutes ago </div>
+      </div>
+      <label for="mxi4ce3" class="commentText"><p>Double big can survive for stretches</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mxi0d91" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>zhozeph123</div>
+        <div>1 | 34 minutes ago </div>
+      </div>
+      <label for="mxi0d91" class="commentText"><p>Mark Daugnalt proving he doesn’t have the chops to be an NBA coach</p>
+
+<p>This trend of calling up young assistants or g league coaches has to end…</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mxi24nf" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Temporary-Level-5410 | Lakers</div>
+        <div>1 | 23 minutes ago </div>
+      </div>
+      <label for="mxi24nf" class="commentText"><p>So they won 68 games by accident?</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mxi29ya" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>zhozeph123</div>
+        <div>1 | 22 minutes ago </div>
+      </div>
+      <label for="mxi29ya" class="commentText"><p>Replace Dagnolt with randy wittman. Ur telling me okc doesn’t win at least 65 games?</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mxi2ewk" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Temporary-Level-5410 | Lakers</div>
+        <div>1 | 21 minutes ago </div>
+      </div>
+      <label for="mxi2ewk" class="commentText"><p>No.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mxi2omw" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>zhozeph123</div>
+        <div>1 | 19 minutes ago </div>
+      </div>
+      <label for="mxi2omw" class="commentText"><p>how many games are they winning with randy wittman</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mxi46dp" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Temporary-Level-5410 | Lakers</div>
+        <div>1 | 9 minutes ago </div>
+      </div>
+      <label for="mxi46dp" class="commentText"><p>Not 65</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mxi4mc7" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>zhozeph123</div>
+        <div>1 | 6 minutes ago </div>
+      </div>
+      <label for="mxi4mc7" class="commentText"><p>I want to know what you’d estimate to be the win differential between Daginoult and Wittman</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mxi4o3a" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Temporary-Level-5410 | Lakers</div>
+        <div>1 | 5 minutes ago </div>
+      </div>
+      <label for="mxi4o3a" class="commentText"><p>Probably quite a few</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mxi4uxx" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>zhozeph123</div>
+        <div>1 | 4 minutes ago </div>
+      </div>
+      <label for="mxi4uxx" class="commentText"><p>let’s hear a number</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="mxi4jup" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>LJ8QB1</div>
+        <div>1 | 6 minutes ago </div>
+      </div>
+      <label for="mxi4jup" class="commentText"><p>Mark is a good coach even if he’s over correcting and getting outcoached by carlisle. Carlisle is just a demon he’s outcoached every coach he’s faced so far</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
