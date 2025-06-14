@@ -1,0 +1,804 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.selfPostImage {
+  width: 100%;
+  height: auto;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/nba/comments/1lbejb1/these_finals_have_been_incredible_so_why_is_every/"><p>These Finals have been incredible. So why is every loss treated like a historic collapse?</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <p>Not trying to sound like a hater here. I love this sub, and I know most of us <em>hate</em> how ESPN and sports media boil everything down to “legacy games,” “who wants it more,” and “he’s HIM or he’s not.”</p>
+
+<p>But honestly, the discourse <em>here</em> during these Finals has felt the same way.</p>
+
+<p>This Thunder vs Pacers Finals has been incredible. Two young, well-coached teams going back and forth. All four games have been competitive, and yet every postgame thread turns into &ldquo;Thunder are frauds,&rdquo; &ldquo;Pacers choked,&rdquo; or &ldquo;Series is over.&rdquo;</p>
+
+<p>If you only read the most-upvoted comments after each game, you’d think it was a total meltdown by the losing team every time.</p>
+
+<ul>
+<li>After <strong>Game 1</strong> (a 1-point game) it was “SGA fake MVP,” “Pacers figured them out,” &ldquo;Thunder should be worried&rdquo; (<a href="https://www.reddit.com/r/nba/comments/1l67avt/andrew_nembhard_cooking_sga_is_not_talked_about/" target="_blank">Link</a>)</li>
+<li>After <strong>Game 2</strong>, it flipped to “Pacers were never ready,” “Haliburton actually was overrated,” “Thunder in 5.” (<a href="https://www.reddit.com/r/nba/comments/1l6ugq1/tyrese_haliburton_through_the_first_3_quarters_of/" target="_blank">Link</a>)</li>
+<li>After <strong>Game 3</strong>, there were so many threads about &ldquo;Thunder losing this finals would be the worst collapse in NBA history.&rdquo; (<a href="https://www.reddit.com/r/nba/comments/1l9x8hx/serious_say_the_thunder_do_end_up_losing_this/" target="_blank">Link</a>, <a href="https://www.reddit.com/r/nba/comments/1l9dqvu/shai_gilgeousalexander_in_pivotal_game_3_in/" target="_blank">Link</a>, <a href="https://www.reddit.com/r/nba/comments/1l9cfuj/thunder_offense_in_final_525_16_2pt_04_3pt_58_ft/" target="_blank">Link</a>)</li>
+<li>After <strong>Game 4</strong> (a literal one-possession game in the 4th) the discourse was “Mathurin choked,” &ldquo;Pacers couldn&rsquo;t score in the 4th,&rdquo; “there&rsquo;s no coming back from this.” (<a href="https://www.reddit.com/r/nba/comments/1layy3q/uthayakumar_pacers_made_one_field_goal_in_the/" target="_blank">Link</a>)</li>
+</ul>
+
+<p>Like… these have been <em>coin-flip games</em>. Instead of <strong>giving credit to the teams that won</strong> for making clutch plays or smart adjustments, it’s all about who “blew it.”</p>
+
+<p>This series has had actual strategy battles. Adjustments. Coaching moves. Clutch moments.</p>
+
+<ul>
+<li>Carlisle’s zone in Game 3 completely disrupted OKC’s rhythm.</li>
+<li>Daigneault’s adjustments in Game 4 (moving SGA off-ball, running more high PnR) freed up Shai to drop 15 of his 35 points in the final 5 minutes.</li>
+</ul>
+
+<p><a href="https://preview.redd.it/n064v3s5jx6f1.png?width=2560&amp;format=png&amp;auto=webp&amp;s=b6dcb333eea6fd033051ea0a400bea245d910102" target="_blank">Credit: u\/StephNoh</a></p>
+
+<p>Sure, Mathurin missed free throws. Maybe Siakam should’ve gotten the ball more. That’s part of the game. In a one-possession game, things can go either way. But reducing every outcome to a “collapse” or a “meltdown” completely ignores what the winning team did to earn the win.</p>
+
+<p>This is the stuff we all complain about when it happens on TV. So why are we doing it here?</p>
+
+<p>This has been one of the most evenly matched and fun Finals in years. Let’s appreciate the execution, the schemes, the grit. Hopefully it goes 7.</p>
+
+<p>If you’ve got thoughts on a cool set play, a smart adjustment, or even just a good screen someone set, drop it below.</p>
+
+<p><em>End rant. Go basketball.</em></p>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mxrxytg" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>BrotherSkeleton | Knicks</div>
+        <div>63 | 40 minutes ago </div>
+      </div>
+      <label for="mxrxytg" class="commentText"><p>NBA discourse is stupid. People needa just watch and enjoy and not be so damn toxic</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mxs3888" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>dnt1694 | Thunder</div>
+        <div>1 | 13 minutes ago </div>
+      </div>
+      <label for="mxs3888" class="commentText"><p>I agree 100%</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="mxs4e6r" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Im_a_Knob | WAS</div>
+        <div>1 | 7 minutes ago </div>
+      </div>
+      <label for="mxs4e6r" class="commentText"><p>thunders loses r/nba: is this the biggest collapse in the history of the nba?</p>
+
+<p>r/nba also: the media talking heads are so dramatic.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mxrxbbk" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Starfish_Bobertsons</div>
+        <div>44 | 44 minutes ago </div>
+      </div>
+      <label for="mxrxbbk" class="commentText"><p>This is what happens when your on air personalities are saying &ldquo;you got any games on your phone?&rdquo;</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mxry528" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>chipzy20</div>
+        <div>12 | 39 minutes ago </div>
+      </div>
+      <label for="mxry528" class="commentText"><p>Because most people are just casual watchers and it gets watered down to one team played better than other team</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mxryhd2" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Dangerous-Orange387</div>
+        <div>12 | 38 minutes ago </div>
+      </div>
+      <label for="mxryhd2" class="commentText"><p>It’s so frustrating especially when the series odds tell you the series should’ve played out like last years Celtics-Mavs series which was 3-0 before ending in 5. There is a chance of a game 7 which hasn’t happened since 2016</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mxrytme" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>_LilBucket | Wizards</div>
+        <div>13 | 36 minutes ago </div>
+      </div>
+      <label for="mxrytme" class="commentText"><p>It’s a sign of the times, in my opinion. It’s easier to say, “Player/team x sucks.” rather than focus on the in-game adjustments (switches, ball movement, etc).</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mxrxxxo" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>PonkMcSquiggles</div>
+        <div>8 | 40 minutes ago </div>
+      </div>
+      <label for="mxrxxxo" class="commentText"><p>First time?</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mxs051q" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Dry_Topic_7333</div>
+        <div>1 | 29 minutes ago </div>
+      </div>
+      <label for="mxs051q" class="commentText"><p>We don&rsquo;t know how to communicate in any way except absolutes anymore</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mxs0dfp" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Low-Blackberry-2690</div>
+        <div>1 | 28 minutes ago </div>
+      </div>
+      <label for="mxs0dfp" class="commentText"><p>This is good content, and I agree that the discourse and overall this subreddit are not in a good place. I will say that games 1 and 4 were actual collapses in terms of blowing leads late, which is fine to mention, thought people take it way too far</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mxs0gwa" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Obi2 | Pacers</div>
+        <div>1 | 27 minutes ago </div>
+      </div>
+      <label for="mxs0gwa" class="commentText"><p>I feel like most of the vitriol I read comes from teams who lost in the playoffs to that 2 finals teams. Western conference teams hate on OKC calling them fouls merchants and dirty and refs / NBA just want them to win. Eastern conference teams (specifically Bucks and Knicks fans, but primarily Bucks fans) whine about Halliburton anytime he cheats on his teams and calls them lucky and annoying and all that.</p>
+
+<p>It’s part of the overall collective idea that there are no longer nuance or grey areas. Everything is team A good team B bad.. you see it play out especially with politics right now.</p>
+
+<p>Cliff Notes: everyone is dumb and ignorant and it’s always us vs them no matter what, so let’s just overreact to everything.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mxrzlwl" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>vvhillderness | Nuggets</div>
+        <div>1 | 32 minutes ago </div>
+      </div>
+      <label for="mxrzlwl" class="commentText"><p>more like WWE everyday</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mxs0b8t" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Intelligent_Ad3378 | Pistons</div>
+        <div>1 | 28 minutes ago </div>
+      </div>
+      <label for="mxs0b8t" class="commentText"><p>Watched every minute of game 4. Rooting heavily for the Pacers. When the Pacers realized that the title was in their grasp they tightened up. They stopped passing the ball.  Carlisle called a timeout to calm them down and remind them who they were. They turned the ball over, Turner passed up an open three that he would have shot in rhythm last game. The Pacers choked. Hali was trying to will them there but he is not a one on one take over the game scorer like SGA. I hope the Pacers can come back but last night was an epic choke.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mxs0jr4" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Gleams12 | Pacers</div>
+        <div>1 | 27 minutes ago </div>
+      </div>
+      <label for="mxs0jr4" class="commentText"><p>It has been the best finals since Lebron came back down 3-1 to beat Golden State. Denver Miami was boring, last year was boring, Lakers over Heat was boring, Suns Bucks was ok. I&rsquo;m sure I&rsquo;m forgetting some other boring finals in that time frame</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mxs4wmx" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>mykl5</div>
+        <div>1 | 4 minutes ago </div>
+      </div>
+      <label for="mxs4wmx" class="commentText"><p>Warriors-Celtics was good</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mxs0mhq" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>protexblue | Hornets</div>
+        <div>1 | 27 minutes ago </div>
+      </div>
+      <label for="mxs0mhq" class="commentText"><p>Thinking Basketball has done an awesome job of analysis and trying to keep each counterpunch in perspective. It&rsquo;s been a great way to help digest it all. TV analysis is largely trash.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mxs0oq9" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>DidiGreglorius</div>
+        <div>1 | 26 minutes ago </div>
+      </div>
+      <label for="mxs0oq9" class="commentText"><p>NBA fans are idiots and this sub is no different lol.</p>
+
+<p>It’s all downstream of ring culture. Once that became all that mattered to people they could ignore the actual basketball.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mxs1ovk" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Character-Sky-340 | Raptors</div>
+        <div>1 | 21 minutes ago </div>
+      </div>
+      <label for="mxs1ovk" class="commentText"><p>Can we just pin this comment somehow at the top of r/nba lol</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mxs2kvg" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Right_Inevitable9874</div>
+        <div>1 | 16 minutes ago </div>
+      </div>
+      <label for="mxs2kvg" class="commentText"><p>Most fans are stupid </p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mxs35np" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>dnt1694 | Thunder</div>
+        <div>1 | 13 minutes ago </div>
+      </div>
+      <label for="mxs35np" class="commentText"><p>Social media has to exaggerate everything for clicks.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mxs19aq" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Iamcooljay</div>
+        <div>1 | 23 minutes ago </div>
+      </div>
+      <label for="mxs19aq" class="commentText"><p>Hey, it’s an awful subreddit that is far gone from its glory days of actual discourse and funny, lighthearted, smart commentary</p>
+
+<p>Use it for highlights and up to date news, but actually entering the comment sections is a waste of time, everyone is angry for no reason lol</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mxs1oej" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>MaldororHollow</div>
+        <div>1 | 21 minutes ago </div>
+      </div>
+      <label for="mxs1oej" class="commentText"><p>Because people are reactionary and neurotic and big networks capitalize on that?</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mxs1v8r" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Naismythology | Lakers</div>
+        <div>1 | 20 minutes ago </div>
+      </div>
+      <label for="mxs1v8r" class="commentText"><p>People do this stuff because they’ve been conditioned by every talking head that these are the takes you’re supposed to have. I thought Game 1 was an incredible comeback. Game 2 the Thunder took care of business. Game 3 the Pacers responded and were flat out better. Game 4 the Pacers couldn’t buy a bucket at the end and the Thunder took advantage.</p>
+
+<p>Unless a game is neck and neck for the whole thing, people treat it like someone “must have” choked. Not every game is going to be game 7 of the 2010 finals or 2016 finals</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mxs241t" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>luniz420 | Pistons</div>
+        <div>1 | 19 minutes ago </div>
+      </div>
+      <label for="mxs241t" class="commentText"><p>I&rsquo;m with ya. I don&rsquo;t care who wins but I definitely want a game 7. I&rsquo;ve enjoyed some of the breakdowns of why any given play or strategy works at certain points of the game and ignored most of the yapping about everything being historic.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mxs258o" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Forsaken_61453</div>
+        <div>1 | 19 minutes ago </div>
+      </div>
+      <label for="mxs258o" class="commentText"><p>I will never understand Pacers running gunning 3 pts, expanding lead, then go back to passing and passing and passing, missing shots, turnovers, bad passes, what changed?   why didn’t pacers keep the pedal to the metal feeding the 3 pt makers</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mxs2b2l" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>MathTutorAndCook</div>
+        <div>1 | 18 minutes ago </div>
+      </div>
+      <label for="mxs2b2l" class="commentText"><p>We all want to see a part of history. But people think that it has to be some level of extreme to be appreciated. We always look for the best of something. It&rsquo;s in our nature</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mxs3g12" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>EightBlocked | NBA</div>
+        <div>1 | 12 minutes ago </div>
+      </div>
+      <label for="mxs3g12" class="commentText"><p>mathurin did choke and the pacers could not score in the 4th though</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mxs3qvb" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>MolicOnePGR | Raptors</div>
+        <div>1 | 10 minutes ago </div>
+      </div>
+      <label for="mxs3qvb" class="commentText"><p>Because OKC is that good</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mxs3sgp" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Big_Departure_2709</div>
+        <div>1 | 10 minutes ago </div>
+      </div>
+      <label for="mxs3sgp" class="commentText"><p>Honestly I don’t know how you can say that games one and four WEREN’T a collapse by the losing team. As an okc fan the Thunder looked completely outclassed four three and a half quarters.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mxs4qdf" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Ok_Key595</div>
+        <div>1 | 5 minutes ago </div>
+      </div>
+      <label for="mxs4qdf" class="commentText"><p>Best finals for determining who wins: offense vs defense.</p>
+
+<p>All comes down to margins, and good coaching does that. Best chess match i’ve seen between coaching so far.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
