@@ -1,0 +1,3815 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.selfPostImage {
+  width: 100%;
+  height: auto;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/nba/comments/1lbb9ed/okc_has_averaged_a_379_free_throw_rate_in_the/"><p>OKC has averaged a .379 free throw rate in the Finals. Their average FTr in Rounds 1-3 of the playoffs was .261. Their average FTr in the reg. season was .220. That amounts to OKC receiving a 72.3% increase on their regular season FTr in the Finals &amp; a 45.2% increase b/w Rounds 1-3 &amp; the Finals.</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <p>For comparison&rsquo;s sake, here are those FTr trends listed out alongside the Pacers&rsquo; and every other team that made it to the 2nd round or beyond (for sample size sake):</p>
+
+<p><strong>Thunder</strong></p>
+
+<ul>
+<li>Playoffs FTr: .379 (72.3% increase from reg. season; 45.2% increase from rounds 1-3)</li>
+<li>Rounds 1-3 FTr: .261 (18.6% increase)</li>
+<li>Reg. season FTr: .220</li>
+</ul>
+
+<p><strong>Pacers</strong></p>
+
+<ul>
+<li>Finals FTr: .311 (29% increase from reg. season; 11.5% increase from rounds 1-3)<br>
+</li>
+<li>Rounds 1-3 FTr: .279 (15.8% increase)</li>
+<li>Reg. season FTr: .241</li>
+</ul>
+
+<p><strong>Knicks</strong></p>
+
+<ul>
+<li>Playoffs FTr: .300 (29.3% increase)</li>
+<li>Reg. season FTr: .232</li>
+</ul>
+
+<p><strong>Timberwolves</strong></p>
+
+<ul>
+<li>Playoffs FTr: .256 (2.8% increase)</li>
+<li>Reg. season FTr: .249</li>
+</ul>
+
+<p><strong>Warriors</strong></p>
+
+<ul>
+<li>Playoffs FTr: .240 (1.6% decrease)</li>
+<li>Reg. season FTr: .244</li>
+</ul>
+
+<p><strong>Nuggets</strong></p>
+
+<ul>
+<li>Playoffs FTr: .273 (5.4% increase)</li>
+<li>Reg. season FTr: .259</li>
+</ul>
+
+<p><strong>Celtics</strong></p>
+
+<ul>
+<li>Playoffs FTr: .273 (28.8% increase)</li>
+<li>Reg. season FTr: .212</li>
+</ul>
+
+<p><strong>Cavs</strong></p>
+
+<ul>
+<li>Playoffs FTr: .318 (32% increase)</li>
+<li>Reg. season FTr: .241</li>
+</ul>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mxr5suc" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>black-remy-buxapenty | Lakers</div>
+        <div>118 | an hour ago </div>
+      </div>
+      <label for="mxr5suc" class="commentText"><p>And yall complained every step of the way lol so don’t act like free throw rate matters now</p>
+
+<p>jesus this sub is braindead when it comes to Shai and okc</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mxr6lsj" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>msf97</div>
+        <div>51 | an hour ago </div>
+      </div>
+      <label for="mxr6lsj" class="commentText"><p>I don’t get why Shai and OKC get so much hate.</p>
+
+<p>It couldn’t be because a certain two fanbases feel threatened…</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mxr7amx" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Milkboy1516 | Bulls</div>
+        <div>69 | an hour ago </div>
+      </div>
+      <label for="mxr7amx" class="commentText"><p>The Nuggets sub is just endless whining about not even watching the series because of the refs yet still somehow endlessly being the main ones bitching</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mxr8ycz" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>lotofhotdogs</div>
+        <div>37 | an hour ago </div>
+      </div>
+      <label for="mxr8ycz" class="commentText"><p>Yup a huge portion of this sub is Jokic stans who feel threatened.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mxrgrul" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Kodak333 | Hawks</div>
+        <div>1 | 7 minutes ago </div>
+      </div>
+      <label for="mxrgrul" class="commentText"><p>And Luka stans</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="mxrcxer" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>darkdepth6 | Nuggets</div>
+        <div>1 | 28 minutes ago </div>
+      </div>
+      <label for="mxrcxer" class="commentText"><p>Threatened by what? 🤣</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mxrf204" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Icy-Lime-9760</div>
+        <div>1 | 16 minutes ago </div>
+      </div>
+      <label for="mxrf204" class="commentText"><p>A player having a better season than Jokic ever had in his career, and now you can no longer push the “Jokic should have won the 2025 MVP” narrative</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mxrhh2k" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>StudiousLebronJames</div>
+        <div>1 | 4 minutes ago </div>
+      </div>
+      <label for="mxrhh2k" class="commentText"><p>2023 jokics ring clears anything shai will ever be capable of. and they didn’t need foster masterclasses to fuel a comeback in the finals</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="mxrdv3e" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>HitboxOfASnail | Thunder</div>
+        <div>1 | 23 minutes ago </div>
+      </div>
+      <label for="mxrdv3e" class="commentText"><p>no one hates basketball more than nuggets fans. they don&rsquo;t even like their own team.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="mxre8u2" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Brooklynfool | Thunder</div>
+        <div>1 | 21 minutes ago </div>
+      </div>
+      <label for="mxre8u2" class="commentText"><p>The Nuggets sub since that second round series has been a great watch imo . So much bitching about OKC lmaooo absolutely amazing</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="mxrfvga" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Unhappy_Cut7438 | Bucks</div>
+        <div>1 | 12 minutes ago </div>
+      </div>
+      <label for="mxrfvga" class="commentText"><p>Its a cult at this point with Jokic.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="mxr73bu" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Kashmir33 | NBA</div>
+        <div>14 | an hour ago </div>
+      </div>
+      <label for="mxr73bu" class="commentText"><p>The only reason I sort of understand hate is because of Dort. He is an exceptionally triggering player to root against.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mxr86k9" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>dmavs11 | NBA</div>
+        <div>9 | an hour ago </div>
+      </div>
+      <label for="mxr86k9" class="commentText"><p>Dort is the reason I started hating OKC. At the end of the day, we can complain about SGA but he’s still out there hooping and never hurting anyone.</p>
+
+<p>Dort Flops more than SGA and he grabs nuts and punches players. And there’s no “craftiness” to Dort flopping on defense.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mxr9fhj" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Zestyclose-Draft-724 | Lakers</div>
+        <div>7 | an hour ago </div>
+      </div>
+      <label for="mxr9fhj" class="commentText"><p>Ahh yes. Following the Golden State Warriors strat.</p>
+
+<p>Dort is the modern Draymond.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mxratyj" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Kashmir33 | NBA</div>
+        <div>-5 | 38 minutes ago </div>
+      </div>
+      <label for="mxratyj" class="commentText"><p>Honestly Draymond never really flopped, he just hurt people with eye pokes and ball kicks. At least Dort pretty much never talks to the refs which is obviously a huge difference to Draymond. I guess he realizes that if he did talk to them a lot they&rsquo;d notice his shenanigans more.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mxrdplk" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Kdot32 | Rockets</div>
+        <div>1 | 23 minutes ago </div>
+      </div>
+      <label for="mxrdplk" class="commentText"><p>Draymonds “natural shooting motion” is a literal flop while shooting</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mxrexac" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Kashmir33 | NBA</div>
+        <div>1 | 17 minutes ago </div>
+      </div>
+      <label for="mxrexac" class="commentText"><p>I actually believe he wanted to kick his opponents and didn&rsquo;t actually care for foul calls, has done so many other dirt things it only makes sense.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="mxrcrfo" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>StairwayToPavillion | Thunder</div>
+        <div>1 | 28 minutes ago </div>
+      </div>
+      <label for="mxrcrfo" class="commentText"><p>id take flopping over eye poking and intentionally injuring.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mxre16c" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Tracerisarugbyfan | Warriors</div>
+        <div>1 | 22 minutes ago </div>
+      </div>
+      <label for="mxre16c" class="commentText"><p>Draymond has hurt people quite a bit, but the guys he’s hit have rarely missed time.</p>
+
+<p>Tell me again that Dort doesn’t eye poke or intentionally injure and maybe I’d believe you, if not for the list of players he’s taken out and who have missed considerable time.</p>
+
+<p>I know, flair is biased. Not saying Draymond is innocent or even defending his actions, but expecting downvotes anyways.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="mxrdtz1" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>hickok3</div>
+        <div>1 | 23 minutes ago </div>
+      </div>
+      <label for="mxrdtz1" class="commentText"><p>Brother what? His ball kicks were him flopping on layups/shots that he was trying to draw fouls on and coined the term &ldquo;natural shootong motion&rdquo;. He got multiple f1&rsquo;s and T&rsquo;s in the Rockets series doing the same shit, flopping to try and draw a foul, then flailing his arms extra hard to hit the player fouling him to try and making it look unintentional. </p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mxrf8ge" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Kashmir33 | NBA</div>
+        <div>1 | 16 minutes ago </div>
+      </div>
+      <label for="mxrf8ge" class="commentText"><p>I actually believe he intended to kick his opponents not to flop for foul calls. There are a million ways to flop without kicking other players so the only conclusion you can come to is that it was his intention to kick them. And he has done so many other things that it just makes sense.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mxrghcq" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>hickok3</div>
+        <div>1 | 9 minutes ago </div>
+      </div>
+      <label for="mxrghcq" class="commentText"><p>Yes, he intentionally flails to draw the foul(flopping), but then he takes it an extra mile to ensure there is contact with the opposing player. It&rsquo;s both a flop and intentionally trying to hit(maybe not injure but, retaliate for sure) the opposing player. </p>
+
+<p>He just doesn&rsquo;t really flop off bal on screens like Dort does.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="mxre4qk" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ScratchSeeker03</div>
+        <div>1 | 21 minutes ago </div>
+      </div>
+      <label for="mxre4qk" class="commentText"><p>I would assume you didn’t think Mathurin’s hit stick on Shai was dirty. (It wasn’t, and that’s the point). If Dort did that to Hali you would have 10,000% said it was dirty.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mxrfgbg" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>okcthundersga | Thunder</div>
+        <div>1 | 14 minutes ago </div>
+      </div>
+      <label for="mxrfgbg" class="commentText"><p>You mean on shai?</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="mxrg31u" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Unhappy_Cut7438 | Bucks</div>
+        <div>1 | 11 minutes ago </div>
+      </div>
+      <label for="mxrg31u" class="commentText"><p>Best defender in the league.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="mxrfkhw" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>TheAgmis | Thunder</div>
+        <div>1 | 14 minutes ago </div>
+      </div>
+      <label for="mxrfkhw" class="commentText"><p>I’ll adopt him as our Tom Wilson</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="mxrcm67" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Titronnica | SAS</div>
+        <div>1 | 29 minutes ago </div>
+      </div>
+      <label for="mxrcm67" class="commentText"><p>SGA does abuse fouling in a manner similar to ofher egregious floppers. There&rsquo;s no question that fouls and inexplicably being rewarded is part of his game.</p>
+
+<p>That being said, Pacers missed a ton of free throws that could have kept them ahead and made brain dead plays down the stretch.</p>
+
+<p>It is possible to understand both concepts.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="mxr7tui" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>TitanTigers | Grizzlies</div>
+        <div>2 | an hour ago </div>
+      </div>
+      <label for="mxr7tui" class="commentText"><p>It’s because Shai is a huge flopper and pushes off relentlessly while Dort and Caruso get away with everything. Dort is also one of the dirtiest players in the league, if not the dirtiest, on top of ALSO being a huge flopper.</p>
+
+<p>But you already knew that</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mxr8bp7" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>HurryAdorable1327 | Supersonics</div>
+        <div>11 | an hour ago </div>
+      </div>
+      <label for="mxr8bp7" class="commentText"><p>The pacers are mauling Sga every play. Shut up.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="mxr8tro" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>lovo17 | Lakers</div>
+        <div>8 | an hour ago </div>
+      </div>
+      <label for="mxr8tro" class="commentText"><p>A lot of NBA officiating is based on reputation and agendas. Players who have reputations as being &ldquo;elite defenders&rdquo; get a lot more leeway from the refs with how they play. Draymond and Dort are examples of this.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mxrahgr" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Successful_Cry4346</div>
+        <div>3 | 40 minutes ago </div>
+      </div>
+      <label for="mxrahgr" class="commentText"><p>So why are there defenders who are known for fouling a lot?</p>
+
+<p>Why was rookie Dort able to guard prime James Harden so well?</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="mxr8er6" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>VelvetineMilkman | Thunder</div>
+        <div>-3 | an hour ago </div>
+      </div>
+      <label for="mxr8er6" class="commentText"><p>Can’t help but think people like you would feel completely different if they were the Grizzlies instead lol</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mxr979c" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>TitanTigers | Grizzlies</div>
+        <div>-8 | an hour ago </div>
+      </div>
+      <label for="mxr979c" class="commentText"><p>Are you  acting like there’s some agenda against you? Yall aren’t the Lakers or Warriors or Celtics. People don’t have any real reason to care about yall one way or the other except for what they see on the court.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mxrc0a1" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>VelvetineMilkman | Thunder</div>
+        <div>1 | 32 minutes ago </div>
+      </div>
+      <label for="mxrc0a1" class="commentText"><p>Well considering everyone loved them until they started kickin everyone’s ass, yeah lol great teams always get hate. NBA fans are by far the most emotional of any league in the world too</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mxrd6qk" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>TitanTigers | Grizzlies</div>
+        <div>1 | 26 minutes ago </div>
+      </div>
+      <label for="mxrd6qk" class="commentText"><p>That argument doesn’t really fly when the Pacers are also in the finals and like 95% of the league is rooting for them</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mxrgtiv" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>VelvetineMilkman | Thunder</div>
+        <div>1 | 7 minutes ago </div>
+      </div>
+      <label for="mxrgtiv" class="commentText"><p>OKC has been the villain all season long and Indiana’s the fun underdog story, it makes total sense lol what do you mean</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="mxrfibz" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>TheAgmis | Thunder</div>
+        <div>1 | 14 minutes ago </div>
+      </div>
+      <label for="mxrfibz" class="commentText"><p>Wait what’s the other one?</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="mxr8qra" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Skilils- | NBA</div>
+        <div>-1 | an hour ago </div>
+      </div>
+      <label for="mxr8qra" class="commentText"><p>Because the standard for physical contact for them is different than with other teams. They hate them because the league is favoring them, they’re set up to be the villains</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mxrd4en" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>benedictrchua | Thunder</div>
+        <div>1 | 27 minutes ago </div>
+      </div>
+      <label for="mxrd4en" class="commentText"><p>Are you watching the games? Pacers are also physical as hell. So was Denver.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="mxr94i4" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>msf97</div>
+        <div>7 | an hour ago </div>
+      </div>
+      <label for="mxr94i4" class="commentText"><p>The NBA have gotten together in their secret bunker and declared a small market with a non marketable star the guy they want to favour.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mxra2f6" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Skilils- | NBA</div>
+        <div>-4 | 42 minutes ago </div>
+      </div>
+      <label for="mxra2f6" class="commentText"><p>Or you can watch the games like everyone else and conclude there’s a different whistle for different teams/players.</p>
+
+<p>Whether it favors a small market or the Lakers is irrelevant. It’s happening and everyone can see it, you can push against that but it’s so obvious you sound foolish.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mxrf5h6" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>throwaway81731846</div>
+        <div>1 | 16 minutes ago </div>
+      </div>
+      <label for="mxrf5h6" class="commentText"><p>Impressed you could type this through your tears</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="mxrf9gh" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>needapermit | Thunder</div>
+        <div>1 | 15 minutes ago </div>
+      </div>
+      <label for="mxrf9gh" class="commentText"><p>But you have to ask yourself why would Adam silver favor the Thunder of all teams?</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mxrhdee" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Skilils- | NBA</div>
+        <div>1 | 4 minutes ago </div>
+      </div>
+      <label for="mxrhdee" class="commentText"><p>There are several reasons for it, market size is one factor but not the end all be all.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="mxraapp" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>rushyt21</div>
+        <div>5 | 41 minutes ago </div>
+      </div>
+      <label for="mxraapp" class="commentText"><p>Yep, the league favors one of the smallest franchises with the least amount of history in the league and doesn’t generate the revenue the big markets do. Good observation.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mxrauc4" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Skilils- | NBA</div>
+        <div>-2 | 38 minutes ago </div>
+      </div>
+      <label for="mxrauc4" class="commentText"><p>Boiling the leagues intention to market size is bad faith, purposely ignorant, and doesn’t consider the several other factors in their decision making process.</p>
+
+<p>The fact this gets parroted around every time goes to show you’re not actually interested in engaging in a substantive conversation and would rather dismiss the conversation.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mxrc7cx" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>rushyt21</div>
+        <div>1 | 31 minutes ago </div>
+      </div>
+      <label for="mxrc7cx" class="commentText"><p>The fact that a fan resorts to league-fixing conspiracy any time a team finds success that the fan doesn’t like is dumb. Sorry man— it’s dumb.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mxrd2p8" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Skilils- | NBA</div>
+        <div>1 | 27 minutes ago </div>
+      </div>
+      <label for="mxrd2p8" class="commentText"><p>If you think people are making their conclusions based on last nights 4th quarter then you’re not actually watching the playoffs and probably didn’t watch the regular season either or even understand the history of this league. But yea everyone is a conspiracy theorist that’ll definitely encourage a substantive conversation and encourage healthy debate.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mxrdvzm" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>rushyt21</div>
+        <div>1 | 23 minutes ago </div>
+      </div>
+      <label for="mxrdvzm" class="commentText"><p>You’re over here with a NBA tinfoil hat but you’re the one demanding “substantive conversation”? Lol ok</p>
+
+<p>This sub has gotten comically bad. Maybe it always has been.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mxrf1co" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Skilils- | NBA</div>
+        <div>1 | 17 minutes ago </div>
+      </div>
+      <label for="mxrf1co" class="commentText"><p>Not surprised, I guess the entire NBA community who’ve watched these games has seen a favorable whistle but you. Shilling for an entertainment league that’s driven by business. Now tell me how the league has no incentive to favor OKC because they’re a small market. Go</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mxrg2hk" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>rushyt21</div>
+        <div>1 | 11 minutes ago </div>
+      </div>
+      <label for="mxrg2hk" class="commentText"><p>“The entire NBA community”</p>
+
+<p>You mean this echo chamber sub?</p>
+
+<p>On one side, we believe the NBA is an entertainment-driven league and will pursue whatever is good for business. But the other side is this sub celebrating low viewership numbers in the Finals. So which is it? Is OKC good for business and that’s why they’re being favored, or are they bad for business and that’s why viewership is low?</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="mxrd2qy" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>whaledarn | Thunder</div>
+        <div>1 | 27 minutes ago </div>
+      </div>
+      <label for="mxrd2qy" class="commentText"><p>this is just a bunch of word salad lmaoo reading these two paragraphs and you’ve contributed nothing to the conversation either. why don’t you explain what the other factors are? and it’s ironic that you say this gets parroted around so much when your argument that okc is heavily favored with free throws is probably the most parroted take rn</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mxrduko" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Skilils- | NBA</div>
+        <div>1 | 23 minutes ago </div>
+      </div>
+      <label for="mxrduko" class="commentText"><p>Because people watch the games and saw it for themselves, even if it’s been a central narrative here when it continues to occur people are going to speak.</p>
+
+<p>I guess you’d rather people not talk about the blatant different whistles and how it’s overwhelmingly changed the course of the series. OKC is just better and play way better defense and are better coached. Vegas sees how great this team is totally man lmao</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mxrenuw" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>whaledarn | Thunder</div>
+        <div>1 | 18 minutes ago </div>
+      </div>
+      <label for="mxrenuw" class="commentText"><p>you’ve again not contributed to the conversation again and boil it down to “people watch and can see it”. like if you think there’s this conspiracy where the nba is rigging games for okc, and someone points out why that doesn’t make sense since okc is a small market, you can’t just claim there are other factors without naming what those factors are.</p>
+
+<p>okc has always been an incredible defense this season. it’s why there’s videos like these:</p>
+
+<p><a href="https://youtu.be/ELm2PTViP_c?si=Ae3Es0dUGpuq_eox" target="_blank">https://youtu.be/ELm2PTViP_c?si=Ae3Es0dUGpuq_eox</a></p>
+
+<p><a href="https://youtu.be/J5VTLvw4Zpc?si=hDlru4QCViBC4ytO" target="_blank">https://youtu.be/J5VTLvw4Zpc?si=hDlru4QCViBC4ytO</a></p>
+
+<p>made about their historic defense. it’s also why whenever people talk about sga’s free throws, they ignore the context behind his elite scoring:</p>
+
+<p><a href="https://youtu.be/twK8rIDvPH0?si=BFYIuIsA31M7JkCu" target="_blank">https://youtu.be/twK8rIDvPH0?si=BFYIuIsA31M7JkCu</a></p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mxrgchf" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Skilils- | NBA</div>
+        <div>1 | 10 minutes ago </div>
+      </div>
+      <label for="mxrgchf" class="commentText"><p>Even his scoring can be attributed to a whistle. I’m constantly congratulating him on his mid range success, he’s really good at it. But pick your poison, if he drives he likely gets a whistle, if he uses his off hand to get space they won’t call it AND he gets a clean shot. If you play physical with him they’ll call fouls on them.</p>
+
+<p>It’s the game within the game that occurs and he has the advantage.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="mxrgf5w" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Unhappy_Cut7438 | Bucks</div>
+        <div>1 | 9 minutes ago </div>
+      </div>
+      <label for="mxrgf5w" class="commentText"><p>You dont watch games, lets be real</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="mxreoav" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>blackbotha</div>
+        <div>1 | 18 minutes ago </div>
+      </div>
+      <label for="mxreoav" class="commentText"><p>What are the other factors then? Cause it make absolutely no sense business wise for the NBA to have a final Pacers /OKC and OKC being the best team in the west with assets meaning they could dominate the conference for the rest of the decade.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mxrfmv1" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Skilils- | NBA</div>
+        <div>1 | 13 minutes ago </div>
+      </div>
+      <label for="mxrfmv1" class="commentText"><p>The league doesn’t snap their fingers and get the results they want, look at the Lakers over the last 5 years. Even with a favorable whistle and a major disparate FTA compared to the rest of the league they’re not in the finals every year.</p>
+
+<p>I’m interested in what other factors you think i could be referring to.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mxrg9vg" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>blackbotha</div>
+        <div>1 | 10 minutes ago </div>
+      </div>
+      <label for="mxrg9vg" class="commentText"><p>I have no idea, you&rsquo;re the one implying big conspiration. Show us your theory and the fact that back up this.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mxrgub5" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Skilils- | NBA</div>
+        <div>1 | 7 minutes ago </div>
+      </div>
+      <label for="mxrgub5" class="commentText"><p>I thought you had something in mind, especially if you watch the games. So to you, bad calls happen but it’s mostly even and doesn’t change the outcome? Is that your conclusion?</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mxrhkww" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>blackbotha</div>
+        <div>1 | 3 minutes ago </div>
+      </div>
+      <label for="mxrhkww" class="commentText"><p>Stop turning around, be at least a lil brave and tell us what is the big thing that the league is formenting.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mxr6815" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>iia_2085 | Raptors</div>
+        <div>75 | an hour ago </div>
+      </div>
+      <label for="mxr6815" class="commentText"><p>People will say foul baiting, but Shai and Jdub have been aggressive attacking Pacers defenders all series</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mxr6x3c" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Amb569</div>
+        <div>26 | an hour ago </div>
+      </div>
+      <label for="mxr6x3c" class="commentText"><p>Except for the losses when Jdub is passive and settles for middies that he can’t hit. Aggression is rewarded in basketball and sports in general</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="mxr88ai" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Skilils- | NBA</div>
+        <div>-1 | an hour ago </div>
+      </div>
+      <label for="mxr88ai" class="commentText"><p>These comments are hilarious. If you knew you’d get the foul call more often than other players/teams you would drive more.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mxr93yy" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Admiral_Tuvix | Wizards</div>
+        <div>11 | an hour ago </div>
+      </div>
+      <label for="mxr93yy" class="commentText"><p>Then why isnt Indiana doing the same?  Haliburton rarely goes into the paint then ya&rsquo;ll cry that he isnt getting calls.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mxrdjs9" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ForThatReason_ImOut</div>
+        <div>1 | 24 minutes ago </div>
+      </div>
+      <label for="mxrdjs9" class="commentText"><p>Hali and other guys drove a lot yesterday and were almost never rewarded with calls because the rules are not the same on one side as the other, not even looking at all of the turnovers Dort and Caruso force by holding and slapping arms with no calls. Look at the calls OKC are getting and then look at all the Pacers possessions where there was contact and no call. The whole thing is that either might be fine in isolation but it&rsquo;s not the same game on one side as it is on the other</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mxrgszi" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>lethalizered | Thunder</div>
+        <div>1 | 7 minutes ago </div>
+      </div>
+      <label for="mxrgszi" class="commentText"><p>I see comments like this and think to myself, &ldquo;damn, the Pacers really finished the game with 12 free throw attempts or so.&rdquo;</p>
+
+<p>Then I actually remember they shot 33 FTs last night.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="mxr9flq" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Skilils- | NBA</div>
+        <div>-7 | an hour ago </div>
+      </div>
+      <label for="mxr9flq" class="commentText"><p>Not everyone is driving to the hoop playing for a whistle, some guys are looking to score.</p>
+
+<p>Indiana knows they’re playing 2v1, if you don’t realize that I feel bad for you</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mxratm7" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Successful_Cry4346</div>
+        <div>16 | 38 minutes ago </div>
+      </div>
+      <label for="mxratm7" class="commentText"><p>lol so Hali is actually secretly an elite drive and finisher? Hes just not getting calls so he’s not doing it? And Chet is just a non factor, terrible rim protector?</p>
+
+<p>This shit is hilarious</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mxrb597" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Skilils- | NBA</div>
+        <div>-8 | 37 minutes ago </div>
+      </div>
+      <label for="mxrb597" class="commentText"><p>He’s got teammates too, are they getting calls like OKC? Even if he drove more is he going to get calls like SGA?</p>
+
+<p>You know no one will.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mxrc82a" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Successful_Cry4346</div>
+        <div>1 | 31 minutes ago </div>
+      </div>
+      <label for="mxrc82a" class="commentText"><p>He can’t drive more because he’s not able to get past Dort. And when he does, he has to finish over an elite rim protector. Thats how defense works</p>
+
+<p>Yes they are getting calls like OKC, they are also shooting a fuck ton of 3s because OKC is funneling them into the paint and leaving shooters open - which tends to lead to open 3s?</p>
+
+<p>But analysis like this requires you to think deeper than just “foul call!”</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mxrebtx" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Skilils- | NBA</div>
+        <div>1 | 20 minutes ago </div>
+      </div>
+      <label for="mxrebtx" class="commentText"><p>Chet’s been great at the rim and Dort is a great defender but the advantage the refs have given them this series and frankly the entire playoffs have been the story.</p>
+
+<p>Sorry to break it to you, we’re going to continue speaking truth to power even if it goes against your NBA worldview. If you’d rather not see it, log off the app.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mxrefom" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Successful_Cry4346</div>
+        <div>1 | 20 minutes ago </div>
+      </div>
+      <label for="mxrefom" class="commentText"><p>“No I’m right, you’re wrong!” Okay lol</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mxrgkne" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Skilils- | NBA</div>
+        <div>1 | 9 minutes ago </div>
+      </div>
+      <label for="mxrgkne" class="commentText"><p>You can continue to push back but we’re not going to acquiesce to shills. No offense</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="mxrgo7i" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>needapermit | Thunder</div>
+        <div>1 | 8 minutes ago </div>
+      </div>
+      <label for="mxrgo7i" class="commentText"><p>What advantage do you see here? The pacers have been just as physical with OKC</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="mxrh35u" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>lethalizered | Thunder</div>
+        <div>1 | 6 minutes ago </div>
+      </div>
+      <label for="mxrh35u" class="commentText"><p>Mathurin, Siakam and Turner alone combined for 22 Free Throws last night.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mxrhpg2" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Skilils- | NBA</div>
+        <div>1 | 3 minutes ago </div>
+      </div>
+      <label for="mxrhpg2" class="commentText"><p>So therefore they got a favorable whistle?</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="mxrf9ca" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>UGLEHBWE | Thunder</div>
+        <div>1 | 15 minutes ago </div>
+      </div>
+      <label for="mxrf9ca" class="commentText"><p>I wish Shai would&rsquo;ve drove more this game. And Caruso needs to say fuck it and keep making those big plays. He has the finals experience and it shows very vividly</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="mxr7t55" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>RudeBench8657 | Timberwolves</div>
+        <div>-7 | an hour ago </div>
+      </div>
+      <label for="mxr7t55" class="commentText"><p>How many times has Jdub drawn 11 FTs in a half before?   I&rsquo;ll sit back and wait.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mxre4on" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>HitboxOfASnail | Thunder</div>
+        <div>1 | 21 minutes ago </div>
+      </div>
+      <label for="mxre4on" class="commentText"><p>which one of jdub fouls weren&rsquo;t fouls? post them.  I&rsquo;ll wait</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="mxrfodg" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>needapermit | Thunder</div>
+        <div>1 | 13 minutes ago </div>
+      </div>
+      <label for="mxrfodg" class="commentText"><p>Show me one that wasn’t a foul!</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="mxr8gt1" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>DifficultWrongdoer45 | 76ers</div>
+        <div>-6 | an hour ago </div>
+      </div>
+      <label for="mxr8gt1" class="commentText"><p>Shai is aggressively foul baiting tho.
+Hes playing within the rules so kudos but, he is still foul baiting lol.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mxrgryl" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Temporary_Inner | Thunder</div>
+        <div>1 | 7 minutes ago </div>
+      </div>
+      <label for="mxrgryl" class="commentText"><p>I know a fucking 76ers flair isn&rsquo;t shit talking about foul baiting. </p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="mxr9b5a" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Successful_Cry4346</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="mxr9b5a" class="commentText"><p>Out of all Shai’s free throws last game, which were foul baited?</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mxrdwfs" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Fragrant-Guest-8147</div>
+        <div>1 | 22 minutes ago </div>
+      </div>
+      <label for="mxrdwfs" class="commentText"><p>I actually think he has cut down on the baiting because his normal stuff isn&rsquo;t getting called. There was a bad one in the third where he lowered his shoulder into nembhard and got a foul but didn&rsquo;t get free throws. Then there was the play in the fourth where he caught nesmith with a hand on his arm. It was a foul but it was also a bait imo because his only intention was to get free throws.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mxrf4qe" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>suesstretchytoy | Thunder</div>
+        <div>1 | 16 minutes ago </div>
+      </div>
+      <label for="mxrf4qe" class="commentText"><p>Idk if I can call that foul a bait. He was stationary and Nesmith had his hand clearly on his shoulder. He didn’t initiate the contact or anything. Weird play by Nesmith who should’ve known better</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="mxrb0gi" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Dnaughty23 | Timberwolves</div>
+        <div>-8 | 37 minutes ago </div>
+      </div>
+      <label for="mxrb0gi" class="commentText"><p>Lmao - everyone in the fourth, including the no call push off directly in front of the ref</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mxrbtjf" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Confident-Teach-3154 | Hawks</div>
+        <div>18 | 33 minutes ago </div>
+      </div>
+      <label for="mxrbtjf" class="commentText"><p>You mean several intentional fouls, a couple techs, and off ball fouls? Yeah everything in the fourth sure</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mxrdmxy" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Dnaughty23 | Timberwolves</div>
+        <div>1 | 24 minutes ago </div>
+      </div>
+      <label for="mxrdmxy" class="commentText"><p>Tell me you didn’t watch the game w/o telling me</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mxrff5f" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Adraf45 | Heat</div>
+        <div>1 | 15 minutes ago </div>
+      </div>
+      <label for="mxrff5f" class="commentText"><p>He is literally citing the fouls that happened. None of his were baited, nesmiths two were because he reached and then caught his arm on a shot</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mxrg8gm" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Dnaughty23 | Timberwolves</div>
+        <div>1 | 10 minutes ago </div>
+      </div>
+      <label for="mxrg8gm" class="commentText"><p>Brother. Those were total baits. LMFAO</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="mxrfsz6" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>okcthundersga | Thunder</div>
+        <div>1 | 13 minutes ago </div>
+      </div>
+      <label for="mxrfsz6" class="commentText"><p>There’s literally a compilation of all of his 4rh quarter fouls. Please time stamp the fouls you don’t think are legit. We are all waiting.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mxrg9wl" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Dnaughty23 | Timberwolves</div>
+        <div>1 | 10 minutes ago </div>
+      </div>
+      <label for="mxrg9wl" class="commentText"><p>Literally all of them</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mxrhp2j" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>I-Like-Women-Boobs | Thunder</div>
+        <div>1 | 3 minutes ago </div>
+      </div>
+      <label for="mxrhp2j" class="commentText"><p>You’re just mad that your team got taken out 4-1 and you’re still paying 44 million to a guy that has bricks for hands.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="mxrfuzm" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>needapermit | Thunder</div>
+        <div>1 | 12 minutes ago </div>
+      </div>
+      <label for="mxrfuzm" class="commentText"><p>You clearly didn’t watch it. You’re not even gonna acknowledge Neismith slapping his wrist or Mathurin body checking him? At least try and be objective</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mxrgdxf" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Dnaughty23 | Timberwolves</div>
+        <div>1 | 10 minutes ago </div>
+      </div>
+      <label for="mxrgdxf" class="commentText"><p>Marginal contact and embellished by the free throw merchant himself</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mxrgm21" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>needapermit | Thunder</div>
+        <div>1 | 8 minutes ago </div>
+      </div>
+      <label for="mxrgm21" class="commentText"><p>Jesus this sub is brain dead man. I’ve never seen people more hate-blinded by a player so monotone like Shai lol. Maybe Tatum. You’re gonna seriously call Mathurin body checking him marginal contact?</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="mxrbuo7" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Successful_Cry4346</div>
+        <div>10 | 33 minutes ago </div>
+      </div>
+      <label for="mxrbuo7" class="commentText"><p>So Shai had 4 free throws from intentional fouls. According to you, he baited those?</p>
+
+<p>When Shai went for a spin floater and got hit on the wrist, according to you, he baited that as well?</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mxrdrc2" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Dnaughty23 | Timberwolves</div>
+        <div>1 | 23 minutes ago </div>
+      </div>
+      <label for="mxrdrc2" class="commentText"><p>He baited two on nesmith. Im missing the 3rd call. Then he got away with a blatant push off</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mxre22q" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Successful_Cry4346</div>
+        <div>1 | 22 minutes ago </div>
+      </div>
+      <label for="mxre22q" class="commentText"><p>No. And you aren’t missing anything, it doesn’t exist. And the “push off” happened because Nesmith was grabbing his jersey</p>
+
+<p>But notice how you went from “everyone in the fourth” to this</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mxr62tj" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Traditional-Storm645 | Thunder</div>
+        <div>43 | an hour ago </div>
+      </div>
+      <label for="mxr62tj" class="commentText"><p>Pacers also just kinda foul a lot lol</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mxr6zky" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>username_x | Bucks</div>
+        <div>16 | an hour ago </div>
+      </div>
+      <label for="mxr6zky" class="commentText"><p>Pacers &ldquo;improved&rdquo; defense has been them just fouling the shit out of every team throughout the playoffs and the refs not being willing to call it every single possession. Nesmith and Nembhard especially are just hugging dudes</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mxr7rdb" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Agreeable_Pain_5512</div>
+        <div>15 | an hour ago </div>
+      </div>
+      <label for="mxr7rdb" class="commentText"><p>that&rsquo;s what OKC&rsquo;s &ldquo;top ranked&rdquo; defense has been doing all playoffs. I mean, ppl were giving Caruso Jokic stopper praise when in reality he just fouled him every possession. Smart of OKC to take advantage of this, and its also smart of Ind to take advantage of this.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mxr8wif" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>HurryAdorable1327 | Supersonics</div>
+        <div>11 | an hour ago </div>
+      </div>
+      <label for="mxr8wif" class="commentText"><p>But this sub said okc couldn’t handle playoff aggression? Looks like it’s the other way around. Cry baby virus in full effect for 29 other subs.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="mxr9od1" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Successful_Cry4346</div>
+        <div>8 | 44 minutes ago </div>
+      </div>
+      <label for="mxr9od1" class="commentText"><p>Brother lol. Listen to yourself for one second.</p>
+
+<p>We know OKC has elite defenders. They were elite … BEFORE going to OKC.</p>
+
+<p>Dont you think maybe, just maybe, they are good at defending without fouling too? Like they have been prior to this year and prior to even being on OKC?</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mxrfows" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Agreeable_Pain_5512</div>
+        <div>1 | 13 minutes ago </div>
+      </div>
+      <label for="mxrfows" class="commentText"><p>show me where I said they are only good because of fouling? they are a good defensive team that&rsquo;s also exploiting the reputation of a good defensive team and being allowed to be very handsy. Caruso on Jokic is just the most glaring example of said exploitation. Doesn&rsquo;t mean they&rsquo;re not a great defensive team. My comment was in direct response to the posters that complained Pacers being allowed to be physical as if that&rsquo;s not what OKC also benefits from.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="mxr9cwi" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>sir_alvarex | OKC</div>
+        <div>5 | an hour ago </div>
+      </div>
+      <label for="mxr9cwi" class="commentText"><p>And its what the Pacers are doing to OKC. It leads to more foul calls, especially if you don&rsquo;t play extremely disciplined and pick where to be physical. OkC has been slightly better at it because they&rsquo;ve done it all season.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mxrhgy4" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Agreeable_Pain_5512</div>
+        <div>1 | 4 minutes ago </div>
+      </div>
+      <label for="mxrhgy4" class="commentText"><p>yea I&rsquo;m just calling it like I see it, OKC is the best at it because they have a very good defensive team and individual defenders to begin with. But being aggressive on defense (and having bench players that can play significant minutes) is a huge part of the Pacer&rsquo;s run. Not sure why people get so worked up as if pointing this out somehow negates their team&rsquo;s achievements. At this point you&rsquo;d be dumb NOT to be physical and force the refs to call fouls.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="mxr7p4p" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>HurryAdorable1327 | Supersonics</div>
+        <div>6 | an hour ago </div>
+      </div>
+      <label for="mxr7p4p" class="commentText"><p>Alright, so I’m not imagining that. Not saying Caruso/dort aren’t hand checking, but the pacers are mauling Sga/Jdub all the way down the court and nothing is called.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="mxr9f9r" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>lotofhotdogs</div>
+        <div>6 | an hour ago </div>
+      </div>
+      <label for="mxr9f9r" class="commentText"><p>You could honestly make the argument Nembhard is fouling on every single possession</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="mxr8nj2" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>AnkitPancakes | Thunder</div>
+        <div>4 | an hour ago </div>
+      </div>
+      <label for="mxr8nj2" class="commentText"><p>Yeah lol. Aggressive defenses foul a lot. Thunder and Pacers are no different.</p>
+
+<p>I think for the most part the refs have been fine besides blowing some obv OOB plays</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="mxr8au6" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>PrimeShaq | Australia</div>
+        <div>-1 | an hour ago </div>
+      </div>
+      <label for="mxr8au6" class="commentText"><p>You’re right but OKC’s perimeter defenders do the same thing.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mxr8m0y" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>username_x | Bucks</div>
+        <div>4 | an hour ago </div>
+      </div>
+      <label for="mxr8m0y" class="commentText"><p>I never said they didn&rsquo;t lol</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="mxraao4" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Obi2 | Pacers</div>
+        <div>-1 | 41 minutes ago </div>
+      </div>
+      <label for="mxraao4" class="commentText"><p>If there is one fan base I will put zero stock into their comments it’s the bucks. Ya’ll have been salty af since we beat you last year and your cognitive dissonance is entertaining at this point.</p>
+
+<p>While some Knicks fans can be salty too, they at least have good basketball knowledge.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="mxr8j45" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>lovo17 | Lakers</div>
+        <div>6 | an hour ago </div>
+      </div>
+      <label for="mxr8j45" class="commentText"><p>They have moments where they lose focus/composure and commit stupid fouls too. There was a point in that Knicks series where they were just doing stupid foul after stupid foul.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="mxrf27j" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>benedictrchua | Thunder</div>
+        <div>1 | 16 minutes ago </div>
+      </div>
+      <label for="mxrf27j" class="commentText"><p>r/nba: we want super physical playoffs</p>
+
+<p>IND and OKC reaching the finals both playing super physical.</p>
+
+<p>r/nba: OKC are cheaters!!!</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="mxrb1pv" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>LJ8QB1</div>
+        <div>2 | 37 minutes ago </div>
+      </div>
+      <label for="mxrb1pv" class="commentText"><p>They can’t keep jdub in front</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="mxrahtq" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>SpadeRyker | Thunder</div>
+        <div>1 | 40 minutes ago </div>
+      </div>
+      <label for="mxrahtq" class="commentText"><p>Thunder and Pacers are both very physical defenses playing with a mindset that the refs can&rsquo;t call everything. Both teams have seen an increase in foul calls during the finals. It&rsquo;s crazy how one sided social media has been against the Thunder when both teams play the same way and have gotten calls and no calls for and against them all series.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="mxraklg" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>tjc815 | Thunder</div>
+        <div>1 | 40 minutes ago </div>
+      </div>
+      <label for="mxraklg" class="commentText"><p>They’ve committed the most fouls per game in the playoffs and their opponents shoot the most free throws</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="mxr7enh" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Weary_Cabinet_8123</div>
+        <div>-2 | an hour ago </div>
+      </div>
+      <label for="mxr7enh" class="commentText"><p>They foul a ton and have had a pretty forgiving whistle all playoffs</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="mxr9nwf" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Zestyclose-Draft-724 | Lakers</div>
+        <div>-2 | 44 minutes ago </div>
+      </div>
+      <label for="mxr9nwf" class="commentText"><p>Should think about it though.</p>
+
+<p>If OKC is gonna get a whistle anyways for flopping, Scott foster, w/e. The pacers may as well be physical with it.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mxr65fj" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>red2play | Hawks</div>
+        <div>37 | an hour ago </div>
+      </div>
+      <label for="mxr65fj" class="commentText"><p>If the Thunder is at .379 and the Pacers are at .311 then why post this thread only naming the Thunder?  They are all flopping and I WISH they would call the flopping more often.  On both sides.  The Refs aren&rsquo;t the stars in the game.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mxr7mqn" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>mopenimoproblem</div>
+        <div>10 | an hour ago </div>
+      </div>
+      <label for="mxr7mqn" class="commentText"><p>Because of the huge discrepancy between the first few rounds of the playoffs and the finals </p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mxr8dbh" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Skilils- | NBA</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="mxr8dbh" class="commentText"><p>FT’s is one aspect of the game refs can influence the game. It’s not the end all be all, it’s one aspect</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mxrbhc3" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ChessHistory</div>
+        <div>4 | 35 minutes ago </div>
+      </div>
+      <label for="mxrbhc3" class="commentText"><p>Yeah that&rsquo;s the dumbest part of this whole thing - the right timed free throws even if it&rsquo;s just a couple possessions can really sway the momentum of the game. Like there&rsquo;s no nuance for how bad calls start frustrating players because people only look at the stats - just oh Pacers and OKC are getting similarly higher FTA.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mxrcchd" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Skilils- | NBA</div>
+        <div>1 | 31 minutes ago </div>
+      </div>
+      <label for="mxrcchd" class="commentText"><p>They’re making these arguments because they’d rather not get into substantive discourse. Or even within those fouls, how many were even legitimate v. calls being made to favor a team.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="mxr9j80" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>rushyt21</div>
+        <div>13 | an hour ago </div>
+      </div>
+      <label for="mxr9j80" class="commentText"><p>Because this sub are full of serial OKC haters. They act like the league was once full of consistent officiating and pure basketball. I’ve watched the game for a long time and it has never been that way and probably never will.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="mxr9kp1" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>lotofhotdogs</div>
+        <div>5 | an hour ago </div>
+      </div>
+      <label for="mxr9kp1" class="commentText"><p>Because Thunder evil</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="mxr81qc" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>RudeBench8657 | Timberwolves</div>
+        <div>0 | an hour ago </div>
+      </div>
+      <label for="mxr81qc" class="commentText"><p>Oh yes please.  Let&rsquo;s not stop at 71 FT shots.  Let&rsquo;s aim for 100!</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mxr9ca6" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>red2play | Hawks</div>
+        <div>3 | an hour ago </div>
+      </div>
+      <label for="mxr9ca6" class="commentText"><p>I&rsquo;m actually advocating for less FT&rsquo;s but at least its fairly equal.  At the same time, I&rsquo;m sick of seeing all of the flopping and its not only OKC its also the PACERs and they are being rewarded by it.  There should be reviews that can overturn flopping players.  I&rsquo;m sick of it.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mxratvf" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>RudeBench8657 | Timberwolves</div>
+        <div>-7 | 38 minutes ago </div>
+      </div>
+      <label for="mxratvf" class="commentText"><p>It&rsquo;s not fairly equal.   It is always OKC more in their wins.   Everyone is going to have a different opinion on how close 38 to 33 shots is.  But it&rsquo;s not equal.</p>
+
+<p>And SGA having the time to get 6 FT shots in the final 44 seconds of a game, while OKC is in the lead, only happens because the refs are calling fouls on OKC for Mathrn, stopping the clock and limiting Pacers to attempt 2 pts, never three.</p>
+
+<p>Pacers fault for driving the rim when they are good at shooting 3s to save games and playing right into OKC&rsquo;s and refs hands to find more time for SGA to get his free throws.   Any other team with a lead is running more clock out and less overall is occurring.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mxrdl5a" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>whaledarn | Thunder</div>
+        <div>1 | 24 minutes ago </div>
+      </div>
+      <label for="mxrdl5a" class="commentText"><p>you can’t boil down the game to SGAs free throws at the end of the game without discussing how he got those, otherwise you’re just box score watching. how were any of those free throws unjustified?</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mxrf2rs" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>RudeBench8657 | Timberwolves</div>
+        <div>1 | 16 minutes ago </div>
+      </div>
+      <label for="mxrf2rs" class="commentText"><blockquote>
+<p>without discussing how he got those,</p>
+</blockquote>
+
+<p>I just got done explaining how there was even time for them.  Geezus fuck you thunder flaired are sickening.  Now I have to go find if there is a way to filter out the sight of anyone with a Thunder flair.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mxrfs3x" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>whaledarn | Thunder</div>
+        <div>1 | 13 minutes ago </div>
+      </div>
+      <label for="mxrfs3x" class="commentText"><p>lol stopping the clock helps pacers because they’re behind. okc would rather dribble the clock out. and you still want to generalize fouls without discussing the specific ones that you have issues with</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="mxrhbm9" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Temporary_Inner | Thunder</div>
+        <div>1 | 5 minutes ago </div>
+      </div>
+      <label for="mxrhbm9" class="commentText"><blockquote>
+<p>Geezus fuck you thunder flaired are sickening. Now I have to go find if there is a way to filter out the sight of anyone with a Thunder flair.</p>
+</blockquote>
+
+<p>What a totally normal and not unhinged response. </p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="mxrela5" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Hquarls | Mavericks</div>
+        <div>1 | 19 minutes ago </div>
+      </div>
+      <label for="mxrela5" class="commentText"><p>Ah yes, the other multiple blatant push-offs in the last 3 min really help FTAs case here</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="mxrfwiv" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>cplbernard | Thunder</div>
+        <div>1 | 12 minutes ago </div>
+      </div>
+      <label for="mxrfwiv" class="commentText"><p>Because there were intentional fouls to stop the clock and out of play fouls that mathurin gifted the thunders. I feel like I’m reciting events to someone that didn’t watch the game and only yell free throw discrepancies when they see 38:33</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="mxremkr" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>HitboxOfASnail | Thunder</div>
+        <div>1 | 19 minutes ago </div>
+      </div>
+      <label for="mxremkr" class="commentText"><p>the fact that you clearly didn&rsquo;t even watch the game and posted all this is insane</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mxrfbs9" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>RudeBench8657 | Timberwolves</div>
+        <div>1 | 15 minutes ago </div>
+      </div>
+      <label for="mxrfbs9" class="commentText"><p>Oh clearly.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="mxrb7ba" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>The_Taskmaker | Nuggets</div>
+        <div>-1 | 36 minutes ago </div>
+      </div>
+      <label for="mxrb7ba" class="commentText"><p>It&rsquo;s this. I watched Jokic turn into a dreidel spun by a toddler this playoffs because the refs allowed that to be the most effective strategy. The problem solves itself overnight if refs just swallow their fucking whistle</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mxr7jot" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Weary_Cabinet_8123</div>
+        <div>18 | an hour ago </div>
+      </div>
+      <label for="mxr7jot" class="commentText"><p>You  Pacers fans gotta give it a rest, your team fouls a lot. Simple as that</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mxr70vq" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>LaylowJones</div>
+        <div>18 | an hour ago </div>
+      </div>
+      <label for="mxr70vq" class="commentText"><p>Both teams play extremely Aggressive. The Pacers press after every made basket, you don’t think that is going to up the foul rate?</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mxr98tu" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>JamieDonWeaks</div>
+        <div>0 | an hour ago </div>
+      </div>
+      <label for="mxr98tu" class="commentText"><p>Yes and that is fine.  The issue arises when the offensive push off, opening a 2-3 ft. gap or the moving screen is not called consistently on both teams.  Dort and Caruso hook the waist of the offensive player almost every trip, but are seldom called for it.  A little consistency at both ends would go a long way.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mxrblzl" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Successful_Cry4346</div>
+        <div>8 | 34 minutes ago </div>
+      </div>
+      <label for="mxrblzl" class="commentText"><p>There is inconsistency both ways, only when it affects the Pacers does it go viral.</p>
+
+<p>Shai did one rip through. Viral. Jokic did it in OKC v DEN multiple times - nobody even posted it.</p>
+
+<p>McConnell “saving” the ball while being out of bounds. Bryant goaltending the ball through the rim. McConnell throwing the ball away and refs saying it was off iHart (this one was hilariously not close). Shai trying to split the defense and getting tripped. The weird lane violation call where everyone was passed the line (one point win btw), etc.</p>
+
+<p>Even your post complains about a push off, but you don’t say anything when the replay shows Nesmith pulling SGA’s jersey with two hands</p>
+
+<p>It’s called confirmation bias</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="mxrbcx3" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>lotofhotdogs</div>
+        <div>3 | 36 minutes ago </div>
+      </div>
+      <label for="mxrbcx3" class="commentText"><p>You know every player in the league has pushed off for decades right?</p>
+
+<p>I swear this has gotta be some of y’all’s first year watching basketball</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mxrbx9x" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>JamieDonWeaks</div>
+        <div>-3 | 33 minutes ago </div>
+      </div>
+      <label for="mxrbx9x" class="commentText"><p>Dude, I&rsquo;ve been watching basketball longer than you&rsquo;ve been alive and &ldquo;every player in the league&rdquo; is a fucking stupid ass take.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mxrc8pg" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>lotofhotdogs</div>
+        <div>1 | 31 minutes ago </div>
+      </div>
+      <label for="mxrc8pg" class="commentText"><p>Sure you have buddy.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mxrcp78" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>JamieDonWeaks</div>
+        <div>1 | 29 minutes ago </div>
+      </div>
+      <label for="mxrcp78" class="commentText"><p>I can, virtually, guarantee it.  Think what you want, I am finished with you.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mxrcvdd" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>lotofhotdogs</div>
+        <div>1 | 28 minutes ago </div>
+      </div>
+      <label for="mxrcvdd" class="commentText"><p>Anyone unironically complaining about push off like they haven’t been uncalled for 30+ years is definitely a new fan lol. You’re not tricking anyone</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mxrgfx3" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>cplbernard | Thunder</div>
+        <div>1 | 9 minutes ago </div>
+      </div>
+      <label for="mxrgfx3" class="commentText"><p>Jazz fans have been complaining about the push off MJ did ever since lol they act like this is something new</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="mxrfxwh" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>I_sold_MHJ</div>
+        <div>1 | 12 minutes ago </div>
+      </div>
+      <label for="mxrfxwh" class="commentText"><p>Get off Reddit Jesus. How are you commenting 50 times on a live thread mid game. Go watch with some friends.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mxr5zdb" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>movingda | Thunder</div>
+        <div>11 | an hour ago </div>
+      </div>
+      <label for="mxr5zdb" class="commentText"><p>What was Indiana?</p>
+
+<p>Indiana Pacers – Foul-Drawing Overview</p>
+
+<p>Free Throws Drawn</p>
+
+<pre><code>•	21.1 fouls drawn per 100 possessions – the highest rate in the NBA ￼.
+•	In the playoffs, they drew 19.6 fouls per game, ranking 1st among playoff teams ￼.
+</code></pre>
+
+<p>Free Throw Edge</p>
+
+<pre><code>•	During the regular season, they consistently earned more free throw attempts than their opponents, averaging a +5.4 FTA differential per game in the playoffs.
+</code></pre>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mxr95dg" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>BriS314</div>
+        <div>8 | an hour ago </div>
+      </div>
+      <label for="mxr95dg" class="commentText"><p>Using a 4 game sample size and comparing that to a 82-game sample size is nasty work</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mxr9czk" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>RunThePnR | NBA</div>
+        <div>6 | an hour ago </div>
+      </div>
+      <label for="mxr9czk" class="commentText"><p>They also have 2 games of pacers intentionally (and Mathurin) fouling OKC the last 2 mins to get a comeback.</p>
+
+<p>The rate is about even</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mxr92vi" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>sir_alvarex | OKC</div>
+        <div>5 | an hour ago </div>
+      </div>
+      <label for="mxr92vi" class="commentText"><p>Indiana is playing just as physical as OKC. That&rsquo;s the biggest difference. Minnesota played us super soft, and Denver played zone almost exclusively which cuts down on fouls.</p>
+
+<p>Its why OKC had the worst free throw differential in the regular season. Playing physical defense leads to more foul calls. In this case, Indiana is just less disciplined compared to OKC.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mxr6o6i" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>AluminiumLlama | Knicks</div>
+        <div>3 | an hour ago </div>
+      </div>
+      <label for="mxr6o6i" class="commentText"><p>As someone who watched the Pacers play 6 straight games, they know the refs can’t call every foul so they take advantage of that.</p>
+
+<p>I haven’t watched the finals at all, so maybe OKC does this too, but it seems to me like the refs are just calling their fouls more often so far.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mxr9ryn" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>sir_alvarex | OKC</div>
+        <div>4 | 44 minutes ago </div>
+      </div>
+      <label for="mxr9ryn" class="commentText"><p>This is pretty much whats happening. The last two games especially. Indiana cranked their physicality to 11, with Nemhard turning into a slightly smaller version of Dort.</p>
+
+<p>Not complaining. If I were a neutral I&rsquo;d love this series. But as an OKC fan its got me nervous as hell.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="mxr8l3n" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>PrimeShaq | Australia</div>
+        <div>3 | an hour ago </div>
+      </div>
+      <label for="mxr8l3n" class="commentText"><p>OKC has employed that strategy all season as well, I don’t blame the players one bit for playing it to their advantage. It’s the refs that affect the game too much with their inconsistencies.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="mxrcuqg" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>tpcrb | Pacers</div>
+        <div>1 | 28 minutes ago </div>
+      </div>
+      <label for="mxrcuqg" class="commentText"><p>OKC had two blatant fouls on steals last night that turned into a free two points. Comepltely changed the game</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="mxr99co" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>RudeBench8657 | Timberwolves</div>
+        <div>-6 | an hour ago </div>
+      </div>
+      <label for="mxr99co" class="commentText"><blockquote>
+<p>but it seems to me like the refs are just calling their fouls more often so far.</p>
+</blockquote>
+
+<p>Only in games they want OKC to win.   It&rsquo;s total refball both OKC wins.   What else does anyone need to know really?</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mxr9e9n" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>CluelessSwordFish | Thunder</div>
+        <div>5 | an hour ago </div>
+      </div>
+      <label for="mxr9e9n" class="commentText"><p>Thunder have shot 37 less 3s than the Pacers and have 32 more points in the paint, yet both teams still have a similar free throw rate.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mxrez7x" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Dear_Measurement_406</div>
+        <div>1 | 17 minutes ago </div>
+      </div>
+      <label for="mxrez7x" class="commentText"><p>Thunder have broken a lot of redditors brains this series</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mxr6mmn" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>zachuhry</div>
+        <div>2 | an hour ago </div>
+      </div>
+      <label for="mxr6mmn" class="commentText"><p>I’d be interested to see how this compares with their reg season and finals TO%. Felt like watching the game yesterday there was a turnover on every other play, which led to run outs and fouls for both teams.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mxr7lc5" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>JamieDonWeaks</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="mxr7lc5" class="commentText"><p>Contact initiated by the offensive player should not be called a foul on the defensive player, but the lean in shoulder/forearm check by each of their big two foul baiters is consistently called a defensive foul or no call is made.  Completely changes the flow and play of the game.  Creating space with a push off is not good basketball.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mxrfmhh" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>wildertwinkie | Supersonics</div>
+        <div>1 | 13 minutes ago </div>
+      </div>
+      <label for="mxrfmhh" class="commentText"><p>Literally every star does this. Its Tatum&rsquo;s signature move lol. You guys always trying to deflect blame. Maybe ask why the Pacers were airballing 3s, or why they didnt give Mathurin any minutes after going off in game 3. Then he proceeds to have the worst 3 minutes of basketball in his life. Or maybe why they didn&rsquo;t give the ball to Pascal considering he is the only one on the Pacers that can create his own shot and they desperately needed it.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mxra1v7" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>EfficiencyFew6864 | Heat</div>
+        <div>2 | 42 minutes ago </div>
+      </div>
+      <label for="mxra1v7" class="commentText"><p>Not surprising since the Pacers are one of the most foul prone teams in the league.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mxrel95" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>VT10h0kies22 | Celtics</div>
+        <div>1 | 19 minutes ago </div>
+      </div>
+      <label for="mxrel95" class="commentText"><p>I find stats like this weird as there’s so much variance and it’s very matchup driven. There will be some discrepancy between games/series, that’s the nature of the game</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mxr92xf" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>blamedrain | OKC</div>
+        <div>3 | an hour ago </div>
+      </div>
+      <label for="mxr92xf" class="commentText"><p>It&rsquo;s wild that the team that drives more has a higher FTr than the team that shoots a lot of 3s.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mxra1yj" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Obi2 | Pacers</div>
+        <div>0 | 42 minutes ago </div>
+      </div>
+      <label for="mxra1yj" class="commentText"><p>I don’t even care about their free throw rate. What bugs me are the no calls on the other end and the elbows DGA outs into defenders chests every step back.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mxra42v" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>FreeCompliments2</div>
+        <div>2 | 42 minutes ago </div>
+      </div>
+      <label for="mxra42v" class="commentText"><p>Both teams are picking up the ball handler at 80 feet from the basket, double teaming, and fighting hard over screens.  I&rsquo;d expect an increase in fouls and we&rsquo;re seeing it on both sides.  I love how hard both teams are fighting.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mxrdugy" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ScratchSeeker03</div>
+        <div>1 | 23 minutes ago </div>
+      </div>
+      <label for="mxrdugy" class="commentText"><p>It humors me endlessly to know you spent a lot of your valuable time just to do all of this work and post this. OKC’s making people lose on and off the floor.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mxrg331" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>J4jem</div>
+        <div>1 | 11 minutes ago </div>
+      </div>
+      <label for="mxrg331" class="commentText"><p>Warriors vs Houston and this series are part of the same league?</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mxrhg03" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>LearnedHowToDougie | Knicks</div>
+        <div>1 | 4 minutes ago </div>
+      </div>
+      <label for="mxrhg03" class="commentText"><p>The pacers play incredible physical defense to pressure the guards. They foul a lot. This isn’t news</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mxrdiee" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>captmorgan50 | Thunder</div>
+        <div>1 | 24 minutes ago </div>
+      </div>
+      <label for="mxrdiee" class="commentText"><p>We back to “rate” now huh?</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mxrf8ab" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>MoonHasFlown</div>
+        <div>1 | 16 minutes ago </div>
+      </div>
+      <label for="mxrf8ab" class="commentText"><p>Whatever you gotta say to make yourself feel better</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mxrfsp8" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Unhappy_Cut7438 | Bucks</div>
+        <div>1 | 13 minutes ago </div>
+      </div>
+      <label for="mxrfsp8" class="commentText"><p>Have the pacers thought about not fouling? Oh right, its the refs lol.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mxrgqpw" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Wafflehouseofpain | Thunder</div>
+        <div>1 | 8 minutes ago </div>
+      </div>
+      <label for="mxrgqpw" class="commentText"><p>Yeah, the Pacers foul a lot.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mxrao7v" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>rumblegod | Thunder</div>
+        <div>0 | 39 minutes ago </div>
+      </div>
+      <label for="mxrao7v" class="commentText"><p>lol refs have been good this series, just a bunch of babies crying over nothing</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mxr7nun" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>RudeBench8657 | Timberwolves</div>
+        <div>-10 | an hour ago </div>
+      </div>
+      <label for="mxr7nun" class="commentText"><p>SGA had 6 FT shots in the final 44 seconds of this game.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mxr8hn7" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>HurryAdorable1327 | Supersonics</div>
+        <div>11 | an hour ago </div>
+      </div>
+      <label for="mxr8hn7" class="commentText"><p>Dude. 2 of the dumbest fouls to have ever been committed led to those FTs. Context matters. Stop using the box score. No one forced Mathurin to truck him and grab him.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mxrd1xt" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>SpadeRyker | Thunder</div>
+        <div>1 | 27 minutes ago </div>
+      </div>
+      <label for="mxrd1xt" class="commentText"><p>Also OP just ignoring that teams that are down always foul in close games to stop the clock and the team that&rsquo;s up always puts the ball in the hands of its best player to make sure they hit the FTs. There&rsquo;s bad faith arguments and then there&rsquo;s this.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="mxr8lzj" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Either_Statement_800 | Thunder</div>
+        <div>10 | an hour ago </div>
+      </div>
+      <label for="mxr8lzj" class="commentText"><p>Two of those were from pacer&rsquo;s away from the play fouls&hellip; come on. And two more were from SGA literally being tackled by the same guy. He didn&rsquo;t even touch the ball yet when he was tackled. There&rsquo;s no way you watched and have this complaint</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="mxr95kz" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>AnkitPancakes | Thunder</div>
+        <div>6 | an hour ago </div>
+      </div>
+      <label for="mxr95kz" class="commentText"><p>2 of those were because Mathurin is a dumbass and can’t defend an inbound play, another was an intentional foul/attempted steal with 20 seconds left and the last w 44 seconds was Nesmith making obv contact w Shai and got caught w his hand on him lol.</p>
+
+<p>There is no conspiracy</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="mxr8zt7" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>CluelessSwordFish | Thunder</div>
+        <div>5 | an hour ago </div>
+      </div>
+      <label for="mxr8zt7" class="commentText"><p>You didn’t watch the game did you?</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="mxrazz8" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>swedishpirate13 | Thunder</div>
+        <div>3 | 38 minutes ago </div>
+      </div>
+      <label for="mxrazz8" class="commentText"><p>So you didn’t see SGA get tackled when they were trying to inbound the ball</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="mxrcdum" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>interested_commenter | Thunder</div>
+        <div>1 | 30 minutes ago </div>
+      </div>
+      <label for="mxrcdum" class="commentText"><p>Which one of those wasn&rsquo;t an obvious foul? None of them were baited or even borderline calls. Clear wrist slap by Nesmith, Mathurin being dumb, and then an intentional foul hug.</p>
+
+<p>He also only had 4 FTs before that point.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="mxrcopz" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>tjc815 | Thunder</div>
+        <div>1 | 29 minutes ago </div>
+      </div>
+      <label for="mxrcopz" class="commentText"><p>You gotta be dumb as hell to take that without context</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
