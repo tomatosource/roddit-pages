@@ -1,0 +1,920 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.selfPostImage {
+  width: 100%;
+  height: auto;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/nba/comments/1le2t8p/sgas_free_throw_rate_as_compared_to_other/"><p>SGA&rsquo;s Free Throw Rate as compared to other midrange-type players</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <p>This year SGA was <a href="https://www.basketball-reference.com/leagues/NBA_2025_advanced.html" target="_blank">13th</a> in the league in Free Throw Rate (FTr, which is FTA per FGA) despite driving the most in the league.</p>
+
+<p>SGA&rsquo;s TERRORIST <a href="https://www.basketball-reference.com/players/g/gilgesh01.html" target="_blank">FTr was 4.04</a> this season.</p>
+
+<p>Let&rsquo;s see how many seasons other midrange-type players have that are equal/higher than that.</p>
+
+<p><a href="https://www.basketball-reference.com/players/j/jordami01.html" target="_blank">MJ</a>: 4</p>
+
+<p><a href="https://www.basketball-reference.com/players/j/johnsma02.html" target="_blank">Magic</a>: 12</p>
+
+<p><a href="https://www.basketball-reference.com/players/b/bryanko01.html" target="_blank">Kobe</a>: 5</p>
+
+<p><a href="https://www.basketball-reference.com/players/i/iversal01.html" target="_blank">AI</a>: 8</p>
+
+<p><a href="https://www.basketball-reference.com/players/w/wadedw01.html" target="_blank">DWade</a>: 7</p>
+
+<p><a href="https://www.basketball-reference.com/players/w/westje01.html" target="_blank">Jerry West</a>: 10</p>
+
+<p><a href="https://www.basketball-reference.com/players/f/fraziwa01.html" target="_blank">Walt Frazier</a>: 5</p>
+
+<p><a href="https://www.basketball-reference.com/players/j/jamesle01.html" target="_blank">LeBron</a>: 9</p>
+
+<p><a href="https://www.basketball-reference.com/players/p/paulch01.html" target="_blank">CP3</a>: 4</p>
+
+<p><a href="https://www.basketball-reference.com/players/d/duranke01.html" target="_blank">KD</a>: 4</p>
+
+<p><a href="https://www.basketball-reference.com/players/b/butleji01.html" target="_blank">Jimmy Butler</a>: 14</p>
+
+<p><a href="https://www.basketball-reference.com/players/d/derozde01.html" target="_blank">DeRozan</a>: 7</p>
+
+<p><a href="https://www.basketball-reference.com/players/s/simmobe01.html" target="_blank">Ben Simmons</a>: 3</p>
+
+<p><a href="https://www.basketball-reference.com/players/w/willilo02.html" target="_blank">Lou Williams</a>: 7</p>
+
+<p><a href="https://www.basketball-reference.com/players/r/rubiori01.html" target="_blank">Rubio</a>: 5</p>
+
+<p><a href="https://www.basketball-reference.com/players/g/grantje01.html" target="_blank">Jerami Grant</a>: 4</p>
+
+<p>Then you have actual floppers who shoot twice as many 3&rsquo;s but still somehow get to the line just as much (or more, like the flopping GOAT Harden). SGA&rsquo;s career FTr is .412. SGA&rsquo;s 3PAr is .220, these players all shoot twice that. I&rsquo;ll list them as career (FTr / 3PAr)</p>
+
+<p>SGA: (.412 / .220)</p>
+
+<p><a href="https://www.basketball-reference.com/players/d/derozde01.html" target="_blank">Harden</a>: 16 (.509 / .470)</p>
+
+<p><a href="https://www.basketball-reference.com/players/d/doncilu01.html" target="_blank">Luka</a>: 3 (.397 / .422)</p>
+
+<p><a href="https://www.basketball-reference.com/players/y/youngtr01.html" target="_blank">Trae</a>: 5 (.412 / .406)</p>
+
+<p><a href="https://www.basketball-reference.com/players/o/okogijo01.html" target="_blank">Josh Okogie</a>: 5 (.425 / .433)</p>
+
+<p><a href="https://www.basketball-reference.com/players/g/gallida01.html" target="_blank">D.Gallinari</a>: 7 (.425 / .463)</p>
+
+<p>Yes, SGA gets to the line and he&rsquo;s great at it, but he&rsquo;s not playing the game any differently than it&rsquo;s ever been played with regard to fouls.</p>
+
+<p>All year I have been begging for evidence of the FT Merchant narrative and been ghosted or given regurgitated tik tok/twitter/brain rot discourse peddled by the equivalent of Stephen A social media grifters that get paid to be divisive for engagement. Like this <a href="https://imgur.com/J1O3Uas" target="_blank">still frame picture of SGA making a layup where his mouth is open</a> as &ldquo;proof that he flops when nobody touches him.&rdquo;</p>
+
+<p>Here&rsquo;s an <a href="https://images.fineartamerica.com/images/artworkimages/mediumlarge/3/2-steve-nash-pa-molumby.jpg" target="_blank">identical picture of Steve Nash</a>&ndash;NOBODY TOUCHED HIM WHAT A FLOPPER.</p>
+
+<p>Here&rsquo;s a <a href="https://youtu.be/twK8rIDvPH0?si=2f32-zoS6J9K6ljX" target="_blank">15 minute video of SGA fouls</a> where the creator even stated he expected to see a bunch of bad calls and barely found any. The common social media, &ldquo;I only watch box scores and youtube shorts&rdquo; narrative is that SGA flops and throws himself on the floor and &ldquo;he doesn&rsquo;t even try to shoot&rdquo;. You will be hard pressed to find any of that in these 15 minutes.</p>
+
+<p>The video goes into how he starts/stops and zig-zags, which causes players to hold/reach/swat to regain position or avoid being beaten for an easy 2. Which is a far cry from the days of pump-faking and then jumping into the defender.</p>
+
+<p>Now everyone stfu and enjoy the rest of what&rsquo;s been an awesome and competitive Finals. Good luck to the Pacers fanbase.</p>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mydcxeh" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>kpeds45 | Raptors</div>
+        <div>60 | 2 hours ago </div>
+      </div>
+      <label for="mydcxeh" class="commentText"><p>SGA has a throwback game and Reddit fans can&rsquo;t stop hating on him while pretending they miss the way the game used to be played.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mydfmpd" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>kpeds45 | Raptors</div>
+        <div>23 | an hour ago </div>
+      </div>
+      <label for="mydfmpd" class="commentText"><p>&ldquo;everyone just shoots 3 pointers&rdquo;</p>
+
+<p>SGA shot diet 3:1 mid range to 3 pointers.</p>
+
+<p>&ldquo;No, not like that! He&rsquo;s not doing it right!&rdquo;</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="mydfl4w" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ozarkhick | Thunder</div>
+        <div>15 | an hour ago </div>
+      </div>
+      <label for="mydfl4w" class="commentText"><p>&ldquo;I like basketball like they used to play it back in the day, not just 3&rsquo;s and rim, and intense physical defense&rdquo;</p>
+
+<p>OKC : does just that. &ldquo;those damn cheaters!&rdquo;</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mydh7rw" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>kpeds45 | Raptors</div>
+        <div>10 | an hour ago </div>
+      </div>
+      <label for="mydh7rw" class="commentText"><p>Agreed (although I do think Caruso gets away with insane amounts of Karate chopping on guys thumbs and wrists for like 85% of his steals&hellip;but so does every &ldquo;good defender&rdquo; who refs swallow their whistle for)</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mydrg7o" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>NegativesPositives</div>
+        <div>1 | 12 minutes ago </div>
+      </div>
+      <label for="mydrg7o" class="commentText"><p>If we put that magnifying glass on Nembhard people would be screaming murder his way too.</p>
+
+<p>Physical defenders have always been allowed more.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="myd9j96" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Ok_Conversation_2950</div>
+        <div>33 | 2 hours ago </div>
+      </div>
+      <label for="myd9j96" class="commentText"><p>They wont. It was never about if it was true or not. If it isn&rsquo;t this, Its pushing off, if it isn&rsquo;t the push off, it&rsquo;s the ref. Attacking the argument will never work when the focus is attacking the player. At the end of the day Shai will always be Shai and there&rsquo;s nothing that can change that. It is what it is.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mydreos" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>YuseeB</div>
+        <div>1 | 12 minutes ago </div>
+      </div>
+      <label for="mydreos" class="commentText"><p>Maybe just maybe its not because of how many times he gets to the line, but becuase of the insane flopping he does, yes others do it too, dosent make it right either way, and since he is the MVP and he is in the final, he gets the hate that others dont.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mydaj7o" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>smashacc | Lakers</div>
+        <div>28 | 2 hours ago </div>
+      </div>
+      <label for="mydaj7o" class="commentText"><p>Blows my mind that people on Reddit will nonstop glaze Tim Duncan and Jokic while claiming that SGA flops too much and his game is too boring</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mydiu78" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Presence_Present | Bucks</div>
+        <div>11 | an hour ago </div>
+      </div>
+      <label for="mydiu78" class="commentText"><p>Legit lol. Every single game Jokic will attempt some wild 3 point shoot with a flop to get free throws</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="mydqvj6" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Aggravating_Alps_953</div>
+        <div>1 | 15 minutes ago </div>
+      </div>
+      <label for="mydqvj6" class="commentText"><p>I think shais game is amazing to watch, but watching a player not attempt to score solely to draw fouls is boring. He doesn’t always do it, but I can watch plenty of players who don’t spend as much time doing it</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="myd98m2" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Annual_Elk929 | Thunder</div>
+        <div>28 | 2 hours ago </div>
+      </div>
+      <label for="myd98m2" class="commentText"><p>No, you don&rsquo;t get it. We&rsquo;ve moved past this narrative, now we&rsquo;ve figured out that Shai is actually a push-off merchant!</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mydiull" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Parallel-Quality</div>
+        <div>7 | an hour ago </div>
+      </div>
+      <label for="mydiull" class="commentText"><p>You&rsquo;re late to the party.</p>
+
+<p>We&rsquo;re already past that one.</p>
+
+<p>Now we&rsquo;re at &ldquo;I don&rsquo;t blame Shai himself, I blame the refs. They are the ones who let him get away with it.&rdquo;</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="myd9d7m" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Annual_Elk929 | Thunder</div>
+        <div>24 | 2 hours ago </div>
+      </div>
+      <label for="myd9d7m" class="commentText"><p>It&rsquo;S HoW hE GetS ThE FreE THroWs</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mydefti" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>GallivantingTime | NBA</div>
+        <div>10 | an hour ago </div>
+      </div>
+      <label for="mydefti" class="commentText"><p>Noooo you dont get it 🥴🥴🥴</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mydbvnt" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>trezzy1242 | Thunder</div>
+        <div>23 | 2 hours ago </div>
+      </div>
+      <label for="mydbvnt" class="commentText"><p>Free throws old news, it&rsquo;s push offs now</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mydd2r6" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>kpeds45 | Raptors</div>
+        <div>17 | 2 hours ago </div>
+      </div>
+      <label for="mydd2r6" class="commentText"><p>And if you slow this down to 1 frame per second I can prove it&rsquo;s a travel. Of course Scott Foster didn&rsquo;t call it though 🙄</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="mydfstf" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>joebreezy12 | Thunder</div>
+        <div>10 | an hour ago </div>
+      </div>
+      <label for="mydfstf" class="commentText"><p>it was &ldquo;not playing defense&rdquo; for like 48 hours until he had 4 blocks and 2 steals last night</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mydi81b" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>CoolAsTheUnthawed | OKC</div>
+        <div>5 | an hour ago </div>
+      </div>
+      <label for="mydi81b" class="commentText"><p>Funniest thing about that was he was playing good defense in all the clips that came from that game besides maybe 2 possessions lmao</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mydb7sn" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>doctorontheleft | Thunder</div>
+        <div>15 | 2 hours ago </div>
+      </div>
+      <label for="mydb7sn" class="commentText"><p>Anybody who believes this social med narrative is depriving themselves of a great Finals, high level and high IQ basketball in full display by both teams.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mydd3rh" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Key_Astronomer2644 | Thunder</div>
+        <div>9 | 2 hours ago </div>
+      </div>
+      <label for="mydd3rh" class="commentText"><p>This will just be a thing until SGA has become undeniable.</p>
+
+<p>People used to describe Jokic as a stat padder.  People used to accredit the Warriors’ dominance to illegal screens and illegal screens alone. People used to say Giannis had no skill. People used to say LeBron was unclutch, so on.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mydgm90" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Broad_Chain3247</div>
+        <div>4 | an hour ago </div>
+      </div>
+      <label for="mydgm90" class="commentText"><p>He is canadian</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mydj93r" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Handyman2116 | Hawks</div>
+        <div>10 | an hour ago </div>
+      </div>
+      <label for="mydj93r" class="commentText"><p>Lol, it&rsquo;s funny how much more free throws Butler and Derozan get while playing a similar playstyle to Shai, even though Shai drives way more every game.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mydpclv" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>FormalDisastrous2467 | Thunder</div>
+        <div>1 | 24 minutes ago </div>
+      </div>
+      <label for="mydpclv" class="commentText"><p>Jimmy is the most egregious merchant I&rsquo;ve ever seen.</p>
+
+<p>At least harden was also a gifted shooter and driver, more than half of Jimmy&rsquo;s scoring is baiting while the rest is roleplayer buckets.</p>
+
+<p>Weirdest star I&rsquo;ve ever seen. </p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mydfst4" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Jimbob3498 | Bucks</div>
+        <div>4 | an hour ago </div>
+      </div>
+      <label for="mydfst4" class="commentText"><p>I think (and hope) people will look back at Shai as one of the great guards, and on this season as one of the great guard seasons. That’s what impact metrics paint it as, and that’s what my eyes have been telling me. I’ll admit, I find some of his fouls annoying (although I actually think most of them are fair), but the way people have been hating on him drives me insane.</p>
+
+<p>It’s partly social media, partly people not being able to accept greatness when it’s happening, and partly people not expecting it. It sucks for now, but it will probably get better. At least Thunder fans should have a title (and probably more) to get over it lol. Plus he has a great chance of going back to back for MVP, so that hopefully shuts more people up</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mydkjih" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>here_for_the_lols | Thunder</div>
+        <div>2 | an hour ago </div>
+      </div>
+      <label for="mydkjih" class="commentText"><p>You don&rsquo;t get it. All those other people get fouled when the drive. Shai drives and just throws his body around for fouls.</p>
+
+<p>And no I don&rsquo;t have any evidence.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mydriu7" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>lexington59</div>
+        <div>1 | 11 minutes ago </div>
+      </div>
+      <label for="mydriu7" class="commentText"><p>Wild to see rubio having a higher rate than sga, seems like dude never got to the line due to taking either wide opens 3s, or getting to the rim and passing out for a better shot</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mydkbch" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>here_for_the_lols | Thunder</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="mydkbch" class="commentText"><p>This is a great and insightful post about SGA, therefore, don&rsquo;t expect it to be upvoted.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mydnba9" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Historical_Mud5545</div>
+        <div>-2 | 35 minutes ago </div>
+      </div>
+      <label for="mydnba9" class="commentText"><p>It’s not all a narrative, some of us watched the games ourselves and don’t even have media accounts and don’t like the guy. </p>
+
+<p>I prefer past first, saavy PG that’s my own choice.</p>
+
+<p>If I prefer Andre miller or rondo or even Jalen rose thats an aesthetic preference and basketball can be enjoyed for the art of the game, too. </p>
+
+<p>Not everyone likes point guards who attempt lots of shots. This discussion is going on for decades .</p>
+
+<p>Plus, he shoots a lot more free throws than other PG excluding Harden who was an anomaly.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mydpzrl" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Jatgoggin | Thunder</div>
+        <div>1 | 20 minutes ago </div>
+      </div>
+      <label for="mydpzrl" class="commentText"><p>You’re on Reddit. What do you mean “don’t have media accounts” when you’re on the site that incentivizes hive minds the most?</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mydj9ev" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ClickElectronic | Mavericks</div>
+        <div>-3 | an hour ago </div>
+      </div>
+      <label for="mydj9ev" class="commentText"><p>Intentionally misleading post. A lot of those &ldquo;midrange&rdquo; players with higher FTr seasons were early in their career when they were having literally hundreds of more shots at-rim than SGA in some cases.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="myddg3a" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Ok-Tree4365</div>
+        <div>-5 | 2 hours ago </div>
+      </div>
+      <label for="myddg3a" class="commentText"><p>You’re trying a little too hard here. Shai does purposely try to get to the line, just like every superstar has. There isn’t as much of a difference between the way he does it compared to Harden, Trae, Luka, etc. as you make it out to be. All those guys look to create contact, and they also get fouled a lot because they’re elite with the ball and at manipulating defenses.</p>
+
+<p>Pretending that every Shai trip to the line is “ethical” is as delusional as saying “all he does is foul bait”.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mydihxb" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>TryAdept2591</div>
+        <div>-5 | an hour ago </div>
+      </div>
+      <label for="mydihxb" class="commentText"><p>I don&rsquo;t think SGA is particularly favored by refs, but I will say this conception of him is due to the eye test. Nearly every player that you mentioned sans a few is bigger and stronger than sga and plays a more physical driving game, so when ppl see SGA drawing fouls at a similar rate to these players despite generally initiating less contact it looks like he&rsquo;s receiving a softer whistle, regardless of what the stats say.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mydf57t" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Elite_Alice | Lakers</div>
+        <div>-7 | an hour ago </div>
+      </div>
+      <label for="mydf57t" class="commentText"><p>Anyway fuck shai</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
