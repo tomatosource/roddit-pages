@@ -1,0 +1,728 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.selfPostImage {
+  width: 100%;
+  height: auto;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/nba/comments/1lgxiod/there_have_been_19_game_7s_in_the_nba_finals_the/"><p>There have been 19 Game 7s in the NBA finals. The team to force a game 7 (meaning they won game 6) has only won the championing <sup>9</sup>&frasl;<sub>19</sub> times. However, in the past 40 years, they&rsquo;ve won <sup>5</sup>&frasl;<sub>6</sub> times.</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <p>After reading <a href="https://www.nba.com/news/all-time-nba-finals-game-7s" target="_blank">this</a> NBA article, I started wondering whether it was the team forcing the game 7 that had &ldquo;momentum&rdquo;, or if the team that &ldquo;choked&rdquo; the series ended up winning. To my surprise, it&rsquo;s a little less than a coin flip (granted half these games took place before the NBA-ABA merger), with the team leading the series having a slight advantage. Here&rsquo;s a table of all the game 7s and their outcomes.</p>
+
+<table>
+<thead>
+<tr>
+<th align="left">Matchup</th>
+<th align="left">Team Forcing G7</th>
+<th align="left">Winning Team</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">Cavs vs Warriors (2016)</td>
+<td align="left"><strong>Cavs</strong></td>
+<td align="left"><strong>Cavs</strong></td>
+</tr>
+
+<tr>
+<td align="left">Spurs vs Heat (2013)</td>
+<td align="left"><strong>Heat</strong></td>
+<td align="left"><strong>Heat</strong></td>
+</tr>
+
+<tr>
+<td align="left">Celtics vs Lakers (2010)</td>
+<td align="left"><strong>Lakers</strong></td>
+<td align="left"><strong>Lakers</strong></td>
+</tr>
+
+<tr>
+<td align="left">Pistons vs Spurs (2005)</td>
+<td align="left">Pistons</td>
+<td align="left">Spurs</td>
+</tr>
+
+<tr>
+<td align="left">Knicks vs Rockets (1994)</td>
+<td align="left"><strong>Rockets</strong></td>
+<td align="left"><strong>Rockets</strong></td>
+</tr>
+
+<tr>
+<td align="left">Pistons vs Lakers (1988)</td>
+<td align="left"><strong>Lakers</strong></td>
+<td align="left"><strong>Lakers</strong></td>
+</tr>
+
+<tr>
+<td align="left">Lakers vs Celtics (1984)</td>
+<td align="left">Lakers</td>
+<td align="left">Celtics</td>
+</tr>
+
+<tr>
+<td align="left">Bullets vs SuperSonics (1978)</td>
+<td align="left"><strong>Bullets</strong></td>
+<td align="left"><strong>Bullets</strong></td>
+</tr>
+
+<tr>
+<td align="left">Celtics vs Bucks (1974)</td>
+<td align="left">Bucks</td>
+<td align="left">Celtics</td>
+</tr>
+
+<tr>
+<td align="left">Lakers vs Knicks (1970)</td>
+<td align="left">Lakers</td>
+<td align="left">Knicks</td>
+</tr>
+
+<tr>
+<td align="left">Celtics vs Lakers (1969)</td>
+<td align="left"><strong>Celtics</strong></td>
+<td align="left"><strong>Celtics</strong></td>
+</tr>
+
+<tr>
+<td align="left">Lakers vs Celtics (1966)</td>
+<td align="left">Lakers</td>
+<td align="left">Celtics</td>
+</tr>
+
+<tr>
+<td align="left">Lakers vs Celtics (1962)</td>
+<td align="left"><strong>Celtics</strong></td>
+<td align="left"><strong>Celtics</strong></td>
+</tr>
+
+<tr>
+<td align="left">Hawks vs Celtics (1960)</td>
+<td align="left">Hawks</td>
+<td align="left">Celtics</td>
+</tr>
+
+<tr>
+<td align="left">Hawks vs Celtics (1957)</td>
+<td align="left">Hawks</td>
+<td align="left">Celtics</td>
+</tr>
+
+<tr>
+<td align="left">Pistons vs Nationals (1955)</td>
+<td align="left"><strong>Nationals</strong></td>
+<td align="left"><strong>Nationals</strong></td>
+</tr>
+
+<tr>
+<td align="left">Nationals vs Lakers (1954)</td>
+<td align="left">Nationals</td>
+<td align="left">Lakers</td>
+</tr>
+
+<tr>
+<td align="left">Knicks vs Lakers (1952)</td>
+<td align="left">Knicks</td>
+<td align="left">Lakers</td>
+</tr>
+
+<tr>
+<td align="left">Knicks vs Royals (1951)</td>
+<td align="left">Knicks</td>
+<td align="left">Royals</td>
+</tr>
+</tbody>
+</table>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="myzmyt0" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>rustyphish | Mavericks</div>
+        <div>117 | 4 hours ago </div>
+      </div>
+      <label for="myzmyt0" class="commentText"><p><sup>9</sup>&frasl;<sub>19</sub> is almost exactly 50-50</p>
+
+<p>So you’re telling me in a game 7 where two teams are likely to be evenly matched, they each win almost exactly half the time? Wild stuff</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="myzpjre" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>aPatheticBeing | Thunder</div>
+        <div>15 | 3 hours ago </div>
+      </div>
+      <label for="myzpjre" class="commentText"><p>would be interesting to know how many game 7s were at home though - it was 2-3-2 for ages.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="myzpp2z" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Proof-Umpire-7718 | Lakers</div>
+        <div>11 | 3 hours ago </div>
+      </div>
+      <label for="myzpp2z" class="commentText"><p>Pretty sure only two away teams have won nba finals game 7’s</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mz004nk" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>oykentrippin</div>
+        <div>12 | 2 hours ago </div>
+      </div>
+      <label for="mz004nk" class="commentText"><p>3 - 2016 Cavs, 1978 Bullets, 1974 Celtics</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mz04l96" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>wormhole222 | Heat</div>
+        <div>7 | 2 hours ago </div>
+      </div>
+      <label for="mz04l96" class="commentText"><p>At least 4 because 69 Celtics also won.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="myzs0wa" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>aPatheticBeing | Thunder</div>
+        <div>2 | 3 hours ago </div>
+      </div>
+      <label for="myzs0wa" class="commentText"><p>okay so basically it&rsquo;s just who was at home for game 7 won, love to hear it lol</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="mz008lm" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ajs723</div>
+        <div>3 | 2 hours ago </div>
+      </div>
+      <label for="mz008lm" class="commentText"><p>Road teams are 15-4. But like half of this data is from the 1950s and 1960s, so I&rsquo;m not sure how relevant that is to anything. </p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="myzuasr" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>hikarinaraba</div>
+        <div>5 | 3 hours ago </div>
+      </div>
+      <label for="myzuasr" class="commentText"><p>Wait until you realize the the team that got forced into a game 7 (meaning they lost game 6) has won the championship <sup>10</sup>&frasl;<sub>19</sub> times</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mz0j383" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>stratewylin | Knicks</div>
+        <div>1 | 18 minutes ago </div>
+      </div>
+      <label for="mz0j383" class="commentText"><p>God damn that’s a whole extra digit more!</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="myzq1gv" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>boozinf | CLE</div>
+        <div>4 | 3 hours ago </div>
+      </div>
+      <label for="myzq1gv" class="commentText"><p>with this kind of insight you and OP deserve the 2026 Fields Medal</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="myzsavx" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ThinkSoftware | Hawks</div>
+        <div>3 | 3 hours ago </div>
+      </div>
+      <label for="myzsavx" class="commentText"><p>Not sure why Justin Fields is handing out medals</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="myzsehx" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>SnakesAlive23 | Suns</div>
+        <div>2 | 3 hours ago </div>
+      </div>
+      <label for="myzsehx" class="commentText"><p>Came here to comment this and it was already the top comment haha. OP thought they cooked with this post haha.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="myzpc5d" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Some-Stranger-7852</div>
+        <div>27 | 3 hours ago </div>
+      </div>
+      <label for="myzpc5d" class="commentText"><p>It’s worth mentioning forcing game 7 in a 2-3-2 format is very different from 2-2-1-1-1 format.</p>
+
+<p>In a 2-3-2 format, assuming teams protect their home court, a higher seed is actually going into Game 6 down 2-3, so them forcing Game 7 means they won at home and will play the next game at home as well.</p>
+
+<p>That is a more realistic scenario than 2-2-1-1-1 format, where it is a lower seed that is down 2-3 before Game 6 that they play at home and then need to win Game 7 on the road.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="myzpk92" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ShowExpensive2 | Clippers</div>
+        <div>14 | 3 hours ago </div>
+      </div>
+      <label for="myzpk92" class="commentText"><p>It&rsquo;s because the format used to be 2-3-2.  From 1985 to 2013, the team that won games 6 and 7 had both games at home.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="myznwb3" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>CliffDraws | Thunder</div>
+        <div>7 | 4 hours ago </div>
+      </div>
+      <label for="myznwb3" class="commentText"><p>Even assuming what two completely different teams did mattered at all for the game tomorrow (it doesn’t) the sample size is so small as to be completely useless data.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="myzomtx" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ScaredOfWindow | Bucks</div>
+        <div>3 | 3 hours ago </div>
+      </div>
+      <label for="myzomtx" class="commentText"><p>Also, a lot of it is from situations with the 2/3/2 format, so the team that forced game 7 had the benefit of being at home for that game, and then was also home for the ensuing finale.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="myzoxs7" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>dynamicfinger</div>
+        <div>7 | 3 hours ago </div>
+      </div>
+      <label for="myzoxs7" class="commentText"><p>So a coin flip. Gotcha.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="myzq8ht" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>TA62624</div>
+        <div>3 | 3 hours ago </div>
+      </div>
+      <label for="myzq8ht" class="commentText"><p>The switch to the 2-3-2 format from 2-2-1-1-1 has something to do with this</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="myznkxg" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>A_Omega_73 | Lakers</div>
+        <div>1 | 4 hours ago </div>
+      </div>
+      <label for="myznkxg" class="commentText"><p>yeah, i&rsquo;m only interested in the modern NBA (1980-present)</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mz0kd6u" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>MayBeAGayBee | Cavaliers</div>
+        <div>1 | 11 minutes ago </div>
+      </div>
+      <label for="mz0kd6u" class="commentText"><p>What’s the splits between game 7s in a 2-2-1-1-1 series vs a 2-3-2 series I wonder?</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mz0kyif" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Popular-Shower9900 | Celtics</div>
+        <div>1 | 8 minutes ago </div>
+      </div>
+      <label for="mz0kyif" class="commentText"><p>Meanwhile, the home team is 15-4  all time - so maybe that&rsquo;s the important factor to discuss, not this silly &ldquo;momentum&rdquo; factoid.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
