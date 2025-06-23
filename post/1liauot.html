@@ -1,0 +1,364 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.selfPostImage {
+  width: 100%;
+  height: auto;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/PathOfExile2/comments/1liauot/a_suggestion_for_the_devs_str_as_an_attribute/"><p>A Suggestion for the Devs: STR as an attribute should provide more health.</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <p><strong>TL;DR</strong> If HP scaled with STR better, I think there would be less reason to spec towards Energy Shield in a lot of builds, especially from those on the bottom half of the skill tree.</p>
+
+<p>-&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;</p>
+
+<p>Currently, each point of Strength provides you with 2 bonus health. This means 100 Strength is 200 health, 200 strength is 400 health, so on. This is something that should be reviewed, and potentially buffed, even if by just a value of 1, from 2hp/str to 3hp/str.</p>
+
+<p>I&rsquo;m not a mathematician or a game dev, so I won&rsquo;t jump forward and say this is something that should 100% be implemented, so take this as a suggestion with the following points as reasons why this might be a good change:</p>
+
+<p><strong>1) Defensive Layers and Effective HP</strong></p>
+
+<p>As it stands, GGG has made it apparent that they want to focus on 3 distinct defensive archetypes: Armour, Evasion, and Energy Shields.</p>
+
+<p>There are multiple problems with this however: energy shields add an excessive amount of buffer to your actual life total, evasion lets you straight up dodge attacks (and AOE + Slams with Acrobatics), while Armour just&hellip; lets you take less damage&hellip; <strong><em>from small attacks</em></strong>. It doesn&rsquo;t do anything for larger hits, and you end up just tanking the full force of most boss attacks.</p>
+
+<p>Argumentatively, this could be countered with &ldquo;just buff armour&rdquo; or &ldquo;add max HP% nodes to the skill tree&rdquo;. The thing is, buffing armour does not solve the inherent problem of it being useless against bosses, and adding HP nodes will just make armour obsolete. At the end of the day, effective HP is king <em>ESPECIALLY</em> when it comes to bossing, and adding HP nodes would require replacing a lot of existing armour nodes for nodes that will pretty much guarantee be picked over armour.</p>
+
+<p>Increasing HP from STR would solve this problem by giving increased eHP, while still working well with armour and not requiring any changes to the existing skill tree.</p>
+
+<p><strong>2) Sustainability</strong></p>
+
+<p>Energy shields recover themselves over a period of time, equal to the % of total energy shield you have. With the existence of Ghost Dance and Mind of Matter in the INT section of the skill tree, it makes energy shield builds much more forgiving, and also means layering this with any other survivability tool just gives you way more room to breathe.</p>
+
+<p>Meanwhile, there exist very few health regen nodes, and they only add 0.2% of max health as regen, (<em>as well as a few nodes that bump regen by 10%</em>). These amounts are far from generous, but mainly suffer from the fact that there aren&rsquo;t enough sources of boosting HP to begin with. Most health regen options on gear is in the form of a flat value, regardless of how much health you actually have, so the options of recovering % based on health is actually very attractive - except we don&rsquo;t have enough health scaling to make it worthwhile.</p>
+
+<p>As a result of this, health tanking becomes a much harder and much more demanding playstyle, as you need to constantly use health potions and kiting tactics to make it worthwhile. Keep in mind that armour classes are supposed to be largely melee based classes, where kiting can be very awkward.</p>
+
+<p>By making HP scale with STR better, the health regen nodes would have more impact, and would streamline the melee experience when it comes to mapping.</p>
+
+<p><strong>3) Stat Stacking</strong></p>
+
+<p>Stat-stacking should feel rewarding. Yes, there exist strength stacking builds (<em>looking at you Gemling Legionnaire and random Warrior builds</em>), but for the most part it feels somewhat redundant.</p>
+
+<p>Consider this: a Warrior build has 600 Strength and almost no Dex or Int, and picks up Brute Strength, converting 15% of its Strength into Damage. That&rsquo;s approximately 40% damage. Nice!</p>
+
+<p>Meanwhile, a random build has a stat spread of 400 STR 100 INT, 100 DEX, and picks up Jack of All Trades, converting the lowest value attribute to 2% damage per 5 points. That build has the same amount damage (40%) while only losing out on 200 strength, which equates to 400 HP.</p>
+
+<p>400 HP is not a big loss, and one could argue the accuracy increase you get from DEX and extra mana you get from INT is worthwhile compared to 400 HP. If this were an Energy Shield based build, this would be completely negligible, as you could easily cover the 400 HP lost with energy shields thanks to the various multiplicative sources of ES in the skill tree, and you would have better sustainability thanks to ES regen being % based.</p>
+
+<p>-&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;</p>
+
+<p>In conclusion, buff STR to Health conversion rates. Double it. Make it 5hp per Strength point even. Fuck it, do the same for INT and mana! (I&rsquo;m joking at this point, but please consider buffing this even slightly)</p>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mzam680" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>icarusawakes</div>
+        <div>1 | 23 minutes ago </div>
+      </div>
+      <label for="mzam680" class="commentText"><p>As an addendum - If the main concern is that &ldquo;buffing attributes&rdquo; will affect all builds across all classes, perhaps have it be so that there are thresholds, ie. everything up to 100 STR will only give 2hp/STR, then 200-300STR gives 3hp/STR, 300-400STR gives 4hp/STR, etc.</p>
+
+<p>I guess what I&rsquo;m advocating for is a <em>REASON</em> for us to stat-stack as heavily as we would like to. Make it more rewarding, instead of every class having to becoming an INT hybrid to utilise Energy Shield gear + have access to Furtive Wraps for damage.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mzao1od" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Fine_Act47</div>
+        <div>1 | 4 minutes ago </div>
+      </div>
+      <label for="mzao1od" class="commentText"><p>Or like diablo 2 did where different classes benefit more or less from stat&rsquo;s eg. Warrior gets 4hp per str while ranger gets 2</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mzalwzc" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>CrystalBladeZz</div>
+        <div>1 | 25 minutes ago </div>
+      </div>
+      <label for="mzalwzc" class="commentText"><p>Should be life nodes on the passive tree</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mzanddo" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>poinT92</div>
+        <div>1 | 10 minutes ago </div>
+      </div>
+      <label for="mzanddo" class="commentText"><p>The whole actual meta Is shaped upon Armour being weak, that&rsquo;s why MOST of the strong builds are revolving around evasion/es.</p>
+
+<p>Also as someone above said, Life nodes aren&rsquo;t consistently showing in the tree</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mzao9gv" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>MrFoxxie</div>
+        <div>1 | a minute ago </div>
+      </div>
+      <label for="mzao9gv" class="commentText"><p>I really don&rsquo;t understand GGG&rsquo;s reasoning for removing life, but then give the exact same stat to int builds via ES.</p>
+
+<p>ES is allowed MULTIPLE 30% nodes, stun threshhold calculated based on the inflated ES, direct ES rolls on the gear for an even bigger ES base to multiply on, able to completely ignore bleed and poison by taking CI, regenerates fast with recovery rate nodes</p>
+
+<p>But then hp gets a single 3% (or was it 5?) and barely any proper regen nodes.</p>
+
+<p>Small pool, no regen, no trivialization of an entire class of damage unlike ES builds, armor doesn&rsquo;t do enough and has a movespeed penalty</p>
+
+<p>Like bruh, what the fuck was GGG thinking here?</p>
+
+<p>Evasion alone is risky af, which is why they&rsquo;re always paired with ES.</p>
+
+<p>In poe1 you could pair evasion with life on the duelist (mercenary in poe2) side of the tree, but even then, most builds will still be less tanky that eva/ES leeching tricksters.</p>
+
+<p>ES nodes have always been the favourite child, i just don&rsquo;t know why they&rsquo;d slap hp further when it&rsquo;s already bad enough.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
