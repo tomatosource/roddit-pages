@@ -1,0 +1,439 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.selfPostImage {
+  width: 100%;
+  height: auto;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/PathOfExile2/comments/1ljm2v0/a_manifesto_on_defenses_in_path_of_exile_2/"><p>A manifesto on defenses in Path of Exile 2</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <p>It has been discussed at length that defenses in PoE2 are not very functional at the moment. Armour has taken the main brunt of criticism, and I agree it is underpowered at the moment, but in my opinion defenses have a more fundamental problem in lack of specialization options. This manifesto is me exploring that, and I may as well post it.</p>
+
+<p><strong>Layer of survivability</strong></p>
+
+<p>One can differentiate 3* types of survivability in a character:</p>
+
+<ul>
+<li><em>Hit Pool (HP)</em>: This the amount of damage you can take before your character dies</li>
+<li><em>Mitigation</em>: This applies to damage taken, reducing it and thus increasing survivability without modifying HP</li>
+<li><em>Avoidance</em>: This applies to damage taken, leading to either 0% or 100% damage taken based on a probability</li>
+</ul>
+
+<p>Each layer has different pros and cons (e.g. HP for DoT, avoidance against multiple hits, mitigation against big single hits), and generally act multiplicatively on eachother. In my experience playing PoE1/2, a character feels tanky and good to play when it has *all 3 layers* to some degree.</p>
+
+<p>Thus, for this post I will assume that any character should be able to reasonably specialize in all 3 layers within the base game, i.e. without unique/skill interactions. I understand you can sometimes feel tanky by overindexing in specific layers, you can already do that so it is not my focus.</p>
+
+<p>(* Recovery should normally be in this list, I will explain why I excluded it at the end)</p>
+
+<p><strong>The triangle of the defenses in PoE2</strong></p>
+
+<p>In PoE2, there are three main defense layers scalable through the tree and equipment: Armour, Evasion, Energy Shield. Each of these defenses is of a different type and is associated with a different attribute and class. Using the passive tree as reference, it would lead to the following triangle:</p>
+
+<p><a href="https://preview.redd.it/rfwn726hhx8f1.png?width=470&amp;format=png&amp;auto=webp&amp;s=c3ce316c3d0c4429eab2fb9a3be426be238b54ae" target="_blank">https://preview.redd.it/rfwn726hhx8f1.png?width=470&amp;format=png&amp;auto=webp&amp;s=c3ce316c3d0c4429eab2fb9a3be426be238b54ae</a></p>
+
+<p>To cite the obvious, a character would have to travel all around the passive tree to specialize in all layers, not to mention the equipment/attribute limitations, making this not viable. Even covering two layers from this starting point takes a significant investment, as you need to travel towards another extreme of the triangle. Thus, just from base defenses there are no &ldquo;tanky&rdquo; characters.</p>
+
+<p><strong>The inverted triangle of secondary defenses</strong></p>
+
+<p>PoE2 has 3 additional potential starting points in the passive tree, associated with combination of attributes. Characters in these starting points will have easier access to two layers of survivability by going to the sides. This is much better than the above, but still not &ldquo;tanky&rdquo; by the above definition.</p>
+
+<p>But what if I told you there is a way, where <em>every single starting point</em> would have access to the 3 layers within reasonable investment? This would require the existence of secondary defenses covering the edges of the inverted triangle like this:</p>
+
+<p><a href="https://preview.redd.it/s0utlycshx8f1.png?width=473&amp;format=png&amp;auto=webp&amp;s=8e15468ff3fef39226f6cd0c889ad4181281be31" target="_blank">https://preview.redd.it/s0utlycshx8f1.png?width=473&amp;format=png&amp;auto=webp&amp;s=8e15468ff3fef39226f6cd0c889ad4181281be31</a></p>
+
+<p>In this way, each starting point can go either one step to each side or two steps in any one direction and would always have access to all survivability layers. So this is the ideal world, lets investigate the current state of PoE2 defenses in this context.</p>
+
+<p><strong>The problem of PoE2 secondary defenses</strong></p>
+
+<p>In the image below we have again the inverted triangle, but displaying instead the current state of secondary defenses in PoE2:</p>
+
+<p><a href="https://preview.redd.it/fzj4ct10ix8f1.png?width=485&amp;format=png&amp;auto=webp&amp;s=5da4d5b3cb217cf28f1957cba39921d81736321c" target="_blank">https://preview.redd.it/fzj4ct10ix8f1.png?width=485&amp;format=png&amp;auto=webp&amp;s=5da4d5b3cb217cf28f1957cba39921d81736321c</a></p>
+
+<p>This image shows the fundamental problem we have at the moment, where secondary defenses are not aligned with the needs of characters at that place of the tree. Interestingly only templar/druid has reasonable access to all 3 layers, the only starting point that cannot be used at the current state of EA. This leads to symptoms like evasion builds always needing to go for ES as it is the only way of scaling HP and investing in block will still lead to you getting one-shot eventually.</p>
+
+<p><strong>Proposed solution to increase options for specialisation</strong></p>
+
+<p>So as mentioned, there are two edges in the inverted tringle that are not fulfilling the needs of characters in that part of the tree. This section covers my proposal.</p>
+
+<ul>
+<li><em>STR/DEX edge</em>: this is in my view the easiest to remediate: You should be able to scale life there, both flat life and increased. This solves so many of the current problems with melee characters, that don&rsquo;t feel tanky until you have invested a large amount in strength. It also gives option for two-handed bow and crossbow users to scale HP without needing to go towards ES.</li>
+<li><em>INT/DEX edge:</em> this is much trickier, as there is no other mitigation layer in the game, especially not fulfilling this fantasy. My best idea so far is to use Ward, adjusted to apply always and only be removed when taking damage to life (resetting on a fixed cooldown), thus serving both ES and Evasion builds. The time delay would be fixed, with the amount of reduction being scalable through gear and as base in bucklers, locuses and quivers. If the flat reduction is not strong enough, it could instead a percent damage reduction buff.</li>
+</ul>
+
+<p>The conclusion is the following overall distribution of defense layers across the passive tree:</p>
+
+<p>IMAGE</p>
+
+<p><a href="https://preview.redd.it/ucsrr495kx8f1.png?width=482&amp;format=png&amp;auto=webp&amp;s=e089b7706a142e82ce3bf24dad200f0e1468bb00" target="_blank">https://preview.redd.it/ucsrr495kx8f1.png?width=482&amp;format=png&amp;auto=webp&amp;s=e089b7706a142e82ce3bf24dad200f0e1468bb00</a></p>
+
+<p><strong>Examples of specializations given these defenses</strong></p>
+
+<p>As a Witch you will have three &ldquo;basic&rdquo; ways to cover all layers of defense as a base:</p>
+
+<ul>
+<li>You can go one step to each side, investing in Energy Shield, Block and Ward</li>
+<li>You can go to the STR side, investing in Energy Shield, Block and Armour</li>
+<li>You can go to the DEX side, investing in Energy Shield, Ward and Evasion</li>
+</ul>
+
+<p>A a duelist, you will have three &ldquo;basic&rdquo; ways to cover all layers of defense as a base:</p>
+
+<ul>
+<li>You can go one step to each side, investing in Life, Evasion and Armour</li>
+<li>You can go to the STR side, investing in Life, Armour and Block</li>
+<li>You can go to the DEX side, investing in Energy Shield, Ward and Evasion</li>
+</ul>
+
+<p>In my view, this setup still allows for a lot of flavour and choice in terms of defensive approach, while ensuring that a baseline tankiness is always at the player&rsquo;s reach.</p>
+
+<p><strong>Implications for main defenses</strong></p>
+
+<p>The solution above of course means a significant buff to character defenses, meaning that some adjustments are needed.</p>
+
+<ul>
+<li>Given the introduction of Ward-like as mitigation layer, the range of possible ES values can now be reduced to be more comparable with life. Currently, these values are necessary to compensate for the lack of any mitigation layer</li>
+<li>Armour would have to be a real mitigation tool for a wide range of characters, and I would propose a similar approach to Evasion: Make it apply to all hits from base functionality, applied before resistances</li>
+<li>The fix above would allow also to remediate one of my biggest pet peeves: How important physical resistance and phys-taken-as is. If armour applies before resistances, physical resistance can become a normal resistance like any other. I would propose to transform it into something similar to chaos resistance, where you are not expected to max it early but towards red maps you should target high resistance. This is so much less game-warping than the current implementation of every character feeling squishy against phys hits</li>
+<li>Given these additional mitigation options I would again significantly reduce the options to invest in maximum resistances of any type (similar to what we had in PoE1). It is in my view extremely unhealthy for the game, and unlike everything we talked about until now, has no diminishing returns. Quite the opposite, the more the better and leads to literal immortal characters. Resistance should simply remain as gear-tax and a simple feel-good check when you are at the 75% cap. Unique interactions are fine of course, just not part of the base game.</li>
+</ul>
+
+<p><strong>PS: The Recovery discussion</strong></p>
+
+<p>In PoE1, recovery through regen or leech has always been one of the main defense layers in characters, and many people will think me cooked for not including it. However, recovery has also been one of the most overpowered mechanics in PoE1 (in my opinion currently out of whack) and tends to break the game because it significantly reduces the set of possible game states: You are either on full-life, or dead.</p>
+
+<p>PoE2 has the opportunity to differentiate itself from PoE1 in this regard, for one simple reason. Every single character has a mandatory, irreplaceable slot with limited but powerful recovery: The life flask. Instead of having more options for permanent recovery, I would prefer to explore more exciting and build-defining flask mods. These should be more bound to the defense layers we explored above, and make recovery linked to them. Some examples of this:</p>
+
+<ul>
+<li>X% of life recovery recovered as ES as well (or instead)</li>
+<li>Reset ward on use, at X% effectiveness</li>
+<li>Amount of life recovered is increased by X% of armour</li>
+<li>X% of life recovered on block during flask use</li>
+<li>Instantly recover X% of maximum life on use</li>
+<li>Recovery speed increase by X% evasion chance</li>
+</ul>
+
+<p>There are so many more possible examples, this is just a direction on where I would like recovery to go in PoE2: Limited instead of constant, and heavily bound /enhancing the fantasy of base defense layers.</p>
+
+<p><strong>TL;DR</strong></p>
+
+<ul>
+<li>Add life scaling at the STR/DEX edge of the passive tree</li>
+<li>Add a new Ward-like mitigation at the INT/DEX edge of the passive tree</li>
+<li>Make armour apply to all hits, prior to resistances</li>
+<li>Make physical resistance a normal resistance to cap, and make it harder to go beyond the 75% cap on any resistance</li>
+<li>Nerf ES (and maybe Evasion) to compensate for these options</li>
+<li>Link recovery to life flasks and make them more linked to the above defenses through mods</li>
+<li>You should read the post</li>
+</ul>
+
+<p>If you read this far, thanks for taking the time. Happy to discuss in the comments what other options are there, this is just what I came up with.</p>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mzkzk5k" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ssx50</div>
+        <div>1 | 25 minutes ago </div>
+      </div>
+      <label for="mzkzk5k" class="commentText"><p>This is a really great and well thought out post.</p>
+
+<p>I totally agree with the flask system being the primary source of regen. The devs clearly took inspiration from the souls games and it blows my mind that they dont just look to those to solve the issue of regen vs 1 shots.</p>
+
+<p>1 shots should be hugely telegraphed and frankly pretty easy to avoid, if they have to exist at all.</p>
+
+<p>Passive regen should be extremely limited. Look at Nightreign, its very low passive regen numbers or very conservative numbers after certain conditions like continual attacks. The regen is quality of life, but it is by no means a primary source of survivability.</p>
+
+<p>Finally, COPY THE SOULS FLASK SYSTEM. They are limited. <em>They are not instant, they take 2ish seconds to consume.</em></p>
+
+<p>There. We solved the impossible task of having regen in a game without stupid and annoying one shots. Now just build boss attack patterns around finding safe windows to pop a health potions. It also has the side effect of making CC moves more valuable when mapping so you can find time to use a potion. Adding a drink animation to the flasks solves so many problems.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mzkwwaq" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>jaymo_busch</div>
+        <div>1 | 37 minutes ago </div>
+      </div>
+      <label for="mzkwwaq" class="commentText"><p>I actually think a lot of the defensive problems could be solved via more access to crafting endgame gear. Once I got a great Sleek Jacket and good ES helmet, gloves, and boots, my defenses were “solved”. This is artificially gated - either new players don’t have enough currency to purchase the gear, enough currency to craft the gear, or enough game knowledge to even begin to know what gear is craftable and how. There is currently not a great middle ground - either players are wearing random shit from their playtime OR we have 1200 evasion 500 es Sleek Jackets with 40% all resist and feel invincible</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mzl0rjx" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>BravestNey</div>
+        <div>1 | 19 minutes ago </div>
+      </div>
+      <label for="mzl0rjx" class="commentText"><p>No one thinks that you can&rsquo;t solve the &ldquo;defensive&rdquo; part of the game with ES/evasion though, read the post lol. Also wouldn&rsquo;t really consider this a crafting issue either, it&rsquo;s trivially easy for a lot of builds to reach pretty high ES/Evasion levels while still having room for other stuff. If anything ES/Evasion is just way too strong tbh</p>
+
+<p>The issue is that ES/Evasion is basically far and away the superior option for like 90% of builds.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mzl1vre" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>jaymo_busch</div>
+        <div>1 | 14 minutes ago </div>
+      </div>
+      <label for="mzl1vre" class="commentText"><p>He lost me at the star, it literally already exists like that, you path towards either Armor, ES, or EV, depending on your build, but you don’t get to choose all 3 - moving ES and EV points to the warrior start area does not “solve” defenses for warrior but just makes every build more similar</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mzl4e7w" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Koolenn</div>
+        <div>1 | a minute ago </div>
+      </div>
+      <label for="mzl4e7w" class="commentText"><p>Very interesting, I have an armor build and generally play mercenary and I 100% agree that atm my fantasy of armour + evasion doesn&rsquo;t work because I can&rsquo;t at the same time scale life enough to not take a one shot</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
