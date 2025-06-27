@@ -1,0 +1,1769 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.selfPostImage {
+  width: 100%;
+  height: auto;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/nba/comments/1llirge/udfa_signing_tracker/"><p>UDFA Signing Tracker</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <table>
+<thead>
+<tr>
+<th align="left">Player</th>
+<th align="left">School/Country</th>
+<th align="left">Team</th>
+<th align="left">Deal</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">Caleb Love</td>
+<td align="left">Arizona</td>
+<td align="left">Portland</td>
+<td align="left">Two-Way</td>
+</tr>
+
+<tr>
+<td align="left">Eric Dixon</td>
+<td align="left">Villanova</td>
+<td align="left">LA  Lakers</td>
+<td align="left">Two-Way</td>
+</tr>
+
+<tr>
+<td align="left">Hunter Sallis</td>
+<td align="left">Wake Forest</td>
+<td align="left">Philadelphia</td>
+<td align="left">Two-Way</td>
+</tr>
+
+<tr>
+<td align="left">Kadary Richmond</td>
+<td align="left">St. John&rsquo;s</td>
+<td align="left">Washington</td>
+<td align="left">?</td>
+</tr>
+
+<tr>
+<td align="left">Mark Sears</td>
+<td align="left">Alabama</td>
+<td align="left">Milwaukee</td>
+<td align="left">Two-Way</td>
+</tr>
+
+<tr>
+<td align="left">Tamar Bates</td>
+<td align="left">Missouri</td>
+<td align="left">Denver</td>
+<td align="left">Two-Way</td>
+</tr>
+
+<tr>
+<td align="left">CJ Huntley</td>
+<td align="left">App State</td>
+<td align="left">Phoenix</td>
+<td align="left">Two-Way</td>
+</tr>
+
+<tr>
+<td align="left">Chucky Hepburn</td>
+<td align="left">Louisville</td>
+<td align="left">Toronto</td>
+<td align="left">Two-Way</td>
+</tr>
+
+<tr>
+<td align="left">Vlad Goldin</td>
+<td align="left">Michigan</td>
+<td align="left">Miami</td>
+<td align="left">Two-Way</td>
+</tr>
+
+<tr>
+<td align="left">Eli John Ndiaye</td>
+<td align="left">Senegal/Spain</td>
+<td align="left">Atlanta</td>
+<td align="left">Two-Way</td>
+</tr>
+
+<tr>
+<td align="left">Hunter Dickinson</td>
+<td align="left">Kansas</td>
+<td align="left">New Orleans</td>
+<td align="left">Two-Way</td>
+</tr>
+
+<tr>
+<td align="left">Miles Kelly</td>
+<td align="left">Auburn</td>
+<td align="left">Dallas</td>
+<td align="left">Two-Way</td>
+</tr>
+
+<tr>
+<td align="left">Ryan Nembhard</td>
+<td align="left">Gonzaga</td>
+<td align="left">Dallas</td>
+<td align="left">Two-Way</td>
+</tr>
+
+<tr>
+<td align="left">Steve Settle III</td>
+<td align="left">Temple</td>
+<td align="left">Miami</td>
+<td align="left">E10</td>
+</tr>
+
+<tr>
+<td align="left">RJ Davis</td>
+<td align="left">North Carolina</td>
+<td align="left">LA Lakers</td>
+<td align="left">E10</td>
+</tr>
+
+<tr>
+<td align="left">Zakai Zeigler</td>
+<td align="left">Tennessee</td>
+<td align="left">Detroit</td>
+<td align="left">Summer League</td>
+</tr>
+
+<tr>
+<td align="left">Grant Nelson</td>
+<td align="left">Alabama</td>
+<td align="left">Brooklyn</td>
+<td align="left">Two-Way</td>
+</tr>
+
+<tr>
+<td align="left">Isaac Nogués Gonzales</td>
+<td align="left">Spain</td>
+<td align="left">Sacramento</td>
+<td align="left">E10</td>
+</tr>
+
+<tr>
+<td align="left">Cam Mathews</td>
+<td align="left">Mississippi State</td>
+<td align="left">Houston</td>
+<td align="left">E10</td>
+</tr>
+
+<tr>
+<td align="left">RJ Luis</td>
+<td align="left">St. John&rsquo;s</td>
+<td align="left">Utah</td>
+<td align="left">Two-Way</td>
+</tr>
+
+<tr>
+<td align="left">Dylan Cardwell</td>
+<td align="left">Auburn</td>
+<td align="left">Sacramento</td>
+<td align="left">Two-Way</td>
+</tr>
+
+<tr>
+<td align="left">Terrence Edwards Jr.</td>
+<td align="left">Louisville</td>
+<td align="left">Milwaukee</td>
+<td align="left">Summer League</td>
+</tr>
+
+<tr>
+<td align="left">RJ Felton</td>
+<td align="left">East Carolina</td>
+<td align="left">Indiana</td>
+<td align="left">E10</td>
+</tr>
+
+<tr>
+<td align="left">Steven Ashworth</td>
+<td align="left">Creighton</td>
+<td align="left">Indiana</td>
+<td align="left">E10</td>
+</tr>
+
+<tr>
+<td align="left">Payton Sandfort</td>
+<td align="left">Iowa</td>
+<td align="left">Oklahoma City</td>
+<td align="left">E10</td>
+</tr>
+
+<tr>
+<td align="left">Steven Crowl</td>
+<td align="left">Wisconsin</td>
+<td align="left">Utah</td>
+<td align="left">E10</td>
+</tr>
+
+<tr>
+<td align="left">Samson Johnson</td>
+<td align="left">UConn</td>
+<td align="left">Indiana</td>
+<td align="left">E10</td>
+</tr>
+
+<tr>
+<td align="left">Kobe Johnson</td>
+<td align="left">UCLA</td>
+<td align="left">Atlanta</td>
+<td align="left">?</td>
+</tr>
+
+<tr>
+<td align="left">Izan Almansa</td>
+<td align="left">Spain</td>
+<td align="left">Philadelphia</td>
+<td align="left">E10</td>
+</tr>
+
+<tr>
+<td align="left">Clifford Omuruyi</td>
+<td align="left">Alabama</td>
+<td align="left">Toronto</td>
+<td align="left">E10</td>
+</tr>
+</tbody>
+</table>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="n0120fa" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>TasSixer | 76ers</div>
+        <div>2 | 6 hours ago </div>
+      </div>
+      <label for="n0120fa" class="commentText"><p>Philly signed Izan Almansa to an E10. He was in the last 2k Mycareer</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="n00j8fl" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>BrunsonReed2025</div>
+        <div>4 | 9 hours ago </div>
+      </div>
+      <label for="n00j8fl" class="commentText"><p>I guess Leon Rose is Sleeping</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="n00grwl" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>YourAsianBuddy | Knicks</div>
+        <div>3 | 9 hours ago </div>
+      </div>
+      <label for="n00grwl" class="commentText"><p>Really like the Goldin pickup for Miami.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="n006noq" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ImJustARandomDude | Celtics</div>
+        <div>4 | 10 hours ago </div>
+      </div>
+      <label for="n006noq" class="commentText"><p>Curious where Ace Baldwin ends up. Its refreshing to see Penn State guys entering the league semi-consistently.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="n004qiz" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Sexy_Authy | Rockets</div>
+        <div>6 | 11 hours ago </div>
+      </div>
+      <label for="n004qiz" class="commentText"><p>Any minute now Wade Taylor my sweet prince</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="n004594" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>thurgoodcongo</div>
+        <div>5 | 11 hours ago </div>
+      </div>
+      <label for="n004594" class="commentText"><p>no brice williams news?</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="n003t9e" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>YourAsianBuddy | Knicks</div>
+        <div>10 | 11 hours ago </div>
+      </div>
+      <label for="n003t9e" class="commentText"><p>RJ Davis &amp; Caleb Love&rsquo;s reasons for not getting picked: Old</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="n00eeas" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Licit_x64 | Hornets</div>
+        <div>9 | 9 hours ago </div>
+      </div>
+      <label for="n00eeas" class="commentText"><p>UNC fan here. RJ is small and Caleb is inconsistent. It’s honestly more of those two things than their age at this point in their careers imo.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="n00atz6" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>orhantemerrut</div>
+        <div>6 | 10 hours ago </div>
+      </div>
+      <label for="n00atz6" class="commentText"><p>Knecht syndrome.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="n001o2f" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>loving-father-69 | Celtics</div>
+        <div>11 | 11 hours ago </div>
+      </div>
+      <label for="n001o2f" class="commentText"><p>Celtics just sitting on their hands</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="n00ani7" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ephen_stephens | Nuggets</div>
+        <div>3 | 10 hours ago </div>
+      </div>
+      <label for="n00ani7" class="commentText"><p>I think they’ve been sitting on Denver’s hands too. Like all draft.</p>
+
+<p>Not even buying in for a backup big? Fucking DAJ is all we had. He can’t be re-signed (even though I love him). At least get a big to stash in the G-League. What are we doing?</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="n001lrh" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>nick168 | Australia</div>
+        <div>7 | 11 hours ago </div>
+      </div>
+      <label for="n001lrh" class="commentText"><p>I&rsquo;ve got RJ Davis signing an E10 but correct me if wrong</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="n00073e" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>LordTemp1 | Pacers</div>
+        <div>24 | 11 hours ago </div>
+      </div>
+      <label for="n00073e" class="commentText"><p>Ryan Nembhard - Gonzaga - Dallas Mavericks - Two-Way</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="n0016bk" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>GOATJames_23-6 | LAL</div>
+        <div>16 | 11 hours ago </div>
+      </div>
+      <label for="n0016bk" class="commentText"><p>Damn how did yall not get him</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="n0052dx" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>PriorityMiserable554 | Pacers</div>
+        <div>9 | 11 hours ago </div>
+      </div>
+      <label for="n0052dx" class="commentText"><p>Coulda had our own thanasis </p>
+
+<p>(He is better than thanasis)</p>
+
+<p>We drafted a guard we can’t fit him </p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="n00gmct" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>_Spunk_Bubble</div>
+        <div>4 | 9 hours ago </div>
+      </div>
+      <label for="n00gmct" class="commentText"><p>Thanasis got drafted</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="n0086jc" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ComplexBadger469</div>
+        <div>4 | 10 hours ago </div>
+      </div>
+      <label for="n0086jc" class="commentText"><p>Drafted basically 2 guards. Taelon is 6’4.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="n0006rm" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>iro3 | Spurs</div>
+        <div>4 | 11 hours ago </div>
+      </div>
+      <label for="n0006rm" class="commentText"><p>any of that spurs udfa love or nah</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="n0006e8" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>jasperplumpton | Pacers</div>
+        <div>11 | 11 hours ago </div>
+      </div>
+      <label for="n0006e8" class="commentText"><p>Ryan Nembhard to the Mavs</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="n004ced" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>nickthearchaeologist | Mavericks</div>
+        <div>7 | 11 hours ago </div>
+      </div>
+      <label for="n004ced" class="commentText"><p>With his assist numbers, Mavs sub is calling that a big win. Honestly, could see a path for him getting regular minutes (like 5-10) late season</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="n0003xp" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>csummerss | Suns</div>
+        <div>12 | 11 hours ago </div>
+      </div>
+      <label for="n0003xp" class="commentText"><p>looking forward to Hunter Dickinson flopping out of nba</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="n003max" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>mainvolume | Spurs</div>
+        <div>4 | 11 hours ago </div>
+      </div>
+      <label for="n003max" class="commentText"><p>My Kansas loving buddy is also waiting for that day he ends up in the Iranian league.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="n0000oq" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Goosedukee | Nets</div>
+        <div>7 | 11 hours ago </div>
+      </div>
+      <label for="n0000oq" class="commentText"><p>Hunter Dickinson got a contract????</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="n0022ys" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>loving-father-69 | Celtics</div>
+        <div>6 | 11 hours ago </div>
+      </div>
+      <label for="n0022ys" class="commentText"><p>Im out of the loop, who is this guy and why is this noteable?</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="n003seu" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>I_SHIT_ON_BUS | Lakers</div>
+        <div>14 | 11 hours ago </div>
+      </div>
+      <label for="n003seu" class="commentText"><p>As a Kansas fan, I’m always glad when our guys get make it to the big league. That said, you rarely have 24 year olds on your team that you can’t wait til they graduate and Hunter was one of those. Dude absolutely blows. Unathletic, no IQ on either end of the court, can’t shoot, can’t dribble, can’t pass. His literal one quality is being tall. And from what I heard he’s a giant asshole off the court too.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="n000rgn" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Sea_Blackberry_4257 | Pistons</div>
+        <div>9 | 11 hours ago </div>
+      </div>
+      <label for="n000rgn" class="commentText"><p>He’s from the DMV area, that was enough for Weaver</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="n000gnf" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ddottay | Cavaliers</div>
+        <div>2 | 11 hours ago </div>
+      </div>
+      <label for="n000gnf" class="commentText"><p>Can’t believe it honestly. He was already doing some media work for CBS Sports Network I thought he was done playing.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="n00097k" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Clithzbee | Cavaliers</div>
+        <div>2 | 11 hours ago </div>
+      </div>
+      <label for="n00097k" class="commentText"><p>From the two mouth breathers running NO</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="n0000h8" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>LordTemp1 | Pacers</div>
+        <div>5 | 11 hours ago </div>
+      </div>
+      <label for="n0000h8" class="commentText"><p>RJ Davis - UNC - Los Angeles Lakers  details still upcoming</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mzzzvyf" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Boltzfan1995 | Lakers</div>
+        <div>6 | 11 hours ago </div>
+      </div>
+      <label for="mzzzvyf" class="commentText"><p>RJ Davis to the Lakers on a 2 Way</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mzzzpmy" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>wottenpazy</div>
+        <div>2 | 11 hours ago </div>
+      </div>
+      <label for="mzzzpmy" class="commentText"><p>Miles Kelly - Mavs</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mzzzfec" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>cl353 | Heat</div>
+        <div>3 | 11 hours ago </div>
+      </div>
+      <label for="mzzzfec" class="commentText"><p>Heat got the Tyler Herro of 6&rsquo;10 forwards Steve Settle on exhibit 10</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mzzyy57" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ziegnatt | NBA</div>
+        <div>3 | 11 hours ago </div>
+      </div>
+      <label for="mzzyy57" class="commentText"><p>izan almanza?</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mzzyv5n" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>nojeanshere | Hornets</div>
+        <div>3 | 11 hours ago </div>
+      </div>
+      <label for="mzzyv5n" class="commentText"><p>LETS GOOOO CJ! So happy to see an App guy make it to the league.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mzzyum0" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ALStark69 | Heat Bandwagon</div>
+        <div>5 | 11 hours ago </div>
+      </div>
+      <label for="mzzyum0" class="commentText"><p>Marky Mark went to Milwaukee nice. Wondering where Grant “White Lightning” Nelson goes</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mzzyttw" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>RiversofJell0 | Lakers</div>
+        <div>3 | 11 hours ago </div>
+      </div>
+      <label for="mzzyttw" class="commentText"><p>Love just screams G League scorer.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mzzyrfk" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>thebonj | Philippines</div>
+        <div>6 | 11 hours ago </div>
+      </div>
+      <label for="mzzyrfk" class="commentText"><p>Vlad Goldin to Miami via Shams</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mzzz93m" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>GOATJames_23-6 | LAL</div>
+        <div>4 | 11 hours ago </div>
+      </div>
+      <label for="mzzz93m" class="commentText"><p>Ffs</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mzzzuom" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Wide_Savings5410 | Lakers</div>
+        <div>2 | 11 hours ago </div>
+      </div>
+      <label for="mzzzuom" class="commentText"><p>We better have a confirmed big that we legit like for Rob to be ignoring all 7ft prospects smh&hellip;</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="n000k5v" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>GOATJames_23-6 | LAL</div>
+        <div>1 | 11 hours ago </div>
+      </div>
+      <label for="n000k5v" class="commentText"><p>Maybe Nelly junior Joseph?</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mzzyojn" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>GOATJames_23-6 | LAL</div>
+        <div>7 | 11 hours ago </div>
+      </div>
+      <label for="mzzyojn" class="commentText"><p>Dixon to the Lakers is great but he’s not a big nor can he play defame so we’ll have to work with that.</p>
+
+<p>Milwaukee gets to develop the new Brunson in Mark Sears and let him get unlimited shots with Dame on the mend</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="n000269" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>xychosis | 76ers</div>
+        <div>2 | 11 hours ago </div>
+      </div>
+      <label for="n000269" class="commentText"><p>He can enable a five-out lineup for you guys though. That’s value imo</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="n000htf" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>GOATJames_23-6 | LAL</div>
+        <div>1 | 11 hours ago </div>
+      </div>
+      <label for="n000htf" class="commentText"><p>Oh yeah definitely love the offensive skillset and upside. Got some Randle to him.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mzzyogr" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Gonstachio</div>
+        <div>6 | 11 hours ago </div>
+      </div>
+      <label for="mzzyogr" class="commentText"><p>Surprised Nembhard wasn’t taken</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="n000567" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>jasperplumpton | Pacers</div>
+        <div>2 | 11 hours ago </div>
+      </div>
+      <label for="n000567" class="commentText"><p>Signed with the Mavs damn</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="n001fpg" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>armandocalvinisius | Mavericks</div>
+        <div>2 | 11 hours ago </div>
+      </div>
+      <label for="n001fpg" class="commentText"><p>smart kid, know mavs need pass-first PG</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="mzzzp9o" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Main-Currency-9175 | Pacers</div>
+        <div>1 | 11 hours ago </div>
+      </div>
+      <label for="mzzzp9o" class="commentText"><p>Clearly going to sign with Indiana.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="n0017r4" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>anthonyde726 | HOU</div>
+        <div>5 | 11 hours ago </div>
+      </div>
+      <label for="n0017r4" class="commentText"><p>Indiana Mavericks</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="mzzzht7" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>DarwinF1nch | Kings</div>
+        <div>1 | 11 hours ago </div>
+      </div>
+      <label for="mzzzht7" class="commentText"><p>Need him on my Kings</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mzzynxw" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>23-TRH-23</div>
+        <div>4 | 11 hours ago </div>
+      </div>
+      <label for="mzzynxw" class="commentText"><p>Mark Sears signing with the Bucks</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="n00s3og" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Due-Wolf-7442</div>
+        <div>1 | 8 hours ago </div>
+      </div>
+      <label for="n00s3og" class="commentText"><p>Wanted him in Portland .(</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mzzy6s5" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Bakerfuckingmayfield | Suns</div>
+        <div>7 | 11 hours ago </div>
+      </div>
+      <label for="mzzy6s5" class="commentText"><p>Mark sears!!!</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mzzy55v" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>grog695 | 76ers</div>
+        <div>2 | 11 hours ago </div>
+      </div>
+      <label for="mzzy55v" class="commentText"><p>Could y’all also try your best to put down what type of contract they are getting (Two-Way, E-10, Summer League)?</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mzzxr98" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>iro3 | Spurs</div>
+        <div>7 | 11 hours ago </div>
+      </div>
+      <label for="mzzxr98" class="commentText"><p>Damn blazers took who I wanted</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mzzzaq0" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>JamesTerevau | West</div>
+        <div>2 | 11 hours ago </div>
+      </div>
+      <label for="mzzzaq0" class="commentText"><p>Blazer fan here that knows little about this guy other than seeing his workout interview. What’s his comp? Thanks in advance!</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mzzzjbh" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>iro3 | Spurs</div>
+        <div>3 | 11 hours ago </div>
+      </div>
+      <label for="mzzzjbh" class="commentText"><p>taller cam thomas but solid defender in the tourney</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="n000z33" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>JamesTerevau | West</div>
+        <div>1 | 11 hours ago </div>
+      </div>
+      <label for="n000z33" class="commentText"><p>Thanks! I’ll probably get to see him a bunch with the Remix (our G-League team). Sounds like he’ll be a bucket at that level.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="mzzzj49" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>PieHorror2624</div>
+        <div>4 | 11 hours ago </div>
+      </div>
+      <label for="mzzzj49" class="commentText"><p>Anfernee Simons</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="n0011ed" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>JamesTerevau | West</div>
+        <div>1 | 11 hours ago </div>
+      </div>
+      <label for="n0011ed" class="commentText"><p>For 25 mill less! Sign me up</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mzzxqz8" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>jkeefy | Mavericks</div>
+        <div>7 | 11 hours ago </div>
+      </div>
+      <label for="mzzxqz8" class="commentText"><p>Interested where RJ Luis and Chucky Hepburn go. My two favorite guards left in the 2nd round and both went undrafted. Kinda wild to me</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="n0078k3" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>epoch_fail | UTA</div>
+        <div>1 | 10 hours ago </div>
+      </div>
+      <label for="n0078k3" class="commentText"><p>we signed a decent UDFA! LFG!!</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="n006g3m" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>BruhMoment763 | Jazz</div>
+        <div>1 | 10 hours ago </div>
+      </div>
+      <label for="n006g3m" class="commentText"><p>Looks like Luis is headed to Utah</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="n000cpl" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>riverratriver | Spurs</div>
+        <div>1 | 11 hours ago </div>
+      </div>
+      <label for="n000cpl" class="commentText"><p>Sameeeee</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="mzzy1jo" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ImaginationArtistic9 | Raptors</div>
+        <div>6 | 11 hours ago </div>
+      </div>
+      <label for="mzzy1jo" class="commentText"><p>Hepburn to toronto</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mzzy5zb" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>jkeefy | Mavericks</div>
+        <div>3 | 11 hours ago </div>
+      </div>
+      <label for="mzzy5zb" class="commentText"><p>Love that for them (hate that for me)</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mzzxpkg" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ralthea | Spurs</div>
+        <div>7 | 11 hours ago </div>
+      </div>
+      <label for="mzzxpkg" class="commentText"><p>Caleb Love got signed at least, my GOAT</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mzzxoow" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>bad_fortuneteller</div>
+        <div>8 | 11 hours ago </div>
+      </div>
+      <label for="mzzxoow" class="commentText"><p>CJ Huntley to the Suns, Chucky Hepburn to the Raptors</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mzzxkyt" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>MG_MN | Timberwolves</div>
+        <div>9 | 11 hours ago </div>
+      </div>
+      <label for="mzzxkyt" class="commentText"><p>Hepburn to Toronto, because of course. They love short king guards</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="mzzxinx" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Babushka5 | Celtics</div>
+        <div>13 | 11 hours ago </div>
+      </div>
+      <label for="mzzxinx" class="commentText"><p>Aw man not Eric dixon</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="mzzxyto" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ChunkyMilkSubstance | Lakers</div>
+        <div>13 | 11 hours ago </div>
+      </div>
+      <label for="mzzxyto" class="commentText"><p>Yes Eric Dixon</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="mzzxljs" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>BryLinds | Knicks</div>
+        <div>17 | 11 hours ago </div>
+      </div>
+      <label for="mzzxljs" class="commentText"><p>He must’ve gotten the Austin Reaves deal</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="n00cp55" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>rjaysenior | Lakers</div>
+        <div>3 | 10 hours ago </div>
+      </div>
+      <label for="n00cp55" class="commentText"><p>Don’t draft me, I’m signing with LA because I’m better than Vando and will make their roster</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
