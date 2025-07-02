@@ -1,0 +1,856 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.selfPostImage {
+  width: 100%;
+  height: auto;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/nba/comments/1lq2kim/memory_lane_a_look_back_at_how_rnba_reacted_when/"><p>Memory Lane: A look back at how r/NBA reacted when Tom Thibodeau was hired as the Knicks Head Coach</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <p>Here&rsquo;s the <a href="https://www.reddit.com/r/nba/comments/hxqadc/wojnarowski_the_new_york_knicks_and_tom_thibodeau/" target="_blank">direct post</a> but let&rsquo;s look at some of the highest upvoted comments:</p>
+
+<blockquote>
+<p><a href="https://www.reddit.com/r/nba/comments/hxqadc/wojnarowski_the_new_york_knicks_and_tom_thibodeau/fz7ndeh/" target="_blank">I’m sorry</a></p>
+
+<p><a href="https://www.reddit.com/r/nba/comments/hxqadc/wojnarowski_the_new_york_knicks_and_tom_thibodeau/fz7ndik/" target="_blank">He’ll be gone before those 5 years are up lmao</a></p>
+
+<p><a href="https://www.reddit.com/r/nba/comments/hxqadc/wojnarowski_the_new_york_knicks_and_tom_thibodeau/fz7nftd/" target="_blank">Better than Kidd</a></p>
+
+<p><a href="https://www.reddit.com/r/nba/comments/hxqadc/wojnarowski_the_new_york_knicks_and_tom_thibodeau/fz7o09y/" target="_blank">Jesus could’ve had a second coming and said he was coaching the Knicks and this sub would’ve still been like, “Not even God can save the Knicks.” Y’all are so predictable sometimes.</a></p>
+
+<p><a href="https://www.reddit.com/r/nba/comments/hxqadc/wojnarowski_the_new_york_knicks_and_tom_thibodeau/fz7rk76/" target="_blank">Whelp. Somehow Derrick will wind up in the Knicks again..</a></p>
+
+<p><a href="https://www.reddit.com/r/nba/comments/hxqadc/wojnarowski_the_new_york_knicks_and_tom_thibodeau/fz7newc/" target="_blank">Hate it hate it hate it</a></p>
+
+<p><a href="https://www.reddit.com/r/nba/comments/hxqadc/wojnarowski_the_new_york_knicks_and_tom_thibodeau/fz8d90q/" target="_blank">It’s worked out pretty well in Chicago and Minnesota. Good job Mr. Dolan! - a Celtics fan</a></p>
+</blockquote>
+
+<p>Just a funny contrast to what people are saying about the Mike Brown hire now, Knicks are a damned if you do, damned if you don&rsquo;t.</p>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="n0ze026" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>atribecalled506 | Knicks</div>
+        <div>86 | 34 minutes ago </div>
+      </div>
+      <label for="n0ze026" class="commentText"><p>I mean the Derrick Rose and the “gone before 5 years are up” were right lol</p>
+
+<p>Thibs absolutely came in and changed the culture though. I’m fine with Brown and I think it was time to make a change, but Thibs will go down as a Knicks legend.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="n0zevdj" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>zebrainatux | Knicks</div>
+        <div>1 | 30 minutes ago </div>
+      </div>
+      <label for="n0zevdj" class="commentText"><p>Knowing that Borrego is likely his top assistant makes me more hopeful that it works out</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="n0zfm9a" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Good_NewsEveryone | Pelicans</div>
+        <div>1 | 27 minutes ago </div>
+      </div>
+      <label for="n0zfm9a" class="commentText"><p>How do we suck and also seem to supply good teams</p>
+
+<p>Makes no sense and yet</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="n0zh0vl" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Time_Transition4817 | Pelicans</div>
+        <div>1 | 20 minutes ago </div>
+      </div>
+      <label for="n0zh0vl" class="commentText"><p>We can only guide others to the treasure we cannot possess</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="n0zicip" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>AzureAhai</div>
+        <div>1 | 13 minutes ago </div>
+      </div>
+      <label for="n0zicip" class="commentText"><p>I mean the main reasons you guys are so bad is because your star can&rsquo;t stay healthy. Zion has played 0 playoff games for the Pelicans so far and it&rsquo;s not like they missed the playoffs every year.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="n0zgiwm" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>greenshotty</div>
+        <div>1 | 22 minutes ago </div>
+      </div>
+      <label for="n0zgiwm" class="commentText"><p>Didn’t Thibs coach 5 seasons for the Knicks</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="n0zidzp" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>HokageEzio | Knicks</div>
+        <div>1 | 13 minutes ago </div>
+      </div>
+      <label for="n0zidzp" class="commentText"><p>Yes.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="n0zf0lj" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>FreeHat1234 | Knicks</div>
+        <div>1 | 30 minutes ago </div>
+      </div>
+      <label for="n0zf0lj" class="commentText"><p>All season Knicks were clowned for having Thibs as a coach. All offseason Knicks are getting clowned for firing Thibs as a coach.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="n0zg0fp" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ASKABOUT_NOTE_CANVAS | Knicks</div>
+        <div>1 | 25 minutes ago </div>
+      </div>
+      <label for="n0zg0fp" class="commentText"><p>Because we overachieved this year and then fired the coach that overachieved duhhhhhhhhhhhhhh</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="n0zi8rt" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Worldly_Cap_6440</div>
+        <div>1 | 14 minutes ago </div>
+      </div>
+      <label for="n0zi8rt" class="commentText"><p>Dw, next year they’ll get go back to being clowned for missing the play-ins</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="n0zdvln" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>YourAsianBuddy | Knicks</div>
+        <div>15 | 35 minutes ago </div>
+      </div>
+      <label for="n0zdvln" class="commentText"><p>Repeating our habits with the Mike Brown hiring now. Only time can tell what he’ll bring us</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="n0zei8u" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>SiphenPrax | Knicks</div>
+        <div>1 | 32 minutes ago </div>
+      </div>
+      <label for="n0zei8u" class="commentText"><p>Yep. Knee jerk reactions mean shit. It will be about what happens long term. Could still very well be a disaster but could also be great.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="n0zi18d" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ASKABOUT_NOTE_CANVAS | Knicks</div>
+        <div>1 | 15 minutes ago </div>
+      </div>
+      <label for="n0zi18d" class="commentText"><p>The comments there were mostly positive though</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="n0zefzt" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>abippityboop | Knicks</div>
+        <div>12 | 32 minutes ago </div>
+      </div>
+      <label for="n0zefzt" class="commentText"><p>Every offseason under Leon, this sub makes fun of every move we make, and every season we’re more successful than the last.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="n0zghte" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>cricketrules509 | Rockets</div>
+        <div>1 | 22 minutes ago </div>
+      </div>
+      <label for="n0zghte" class="commentText"><p>The constant in that was also Thibs who pretty much always overachieves with the roster he’s given</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="n0zh32a" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>abippityboop | Knicks</div>
+        <div>1 | 20 minutes ago </div>
+      </div>
+      <label for="n0zh32a" class="commentText"><p>Or was the constant Leon Rose slowly building the best roster we&rsquo;ve had in 30 years?</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="n0zeeta" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>SpicyP43905 | Raptors</div>
+        <div>11 | 33 minutes ago </div>
+      </div>
+      <label for="n0zeeta" class="commentText"><p>I like pistachios.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="n0zg400" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>complexvibess | Warriors</div>
+        <div>1 | 24 minutes ago </div>
+      </div>
+      <label for="n0zg400" class="commentText"><p>You&rsquo;re weird</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="n0zifo6" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>aznhalo3 | TOR</div>
+        <div>1 | 13 minutes ago </div>
+      </div>
+      <label for="n0zifo6" class="commentText"><p>pistachios are a goated nut</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="n0zea9t" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Mods_Do_It_For_Fr33 | Knicks</div>
+        <div>8 | 33 minutes ago </div>
+      </div>
+      <label for="n0zea9t" class="commentText"><p>There&rsquo;s no way NY fired Thibs with Mike Brown being the replacement they imagined they&rsquo;d get.</p>
+
+<p>They fired him, missed out on the coaches they wanted, and now this is what they ended up with.</p>
+
+<p>Makes me SMH my head.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="n0zf52i" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>junkit33</div>
+        <div>1 | 29 minutes ago </div>
+      </div>
+      <label for="n0zf52i" class="commentText"><p>The Knicks definitely thought they were just going to poach somebody else&rsquo;s good coach and had no backup plan whatsoever.</p>
+
+<p>What I don&rsquo;t get, is why not have those conversations before firing Thibs?  Yeah it&rsquo;ll leak, but so what?</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="n0ziyjd" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>AzureAhai</div>
+        <div>1 | 10 minutes ago </div>
+      </div>
+      <label for="n0ziyjd" class="commentText"><p>Mike Brown isn&rsquo;t a terrible coach, but it does seem like a changing shit for the sake of changing shit type move.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="n0zf2n9" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>DeyZent | Magic</div>
+        <div>1 | 29 minutes ago </div>
+      </div>
+      <label for="n0zf2n9" class="commentText"><p>I mean they went on a calling spree actively recruiting already employed coaches lol i’d imagine Mike Brown was far down the list to begin with</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="n0zeiwx" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>HokageEzio | Knicks</div>
+        <div>1 | 32 minutes ago </div>
+      </div>
+      <label for="n0zeiwx" class="commentText"><p>Next to a look back on how people reacted to Brown getting fired by Sacramento.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="n0ze0e3" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>LuckyLikeNagito | Knicks</div>
+        <div>6 | 34 minutes ago </div>
+      </div>
+      <label for="n0ze0e3" class="commentText"><p>everyone doubting us like always it aint personal 😂 gon be better then most of the teams talking allat </p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="n0zgvb5" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>lambopanda | Rockets</div>
+        <div>1 | 21 minutes ago </div>
+      </div>
+      <label for="n0zgvb5" class="commentText"><p>How many head coaches last five years with one team? We have Kerr, Spo. I guess you can count Carlisle.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="n0zitda" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>HokageEzio | Knicks</div>
+        <div>1 | 11 minutes ago </div>
+      </div>
+      <label for="n0zitda" class="commentText"><p>Billy Donovan is the 3rd longest tenured head coach currently. He got hired September of 2020.</p>
+
+<p>More than 5 seasons is abnormal.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="n0zg059" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>IMKudaimi123 | Bulls</div>
+        <div>1 | 25 minutes ago </div>
+      </div>
+      <label for="n0zg059" class="commentText"><p>Those were so stupid. It’s like they forgot how well he did in Chicago. Minnesota wasn’t great but that was cuz he was also in charge of personnel fully.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="n0zhyuy" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Natural_House_609</div>
+        <div>1 | 15 minutes ago </div>
+      </div>
+      <label for="n0zhyuy" class="commentText"><p>That&rsquo;s sports fan baby</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="n0zfjjm" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ASKABOUT_NOTE_CANVAS | Knicks</div>
+        <div>1 | 27 minutes ago </div>
+      </div>
+      <label for="n0zfjjm" class="commentText"><p>Sounds like a lot of the comments were positive though</p>
+
+<p>general sentiment was &ldquo;good coach bad GM&rdquo;</p>
+
+<p>now the sentiment is the different but similar &ldquo;yeah he has his flaws but led your team to the ECF for the first time in 25 years&rdquo;</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="n0ziam2" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Mindsetsandreps | Knicks</div>
+        <div>1 | 14 minutes ago </div>
+      </div>
+      <label for="n0ziam2" class="commentText"><p>I posted, which of course got taken down, the thread where we hired David Fizdale and you’d think we hired god himself</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="n0zjrz6" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>solo118 | Knicks</div>
+        <div>1 | 6 minutes ago </div>
+      </div>
+      <label for="n0zjrz6" class="commentText"><p>Yeah I am not listening to the noise, if its a done deal I will just wait and see how our season goes.</p>
+
+<p>Our FO is doing great things, so I trust them</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="n0zfqaq" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>bzl33</div>
+        <div>1 | 26 minutes ago </div>
+      </div>
+      <label for="n0zfqaq" class="commentText"><p>you guys truly are the Cowboys fans of the NBA</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
