@@ -1,0 +1,799 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.selfPostImage {
+  width: 100%;
+  height: auto;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/nba/comments/1ls42hh/longest_tenured_player_for_each_team/"><p>Longest Tenured Player for Each Team</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <p>Not including the upcoming season:</p>
+
+<p><strong>Western Conference:</strong></p>
+
+<p>Golden State Warriors: Stephen Curry (16 seasons)</p>
+
+<p>Dallas Mavericks: Dwight Powell (11 seasons)</p>
+
+<p>Denver Nuggets: Nikola Jokic (10 seasons)</p>
+
+<p>Phoenix Suns: Devin Booker (10 seasons)</p>
+
+<p>LA Lakers: LeBron James (7 seasons)</p>
+
+<p>LA Clippers: Ivica Zubac (7 seasons)</p>
+
+<p>Memphis Grizzlies: Jaren Jackson Jr (7 seasons)</p>
+
+<p>Minnesota Timberwolves: Naz Reid (6 seasons)</p>
+
+<p>New Orleans Pelicans: Zion Williamson (6 seasons, 1 inactive)</p>
+
+<p>OKC Thunder: Luguentz Dort (6 seasons)</p>
+
+<p>San Antonio Spurs: Keldon Johnson (6 seasons)</p>
+
+<p>Houston Rockets: Jae&rsquo;Sean Tate (5 seasons)</p>
+
+<p>Sacramento Kings: Domantas Sabonis (4 seasons)</p>
+
+<p>Portland Trail Blazers: Shaedon Sharpe (3 seasons)</p>
+
+<p>Utah Jazz: Walker Kessler (3 seasons)</p>
+
+<p><strong>Eastern Conference:</strong></p>
+
+<p>Milwaukee Bucks: Giannis Antetokounmpo (12 seasons)</p>
+
+<p>Philadelphia 76ers: Joel Embiid (11 seasons, 2 inactive)</p>
+
+<p>Boston Celtics: Jaylen Brown (9 seasons)</p>
+
+<p>Orlando Magic: Jonathan Isaac (8 seasons, 2 inactive)</p>
+
+<p>Miami Heat: Bam Adebayo (8 seasons)</p>
+
+<p>Atlanta Hawks: Trae Young (7 seasons)</p>
+
+<p>Charlotte Hornets: Miles Bridges (7 seasons, 1 inactive)</p>
+
+<p>New York Knicks: Mitchell Robinson (7 seasons)</p>
+
+<p>Brooklyn Nets: Nicolas Claxton (6 seasons)</p>
+
+<p>Chicago Bulls: Coby White (6 seasons)</p>
+
+<p>Cleveland Cavaliers: Darius Garland (6 seasons)</p>
+
+<p>Indiana Pacers: TJ McConnell (6 seasons)</p>
+
+<p>Detroit Pistons: Isaiah Stewart (5 seasons)</p>
+
+<p>Toronto Raptors: Scottie Barnes (4 seasons)</p>
+
+<p>Washington Wizards: Corey Kispert (4 seasons)</p>
+
+<p>Any names that stand out?</p>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="n1foqdg" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>armandocalvinisius | Mavericks</div>
+        <div>17 | an hour ago </div>
+      </div>
+      <label for="n1foqdg" class="commentText"><p>GOAT Powell</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="n1fp8ip" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>solarscopez | Celtics</div>
+        <div>7 | an hour ago </div>
+      </div>
+      <label for="n1fp8ip" class="commentText"><p>Bro somehow managed to outlast Luka&rsquo;s entire Mavs career 💀</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="n1frx9j" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Vivid_Balance6798</div>
+        <div>3 | 37 minutes ago </div>
+      </div>
+      <label for="n1frx9j" class="commentText"><p>Rondo trade throwin</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="n1fpyip" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>shanmustafa</div>
+        <div>8 | an hour ago </div>
+      </div>
+      <label for="n1fpyip" class="commentText"><p>these years sneak up on you, i really thought it would be a bigger gap between Steph and Giannis</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="n1fqyko" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Silent-Frame1452 | Jazz</div>
+        <div>7 | an hour ago </div>
+      </div>
+      <label for="n1fqyko" class="commentText"><p>Missing Utah for one, I believe their longest tenured player is Kessler’s after dumping Clarkson.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="n1fr4u5" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>solarscopez | Celtics</div>
+        <div>4 | an hour ago </div>
+      </div>
+      <label for="n1fr4u5" class="commentText"><p>Edited it in.</p>
+
+<p>Good call, thought I had gotten everyone lol.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="n1froef" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>A_Wild_Goonch</div>
+        <div>3 | 39 minutes ago </div>
+      </div>
+      <label for="n1froef" class="commentText"><p>Naz Reid</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="n1fshlz" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ghostofabhelmet | Thunder</div>
+        <div>1 | 31 minutes ago </div>
+      </div>
+      <label for="n1fshlz" class="commentText"><p>Wait I may be dumb af but why is Jokic 10 seasons for the Nuggets while Giannis was 12 seasons with the Bucks. I swear Joker was drafted in 2014 while Giannis was 2013.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="n1ftmyc" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>solarscopez | Celtics</div>
+        <div>1 | 20 minutes ago </div>
+      </div>
+      <label for="n1ftmyc" class="commentText"><p>Jokic first played for the Nuggets in 2015-16, he was drafted in 2014 but played overseas in the 2014-15 season.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="n1fqq6b" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>JudasBC | Suns</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="n1fqq6b" class="commentText"><p>Wonder how close these guys are to the franchise leaders all time, would Steph hold that record for the Warriors and what team has the lowest length leader overall?</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="n1fthoa" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>solarscopez | Celtics</div>
+        <div>1 | 21 minutes ago </div>
+      </div>
+      <label for="n1fthoa" class="commentText"><p>This is what ChatGPT says, I&rsquo;ll see if I can go around and verify it but it seems mostly true off the first couple I looked at. Curry and Giannis are the only active one, but a couple of the franchises might have a new leader soon (Nuggets, Pelicans, Hornets). I also don&rsquo;t know if Lebron qualifies because his longest stint was his first one which was 7 years. So it should probably be Zydrunas Ilgauskas (14 seasons).</p>
+
+<p><strong>Eastern Conference:</strong></p>
+
+<table>
+<thead>
+<tr>
+<th>Rank</th>
+<th>Player</th>
+<th>Team</th>
+<th>Seasons</th>
+<th>Years</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>1</td>
+<td><strong>Udonis Haslem</strong></td>
+<td>Miami Heat</td>
+<td><strong>20</strong></td>
+<td>2003–2023</td>
+</tr>
+
+<tr>
+<td>2</td>
+<td><strong>Reggie Miller</strong></td>
+<td>Indiana Pacers</td>
+<td><strong>18</strong></td>
+<td>1987–2005</td>
+</tr>
+
+<tr>
+<td>3</td>
+<td><strong>John Havlicek</strong></td>
+<td>Boston Celtics</td>
+<td><strong>16</strong></td>
+<td>1962–1978</td>
+</tr>
+
+<tr>
+<td>4</td>
+<td><strong>Patrick Ewing</strong></td>
+<td>New York Knicks</td>
+<td><strong>15</strong></td>
+<td>1985–2000</td>
+</tr>
+
+<tr>
+<td>4</td>
+<td><strong>Hal Greer</strong></td>
+<td>Philadelphia 76ers</td>
+<td><strong>15</strong></td>
+<td>1958–1973</td>
+</tr>
+
+<tr>
+<td>6</td>
+<td><strong>Joe Dumars</strong></td>
+<td>Detroit Pistons</td>
+<td><strong>14</strong></td>
+<td>1985–1999</td>
+</tr>
+
+<tr>
+<td>7</td>
+<td><strong>Michael Jordan</strong></td>
+<td>Chicago Bulls</td>
+<td><strong>13</strong></td>
+<td>1984–1993, 1995–98</td>
+</tr>
+
+<tr>
+<td>7</td>
+<td><strong>Wes Unseld</strong></td>
+<td>Washington Wizards</td>
+<td><strong>13</strong></td>
+<td>1968–1981</td>
+</tr>
+
+<tr>
+<td>9</td>
+<td><strong>Dominique Wilkins</strong></td>
+<td>Atlanta Hawks</td>
+<td><strong>12</strong></td>
+<td>1982–1994</td>
+</tr>
+
+<tr>
+<td>10</td>
+<td><strong>Giannis Antetokounmpo</strong></td>
+<td>Milwaukee Bucks</td>
+<td><strong>12</strong></td>
+<td>2013–present</td>
+</tr>
+
+<tr>
+<td>11</td>
+<td><strong>LeBron James</strong></td>
+<td>Cleveland Cavaliers</td>
+<td><strong>11</strong></td>
+<td>2003–10, 2014–18</td>
+</tr>
+
+<tr>
+<td>12</td>
+<td><strong>Nick Anderson</strong></td>
+<td>Orlando Magic</td>
+<td><strong>10</strong></td>
+<td>1989–1999</td>
+</tr>
+
+<tr>
+<td>13</td>
+<td><strong>DeMar DeRozan</strong></td>
+<td>Toronto Raptors</td>
+<td><strong>9</strong></td>
+<td>2009–2018</td>
+</tr>
+
+<tr>
+<td>13</td>
+<td><strong>Eric Piatkowski</strong></td>
+<td>LA Clippers</td>
+<td><strong>9</strong></td>
+<td>1994–2003</td>
+</tr>
+
+<tr>
+<td>15</td>
+<td><strong>Kemba Walker</strong></td>
+<td>Charlotte Hornets</td>
+<td><strong>8</strong></td>
+<td>2011–2019</td>
+</tr>
+
+<tr>
+<td>15</td>
+<td><strong>Buck Williams</strong></td>
+<td>Brooklyn Nets</td>
+<td><strong>8</strong></td>
+<td>1981–1989</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Western Conference:</strong></p>
+
+<table>
+<thead>
+<tr>
+<th>Rank</th>
+<th>Player</th>
+<th>Team</th>
+<th>Seasons</th>
+<th>Years</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>1</td>
+<td><strong>Dirk Nowitzki</strong></td>
+<td>Dallas Mavericks</td>
+<td><strong>21</strong></td>
+<td>1998–2019</td>
+</tr>
+
+<tr>
+<td>2</td>
+<td><strong>Kobe Bryant</strong></td>
+<td>Los Angeles Lakers</td>
+<td><strong>20</strong></td>
+<td>1996–2016</td>
+</tr>
+
+<tr>
+<td>3</td>
+<td><strong>John Stockton</strong></td>
+<td>Utah Jazz</td>
+<td><strong>19</strong></td>
+<td>1984–2003</td>
+</tr>
+
+<tr>
+<td>3</td>
+<td><strong>Tim Duncan</strong></td>
+<td>San Antonio Spurs</td>
+<td><strong>19</strong></td>
+<td>1997–2016</td>
+</tr>
+
+<tr>
+<td>5</td>
+<td><strong>Hakeem Olajuwon</strong></td>
+<td>Houston Rockets</td>
+<td><strong>17</strong></td>
+<td>1984–2001</td>
+</tr>
+
+<tr>
+<td>6</td>
+<td><strong>Stephen Curry</strong></td>
+<td>Golden State Warriors</td>
+<td><strong>16+</strong></td>
+<td>2009–present</td>
+</tr>
+
+<tr>
+<td>7</td>
+<td><strong>Kevin Garnett</strong></td>
+<td>Minnesota Timberwolves</td>
+<td><strong>14</strong></td>
+<td>1995–2007, 2015–16</td>
+</tr>
+
+<tr>
+<td>8</td>
+<td><strong>Alvan Adams</strong></td>
+<td>Phoenix Suns</td>
+<td><strong>13</strong></td>
+<td>1975–1988</td>
+</tr>
+
+<tr>
+<td>9</td>
+<td><strong>Clyde Drexler</strong></td>
+<td>Portland Trail Blazers</td>
+<td><strong>12</strong></td>
+<td>1983–1995</td>
+</tr>
+
+<tr>
+<td>9</td>
+<td><strong>Mike Conley</strong></td>
+<td>Memphis Grizzlies</td>
+<td><strong>12</strong></td>
+<td>2007–2019</td>
+</tr>
+
+<tr>
+<td>11</td>
+<td><strong>Alex English</strong></td>
+<td>Denver Nuggets</td>
+<td><strong>11</strong></td>
+<td>1980–1990</td>
+</tr>
+
+<tr>
+<td>11</td>
+<td><strong>Russell Westbrook</strong></td>
+<td>Oklahoma City Thunder</td>
+<td><strong>11</strong></td>
+<td>2008–2019</td>
+</tr>
+
+<tr>
+<td>13</td>
+<td><strong>Peja Stojaković</strong></td>
+<td>Sacramento Kings</td>
+<td><strong>8</strong></td>
+<td>1998–2006</td>
+</tr>
+
+<tr>
+<td>14</td>
+<td><strong>Jrue Holiday</strong></td>
+<td>New Orleans Pelicans</td>
+<td><strong>7</strong></td>
+<td>2013–2020</td>
+</tr>
+</tbody>
+</table>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="n1fuvjz" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>slickrickstyles | Pacers</div>
+        <div>1 | 7 minutes ago </div>
+      </div>
+      <label for="n1fuvjz" class="commentText"><p>Love TJ but still weird to see him now as our longest tenured player. Crazy how much can change so quickly</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="n1fuzr6" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>OKCDraftPick2028 | Lakers</div>
+        <div>1 | 6 minutes ago </div>
+      </div>
+      <label for="n1fuzr6" class="commentText"><p>Lebron has been here for so long man, the lakers has been blessed by basketball gods. Now we get prime luka doncic to spend his time in the lakers assuming he re-sign.</p>
+
+<p>the last time we didn&rsquo;t have an allstar is the 2 seasons after kobe retired. After that you have to go all the way back to the year before kobe got drafted in 1995 for the all star less lakers lol</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
