@@ -1,0 +1,588 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.selfPostImage {
+  width: 100%;
+  height: auto;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/nba/comments/1lwhcjd/in_the_past_30_seasons_there_have_only_been_4/"><p>In the past 30 seasons, there have only been 4 players who&rsquo;ve won Rookie of the Year and been named to at least 1 All-NBA team, 2 All-Defensive teams, and 3 All-Star teams: Tim Duncan, LeBron James, Chris Paul, and Ben Simmons.</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <p>Fifteen players total meet this criteria in ABA/NBA history:</p>
+
+<table>
+<thead>
+<tr>
+<th>Player</th>
+<th>League</th>
+<th>ROY</th>
+<th>All-League</th>
+<th>All-Defensive</th>
+<th>All-Star</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>Ben Simmons</td>
+<td>NBA</td>
+<td>2017-18</td>
+<td>1</td>
+<td>2</td>
+<td>3</td>
+</tr>
+
+<tr>
+<td>Chris Paul</td>
+<td>NBA</td>
+<td>2005-06</td>
+<td>11</td>
+<td>9</td>
+<td>12</td>
+</tr>
+
+<tr>
+<td>LeBron James</td>
+<td>NBA</td>
+<td>2003-04</td>
+<td>21</td>
+<td>6</td>
+<td>21</td>
+</tr>
+
+<tr>
+<td>Tim Duncan</td>
+<td>NBA</td>
+<td>1997-98</td>
+<td>15</td>
+<td>15</td>
+<td>15</td>
+</tr>
+
+<tr>
+<td>Jason Kidd</td>
+<td>NBA</td>
+<td>1994-95</td>
+<td>6</td>
+<td>9</td>
+<td>10</td>
+</tr>
+
+<tr>
+<td>Shaquille O&rsquo;Neal</td>
+<td>NBA</td>
+<td>1992-93</td>
+<td>14</td>
+<td>3</td>
+<td>15</td>
+</tr>
+
+<tr>
+<td>David Robinson</td>
+<td>NBA</td>
+<td>1989-90</td>
+<td>10</td>
+<td>8</td>
+<td>10</td>
+</tr>
+
+<tr>
+<td>Patrick Ewing</td>
+<td>NBA</td>
+<td>1985-86</td>
+<td>7</td>
+<td>3</td>
+<td>11</td>
+</tr>
+
+<tr>
+<td>Michael Jordan</td>
+<td>NBA</td>
+<td>1984-85</td>
+<td>11</td>
+<td>9</td>
+<td>14</td>
+</tr>
+
+<tr>
+<td>Buck Williams</td>
+<td>NBA</td>
+<td>1981-82</td>
+<td>1</td>
+<td>4</td>
+<td>3</td>
+</tr>
+
+<tr>
+<td>Larry Bird</td>
+<td>NBA</td>
+<td>1979-80</td>
+<td>10</td>
+<td>3</td>
+<td>12</td>
+</tr>
+
+<tr>
+<td>Artis Gilmore</td>
+<td>ABA &amp; NBA</td>
+<td>1971-72</td>
+<td>5</td>
+<td>5</td>
+<td>11</td>
+</tr>
+
+<tr>
+<td>Dave Cowens</td>
+<td>NBA</td>
+<td>1970-71</td>
+<td>3</td>
+<td>3</td>
+<td>8</td>
+</tr>
+
+<tr>
+<td>Kareem Abdul-Jabbar</td>
+<td>NBA</td>
+<td>1969-70</td>
+<td>15</td>
+<td>11</td>
+<td>19</td>
+</tr>
+
+<tr>
+<td>Wilt Chamberlain</td>
+<td>NBA</td>
+<td>1959-60</td>
+<td>10</td>
+<td>2</td>
+<td>13</td>
+</tr>
+</tbody>
+</table>
+<p>Sources: <a href="https://www.basketball-reference.com/awards/roy.html" target="_blank">Rookie of the Year</a> | <a href="https://www.basketball-reference.com/awards/all_league_by_player.html" target="_blank">All-League</a> | <a href="https://www.basketball-reference.com/awards/all_defense_by_player.html" target="_blank">All-Defensive</a> | <a href="https://www.basketball-reference.com/awards/all_star_by_player.html" target="_blank">All-Star</a></p>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="n2e391a" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>OverallGeneral7129 | Cavaliers</div>
+        <div>17 | an hour ago </div>
+      </div>
+      <label for="n2e391a" class="commentText"><p>Ben Simmons looking like a Polar Bear in Arlington Texas here</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="n2e5dsf" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>SwanOutrageous6908 | Lakers</div>
+        <div>10 | 39 minutes ago </div>
+      </div>
+      <label for="n2e5dsf" class="commentText"><p>It&rsquo;s obviously such a cherry-pick stat, but one thing to point out is that Duncan, LeBron, and CP3 each have several All-NBA Firsts, while Simmons has one singular Third Team. Simmons squeaked onto this list by a cherry-picky technicality.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="n2e57od" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>mrb4 | Suns</div>
+        <div>7 | 40 minutes ago </div>
+      </div>
+      <label for="n2e57od" class="commentText"><p>this is that meme with the 4 soldiers and one guy in a clown suit.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="n2e61uq" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ztpurcell | Pacers</div>
+        <div>6 | 36 minutes ago </div>
+      </div>
+      <label for="n2e61uq" class="commentText"><p>Thaddeus Young ass stat</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="n2e3i2k" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>donniedarko4141 | Knicks</div>
+        <div>5 | an hour ago </div>
+      </div>
+      <label for="n2e3i2k" class="commentText"><p>How many players have done this if you drop the rookie of the year requirement</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="n2e9pvw" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>thesch | Bulls</div>
+        <div>1 | 20 minutes ago </div>
+      </div>
+      <label for="n2e9pvw" class="commentText"><p><a href="https://www.statmuse.com/nba/ask?q=players+with+at+least+1+all-nba+team%2C+2+all-defense+teams%2C+and+3+all-star+teams+since+1995" target="_blank">A lot</a>.</p>
+
+<p>It shows 25 but there are more than that because that&rsquo;s just where statmuse cuts it off unless you have statmuse+. The list of 25 is missing some players like Giannis, Draymond, Gobert.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="n2e8w5a" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ConspicuousPineapple</div>
+        <div>1 | 23 minutes ago </div>
+      </div>
+      <label for="n2e8w5a" class="commentText"><p>Bar injuries, Wemby is adding his name to this list in 2027.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="n2e40gh" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>OilOfOlaz | Celtics</div>
+        <div>2 | an hour ago </div>
+      </div>
+      <label for="n2e40gh" class="commentText"><p>Since 1984, there has been only one guy taking a shit Warschauer Straße train station in Berlin at 6:42pm on the 10th of July.
+And I know this, cuz the other toilet was out of order&hellip;</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="n2e9gke" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>TripleSingleHOF | Bulls [CHI] Alex Caruso</div>
+        <div>1 | 21 minutes ago </div>
+      </div>
+      <label for="n2e9gke" class="commentText"><p>This is a prime example about how statistics can be used to fit your narrative, whatever that may be.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="n2ebtwi" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>xPhrazy</div>
+        <div>1 | 10 minutes ago </div>
+      </div>
+      <label for="n2ebtwi" class="commentText"><p>Hey LeBron we&rsquo;re all good bruh, Ben Simmons is here&hellip;.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="n2ed4x1" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>toadtruck | Trail Blazers</div>
+        <div>1 | 5 minutes ago </div>
+      </div>
+      <label for="n2ed4x1" class="commentText"><p>&hellip;.and Hansen Yang</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="n2edm5c" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Niceguydan8</div>
+        <div>1 | 2 minutes ago </div>
+      </div>
+      <label for="n2edm5c" class="commentText"><p>These cherry picked stats are the fuckin&rsquo; worst, man.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
