@@ -1,0 +1,250 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.selfPostImage {
+  width: 100%;
+  height: auto;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/PathOfExile2/comments/1ly3zzr/lets_talk_about_evasion/"><p>Let&rsquo;s talk about Evasion</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <p>There&rsquo;s been a lot of discussion on defenses, mainly on Armor and Energy Shield, but after the recent CN interview I was surprised to learn that chinese players are more concerned about Evasion. That got me thinking on why and eventually I remember one other game that potentially solved the problem.</p>
+
+<h1 id="why-evasion-feels-bad-to-use">Why Evasion feels bad to use?</h1>
+
+<p>It&rsquo;s RNG and binary.</p>
+
+<p>Evasion is not true RNG, entropy system prevents you from getting too lucky or too unlucky, however it still regularly creates situations where one moment you&rsquo;re tanking something you have no business tanking and next moment you die to something completely harmless. It&rsquo;s unreliable and unsatisfying.</p>
+
+<p>It&rsquo;s a binary system with only two states: fail (you&rsquo;re hit) and success (you dodged). Problem is the difference between those states is literally life and death: just a couple of hits can kill you, way before entropy kicks in and successful evasion completely nullifies any attack with any amount of damage and status effects.</p>
+
+<p>If you don&rsquo;t evade enough, it feels useless as a defense layer,but if you evade too much, it&rsquo;s too OP and you become effectively immune to all damage. Since it&rsquo;s RNG, you&rsquo;re bouncing between those states.</p>
+
+<p>GGG tried to address it by introducing slams and AoE attacks that ignore dodge, but I don&rsquo;t think it quite hit the mark. Which is why I want to talk about another system:</p>
+
+<h1 id="the-middle-state-between-hit-and-evade-fumble">The middle state between Hit and Evade: Fumble.</h1>
+
+<p>Stoneshard is the game that I remembered, more specifically how it handled evasion. Effectively it added a third state: Hit - Fumble - Evade. This allowed to separate fail/pass check of hit and evade from each other. Otherwise it uses the familiar accuracy/evasion relation, but adds a new modifier: &ldquo;Fumble chance&rdquo;.</p>
+
+<p><a href="https://preview.redd.it/j4jybn8irgcf1.png?width=374&amp;format=png&amp;auto=webp&amp;s=d0674ae3facae2bdbc912971b87f9f278f0d7caa" target="_blank">The description for Accuracy.</a></p>
+
+<p><strong>Fumbled attack deals -50% damage (half) and cannot apply any status effects, DoTs, on-hit effects etc. (in a way it&rsquo;s like Spell Supress from PoE1, but applies to all hits).</strong></p>
+
+<p><strong>The &ldquo;hit&rdquo; states with Fumble:</strong></p>
+
+<p><strong>1. Enemy passes fumble check, you fail evasion check -&amp;gt; You&rsquo;re hit.</strong></p>
+
+<p><strong>2. Enemy passes fumble check, you pass evasion check -&amp;gt; You receive fumbled attack.</strong></p>
+
+<p><strong>3. Enemy fails fumble check, you fail evasion check -&amp;gt; You receive fumbled attack.</strong></p>
+
+<p><strong>4. Enemy fails fumble check, you pass evasion check -&amp;gt; You evade the attack.</strong></p>
+
+<p>This is how it works in Stoneshard, but it can be simplified by just separating Evasion into Fumble chance and Evasion chance. Since Fumble doesn&rsquo;t completely negate the attack, it can be safely raised higher, maybe even to 100%. Specific effects of Fumble are also not set in stone and can be changed to better suit PoE2 balance.</p>
+
+<p><strong>The idea</strong> is to evolve Evasion sytsem from binary and add a third middle state to make it more gradual, manageable and reliable. The same way Stun system evolved from binary RNG/guaranteed system into current poise/stun bar.</p>
+
+<p>While writing this I suddenly realised fumble will make Armor/Evasion hybrid really strong, since fumbled hits will make armor massively more effective because armor formula is not linear. And this will actually make it distinct, since it will focus on tanking fumbled hits instead of pure Evasion trying to completely evade attacks.</p>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+    </div>
+  </body>
+</html>
