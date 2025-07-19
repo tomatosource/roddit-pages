@@ -1,0 +1,530 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.selfPostImage {
+  width: 100%;
+  height: auto;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/nba/comments/1m3iid5/oc_how_a_basketball_simulation_engine_ranks_the/"><p>[OC] How a basketball simulation engine ranks the best players of all time. AKA “Basketball isn’t played on a spreadsheet!” (Updated July 2025, v 2.0)</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <blockquote>
+<p>&ldquo;Basketball isn&rsquo;t played on a spreadsheet!&rdquo;</p>
+
+<p>Well, what if it was?</p>
+</blockquote>
+
+<p>2 years ago (during the 2023 offseason), I made a post breaking down how the basketball simulation website WhatIfSports values NBA players in a fictional league where every player in history is available, using a 5-year window of players’ careers.</p>
+
+<p>&amp;nbsp;</p>
+
+<p>I posted an update not long ago, but a regular season of our biggest league just finished so I’m updating this with new findings and thoughts.</p>
+
+<p>&amp;nbsp;</p>
+
+<p><strong>The site:</strong>
+WhatIfSports is a site that takes every season of every player ever, and lets you build team with those player seasons. It then runs their real-life advanced per-possession numbers through an engine to imagine what would happen with all players from your team + your opponents’ teams on the court, and generates a new box score and stats (all the way down to every single possession and timeout)</p>
+
+<p>#Part 1 of the update:
+My original post got 532 comments. Let’s start this post with what I learned from those comments, and what I feel needs to be emphasized:</p>
+
+<p><em>Role players</em>: this isn’t like a traditional best players of all-time ranking that typically measures who is the best at being “the guy.” We’re making complete teams and there’s only one basketball. Example: if you already have Steph Curry, Paul Pierce, James Worthy, and Patrick Ewing…then Chet Holmgren will help you out a LOT more than Paolo Banchero.
+Due to the makeup of an ALL-TIME PLAYER POOL, every team can easily have 8+ players who were great at being “the guy,” but there are only so many elite role players from NBA history to go around.</p>
+
+<p>Since this involves team building, and there’s an ABUNDANCE of high usage all-star wings in NBA history and only a limited amount of DPOY caliber players who are elite rebounders: the elite role players get a boost. Supply and demand. Yes it looks funny that Ben Wallace gets picked ahead of Kobe Bryant, but A) even though Ben is a low usage player, the things he’s good at are harder to come by, and B) you can get a good scoring SG like Alex English or Devin Booker with your last pick if you want, but the late round defensive centers aren’t nearly as good. The delta between Kobe and a 12th round scoring wing is less than between Ben Wallace and a 12th round role players center, which would be like…Oliver Miller.</p>
+
+<p>&amp;nbsp;</p>
+
+<p><em>Normalization:</em> The game uses per-possession stats (AST%, USG%, etc), which does a pretty good job of normalizing by era/pace.</p>
+
+<p>&amp;nbsp;</p>
+
+<p><em>Average players</em>: The “Mendoza/Andy Dalton bar” is a lot higher: In a real world single season environment (real life), a replacement player is someone like Javonte Green. But when you’re putting EVERY player in history together, the replacement level guys are LaMelo Balls and Vlade Divacs. The 50th best guy in today’s NBA would be a borderline G-Leaguer if every player from history came through in a time machine. But guys who can rack up non-scoring stats without needing the ball will always have a home here.</p>
+
+<p>&amp;nbsp;</p>
+
+<p><em>Pure stats:</em> The game doesn’t say “well ___ would have learned how to shoot 3s if they played today”. They added some imaginary 3s, blocks, and steals for players who played before the 3-point line/before those numbers were tracked, and honestly they’re pretty generous about it. But that’s it. This is just straight up stat comparison and in an environment where team building is the key. And honestly players from 1994-97 who got to play with a shortened 3 point line benefit heavily since their stats are being compared to players who play with the normal 3-point line if anything.</p>
+
+<p>&amp;nbsp;</p>
+
+<p><em>“Invisible stats”:</em>
+TO%: This is huge for us and I NEVER see it brought up irl. Raw turnover numbers are deceptive. They’re partially a product of minutes/touches. There are guys with high TO per game numbers that are actually low TO% since they have the ball a lot and play heavy minutes. The inverse can be true too. TO% looks at how often a player turns it over compared to other play-ending results from that player (shooting, trip to the free throw line, assisting another player.) This stat works against guys like DeMarcus Cousins, Draymond Green, Domantas Sabonis, and Steve Nash. It works in favor of guys like Jarrett Allen, Shawn Marion, Chris Paul, and Anthony Davis.</p>
+
+<p>Foul%: we care about this a lot.Fouls matter when putting together teams. If a player looks too high or too low in overall rankings to you, it’s probably partially due to fouls and TOs.</p>
+
+<p>&amp;nbsp;</p>
+
+<p>#Biggest risers since the 22-23 season:</p>
+
+<p>&amp;nbsp;</p>
+
+<p>SGA was about the 180th best player and now is about 30th.
+Luka was about 50th best and is now also around 30th.
+(Update: both were selected by the same GM at the turn of a snake draft (23 and 25) and he finished 22nd out of 24, but this is probably a combo of both being a slight reach and him missing out on good bigs)</p>
+
+<p>Jokic was about 12th and is now about 7th. It’s only 5 spots, but going from 12th to 7th best EVER is a huge jump. (update: his team finished in 6th place in the regular season. I think Jokic has earned his top-10 spot)</p>
+
+<p>Haliburton was about the 100th best player and is now about the 50th. I remember someone said it was dumb that we had him at around the 100th best of all time, but since then he’s led his team to an ECF one season, and a game 7 of the Finals the next, so idk maybe he really is that conducive to winning games.</p>
+
+<p>Wemby and Chet are both around 125-150th, which is REALLY high for guys who only play 2 seasons since this is a 5-season exercise. If we were to look at a 2-year window, they’d both probably be top 75 guys of all time. I think they’re gonna put together insane resumes irl before it’s done. FWIW, this exercise values Chet almost as highly as Wemby and far higher than most other young players. Obviously not as the top option, but as a guy who can help you win a title if he’s a role player, which we saw come to fruition in real life.</p>
+
+<p>Jalen Duren, Anthony Edwards, Amen Thompson, Hartenstein, Dyson Daniels, Jaren Jackson, Jalen Brunson, Aaron Gordon, and Scottie Barnes are now on the board, albeit as late rounders. Zubac and Jarrett Allen are high rounders.</p>
+
+<p>Jalen Johnson is looking really good. He could be a big player in this soon.</p>
+
+<p>Wilt has moved from about 4th to 2nd. Obviously not due to new seasons from him, but rather from a wider pool of complimentary players to put around him with new seasons added that have good perimeter shooting.(Update: his team is in 3rd place currently. I think he’s earned his spot as the #2 player)</p>
+
+<p>&amp;nbsp;</p>
+
+<p>#Fallers since 22-23:</p>
+
+<p>&amp;nbsp;</p>
+
+<p>Ray Allen and Reggie Miller are becoming less valuable since there are now lots of guys who shoot as well (or better, statistically) than they did, plus neither was a major contributor elsewhere (defense, rebounding, passing, etc.) Sadly both are now just rotational guys. Reggie doesn’t even get drafted most of the time.</p>
+
+<p>Steve Nash dropped from about 55th to about 120 based on so many good shooters entering. Many of them aren’t a negative at rebounding/D like he is, and/or turn the ball over less. (update: Based on the last batch of comments, I don’t think people realize how high #120 is in an all-time context. That means you’re top 25 at your position all-time. It’s a good thing. Keep in mind that with guys like Bron/Wade/Kobe being used as PGs in this world, and you’d have to be a top-5 pure PG to be higher than that. Is he better than Curry/Magic/Stockton/Paul/Oscar?)</p>
+
+<p>Kareem has fallen from about 6th to 12th. Partially due to new big men entering his tier (Jokic), and partially due to how modern players fit with him. (update: his team is middle of the pack. I think 12-15 is the right range for him)</p>
+
+<p>Stuff from the original post, edited down (full original post here: <a href="https://reddit.com/r/nba/comments/15iazbp/oc_how_a_basketball_simulation_engine_ranks_the/" target="_blank">https://reddit.com/r/nba/comments/15iazbp/oc_how_a_basketball_simulation_engine_ranks_the/</a>  )</p>
+
+<p>&amp;nbsp;</p>
+
+<p><strong>I do not believe that this is the actual all-time rankings of these players.</strong> But this is roughly how players look to the eyes of a simulation engine. <strong><em>This is who The SIM thinks the greatest players of all time are, in the context of every player in history being available, and how they would fit into a team.</em></strong></p>
+
+<hr>
+
+<p>###Identifying the top players through a statistical lens. The best players: according to WhatIfSports&rsquo; Simulation Engine.</p>
+
+<hr>
+
+<p><strong>The methodology:</strong></p>
+
+<p>There are lots of different game formats for WhatIfSports. Most of them involve a salary cap. We&rsquo;re not looking at data from those leagues; it would skew the data with an extra variable. Most formats also involve selecting the best season and only the best season of a player&rsquo;s career, which skews data towards players who peaked for one season; I don’t want to focus on a player’s single best season. So for this exercise, I will be looking at data from the &ldquo;Savage League&rdquo;; which has no salary cap, and uses the 5 best seasons of a player&rsquo;s career (doesn&rsquo;t have to be consecutive)
+&amp;gt;<strong>This allows us to identify the 5-best statistical years of players&rsquo; careers.</strong> So not quite &ldquo;best careers&rdquo;, and not quite &ldquo;best peaks&rdquo; (since the 5 seasons don&rsquo;t have to be consecutive), but somewhere in-between.</p>
+
+<p>The Savage League is a draft league that has each of 24 users draft 12 players (288 total NBA/ABA players) and then assemble 5 unique teams that each contain one unique season of each of your 12 players. So if you draft Michael Jordan, you pick 5 of his seasons and put one on each of your 5 teams, and repeat for your other 11 players to build 5 teams (with a lot more strategy involved that I don&rsquo;t need to get into) and pit your 5 teams against 23 GMs who each have 5 teams. You set your lineups and set some basic strategy, and then the website will simulate matchups over the course of 82 games + playoffs against other users. Every season of every player in NBA history is eligible to be drafted, and trust me, we scour the obscure guys to find any advantage we can. Shout out to Carey Scurry and Trayce Jackson-Davis.</p>
+
+<hr>
+
+<p>Okay, let&rsquo;s look how this website/method is and isn&rsquo;t perfect.</p>
+
+<p><strong>What <em>isn&rsquo;t</em> a problem:</strong></p>
+
+<ul>
+<li><p><strong>Era-normalization:</strong> This is not as big of a problem as you’d imagine. We (the GMs) and the website (the &ldquo;Sim&rdquo;) look at things in a <em>&ldquo;per possession&rdquo;</em> context. USG%, eFG%, foul draw rate, AST%, TO%, OREB%, DREB%, yada yada. All per-possession. So if Player A and Player B played in two separate eras with two vastly different paces, the stats will normalize that accordingly.
+&amp;gt;Example: we don&rsquo;t care about how many rebounds a player grabbed per game. We don&rsquo;t even care how many rebounds a player grabbed per36; we care about what % of available rebounds that player was able to grab.
+There is also a small adjustment made to all players&rsquo; 2FG% and 3FG% based on the average effectiveness of the era</p></li>
+
+<li><p><strong>User/human biases:</strong> I don&rsquo;t think this is a problem. We all pay money to play a season of Savage simply for bragging rights of winning the league, and the two worst finishers have to sit out the next time around. A user will rarely ever draft a player just because he/she likes them. We&rsquo;re all trying to make the best teams. Even if there is some human bias in selection, I am weighing the results by actual wins in the sim, and the sim has no bias.</p></li>
+
+<li><p><strong>Roster Fit/Chemistry:</strong> This isn&rsquo;t a problem. You have to build teams to compliment your other players&rsquo; strengths. This isn&rsquo;t like a fantasy basketball team where you just sum the raw value that your players produced and can stack categories that don’t stack in real life (example: in fantasy basketball you can draft players that combine for 300 PPG, but just like in real life, that wouldn’t work in WiS since there’s only one ball). You still need to have a good balance of passing/spacing/rebounding/defense/positional versatility/bench/etc etc on your team. The engine is simulating what it thinks would happen if your players were on the court at the same time against your opponent&rsquo;s players.</p></li>
+</ul>
+
+<p><strong>What actually <em>is</em> a problem with this methodology:</strong></p>
+
+<ul>
+<li><p><strong>Real life style of play is nearly-invisible to the stats:</strong> The sim has no way of knowing that a player like Melo or Barkley would eat away the shotclock on ISOs. It just sees what % of possessions the player used, and what the results of those possessions were, and how the players around them might affect it. Unlike a video game, there&rsquo;s no physical attribute &ldquo;speed&rdquo;, &ldquo;agility&rdquo;, etc ratings.</p></li>
+
+<li><p><strong>Defensive ratings are imperfect:</strong> While most of the numbers on a player&rsquo;s card are based on their actual real-life stats, there is one semi-arbitrary number: defense. The website assigns a 0-100 score for every player&rsquo;s defense, and there is some human error in this one component. All-D and DPOY awards boost this score. There&rsquo;s a lot of accuracy in some instances. But for some players, the ratings are inaccurate.
+Also, the website doesn&rsquo;t have a way to differentiate if a player is good at certain aspects of defense (on ISOs vs help, on perimeter vs paint, rotations, etc), just if they&rsquo;re good/average/bad at D overall, and how effective they are at guarding each position.</p></li>
+
+<li><p><strong>Teammate boosts:</strong> DeAndre Jordan shot over 70% in 3 of his seasons that he played with Chris Paul. The website has no way to separate how good he would have been in a vacuum/without Chris Paul in those seasons. So DeAndre Jordan is a very very very good player in the Sim and we don&rsquo;t know how accurate that would be. It&rsquo;s not as big of a problem as you&rsquo;re imagining. He still only shoots roughly as often as he did irl, so he&rsquo;s still just a putback &amp; lob type of guy in the Sim. If you paired him with say Jordan Clarkson as his PG in the sim then his numbers would drop significantly, just like in real life.</p></li>
+
+<li><p><strong>The Sim can&rsquo;t see things that aren’t in box scores</strong> like well-set screens, boxing out, etc. This means that Brook Lopez is considered a bad rebounder in the sim. In real life, we know that he helps his team secure rebounds even though he doesn&rsquo;t grab them often himself. This could be solved if someone ever made a more complex sim that looked at on-floor/off-floor ratings too. It also doesn&rsquo;t factor in clutch rankings, mental toughness, etc.</p></li>
+</ul>
+
+<hr>
+
+<p><strong>With that said, here are the highlights of the rankings, updated for the 24-25 season:</strong></p>
+
+<p><strong>1. LeBron James.</strong> In this world, this isn&rsquo;t ever even a debate. He&rsquo;s #1 in this by a good margin. We&rsquo;ve even discussed making his 6-10th best seasons a separate draftable player, and most people agree that version would be a top 5 pick if so. He’s really the only player in the game who is good at everything. Even the players in the next tier all have at least one weakness. He usually gets played as a point guard, which creates a massive rebounding and eFG% advantage compared to other point guards.
+Version 2.0 update: his team finished the regular season tied for 1st even though they had the worst picks to pair him with (snake draft). He good. I do want to clarify that there’s a difference between being clearly the best player, and being a lot better than #2 or #3. He’s ever so slightly better than the next tier.</p>
+
+<p><strong>2-5: Wilt Chamberlain, Michael Jordan, Giannis, Steph Curry.</strong> Roughly in that order. MJ has seen a slight bump lately as it’s easier to get 3-point shooting on your team with him taking up a guard spot than it used to be, thanks to new shooting big men available. Kareem fell out of this tier since my last post for a variety of reasons.</p>
+
+<p><strong>6-13: Shaquille O’Neal, Nikola Jokic, David Robinson, Chris Paul, Rudy Gobert, Anthony Davis, Kareem</strong> I would say these guys are all in about the 3rd tier.</p>
+
+<p>I already know what a lot of the comments are going to be, but no one is picking Gobert to be a lead scorer. He’s there to protect the paint, grab boards, get blocks, and score 15ppg at ~70%. Refer back to the supply and demand section from above. Plenty of real life 28ppg guys are available all the way through the end of the draft that you can pair him with, but there aren’t any other historic rebounding + 70 FG% + DPOY players to pick from aside from Gobert.
+In non-Gobert news: David Robinson’s prime (pre-Duncan) actually rates higher than Duncan in this format, but the Spurs kind of stunk outside of him. I think he’s slept on, historically.
+Jokic is really bad on defense in this game, but the goal with him is to pick up some big defensive guards who aren’t great passers, and to kind of build inside-out. His scoring efficiency + passing + rebounding combo is historic.</p>
+
+<p>(update: David Robinson gets a bump up. Kareem get a bump down. Dwight gets a bump down from here to the next tier. Gobert probably gets a bump up to the tier above this based on this season’s results, believe it or not.)</p>
+
+<p><strong>14-20: Dwight Howard, Karl Malone, James Harden, Kawhi Leonard, Kevin Durant, Larry Bird, Julius Erving, Hakeem Olajuwon,</strong> Kawhi and Erving are both extremely successful in this league by GMs who draft them around here. They’re actually the two most successful players in this league by wins, but I don’t think they’d be able to uphold it if they were drafted higher (this is a snake draft). The strategy with both of them involves playing them at a guard position (even PG sometimes), and knowing that your assists will be low but that you’re getting an advantage on FG%, defense, TOs, and rebounding. A lot of Erving’s best seasons are from the ABA, so he might be getting a boost from playing in a lesser league irl.
+Hakeem is amazing at so many things, but his draft stock gets hurt by him shooting a lot for someone who isn’t a very efficient shooter (in the context of an all-time player pool), but he’s still worth building your team around and has shown good results. Bird is starting to drop now that his skill set is less unique.</p>
+
+<p><strong>21-30: Kevin Garnett, Charles Barkley, DeAndre Jordan, Tim Duncan, Luka Doncic, Dennis Rodman, SGA, Joel Embiid, Moses Malone, Dwyane Wade</strong> the order is getting harder to determine at this point, but I’d say these guys are all in about this tier. If you’re confused about DeAndre Jordan, refer back to the section about supply and demand. You can easily pair him with 11 real-life all-star guards/forwards with your next 11 picks if you want to, but there won’t be any other 70% shooting, elite rebounders available later.</p>
+
+<p>(Version 2.0 update: I don’t think SGA is quite ready for this tier yet. And am almost certain that Embiid doesn’t belong here. His teams have been pretty bad)</p>
+
+<p><strong>notable mid 2nd rounders: Magic Johnson, Gary Payton, Ben Wallace, Scottie Pippen, Artis Gilmore, Kevin McHale, Oscar Robertson, Karl-Anthony Towns, Damian Lillard, Bill Russell</strong></p>
+
+<p><strong>notable late 2nd/early 3rd guys: Jason Kidd, Shawn Kemp, Kyrie, Dikembe, Kobe, Stockton, Jimmy Butler, Shawn Marion, Paul George, Mourning.</strong></p>
+
+<p>From this point on I&rsquo;ll just drop in a few highlights:</p>
+
+<p><strong>Power forward rankings</strong>: I see this debated a lot. If you put any stock into what the SIM thinks, the order of the guys that are usually part of this debate is: Giannis, Karl Malone, Garnett, Duncan, Barkley, Dirk (with a decent gap between Barkley and Dirk). However, for guys not usually in this convo: AD’s top 5 seasons actually come in slightly above Karl Malone’s top-5 (want to highlight that it’s based on past seasons. The SIM isn’t Niko. 24-25 Luka is far more valuable than 24-25 AD). Rodman is about as valuable as Barkley. Kemp is right behind Barkley. Jerry Lucas is about as valuable as Dirk. Love is right below Lucas. Elton Brand is surprisingly high in the mix. Pau Gasol is up there. Webber is at the bottom of this pack by far, but is still playable.</p>
+
+<p>The <strong>Golden State Warriors</strong> title teams probably have the most amount of draftable players: <strong>Steph</strong> is a top-5 all-time guy, <strong>Klay</strong> is a 4th rounder, <strong>Draymond</strong> is a 5th rounder, <strong>Iguodala</strong> is a 6th rounder, <strong>Bogut</strong> is an 8th rounder….and that’s even before you count <strong>Durant</strong>, who is a 1st rounder. You can’t do this with any other teams for players who were in their prime all at the same time (as in: Dwyane Wade was on the LeBron Cavs, but no one would ever touch his Cavs season in this game, but all of these players are picked for their actual Warriors seasons). For the 2nd era of GSW teams, Looney and GPII are also draftable role players.</p>
+
+<p>The <strong>23-24 Boston Celtics</strong> are much more of a teamwork/depth powered team than most champions in history, according to this. <strong>Tatum</strong> is only about the 75th best player all-time in this format (late 3rd round/early 4th round), but <strong>Jaylen Brown</strong> (7th round), <strong>Kristaps</strong> (5th/6th), <strong>Jrue</strong> (3rd, but mostly for his Bucks seasons. Celtics Jrue would be about a 6th rounder), <strong>Derrick White</strong> (4th/5th), <strong>Horford</strong> (5th, but his Celtics seasons alone would put him at about 8th round), and even <strong>Pritchard</strong> (10th) all get drafted in this league.</p>
+
+<p>The <strong>04 Pistons</strong>: we covered <strong>Ben Wallace</strong> being about 35th, but <strong>Chauncey Billups</strong> is about 80th, and <strong>Rasheed</strong> is about 220th. There’s no place in this league for Rip Hamilton or Tayshaun Prince, unfortunately. <strong>McDyess</strong> goes around 200th, but mostly for his 97-98 Suns season, although his Pistons seasons are playable as a backup, low minute option.</p>
+
+<p>The <strong>24-25 Thunder</strong> are stacked with elite role players. <strong>SGA</strong> is a franchise-level guy at around #30, but <strong>Chet</strong> (7th round), <strong>J Dub</strong> (9th round), <strong>Caruso</strong> (10th round), <strong>Hartenstein</strong> (10th round), <strong>Dort</strong> (borderline draftable), <strong>Cason</strong> (borderline draftable) are all playable in an all-time player pool. Even Isaiah Joe and Aaron Wiggins wouldn’t raise eyebrows if someone used a 12th round pick on them. Deep team.</p>
+
+<p><strong>Kobe</strong> is about 55th. He&rsquo;s just far too inefficient to be a first or second rounder, but he can be a good pick in the 3rd round with the right first two picks around him. You want him for his D, defensive versatility, low TO%, and good boards for his position. You don’t want him for his scoring. If there was a way to make him shoot less, he’d be much more valuable. Which brings me to…</p>
+
+<p><strong>LeBron</strong> vs <strong>Jordan</strong> vs <strong>Kobe</strong>’s careers and help: I’m going to do the stupidest thing I’ve ever done in my life: opening up myself to comments by chiming in on this. I see the three of them compared a lot online now. This is just me relating what the sim thinks about their respective teams if anyone is curious, trying to keep my own thoughts out as much as possible. They’re all great players. They all had great help. The SIM has Bron, Wilt, and MJ as the 3 best players ever. Kobe isn’t in that conversation but is a really good player. For players of a similar archetype, it does value Dr J, Kawhi, and a few others in between MJ and Kobe though.</p>
+
+<p><strong>MJ’s Help: Pippen</strong> is a 2nd rounder (~35) in this world, placing ahead of guys like Patrick Ewing and Jason Tatum (and Kobe). So he’s good enough to be the 2nd best player in a 24-team league with an all-time player pool; elite co-star. FWIW, his seasons without MJ are really really good. Pippen aside: for all 6 titles, MJ had an elite low-usage role player. Of course we all know <strong>Rodman</strong> (top-35 but peaked with Pistons) was great, but Horace Grant (top-55) was almost as valuable. They had a very good Big 3 for all 6 titles, it’s just that one of those members added value without having a high PPG so it goes unnoticed by some. Kukoc and Ron Harper’s Bulls seasons are pretty good but not good enough to have a home in this world. It was a true Big 3, as there’s no 4th guy you’d want from these teams in the all-time draft. In formats where we draft from just one era: MJ, Pippen, Rodman, and Grant are all 1st rounders in a 1990-1999 draft (Horace might be an early 2nd), and they all go ahead or around guys like Drexler and Stockton…meaning that MJ had very good help relative to his era, but also that he was the best individual player of his era. Both can be true, and both being true is honestly probably the only way a player wins 6 titles.</p>
+
+<p><strong>Kobe’s help:</strong> <strong>Shaq</strong> is a top-10 player of all time in the SIM. We all know that’s huge. The sim thinks Shaq</p>
+
+<blockquote>
+<p>Kobe in those years FWIW. But I hear a lot of people say that his last two titles were with “no help.” and while I think him winning two without Shaq is very impressive, that was also a great supporting cast. <strong>Gasol</strong> is a top-120 player of all time in the sim (roughly as valuable as Dirk or Robert Parish, or about as valuable as Donovan Mitchell or Steve Nash for a non-PF comparison) and much better than a lot of guys in the NBA’s official top-75 list. <strong>Bynum</strong> is great in this game and goes in the 6th/7th round (top 150). He’s about as valuable as Chris Webber or Penny Hardaway. Odom is a rotational guy who often gets drafted in the 9th-11th rounds. Artest is a guy who could go in the 12th. This is about the same level of help that many recent champions have had around their star (OKC, DEN, MIL, which is still impressive to win a title with, let alone 2), and is a superior cast to teams like Hakeem in 94 or Curry in 22.</p>
+</blockquote>
+
+<p><strong>LeBron’s help, first Cleveland stint:</strong> no one on this team is worth taking in an all-time draft except for <em>maybe</em> <strong>Varejao</strong> as a 12th rounder rotational glue guy. It really was a bad team. Big Z is never relevant in the sim, even in extremely limited formats, and would only hurt a team. Mo Williams is okay but not even replacement level in this format. This squad grades out much lower than MJ’s pre-title help FWIW. <strong>LeBron’s help in Miami: Wade</strong> is fantastic. He peaked before LeBron came to Miami, but was still a very good player during most of this era. The Big 3 era Wade is about equal with Pippen’s prime, an elite co-star. <strong>Bosh</strong> is a guy who only gets drafted about half the time (and as an 11th/12th rounder when he does). He’s about the 320th best player of all time, and that’s propped up by his Toronto years mostly. A good player but not an all-timer. <strong>Ray Allen</strong>’s Miami seasons aren’t really playable in this league. He’s about as good as Bulls Harper. It was a good team, but the sim thinks Pippen + (Rodman or Horace)</p>
+
+<blockquote>
+<p>Wade + Bosh, and that’s in a neutral environment (not factoring in that the rest of the league was better in the 2010s than the 90s). Honestly they would’ve been a lot better using Bosh’s salary on two role players, according to this. <strong>LeBron’s help in the 2nd Cleveland stint</strong> the SIM loves <strong>Kyrie</strong> but most of his best seasons in the sim were after this. Kyrie’s Cleveland years alone would put him at about 60th best (3rd rounder), slightly worse than Pippen or Wade. <strong>Kevin Love</strong> is about 120th (5th/6th rounder). So equivalent to Pau, roughly. <strong>Tristan Thompson</strong> is borderline playable, similar to Bulls Harper or Lakers Metta Peace. Good team, but went up against historic competition. This is where it gets tricky because Kyrie + Love + Tristan is slightly better than Pau + Bynum + Odom, and Kobe won two with that cast…but the sim also thinks MUCH higher of those Warriors teams than that Magic team or even the Celtics team that Kobe beat (or any of MJ’s Finals competition). It also thinks the Warriors would beat Bulls/Lakers title teams. <strong>LeBron’s help in his Lakers stint</strong>: This is where it gets interesting. The sim actually has Anthony Davis as the best player on that title team and during their whole run together (slightly). AD is really good at the invisible stats listed above like fouls and TO%, so he contributes a lot with no negatives. The rest of LBJ’s help on this title team is pretty good but not great. No one else here is as good as Bynum, but AD is significantly better than Pau. Caruso and this old man version of Dwight/Danny Green would all be solid 11th rounders in this world. I will say that the sim thinks that prime Kobe or MJ on this team instead of Bron would have also beaten the Heat in the bubble, but that their late-career versions wouldn’t.
+My main takeaway: I personally think Bron’s peak (2013) is understated, and his late-career is a little overrated. This is probably due to pace increasing and his ‘per game’ stats holding up to his prime, but if you look at possession based stats, there’s a clear drop off.</p>
+</blockquote>
+
+<p>Conclusion: They’re all great players. They all had great help. Anyone who claims otherwise is being biased. Kobe is a couple rungs below MJ and LeBron in this…and that’s okay, it still thinks he’s really good. It projects that he’d win 3-6 titles if he was playing with Shaq and then Gasol+Bynum+Odom+MWP against the teams of his era. Bron’s peak was ever so slightly better than MJ’s according to this. You’d need a microscope to see the difference.</p>
+
+<p>————————————————————</p>
+
+<p><strong>Other 00s era SGs:</strong> We talked about Kobe and Wade, they’re both great. Let’s move to <strong>Vince Carter</strong> and <strong>Tracy McGrady</strong> - both are 7th/8th rounders (180ish), but that’s means they’re solid players. They’re better in this all-time world than Lou Williams was in the real world, if that makes sense. The teams that draft them here are often very successful. <strong>Paul Pierce</strong> also falls into this range but gets drafted slightly above Vince/TMac but has slightly worse success. <strong>Ray Allen</strong> is probably an 8th rounder and so is <strong>Eddie Jones</strong>, but for different reasons. <strong>Brandon Roy</strong> is borderline draftable, even with the injuries. A 13th rounder in a 12 round draft kind of guy. <strong>Joe Johnson</strong> and <strong>Finley</strong> and <strong>Rip Hamilton</strong> and any other SGs from this era don’t make the cut. Neither does Allen Iverson, believe it or not. Amazing highlights, but the stats don’t like him at all. At all at all.</p>
+
+<p><strong>Oscar Robertson</strong> vs <strong>Russell Westbrook</strong>: Oscar goes around 40th (early/mid 2nd round). He&rsquo;s a lot more efficient than most guys from his era. His rebound and assist numbers are not nearly as impressive in a per-possession context though. He played in a high pace era. <strong>Russ</strong> is about 120th. He can single handedly tank your efficiency and TOs, but if you have the right pieces around him, he can be a contributor on a winning team. I&rsquo;m not sure if the average fan understands truly how different his efficiency is vs someone like Steph. For context, Westbrook rebounds and assists at a much much higher rate than the Big O (when looked at per possession, not per game), but Oscar is still good at both while being a more efficient scorer who turns the ball over far less.</p>
+
+<p><strong>Knicks</strong>: <strong>Patrick Ewing</strong> is about 60th. <strong>Walt Frazier</strong> is about 70th. <strong>Willis Reed</strong> is about 110th. <strong>Jalen Brunson</strong> is about 200th. <strong>Carmelo</strong> is the kind of guy who might get drafted in the last two rounds if you need his skill set to backup a high usage wing, but goes undrafted otherwise. <strong>KAT</strong> is actually the best of this bunch (40th), but I think this is a product of having an easier time covering his weaknesses in an all-time pool. He’s better than Ewing when surrounded by all-time teammates, but probably worse than if we were to just look at how each would do in a regular NBA season with average teammates. His TS%/eFG% is amazing though. He really is (statistically) the best shooting big man of all time.</p>
+
+<p><strong>Lakers</strong>: aside from Kareem, Shaq, Kobe, AD, and Pau, who I touched on already: <strong>Magic</strong> is about 40th <strong>Jerry West</strong> goes about 90th. <strong>Elgin Baylor</strong> used to go undrafted due to his abysmal FG%, but I’m a big fan of him in this game. I drafted him in our current season and have him playing heavy minutes and did okay this season. His rebounding and D are elite for someone who can guard SGs. <strong>Connie Hawkins</strong> and <strong>James Worthy</strong> are the kind of guys who would be okay but not great 12th round picks.</p>
+
+<p><strong>Spurs</strong>: <strong>Manu</strong> goes about 60th and <strong>Tony Parker</strong> rarely gets drafted, but will get drafted at about 280th if he does. Manu&rsquo;s per possession stats are insane. Part of me thinks Manu seems too high, but on the other hand he did win gold with a pretty weak supporting cast, and he did a lot better against the Pistons than Kobe did when DET made back to back finals. Idk maybe he really is an all-timer who never got his proper shine. <strong>DRob</strong> grades out a little higher than <strong>Duncan</strong> when looking at peaks, but both are first rounders. If you factor in longevity, Duncan would probably be a top-5 player. <strong>Wemby</strong> is well on his way to a HOF career according to this. <strong>Kawhi</strong>’s Spurs seasons are surprisingly strong. As in prime Dr J level strong (~20th). <strong>De’Aron Fox</strong> is a 10th or 11th rounder in the all-time draft (~250). <strong>George Gervin</strong> is also about a 10th or 11th rounder. <strong>Kyle Anderson</strong> surprisingly is a 6-7th rounder. He’s dope when he’s surrounded by stars and just gets to be a glue guy. <strong>Danny Green</strong> is about equal value to SloMo.</p>
+
+<p><strong>Guys derailed by injuries</strong>: <strong>Penny Hardaway</strong> is about 120th all-time even though he can&rsquo;t contribute much due to injuries/low minutes outside of 1-2 seasons. He was very good in the short time he was healthy.<strong>Victor Oladipo</strong> goes about 170th solely off the strength of that one good Indiana season (contributing nothing on the other 4 that you have to use him). Very strong season that stands up in a historical context. Nothing playable outside of that. <strong>Grant Hill</strong> usually gets drafted around 200th but is also the worst performer out of the entire field (lowest success out of all players that get drafted often). I think his eye test looks a lot better than his on-paper results. The stats don’t like him that much.<strong>Ben Simmons</strong> is a top 90 player all-time in this context. Again, this can&rsquo;t account for him chickening out in crunch time, but I still think people forgot how good he was ~5 years ago. He is a very good player by advanced metrics, especially if he’s on a team with someone like Steph.</p>
+
+<p><strong>60s/70s (pre Magic/Bird NBA)</strong>: a lot of people seemed to think the engine was too low on the early-NBA guys but I’ve thought about it and I really don’t think that’s true. Wilt is the 2nd best player. Kareem is a top-12 guy. Erving is the 2nd winningest player in this and goes around 20th. Bill Russell, Oscar Robertson, Moses Malone, Artis Gilmore are all 2nd round picks. Bobby Jones and Bill Walton are 3rd rounders. Reed/Frazier/Lucas/West all get taken in the first 5 or 6 rounds. For reference, all of those players go ahead of Jalen Williams or Jaylen Brown, which means it thinks they could have been the best or 2nd best player on a modern title team. That seems like quite a bit of representation. I think if it recognizes that Oscar is significantly better than Westbrook, it’s pretty well calibrated. Just my opinion.</p>
+
+<p>A few comments from people probably around my age (who grew up watching the Kobe/Duncan era) said they think the <strong>early 2000s era</strong> is under represented. I don’t think this is true. I think it’s just that some of the names you’re expecting to see are a little lower and others are a little higher. <strong>Shaq</strong>’is a top-10 all-time guy. <strong>Garnett and Duncan</strong> are both first rounders. <strong>Chris Paul</strong> is a top-10 player and his two best seasons are 07-08 and 08-09. <strong>Ben Wallace and Shawn Marion</strong> are 2nd rounders. <strong>Kobe, Camby, Manu, Elton Brand</strong> are all 3rd rounders. 10 players in the top-75 for one ~7 year window seems like good representation. It’s just that AI and TMac are less valuable in an all-time pool than they would be in a one-season pool, while Camby and Wallace get a boost due to having rarer skill sets.</p>
+
+<p>Modern guys who rank higher than you&rsquo;d imagine (remember, this is all-time): <strong>Jrue Holiday</strong> (~50), <strong>Bam Adebayo</strong> (~55), <strong>Jimmy Buckets</strong> (~40th), <strong>Draymond Green</strong> (~75), <strong>Al Horford</strong> (~100), <strong>Danny Green</strong> (~120), <strong>Kristaps Porzingis</strong> (~120), <strong>Michael Porter Jr</strong> (~120), <strong>Mike Conley</strong> (~130), <strong>Myles Turner and Pascal Siakam</strong> (~150). When you look at how often their teams win irl, it could be argued that they really do actually produce close to this value.</p>
+
+<p><strong>Zion</strong> goes top 200 every single time, even though he BARELY has minutes. He&rsquo;s that good in the few minutes he does play.  He doesn’t rebound very well for a big, but his usage+eFG+low TO% is pretty similar to Shaq. Statistically he’s Shaq without rebounds, which is still a pretty dang good player.</p>
+
+<p>Players in the real-life NBA top-75 who wouldn&rsquo;t even sniff the top-250 of this format (alphabetical by last name): <strong>Nate Archibald, Paul Arizin, Rick Barry, Elgin Baylor, Dave Bing, Bob Cousy, Dave DeBusschere, Hal Greer, Allen Iverson, Sam Jones, Pete Maravich, George Mikan, Earl Monroe, Bob Pettit, Dolph Schayes, Bill Sharman, Isiah Thomas, Nate Thurmond, Lenny Wilkens, Dominique Wilkins.</strong> I’d say <strong>Elvin Hayes</strong> is borderline, he wouldn’t be a crazy late round pick. <strong>Mikan</strong> actually grades out okay but no one has the guts to take him since he has the Iverson problem (will shoot a lot when you don’t want him to). The rest of his stats are killer though.</p>
+
+<p>Guys who rarely get talked about on /r/NBA who are very relevant in our sim-world: <strong>Larry Nance Sr</strong> (~60th), <strong>Buck Williams</strong> (~75), <strong>Marques Johnson</strong> (~130) <strong>Chris Andersen</strong> (~150), <strong>Alvin Robertson</strong> (~150), <strong>Delon Wright</strong> (~150), <strong>Jamario Moon</strong> (~180), <strong>Kyle O&rsquo; Quinn</strong> (~180), <strong>Hot Rod Williams</strong> (~200), <strong>Dan Roundfield</strong> (~200), <strong>Tom Boerwinkle</strong> (~200), <strong>Bill Bridges</strong> (~200), <strong>Clarence Weatherspoon</strong> (~240), <strong>Charlie Ward</strong> (~280) <strong>Don Buse</strong> (~300), <strong>Larry Sanders</strong> (~250), <strong>Dana Barros</strong> (~300), <strong>Bobby Phills</strong> (~300) - most of these are elite role players. If we have our usage covered, we&rsquo;re looking for someone who can contribute without taking up any possessions.</p>
+
+<p>Oh and <strong>Sidney Moncrief.</strong> we f*cking love Sidney Moncrief (~70th). That mid 80s Bucks team with him and Marques grades out pretty well historically, but ran into elite competition with the Bird/Parish/McHale Celtics and the Moses/Erving/Jones Sixers. Honestly there’s a couple of title teams in history they could have beaten, including some fairly modern ones. The late 80s Cavs were also pretty good, but Daugherty and Price are both only about (250-300). Ron Harper is about 220th. Nance is the standout from those teams in this exercise (60th).</p>
+
+<p>We also love <strong>Fat Lever</strong> (~140)</p>
+
+<p>#Conclusions: Obviously this isn&rsquo;t perfect. I am in no way saying that this is actually what these players&rsquo; all-time rankings are/should be. However, I am saying we can learn something from it. Dwight is a top-10 player all-time by the numbers when you neutralize eras with per-possesion stats, and combined with his awards and accolades, I do think he absolutely should have made the top-75 team. This method also graded out Haliburton ahead of Fox when they played together, and that seems like it was on to something. Etc.</p>
+
+<p>I do think that we miss a lot of things with the eye-test. You probably think Ben Wallace (~35th) and Bam Adebayo (~55) are way too high on this list, and they probably are. I would also argue that we usually have them too low on our human-made lists. Look at real life finals teams and see how many times you count a Ben Wallace, Adebayo, Draymond, Horace Grant, Rodman, Aaron Gordon, Chet Holmgren, Tyson Chandler type of guy. I think they probably help their teams win irl more than they’re given credit for. The same reason why the Nuggets were better with Billups than AI, or how the Lakers got worse when they went from Caruso/KCP to Westbrook.</p>
+
+<p>Anyway, if you&rsquo;re a big old nerd, come join us. Here’s a link to the actual most recent draft (<a href="https://www.whatifsports.com/forums/Posts.aspx?topicID=546110&amp;TopicsTimeframe=0" target="_blank">https://www.whatifsports.com/forums/Posts.aspx?topicID=546110&amp;TopicsTimeframe=0</a>) and here’s a link to a random regular season boxscore (<a href="https://www.whatifsports.com/NBA/boxscore.asp?GameID=10892362&amp;nomenu=1&amp;teamfee=9.95" target="_blank">https://www.whatifsports.com/NBA/boxscore.asp?GameID=10892362&amp;nomenu=1&amp;teamfee=9.95</a>). Feel free to message me if you want to build some virtual teams as a GM and want tips/advice. There are even formats where you can draft and trade every offseason. I don&rsquo;t work for them or anything. Just bored and it&rsquo;s the offseason.</p>
+
+<p>Also, comment a player who isn’t listed and I’ll be happy to tell you where they rank in this format.</p>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="n3wy71p" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>airgordo4</div>
+        <div>1 | 10 minutes ago </div>
+      </div>
+      <label for="n3wy71p" class="commentText"><p>Throw this in the trash lol. This is the worse outcome of rankings I’ve ever seen.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="n3wys1o" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Neither-Power1708</div>
+        <div>1 | 7 minutes ago </div>
+      </div>
+      <label for="n3wys1o" class="commentText"><p>Thank you for showing why basketball isn&rsquo;t played on spreadsheets</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="n3wypd0" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>LosCleepersFan | Clippers</div>
+        <div>1 | 7 minutes ago </div>
+      </div>
+      <label for="n3wypd0" class="commentText"><p>Reggie doesn&rsquo;t even get drafted sometimes is incredible to think about honestly.</p>
+
+<p>Guy was spectacular when the lights were the brightest, but I guess there&rsquo;s no simulation heart and drive on a person.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="n3wze8t" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ThunderUpDavid</div>
+        <div>1 | 3 minutes ago </div>
+      </div>
+      <label for="n3wze8t" class="commentText"><p>It&rsquo;s neat, but just knowing what the real world <em>playoff</em> value of players like Gogurt and DeAndre Jordan is, really undermines this whole thing. Regular season and deep playoff runs may as well be different sports with the way Rudy becomes almost unplayable and DeAndre Jordan <em>is</em> unplayable.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="n3wzi1m" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Boom-Doc-a-Locka</div>
+        <div>1 | 2 minutes ago </div>
+      </div>
+      <label for="n3wzi1m" class="commentText"><p>Hahahahaha.
+No.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
