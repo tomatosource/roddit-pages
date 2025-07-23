@@ -1,0 +1,408 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.selfPostImage {
+  width: 100%;
+  height: auto;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/nba/comments/1m7jztv/the_math_behind_winning_every_eastern_conference/"><p>The math behind winning every Eastern Conference playoff series for 8 years</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <p>We are deep in the throes of the off-season. Summer League is over, Cooper Flagg is definitely already a bust (this is a joke, don&rsquo;t @ me), and for the first time I can remember, Suns fans are envying Charlotte fans.</p>
+
+<p>With nothing better to talk about, we are also seeing regurgitated and half-assed GOAT arguments, as is normal around here. I am not setting out to define who&rsquo;s the GOAT. Frankly, it&rsquo;s dumb. But I am here to lay down the law about one of the greatest achievements in the modern NBA, and that&rsquo;s Lebron making the finals for 8 consecutive years.</p>
+
+<p>I can hear you whining already &lsquo;<em>but the East was weak!&rsquo;</em> Yes it was, astute redditor. I am not here to refute that. I am here to tell you that winning 24 consecutive In-conference playoff series, the most <em>in NBA history</em>, is an incredible feat even when (mostly) favored.</p>
+
+<p>Methodology: I am using Basketball reference to determine the pre-series line for each of these 24 playoff matchups, and converting that line to likelihood of winning using these formulas AKA the implied probability of winning formulas:</p>
+
+<p>If favored: P = absolute odds / (absolute odds + 100)</p>
+
+<p>Absolute here means we are taking the value and counting how far it is from zero. So -275 would have an absolute value of just 275.</p>
+
+<p>If not favored: P = 100 / (odds + 100)</p>
+
+<p>So for Lebron&rsquo;s matchup against the Celtics in 2018, the line was -275. This would make the odds: 275 / (275 + 100) = 73.3%.</p>
+
+<p>Once odds for each series are calculated, we multiple them together. This gives us the odds of multiple things all happening. Easy example, if you flip a coin it has .5 chance of heads. If you flip 2 coins, it has .25 chance of both being heads (.5 x .5)</p>
+
+<p>So, here are the odds for all 8 seasons of playoff victories, including the odds of winning all 24 of them.</p>
+
+<p>=========================================</p>
+
+<p>2018 Eastern Conference First Round:
+Cleveland Cavaliers (–600) vs Indiana Pacers (+450) — 85.71%</p>
+
+<p>2018 Eastern Conference Semifinals:
+Toronto Raptors (–190) vs Cleveland Cavaliers (+165) — 37.74% (note: this is the only series Lebron was an underdog)</p>
+
+<p>2018 Eastern Conference Finals:
+Cleveland Cavaliers (–275) vs Boston Celtics (+235) — 73.33%</p>
+
+<p>2017 Eastern Conference First Round:
+Cleveland Cavaliers (–1100) vs Indiana Pacers (+700) — 91.67%</p>
+
+<p>2017 Eastern Conference Semifinals:
+Cleveland Cavaliers (–475) vs Toronto Raptors (+380) — 82.69%</p>
+
+<p>2017 Eastern Conference Finals:
+Cleveland Cavaliers (–700) vs Boston Celtics (+500) — 88.67%</p>
+
+<p>2016 Eastern Conference First Round:
+Cleveland Cavaliers (–1700) vs Detroit Pistons (+1100) — 94.44%</p>
+
+<p>2016 Eastern Conference Semifinals:
+Cleveland Cavaliers (–500) vs Atlanta Hawks (+400) — 83.33%</p>
+
+<p>2016 Eastern Conference Finals:
+Cleveland Cavaliers (–1350) vs Toronto Raptors (+885) — 93.10%</p>
+
+<p>2015 Eastern Conference First Round:
+Cleveland Cavaliers (–5000) vs Boston Celtics (+2100) — 98.04%</p>
+
+<p>2015 Eastern Conference Semifinals:
+Cleveland Cavaliers (–240) vs Chicago Bulls (+200) — 70.59%</p>
+
+<p>2015 Eastern Conference Finals:
+Cleveland Cavaliers (–190) vs Atlanta Hawks (+165) — 65.52%</p>
+
+<p>2014 Eastern Conference First Round:
+Miami Heat (–2500) vs Charlotte Bobcats (+1000) — 96.15%</p>
+
+<p>2014 Eastern Conference Semifinals:
+Miami Heat (–620) vs Brooklyn Nets (+450) — 86.11%</p>
+
+<p>2014 Eastern Conference Finals:
+Miami Heat (–380) vs Indiana Pacers (+300) — 79.17%</p>
+
+<p>2013 Eastern Conference First Round:
+Miami Heat (–20000) vs Milwaukee Bucks (+7500) — 99.50% (worst odds I&rsquo;ve ever seen for an NBA playoff series)</p>
+
+<p>2013 Eastern Conference Semifinals:
+Miami Heat (–3000) vs Chicago Bulls (+1100) — 96.77%</p>
+
+<p>2013 Eastern Conference Finals:
+Miami Heat (–850) vs Indiana Pacers (+575) — 89.47%</p>
+
+<p>2012 Eastern Conference First Round:
+Miami Heat (–900) vs New York Knicks (+650) — 90.00%</p>
+
+<p>2012 Eastern Conference Semifinals:
+Miami Heat (–950) vs Indiana Pacers (+625) — 90.48%</p>
+
+<p>2012 Eastern Conference Finals:
+Miami Heat (–530) vs Boston Celtics (+400) — 84.13%</p>
+
+<p>2011 Eastern Conference First Round:
+Miami Heat (–2500) vs Philadelphia 76ers (+1000) — 96.15%</p>
+
+<p>2011 Eastern Conference Semifinals:
+Miami Heat (–190) vs Boston Celtics (+165) — 65.52%</p>
+
+<p>2011 Eastern Conference Finals:
+Miami Heat (–190) vs Chicago Bulls (+160) — 65.52%</p>
+
+<p>=========================================</p>
+
+<p>Final combined probability of winning all 24 series: ~0.84%, or about <sup>1</sup>&frasl;<sub>120</sub>.</p>
+
+<p>=========================================</p>
+
+<p>TLDR; Winning 24 consecutive In-Conference series, even when favored, is pretty fucking crazy.</p>
+
+<p>Posted from my phone, my apologies for typos or formatting issues.</p>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="n4s0e09" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>lionpenguin88</div>
+        <div>1 | 9 minutes ago </div>
+      </div>
+      <label for="n4s0e09" class="commentText"><p>This is quite a lot of math but good post</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="n4s11ji" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>StrategyTop7612 | Clippers</div>
+        <div>1 | 6 minutes ago </div>
+      </div>
+      <label for="n4s11ji" class="commentText"><p>Yeah, it&rsquo;s very interesting to see laid out.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="n4s0vc5" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>StrategyTop7612 | Clippers</div>
+        <div>1 | 6 minutes ago </div>
+      </div>
+      <label for="n4s0vc5" class="commentText"><p>Very interesting work. I believe you forgot to account for the vig for the implied probabilities though.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="n4s1f0y" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Humble_Orange_2015 | Georgia</div>
+        <div>1 | 4 minutes ago </div>
+      </div>
+      <label for="n4s1f0y" class="commentText"><p>What are those Heat and Bucks odds lol</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="n4s1shj" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>pifhluk | Bucks</div>
+        <div>1 | 2 minutes ago </div>
+      </div>
+      <label for="n4s1shj" class="commentText"><p>LeBron definitely had that feeling sane as Jordan where you just knew your team was going to lose to them in the playoffs. I watched both and it was demoralizing knowing your team was going to lose. Jordan slightly more just because of the scoring but both gave that feeling.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
