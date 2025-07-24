@@ -1,0 +1,557 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.selfPostImage {
+  width: 100%;
+  height: auto;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/nba/comments/1m84ieq/craftedgm_nba_nba_draft_gm_study_a_comprehensive/"><p>[CraftedGM NBA] NBA Draft GM Study: A Comprehensive analysis of NBA General Manager draft performance from 2010-2025, ranking GMs by their ability to identify talent and build through the draft.</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <h1 id="methodology">Methodology</h1>
+
+<h1 id="what-this-study-measures-and-what-it-doesn-t">What This Study Measures (And What It Doesn&rsquo;t)</h1>
+
+<p><strong>This is NOT a comprehensive GM rating.</strong> This study exclusively evaluates players acquired through the NBA Draft. Sam Presti trading for Shai Gilgeous-Alexander gets him zero credit here, nor do free agent signings, trades, or other roster construction methods.</p>
+
+<p><strong>We only measure draft pick performance</strong> - how well the players selected have performed in their NBA careers compared to expectations and alternatives available at the time.</p>
+
+<h1 id="important-caveats">Important Caveats</h1>
+
+<ul>
+<li><strong>Player Development:</strong> GMs receive credit/blame for how their picks ultimately performed, regardless of whether development happened in their organization or elsewhere</li>
+<li><strong>Draft-and-Trade/Waive:</strong> GMs are evaluated on the player selected, even if they immediately traded or waived them (the pick selection itself is what&rsquo;s being measured)</li>
+<li><strong>Organizational Context:</strong> Different franchises have varying levels of player development infrastructure, coaching, and opportunity allocation</li>
+<li><strong>Sample Size:</strong> GMs with fewer than 5 total picks receive incomplete grades due to insufficient data</li>
+<li><strong>Injury/External Factors:</strong> Career-altering injuries and other external factors beyond GM control can significantly impact player performance</li>
+</ul>
+
+<h1 id="data-source-timeline">Data Source &amp; Timeline</h1>
+
+<ul>
+<li>Primary analysis focuses on 2010-2020 drafts for complete career evaluation</li>
+<li>Recent picks (2021-2025) shown for context but not included in grades</li>
+<li>SurplusPM (66% XRAPM vs Expected + 33% XRAPM vs Next 5) used as primary performance metric. This is a per/year metric, not cumulative.</li>
+</ul>
+
+<h1 id="grading-criteria">Grading Criteria</h1>
+
+<ul>
+<li><strong>SurplusPM vs Expected:</strong> How much better/worse picks performed than expected for their draft position</li>
+<li><strong>Hit Rate:</strong> Percentage of picks that outperformed the next 5 players selected</li>
+<li><strong>Consistency:</strong> Avoiding complete busts and finding value throughout the draft</li>
+</ul>
+
+<p>Found this to be an interesting read.</p>
+
+<p>Source: <a href="https://craftednba.com/draft/gm-study#all-picks-ranked" target="_blank">https://craftednba.com/draft/gm-study#all-picks-ranked</a></p>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="n4wcone" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Ryoga476ad</div>
+        <div>12 | an hour ago </div>
+      </div>
+      <label for="n4wcone" class="commentText"><p>Very nice, but it should be weighted, imo.
+Fialing a top pick is much worse than failing a second rounder.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="n4wdokg" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Obvious_Parsley3238</div>
+        <div>10 | an hour ago </div>
+      </div>
+      <label for="n4wdokg" class="commentText"><p>This metric seems to really reward you for hitting on late picks. I&rsquo;m not sure Morey deserves all those points for getting Paul Reed, or Presti should get dinged for missing on Theo Maledon.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="n4wfl63" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Naive_Coast_8919 | Thunder</div>
+        <div>4 | 36 minutes ago </div>
+      </div>
+      <label for="n4wfl63" class="commentText"><p>Or Isaiah Whitehead grades as an elite pick for Marks, a better pick than Claxton.  The guy played one full season then busted out of the league.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="n4wj9p9" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>2coolcaterpillar | Thunder</div>
+        <div>1 | 17 minutes ago </div>
+      </div>
+      <label for="n4wj9p9" class="commentText"><p>More surprising than Presti getting a ‘C’ grade is me learning his real name is Samuel Prestigiacomo. Thought OP was making a weird nickname for him lmao</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="n4wkcf3" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Wynona_Judd | Pistons</div>
+        <div>1 | 12 minutes ago </div>
+      </div>
+      <label for="n4wkcf3" class="commentText"><p>Joe Dumars gets a really high ranking here for solely for drafting Khris Middleton, but it doesn&rsquo;t take in account that Dumars clearly didn&rsquo;t value him at all because he dumped Middleton after one season.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="n4whwxc" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>nowhathappenedwas | NBA</div>
+        <div>1 | 24 minutes ago </div>
+      </div>
+      <label for="n4whwxc" class="commentText"><p>This is a cool project, and the layout is very appealing. But the methodology seems pretty underwhelming.</p>
+
+<blockquote>
+<p>Hit Rate: Percentage of picks that outperformed the next 5 players selected</p>
+</blockquote>
+
+<p>This is dumb. Drafting a starter-level player in the second round is a great pick. It shouldn&rsquo;t matter whether Jokic was taken 5 picks later or 7 picks later.</p>
+
+<blockquote>
+<p>Draft-and-Trade/Waive: GMs are evaluated on the player selected, even if they immediately traded or waived them (the pick selection itself is what&rsquo;s being measured)</p>
+</blockquote>
+
+<p>Then why does Utah&rsquo;s GM get credit for drafting Gobert and Mitchell &ndash; both of whom were drafted by Denver and immediately traded to Utah?</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="n4we37d" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>FRiver | NBA</div>
+        <div>1 | 43 minutes ago </div>
+      </div>
+      <label for="n4we37d" class="commentText"><p>This is really impressive. Will have to have a deep dive to see if the methodology holds but love the UI and detailed data</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="n4wf7dh" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Autistic_Puppy</div>
+        <div>1 | 37 minutes ago </div>
+      </div>
+      <label for="n4wf7dh" class="commentText"><p>I didn’t realize how impressive Morey’s tracking record was. Dude is just a god at finding value outside the top 10</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="n4wg8op" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Lawdog_</div>
+        <div>1 | 32 minutes ago </div>
+      </div>
+      <label for="n4wg8op" class="commentText"><p>Is Presti on this list?</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="n4wgxx5" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>small-with-benefits | Thunder</div>
+        <div>1 | 29 minutes ago </div>
+      </div>
+      <label for="n4wgxx5" class="commentText"><p>He’s mid apparently</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="n4wjx8w" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Lawdog_</div>
+        <div>1 | 14 minutes ago </div>
+      </div>
+      <label for="n4wjx8w" class="commentText"><p>The Prestigiacomo was throwing me off. He has 7 Elite and 6 great picks. OKC has had more picks, and that seems to be used against him in this metric. I don’t know if Sorber/Topic will hit, but Presti drafted OKC to a championship core, and then made trades to push them over the top. Morey might be great at maximizing value on picks, but Presti nailed higher value picks. That is much more important!</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="n4wh1b0" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>SandyMandy17 | Thunder</div>
+        <div>1 | 28 minutes ago </div>
+      </div>
+      <label for="n4wh1b0" class="commentText"><p>Can you explain how Jdub at 12 is a +1.64 but Theo Maledon at 36 is a -4.5</p>
+
+<p>Picks out of the lottery definitely shouldn’t be weighed as much</p>
+
+<p>Half of Daryl morey’s biggest surplus picks didn’t even play for his teams and got value elsewhere</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="n4wjmli" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>the_iceman_cometh | Cavaliers</div>
+        <div>1 | 16 minutes ago </div>
+      </div>
+      <label for="n4wjmli" class="commentText"><p>Some of the data is incomplete. No Mobley on for Koby Altman?</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="n4wkdg7" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Dan_The_Orange_Snail | MIA</div>
+        <div>1 | 12 minutes ago </div>
+      </div>
+      <label for="n4wkdg7" class="commentText"><p>Norris Cole was playing 20 min/game his 2nd year in the league on a championship team at pick 28 and he’s considered a bust? Feels like the formula lowers your score if some of the 5 guys directly behind you wind up having longer/better careers. (Cory Joseph, Jimmy Butler, Bojan Bogdanovich in this example), but Norris arguably was way more important to those Heat teams than those guys would’ve been (Heat needed NBA ready backup PG). Like obv Jimmy would’ve been the better pick, but Norris def wasn’t a bust by any means</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="n4wko68" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Ok_Sky7827</div>
+        <div>1 | 11 minutes ago </div>
+      </div>
+      <label for="n4wko68" class="commentText"><p>This is super interesting but some of the scores don’t make sense. Banchero has a negative score, that’s really strange. Also Suggs has a negative but 4 picks later Magic drafted Wagner. The way the scoring works, magic are getting punished for the Suggs pick because they drafted Wagner 4 picks later</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="n4wfyh1" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>existencefaqs</div>
+        <div>0 | 34 minutes ago </div>
+      </div>
+      <label for="n4wfyh1" class="commentText"><p>Weird they don&rsquo;t count undrafted players. By the metric that overvalues, imo, the importance of late round finds (Paul Reed being 16th best pick ahead of Siakam, Shai, and Luka), Fred Van Vleet would be the best player acquired at the draft relative to position.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
