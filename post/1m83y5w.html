@@ -1,0 +1,649 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.selfPostImage {
+  width: 100%;
+  height: auto;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/nba/comments/1m83y5w/preseason_odds_and_predicting_the_2026_nba/"><p>Preseason odds and predicting the 2026 NBA Champion</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <p>Basketball reference has preseason odds dating back to the 1984-85 season</p>
+
+<ul>
+<li>1984-85: Los Angeles Lakers (+200)</li>
+<li>1985-86: Boston Celtics (+250)</li>
+<li>1986-87: Los Angeles Lakers (+400)</li>
+<li>1987-88: Los Angeles Lakers (+120)</li>
+<li>1988-89: Detroit Pistons (+400)</li>
+<li>1989-90: Detroit Pistons (+300)</li>
+<li>1990-91: Chicago Bulls (+700)</li>
+<li>1991-92: Chicago Bulls (+250)</li>
+<li>1992-93: Chicago Bulls (+120)</li>
+<li>1993-94: Houston Rockets (+1200)</li>
+<li>1994-95: Houston Rockets (+450)</li>
+<li>1995-96: Chicago Bulls (+350)</li>
+<li>1996-97: Chicago Bulls (+100)</li>
+<li>1997-98: Chicago Bulls (+140)</li>
+<li>1998-99: San Antonio Spurs (+450)</li>
+<li>1999-00: Los Angeles Lakers (+400)</li>
+<li>2000-01: Los Angeles Lakers (+180)</li>
+<li>2001-02: Los Angeles Lakers (+200)</li>
+<li>2002-03: San Antonio Spurs (+1100)</li>
+<li>2003-04: Detroit Pistons (+1500)</li>
+<li>2004-05: San Antonio Spurs (+400)</li>
+<li>2005-06: Miami Heat (+350)</li>
+<li>2006-07: San Antonio Spurs (+450)</li>
+<li>2007-08: Boston Celtics (+1000)</li>
+<li>2008-09: Los Angeles Lakers (+350)</li>
+<li>2009-10: Los Angeles Lakers (+225)</li>
+<li>2010-11: Dallas Mavericks (+2000)</li>
+<li>2011-12: Miami Heat (+225)</li>
+<li>2012-13: Miami Heat (+225)</li>
+<li>2013-14: San Antonio Spurs (+1200)</li>
+<li>2014-15: Golden State Warriors (+2800)</li>
+<li>2015-16: Cleveland Cavaliers (+280)</li>
+<li>2016-17: Golden State Warriors (-128)</li>
+<li>2017-18: Golden State Warriors (-187)</li>
+<li>2018-19: Toronto Raptors (+1850)</li>
+<li>2019-20: Los Angeles Lakers (+450)</li>
+<li>2020-21: Milwaukee Bucks (+550)</li>
+<li>2021-22: Golden State Warriors (+900)</li>
+<li>2022-23: Denver Nuggets (+1800)</li>
+<li>2023-24: Boston Celtics (+450)</li>
+<li>2024-25: Oklahoma City Thunder (+675)</li>
+</ul>
+
+<p><sup>28</sup>&frasl;<sub>41</sub> teams better than +500 (68.3%)</p>
+
+<p><sup>32</sup>&frasl;<sub>41</sub> teams better than +1000 (78.0%)</p>
+
+<p><sup>36</sup>&frasl;<sub>41</sub> teams better than +1500 (87.8%)</p>
+
+<p><sup>39</sup>&frasl;<sub>41</sub> teams better than +2000 (95.1%)</p>
+
+<p><sup>41</sup>&frasl;<sub>41</sub> teams better than +3000 (100%)</p>
+
+<p>Basketball reference’s source hasn’t updated since most of free agency so it’s outdated, but most sports books have the following teams as better than +3000</p>
+
+<p>Tier 1 (better than +500)</p>
+
+<ul>
+<li>Oklahoma City Thunder</li>
+</ul>
+
+<p>Tier 2 (better than +1000)</p>
+
+<ul>
+<li>Cleveland Cavaliers</li>
+<li>New York Knicks</li>
+<li>Denver Nuggets</li>
+<li>Houston Rockets</li>
+</ul>
+
+<p>Tier 3 (better than +2000)</p>
+
+<ul>
+<li>Orlando Magic</li>
+<li>Minnesota Timberwolves</li>
+<li>Los Angeles Lakers</li>
+<li>Los Angeles Clippers</li>
+</ul>
+
+<p>Tier 4 (better than +3000)</p>
+
+<ul>
+<li>Golden State Warriors</li>
+</ul>
+
+<p>Outside of the Warriors going on some miracle run, the other 9 teams would be the teams to expect to win the 2026 finals. In the last 20 years, 13 of the teams to win the finals hit the over on their preseason win total, with the majority of the “under” winners being top 2 in overall odds.</p>
+
+<p>This rest is my own opinion, but based on these historical trends, there’s a few things we can extrapolate from teams that typically outperform their expectations:</p>
+
+<ul>
+<li><p>Teams that do not make major additions (aka run it back) after not winning a title typically do not win the following year. This would exclude the Cavaliers, Knicks, and Timberwolves from contention. The Thunder get a pass as the defending champions, the Nuggets, Rockets, Magic and Lakers and Clippers all made changes to their starting rotations.</p></li>
+
+<li><p>Teams that lack experience do not typically win. I know we saw an exception to this last year, but it took a 68-14 team with the MVP as the overwhelming favorite going 7 games against a 4 seeds to break this rule. Teams/cores that haven’t made a conference finals before typically do not jump that far ahead of their timeline. This would exclude the Magic as well. The Rockets could technically be excluded, but Kevin Durant and Fred VanVleet have championship experience and Ime Udoka has been to the finals as a HC, so they’re sort of a fringe team, but Kevin Durant’s teams do typically hit the under so that’s something to consider.</p></li>
+</ul>
+
+<p>For these reasons, if I’m personally picking the NBA champion for 2026 today, I would order it</p>
+
+<ol>
+<li>Thunder</li>
+<li>Nuggets (54+ wins)</li>
+<li>Lakers (if they are a top 3 seed)</li>
+<li>Clippers (if they are a top 3 seed)</li>
+</ol>
+
+<p>All 4 of these teams have players who can be considered top 5 and the best player in a playoff series (when Kawhi is healthy) with playoff risers, they added depth, and have championship experience. Clippers are a bit of a stretch but I’m willing to trick myself they won’t be injured again</p>
+
+<p>While other teams have arguments to be title contenders (somebody has to come out of the East, the West has plenty of good teams) and rules can always be broken or injury luck can change outcomes, these are the 4 teams that have the “recipe” so to speak and I think one of them will be celebrating next June.</p>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="n4w76dr" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>legend023 | Pelicans</div>
+        <div>1 | 23 minutes ago </div>
+      </div>
+      <label for="n4w76dr" class="commentText"><p>KD Warriors had minus odds and people think that team was legitimate lmao</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="n4w7wwh" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>CruelRuin</div>
+        <div>1 | 19 minutes ago </div>
+      </div>
+      <label for="n4w7wwh" class="commentText"><p>crazy how the 97 bulls, fresh off a 72 win season and handily dominating the playoffs had worse odds than a team that hadn&rsquo;t played 1 game together</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="n4waqeb" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>MuchAbouAboutNothing | Thunder</div>
+        <div>1 | 4 minutes ago </div>
+      </div>
+      <label for="n4waqeb" class="commentText"><p>Lol yeah my first takeaway from this was: &ldquo;damn those GSW teams were cracked&rdquo;</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="n4w7dhj" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Vegetable_Kale_1331 | Thunder</div>
+        <div>1 | 22 minutes ago </div>
+      </div>
+      <label for="n4w7dhj" class="commentText"><p>I think the Hawks will be next seasons “Pacers” in the playoffs</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="n4w81jk" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>CarBallAlex | Celtics</div>
+        <div>1 | 19 minutes ago </div>
+      </div>
+      <label for="n4w81jk" class="commentText"><p>Books have Hawks right behind the Warriors on average. I almost put them in tier 4 and think they can absolutely be the 4th best team in the East next year</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="n4wa0g0" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>dostorwell</div>
+        <div>1 | 8 minutes ago </div>
+      </div>
+      <label for="n4wa0g0" class="commentText"><p>Agreed</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="n4wam7v" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>FlipMoBitch | Bucks</div>
+        <div>1 | 5 minutes ago </div>
+      </div>
+      <label for="n4wam7v" class="commentText"><p>I want to believe that but I just don’t trust Trae like that</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="n4w7i4p" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>loyola-atherton | Lakers</div>
+        <div>1 | 21 minutes ago </div>
+      </div>
+      <label for="n4w7i4p" class="commentText"><p>For the biggest payout, you guys should believe in the Utah Jazz</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="n4w8bh7" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>CarBallAlex | Celtics</div>
+        <div>1 | 17 minutes ago </div>
+      </div>
+      <label for="n4w8bh7" class="commentText"><p>True and real</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="n4wa9vl" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>KennyDoge0114 | Jazz</div>
+        <div>1 | 7 minutes ago </div>
+      </div>
+      <label for="n4wa9vl" class="commentText"><p>Imagine a player winning summer league MVP and finals MVP in the same season</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="n4w8gdu" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>coacoanutbenjamn | Celtics</div>
+        <div>1 | 16 minutes ago </div>
+      </div>
+      <label for="n4w8gdu" class="commentText"><p>Honestly feels hard to imagine how OKC gets beat unless they have an injury</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="n4w8wda" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>CarBallAlex | Celtics</div>
+        <div>1 | 14 minutes ago </div>
+      </div>
+      <label for="n4w8wda" class="commentText"><p>I think the Nuggets are their biggest threat. Otherwise I agree.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="n4wan7z" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>nbaistheworst</div>
+        <div>1 | 5 minutes ago </div>
+      </div>
+      <label for="n4wan7z" class="commentText"><p>Remember the 2024 offseason when most people were saying that about the Celtics?</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="n4waxyu" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>coacoanutbenjamn | Celtics</div>
+        <div>1 | 3 minutes ago </div>
+      </div>
+      <label for="n4waxyu" class="commentText"><p>Yes but even as a Celtics fan I was saying it was between BOS and OKC</p>
+
+<p>Now I think OKC is the only tier 1 team</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="n4waxgr" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>MuchAbouAboutNothing | Thunder</div>
+        <div>1 | 3 minutes ago </div>
+      </div>
+      <label for="n4waxgr" class="commentText"><p>Rockets could cook. Spurs could arrive early. 2026 could be the year of the unc</p>
+
+<p>The west is going to be tough</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="n4w9ore" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>atsadaporkadachop</div>
+        <div>1 | 10 minutes ago </div>
+      </div>
+      <label for="n4w9ore" class="commentText"><p>The LA teams aren&rsquo;t winning it all.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="n4w9zba" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>dostorwell</div>
+        <div>1 | 8 minutes ago </div>
+      </div>
+      <label for="n4w9zba" class="commentText"><p>I don&rsquo;t see how the Nuggets aren&rsquo;t the favourites. Their week ass last year&rsquo;s version with injuries took okc to 7 games. Jokic is the best player in the planet and with a proper team he&rsquo;s pretty much unstopable</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="n4wadb6" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>nbaistheworst</div>
+        <div>1 | 6 minutes ago </div>
+      </div>
+      <label for="n4wadb6" class="commentText"><p>Like last year&rsquo;s Celtics, the Thunder will be the favorites. I&rsquo;ll take the field, because repeating is hard.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
