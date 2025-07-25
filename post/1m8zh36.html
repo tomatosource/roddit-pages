@@ -1,0 +1,1039 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.selfPostImage {
+  width: 100%;
+  height: auto;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/nba/comments/1m8zh36/oc_who_is_the_most_valuable_volume_scorer_in_nba/"><p>[OC] Who is the most valuable volume scorer in NBA history? Or, &ldquo;A Scoring Stat Wilt Chamberlain Ranks Dead Last In&rdquo;</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <h1 id="introduction">Introduction</h1>
+
+<p>A few days ago, I <a href="https://www.reddit.com/r/nbadiscussion/comments/1m3am2v/oc_expanded_analysis_on_30point_games_and_winning/" target="_blank">expanded a little</a> upon <a href="https://www.reddit.com/r/nbadiscussion/comments/1m2h3or/oc_top_players_by_winning_percentage_in_30point/" target="_blank">the initial work</a> of u/StrategyTop7612, which displayed players&rsquo; winning percentages in games in which they scored 30 points. My analysis explored the question of &ldquo;how much more did these players&rsquo; teams win compared to when they <em>didn&rsquo;t</em> score 30?&rdquo; This yielded some interesting results, such as Pete Maravich, Hal Greer, and Bob Love ranking way higher than everyone else. Though I enjoyed seeing that these often underappreciated players won a whole lot more when they scored a lot of points, the analysis still felt incomplete.</p>
+
+<p>Maravich and Love led very different careers. The former was a guard who was often tasked with scoring as much as he could; his offenses lived and died by his efficiency day-to-day. The latter was a power forward whose offensive production wasn&rsquo;t nearly as pivotal for his team&rsquo;s success. Love&rsquo;s win differential when he scored 30 vs when he didn&rsquo;t might make us think it was, but in actuality, he only scored 30 in 14% of his games. Meanwhile, Maravich scored 30 in 32% of his games. Obviously, Maravich&rsquo;s point total crossing the 30 threshold impacted his teams more, because he did it more. Simply looking at win differential wasn&rsquo;t granting that nuance. Instead, I wanted to look at how many wins a player <em>actually</em> contributed as a result of being a volume scorer.</p>
+
+<h1 id="calculating-volume-scoring-wins-vsw">Calculating Volume Scoring Wins (VSW)</h1>
+
+<p>Larry Bird will be our example player. Bird sports the highest winning percentage when scoring 30 of all time (minimum 100 30-point games), at a whopping 83%. But, when he didn&rsquo;t score 30, his teams still won 71% of the time. This could tell us a number of things, like that his supporting cast was elite, or that he provided substantial value on the court in other ways besides scoring.</p>
+
+<p>Bird scoring less than 30 can be considered the &ldquo;null.&rdquo; The null condition was met in 674 of his games, for a 71% winning percentage. Bird also played in 223 additional games. Assuming the null condition was met in those 223 games, we would expect his teams to win 71% of them, or 157. However, the null condition was <em>not</em> met in those games, as Bird did in fact score at least 30 points in each of them. In actuality, his teams won 83% of those games, or 185. So, we can conclude that Bird scoring 30 resulted in 185-157 = 28 <em>more</em> wins for his team as opposed to if he had not scored 30.</p>
+
+<p>Of course, basketball is a team sport, so it would be imprecise to credit Bird with 28 whole wins added. In order to estimate his true contribution, we can look to win shares. Since win shares are so strongly correlated with team wins, we can figure out how much responsibility Bird carried for his team&rsquo;s success. His career win shares total is about 146, and his teams won a total of 660 games. We can thus estimate that Bird was <sup>146</sup>&frasl;<sub>660</sub> = ~22% responsible for his team&rsquo;s wins.</p>
+
+<p>Now we have a better sense of how much credit to give Bird for the added wins. If his teams won 28 more games than expected when he scored 30, and he was generally responsible for 22% of their wins, his total contribution amounts to 28*.22 = 6.1. This is his Volume Scoring Wins (VSW).</p>
+
+<p>We can calculate Bird&rsquo;s pound-for-pound volume scoring contribution by converting this number to a per-82 game scale (VSW/82). His VSW/82 comes out to 0.6, which means that on average in a full season, Bird contributed a little over half a win more than expected as a result of scoring 30 points.</p>
+
+<p>This metric is considerably more accurate for understanding how much a player&rsquo;s volume scoring impacts winning, as it considers not just winning percentage difference, but also frequency and responsibility. Addressing the Bob Love example again: Despite not scoring 30 very often, he still contributed to 33 additional wins for his teams due to his high win% differential. However, since he was responsible for only 13% of his team&rsquo;s wins, his VSW comes out to 4.1, with a VSW/82 of 0.4.</p>
+
+<h1 id="the-most-and-least-valuable-volume-scorers">The Most and Least Valuable Volume Scorers</h1>
+
+<p>Now that we&rsquo;re able to calculate VSW and its rate-based counterpart, we can apply it to each of the 92 players in history who have scored 30 at least a hundred times in their career.</p>
+
+<p><strong>The top 15 in VSW:</strong></p>
+
+<table>
+<thead>
+<tr>
+<th align="left">Rank</th>
+<th align="left">Player</th>
+<th align="left">Volume Scoring Wins</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">1</td>
+<td align="left">Jerry West</td>
+<td align="left">17.4</td>
+</tr>
+
+<tr>
+<td align="left">2</td>
+<td align="left">Michael Jordan</td>
+<td align="left">17.1</td>
+</tr>
+
+<tr>
+<td align="left">3</td>
+<td align="left"><strong>Giannis Antetokounmpo</strong></td>
+<td align="left">15.0</td>
+</tr>
+
+<tr>
+<td align="left">4</td>
+<td align="left">Dominique Wilkins</td>
+<td align="left">13.8</td>
+</tr>
+
+<tr>
+<td align="left">5</td>
+<td align="left">Karl Malone</td>
+<td align="left">13.8</td>
+</tr>
+
+<tr>
+<td align="left">6</td>
+<td align="left">Adrian Dantley</td>
+<td align="left">12.6</td>
+</tr>
+
+<tr>
+<td align="left">7</td>
+<td align="left">Bob Pettit</td>
+<td align="left">12.1</td>
+</tr>
+
+<tr>
+<td align="left">8</td>
+<td align="left">Allen Iverson</td>
+<td align="left">11.7</td>
+</tr>
+
+<tr>
+<td align="left">9</td>
+<td align="left">Pete Maravich</td>
+<td align="left">10.5</td>
+</tr>
+
+<tr>
+<td align="left">10</td>
+<td align="left">Dirk Nowitzki</td>
+<td align="left">10.3</td>
+</tr>
+
+<tr>
+<td align="left">11</td>
+<td align="left">Moses Malone</td>
+<td align="left">10.2</td>
+</tr>
+
+<tr>
+<td align="left">12</td>
+<td align="left"><strong>Anthony Davis</strong></td>
+<td align="left">9.9</td>
+</tr>
+
+<tr>
+<td align="left">13</td>
+<td align="left"><strong>Stephen Curry</strong></td>
+<td align="left">8.8</td>
+</tr>
+
+<tr>
+<td align="left">14</td>
+<td align="left"><strong>James Harden</strong></td>
+<td align="left">8.1</td>
+</tr>
+
+<tr>
+<td align="left">15</td>
+<td align="left"><strong>LeBron James</strong></td>
+<td align="left">7.2</td>
+</tr>
+</tbody>
+</table>
+<p><strong>And here are the top 15 in VSW/82:</strong></p>
+
+<table>
+<thead>
+<tr>
+<th align="left">Rank</th>
+<th align="left">Player</th>
+<th align="left">Volume Scoring Wins per 82</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">1</td>
+<td align="left">Jerry West</td>
+<td align="left">1.5</td>
+</tr>
+
+<tr>
+<td align="left">2</td>
+<td align="left"><strong>Giannis Antetokounmpo</strong></td>
+<td align="left">1.4</td>
+</tr>
+
+<tr>
+<td align="left">3</td>
+<td align="left">Michael Jordan</td>
+<td align="left">1.3</td>
+</tr>
+
+<tr>
+<td align="left">4</td>
+<td align="left">Pete Maravich</td>
+<td align="left">1.3</td>
+</tr>
+
+<tr>
+<td align="left">5</td>
+<td align="left">Bob Pettit</td>
+<td align="left">1.3</td>
+</tr>
+
+<tr>
+<td align="left">6</td>
+<td align="left"><strong>Trae Young</strong></td>
+<td align="left">1.2</td>
+</tr>
+
+<tr>
+<td align="left">7</td>
+<td align="left">Adrian Dantley</td>
+<td align="left">1.1</td>
+</tr>
+
+<tr>
+<td align="left">8</td>
+<td align="left">Dominique Wilkins</td>
+<td align="left">1.1</td>
+</tr>
+
+<tr>
+<td align="left">9</td>
+<td align="left">Allen Iverson</td>
+<td align="left">1.0</td>
+</tr>
+
+<tr>
+<td align="left">10</td>
+<td align="left"><strong>Anthony Davis</strong></td>
+<td align="left">1.0</td>
+</tr>
+
+<tr>
+<td align="left">11</td>
+<td align="left"><strong>Joel Embiid</strong></td>
+<td align="left">1.0</td>
+</tr>
+
+<tr>
+<td align="left">12</td>
+<td align="left"><strong>Shai Gilgeous-Alexander</strong></td>
+<td align="left">1.0</td>
+</tr>
+
+<tr>
+<td align="left">13</td>
+<td align="left"><strong>Luka Dončić</strong></td>
+<td align="left">0.8</td>
+</tr>
+
+<tr>
+<td align="left">14</td>
+<td align="left">Karl Malone</td>
+<td align="left">0.8</td>
+</tr>
+
+<tr>
+<td align="left">15</td>
+<td align="left"><strong>Stephen Curry</strong></td>
+<td align="left">0.7</td>
+</tr>
+</tbody>
+</table>
+<p>It&rsquo;s not terribly surprising to see Jerry West and Michael Jordan conquer a stat like this. We also still see Maravich hang around near the top; the fact that he is still in the top 10 of the cumulative version despite his shorter career is impressive. The active player who leads in both versions by far is Giannis, which may surprise some considering his historically elite two-way game.</p>
+
+<p>Now we shift gears to the other end of the leaderboard, towards players whose volume scoring was either negligible or negative to their team&rsquo;s success.</p>
+
+<p><strong>The bottom 15 in VSW:</strong></p>
+
+<table>
+<thead>
+<tr>
+<th align="left">Rank</th>
+<th align="left">Player</th>
+<th align="left">Volume Scoring Wins</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">92</td>
+<td align="left">Wilt Chamberlain</td>
+<td align="left">-13.0</td>
+</tr>
+
+<tr>
+<td align="left">91</td>
+<td align="left">Tim Duncan</td>
+<td align="left">-1.7</td>
+</tr>
+
+<tr>
+<td align="left">90</td>
+<td align="left">Mark Aguirre</td>
+<td align="left">-1.1</td>
+</tr>
+
+<tr>
+<td align="left">89</td>
+<td align="left">Oscar Robertson</td>
+<td align="left">-1.1</td>
+</tr>
+
+<tr>
+<td align="left">88</td>
+<td align="left">George Mikan</td>
+<td align="left">-0.6</td>
+</tr>
+
+<tr>
+<td align="left">87</td>
+<td align="left">Kareem Abdul-Jabbar</td>
+<td align="left">-0.5</td>
+</tr>
+
+<tr>
+<td align="left">86</td>
+<td align="left">Stephon Marbury</td>
+<td align="left">-0.5</td>
+</tr>
+
+<tr>
+<td align="left">85</td>
+<td align="left"><strong>Donovan Mitchell</strong></td>
+<td align="left">-0.2</td>
+</tr>
+
+<tr>
+<td align="left">84</td>
+<td align="left">Bob McAdoo</td>
+<td align="left">-0.1</td>
+</tr>
+
+<tr>
+<td align="left">83</td>
+<td align="left">Nate Archibald</td>
+<td align="left">0.1</td>
+</tr>
+
+<tr>
+<td align="left">82</td>
+<td align="left">Spencer Haywood</td>
+<td align="left">0.2</td>
+</tr>
+
+<tr>
+<td align="left">81</td>
+<td align="left"><strong>Karl-Anthony Towns</strong></td>
+<td align="left">0.2</td>
+</tr>
+
+<tr>
+<td align="left">80</td>
+<td align="left">Antawn Jamison</td>
+<td align="left">0.5</td>
+</tr>
+
+<tr>
+<td align="left">79</td>
+<td align="left">David Thompson</td>
+<td align="left">0.6</td>
+</tr>
+
+<tr>
+<td align="left">78</td>
+<td align="left">Mike Mitchell</td>
+<td align="left">0.7</td>
+</tr>
+</tbody>
+</table>
+<p><strong>And here are the bottom 15 in VSW/82:</strong></p>
+
+<table>
+<thead>
+<tr>
+<th align="left">Rank</th>
+<th align="left">Player</th>
+<th align="left">Volume Scoring Wins per 82</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">92</td>
+<td align="left">Wilt Chamberlain</td>
+<td align="left">-1.0</td>
+</tr>
+
+<tr>
+<td align="left">91</td>
+<td align="left">George Mikan</td>
+<td align="left">-0.1</td>
+</tr>
+
+<tr>
+<td align="left">90</td>
+<td align="left">Tim Duncan</td>
+<td align="left">-0.1</td>
+</tr>
+
+<tr>
+<td align="left">89</td>
+<td align="left">Mark Aguirre</td>
+<td align="left">-0.1</td>
+</tr>
+
+<tr>
+<td align="left">88</td>
+<td align="left">Oscar Robertson</td>
+<td align="left">-0.1</td>
+</tr>
+
+<tr>
+<td align="left">87</td>
+<td align="left">Stephon Marbury</td>
+<td align="left">0.0</td>
+</tr>
+
+<tr>
+<td align="left">86</td>
+<td align="left">Kareem Abdul-Jabbar</td>
+<td align="left">0.0</td>
+</tr>
+
+<tr>
+<td align="left">85</td>
+<td align="left"><strong>Donovan Mitchell</strong></td>
+<td align="left">0.0</td>
+</tr>
+
+<tr>
+<td align="left">84</td>
+<td align="left">Bob McAdoo</td>
+<td align="left">0.0</td>
+</tr>
+
+<tr>
+<td align="left">83</td>
+<td align="left">Nate Archibald</td>
+<td align="left">0.0</td>
+</tr>
+
+<tr>
+<td align="left">82</td>
+<td align="left">Spencer Haywood</td>
+<td align="left">0.0</td>
+</tr>
+
+<tr>
+<td align="left">81</td>
+<td align="left"><strong>Karl-Anthony Towns</strong></td>
+<td align="left">0.0</td>
+</tr>
+
+<tr>
+<td align="left">80</td>
+<td align="left">Antawn Jamison</td>
+<td align="left">0.0</td>
+</tr>
+
+<tr>
+<td align="left">79</td>
+<td align="left">Ray Allen</td>
+<td align="left">0.0</td>
+</tr>
+
+<tr>
+<td align="left">78</td>
+<td align="left">Jack Twyman</td>
+<td align="left">0.1</td>
+</tr>
+</tbody>
+</table>
+<p>Here we are smacked in the face with what the title alludes to. Among all players in this sample, none come close to the negative volume scoring value of Wilt Chamberlain. And if you&rsquo;re familiar with the narrative of his career, this should make total sense. In the 7 years before he won his first title, he averaged at least 33 ppg, and averaged over 50 once. In the year he won his first title, he averaged 24.</p>
+
+<p>If you&rsquo;re curious where your favorite high-volume scorer from history ranks in this stat, <a href="https://docs.google.com/spreadsheets/d/1ipuo1L1kzbK7abmoVZxlwczD9fB0FUd7QVpavE575-o/edit?usp=sharing" target="_blank">here are the data for all 92 players.</a></p>
+
+<h1 id="does-vsw-correlate-with-anything">Does VSW correlate with anything?</h1>
+
+<p>VSW is certainly imperfect and bound to extraneous factors that are unique to each player. Nevertheless, I was curious as to what other stats it may correlate to, and if any conclusions could be drawn from that.</p>
+
+<p>The stats I analyzed were: True Shooting Percentage (TS+), Effective Field Goal Percentage (eFG+), Free Throw Percentage (FT+), Free Throw Attempt Rate (FTr+), Height (instead of rebounds, as those are highly sensitive to era), Assists, WS/82 (Offensive and Defensive), Win%, Responsibility%, and proportion of Win Shares that were Offensive (OWS%). I shied away from stats that were not available for every player in the dataset.</p>
+
+<p>Below are a couple tables outlining how the above metrics correlate with VSW/82 (specifically the rate stat, as most of these are rate-based). They are ranked by <em>how positively they correlate</em>. A score of 1 would indicate an extremely strong positive correlation, whereas a -1 would mean that as one goes up, the other goes down. A score of 0 means there&rsquo;s no correlation.</p>
+
+<p>Let&rsquo;s address the shooting efficiency metrics first:</p>
+
+<table>
+<thead>
+<tr>
+<th align="left">Stat</th>
+<th align="left">Correlation with VSW/82 &reg;</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">FTr+</td>
+<td align="left">0.31</td>
+</tr>
+
+<tr>
+<td align="left">FT+</td>
+<td align="left">0.20</td>
+</tr>
+
+<tr>
+<td align="left">TS+</td>
+<td align="left">-0.02</td>
+</tr>
+
+<tr>
+<td align="left">eFG+</td>
+<td align="left">-0.21</td>
+</tr>
+</tbody>
+</table>
+<p>From this, it seems that players who are <em>less</em> efficient with their shots tend to contribute <em>more</em> value when they score 30. If regularly inefficient scorers are reaching 30 points, that probably means they&rsquo;re overperforming their percentages and/or shooting enough that it doesn&rsquo;t matter. If those guys aren&rsquo;t reaching 30, that probably means they&rsquo;re missing a lot and creating a hole that&rsquo;s tough for their teams to dig out of.</p>
+
+<p>And the reason that the True Shooting correlation is a wash is because the negative correlation with eFG+ is canceled out by the positive correlation with the free throw metrics! It turns out that getting to the line a lot and making your 1s is valuable. No wonder Giannis, Harden, Embiid, and SGA sport great VSW/82.</p>
+
+<p>Now let&rsquo;s examine how the stat correlates with the other metrics:</p>
+
+<table>
+<thead>
+<tr>
+<th align="left">Stat</th>
+<th align="left">Correlation with VSW/82 &reg;</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">Assists/G</td>
+<td align="left">0.20</td>
+</tr>
+
+<tr>
+<td align="left">Responsibility%</td>
+<td align="left">0.15</td>
+</tr>
+
+<tr>
+<td align="left">OWS/82</td>
+<td align="left">0.14</td>
+</tr>
+
+<tr>
+<td align="left">Assists/WS</td>
+<td align="left">0.10</td>
+</tr>
+
+<tr>
+<td align="left">WS/82</td>
+<td align="left">0.09</td>
+</tr>
+
+<tr>
+<td align="left">OWS%</td>
+<td align="left">0.08</td>
+</tr>
+
+<tr>
+<td align="left">Win%</td>
+<td align="left">-0.01</td>
+</tr>
+
+<tr>
+<td align="left">DWS/82</td>
+<td align="left">-0.02</td>
+</tr>
+
+<tr>
+<td align="left">Height</td>
+<td align="left">-0.12</td>
+</tr>
+</tbody>
+</table>
+<p>VSW/82 correlating more with OWS than DWS is intuitive. It only slightly correlating with OWS% (r=.08) indicates that those who provide more volume scoring value tend to focus a little more on offense than defense, but this tendency is not too substantial. I&rsquo;m personally glad to see it doesn&rsquo;t correlate with Win%, since that tells me it&rsquo;s not noticeably biased against players on bad teams. Responsibility%&ndash;or how much a player&rsquo;s win shares meant for his teams&rsquo; wins&ndash;was positively correlated with VSW/82, which indicates that players who carry their teams tend to provide more value when they score a lot (duh).</p>
+
+<p>The interesting parts to me here are how the stat positively correlates with assists while negatively correlating with height (and we can assume rebounds). The height relationship isn&rsquo;t strong, but I believe it helps explain some of the efficiency discrepancies from earlier (height itself is strongly correlated with eFG+, r=.49). And perhaps a reason for taller players tending to score a little lower in volume scoring value is because they have a greater capacity to contribute in other aspects of the game, namely rebounding and rim protection (height and OWS% are negatively correlated, r=-.34). Therefore, their floors for how much value they can provide outside of scoring are higher, so they&rsquo;re not going to move the needle quite as much by scoring a lot. Two notable exceptions to this height trend&ndash;Russell Westbrook and Oscar Robertson&ndash;are not surprising to see on the lower end of this stat, considering their rebounding prowess.</p>
+
+<p>Meanwhile, shorter players have a lower floor in this sense; they are less capable of rebounding and rim protection. This means that by scoring a lot, they are moving their needle comparatively much more, since scoring is often their primary avenue for producing value. Shorter players also tend to be playmakers (height and assists per win share are strongly negatively correlated, r=-.69), and those who pass more tend to be worse shooters (assists per win share and eFG+ are strongly negatively correlated, r=-.59), which helps explain why VSW/82&rsquo;s strongest correlation here was with assists.</p>
+
+<p>Height in general correlates pretty strongly with WS/82 (r=.43). The moral of the story is that to succeed in basketball, it helps to follow the two rules: 1) Be tall, and 2) Don&rsquo;t be short.</p>
+
+<h1 id="conclusion">Conclusion</h1>
+
+<p>Despite the imperfections of win shares, the noise inherent with team data, and the unscientific 30-point cutoff&hellip; the results make a lot of sense to me. Contextualizing volume scoring value beyond mere win percentages can enhance our understanding of individual impact, and I think VSW does that fairly well. I also thought it was important to analyze how the stat correlates with others, even though some of the results were obvious.</p>
+
+<p>Some parting thoughts&hellip; Pretty much all of the players in our sample were #1 options for their teams. Can VSW/82 provide insight into the efficacy of a #1 option? Could this analysis be applied to players who are not #1 options, but perhaps could be? Maybe the stat could be employed for ranges of points to provide insight on which tiers of scoring players provide the most value. Or maybe it could be applied to box score stats other than points&hellip;</p>
+
+<p>Did anything about the results surprise you? I would love to engage with your thoughts on these questions and more in the comments.</p>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="n535ub1" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>tofuhoagie | 76ers</div>
+        <div>1 | 32 minutes ago </div>
+      </div>
+      <label for="n535ub1" class="commentText"><p>Fucking love these deep dives into bonkers stats I didn’t know I needed. Keep up the good work!</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="n5362f5" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>LetsGetLunch | Warriors</div>
+        <div>1 | 31 minutes ago </div>
+      </div>
+      <label for="n5362f5" class="commentText"><p>do you think this measure might be more robust if you chose i.e. 90th or 95th percentile performances in any given year by points/100 possessions (rather than a 30 point/game cutoff)? that might help normalize between eras</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="n538mky" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ritmica | Cavaliers</div>
+        <div>1 | 18 minutes ago </div>
+      </div>
+      <label for="n538mky" class="commentText"><p>Maybe! Admittedly, I was just bouncing off data from someone else that focused on the 30-point cutoff, so I didn&rsquo;t try to change what I started with. I also refrained from per-100 stats because I wanted to be able to still analyze the Mikans and the Chamberlains, etc.</p>
+
+<p>If you mean 90th percentile performances compared to themselves, that could work, but then the cutoff would essentially be a little different for everyone. But if you mean 90th percentile performances in general, I could see how that could help it be more accurate in terms of era. I think either could work. Actually finding that data would be the challenge though.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="n535rcu" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Jra805 | Suns</div>
+        <div>1 | 32 minutes ago </div>
+      </div>
+      <label for="n535rcu" class="commentText"><p>Even as a Suns fan who dislikes the Spurs (but damn they are making it hard lately with their synchronized swimming) - seeing TIM DUNCAN ranked low in <em>anything</em> is tough to accept.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="n538til" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>lefebrave | Celtics</div>
+        <div>1 | 17 minutes ago </div>
+      </div>
+      <label for="n538til" class="commentText"><p>Tbf, ranking low in this (even when we assume the calculation got it all right) does not mean anything bad or good. You can even say it is good for a player like Duncan who led his team to titles as it might mean you are capable of scoring big but you sacrifice that for winning. This is a team game as stated and the situation is unique for most of 5he stars here.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="n538pp4" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>janemba50 | Spurs</div>
+        <div>1 | 17 minutes ago </div>
+      </div>
+      <label for="n538pp4" class="commentText"><p>I think it makes sense because Duncan was always team oriented so if he needs to drop 30+ their shots not falling. At least by like 2010 onward.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="n53aihy" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ritmica | Cavaliers</div>
+        <div>1 | 8 minutes ago </div>
+      </div>
+      <label for="n53aihy" class="commentText"><p>Yeah, Duncan ranking so low in this is interesting. He&rsquo;s accompanied by a few other bigs who were gifted defensively and played on great teams. But especially in Duncan&rsquo;s case, I think playing for just one team makes drawing conclusions about him a little easier. Since scoring a lot wasn&rsquo;t his primary source of value, other players on his (often highly competent) teams carried more of the offensive load. If Duncan found himself in situations where he needed to score 30, that probably meant the rest of the Spurs weren&rsquo;t firing on all cylinders, so maybe they were slightly more susceptible to losing in that case.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="n53banz" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Jra805 | Suns</div>
+        <div>1 | 5 minutes ago </div>
+      </div>
+      <label for="n53banz" class="commentText"><p>Yeah some good points made by you and others, I guess it speaks to how amazing those Spurs team were. Big Beautiful team first Basketball (obligatory fuck Horry for my sanity)</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="n53920a" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>p_pio</div>
+        <div>1 | 16 minutes ago </div>
+      </div>
+      <label for="n53920a" class="commentText"><p>It seems that this statistic heavily favour &ldquo;FT merchants&rdquo;. West got almost 10 FTA pg, Giannis was FTA leader for last 3 seasons, Pettit got over 10 FTA pg.</p>
+
+<p>Especially for bigs. From bigs at top only AD isn&rsquo;t/wasn&rsquo;t strongly reliant on FT.</p>
+
+<p>All other bigs presented at post, aren&rsquo;t/weren&rsquo;t really FT guys. Wilt got lot of FT (actuall all time leader career wise) but he was notoriously bad shooter. McAdoo at his best was FT leader but after Braves his number dropped, KAT, TD, KAJ didn&rsquo;t have that many FTs and Mikan numbers dropped after &lsquo;51 (though he is borderline case as he got 10+ FT in first 3 seasons).</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="n539441" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>-Drink_More_Water- | Bucks</div>
+        <div>1 | 15 minutes ago </div>
+      </div>
+      <label for="n539441" class="commentText"><p>Using this to further push my Giannis agenda lol</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="n5377e8" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>KaSacha | France</div>
+        <div>1 | 25 minutes ago </div>
+      </div>
+      <label for="n5377e8" class="commentText"><p>I expected Curry to be higher ngl</p>
+
+<p>I guess the KD stint skews the data</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="n538yhu" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>janemba50 | Spurs</div>
+        <div>1 | 16 minutes ago </div>
+      </div>
+      <label for="n538yhu" class="commentText"><p>Really cool post, thanks for sharing.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="n53992z" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>erog84 | Suns</div>
+        <div>1 | 15 minutes ago </div>
+      </div>
+      <label for="n53992z" class="commentText"><p>I mean I love math and statistics are fun, but the results still can’t comprehend the context. Let’s say player A is on a team that isn’t great and they need him to score 30+ to even have a chance but still lose more often than not. Then later on that player gets better teammates and doesn’t have to score as much and they win more.  Seems like that would show up negative on here (aka wilt). If I saw a list of the negatives and it was a bunch of inefficient bad scorers I’d say you are onto something but there is multiple all time greats on there.  Sometimes putting together complex numbers doesn’t really tell us anything.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="n53a3s3" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>TripleSingleHOF | Bulls [CHI] Alex Caruso</div>
+        <div>1 | 10 minutes ago </div>
+      </div>
+      <label for="n53a3s3" class="commentText"><p>This is very cool.</p>
+
+<p>The first names that came to mind when I saw the topic title were MJ, Dominique, and Adrian Dantley, so it&rsquo;s vindicating to see them ranked so highly.</p>
+
+<p>Just curious, where is Alex English on this list?</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
