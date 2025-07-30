@@ -1,0 +1,334 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.selfPostImage {
+  width: 100%;
+  height: auto;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/nba/comments/1md658k/oc_i_built_a_searchable_linkable_cba/"><p>[OC] I built a searchable, linkable CBA</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <p>Basically the title. For those of us who are crazy enough to deep dive or cite a primary source, let me know what you think. It&rsquo;s still a little rough around the edges, but is also at a point where I could use feedback to make it better.</p>
+
+<p><a href="https://tailend.app/cba" target="_blank">https://tailend.app/cba</a></p>
+
+<p>Features currently include:</p>
+
+<ul>
+<li>Hybrid lexical and semantic search. For example: <a href="https://tailend.app/cba/?query=Can%20players%20own%20equity%20in%20teams" target="_blank">Can players own equity in teams?</a> Still very much a work in progress and will significantly improve once I have a better understanding of what people search for and how they word it</li>
+<li>Old-school Ctrl+F searching also works (for those that prefer that) since everything is on a single page</li>
+<li>You can hyperlink directly to a desired <a href="https://tailend.app/cba/#/III" target="_blank">article</a>, <a href="https://tailend.app/cba/#/IV/6" target="_blank">section</a>, or <a href="https://tailend.app/cba/#/XVIII/2/a" target="_blank">subsection</a> (hover/touch a section of text, then click the link icon). </li>
+<li>Self-references within the text are also auto-linked. <a href="https://tailend.app/cba/#/II/2/b" target="_blank">Example</a>.</li>
+<li>Navigating through those self-references uses your browser history, so clicking back returns you to where you were before</li>
+<li>PDF Page Numbers are displayed both inline and on the left. When clicked, the CBA PDF opens directly to that page so you can read/verify the original text (may not work depending on your default PDF viewer, especially on mobile)</li>
+<li>Quick preview and navigation through a &ldquo;minimap&rdquo; on the right, similar to code-editor style minimaps for those with a software development background (desktop only)</li>
+<li>Redline highlights that compare against the 2017 CBA (invite only)</li>
+<li>ChatGPT integration (invite only, mainly because of my low quota. Probably available to everyone without any limits once I can setup/host my own LLM, like vLLM+Mixtral, assuming it ends up being good enough)</li>
+</ul>
+
+<p>Features that will exist eventually:</p>
+
+<ul>
+<li>Dark mode (the minimap on desktop complicates this a bit)</li>
+<li>Reverse citation maps (each subsection will show a list of where it is mentioned elsewhere in the CBA)</li>
+<li>The exhibits still need parsed and added (my current PDF parsing code doesn&rsquo;t work very well on them yet)</li>
+<li>Likewise, I haven&rsquo;t finished parsing the dozen or so tables in the CBA. Right now they show up as jumbled text</li>
+<li>Search will be expanded to also include sparse vector embeddings.</li>
+</ul>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="n5z1ac9" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>YujiDomainExpansion</div>
+        <div>1 | 25 minutes ago </div>
+      </div>
+      <label for="n5z1ac9" class="commentText"><p>We will be seated for the full version</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="n5z1sql" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ashtonjeantygoat | Warriors</div>
+        <div>1 | 22 minutes ago </div>
+      </div>
+      <label for="n5z1sql" class="commentText"><p>How long did it take to do this?</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="n5z3gmo" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Inaccurate- | Cavaliers</div>
+        <div>1 | 13 minutes ago </div>
+      </div>
+      <label for="n5z3gmo" class="commentText"><p>On and off throughout late June and most of July. Maybe three-ish weeks if broken down into full time.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="n5z3r2p" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>SmallAd9435</div>
+        <div>1 | 11 minutes ago </div>
+      </div>
+      <label for="n5z3r2p" class="commentText"><p>Nice!</p>
+
+<p>Someone has to take the torch from Larry Coon. It seems you have volunteered as tribute. 👍</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="n5z3u37" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>egregious888 | Heat</div>
+        <div>1 | 11 minutes ago </div>
+      </div>
+      <label for="n5z3u37" class="commentText"><p>My friends already think I&rsquo;m annoying with NBA talk. You may have just ruined their lives 😂</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
