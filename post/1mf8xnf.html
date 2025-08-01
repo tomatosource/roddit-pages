@@ -1,0 +1,868 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.selfPostImage {
+  width: 100%;
+  height: auto;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/nba/comments/1mf8xnf/worst_award_votes_of_the_21st_century/"><p>Worst award votes of the 21st century</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <p>Non-exhaustive list, add more in the comments</p>
+
+<ul>
+<li><strong>Allen Iverson 2001 DPOY (1st place vote)</strong>
+
+<ul>
+<li>Over Duncan, Mutombo, Garnett, Ben Wallace, etc.</li>
+</ul></li>
+<li><strong>Michael Olowakandi 2002 All NBA</strong>
+
+<ul>
+<li><sup>11</sup>&frasl;<sub>9</sub> on 43% shooting for a 39 win Clippers team</li>
+</ul></li>
+<li><strong>Raef LaFrentz 2002 All NBA</strong>
+
+<ul>
+<li><sup>15</sup>&frasl;<sub>7</sub> for a terrible Nuggets team, traded to a good Mavericks team but only averaged <sup>11</sup>&frasl;<sub>7</sub> after the trade</li>
+</ul></li>
+<li><strong>Brian Grant All NBA 2003</strong>
+
+<ul>
+<li><sup>10</sup>&frasl;<sub>10</sub> for a 25 win Miami team</li>
+</ul></li>
+<li><strong>Marquis Daniels 2004 ROY</strong>
+
+<ul>
+<li>Somehow got votes in the same year as LeBron/Wade/Bosh/Melo while averaging 8/3/2</li>
+</ul></li>
+<li><strong>PJ Brown 2005 MVP</strong>
+
+<ul>
+<li><sup>11</sup>&frasl;<sub>9</sub> on 45% shooting for a ghastly 18 win Hornets team</li>
+</ul></li>
+<li><strong>Nenad Kristic 2006 All NBA</strong>
+
+<ul>
+<li><sup>14</sup>&frasl;<sub>6</sub> on 50% shooting; somehow gets a vote in a packed center race including Shaq, Ben Wallace, Yao, Dwight, Pau</li>
+</ul></li>
+<li><strong>Quinton Ross 2007 DPOY (1st place vote)</strong>
+
+<ul>
+<li>Don&rsquo;t remember Ross&rsquo; game too well but he only played 21 MPG for a good but not great 10th ranked Clippers defense, somehow gets 1st place vote over Ben Wallace, Camby, Duncan, Bowen, Battier, etc.</li>
+</ul></li>
+<li><strong>Robin Lopez 2009 ROY</strong>
+
+<ul>
+<li><sup>3</sup>&frasl;<sub>2</sub> in 10 MPG</li>
+</ul></li>
+<li><strong>David Lee 2010 DPOY</strong> 
+
+<ul>
+<li>Guess they thought rebounding = defense?</li>
+</ul></li>
+<li><strong>Keith Bogans 2011 DPOY (1st place)</strong>
+
+<ul>
+<li>Solid defender but insane pick in a year with Dwight Howard, Garnett, Tyson Chandler, Tony Allen, etc.</li>
+</ul></li>
+<li><strong>Kendrick Perkins 2011 All NBA</strong>
+
+<ul>
+<li><sup>6</sup>&frasl;<sub>8</sub> in 26 MPG</li>
+</ul></li>
+<li><strong>Josh Selby 2012 ROY</strong>
+
+<ul>
+<li>2/1/1 in 9 MPG</li>
+</ul></li>
+<li><strong>John Jenkins 2013 ROY</strong>
+
+<ul>
+<li>6/2/1 in 15 MPG</li>
+</ul></li>
+<li><strong>Isaiah Thomas 2017 All Defense</strong>
+
+<ul>
+<li>Didn&rsquo;t go through all the All Defense teams but this one deserves inclusion</li>
+</ul></li>
+<li><strong>Marvin Bagley 2019 All NBA</strong>
+
+<ul>
+<li>Rookie Bagley had ok stats but nowhere near All NBA levels</li>
+</ul></li>
+<li><strong>Domantas Sabonis 2024 DPOY</strong>
+
+<ul>
+<li>Almost as bad as the Isaiah Thomas vote</li>
+</ul></li>
+</ul>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="n6f9mom" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>hipstersband</div>
+        <div>14 | an hour ago </div>
+      </div>
+      <label for="n6f9mom" class="commentText"><p>Brian Grant has to be the one. Why</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="n6fb0cq" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>OutsideTheServiceBox | Bucks</div>
+        <div>11 | an hour ago </div>
+      </div>
+      <label for="n6fb0cq" class="commentText"><p>I remember some Nets&rsquo; beat writer also voted Luka for all-defense a few years back.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="n6fgo2x" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Ok-Street-2473</div>
+        <div>1 | 16 minutes ago </div>
+      </div>
+      <label for="n6fgo2x" class="commentText"><p>These people should lose their votes.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="n6fawn0" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>MalcolmSupleX | Magic</div>
+        <div>5 | an hour ago </div>
+      </div>
+      <label for="n6fawn0" class="commentText"><p>Rachel Nichols is wild.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="n6fb7in" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Personal-Ad8280 | Lakers</div>
+        <div>5 | an hour ago </div>
+      </div>
+      <label for="n6fb7in" class="commentText"><p>I think iverson is a bad one but it’s not the worst one on the list because just looking at the counting stats and defensive ranks you would think well he’s the best defender </p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="n6fd727" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>InternationalClick78 | Spurs</div>
+        <div>8 | 35 minutes ago </div>
+      </div>
+      <label for="n6fd727" class="commentText"><p>If you have a vote your understanding of defence should go beyond steals</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="n6fde1l" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Personal-Ad8280 | Lakers</div>
+        <div>4 | 34 minutes ago </div>
+      </div>
+      <label for="n6fde1l" class="commentText"><p>I agree but I think it’s better than literally all of these other ones even tho it’s indefensible</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="n6ffsgn" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>thesch | Bulls</div>
+        <div>1 | 21 minutes ago </div>
+      </div>
+      <label for="n6ffsgn" class="commentText"><p>It&rsquo;s a bad vote but that Sixers team was great on defense. They were basically built so AI carried them on offense and the rest of the starters were there for their defense.</p>
+
+<p>So like you said he was getting 2.5 steals a game for a team that was playing great defense, and I guess that fooled the voter into thinking AI was a big part of the reason the defense was so good.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="n6ffzi9" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>YSLAnunoby | Raptors</div>
+        <div>1 | 20 minutes ago </div>
+      </div>
+      <label for="n6ffzi9" class="commentText"><p>But how could you justify it for AI over his teammates?</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="n6fiycd" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Personal-Ad8280 | Lakers</div>
+        <div>1 | 3 minutes ago </div>
+      </div>
+      <label for="n6fiycd" class="commentText"><p>Cooler hair and more steals basically, not really but its name value and face stat more or less</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="n6favw6" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>weenyboy_57</div>
+        <div>4 | an hour ago </div>
+      </div>
+      <label for="n6favw6" class="commentText"><p>Anyone who voted Iggy for FMVP in 2015</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="n6fhrnj" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>irespectwomenlol</div>
+        <div>1 | 10 minutes ago </div>
+      </div>
+      <label for="n6fhrnj" class="commentText"><p>Even if you want to argue that Iggy&rsquo;s Final MVP award was weak, he deserved it as a career makeup award for being repeatedly robbed of recognition by the league.</p>
+
+<ul>
+<li>He got completely robbed of the dunk contest award, despite crushing Nate Robinson&rsquo;s pathetic 150 attempts trying to dunk, and delivering one of the true jaw-dropping dunks ever seen in the contest.</li>
+<li>He was one of the best defenders in the league for over a decade, and only made 2 all-defensive teams.</li>
+<li>He only made 1 all-star team despite putting up the counting and advanced stats to justify multiple selections.</li>
+</ul>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="n6fdyt7" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>sportsfan113 | 76ers</div>
+        <div>1 | 31 minutes ago </div>
+      </div>
+      <label for="n6fdyt7" class="commentText"><p>The guy that voted Melo for MVP over LeBron.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="n6fg7lb" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>j_cruise | Nets</div>
+        <div>1 | 18 minutes ago </div>
+      </div>
+      <label for="n6fg7lb" class="commentText"><p>Michael Olowokandi 2002 All-NBA - this one is pretty egregious. The stats were empty, and the Clippers were irrelevant.</p>
+
+<p>Robin Lopez 2009 ROY vote - <sup>3</sup>&frasl;<sub>2</sub> in 10 MPG</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="n6fc0k4" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>MileHi49er | Nuggets</div>
+        <div>1 | 41 minutes ago </div>
+      </div>
+      <label for="n6fc0k4" class="commentText"><p>I am gonna get downvoted to hell for this&hellip;</p>
+
+<p>But Derrick Rose&rsquo;s MVP was only bc they didnt want to give Lebron a 3rd in a row.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="n6fff7o" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Veserius | NBA</div>
+        <div>1 | 23 minutes ago </div>
+      </div>
+      <label for="n6fff7o" class="commentText"><p>The season series between the bulls and heat was extremely close and decided by something like 9 points in total. If Miami hits like 2 shots and some FTs LeBron wins MVP.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="n6fgg4b" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Slight_Public_5305 | Knicks</div>
+        <div>1 | 17 minutes ago </div>
+      </div>
+      <label for="n6fgg4b" class="commentText"><p>Nah, it’s also because voters can’t recognise that in the regular season your 4-10 guys are way more than you 2-3 guys. Media was out there talking as if Lebron had a better supporting cast, when he obviously fucking didn’t (at least in the regular season).</p>
+
+<p>You can amp up stars minutes in the playoffs, so it evened out there.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="n6fi7y9" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>-BigDickOriole- | Nuggets</div>
+        <div>1 | 7 minutes ago </div>
+      </div>
+      <label for="n6fi7y9" class="commentText"><p>I think it was mostly because the bulls won more games than the heat, when the heat were hyped up to be an unbeatable super team. It was just the narrative behind it since the Bulls blew away everyones expectations. It&rsquo;s not like their stats were that far off, either.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="n6fczua" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Morezingis | Timberwolves</div>
+        <div>0 | 36 minutes ago </div>
+      </div>
+      <label for="n6fczua" class="commentText"><p><a href="https://www.nbcsports.com/nba/news/lebron-james-says-derrick-rose-is-mvp" target="_blank">LeBron James says Derrick Rose is MVP</a></p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="n6fdk1k" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Ok-Discipline9998 | Raptors</div>
+        <div>10 | 33 minutes ago </div>
+      </div>
+      <label for="n6fdk1k" class="commentText"><p>TBF only dumbasses would say to the press &ldquo;I was robbed, I deserve it more than this guy&rdquo;</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="n6fexbq" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>CMYGQZ | Grizzlies</div>
+        <div>1 | 26 minutes ago </div>
+      </div>
+      <label for="n6fexbq" class="commentText"><p>well  a certain “dumbass” never held back against Marc Gasol’s DPOY</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="n6fdpqb" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>MileHi49er | Nuggets</div>
+        <div>4 | 32 minutes ago </div>
+      </div>
+      <label for="n6fdpqb" class="commentText"><p>Dumbasses like Joel Embiid? Lol</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="n6fdvbj" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Ok-Discipline9998 | Raptors</div>
+        <div>1 | 31 minutes ago </div>
+      </div>
+      <label for="n6fdvbj" class="commentText"><p>You&rsquo;ve heard me</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="n6fdoui" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Morezingis | Timberwolves</div>
+        <div>-1 | 32 minutes ago </div>
+      </div>
+      <label for="n6fdoui" class="commentText"><p>Season wasn’t over yet, mate. </p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="n6fhnx0" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>pbcorporeal | Pelicans</div>
+        <div>1 | 10 minutes ago </div>
+      </div>
+      <label for="n6fhnx0" class="commentText"><p>The full comments give a bit of a different spin on it.</p>
+
+<blockquote>
+<p>Right now, statistically, it&rsquo;s probably one of the best years I&rsquo;ve had,&rdquo; James said. &ldquo;But we&rsquo;ll see. The media kind of controls it. You&rsquo;ve got some guys here that have done their job also. At one point, I thought Dirk was also [worthy] until he got hurt. But Derrick Rose definitely has gotten a lot of the exposure and a lot of the media attention because of the work he&rsquo;s done. He&rsquo;s playing some unbelievable basketball.&rdquo;</p>
+</blockquote>
+
+<p>It&rsquo;a more a prediction than anything else, and it was pretty known by this point (if there was any doubt before the season) that the media were looking to punish Lebron for the decision and his MVP hopes were going to be damaged because of it,</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="n6fc3gh" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>RedPillTears</div>
+        <div>1 | 41 minutes ago </div>
+      </div>
+      <label for="n6fc3gh" class="commentText"><p>Lmfao the all NBA centers that took advantage of being in a trash era, salute to them fr.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="n6fidb4" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Viktrodriguez | Pacers</div>
+        <div>1 | 6 minutes ago </div>
+      </div>
+      <label for="n6fidb4" class="commentText"><p>To me it&rsquo;s more the combination of a player winning DPOY, but not being on 1st Team All-Defense in the same year (Marc Gasol). One would think winning DPOY, MVP or ROY would automatically make them 1st team in that category.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="n6fdj7t" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Overall-Stress6918</div>
+        <div>0 | 33 minutes ago </div>
+      </div>
+      <label for="n6fdj7t" class="commentText"><p>The melo lebron vote was close I remember. Can’t believe anyone besides the big 4 got a vote</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="n6ffayt" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>hopopo | Celtics</div>
+        <div>1 | 23 minutes ago </div>
+      </div>
+      <label for="n6ffayt" class="commentText"><p>Any award and honor given to life long PED abuser LeBron James.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="n6f9uvb" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Different-Winter2855</div>
+        <div>-3 | an hour ago </div>
+      </div>
+      <label for="n6f9uvb" class="commentText"><p>Not having the Kendrick Perkins slander</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
