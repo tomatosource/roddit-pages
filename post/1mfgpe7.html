@@ -1,0 +1,1042 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.selfPostImage {
+  width: 100%;
+  height: auto;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/nba/comments/1mfgpe7/what_does_it_mean_to_be_mvp_an_australians_take/"><p>What does it mean to be MVP? An Australian&rsquo;s take</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <p><strong><em>Is it the best player in the league, the best player on the best team, someone who has done something statistically unique, or something else entirely?</em></strong></p>
+
+<p>I&rsquo;ve been following the NBA for about six or seven years and it seems this debate happens every season. In the Australian Football League a rough equivalent of the MVP is the Brownlow Medal. After each game of AFL, the umpires vote for the top three players on the ground (across both teams), and award them 3/2/1 votes. At the end of the season, the player with the most votes wins the Medal. I&rsquo;ve always thought this to be quite a simple but elegant system as players need to be consistently better than both their teammates and their opposition, and they need to play in as many games as possible.</p>
+
+<p>Since it&rsquo;s the offseason, and I wanted to practice coding, I thought it would be fun to apply this game-by-game approach to the NBA, and see if NBA Brownlow Medallists would be materially different to the winners of the MVP award.</p>
+
+<p><strong>Approach</strong></p>
+
+<p>Of course there&rsquo;s no way I could get umpire votes, and given the discourse around Scott Foster et. al. it might be for the best, so I scored each player&rsquo;s performance in each game according to the following rules:</p>
+
+<ul>
+<li>&lsquo;points&rsquo;: 1.00,</li>
+<li>&lsquo;assists&rsquo;: 2.25,</li>
+<li>&lsquo;blocks&rsquo;: 3.00,</li>
+<li>&lsquo;steals&rsquo;: 2.00,</li>
+<li>&lsquo;fieldGoalsAttempted&rsquo;: -0.70,</li>
+<li>&lsquo;fieldGoalsMade&rsquo;: 2.00,</li>
+<li>&lsquo;threePointersMade&rsquo;: 0.75,</li>
+<li>&lsquo;freeThrowsAttempted&rsquo;: -0.30,</li>
+<li>&lsquo;freeThrowsMade&rsquo;: 0.60,</li>
+<li>&lsquo;reboundsDefensive&rsquo;: 1.00,</li>
+<li>&lsquo;reboundsOffensive&rsquo;: 1.25,</li>
+<li>&lsquo;turnovers&rsquo;: -1.00,</li>
+<li>&lsquo;plusMinusPoints&rsquo;: 0.30</li>
+<li>WIN_MULTIPLIER = 1.25</li>
+</ul>
+
+<p>*plusMinusPoints referes to box +/-,* <em>and WIN_MULTIPLIER is applied to the &lsquo;raw&rsquo; total score of all players on the winning team of a game</em></p>
+
+<p>For each game, the player (across both teams) with the highest score received three votes, the second highest score two votes, and third highest score one vote. The player with the most votes each season was awarded the Brownlow Medal.</p>
+
+<p><strong>Results</strong></p>
+
+<p>Full results are below (I only included 1976 - present because I&rsquo;m not sure how the data file treats players pre-merger).</p>
+
+<p>In general the Medal is typically always won by an all-time great. This makes sense as basketball teams have much fewer players than an AFL side and are usually constructed to support the best player&rsquo;s style, meaning they can consistently poll votes most games. However, players having outstanding seasons, and iron men that play in almost every game each season also regularly crack the top five.</p>
+
+<p>While the Medallist and the MVP overlap in many seasons they&rsquo;re not congruent. My approach, of course, overlooks many intangibles that don&rsquo;t show up in the stat sheet that could may impact an MVP voter, it also standardises the impact of certain statistics - perhaps it&rsquo;s wrong to say all field goals/assists/blocks etc. are made equal. However, it also removes any sentimentality that might be present in NBA MVP award voting such as season storylines, outsized individual highlights, or voter fatigue.</p>
+
+<p>A few interesting insights and superlatives to call out from the results:</p>
+
+<p><em>Most common Brownlow Medallist:</em></p>
+
+<p>1.     LeBron James - 8</p>
+
+<p>2.     Michael Jordan - 6</p>
+
+<p>3.     = Nikola Jokic, = Larry Bird, = Kareem Abdul-Jabbar* - 4 (KAJ has some pre-1976 too)</p>
+
+<p><em>Most successful individual polling seasons:</em></p>
+
+<p>1.     = LeBron James 2010, 2009, = Michael Jordan 1988 - 207 votes</p>
+
+<p>2.     = Shaquille O&rsquo;Neal 2000, = Michael Jordan 1989 - 206 votes</p>
+
+<p>3.     Hakeem Olajuwon 1993 - 201 votes</p>
+
+<p><em>Closest Brownlow Medal race:</em></p>
+
+<p>2019 - James Harden (175 votes) beating Giannis Antetokounmpo (174 votes) by a single vote</p>
+
+<p><em>Key differences between MVP and Brownlow Medal winners:</em></p>
+
+<ul>
+<li>Embiid, Westbrook, DRose, Kobe, Dirk, Nash, AI, Barkley, Walton all have won MVP but not the Brownlow</li>
+<li>Chris Paul (2008) is the only player to win the Brownlow without ever having won MVP</li>
+<li>Lebron has the biggest disparity between MVPs won (4) and Brownlows won (8)</li>
+</ul>
+
+<p>If you found this interesting, you&rsquo;d like to see more detailed results, different scoring weights, or anything else then please let me know, it&rsquo;d be great to tell my girlfriend I&rsquo;m not the only one that&rsquo;s fascinated by obscure and unnecessary sporting analysis.</p>
+
+<p>NBA player data file source: <a href="https://www.kaggle.com/datasets/eoinamoore/historical-nba-data-and-player-box-scores/data" target="_blank">https://www.kaggle.com/datasets/eoinamoore/historical-nba-data-and-player-box-scores/data</a></p>
+
+<p>NBA MVP winner list: <a href="https://www.espn.com/nba/history/awards/_/id/33" target="_blank">https://www.espn.com/nba/history/awards/_/id/33</a> </p>
+
+<table>
+<thead>
+<tr>
+<th align="left">Season</th>
+<th align="left">MVP winner</th>
+<th align="left">Brownlow Medallist</th>
+<th align="left">BM votes</th>
+<th align="left">BM runner up</th>
+<th align="left">BM 3 runner up</th>
+<th align="left">BM 4 runner up</th>
+<th align="left">BM 5 runner up</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">2025</td>
+<td align="left">Shai Gilgeous-Alexander</td>
+<td align="left">Shai Gilgeous-Alexander</td>
+<td align="left">183</td>
+<td align="left">Nikola Jokic</td>
+<td align="left">Giannis Antetokounmpo</td>
+<td align="left">Jayson Tatum</td>
+<td align="left">James Harden</td>
+</tr>
+
+<tr>
+<td align="left">2024</td>
+<td align="left">Nikola Jokic</td>
+<td align="left">Nikola Jokic</td>
+<td align="left">165</td>
+<td align="left">Luka Doncic</td>
+<td align="left">Shai Gilgeous-Alexander</td>
+<td align="left">Giannis Antetokounmpo</td>
+<td align="left">Jayson Tatum</td>
+</tr>
+
+<tr>
+<td align="left">2023</td>
+<td align="left">Joel Embiid</td>
+<td align="left">Nikola Jokic</td>
+<td align="left">159</td>
+<td align="left">Joel Embiid</td>
+<td align="left">Jayson Tatum</td>
+<td align="left">Giannis Antetokounmpo</td>
+<td align="left">Luka Doncic</td>
+</tr>
+
+<tr>
+<td align="left">2022</td>
+<td align="left">Nikola Jokic</td>
+<td align="left">Nikola Jokic</td>
+<td align="left">179</td>
+<td align="left">Giannis Antetokounmpo</td>
+<td align="left">Joel Embiid</td>
+<td align="left">Luka Doncic</td>
+<td align="left">Trae Young</td>
+</tr>
+
+<tr>
+<td align="left">2021</td>
+<td align="left">Nikola Jokic</td>
+<td align="left">Nikola Jokic</td>
+<td align="left">163</td>
+<td align="left">Luka Doncic</td>
+<td align="left">Stephen Curry</td>
+<td align="left">Julius Randle</td>
+<td align="left">Giannis Antetokounmpo</td>
+</tr>
+
+<tr>
+<td align="left">2020</td>
+<td align="left">Giannis Antetokounmpo</td>
+<td align="left">Giannis Antetokounmpo</td>
+<td align="left">159</td>
+<td align="left">James Harden</td>
+<td align="left">LeBron James</td>
+<td align="left">Luka Doncic</td>
+<td align="left">Nikola Jokic</td>
+</tr>
+
+<tr>
+<td align="left">2019</td>
+<td align="left">Giannis Antetokounmpo</td>
+<td align="left">James Harden</td>
+<td align="left">175</td>
+<td align="left">Giannis Antetokounmpo</td>
+<td align="left">Damian Lillard</td>
+<td align="left">Nikola Jokic</td>
+<td align="left">Russell Westbrook</td>
+</tr>
+
+<tr>
+<td align="left">2018</td>
+<td align="left">James Harden</td>
+<td align="left">LeBron James</td>
+<td align="left">176</td>
+<td align="left">Russell Westbrook</td>
+<td align="left">James Harden</td>
+<td align="left">Giannis Antetokounmpo</td>
+<td align="left">Anthony Davis</td>
+</tr>
+
+<tr>
+<td align="left">2017</td>
+<td align="left">Russell Westbrook</td>
+<td align="left">James Harden</td>
+<td align="left">193</td>
+<td align="left">Russell Westbrook</td>
+<td align="left">LeBron James</td>
+<td align="left">John Wall</td>
+<td align="left">Giannis Antetokounmpo</td>
+</tr>
+
+<tr>
+<td align="left">2016</td>
+<td align="left">Stephen Curry</td>
+<td align="left">Stephen Curry</td>
+<td align="left">188</td>
+<td align="left">LeBron James</td>
+<td align="left">Russell Westbrook</td>
+<td align="left">James Harden</td>
+<td align="left">Chris Paul</td>
+</tr>
+
+<tr>
+<td align="left">2015</td>
+<td align="left">Stephen Curry</td>
+<td align="left">Stephen Curry</td>
+<td align="left">177</td>
+<td align="left">James Harden</td>
+<td align="left">Chris Paul</td>
+<td align="left">LeBron James</td>
+<td align="left">John Wall</td>
+</tr>
+
+<tr>
+<td align="left">2014</td>
+<td align="left">Kevin Durant</td>
+<td align="left">Kevin Durant</td>
+<td align="left">178</td>
+<td align="left">LeBron James</td>
+<td align="left">Stephen Curry</td>
+<td align="left">Kevin Love</td>
+<td align="left">John Wall</td>
+</tr>
+
+<tr>
+<td align="left">2013</td>
+<td align="left">LeBron James</td>
+<td align="left">LeBron James</td>
+<td align="left">182</td>
+<td align="left">Kevin Durant</td>
+<td align="left">Chris Paul</td>
+<td align="left">Russell Westbrook</td>
+<td align="left">Carmelo Anthony</td>
+</tr>
+
+<tr>
+<td align="left">2012</td>
+<td align="left">LeBron James</td>
+<td align="left">LeBron James</td>
+<td align="left">137</td>
+<td align="left">Kevin Durant</td>
+<td align="left">Chris Paul</td>
+<td align="left">Blake Griffin</td>
+<td align="left">Josh Smith</td>
+</tr>
+
+<tr>
+<td align="left">2011</td>
+<td align="left">Derrick Rose</td>
+<td align="left">LeBron James</td>
+<td align="left">168</td>
+<td align="left">Derrick Rose</td>
+<td align="left">Dwight Howard</td>
+<td align="left">Dwyane Wade</td>
+<td align="left">Russell Westbrook</td>
+</tr>
+
+<tr>
+<td align="left">2010</td>
+<td align="left">LeBron James</td>
+<td align="left">LeBron James</td>
+<td align="left">207</td>
+<td align="left">Kevin Durant</td>
+<td align="left">Dwyane Wade</td>
+<td align="left">Dwight Howard</td>
+<td align="left">Kobe Bryant</td>
+</tr>
+
+<tr>
+<td align="left">2009</td>
+<td align="left">LeBron James</td>
+<td align="left">LeBron James</td>
+<td align="left">207</td>
+<td align="left">Chris Paul</td>
+<td align="left">Dwyane Wade</td>
+<td align="left">Kobe Bryant</td>
+<td align="left">Dwight Howard</td>
+</tr>
+
+<tr>
+<td align="left">2008</td>
+<td align="left">Kobe Bryant</td>
+<td align="left">Chris Paul</td>
+<td align="left">171</td>
+<td align="left">LeBron James</td>
+<td align="left">Kobe Bryant</td>
+<td align="left">Dwight Howard</td>
+<td align="left">Tim Duncan</td>
+</tr>
+
+<tr>
+<td align="left">2007</td>
+<td align="left">Dirk Nowitzki</td>
+<td align="left">LeBron James</td>
+<td align="left">164</td>
+<td align="left">Tim Duncan</td>
+<td align="left">Dirk Nowitzki</td>
+<td align="left">Kevin Garnett</td>
+<td align="left">Kobe Bryant</td>
+</tr>
+
+<tr>
+<td align="left">2006</td>
+<td align="left">Steve Nash</td>
+<td align="left">LeBron James</td>
+<td align="left">169</td>
+<td align="left">Kobe Bryant</td>
+<td align="left">Dirk Nowitzki</td>
+<td align="left">Dwyane Wade</td>
+<td align="left">Elton Brand</td>
+</tr>
+
+<tr>
+<td align="left">2005</td>
+<td align="left">Steve Nash</td>
+<td align="left">Kevin Garnett</td>
+<td align="left">168</td>
+<td align="left">Dirk Nowitzki</td>
+<td align="left">LeBron James</td>
+<td align="left">Dwyane Wade</td>
+<td align="left">Allen Iverson</td>
+</tr>
+
+<tr>
+<td align="left">2004</td>
+<td align="left">Kevin Garnett</td>
+<td align="left">Kevin Garnett</td>
+<td align="left">198</td>
+<td align="left">Tim Duncan</td>
+<td align="left">Jermaine O&rsquo;Neal</td>
+<td align="left">Andrei Kirilenko</td>
+<td align="left">Stephon Marbury</td>
+</tr>
+
+<tr>
+<td align="left">2003</td>
+<td align="left">Tim Duncan</td>
+<td align="left">Tim Duncan</td>
+<td align="left">180</td>
+<td align="left">Kevin Garnett</td>
+<td align="left">Tracy McGrady</td>
+<td align="left">Kobe Bryant</td>
+<td align="left">Dirk Nowitzki</td>
+</tr>
+
+<tr>
+<td align="left">2002</td>
+<td align="left">Tim Duncan</td>
+<td align="left">Tim Duncan</td>
+<td align="left">192</td>
+<td align="left">Kevin Garnett</td>
+<td align="left">Shaquille O&rsquo;Neal</td>
+<td align="left">Gary Payton</td>
+<td align="left">Tracy McGrady</td>
+</tr>
+
+<tr>
+<td align="left">2001</td>
+<td align="left">Allen Iverson</td>
+<td align="left">Shaquille O&rsquo;Neal</td>
+<td align="left">166</td>
+<td align="left">Chris Webber</td>
+<td align="left">Tim Duncan</td>
+<td align="left">Kevin Garnett</td>
+<td align="left">Allen Iverson</td>
+</tr>
+
+<tr>
+<td align="left">2000</td>
+<td align="left">Shaquille O&rsquo;Neal</td>
+<td align="left">Shaquille O&rsquo;Neal</td>
+<td align="left">206</td>
+<td align="left">Karl Malone</td>
+<td align="left">Gary Payton</td>
+<td align="left">Kevin Garnett</td>
+<td align="left">Tim Duncan</td>
+</tr>
+
+<tr>
+<td align="left">1999</td>
+<td align="left">Karl Malone</td>
+<td align="left">Karl Malone</td>
+<td align="left">98</td>
+<td align="left">Tim Duncan</td>
+<td align="left">Shaquille O&rsquo;Neal</td>
+<td align="left">Jason Kidd</td>
+<td align="left">Alonzo Mourning</td>
+</tr>
+
+<tr>
+<td align="left">1998</td>
+<td align="left">Michael Jordan</td>
+<td align="left">Karl Malone</td>
+<td align="left">179</td>
+<td align="left">Gary Payton</td>
+<td align="left">Michael Jordan</td>
+<td align="left">Tim Duncan</td>
+<td align="left">Shaquille O&rsquo;Neal</td>
+</tr>
+
+<tr>
+<td align="left">1997</td>
+<td align="left">Karl Malone</td>
+<td align="left">Karl Malone</td>
+<td align="left">181</td>
+<td align="left">Michael Jordan</td>
+<td align="left">Grant Hill</td>
+<td align="left">Patrick Ewing</td>
+<td align="left">Gary Payton</td>
+</tr>
+
+<tr>
+<td align="left">1996</td>
+<td align="left">Michael Jordan</td>
+<td align="left">Michael Jordan</td>
+<td align="left">192</td>
+<td align="left">David Robinson</td>
+<td align="left">Karl Malone</td>
+<td align="left">Hakeem Olajuwon</td>
+<td align="left">Grant Hill</td>
+</tr>
+
+<tr>
+<td align="left">1995</td>
+<td align="left">David Robinson</td>
+<td align="left">David Robinson</td>
+<td align="left">198</td>
+<td align="left">Karl Malone</td>
+<td align="left">Shaquille O&rsquo;Neal</td>
+<td align="left">Hakeem Olajuwon</td>
+<td align="left">Patrick Ewing</td>
+</tr>
+
+<tr>
+<td align="left">1994</td>
+<td align="left">Hakeem Olajuwon</td>
+<td align="left">Hakeem Olajuwon</td>
+<td align="left">195</td>
+<td align="left">David Robinson</td>
+<td align="left">Shaquille O&rsquo;Neal</td>
+<td align="left">Patrick Ewing</td>
+<td align="left">Karl Malone</td>
+</tr>
+
+<tr>
+<td align="left">1993</td>
+<td align="left">Charles Barkley</td>
+<td align="left">Hakeem Olajuwon</td>
+<td align="left">201</td>
+<td align="left">Michael Jordan</td>
+<td align="left">David Robinson</td>
+<td align="left">Karl Malone</td>
+<td align="left">Charles Barkley</td>
+</tr>
+
+<tr>
+<td align="left">1992</td>
+<td align="left">Michael Jordan</td>
+<td align="left">Michael Jordan</td>
+<td align="left">184</td>
+<td align="left">Patrick Ewing</td>
+<td align="left">Clyde Drexler</td>
+<td align="left">John Stockton</td>
+<td align="left">David Robinson</td>
+</tr>
+
+<tr>
+<td align="left">1991</td>
+<td align="left">Michael Jordan</td>
+<td align="left">Michael Jordan</td>
+<td align="left">200</td>
+<td align="left">David Robinson</td>
+<td align="left">Magic Johnson</td>
+<td align="left">John Stockton</td>
+<td align="left">Karl Malone</td>
+</tr>
+
+<tr>
+<td align="left">1990</td>
+<td align="left">Magic Johnson</td>
+<td align="left">Michael Jordan</td>
+<td align="left">190</td>
+<td align="left">Magic Johnson</td>
+<td align="left">David Robinson</td>
+<td align="left">Hakeem Olajuwon</td>
+<td align="left">Patrick Ewing</td>
+</tr>
+
+<tr>
+<td align="left">1989</td>
+<td align="left">Magic Johnson</td>
+<td align="left">Michael Jordan</td>
+<td align="left">206</td>
+<td align="left">Magic Johnson</td>
+<td align="left">Hakeem Olajuwon</td>
+<td align="left">John Stockton</td>
+<td align="left">Charles Barkley</td>
+</tr>
+
+<tr>
+<td align="left">1988</td>
+<td align="left">Michael Jordan</td>
+<td align="left">Michael Jordan</td>
+<td align="left">207</td>
+<td align="left">Larry Bird</td>
+<td align="left">Magic Johnson</td>
+<td align="left">Clyde Drexler</td>
+<td align="left">Charles Barkley</td>
+</tr>
+
+<tr>
+<td align="left">1987</td>
+<td align="left">Magic Johnson</td>
+<td align="left">Magic Johnson</td>
+<td align="left">185</td>
+<td align="left">Michael Jordan</td>
+<td align="left">Larry Bird</td>
+<td align="left">Hakeem Olajuwon</td>
+<td align="left">Charles Barkley</td>
+</tr>
+
+<tr>
+<td align="left">1986</td>
+<td align="left">Larry Bird</td>
+<td align="left">Larry Bird</td>
+<td align="left">172</td>
+<td align="left">Dominique Wilkins</td>
+<td align="left">Magic Johnson</td>
+<td align="left">Alex English</td>
+<td align="left">Isiah Thomas</td>
+</tr>
+
+<tr>
+<td align="left">1985</td>
+<td align="left">Larry Bird</td>
+<td align="left">Larry Bird</td>
+<td align="left">186</td>
+<td align="left">Magic Johnson</td>
+<td align="left">Isiah Thomas</td>
+<td align="left">Michael Jordan</td>
+<td align="left">Micheal Ray Richardson</td>
+</tr>
+
+<tr>
+<td align="left">1984</td>
+<td align="left">Larry Bird</td>
+<td align="left">Larry Bird</td>
+<td align="left">163</td>
+<td align="left">Isiah Thomas</td>
+<td align="left">Magic Johnson</td>
+<td align="left">Julius Erving</td>
+<td align="left">Mark Aguirre</td>
+</tr>
+
+<tr>
+<td align="left">1983</td>
+<td align="left">Moses Malone</td>
+<td align="left">Larry Bird</td>
+<td align="left">149</td>
+<td align="left">Magic Johnson</td>
+<td align="left">Moses Malone</td>
+<td align="left">Alex English</td>
+<td align="left">Marques Johnson</td>
+</tr>
+
+<tr>
+<td align="left">1982</td>
+<td align="left">Moses Malone</td>
+<td align="left">Moses Malone</td>
+<td align="left">166</td>
+<td align="left">Julius Erving</td>
+<td align="left">Larry Bird</td>
+<td align="left">Magic Johnson</td>
+<td align="left">George Gervin</td>
+</tr>
+
+<tr>
+<td align="left">1981</td>
+<td align="left">Julius Erving</td>
+<td align="left">Julius Erving</td>
+<td align="left">165</td>
+<td align="left">Kareem Abdul-Jabbar</td>
+<td align="left">Adrian Dantley</td>
+<td align="left">Moses Malone</td>
+<td align="left">Larry Bird</td>
+</tr>
+
+<tr>
+<td align="left">1980</td>
+<td align="left">Kareem Abdul-Jabbar</td>
+<td align="left">Kareem Abdul-Jabbar</td>
+<td align="left">174</td>
+<td align="left">Julius Erving</td>
+<td align="left">Larry Bird</td>
+<td align="left">George Gervin</td>
+<td align="left">Gus Williams</td>
+</tr>
+
+<tr>
+<td align="left">1979</td>
+<td align="left">Moses Malone</td>
+<td align="left">Kareem Abdul-Jabbar</td>
+<td align="left">185</td>
+<td align="left">World Free</td>
+<td align="left">George Gervin</td>
+<td align="left">Artis Gilmore</td>
+<td align="left">Moses Malone</td>
+</tr>
+
+<tr>
+<td align="left">1978</td>
+<td align="left">Bill Walton</td>
+<td align="left">George Gervin</td>
+<td align="left">142</td>
+<td align="left">Kareem Abdul-Jabbar</td>
+<td align="left">Bob McAdoo</td>
+<td align="left">Bill Walton</td>
+<td align="left">David Thompson</td>
+</tr>
+
+<tr>
+<td align="left">1977</td>
+<td align="left">Kareem Abdul-Jabbar</td>
+<td align="left">Kareem Abdul-Jabbar</td>
+<td align="left">182</td>
+<td align="left">Bill Walton</td>
+<td align="left">Pete Maravich</td>
+<td align="left">Elvin Hayes</td>
+<td align="left">Bob Lanier</td>
+</tr>
+
+<tr>
+<td align="left">1976</td>
+<td align="left">Kareem Abdul-Jabbar</td>
+<td align="left">Kareem Abdul-Jabbar</td>
+<td align="left">199</td>
+<td align="left">Bob McAdoo</td>
+<td align="left">Nate Archibald</td>
+<td align="left">Rick Barry</td>
+<td align="left">Calvin Murphy</td>
+</tr>
+</tbody>
+</table>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="n6gywlo" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Dependent-Effect6077</div>
+        <div>11 | an hour ago </div>
+      </div>
+      <label for="n6gywlo" class="commentText"><p>LeBron definitely has a case for more extra MVPs pre-2013 than post-2013 and it always puzzles me why everyone focuses on the post-2013 years when claiming he should have more of them</p>
+
+<p>From 2006-2013ish he was very consistently the best <em>regular season</em> player in the world which is what MVP is supposed to be about and many statistical metrics would give him 2-3 extra awards in that span</p>
+
+<p>It&rsquo;s like people conflate his regular season reputation with his playoff reputation so wrongly assume his pre-2012 self couldn&rsquo;t have produced some of his absolute most impressive overall seasons</p>
+
+<p>For example almost every metric likes the case for LeBron over Nash in 06 more than the case for LeBron over Giannis in 2020 and yet I don&rsquo;t think I&rsquo;ve ever seen <em>anyone</em> claim he should have won the 2006 MVP</p>
+
+<p>Other factor in this is that offensive numbers started off extremely low at the start of LeBron&rsquo;s career and steadily increased over time so it&rsquo;s underrated how much a 27/7/7 was in like 2008 or something</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="n6gz6im" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Personal-Ad8280 | Lakers</div>
+        <div>3 | 44 minutes ago </div>
+      </div>
+      <label for="n6gz6im" class="commentText"><p>Nice work bro</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="n6gzamh" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>j_ban</div>
+        <div>1 | 43 minutes ago </div>
+      </div>
+      <label for="n6gzamh" class="commentText"><p>Whatever it is, MVP doesn’t mean best player in the league</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="n6gzes7" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>yyz505a</div>
+        <div>2 | 42 minutes ago </div>
+      </div>
+      <label for="n6gzes7" class="commentText"><p>Thumbs up. All the various awards need to be reconsidered (or else just deleted)</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="n6h0dna" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Responsible-Bass4020 | Thunder</div>
+        <div>2 | 35 minutes ago </div>
+      </div>
+      <label for="n6h0dna" class="commentText"><p>didn’t read past the title so i’m assuming this is a Josh Giddy for mvp post</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="n6h2aym" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Jack_The_Sparrow_ | Warriors</div>
+        <div>1 | 21 minutes ago </div>
+      </div>
+      <label for="n6h2aym" class="commentText"><p>It means you&rsquo;re really fucking good at dribbling an orange rubber ball for a shitload of moneys</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="n6h1oko" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Excellent_Speech_901</div>
+        <div>1 | 25 minutes ago </div>
+      </div>
+      <label for="n6h1oko" class="commentText"><p>I&rsquo;ve felt that the award for the best player on the best team is the fMVP and the MVP should be for Bob McAdoo when he&rsquo;s personally doing awesome work regardless of having a useful team. This seems to be a minority opinion.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="n6h2umj" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>pokexchespin | BOS</div>
+        <div>1 | 17 minutes ago </div>
+      </div>
+      <label for="n6h2umj" class="commentText"><p>harden in 2017 and chris paul in 2008 are two of my biggest disagreements with the real MVP voting, so i’m glad this metric is on my side there. overall, very solid results, and a pretty fun project. i wonder how it would differ if instead of your own weights for stats, you just used game score and then maybe added on the win modifier to determine votes, since that’s an existing all in one metric that’s calculated for every game</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="n6gz0hl" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Puzzleheaded-Bit7457 | Nets</div>
+        <div>0 | an hour ago </div>
+      </div>
+      <label for="n6gz0hl" class="commentText"><p>Flair up, cunt</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="n6h14ib" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>SneakerWizard3</div>
+        <div>1 | 29 minutes ago </div>
+      </div>
+      <label for="n6h14ib" class="commentText"><p>It means convenience. It&rsquo;s all in the media&rsquo;s hands. If they portray Shai as a young leader, he wins.  If they portray his as a free throw merchant, jokic wins. Same for all previous years. (This is my Opinion)</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
