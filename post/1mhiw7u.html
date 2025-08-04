@@ -1,0 +1,762 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.selfPostImage {
+  width: 100%;
+  height: auto;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/nba/comments/1mhiw7u/below_are_a_list_of_1st_overall_nba_mlb_draft/"><p>Below are a list of 1st Overall NBA &amp; MLB draft picks since 2010. Which picks were better each year?</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <p>I&rsquo;ve compiled a table of 1st overall picks for both NBA and MLB of the same respective year.</p>
+
+<table>
+<thead>
+<tr>
+<th align="left">Year</th>
+<th align="left">NBA Draftee</th>
+<th align="left">MLB Draftee</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">2010</td>
+<td align="left">John Wall</td>
+<td align="left">Bryce Harper</td>
+</tr>
+
+<tr>
+<td align="left">2011</td>
+<td align="left">Kyrie Irving</td>
+<td align="left">Gerrit Cole</td>
+</tr>
+
+<tr>
+<td align="left">2012</td>
+<td align="left">Anthony Davis</td>
+<td align="left">Carlos Correa</td>
+</tr>
+
+<tr>
+<td align="left">2013</td>
+<td align="left">Anthony Bennett</td>
+<td align="left">Mark Appel</td>
+</tr>
+
+<tr>
+<td align="left">2014</td>
+<td align="left">Andrew Wiggins</td>
+<td align="left">Brady Aiken</td>
+</tr>
+
+<tr>
+<td align="left">2015</td>
+<td align="left">Karl-Anthony Towns</td>
+<td align="left">Dansby Swanson</td>
+</tr>
+
+<tr>
+<td align="left">2016</td>
+<td align="left">Ben Simmons</td>
+<td align="left">Mickey Moniak</td>
+</tr>
+
+<tr>
+<td align="left">2017</td>
+<td align="left">Markelle Fultz</td>
+<td align="left">Royce Lewis</td>
+</tr>
+
+<tr>
+<td align="left">2018</td>
+<td align="left">DeAndre Ayton</td>
+<td align="left">Casey Mize</td>
+</tr>
+
+<tr>
+<td align="left">2019</td>
+<td align="left">Zion Williamson</td>
+<td align="left">Adley Rutschman</td>
+</tr>
+
+<tr>
+<td align="left">2020</td>
+<td align="left">Anthony Edwards</td>
+<td align="left">Spencer Torkelson</td>
+</tr>
+
+<tr>
+<td align="left">2021</td>
+<td align="left">Cade Cunningham</td>
+<td align="left">Henry Davis</td>
+</tr>
+
+<tr>
+<td align="left">2022</td>
+<td align="left">Paolo Banchero</td>
+<td align="left">Jackson Holliday</td>
+</tr>
+
+<tr>
+<td align="left">2023</td>
+<td align="left">Victor Wembanyama</td>
+<td align="left">Paul Skenes</td>
+</tr>
+
+<tr>
+<td align="left">2024</td>
+<td align="left">Zaccharie Risacher</td>
+<td align="left">Travis Bazzana</td>
+</tr>
+</tbody>
+</table>
+<p>If you could do a year by year grading of each player, who was better for their respective sport. Ie was Kyrie Irving better than Gerrit Cole as a draftee of their respective sport?</p>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="n6wfhf2" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>DimwittedLogic | 76ers</div>
+        <div>1 | 31 minutes ago </div>
+      </div>
+      <label for="n6wfhf2" class="commentText"><p>2013 is cursed.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="n6wiwpn" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>BarrathBeyond | West</div>
+        <div>1 | 15 minutes ago </div>
+      </div>
+      <label for="n6wiwpn" class="commentText"><p>i don’t know anything about baseball but i have to assume for 2013 the mlb one was the better pick</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="n6wjo82" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>TitanTigers | Grizzlies</div>
+        <div>1 | 12 minutes ago </div>
+      </div>
+      <label for="n6wjo82" class="commentText"><p>They were both extremely bad picks. I don’t think Appel ever made it to the majors.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="n6wknuy" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>DimwittedLogic | 76ers</div>
+        <div>1 | 7 minutes ago </div>
+      </div>
+      <label for="n6wknuy" class="commentText"><p>Six games in 2021 for the Phillies.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="n6wkw8h" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>TitanTigers | Grizzlies</div>
+        <div>1 | 6 minutes ago </div>
+      </div>
+      <label for="n6wkw8h" class="commentText"><p>lol my apologies to Mark Appel for the disrespect</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="n6wjy5j" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>DimwittedLogic | 76ers</div>
+        <div>1 | 11 minutes ago </div>
+      </div>
+      <label for="n6wjy5j" class="commentText"><p>One of the worst first overall picks ever. He played 6 games in his entire major league career.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="n6wib13" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Automatic_Humor_8167</div>
+        <div>1 | 18 minutes ago </div>
+      </div>
+      <label for="n6wib13" class="commentText"><p>wemby</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="n6wlfhl" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>MacJonesisaterrorist | Celtics</div>
+        <div>1 | 4 minutes ago </div>
+      </div>
+      <label for="n6wlfhl" class="commentText"><p>Skenes is the best pitcher in the MLB</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="n6wlokr" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Automatic_Humor_8167</div>
+        <div>1 | 3 minutes ago </div>
+      </div>
+      <label for="n6wlokr" class="commentText"><p>has there ever been someone better than him at what he does</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="n6wg1bp" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>bringbackbulaga</div>
+        <div>1 | 28 minutes ago </div>
+      </div>
+      <label for="n6wg1bp" class="commentText"><p>MLB, mlb, nba, neither, nba, push, nba, mlb, mlb, push, nba, nba, nba, push, too early</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="n6whnf4" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ParkedLikeAHotCar34 | Bucks</div>
+        <div>1 | 21 minutes ago </div>
+      </div>
+      <label for="n6whnf4" class="commentText"><p>I don’t watch a lot of baseball, Bryce Harper and Gerrit Cole are considered to have better careers than John Wall and Kyrie?</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="n6whxs1" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>bringbackbulaga</div>
+        <div>1 | 20 minutes ago </div>
+      </div>
+      <label for="n6whxs1" class="commentText"><p>Yes, Harper is a 2x mvp, Cole is one of the greatest pitchers of the last decade</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="n6wk04z" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Sinisterminister77 | Pacers</div>
+        <div>1 | 10 minutes ago </div>
+      </div>
+      <label for="n6wk04z" class="commentText"><p>I’d take Harper over Wall but Kyrie over Cole or at least a push</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="n6wih70" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>TitanTigers | Grizzlies</div>
+        <div>1 | 17 minutes ago </div>
+      </div>
+      <label for="n6wih70" class="commentText"><p>Pretty easily</p>
+
+<p>Harper over Wall is not close. Cole has been a top 10 pitcher for the last 6 or 7 years in a row</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="n6wh6t7" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ProdigyMayd</div>
+        <div>1 | 23 minutes ago </div>
+      </div>
+      <label for="n6wh6t7" class="commentText"><p>Sort of wild Skenes and Wemby went same year</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="n6wj0jv" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>IHateAdamSilver | Nets</div>
+        <div>1 | 15 minutes ago </div>
+      </div>
+      <label for="n6wj0jv" class="commentText"><p>2010 MLB
+2011 MLB
+2012 NBA
+2013 MLB
+2014 NBA
+2015 NBA
+2016 NBA
+2017 MLB
+2018 MLB
+2019 NBA
+2020 NBA
+2021 NBA
+2022 NBA
+2023 MLB</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="n6wjhil" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Automatic_Humor_8167</div>
+        <div>1 | 13 minutes ago </div>
+      </div>
+      <label for="n6wjhil" class="commentText"><p>i dont know what a &ldquo;paul skenes&rdquo; is but unless his body allows him to warp the very physics of baseball then no</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="n6wk27d" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Zeke-Nnjai | NBA</div>
+        <div>1 | 10 minutes ago </div>
+      </div>
+      <label for="n6wk27d" class="commentText"><p>He kinda does. He has the ability to be the best pitcher ever</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="n6wkksk" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Automatic_Humor_8167</div>
+        <div>1 | 8 minutes ago </div>
+      </div>
+      <label for="n6wkksk" class="commentText"><p>is he like breaking guys bats with his pitches</p>
+
+<p>do they have to invent new bats</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="n6wkkgb" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>IHateAdamSilver | Nets</div>
+        <div>1 | 8 minutes ago </div>
+      </div>
+      <label for="n6wkkgb" class="commentText"><p>Right now he&rsquo;s undeniably a better baseball player than Wemby is a basketball player</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="n6wle6l" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Automatic_Humor_8167</div>
+        <div>1 | 4 minutes ago </div>
+      </div>
+      <label for="n6wle6l" class="commentText"><p>wemby played half a season and led the league in total blocks</p>
+
+<p>if this guy played half a season would he have led the league in whatever a good baseball thing is</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="n6wkab3" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Zeke-Nnjai | NBA</div>
+        <div>1 | 9 minutes ago </div>
+      </div>
+      <label for="n6wkab3" class="commentText"><p>2023 is insane. 2 guys with legitimate goat potential</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="n6wjakm" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Neither-Power1708</div>
+        <div>1 | 14 minutes ago </div>
+      </div>
+      <label for="n6wjakm" class="commentText"><p>Unbelievable off-season shit posting, good job</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
