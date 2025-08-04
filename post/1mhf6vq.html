@@ -1,0 +1,617 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.selfPostImage {
+  width: 100%;
+  height: auto;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/nba/comments/1mhf6vq/the_20032004_detroit_pistons_held_their_opponents/"><p>The 2003-2004 Detroit Pistons held their opponents to under 70 points 11 times including a five game streak.</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <table>
+<thead>
+<tr>
+<th align="left">G</th>
+<th align="left" colspan="2">Opponent</th>
+<th align="left">Tm</th>
+<th align="left">Opp</th>
+</tr>
+</thead>
+
+<tbody>
+</tbody>
+
+<tfoot>
+<tr>
+<td align="left">77</td>
+<td align="left">Indiana Pacers</td>
+<td align="left">W</td>
+<td align="left">79</td>
+<td align="left">61</td>
+</tr>
+
+<tr>
+<td align="left">67</td>
+<td align="left">Chicago Bulls</td>
+<td align="left">W</td>
+<td align="left">98</td>
+<td align="left">65</td>
+</tr>
+
+<tr>
+<td align="left">66</td>
+<td align="left">Seattle SuperSonics</td>
+<td align="left">W</td>
+<td align="left">86</td>
+<td align="left">65</td>
+</tr>
+
+<tr>
+<td align="left">79</td>
+<td align="left">Toronto Raptors</td>
+<td align="left">W</td>
+<td align="left">74</td>
+<td align="left">66</td>
+</tr>
+
+<tr>
+<td align="left">65</td>
+<td align="left">Denver Nuggets</td>
+<td align="left">W</td>
+<td align="left">97</td>
+<td align="left">66</td>
+</tr>
+
+<tr>
+<td align="left">59</td>
+<td align="left">Philadelphia 76ers</td>
+<td align="left">W</td>
+<td align="left">76</td>
+<td align="left">66</td>
+</tr>
+
+<tr>
+<td align="left">36</td>
+<td align="left">Houston Rockets</td>
+<td align="left">W</td>
+<td align="left">85</td>
+<td align="left">66</td>
+</tr>
+
+<tr>
+<td align="left">64</td>
+<td align="left">Portland Trail Blazers</td>
+<td align="left">W</td>
+<td align="left">83</td>
+<td align="left">68</td>
+</tr>
+
+<tr>
+<td align="left">35</td>
+<td align="left">Boston Celtics</td>
+<td align="left">W</td>
+<td align="left">78</td>
+<td align="left">68</td>
+</tr>
+
+<tr>
+<td align="left">68</td>
+<td align="left">Philadelphia 76ers</td>
+<td align="left">W</td>
+<td align="left">85</td>
+<td align="left">69</td>
+</tr>
+
+<tr>
+<td align="left">18</td>
+<td align="left">Washington Wizards</td>
+<td align="left">W</td>
+<td align="left">80</td>
+<td align="left">69</td>
+</tr>
+</tfoot>
+</table>
+<p>They did it an additional six times in the playoffs.</p>
+
+<p>The Pistons would have extended that 5-game streak holding opponents to 70 points or less to 6 games if it weren&rsquo;t for the New Jersey Nets.</p>
+
+<p>The Nets, down 69-88 intentionally fouled the Pistons to get the ball back and reached 71 with an <a href="https://youtu.be/PYOmGxLcE68" target="_blank">Aaron Williams tip-in with 1 second left</a>. They were blown out but were visibly laughing and celebrating the loss, which is just hilarious.</p>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="n6vlznr" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Amazing-Astronaut913</div>
+        <div>23 | an hour ago </div>
+      </div>
+      <label for="n6vlznr" class="commentText"><p>Carmelo getting drafted to Detroit instead of Darko is an all time what if. FUCK</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="n6vmsgl" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>murkysampson | Pistons</div>
+        <div>10 | an hour ago </div>
+      </div>
+      <label for="n6vmsgl" class="commentText"><p>If they still trade for Sheed that team is a dynasty for sure. Even without Sheed- Chauncey, Prince, and Ben still make for an elite defense and they are getting more than 1 ring.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="n6voxr6" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>wongo | Cavaliers</div>
+        <div>8 | 38 minutes ago </div>
+      </div>
+      <label for="n6voxr6" class="commentText"><p>First of all, I&rsquo;ll not stand for this Rip Hamilton erasure</p>
+
+<p>And two, the flip side to that scenario is Tayshuan would be the odd man out. Maybe he would have come off the bench but he was the SF for a long time, no guarantee he turns into the player he was if he&rsquo;s behind Melo on the chart</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="n6vmhvh" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>heat_fan_ | Raptors</div>
+        <div>9 | an hour ago </div>
+      </div>
+      <label for="n6vmhvh" class="commentText"><p>That Pistons teams ys one of the best defensive teams I&rsquo;ve ever seen </p>
+
+<p>Detroit really picked Darko instead of Melo that year yikes </p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="n6vo6oi" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>broly9139</div>
+        <div>8 | 42 minutes ago </div>
+      </div>
+      <label for="n6vo6oi" class="commentText"><p>People always say this and i always counter with chris bosh arguably would’ve been a better fit as his game would’ve fit the team ball the pistons played much better  and he would’ve been essentially what they were trying for with darko</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="n6vnx5l" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>tomdawg0022 | Timberwolves</div>
+        <div>4 | 43 minutes ago </div>
+      </div>
+      <label for="n6vnx5l" class="commentText"><p>They could have had Melo but if they wanted the big man they should have taken Bosh at 2. That would have been a great fit as well.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="n6vmm2m" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>StrategyTop7612 | Clippers</div>
+        <div>2 | an hour ago </div>
+      </div>
+      <label for="n6vmm2m" class="commentText"><p>Yeah, it was an absolutely amazing defensive team.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="n6vnf7p" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>michaelb5000</div>
+        <div>2 | an hour ago </div>
+      </div>
+      <label for="n6vnf7p" class="commentText"><p>I think the bad boy pistons were better overall defensively but didn’t get to watch the 2004 team enough and so may be underestimating them. Big Ben was awesome though.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="n6vorbe" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Asleep_Ground1710 | Bulls</div>
+        <div>4 | 39 minutes ago </div>
+      </div>
+      <label for="n6vorbe" class="commentText"><p>I&rsquo;ve watched games of the 04 finals on Youtube and man those Pistons teams were really quite advanced for the time. They were fronting the entry pass and playing ball denial on Shaq, letting Kobe dribble into traps and walling off easy 2s, they had an elite help defense. In one sequence, Ben Wallace switched onto Kobe like it was second nature to him.</p>
+
+<p>Only teams with the shooting to beat them were the Spurs and 7SOL Suns.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="n6vp5i1" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>tiorteD_snotsiP | Pistons</div>
+        <div>4 | 37 minutes ago </div>
+      </div>
+      <label for="n6vp5i1" class="commentText"><p>I’ll always remember watching this run, and the nets broke it barely on like a last second shot to get over 70 and still lost. They started celebrating and I was like how pathetic haha. That defense was lethal. Ben anchoring the paint, tayshaun prince was a menace on the perimeter. And the other 3 just created chaos around them.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="n6vq6oo" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Renegadeforever2024 | Raptors</div>
+        <div>1 | 32 minutes ago </div>
+      </div>
+      <label for="n6vq6oo" class="commentText"><p>Goat defense in the 21 century</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="n6vniqc" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>tomdawg0022 | Timberwolves</div>
+        <div>2 | an hour ago </div>
+      </div>
+      <label for="n6vniqc" class="commentText"><p>After the Rasheed trade, Detroit gave up only 79 PPG over the final 27 games of the regular season and 80.7 in the playoffs. Over those 50 games, they only gave up 100 once (triple OT playoff game against the Nets that they lost 127-120) and only gave up 90+ 7 times (5 in the playoffs, twice in the regular season).</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="n6vnwwp" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>tomhalejr | Trail Blazers</div>
+        <div>1 | 43 minutes ago </div>
+      </div>
+      <label for="n6vnwwp" class="commentText"><p>The point differentials were obviously ridiculous as well&hellip;</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="n6vqdx2" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>dafdiego777 | Rockets</div>
+        <div>1 | 31 minutes ago </div>
+      </div>
+      <label for="n6vqdx2" class="commentText"><p>Pistons didn&rsquo;t even technically have the best d that year (that was the spurs).</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="n6vr0j2" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ShakesbeerMe | Timberwolves</div>
+        <div>1 | 28 minutes ago </div>
+      </div>
+      <label for="n6vr0j2" class="commentText"><p>My favorite starting five ever. Just terrifying.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="n6vr320" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>thegreaterfool714 | Lakers</div>
+        <div>1 | 28 minutes ago </div>
+      </div>
+      <label for="n6vr320" class="commentText"><p>The greatest NBA defense I ever watched live. To this day I still get basketball PTSD after what they did to my Lakers in the finals.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
