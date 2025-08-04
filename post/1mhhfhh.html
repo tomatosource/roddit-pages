@@ -1,0 +1,2974 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.selfPostImage {
+  width: 100%;
+  height: auto;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/nba/comments/1mhhfhh/oc_there_are_an_average_of_30_future_hall_of/"><p>[OC] There are an average of 30 future Hall of Famers playing in a given NBA season. Excluding 13 &ldquo;locks&rdquo; (LeBron, KD, CP3, Steph, Harden, Russ, AD, Giannis, Jokic, Dame, PG, Kyrie &amp; Kawhi), who do you think comprised the remaining 17 players this past season?</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <p>A favorite pastime of nba subreddit users is to debate a player&rsquo;s Hall of Fame credentials, be it <a href="https://np.reddit.com/r/nba/comments/1jdiyd3/is_al_horford_a_hall_of_famer/" target="_blank">Al Horford</a>, <a href="https://np.reddit.com/r/nba/comments/1kp7tz3/serious_discussion_is_demar_derozan_a_hall_of/" target="_blank">DeMar</a> <a href="https://np.reddit.com/r/nba/comments/1ldtnf6/will_demar_derozan_make_the_hall_of_fame/" target="_blank">DeRozan</a>, <a href="https://np.reddit.com/r/nba/comments/1hx1sf5/is_draymond_a_hall_of_famer/" target="_blank">Draymond Green</a>, <a href="http://np.reddit.com/r/nba/comments/1m9tosj/do_you_think_devin_booker_is_a_future_hall_of/" target="_blank">Devin Booker</a> or <a href="https://np.reddit.com/r/nba/comments/1ivs8lc/according_to_basketball_reference_rudy_gobert/" target="_blank">Rudy Gobert</a>. I wanted to figure out exactly how many Hall of Famers play in a given year, and whether this research can help inform some users of the competition that Player Z might face in their bid to be enshrined.</p>
+
+<p>Some graphs showing the <a href="https://imgur.com/dGs4oP9" target="_blank">number of Basketball Hall of Famers playing in the ABA/NBA</a>, as well as the <a href="https://imgur.com/XlmlJJU" target="_blank">number of first seasons/final seasons</a>. Here&rsquo;s a link to a <a href="https://docs.google.com/spreadsheets/d/17EKQLcpvuHF0BCAJ4RoQQ4nGauKYthCR65Gol85iws4/edit?usp=sharing" target="_blank">Google Sheet</a>, as well as <a href="https://github.com/sumitrodatta/current-nba-hof" target="_blank">GitHub</a>!</p>
+
+<p>Some notes:</p>
+
+<ol>
+<li>The player pool I chose was male Basketball Hall of Famers who were inducted as players and have NBA/ABA statistics on Basketball-Reference (so no Sherryl Swoopes, Red Auerbach or Nikos Galis)</li>
+<li>There was a boom in HOFers from 1968-1977 because both the ABA and NBA were still up and running.</li>
+<li>Reasons for dips in between years usually are that HOFers taking that season off (Magic w/AIDs, Grant Hill w/leg injury, etc)</li>
+</ol>
+
+<p><strong>Excluding the past 10 years, the average amount of Hall of Famers in a season from 1947-2016 is 30.</strong> To be objective, I chose <a href="https://www.basketball-reference.com/about/hof_prob.html" target="_blank">90% HOF probability</a> as a clean cut-off for locks, both inactive and active. This gives us an initial group of 13 active players: LeBron James, Kevin Durant, Chris Paul, Stephen Curry, James Harden, Russell Westbrook, Anthony Davis, Giannis Antetokounmpo, Nikola Jokic, Damian Lillard, Paul George, Kyrie Irving &amp; Kawhi Leonard. This also gives us 1 interesting inactive &ldquo;future&rdquo; HOFer in Larry Foust, an eight-time All-Star centre from the 1950s. Given it&rsquo;s been so long, he&rsquo;s probably not getting in, but for the sake of this exercise, he&rsquo;s a Hall of Famer!</p>
+
+<p>(As an aside, <strong>the point of this post is NOT &ldquo;Why didn’t you include Player X as a lock?&rdquo;</strong>. The HOF probability formula on Basketball-Reference is &ldquo;based solely on NBA accomplishments and statistical output&rdquo;, and supposed to answer the question “If this player retired <em>today</em>, what is the probability he would be elected to the Hall of Fame?” Also, it is only presented for those who have a minimum of 400 NBA games played.)</p>
+
+<p>Back on topic: with 13 active locks, that leaves 17 open spots (including up to 2 rookies). These are my picks (grouped in case similarity, but not in order).</p>
+
+<p>(Full disclosure: I&rsquo;ve done this exercise <a href="https://np.reddit.com/r/nba/comments/f9bhn1/oc_there_are_an_average_of_26_future_hall_of/" target="_blank">5 years ago</a>, and my most egregious miss was &amp;gt;!Rui Hachimura, who I chose as a rookie. I thought he would have a solid NBA career, but his HOF candidacy would hinge on outstanding international accolades.!&amp;lt;If this means I lose all credibility and you stop reading, so be it.)</p>
+
+<ul>
+<li>&amp;gt;!Dray!&amp;lt; &amp; &amp;gt;!Klay!&amp;lt; (integral parts of dynasty)</li>
+<li>&amp;gt;!Luka!&amp;lt; &amp; &amp;gt;!Trae!&amp;lt; (high wattage offensive superstars, destined to remain linked)</li>
+<li>&amp;gt;!Embiid!&amp;lt; &amp; &amp;gt;!Wemby!&amp;lt; (dominant, but health issues are a major concern)</li>
+<li>&amp;gt;!Kyle Lowry!&amp;lt; (bulldog, greatest in their franchise history)</li>
+<li>&amp;gt;!Kevin Love !&amp;lt;(similar case to Chris Bosh – pile up stats on bad to mediocre teams, link up with LeBron and third-wheel to at least one championship)</li>
+<li>&amp;gt;!Jimmy Butler!&amp;lt; (analytic darling and absolute playoff animal)</li>
+<li>&amp;gt;!KAT!&amp;lt; (generational shooting bigman)</li>
+<li>&amp;gt;!Rudy Gobert!&amp;lt; (defensive first center w/multiple DPOY)</li>
+<li>&amp;gt;!Jayson Tatum!&amp;lt; (consistent greatness, and now has his ring)</li>
+<li>&amp;gt;!Anthony Edwards!&amp;lt; (potential American face of the next generation)</li>
+<li>&amp;gt;!Shai Gilgeous-Alexander!&amp;lt; (just concluded one of the greatest seasons ever, with no signs of slowing down)</li>
+<li>&amp;gt;!Donovan Mitchell!&amp;lt; (a number 1 option since he entered the league, but teams haven&rsquo;t gotten as far in the playoffs as expected)</li>
+</ul>
+
+<p>Last 10 Out:</p>
+
+<ul>
+<li>&amp;gt;!Jaylen Brown!&amp;lt;, &amp;gt;!Jalen Williams!&amp;lt; &amp; &amp;gt;!Pascal Siakam!&amp;lt; (genuine number 2s on title teams)</li>
+<li>&amp;gt;!Jalen Brunson!&amp;lt; (as a small guard, can he withstand wear-and-tear to sustain excellence?)</li>
+<li>&amp;gt;!Devin Booker!&amp;lt;&amp; &amp;gt;!DeMar DeRozan!&amp;lt; (prolific scorers)</li>
+<li>&amp;gt;!Tyrese Haliburton!&amp;lt; (in the John Stockton mold as a pass-first point guard)</li>
+<li>&amp;gt;!Ja Morant!&amp;lt; (are the off-court issues behind him?)</li>
+<li>&amp;gt;!Jaren Jackson Jr!&amp;lt; &amp; &amp;gt;!Evan Mobley!&amp;lt; (young defensive stalwarts each with a DPOY to their name)</li>
+</ul>
+
+<p>Thanks for reading! I do hope this shows how much of a mountain players have to climb to be in HOF consideration, and I hope y’all enjoyed the post!</p>
+
+<h1 id="tl-dr">TL;DR</h1>
+
+<p>There are an average of 30 future Hall of Famers playing in a given NBA season. On average, 2 FHOF are in their first season and 2 FHOF are in their final season. Given 13 “locks” (LeBron, KD, CP3, Steph, Harden, Russ, AD, Giannis, Jokic, Dame, PG, Kyrie &amp; Kawhi), who could comprise the Sweet 17 joining them?</p>
+
+<p>Here are my picks! I’ve placed them in alphabetical order. Who are yours?</p>
+
+<blockquote>
+<p>!Anthony Edwards, Damian Lillard, Donovan Mitchell, Draymond Green, Jayson Tatum, Jimmy Butler, Joel Embiid, Karl-Anthony Towns, Kevin Love, Klay Thompson, Kyle Lowry, Luka Doncic, Rudy Gobert, Shai Gilgeous-Alexander, Trae Young, Victor Wembanyama!&amp;lt;</p>
+</blockquote>
+
+<p>Last 10 Out:</p>
+
+<blockquote>
+<p>!DeMar DeRozan, Devin Booker, Evan Mobley, Ja Morant, Jaylen Brown, Jalen Brunson, Jalen Williams, Jaren Jackson Jr, Pascal Siakam, Tyrese Haliburton!&amp;lt;</p>
+</blockquote>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="n6w4ee2" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Rude-Celebration2241</div>
+        <div>1 | 24 minutes ago </div>
+      </div>
+      <label for="n6w4ee2" class="commentText"><p>Dray, Klay, Jimmy, SGA &amp; Embiid are all locks</p>
+
+<p>Tatum and Luka feel like locks.</p>
+
+<p>Rudy, KLove, Horford and Lowry all feel likely too</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="n6w5wte" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Blumpkin_Party | Hawks</div>
+        <div>1 | 17 minutes ago </div>
+      </div>
+      <label for="n6w5wte" class="commentText"><p>I feel like all of the last group is more Hall of Very Good than HoF other than Rudy.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="n6w7g57" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>meatbulbz2 | Magic</div>
+        <div>1 | 10 minutes ago </div>
+      </div>
+      <label for="n6w7g57" class="commentText"><p>Horford will get in bc it includes collegiate achievements, which he has some glowing ones.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="n6w7gey" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>RCM88x | Cavaliers</div>
+        <div>1 | 10 minutes ago </div>
+      </div>
+      <label for="n6w7gey" class="commentText"><p>Horford won two NCAA titles it would be pretty tragic if he didn&rsquo;t get in imo.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="n6w8o3s" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>rajs1286 | Lakers</div>
+        <div>1 | 4 minutes ago </div>
+      </div>
+      <label for="n6w8o3s" class="commentText"><p>It would be tragic if he DID get in. Joakim Noah was on those teams and finished 3rd in MVP voting one year, he reached a higher peak than Horford and there’s no way he should get in</p>
+
+<p>Horford is a poor poor excuse for a HOFer</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="n6w7mc5" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>cwt36 | SEA</div>
+        <div>1 | 9 minutes ago </div>
+      </div>
+      <label for="n6w7mc5" class="commentText"><p>It is for KLove and Lowry, but Horford was also a star on back-to-back national championships in college. It’s the basketball hall of fame, an NBA career is weighed the heaviest in terms of consideration, but adding a superb college career to a great professional career pushes Horford in. Probably not a first ballot, but he will get in.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="n6w8hyg" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Redditfaceguy | Nuggets</div>
+        <div>1 | 5 minutes ago </div>
+      </div>
+      <label for="n6w8hyg" class="commentText"><p>K Love is without a doubt a HOFer</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="n6w69wm" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Rude-Celebration2241</div>
+        <div>1 | 15 minutes ago </div>
+      </div>
+      <label for="n6w69wm" class="commentText"><p>I mean if it were up to me, yeah. But I think they’ll make it.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="n6w6clt" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>111cesarz | Mexico</div>
+        <div>1 | 15 minutes ago </div>
+      </div>
+      <label for="n6w6clt" class="commentText"><p>Luka jaylen brown tatum</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="n6w8dgf" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>kds_little_brother | OKC</div>
+        <div>1 | 5 minutes ago </div>
+      </div>
+      <label for="n6w8dgf" class="commentText"><p>The basketball HOF is in the vicinity of the Hall of Very Good</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="n6w8js6" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Redditfaceguy | Nuggets</div>
+        <div>1 | 5 minutes ago </div>
+      </div>
+      <label for="n6w8js6" class="commentText"><p>K Love is 100% a HOFer</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="n6w7a39" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Isolated_Blackbird | Mavericks</div>
+        <div>1 | 11 minutes ago </div>
+      </div>
+      <label for="n6w7a39" class="commentText"><p>Luka is a hall of famer if he quit today.</p>
+
+<p>There are like 13 players in NBA history with more 1st team All-Pro selections.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="n6w8m1i" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>chewie_33 | Supersonics</div>
+        <div>1 | 4 minutes ago </div>
+      </div>
+      <label for="n6w8m1i" class="commentText"><p>Now imagine a GM trading that guy&hellip;</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="n6w8tdm" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Isolated_Blackbird | Mavericks</div>
+        <div>1 | 3 minutes ago </div>
+      </div>
+      <label for="n6w8tdm" class="commentText"><p>No one would ever…</p>
+
+<p>FUCK NICO</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="n6w8raj" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Sassy_Honey_Badger</div>
+        <div>1 | 4 minutes ago </div>
+      </div>
+      <label for="n6w8raj" class="commentText"><p>Not to mention his ACB, Euroleague and European Championship resume.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="n6w84vo" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Bayelor | LAL</div>
+        <div>1 | 7 minutes ago </div>
+      </div>
+      <label for="n6w84vo" class="commentText"><p>Jrue holiday probably makes it along with these guys</p>
+
+<p>2 rings, 3 all stars, 6 all defensive teams, 2 gold medals</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="n6w87kr" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Zeke-Nnjai | NBA</div>
+        <div>1 | 6 minutes ago </div>
+      </div>
+      <label for="n6w87kr" class="commentText"><p>Rudy is a lock too. 4x DPOY is automatic bid.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="n6w8ehr" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>rajs1286 | Lakers</div>
+        <div>1 | 5 minutes ago </div>
+      </div>
+      <label for="n6w8ehr" class="commentText"><p>That last group, other than Rudy, has no business getting in</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="n6w8gcj" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Randvek | Trail Blazers</div>
+        <div>1 | 5 minutes ago </div>
+      </div>
+      <label for="n6w8gcj" class="commentText"><p>I don’t agree with SGA, Tatum, and Luka only because I don’t think it’s possible to be a “lock” at 27. All are well above the curve though.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="n6w90fg" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Imkitoto | Lakers</div>
+        <div>1 | 2 minutes ago </div>
+      </div>
+      <label for="n6w90fg" class="commentText"><p>Rudy…?</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="n6w5hn5" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>COMMENTASIPLEASE | Celtics</div>
+        <div>1 | 19 minutes ago </div>
+      </div>
+      <label for="n6w5hn5" class="commentText"><p>I think they make make Jimmy and Klay wait a little</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="n6w66ui" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Justingotgame22</div>
+        <div>1 | 16 minutes ago </div>
+      </div>
+      <label for="n6w66ui" class="commentText"><p>Klay Thompson? Nah he’s a lock along with Draymond</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="n6w6py3" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Proof-Umpire-7718 | Lakers</div>
+        <div>1 | 13 minutes ago </div>
+      </div>
+      <label for="n6w6py3" class="commentText"><p>Nah the basketball HOF has a low standard.</p>
+
+<p>Klay’s easily dome enough to warrant being a first ballot HOFer as he was an integral piece of 4 championship teams and one of the greatest dynasties ever.</p>
+
+<p>One of the all time greatest 3 point shooters ever, that currently holds the record for most 3’s in a game and a great defender in his peak.</p>
+
+<p>For Jimmy, I think he may have to wait a bit.</p>
+
+<p>Excellent career so far, but he lacks the necessary accolades.</p>
+
+<p>He would obviously be a clear first ballot HOFer if he had a ring and a FMVP, but he doesn’t.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="n6w69h2" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>grudgepacker | Bucks</div>
+        <div>1 | 16 minutes ago </div>
+      </div>
+      <label for="n6w69h2" class="commentText"><p>Jimmy gets in right away on vibes only. Could see them waiting on Klay for a minute&hellip;but also, nah</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="n6w61fn" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Fulmizant | Cavaliers</div>
+        <div>1 | 17 minutes ago </div>
+      </div>
+      <label for="n6w61fn" class="commentText"><p>Klay making hall of fame is a joke man. The hall should have some standards. Nothing wrong with a guy just getting into his team’s ring if honor</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="n6w6c95" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>randomhuman234</div>
+        <div>1 | 15 minutes ago </div>
+      </div>
+      <label for="n6w6c95" class="commentText"><p>You gotta be trolling. ELITE 2 way sniper for a decade+ on 4 different championship teams.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="n6w8xz3" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>gregosaurusrex | Cavaliers</div>
+        <div>1 | 3 minutes ago </div>
+      </div>
+      <label for="n6w8xz3" class="commentText"><p>I&rsquo;m a Cavs fan so I&rsquo;m obviously biased against any Warrior but he seems like a fringe case to me. Never the best player on his team - arguably never better than third best - never made first or second team all NBA or first team all defense. He did contribute to four championships and an Olympic gold medal, though, and that is important.</p>
+
+<p>I&rsquo;m not saying he&rsquo;d be the worst player ever inducted or that he&rsquo;s not an excellent player, but I don&rsquo;t think he&rsquo;s an absolute lock, nor should he be. I think the basketball HOF in general is a bit too lax on inductees and would like to see it more like the NFL HOF.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="n6w6gc7" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Rude-Celebration2241</div>
+        <div>1 | 15 minutes ago </div>
+      </div>
+      <label for="n6w6gc7" class="commentText"><p>Nahhhhh. Klay is a deserving lock.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="n6w7v5t" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>GamedayDev | Warriors</div>
+        <div>1 | 8 minutes ago </div>
+      </div>
+      <label for="n6w7v5t" class="commentText"><p>he whooped your teams ass that’s a crazy take lol</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="n6w846a" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>DrFartgoreShartsmith</div>
+        <div>1 | 7 minutes ago </div>
+      </div>
+      <label for="n6w846a" class="commentText"><p>No Jokic? He’s well into being a lock already</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="n6w85pk" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>hoodfavhoops | Warriors</div>
+        <div>1 | 7 minutes ago </div>
+      </div>
+      <label for="n6w85pk" class="commentText"><p>No way sga is a lock. He won a title but theoretically he could get drosed</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="n6w8oa6" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Necessary-One1782 | Lakers</div>
+        <div>1 | 4 minutes ago </div>
+      </div>
+      <label for="n6w8oa6" class="commentText"><p>d rose doesnt have a finals mvp</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="n6w8zlo" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>IAP-23I | Knicks</div>
+        <div>1 | 3 minutes ago </div>
+      </div>
+      <label for="n6w8zlo" class="commentText"><p>Not a chance, DRose resume doesn’t come close to SGA. In what world would a championship, MVP, FMVP candidate NOT make the Basketball HOF?</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="n6w3nee" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>NewSunSeverian | Wizards</div>
+        <div>1 | 28 minutes ago </div>
+      </div>
+      <label for="n6w3nee" class="commentText"><p>SGA is already a lock. He’s got the MVP which damn near always gets you there (outside of very rare exceptions like Derrick Rose who had his elite player career cut very short), plus Finals MVP.  He’s in for sure if he retires today.  </p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="n6w80pm" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>PixelBy_Pixel | Pistons</div>
+        <div>1 | 7 minutes ago </div>
+      </div>
+      <label for="n6w80pm" class="commentText"><p>D Rose is definitely gonna make it, he’s just not eligible for another 2 years</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="n6w8foz" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>vzsax | Grizzlies</div>
+        <div>1 | 5 minutes ago </div>
+      </div>
+      <label for="n6w8foz" class="commentText"><p>Man I don&rsquo;t think we have any precedent to know whether D Rose will make it or not. I&rsquo;d lean no personally — there&rsquo;s just not enough besides the 1 MVP.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="n6w89fi" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>TheI3east</div>
+        <div>1 | 6 minutes ago </div>
+      </div>
+      <label for="n6w89fi" class="commentText"><p>Rose isn&rsquo;t in because he&rsquo;s not eligible yet, not because his career was cut short. Every HOF-eligible MVP is in the HOF.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="n6w5319" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>outside_josh9</div>
+        <div>1 | 21 minutes ago </div>
+      </div>
+      <label for="n6w5319" class="commentText"><p>If he retired today, he would not get in. It doesn’t matter what you did for one season. Or else Rose would get in. SGA has to continue to show this. You don’t get in by having one amazing year.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="n6w5vez" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>NewSunSeverian | Wizards</div>
+        <div>1 | 17 minutes ago </div>
+      </div>
+      <label for="n6w5vez" class="commentText"><p>He didn’t just have one amazing year dude. He has three consecutive First Teams, and the season before this last one, he averaged 30 ppg. The one before that, he averaged 31. All on godly efficiency. </p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="n6w66w9" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>KJiggy | Pistons</div>
+        <div>1 | 16 minutes ago </div>
+      </div>
+      <label for="n6w66w9" class="commentText"><blockquote>
+<p>If he retired today, he would not get in.</p>
+</blockquote>
+
+<p>Yes he would</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="n6w67kd" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>amedeoisme | Knicks</div>
+        <div>1 | 16 minutes ago </div>
+      </div>
+      <label for="n6w67kd" class="commentText"><p>Well the thing is that SGA has 3x all nba first teams and won a title/FMVP that dwarfs rose who was elite for a season and a half</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="n6w64u1" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>GildedLockheart | Timberwolves</div>
+        <div>1 | 16 minutes ago </div>
+      </div>
+      <label for="n6w64u1" class="commentText"><p>One amazing year? plz he’s been great last year too</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="n6w6vrh" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Automatic-Collar-85 | Thunder</div>
+        <div>1 | 13 minutes ago </div>
+      </div>
+      <label for="n6w6vrh" class="commentText"><p>Totally disagree, have you seen the basketball HOF and the names in it? If guys like Louie Dampier and Charlie Scott (with all due respect) get in then I don’t see why SGA wouldn’t if he retired today. While I do agree he should have to do more to get in, the basketball HOF is ridiculously easy to make compared to other sports and there’s a long list of guys that have gotten in for less than what SGA has accomplished</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="n6w6ytu" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Automatic-Collar-85 | Thunder</div>
+        <div>1 | 12 minutes ago </div>
+      </div>
+      <label for="n6w6ytu" class="commentText"><p>Also 3 all nba first teams means 3 amazing years, not just 1</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="n6w778e" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Proof-Umpire-7718 | Lakers</div>
+        <div>1 | 11 minutes ago </div>
+      </div>
+      <label for="n6w778e" class="commentText"><p>Rose would be a clear HOFer if he achieved what Shai did by winning a ring and FMVP in his magical 2011 season.</p>
+
+<p>Having an MVP, ring, FMVP, and a scoring title is sufficient to make you a HOFer, even if you lack longevity to a significant extent.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="n6w7msm" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Mirizzi | Timberwolves</div>
+        <div>1 | 9 minutes ago </div>
+      </div>
+      <label for="n6w7msm" class="commentText"><p>Did Rose win finals MVP?</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="n6w90sq" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Pneuma_LooT | Pistons</div>
+        <div>1 | 2 minutes ago </div>
+      </div>
+      <label for="n6w90sq" class="commentText"><p>Nah Rose will definitely get it. Basketball HoF is notoriously easier to get into than any other HoF and he had a few incredibly impactful years and then was a really good bench player despite all the injuries he had.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="n6w3lty" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>COMMENTASIPLEASE | Celtics</div>
+        <div>1 | 28 minutes ago </div>
+      </div>
+      <label for="n6w3lty" class="commentText"><p>Tatum, Draymond, Luka, and Embiid are locks at this point. SGA is probably a lock already but 1  more high profile season confirms it. Jaylen Brown is probably like 1 or 2 All NBA’s from being a lock. Ant needs a few more seasons but he’ll probably make it at his current pace. Klay, Jimmy, and Gobert get in but maybe not 1st ballot.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="n6w56fg" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>NewSunSeverian | Wizards</div>
+        <div>1 | 21 minutes ago </div>
+      </div>
+      <label for="n6w56fg" class="commentText"><p>SGA is 100% a lock. Virtually every MVP makes it in and he has a Finals MVP on top of it, plus a scoring title and 3x First Team selections.  </p>
+
+<p>He’s in for sure. </p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="n6w6til" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Proof-Umpire-7718 | Lakers</div>
+        <div>1 | 13 minutes ago </div>
+      </div>
+      <label for="n6w6til" class="commentText"><p>Yeah he could retire today and make it.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="n6w47ak" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Kait0yashio | Magic</div>
+        <div>1 | 25 minutes ago </div>
+      </div>
+      <label for="n6w47ak" class="commentText"><p>So is Rudy and Luka</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="n6w4wbk" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>COMMENTASIPLEASE | Celtics</div>
+        <div>1 | 22 minutes ago </div>
+      </div>
+      <label for="n6w4wbk" class="commentText"><p>I mentioned Luka is a lock. Rudy gets in but they might make him wait.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="n6w5cns" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Kait0yashio | Magic</div>
+        <div>1 | 20 minutes ago </div>
+      </div>
+      <label for="n6w5cns" class="commentText"><p>I meant embiid but Luka came out. An MVP and several dominant years has him locked I think</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="n6w5jx0" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>COMMENTASIPLEASE | Celtics</div>
+        <div>1 | 19 minutes ago </div>
+      </div>
+      <label for="n6w5jx0" class="commentText"><p>Makes sense, I added him</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="n6w4xz8" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>KingIdis | Knicks</div>
+        <div>1 | 22 minutes ago </div>
+      </div>
+      <label for="n6w4xz8" class="commentText"><p>Also Luka</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="n6w6rwp" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>misdreavusval | Mavericks</div>
+        <div>1 | 13 minutes ago </div>
+      </div>
+      <label for="n6w6rwp" class="commentText"><p>embiid is definitely a lock. MVP, gold medal, 7x ASG, 5x all nba, 3x All defense.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="n6w5k7v" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>hlebtastic</div>
+        <div>1 | 19 minutes ago </div>
+      </div>
+      <label for="n6w5k7v" class="commentText"><p>I don’t know that I think he deserves to be in necessarily, but one guy who never gets mentioned in these conversations is Jrue Holiday. His counting stats aren’t going to blow you away, but he’s just flat out a better player than a lot of players on this list and had a better career as well</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="n6w8pwc" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>datsoar | Bucks</div>
+        <div>1 | 4 minutes ago </div>
+      </div>
+      <label for="n6w8pwc" class="commentText"><p>Hypothetical, if Jrue made it what jersey is he wearing?</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="n6w7y05" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Proof-Umpire-7718 | Lakers</div>
+        <div>1 | 8 minutes ago </div>
+      </div>
+      <label for="n6w7y05" class="commentText"><p>Also a two time Olympic medallist, which is a major contributing factor.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="n6w5wss" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>TheWestRemembers | Lakers</div>
+        <div>1 | 17 minutes ago </div>
+      </div>
+      <label for="n6w5wss" class="commentText"><p>Al Horford. Back to back college champions with the Gators, 5x All Star, NBA champion, almost 2 decades in the NBA, hot wife.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="n6w7kgu" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>amedeoisme | Knicks</div>
+        <div>1 | 9 minutes ago </div>
+      </div>
+      <label for="n6w7kgu" class="commentText"><p>Yeah college carrying it a bit, that’s why I kinda wish it was just the NBA HOF.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="n6w4ogf" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Leavingtheecstasy | Thunder</div>
+        <div>1 | 23 minutes ago </div>
+      </div>
+      <label for="n6w4ogf" class="commentText"><p>SGA clearly is on the trajectory.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="n6w7jb5" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Proof-Umpire-7718 | Lakers</div>
+        <div>1 | 9 minutes ago </div>
+      </div>
+      <label for="n6w7jb5" class="commentText"><p>He’s already there.</p>
+
+<p>MVP, Champion, FMVP, scoring title, and three All-NBA first team and three All-Star selections.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="n6w7td9" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>PixelBy_Pixel | Pistons</div>
+        <div>1 | 8 minutes ago </div>
+      </div>
+      <label for="n6w7td9" class="commentText"><p>every MVP in history has made the HOF, even if he retired tomorrow he would make it</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="n6w73gn" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Nuclearsunburn | Heat</div>
+        <div>1 | 12 minutes ago </div>
+      </div>
+      <label for="n6w73gn" class="commentText"><p>I think he’s in even if he retires tomorrow</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="n6w881v" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>kamekaze1024</div>
+        <div>1 | 6 minutes ago </div>
+      </div>
+      <label for="n6w881v" class="commentText"><p>Call me crazy but he’s already a lock. Derrick Rose may be the first MVP to not get inducted by SGA is a MVP and FMVP. That’s a guarantee in my book</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="n6w5egy" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>cursedazsports | Suns</div>
+        <div>1 | 20 minutes ago </div>
+      </div>
+      <label for="n6w5egy" class="commentText"><p>why would donovan mitchell be in and not devin booker? book has two olympic gold medals, a finals appearance, and will probably finish with more points.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="n6w8dsy" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>kamekaze1024</div>
+        <div>1 | 5 minutes ago </div>
+      </div>
+      <label for="n6w8dsy" class="commentText"><p>I mean shit, Mitchell hasn’t even made it to a Conference Final.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="n6w6o4q" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>amedeoisme | Knicks</div>
+        <div>1 | 14 minutes ago </div>
+      </div>
+      <label for="n6w6o4q" class="commentText"><p>Probably the 2x more all star seasons</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="n6w5075" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>gOPHER3727</div>
+        <div>1 | 22 minutes ago </div>
+      </div>
+      <label for="n6w5075" class="commentText"><p>I feel like Booker is pretty much a lock as well simply due to sheer volume. Provided he avoids injury he&rsquo;s going to get way up there in points and 3 pointers (like top 10) and decently high in assists, plus he looks to be one of those one-team stars. SGA pretty much a lock as well at this point.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="n6w816p" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Justingotgame22</div>
+        <div>1 | 7 minutes ago </div>
+      </div>
+      <label for="n6w816p" class="commentText"><p>Booker is not a lock today.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="n6w4081" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>yaaanevaknow | United States</div>
+        <div>1 | 26 minutes ago </div>
+      </div>
+      <label for="n6w4081" class="commentText"><p>Lowry is not HOF</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="n6w49pb" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Rithgarth | MKE</div>
+        <div>1 | 25 minutes ago </div>
+      </div>
+      <label for="n6w49pb" class="commentText"><p>6 all stars and a long  productive career will typically get you in. </p>
+
+<p>He&rsquo;s also widely considered the greatest Raptor, which should help him out.</p>
+
+<p>He&rsquo;s just not going to be a first ballot HOF guy.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="n6w7ljf" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Proof-Umpire-7718 | Lakers</div>
+        <div>1 | 9 minutes ago </div>
+      </div>
+      <label for="n6w7ljf" class="commentText"><p>Also being a champion.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="n6w4yxu" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>flexingtonsteele | LAL</div>
+        <div>1 | 22 minutes ago </div>
+      </div>
+      <label for="n6w4yxu" class="commentText"><p>Yes he is lmao</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="n6w6ci6" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>mnight84</div>
+        <div>1 | 15 minutes ago </div>
+      </div>
+      <label for="n6w6ci6" class="commentText"><p>Luka doncic is a lock! Especially when you throw in the fact it is the basketball Hall of Fame not the NBA Hall of Fame!  what Luka has done in Europe combined with his first seven seasons in the NBA he is already in based on that.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="n6w4s21" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Teleporter456789 | Cavaliers</div>
+        <div>1 | 23 minutes ago </div>
+      </div>
+      <label for="n6w4s21" class="commentText"><p>Jimmy Butler</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="n6w71ez" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>OnePointSeven | Bulls</div>
+        <div>1 | 12 minutes ago </div>
+      </div>
+      <label for="n6w71ez" class="commentText"><p>my version of your Rui pick: Matas Buzelis</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="n6w49w2" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>racingplaybook</div>
+        <div>1 | 25 minutes ago </div>
+      </div>
+      <label for="n6w49w2" class="commentText"><p>Great analysis! I know that comparing different eras is difficult/pointless, but with the number of HOFs decreasing recently I am wondering whether the qualifications for being considered as a HOF player are gradually getting higher</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="n6w5v59" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>EarthWarping | NBA</div>
+        <div>1 | 17 minutes ago </div>
+      </div>
+      <label for="n6w5v59" class="commentText"><p>Its also the basketball, not NBA HOF.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="n6w5brw" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>shotokhan1992- | 76ers</div>
+        <div>1 | 20 minutes ago </div>
+      </div>
+      <label for="n6w5brw" class="commentText"><p>NBA needs its own HOF with a higher standard to get in. KAT and Demar Dearozan?? I mean you’re probably right that they could get in, but you shouldn’t be</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="n6w5dbh" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>benchmaster620</div>
+        <div>1 | 20 minutes ago </div>
+      </div>
+      <label for="n6w5dbh" class="commentText"><p>Cade looks to be on that trajectory and is already more accomplished than a few guys in or almost everyone on the first 10 out</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="n6w5xc3" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>twoyrsaway</div>
+        <div>1 | 17 minutes ago </div>
+      </div>
+      <label for="n6w5xc3" class="commentText"><p>Luka is was already a lock for what he did in Euroleauge alone. The 5 all NBA first teams are just the cherry on top</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="n6w8off" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>amedeoisme | Knicks</div>
+        <div>1 | 4 minutes ago </div>
+      </div>
+      <label for="n6w8off" class="commentText"><p>Really? If he retired after his euroleague run and didn’t go to the nba he would make it? That sounds ridiculous</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="n6w684z" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>grusilag9 | Mavericks</div>
+        <div>1 | 16 minutes ago </div>
+      </div>
+      <label for="n6w684z" class="commentText"><p>Luka should probably be in your locks category. He’s a euro league MVP, Final Four MVP, and Euro league champion with Real Madrid all before he even played his first NBA game</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="n6w6jb7" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>TyreseHaliburtonGOAT</div>
+        <div>1 | 14 minutes ago </div>
+      </div>
+      <label for="n6w6jb7" class="commentText"><p>Haliburton</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="n6w8pl0" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>TJWA | Pacers</div>
+        <div>1 | 4 minutes ago </div>
+      </div>
+      <label for="n6w8pl0" class="commentText"><p>You&rsquo;re god damn right</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="n6w47y4" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>MikeConleyIsLegend | Grizzlies</div>
+        <div>1 | 25 minutes ago </div>
+      </div>
+      <label for="n6w47y4" class="commentText"><p>Jaylen Wells</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="n6w4d4t" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>legend023 | Pelicans</div>
+        <div>1 | 25 minutes ago </div>
+      </div>
+      <label for="n6w4d4t" class="commentText"><p>Not gonna lie there might be more than 30 because even the last 10 out seem relatively likely</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="n6w4k7x" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Broad_Chain3247</div>
+        <div>1 | 24 minutes ago </div>
+      </div>
+      <label for="n6w4k7x" class="commentText"><p>Anthony Edwards for sure</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="n6w4omf" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>complexvibess | Warriors</div>
+        <div>1 | 23 minutes ago </div>
+      </div>
+      <label for="n6w4omf" class="commentText"><p>PG &amp; AD??</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="n6w5q3y" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ZestycloseBenefit852</div>
+        <div>1 | 18 minutes ago </div>
+      </div>
+      <label for="n6w5q3y" class="commentText"><p>AD for sure, def not pg tho</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="n6w7qzm" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Justingotgame22</div>
+        <div>1 | 8 minutes ago </div>
+      </div>
+      <label for="n6w7qzm" class="commentText"><p>Pg makes it. Don’t forget his Pacers days. Def not first ballot</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="n6w7z4z" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>hiatus-x-hiatus22</div>
+        <div>1 | 7 minutes ago </div>
+      </div>
+      <label for="n6w7z4z" class="commentText"><p>Paul George is 100% getting in. His resume is already more than good enough.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="n6w8sh2" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>amedeoisme | Knicks</div>
+        <div>1 | 4 minutes ago </div>
+      </div>
+      <label for="n6w8sh2" class="commentText"><p>Def not? Pg has 9x all star 6x all nba, that dwarfs the stats of many other guys in the HOF already</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="n6w909i" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>FlawlessLikeUs | NBA</div>
+        <div>1 | 3 minutes ago </div>
+      </div>
+      <label for="n6w909i" class="commentText"><p>Lol.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="n6w5hv2" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>oneforallmc</div>
+        <div>1 | 19 minutes ago </div>
+      </div>
+      <label for="n6w5hv2" class="commentText"><p>Why wouldn’t AD and PG make it??</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="n6w6kvk" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Ok-Tree4365</div>
+        <div>1 | 14 minutes ago </div>
+      </div>
+      <label for="n6w6kvk" class="commentText"><p>Absolutely </p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="n6w59m5" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Smart_Tangerine_6944</div>
+        <div>1 | 20 minutes ago </div>
+      </div>
+      <label for="n6w59m5" class="commentText"><p>Paolo is going to average 28+ for the next decade. He’s probably a lock as well.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="n6w5xmx" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>GoldHorusSixSaturnus | Raptors</div>
+        <div>1 | 17 minutes ago </div>
+      </div>
+      <label for="n6w5xmx" class="commentText"><p>In what world is Paul George a HoFer?</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="n6w8dis" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>amedeoisme | Knicks</div>
+        <div>1 | 5 minutes ago </div>
+      </div>
+      <label for="n6w8dis" class="commentText"><p>Have you seen the list of the HOF? A 9x all star and 6x all nba</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="n6w8kee" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Parrallax91</div>
+        <div>1 | 5 minutes ago </div>
+      </div>
+      <label for="n6w8kee" class="commentText"><p>Compared to the NFL and MLB HoFs it&rsquo;s pretty easy to get into the basketball one.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="n6w6tg3" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Toadincuffs</div>
+        <div>1 | 13 minutes ago </div>
+      </div>
+      <label for="n6w6tg3" class="commentText"><p>He is a first ballot HoFer for sure, lol</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="n6w56nf" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Aware-Cut5688</div>
+        <div>1 | 21 minutes ago </div>
+      </div>
+      <label for="n6w56nf" class="commentText"><p>Lol pg?</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="n6w5wi3" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Proof-Umpire-7718 | Lakers</div>
+        <div>1 | 17 minutes ago </div>
+      </div>
+      <label for="n6w5wi3" class="commentText"><p>I agree with your list.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="n6w5x70" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Charlie_Wax | Warriors</div>
+        <div>1 | 17 minutes ago </div>
+      </div>
+      <label for="n6w5x70" class="commentText"><p>Banchero will walk in if he stays healthy and keeps improving.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="n6w635f" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Jamie-----</div>
+        <div>1 | 16 minutes ago </div>
+      </div>
+      <label for="n6w635f" class="commentText"><p>So average of 2 per draft class. Unclear who they’ll be, but we should budget 10 from the 2021-25 drafts even though we don’t know who they’ll be </p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="n6w64cd" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Promech</div>
+        <div>1 | 16 minutes ago </div>
+      </div>
+      <label for="n6w64cd" class="commentText"><p>I think Trae, Jalen Williams and Ja Morant are probably not hall of famers right now and probably have a pretty steep hill to climb to become one(they’re all capable of climbing it, I just think that they actually need to do it to get into that category). </p>
+
+<p>Lowry is my favorite player behind Bosh, but I don’t know that he gets the nod to the hall of fame. Imo it would be deserved, but if he never made it I wouldn’t be overly surprised or disappointed. </p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="n6w6cnu" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ThSrT | Pistons</div>
+        <div>1 | 15 minutes ago </div>
+      </div>
+      <label for="n6w6cnu" class="commentText"><p>Luka and SGA are a lock. Even they retire tomorrow, they would be in the hof.</p>
+
+<p>To be honest, Luka was a lock from the start for his years in Euroleague and with the national team.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="n6w6g8b" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Ok-Tree4365</div>
+        <div>1 | 15 minutes ago </div>
+      </div>
+      <label for="n6w6g8b" class="commentText"><p>Nic Batum, for NBA + Team France accomplishments.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="n6w6gpb" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Glizzy-78</div>
+        <div>1 | 15 minutes ago </div>
+      </div>
+      <label for="n6w6gpb" class="commentText"><p>Derozen is going to make it. Every player with more career points than him is either still active or in the HOF, and he has about 5k more points than the highest guys on the list not in the HOF.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="n6w6npi" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>OverallGeneral7129 | Cavaliers</div>
+        <div>1 | 14 minutes ago </div>
+      </div>
+      <label for="n6w6npi" class="commentText"><p>Shai, Embiid, Jimmy, Klay, Draymond, Tatum, Luka, Gobert and then there are the people who I would say are on pace like Ant and Wemby</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="n6w6pnq" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>yapyd | Minneapolis Lakers</div>
+        <div>1 | 13 minutes ago </div>
+      </div>
+      <label for="n6w6pnq" class="commentText"><p>I think people are underlooking DeMar DeRozan. 25k points and just behind Steph in the all-time scoring list. He&rsquo;s not first ballot, but he should make the cut. He should definitely make it over KAT and Trae as of right now</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="n6w6xbp" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>clanflyf | Warriors</div>
+        <div>1 | 12 minutes ago </div>
+      </div>
+      <label for="n6w6xbp" class="commentText"><p>I do wish nba HOF are as harsh on criteria like baseball HOF</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="n6w6y0t" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>elwood_west</div>
+        <div>1 | 12 minutes ago </div>
+      </div>
+      <label for="n6w6y0t" class="commentText"><p>Paul George is a lock for HoF?</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="n6w7crs" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>SeismicRipFart | Trail Blazers</div>
+        <div>1 | 10 minutes ago </div>
+      </div>
+      <label for="n6w7crs" class="commentText"><p>Shaedon Sharpe</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="n6w7mnh" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>cilantro_samosa | TOR</div>
+        <div>1 | 9 minutes ago </div>
+      </div>
+      <label for="n6w7mnh" class="commentText"><p>For those who are commenting why Player X is not considered a lock:</p>
+
+<blockquote>
+<p>To be objective, I chose <a href="https://www.basketball-reference.com/about/hof_prob.html" target="_blank">90% HOF probability</a> as a clean cut-off for locks, both inactive and active.<br>
+[&hellip;]<br>
+(As an aside, <strong>the point of this post is NOT &ldquo;Why didn’t you include Player X as a lock?&rdquo;</strong>. The HOF probability formula on Basketball-Reference is &ldquo;based solely on NBA accomplishments and statistical output&rdquo;, and supposed to answer the question “If this player retired <em>today</em>, what is the probability he would be elected to the Hall of Fame?” Also, it is only presented for those who have a minimum of 400 NBA games played.)</p>
+</blockquote>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="n6w7n3e" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>TheRealTofuey | Spurs</div>
+        <div>1 | 9 minutes ago </div>
+      </div>
+      <label for="n6w7n3e" class="commentText"><p>NBA created its own true exclusive hall of fame with the NBA 75. </p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="n6w7py5" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Either-Estimate-9239</div>
+        <div>1 | 9 minutes ago </div>
+      </div>
+      <label for="n6w7py5" class="commentText"><p>PG a lock for Hall of Overrated yea</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="n6w7rgi" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Proof-Umpire-7718 | Lakers</div>
+        <div>1 | 8 minutes ago </div>
+      </div>
+      <label for="n6w7rgi" class="commentText"><p>I think Flagg will make it.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="n6w7us9" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Toadincuffs</div>
+        <div>1 | 8 minutes ago </div>
+      </div>
+      <label for="n6w7us9" class="commentText"><p>This does not change the list, but surely Middleton is (as of now) ahead of JJJ, Mobley, or J-Dub</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="n6w85oi" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>AnkitPancakes | Thunder</div>
+        <div>1 | 7 minutes ago </div>
+      </div>
+      <label for="n6w85oi" class="commentText"><p>SGA is a first ballot hall of famer if he retired today. MVP, FMVP and 3x First Team All NBA is a short list</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="n6w87vt" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Isolated_Blackbird | Mavericks</div>
+        <div>1 | 6 minutes ago </div>
+      </div>
+      <label for="n6w87vt" class="commentText"><p>Luka is an absolute lock right now. Luka is a hall of famer if he quit today.</p>
+
+<p>There are only like 13 players in NBA history with more 1st team All-Pro selections.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="n6w8cfi" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>daswisco | Bucks</div>
+        <div>1 | 6 minutes ago </div>
+      </div>
+      <label for="n6w8cfi" class="commentText"><p>One that gets overlooked might be Brook Lopez. Reinvented his game with Milwaukee, but is a franchise great for the Nets leading the them in career blocks and points. Basketball seems to have one of the lower bars for entry into the hall of fame, but I think leading a franchise in points should get you in.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="n6w8cj1" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>calartnick</div>
+        <div>1 | 6 minutes ago </div>
+      </div>
+      <label for="n6w8cj1" class="commentText"><p>I mean are we factoring young guys we have no idea? Because a few are going to pop and make it.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="n6w8cxb" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Nautical_JuiceBoy</div>
+        <div>1 | 6 minutes ago </div>
+      </div>
+      <label for="n6w8cxb" class="commentText"><p>What an amazing read tbh. Thanks for giving me that while I ate my bowl of spaghetti and meatballs</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="n6w8i4j" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>DuckDucks | Knicks</div>
+        <div>1 | 5 minutes ago </div>
+      </div>
+      <label for="n6w8i4j" class="commentText"><p>The number of average HOFers will go up  overtime. More of the very young players today will make it than are projected</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="n6w8jre" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>jomanhan9</div>
+        <div>1 | 5 minutes ago </div>
+      </div>
+      <label for="n6w8jre" class="commentText"><p>Does Deandre Jordan sneak in? Dudes got a case with how easy it is to get into the NBA HOF</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="n6w8k36" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>jcampo13 | 76ers</div>
+        <div>1 | 5 minutes ago </div>
+      </div>
+      <label for="n6w8k36" class="commentText"><p>Embiid&rsquo;s peak is way too high for him to miss out despite the injuries. Embiid, Tatum, SGA, and Luka are effectively locks (even if BBALL Ref doesn&rsquo;t agree yet).</p>
+
+<p>I think KAT, Love, Lowry, and Trae are questionable to get in. Trae and KAT in particular I think are on this outside looking in. Love doesn&rsquo;t really merit inclusion either.</p>
+
+<p>On the other hand I think DeRozan is easily in the HoF. He has a very realistic shot to retire in the top 10 of all-time points. He very will could have north of 30k by the time he retires. At a certain point despite his playoff failings, his career is just too prolific to deny.</p>
+
+<p>Tyrese Haliburton it all depends how he comes back from the injury but he was 100% on track before that.</p>
+
+<p>Wemby I have no idea either way. The talent is mostly there but can he stay healthy?</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="n6w8nsy" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>PerfectlyCutOnion</div>
+        <div>1 | 4 minutes ago </div>
+      </div>
+      <label for="n6w8nsy" class="commentText"><p>GOAT Khris Middleton</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="n6w8xl9" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>grudgepacker | Bucks</div>
+        <div>1 | 3 minutes ago </div>
+      </div>
+      <label for="n6w8xl9" class="commentText"><p>Paging OP - you have Dame listed in both your &ldquo;13 locks&rdquo; and your &ldquo;sweet 17&rdquo;</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="n6w8yn2" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Akidnamedkenny | Heat</div>
+        <div>1 | 3 minutes ago </div>
+      </div>
+      <label for="n6w8yn2" class="commentText"><p>I’d probably just leave out Lowry. He’s probably in the hall of very good. We see on Jackson and Mobley. Everyone else yeah I agree more than likely hall of famers</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="n6w8zme" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>JB_JB_JB63 | Pelicans</div>
+        <div>1 | 3 minutes ago </div>
+      </div>
+      <label for="n6w8zme" class="commentText"><p>Kyrie is not a lock by any means</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="n6w91ak" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Mindless_Bid_5162</div>
+        <div>1 | 2 minutes ago </div>
+      </div>
+      <label for="n6w91ak" class="commentText"><p>Every one gets into HOF in basketball. Get my boy Jamal Crawford and Derrick rose in then.</p>
+
+<p>D-Rose genuinely had basketball culture in chokehold in way no player other than Curry and Lebron had.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="n6w4inl" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>pretzeldoggo | Kings</div>
+        <div>1 | 24 minutes ago </div>
+      </div>
+      <label for="n6w4inl" class="commentText"><p>DeMar DeRozan</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="n6w6klm" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>amedeoisme | Knicks</div>
+        <div>1 | 14 minutes ago </div>
+      </div>
+      <label for="n6w6klm" class="commentText"><p>Lacking the accolades or playoff success</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="n6w78es" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Its_Hoggish_Greedly | Kings</div>
+        <div>1 | 11 minutes ago </div>
+      </div>
+      <label for="n6w78es" class="commentText"><p>Feels like he should be a lock.</p>
+
+<p>Six NBA All-Star selections (2014, 2016-2018, 2022, 2023), two All-NBA Second Team selections (2018, 2022), and one All-NBA Third Team selection (2017), two gold medals, and is in the top 25 all-time scoring list with the potential to move into the top 20 before the end of the season.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="n6w900u" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>amedeoisme | Knicks</div>
+        <div>1 | 3 minutes ago </div>
+      </div>
+      <label for="n6w900u" class="commentText"><p>How is that a lock tbh? The 3 all nba teams is too low to be in the HOF imo. No real playoff success as well. He’s not one of the best players ever</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="n6w64tl" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Low-iq-haikou | Bulls</div>
+        <div>1 | 16 minutes ago </div>
+      </div>
+      <label for="n6w64tl" class="commentText"><p>I think DeRozan makes it, he has 25k career points. Will finish in the top 20 all time, maybe top 15. I’d give him better odds than Lowry.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="n6w8k09" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Blumpkin_Party | Hawks</div>
+        <div>1 | 5 minutes ago </div>
+      </div>
+      <label for="n6w8k09" class="commentText"><p>Derozan I don’t think is first ballot but he will eventually get in. The numbers and longevity are too much to ignore.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="n6w6o7l" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Still-Expression-71</div>
+        <div>1 | 14 minutes ago </div>
+      </div>
+      <label for="n6w6o7l" class="commentText"><p>Jaylen brown is 44th all time in playoff points, ECF MVP and finals MVP, 4 time all star but likely this year with Tatum out and 1 time all NBA. Great defender but not all defense level. Perpetually on winning teams as second banana. He wouldn’t make a HOF in other sports but Reggie miller is in with similar accolades.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="n6w43m9" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>SpecialOpsCynic</div>
+        <div>1 | 26 minutes ago </div>
+      </div>
+      <label for="n6w43m9" class="commentText"><p>Trae??</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="n6w5m7d" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Blumpkin_Party | Hawks</div>
+        <div>1 | 19 minutes ago </div>
+      </div>
+      <label for="n6w5m7d" class="commentText"><p>If Trae has 3 to 4 years at his current pace, he’s going to have an insane statistical profile in addition to 6+ All Stars.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="n6w6gjq" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>amedeoisme | Knicks</div>
+        <div>1 | 15 minutes ago </div>
+      </div>
+      <label for="n6w6gjq" class="commentText"><p>All nba&amp;gt; all star tbh</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="n6w6ikh" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Ok-Tree4365</div>
+        <div>1 | 14 minutes ago </div>
+      </div>
+      <label for="n6w6ikh" class="commentText"><p>Yes</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="n6w5zyy" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Still-Expression-71</div>
+        <div>1 | 17 minutes ago </div>
+      </div>
+      <label for="n6w5zyy" class="commentText"><p>He’s made 4 all star teams and has been on perpetually mediocre teams except 1 ECF</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="n6w8qk3" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Arjun_311 | Hawks</div>
+        <div>1 | 4 minutes ago </div>
+      </div>
+      <label for="n6w8qk3" class="commentText"><p>Obviously I’m biased but when he retires he will probably be extremely high on the career assists leaderboard and maybe points. I foresee him having a very long career since he doesn’t rely on athleticism a crazy amount. As long as he can shoot and pass I feel like he will keep racking up stats.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="n6w4xok" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>80080 | Raptors</div>
+        <div>1 | 22 minutes ago </div>
+      </div>
+      <label for="n6w4xok" class="commentText"><p>If Zion can stay healthy I think he still has a chance. Al Horford might have a fringe case</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
