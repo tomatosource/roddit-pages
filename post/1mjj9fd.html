@@ -1,0 +1,405 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.selfPostImage {
+  width: 100%;
+  height: auto;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/nba/comments/1mjj9fd/most_times_breaking_personal_career_high_in/"><p>Most times breaking personal career high in points - a unique title holder</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <p>Considering both the regular season and playoffs, which player has broken their personal career high in points the most? Another way to think of this: which player really showed gradual improvement in their scoring reflected by a slow increase in their unique point totals through games. There&rsquo;s one player that holds the sole top position - try to guess which one before glancing below.</p>
+
+<p>Inspired by the comments on this <a href="https://np.reddit.com/r/nba/comments/1mj5zhs/jalen_brunson_with_his_first_career_high_at_the/" target="_blank">thread</a>, and the dataset described <a href="https://np.reddit.com/r/fantasybball/comments/1hqh2vj/nba_historical_dataset_box_scores_player_stats/" target="_blank">here</a>, we can find the pecking order. This is done by going through games in ascending order of date and finding when a player scores more than their previous high.</p>
+
+<p>The winner is&hellip;: &amp;gt;!Giannis Antetokounmpo starting with his first game with 1 point and ending with his current career high of 64.!&amp;lt;</p>
+
+<p>This table below shows the top 25:</p>
+
+<table>
+<thead>
+<tr>
+<th align="left">Name</th>
+<th align="left">Number of Unique Career Highs</th>
+<th align="left">Point Progression</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">Giannis Antetokounmpo</td>
+<td align="left">19</td>
+<td align="left">1,5,11,15,16,18,19,20,25,27,29,33,34,39,41,44,52,55,64</td>
+</tr>
+
+<tr>
+<td align="left">Kevin Martin</td>
+<td align="left">18</td>
+<td align="left">1,2,4,6,9,17,18,19,20,22,25,26,30,35,40,43,48,50</td>
+</tr>
+
+<tr>
+<td align="left">James Harden</td>
+<td align="left">17</td>
+<td align="left">5,6,9,24,25,26,30,33,40,45,46,50,51,53,56,60,61</td>
+</tr>
+
+<tr>
+<td align="left">Jerami Grant</td>
+<td align="left">17</td>
+<td align="left">4,10,11,13,16,18,21,22,25,27,28,29,31,32,43,44,49</td>
+</tr>
+
+<tr>
+<td align="left">Derek Harper</td>
+<td align="left">17</td>
+<td align="left">2,4,8,10,12,13,19,20,21,22,23,26,29,31,35,38,42</td>
+</tr>
+
+<tr>
+<td align="left">John Salmons</td>
+<td align="left">17</td>
+<td align="left">2,3,4,6,9,10,11,13,15,16,21,22,23,27,31,32,38</td>
+</tr>
+
+<tr>
+<td align="left">Kobe Bryant</td>
+<td align="left">17</td>
+<td align="left">1,5,10,16,21,24,25,27,30,33,38,40,43,51,56,62,81</td>
+</tr>
+
+<tr>
+<td align="left">Karl Malone</td>
+<td align="left">16</td>
+<td align="left">8,14,17,18,25,26,29,31,35,38,39,41,42,44,52,61</td>
+</tr>
+
+<tr>
+<td align="left">Nikola Vucevic</td>
+<td align="left">16</td>
+<td align="left">6,9,11,13,15,16,18,19,20,25,30,33,34,37,41,43</td>
+</tr>
+
+<tr>
+<td align="left">Rod Strickland</td>
+<td align="left">16</td>
+<td align="left">5,9,10,12,14,15,16,17,20,22,27,30,31,32,36,37</td>
+</tr>
+
+<tr>
+<td align="left">Danny Granger</td>
+<td align="left">16</td>
+<td align="left">4,5,6,9,12,16,21,22,23,25,28,32,33,37,42,44</td>
+</tr>
+
+<tr>
+<td align="left">Gilbert Arenas</td>
+<td align="left">16</td>
+<td align="left">1,2,7,8,12,14,16,18,25,32,37,41,43,44,47,60</td>
+</tr>
+
+<tr>
+<td align="left">Gail Goodrich</td>
+<td align="left">15</td>
+<td align="left">9,11,13,21,23,25,28,30,31,32,41,43,47,49,53</td>
+</tr>
+
+<tr>
+<td align="left">Josh Smith</td>
+<td align="left">15</td>
+<td align="left">7,8,11,12,14,16,19,20,21,25,26,28,29,32,38</td>
+</tr>
+
+<tr>
+<td align="left">Jack Sikma</td>
+<td align="left">15</td>
+<td align="left">6,8,11,14,16,24,26,28,29,30,33,34,35,38,39</td>
+</tr>
+
+<tr>
+<td align="left">Tim Hardaway</td>
+<td align="left">15</td>
+<td align="left">6,12,14,17,19,20,25,27,28,32,36,37,40,43,45</td>
+</tr>
+
+<tr>
+<td align="left">Moses Malone</td>
+<td align="left">15</td>
+<td align="left">6,10,14,17,22,24,25,26,31,32,36,39,45,51,53</td>
+</tr>
+
+<tr>
+<td align="left">Dee Brown</td>
+<td align="left">15</td>
+<td align="left">5,6,10,14,18,19,22,23,24,25,32,35,38,40,41</td>
+</tr>
+
+<tr>
+<td align="left">Dennis Schroder</td>
+<td align="left">15</td>
+<td align="left">5,10,11,14,15,16,22,24,25,27,28,31,33,34,41</td>
+</tr>
+
+<tr>
+<td align="left">Jalen Rose</td>
+<td align="left">15</td>
+<td align="left">4,12,14,15,18,21,23,26,28,32,35,40,42,43,44</td>
+</tr>
+
+<tr>
+<td align="left">Johnny Newman</td>
+<td align="left">15</td>
+<td align="left">2,6,14,16,19,22,24,26,27,28,29,34,35,40,41</td>
+</tr>
+
+<tr>
+<td align="left">Jeff Hornacek</td>
+<td align="left">15</td>
+<td align="left">2,3,4,10,14,18,20,21,22,24,28,32,36,39,40</td>
+</tr>
+
+<tr>
+<td align="left">Richard Hamilton</td>
+<td align="left">15</td>
+<td align="left">10,14,15,17,19,21,22,25,26,30,34,40,41,44,51</td>
+</tr>
+
+<tr>
+<td align="left">Eric Bledsoe</td>
+<td align="left">15</td>
+<td align="left">1,6,9,17,18,20,23,27,28,30,33,34,35,40,41</td>
+</tr>
+
+<tr>
+<td align="left">Naji Marshall</td>
+<td align="left">15</td>
+<td align="left">1,2,9,12,15,16,20,21,22,23,24,26,29,34,38</td>
+</tr>
+</tbody>
+</table>
+<p>In retrospect, Giannis is a good intuitive guess given his slow start at 18 years old (1 point game) to where he is now leaving a lot of room for gradual improvement. Other examples that fit that mold are James Harden and Kobe Bryant.</p>
+
+<p>Players who have high career highs but burst into the scene more rapidly like LeBron and Jordan have 9 and 7 instances respectively of breaking their career highs.</p>
+
+<p>The mean and median are 5.3 and 5 respectively.</p>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="n7blmtr" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>OutsideTheServiceBox | Bucks</div>
+        <div>1 | 14 minutes ago </div>
+      </div>
+      <label for="n7blmtr" class="commentText"><p>I figured Giannis would be near the top but I didn&rsquo;t think he&rsquo;d actually be at it. Makes sense of course, he came into the league as such a project and I don&rsquo;t think even averaged 20 until year 4 or 5. And he&rsquo;s continued to add to his game and the league has continued to become more favorable toward offense as well.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
