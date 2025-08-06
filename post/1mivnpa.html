@@ -1,0 +1,369 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.selfPostImage {
+  width: 100%;
+  height: auto;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/nba/comments/1mivnpa/combining_math_film_study_iii_top_25_peaks_since/"><p>Combining Math + Film Study (III): Top 25 Peaks Since 2000</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <p>Over the past year, I’ve been working on the most ambitious version of a project I’ve quietly refined for over a decade: isolating and quantifying the highest individual peaks in modern NBA history. Specifically, I set out to answer a narrow, but important, question: *who has reached the most valuable multi-season peak level of play since the year 2000?* Not over a career, and not based on accolades or narratives. Just: whose absolute best years provided the most additive value to a random championship-caliber roster?</p>
+
+<p>This post is the culmination of hundreds of hours of statistical modeling, film analysis, and historical refinement. I’m a professional statistician by training, and this project is built from the ground up with that lens — combining rigorous quantitative modeling with domain-specific observational study. It builds on the same foundation as my previous two projects - a blend of impact metrics and film study — but expands in scope, depth, and historical context. The result is a ranking of the 25 greatest multi-season peaks of the 21st century, grounded in evidence and designed to isolate value in the context that matters most: scalable, repeatable, title-winning basketball.</p>
+
+<h1 id="project-scope-and-definition">Project Scope and Definition</h1>
+
+<p>To be clear, this is not a ranking of the most *decorated* seasons, the most *memorable* seasons, or even the most *statistically productive* seasons. It’s a ranking of <strong>the most repeatable and context-independent peaks by expected value of impact</strong> — those seasons where a player’s value, when dropped onto a random playoff roster, would most increase that team’s odds of winning a championship.</p>
+
+<p><strong>The Core Question:</strong></p>
+
+<p><em>How much does this version of this player increase a good team’s probability of winning a title?</em></p>
+
+<p>That framing immediately rules out inflated regular season statlines on mediocre teams, and rewards players who:</p>
+
+<ul>
+<li>Translate their value to playoff settings</li>
+<li>Excel across multiple roles and contexts</li>
+<li>Scale up or down depending on surrounding talent</li>
+<li>Remain effective against top-end defenses</li>
+</ul>
+
+<h1 id="methodology">Methodology</h1>
+
+<p>The evaluation process consists of two primary phases: <strong>statistical modeling</strong> and <strong>film-informed contextual adjustment</strong>. The end goal is a single composite score per player-peak that reflects expected added playoff value.</p>
+
+<h1 id="phase-1-statistical-composite-metric">Phase 1: Statistical Composite Metric</h1>
+
+<p>The starting point for each player-peak is a <strong>composite value score</strong> derived from advanced impact metrics. Specifically, I use a weighted average of the most statistically reliable RAPM-based models available for those seasons. These include:</p>
+
+<ul>
+<li>Multi-year luck-adjusted Regularized Adjusted Plus-Minus (RAPM) variants</li>
+<li>Backsolved on/off models with lineup-based corrections</li>
+<li>Augmented Plus-Minus (AuPM) models that incorporate predictive shrinkage</li>
+<li>Hybrid models such as EPM, DARKO, and LEBRON, depending on data availability</li>
+</ul>
+
+<p>Each metric is standardized (converted to Z-scores) and then aggregated using a weighting scheme based on theoretical signal strength, empirical postseason persistence, and orthogonality (i.e., minimizing double-counting).</p>
+
+<p>This composite serves as the <strong>baseline estimate</strong> of a player&rsquo;s value, largely capturing box score-independent, on-court impact. However, by itself, this signal is incomplete. That’s where the second phase comes in.</p>
+
+<h1 id="phase-2-portability-scalability-and-contextual-adjustments">Phase 2: Portability, Scalability, and Contextual Adjustments</h1>
+
+<p>This is where domain-specific analysis adds critical context. Starting with the baseline composite, I conduct targeted film review and postseason-specific analysis for each candidate peak. The purpose is to assess <strong>how well the quantified value actually travels</strong> — across roles, schemes, and playoff environments.</p>
+
+<p>Three core adjustment categories are applied:</p>
+
+<ul>
+<li><strong>Playoff Portability</strong>: How well does the player hold up against playoff-level resistance? This includes how scoring efficiency changes vs. top defenses, how well they handle aggressive help schemes deep into a series, and how reliably they execute under elevated pressure.</li>
+<li><strong>Scalability</strong>: How well does the player’s value scale alongside other high-end talent? Do they amplify others? Can they still contribute if usage is reduced or responsibilities shift? This focuses on scalable skills like shooting, touch passing, and off-ball movement.</li>
+<li><strong>Team Context</strong>: Is the player being propped up or brought down by his current surrounding environment and team/lineup construction in a way that&rsquo;s inflating/deflating the metrics? Remember, this is not a list of situational value within a given team context, but rather an aggregate measure of value ACROSS team contexts.</li>
+</ul>
+
+<p>Adjustments are made independently for offense and defense, and then integrated into a final score. These adjustments are modest but crucial: they correct for blind spots in RAPM-based metrics, especially those taken from the regular season, and explicitly reward playoff-translatable skill sets.</p>
+
+<h1 id="score-interpretation">Score Interpretation</h1>
+
+<p>The final score is a unitless proxy for <strong>added championship equity</strong> — that is, how much more likely a team is to win a title with that player added, assuming a generic playoff-caliber environment.</p>
+
+<p>Interpretive scale:</p>
+
+<ul>
+<li><strong>7.0+</strong>: GOAT-tier peak (think peak Michael Jordan or LeBron James)</li>
+<li><strong>6.0</strong>: All-time great peak (think peak Magic Johnson or Stephen Curry)</li>
+<li><strong>5.0</strong>: MVP-level value</li>
+<li><strong>4.0</strong>: All-NBA caliber peak</li>
+<li><strong>3.0</strong>: All-Star impact</li>
+<li><strong>0.0</strong>: Replacement level</li>
+</ul>
+
+<p>Each ranking also includes a <strong>plausible range</strong>, or confidence interval, to reflect statistical uncertainty, sample limitations, and subjective ambiguity in film and data interpretation.</p>
+
+<h1 id="the-top-25-peaks-since-2000">The Top 25 Peaks Since 2000:</h1>
+
+<p>Format:</p>
+
+<p>[ranking: point estimate]. [Years] [Name] (plausible ranking range) (point estimate valuations: offense, defense, net)</p>
+
+<p><strong>1. &lsquo;12-&lsquo;14 LeBron James (1) (5.75, 1.6, 7.35)</strong></p>
+
+<p>--</p>
+
+<p><strong>2. &lsquo;00-&lsquo;02 Shaquille O&rsquo;Neal (2) (5, 1.7, 6.7)</strong></p>
+
+<p>--</p>
+
+<p><strong>3. &lsquo;23-&lsquo;25 Nikola Jokic (3-6) (6, 0.25, 6.25)</strong></p>
+
+<p><strong>4. &lsquo;16-&lsquo;18 Stephen Curry (3-6) (5.95, 0.25, 6.2)</strong></p>
+
+<p><strong>5. &lsquo;02-&lsquo;04 Kevin Garnett (3-6) (2.80, 3.35, 6.15)</strong></p>
+
+<p><strong>6. &lsquo;02-&lsquo;04 Tim Duncan (3-8) (3, 3.05, 6.05)</strong></p>
+
+<p>--</p>
+
+<p><strong>7. &lsquo;16-&lsquo;18 Kevin Durant (6-14) (5.05, 0.7, 5.75)</strong></p>
+
+<p><strong>8. &lsquo;20-&lsquo;22 Giannis Antetokounmpo (6-15) (3.3, 2.4, 5.7)</strong></p>
+
+<p><strong>9. &lsquo;06-&lsquo;08 Kobe Bryant (7-15) (5.15, 0.5, 5.65)</strong></p>
+
+<p><strong>10. &lsquo;14-&lsquo;16 Chris Paul (7-15) (5.05, 0.6, 5.65)</strong></p>
+
+<p><strong>11. &lsquo;24-&lsquo;25 Shai Gilgeous-Alexander (7-15) (5, 0.6, 5.6)</strong></p>
+
+<p><strong>12. &lsquo;09-&lsquo;11 Dwyane Wade (8-15) (4.8, 0.75, 5.55)</strong></p>
+
+<p><strong>13. &lsquo;05-&lsquo;07 Steve Nash (7-17) (5.9, -0.4, 5.5)</strong></p>
+
+<p><strong>14. &lsquo;22-&lsquo;24 Joel Embiid (7-18) (3.7, 1.75, 5.45)</strong></p>
+
+<p><strong>15. &lsquo;19-&lsquo;21 Kawhi Leonard (7-19) (4.4, 1, 5.4)</strong></p>
+
+<p><strong>16. &lsquo;09-&lsquo;11 Dirk Nowitzki (13-20) (4.9, 0.35, 5.25)</strong></p>
+
+<p><strong>17. &lsquo;23-&lsquo;24 Luka Doncic (13-20) (5.4, -0.2, 5.2)</strong></p>
+
+<p><strong>18. &lsquo;02-&lsquo;03 Tracy McGrady (14-20) (4.6, 0.5, 5.1)</strong></p>
+
+<p><strong>19 &lsquo;18-&lsquo;20 Anthony Davis (14-20) (2.4, 2.65, 5.05)</strong></p>
+
+<p><strong>20. &lsquo;18-&lsquo;20 James Harden (16-20)(5.2, -0.3, 4.9)</strong></p>
+
+<p>--</p>
+
+<p><strong>21. &lsquo;09-&lsquo;11 Dwight Howard (20-25) (1.6, 2.9, 4.5)</strong></p>
+
+<p><strong>22. &lsquo;23-&lsquo;25 Jayson Tatum (21-26) (3.2, 1.15, 4.35)</strong></p>
+
+<p><strong>23. &lsquo;02-&lsquo;03 Jason Kidd (21-33) (2.35, 1.8, 4.15)</strong></p>
+
+<p><strong>24. &lsquo;20-&lsquo;23 Jimmy Butler (21-34) (2.6, 1.5, 4.1)</strong></p>
+
+<p><strong>25. &lsquo;05-&lsquo;07 Manu Ginobili (22-34) (3.3, 0.75, 4.05)</strong></p>
+
+<p>HMs: Draymond Green, Russell Westbrook, Damian Lillard, Paul George, Paul Pierce, Ray Allen, Jalen Brunson, Allen Iverson, Derrick Rose</p>
+
+<p>As always, happy to answer questions and debate player placements!</p>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="n76g7ea" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>dragonrider5555 | Celtics</div>
+        <div>4 | 33 minutes ago </div>
+      </div>
+      <label for="n76g7ea" class="commentText"><p>Great post . Manu is a lot closer to top 75 than people think</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
