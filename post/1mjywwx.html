@@ -1,0 +1,1096 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.selfPostImage {
+  width: 100%;
+  height: auto;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/nba/comments/1mjywwx/im_the_developer_of_basketball_gm_a_sim_game/"><p>I&rsquo;m the developer of Basketball GM, a sim game where you run the league your way: modern, historical, or fully custom. Completely free, no microtransactions.</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <p><a href="https://basketball-gm.com/" target="_blank">Basketball GM</a> is a web-based game where you are the general manager of a basketball team. That&rsquo;s the normal way to play, and it&rsquo;s very fun, I encourage you to try!</p>
+
+<p>But from a slightly different perspective, Basketball GM like a super customizable basketball sandbox. Here are some interesting things you can do:</p>
+
+<ul>
+<li><p>Create a league with <a href="https://play.basketball-gm.com/new_league/real" target="_blank">real players from any season in history</a> (okay this one is pretty basic, just putting it here for those who don&rsquo;t know!)</p></li>
+
+<li><p>Make a <a href="https://play.basketball-gm.com/new_league/cross_era" target="_blank">cross-era league</a> with random teams from history (or click &ldquo;Customize&rdquo; and pick exactly the ones you want)</p></li>
+
+<li><p>Pick your favorite player from today and send him back to 1952 to see how he does against all the plumbers. First <a href="https://play.basketball-gm.com/new_league/real" target="_blank">make a real players league in 1952</a>, then go to Tools &amp;gt; Import/Export Players &amp;gt; Import Real Players.</p></li>
+
+<li><p>Create different types of players (in any league go to Tools &amp;gt; Create Player) and see how they do.</p></li>
+
+<li><p>Simulate 1000 seasons of basketball and see what happens. There&rsquo;s no limit!</p></li>
+
+<li><p>Try a Random Debuts league! Then future draft classes are all random combinations of past, current, and future real players. To try it, when creating a league click Customize Settings and change Randomization to Random Debuts.</p></li>
+
+<li><p>Play around with different rules - playoff formats, regular season scheduling, three pointers, and more. Try a smarter way to end games (the Elam Ending) or a stupider one (a three-point shootout to decide ties).</p></li>
+
+<li><p>Change the style of play - have a 1950s league with modern play style, or vice versa.</p></li>
+
+<li><p>Despite the name of the game being &ldquo;Basketball GM&rdquo;, you don&rsquo;t even have to control a team. You can enable Spectator Mode and just watch what happens.</p></li>
+</ul>
+
+<p>And that&rsquo;s just scratching the surface of the functionality available to you in Basketball GM.</p>
+
+<p>For those of you who have played BBGM in the past but haven&rsquo;t tried it lately, here are some of the biggest improvements since last year:</p>
+
+<ul>
+<li><p>Many significant UI improvements such as <a href="https://zengm.com/blog/2025/01/trading-block-filters/" target="_blank">trading block filters to specify what you want from AI teams</a>, <a href="https://np.reddit.com/r/BasketballGM/comments/1j93rev/version_202503111114_new_draft_picks_page/" target="_blank">a new Draft Picks page</a>, <a href="https://zengm.com/blog/2025/02/player-profile-stat-ranges/" target="_blank">career totals/averages for ranges of seasons</a>, <a href="https://zengm.com/blog/2025/01/bulk-actions/" target="_blank">apply bulk actions to many rows of player tables</a>, <a href="https://zengm.com/blog/2025/03/face-updates/" target="_blank">relatives now look similar and the face editor is easier to use</a>, and improved <a href="https://np.reddit.com/r/BasketballGM/comments/1m8lzga/version_202507241273_improved_live_sim_ui_on/" target="_blank">live sim</a> and <a href="https://np.reddit.com/r/BasketballGM/comments/1m7l27c/version_202507231018_improved_draft_ui_current/" target="_blank">draft</a> UIs.</p></li>
+
+<li><p>New <a href="https://zengm.com/blog/2025/07/new-achievements/" target="_blank">achievements</a> and <a href="https://np.reddit.com/r/BasketballGM/comments/1ixes99/version_202502241037_has_two_new_frivolities/" target="_blank">more</a> <a href="https://np.reddit.com/r/BasketballGM/comments/1kquxm0/version_202505191393_added_new_most_retired/" target="_blank">frivolities</a>.</p></li>
+
+<li><p>New ways to customize your league, including <a href="https://zengm.com/blog/2025/07/20-new-teams/" target="_blank">20 new built-in teams and logos</a>, a fun <a href="https://zengm.com/blog/2025/05/import-real-players/" target="_blank">Import Real Players</a> feature, and <a href="https://np.reddit.com/r/BasketballGM/comments/1k7yfdv/version_202504251139_edit_the_complete_order_of/" target="_blank">edit the entire draft order in God Mode</a>.</p></li>
+
+<li><p>Continually updated real players rosters for the current season, as well as several updates to <a href="https://zengm.com/blog/2025/05/real-players-playoffs-draft-lottery/" target="_blank">improve</a> <a href="https://np.reddit.com/r/BasketballGM/comments/1iyvevx/version_202502260845_player_notes_are_shown_in/" target="_blank">historical</a> <a href="https://zengm.com/blog/2025/02/null-historical-stats/" target="_blank">data</a>.</p></li>
+
+<li><p>Tons of other updates - <a href="https://zengm.com/changelog/" target="_blank">here is the full changelog</a> which goes all the way back to 2013!</p></li>
+</ul>
+
+<p>If you&rsquo;re still reading and you forgot the link, it&rsquo;s <a href="https://basketball-gm.com/" target="_blank">basketball-gm.com</a> (also works without the dash!). There is also an active subreddit /r/BasketballGM, I am always checking there (and email and other social media) for feedback, many of the improvements listed above were suggested by users.</p>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="n7epo5d" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>neonitik | 76ers</div>
+        <div>53 | an hour ago </div>
+      </div>
+      <label for="n7epo5d" class="commentText"><p>I&rsquo;ve wasted so much time in this game at work over the years, thanks for making this.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="n7eqo7x" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>rumblegod | Thunder</div>
+        <div>29 | an hour ago </div>
+      </div>
+      <label for="n7eqo7x" class="commentText"><p>Hey man, thank you for building something for the community. It’s been years with lots of time and effort. Hopefully this is something that provides value to you in some way outside of community support feel good.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="n7er0nn" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>dumbmatter</div>
+        <div>45 | an hour ago </div>
+      </div>
+      <label for="n7er0nn" class="commentText"><p>For years this was a hobby making either no money or very little money. But there are ads in the game and I make money from it. It&rsquo;s actually been my full time job <a href="https://zengm.com/blog/2021/01/full-time-job/" target="_blank">since 2021</a> which is kind of insane!</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="n7er9za" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>rumblegod | Thunder</div>
+        <div>9 | an hour ago </div>
+      </div>
+      <label for="n7er9za" class="commentText"><p>Oh hell yea man!! That’s awesome and you deserve  it!</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="n7eycgo" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>dontdaregiveup</div>
+        <div>1 | 7 minutes ago </div>
+      </div>
+      <label for="n7eycgo" class="commentText"><p>Yo just wanna stay thank you for the endless amount of hours of fun I had playing your game. You&rsquo;re an awesome dev</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="n7estwl" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>JusticeForKeytarBear | Celtics</div>
+        <div>19 | 37 minutes ago </div>
+      </div>
+      <label for="n7estwl" class="commentText"><p>This game ruined my life, <sup>10</sup>&frasl;<sub>10</sub></p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="n7eviov" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>dumbmatter</div>
+        <div>1 | 22 minutes ago </div>
+      </div>
+      <label for="n7eviov" class="commentText"><p>Was it ruined as badly as <a href="https://archive.org/details/universalbasebal00coov" target="_blank">the protagonist of this novel</a>? I always tell people to read that if they say they are playing too much BBGM</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="n7exgns" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>JusticeForKeytarBear | Celtics</div>
+        <div>1 | 11 minutes ago </div>
+      </div>
+      <label for="n7exgns" class="commentText"><p>That’s what happened to me actually</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="n7eq2st" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>MuchAbouAboutNothing | Thunder</div>
+        <div>16 | an hour ago </div>
+      </div>
+      <label for="n7eq2st" class="commentText"><p>Love the game, played it for years, thanks for continuing to work on and improve it.</p>
+
+<p>A few questions:</p>
+
+<ol>
+<li><p>How&rsquo;s it funded? Is it just through donations? Has the game ever been close to closing down due to running costs</p></li>
+
+<li><p>Do you know what percentage of players / leagues enable God mode?</p></li>
+</ol>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="n7eqend" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>dumbmatter</div>
+        <div>17 | an hour ago </div>
+      </div>
+      <label for="n7eqend" class="commentText"><blockquote>
+<p>How&rsquo;s it funded? Is it just through donations? Has the game ever been close to closing down due to running costs</p>
+</blockquote>
+
+<p>There are ads in the game. I understand if people use ad blockers though, cause ads do suck. There&rsquo;s also a $5/month subscription to remove ads.</p>
+
+<p>It also has very low costs because the whole game is running in your web browser. So even if it wasn&rsquo;t making any money at all, I could still keep it online for close to free.</p>
+
+<blockquote>
+<p>Do you know what percentage of players / leagues enable God mode?</p>
+</blockquote>
+
+<p>No, I don&rsquo;t track what options people use. Maybe I should because it&rsquo;d be interesting to see.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="n7eqcuc" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Ok-Salamander-1980</div>
+        <div>3 | an hour ago </div>
+      </div>
+      <label for="n7eqcuc" class="commentText"><p>It’s run all client side I don’t think there are costs.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="n7eqkib" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>dumbmatter</div>
+        <div>26 | an hour ago </div>
+      </div>
+      <label for="n7eqkib" class="commentText"><p>My <span class="math inline">\(8/month shared server is a cost! Domain registration also runs about \)</span>10/year.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="n7eqs19" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Ok-Salamander-1980</div>
+        <div>21 | an hour ago </div>
+      </div>
+      <label for="n7eqs19" class="commentText"><p>Apologies for massively underestimating by close to infinity.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="n7eqirm" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>rumblegod | Thunder</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="n7eqirm" class="commentText"><p>No costs? What world do you live in?</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="n7eqnzp" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>MuchAbouAboutNothing | Thunder</div>
+        <div>3 | an hour ago </div>
+      </div>
+      <label for="n7eqnzp" class="commentText"><p>I guess just s3 hosting but if it&rsquo;s client side then no need for an api, for a data store etc. actually would be pretty cheap</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="n7eqp18" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>MuchAbouAboutNothing | Thunder</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="n7eqp18" class="commentText"><p>Thanks, I forgot about that</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="n7eu6f4" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Krazdone | Warriors</div>
+        <div>1 | 30 minutes ago </div>
+      </div>
+      <label for="n7eu6f4" class="commentText"><p>I just want to give a testimonial, I have sunk hundreds of hours into Basketball GM. It is incredibly easy to pick up, fantastic for office work where you have downtime, and absolute heaven for stat nerds or people who like building narratives in their heads a la Football Manager, Paradox Games, DnD, etc.</p>
+
+<p>I can&rsquo;t say enough good things. u/dumbmatter is a permanent fixture in the subreddit and is always answering questions, hunting for bugs. Indie development at its best.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="n7ev7sp" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>dumbmatter</div>
+        <div>1 | 24 minutes ago </div>
+      </div>
+      <label for="n7ev7sp" class="commentText"><p>Thanks :)</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="n7es03d" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>john_454 | Thunder</div>
+        <div>8 | 42 minutes ago </div>
+      </div>
+      <label for="n7es03d" class="commentText"><p>awesome game everyone should try.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="n7eth5t" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>DontEatCabbages23_</div>
+        <div>8 | 34 minutes ago </div>
+      </div>
+      <label for="n7eth5t" class="commentText"><p>I like your game but tall players are too broken</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="n7euvdi" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>dumbmatter</div>
+        <div>1 | 26 minutes ago </div>
+      </div>
+      <label for="n7euvdi" class="commentText"><p>Player ratings revamp is very much needed and hopefully will happen later this year. There are a bunch of weird little inaccuracies you notice if you play enough. But I&rsquo;ve been procrastinating on it somewhat, and also it is difficult.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="n7eqw56" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>VarrocksFinest</div>
+        <div>4 | an hour ago </div>
+      </div>
+      <label for="n7eqw56" class="commentText"><p>Are there any plans to make an app or are you sticking to web browser only?</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="n7esitt" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Ilikesporks_ | Lakers</div>
+        <div>5 | 39 minutes ago </div>
+      </div>
+      <label for="n7esitt" class="commentText"><p>i haven&rsquo;t heard of this before but i&rsquo;m assuming this is like the basketball version of football manager? either way this is pretty cool although i can&rsquo;t get into these types games cause i feel like i&rsquo;d end up wasting too much time on them</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="n7et4bx" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>dumbmatter</div>
+        <div>11 | 36 minutes ago </div>
+      </div>
+      <label for="n7et4bx" class="commentText"><p>Yeah it&rsquo;s something like that. Biggest difference is that Football Manager is a lot more detailed, whereas I&rsquo;m trying to make the gameplay more streamlined and avoid as much micromanagement as possible.</p>
+
+<p>But it is a totally valid choice to avoid things that you find too addictive. I do the same thing with junk food - if it&rsquo;s in the house, I will eat all of it immediately. But somehow I have plenty of self control to just not buy it in the first place.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="n7eua5t" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Azenethi | Vancouver Grizzlies</div>
+        <div>1 | 29 minutes ago </div>
+      </div>
+      <label for="n7eua5t" class="commentText"><p>I love the game! But all I’m saying is if one day you feel like adding an optional micromanagement mode well… I wouldn’t say no haha</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="n7eulbp" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>dumbmatter</div>
+        <div>1 | 27 minutes ago </div>
+      </div>
+      <label for="n7eulbp" class="commentText"><p>It would be cool to try to make a more FM-like game some day. idk if I ever will, but there&rsquo;s a reason FM is so popular!</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="n7etkkb" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Nomer77</div>
+        <div>3 | 33 minutes ago </div>
+      </div>
+      <label for="n7etkkb" class="commentText"><p>Daryl Morey would be so annoying if the actual league had microtransactions.  Like a Venmo spammer who constantly requests $0.01.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="n7eu5mg" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Express-Pandas | Kings</div>
+        <div>1 | 30 minutes ago </div>
+      </div>
+      <label for="n7eu5mg" class="commentText"><p>The goat</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="n7ethyr" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Professional-Fee6914</div>
+        <div>2 | 34 minutes ago </div>
+      </div>
+      <label for="n7ethyr" class="commentText"><p>is this like the soccer game game from 20 years ago? </p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="n7eupvk" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>dumbmatter</div>
+        <div>1 | 27 minutes ago </div>
+      </div>
+      <label for="n7eupvk" class="commentText"><p>Football Manager is still around and is still very popular! But yeah, it&rsquo;s kind of similar to that.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="n7eulg5" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Iron_Clover15 | Pistons</div>
+        <div>1 | 27 minutes ago </div>
+      </div>
+      <label for="n7eulg5" class="commentText"><p>Can you play with friends / plans for this?</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="n7ev3pw" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>dumbmatter</div>
+        <div>1 | 24 minutes ago </div>
+      </div>
+      <label for="n7ev3pw" class="commentText"><p>It&rsquo;s fundamentally a single player game. But some people will have one person use God Mode to control multiple teams, and then coordinate with friends through chat to have them run those teams. Obviously that is kind of annoying and not a great UI, but that&rsquo;s the best possible right now.</p>
+
+<p>I would like to add real multiplayer some day, but I don&rsquo;t know if/when I actually will because it&rsquo;d require rewriting a lot of the code.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="n7eyh9w" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Xavian044</div>
+        <div>1 | 6 minutes ago </div>
+      </div>
+      <label for="n7eyh9w" class="commentText"><p>Yes and if you’re interested I know a goated league to join. But the way dumbmatter described it was exactly on point.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="n7evxp3" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Strong-Sky5196 | Supersonics</div>
+        <div>1 | 20 minutes ago </div>
+      </div>
+      <label for="n7evxp3" class="commentText"><p>Been playing since like 2016-17, goat basketball sim</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="n7ewub9" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Handyman2116 | Hawks</div>
+        <div>1 | 15 minutes ago </div>
+      </div>
+      <label for="n7ewub9" class="commentText"><p>This game is so goated. I&rsquo;ve spent so many long train journeys passing time with this and the football version.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="n7ex964" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>juicybot | Knicks</div>
+        <div>1 | 13 minutes ago </div>
+      </div>
+      <label for="n7ex964" class="commentText"><p>i&rsquo;m too dumb to play your game but i do see you post about it every so often and, i&rsquo;ve gotta say, the comments are always extremely positive. so good job!</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="n7exhfh" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>legend023 | Pelicans</div>
+        <div>1 | 11 minutes ago </div>
+      </div>
+      <label for="n7exhfh" class="commentText"><p>There’s too many centers/forwards and not enough guards on random player leagues</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="n7ey6wk" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>dumbmatter</div>
+        <div>1 | 7 minutes ago </div>
+      </div>
+      <label for="n7ey6wk" class="commentText"><p>Possibly true. Could just be that the position labels need to be tweaked a bit.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="n7eyhhi" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>bitemydickallthetime | CHI</div>
+        <div>1 | 6 minutes ago </div>
+      </div>
+      <label for="n7eyhhi" class="commentText"><p>This kind of thing feels like part of the reason people have stopped enjoying the regular season. Everyone is too invested in the business and front office side of the league. They think the real game being played by the bean counters who put teams together based on statistical models. When a team doesn&rsquo;t play well it&rsquo;s always the front office&rsquo;s fault. Basketball is a pretty fun game. People tend to forget.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="n7eyrin" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>RightCut4940 | Hornets</div>
+        <div>1 | 4 minutes ago </div>
+      </div>
+      <label for="n7eyrin" class="commentText"><p>I like it but I feel like the trades make no sense. I always get &ldquo;are you crazy?&rdquo; for really good deals (for the other team) and then they propose a deal that&rsquo;s much better for me (and usually batshit crazy).</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="n7eytxl" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>JPNBusinessman | Kings</div>
+        <div>1 | 4 minutes ago </div>
+      </div>
+      <label for="n7eytxl" class="commentText"><p>I will never forget the day my franchise player D&rsquo;Angelo Russell got kidnapped and murdered by the CIA.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="n7ez0ju" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ScantlyChad | Warriors</div>
+        <div>1 | 3 minutes ago </div>
+      </div>
+      <label for="n7ez0ju" class="commentText"><p>I love this game. Will never forget my save in which Carl Braun became Bill Russell with 11 championships, <a href="https://i.imgur.com/K6vTpFU.jpeg" target="_blank">and the Kings, led by Ron Harper, became a 90s dynasty.</a></p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="n7ew5bv" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Hornsdowngunsup | Spurs</div>
+        <div>1 | 19 minutes ago </div>
+      </div>
+      <label for="n7ew5bv" class="commentText"><p>Are you paying us or you just stealing our ideas and data?</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="n7eyhfb" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>dumbmatter</div>
+        <div>1 | 6 minutes ago </div>
+      </div>
+      <label for="n7eyhfb" class="commentText"><p>Just stealing :)</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
