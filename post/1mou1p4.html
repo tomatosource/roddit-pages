@@ -1,0 +1,709 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.selfPostImage {
+  width: 100%;
+  height: auto;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/nba/comments/1mou1p4/using_player_impact_estimate_to_determine_which/"><p>Using Player Impact Estimate to determine which stars are playoff risers and fallers</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <p><em>Player Impact Estimate aka PIE, is a metric to gauge a player’s all-around contribution to the game. Almost all statistical categories in the box score are involved in the PIE formula. PIE answers what % of the events in a game each player contributed.</em></p>
+
+<p>PIE has actually been a pretty decent indicator of who wins the MVP. Shai was just 1.1 behind Giannis (who led the league), and every other year since 2016 the leader has been the MVP winner (2021 Embiid only played 51 games) so I think it&rsquo;s a decent metric that gauges how impactful a player has been during the regular season. But what about during the playoffs?</p>
+
+<p>What I have done here is taken every player who has finished top 5 in MVP voting the last 5 years (and some of my own choices I found interesting to round it at an even 20 players) and broken down their year by year PIE and how that compares to their playoff PIE from that season. The players with the largest plus are playoff &ldquo;risers&rdquo; and the players with the largest minus are playoff &ldquo;droppers.&rdquo; Obviously we&rsquo;re only including seasons they played in the playoffs, and I left off seasons with low playoff MPG</p>
+
+<p><strong>LeBron James</strong></p>
+
+<ul>
+<li>2005-06: 19.2 / 17.8 (-1.4)</li>
+<li>2006-07: 18.1 / 19.1 (+1.0)</li>
+<li>2007-08: 19.9 / 19.6 (-0.3)</li>
+<li>2008-09: 22.6 / 27.3 (+4.7)</li>
+<li>2009-10: 21.8 / 21.2 (-0.6)</li>
+<li>2010-11:  20.1 / 16.9 (-3.2)</li>
+<li>2011-12: 22.0 / 22.0 (+0.0)</li>
+<li>2012-13: 22.1 / 20.5 (-1.6)</li>
+<li>2013-14: 20.0 / 21.2 (+1.2)</li>
+<li>2014-15: 17.1 / 19.9 (+2.8)</li>
+<li>2015-16: 18.9 / 19.9 (+1.0)</li>
+<li>2016-17: 18.3 / 19.9 (+1.6)</li>
+<li>2017-18: 19.1 / 22.4 (+3.3)</li>
+<li>2019-20: 19.8 / 23.5 (+3.7)</li>
+<li>2020-21: 19.1 / 17.3 (-1.8)</li>
+<li>2022-23: 17.2 / 16.5 (-0.7)</li>
+<li>2023-24: 16.9 / 17.1 (+0.2)</li>
+<li>2024-25: 16.9 / 18.5 (+1.6)</li>
+</ul>
+
+<p>Average Regular Season: 19.4 | Average Playoffs: 20.0 | Difference: +0.6</p>
+
+<p><strong>Kevin Durant</strong></p>
+
+<ul>
+<li>2009-10: 18.3 / 12.5 (-5.8)</li>
+<li>2010-11: 15.9 / 17.3 (+1.4)</li>
+<li>2011-12: 18.6 / 18.0 (-0.6)</li>
+<li>2012-13: 20.2 / 20.5 (+0.3)</li>
+<li>2013-14: 20.6 / 16.2 (-4.4)</li>
+<li>2015-16: 19.4 / 13.8 (-5.6)</li>
+<li>2016-17: 18.6 / 17.9 (-0.7)</li>
+<li>2017-18: 16.8 / 17.5 (+0.7)</li>
+<li>2018-19: 16.2 / 17.6 (+1.4)</li>
+<li>2020-21: 17.2 / 19.7 (+2.5)</li>
+<li>2021-22: 18.0 / 9.4 (-8.6)</li>
+<li>2022-23: 18.5 / 14.6 (-3.9)</li>
+<li>2023-24: 14.8 / 14.1 (-0.7)</li>
+</ul>
+
+<p>Average Regular Season: 17.9 | Average Playoffs: 16.1 | Difference: -1.8</p>
+
+<p><strong>Stephen Curry</strong></p>
+
+<ul>
+<li>2012-13: 13.8 / 13.7 (-0.1)</li>
+<li>2013-14: 16.4 / 13.0 (-3.4)</li>
+<li>2014-15: 17.8 / 17.4 (-0.4)</li>
+<li>2015-16: 19.7 / 15.6 (-4.1)</li>
+<li>2016-17: 15.1 / 17.3 (+2.2)</li>
+<li>2017-18: 16.5 / 15.4 (-1.1)</li>
+<li>2018-19: 15.2 / 15.0 (-0.2)</li>
+<li>2021-22: 15.5 / 15.8 (+0.3)</li>
+<li>2022-23: 16.6 / 14.6 (-2.0)</li>
+<li>2024-25: 14.5 / 15.2 (+0.7)</li>
+</ul>
+
+<p>Average Regular Season: 16.1 | Average Playoffs: 15.3 | Difference: -0.8</p>
+
+<p><strong>Chris Paul</strong></p>
+
+<ul>
+<li>2007-08: 18.2 / 18.7 (+0.5)</li>
+<li>2008-09: 21.2 / 13.4 (-7.8)</li>
+<li>2010-11: 16.9 / 22.4 (+5.5)</li>
+<li>2011-12: 18.6 / 15.7 (-2.9)</li>
+<li>2012-13: 17.8 / 20.0 (+2.2)</li>
+<li>2013-14: 17.9 / 15.5 (-2.4)</li>
+<li>2014-15: 17.3 / 17.9 (+0.6)</li>
+<li>2015-16: 18.4 / 22.4 (+4.0)</li>
+<li>2016-17: 18.2 / 21.2 (+3.0)</li>
+<li>2017-18: 16.6 / 15.5 (-1.1)</li>
+<li>2018-19: 13.8 / 12.9 (-0.9)</li>
+<li>2019-20: 15.3 / 15.5 (+0.2)</li>
+<li>2020-21: 15.0 / 14.5 (-0.5)</li>
+<li>2021-22: 15.0 / 15.6 (+0.6)</li>
+<li>2022-23: 13.3 / 10.1 (-3.2)</li>
+</ul>
+
+<p>Average Regular Season: 16.9 | Average Playoffs: 16.8 | Difference: -0.1</p>
+
+<p><strong>Kawhi Leonard</strong></p>
+
+<ul>
+<li>2011-12: 10.8 / 10.4 (-0.4)</li>
+<li>2012-13: 11.5 / 13.4 (+1.9)</li>
+<li>2013-14: 13.2 / 12.5 (-0.7)</li>
+<li>2014-15: 14.8 / 13.4 (-1.4)</li>
+<li>2015-16: 17.0 / 17.4 (+0.4)</li>
+<li>2016-17: 17.4 / 21.3 (+3.9)</li>
+<li>2018-19: 17.2 / 19.2 (+2.0)</li>
+<li>2019-20: 19.1 / 18.4 (-0.7)</li>
+<li>2020-21: 17.0 / 19.1 (+2.1)</li>
+<li>2022-23: 15.9 / 18.7 (+2.8)</li>
+<li>2023-24: 15.4 / 12.5 (-2.9)</li>
+<li>2024-25: 13.4 / 15.7 (+2.3)</li>
+</ul>
+
+<p>Average Regular Season: 15.2 | Average Playoffs: 16.0 | Difference: +0.8</p>
+
+<p><strong>James Harden</strong></p>
+
+<ul>
+<li>2009-10: 9.7 / 10.6 (+0.9)</li>
+<li>2010-11: 10.8 / 13.5 (+2.7)</li>
+<li>2011-12: 13.9 / 13.3 (-0.6)</li>
+<li>2012-13: 14.9 / 13.2 (-1.7)</li>
+<li>2013-14: 15.6 / 11.5 (-4.1)</li>
+<li>2014-15: 18.4 / 17.0 (-1.4)</li>
+<li>2015-16: 17.4 / 16.4 (-1.0)</li>
+<li>2016-17: 19.0 / 16.9 (-2.1)</li>
+<li>2017-18: 19.4 / 16.2 (-3.2)</li>
+<li>2018-19: 20.1 / 16.2 (-3.9)</li>
+<li>2019-20: 19.0 / 19.0 (+0.0)</li>
+<li>2020-21: 17.4 / 16.7 (-0.7)</li>
+<li>2021-22: 15.3 / 12.7 (-2.6)</li>
+<li>2022-23: 15.9 / 13.7 (-2.2)</li>
+<li>2023-24: 13.1 / 15.4 (+2.3)</li>
+<li>2024-25: 14.5 / 12.3 (-2.2)</li>
+</ul>
+
+<p>Average Regular Season: 15.9 | Average Playoffs: 14.7 | Difference: -1.2</p>
+
+<p><strong>Jimmy Butler</strong></p>
+
+<ul>
+<li>2012-13: 10.6 / 10.4 (-0.2)</li>
+<li>2013-14: 9.5 / 7.9 (-1.6)</li>
+<li>2014-15: 13.8 / 13.7 (-0.1)</li>
+<li>2016-17: 16.4 / 13.0 (-3.4)</li>
+<li>2017-18: 15.1 / 11.7 (-3.4)</li>
+<li>2018-19: 12.6 / 15.2 (+2.6)</li>
+<li>2019-20: 15.9 / 15.0 (-0.9)</li>
+<li>2020-21: 18.4 / 8.6 (-9.8)</li>
+<li>2021-22: 16.4 / 20.5 (+4.1)</li>
+<li>2022-23: 17.7 / 15.8 (-1.9)</li>
+<li>2024-25: 14.5 / 14.5 (+0.0)</li>
+</ul>
+
+<p>Average Regular Season: 14.6 | Average Playoffs: 13.3 | Difference: -1.3</p>
+
+<p><strong>Giannis Antetokounmpo</strong></p>
+
+<ul>
+<li>2014-15: 11.1 / 7.6 (-3.5)</li>
+<li>2016-17: 17.6 / 16.6 (-1.0)</li>
+<li>2017-18: 18.6 / 18.3 (-0.3)</li>
+<li>2018-19: 21.8 / 18.8 (-3.0)</li>
+<li>2019-20: 23.9 / 22.3 (-1.6)</li>
+<li>2020-21: 19.6 / 20.1 (+0.5)</li>
+<li>2021-22: 21.0 / 20.8 (-0.2)</li>
+<li>2022-23: 20.4 / 14.3 (-6.1)</li>
+<li>2024-25: 21.0 / 21.1 (+0.1)</li>
+</ul>
+
+<p>Average Regular Season: 19.4 | Average Playoffs: 17.8 | Difference: -1.6</p>
+
+<p><strong>Nikola Jokic</strong></p>
+
+<ul>
+<li>2018-19: 18.8 / 20.2 (+1.4)</li>
+<li>2019-20: 17.9 / 16.6 (-1.3)</li>
+<li>2020-21: 20.1 / 19.1 (-1.0)</li>
+<li>2021-22: 23.0 / 21.7 (-1.3)</li>
+<li>2022-23: 21.1 / 21.0 (-0.1)</li>
+<li>2023-24: 21.1 / 20.5 (-0.6)</li>
+<li>2024-25: 20.6 / 18.0 (-2.6)</li>
+</ul>
+
+<p>Average Regular Season: 20.4 | Average Playoffs: 19.6 | Difference: -0.8</p>
+
+<p><strong>Joel Embiid</strong></p>
+
+<ul>
+<li>2017-18: 17.7 / 14.9 (-2.8)</li>
+<li>2018-19: 19.6 / 17.8 (-1.8)</li>
+<li>2019-20: 19.4 / 18.2 (-1.2)</li>
+<li>2020-21: 20.3 / 18.6 (-1.7)</li>
+<li>2021-22: 21.2 / 14.2 (-7.0)</li>
+<li>2022-23: 21.3 / 13.3 (-8.0)</li>
+<li>2023-24: 22.5 / 17.6 (-4.9)</li>
+</ul>
+
+<p>Average Regular Season: 20.3 | Average Playoffs: 16.4 | Difference: -3.9</p>
+
+<p><strong>Devin Booker</strong></p>
+
+<ul>
+<li>2020-21: 12.5 / 11.6 (-0.9)</li>
+<li>2021-22: 13.7 / 12.2 (-1.5)</li>
+<li>2022-23: 14.7 / 16.9 (+2.2)</li>
+<li>2023-24: 14.2 / 14.0 (-0.2)</li>
+</ul>
+
+<p>Average Regular Season: 13.8 | Average Playoffs: 13.7 | Difference: -0.1</p>
+
+<p><strong>Donovan Mitchell</strong></p>
+
+<ul>
+<li>2017-18: 10.9 / 12.6 (+1.7)</li>
+<li>2018-19: 11.7 / 4.5 (-7.2)</li>
+<li>2019-20: 12.5 / 19.5 (+7.0)</li>
+<li>2020-21: 13.8 / 16.2 (+2.4)</li>
+<li>2021-22: 13.5 / 12.3 (-1.2)</li>
+<li>2022-23: 14.9 / 13.0 (-1.9)</li>
+<li>2023-24: 15.0 / 16.4 (+1.4)</li>
+<li>2024-25: 13.7 / 15.9 (+2.2)</li>
+</ul>
+
+<p>Average Regular Season: 13.3 | Average Playoffs: 13.8 | Difference: +0.5</p>
+
+<p><strong>Anthony Edwards</strong></p>
+
+<ul>
+<li>2021-22: 11.1 / 11.6 (+0.5)</li>
+<li>2022-23: 12.5 / 16.6 (+3.1)</li>
+<li>2023-24: 14.5 / 15.8 (+1.3)</li>
+<li>2024-25: 14.0 / 15.5 (+1.5)</li>
+</ul>
+
+<p>Average Regular Season: 13.0 | Average Playoffs: 14.9 | Difference: +1.9</p>
+
+<p><strong>Jayson Tatum</strong></p>
+
+<ul>
+<li>2017-18: 10.8 / 11.2 (+0.4)</li>
+<li>2018-19: 10.6 / 10.6 (+0.0)</li>
+<li>2019-20: 14.3 / 16.4 (+2.1)</li>
+<li>2020-21: 15.2 / 14.9 (-0.3)</li>
+<li>2021-22: 15.9 / 13.1 (-2.8)</li>
+<li>2022-23: 16.7 / 16.4 (-0.3)</li>
+<li>2023-24: 15.5 / 14.9 (-0.6)</li>
+<li>2024-25: 15.8 / 20.2 (+4.4)</li>
+</ul>
+
+<p>Average Regular Season: 14.4 | Average Playoffs: 14.7 | Difference: +0.3</p>
+
+<p><strong>Luka Doncic</strong></p>
+
+<ul>
+<li>2019-20: 19.4 / 18.9 (-0.5)</li>
+<li>2020-21: 17.9 / 18.6 (+0.7)</li>
+<li>2021-22: 19.1 / 20.4 (+1.3)</li>
+<li>2023-24: 20.0 / 17.7 (-2.3)</li>
+<li>2024-25: 17.0 / 15.7 (-1.3)</li>
+</ul>
+
+<p>Average Regular Season: 18.7 | Average Playoffs: 18.3 | Difference: -0.4</p>
+
+<p><strong>Shai Gilgeous-Alexander</strong></p>
+
+<ul>
+<li>2018-19: 8.3 / 8.8 (+0.5)</li>
+<li>2019-20: 12.3 / 10.3 (-2.0)</li>
+<li>2023-24: 18.7 / 18.3 (-0.4)</li>
+<li>2024-25: 19.9 / 17.9 (-2.0)</li>
+</ul>
+
+<p>Average Regular Season: 14.8 | Average Playoffs: 13.8 | Difference: -1.0</p>
+
+<p><strong>Jalen Brunson</strong></p>
+
+<ul>
+<li>2020-21: 12.3 / 11.0 (-1.3)</li>
+<li>2021-22: 12.2 / 12.6 (+0.4)</li>
+<li>2022-23: 13.8 / 16.5 (+2.7)</li>
+<li>2023-24: 15.6 / 13.9 (-1.7)</li>
+<li>2024-25: 13.8 / 14.3 (+0.5)</li>
+</ul>
+
+<p>Average Regular Season: 13.5 | Average Playoffs: 13.7 | Difference: +0.2</p>
+
+<p><strong>Tyrese Haliburton</strong></p>
+
+<ul>
+<li>2023-24: 15.7 / 14.5 (-1.2)</li>
+<li>2024-25: 14.3 / 15.1 (+0.8)</li>
+</ul>
+
+<p>Average Regular Season: 15.0 | Average Playoffs: 14.8 | Difference: -0.2</p>
+
+<p><strong>Jaylen Brown</strong></p>
+
+<ul>
+<li>2017-18: 8.9 / 10.1 (+1.2)</li>
+<li>2018-19: 8.4 / 9.3 (+0.9)</li>
+<li>2019-20: 11.3 / 12.3 (+1.0)</li>
+<li>2021-22: 13.5 / 12.6 (-0.9)</li>
+<li>2022-23: 13.2 / 10.2 (-3.0)</li>
+<li>2023-24: 11.6 / 12.1 (+0.5)</li>
+<li>2024-25: 11.4 / 12.5 (+1.1)</li>
+</ul>
+
+<p>Average Regular Season: 11.2 | Average Playoffs: 11.3 | Difference: +0.1</p>
+
+<p><strong>Jamal Murray</strong></p>
+
+<ul>
+<li>2018-19: 10.8 / 12.2 (+1.4)</li>
+<li>2019-20: 12.1 / 15.6 (+3.5)</li>
+<li>2022-23: 12.1 / 14.8 (+2.7)</li>
+<li>2023-24: 13.7 / 8.6 (-5.1)</li>
+<li>2024-25: 11.1 / 10.4 (-0.7)</li>
+</ul>
+
+<p>Average Regular Season: 12.0 | Average Playoffs: 12.3 | Difference: +0.3</p>
+
+<p>Regular Season and Playoff Difference ordered</p>
+
+<ol>
+<li>Anthony Edwards (+1.9)</li>
+<li>Kawhi Leonard (+0.8)</li>
+<li>LeBron James (+0.6)</li>
+<li>Donovan Mitchell (+0.5)</li>
+<li>Jayson Tatum (+0.3)</li>
+<li>Jamal Murray (+0.3)</li>
+<li>Jalen Brunson (+0.2)</li>
+<li>Jaylen Brown (+0.1)</li>
+<li>Chris Paul (-0.1)</li>
+<li>Devin Booker (-0.1)</li>
+<li>Tyrese Haliburton (-0.2)</li>
+<li>Luka Doncic (-0.4)</li>
+<li>Stephen Curry (-0.8)</li>
+<li>Nikola Jokic (-0.8)</li>
+<li>Shai Gilgeous-Alexander (-1.0)</li>
+<li>James Harden (-1.2)</li>
+<li>Jimmy Butler (-1.3)</li>
+<li>Giannis Antetokounmpo (-1.6)</li>
+<li>Kevin Durant (-1.8)</li>
+<li>Joel Embiid (-3.9)</li>
+</ol>
+
+<p>These scores simply indicate how players &ldquo;estimated impact&rdquo; scores in the playoffs relative to their regular seasons. Even though Embiid has a higher playoff PIE than Anthony Edwards, they are at complete opposite ends of this list, and most fall in between +1.0 and -1.0 which I would consider a normal standard deviation. Most players fall in the negative because playoffs are harder and it&rsquo;s easier to overperform in the regular season. For this reason the only true clear playoff underperformer is Joel Embiid.</p>
+
+<p>Best Average Playoff PIE</p>
+
+<ol>
+<li>LeBron James (20.0)</li>
+<li>Nikola Jokic (19.6)</li>
+<li>Luka Doncic (18.3)</li>
+<li>Giannis Antetokounmpo (17.8)</li>
+<li>Chris Paul (16.8)</li>
+</ol>
+
+<p>Highest Playoff PIE Peaks</p>
+
+<ol>
+<li>Lebron James 2008-09 (27.3)</li>
+<li>LeBron James 2019-20 (23.5)</li>
+<li>LeBron James 2017-18 (22.4)</li>
+<li>Chris Paul 2010-11 (22.4)</li>
+<li>Chris Paul 2015-16 (22.4)</li>
+</ol>
+
+<p>Also just as an added fun bonus, the highest PIE scores in the finals from the last 15 FMVPs</p>
+
+<ol>
+<li>2023 Nikola Jokic (23.1)</li>
+<li>2021 Giannis Antetokounmpo (23.0)</li>
+<li>2020 LeBron James (22.8)</li>
+<li>2016 LeBron James (22.5)</li>
+<li>2018 Kevin Durant (20.7)</li>
+<li>2017 Kevin Durant (19.8)</li>
+<li>2013 LeBron James (18.9)</li>
+<li>2012 LeBron James (18.8)</li>
+<li>2022 Stephen Curry (17.8)</li>
+<li>2011 Dirk Nowitzki (17.4)</li>
+<li>2019 Kawhi Leonard (16.7)</li>
+<li>2025 Shai Gilgeous-Alexander (16.2)</li>
+<li>2014 Kawhi Leonard (15.4)</li>
+<li>2015 Andre Iguodala (13.5) (Curry scored 16.2)</li>
+<li>2024 Jaylen Brown (10.9) (Tatum scored 13.7)</li>
+</ol>
+
+<p>There&rsquo;s probably a lot of other interesting players you could calculate this for, but honestly it took me so long I have no interest in expanding this list any further.</p>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="n8etium" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Seito46</div>
+        <div>1 | 31 minutes ago </div>
+      </div>
+      <label for="n8etium" class="commentText"><p>surprised james harden isn&rsquo;t lower tbh</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="n8etumn" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Even_Tangerine_4201</div>
+        <div>1 | 28 minutes ago </div>
+      </div>
+      <label for="n8etumn" class="commentText"><p>He balances out the bad games when it matters with really good games when it doesn’t.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="n8eum0k" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>JoJonesy | Celtics</div>
+        <div>1 | 23 minutes ago </div>
+      </div>
+      <label for="n8eum0k" class="commentText"><p>For what it&rsquo;s worth, it&rsquo;s hard to disambiguate &ldquo;rising in the playoffs&rdquo; against taking possessions off in the regular season. That said, the outliers are definitely interesting— Ant&rsquo;s numbers track with what we&rsquo;ve seen, although I&rsquo;m a little skeptical of the sample size, and while I figured Embiid would be near the bottom I had no idea it was by <em>that</em> much</p>
+
+<p>(also, because as a Celtics fan I have to bring this up whenever it&rsquo;s relevant— Jayson Tatum is so fucking underrated as a playoff performer because of a couple of bad series, and he hasn&rsquo;t gotten nearly enough credit for how consistently successful the team has been over the last half decade)</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="n8evbvg" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>FH261169 | Mavericks</div>
+        <div>1 | 17 minutes ago </div>
+      </div>
+      <label for="n8evbvg" class="commentText"><p>was scrolling to see embiid was not disappointed</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="n8esgbz" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>darwinevo | Lakers</div>
+        <div>1 | 39 minutes ago </div>
+      </div>
+      <label for="n8esgbz" class="commentText"><p>LeBron is fucking unreal</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="n8euwms" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Little_Sherbet5775</div>
+        <div>1 | 21 minutes ago </div>
+      </div>
+      <label for="n8euwms" class="commentText"><p>As a celtics can, no shot Andre Igondala=Tatum in real life (I know this is just one statistic). Also Iggy&amp;gt;Brown, no way. Also tatum is not a playoff riser. I dont think a single celtics fan will say tatum rises in the playoffs.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
