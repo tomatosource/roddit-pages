@@ -1,0 +1,759 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.selfPostImage {
+  width: 100%;
+  height: auto;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/nba/comments/1mqdsr5/one_stop_shop_for_the_202526_nba_national_tv/"><p>One stop shop for the 2025-26 NBA National TV schedule by team AND by broadcast network (Traditional and Streaming Exclusive breakout)</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <p>Articles and tweets are coming out about what teams have what schedule, but some people are still confused on which national games are the typical &ldquo;NBA TV&rdquo; types of games that are only national if you have the platform. NBA TV is gone now, but there are streaming exclusive games on Peacock and Prime Video.</p>
+
+<p>This chart will give you a one stop shop of everything you could wonder about the national tv breakout per team, including what networks picked up their games:</p>
+
+<table>
+<thead>
+<tr>
+<th>Team</th>
+<th>ABC</th>
+<th>NBC</th>
+<th>ESPN</th>
+<th>Peacock</th>
+<th>Prime Video</th>
+<th>Traditional National TV (NBC, ABC, ESPN)</th>
+<th>Streaming Exclusive (Peacock and Prime Video)</th>
+<th>Total</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>OKC</td>
+<td>5</td>
+<td>7</td>
+<td>8</td>
+<td>4</td>
+<td>10</td>
+<td>20</td>
+<td>14</td>
+<td>34</td>
+</tr>
+
+<tr>
+<td>GSW</td>
+<td>6</td>
+<td>7</td>
+<td>7</td>
+<td>4</td>
+<td>10</td>
+<td>20</td>
+<td>14</td>
+<td>34</td>
+</tr>
+
+<tr>
+<td>NYK</td>
+<td>6</td>
+<td>8</td>
+<td>7</td>
+<td>3</td>
+<td>10</td>
+<td>21</td>
+<td>13</td>
+<td>34</td>
+</tr>
+
+<tr>
+<td>LAL</td>
+<td>6</td>
+<td>7</td>
+<td>7</td>
+<td>4</td>
+<td>10</td>
+<td>20</td>
+<td>14</td>
+<td>34</td>
+</tr>
+
+<tr>
+<td>HOU</td>
+<td>4</td>
+<td>7</td>
+<td>6</td>
+<td>4</td>
+<td>7</td>
+<td>17</td>
+<td>11</td>
+<td>28</td>
+</tr>
+
+<tr>
+<td>MIN</td>
+<td>4</td>
+<td>6</td>
+<td>7</td>
+<td>4</td>
+<td>7</td>
+<td>17</td>
+<td>11</td>
+<td>28</td>
+</tr>
+
+<tr>
+<td>DEN</td>
+<td>4</td>
+<td>6</td>
+<td>8</td>
+<td>3</td>
+<td>5</td>
+<td>18</td>
+<td>8</td>
+<td>26</td>
+</tr>
+
+<tr>
+<td>BOS</td>
+<td>2</td>
+<td>6</td>
+<td>6</td>
+<td>4</td>
+<td>7</td>
+<td>14</td>
+<td>11</td>
+<td>25</td>
+</tr>
+
+<tr>
+<td>CLE</td>
+<td>3</td>
+<td>5</td>
+<td>7</td>
+<td>5</td>
+<td>4</td>
+<td>15</td>
+<td>9</td>
+<td>24</td>
+</tr>
+
+<tr>
+<td>DAL</td>
+<td>3</td>
+<td>8</td>
+<td>5</td>
+<td>2</td>
+<td>5</td>
+<td>16</td>
+<td>7</td>
+<td>23</td>
+</tr>
+
+<tr>
+<td>SAS</td>
+<td>2</td>
+<td>5</td>
+<td>7</td>
+<td>2</td>
+<td>6</td>
+<td>14</td>
+<td>8</td>
+<td>22</td>
+</tr>
+
+<tr>
+<td>LAC</td>
+<td>0</td>
+<td>7</td>
+<td>7</td>
+<td>3</td>
+<td>4</td>
+<td>14</td>
+<td>7</td>
+<td>21</td>
+</tr>
+
+<tr>
+<td>MIL</td>
+<td>0</td>
+<td>4</td>
+<td>5</td>
+<td>4</td>
+<td>5</td>
+<td>9</td>
+<td>9</td>
+<td>18</td>
+</tr>
+
+<tr>
+<td>DET</td>
+<td>0</td>
+<td>2</td>
+<td>4</td>
+<td>6</td>
+<td>4</td>
+<td>6</td>
+<td>10</td>
+<td>16</td>
+</tr>
+
+<tr>
+<td>ORL</td>
+<td>0</td>
+<td>3</td>
+<td>3</td>
+<td>4</td>
+<td>4</td>
+<td>6</td>
+<td>8</td>
+<td>14</td>
+</tr>
+
+<tr>
+<td>PHI</td>
+<td>1</td>
+<td>5</td>
+<td>2</td>
+<td>2</td>
+<td>4</td>
+<td>8</td>
+<td>6</td>
+<td>14</td>
+</tr>
+
+<tr>
+<td>ATL</td>
+<td>0</td>
+<td>3</td>
+<td>3</td>
+<td>4</td>
+<td>3</td>
+<td>6</td>
+<td>7</td>
+<td>13</td>
+</tr>
+
+<tr>
+<td>MEM</td>
+<td>0</td>
+<td>1</td>
+<td>3</td>
+<td>3</td>
+<td>3</td>
+<td>4</td>
+<td>6</td>
+<td>10</td>
+</tr>
+
+<tr>
+<td>IND</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>3</td>
+<td>4</td>
+<td>2</td>
+<td>7</td>
+<td>9</td>
+</tr>
+
+<tr>
+<td>SAC</td>
+<td>0</td>
+<td>5</td>
+<td>1</td>
+<td>2</td>
+<td>1</td>
+<td>6</td>
+<td>3</td>
+<td>9</td>
+</tr>
+
+<tr>
+<td>PHX</td>
+<td>0</td>
+<td>5</td>
+<td>1</td>
+<td>3</td>
+<td>0</td>
+<td>6</td>
+<td>3</td>
+<td>9</td>
+</tr>
+
+<tr>
+<td>POR</td>
+<td>0</td>
+<td>6</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>6</td>
+<td>2</td>
+<td>8</td>
+</tr>
+
+<tr>
+<td>MIA</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>2</td>
+<td>2</td>
+<td>3</td>
+<td>5</td>
+</tr>
+
+<tr>
+<td>CHA</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>2</td>
+<td>3</td>
+</tr>
+
+<tr>
+<td>CHI</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>2</td>
+<td>3</td>
+</tr>
+
+<tr>
+<td>BKN</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>2</td>
+</tr>
+
+<tr>
+<td>NOP</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>2</td>
+</tr>
+
+<tr>
+<td>TOR</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>2</td>
+<td>2</td>
+</tr>
+
+<tr>
+<td>UTA</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>2</td>
+</tr>
+
+<tr>
+<td>WAS</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>2</td>
+<td>2</td>
+</tr>
+</tbody>
+</table>
+<p><a href="https://www.nba.com/schedule?bc=NATL&amp;cal=all&amp;pd=false®ion=1&amp;season=Regular%20Season" target="_blank">Source</a></p>
+
+<p>Footnotes:</p>
+
+<ul>
+<li><p>Christmas Day games are simulcast on ESPN and ABC. I counted these as ABC, being the larger network.</p></li>
+
+<li><p>NBC games are simulcast on Peacock, which is different from the games that are exclusive to Peacock. I counted these as NBC.</p></li>
+</ul>
+
+<hr>
+
+<p><strong>Most Games on Traditional National TV</strong>:</p>
+
+<ul>
+<li><p>Knicks - 21</p></li>
+
+<li><p>Thunder, Warriors, Lakers - 20</p></li>
+
+<li><p>Denver - 18</p></li>
+
+<li><p>Minnesota, Houston - 17</p></li>
+
+<li><p>Dallas - 16</p></li>
+</ul>
+
+<p><strong>Most Games on Streaming Exclusive</strong>:</p>
+
+<ul>
+<li><p>Thunder, Warriors, Lakers - 14</p></li>
+
+<li><p>Knicks - 13</p></li>
+
+<li><p>Boston, Houston, Minnesota - 11</p></li>
+
+<li><p>Detroit - 10</p></li>
+
+<li><p>Milwaukee, Cleveland - 9</p></li>
+</ul>
+
+<p><strong>Teams with the Least Traditional National Games</strong>:</p>
+
+<ul>
+<li><p>Toronto, Washington - 0</p></li>
+
+<li><p>Charlotte, Chicago, Brooklyn, New Orleans, Utah - 1</p></li>
+
+<li><p>Indiana, Miami - 2</p></li>
+</ul>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="n8q39zh" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>CaterpillarFirst2228</div>
+        <div>2 | an hour ago </div>
+      </div>
+      <label for="n8q39zh" class="commentText"><p>Doing LeBron&rsquo;s (God) work with this post.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="n8q3srh" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>HokageEzio | Knicks</div>
+        <div>3 | an hour ago </div>
+      </div>
+      <label for="n8q3srh" class="commentText"><p>Everybody and their mother (<a href="https://www.reddit.com/r/nba/comments/1mqb3c9/list_of_202526_national_tv_games_by_team/" target="_blank">including myself</a>) was just listing out the totals so I felt like it was worth its own post to get everything in one place.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="n8q7e64" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>BcuzRacecar</div>
+        <div>1 | 40 minutes ago </div>
+      </div>
+      <label for="n8q7e64" class="commentText"><p>Are the nbc games truly national? I thought some stations arent going to show both games of the night.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="n8q7vvs" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Few-Sound-7559</div>
+        <div>1 | 38 minutes ago </div>
+      </div>
+      <label for="n8q7vvs" class="commentText"><p>Should be national </p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="n8q9nxr" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>CheesyCheckers3713</div>
+        <div>1 | 28 minutes ago </div>
+      </div>
+      <label for="n8q9nxr" class="commentText"><p>The meaning of “national” games is subjective to a fan.</p>
+
+<p>To some, “national” games are only those on the main, telestial networks where no extras are needed (cable, streaming) but they won’t be able to see them on their local team’s broadcast. So only ABC and NBC.</p>
+
+<p>To others, “national” games extend to telestial and cable/streaming sites. So now include Peacock, ESPN, Amazon, and NBATV.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="n8qbgqg" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>BubblyReception453</div>
+        <div>1 | 19 minutes ago </div>
+      </div>
+      <label for="n8qbgqg" class="commentText"><p>This is great work!! My Spurs are backup up baby! We will surprise a lot of people</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
