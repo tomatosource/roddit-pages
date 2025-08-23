@@ -1,0 +1,458 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.selfPostImage {
+  width: 100%;
+  height: auto;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/PathOfExile2/comments/1mxtnzf/path_of_building_community_poe_2_v090_spectres/"><p>Path of Building Community PoE 2 v0.9.0 - Spectres / Companions + 0.2.1 Uniques / Runes</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <p>Hey everyone,</p>
+
+<p>Big update this week! We’ve finally added support for <strong>Spectres and Companions</strong> (note: rare mods aren’t supported yet). Alongside that, we’ve included all the new uniques from <strong>0.2.1</strong> and support for many of their mods.</p>
+
+<p>There’s also a ton of fixes and additions that have been sitting on the beta branch for a while, plus a bunch more that got merged in over the past week.</p>
+
+<p>With 0.3 just around the corner, a lot of people are probably wondering if PoB will get an early release of the new skill tree.<br>
+Unfortunately, GGG aren’t offering early access to the PoE 2 tree data (and likely never will). That means we’ll all need to wait until either:</p>
+
+<ul>
+<li>The torrent drops (might include the tree, but not guaranteed), or</li>
+<li>After the league officially starts.</li>
+</ul>
+
+<p>So no early PoB trees for now.</p>
+
+<p>Have a read below of some of the UI changes we added for Spectres/Companions and item / tree tooltips</p>
+
+<h1 id="spectres-companions">Spectres / Companions</h1>
+
+<p>I&rsquo;d like to thank Blitz54 for handling all the work on the new Spectre / Companion stuff</p>
+
+<p>We&rsquo;re handling Spectres differently from what we did in PoE 1. We&rsquo;ve decided to add every possible spectre to the list (You can see this by clicking the &ldquo;Show All Spectres&rdquo; button), but display a curated list by default for the most common Spectres we saw people using</p>
+
+<p>We have not added support for every Spectre&rsquo;s skill, as it&rsquo;s a gargantuan effort to add hundreds of skills for monsters that people might never use.<br>
+If you’re using a Spectre or Companion and their skills aren’t showing up, please open a request on GitHub and we’ll get it added.</p>
+
+<p>We’ve also revamped the UI to display a lot more relevant info for these minions.</p>
+
+<p><a href="https://preview.redd.it/cenaw730epkf1.png?width=739&amp;format=png&amp;auto=webp&amp;s=769b66ec2b0d763ad256d28be15561a9cb474013" target="_blank">The UI now shows you a bunch of basic stats on the minions, as well as their possible spawn locations</a></p>
+
+<p><a href="https://preview.redd.it/bfcj1rz9epkf1.png?width=536&amp;format=png&amp;auto=webp&amp;s=0bbe378a6c8770d52f86dbe1126afb719ce97b36" target="_blank">If you hover over the spawn location, it will also tell you about all the other possible monsters that can spawn in that area</a></p>
+
+<p><a href="https://preview.redd.it/upgg0x1cfpkf1.png?width=222&amp;format=png&amp;auto=webp&amp;s=d10573b19cc6d123345d9378efa531de10f70241" target="_blank">You are also able to sort spectres by their base stats, and you can search spectres based on their skill name</a></p>
+
+<p><a href="https://preview.redd.it/l51v1nonfpkf1.png?width=227&amp;format=png&amp;auto=webp&amp;s=e083571477289cb79092d9c572a4f7854d310b0a" target="_blank">Click on these icons to filter Spectres \/ Companions by their monster type</a></p>
+
+<h1 id="new-item-tree-tooltips">New Item / Tree tooltips</h1>
+
+<p>Also courtesy of Blitz84:</p>
+
+<ul>
+<li>Gear &amp; tree tooltips now include more detail (plus flavour text for uniques).</li>
+<li>If you don’t like the new look, you can turn it off under <strong>Options → Styled Tooltips with Flavour Text</strong>.</li>
+</ul>
+
+<p><a href="https://preview.redd.it/b1b5ksikgpkf1.png?width=762&amp;format=png&amp;auto=webp&amp;s=95caa48e5989e84a3eab569c84b08285be2801a5" target="_blank">New tooltips for gear and tree nodes</a></p>
+
+<h1 id="new-to-path-of-building">&mdash; New to Path of Building &mdash;</h1>
+
+<p>• Support Spectres and Companions, and overhaul Spectre Library (Blitz54)<br>
+• Add Uniques from 0.2.1 and update old ones (Blitz54)<br>
+• Add support for new runes added in 0.2.1 (Kenishi)</p>
+
+<h1 id="tree">&mdash; Tree &mdash;</h1>
+
+<p>• Add support for &ldquo;while wielding a Quarterstaff&rdquo; (One with the River) (Antaresque)<br>
+• Add support for Insulated Treads and &ldquo;armour break on targets with ailments&rdquo; node (Blitz54)<br>
+• Add support for &ldquo;Zealous Inquisition&rdquo; explode mod (Witchhunter Ascendancy Notable) (majochem)<br>
+• Add support for Lich Jewel Socket (trompetin17)<br>
+• Add support for Sturdy Ally and Tandem Assault (Blitz54)<br>
+• Add support for &ldquo;Presence&rdquo; and related mods (majochem, Blitz54)<br>
+• Add support for &ldquo;Hazard&rdquo; related mods (majochem)<br>
+• Add support for Bleed and Poison chance on critical hit calculation (majochem)</p>
+
+<h1 id="skills">&mdash; Skills &mdash;</h1>
+
+<p>• Add support for Voltaic Mark shock effect (Blitz54)<br>
+• Add support for Derange support gem (madxmike)<br>
+• Add support for Ambrosia and Concoct Support (LocalIdentity)<br>
+• Add support for Deliberation Damage Mod (Blitz54)<br>
+• Add support for Muster Support (ltogniolli)</p>
+
+<h1 id="items">&mdash; Items &mdash;</h1>
+
+<p>• Add support for Forking Critical Strikes (Antaresque)<br>
+• Add support for Doomfletch modifier (Antaresque)<br>
+• Add support for Shyaba &ldquo;Always Hits&rdquo; (Blitz54)<br>
+• Add support for Atziri&rsquo;s Acuity (Unique Gloves) (majochem)<br>
+• Add support for Blood Price reserved mod (Blitz54)<br>
+• Add support for Voltaxic Rift shock chance mod (Blitz54)<br>
+• Add support for Bursting Decay and its modifier (Antaresque)<br>
+• Add support for Atsak&rsquo;s Sight (Unique Helmet) (majochem)<br>
+• Add support for &ldquo;Cannot Use - Skills&rdquo; modifiers (Blitz54)<br>
+• Add support for Essentia Sanguis leech mod (Blitz54)<br>
+• Add support for Leopold&rsquo;s Applause (LocalIdentity)<br>
+• Add support for Splinter of Loratta (Unique Spear) (majochem)</p>
+
+<h1 id="fixed-crashes">&mdash; Fixed Crashes &mdash;</h1>
+
+<p>• Fix crash due to outdated state of sub skill dropdown (Paliak)<br>
+• Fix crash when deleting newly created config set (Paliak)<br>
+• Fix crash from support gems imported on skills from items (Wires77)<br>
+• Fix Gem tooltips crashing on Linux (TheDechev)</p>
+
+<h1 id="user-interface">&mdash; User Interface &mdash;</h1>
+
+<p>• Add button to log out from the PoE API (trompetin17)<br>
+• Show Quiver Effect breakdown on Calcs Tab (trompetin17)<br>
+• Enable Sorting of folders by date and inherit the sort order in the build save dialog (Noologos)<br>
+• Display distance in Units for AoE breakdown (Blitz54)<br>
+• Add text after red mods to show that PoB does not currently handle them (LocalIdentity)<br>
+• Add Item Flavour text with styled Tooltips and Passive Tree headers (config to disable if you don&rsquo;t like it) (Blitz54)</p>
+
+<h1 id="fixed-calculations">&mdash; Fixed Calculations &mdash;</h1>
+
+<p>• Fix calculation when using multiple &ldquo;more Crit Damage Bonus&rdquo; mods (LocalIdentity)<br>
+• Fix Flicker Strike not scaling with Area damage (CedrN)<br>
+• Fix Concoction skills not scaling with Area damage (Paliak)<br>
+• Fix modifiers to Blasphemy Spirit reservation applying to supported curses (Paliak)<br>
+• Fix Grasp of the Void damage gain not working correctly (LocalIdentity)<br>
+• Fix Poisonburst Arrow not scaling with Skill Effect Duration (LocalIdentity)<br>
+• Fix Discipline value being scaled by mods (LocalIdentity)<br>
+• Fix Stomping Ground not scaling with Melee Damage (LocalIdentity)<br>
+• Fix Minions not gaining 10 Accuracy per monster level (LocalIdentity)<br>
+• Fix Curse limit being 1 more than expected (mauriliogenovese)<br>
+• Fix Gemling&rsquo;s Integrated Efficiency using global gem count (Kenishi)<br>
+• Fix Intimidate to apply Global Inc damage taken and deal reduced damage (LocalIdentity)<br>
+• Fix flat Physical damage reduction not scaling max hit properly (LocalIdentity)</p>
+
+<h1 id="fixed-behaviours">&mdash; Fixed Behaviours &mdash;</h1>
+
+<p>• Fix banner valour config and tree nodes (Blitz54)<br>
+• Fix Rathpith Globe damage not working with Crown of Eyes (LocalIdentity)<br>
+• Add new keystones to &ldquo;From Nothing&rdquo; jewel (Blitz54)<br>
+• Fix Fractured mods not importing on items (LocalIdentity)<br>
+• Fix many mods on jewels not being included in Weighted Search results (LocalIdentity)<br>
+• Fix Trade results not including Fractured Mods (LocalIdentity)<br>
+• Fix Whirlwind config to support Whirling Slash (Blitz54)<br>
+• Fix Beidat&rsquo;s Hand Energy Shield per Max Life mod not working (Paliak)<br>
+• Fix some Relic items not counting as Unique (LocalIdentity)<br>
+• Fix Wiki hotkey (F1) not working correctly for relic items (LocalIdentity)<br>
+• Fix +Skill level mods not applying to skills granted by items (mauriliogenovese)</p>
+
+<h1 id="accuracy-improvements">&mdash; Accuracy Improvements &mdash;</h1>
+
+<p>• Fix Eternal Life chaos damage resource drain breakdown (Edvinas-Smita)<br>
+• Fix Jewels missing many mods in item crafter (LocalIdentity)<br>
+• Add support for Chaotic Might and fix Mjolner skill (LocalIdentity)<br>
+• Fix Against the Darkness using Medium radius instead of Small (LocalIdentity)<br>
+• Fix first explicit mod missing when it has no parsing (LocalIdentity)</p>
+
+<h1 id="resources">Resources</h1>
+
+<p>If you find an issue, report it here<br>
+<a href="https://github.com/PathOfBuildingCommunity/PathOfBuilding-PoE2/issues" target="_blank">https://github.com/PathOfBuildingCommunity/PathOfBuilding-PoE2/issues</a></p>
+
+<p>If you&rsquo;d like to spread the word about our project, link to our website: <a href="https://pathofbuilding.community/" target="_blank">https://pathofbuilding.community/</a></p>
+
+<p>If you want to download our fork, head here: <a href="https://github.com/PathOfBuildingCommunity/PathOfBuilding-PoE2/releases" target="_blank">https://github.com/PathOfBuildingCommunity/PathOfBuilding-PoE2/releases</a></p>
+
+<p>If you&rsquo;re interested in contributing to the fork, head here: <a href="https://github.com/PathOfBuildingCommunity/PathOfBuilding-PoE2/blob/dev/CONTRIBUTING.md" target="_blank">https://github.com/PathOfBuildingCommunity/PathOfBuilding-PoE2/blob/dev/CONTRIBUTING.md</a></p>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="na7ej2l" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Ill-Dependent2976</div>
+        <div>1 | 19 minutes ago </div>
+      </div>
+      <label for="na7ej2l" class="commentText"><p>Is that a new thing on no new tree reveal until the torrent drops?  I thought there was a history of them releasing it beforehand, particularly with big changes.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="na7gc09" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>chuanhsing</div>
+        <div>1 | 2 minutes ago </div>
+      </div>
+      <label for="na7gc09" class="commentText"><p>they offer ea data for passives tree for poe 1 only<br>
+<a href="https://github.com/orgs/grindinggear/repositories" target="_blank">https://github.com/orgs/grindinggear/repositories</a></p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="na7effx" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Zarroc1733</div>
+        <div>1 | 20 minutes ago </div>
+      </div>
+      <label for="na7effx" class="commentText"><p>You the best!</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="na7eshq" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>chuanhsing</div>
+        <div>1 | 17 minutes ago </div>
+      </div>
+      <label for="na7eshq" class="commentText"><p>༼ つ ◕_◕ ༽つ PoB TAKE MY ENERGY ༼ つ ◕_◕ ༽つ</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="na7etje" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>-ChidRock-</div>
+        <div>1 | 17 minutes ago </div>
+      </div>
+      <label for="na7etje" class="commentText"><p>Massive W. The best in class tool for both PoE1 and Poe2. Cannot imagine playing either game without PoB. Huge thanks!</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
