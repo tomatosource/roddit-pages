@@ -1,0 +1,558 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.selfPostImage {
+  width: 100%;
+  height: auto;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/nba/comments/1mzxuz8/active_players_with_most_allnba_1st_team/"><p>Active players with most All-NBA 1st Team selections: LeBron (13), Giannis (7), Durant (6), Harden (6), Jokic (5), Luka (5).</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <table>
+<thead>
+<tr>
+<th>Rk</th>
+<th>Player</th>
+<th>Tot</th>
+<th>1st</th>
+<th>2nd</th>
+<th>3rd</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>1</td>
+<td>LeBron James</td>
+<td>21</td>
+<td>13</td>
+<td>4</td>
+<td>4</td>
+</tr>
+
+<tr>
+<td>16</td>
+<td>Giannis Antetokounmpo</td>
+<td>9</td>
+<td>7</td>
+<td>2</td>
+<td>0</td>
+</tr>
+
+<tr>
+<td>19</td>
+<td>Kevin Durant</td>
+<td>11</td>
+<td>6</td>
+<td>5</td>
+<td>0</td>
+</tr>
+
+<tr>
+<td>20</td>
+<td>James Harden</td>
+<td>8</td>
+<td>6</td>
+<td>0</td>
+<td>2</td>
+</tr>
+
+<tr>
+<td>27</td>
+<td>Nikola Jokić</td>
+<td>7</td>
+<td>5</td>
+<td>2</td>
+<td>0</td>
+</tr>
+
+<tr>
+<td>29</td>
+<td>Luka Dončić</td>
+<td>5</td>
+<td>5</td>
+<td>0</td>
+<td>0</td>
+</tr>
+
+<tr>
+<td>31</td>
+<td>Stephen Curry</td>
+<td>11</td>
+<td>4</td>
+<td>5</td>
+<td>2</td>
+</tr>
+
+<tr>
+<td>33</td>
+<td>Chris Paul</td>
+<td>11</td>
+<td>4</td>
+<td>5</td>
+<td>2</td>
+</tr>
+
+<tr>
+<td>40</td>
+<td>Anthony Davis</td>
+<td>5</td>
+<td>4</td>
+<td>1</td>
+<td>0</td>
+</tr>
+
+<tr>
+<td>42</td>
+<td>Jayson Tatum</td>
+<td>5</td>
+<td>4</td>
+<td>0</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<p>Rk = All-time ranking</p>
+
+<p>Source: <a href="https://www.basketball-reference.com/awards/all_league_by_player.html" target="_blank">https://www.basketball-reference.com/awards/all_league_by_player.html</a></p>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="namghts" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>CaptainBananafishJr | Magic</div>
+        <div>1 | 24 minutes ago </div>
+      </div>
+      <label for="namghts" class="commentText"><p>is the &ldquo;Rk&rdquo; on the left their all time ranking?</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="namgn3h" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>arashtp | TOR</div>
+        <div>1 | 24 minutes ago </div>
+      </div>
+      <label for="namgn3h" class="commentText"><p>Yeah.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="namgkbx" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>arashtp | TOR</div>
+        <div>1 | 24 minutes ago </div>
+      </div>
+      <label for="namgkbx" class="commentText"><p>Didn&rsquo;t realize CP3 and Steph had identical selection counts.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nami26x" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Subtly_Emerald</div>
+        <div>1 | 17 minutes ago </div>
+      </div>
+      <label for="nami26x" class="commentText"><p>Pretty amazing that Luka is 29th overall even without a ring. Is he the only one in the active list without one? Can&rsquo;t wait for him to get a ring!!!</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="namin8d" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>somasomore</div>
+        <div>1 | 14 minutes ago </div>
+      </div>
+      <label for="namin8d" class="commentText"><p>Harden and Chris Paul are this, and do t have rings. I imagine Theres a bunch of the full list without rings</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="namk6i0" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>HokageEzio | Knicks</div>
+        <div>1 | 6 minutes ago </div>
+      </div>
+      <label for="namk6i0" class="commentText"><p>All time, most 1st team selections without a ring:</p>
+
+<ul>
+<li><p>Karl Malone - 11</p></li>
+
+<li><p>Elgin Baylor - 10</p></li>
+
+<li><p>James Harden - 6</p></li>
+
+<li><p>Charles Barkley - 5</p></li>
+
+<li><p>George Gervin - 5</p></li>
+
+<li><p>Luka Doncic - 5</p></li>
+
+<li><p>Chris Paul - 4</p></li>
+
+<li><p>Max Zaslofsky - 4</p></li>
+
+<li><p>Allen Iverson - 3</p></li>
+
+<li><p>Steve Nash - 3</p></li>
+</ul>
+
+<p>Couple with 2 and then obviously there&rsquo;s going to be a bunch with 1 (guys like Embiid and Ewing only have 1, that list would go on forever)</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="namj0t3" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>HokageEzio | Knicks</div>
+        <div>1 | 12 minutes ago </div>
+      </div>
+      <label for="namj0t3" class="commentText"><p>Most 1st team selections without a ring (active)</p>
+
+<ul>
+<li><p>Harden - 6</p></li>
+
+<li><p>Luka - 5</p></li>
+
+<li><p>CP3 - 4</p></li>
+
+<li><p>Russ - 2</p></li>
+</ul>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="namj528" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>muddyklux | Grizzlies</div>
+        <div>1 | 11 minutes ago </div>
+      </div>
+      <label for="namj528" class="commentText"><p>Harden and CP</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="namk5ey" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>HenrikCrown | Pelicans</div>
+        <div>1 | 6 minutes ago </div>
+      </div>
+      <label for="namk5ey" class="commentText"><p>5 first teams is the elite magic number imo </p>
+
+<p>3-4 is solid too if you look past records </p>
+
+<p>Like McGrady has 2 1st teams so that kinda sets the standard to break and CP3 barely has 4 too</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="namjhvo" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>SpaceCowboy170 | Jazz Bandwagon</div>
+        <div>1 | 10 minutes ago </div>
+      </div>
+      <label for="namjhvo" class="commentText"><p>Giannis has a helluva resume </p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="namkyux" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Tight-Sheepherder641</div>
+        <div>1 | 2 minutes ago </div>
+      </div>
+      <label for="namkyux" class="commentText"><p>It&rsquo;s always a little surprising to see Steph with as few 1st team selections as he has.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
