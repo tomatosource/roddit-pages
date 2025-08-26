@@ -1,0 +1,392 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.selfPostImage {
+  width: 100%;
+  height: auto;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/PathOfExile2/comments/1n0gkxa/tech_checklist_after_03_patch/"><p>Tech Checklist After 0.3 patch</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <p>Hello, exiles! Every league launch brings hope for a smooth start, but in reality we often encounter crashes, lag, bugs, and other “pleasant” surprises.</p>
+
+<p>I&rsquo;ve compiled a list of common technical issues and how to fix them so you don&rsquo;t spend your first hours of the league struggling with settings instead of diving into the content.</p>
+
+<p>Bookmark this post to quickly resolve any issues.</p>
+
+<h1 id="basic-tips">Basic tips</h1>
+
+<ol>
+<li>The game runs better on some systems using Vulkan. Turn on Vulkan on your game settings.</li>
+<li>Nvidia Reflex is currently disabled in 0.2, but it may work again in 0.3, so treat it with caution. Better yet, leave it disabled :)</li>
+<li>Fullscreen mode solves many problems with FPS drops and poor performance.</li>
+<li>Vsync on some systems causes crashes and a significant drop in performance.</li>
+<li>In-game chat can cause freezes and lag due to cache overflow. Our task is to disable new messages and clear the cache.</li>
+</ol>
+
+<p>This can be fixed with the following commands, which we write in the chat:</p>
+
+<p>/global 44573 - any number from 1 to 65535</p>
+
+<p>/trade 63424</p>
+
+<p>/clear - clears the chat cache</p>
+
+<h1 id="advanced-tips">Advanced tips</h1>
+
+<p>If the tips above did not help, proceed to this section.</p>
+
+<ol>
+<li>If you experience frequent freezes, here is what you can do. In Windows settings, open the “Power Options” menu and set it to “High Performance” or “Ultra High Performance.”</li>
+<li>The game has significant issues with your processor&rsquo;s resource allocation, so many recommend that if you have more than 8 cores, you should only leave 6 for the game. This can be done through Task Manager or Process Lasso in a couple of minutes with YouTube guides on “Poe2 Set Affinity Process Lasso”. Here is a good video, for example: <a href="https://www.youtube.com/watch?v=i2A94sjy7IY" target="_blank">https://www.youtube.com/watch?v=i2A94sjy7IY</a></li>
+<li>There is another problem related to the processor, namely throttling on Intel processors. In this case, the program “ThrottleStop 9.7” from TechPowerUp, will help you. Here is a screenshot of the settings you need to configure. After configuring them, click “Save,” and to make everything work, click “Turn On” Then minimize the window and enjoy the smooth image.</li>
+</ol>
+
+<p><a href="https://preview.redd.it/9kj5cjxdublf1.png?width=600&amp;format=png&amp;auto=webp&amp;s=4dcf51aea29fb3be66be061a8e1aacc49ee64dbc" target="_blank">https://preview.redd.it/9kj5cjxdublf1.png?width=600&amp;format=png&amp;auto=webp&amp;s=4dcf51aea29fb3be66be061a8e1aacc49ee64dbc</a></p>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="naqdhdo" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Excaidium</div>
+        <div>1 | 27 minutes ago </div>
+      </div>
+      <label for="naqdhdo" class="commentText"><p>If you switch between DX12 and Vulkan (or the other way around), the game will need to recompile all shaders. This means you can expect a lot of stuttering at the beginning, and even when visiting new areas for the first time.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="naqdcvl" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Shipzterns</div>
+        <div>1 | 28 minutes ago </div>
+      </div>
+      <label for="naqdcvl" class="commentText"><p>Also in at work but im sure theres an audio option that must be disabled for performance. Some1 help</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="naqdt5p" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Julien_Black</div>
+        <div>1 | 23 minutes ago </div>
+      </div>
+      <label for="naqdt5p" class="commentText"><p>Indeed! Audio channels to low and disable reverb. This saved me quite a few frames last patch. Also disable screen shake</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="naqdxkn" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>CadleyLenerson</div>
+        <div>1 | 22 minutes ago </div>
+      </div>
+      <label for="naqdxkn" class="commentText"><p>Set channel count to low for more performance</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="naqelwr" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Emotional-Drawer-228</div>
+        <div>1 | 16 minutes ago </div>
+      </div>
+      <label for="naqelwr" class="commentText"><p>Works for PS5 as well? Is there any hope upcoming patch for optimazation with console, currently running endgame maps is hard with current FPS and the FPS drops (Playing co-op aswell). Thanks in advance.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="naqf5p6" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>vicyos</div>
+        <div>1 | 10 minutes ago </div>
+      </div>
+      <label for="naqf5p6" class="commentText"><p>Does Vsync cause problems in PoE2? I have always used it to keep the FPS more stable.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="naqfe8x" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>kaptainkhaos</div>
+        <div>1 | 8 minutes ago </div>
+      </div>
+      <label for="naqfe8x" class="commentText"><p>The game is also sensitive to overclocked cpus, I had many ctd until I removed the mild OC.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="naqekjh" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Vireca</div>
+        <div>1 | 16 minutes ago </div>
+      </div>
+      <label for="naqekjh" class="commentText"><p>None of these &ldquo;fixes&rdquo; really fix anything on most users. The true reality is that the game it&rsquo;s not optimized correctly (yet) and plays real bad when there&rsquo;s too much stuff on screen, usually related to lightning most notable on fire and cold skills</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
