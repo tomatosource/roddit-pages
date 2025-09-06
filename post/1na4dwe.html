@@ -1,0 +1,708 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.selfPostImage {
+  width: 100%;
+  height: auto;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/nba/comments/1na4dwe/is_ballmer_really_smart_the_pitch_deck_that/"><p>Is Ballmer really smart? The Pitch Deck that caused him to invest in Aspiration</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <p>There are many people trying to defend Steve Ballmer for the Kawhi non-show endorsement contract fiasco with Aspiration by saying &ldquo;Steve is too smart to do this.&rdquo;</p>
+
+<p>So lets try to replicate what Ballmer knew about Aspiration when he invested in it</p>
+
+<p>In November 2021 <a href="https://www.propublica.org/article/the-celebrity-backed-green-fintech-company-that-isnt-as-green-as-it-seems" target="_blank">Propublica wrote a piece on Aspiration</a> that questioned many of the claims that Aspiration was making. Namely:</p>
+
+<ul>
+<li>Aspiration claimed they planted 35 million trees that year. Propublica able to confirm that this number included future planned plantings and that only 12 million trees were actually planted</li>
+<li>The 5 million member claim included everyone who every accepted the Terms and Conditions on their website, not those that actually funded an account. Actual funded accounts was about 600k</li>
+<li>Aspirations investments weren&rsquo;t as green or carbon-neutral as they suggested</li>
+</ul>
+
+<p><a href="https://downloads.ctfassets.net/ejg6grzpbbxj/aigX9j5BrHFpWhOO99ZaG/6addbd532af7f41484e14d2c111684db/Investor_Presentation_10-29-21.pdf" target="_blank">Propublica also linked to a copy of the Aspiration&rsquo;s Investor Presentation from October 2021</a>. This presentation was updated to include the deal with the Clippers from the version that Ballmer and team would have seen before before they invested in September 2021, but the numbers and projections should be reasonably close.</p>
+
+<p>The most striking thing that Propublica called out was that Aspiration&rsquo;s claim of being cash-flow positive relied on custom metric that excluded marketing expenses (EBITDAM - earnings before interest, taxes, depreciation, amortization and marketing). From the article:</p>
+
+<blockquote>
+<p>“It’s very strange to represent your overall finances in that way,” said Daniel McCarthy, a marketing professor at Emory University who specializes in customer-based corporate valuation. “I haven’t seen any other company do that before.&rdquo;</p>
+</blockquote>
+
+<p>If you were to use Aspiration&rsquo;s custom profitability metric they projected a profit of <span class="math inline">\(536,000. If you were to use the more traditional EBITDAM they projected a **loss of \)</span>149 million**.</p>
+
+<p>I am sure those who are better at reading balance sheets that I can work out other curious aspects of the Investor Presentation (like is a margin in the upper 70% reasonable?) but even from the investor deck it looks like this company had a lot of issues underneath a glossy presentation.</p>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ncravdo" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>dietcokewLime | Lakers</div>
+        <div>31 | 34 minutes ago </div>
+      </div>
+      <label for="ncravdo" class="commentText"><p>Not to defend Balmer too much but he is the genius who brought us Windows Vista, windows mobile, and Bing</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="ncrch8m" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Rubberbabeh | Bulls</div>
+        <div>1 | 26 minutes ago </div>
+      </div>
+      <label for="ncrch8m" class="commentText"><p>His failure as a CEO is why these clowns keep touting him as one of the “great investors” of the era. They have to justify his wealth somehow.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="ncrdl1v" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>hlebtastic</div>
+        <div>1 | 21 minutes ago </div>
+      </div>
+      <label for="ncrdl1v" class="commentText"><p>He didn’t just start working with Microsoft when he took the CEO job. He played a major role in building the company. </p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="ncrdz5g" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Rubberbabeh | Bulls</div>
+        <div>1 | 19 minutes ago </div>
+      </div>
+      <label for="ncrdz5g" class="commentText"><p>I’m well aware but his tenure as CEO was their dark ages. His stock skyrocketed afterwards</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="ncre8sp" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>IzzaKnife | Raptors</div>
+        <div>1 | 17 minutes ago </div>
+      </div>
+      <label for="ncre8sp" class="commentText"><p>Microsoft nearly tripled in revenue during his time as CEO</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="ncreyl0" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>HurryAdorable1327 | Supersonics</div>
+        <div>1 | 14 minutes ago </div>
+      </div>
+      <label for="ncreyl0" class="commentText"><p>Folks here don’t want to hear that. The man is a failure.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="ncrfgr9" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>OccasionalGoodTakes | Supersonics</div>
+        <div>1 | 11 minutes ago </div>
+      </div>
+      <label for="ncrfgr9" class="commentText"><p>Thinking company value equates to individual success is even worse than thinking he is an outright failure. He played a major part in the company but his tenure as CEO is the worst era of Microsoft. He is lucky someone better came after and before. </p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="ncrgvbi" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Kvsav57</div>
+        <div>1 | 4 minutes ago </div>
+      </div>
+      <label for="ncrgvbi" class="commentText"><p>Because there are a lot of companies that run on momentum once they get so big. Amazon is like that too. Jassy is an awful CEO but are people going to suddenly change their purchasing habits because the CEO has achieved nothing and actively made the company worse?</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="ncrgrf9" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Patsanon1212</div>
+        <div>1 | 5 minutes ago </div>
+      </div>
+      <label for="ncrgrf9" class="commentText"><p>He was CEO from 2000-2014, the time that computers went from &ldquo;useful, important to productivity, and seeing adoption in some homes and workplaces&rdquo; to &ldquo;literally the core of all businesses and one or more in most homes&rdquo;. While Microsoft was certainly a part of that growth, a shit load of it was because of developments in component manufacturing and third party app development.</p>
+
+<p>Microsoft was already the biggest player, obviously their value was going to explode. This is a bit like saying boomers are great investors when any doing anything but making the worst choices would have made money on the massively expanding stock markets of the time.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="ncref9x" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>jcheeseball | Heat</div>
+        <div>1 | 16 minutes ago </div>
+      </div>
+      <label for="ncref9x" class="commentText"><p>Also played a main role in avoiding any kind of standards in CSS, RSS or even HTML in the early days trying to develop more of a monopoly for windows.  Also lets not forget the side deals with Adobe and the gpu companies to keep linux (a far superior OS) at bay.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="ncrfkvt" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>SolaireTheSunPraiser | San Francisco Warriors</div>
+        <div>1 | 10 minutes ago </div>
+      </div>
+      <label for="ncrfkvt" class="commentText"><p>Isn&rsquo;t making side deals to keep an advantage over superior competitors and trying to develop a monopoly for your company exactly what an effective CEO should do? Coming at this from the business end, not a technical end.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="ncrgpqi" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>jcheeseball | Heat</div>
+        <div>1 | 5 minutes ago </div>
+      </div>
+      <label for="ncrgpqi" class="commentText"><p>Yes, it absolutely helped both companies.  But refusing to make drivers or allow drivers for a competing OS or litigating people who made linux ports while refusing to make there own for photoshop at least in my opinion should have been deemed illegal and anti-competitive from the start.  This type of business has been going on way to long in this field and I understood it when it was a relatively new field, but it&rsquo;s been around a long time now.</p>
+
+<p>I still don&rsquo;t understand how the App stores aren&rsquo;t regulated by now.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="ncrg32n" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>GayForJamie</div>
+        <div>1 | 8 minutes ago </div>
+      </div>
+      <label for="ncrg32n" class="commentText"><p>Bing was good until they nerfed searching for porn.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="ncrgexx" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>RyouBestGirl | Japan</div>
+        <div>1 | 6 minutes ago </div>
+      </div>
+      <label for="ncrgexx" class="commentText"><p>Also Xbox One</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ncrbcg8" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>hlebtastic</div>
+        <div>1 | 32 minutes ago </div>
+      </div>
+      <label for="ncrbcg8" class="commentText"><p>The better question is “are companies like Aspiration fraud companies that are defrauding big donors, or are they useful tools for big donors to launder money.”</p>
+
+<p>Ballmer used this money to successfully launder money. Would have gotten away with it if it didn’t blow up and Pablo Torre didn’t get tipped off. The better question is how many other companies is he using, are other people in his position doing similarly and where, and for what purpose are they laundering money? Circumventing the salary cap of a sports league is kind of a small fish when we’re talking about the richest and most powerful people in the world. </p>
+
+<p>Edit for added conclusion: to companies like Aspire exist because people like Ballmer can be scammed, or do they exist because they do exactly what people like Ballmer want them to. And when they blow up, usually, it is not people like Ballmer that end up in trouble. There’s a built in fall guy. </p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="ncrcb58" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>reddit_reader_25</div>
+        <div>1 | 27 minutes ago </div>
+      </div>
+      <label for="ncrcb58" class="commentText"><p>I wonder if he thought this was a legit company at first but then saw it as a scam later. Or maybe he thought kawhi’s money was already paid off to him? Maybe 28 million was supposed to him directly instead of 7 million a year? I dunno</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ncras5y" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Geralt0908 | Heat</div>
+        <div>8 | 35 minutes ago </div>
+      </div>
+      <label for="ncras5y" class="commentText"><p><em>Uh, no, they&rsquo;re saying, &ldquo;buu-almer, buu-almer.&rdquo;</em></p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ncraoek" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>heat_fan_ | Raptors</div>
+        <div>6 | 35 minutes ago </div>
+      </div>
+      <label for="ncraoek" class="commentText"><p>He absolutely knew about them , him lying in the interview to ESPN about not knowing them was ridiculous </p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ncrb46b" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Pseudo-nym123 | Mavericks</div>
+        <div>2 | 33 minutes ago </div>
+      </div>
+      <label for="ncrb46b" class="commentText"><blockquote>
+<p><strong><em>Risks Relating to Our Business and Industry</em></strong></p>
+
+<p><em>We have a history of losses, and we may not achieve or maintain profitability in the future.</em></p>
+</blockquote>
+
+<p>Sounds like the perfect, non-shady investment for a billionaire</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="ncrg266" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>OccasionallyLogical</div>
+        <div>1 | 8 minutes ago </div>
+      </div>
+      <label for="ncrg266" class="commentText"><p>This is pretty standard disclosure language</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ncrbpsg" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ForgotPWAgainSigh | LAL</div>
+        <div>1 | 30 minutes ago </div>
+      </div>
+      <label for="ncrbpsg" class="commentText"><p>He&rsquo;s careless. Probably thinks he&rsquo;s above the rules. Aspiration fall guy can take the fall and ballmer will take care of the fall guy for life. They do this a lot in the notorious Asian gangs </p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ncrccag" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>rzolf</div>
+        <div>1 | 27 minutes ago </div>
+      </div>
+      <label for="ncrccag" class="commentText"><p>I think Balmer just assumed nobody would ever find out, and if they did they wouldn&rsquo;t care. He is clumsily gaslighting now because he was got caught off guard. This kind of thing, having side LLCs doing something shady or funneling $ to your wife&rsquo;s company became super common in the tech startup world starting in the 2010s. Before that, it used to be forbidden but something changed and now it&rsquo;s not only common it is encouraged. So I think Balmer is just confused now about why anyone would even care that he did this, as he&rsquo;s been used to being around people who think it is clever and standard operating procedure.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ncre7ew" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>LegitimateMoney00 | Knicks</div>
+        <div>1 | 17 minutes ago </div>
+      </div>
+      <label for="ncre7ew" class="commentText"><p>I mean, the only reason he got caught is because Kawhi decided to name his LLC the most obvious bs ever “KL2 Aspire”. If that hadn’t happen, he probably would have gotten off free. But I’m glad he didn’t. Now I hope he is forced to sell.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ncrgc29" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>stgwii</div>
+        <div>1 | 7 minutes ago </div>
+      </div>
+      <label for="ncrgc29" class="commentText"><p>This is a good analysis, but it also was only <span class="math inline">\(50 million from a guy worth \)</span>150,000,000,000. That’s the equivalent of investing $10 in your neighborhood kids lemonade stand. It’s so low it doesn’t really matter if it pays off.</p>
+
+<p>All that said, I absolutely think this was all about circumventing the salary cap</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ncrgyw9" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ForsakenRacism | Knicks</div>
+        <div>1 | 4 minutes ago </div>
+      </div>
+      <label for="ncrgyw9" class="commentText"><p>It might be hard to comprehend but 50m is proportion to ballmer as 40 bucks is to someone who makes 100k</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
