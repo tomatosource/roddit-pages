@@ -1,0 +1,355 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.selfPostImage {
+  width: 100%;
+  height: auto;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/PathOfExile2/comments/1ne7tqz/im_glad_the_devs_are_passionate_about_the_game/"><p>I&rsquo;m glad the devs are passionate about the game and are having fun designing combos + archetypes, but I feel like that part should be OUR job/privilege</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <p>Basically what I&rsquo;m saying is it should be each player&rsquo;s job to make his own build and combos, not the devs.</p>
+
+<p><em>GGG should make the abilities, animations, beautiful visual effects, but the players should make (most) of the synergies. That&rsquo;s the appeal, right?</em></p>
+
+<p>Here are some examples of what I mean.</p>
+
+<table>
+<thead>
+<tr>
+<th align="left">How it is now</th>
+<th align="left">How it should be</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">Spear skills are hardcoded to work with <strong>parry</strong></td>
+<td align="left"><strong>Parry</strong> gives a generic debuff like Daze + its own 50% attack damage increase. <strong>Spear skills</strong> consume Daze. <strong>Daze</strong> can be put on most skills with support gems and passives</td>
+</tr>
+
+<tr>
+<td align="left">Some skills are hardcoded <strong>blow up frozen</strong> enemies</td>
+<td align="left">Generic support gem that makes skills blow up frozen targets, maybe with weights based on use time</td>
+</tr>
+
+<tr>
+<td align="left">Some <strong>spells</strong> are hardcoded to give certain <strong>elemental infusions</strong>. Some <strong>spells</strong> are hardcoded to use certain elemental infusions</td>
+<td align="left">Infusions have generic stats that work on most projectile/strike/slam abilities by adding generic visuals. Certain skills could still have explicit synergies. Obtain infusions from any <strong>skill</strong> of that element, if you socket a generic support gem (again maybe chance based on weight or condition).</td>
+</tr>
+
+<tr>
+<td align="left">Certain skills are hardcoded to create <strong>Charges</strong>, others are hardcoded to consume <strong>Charges</strong>.</td>
+<td align="left"><strong>Generic Support Gems</strong> create charges, based on conditions, like consuming a buff, detonating something generic, or a resource (we have a spirit gem like this actually). Other generic Support gems consume Charges to provide either <strong>Crit, Attack Speed, or Less Damage taken</strong> while casting (obvious which charge does what). Some hardcoded interactions can still exist.</td>
+</tr>
+
+<tr>
+<td align="left">Mace skills are hardcoded to trigger and consume <strong>Slams</strong>/Shocks.</td>
+<td align="left"><strong>Most AoE ground effect</strong> should be supportable with a gem that makes it a slam. Other AoE ground effects should be able to consume that for generic bonuses, like echoing, growing in size, aftershocking, again, by using a support gem.</td>
+</tr>
+
+<tr>
+<td align="left">Skills are hardcoded to be either main damage, support, detonation, debuff, sprinkle, explosion etc.</td>
+<td align="left">YOU as a player choose which skills you use as main abilities. YOU choose which abilities debuff and which detonate. YOU choose what sprinkles and what explodes in a big area. YOU decide what is slow and what is fast, given hard choices of what you sacrifice and what you boost. YOU choose how your combo flows.</td>
+</tr>
+</tbody>
+</table>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ndmjjvw" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>SakeMadaMada</div>
+        <div>1 | 44 minutes ago </div>
+      </div>
+      <label for="ndmjjvw" class="commentText"><p>Why are you trying to combo at all when end game stuff will randomly one shot you if you don&rsquo;t instant delete them.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="ndmklgr" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Lumintorious</div>
+        <div>1 | 38 minutes ago </div>
+      </div>
+      <label for="ndmklgr" class="commentText"><p>I get that, but that&rsquo;s a different problem.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="ndmk72j" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>WebPrimary2848</div>
+        <div>1 | 41 minutes ago </div>
+      </div>
+      <label for="ndmk72j" class="commentText"><p>I play poison PF and am frequently rolling into melee range before shooting enemies. I haven&rsquo;t died from 94 -&amp;gt; 97, sounds like your build is a little glassy</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ndmqrfb" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Ixziga</div>
+        <div>1 | 4 minutes ago </div>
+      </div>
+      <label for="ndmqrfb" class="commentText"><p>Yeah I think heading support gems activate these combos is the necessary direction things have to go to truly unlock multi class combos.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ndmnv8t" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>sfirita</div>
+        <div>1 | 20 minutes ago </div>
+      </div>
+      <label for="ndmnv8t" class="commentText"><p>The real problem, at least for me, is tied to this</p>
+
+<p>-the core design of the endgame</p>
+
+<p>-the actual armor issue , excluding automatically a pure melee build</p>
+
+<p>-the soft nerfs and changes GGG pushes out with no real design philosophy, pushing people into the Meta. One example : they nerfed the spirit gain node from monk&rsquo;s ascendency , just to push people to use tactician when it came out (with the half cost of spirit reservationd etc)&hellip;they are in some sense orienting people to certain builds. They did the same with warrior totem. They use data to see the most played builds and class, and base their  balancing philosophy on that .and that&rsquo;s the problem.There&rsquo;s no real build diversity if you think about it. Diablo 2 and 3 were designed to have that diversity. Poe is not.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
