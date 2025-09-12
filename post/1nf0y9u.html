@@ -1,0 +1,619 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.selfPostImage {
+  width: 100%;
+  height: auto;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/PathOfExile2/comments/1nf0y9u/path_of_exile_2_pc_optimization_guide_stepbystep/"><p>Path of Exile 2 — PC Optimization Guide (Step-by-Step)</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <p>Hello, I’m a PoE2 player from Korea.</p>
+
+<p>I’m also a YouTuber and streamer, but I’ll leave out the link since I don’t want it to look like I’m just here to promote. (If you&rsquo;re looking for it, I won&rsquo;t stop you.)</p>
+
+<p>These optimizations are based on my experience in Korea, and I hope they help you as well.</p>
+
+<p>Oh, and I’ve been working as a programmer in Korea for 7 years.</p>
+
+<p>That’s all.</p>
+
+<p><strong>The following is a translation of my video&rsquo;s content into English.</strong></p>
+
+<h1 id="reference">[Reference]</h1>
+
+<p><strong>Program name</strong> <code>PathOfExile_KG.exe</code> <em>(PoE executable; you can verify this in Task Manager)</em></p>
+
+<p><strong>Shader cache folder paths</strong></p>
+
+<ol>
+<li><code>%USERPROFILE%\AppData\Local\NVIDIA</code></li>
+<li><code>%USERPROFILE%\AppData\Local\NVIDIA Corporation</code></li>
+<li><code>%USERPROFILE%\AppData\Roaming\Path of Exile 2</code></li>
+</ol>
+
+<p><strong>Power plan command</strong></p>
+
+<pre><code>powercfg -duplicatescheme e9a42b02-d5df-448d-aa00-03f14749eb61
+</code></pre>
+
+<p><strong>Windows 11 users — reference link</strong> <a href="https://support.microsoft.com/en-us/windows/optimizations-for-windowed-games-in-windows-11-3f006843-2c7e-4ed0-9a5e-f9389e535952" target="_blank">https://support.microsoft.com/en-us/windows/optimizations-for-windowed-games-in-windows-11-3f006843-2c7e-4ed0-9a5e-f9389e535952</a></p>
+
+<h1 id="config-file-key-settings">Config file (key settings)</h1>
+
+<pre><code># If you need to use vertical sync, do NOT apply this line:
+vsync=Off
+
+screenspace_effects=0
+screenspace_effects_resolution=0
+shadow_type=Low
+global_illumination_detail=0
+water_detail=0
+texture_quality=TextureQualityMedium
+
+# Make sure this is set to false:
+reverb_enabled2=false
+
+reduce_user_interface_animations=true
+use_dynamic_resolution=true
+dynamic_resolution_fps=130
+</code></pre>
+
+<h1 id="path-of-exile-2-pc-optimization-guide-step-by-step">Path of Exile 2 — PC Optimization Guide (Step-by-Step)</h1>
+
+<blockquote>
+<p>Results vary by system. Follow the steps in order and test what fits your rig best.</p>
+</blockquote>
+
+<h1 id="1-in-game-core-display-renderer">1) In-Game: Core Display &amp; Renderer</h1>
+
+<ul>
+<li><strong>Open Settings (ESC) → Graphics.</strong> Set <strong>Renderer = DirectX 12 (default)</strong> for stability. If your system is older, <strong>test Vulkan</strong> and keep the one that feels more stable for you.</li>
+<li><strong>Display Mode:</strong>
+
+<ul>
+<li><strong>Fullscreen</strong> = lower input latency (snappier feel)</li>
+<li><strong>Windowed/Borderless</strong> = easier task switching (modern implementations are fine)</li>
+</ul></li>
+<li><strong>V-Sync:</strong>
+
+<ul>
+<li><strong>60Hz monitors:</strong> use <strong>Adaptive</strong> to prevent tearing.</li>
+<li><strong>144Hz+ monitors:</strong> <strong>Off</strong> to reduce input lag.</li>
+</ul></li>
+</ul>
+
+<h1 id="2-in-game-dynamic-resolution-upscaling">2) In-Game: Dynamic Resolution &amp; Upscaling</h1>
+
+<ul>
+<li><strong>Dynamic Resolution: ON.</strong> It cushions heavy effect/mob-dense moments that cause frame dips.</li>
+<li><strong>Upscaling options (pick and test):</strong>
+
+<ul>
+<li><strong>NVIDIA:</strong> Start with <strong>DLSS</strong>; move between <strong>Balanced → Performance → Ultra Performance</strong> as needed.</li>
+<li><strong>AMD:</strong> Use <strong>FSR</strong> with the same <strong>Balanced/Performance/Ultra</strong> mindset.</li>
+<li>If frames still struggle, try <strong>NIS</strong> (works in all games; typically less “blurry”). <strong>Note:</strong> With any upscaler, UI can also be upscaled and look soft. Increase <strong>Sharpness</strong> if needed.</li>
+<li><strong>Linear</strong> upscaler = <strong>maximum performance</strong> / <strong>lowest image quality</strong> (visible pixelation). Only use if you prioritize FPS over fidelity.</li>
+</ul></li>
+<li><strong>Recommended detail tweaks:</strong>
+
+<ul>
+<li><strong>Texture Quality = Medium</strong>, <strong>Texture Filtering = 4x or 8x</strong></li>
+<li><strong>Reflections = Shadows</strong>, <strong>Shadow Quality = Low</strong>, <strong>Sun Shadows = Low</strong>, <strong>Number of Lights = Low</strong>, <strong>Bloom = Minimal</strong>, <strong>Water Detail = Low</strong></li>
+</ul></li>
+<li>Expect a noticeable FPS uplift after these changes.</li>
+</ul>
+
+<h1 id="3-in-game-latency-caps-performance-toggles">3) In-Game: Latency, Caps &amp; Performance Toggles</h1>
+
+<ul>
+<li><strong>NVIDIA Reflex:</strong>
+
+<ul>
+<li><strong>On</strong> lowers input lag; <strong>On + Boost</strong> if you still feel delay.</li>
+<li>If it feels mismatched on your system, <strong>turn it Off</strong>. Trust your feel.</li>
+</ul></li>
+<li><strong>Foreground FPS cap:</strong> set <strong>2–3 FPS below</strong> your monitor refresh (e.g., 144Hz → <strong>142</strong>). <strong>Background FPS:</strong> <strong>30</strong> to avoid wasting resources.</li>
+<li><strong>Triple Buffering:</strong> Off = snappier input; On = smoother frame pacing. Test and pick.</li>
+<li><strong>Enable:</strong> <strong>Dynamic Culling</strong> &amp; <strong>Engine Multithreading</strong>. <strong>Target Framerate:</strong> <strong>120</strong>. <strong>Turn off</strong> the performance <strong>Graph</strong> overlay after setup.</li>
+</ul>
+
+<h1 id="4-in-game-sound-for-stability">4) In-Game: Sound for Stability</h1>
+
+<ul>
+<li><strong>Channels = Low</strong>, <strong>Disable Reverb</strong>, <strong>Mute in Background = On</strong> → reduces CPU load and helps stabilize frames.</li>
+</ul>
+
+<h1 id="5-edit-the-game-config-advanced-but-powerful">5) Edit the Game Config (advanced but powerful)</h1>
+
+<ol>
+<li><strong>Exit the game.</strong></li>
+<li>Navigate to your config and find <code>poe2_production_Config.ini</code>. <strong>Make a backup copy first.</strong></li>
+<li>Open the original and edit these keys (exact spelling/case matters):
+
+<ul>
+<li><code>vsync = Off (If you are using vertical synchronization (V-Sync), do not change this value.)</code></li>
+<li><code>reduce_user_interface_animations = true</code></li>
+<li><code>dynamic_resolution_fps =</code>
+
+<ul>
+<li><strong>144Hz:</strong> <code>120–130</code></li>
+<li><strong>165Hz:</strong> <code>138–150</code></li>
+<li><strong>240Hz+:</strong> around <code>200</code></li>
+</ul></li>
+</ul></li>
+<li>Save → <strong>Right-click the file → Properties → set to Read-only</strong> to lock your values between launches (toggle off later if you want to edit again) <strong>(It is not something that must be done. ).</strong></li>
+<li>If anything breaks, <strong>restore from your backup.</strong></li>
+</ol>
+
+<blockquote>
+<p><strong>Windows 11 (Windowed Gaming Optimization):</strong> Settings → System → Display → Graphics → Default graphics settings → <strong>Enable “Optimizations for windowed games.”</strong></p>
+</blockquote>
+
+<h1 id="6-nvidia-amd-prep-clean-shader-caches-nvidia-shown-amd-users-find-similarly-named-options">6) NVIDIA/AMD Prep — Clean Shader Caches (NVIDIA shown; AMD users find similarly named options)</h1>
+
+<p><strong>In NVIDIA Control Panel (before tuning per-app settings):</strong></p>
+
+<ol>
+<li><strong>Global Settings → Shader Cache Size: Disable → Apply → Reboot.</strong></li>
+<li>Delete shader cache files (keep the folders):
+
+<ul>
+<li><strong>DXCache</strong> &amp; <strong>GLCache</strong> (empty their contents).</li>
+<li><strong>NVIDIA Corporation → NV_Cache</strong> (if present, empty it).</li>
+<li><strong>Disk Cleanup:</strong> delete <strong>DirectX Shader Cache</strong> only.</li>
+</ul></li>
+<li>Back in NVIDIA Control Panel, set <strong>Shader Cache Size ≥ 100GB or Infinite</strong>, <strong>Apply</strong>, then <strong>Reboot</strong>.</li>
+<li>Clean PoE2-specific caches: delete contents of <code>ShaderCacheD3D12</code> and your <strong>minimap</strong> folder (files only).</li>
+</ol>
+
+<blockquote>
+<p>First launch after cleaning may stutter while shaders rebuild; it stabilizes afterward.</p>
+</blockquote>
+
+<h1 id="7-nvidia-control-panel-per-app-poe2">7) NVIDIA Control Panel — Per-App (PoE2)</h1>
+
+<ul>
+<li><strong>Program Settings:</strong> Add the game and <strong>select</strong> <code>PathOfExile_KG</code> (<strong>not</strong> the x64 exe).</li>
+<li><strong>Monitor Technology:</strong> <strong>G-SYNC Compatible</strong> (name may vary by GPU).</li>
+<li><strong>Power Management Mode:</strong> <strong>Prefer Maximum Performance</strong> (reduces mode-switch hiccups).</li>
+<li><strong>Surround, PhysX:</strong> set <strong>Processor = your GPU</strong>.</li>
+<li><strong>Adjust Desktop Size &amp; Position:</strong>
+
+<ul>
+<li><strong>Low-end rigs:</strong> <strong>Scaling performed by Display</strong></li>
+<li><strong>Higher-end rigs:</strong> <strong>Scaling performed by GPU</strong> (This also governs who handles scaling when Dynamic Resolution kicks in.)</li>
+</ul></li>
+<li><strong>Set up G-SYNC:</strong> enable for <strong>Windowed and Fullscreen</strong>, pick your monitor, and apply.</li>
+</ul>
+
+<h1 id="8-windows-graphics-power">8) Windows Graphics &amp; Power</h1>
+
+<ul>
+<li><strong>Settings → System → Display → Graphics:</strong> <strong>Add</strong> <code>PathOfExile_KG.exe</code> <strong>→ Options → High Performance → Save.</strong></li>
+<li><strong>Hardware-Accelerated GPU Scheduling (HAGS):</strong> try <strong>On/Off</strong> and keep what feels better <strong>for your PC</strong> (it can differ by game).</li>
+<li><strong>Power Plan:</strong> unlock and select <strong>Ultimate Performance</strong> in Control Panel (run the provided command from the source/pinned comment to reveal it, then choose it).</li>
+</ul>
+
+<h1 id="9-final-note">9) Final Note</h1>
+
+<ul>
+<li>After all steps (in-game, config, Windows 11 options, driver cache, per-app settings, graphics settings, HAGS, power), you’re done. Expect brief stutter on first boot due to shader compilation; it should stabilize soon after.</li>
+</ul>
+
+<h1 id="not-recommended">[NOT RECOMMENDED]</h1>
+
+<ul>
+<li><strong>Editing</strong> <code>poe2_production_Config.ini</code> <strong>without a backup</strong> (always make a copy first).</li>
+<li><strong>Choosing the x64 executable</strong> in NVIDIA Program Settings (pick <code>PathOfExile_KG</code> only).</li>
+<li><strong>Deleting the DXCache/GLCache folders themselves</strong> (delete their <strong>contents</strong>, keep the folders).</li>
+</ul>
+
+<h1 id="issues-fixes">Issues &amp; Fixes</h1>
+
+<p><strong>Issue 1 — Monitor problems after optimization</strong> <em>(flickering light, scan lines, etc.)</em> <strong>Fix:</strong> Revert <strong>V-Sync</strong> to its default setting. In <strong>NVIDIA Control Panel</strong>, check whether <strong>G-SYNC Compatible</strong> is enabled and <strong>disable G-SYNC Compatible</strong>. Also make sure the <strong>vSync value in your config file matches your in-game setting</strong>. Most monitor issues come from <strong>V-Sync / sync / scaling</strong> mismatches.</p>
+
+<p><strong>Issue 2 — Game feels slow when launching or changing maps after optimization</strong> You likely <strong>disabled the shader cache</strong> and <strong>deleted the cache files</strong>. After that, you must <strong>re-enable the shader cache</strong>. If you leave it disabled, the game keeps <strong>recompiling shaders continually</strong>, which causes persistent slowdowns.</p>
+
+<p><strong>Issue 3 — What caused the recent game freezes?</strong> The root cause was <strong>DXGI_ERROR_DEVICE_REMOVED</strong> — Windows <strong>TDR</strong> (Timeout Detection and Recovery) forcibly resetting the GPU. In simple terms, the <strong>GPU briefly “dies” and then comes back</strong>.</p>
+
+<p><strong>Issue 4 — My PC specs</strong></p>
+
+<ul>
+<li><strong>OS:</strong> Windows 10</li>
+<li><strong>CPU:</strong> AMD Ryzen 7 5800X3D</li>
+<li><strong>RAM:</strong> 64 GB</li>
+<li><strong>GPU:</strong> NVIDIA RTX 4080</li>
+<li><strong>Storage:</strong> 3 × SSD</li>
+<li><strong>Displays:</strong> 2 monitors</li>
+<li><strong>Capture:</strong> 1 capture card</li>
+<li><strong>Primary gaming monitor:</strong> LG 27&rdquo; (1080p) <strong>144Hz</strong> gaming monitor (monitor preset: <strong>RTS</strong>, response time set to <strong>Very Fast</strong>)</li>
+<li><strong>Driver:</strong> NVIDIA Game Ready <strong>581.15</strong></li>
+</ul>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ndsvgft" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ademayor</div>
+        <div>1 | 30 minutes ago </div>
+      </div>
+      <label for="ndsvgft" class="commentText"><p>Should also be posted on /r/optimizedgaming sub. Good job</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="ndsvkgl" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>LowBar3210</div>
+        <div>1 | 29 minutes ago </div>
+      </div>
+      <label for="ndsvkgl" class="commentText"><p>thx</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ndsxv92" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Xcellers</div>
+        <div>1 | 15 minutes ago </div>
+      </div>
+      <label for="ndsxv92" class="commentText"><p>This is ace content - thanks for sharing this!</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ndsxq8q" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Immediate_Review8558</div>
+        <div>1 | 16 minutes ago </div>
+      </div>
+      <label for="ndsxq8q" class="commentText"><p>You should get bonus from ggg for doing their job</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ndsykjp" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>hilmigg</div>
+        <div>1 | 11 minutes ago </div>
+      </div>
+      <label for="ndsykjp" class="commentText"><p>I&rsquo;ve done most of those steps but can&rsquo;t seem to fix the 5-6 second freeze that causes the map fog to reset.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="ndszc41" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>BasicWaveSk</div>
+        <div>1 | 6 minutes ago </div>
+      </div>
+      <label for="ndszc41" class="commentText"><p>Yeah, been dealing with this the whole patch and cannot find a solution. Didnt have any Issues last season. Running a 14600kf and rtx4070.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="ndt01bc" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>hilmigg</div>
+        <div>1 | 2 minutes ago </div>
+      </div>
+      <label for="ndt01bc" class="commentText"><p>I am having it since 0.2, 5080 and I think that&rsquo;s happening on nvidia cards.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="ndsziju" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Shorkan</div>
+        <div>1 | 5 minutes ago </div>
+      </div>
+      <label for="ndsziju" class="commentText"><p>That&rsquo;s a nvidia driver crash, I believe. All I can think of is trying Vulkan/DX12, see if any makes a difference; or try a different driver version in case you are lucky. But I don&rsquo;t think you can get rid of them completely until either GGG or nVidia fix stuff on their end.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ndsy9u9" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Longjumping-Kiwi-937</div>
+        <div>1 | 13 minutes ago </div>
+      </div>
+      <label for="ndsy9u9" class="commentText"><p>Thx for this! Been tinkering around alot and gonna try this today. Btw if on win11 search game mode and disable it. It tanked my performance alot.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ndsz6j1" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>x0cloud_strife0x</div>
+        <div>1 | 7 minutes ago </div>
+      </div>
+      <label for="ndsz6j1" class="commentText"><p>Oh I need to try this out. Saving this for later.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
