@@ -1,0 +1,561 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.selfPostImage {
+  width: 100%;
+  height: auto;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/PathOfExile2/comments/1nhggbi/the_witchhunter_ascendancy_in_03_a_dive_into_a/"><p>The Witchhunter Ascendancy in 0.3 - A Dive into a Flawed Design</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <p>Hey Exiles,</p>
+
+<p>I&rsquo;ve been theorycrafting and playing with the Witchhunter Ascendancy and after digging into the specifics of the notables doing some scaling and playing, I&rsquo;ve come to a pretty dissapointed conclusion: the theme may be neat, but the mechanics are riddled with flaws that make it feel underpowered, especially for party play and endgame scaling. I wanted to break down my thoughts on each notable cluster.</p>
+
+<p><strong>TL;DR:</strong> Most of the Witchhunter&rsquo;s notables are either mathematical traps in party play (Culling), too restrictive to be useful (Weapon Master), or numerically inefficient compared to other Ascendancies.</p>
+
+<hr>
+
+<h2 id="the-culling-trap-pitiless-killer-judge-jury-and-executioner">The Culling Trap: <code>Pitiless Killer</code> &amp; <code>Judge, Jury, and Executioner</code></h2>
+
+<p>This is the biggest issue. On the surface, the new items and passives letting us scale Culling Strike threshold look incredible. I did the math on the maximum potential investment, and have tested in practice. I&rsquo;ll cover the general scaling and not the nodes/scaling that in addition to this apply to Rare and Unique exclusively:</p>
+
+<ul>
+<li><strong>Sources (With corruptions, attainable in-game):</strong>
+Corrupted Myris Uxor (122%)
+Heart of the Well (30%)
+Tandem Assault (26%)
+Bounty Hunter (32%)
+Finish Them (52%)
+3 minor nodes (18%)
+Culling Strike II Support (20%).</li>
+<li><strong>Total:</strong> A whopping <strong>300% increased Culling Strike Threshold</strong>.</li>
+</ul>
+
+<p>This multiplies our base cull by 4. Here&rsquo;s what that looks like in single-player:</p>
+
+<table>
+<thead>
+<tr>
+<th align="left">Enemy Rarity</th>
+<th align="center">Base Threshold</th>
+<th align="center">Max Potential Threshold</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">Normal</td>
+<td align="center">30%</td>
+<td align="center"><strong>100%</strong> (Culls on any hit)</td>
+</tr>
+
+<tr>
+<td align="left">Magic</td>
+<td align="center">20%</td>
+<td align="center"><strong>80%</strong></td>
+</tr>
+
+<tr>
+<td align="left">Rare</td>
+<td align="center">10%</td>
+<td align="center"><strong>40%</strong></td>
+</tr>
+
+<tr>
+<td align="left">Unique</td>
+<td align="center">5%</td>
+<td align="center"><strong>20%</strong></td>
+</tr>
+</tbody>
+</table>
+<p>Looks amazing, right? Culling a boss at 20% life! But here&rsquo;s the problem: <strong>Cull is always calculated from a monster&rsquo;s single-player base life.</strong> When you&rsquo;re in a party, the monster&rsquo;s actual health skyrockets, but the cull threshold doesn&rsquo;t.</p>
+
+<p>Here’s what that 20% boss cull <em>actually</em> looks like in a 6-player party:</p>
+
+<table>
+<thead>
+<tr>
+<th align="left">Rarity</th>
+<th align="center">Single-Player Cull %</th>
+<th align="center">6-Player HP Multiplier</th>
+<th align="center"><strong>Effective % of Actual HP Culled</strong></th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">Normal</td>
+<td align="center">100%</td>
+<td align="center">3.5x</td>
+<td align="center">~<strong>28.6%</strong></td>
+</tr>
+
+<tr>
+<td align="left">Magic</td>
+<td align="center">80%</td>
+<td align="center">4.0x</td>
+<td align="center"><strong>20%</strong></td>
+</tr>
+
+<tr>
+<td align="left">Rare</td>
+<td align="center">40%</td>
+<td align="center">5.0x</td>
+<td align="center"><strong>8%</strong></td>
+</tr>
+
+<tr>
+<td align="left">Unique</td>
+<td align="center">20%</td>
+<td align="center">6.0x</td>
+<td align="center">~<strong>3.3%</strong></td>
+</tr>
+</tbody>
+</table>
+<p>After all that investment across two ascendancy nodes, my gear, and my passive tree, my effective cull on a unique boss is <strong>3.3%</strong>. This doesn&rsquo;t even account for the fact that cull is calculated <em>before</em> a hit or that it doesn&rsquo;t work on scripted death animations. These nodes are a complete bait-and-switch for anyone who plays with friends.</p>
+
+<p>Oh and if you though Decimating Strike was either not working in party play, or would somehow save this 2 notable pair, it is also <strong>always calculated from a monster&rsquo;s single-player base life.</strong> It&rsquo;s not even worth showing the Effective % of Actual HP Decimated as it&rsquo;s so miniscule.</p>
+
+<hr>
+
+<h2 id="weapon-master-a-cool-idea-a-terrible-execution"><code>Weapon Master</code>: A Cool Idea, A Terrible Execution</h2>
+
+<p>The fantasy of swapping between a clear setup and a bossing setup is cool. But the restriction that you <strong>cannot allocate Jewel Sockets or Keystones</strong> to your weapon swap passives makes this notable almost useless. Keystones are what enable build-defining changes, and jewels are our most efficient source of endgame power. This notable isn&rsquo;t enabling a new archetype; it&rsquo;s just giving you 100 more weapon set passive points with the most important options disabled. Hard pass.</p>
+
+<hr>
+
+<h2 id="witchbane-no-mercy-inefficient-and-irrelevant"><code>Witchbane</code> &amp; <code>No Mercy</code>: Inefficient and Irrelevant</h2>
+
+<p>This two-node cluster gives a debuff for <code>50% less cooldown recovery rate</code> on bosses and a conditional <code>40% more damage</code>.</p>
+
+<p>The CDR debuff is irrelevant in the endgame. Bosses either die in seconds or have immunity phases. It doesn&rsquo;t solve any real problems. And spending <strong>two ascendancy points</strong> for a conditional 40% more damage multiplier is just incredibly inefficient. Other classes get that kind of power, or more, from a single node with no strings attached.</p>
+
+<hr>
+
+<h2 id="obsessive-rituals-ceremonial-ablution-weaker-than-specialization"><code>Obsessive Rituals</code> &amp; <code>Ceremonial Ablution</code>: Weaker Than Specialization</h2>
+
+<p>This cluster introduces Sorcery Ward, a new defensive layer. The problem is the entry node, <code>Obsessive Rituals</code>, hits you with a <strong><code>35% less Armour and Evasion</code></strong> multiplier. This forces you into a hybrid defense that is fundamentally weaker than just specializing in one. A pure armour stacker or a pure evasion/suppression build will always be tankier. The second node just buffs this already-flawed mechanic. It’s a solution to a problem the ascendancy creates for itself.</p>
+
+<hr>
+
+<h2 id="zealous-inquisition-the-inconsistent-explode"><code>Zealous Inquisition</code>: The Inconsistent Explode</h2>
+
+<p>This gives a 10% chance to explode enemies for 100% of their life (20% vs Undead/Demons). It&rsquo;s&hellip; okay for solo clearing, sometimes. But 10% is too inconsistent to feel smooth, and you&rsquo;ll probably still use a Herald of Ash or Ice anyway. And just like the culling nodes, its power falls off a cliff in party play. An explosion that might chain in solo play will just tickle a high-HP magic pack in a 6-man party.</p>
+
+<hr>
+
+<p>Thanks for coming to my Ted Talk.</p>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nebd8oe" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>lycanth97</div>
+        <div>1 | 31 minutes ago </div>
+      </div>
+      <label for="nebd8oe" class="commentText"><p>tl;dr - if you got no friends like me culling looks better than I thought and Witch Hunter is viable. Thanks for the math!</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nebdf2z" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>McHearty</div>
+        <div>1 | 29 minutes ago </div>
+      </div>
+      <label for="nebdf2z" class="commentText"><p>I don&rsquo;t explicitly say it in the post, but unless you specifically need a global source of cull, you can get the same scaling on other ascendancies as well.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nebdye8" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>lycanth97</div>
+        <div>1 | 23 minutes ago </div>
+      </div>
+      <label for="nebdye8" class="commentText"><p>Oh yeah, I just really like to play Witch Hunter and was wondering how high culling is able to scale :D</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nebee56" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ErikPOD</div>
+        <div>1 | 19 minutes ago </div>
+      </div>
+      <label for="nebee56" class="commentText"><p>I agree, but it has the coolest backgrund picture.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nebevjv" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>CMDR_Lina_Inv</div>
+        <div>1 | 14 minutes ago </div>
+      </div>
+      <label for="nebevjv" class="commentText"><p>Hi. Do you have any proof that the decimating strike and the zealous explosion scale with Single Player monster HP?<br>
+We may see that in culling, but for decimating, the fluctuation is quite huge, so what was your method to measure it?<br>
+Thanks.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nebfdfo" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>McHearty</div>
+        <div>1 | 8 minutes ago </div>
+      </div>
+      <label for="nebfdfo" class="commentText"><p>Decimating strike has a 26 point range it can land 5-30%. On boss encounters, especially pinnacles flat percentage Decimation is easy to see with scaled health as noted 6x.</p>
+
+<p>The issue with Zealous Explosion is it&rsquo;s ability to chain on itself through cull is diminished, not that it&rsquo;s explosion doesn&rsquo;t scale based on the increased HP.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nebfkhe" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Akirpt</div>
+        <div>1 | 6 minutes ago </div>
+      </div>
+      <label for="nebfkhe" class="commentText"><p>I would like to add another big problem which is how the nodes don&rsquo;t even work with themselves.</p>
+
+<p>When I read the passive tree I thought: &ldquo; How neat, If I can deal 5-30% max hp of the enemy before my hit connects (Decimating Strike) , I can benefit from the extra damage (No mercy) from the first hit.</p>
+
+<p>In reality, because Decimating strike does not count as hit, it does not remove concentration, which makes the &ldquo;No mercy&rdquo; talent even more conditional and weak</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nebfky5" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Flethan</div>
+        <div>1 | 6 minutes ago </div>
+      </div>
+      <label for="nebfky5" class="commentText"><p>Playing Poison Gernades Witchhunter right now and I&rsquo;m of the opinion that it&rsquo;s S-tier, so I&rsquo;ll provide a different perspective for the nodes I&rsquo;m running:</p>
+
+<p>Zealous Inquisition: Obviously it&rsquo;s incredibly strong with poison. Once you hit maps with any sort of density, a single explode can turn into max poison stacks clearing multiple screens thanks to Herald of Plague. Its base damage is so high compared to most explosion but balanced by its low chance, though with poison proliferation the low chance doesn&rsquo;t really matter. It&rsquo;s by far the strongest clear I&rsquo;ve had in either game and it doesn&rsquo;t even need a good weapon or gem level amulet. And really, it you should consider it a 20% chance in most cases, because Abyss, Breach, and Expedition are all almost entirely Undead or Demons.</p>
+
+<p>Weapon Master: Due to jewel sockets and keystones locking down your tree, getting more than 50 extra points seems completely unrealistic. But even if you only use 20 extra points, late game one extra passive should be about 3% more damage, so 20 extra passives for a bossing swap is like 60% more damage. That&rsquo;s huge for a single node, and it isn&rsquo;t even using it creatively. Yes, it&rsquo;s slightly clunky, but most of the clunk has been removed with instant swap, and it lets you rob a huge amount of power from you tree that you really shouldn&rsquo;t be able to.</p>
+
+<p>Sorcery Ward: You didn&rsquo;t talk about it but I&rsquo;m running it so I&rsquo;ll say a brief bit about it. It basically converts 33% of your armour into ES that only defends against elemental damage. However, with physical and chaos hits being generally smaller, you are less likely to be one shot with an HP pool by them. With good armour bases, you get like 10k sorcery ward, and with armour applies to ele, you are basically ele immune. It&rsquo;s an extremely efficient (about 3x better than building raw ES) defensive tool that covers hp&rsquo;s weakest area, big ele hits, while still letting you build armour to defend against phys, which is ES&rsquo;s weakest area.</p>
+
+<p>The combo of these 3 nodes leaves you with S-tier clear ( Zealous Inquisition if you go poison), S-tier bossing (weapon swap), and S-tier defense (Sorcery Ward due to easy crafting this league). I don&rsquo;t think it&rsquo;s necessarily the best in each category, but considering most ascendancies only get to be good in two categories and have to compromise in the third, I think Witchhunter is in a very good spot.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nebebf0" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>SoulofArtoria</div>
+        <div>1 | 19 minutes ago </div>
+      </div>
+      <label for="nebebf0" class="commentText"><p>Ascendancy and passive tree, alongside endgame atlas are my biggest gripe of poe 2 right now. All other aspects range from decent to excellent. You pointed out witchunter, but Id argue most ascendancies design are either uninspired like pathfinders 5 passive point omegalul, or just way too niche or underpowered. Passive tree i ranted couple times but I think is just too boring and weak. Too much addictive increases and travel points, not enough interesting notables, nodes with crappy feelsbad downsides.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nebeo25" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Dozina0012</div>
+        <div>1 | 16 minutes ago </div>
+      </div>
+      <label for="nebeo25" class="commentText"><p>A really good dive into the flaws. Concentration is a mechanic that I have no idea how that thing even worth putting into. Cooldown reduction on enemy just feels worthless and you need 4 ascendancy point to get 40% more damage.</p>
+
+<p>My idea for some changes that could be made for some nodes.</p>
+
+<p>Combine decimating strike and culling strike into the same nodes.</p>
+
+<p>Replace decimating strike node with reworked zealous inquisition which instead of 10% chance of killed enemy to exploded into &ldquo;enemy take increased damage per their missing % hp and exploded when killed equal to 50% of cull damage&rdquo;</p>
+
+<p>Sorcery ward can also absorb chaos damage and should not have &ldquo;35% less ar/er&rdquo;. Instead reduce the scaling from 30% of ar/er into 15%.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
