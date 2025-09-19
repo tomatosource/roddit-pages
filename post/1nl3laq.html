@@ -1,0 +1,657 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.selfPostImage {
+  width: 100%;
+  height: auto;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/PathOfExile2/comments/1nl3laq/outdated_exchange_rates_on_trade_site_are/"><p>Outdated Exchange Rates on Trade Site Are Misleading New Players</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <p>It’s been over 10 days now and the exchange rate displayed on the official trade site still shows <em>1 Divine = ~117 Exalted Orbs.</em> Meanwhile, the real player-driven market is closer to <em>285+ Exalts per Divine.</em></p>
+
+<p>This discrepancy creates a serious problem for newer players. When they check the official trade site — which is supposed to be the most trusted resource — they see items listed using the outdated ratio and assume it’s accurate. In reality, they often end up overpaying by a huge margin without realizing it.</p>
+
+<p>Annulment Orbs are one of the worst offenders, since their listed Divine/Exalt ratios don’t reflect what’s actually happening in trade. The end result is that newer or less-experienced players are effectively walking into bad deals simply because the “official” numbers aren’t updated.</p>
+
+<p>Could we get these exchange rates updated more frequently (daily, or even hourly)? Even a rough automated adjustment would be better than leaving things stuck for weeks. Keeping the official trade data closer to reality would go a long way toward protecting new players and making the economy healthier for everyone.</p>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nf2j3ry" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>No_Log_7440</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="nf2j3ry" class="commentText"><p>Maybe I’m overlooking something, but can’t they just pull near-realtime data from Ange?</p>
+
+<p>They could effectively create a graph with relative currency values between the top 5-6 currencies (Vaal, regal, exalt, chaos, annul, divine) using a rolling average of the last ### of successful trades and use this as an automated feeder into trade site.</p>
+
+<p>No idea what this # should be, but it just needs to be large enough to be relatively stable and not easily influenced by accidents/ouliers or bad actors. The nature of Ange and asynchronous trade makes market manipulation much less likely, but I’m sure someone smarter than me could also write some logic for this to reduce potential negative impacts.  Using multiple reference points/relationships also makes detecting outliers and manipulation much easier.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nf2k21x" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>tazdraperm</div>
+        <div>1 | 40 minutes ago </div>
+      </div>
+      <label for="nf2k21x" class="commentText"><p>They can. There&rsquo;s a private API for that which is currently used by POE.Ninja</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nf2qskq" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>mcbuckets21</div>
+        <div>1 | 6 minutes ago </div>
+      </div>
+      <label for="nf2qskq" class="commentText"><p>e/okay I was wrong. I checked the api at the start of mercenaries and it didn&rsquo;t exist (or I somehow missed it). but it exists now:<br>
+<a href="https://www.pathofexile.com/developer/docs/reference#currencyexchange" target="_blank">https://www.pathofexile.com/developer/docs/reference#currencyexchange</a></p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nf2rbta" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>tazdraperm</div>
+        <div>1 | 3 minutes ago </div>
+      </div>
+      <label for="nf2rbta" class="commentText"><p>There is API, but it&rsquo;s not public. I dont know if it works for Poe1, but it surely does for Poe2. Poe.ninja prices are pretty accurate for Poe2.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="nf2rpof" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>tazdraperm</div>
+        <div>1 | a minute ago </div>
+      </div>
+      <label for="nf2rpof" class="commentText"><p>Here&rsquo;s your go: <a href="https://www.pathofexile.com/developer/docs/reference#currencyexchange" target="_blank">https://www.pathofexile.com/developer/docs/reference#currencyexchange</a></p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="nf2oguf" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>LongLonMan</div>
+        <div>1 | 18 minutes ago </div>
+      </div>
+      <label for="nf2oguf" class="commentText"><p>That’s what I do</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nf2ij8c" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>gvieira</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="nf2ij8c" class="commentText"><p>It&rsquo;s even worse with mirror:divines. A 1 mirror listing shows as cheaper than 260 divines.</p>
+
+<p>Even though GGG has ALL the data they need to make it automated, they still update ratios manually. It&rsquo;s like that in poe1 too. It&rsquo;s stupid af.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nf2graq" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>elsiecharlot</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="nf2graq" class="commentText"><p>10 days? lol its been since release last year</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nf2k2cf" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>CloudConductor</div>
+        <div>1 | 40 minutes ago </div>
+      </div>
+      <label for="nf2k2cf" class="commentText"><p>This has been an issue in poe1 for years lol</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="nf2gvab" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Unicorn698</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="nf2gvab" class="commentText"><p>soo bad dude keeps getting worst and worst</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nf2jac6" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Extreme-Goose</div>
+        <div>1 | 44 minutes ago </div>
+      </div>
+      <label for="nf2jac6" class="commentText"><p>This also makes experienced players have to take more steps to make good filters. Just connect the currency exchange ratios to the website database</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nf2q4vs" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Unicorn698</div>
+        <div>1 | 9 minutes ago </div>
+      </div>
+      <label for="nf2q4vs" class="commentText"><p>it is exhausting at this point keeping track on values in game and on trade site have to be cautions before buying like am i over paying or something</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nf2l54z" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Hardyyz</div>
+        <div>1 | 35 minutes ago </div>
+      </div>
+      <label for="nf2l54z" class="commentText"><p>New players are more likely to just use the in game tool (Ange)</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nf2oo7u" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>WeddingDecent8211</div>
+        <div>1 | 16 minutes ago </div>
+      </div>
+      <label for="nf2oo7u" class="commentText"><p>People list trash items at trade market at 1annul as this is listed first before eg 30ex items. It&rsquo;s a way to scam people who don&rsquo;t know current exchange rates</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nf2r1jh" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ChronoVT</div>
+        <div>1 | 5 minutes ago </div>
+      </div>
+      <label for="nf2r1jh" class="commentText"><p>Currency is purchased/sold via the exchange and not the player market right? Won&rsquo;t that display the latest when you try to put 1 divine for sale? If you&rsquo;re selling through the market, it&rsquo;s your own fault isn&rsquo;t it.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nf2rpbk" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>CoreyJK</div>
+        <div>1 | a minute ago </div>
+      </div>
+      <label for="nf2rpbk" class="commentText"><p>Trading currency isn’t the issue, it’s gear</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="nf2rskh" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>deskdemonnn</div>
+        <div>1 | a few seconds ago </div>
+      </div>
+      <label for="nf2rskh" class="commentText"><p>ITEMS like weapons are being put up for 1 annul, that starts showing up around 20exalts cause the trade site still thinks its 1:20~ when currently its like 1:70ex now, so people either spend more than they thought they had cause why would the official site be so unreliable to not show proper price values</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nf2iuj2" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>AimenZaied | Invoker</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="nf2iuj2" class="commentText"><p>Not sure what they are waiting for, it should be an easy fix overall, just link the rates</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nf2n01r" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Farazon94</div>
+        <div>1 | 25 minutes ago </div>
+      </div>
+      <label for="nf2n01r" class="commentText"><p>The most trusted source is the in-game exchange as it&rsquo;s live at any given moment without the need to use an out-of-game tool to check prices. I&rsquo;m confused why anyone would want to check currency exchange rate there instead of in game - I thought that was the whole point of adding the currency exchange system.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nf2jv6n" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>CloudConductor</div>
+        <div>1 | 41 minutes ago </div>
+      </div>
+      <label for="nf2jv6n" class="commentText"><p>I don’t understand why this hasn’t become a real time feed from the currency exchange by now</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nf2pgz1" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Unicorn698</div>
+        <div>1 | 13 minutes ago </div>
+      </div>
+      <label for="nf2pgz1" class="commentText"><p>yep just pull from currency exchange and it will fix all the problems</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nf2k08p" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>gtetrakai</div>
+        <div>1 | 41 minutes ago </div>
+      </div>
+      <label for="nf2k08p" class="commentText"><p><em>May</em> be leading <em>some</em> players.</p>
+
+<p>Had a buddy start up poe2 for the first time last weekend - no prior interaction with poe1 or the new currency exchange or acync trading. He was able to locate the exchange rates in game for the currency he was asking about trading without me telling him anything, as well as other currencies for the same item. He also asked why rates for some were out of wack compared to others and that people could probably just flip all they want without actually farming. (Had to explain to him the trades have a gold cost so you eventually can&rsquo;t use the system if you don&rsquo;t farm some gold).</p>
+
+<p>The point is, at the end of the day trade has required -both- sides to interact. If you are listing prices at whatever you are setting them to, there is only one person to blame - and it&rsquo;s not the person who sniped that deal of the league. <strong>Especially</strong> when we have in game resources to check the prices specifically on currency. It&rsquo;s the most real time that we have&hellip;.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nf2l6sl" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>KylAnde01</div>
+        <div>1 | 34 minutes ago </div>
+      </div>
+      <label for="nf2l6sl" class="commentText"><p>There&rsquo;s a fair number of people who scoop up a lot of currency through this kind of arbitrage, especially in the first week of any league. I dont have the patience for it myself, but it&rsquo;s pretty cool the variety of approaches a person can take to an active trade economy.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
