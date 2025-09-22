@@ -1,0 +1,283 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.selfPostImage {
+  width: 100%;
+  height: auto;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/PathOfExile2/comments/1nnrdc9/made_a_small_browser_extension_to_view_your_stash/"><p>Made a small browser extension to view your stash on trade site</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <p>I saw a post here yesterday with a <a href="https://www.reddit.com/r/PathOfExile2/comments/1nmp2rc/merchant_tab_improvement_suggestion/" target="_blank">Suggestion</a> to show the price you set on the items you sell at Ange. I wanted to take it a bit further and also add a good way to visualise how long items have been listed, what they are priced at and have a color code to show which items should be relisted. It also shows if you forgot to set a price to certain items and in which tab they are located.<br>
+I know all this information is already there in the list on the search if you filter on your own user, but this extension visualises it so it&rsquo;s easier to crossreference.</p>
+
+<p>I wish I could mod it ingame but I can&rsquo;t, so instead I made it work on the trade page, this is what it looks like in action:</p>
+
+<p><a href="https://preview.redd.it/vylod5ehtqqf1.png?width=1706&amp;format=png&amp;auto=webp&amp;s=0b6ac992dae9b6a4fe539ead4b7c6ebf9086b7c1" target="_blank">View of one of the stash tabs, tab names at top are matching with ingame</a></p>
+
+<p><a href="https://preview.redd.it/mvcybu21wqqf1.png?width=1150&amp;format=png&amp;auto=webp&amp;s=d040b9b795212a1aca42faa6359c1b28bf9b134e" target="_blank">Example of an in person tab, tab names are at the top as ingame</a></p>
+
+<p>This is a very rough draft that I only worked on for like 3 hours, but the idea is to extend this with price checking/suggestions so you can easy relist items ingame at current market prices, using similar filters like Exiled Exchange and whatnot. But I wanted to get a first feeling if people found this useful at all or if I&rsquo;m just wasting my time :)</p>
+
+<p>The extension is not published yet, but can be used already through the instructions on the <a href="https://github.com/ThomasAmeye/PoE2TradeStashViewer" target="_blank">Github repo</a></p>
+
+<p>Feel free to give feedback or let me know if there are breaking bugs</p>
+
+<p>One note, in person trade tabs will only show up when you are actually online ingame. Buyout tabs are always available</p>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nfnoff5" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>the24thour</div>
+        <div>1 | 23 minutes ago </div>
+      </div>
+      <label for="nfnoff5" class="commentText"><p>This is really slick. Will for sure use this. If this could be turned into an in game overlay I&rsquo;d die happy.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nfnolqs" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>TheInnsanity</div>
+        <div>1 | 22 minutes ago </div>
+      </div>
+      <label for="nfnolqs" class="commentText"><p>can&rsquo;t wait for my work productivity to suffer</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nfmowmh" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Venmar281</div>
+        <div>0 | 4 hours ago </div>
+      </div>
+      <label for="nfmowmh" class="commentText"><p>Awesome!</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
