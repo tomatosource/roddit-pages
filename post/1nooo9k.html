@@ -1,0 +1,708 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.selfPostImage {
+  width: 100%;
+  height: auto;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/nba/comments/1nooo9k/jayson_tatums_surgeon_dr_omalley_on_his_unique/"><p>Jayson Tatum&rsquo;s surgeon Dr. O&rsquo;Malley on his unique recovery: &ldquo;I don&rsquo;t think I&rsquo;ve seen a person&rsquo;s calf look as strong as his. At six or eight weeks he was doing double heel rises. He worked his calf so hard that the side effect of loss of strength, I don&rsquo;t think he&rsquo;s going to have any.&rdquo;</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <p>Source: <a href="https://people.com/nba-star-jayson-tatum-reveals-agony-of-ruptured-achilles-tendon-how-sons-kept-spirits-up-11813773" target="_blank">https://people.com/nba-star-jayson-tatum-reveals-agony-of-ruptured-achilles-tendon-how-sons-kept-spirits-up-11813773</a></p>
+
+<p>Some other interesting quotes from the article:</p>
+
+<p>On non-opiod pain drug:</p>
+
+<blockquote>
+<p>At first after surgery, his pain was so intense, he tried taking a prescribed opioid medication, but ended up “so nauseous” that he stopped after less than a day. O&rsquo;Malley suggested a new <a href="https://people.com/non-opioid-painkiller-journavx-approved-fda-8783714" target="_blank">non-opioid pain drug</a> that was just approved by the FDA earlier this year, Journavx, which doesn’t “dull your brain&rdquo; and &ldquo;there&rsquo;s no addictive potential.&rdquo; It allowed Tatum (who&rsquo;s since become a spokesperson for the drug’s manufacturer, Vertex Pharmaceuticals) to quickly begin his intense rehab—three hours every day in physical therapy treatment and in the weight room.</p>
+</blockquote>
+
+<p>On Deuce now being able to beat him:</p>
+
+<blockquote>
+<p>Deuce also offered some cheekier motivation. “Deuce didn’t cut him any slack,” says Cole. “When they were outside playing [basketball] he&rsquo;s like, ‘I can beat you now!’ We were like, ‘Way to beat a man while he’s down!’ Jayson warned him, ‘You got a couple of weeks.’”</p>
+</blockquote>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nft5ie2" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>taygads</div>
+        <div>1 | 17 minutes ago </div>
+      </div>
+      <label for="nft5ie2" class="commentText"><p>This reads like a puff piece for a new just-approved by the FDA drug, which in turn makes me skeptical about whether the extremely rosy picture painted - about what that drug allowed him to do re: starting intense rehab early and why that could mean no loss of strength (virtually unheard of in Achilles ruptures) - is actually as rosy as it sounds given the article’s ultimate goal is to market the drug…</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nft6h5r" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>dpman48 | Thunder</div>
+        <div>1 | 13 minutes ago </div>
+      </div>
+      <label for="nft6h5r" class="commentText"><p>It should make you skeptical. In its trials it was no better than Tylenol and not even compared to full strength opioids and most people using it required NSAIDs for pain as well.  It’s “promising” but VERY early days and definitely not cost effective.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="nft660i" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>balls_wuz_here</div>
+        <div>1 | 14 minutes ago </div>
+      </div>
+      <label for="nft660i" class="commentText"><p>Bro surely people wouldnt lie for millions of dollars!!!</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="nft6e2h" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>True-Noise9176</div>
+        <div>1 | 13 minutes ago </div>
+      </div>
+      <label for="nft6e2h" class="commentText"><p>I mean yeah but at the same time there’s also not much to incentivize the doctor himself to say what he did. He’s done hundreds of athlete surgeries I doubt he’d lie to the press about being surprised by the progress</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="nft6c3r" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>deets23_ | Celtics</div>
+        <div>1 | 13 minutes ago </div>
+      </div>
+      <label for="nft6c3r" class="commentText"><p>Maybe read the whole article? It was only mentioned in a small part</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nft7hqp" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>taygads</div>
+        <div>1 | 8 minutes ago </div>
+      </div>
+      <label for="nft7hqp" class="commentText"><p>It’s the context clues that give it away - It was published in People, because the article’s intended audience isn’t the NBA community lol it’s gen pop and the only reason to think gen pop would give a shit about Tatum’s ACL recovery is because the article isn’t actually about that, it’s about the drug name dropped in the article and lauded for all of the supposed x, y, &amp; z benefits it’s given Tatum, who was also cited as a new spokesperson for the drug manufacturer.</p>
+
+<p>The article also went tangentially into other topics because that’s how you make an article/interview conducted to market a new drug look like it’s just any other athlete profile that just so happens to speak glowingly about this new drug the FDA just approved. 🙃</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="nft79up" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>TheRuralCamel | Celtics</div>
+        <div>1 | 9 minutes ago </div>
+      </div>
+      <label for="nft79up" class="commentText"><p>I understand redditors like to be skeptical about everything, but this was a small aside in the article, and Tatum’s not the type of guy to lie for money or some company. He has a 300 million dollar contract, it’s not like he needs the money</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nft7xdy" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>computer_love91 | MIL</div>
+        <div>1 | 6 minutes ago </div>
+      </div>
+      <label for="nft7xdy" class="commentText"><p>Lol oh yes because people who are already rich definitely don&rsquo;t do shady things to get even richer.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="nft89d9" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>kanokari | Timberwolves</div>
+        <div>1 | 4 minutes ago </div>
+      </div>
+      <label for="nft89d9" class="commentText"><p>That&rsquo;s quite the naive view</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="nft8ca2" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ADavidJohnson | Supersonics</div>
+        <div>1 | 4 minutes ago </div>
+      </div>
+      <label for="nft8ca2" class="commentText"><p>Right, that’s how we know the Kawhi stuff is bogus. Because who would do all that for a little extra money when they’re already rich?</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nft4x0v" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>GeorgeClooneyWasHere</div>
+        <div>1 | 20 minutes ago </div>
+      </div>
+      <label for="nft4x0v" class="commentText"><p>I love fresh pasta</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nft5ein" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>avd318</div>
+        <div>1 | 18 minutes ago </div>
+      </div>
+      <label for="nft5ein" class="commentText"><p>Bookmarking for when he gets hurt again four games after he rushes back</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nft7hvb" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>goldfish_11 | Celtics</div>
+        <div>1 | 8 minutes ago </div>
+      </div>
+      <label for="nft7hvb" class="commentText"><p>Hey fuck you.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nft5xsh" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Envelope_Torture</div>
+        <div>1 | 15 minutes ago </div>
+      </div>
+      <label for="nft5xsh" class="commentText"><p>I was expecting this to be in line with the Aaron Rodgers nonsense a couple years ago, but it seems to be more focused on talking about post-recovery ability rather than setting insane unrealistic return to play timelines.</p>
+
+<p>Or it&rsquo;s some weird marketing for the drug they&rsquo;re talking about.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nft4vz0" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>americanbeaver | Bucks</div>
+        <div>1 | 20 minutes ago </div>
+      </div>
+      <label for="nft4vz0" class="commentText"><p>It rules how far the recovery from these injuries has come. Players are bouncing back so much faster and they&rsquo;re returning to play at a stronger point. I thought it was a fluke with Kevin Durant but now it feels like guys are consistently coming back on this time table. Great for the league.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nft58oa" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>NewSunSeverian | Wizards</div>
+        <div>1 | 19 minutes ago </div>
+      </div>
+      <label for="nft58oa" class="commentText"><blockquote>
+<p> which doesn’t “dull your brain&rdquo; </p>
+</blockquote>
+
+<p>well what’s the fun in that </p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nft47ze" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>TheGargageMan | Rockets</div>
+        <div>1 | 24 minutes ago </div>
+      </div>
+      <label for="nft47ze" class="commentText"><p>It&rsquo;s like his recovery was guided from above.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nft6pxo" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>peanut-britle-latte | Knicks</div>
+        <div>1 | 12 minutes ago </div>
+      </div>
+      <label for="nft6pxo" class="commentText"><p>Don&rsquo;t let Bill Simmons see this.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nft6h0c" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>IAmKevinDurantAMA | Warriors</div>
+        <div>1 | 13 minutes ago </div>
+      </div>
+      <label for="nft6h0c" class="commentText"><p>honestly, the nephews on this sub don&rsquo;t realize how hard working Tatum is. He has all the intangibles you could ask for and has always seemed like a first one in, last one out type of guy. He&rsquo;s sneaky athletic and in a fight, you have to put him down. I was a bit disappointed when he started getting tattoos, but other than that, he seems like a surprisingly well-spoken guy!</p>
+
+<p>EDIT: Also, I forgot to mention, I obviously wouldn&rsquo;t let my daughter date him, but there&rsquo;s no denying that he&rsquo;s a good guy with a good head on his shoulders.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nft7w3x" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>bobmcadoo9088 | BOS</div>
+        <div>1 | 6 minutes ago </div>
+      </div>
+      <label for="nft7w3x" class="commentText"><p>can your daughter date payton pritchard or sam hauser?</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nft72ey" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>gh0st_ | Celtics</div>
+        <div>1 | 10 minutes ago </div>
+      </div>
+      <label for="nft72ey" class="commentText"><p>Don&rsquo;t give me hope</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nft746d" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Strategist40 | Lakers</div>
+        <div>1 | 10 minutes ago </div>
+      </div>
+      <label for="nft746d" class="commentText"><p>Surely he’s still not playing this season, at least not until the very end?</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nft8057" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Deviljho12 | Celtics</div>
+        <div>1 | 5 minutes ago </div>
+      </div>
+      <label for="nft8057" class="commentText"><p>I mean, Tatum is a fiend for basketball even for NBA players and it&rsquo;s not entirely unreasonable to expect JB and crew to keep our playoff hopes alive in a very weak east till the final stretch of the season</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nft8bxb" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Strategist40 | Lakers</div>
+        <div>1 | 4 minutes ago </div>
+      </div>
+      <label for="nft8bxb" class="commentText"><p>Well yeah, but my point is they shouldn’t risk rushing him back, even if he is doing a lot better than most.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nft8dms" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>lets_talk_basketball</div>
+        <div>1 | 4 minutes ago </div>
+      </div>
+      <label for="nft8dms" class="commentText"><p>They gave my boy the purest HGH in the known universe.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nft8fzn" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>CupOfHotTeaa | Bucks</div>
+        <div>1 | 3 minutes ago </div>
+      </div>
+      <label for="nft8fzn" class="commentText"><p>speedy recovery is expected from a teenager</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
