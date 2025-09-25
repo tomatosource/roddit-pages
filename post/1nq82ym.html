@@ -1,0 +1,386 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.selfPostImage {
+  width: 100%;
+  height: auto;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/nba/comments/1nq82ym/combining_math_film_study_the_greatest_offensive/"><p>Combining Math + Film Study: The Greatest Offensive Peaks Since the Merger</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <h1 id="introduction">Introduction</h1>
+
+<p>Recently, I’ve devoted significant time to a project designed to measure and rank the greatest offensive peaks in modern NBA history. The central question is tightly defined: *since the ABA–NBA merger, which players have sustained the most valuable multi-year stretches of offensive play?* Not careers in their entirety, not accolades, and not narrative-driven legacies. The goal is to pinpoint those seasons where a player’s offensive game, at its absolute best, most increased the championship odds of a typical playoff-level roster.</p>
+
+<p>The analysis draws on hundreds of hours of statistical modeling, targeted film study, and historical validation. My professional background is in statistics, and the structure of this work reflects that — rigorous quantitative modeling paired with context-specific observation. Advanced impact metrics form the statistical foundation, while film provides the necessary context for how value holds up under postseason conditions. The outcome is a ranking of the most impactful multi-season offensive peaks since the merger, grounded in evidence and focused on what matters most: scalable, repeatable, title-winning offense.</p>
+
+<p><strong>The Core Question:</strong></p>
+
+<p><em>How much does this version of this player&rsquo;s offense alone increase a good team’s probability of winning a title?</em></p>
+
+<p>That framing immediately rules out inflated regular season statlines on mediocre teams, and rewards players who:</p>
+
+<ul>
+<li>Translate their value to playoff settings</li>
+<li>Excel across multiple roles and contexts</li>
+<li>Scale up or down depending on surrounding talent</li>
+<li>Remain effective against top-end defenses</li>
+</ul>
+
+<h1 id="methodology">Methodology</h1>
+
+<p>The evaluation process consists of two primary phases: <strong>statistical modeling</strong> and <strong>film-informed contextual adjustment</strong>. The end goal is a single composite score per player-peak that reflects expected added playoff offensive value.</p>
+
+<h1 id="phase-1-statistical-composite-metric">Phase 1: Statistical Composite Metric</h1>
+
+<p>The starting point for each player-peak is a <strong>composite value score</strong> derived from advanced impact metrics. Specifically, I use a weighted average of the most statistically reliable RAPM-based models available for those seasons. These include:</p>
+
+<ul>
+<li>Multi-year luck-adjusted Regularized Adjusted Plus-Minus (RAPM) variants</li>
+<li>Backsolved on/off models with lineup-based corrections</li>
+<li>Augmented Plus-Minus (AuPM) models that incorporate predictive shrinkage</li>
+<li>Hybrid models such as EPM, DARKO, and LEBRON, depending on data availability</li>
+</ul>
+
+<p>Each metric is standardized (converted to Z-scores) and then aggregated using a weighting scheme based on theoretical signal strength, empirical postseason persistence, and orthogonality (i.e., minimizing double-counting).</p>
+
+<p>This composite serves as the <strong>baseline estimate</strong> of a player&rsquo;s offensive value, largely capturing box score-independent, on-court impact. However, by itself, this signal is incomplete. That’s where the second phase comes in.</p>
+
+<h1 id="phase-2-portability-scalability-and-contextual-adjustments">Phase 2: Portability, Scalability, and Contextual Adjustments</h1>
+
+<p>This is where domain-specific analysis adds critical context. Starting with the baseline composite, I conduct targeted film review and postseason-specific analysis for each candidate peak. The purpose is to assess <strong>how well the quantified value actually travels</strong> — across roles, schemes, and playoff environments.</p>
+
+<p>Three core adjustment categories are applied:</p>
+
+<ul>
+<li><strong>Playoff Portability</strong>: How well does the player hold up against playoff-level resistance? This includes how scoring efficiency changes vs. top defenses, how well they handle aggressive help schemes deep into a series, and how reliably they execute under elevated pressure.</li>
+<li><strong>Scalability</strong>: How well does the player’s value scale alongside other high-end talent? Do they amplify others? Can they still contribute if usage is reduced or responsibilities shift? This focuses on scalable skills like shooting, touch passing, and off-ball movement.</li>
+<li><strong>Team Context</strong>: Is the player being propped up or brought down by his current surrounding environment and team/lineup construction in a way that&rsquo;s inflating/deflating the metrics? Remember, this is not a list of situational value within a given team context, but rather an aggregate measure of value ACROSS team contexts.</li>
+</ul>
+
+<p>The contextual adjustments I make are modest but crucial: they correct for blind spots in RAPM-based metrics, especially those taken from the regular season, and explicitly reward playoff-translatable skill sets.</p>
+
+<h1 id="score-interpretation-and-rankings">Score Interpretation and Rankings</h1>
+
+<p>The score is expressed as a unitless proxy for what we can call Added Championship Equity (ACE) — an estimate of how much a player’s offensive peak increases a playoff-caliber team’s title odds on average across team situations. It is not meant as a literal probability calculation, but as a standardized heuristic grounded in impact metrics, probability modeling, and playoff translation analysis.</p>
+
+<p>Interpretive Scale (approximate benchmarks):</p>
+
+<ul>
+<li>6.0 ≈ +20% ACE — GOAT-level offensive peak, typically gives a top ~5-15 overall peak ever even assuming average defense</li>
+<li>5.0 ≈ +15% ACE — MVP-level value from offense alone</li>
+<li>4.0 ≈ +10% ACE — strong All-NBA / borderline MVP-level value from offense alone</li>
+<li>3.0 ≈ +5% ACE — All-NBA value from offense alone</li>
+<li>0.0 ≈ 0% ACE — neutral offensive contribution</li>
+</ul>
+
+<p>Methodological Note on ACE:<br>
+The ACE values are not derived from a single closed-form formula, but from a blend of probabilistic heuristics and statistical inference:</p>
+
+<ul>
+<li>Base rates: Historical distributions of RAPM/EPM-type impact metrics and their correlation with playoff offensive ratings.</li>
+<li>Translation penalties: Adjustments for how efficiency and usage shift against playoff defenses, informed by film and postseason splits.</li>
+<li>Monte Carlo heuristics: Simulated adjustments to team title odds when substituting one player’s peak for another, controlling for neutral roster context.</li>
+<li>Scaling curves: Weighting functions that map incremental offensive impact to nonlinear changes in championship equity</li>
+</ul>
+
+<p>Each player’s final score is therefore best read as an expected-value proxy rather than an exact probability.</p>
+
+<p>To reflect uncertainty, every entry is reported with a plausible range — capturing statistical variance, sample size limitations, and the inherent subjectivity in film-informed adjustments.</p>
+
+<p><strong>The Best Offensive Players Since the Merger:</strong></p>
+
+<p>Format:</p>
+
+<p>[ranking: point estimate]. [Years] [Name] (plausible ranking range) (point estimate offensive valuation</p>
+
+<p><strong>T1. &lsquo;23-&lsquo;25 Nikola Jokic (1-4) (6)</strong></p>
+
+<p><strong>T1. &lsquo;16-&lsquo;18 Stephen Curry (1-4) (6)</strong></p>
+
+<p><strong>3. &lsquo;90-&lsquo;92 Michael Jordan (1-6) (5.9)</strong></p>
+
+<p><strong>4. &lsquo;87-&lsquo;89 Magic Johnson (1-6) (5.85)</strong></p>
+
+<p><strong>T5. &lsquo;05-&lsquo;07 Steve Nash (3-7) (5.7)</strong></p>
+
+<p><strong>T5. &lsquo;16-&lsquo;18 LeBron James (3-7) (5.7)</strong></p>
+
+<p><strong>7. &lsquo;85-&lsquo;87 Larry Bird (5-7) (5.5)</strong></p>
+
+<p><strong>&ndash;</strong></p>
+
+<p><strong>T8. &lsquo;22-&lsquo;24 Luka Doncic (8-14) (5.15)</strong></p>
+
+<p><strong>T8. &lsquo;06-&lsquo;08 Kobe Bryant (8-15) (5.15)</strong></p>
+
+<p><strong>10. &lsquo;16-&lsquo;18 Kevin Durant (8-15) (5.1)</strong></p>
+
+<p><strong>11. &lsquo;18-&lsquo;20 James Harden (8-16) (5.05)</strong></p>
+
+<p><strong>12. &lsquo;00-&lsquo;02 Shaquille O&rsquo;Neal (8-16) (5)</strong></p>
+
+<p><strong>13. &lsquo;08-&lsquo;09 Chris Paul (8-16) (4.95)</strong></p>
+
+<p><strong>14. &lsquo;09-&lsquo;10 Dwyane Wade (8-16) (4.9)</strong></p>
+
+<p><strong>15. &lsquo;09-&lsquo;11 Dirk Nowitzki (8-19) (4.85)</strong></p>
+
+<p>HMs: Shai Gilgeous-Alexander, Charles Barkley, Penny Hardaway, Tracy McGrady</p>
+
+<p>Each of these players has a peak profile that edges up against my top 15. With modestly different assumptions in swing areas — efficiency scaling, playmaking portability, or postseason resilience — you could construct a reasonable case for their inclusion. A round 20 would have been a cleaner endpoint, and Kareem would have occupied that slot in my framework, but I couldn’t *quite* justify a credible argument for him over Dirk within this lens.</p>
+
+<h1 id="closing-note">Closing Note</h1>
+
+<p>The purpose of posting the results of this project is to encourage thoughtful discussion, not to reduce the conversation to hair-splitting over exact placement. The ranges attached to each peak make clear that we are dealing with bands of value, not absolute certainties. In practice, two broad tiers emerge: the select few whose offensive peaks rise into truly historic territory, and a larger group clustered closely behind. Within that second tier, the margins separating players are extremely slim — often hinging on small contextual factors or modest differences in interpretation.</p>
+
+<p>My intent is not to elevate those margins into absolutes, but to provide a structured framework for understanding offensive impact at the highest levels. The hope is that this framework promotes high-quality conversation about how and why great offense translates — not just a focus on whether Player X deserves to be one or two spots higher than Player Y.</p>
+
+<p>As always, happy to answer any questions!</p>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ng51477" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>nowhathappenedwas | NBA</div>
+        <div>2 | 4 hours ago </div>
+      </div>
+      <label for="ng51477" class="commentText"><p>I would love to see your results for phase 1 and how they compare to phase 2.</p>
+
+<p>For example, Doncic is higher than any of the metrics you mention would place him. Is this from your subjective film study in phase 2?</p>
+
+<p>Also curious which metrics you&rsquo;re using to evaluate the pre-PBP era peaks from Jordan, Bird, and Magic.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ng5fxvm" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>bringbackpologrounds</div>
+        <div>1 | 3 hours ago </div>
+      </div>
+      <label for="ng5fxvm" class="commentText"><p>Fascinating work. Do you have a full list? I&rsquo;d like to see the worst players. </p>
+
+<p>Where&rsquo;s Reggie Miller?</p>
+
+<p>How do you weigh the constituent models and film adjustments? Can you provide an example for a specific player?</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
