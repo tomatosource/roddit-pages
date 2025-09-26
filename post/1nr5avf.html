@@ -1,0 +1,1187 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.selfPostImage {
+  width: 100%;
+  height: auto;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/nba/comments/1nr5avf/oc_whos_the_most_contrarian_voter_in_the_history/"><p>[OC] Who&rsquo;s the most contrarian voter in the history of NBA public awards ballots?</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <p>In 2014, the NBA started publishing end-of-season awards voting ballots. <a href="https://np.reddit.com/r/nba/comments/j7dv38/oc_whos_the_most_contrarian_voter_in_the_history/" target="_blank">5 years ago</a>, I posted about who the most contrarian voter was at that time in history (Boston Globe reporter Gary Washburn). I also did single-season looks in <a href="https://np.reddit.com/r/nba/comments/13gj49i/oc_who_was_the_most_contrarian_awards_voter_this/" target="_blank">2023</a> (surprisingly not Mark Jackson, who left Jokic off his MVP ballot; it was Brazilian reporter Eduardo Barao) and <a href="https://np.reddit.com/r/nba/comments/1czn9oz/oc_who_was_the_most_contrarian_awards_voter_this/" target="_blank">2024</a> (Tolis Kotzias, a Greek reporter). I wanted to bring back the historical view to see if anyone had dethroned Gary Washburn, and I also built a <a href="https://sumitrodatta.shinyapps.io/nba-awards-voter-history/" target="_blank">website</a>!</p>
+
+<h1 id="methodology">Methodology</h1>
+
+<ul>
+<li>In 2024, Tolis Kotzias of SDNA gave Jrue Holiday a first place vote for Defensive Player of the Year, which was worth 5 points.</li>
+<li>Holiday received 7 points for Defensive Player of the Year. Since there are 98 other media members, Holiday received on average ~0.02 points from the rest of the voting contingent</li>
+<li>5 - 0.02 = 4.98 point differential (absolute value taken, higher values are &ldquo;worse&rdquo;)</li>
+<li>To penalize votes that were especially contrarian, we take the squared value of each difference. That means giving Jrue Holiday five points for Defensive Player of the Year when his average points per media member was 0.02 would be a lot more &ldquo;contrarian&rdquo; than giving five points to Bam Adebayo, who finished third in the voting and had an average points per media member of 0.93.</li>
+<li>After I squared each result, we take the square root of the average difference between all the points awarded on a particular ballot and the average points the 99 media members awarded to those players on that ballot. I included all candidates that received a vote for the award, and assigned a point value of 0 if not on a voter&rsquo;s ballot.</li>
+<li>To continue to use Kotzias as an example, he gave Jrue 5 points (Jrue received 0.02 points per other media member on average), Giannis 3 points (0 points per other media member) and Anthony Davis 1 point (0.84 points per other media member).</li>
+</ul>
+
+<p><strong>Jrue</strong>: (5 - 0.02)^(2) = 24.8</p>
+
+<p><strong>Giannis</strong>: (3 - 0)^(2) = 9</p>
+
+<p><strong>AD</strong>: (1 - 0.84)^(2) = 0.0267</p>
+
+<p><strong>Gobert</strong>: (0 - 4.42)^(2) = 19.522</p>
+
+<p><strong>Wemby</strong>: (0 - 2.5)^(2) = 6.25</p>
+
+<p>etc. (continued for all players who received at least one DPOY vote)</p>
+
+<p><strong>Average Deviation From The Consensus</strong>: sqrt((24.8 + 9 + 0.0267 + 19.522 + 6.25 + &hellip;)/13) = ~2.16</p>
+
+<ul>
+<li>I did this same calculation for every media member for every award (MVP, Rookie of the Year, Sixth Man of the Year, Most Improved Player of the Year, Defensive Player of the Year, Clutch Player of the Year, Coach of the Year, All-NBA, All-Defensive, All-Rookie).</li>
+<li>Lastly, I took the sum of all these average deviations from the 9 awards to create a &ldquo;Total Contrarian Score&rdquo;</li>
+</ul>
+
+<p>I&rsquo;d like to reiterate a significant point from all the historical posts: <strong>not all ballots that are considered contrarian are &ldquo;bad&rdquo; or indefensible</strong>.</p>
+
+<p>With the methodology out of the way, on to the results!</p>
+
+<h1 id="most-contrarian-single-picks-of-all-time-for-each-award">Most Contrarian Single Picks of All-Time for Each Award</h1>
+
+<p>First, the individual awards:</p>
+
+<table>
+<thead>
+<tr>
+<th align="left">Year</th>
+<th align="left">Award</th>
+<th align="left">Voter</th>
+<th align="left">Affiliation</th>
+<th align="left">Player</th>
+<th align="left">Points Given</th>
+<th align="left">Sq Pt Diff</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">2021</td>
+<td align="left">MVP</td>
+<td align="left">NBA Fan Vote</td>
+<td align="left">NBA Fan Vote</td>
+<td align="left">Derrick Rose</td>
+<td align="left">10</td>
+<td align="left">100</td>
+</tr>
+
+<tr>
+<td align="left">2019</td>
+<td align="left">COY</td>
+<td align="left">Tim Bontemps</td>
+<td align="left">ESPN</td>
+<td align="left">David Joerger</td>
+<td align="left">5</td>
+<td align="left">25</td>
+</tr>
+
+<tr>
+<td align="left">2024</td>
+<td align="left">CPOY</td>
+<td align="left">Tolis Kotzias</td>
+<td align="left">SDNA</td>
+<td align="left">Jayson Tatum</td>
+<td align="left">5</td>
+<td align="left">25</td>
+</tr>
+
+<tr>
+<td align="left">2020</td>
+<td align="left">DPOY</td>
+<td align="left">Greg Logan</td>
+<td align="left">Newsday</td>
+<td align="left">Andre Drummond</td>
+<td align="left">5</td>
+<td align="left">25</td>
+</tr>
+
+<tr>
+<td align="left">2025</td>
+<td align="left">DPOY</td>
+<td align="left">Ric Bucher</td>
+<td align="left">FS1</td>
+<td align="left">Giannis Antetokounmpo</td>
+<td align="left">5</td>
+<td align="left">25</td>
+</tr>
+
+<tr>
+<td align="left">2014</td>
+<td align="left">MIP</td>
+<td align="left">Michael Smith</td>
+<td align="left">Prime Ticket</td>
+<td align="left">Kevin Durant</td>
+<td align="left">5</td>
+<td align="left">25</td>
+</tr>
+
+<tr>
+<td align="left">2015</td>
+<td align="left">MIP</td>
+<td align="left">Cedric Maxwell</td>
+<td align="left">WEEI Radio</td>
+<td align="left">DeMarre Carroll</td>
+<td align="left">5</td>
+<td align="left">25</td>
+</tr>
+
+<tr>
+<td align="left">2015</td>
+<td align="left">MIP</td>
+<td align="left">Tom Heinsohn</td>
+<td align="left">Comcast SportsNet</td>
+<td align="left">Tyler Zeller</td>
+<td align="left">5</td>
+<td align="left">25</td>
+</tr>
+
+<tr>
+<td align="left">2017</td>
+<td align="left">MIP</td>
+<td align="left">Ron Tillery</td>
+<td align="left">Memphis Commercial-Appeal</td>
+<td align="left">Mike Conley</td>
+<td align="left">5</td>
+<td align="left">25</td>
+</tr>
+
+<tr>
+<td align="left">2024</td>
+<td align="left">MIP</td>
+<td align="left">Tolis Kotzias</td>
+<td align="left">SDNA</td>
+<td align="left">Tyrese Haliburton</td>
+<td align="left">5</td>
+<td align="left">25</td>
+</tr>
+
+<tr>
+<td align="left">2019</td>
+<td align="left">SMOY</td>
+<td align="left">Richard Walker</td>
+<td align="left">Gaston Gazette</td>
+<td align="left">Dennis Schroder</td>
+<td align="left">5</td>
+<td align="left">25</td>
+</tr>
+
+<tr>
+<td align="left">2014</td>
+<td align="left">ROY</td>
+<td align="left">Steve Kerr</td>
+<td align="left">TNT</td>
+<td align="left">Tim Hardaway Jr.</td>
+<td align="left">5</td>
+<td align="left">23.558</td>
+</tr>
+</tbody>
+</table>
+
+<ul>
+<li>Mike Crispino putting Curry fifth for MVP in 2015 has been usurped by the NBA Fan Vote voting Derrick Rose for MVP in 2021.</li>
+<li>KD got a MIP winner vote from Michael Smith in 2014, this was the same year he won MVP.</li>
+<li>Apart from the most contrarian ROY vote, the other votes are all instances of voters being the only one to think that their pick deserves a vote and that too a first place vote!</li>
+</ul>
+
+<p>Now, the end-of-season teams:</p>
+
+<table>
+<thead>
+<tr>
+<th align="left">Year</th>
+<th align="left">Award</th>
+<th align="left">Voter</th>
+<th align="left">Affiliation</th>
+<th align="left">Player</th>
+<th align="left">Points Given</th>
+<th align="left">Sq Pt Diff</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">2020</td>
+<td align="left">All-Defense</td>
+<td align="left">Duane Rankin</td>
+<td align="left">Arizona Republic</td>
+<td align="left">James Harden</td>
+<td align="left">2</td>
+<td align="left">2</td>
+</tr>
+
+<tr>
+<td align="left">2020</td>
+<td align="left">All-Defense</td>
+<td align="left">Greg Logan</td>
+<td align="left">Newsday</td>
+<td align="left">Andre Drummond</td>
+<td align="left">2</td>
+<td align="left">2</td>
+</tr>
+
+<tr>
+<td align="left">2020</td>
+<td align="left">All-Defense</td>
+<td align="left">Greg Logan</td>
+<td align="left">Newsday</td>
+<td align="left">Luka Doncic</td>
+<td align="left">2</td>
+<td align="left">2</td>
+</tr>
+
+<tr>
+<td align="left">2019</td>
+<td align="left">All-Defense</td>
+<td align="left">Massimo Lopes Pegna</td>
+<td align="left">La Gazzetta dello Sport</td>
+<td align="left">Stephen Curry</td>
+<td align="left">2</td>
+<td align="left">2</td>
+</tr>
+
+<tr>
+<td align="left">2018</td>
+<td align="left">All-Defense</td>
+<td align="left">Dennis Scott</td>
+<td align="left">Turner</td>
+<td align="left">Avery Bradley</td>
+<td align="left">2</td>
+<td align="left">2</td>
+</tr>
+
+<tr>
+<td align="left">2017</td>
+<td align="left">All-Defense</td>
+<td align="left">Lisa Shen Yang</td>
+<td align="left">Tencent</td>
+<td align="left">Eric Gordon</td>
+<td align="left">2</td>
+<td align="left">2</td>
+</tr>
+
+<tr>
+<td align="left">2017</td>
+<td align="left">All-Defense</td>
+<td align="left">Richard Walker</td>
+<td align="left">Gaston Gazette</td>
+<td align="left">Karl-Anthony Towns</td>
+<td align="left">2</td>
+<td align="left">2</td>
+</tr>
+
+<tr>
+<td align="left">2016</td>
+<td align="left">All-Defense</td>
+<td align="left">Sean Deveney</td>
+<td align="left">The Sporting News</td>
+<td align="left">Victor Oladipo</td>
+<td align="left">2</td>
+<td align="left">2</td>
+</tr>
+
+<tr>
+<td align="left">2015</td>
+<td align="left">All-Defense</td>
+<td align="left">Tony Fiorentino</td>
+<td align="left">Sun Sports</td>
+<td align="left">Hassan Whiteside</td>
+<td align="left">2</td>
+<td align="left">2</td>
+</tr>
+
+<tr>
+<td align="left">2014</td>
+<td align="left">All-Defense</td>
+<td align="left">Al McCoy</td>
+<td align="left">KTAR Radio</td>
+<td align="left">Matt Barnes</td>
+<td align="left">2</td>
+<td align="left">2</td>
+</tr>
+
+<tr>
+<td align="left">2014</td>
+<td align="left">All-Defense</td>
+<td align="left">Cedric Maxwell</td>
+<td align="left">WEEI Radio</td>
+<td align="left">Dwyane Wade</td>
+<td align="left">2</td>
+<td align="left">2</td>
+</tr>
+
+<tr>
+<td align="left">2021</td>
+<td align="left">All-Defense</td>
+<td align="left">Jason Jones</td>
+<td align="left">The Athletic</td>
+<td align="left">Jaylen Brown</td>
+<td align="left">2</td>
+<td align="left">4</td>
+</tr>
+
+<tr>
+<td align="left">2021</td>
+<td align="left">All-Defense</td>
+<td align="left">Michael Wilbon</td>
+<td align="left">ESPN</td>
+<td align="left">Mike Conley</td>
+<td align="left">2</td>
+<td align="left">4</td>
+</tr>
+
+<tr>
+<td align="left">2022</td>
+<td align="left">All-Defense</td>
+<td align="left">Dennis Scott</td>
+<td align="left">Turner</td>
+<td align="left">Jaylen Brown</td>
+<td align="left">2</td>
+<td align="left">4</td>
+</tr>
+
+<tr>
+<td align="left">2022</td>
+<td align="left">All-Defense</td>
+<td align="left">Kevin Pelton</td>
+<td align="left">ESPN</td>
+<td align="left">Al Horford</td>
+<td align="left">2</td>
+<td align="left">4</td>
+</tr>
+
+<tr>
+<td align="left">2022</td>
+<td align="left">All-Defense</td>
+<td align="left">Mark Medina</td>
+<td align="left"><a href="http://NBA.com" target="_blank">NBA.com</a></td>
+<td align="left">Marcus Smart</td>
+<td align="left">0</td>
+<td align="left">4</td>
+</tr>
+
+<tr>
+<td align="left">2023</td>
+<td align="left">All-Defense</td>
+<td align="left">Dennis Scott</td>
+<td align="left">WarnerMedia</td>
+<td align="left">Paul George</td>
+<td align="left">2</td>
+<td align="left">4</td>
+</tr>
+
+<tr>
+<td align="left">2023</td>
+<td align="left">All-Defense</td>
+<td align="left">Max Haupt</td>
+<td align="left">DPA</td>
+<td align="left">Tyrese Haliburton</td>
+<td align="left">2</td>
+<td align="left">4</td>
+</tr>
+
+<tr>
+<td align="left">2017</td>
+<td align="left">All-NBA</td>
+<td align="left">Ailene Voisin</td>
+<td align="left">Sacramento Bee</td>
+<td align="left">Nikola Jokic</td>
+<td align="left">5</td>
+<td align="left">24.29793</td>
+</tr>
+
+<tr>
+<td align="left">2014</td>
+<td align="left">All-Rook</td>
+<td align="left">Kevin Calabro</td>
+<td align="left">ESPN Radio</td>
+<td align="left">Victor Oladipo</td>
+<td align="left">0</td>
+<td align="left">4</td>
+</tr>
+</tbody>
+</table>
+
+<ul>
+<li>all the All-Defense picks are voters who are the only ones to think a specific player deserves first team, EXCEPT for Mark Medina in 2022 who was the only one not to vote Marcus Smart for All-Defense at all.</li>
+<li>Ailene Voisin put Jokic as First Team All-NBA in 2017 (he averaged 16.<sup>7</sup>&frasl;<sub>9</sub>.<sup>8</sup>&frasl;<sub>4</sub>.9 on 57.<sup>8</sup>&frasl;<sub>32</sub>.<sup>4</sup>&frasl;<sub>82</sub>.5 shooting splits in 27.9 minutes per game)</li>
+<li>Kevin Calabro was the only voter to leave Oladipo off his All-Rookie ballot entirely in 2014</li>
+</ul>
+
+<h1 id="most-contrarian-single-award-ballots-of-all-time">Most Contrarian Single Award Ballots of All-Time</h1>
+
+<p>MVP: Tolis Kotzias&rsquo; ballot in 2024 of Giannis, Jokic, Anthony Edwards, Jalen Brunson, SGA (leaving off 3rd place finisher Luka Doncic)</p>
+
+<p>DPOY: Kenneth Lau in 2019 voted Draymond, Embiid, Gobert (leaving off 2nd place Giannis &amp; 3rd place Paul George)</p>
+
+<p>COY: Stan Van Gundy in 2025 went Tyronn Lue, JB Bickerstaff then eventual winner Kenny Atkinson</p>
+
+<p>SMOY: Another 2025 voter in John Schuhmann, who voted Naz Reid, De&rsquo;Andre Hunter, then eventual winner Payton Pritchard,</p>
+
+<p>MIP: Another Tolis Kotzias 2024 special, as he voted Tyrese Haliburton (only voter!), Grayson Allen, and Jalen Brunson. No votes for any of the top 4 (Tyrese Maxey, Coby White, Alperen Sengun or Jalen Williams).</p>
+
+<p>CPOY: Our third 2025 voter, it&rsquo;s Kendrick Perkins voting Anthony Edwards, Donovan Mitchell (only voter!) and SGA. This left off winner Jalen Brunson &amp; 2nd-place Jokic.</p>
+
+<p>All-NBA: Kenneth Lau&rsquo;s 2019 ballot.</p>
+
+<table>
+<thead>
+<tr>
+<th align="left">Tm</th>
+<th align="left">Player1</th>
+<th align="left">Player2</th>
+<th align="left">Player3</th>
+<th align="left">Player4</th>
+<th align="left">Player5</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">1st</td>
+<td align="left">Giannis Antetokounmpo</td>
+<td align="left">James Harden</td>
+<td align="left">Joel Embiid</td>
+<td align="left">Kevin Durant</td>
+<td align="left">Stephen Curry</td>
+</tr>
+
+<tr>
+<td align="left">2nd</td>
+<td align="left">Andre Drummond</td>
+<td align="left">Danilo Gallinari</td>
+<td align="left">Dwyane Wade</td>
+<td align="left">Klay Thompson</td>
+<td align="left">Luka Doncic</td>
+</tr>
+
+<tr>
+<td align="left">3rd</td>
+<td align="left">Damian Lillard</td>
+<td align="left">Donovan Mitchell</td>
+<td align="left">Marvin Bagley III</td>
+<td align="left">Pascal Siakam</td>
+<td align="left">Rudy Gobert</td>
+</tr>
+</tbody>
+</table>
+
+<ul>
+<li>No Paul George or Jokic (1st teamers), Kawhi or Kyrie (2nd teamers)</li>
+<li>Only voter of Drummond, D-Wade, Luka &amp; Marvin Bagley III</li>
+</ul>
+
+<p>All-Defense: Max Haupt&rsquo;s 2023 ballot.</p>
+
+<table>
+<thead>
+<tr>
+<th align="left">Tm</th>
+<th align="left">Player1</th>
+<th align="left">Player2</th>
+<th align="left">Player3</th>
+<th align="left">Player4</th>
+<th align="left">Player5</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">1st</td>
+<td align="left">Bam Adebayo</td>
+<td align="left">Giannis Antetokounmpo</td>
+<td align="left">Jimmy Butler</td>
+<td align="left">Joel Embiid</td>
+<td align="left">Tyrese Haliburton</td>
+</tr>
+
+<tr>
+<td align="left">2nd</td>
+<td align="left">Alex Caruso</td>
+<td align="left">Anthony Davis</td>
+<td align="left">Desmond Bane</td>
+<td align="left">Evan Mobley</td>
+<td align="left">Shai Gilgeous-Alexander</td>
+</tr>
+</tbody>
+</table>
+
+<ul>
+<li>No Jaren Jackson Jr, Jrue Holiday or Brook Lopez (1st teamers)</li>
+<li>Only voter of Tyrese Haliburton and Desmond Bane</li>
+</ul>
+
+<p>All-Rookie: Chris Haynes&rsquo; 2020 ballot.</p>
+
+<table>
+<thead>
+<tr>
+<th align="left">Tm</th>
+<th align="left">Player1</th>
+<th align="left">Player2</th>
+<th align="left">Player3</th>
+<th align="left">Player4</th>
+<th align="left">Player5</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">1st</td>
+<td align="left">Eric Paschall</td>
+<td align="left">Ja Morant</td>
+<td align="left">Kendrick Nunn</td>
+<td align="left">RJ Barrett</td>
+<td align="left">Rui Hachimura</td>
+</tr>
+
+<tr>
+<td align="left">2nd</td>
+<td align="left">Coby White</td>
+<td align="left">Darius Garland</td>
+<td align="left">De&rsquo;Andre Hunter</td>
+<td align="left">P.J. Washington</td>
+<td align="left">Tyler Herro</td>
+</tr>
+</tbody>
+</table>
+
+<ul>
+<li>No Zion or Brandon Clarke (1st teamers)</li>
+</ul>
+
+<h1 id="most-contrarian-voters-by-year">Most Contrarian Voters By Year</h1>
+
+<table>
+<thead>
+<tr>
+<th align="left">Year</th>
+<th align="left">Voter Name</th>
+<th align="left">Affiliation</th>
+<th align="left">Year Contrary Score</th>
+<th align="left">Most Contrary Pick</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">2014</td>
+<td align="left">Al McCoy</td>
+<td align="left">KTAR Radio</td>
+<td align="left">10.6161</td>
+<td align="left">PJ Tucker for DPOY winner</td>
+</tr>
+
+<tr>
+<td align="left">2015</td>
+<td align="left">Hubie Brown</td>
+<td align="left">ESPN</td>
+<td align="left">8.9697</td>
+<td align="left">Nikola Mirotic for SMOY winner</td>
+</tr>
+
+<tr>
+<td align="left">2016</td>
+<td align="left">Eric Hasseltine</td>
+<td align="left">92.9 FM ESPN/680 AM ESPN</td>
+<td align="left">9.5572</td>
+<td align="left">Ryan Anderson for SMOY winner</td>
+</tr>
+
+<tr>
+<td align="left">2017</td>
+<td align="left">Richard Walker</td>
+<td align="left">Gaston Gazette</td>
+<td align="left">10.6156</td>
+<td align="left">Karl-Anthony Towns for 1st-Team All-Defense</td>
+</tr>
+
+<tr>
+<td align="left">2018</td>
+<td align="left">Dennis Scott</td>
+<td align="left">Turner</td>
+<td align="left">8.4964</td>
+<td align="left">Avery Bradley for 1st Team All-Defense</td>
+</tr>
+
+<tr>
+<td align="left">2019</td>
+<td align="left">Kennegh Lau</td>
+<td align="left">BesTV</td>
+<td align="left">9.6328</td>
+<td align="left">Draymond Green for DPOY winner</td>
+</tr>
+
+<tr>
+<td align="left">2020</td>
+<td align="left">Greg Logan</td>
+<td align="left">Newsday</td>
+<td align="left">10.384</td>
+<td align="left">Andre Drummond for DPOY winner</td>
+</tr>
+
+<tr>
+<td align="left">2021</td>
+<td align="left">Max Haupt</td>
+<td align="left">DPA</td>
+<td align="left">11.7072</td>
+<td align="left">Omitting Nikola Jokic from MVP ballot</td>
+</tr>
+
+<tr>
+<td align="left">2022</td>
+<td align="left">Rod Boone</td>
+<td align="left">Charlotte Observer</td>
+<td align="left">11.4608</td>
+<td align="left">Jimmy Butler for 1st-Team All-Defense</td>
+</tr>
+
+<tr>
+<td align="left">2023</td>
+<td align="left">Eduardo Barao</td>
+<td align="left">BAND</td>
+<td align="left">11.9396</td>
+<td align="left">Jaylin Williams for 1st-Team All-Rookie</td>
+</tr>
+
+<tr>
+<td align="left">2024</td>
+<td align="left">Tolis Kotzias</td>
+<td align="left">SDNA</td>
+<td align="left">16.5903</td>
+<td align="left">Jayson Tatum for CPOY winner</td>
+</tr>
+
+<tr>
+<td align="left">2025</td>
+<td align="left">Stan Van Gundy</td>
+<td align="left">WarnerMedia</td>
+<td align="left">12.5702</td>
+<td align="left">Josh Giddey for MIP winner</td>
+</tr>
+</tbody>
+</table>
+
+<h1 id="most-contrarian-voters-by-total-contrarian-score-average-contrarian-score-per-ballot-and-per-pick">Most Contrarian Voters By Total Contrarian Score, Average Contrarian Score Per Ballot and Per Pick</h1>
+
+<p>Total Contrarian Score</p>
+
+<table>
+<thead>
+<tr>
+<th align="left">Voter</th>
+<th align="left">Number of Years Voted</th>
+<th align="left">Career Contrary Score</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">Gary Washburn</td>
+<td align="left">12</td>
+<td align="left">98.3412</td>
+</tr>
+
+<tr>
+<td align="left">Ric Bucher</td>
+<td align="left">12</td>
+<td align="left">98.0813</td>
+</tr>
+
+<tr>
+<td align="left">Keith Pompey</td>
+<td align="left">12</td>
+<td align="left">82.2325</td>
+</tr>
+
+<tr>
+<td align="left">Frank Isola</td>
+<td align="left">12</td>
+<td align="left">80.8441</td>
+</tr>
+
+<tr>
+<td align="left">Tim Reynolds</td>
+<td align="left">10</td>
+<td align="left">80.6529</td>
+</tr>
+
+<tr>
+<td align="left">Michael Wilbon</td>
+<td align="left">12</td>
+<td align="left">79.5889</td>
+</tr>
+
+<tr>
+<td align="left">Chris Broussard</td>
+<td align="left">12</td>
+<td align="left">78.9026</td>
+</tr>
+
+<tr>
+<td align="left">Bill Simmons</td>
+<td align="left">12</td>
+<td align="left">78.5161</td>
+</tr>
+
+<tr>
+<td align="left">Dennis Scott</td>
+<td align="left">9</td>
+<td align="left">74.3238</td>
+</tr>
+
+<tr>
+<td align="left">Jeff Zillgitt</td>
+<td align="left">12</td>
+<td align="left">74.2551</td>
+</tr>
+</tbody>
+</table>
+<p>Average Contrarian Score Per Ballot (min 35 awards voted on, which is the average)</p>
+
+<table>
+<thead>
+<tr>
+<th align="left">Voter</th>
+<th align="left">Number of Awards Voted</th>
+<th align="left">Contrary Score Per Ballot</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">Kendrick Perkins</td>
+<td align="left">39</td>
+<td align="left">0.9798</td>
+</tr>
+
+<tr>
+<td align="left">Rod Boone</td>
+<td align="left">47</td>
+<td align="left">0.9351</td>
+</tr>
+
+<tr>
+<td align="left">A. Sherrod Blakely</td>
+<td align="left">42</td>
+<td align="left">0.9005</td>
+</tr>
+
+<tr>
+<td align="left">Flavio Tranquillo</td>
+<td align="left">37</td>
+<td align="left">0.8980</td>
+</tr>
+
+<tr>
+<td align="left">Gary Washburn</td>
+<td align="left">111</td>
+<td align="left">0.8860</td>
+</tr>
+
+<tr>
+<td align="left">Dennis Scott</td>
+<td align="left">84</td>
+<td align="left">0.8848</td>
+</tr>
+
+<tr>
+<td align="left">Ric Bucher</td>
+<td align="left">111</td>
+<td align="left">0.8836</td>
+</tr>
+
+<tr>
+<td align="left">Kevin Pelton</td>
+<td align="left">75</td>
+<td align="left">0.8800</td>
+</tr>
+
+<tr>
+<td align="left">Eddie Sefko</td>
+<td align="left">39</td>
+<td align="left">0.8743</td>
+</tr>
+
+<tr>
+<td align="left">Tim Reynolds</td>
+<td align="left">93</td>
+<td align="left">0.8672</td>
+</tr>
+</tbody>
+</table>
+<p>Average Contrarian Score Per Pick (min 189 picks made, which is the average)</p>
+
+<table>
+<thead>
+<tr>
+<th align="left">Voter</th>
+<th align="left">Number of Awards Voted</th>
+<th align="left">Contrary Score Per Ballot</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">Kendrick Perkins</td>
+<td align="left">229</td>
+<td align="left">0.1669</td>
+</tr>
+
+<tr>
+<td align="left">Rod Boone</td>
+<td align="left">281</td>
+<td align="left">0.1564</td>
+</tr>
+
+<tr>
+<td align="left">Flavio Tranquillo</td>
+<td align="left">223</td>
+<td align="left">0.1490</td>
+</tr>
+
+<tr>
+<td align="left">Eddie Sefko</td>
+<td align="left">231</td>
+<td align="left">0.1476</td>
+</tr>
+
+<tr>
+<td align="left">Dennis Scott</td>
+<td align="left">504</td>
+<td align="left">0.1475</td>
+</tr>
+
+<tr>
+<td align="left">Gary Washburn</td>
+<td align="left">669</td>
+<td align="left">0.1470</td>
+</tr>
+
+<tr>
+<td align="left">Kevin Pelton</td>
+<td align="left">449</td>
+<td align="left">0.1470</td>
+</tr>
+
+<tr>
+<td align="left">Ric Bucher</td>
+<td align="left">669</td>
+<td align="left">0.1466</td>
+</tr>
+
+<tr>
+<td align="left">A. Sherrod Blakely</td>
+<td align="left">259</td>
+<td align="left">0.1460</td>
+</tr>
+
+<tr>
+<td align="left">Tim Reynolds</td>
+<td align="left">559</td>
+<td align="left">0.1443</td>
+</tr>
+</tbody>
+</table>
+<p>So Gary Washburn retains his spot as your career contrarian score leader, while Kendrick Perkins is your rate-stat contrarian champ. Hope y&rsquo;all enjoyed reading, and the <a href="https://sumitrodatta.shinyapps.io/nba-awards-voter-history/" target="_blank">website</a> is here for you to poke around!</p>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ngbswcc" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Ok-Discipline9998 | Raptors</div>
+        <div>1 | 24 minutes ago </div>
+      </div>
+      <label for="ngbswcc" class="commentText"><p>It&rsquo;s the one guy who voted Melo for MVP that season, end of thread</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="ngbtryq" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>OkExchange7229 | Rockets</div>
+        <div>1 | 19 minutes ago </div>
+      </div>
+      <label for="ngbtryq" class="commentText"><p>Wouldve made Lebron the first unanimous MVP if he didn’t vote Melonbut he just wanted to be a contrarian.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ngbu608" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>dirtynashtyfilthy | Slovenia</div>
+        <div>1 | 18 minutes ago </div>
+      </div>
+      <label for="ngbu608" class="commentText"><p>Marvin Bagley over Jokic is absolutely wild </p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ngbvw4w" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>StudyAlternative499 | Bucks</div>
+        <div>1 | 10 minutes ago </div>
+      </div>
+      <label for="ngbvw4w" class="commentText"><p>More contrarian voters please. If anyone votes for every winner they should lose their ballot cause they’re not bringing anything to the table.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ngbxg1e" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>HokageEzio | Knicks</div>
+        <div>1 | 2 minutes ago </div>
+      </div>
+      <label for="ngbxg1e" class="commentText"><p>Does that shit say Tyrese Haliburton first team All-Defense?</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
