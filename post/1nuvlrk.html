@@ -1,0 +1,730 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.selfPostImage {
+  width: 100%;
+  height: auto;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/nba/comments/1nuvlrk/data_analysis_of_mvp_voting_20002025_using/"><p>Data Analysis of MVP Voting (2000-2025) using Advanced Statistics</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <p>Using Basketball Reference, I collected a table with 12,667 rows (one for each player in each season since 2000) and 20 columns (each one a different advanced statistic). This table can be expressed as a series of linear equations, one equation per row, where adding up the terms in each equation outputs a resulting number. In order to tune these equations to give us insights into each player&rsquo;s seasons, we can assign weights to each of the stat categories (i.e. some stats are more important than others for certain things).</p>
+
+<p>In this instance, I wanted to see which advanced stats are the most important to have for earning an MVP. So I assigned a number to each row based on their placement in MVP voting that season. MVP winners were assigned 1, second place was assigned (<sup>1</sup>&frasl;<sub>2</sub>), third place was given (<sup>1</sup>&frasl;<sub>3</sub>), and so on. For each row, there are many combinations of weights that can be used to output that player&rsquo;s MVP number. Ideally, there exists a single set of weights that, when multiplied by the associated stats for every player, gives the exact MVP number of every player. In practice, this does not happen because MVPs are not chosen in a data-based process, but a subjective context-based process. This means the best we can do is to find a single set of weights that outputs the closest-to-correct MVP number for each row. To calculate these weights, I give the full data table to MATLAB, which calculates the combination of weights that minimizes the total squared error between the resultant MVP score and the assigned MVP numbers.</p>
+
+<p>In essence, these weights show how important each stat is in determining the MVP. If MVP voters strictly voted based on advanced statistics, this is how heavily they would consider each stat on average over the span from 2000 to 2025.</p>
+
+<p>The MVP score is calculated by multiplying the following weights by their associated advanced statistic for each player, then adding up the results:</p>
+
+<ul>
+<li>PER (-0.00066)</li>
+<li>TS% (-0.02633)</li>
+<li>3PAr (-0.00340)</li>
+<li>FTr (+0.00123)</li>
+<li>ORB% (-0.00247)</li>
+<li>DRB% (-0.00279)</li>
+<li>TRB% (+0.00553)</li>
+<li>AST% (-0.00012)</li>
+<li>STL% (-0.00482)</li>
+<li>BLK% (-0.00113)</li>
+<li>TOV% (+0.00023)</li>
+<li>USG% (+0.00121)</li>
+<li>OWS (+0.00866)</li>
+<li>DWS (+0.00262)</li>
+<li>WS (-0.01196)</li>
+<li>WS/48 (+0.08578)</li>
+<li>OBPM (-0.01411)</li>
+<li>DBPM (-0.00921)</li>
+<li>BPM (+0.01202)</li>
+<li>VORP (+0.03366)</li>
+</ul>
+
+<p>The most positive weights should reflect the stats that only MVP caliber players accumulate a lot of. The most negative weights should reflect stats that non-MVP caliber players can accumulate.</p>
+
+<p>This is present in the calculated weights, with the WS/48 weight being more than double any of the others, with VORP trailing behind in 2nd place.</p>
+
+<p>The weights for TS%, OBPM, and WS are significantly negative, as non-stars can have very high values in them. For instance, a role player can shoot 65% TS on low volume, while a star might be just as good of a shooter, but have a much lower TS% due to high volume.</p>
+
+<p>Applying these weights to the data results in an MVP score for each player in each season. This score does NOT reflect who deserves the MVP, or who the best player was that season. A high MVP score simply means that a player has a combination of advanced stats that suggest they would place highly in MVP voting (i.e. very &ldquo;MVP-like&rdquo;) based on past placements. This score is a way to quantify what &ldquo;MVP numbers&rdquo; really look like, and who put up the most of them in any given season.</p>
+
+<p>Highest scores for MVP seasons:</p>
+
+<ol>
+<li>Lebron James (2009) - 0.298</li>
+<li>Nikola Jokić (2024) - 0.277</li>
+<li>Nikola Jokić (2022) - 0.261</li>
+<li>Lebron James (2010) - 0.258</li>
+<li>Russell Westbrook (2017) - 0.250</li>
+</ol>
+
+<p>Lowest scores for MVP seasons:</p>
+
+<ol>
+<li>Steve Nash (2005) - 0.095</li>
+<li>Steve Nash (2006) - 0.105</li>
+<li>Kobe Bryant (2008) - 0.145</li>
+<li>Allen Iverson (2001) - 0.146</li>
+<li>Derrick Rose (2011) - 0.159</li>
+</ol>
+
+<p>Highest scores for non-MVP seasons:</p>
+
+<ol>
+<li>Nikola Jokić (2025) - 0.255</li>
+<li>LeBron James (2008) - 0.255</li>
+<li>Dwyane Wade (2009) - 0.247</li>
+<li>James Harden (2019) - 0.241</li>
+<li>Tracy McGrady (2003) - 0.240</li>
+</ol>
+
+<p>Highest scores for seasons with zero MVP votes:</p>
+
+<ol>
+<li>Kevin Garnett (2006) - 0.169</li>
+<li>Jimmy Butler (2017) - 0.154</li>
+<li>Tracy McGrady (2004) - 0.154</li>
+<li>Gilbert Arenas (2006) - 0.149</li>
+<li>DeMarcus Cousins (2017) - 0.146</li>
+</ol>
+
+<p>If MVP voting over the last 26 years remained absolutely consistent, based on advanced statistics only, these would be the MVP winners (2000 - 2025), with 2nd place as honorable mentions.</p>
+
+<p>Highest scoring season by year:</p>
+
+<ol>
+<li>Shaquille O&rsquo;Neal (2000) - H.M. Gary Payton</li>
+<li>Vince Carter (2001) - H.M. Shaquille O&rsquo;Neal</li>
+<li>Tim Duncan (2002) - H.M. Kevin Garnett</li>
+<li>Tracy McGrady (2003) - H.M. Kevin Garnett</li>
+<li>Kevin Garnett (2004) - H.M. Andrei Kirilenko</li>
+<li>LeBron James (2005) - H.M. Kevin Garnett</li>
+<li>LeBron James (2006) - H.M. Kobe Bryant</li>
+<li>LeBron James (2007) - H.M. Dirk Nowitzki</li>
+<li>LeBron James (2008) - H.M. Chris Paul</li>
+<li>LeBron James (2009) - H.M. Dwyane Wade</li>
+<li>LeBron James (2010) - H.M. Dwyane Wade</li>
+<li>LeBron James (2011) - H.M. Derrick Rose</li>
+<li>LeBron James (2012) - H.M. Chris Paul</li>
+<li>LeBron James (2013) - H.M. Kevin Durant</li>
+<li>Kevin Durant (2014) - H.M. LeBron James</li>
+<li>James Harden (2015) - H.M. Stephen Curry</li>
+<li>Stephen Curry (2016) - H.M. Kevin Durant</li>
+<li>Russell Westbrook (2017) - H.M. James Harden</li>
+<li>LeBron James (2018) - H.M. James Harden</li>
+<li>James Harden (2019) - H.M. Giannis Antetokounmpo</li>
+<li>James Harden (2020) - H.M. Giannis Antetokounmpo</li>
+<li>Nikola Jokić (2021) - H.M. Stephen Curry</li>
+<li>Nikola Jokić (2022) - H.M. Giannis Antetokounmpo</li>
+<li>Nikola Jokić (2023) - H.M. Luka Dončić</li>
+<li>Nikola Jokić (2024) - H.M. Luka Dončić</li>
+<li>Nikola Jokić (2025) - H.M. Shai Gilgeous-Alexander</li>
+</ol>
+
+<p>Shout-out to Michael Olowokandi (2000) who had the lowest MVP score of the last 26 years (-0.089), beating out Chris Mihm (2002) and Kevin Knox (2019).</p>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nh48f5k" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>smkmn13 | Timberwolves</div>
+        <div>12 | 4 hours ago </div>
+      </div>
+      <label for="nh48f5k" class="commentText"><p>I wonder if you’re overweighting non-first finishers. If there’s a consensus pick for the top, the next few spots might be treated less as actual next best and more of an honorary thing. Bball Ref has the actual voting numbers too - perhaps the “right side” could be modified to include “MVP points” or something like that.</p>
+
+<p>Also, great work! Should’ve opened with that.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nh4k9tg" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Cherry_Venus | Warriors</div>
+        <div>3 | 3 hours ago </div>
+      </div>
+      <label for="nh4k9tg" class="commentText"><p>2nd and 3rd place are often so far away from winning mvp, counting 2nd place as 50% is crazy, and 3rd place shouldn&rsquo;t really count for anything most years.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="nh4fgst" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>31WTexaco | Mavericks</div>
+        <div>0 | 3 hours ago </div>
+      </div>
+      <label for="nh4fgst" class="commentText"><p>I thought about doing that, but it would have taken longer than just copy/pasting the data from the main &ldquo;advanced&rdquo; window which already included MVP placements, and I was feeling a bit lazy. It would be interesting to see how it would affect the outcome. I assume it would skew the data a bit more towards the stats of several-time winners like Jokic and Lebron. I also thought about doing the same process for DPOY, earlier decades of MVPs, 2K overall scores, or maybe even a consistent yearly top 10 list over the timespan. If I have time and can find a good dataset for those last two I might take a look at them.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nh4fq2u" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>smkmn13 | Timberwolves</div>
+        <div>2 | 3 hours ago </div>
+      </div>
+      <label for="nh4fq2u" class="commentText"><p>Yeah there’s a handful of similar exercises I’ve considered, but the amount of copy pasting was always the limiting factor. I’m not even sure if there’s a paid version of something out there that makes it easier…but if there was…I probably wouldn’t pay for it anyways lol. Thanks again for sharing this!</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nh4hauw" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>31WTexaco | Mavericks</div>
+        <div>2 | 3 hours ago </div>
+      </div>
+      <label for="nh4hauw" class="commentText"><p>Thanks!</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nh45nk0" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>LegitimateMoney00 | Knicks</div>
+        <div>3 | 4 hours ago </div>
+      </div>
+      <label for="nh45nk0" class="commentText"><p>AK-47 really was under appreciated asf.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nh45td9" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>BigStrongPolarGuy</div>
+        <div>1 | 4 hours ago </div>
+      </div>
+      <label for="nh45td9" class="commentText"><p>Interesting. Looks about right. Outside of 2001 and 2005, those would have been my guesses every year for who deserves it from a purely statistical basis.</p>
+
+<p>2005 is interesting because I&rsquo;m guessing the top 3 people all didn&rsquo;t receive 1st place votes (I would think it&rsquo;s LeBron, KG, and then Dirk). Nash, Shaq, Duncan, Iverson, and Amar&rsquo;e got the 1st place votes that year.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nh4c84i" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>31WTexaco | Mavericks</div>
+        <div>1 | 3 hours ago </div>
+      </div>
+      <label for="nh4c84i" class="commentText"><p>It&rsquo;s not necessarily about who *deserves* the award from a statistical pov, but it&rsquo;s really who is statistically similar to MVP vote-getters over the time span. So Vince Carter in 2001 certainly looked like an MVP from his advanced stats, while 2005-2006 Steve Nash very much didn&rsquo;t look like an MVP. You may even argue some of the hypothetical winners had worse statistical seasons than people who scored less than them, which is totally valid. It would just be an expression of the bias of voters who consider the entire context of a player&rsquo;s season, not just the advanced stats.</p>
+
+<p>The top 5 for 2005 (Very similar to stats of typical MVPs):</p>
+
+<ol>
+<li>LeBron James - 0.225<br>
+</li>
+<li>Kevin Garnett - 0.224<br>
+</li>
+<li>Tracy McGrady - 0.164<br>
+</li>
+<li>Dirk Nowitzki - 0.161<br>
+</li>
+<li>Vince Carter - 0.141<br>
+</li>
+</ol>
+
+<p>Further down the list (Less similar to stats of typical MVPs):</p>
+
+<ol>
+<li>Tim Duncan - 0.123<br>
+</li>
+<li>Allen Iverson - 0.116<br>
+</li>
+<li>Shaquille O&rsquo;Neal - 0.104<br>
+</li>
+<li>Amar&rsquo;e Stoudemire - 0.099<br>
+</li>
+<li>Steve Nash - 0.095<br>
+</li>
+</ol>
+
+<p>Whether or not Nash deserved that MVP over Kobe, it&rsquo;s clear that his stats did not reflect his talent very well. He seems to be a very context-based MVP winner. Kobe&rsquo;s stats don&rsquo;t reflect his talent well either, considering he placed 6th in hypothetical voting that year. It could be that both Nash and Kobe have a unique combination of stats that isn&rsquo;t shared by other MVPs (hence why they were both in the bottom 5 of scores for MVP winning seasons).</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nh4dcde" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>BigStrongPolarGuy</div>
+        <div>2 | 3 hours ago </div>
+      </div>
+      <label for="nh4dcde" class="commentText"><p>Yeah, I&rsquo;m using deserve here to mean based on precedent.</p>
+
+<p>I&rsquo;m shocked T-Mac finishes over Dirk there.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nh4lq7y" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>lucky-me_lucky-mud | Spurs</div>
+        <div>1 | 2 hours ago </div>
+      </div>
+      <label for="nh4lq7y" class="commentText"><p>Does Vince Carter with an MVP in 01 get the game winner in game 7 against Iverson to fall? Does he take a game off the Lakers in similar fashion, maybe dunking over Tyronn Lue instead?</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nh4nvep" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>nowhathappenedwas | NBA</div>
+        <div>1 | 2 hours ago </div>
+      </div>
+      <label for="nh4nvep" class="commentText"><p>Love how OWS and DWS are positive while WS is negative. And how DBPM and OBPM are negative while BPM is positive.</p>
+
+<p>Also like how ORB% and DRB% are negative while TRB% is positive. This one <em>kinda</em> makes sense because it means they play on a good team (more defensive reboot chances than offensive rebound chances because they’re making more shots than their opponents).</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nh4oy0e" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Borbs_revenge_ | Raptors</div>
+        <div>2 | 2 hours ago </div>
+      </div>
+      <label for="nh4oy0e" class="commentText"><p>This is interesting, so it&rsquo;s basically like showing who most closely fit the MVP mold each year (based on all other years).</p>
+
+<p>It would be slightly better if you fit the model for each year on all data excluding that year (i.e. if the 2005 model is fit after being trained on all years excluding 2005). Maybe you did that but I didn&rsquo;t read closely enough.</p>
+
+<p>Also, minimizing the total square error is essentially linear regression. And given that these variables are so highly correlated, that impacts all their estimates and we can&rsquo;t exactly interpret them. I would be interested to see if there was some variable selection like LASSO to see which variable is most influential for MVP prediction</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nh4rwqy" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Parallel-Quality</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="nh4rwqy" class="commentText"><p>Nobody talking about how Harden would have 3 MVP&rsquo;s.</p>
+
+<p>Prime Harden is consistently disrespected.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nh4x19l" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>FH261169 | Mavericks</div>
+        <div>1 | 28 minutes ago </div>
+      </div>
+      <label for="nh4x19l" class="commentText"><p>This doesn&rsquo;t factor is team wins, which has always played a big part in voting.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nh4yh7x" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>PyrateKyng94</div>
+        <div>1 | 16 minutes ago </div>
+      </div>
+      <label for="nh4yh7x" class="commentText"><p>This feels right to me. I do think lebron should have won 9 MVP’s in a row. I think harden should have 3. And Jokic the last 5. Is this what not having voter fatigue looks like?</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nh4792y" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>birdseye-maple | Warriors</div>
+        <div>-2 | 4 hours ago </div>
+      </div>
+      <label for="nh4792y" class="commentText"><p>I&rsquo;m suspicious.</p>
+
+<p>You have a new account with almost no posts, clearly you don&rsquo;t want other people to know who your favorite player is.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nh4de24" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>31WTexaco | Mavericks</div>
+        <div>3 | 3 hours ago </div>
+      </div>
+      <label for="nh4de24" class="commentText"><p>My favorite current player is Luka, which is why I&rsquo;m a Mavericks fan. I started watching basketball in 2022 and he was the most fun to watch so I would always tune in to Mavericks games. Such a shame that he&rsquo;s gone but now I&rsquo;m locked into Dallas and I&rsquo;m okay with that.</p>
+
+<p>But it doesn&rsquo;t matter anyhow. All I did was input a whole bunch of numbers (without names attached) into what amounts to a calculator and it spit out the weights I used. After that, I just did some multiplying and adding and sorted the results by size. It almost feels like magic to just do math and all the superstars come out at the end. Very cool stuff.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nh45pc5" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>SergeantGunsalsa | Warriors</div>
+        <div>-3 | 4 hours ago </div>
+      </div>
+      <label for="nh45pc5" class="commentText"><p>this got me thinking and opening wounds from kobe being robbed of 2 mvps&hellip;thanks nba reddit</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nh49myk" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>imadogg | Lakers</div>
+        <div>4 | 4 hours ago </div>
+      </div>
+      <label for="nh49myk" class="commentText"><p>According to this, Kobe should have zero and Vince Carter should have one</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
