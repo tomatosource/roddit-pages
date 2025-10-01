@@ -1,0 +1,334 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.selfPostImage {
+  width: 100%;
+  height: auto;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/PathOfExile2/comments/1nv532k/quick_napkin_math_for_quantity_with_the/"><p>Quick napkin math for quantity with the tower/tablet changes.</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <p>Disclaimer: This is what I came up with after a bit of testing, this is by no means 100% correct and I might&rsquo;ve messed some things up, so take it all with a grain of salt.</p>
+
+<p>There is a bit of a pain point, but overall not too much changed really.</p>
+
+<p>I ran the numbers on quantity with the same atlas setup as before the patch (which is: 32% increased effect of tablets + 20% chance to double the effect):</p>
+
+<p><strong>Up to patch 0.3.0 with tower overlaps:</strong></p>
+
+<p>You&rsquo;d hunt for tower overlaps, running uninteresting/boring maps in the process, and end up with something like the following after getting 4 overlaps (number of maps are just for illustration and not necessarily correct, it&rsquo;s best guesstimate).</p>
+
+<p>We had:</p>
+
+<ul>
+<li>4 tower overlap (12 tablets): 12 × 7% (base from tablets) × 1.32 (32% increased effect) × 1.2 (20% chance to double) ≈ 133% quantity</li>
+<li>3 tower overlap (9 tablets): 9 × 7% × 1.32 × 1.2 ≈ 100% quantity</li>
+<li>2 tower overlap (6 tablets): 6 × 7% × 1.32 × 1.2 ≈ 67% quantity</li>
+<li>1 tower (3 tablets): 3 × 7% × 1.32 × 1.2 ≈ 33% quantity</li>
+</ul>
+
+<p>Which results in:</p>
+
+<ul>
+<li>4-5 maps hitting 133% quantity (4 towers - jackpot spots 12*7% quant)</li>
+<li>12-13 maps at 100% (3 towers)</li>
+<li>24 maps around 67% (2 towers)</li>
+<li>35 maps at 33% (1 tower)</li>
+</ul>
+
+<p>We&rsquo;re calculating the multiplier like this:</p>
+
+<ul>
+<li>Baseline: 100% at 1x multiplier (the base every player has)</li>
+<li>For 133% increased quantity, that&rsquo;s a 1.33x multiplier</li>
+<li>Which results in a (1 + 1.33 =) 2.33 multiplier</li>
+</ul>
+
+<p>When we run the numbers on those 76 maps/nodes:</p>
+
+<ul>
+<li>4.5 maps at 133% quantity (×2.33 loot) = 10.5</li>
+<li>12.5 maps at 100% quantity (×2.0 loot) = 25.0</li>
+<li>24 maps at 67% quantity (×1.67 loot) = 40.1</li>
+<li>35 maps at 33% quantity (×1.33 loot) = 46.6</li>
+<li><strong>Total: 122x loot multiplier</strong></li>
+</ul>
+
+<p><strong>After Patch 0.3.1:</strong></p>
+
+<p>Compared to the new system with 3 tablets each map where every map gets ~48% quantity (3 x 10% tablets x 1.32 (32% incresed effect) x 1.2 (20% chance to double), which results in:</p>
+
+<ul>
+<li>76 × 1.48 = <strong>113x total loot multiplier</strong></li>
+</ul>
+
+<p>So, compared to 4 tower overlap, it&rsquo;s about 7-8% less loot overall.</p>
+
+<p><strong>Conclusion</strong></p>
+
+<p>Downsides:</p>
+
+<ul>
+<li>No more 4 overlap peaks</li>
+<li>You&rsquo;re getting about 7-8% less loot overall compared to optimized tower farming.</li>
+</ul>
+
+<p>Upside:</p>
+
+<ul>
+<li>7-8% difference in the multiplier is barely noticeable for casual players</li>
+<li>no hunting for tower overlaps</li>
+<li>no running of &ldquo;empty&rdquo; maps</li>
+<li>no funky pathing to towers</li>
+</ul>
+
+<p>For most players who weren&rsquo;t min-maxing tower positions, this barely changes anything - it&rsquo;s just less of a hassle now. For the hardcore farmers though, yeah, that 7-8% hurts. It boils down to whether you&rsquo;d rather save time and sanity or squeeze out every last bit of efficiency.</p>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nh5zugh" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Dlovg</div>
+        <div>1 | 15 minutes ago </div>
+      </div>
+      <label for="nh5zugh" class="commentText"><p>I think it&rsquo;s abit tragic how much negative focus this gets on reddit when this system is much better than the one pre patch.</p>
+
+<p>Finally people aren&rsquo;t &ldquo;forced&rdquo; to overlap towers and spend alot of time to optimize how they will play end game, but all the posts here are so negative&hellip;</p>
+
+<p>I&rsquo;m not referring to your post BTW, it was a good post focusing on facts.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nh616kz" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Vireca</div>
+        <div>1 | 5 minutes ago </div>
+      </div>
+      <label for="nh616kz" class="commentText"><p>I don&rsquo;t think people is taking in mind that the change is huge on the long run</p>
+
+<p>Before as you said, you had to run bad maps or maps with literally no mechanics to progress into an overlapping tower zone and then BOOM loot rain</p>
+
+<p>Now you have loot in every map you enter no matter what when using tablets AND extra content that you can encounter randomly</p>
+
+<p>In 10 maps before you get barely nothing, in 10 maps now you can farm a lot of stuff</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
