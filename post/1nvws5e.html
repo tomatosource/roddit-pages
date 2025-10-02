@@ -1,0 +1,764 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.selfPostImage {
+  width: 100%;
+  height: auto;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/nba/comments/1nvws5e/updated_depth_chart/"><p>Updated Depth Chart</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <p>*Injured Out for the Season excluded (Tatum, Haliburton, Lillard, VanVleet, Irving(possible), Dejounte(possible)</p>
+
+<p>*Two-Way not included</p>
+
+<p>-</p>
+
+<p>76ers</p>
+
+<p>Joel Embiid | Andre Drummond | Johni Broome</p>
+
+<p>Trendon Watford | Adem Bona</p>
+
+<p>Quentin Grimes | Kelly Oubre Jr. | Justin Edwards</p>
+
+<p>Paul George | VJ Edgecombe | Eric Gordon</p>
+
+<p>Tyrese Maxey | Jared McCain | Kyle Lowry</p>
+
+<p>-</p>
+
+<p>Bucks</p>
+
+<p>Myles Turner | Jericho Sims</p>
+
+<p>Giannis Antetokounmpo | Bobby Portis | Tyler Smith</p>
+
+<p>Kyle Kuzma | Taurean Prince | Chris Livingston | Thanasis Antetokounmpo</p>
+
+<p>Gary Trent Jr. | Ryan Rollins | Gary Harris | Andre Jackson | Amir Coffey</p>
+
+<p>Kevin Porter Jr. | Cole Anthony | AJ Green</p>
+
+<p>-</p>
+
+<p>Bulls</p>
+
+<p>Nikola Vucevic | Zach Collins | Jalen Smith</p>
+
+<p>Matas Buzelis | Patrick Williams | Noa Essengue</p>
+
+<p>Kevin Huerter | Isaac Okoro | Julian Phillips</p>
+
+<p>Coby White | Ayo Dosunmu | Dalen Terry</p>
+
+<p>Josh Giddey | Tre Jones | Jevon Carter</p>
+
+<p>-</p>
+
+<p>Cavaliers</p>
+
+<p>Jarrett Allen | Larry Nance Jr. | Thomas Bryant</p>
+
+<p>Evan Mobley | Dean Wade</p>
+
+<p>De&rsquo;Andre Hunter | Max Strus | Jaylon Tyson</p>
+
+<p>Donovan Mitchell | Sam Merrill | Craig Porter Jr.</p>
+
+<p>Darius Garland | Lonzo Ball | Tyrese Proctor</p>
+
+<p>-</p>
+
+<p>Celtics</p>
+
+<p>Neemias Queta | Luka Garza</p>
+
+<p>Chris Boucher | Xavier Tillman | Josh Minott</p>
+
+<p>Jaylen Brown | Sam Hauser | Jordan Walsh</p>
+
+<p>Anfernee Simons | Baylor Scheierman | Hugo Gonzalez</p>
+
+<p>Derrick White | Payton Pritchard</p>
+
+<p>-</p>
+
+<p>Clippers</p>
+
+<p>Ivica Zubac | Brook Lopez| Yanic Niederhauser</p>
+
+<p>John Collins | Nicolas Batum | Kobe Brown</p>
+
+<p>Kawhi Leonard | Derrick Jones Jr. | Bogdan Bogdanovic</p>
+
+<p>Bradley Beal | Kris Dunn | Cameron Christie</p>
+
+<p>James Harden | Chris Paul</p>
+
+<p>-</p>
+
+<p>Grizzlies</p>
+
+<p>Zach Edey | Santi Aldama | Jock Landale</p>
+
+<p>Jaren Jackson Jr. | Brandon Clarke | GG Jackson</p>
+
+<p>Jaylen Wells | Vincent Williams Jr. | John Konchar</p>
+
+<p>Ty Jerome | Kentavious Caldwell-Pope | Cedric Coward</p>
+
+<p>Ja Morant | Scotty Pippen Jr. | Cam Spencer</p>
+
+<p>-</p>
+
+<p>Hawks</p>
+
+<p>Kristaps Porzingis | Onyeka Okongwu | Asa Newell</p>
+
+<p>Jalen Johnson | Nikola Djurisic | Mouhamed Gueye</p>
+
+<p>Zaccharie Risacher | Nickeil Alexander-Walker | Caleb Houstan</p>
+
+<p>Dyson Daniels | Luke Kennard</p>
+
+<p>Trae Young | Vit Krejci</p>
+
+<p>-</p>
+
+<p>Heat</p>
+
+<p>Kel&rsquo;el Ware | Nikola Jovic</p>
+
+<p>Bam Adebayo | Precious Achiuwa | Keshad Johnson</p>
+
+<p>Andrew Wiggins | Jaime Jaquez Jr. | Pelle Larsson</p>
+
+<p>Norman Powell | Simone Fontecchio | Terry Rozier | Dru Smith</p>
+
+<p>Tyler Herro | Davion Mitchell | Kasparas Jakucionis</p>
+
+<p>-</p>
+
+<p>Hornets</p>
+
+<p>Mason Plumlee | Moussa Diabate | Ryan Kalkbrenner</p>
+
+<p>Miles Bridges | Grant Williams | Tidjane Salaun</p>
+
+<p>Brandon Miller | Kon Knueppel | Liam McNeeley | Sion James</p>
+
+<p>Collin Sexton | Pat Connaughton | Josh Green</p>
+
+<p>LaMelo Ball | Spencer Dinwiddie | Tre Mann</p>
+
+<p>-</p>
+
+<p>Jazz</p>
+
+<p>Walker Kessler | Jusuf Nurkic | Kevin Love</p>
+
+<p>Kyle Filipowski | Taylor Hendricks | Kyle Anderson</p>
+
+<p>Lauri Markkanen | Ace Bailey | Georges Niang</p>
+
+<p>Keyonte George | Brice Sensabaugh | Svi Mykhailiuk | Cody Williams</p>
+
+<p>Isaiah Collier | Walter Clayton Jr.</p>
+
+<p>-</p>
+
+<p>Kings</p>
+
+<p>Domantas Sabonis | Drew Eubanks | Isaac Jones | Maxime Raynaud</p>
+
+<p>Keegan Murray | Dario Saric</p>
+
+<p>DeMar DeRozan | Keon Ellis | Doug McDermott | Nique Clifford</p>
+
+<p>Zach LaVine | Malik Monk | Terence Davis</p>
+
+<p>Dennis Schroder | Devin Carter</p>
+
+<p>-</p>
+
+<p>Knicks</p>
+
+<p>Karl-Anthony Towns | Mitchell Robinson</p>
+
+<p>OG Anunoby | Guerschon Yabusele</p>
+
+<p>Mikal Bridges | Jordan Clarkson | Pacome Dadiet</p>
+
+<p>Josh Hart | Malcolm Brogdon | Landry Shamet</p>
+
+<p>Jalen Brunson | Miles McBride | Tyler Kolek</p>
+
+<p>-</p>
+
+<p>Lakers</p>
+
+<p>Deandre Ayton | Jaxson Hayes | Maxi Kleber</p>
+
+<p>LeBron James | Jarred Vanderbilt | Adou Thiero</p>
+
+<p>Rui Hachimura | Jake LaRavia | Dalton Knecht</p>
+
+<p>Austin Reaves | Gabe Vincent</p>
+
+<p>Luka Doncic | Marcus Smart | Bronny James</p>
+
+<p>-</p>
+
+<p>Magic</p>
+
+<p>Wendell Carter Jr. | Goga Bitadze | Moritz Wagner</p>
+
+<p>Paolo Banchero | Jonathan Isaac</p>
+
+<p>Franz Wagner | Tristan Da Silva | Noah Penda</p>
+
+<p>Desmond Bane | Anthony Black | Jett Howard</p>
+
+<p>Jalen Suggs | Tyus Jones | Jase Richardson</p>
+
+<p>-</p>
+
+<p>Mavericks</p>
+
+<p>Daniel Gafford | Dereck Lively II | Dwight Powell</p>
+
+<p>Anthony Davis | PJ Washington | Caleb Martin</p>
+
+<p>Cooper Flagg | Naji Marshall | Jaden Hardy</p>
+
+<p>Klay Thompson | Max Christie | Dennis Smith Jr.</p>
+
+<p>D&rsquo;Angelo Russell | Dante Exum | Brandon Williams</p>
+
+<p>-</p>
+
+<p>Nets</p>
+
+<p>Nicolas Claxton | Day&rsquo;Ron Sharpe | Danny Wolf</p>
+
+<p>Michael Porter Jr. | Noah Clowney | Jalen Wilson</p>
+
+<p>Ziaire Williams | Haywood Highsmith | Tyrese Martin | Drew Timme</p>
+
+<p>Cameron Thomas | Terance Mann | Dariq Whitehead | Drake Powell</p>
+
+<p>Egor Demin | Nolan Traore | Kobe Bufkin | Ben Saraf</p>
+
+<p>-</p>
+
+<p>Nuggets</p>
+
+<p>Nikola Jokic | Jonas Valanciunas</p>
+
+<p>Aaron Gordon | Zeke Nnaji | DaRon Holmes II</p>
+
+<p>Cameron Johnson | Julian Strawther | Hunter Tyson</p>
+
+<p>Christian Braun | Peyton Watson | Tim Hardaway Jr.</p>
+
+<p>Jamal Murray | Bruce Brown Jr. | Jalen Pickett</p>
+
+<p>-</p>
+
+<p>Pacers</p>
+
+<p>Jay Huff | Tony Bradley | James Wiseman</p>
+
+<p>Pascal Siakam | Obi Toppin | Isaiah Jackson</p>
+
+<p>Aaron Nesmith | Jarace Walker</p>
+
+<p>Bennedict Mathurin | Ben Sheppard | Johnny Furphy</p>
+
+<p>Andrew Nembhard | TJ McConnell | Delon Wright | Kam Jones</p>
+
+<p>-</p>
+
+<p>Pelicans</p>
+
+<p>Yves Missi | Kevon Looney | Derik Queen</p>
+
+<p>Zion Williamson | Karlo Matkovic</p>
+
+<p>Trey Murphy | Herb Jones</p>
+
+<p>Jordan Poole | Saddiq Bey | Jordan Hawkins | Micah Peavy</p>
+
+<p>Jeremiah Fears | Jose Alvarado</p>
+
+<p>-</p>
+
+<p>Pistons</p>
+
+<p>Jalen Duren | Isaiah Stewart | Paul Reed</p>
+
+<p>Tobias Harris | Ron Holland II | Bobi Klintman</p>
+
+<p>Ausar Thompson | Duncan Robinson | Javonte Green</p>
+
+<p>Jaden Ivey | Caris LeVert | Chaz Lanier</p>
+
+<p>Cade Cunningham | Marcus Sasser</p>
+
+<p>-</p>
+
+<p>Raptors</p>
+
+<p>Jakob Poeltl | Sandro Mamukelashvili | Jonathan Mogbo</p>
+
+<p>Scottie Barnes | Collin Murray-Boyles</p>
+
+<p>Brandon Ingram | Ochai Agbaji | Jamison Battle | AJ Lawson</p>
+
+<p>RJ Barrett | Gradey Dick | Garrett Temple | Ja&rsquo;Kobe Walter</p>
+
+<p>Immanuel Quickley | Jamal Shead</p>
+
+<p>-</p>
+
+<p>Rockets</p>
+
+<p>Alperen Sengun | Steven Adams | Clint Capela</p>
+
+<p>Jabari Smith Jr. | Tari Eason | Jeff Green</p>
+
+<p>Kevin Durant | Dorian Finney-Smith | Jae&rsquo;Sean Tate</p>
+
+<p>Reed Sheppard | Josh Okogie</p>
+
+<p>Amen Thompson | Aaron Holiday</p>
+
+<p>-</p>
+
+<p>Spurs</p>
+
+<p>Victor Wembanyama | Luke Kornet | Kelly Olynyk</p>
+
+<p>Harrison Barnes | Jeremy Sochan</p>
+
+<p>Devin Vassell | Keldon Johnson | Carter Bryant</p>
+
+<p>Stephon Castle | Julian Champagnie | Lindy Waters III</p>
+
+<p>De&rsquo;Aaron Fox | Dylan Harper | Jordan McLaughlin</p>
+
+<p>-</p>
+
+<p>Suns</p>
+
+<p>Mark Williams | Nick Richards | Khaman Maluach</p>
+
+<p>Dillon Brooks | Oso Ighodaro | Rasheer Fleming | Nigel Hayes-Davis</p>
+
+<p>Ryan Dunn | Royce O&rsquo;Neale</p>
+
+<p>Jalen Green | Grayson Allen | Jordan Goodwin</p>
+
+<p>Devin Booker | Collin Gillespie</p>
+
+<p>-</p>
+
+<p>Timberwolves</p>
+
+<p>Rudy Gobert | Naz Reid | Joan Beringer</p>
+
+<p>Julius Randle</p>
+
+<p>Jaden McDaniels | Terrence Shannon Jr. | Joe Ingles | Leonard Miller</p>
+
+<p>Anthony Edwards | Donte DiVincenzo | Jaylen Clark</p>
+
+<p>Mike Conley | Rob Dillingham | Nah&rsquo;Shon Hyland</p>
+
+<p>-</p>
+
+<p>Thunder</p>
+
+<p>Isaiah Hartenstein | Jaylin Williams | Thomas Sorber</p>
+
+<p>Chet Holmgren | Kenrich Williams | Ousmane Dieng</p>
+
+<p>Jalen Williams | Aaron Wiggins | Isaiah Joe</p>
+
+<p>Luguentz Dort | Alex Caruso | Ajay Mitchell</p>
+
+<p>Shai Gilgeous-Alexander | Cason Wallace | Nikola Topic</p>
+
+<p>-</p>
+
+<p>Trail Blazers</p>
+
+<p>Donovan Clingan | Robert Williams III | Hansen Yang</p>
+
+<p>Toumani Camara | Jerami Grant | Duop Reath</p>
+
+<p>Deni Avdija | Kris Murray | Blake Wesley</p>
+
+<p>Shaedon Sharpe | Matisse Thybulle | Rayan Rupert</p>
+
+<p>Jrue Holiday | Scoot Henderson</p>
+
+<p>-</p>
+
+<p>Warriors</p>
+
+<p>Al Horford | Quinten Post | Trayce Jackson-Davis</p>
+
+<p>Draymond Green | Jonathan Kuminga | Gui Santos</p>
+
+<p>Jimmy Butler | Moses Moody</p>
+
+<p>Brandin Podziemski | Buddy Hield | Gary Payton II</p>
+
+<p>Stephen Curry | De&rsquo;Anthony Melton | Seth Curry | Will Richard</p>
+
+<p>-</p>
+
+<p>Wizards</p>
+
+<p>Alex Sarr | Marvin Bagley III</p>
+
+<p>Kyshawn George | Corey Kispert | Dillon Jones | Anthony Gill</p>
+
+<p>Bilal Coulibaly | Khris Middleton | Will Riley</p>
+
+<p>Cam Whitmore | Tre Johnson | Malaki Branham</p>
+
+<p>CJ McCollum | Bub Carrington | AJ Johnson</p>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nhbpo15" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>XXX--WRLD | Lakers</div>
+        <div>1 | 26 minutes ago </div>
+      </div>
+      <label for="nhbpo15" class="commentText"><p>Madlad with an absolute unit of a post</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nhbpz10" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>jonaintalive</div>
+        <div>1 | 23 minutes ago </div>
+      </div>
+      <label for="nhbpz10" class="commentText"><p>I’m not trying to hate, but I had not really focused in on what the Buck’s roster truly was. Having it laid out like this, this roster stinks man wtf. I love most of these players as back end rotation players but man.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nhbpvel" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>OrganicHunt952 | Mavericks</div>
+        <div>1 | 24 minutes ago </div>
+      </div>
+      <label for="nhbpvel" class="commentText"><p>Mavs hands down the deepest team, let’s see how it goes though, especially with the Kyrie injury. Also lively will start over gafford.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nhbrohg" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>2106au | Grizzlies</div>
+        <div>1 | 6 minutes ago </div>
+      </div>
+      <label for="nhbrohg" class="commentText"><p>OKC looks deeper. Joe is 3rd team on this depth chart. </p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nhbqb6k" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Supreme_God_Bunny | Hornets</div>
+        <div>1 | 20 minutes ago </div>
+      </div>
+      <label for="nhbqb6k" class="commentText"><p>The fact that you think Kon is a shooting guard tho, Pat is a small forward</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nhbr7m1" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>RoyalEmergency3911 | Trail Blazers</div>
+        <div>1 | 11 minutes ago </div>
+      </div>
+      <label for="nhbr7m1" class="commentText"><p>So excited</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nhbrhqy" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>SparkyForce | Warriors</div>
+        <div>1 | 8 minutes ago </div>
+      </div>
+      <label for="nhbrhqy" class="commentText"><p>Half our team just got here 🔥</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
