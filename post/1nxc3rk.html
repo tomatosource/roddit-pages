@@ -1,0 +1,467 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.selfPostImage {
+  width: 100%;
+  height: auto;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/baseball/comments/1nxc3rk/oc_abs_will_secretly_shrink_the_size_of_the/"><p>[OC] ABS will secretly shrink the size of the strike zone significantly</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <p>The ABS Challenge system, used in AAA for several years now, is set to make its major league debut next year. However, the technology that is judging the pitches is incapable of capturing the true rulebook definition of the strike zone. As a compromise, the dimensions of the zone have been simplified greatly: the strike zone is a 2D rectangle (measured at the middle of home plate) rather than the 3D box; and the height of the zone is a factor of the batter&rsquo;s height, rather than batting stance.</p>
+
+<p>However, these batter height presets are not at all representative of how MLB has wanted to call pitches and how umpires are actually calling pitches. For this analysis, I studied the data of hitters who took at least 500 pitches in 2025 (293 hitters in total) and compared their strike zone information with the ABS zone they experienced in Spring Training. <strong>As a result, batters can expect to see their strike zones shrink about 2&rdquo; next year thanks to the new ABS definition of the strike zone.</strong></p>
+
+<p>First, I look at the MLB-prescribed vertical zone boundaries, the same boundaries for which umpires are graded on. After adjusting for the ABS zone which is 8.5&rdquo; deep from the front edge of home plate, I averaged each hitters&rsquo; top and bottom zone values and plotted them as a function of height:</p>
+
+<p><a href="https://preview.redd.it/5edpiog5tysf1.png?width=1580&amp;format=png&amp;auto=webp&amp;s=2708bc7297630aa3cad4ecfcf925e8c25ccb385c" target="_blank">Scatterplots of MLB vertical strike zone bounds compared to batter height</a></p>
+
+<p>For hitters above the trendline, that suggests their batting stance is taller than the average; for hitters below, the opposite. The purple trendline is a line fixed at the origin so that the trendline value can be calculated as an exact factor of a batter&rsquo;s height. From this analysis, we get that MLB wants the top of the zone at 55.7% of the batters height, and the bottom at 25.3%.</p>
+
+<p>But what MLB wants is not necessarily what MLB gets out of their umpires. For this second analysis I analyze the <em>effective</em> zone, i.e. where umpires are actually calling balls and strikes vertically on batters. For each hitter I took pitches that were horizontally in the zone and calculated the effective 50-50 boundary between strike and ball. Again, we can plot this based on their height:</p>
+
+<p><a href="https://preview.redd.it/udh69ijdtysf1.png?width=1580&amp;format=png&amp;auto=webp&amp;s=5101fc8b7ca9166a392a491e71cfbfff19f94b8e" target="_blank">Scatterplots of umpires&rsquo; effective strike zone compared to batter height</a></p>
+
+<p>The trendline slope says that umpires typically call the zone from 25.5% of the batter&rsquo;s height to 55.0%, which is slightly more squished than what MLB wants. However, this is still much larger than what the ABS presets will be for next year, which will be between 27% and 53.5% of the batter&rsquo;s heights, which I summarize in this table:</p>
+
+<table>
+<thead>
+<tr>
+<th align="left">Zone type</th>
+<th align="left">Top%</th>
+<th align="left">Bot%</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">MLB</td>
+<td align="left">55.7%</td>
+<td align="left">25.3%</td>
+</tr>
+
+<tr>
+<td align="left">Effective</td>
+<td align="left">55.0%</td>
+<td align="left">25.5%</td>
+</tr>
+
+<tr>
+<td align="left">ABS</td>
+<td align="left">53.5%</td>
+<td align="left">27.0%</td>
+</tr>
+</tbody>
+</table>
+<p>The effective umpire zone, already tighter than what MLB wanted for 2025, is still much larger than what the ABS zone will be for 2026. <strong>The practical implications of this secret change is that nearly every batter will see a significant reduction in the size of their strike zones: the top of the zone lowers by 1.11&rdquo; and the bottom of the zone is raised by 1.07&rdquo; for a net zone size decrease of 2.18&rdquo;.</strong> In fact, of the 293 hitters studied, only 5 will see a larger strike zone with ABS compared to before.</p>
+
+<p><a href="https://preview.redd.it/wqwpcrfhtysf1.png?width=1580&amp;format=png&amp;auto=webp&amp;s=6e188ae9fbcbe4d7cc6487cbd7b5a2b45a385cac" target="_blank">Showing the general decrease in strike zone size with ABS and distribution of the shrink</a></p>
+
+<p>Perhaps umpires can be quick to adapt to this new zone, but until that time, there will be an inch at the top and bottom of the zone where umpires will more likely than not call strikes, but get overturned by ABS anyway. <strong>That&rsquo;s not a result of the umpires being wrong; their effective zone matches the official stance-based zone more than ABS does, but it&rsquo;s a result of how MLB has decided to configure ABS itself.</strong> It&rsquo;s a radical change that hitters and pitchers will probably learn the hard way through some questionable challenges.</p>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nhmdtd7" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>jcheeseball | San Francisco Giants</div>
+        <div>15 | 32 minutes ago </div>
+      </div>
+      <label for="nhmdtd7" class="commentText"><p>It&rsquo;s also going to make curveballs, breaking balls and sliders that land belt high very important and tough to hit pitches.  The lowball meta is finally going to change a bit.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nhmi3e9" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>tyler-86 | World Series Trophy • Los Angeles Dod…</div>
+        <div>8 | 7 minutes ago </div>
+      </div>
+      <label for="nhmi3e9" class="commentText"><p>The ABS definition of a strike zone is a lot easier to tweak than 100 different dudes&rsquo; perception (and one woman&rsquo;s perception) of the strike zone if need be, at least.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nhmeht2" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>knakveey | San Francisco Giants • Sell</div>
+        <div>5 | 28 minutes ago </div>
+      </div>
+      <label for="nhmeht2" class="commentText"><p>Thanks for taking the time to collect and present all of this. Perfect off-day content :)</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nhmell2" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Electronic-Cicada352</div>
+        <div>5 | 27 minutes ago </div>
+      </div>
+      <label for="nhmell2" class="commentText"><p>Don’t care. Still want</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nhmimsu" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>raystheroof1 | yankee stadium is a dump</div>
+        <div>3 | 4 minutes ago </div>
+      </div>
+      <label for="nhmimsu" class="commentText"><p>Didnt read past</p>
+
+<blockquote>
+<p>is incapable of capturing the true rulebook definition of the strike zone</p>
+</blockquote>
+
+<p>So like umpires? but consistent</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nhmfy7r" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>CygnusN7 | San Francisco Giants • Yomiuri G…</div>
+        <div>2 | 20 minutes ago </div>
+      </div>
+      <label for="nhmfy7r" class="commentText"><p>Good.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nhmg93x" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Robokiller87 | MLB Pride</div>
+        <div>3 | 18 minutes ago </div>
+      </div>
+      <label for="nhmg93x" class="commentText"><p>I believe in the professionals at hitting baseballs and their ability to adapt to this.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nhmhekf" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Sthrax | New York Yankees</div>
+        <div>3 | 11 minutes ago </div>
+      </div>
+      <label for="nhmhekf" class="commentText"><p>Since umpires are &ldquo;incapable of capturing the true rulebook definition of the strike zone,&rdquo; as has been repeatedly demonstrated year after year, I&rsquo;ve got no issue with this.  Bring on the ABS.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nhmf4m7" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>cryehavok | Chicago Cubs</div>
+        <div>0 | 24 minutes ago </div>
+      </div>
+      <label for="nhmf4m7" class="commentText"><p>Pshh, nerd!</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nhmgctx" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>RollOverPerezvon | Houston Astros</div>
+        <div>0 | 17 minutes ago </div>
+      </div>
+      <label for="nhmgctx" class="commentText"><p>My main takeaway from this is that Altuve&rsquo;s gonna have a nice bounce back year.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nhmgo2w" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>happyjello</div>
+        <div>0 | 16 minutes ago </div>
+      </div>
+      <label for="nhmgo2w" class="commentText"><p><img src="giphy|J8FZIm9VoBU6Q" alt="gif" /></p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
