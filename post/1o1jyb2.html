@@ -1,0 +1,693 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.selfPostImage {
+  width: 100%;
+  height: auto;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/nba/comments/1o1jyb2/oc_how_does_parity_affect_the_excitement_of_an/"><p>[OC] How does parity affect the excitement of an NBA season?</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <h1 id="introduction">Introduction</h1>
+
+<p>This is a continuation of a previous <a href="https://www.reddit.com/r/nba/comments/1nvhk56/oc_has_the_nba_regular_season_gotten_less/" target="_blank">post</a>. Using <a href="https://inpredictable.com" target="_blank">inpredictable&rsquo;s</a>, <a href="https://www.inpredictable.com/2014/05/top-game-finder-for-nba.html" target="_blank"><strong>excitement</strong></a>,
+and <a href="https://www.inpredictable.com/2020/04/an-update-to-tension-index-with-assist_11.html" target="_blank"><strong>tension</strong></a> data from the 1996-97 to 2024-25 seasons, I want to explore
+the question: <strong>Has the NBA regular season gotten less exciting?</strong></p>
+
+<p>Last time, we made a cursory attempt at comparing excitement and tension across seasons by graphing the number of games in the <a href="https://jeremylu43.github.io/images/NBA_Excitement/excitement_scatter_top_100.png" target="_blank">top 100</a> and <a href="https://jeremylu43.github.io/images/NBA_Excitement/excitement_scatter_top_500.png" target="_blank">top 500</a> of excitement and tension.
+Based on these two graphs, we have a signal that perhaps tension has decreased, while excitement has increased. This potential change might be attributed to how the NBA has shifted to a faster pace, relaxed defensive rules, and
+an emphasis on three point shooting. Leads can balloon quickly (which would reduce tension), and disappear just as quickly, leading to more comebacks (and therefore hire excitement) and closer games.
+While hypothesizing why this signal exists, another potential factor I thought of which could affect tension and excitement across an entire season, would be parity. Theoretically,
+<strong>if teams were more evenly matched (reflected by closer standings),  games might be closer, resulting in higher tension, and perhaps higher excitement</strong>, due to their <a href="https://jeremylu43.github.io/images/NBA_Excitement/excitement_tension_scatter.png" target="_blank">correlation</a>.</p>
+
+<p>This
+post will attempt to answer <strong>how much does parity affect a season&rsquo;s daily median excitement and tension?</strong></p>
+
+<h1 id="measuring-parity">Measuring Parity</h1>
+
+<p>The <a href="https://en.wikipedia.org/wiki/Gini_coefficient" target="_blank"><strong>Gini Coefficient</strong></a> is a statistical measure that has commonly be used to <a href="https://harvardsportsanalysis.org/2017/08/an-analysis-of-parity-levels-in-soccer/" target="_blank">estimate the parity of a sports league</a> via season standings.
+It&rsquo;s origins are in economics, where this measure is used to evaluate inequality among income levels. To explain it simply, a Gini coefficient of 0 means perfect inequality, where all wealth would be equal. For the NBA, that means every team would be 41-41.
+A Gini of 1 would mean that one person holds all the wealth(a basketball equivalent doesn&rsquo;t exist, since it&rsquo;s impossible for one team to have all the wins). Basically, a <strong>higher Gini coefficient means less parity</strong> in a season.</p>
+
+<p>Here are the Gini&rsquo;s for each season in order and sorted:</p>
+
+<table>
+<thead>
+<tr>
+<th><strong>Original</strong></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th><strong>Sorted</strong></th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>Season</td>
+<td>Gini</td>
+<td>Best Team</td>
+<td>Worst Team</td>
+<td></td>
+<td>Season</td>
+<td>Gini</td>
+<td>Best Team</td>
+<td>Worst Team</td>
+</tr>
+
+<tr>
+<td>1996</td>
+<td>0.161</td>
+<td>CHI (69 - 13)</td>
+<td>VAN (14 - 68)</td>
+<td></td>
+<td>1996</td>
+<td>0.161</td>
+<td>CHI (69 - 13)</td>
+<td>VAN (14 - 68)</td>
+</tr>
+
+<tr>
+<td>1997</td>
+<td>0.153</td>
+<td>CHI (62 - 20)</td>
+<td>DEN (11 - 71)</td>
+<td></td>
+<td>1997</td>
+<td>0.153</td>
+<td>CHI (62 - 20)</td>
+<td>DEN (11 - 71)</td>
+</tr>
+
+<tr>
+<td>1998</td>
+<td>0.128</td>
+<td>SAS (37 - 13)</td>
+<td>VAN (8 - 42)</td>
+<td></td>
+<td>2008</td>
+<td>0.143</td>
+<td>CLE (66 - 16)</td>
+<td>SAC (17 - 65)</td>
+</tr>
+
+<tr>
+<td>1999</td>
+<td>0.13</td>
+<td>LAL (67 - 15)</td>
+<td>LAC (15 - 67)</td>
+<td></td>
+<td>2007</td>
+<td>0.141</td>
+<td>BOS (66 - 16)</td>
+<td>MIA (15 - 67)</td>
+</tr>
+
+<tr>
+<td>2000</td>
+<td>0.132</td>
+<td>SAS (58 - 24)</td>
+<td>CHI (15 - 67)</td>
+<td></td>
+<td>2023</td>
+<td>0.137</td>
+<td>BOS (64 - 18)</td>
+<td>DET (14 - 68)</td>
+</tr>
+
+<tr>
+<td>2001</td>
+<td>0.111</td>
+<td>SAC (61 - 21)</td>
+<td>GSW (21 - 61)</td>
+<td></td>
+<td>2009</td>
+<td>0.137</td>
+<td>CLE (61 - 21)</td>
+<td>NJN (12 - 70)</td>
+</tr>
+
+<tr>
+<td>2002</td>
+<td>0.115</td>
+<td>SAS (60 - 22)</td>
+<td>DEN (17 - 65)</td>
+<td></td>
+<td>2019</td>
+<td>0.134</td>
+<td>MIL (56 - 17)</td>
+<td>GSW (15 - 50)</td>
+</tr>
+
+<tr>
+<td>2003</td>
+<td>0.108</td>
+<td>IND (61 - 21)</td>
+<td>ORL (21 - 61)</td>
+<td></td>
+<td>2013</td>
+<td>0.134</td>
+<td>SAS (62 - 20)</td>
+<td>MIL (15 - 67)</td>
+</tr>
+
+<tr>
+<td>2004</td>
+<td>0.124</td>
+<td>PHX (62 - 20)</td>
+<td>ATL (13 - 69)</td>
+<td></td>
+<td>2014</td>
+<td>0.133</td>
+<td>GSW (67 - 15)</td>
+<td>MIN (16 - 66)</td>
+</tr>
+
+<tr>
+<td>2005</td>
+<td>0.106</td>
+<td>DET (64 - 18)</td>
+<td>POR (21 - 61)</td>
+<td></td>
+<td>2010</td>
+<td>0.132</td>
+<td>CHI (62 - 20)</td>
+<td>MIN (17 - 65)</td>
+</tr>
+
+<tr>
+<td>2006</td>
+<td>0.104</td>
+<td>DAL (67 - 15)</td>
+<td>MEM (22 - 60)</td>
+<td></td>
+<td>2000</td>
+<td>0.132</td>
+<td>SAS (58 - 24)</td>
+<td>CHI (15 - 67)</td>
+</tr>
+
+<tr>
+<td>2007</td>
+<td>0.141</td>
+<td>BOS (66 - 16)</td>
+<td>MIA (15 - 67)</td>
+<td></td>
+<td>2012</td>
+<td>0.13</td>
+<td>MIA (66 - 16)</td>
+<td>ORL (20 - 62)</td>
+</tr>
+
+<tr>
+<td>2008</td>
+<td>0.143</td>
+<td>CLE (66 - 16)</td>
+<td>SAC (17 - 65)</td>
+<td></td>
+<td>1999</td>
+<td>0.13</td>
+<td>LAL (67 - 15)</td>
+<td>LAC (15 - 67)</td>
+</tr>
+
+<tr>
+<td>2009</td>
+<td>0.137</td>
+<td>CLE (61 - 21)</td>
+<td>NJN (12 - 70)</td>
+<td></td>
+<td>2024</td>
+<td>0.129</td>
+<td>OKC (68 - 14)</td>
+<td>UTA (17 - 65)</td>
+</tr>
+
+<tr>
+<td>2010</td>
+<td>0.132</td>
+<td>CHI (62 - 20)</td>
+<td>MIN (17 - 65)</td>
+<td></td>
+<td>1998</td>
+<td>0.128</td>
+<td>SAS (37 - 13)</td>
+<td>VAN (8 - 42)</td>
+</tr>
+
+<tr>
+<td>2011</td>
+<td>0.128</td>
+<td>CHI (50 - 16)</td>
+<td>CHA (7 - 59)</td>
+<td></td>
+<td>2011</td>
+<td>0.128</td>
+<td>CHI (50 - 16)</td>
+<td>CHA (7 - 59)</td>
+</tr>
+
+<tr>
+<td>2012</td>
+<td>0.13</td>
+<td>MIA (66 - 16)</td>
+<td>ORL (20 - 62)</td>
+<td></td>
+<td>2015</td>
+<td>0.127</td>
+<td>GSW (73 - 9)</td>
+<td>PHI (10 - 72)</td>
+</tr>
+
+<tr>
+<td>2013</td>
+<td>0.134</td>
+<td>SAS (62 - 20)</td>
+<td>MIL (15 - 67)</td>
+<td></td>
+<td>2017</td>
+<td>0.126</td>
+<td>HOU (65 - 17)</td>
+<td>PHX (21 - 61)</td>
+</tr>
+
+<tr>
+<td>2014</td>
+<td>0.133</td>
+<td>GSW (67 - 15)</td>
+<td>MIN (16 - 66)</td>
+<td></td>
+<td>2004</td>
+<td>0.124</td>
+<td>PHX (62 - 20)</td>
+<td>ATL (13 - 69)</td>
+</tr>
+
+<tr>
+<td>2015</td>
+<td>0.127</td>
+<td>GSW (73 - 9)</td>
+<td>PHI (10 - 72)</td>
+<td></td>
+<td>2018</td>
+<td>0.12</td>
+<td>MIL (60 - 22)</td>
+<td>NYK (17 - 65)</td>
+</tr>
+
+<tr>
+<td>2016</td>
+<td>0.107</td>
+<td>GSW (67 - 15)</td>
+<td>BKN (20 - 62)</td>
+<td></td>
+<td>2021</td>
+<td>0.119</td>
+<td>PHX (64 - 18)</td>
+<td>HOU (20 - 62)</td>
+</tr>
+
+<tr>
+<td>2017</td>
+<td>0.126</td>
+<td>HOU (65 - 17)</td>
+<td>PHX (21 - 61)</td>
+<td></td>
+<td>2020</td>
+<td>0.116</td>
+<td>UTA (52 - 20)</td>
+<td>HOU (17 - 55)</td>
+</tr>
+
+<tr>
+<td>2018</td>
+<td>0.12</td>
+<td>MIL (60 - 22)</td>
+<td>NYK (17 - 65)</td>
+<td></td>
+<td>2002</td>
+<td>0.115</td>
+<td>SAS (60 - 22)</td>
+<td>DEN (17 - 65)</td>
+</tr>
+
+<tr>
+<td>2019</td>
+<td>0.134</td>
+<td>MIL (56 - 17)</td>
+<td>GSW (15 - 50)</td>
+<td></td>
+<td>2001</td>
+<td>0.111</td>
+<td>SAC (61 - 21)</td>
+<td>GSW (21 - 61)</td>
+</tr>
+
+<tr>
+<td>2020</td>
+<td>0.116</td>
+<td>UTA (52 - 20)</td>
+<td>HOU (17 - 55)</td>
+<td></td>
+<td>2003</td>
+<td>0.108</td>
+<td>IND (61 - 21)</td>
+<td>ORL (21 - 61)</td>
+</tr>
+
+<tr>
+<td>2021</td>
+<td>0.119</td>
+<td>PHX (64 - 18)</td>
+<td>HOU (20 - 62)</td>
+<td></td>
+<td>2016</td>
+<td>0.107</td>
+<td>GSW (67 - 15)</td>
+<td>BKN (20 - 62)</td>
+</tr>
+
+<tr>
+<td>2022</td>
+<td>0.091</td>
+<td>MIL (58 - 24)</td>
+<td>DET (17 - 65)</td>
+<td></td>
+<td>2005</td>
+<td>0.106</td>
+<td>DET (64 - 18)</td>
+<td>POR (21 - 61)</td>
+</tr>
+
+<tr>
+<td>2023</td>
+<td>0.137</td>
+<td>BOS (64 - 18)</td>
+<td>DET (14 - 68)</td>
+<td></td>
+<td>2006</td>
+<td>0.104</td>
+<td>DAL (67 - 15)</td>
+<td>MEM (22 - 60)</td>
+</tr>
+
+<tr>
+<td>2024</td>
+<td>0.129</td>
+<td>OKC (68 - 14)</td>
+<td>UTA (17 - 65)</td>
+<td></td>
+<td>2022</td>
+<td>0.091</td>
+<td>MIL (58 - 24)</td>
+<td>DET (17 - 65)</td>
+</tr>
+</tbody>
+</table>
+<p>A visual of the lowest (most balanced) and highest Gini (least balanced) seasons can be found <a href="https://jeremylu43.github.io/images/NBA_Excitement/gini_win_distribution.png" target="_blank">here</a>.</p>
+
+<p>In the 2022-23 season, the team standings are extremely close, with only 6 teams eclipsing 50 wins, and 14 teams between 40 and 50 wins. The Giannis led Bucks placed first with a record of 58-24 while the Pistons finished last at 17-65.</p>
+
+<p>Meanwhile, the 1997-97 was the least close season, as Michael Jordan and his Bulls led the league with a record of 69-13. 3 teams had over 60 wins, and 7 had less than 30 wins (compared to only 3 in 2022-23). Adding to the gap in competitiveness, the Celtics and Grizzlies finished at 15-67 and 14-68, respectively.</p>
+
+<h1 id="parity-and-excitement-tension">Parity and Excitement/Tension</h1>
+
+<p><a href="https://jeremylu43.github.io/images/NBA_Excitement/gini_win_distribution.png" target="_blank">Plotting a regression</a> of each season&rsquo;s Gini index with median daily excitement and tension, we can see a negative relationship between Gini and median daily excitement, meaning that
+<strong>excitement is lower in seasons where team standings are further separated</strong>. Under this model, we can expect that the difference in median daily excitement between the 2022-23 and the 1996-97 season to be approximately 1, although
+the actual difference was almost 2.5. 2019 does stand out as an outlier, most likely due to the <a href="https://en.wikipedia.org/wiki/2020_NBA_Bubble" target="_blank">bubble season</a>. Only top teams were invited to
+compete, with every game being meaningful for playoff hopes and seeding. As a result, daily median excitement was higher, and the standings were also skewed, which affects the Gini coefficient.</p>
+
+<p><a href="https://jeremylu43.github.io/images/NBA_Excitement/gini_regressions_no_bubble.png" target="_blank">Removing the bubble</a> shows a slightly stronger relationship between Gini coefficient and median daily excitement.</p>
+
+<p><strong>For tension, there is a lack of a clear relationship</strong>. In fact, the 1996-97 season, which had less parity according to the Gini coefficient, actually surpasses the 2022-23 season in median daily tension.</p>
+
+<h1 id="conclusion">Conclusion</h1>
+
+<p>I theorized initially that more parity might improve median daily excitement and daily tensions, using the heuristic that as viewers, we tend to enjoy watching more evenly matched teams,
+and enjoying the uncertainty of the outcome. By using the Gini coefficient as a measure for parity, we can see that <strong>as teams are further apart in standings, median daily excitement decreases</strong>,
+whereas the relationship between parity and tension is unclear (or rather, undetectable given our current data).</p>
+
+<p>While we did show a negative correlation between less balance and excitement, the quantitative difference is hard to interpret. The regression shows a difference of 1 (1.5 if you remove the outlier bubble season) in median daily excitement,
+but we are <strong>unable to claim that this is a meaningful difference in our perceptions</strong> of how exciting the season is. Additionally, <a href="https://jeremylu43.github.io/nba_excitement_part_1/#conclusion" target="_blank">previous discussed limitations</a> of our metrics still apply.
+In particular, even if the median daily excitement has decreased, our tendency to remember the more exciting games may alter our perceptions, minimizing the relationship with parity with the daily median excitement.</p>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nih21kf" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>guywilliamsguy | Raptors</div>
+        <div>4 | an hour ago </div>
+      </div>
+      <label for="nih21kf" class="commentText"><p>I appreciate the effort eh!</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nih46bs" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>BabyLeVert | Nets</div>
+        <div>2 | an hour ago </div>
+      </div>
+      <label for="nih46bs" class="commentText"><p>Its generally thought that viewership is high when there is a dynasty. this is just not nba, this is in any sport. Because there tends to be a famous athlete associated with it and casuals just cling to those teams. There are alot more casual fans than hardcore ones and every sport caters to them. Hardcore fans will watch no matter what, casual fans have to be sold on the team and thats easier when there is a dominant player/team.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nih7vya" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Snapphane88</div>
+        <div>1 | 39 minutes ago </div>
+      </div>
+      <label for="nih7vya" class="commentText"><p>It&rsquo;s not about parity, it&rsquo;s about commercials. The game is almost unwatchable due to the breaks, but at least Jaylen Brown is getting his  300 mil contract thanks to the commmercials. Basketball has always been my favourite sport but soccer&rsquo;s 2x 45 minutes of uninterrupted gameplay with a welcome 20min break in the middle has turned me away from the NBA.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
