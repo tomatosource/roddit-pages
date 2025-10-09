@@ -1,0 +1,262 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.selfPostImage {
+  width: 100%;
+  height: auto;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/PathOfExile2/comments/1o1uig8/inconsistent_gpu_performance_sometimes_great/"><p>Inconsistent GPU performance – sometimes great, sometimes not so much (PO2 issue?)</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <p>Hey guys,</p>
+
+<p>I’ve been running into a weird issue with my GPU where performance is super inconsistent. Sometimes games run great, and other times the FPS tanks for no obvious reason.</p>
+
+<p>I grabbed two photos (sorry, couldn’t screenshot) from the same game — this happens both in the menu and in-game:</p>
+
+<ul>
+<li><strong>Bad run:</strong> ~81 FPS, GPU power draw ~235W, GPU utilization 100%.</li>
+<li><strong>Good run:</strong> ~212 FPS, GPU power draw ~360W, GPU utilization 99%.</li>
+</ul>
+
+<p>The only big difference I can see is the <strong>power draw</strong>. When it’s pulling ~360W, the card performs as expected. When it’s stuck at ~230W, FPS is cut nearly in half.</p>
+
+<ul>
+<li>Temps are fine (GPU 42–54°C, CPU 69–72°C).</li>
+<li>GPU/CPU utilization looks normal.</li>
+<li>No signs of thermal throttling.</li>
+<li>Doesn’t happen in other games, seems specific to this one.</li>
+<li>Restarting the computer sometimes “fixes” it for 15 minutes to a full session, but it’s inconsistent.</li>
+</ul>
+
+<p><strong>I tried</strong></p>
+
+<ul>
+<li>Disabling V-Sync / Adaptive Sync</li>
+<li>Changing CPU idle state</li>
+<li>Switching between DX11 / DX12 / Vulkan</li>
+<li>Toggling multithreading option</li>
+<li>Enabling/disabling Resizable BAR + Above 4G decoding</li>
+<li>Making the Windows use high perfomance</li>
+</ul>
+
+<p>None of these made a difference.</p>
+
+<p>At this point I’m not sure if it’s a <strong>PSU issue, driver/BIOS quirk, or just the game itself</strong> acting up.</p>
+
+<p>Has anyone else seen something like this? Any ideas or fixes would be super appreciated.</p>
+
+<p><strong>My Specs are</strong></p>
+
+<p>AMD Ryzen 7 7800X3D</p>
+
+<p>32GB DDR5</p>
+
+<p>Gigabyte B650 AORUS ULTRA</p>
+
+<p>Bios F38b</p>
+
+<p>AMD 7900 XTX</p>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+    </div>
+  </body>
+</html>
