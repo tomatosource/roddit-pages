@@ -1,0 +1,414 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.selfPostImage {
+  width: 100%;
+  height: auto;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/PathOfExile2/comments/1o38k94/update_there_seem_to_be_34_useless_atlas_nodes/"><p>UPDATE: There seem to be 34 useless atlas nodes after the patch (it&rsquo;s still fishy)</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <p>This is an update post to my previous post <a href="https://www.reddit.com/r/PathOfExile2/comments/1nywpf4/there_seem_to_be_34_useless_atlas_nodes_after_the/" target="_blank">There seem to be 34 useless atlas nodes after the patch (literally)</a></p>
+
+<p>This week we got patch <a href="https://www.pathofexile.com/forum/view-thread/3865794/page/1#p26402394" target="_blank">0.3.1b</a> with following relevant change:</p>
+
+<blockquote>
+<p>Fixed a bug where stats that increased the chance of encountering specific content in maps were only increasing the chance relative to other content, and not increasing the amount of content encountered overall.</p>
+</blockquote>
+
+<p>So this means more strongboxes and essences, right? RIGHT?</p>
+
+<p>Well, not exactly.</p>
+
+<h1 id="prepatch-results">Prepatch results</h1>
+
+<p>During the first half of this week (prepatch) I continued doing regular T15 maps (with only an irradiated tablet with no bonuses to random content) and got following results, 20 maps for each configuration:</p>
+
+<table>
+<thead>
+<tr>
+<th align="left"># strongboxes</th>
+<th align="left"># essences</th>
+<th align="left"># total</th>
+<th align="left">avg per map (combined)</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">no bonuses</td>
+<td align="left">5</td>
+<td align="left">10</td>
+<td align="left">15</td>
+</tr>
+
+<tr>
+<td align="left">+300% both (atlas)</td>
+<td align="left">12</td>
+<td align="left">9</td>
+<td align="left">21</td>
+</tr>
+
+<tr>
+<td align="left">+300% both (atlas) + Ecological Shift</td>
+<td align="left">11</td>
+<td align="left">10</td>
+<td align="left">21</td>
+</tr>
+</tbody>
+</table>
+<p>As you can see, the bonus increased the count by a little (+40% for both cases), which is nowhere near +300% or +420% (with Ecological Shift).</p>
+
+<h1 id="postpatch-results">Postpatch results</h1>
+
+<p>After the patch I decided to current state again. Same configuration, only this time 10 maps of each configuration:</p>
+
+<table>
+<thead>
+<tr>
+<th align="left"># strongboxes</th>
+<th align="left"># essences</th>
+<th align="left"># total</th>
+<th align="left">avg per map (combined)</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">+300% both (atlas)</td>
+<td align="left">16</td>
+<td align="left">3</td>
+<td align="left">19</td>
+</tr>
+
+<tr>
+<td align="left">+300% both (atlas) + Ecological Shift</td>
+<td align="left">14</td>
+<td align="left">6</td>
+<td align="left">20</td>
+</tr>
+</tbody>
+</table>
+<p>This is a significant increase to strongboxes! While prepatch it was avg 0.4 (more about that later) strongboxes per map, now it was 1.5 per map (roughly +275% increase).</p>
+
+<p>Essences are another story. Prepatch avg 0.48 per map, postpatch avg 0.45 per map.</p>
+
+<p>I&rsquo;m not sure what to make of it. Does it work only for strongboxes and not for essences? Well, it seems so. Maybe it will work for essences when I spec out of strongboxes? Worth testing.</p>
+
+<h1 id="ecological-shift">Ecological Shift</h1>
+
+<p>Besides strongboxes and essences, I have also tracked additional content, including the random extra content (azmeri spirits, rogue exiles, shrines). &ldquo;specced&rdquo; means configuration with atlas nodes providing +300% both essences and strongboxes.</p>
+
+<p>Results:</p>
+
+<table>
+<thead>
+<tr>
+<th align="left">avg random extra content per map</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">prepatch specced without Ecological Shift</td>
+</tr>
+
+<tr>
+<td align="left">prepatch specced with Ecological Shift</td>
+</tr>
+
+<tr>
+<td align="left">postpatch specced without Ecological Shift</td>
+</tr>
+
+<tr>
+<td align="left">postpatch specced with Ecological Shift</td>
+</tr>
+</tbody>
+</table>
+<p>Both prepatch and postpatch, speccing Ecological Shift actually decreased random extra content instead of increasing it by +40%.</p>
+
+<h1 id="what-is-the-base-chance-for-spawning-strongboxes-and-essences">What is the base chance for spawning strongboxes and essences?</h1>
+
+<p>If we guess that prepatch +300% increased the count by +40%, based on the prepatch data we can estimate the spawn chances:</p>
+
+<ul>
+<li>Strongboxes: 36% (per map)</li>
+<li>Essences: 39% (per map)</li>
+</ul>
+
+<p>If we expect that the +300% bonus was truly applied for strongboxes but not for essences, we get estimate postpatch spawn chance:</p>
+
+<ul>
+<li>Strongboxes: 37.5% (per map)</li>
+<li>Essences: 45%</li>
+</ul>
+
+<p>All in all, it seems that strongboxes and essences seem to share similar spawn chance, which is roughly 40% per map. If we applied the +300% bonus, we could expect roughly 1.6 strongboxes per map, which is very close to what I got (1.5 per map).</p>
+
+<h1 id="tl-dr">TL;DR:</h1>
+
+<ul>
+<li>Running a specced +300% atlas for both strongboxes and essences increased the amount of strongboxes (as expected - by roughly 300%) but not essences</li>
+<li>Ecological Shift does not work as intended (no increase to random extra content, but you get fewer packs)</li>
+<li>Base spawn chance for strongboxes and essences (independently) seems to be about 40% per map</li>
+</ul>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nitcelv" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ddzed</div>
+        <div>1 | 12 minutes ago </div>
+      </div>
+      <label for="nitcelv" class="commentText"><p>Exiles related nodes for example didn&rsquo;t work in 0.2 either.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nitecrn" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>SlipperyAnanas</div>
+        <div>1 | 2 minutes ago </div>
+      </div>
+      <label for="nitecrn" class="commentText"><p>I have become accustomed to take GGG’s patch notes with a grain of salt. A lot of the balance shit is just a sugar pill. A placebo.</p>
+
+<p>We appreciate verifications done by gentlemen like yourself. Thank you</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nitcgsh" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>taleofbor</div>
+        <div>1 | 12 minutes ago </div>
+      </div>
+      <label for="nitcgsh" class="commentText"><p>Thanks for this. Also, it might be good if you can share a spreadsheet of the data you collected</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
