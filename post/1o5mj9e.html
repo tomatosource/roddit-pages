@@ -1,0 +1,776 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.selfPostImage {
+  width: 100%;
+  height: auto;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/baseball/comments/1o5mj9e/the_playoffs_this_year_are_dominated_by_northern/"><p>The playoffs this year are dominated by northern teams.</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <p>8 of the top 10 northernmost teams made the playoffs this year. Of the 4 teams still in the playoffs, 3 of them are in the top 4 northernmost. The only team to have won an LCS game so far is the northernmost one.</p>
+
+<table>
+<thead>
+<tr>
+<th align="center">Playoffs</th>
+<th align="left">Team</th>
+<th align="center">Latitude</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="center">X</td>
+<td align="left">Seattle Mariners</td>
+<td align="center">47.5914</td>
+</tr>
+
+<tr>
+<td align="center">Minnesota Twins</td>
+<td align="left">44.98167</td>
+<td align="center"></td>
+</tr>
+
+<tr>
+<td align="center">X</td>
+<td align="left">Toronto Blue Jays</td>
+<td align="center">43.64149</td>
+</tr>
+
+<tr>
+<td align="center">X</td>
+<td align="left">Milwaukee Brewers</td>
+<td align="center">43.02826</td>
+</tr>
+
+<tr>
+<td align="center">X</td>
+<td align="left">Boston Red Sox</td>
+<td align="center">42.34637</td>
+</tr>
+
+<tr>
+<td align="center">X</td>
+<td align="left">Detroit Tigers</td>
+<td align="center">42.33878</td>
+</tr>
+
+<tr>
+<td align="center">X</td>
+<td align="left">Chicago Cubs</td>
+<td align="center">41.94844</td>
+</tr>
+
+<tr>
+<td align="center">Chicago White Sox</td>
+<td align="left">41.82995</td>
+<td align="center"></td>
+</tr>
+
+<tr>
+<td align="center">X</td>
+<td align="left">Cleveland Guardians</td>
+<td align="center">41.49593</td>
+</tr>
+
+<tr>
+<td align="center">X</td>
+<td align="left">New York Yankees</td>
+<td align="center">40.82964</td>
+</tr>
+
+<tr>
+<td align="center">New York Mets</td>
+<td align="left">40.75724</td>
+<td align="center"></td>
+</tr>
+
+<tr>
+<td align="center">Pittsburgh Pirates</td>
+<td align="left">40.44687</td>
+<td align="center"></td>
+</tr>
+
+<tr>
+<td align="center">X</td>
+<td align="left">Philadelphia Phillies</td>
+<td align="center">39.90617</td>
+</tr>
+
+<tr>
+<td align="center">Colorado Rockies</td>
+<td align="left">39.75615</td>
+<td align="center"></td>
+</tr>
+
+<tr>
+<td align="center">Baltimore Orioles</td>
+<td align="left">39.28286</td>
+<td align="center"></td>
+</tr>
+
+<tr>
+<td align="center">X</td>
+<td align="left">Cincinnati Reds</td>
+<td align="center">39.09738</td>
+</tr>
+
+<tr>
+<td align="center">Kansas City Royals</td>
+<td align="left">39.05148</td>
+<td align="center"></td>
+</tr>
+
+<tr>
+<td align="center">Washington Nationals</td>
+<td align="left">38.87301</td>
+<td align="center"></td>
+</tr>
+
+<tr>
+<td align="center">St. Louis Cardinals</td>
+<td align="left">38.62255</td>
+<td align="center"></td>
+</tr>
+
+<tr>
+<td align="center">Athletics</td>
+<td align="left">38.58045</td>
+<td align="center"></td>
+</tr>
+
+<tr>
+<td align="center">San Francisco Giants</td>
+<td align="left">37.7786</td>
+<td align="center"></td>
+</tr>
+
+<tr>
+<td align="center">X</td>
+<td align="left">Los Angeles Dodgers</td>
+<td align="center">34.07385</td>
+</tr>
+
+<tr>
+<td align="center">Atlanta Braves</td>
+<td align="left">33.89069</td>
+<td align="center"></td>
+</tr>
+
+<tr>
+<td align="center">Los Angeles Angels</td>
+<td align="left">33.80003</td>
+<td align="center"></td>
+</tr>
+
+<tr>
+<td align="center">Arizona Diamondbacks</td>
+<td align="left">33.44539</td>
+<td align="center"></td>
+</tr>
+
+<tr>
+<td align="center">Texas Rangers</td>
+<td align="left">32.74754</td>
+<td align="center"></td>
+</tr>
+
+<tr>
+<td align="center">X</td>
+<td align="left">San Diego Padres</td>
+<td align="center">32.70759</td>
+</tr>
+
+<tr>
+<td align="center">Houston Astros</td>
+<td align="left">29.75703</td>
+<td align="center"></td>
+</tr>
+
+<tr>
+<td align="center">Tampa Bay Rays</td>
+<td align="left">27.98015</td>
+<td align="center"></td>
+</tr>
+
+<tr>
+<td align="center">Miami Marlins</td>
+<td align="left">25.77815</td>
+<td align="center"></td>
+</tr>
+</tbody>
+</table>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="njac1r5" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>mariohawk | Seattle Mariners</div>
+        <div>62 | an hour ago </div>
+      </div>
+      <label for="njac1r5" class="commentText"><p>Good reminder to all that Seattle is, in fact, further north than Toronto.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="njad0qg" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>bestyrs | Seattle Mariners</div>
+        <div>39 | an hour ago </div>
+      </div>
+      <label for="njad0qg" class="commentText"><p>The northernmost part of California is further north than the southernmost part of Ontario.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="njadt36" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ForgotMyPassword1989 | Seattle Mariners</div>
+        <div>16 | an hour ago </div>
+      </div>
+      <label for="njadt36" class="commentText"><p>That&rsquo;s wild. I had to google that. Erie islands Ontario 41.71 &amp; Hilt, California 42.0</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="njaedv2" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>bestyrs | Seattle Mariners</div>
+        <div>18 | an hour ago </div>
+      </div>
+      <label for="njaedv2" class="commentText"><p>It’s one of those weird geography quirks. People don’t realize how far south southern Ontario is.</p>
+
+<p>More of my favourite quirks. LA is further east than Reno. Atlanta is further west than Detroit.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="njag6on" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>penguinopph | Chicago Cubs • RCH-Pinguins</div>
+        <div>8 | 43 minutes ago </div>
+      </div>
+      <label for="njag6on" class="commentText"><p>The southernmost part of Ontario is south of Detroit, despite what Steve Perry wants you to not stop believing.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="njagym8" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>p-wing | San Francisco Giants</div>
+        <div>5 | 39 minutes ago </div>
+      </div>
+      <label for="njagym8" class="commentText"><p>I live close enough to Atlanta to be affected by its time zone choice, but we really should be in central time. In an indirect way, we&rsquo;re in the wrong time zone because Hartsfield-Jackson wants to be in the same time as NY and DC.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="njahg0u" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>islandsluggers | New York Mets</div>
+        <div>1 | 36 minutes ago </div>
+      </div>
+      <label for="njahg0u" class="commentText"><p>Also southern most Ontario is closer to Atlanta than distance between Atlanta to Miami</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="njaopj9" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>turtles1224 | Seattle Mariners</div>
+        <div>1 | a few seconds ago </div>
+      </div>
+      <label for="njaopj9" class="commentText"><p>If you want more fun ones:</p>
+
+<p>Bristol, TN is closer to Ontario, Canada than Memphis, TN</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="njadwgf" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>oogieball | Dumpster Fire • New York Mets</div>
+        <div>3 | an hour ago </div>
+      </div>
+      <label for="njadwgf" class="commentText"><p>Kennedy&rsquo;s secretary&rsquo;s name was Lincoln&hellip;</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="njagrjy" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>huskiesowow | Seattle Mariners</div>
+        <div>7 | 40 minutes ago </div>
+      </div>
+      <label for="njagrjy" class="commentText"><p>Seattle is further north than the majority of the Canadian population.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="njahmb6" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>reptheevt | Seattle Mariners</div>
+        <div>5 | 36 minutes ago </div>
+      </div>
+      <label for="njahmb6" class="commentText"><p>This is me being ignorant but I didn’t realize GTA+Montreal was more than half the population of Canada. Would have thought between Vancouver, Calgary, Edmonton and the prairies, they would cover </p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="njahlqm" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Corduroy_Sazerac</div>
+        <div>4 | 36 minutes ago </div>
+      </div>
+      <label for="njahlqm" class="commentText"><p><a href="https://theworld.org/stories/2013/11/07/listeners-geo-quiz-about-crossing-us-canada-border" target="_blank">27 US States have a point that is further north than the southernmost point of Canada.</a></p>
+
+<p>13 US States are entirely north of Mexico and entirely south of Canada.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="njacm2a" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ForgotMyPassword1989 | Seattle Mariners</div>
+        <div>21 | an hour ago </div>
+      </div>
+      <label for="njacm2a" class="commentText"><p>Imagine playing below the 45th parallel</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="njadn7a" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Silly_Elevator_3111 | Seattle Mariners</div>
+        <div>12 | an hour ago </div>
+      </div>
+      <label for="njadn7a" class="commentText"><p>We the north</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="njagwa6" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Antithesys | Minnesota Twins • MVPoster</div>
+        <div>9 | 39 minutes ago </div>
+      </div>
+      <label for="njagwa6" class="commentText"><p>In terms of the average latitude between the two competitors, the northernmost World Series of all time was 1918 between the Red Sox and Cubs, at the mean latitude of 42.1471.</p>
+
+<p>If Milwaukee wins the pennant, the 2025 World Series will have this beat regardless of the AL champion.</p>
+
+<p>Easternmost: 1986 Mets-Red Sox, -72.4731<br>
+Westernmost: 1989 A&rsquo;s-Giants, -122.2938<br>
+Southernmost: if you count the regular home parks, 2020 Dodgers-Rays, 30.9207; however, that Series was played entirely in Arlington (32.7471). Counting only the parks the Series was actually played in, the southernmost was 2021 Braves-Astros at 31.8239.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="njagzzq" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>MavsFanForLife | Texas Rangers</div>
+        <div>7 | 39 minutes ago </div>
+      </div>
+      <label for="njagzzq" class="commentText"><p>had to look it up but 2023 was the opposite of this where 7 out of the 9 most southern teams made it to the playoffs (SD and LAA missing out)</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="njadehb" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Clarice_Ferguson | Seattle Mariners • Baltimore Orioles</div>
+        <div>2 | an hour ago </div>
+      </div>
+      <label for="njadehb" class="commentText"><p>Only seems fair that in a year that feels cold and miserable across the zeitgeist that northern teams would excel.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="njak6m2" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>seredin | Atlanta Braves</div>
+        <div>2 | 23 minutes ago </div>
+      </div>
+      <label for="njak6m2" class="commentText"><p>there&rsquo;s a joke to be made about rising again here, but i don&rsquo;t want that shit in my comment history</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="njam2ej" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>BlindManBaldwin | Colorado Rockies</div>
+        <div>2 | 13 minutes ago </div>
+      </div>
+      <label for="njam2ej" class="commentText"><p>Sherman weeps with joy.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="njaop40" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Finrad-Felagund | St. Louis Cardinals</div>
+        <div>1 | a few seconds ago </div>
+      </div>
+      <label for="njaop40" class="commentText"><p>This is the true turnabout of the hockey way, which has been dominated by southern teams in recent years</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
