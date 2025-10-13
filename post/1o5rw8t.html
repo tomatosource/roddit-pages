@@ -1,0 +1,319 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.selfPostImage {
+  width: 100%;
+  height: auto;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/PathOfExile2/comments/1o5rw8t/does_anyone_know_why_the_currency_exchange_often/"><p>Does anyone know why the Currency Exchange often fails to perform entire orders?</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <p>Every few orders, the exchange gets tired and gives up on my order, and just steals my gold.</p>
+
+<p>Example:  I post 100 item for 695 exalts.  It takes an absurd amount of my gold to post.</p>
+
+<p>A few minutes later, it completes the order.  It sold maybe 40 of the items, returns the 60 remaining unsold items, and keeps my absurd amount of gold, saying try again.</p>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="njbglc8" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>RevenantExiled</div>
+        <div>1 | 43 minutes ago </div>
+      </div>
+      <label for="njbglc8" class="commentText"><p>When you list, the system only deals with whole numbers. If your trade ratio doesn&rsquo;t divide evenly, it can cause issues.</p>
+
+<p>Like: sell 100 Alteration Orbs for 65 exalted orbs (ratio 1 Alt: 0.65 ex).<br>
+Someone wants to buy with 36 ex. To match your ratio:<br>
+36 ex ÷ 0.65 = 55.38 Alts (not a whole number).</p>
+
+<p>The system can&rsquo;t trade 55.38 Alts, so it picks the largest whole number that fits: 55 Alts for 36 ex so it sells 55 alts, returns your remaining 45 alts, and closes the order to avoid decimal issues.</p>
+
+<p>This happens because the exchange avoids rounding (which could mess up your ratio or be exploitable). It stops matching when it can&rsquo;t find clean, whole-number trades</p>
+
+<p>Trade at an &ldquo;easier&rdquo; rate to fulfill for this not to happen, I stopped exchanging exalts because it got too annoying at some point, chaos/ annulments are easier for big trades but it may be a bit more expensive</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="njbe667" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>EffectiveTonight</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="njbe667" class="commentText"><p>You get refunded the portion of gold you would have used.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="njbei5l" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Roll_the-Bones</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="njbei5l" class="commentText"><p>Probably no sellers, no supply?</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="njbezjx" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>-Nimroth</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="njbezjx" class="commentText"><p>It is because it has trouble processing sales that are not perfectly divisible.<br>
+If you had posted it at 100 for 700 for example it likely would have worked fine.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="njbilbe" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Nexies</div>
+        <div>1 | 33 minutes ago </div>
+      </div>
+      <label for="njbilbe" class="commentText"><p>You can do this on purpose to retain a small amount of your purchasing currency when you buy things</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
