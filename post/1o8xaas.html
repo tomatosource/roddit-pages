@@ -1,0 +1,410 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.selfPostImage {
+  width: 100%;
+  height: auto;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/PathOfExile2/comments/1o8xaas/updated_evasion_and_deflect_graph/"><p>Updated Evasion and Deflect Graph</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <p><strong>TL;DR:</strong> - updated the evasion / deflect Desmos graph to have a monster level slider, player evasion / deflect slider, and updated formulae.<br>
+Here&rsquo;s a link to the graph:<br>
+<a href="https://www.desmos.com/calculator/oqwmuxkenh" target="_blank">https://www.desmos.com/calculator/oqwmuxkenh</a><br>
+Simply change your m value to monster level</p>
+
+<p>and change your x value to the evasion or deflection rating your are investigating to help guide.</p>
+
+<p>Here&rsquo;s an example are monster level 70 (m) with 15k evasion (x):</p>
+
+<p><a href="https://preview.redd.it/9qp22gng9nvf1.png?width=800&amp;format=png&amp;auto=webp&amp;s=70fe2198152a44813797451e327f254784e83cf8" target="_blank">https://preview.redd.it/9qp22gng9nvf1.png?width=800&amp;format=png&amp;auto=webp&amp;s=70fe2198152a44813797451e327f254784e83cf8</a></p>
+
+<p><strong>Longer version:</strong><br>
+A few threads were floating around showing the evasion and deflection chance and a lovely graph.</p>
+
+<p>Drawing inspiration from this I wanted to make it easier to use for my needs and update some of the figures.</p>
+
+<p>I updated the evasion formula based on 0.3.1 changes found here: <a href="https://www.pathofexile.com/forum/view-thread/3862213" target="_blank">https://www.pathofexile.com/forum/view-thread/3862213</a></p>
+
+<p>Specifically:  &ldquo;When calculating chance to Hit vs Players or their Minions, we now use the following formula: Chance to Hit = 1 - (0.95 * defender_evasion) / (defender_evasion + 4 * attacker_accuracy)&rdquo;</p>
+
+<p>No notes on deflection formula so it remains the same as <a href="https://www.reddit.com/r/PathOfExile2/comments/1n2tefy/comment/nb8wufb/" target="_blank">https://www.reddit.com/r/PathOfExile2/comments/1n2tefy/comment/nb8wufb/</a></p>
+
+<p>I used the monster accuracy stats from <a href="http://poe2db.tw" target="_blank">poe2db.tw</a> - specifically: <a href="https://poe2db.tw/us/Monster#MonsterStats" target="_blank">https://poe2db.tw/us/Monster#MonsterStats</a> and inferred the accuracy equation against monster level - quadratic seemed to have a nice fit, so thats the calc. No idea how <em>accurate</em> the figures are but poe2db usually seems pretty good.</p>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="njy40xc" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>dante3590</div>
+        <div>1 | 19 minutes ago </div>
+      </div>
+      <label for="njy40xc" class="commentText"><p>So what&rsquo;s the minimum evade/deflect needed to avoid one shot from level 90-81 elites or boss.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="njy45q0" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Gingerbreadman_</div>
+        <div>1 | 18 minutes ago </div>
+      </div>
+      <label for="njy45q0" class="commentText"><p>different variable - s (skill)</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="njy4ai3" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>dante3590</div>
+        <div>1 | 17 minutes ago </div>
+      </div>
+      <label for="njy4ai3" class="commentText"><p>Assuming the character is not moving and not using any extra skills.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="njy4ebe" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Gingerbreadman_</div>
+        <div>1 | 16 minutes ago </div>
+      </div>
+      <label for="njy4ebe" class="commentText"><p>esc key</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="njy4js0" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>LatterDimension877</div>
+        <div>1 | 14 minutes ago </div>
+      </div>
+      <label for="njy4js0" class="commentText"><p>did you look at the chart? deflection is never going to reach 100% so there always a chance you will get one shot. getting more evasion and deflection only reduce the chances of getting one shot but it&rsquo;s non zero</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="njy4x9l" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>TheInnsanity</div>
+        <div>1 | 11 minutes ago </div>
+      </div>
+      <label for="njy4x9l" class="commentText"><p>nah, ggg would totally let us get to 100% evasion (/s)</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="njy4z5i" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>dante3590</div>
+        <div>1 | 10 minutes ago </div>
+      </div>
+      <label for="njy4z5i" class="commentText"><p>I mean deflection just reduce dmg and evasion has a probably to avoid complely? That&rsquo;s my understanding. So pure evasion with deflection would still need some minimum hp and shield. Assuming some of the hit does big dmg. So should be a way to find out how much shield+hp and deflection+evasion is needed?</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="njy5akf" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Gingerbreadman_</div>
+        <div>1 | 7 minutes ago </div>
+      </div>
+      <label for="njy5akf" class="commentText"><p>I assumed you were yanking my chain - apologies.</p>
+
+<p>Basically, you can never reach 100% chance to evade, and you can never reach 100% chance to deflect. Based on the formulae that I used.</p>
+
+<p>this means, if Evasion and Deflect are your <em>only</em> defensive stats, then you just need a pool big enough to survive the hit, or don&rsquo;t be where you can get hit in the first place.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="njy5mag" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>dante3590</div>
+        <div>1 | 4 minutes ago </div>
+      </div>
+      <label for="njy5mag" class="commentText"><p>In reality probably will still get hit for whatever reasons. So going towards pool big enough part. What&rsquo;s the approx pool required to survive? Probably better to invest in that pool after 70% evade and deflect?</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
