@@ -1,0 +1,926 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.selfPostImage {
+  width: 100%;
+  height: auto;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/baseball/comments/1oaqq2p/how_many_wins_above_replacement_did_shohei_ohtani/"><p>How many Wins Above Replacement did Shohei Ohtani produce in Game 4 of the 2025 National League Championship Series? + Comparisons to Other All-Time Games</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <p>As we all know, Shohei Ohtani put up perhaps the greatest single game performance of all time against the Milwaukee Brewers, arguably the best baseball team in 2025 (#1 regular season record, #4 fWAR, #2 bWAR) to clinch the NL Pennant. He batted and pitched so well, that he practically won the game all by himself, which got me thinking, how many wins above replacement did Shohei Ohtani produce yesterday?</p>
+
+<p>Unfortuantely, FanGraphs doesn&rsquo;t calculate fWAR for postseason games, so I had to do this by hand. My results have him at <strong>0.29 pitching fWAR</strong> and <strong>0.45 batting fWAR</strong> for a combined total of <strong>0.74 fWAR</strong>. You can check my work later in the appendix section of this post.</p>
+
+<h1 id="some-comparisons-to-other-all-time-great-games">Some Comparisons to Other All-Time Great Games</h1>
+
+<p>0.74 WAR is a pretty good day. But how good of a day is it relative to other good days?</p>
+
+<p>It&rsquo;s very difficult to find the best single games in terms of fWAR since I can&rsquo;t get splits AND sort by that statistic. But what I did was I found the leaders of stats that are proxies to high single game fWAR.</p>
+
+<p>For position players, I looked for players with the most home runs and found some games that come close.</p>
+
+<table>
+<thead>
+<tr>
+<th align="left">Name</th>
+<th align="left">fWAR</th>
+<th align="left">Date</th>
+<th align="left">Box Scores</th>
+<th align="left">Notes</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">Nick Kurtz</td>
+<td align="left">0.70</td>
+<td align="left">7/25/2025</td>
+<td align="left">6 PA, 6 H, 4 HR, 1 2B</td>
+<td align="left"></td>
+</tr>
+
+<tr>
+<td align="left">Shawn Green</td>
+<td align="left">0.69</td>
+<td align="left">5/23/2002</td>
+<td align="left">6 PA, 6 H, 4 HR, 1 2B</td>
+<td align="left"></td>
+</tr>
+
+<tr>
+<td align="left">Shohei Ohtani (lol)</td>
+<td align="left">0.68</td>
+<td align="left">9/19/2024</td>
+<td align="left">6 PA, 6 H, 3 HR, 2 2B, 2 SB</td>
+<td align="left"></td>
+</tr>
+
+<tr>
+<td align="left">Josh Hamilton</td>
+<td align="left">0.67</td>
+<td align="left">5/8/2012</td>
+<td align="left">5 PA, 5 H, 4 HR, 1 2B</td>
+<td align="left"></td>
+</tr>
+
+<tr>
+<td align="left">Babe Ruth</td>
+<td align="left">0.44</td>
+<td align="left">5/25/1935</td>
+<td align="left">4 PA, 4 H, 3 HR</td>
+<td align="left"></td>
+</tr>
+
+<tr>
+<td align="left">Otis Nixon</td>
+<td align="left">0.23</td>
+<td align="left">6/16/1991</td>
+<td align="left">5 PA, 3 H, 6 SB</td>
+<td align="left"></td>
+</tr>
+
+<tr>
+<td align="left">Reggie Jackson</td>
+<td align="left">0.34</td>
+<td align="left">10/18/1977</td>
+<td align="left">4 PA, 3 H, 3 HR, 1 BB</td>
+<td align="left">World Series Game 6</td>
+</tr>
+</tbody>
+</table>
+<p>I didn&rsquo;t look at even a fraction of every game ever played, but I&rsquo;m confident in saying that no pure position player has ever had a game as good as Ohtani did last Friday given that 19 total bases isn&rsquo;t enough. However, I was actually able to find about a couple dozen pitching games that surpassed Ohtani&rsquo;s 0.74 mark.</p>
+
+<p>For pitchers, I looked for players with the most strikeouts or highest game scores.</p>
+
+<table>
+<thead>
+<tr>
+<th align="left">Name</th>
+<th align="left">fWAR</th>
+<th align="left">Date</th>
+<th align="left">Box Scores</th>
+<th align="left">Notes</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">Luis Tiant</td>
+<td align="left">1.24</td>
+<td align="left">7/3/1968</td>
+<td align="left">10 IP, 0 ER, 19 K, 0 BB, 0 HR</td>
+<td align="left"></td>
+</tr>
+
+<tr>
+<td align="left">Vida Blue</td>
+<td align="left">1.15</td>
+<td align="left">7/9/1971</td>
+<td align="left">11 IP, 0 ER, 17 K, 0 BB, 0 HR</td>
+<td align="left">Relievers pitched 9 more innings after leaving the game</td>
+</tr>
+
+<tr>
+<td align="left">Roger Clemens</td>
+<td align="left">1.08</td>
+<td align="left">9/18/1996</td>
+<td align="left">9 IP, 0 ER, 20 K, 0 BB, 0 HR</td>
+<td align="left"></td>
+</tr>
+
+<tr>
+<td align="left">Kerry Wood</td>
+<td align="left">0.98</td>
+<td align="left">5/6/1998</td>
+<td align="left">9 IP, 0 ER, 20 K, 0 BB, 0 HR</td>
+<td align="left"></td>
+</tr>
+
+<tr>
+<td align="left">David Cone</td>
+<td align="left">0.96</td>
+<td align="left">10/6/1991</td>
+<td align="left">9 IP, 0 ER, 19 K, 1 BB, 0 HR</td>
+<td align="left"></td>
+</tr>
+
+<tr>
+<td align="left">Roger Clemens</td>
+<td align="left">0.96</td>
+<td align="left">8/25/1998</td>
+<td align="left">9 IP, 0 ER, 18 K, 0 BB, 0 HR</td>
+<td align="left"></td>
+</tr>
+
+<tr>
+<td align="left">Bob Gibson</td>
+<td align="left">0.91</td>
+<td align="left">10/2/1968</td>
+<td align="left">9 IP, 0 ER, 17 K, 1 BB, 0 HR</td>
+<td align="left">World Series Game 1</td>
+</tr>
+
+<tr>
+<td align="left">Nolan Ryan</td>
+<td align="left">0.91</td>
+<td align="left">8/12/1974</td>
+<td align="left">9 IP, 2 ER, 19 K, 2 BB, 0 HR</td>
+<td align="left"></td>
+</tr>
+
+<tr>
+<td align="left">Ramon Martinez</td>
+<td align="left">0.91</td>
+<td align="left">6/4/1990</td>
+<td align="left">9 IP, 0 ER, 18 K, 1 BB, 0 HR</td>
+<td align="left"></td>
+</tr>
+
+<tr>
+<td align="left">Max Scherzer</td>
+<td align="left">0.90</td>
+<td align="left">10/3/2015</td>
+<td align="left">9 IP, 0 ER, 17 K, 0 BB, 0 HR</td>
+<td align="left"></td>
+</tr>
+
+<tr>
+<td align="left">Ron Guidry</td>
+<td align="left">0.87</td>
+<td align="left">6/17/1978</td>
+<td align="left">9 IP, 0 ER, 18 K, 2 BB, 0 HR</td>
+<td align="left"></td>
+</tr>
+
+<tr>
+<td align="left">Max Scherzer</td>
+<td align="left">0.87</td>
+<td align="left">6/14/2015</td>
+<td align="left">9 IP, 0 ER, 16 K, 1 BB, 0 HR</td>
+<td align="left"></td>
+</tr>
+
+<tr>
+<td align="left">Sandy Koufax</td>
+<td align="left">0.80</td>
+<td align="left">9/9/1965</td>
+<td align="left">9 IP, 0 ER, 14 K, 0 BB, 0 HR</td>
+<td align="left">Perfect game</td>
+</tr>
+
+<tr>
+<td align="left">Anibal Sanchez</td>
+<td align="left">0.78</td>
+<td align="left">4/26/2014</td>
+<td align="left">8 IP, 0 ER, 17 K, 1 BB, 0 HR</td>
+<td align="left"></td>
+</tr>
+
+<tr>
+<td align="left">Don Wilson</td>
+<td align="left">0.78</td>
+<td align="left">6/14/1968</td>
+<td align="left">9 IP, 1 ER, 18 K, 2 BB, 0 HR</td>
+<td align="left"></td>
+</tr>
+
+<tr>
+<td align="left">Randy Johnson</td>
+<td align="left">0.78</td>
+<td align="left">8/8/1997</td>
+<td align="left">9 IP, 0 ER, 19 K, 3 BB, 0 HR</td>
+<td align="left"></td>
+</tr>
+
+<tr>
+<td align="left">Corey Kluber</td>
+<td align="left">0.78</td>
+<td align="left">5/13/2015</td>
+<td align="left">8 IP, 0 ER, 18 K, 0 BB, 0 HR</td>
+<td align="left"></td>
+</tr>
+
+<tr>
+<td align="left">Roger Clemens</td>
+<td align="left">0.77</td>
+<td align="left">4/29/1986</td>
+<td align="left">9 IP, 1 ER, 20 K, 0 BB, 1 HR</td>
+<td align="left"></td>
+</tr>
+
+<tr>
+<td align="left">Curt Schilling</td>
+<td align="left">0.76</td>
+<td align="left">4/7/2002</td>
+<td align="left">9 IP, 0 ER, 17 K, 2 BB, 0 HR</td>
+<td align="left"></td>
+</tr>
+
+<tr>
+<td align="left">Justin Verlander</td>
+<td align="left">0.74</td>
+<td align="left">9/1/2019</td>
+<td align="left">9 IP, 0 ER, 14 K, 1 BB, 0 HR</td>
+<td align="left"></td>
+</tr>
+
+<tr>
+<td align="left">Brandon Morrow</td>
+<td align="left">0.72</td>
+<td align="left">8/8/2010</td>
+<td align="left">9 IP, 0 ER, 17 K, 2 BB, 0 HR</td>
+<td align="left"></td>
+</tr>
+
+<tr>
+<td align="left">Nap Rucker</td>
+<td align="left">0.71</td>
+<td align="left">9/5/1908</td>
+<td align="left">9 IP, 0 ER, 14 K, 0 BB, 0 HR</td>
+<td align="left">101 game score highest in a 9 inning game before 1974</td>
+</tr>
+
+<tr>
+<td align="left">Matt Cain</td>
+<td align="left">0.68</td>
+<td align="left">6/13/2012</td>
+<td align="left">9 IP, 0 ER, 14 K, 0 BB, 0 HR</td>
+<td align="left">Perfect game</td>
+</tr>
+
+<tr>
+<td align="left">Don Larsen</td>
+<td align="left">0.67</td>
+<td align="left">10/8/1956</td>
+<td align="left">9 IP, 0 ER, 7 K, 0 BB, 0 HR, World Series Game 5, perfect game</td>
+<td align="left"></td>
+</tr>
+
+<tr>
+<td align="left">Kevin Brown</td>
+<td align="left">0.66</td>
+<td align="left">9/29/1998</td>
+<td align="left">8 IP, 0 ER, 16 K, 2 BB, 0 HR</td>
+<td align="left">NL Division Series Game 1</td>
+</tr>
+
+<tr>
+<td align="left">Charlie Sweeney</td>
+<td align="left">0.58</td>
+<td align="left">6/7/1884</td>
+<td align="left">9 IP, 0 ER, 19 K, 1 BB, 0 HR</td>
+<td align="left">Tied for highest Ks in a game before 1974</td>
+</tr>
+
+<tr>
+<td align="left">Shohei Ohtani</td>
+<td align="left">0.58</td>
+<td align="left">6/22/2022</td>
+<td align="left">8 IP, 0 ER, 13 K, 1 BB, 0 HR</td>
+<td align="left"></td>
+</tr>
+
+<tr>
+<td align="left">Joe Oeschger</td>
+<td align="left">0.57</td>
+<td align="left">5/1/1920</td>
+<td align="left">26 IP, 1 ER, 7 K, 4 BB, 0 HR</td>
+<td align="left">153 game score highest of all time</td>
+</tr>
+
+<tr>
+<td align="left">Pedro Martinez</td>
+<td align="left">0.56</td>
+<td align="left">9/10/1999</td>
+<td align="left">9 IP, 1 ER, 17 K, 0 BB, 1 HR</td>
+<td align="left">Against New York Yankees team in the midst of a 4 World Series in 5 year run</td>
+</tr>
+
+<tr>
+<td align="left">Randy Johnson</td>
+<td align="left">0.44</td>
+<td align="left">6/24/1997</td>
+<td align="left">9 IP, 4 ER, 19 K, 0 BB, 2 HR</td>
+<td align="left"></td>
+</tr>
+
+<tr>
+<td align="left">Max Scherzer</td>
+<td align="left">0.41</td>
+<td align="left">5/11/2016</td>
+<td align="left">9 IP, 2 ER, 20 K, 0 BB, 2 HR</td>
+<td align="left"></td>
+</tr>
+
+<tr>
+<td align="left">Hideo Nomo</td>
+<td align="left">0.40</td>
+<td align="left">4/13/1996</td>
+<td align="left">9 IP, 1 ER, 17 K, 3 BB, 1 HR</td>
+<td align="left"></td>
+</tr>
+</tbody>
+</table>
+<p>It seems like 16 Ks is the fuzzy border for 0.74 fWAR. StatMuse AI guesses (potentially hallucinates) that there are 133 games with at least 16 strikeouts. 10 of the 25 games with 18+ Ks are above 0.74 fWAR, so I estimate that there&rsquo;s maybe 50 games that are better than Ohtani&rsquo;s.</p>
+
+<p>Now for combined pitching and batting performances, I looked for players who pitched and hit a home run.</p>
+
+<table>
+<thead>
+<tr>
+<th align="left">Name</th>
+<th align="left">Pitching fWAR</th>
+<th align="left">Batting fWAR</th>
+<th align="left">Total fWAR</th>
+<th align="left">Date</th>
+<th align="left">Box Scores</th>
+<th align="left">Notes</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">Shohei Ohtani (lol)</td>
+<td align="left">0.38</td>
+<td align="left">0.36</td>
+<td align="left">0.74</td>
+<td align="left">6/27/2023</td>
+<td align="left">6.1 IP, 1 ER, 2 BB, 10 K, 0 HR, 4 PA, 3 H, 2 HR, 1 BB</td>
+<td align="left"></td>
+</tr>
+
+<tr>
+<td align="left">Shohei Ohtani</td>
+<td align="left">0.29</td>
+<td align="left">0.45</td>
+<td align="left">0.74</td>
+<td align="left">10/17/2025</td>
+<td align="left">6 IP, 0 ER, 10 K, 3 BB, 0 HR, 4 PA, 3 H, 3 HR, 1 BB</td>
+<td align="left">NL Championship Series Game 4</td>
+</tr>
+
+<tr>
+<td align="left">Jacob DeGrom</td>
+<td align="left">0.57</td>
+<td align="left">0.13</td>
+<td align="left">0.70</td>
+<td align="left">4/3/2019</td>
+<td align="left">7 IP, 0 ER, 14 K, 1 BB, 0 HR, 3 PA, 1 H, 1 HR</td>
+<td align="left"></td>
+</tr>
+
+<tr>
+<td align="left">Madison Bumgarner</td>
+<td align="left">0.31</td>
+<td align="left">0.35</td>
+<td align="left">0.66</td>
+<td align="left">4/2/2017</td>
+<td align="left">7 IP, 3 ER, 11 K, 0 BB, 1 HR, 3 PA, 2 H, 2 HR, 1 BB</td>
+<td align="left"></td>
+</tr>
+
+<tr>
+<td align="left">Shohei Ohtani</td>
+<td align="left">0.49</td>
+<td align="left">0.11</td>
+<td align="left">0.60</td>
+<td align="left">4/20/2022</td>
+<td align="left">6 IP, 0 ER, 12 K, 1 BB, 5 PA, 2 H, 1 2B, 1 BB</td>
+<td align="left"></td>
+</tr>
+
+<tr>
+<td align="left">Rick Wise</td>
+<td align="left">0.28</td>
+<td align="left">0.28</td>
+<td align="left">0.56</td>
+<td align="left">6/23/1971</td>
+<td align="left">9 IP, 0 ER, 3 K, 1 BB, 0 HR, 4 PA, 2 H, 2 HR</td>
+<td align="left">No-hitter</td>
+</tr>
+
+<tr>
+<td align="left">Bob Gibson</td>
+<td align="left">0.40</td>
+<td align="left">0.09</td>
+<td align="left">0.49</td>
+<td align="left">10/12/1967</td>
+<td align="left">9 IP, 2 ER, 10 K, 3 BB, 0 HR, 4 PA, 1 H, 1 HR</td>
+<td align="left">World Series Game 7</td>
+</tr>
+
+<tr>
+<td align="left">Bartolo Colon</td>
+<td align="left">0.09</td>
+<td align="left">0.13</td>
+<td align="left">0.22</td>
+<td align="left">5/7/2016</td>
+<td align="left">6.2 IP, 3 ER, 5 K, 1 BB, 1 HR, 3 PA, 1 H, 1 HR</td>
+<td align="left"></td>
+</tr>
+
+<tr>
+<td align="left">Babe Ruth</td>
+<td align="left">0.04</td>
+<td align="left">0.14</td>
+<td align="left">0.18</td>
+<td align="left">5/20/1919</td>
+<td align="left">9 IP, 4 ER, 1 K, 4 BB, 1 HBP, 0 HR, 5 PA, 1 H, 1 HR</td>
+<td align="left"></td>
+</tr>
+</tbody>
+</table>
+<p>First 0.74 WAR game is a fluke. But two 0.74 WAR games is undeniable. And I believe we will see a couple more.</p>
+
+<p>Something important to consider is that most of these games I&rsquo;ve listed were against non-playoff teams. Vida Blue played the mediocre 1971 California Angels (76-86). Sandy Koufax was perfect against an 8th place 1965 Chicago Cubs (72-90). Justin Verlander and Roger Clemens destroyed the terrible 2019 Toronto Blue Jays (67-95) and 1996 Detroit Tigers (53-109) respectively. Even Ohtani beat up the pitchers and batters of the horrific 2023 Chicago White Sox (61-101).</p>
+
+<p>So when taking into account the strength of the opponent and importance to the season, only Bob Gibson&rsquo;s 1968 World Series Game 1 is better. I feel it&rsquo;s fair to say every other game besides that pales next to Ohtani&rsquo;s October 17th.</p>
+
+<h1 id="how-to-be-better-than-nlcs-mvp-shohei-ohtani">How To Be Better Than NLCS MVP Shohei Ohtani</h1>
+
+<p>If you are a pitcher, the blueprint is already laid out at the very least 20 times over. You should aim for 17 punch outs over 9 scoreless innings. Even then, you need to minimize walks to 2 and home runs to 1. You get more leeway if you can strikeout more. You basically need to be 3 times the pitcher of an average major leaguer.</p>
+
+<p>If you are a position player, you need to write the blueprint yourself. You could hit 5 home runs. Most power hitters are a detriment on the base paths and on the field, so if a guy is already hitting 4 home runs, the &ldquo;easiest&rdquo; way forward is to hit one more. Or you could hit 4 home runs and steal 2 bases. 2024 Ohtani was already a 5 feet away from doing that when his first double hit the top of the right center field wall. Or you could hit 3 home runs and either steal 6 bases or steal 3 bases and make some good plays at a premium defensive position such as catcher or shortstop (the most Defensive Runs I&rsquo;ve seen in a single game is 0.5).</p>
+
+<p>If you are both, then either you are an MLB The Show created player or you are Shohei Ohtani.</p>
+
+<p>All of this illustrates just how many avenues Ohtani has to provide run value and why he&rsquo;s consistently a 8.0-9.5 WAR player. If his bat is slumping, he can be a Cy Young caliber pitcher (2022). If he can&rsquo;t throw, he can make up for it by stealing more (2024). When everything is working at once, he&rsquo;s an undisputed league MVP (2021, 2023, 2025). He could probably become a solid outfielder too with a Hunter Renfroe or Rick Ankiel defense comp.</p>
+
+<p>Speaking of his arm, his UCL durability is the biggest issue, but if he could stay healthy, like he was in 2021-22, and keeps batting and pitching at his current level, he could average 9.5-11 WAR and he could peak at 13 WAR.</p>
+
+<h1 id="appendix-calculating-ohtani-s-war">Appendix: Calculating Ohtani&rsquo;s WAR</h1>
+
+<p>Some notes:</p>
+
+<ol>
+<li><p>I&rsquo;ll be using FanGraphs&rsquo; fWAR formulas because I think their assumptions and data used are more sound than Baseball-Reference&rsquo;s, although that&rsquo;s not to say bWAR isn&rsquo;t useful.</p></li>
+
+<li><p>I&rsquo;ll be simplifying the calculations because some of the most complicated work are park and league adjustments which are very small on a single game level (e.g. ~.013 and ~0.026 batting runs at Coors Field and T-Mobile Park respectively). I also want to be able to do these calculations by hand relatively quickly.</p></li>
+</ol>
+
+<p>Okay let&rsquo;s crunch some numbers.</p>
+
+<h2 id="pitching">Pitching</h2>
+
+<p>The first thing Ohtani did that game was throw a 99 MPH fastball, so let&rsquo;s start with his <a href="https://library.fangraphs.com/war/calculating-war-pitchers/" target="_blank">pitching fWAR</a>.</p>
+
+<pre><code>Pitching fWAR = (((((AL or NL FIPR9 – FIPR9) / dRPW) + Replacement Level) * (IP/9)) * LI Multiplier for Relievers) + League Correction
+</code></pre>
+
+<h3 id="fipr9s">FIPR9s</h3>
+
+<p>FIPR9 is FIP with a lot of adjustments made to it. First thing we have to do is count in-field fly balls as strikeouts since IFFBs virtually never land for hits, we&rsquo;ll call it ifFIP.</p>
+
+<pre><code>ifFIP = ((13*HR)+(3*(BB+HBP))-(2*(K+IFFB)))/IP + ifFIP constant
+</code></pre>
+
+<p>We&rsquo;ll need to calculate ifFIP constant since cFIP on FanGraphs&rsquo; Guts! page doesn&rsquo;t take into account IFFBs.</p>
+
+<pre><code>ifFIP Constant = lgERA – (((13*lgHR)+(3*(lgBB+lgHBP))-(2*(lgK+lgIFFB)))/lgIP)
+
+ifFIP Constant = 4.16 – (((13*5650)+(3*(15379+1928))-(2*(40645+4703)))/43075) = 3.36
+</code></pre>
+
+<p>Back to Ohtani&rsquo;s ifFIP.</p>
+
+<pre><code>ifFIP = ((13*0)+(3*(3+0))-(2*(10+0)))/6 + 3.36 = 1.53
+</code></pre>
+
+<p>ifFIP is scaled to ERA, but we need it scaled to RA9. We&rsquo;ll call it FIPR9</p>
+
+<pre><code>FIPR9 = ifFIP + (lgRA9 - lgERA)
+
+FIPR9 = 1.53 + (4.52 - 4.16) = 1.89
+</code></pre>
+
+<p>Next FanGraphs calls for a park adjustment, but we&rsquo;ll ignore because of Note 2.</p>
+
+<p>Next we&rsquo;ll calculate the AL or NL FIPR9. We can probably get the MLB FIPR9 in 2025 because of the balanced schedule and universal DH, but for consistency with previous years, I&rsquo;ll get the NL FIPR9 for this game.</p>
+
+<pre><code>NL ifFIP = ((13*2762)+(3*(7619+998))-(2*(20085+2282)))/21510.67 + 3.36 = 4.15
+
+NL FIPR9 = 4.15 + (4.52 - 4.16) = 4.51
+</code></pre>
+
+<p>Then we need Dynamic Runs Per Win (dRPW) because pitchers directly influence the run environment when they&rsquo;re pitching.</p>
+
+<pre><code>dRPW = ((((18 - IP/G)*(AL or NL FIPR9)) + ((IP/G)*FIPR9))/18) + 2)*1.5
+
+dRPW = (((((18 – 6/1)*(4.51)) + ((6/1)*1.89))/18) + 2)*1.5 = 8.46
+</code></pre>
+
+<h3 id="replacement-level-li-multiplier-and-league-correction">Replacement Level, LI Multiplier, and League Correction</h3>
+
+<p>Replacement Level means something different when the pitcher is replacing a starter or a reliever. There&rsquo;s a formula we can use to calculate this level if a pitcher is splitting time between starting and relieving, but for single games it&rsquo;s very easy to get: 0.12 if they started the game and 0.03 if they relieved. I wonder if openers should be counted as starters or not, but I digress.</p>
+
+<p>Relievers are used for different levels of leverages which what the LI Multiplier is for, but since Ohtani started we can just set this to 1.</p>
+
+<p>League Correction is to ensure that MLB-wide pitcher WAR sums to the total amount of WAR in a year, assumed to be 1000 WAR with a 57% to 43% split between position players and pitchers. This adjustment is minuscule for single games, so we&rsquo;ll set this to 0.</p>
+
+<p>Now to plug everything in&hellip;</p>
+
+<pre><code>Pitching fWAR = (((((4.51 – 1.89) / 8.46) + 0.12) * (6/9)) * 1) + 0 = 0.29
+</code></pre>
+
+<h2 id="batting">Batting</h2>
+
+<p>Pretty good, but we can&rsquo;t forget that 5 minutes after he struckout 3 at the top of the 1st, he hit a 446 foot bomb. Let&rsquo;s look at his <a href="https://library.fangraphs.com/war/war-position-players/" target="_blank">position player fWAR</a>. Here&rsquo;s the formula.</p>
+
+<pre><code>Batting fWAR = (Batting Runs + Base Running Runs + Fielding Runs + Positional Adjustment + League Adjustment + Replacement Runs) / (Runs Per Win)
+</code></pre>
+
+<p>Batting Runs is just Weighted Runs Above Average with park and league adjustments. So we&rsquo;ll just set that to whatever his wRAA was, 4.5.</p>
+
+<p>The only running did was when he was doing his home run trots, so Base Running Runs is 0.</p>
+
+<p>He also didn&rsquo;t field any balls, so Fielding Runs is 0.</p>
+
+<p>Positional Adjustment is -0.1 since he DHed.</p>
+
+<p>League Adjustment and Replacement Level Runs are both negligible so we&rsquo;ll ignore those.</p>
+
+<p>Runs Per Win this season was 9.77.</p>
+
+<pre><code>Batting fWAR = (4.5 + 0 + 0 + -0.1 + 0 + 0) / (9.77) = 0.45
+</code></pre>
+
+<p>And finally&hellip;</p>
+
+<pre><code>fWAR = Pitching fWAR + Batting fWAR = 0.29 + 0.45 = 0.74
+</code></pre>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nkb6kxt" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>xyzzy321 | St. Louis Cardinals</div>
+        <div>5 | 10 minutes ago </div>
+      </div>
+      <label for="nkb6kxt" class="commentText"><p>How can someone have &amp;gt;1 WAR in a single game?!</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nkb86eb" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Dredeuced | Atlanta Braves</div>
+        <div>1 | a few seconds ago </div>
+      </div>
+      <label for="nkb86eb" class="commentText"><p>Cuz the other team was also pitching at a 1 WAR pace, so the only way to win was to have more win</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nkb6ter" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Qeltar_ | Boston Red Sox • Toronto Blue Jays</div>
+        <div>3 | 9 minutes ago </div>
+      </div>
+      <label for="nkb6ter" class="commentText"><p>Luis is very sad about that typo.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nkb72b5" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>pixieSteak | Washington Nationals</div>
+        <div>1 | 7 minutes ago </div>
+      </div>
+      <label for="nkb72b5" class="commentText"><p>LOLOLOLO</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nkb6vzv" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>UsErNaMeS_aR_DuMb | Baltimore Orioles</div>
+        <div>2 | 8 minutes ago </div>
+      </div>
+      <label for="nkb6vzv" class="commentText"><p>I’m so sorry, Angels fans.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nkb7zu5" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>RightBack2 | Baltimore Orioles</div>
+        <div>1 | 2 minutes ago </div>
+      </div>
+      <label for="nkb7zu5" class="commentText"><p>Ok maybe its just me but using WAR for 1 game is quite possibly the most meaningless thing ever.  I applaud your effort OP but this is actually pointless. WAR is nothing without sample size.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nkb865w" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>elementofpee | Seattle Mariners</div>
+        <div>1 | a few seconds ago </div>
+      </div>
+      <label for="nkb865w" class="commentText"><p><img src="giphy|Cz6TlrRVVyv9S" alt="gif" /></p>
+
+<p>Jk, but seriously, thank you for showing your work!</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
