@@ -1,0 +1,1233 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.selfPostImage {
+  width: 100%;
+  height: auto;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/nba/comments/1oclj2b/dwight_howard_reacting_to_dyson_daniels_100m/"><p>Dwight Howard reacting to Dyson Daniels <span class="math inline">\(100m Hawks deal: &quot;😮‍💨😮‍💨 yall saying underpaid man these boys getting paid I ain’t never even sign a \)</span>100 mill contract&rdquo;</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <p>Howard amassed ~<span class="math inline">\(250m over his long career with no \)</span>100m contracts. <a href="https://bleacherreport.com/articles/25262994-dwight-howard-reacts-state-nba-contracts-after-dyson-daniels-100m-hawks-deal" target="_blank">Source</a></p>
+
+<table>
+<thead>
+<tr>
+<th align="left">Year Signed</th>
+<th align="left">Team</th>
+<th align="left">Contract Term</th>
+<th align="left">Approx. Annual Value</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">2004</td>
+<td align="left">Orlando Magic</td>
+<td align="left">4-yr ~$19.5m</td>
+<td align="left">~$4.9m</td>
+</tr>
+
+<tr>
+<td align="left">2007</td>
+<td align="left">Orlando Magic</td>
+<td align="left">5-yr ~$83.2m</td>
+<td align="left">~$16.6m</td>
+</tr>
+
+<tr>
+<td align="left">2013</td>
+<td align="left">Houston Rockets</td>
+<td align="left">4-yr ~$87.6m</td>
+<td align="left">~$21.9m</td>
+</tr>
+
+<tr>
+<td align="left">2016</td>
+<td align="left">Atlanta Hawks</td>
+<td align="left">3-yr ~$70.5m</td>
+<td align="left">~$23.5m</td>
+</tr>
+
+<tr>
+<td align="left">2018</td>
+<td align="left">Washington Wizards</td>
+<td align="left">2-yr ~$10.9m</td>
+<td align="left">~$5.5m</td>
+</tr>
+
+<tr>
+<td align="left">2019</td>
+<td align="left">Los Angeles Lakers</td>
+<td align="left">1-yr ~$2.6m</td>
+<td align="left">~$2.6m</td>
+</tr>
+
+<tr>
+<td align="left">2020</td>
+<td align="left">Philadelphia 76ers</td>
+<td align="left">1-yr ~$2.6m</td>
+<td align="left">~$2.6m</td>
+</tr>
+
+<tr>
+<td align="left">2021</td>
+<td align="left">Los Angeles Lakers</td>
+<td align="left">1-yr ~$2.6m</td>
+<td align="left">~$2.6m</td>
+</tr>
+</tbody>
+</table>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nkneels" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>MatchAffectionate951</div>
+        <div>1 | 17 minutes ago </div>
+      </div>
+      <label for="nkneels" class="commentText"><p>Why is everyone taking this as hate ?</p>
+
+<p>He just acknowledging how large contracts have gotten</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nknf4z4" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Lazaraaus | 76ers</div>
+        <div>1 | 13 minutes ago </div>
+      </div>
+      <label for="nknf4z4" class="commentText"><p>Because in modern social media age that is the only way to engage with anything. Take the worst possible interpretation, even in bad faith, and use it to further whatever invisible demons you are fighting.</p>
+
+<p>So if you’re anti-Dwight for whatever reason, he’s obviously ‘bitter’ and ‘hating’ and turning into the ‘next shaq’.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nkngb7x" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>EnigmaSpore | Warriors</div>
+        <div>1 | 8 minutes ago </div>
+      </div>
+      <label for="nkngb7x" class="commentText"><p>if they aint rage&rsquo;n, they aint engage&rsquo;n.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="nknggvp" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Folk-Herro | Heat</div>
+        <div>1 | 7 minutes ago </div>
+      </div>
+      <label for="nknggvp" class="commentText"><p>I thought I was going insane. Like he said nothing negative and there is no implication he thinks Dyson doesn’t deserve this money.</p>
+
+<p>Dude is just shocked, like all of us, how much these guys make now. Especially good, finge all-star players</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nkncxxp" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>CazOnReddit | Raptors</div>
+        <div>1 | 24 minutes ago </div>
+      </div>
+      <label for="nkncxxp" class="commentText"><p>Something something greed in the Bible</p>
+
+<p>Like you made 250 million.  Unless you have the worst financial manager ever and/or a gambling addiction/multiple payees for child support, you made several lifetimes worth of money to live off of.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nkndxu7" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>pawpawjr</div>
+        <div>1 | 19 minutes ago </div>
+      </div>
+      <label for="nkndxu7" class="commentText"><p>Lol Dwight probably has quite a few child support payments to make</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nkne7cb" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>kultureisrandy | Lakers</div>
+        <div>1 | 18 minutes ago </div>
+      </div>
+      <label for="nkne7cb" class="commentText"><p>Still holding out for that Lakers call-up lmao</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="nknfngl" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>superfadeaway | Knicks</div>
+        <div>1 | 11 minutes ago </div>
+      </div>
+      <label for="nknfngl" class="commentText"><p>if you have even 15 kids and still cry about 250m you&rsquo;re insane</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nknfvy8" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>CazOnReddit | Raptors</div>
+        <div>1 | 10 minutes ago </div>
+      </div>
+      <label for="nknfvy8" class="commentText"><p>If you have 15 kids you got 15 reasons to spend that money on &ldquo;How to be a Father for Dummies&rdquo;</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nknbg7d" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>eveningwindowed | Warriors</div>
+        <div>1 | 31 minutes ago </div>
+      </div>
+      <label for="nknbg7d" class="commentText"><p>Yeah we&rsquo;re not comparing it to 10 years ago we&rsquo;re comparing it to today</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nkndtou" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>mrclark3 | Bucks</div>
+        <div>1 | 20 minutes ago </div>
+      </div>
+      <label for="nkndtou" class="commentText"><p>Not even 10 years ago. Dwight’s prime was basically 20 years ago now.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nkneax4" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>THUNDER-GUN04 | Nuggets</div>
+        <div>1 | 17 minutes ago </div>
+      </div>
+      <label for="nkneax4" class="commentText"><p>Ow</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nknem1h" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>WonderbreadOG</div>
+        <div>1 | 16 minutes ago </div>
+      </div>
+      <label for="nknem1h" class="commentText"><p>Yeah a lot of us felt that stray hit us in our sore lower backs..</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="nkneh8u" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>purplenyellowrose909 | Timberwolves</div>
+        <div>1 | 17 minutes ago </div>
+      </div>
+      <label for="nkneh8u" class="commentText"><p>People are gonna be in denial that we&rsquo;re closer to 2030 than 2020 starting Jan 1</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nknfsr8" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>jswissle | Knicks</div>
+        <div>1 | 10 minutes ago </div>
+      </div>
+      <label for="nknfsr8" class="commentText"><p>Fuck you</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="nkng1m7" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>livelaughloaft | Raptors</div>
+        <div>1 | 9 minutes ago </div>
+      </div>
+      <label for="nkng1m7" class="commentText"><p>Shut your time misappropriating mouth</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="nknefjl" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>dsalmon1449</div>
+        <div>1 | 17 minutes ago </div>
+      </div>
+      <label for="nknefjl" class="commentText"><p>Take that back</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="nknfp4w" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>chitownbulls92 | Bulls</div>
+        <div>1 | 11 minutes ago </div>
+      </div>
+      <label for="nknfp4w" class="commentText"><p>Closer to 15 years ago. 20 years he was still a sophomore if we’re being technical lol</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nknemjo" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ShinyDragonite77</div>
+        <div>1 | 16 minutes ago </div>
+      </div>
+      <label for="nknemjo" class="commentText"><p>Doesn’t strike me as complaining at all. He’s just saying that $100 mill is a lot of money. Idk why this is painted in such a negative light. He never says they’re overpaid.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nkng6vx" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Ginska</div>
+        <div>1 | 9 minutes ago </div>
+      </div>
+      <label for="nkng6vx" class="commentText"><p>Yeah I am so confused after reading these comments. At first read, nothing comes off as hating</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nknda8u" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Wavepops</div>
+        <div>1 | 22 minutes ago </div>
+      </div>
+      <label for="nknda8u" class="commentText"><p>Dwight gonna turn into Shaq when it comes to player contracts and hating</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nkne18d" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Joshottas</div>
+        <div>1 | 19 minutes ago </div>
+      </div>
+      <label for="nkne18d" class="commentText"><p>No one is gonna mince their words when it comes to Dwight tho.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nknglxq" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>GreedyPride4565</div>
+        <div>1 | 7 minutes ago </div>
+      </div>
+      <label for="nknglxq" class="commentText"><p>Average Shaq discussion when he’s being a hater:</p>
+
+<p>“What a thin skinned egotistical man. He can’t hear a single comparison to any other big man without making it all about himself. Why is his ego so big???”</p>
+
+<p>Average Shaq discussion when comparing to other big men:</p>
+
+<p>“It’s laughable that you guys think anyone can even breathe the same air as Shaq. Shaq would turn every big man since 2008 into a fine powder. He’d break them in half and have them begging for mercy and every team would need to waive all their guards and sign 15 zaza pachulias to even hope to hold him below 60 ppg”</p>
+
+<p>Yeah I wonder why his egos so big</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="nknecdp" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Pony2013 | Mavericks</div>
+        <div>1 | 17 minutes ago </div>
+      </div>
+      <label for="nknecdp" class="commentText"><p>I mean shit I would too lowkey. Obviously the NBA has grown since the early 2000s but must &ldquo;suck&rdquo; to see as a retired player.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nknfizr" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>PhatYeeter | 76ers</div>
+        <div>1 | 12 minutes ago </div>
+      </div>
+      <label for="nknfizr" class="commentText"><p>Id agree from the perspective of role players. Being a role player can get you generational wealth nowadays, which wasn&rsquo;t a thing back in the day.</p>
+
+<p>Guys like Dwight made plenty and it&rsquo;s cringe to be so salty about it.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nkncmkx" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>aquatic_ambiance</div>
+        <div>1 | 25 minutes ago </div>
+      </div>
+      <label for="nkncmkx" class="commentText"><p>I mean he peaked as a player 14 years ago. It&rsquo;s not really surprising that lesser players make &ldquo;more&rdquo; money</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nknebja" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Mood_Academic | Lakers</div>
+        <div>1 | 17 minutes ago </div>
+      </div>
+      <label for="nknebja" class="commentText"><p>This is in large part due to the increasing $$ from the TV deal. Everyone laughed at the NBA (this forum included) when years ago they said they were aiming for 75+ billion for their next TV deal</p>
+
+<p>This thread and the voices online were calling them delusional and how the NBA was “going broke cause they went woke” and “the NBA is dying”</p>
+
+<p>Meanwhile they literally tripled their deal and then some, and you’re gonna see some crazy $$ contracts over the next few years with players making 70+ mil a year</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nknex88" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>captain_ahabb | Lakers</div>
+        <div>1 | 14 minutes ago </div>
+      </div>
+      <label for="nknex88" class="commentText"><p>It&rsquo;s also inflation</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="nknfvut" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>beefJeRKy-LB | Lebanon</div>
+        <div>1 | 10 minutes ago </div>
+      </div>
+      <label for="nknfvut" class="commentText"><blockquote>
+<p>“going broke cause they went woke”</p>
+</blockquote>
+
+<p>that was really only Ethan Strauss</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nknh54z" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Mood_Academic | Lakers</div>
+        <div>1 | 4 minutes ago </div>
+      </div>
+      <label for="nknh54z" class="commentText"><p>There was an entire Twitter mob movement about it, not just 1 guy</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nknfzlq" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Milla4Prez66 | Magic</div>
+        <div>1 | 9 minutes ago </div>
+      </div>
+      <label for="nknfzlq" class="commentText"><p>I swore that our last contract with him was over 100M and look it up and it was like 83M. Game has really changed financially.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nkndlow" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>thickofitenjoyer | Magic</div>
+        <div>1 | 21 minutes ago </div>
+      </div>
+      <label for="nkndlow" class="commentText"><p>Dwight my dawg please dont become like the others</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nkndlta" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>knowtoriusMAC | Knicks</div>
+        <div>1 | 21 minutes ago </div>
+      </div>
+      <label for="nkndlta" class="commentText"><p>Who hates NBA players getting paid more?</p>
+
+<p>Retired NBA players or guys wearing sunglasses in their profile photo.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nknfnct" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>SeaMoney4312 | Rockets</div>
+        <div>1 | 11 minutes ago </div>
+      </div>
+      <label for="nknfnct" class="commentText"><p>I think max contract guys will always be a little salty seeing dudes half as good making so much money since their earning potential was limited. I still don’t actually know why max contracts are a thing. If somebody wants to use 90% of the salary cap on one player let em do it, not like they’d win and if they did that means he’s worth it</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nknens6" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>jr_randolph</div>
+        <div>1 | 16 minutes ago </div>
+      </div>
+      <label for="nknens6" class="commentText"><p>Top players for good part of the 90s were making 2, 3 million a year - it is what it is, just different times of when that money was flowing in.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nknf0zt" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>gd2121</div>
+        <div>1 | 14 minutes ago </div>
+      </div>
+      <label for="nknf0zt" class="commentText"><p>Dwight getting those reality show checks tho</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nknfxc7" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Brownsound7 | Celtics</div>
+        <div>1 | 10 minutes ago </div>
+      </div>
+      <label for="nknfxc7" class="commentText"><p>Dwight’s about to join the legion of oldheads who refuse to understand inflation and higher investment in the league as the biggest drivers of contract scaling</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nkngd2j" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>PaintByLetters | Rockets</div>
+        <div>1 | 8 minutes ago </div>
+      </div>
+      <label for="nkngd2j" class="commentText"><p>Dwight learning about the time value of money in real time.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nkngm6u" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>gargled_jizz_69 | Suns</div>
+        <div>1 | 7 minutes ago </div>
+      </div>
+      <label for="nkngm6u" class="commentText"><p>Weren&rsquo;t 100m contracts rare during Howards prime?</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nkngzr0" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Gatesleeper | Raptors</div>
+        <div>1 | 5 minutes ago </div>
+      </div>
+      <label for="nkngzr0" class="commentText"><p>His second contract with Orlando was 5 years <span class="math inline">\(83.2m, then 4 years \)</span>87.6 with the Rockets, then 3 years $70.5 with the Hawks.</p>
+
+<p>So it’s true, he never signed a hundred million dollar contract, to my surprise.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nkncm1k" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Vince_-</div>
+        <div>1 | 25 minutes ago </div>
+      </div>
+      <label for="nkncm1k" class="commentText"><p>Dwight is on social media too much. Can&rsquo;t believe I saw him on Tik Tok live before lol</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nkndd20" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Danibear285 | Clippers</div>
+        <div>1 | 22 minutes ago </div>
+      </div>
+      <label for="nkndd20" class="commentText"><p>I heard Bang Bros is hiring</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nknbrn1" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Dukester10071 | Nets</div>
+        <div>1 | 29 minutes ago </div>
+      </div>
+      <label for="nknbrn1" class="commentText"><p>Except he literally did though? Twice!! <span class="math inline">\(83.2M in 2007 is the same as \)</span>130M today and <span class="math inline">\(87.6M in 2013 is \)</span>122M today. Plus the league is making a shitton more money nowadays than during his prime playing career</p>
+
+<p>Edit: nearly 3 times, <span class="math inline">\(70.5M in 2016 is \)</span>94M</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nknch9d" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Sandawichu</div>
+        <div>1 | 26 minutes ago </div>
+      </div>
+      <label for="nknch9d" class="commentText"><p>Except he literally didn’t. He isn’t talking about purchasing power of the dollar. He’s literally saying he never signed a <span class="math inline">\(100M contract. \)</span>83M =/= $100M</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nkncom8" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>PurplePango | Pelicans</div>
+        <div>1 | 25 minutes ago </div>
+      </div>
+      <label for="nkncom8" class="commentText"><p>Not sure that commenter knows the word literally</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="nkndc4z" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Dukester10071 | Nets</div>
+        <div>1 | 22 minutes ago </div>
+      </div>
+      <label for="nkndc4z" class="commentText"><p>He is comparing the deals that he got to a deal that happened this year. How does it make sense to not account for inflation lol. He is comparing to present day value of money, which he very well signed two over $100M contracts in present day value</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nknfqw1" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Prestig33 | MIN</div>
+        <div>1 | 11 minutes ago </div>
+      </div>
+      <label for="nknfqw1" class="commentText"><p>It&rsquo;s not that deep bro. He said he has never signed a contract with the value of $100 million at the time signing.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="nkncnok" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Frewsa | Warriors</div>
+        <div>1 | 25 minutes ago </div>
+      </div>
+      <label for="nkncnok" class="commentText"><p>That’s not what literally means</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="nknd593" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>TJ514402 | Bulls</div>
+        <div>1 | 23 minutes ago </div>
+      </div>
+      <label for="nknd593" class="commentText"><p>Literally?</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nknfvz0" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>sor2hi</div>
+        <div>1 | 10 minutes ago </div>
+      </div>
+      <label for="nknfvz0" class="commentText"><p>Figuratively?</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
