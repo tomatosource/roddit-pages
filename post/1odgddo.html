@@ -1,0 +1,571 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.selfPostImage {
+  width: 100%;
+  height: auto;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/nba/comments/1odgddo/all_of_the_top_10_longest_shots_are_wrong_analysis/"><p>All of the top 10 longest shots are WRONG [Analysis]</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <p><strong>Graphic of updated shot distances:</strong> <a href="https://imgur.com/a/CRUXJTb" target="_blank"><strong>https://imgur.com/a/CRUXJTb</strong></a></p>
+
+<p><strong>Preface</strong></p>
+
+<p>This quest started when Jokić made a <sup>3</sup>&frasl;<sub>4</sub> court shot against the Kings last year and I saw it was officially recorded at 66ft. Some fans immediately pulled out an image of court dimensions and did some Pythagorean theorem and saw this was incorrect. My calculations had it around 72-73 ft, which immediately made me skeptical of Baron Davis&rsquo;s legendary, record-holding 89 ft shot because there was no way he was 16ft further back based on the video. Thus, I decided to build a little desktop app that let me click anywhere on a court and figure out the shot distance. What I found had me up until 5 am, feeling like I had just uncovered a vast conspiracy.</p>
+
+<h1 id="all-of-the-top-10-longest-shots-are-wrong">All of the top 10 longest shots are wrong.</h1>
+
+<p>Turns out, bad record keeping on long shot distance is pervasive throughout NBA history. Some shots don&rsquo;t adjust for vertical distance off the center line, some don&rsquo;t account for the backboard being 4ft off the baseline, most don&rsquo;t factor in that the center of the hoop is another foot forward from that, some are just bad spotting of where the shot was.</p>
+
+<p><strong>Methodology</strong></p>
+
+<p>I went through the video of each shot and recorded the furthest point forward the shooter was still touching the ground when the ball was released, AKA, their leading foot. This is the standard for shot distance. This means people that ran and leapt forward can get a bit of an advantage via their air distance compared to, say, Planinić, who just water polo&rsquo;d it.</p>
+
+<p>The end point for a shot is the center of the net. The distance is just Pythagorean theorem.</p>
+
+<p><strong>Limitations</strong></p>
+
+<p>My estimates of a shooter&rsquo;s front foot placement are not perfect. I went through videos frame by frame and referenced whatever marking on the court that I could. I estimate these should be within ±1 ft of the true distance.</p>
+
+<p><strong>Norm Van Lier</strong>. I could not find ANY videos or images of this shot. I barely found anything describing the actual shot. I checked Internet Archive, If you have them, please let me see them. The only account I have is from NBA.com: &ldquo;Van Lier, <strong>standing in the Bulls&rsquo; foul lane</strong>, picked up a loose ball and heaved it in the other direction&rdquo;. I put him about in the middle of the foul lane. This shot is recorded as 84 ft but does not appear to factor in the hoop being 5ft off the baseline. It&rsquo;s probably 76-80 ft depending on distance from center line as well.</p>
+
+<p><strong>I only checked the official top 10 shots plus Jokić&rsquo;s shot.</strong> Others are probably wrong, which means some of the latter entries on this list might not be in the real top 10.</p>
+
+<p>Without further ado, here is the list. Also, congrats Herb Williams, get on that Jon Bois.</p>
+
+<table>
+<thead>
+<tr>
+<th align="left">Player</th>
+<th align="center">Year</th>
+<th align="center">New Rank</th>
+<th align="center">Actual Distance (ft)</th>
+<th align="center">Old Rank</th>
+<th align="center">Official Distance (ft)</th>
+<th align="center">Diff</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">Herb Williams</td>
+<td align="center">1986</td>
+<td align="center">1</td>
+<td align="center">82.1</td>
+<td align="center">5</td>
+<td align="center">81</td>
+<td align="center">1.1</td>
+</tr>
+
+<tr>
+<td align="left">Baron Davis</td>
+<td align="center">2001</td>
+<td align="center">2</td>
+<td align="center">80.0</td>
+<td align="center">1</td>
+<td align="center">89</td>
+<td align="center">-9</td>
+</tr>
+
+<tr>
+<td align="left">Norm Van Lier</td>
+<td align="center">1977</td>
+<td align="center">3</td>
+<td align="center">79 (Est.)</td>
+<td align="center">2</td>
+<td align="center">84</td>
+<td align="center">-6</td>
+</tr>
+
+<tr>
+<td align="left">Magic Johnson</td>
+<td align="center">1987</td>
+<td align="center">4</td>
+<td align="center">78.8</td>
+<td align="center">3</td>
+<td align="center">84</td>
+<td align="center">-5.2</td>
+</tr>
+
+<tr>
+<td align="left">Ziaire Williams</td>
+<td align="center">2023</td>
+<td align="center">5</td>
+<td align="center">78.8</td>
+<td align="center">6</td>
+<td align="center">79</td>
+<td align="center">-0.2</td>
+</tr>
+
+<tr>
+<td align="left">Vince Carter</td>
+<td align="center">2016</td>
+<td align="center">6</td>
+<td align="center">76.7</td>
+<td align="center">8</td>
+<td align="center">72</td>
+<td align="center">4.7</td>
+</tr>
+
+<tr>
+<td align="left">Zoran Planinić</td>
+<td align="center">2005</td>
+<td align="center">7</td>
+<td align="center">75.1</td>
+<td align="center">7</td>
+<td align="center">77</td>
+<td align="center">-1.9</td>
+</tr>
+
+<tr>
+<td align="left">Andre Drummond</td>
+<td align="center">2016</td>
+<td align="center">8</td>
+<td align="center">73.7</td>
+<td align="center">10</td>
+<td align="center">71</td>
+<td align="center">2.7</td>
+</tr>
+
+<tr>
+<td align="left">Darius Miller</td>
+<td align="center">2018</td>
+<td align="center">9</td>
+<td align="center">73.2</td>
+<td align="center">9</td>
+<td align="center">72</td>
+<td align="center">1.2</td>
+</tr>
+
+<tr>
+<td align="left">Nikola Jokić</td>
+<td align="center">2024</td>
+<td align="center">10</td>
+<td align="center">72.3</td>
+<td align="center">Unranked</td>
+<td align="center">66</td>
+<td align="center">6.3</td>
+</tr>
+
+<tr>
+<td align="left">LeBron James</td>
+<td align="center">2007</td>
+<td align="center">11</td>
+<td align="center">72.3</td>
+<td align="center">4</td>
+<td align="center">83</td>
+<td align="center">-10.6</td>
+</tr>
+</tbody>
+</table>
+<p>Links in table order:</p>
+
+<table>
+<thead>
+<tr>
+<th align="left">Link</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left"><a href="https://www.youtube.com/watch?v=mpxch7wxiH0" target="_blank">Sacramento Kings vs Indiana Pacers (January 8, 1986) &ldquo;Herb Williams Throws In 81 Foot Shot&rdquo; - YouTube</a></td>
+</tr>
+
+<tr>
+<td align="left"><a href="https://www.youtube.com/watch?v=7k1LCemWIdo" target="_blank">Baron Davis 89 Foot Full Court Shot! - YouTube</a></td>
+</tr>
+
+<tr>
+<td align="left"><a href="https://www.nba.com/bulls/history/ten_great_shots.html" target="_blank">ESTIMATE from this description: https://www.nba.com/bulls/history/ten_great_shots.html</a></td>
+</tr>
+
+<tr>
+<td align="left"><a href="https://www.youtube.com/watch?v=zBlCQbUekvA" target="_blank">MAGIC JOHNSON! 80 FEET BUZZER-BEATER! - YouTube</a></td>
+</tr>
+
+<tr>
+<td align="left">[Ziaire Williams hits the INSANE full court buzzer beater! January 22, 2023 YouTube(<a href="https://www.youtube.com/watch?v=fZv5OT1Yc34" target="_blank">https://www.youtube.com/watch?v=fZv5OT1Yc34</a>)</td>
+</tr>
+
+<tr>
+<td align="left"><a href="https://www.youtube.com/watch?v=zpCsQ-oeCsI" target="_blank">Vince Carter&rsquo;s Full Court Buzzer-Beater Timberwovles vs Grizzlies February 19, 2016 NBA YouTube</a></td>
+</tr>
+
+<tr>
+<td align="left"><a href="https://www.youtube.com/watch?v=IUt-fY3C2XM" target="_blank">Zoran Planinic Near Full-Court Buzzer Beater (2005) - YouTube</a></td>
+</tr>
+
+<tr>
+<td align="left"><a href="https://www.youtube.com/watch?v=-s6hIQ2ME_w" target="_blank">Andre Drummond Drains the Full-Court Buzzer Beater! - YouTube</a></td>
+</tr>
+
+<tr>
+<td align="left"><a href="https://www.youtube.com/watch?v=0GlXgP4H3lo" target="_blank">Darius Miller FULL COURT Buzzer Beater - YouTube</a></td>
+</tr>
+
+<tr>
+<td align="left"><a href="https://www.youtube.com/watch?v=C2jl51sb038" target="_blank">Nikola Jokic INSANE <sup>3</sup>&frasl;<sub>4</sub> COURT SHOT buzzer beater vs Kings and doesn&rsquo;t react 😂</a></td>
+</tr>
+
+<tr>
+<td align="left"><a href="https://www.youtube.com/watch?v=qkhAs_Vmci0" target="_blank">LeBron James Deepest Three Ever - YouTube</a></td>
+</tr>
+</tbody>
+</table>
+<p>You may be asking why, if I figured this out back in January, did I wait until now to post? The answer is that, like most programmers, I am lazy and afraid of writing documentation. I might post the code if you guys want.</p>
+
+<p>EDIT: Fixed the table formatting.</p>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nktnnt1" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>NOHITJEROME | Cavaliers</div>
+        <div>10 | an hour ago </div>
+      </div>
+      <label for="nktnnt1" class="commentText"><p>realized all the numbers were made up when ESPN (?) said Steph Curry&rsquo;s game winner vs OKC in 2016 was like 28 feet when it was clearly closer to 40 feet<br>
+<a href="https://www.youtube.com/watch?v=GEMVGHoenXM" target="_blank">https://www.youtube.com/watch?v=GEMVGHoenXM</a></p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nktpad4" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>jakekerr | Lakers</div>
+        <div>5 | 44 minutes ago </div>
+      </div>
+      <label for="nktpad4" class="commentText"><p>Love OP&rsquo;s madlad energy. The perfect off-season post, and he waits until the season starts to post it.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nktp8mc" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>coacoanutbenjamn | Celtics</div>
+        <div>3 | an hour ago </div>
+      </div>
+      <label for="nktp8mc" class="commentText"><p>Seems like the NBA never established a consistent way to measure the shot. My guess is they left it up to the home teams’ statisticians and a bunch of teams use different methods</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nktp09d" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>MddlingAges | Knicks</div>
+        <div>2 | an hour ago </div>
+      </div>
+      <label for="nktp09d" class="commentText"><p>This is clearly guesstimated by the home team scorers&rsquo; table.</p>
+
+<p>I&rsquo;d like to see the analytics data people publish their top ten of from whenever they got the court telemetry recorded. And just leave it at that.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nktta6m" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>PrimeTimeInc | Hornets</div>
+        <div>1 | 25 minutes ago </div>
+      </div>
+      <label for="nktta6m" class="commentText"><p>Like those 15 blocks or w/e OKC had against the Hornets in a preseason game that got posted here a week or two ago. Half them mfs weren’t even close to being blocks lol. The league needs better score keeping standards apparently (I have no idea if there’s centralized score keeping but that ‘highlight’ really stuck out to me)</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nktpodn" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>DrTom | PDX</div>
+        <div>2 | 43 minutes ago </div>
+      </div>
+      <label for="nktpodn" class="commentText"><p>Not totally related but look how effortlessly Jokic tosses that ball. He looks as casual as I do throwing balls of trash at the bin.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nktpwe6" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>actually-potato | Pistons</div>
+        <div>1 | 41 minutes ago </div>
+      </div>
+      <label for="nktpwe6" class="commentText"><p>Cool. Nice work</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nktxd97" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Jack_The_Sparrow_ | Warriors</div>
+        <div>1 | 5 minutes ago </div>
+      </div>
+      <label for="nktxd97" class="commentText"><p>Neat. Nice Work</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
