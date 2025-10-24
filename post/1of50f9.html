@@ -1,0 +1,836 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.selfPostImage {
+  width: 100%;
+  height: auto;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/baseball/comments/1of50f9/lasr_beam_vladimir_guerrero_jr/"><p>LASR Beam: Vladimir Guerrero Jr.</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <p>Happy World Series season, fellow baseball nerds!</p>
+
+<p>Throughout the season, I’ve been posting about “LASR,” League-Adjusted Standardized Rating, a project of mine that’s aimed at contextualizing player stats. It’s hard to keep track of the answers to “How good is a .300 batting average these days?” and “Is that chase rate high or low?” and “<em>Is</em> Mark Canha the best player in baseball?” LASR is designed to help answer these questions. The ratings are essentially z-scores, the number of standard deviations a data point is above or below the mean, translated to a scale inspired by the traditional 20-80 scouting scale. More information about the project can be found on my profile (I’m not going to link to anything to avoid self-promotion).</p>
+
+<p>I’ve primarily been posting these graphics (without any accompanying analysis):</p>
+
+<p><a href="https://preview.redd.it/q99wadfkn3xf1.png?width=1000&amp;format=png&amp;auto=webp&amp;s=2d49d7fb379f7c348f4444f9f317d3b97bfac0df" target="_blank">https://preview.redd.it/q99wadfkn3xf1.png?width=1000&amp;format=png&amp;auto=webp&amp;s=2d49d7fb379f7c348f4444f9f317d3b97bfac0df</a></p>
+
+<p>&hellip;and I’m not planning on stopping those occasional posts where I’m just presenting the data. However, I’d like to try something here and see if it sticks: an analytical deep dive into these values and the patterns that often show up, in the context of the player’s career (with some light commentary mixed in).</p>
+
+<p>Who knows how many I do, but here’s the first one – and who better to start with than the current star of the postseason&hellip;</p>
+
+<h1 id="vladimir-guerrero-jr">Vladimir Guerrero Jr.</h1>
+
+<p>Before the playoffs began, Vladimir Guerrero Jr. was the undisputed face of the Blue Jays, having signed a <a href="https://www.mlb.com/news/vladimir-guerrero-jr-blue-jays-extension" target="_blank">14-year, $500 million extension</a> earlier this year that will likely have him calling Toronto his home for his entire career. Now, he has an ALCS MVP on his shelf (and would have an ALDS MVP if that award existed) and has fully cemented himself as a Canadian legend. In those first two rounds, he slashed .442/.510/.930 with 6 home runs and 12 runs batted in, good for a 280 wRC+ which <a href="https://www.fangraphs.com/leaders/major-league?pos=all&amp;stats=bat&amp;lg=all&amp;type=8&amp;season=2025&amp;month=0&amp;season1=2025&amp;ind=0&amp;postseason=Y&amp;sortcol=17&amp;sortdir=default&amp;qual=10" target="_blank">leads all hitters in the 2025 playoffs</a> with at least 10 plate appearances (Guerrero has 51). There is no question about it: Vladito is the best hitter on the planet right now.</p>
+
+<p>But I’m not gonna talk about any of that. Well, other than, y’know, what I’ve already said.</p>
+
+<p>LASR only incorporates regular season data. I probably could put in some time to translate postseason data, but it’s not a top priority. The sample sizes are too small and the range in playing time is too wide. I like to think of playoff stats as cute little extra terrestrials floating just beyond the edge of the “normal” baseball universe. Fascinating to look at and talk about, but we know they don’t belong on our planet.</p>
+
+<p>I’m here to talk about the regular season, where sample sizes are comfortably large enough to convey an accurate reflection of player abilities in their stats. My first journey is on the twisty roadmap that is Vladimir Guerrero Jr.’s regular season career.</p>
+
+<h1 id="a-top-prospect-with-a-pedigree">A top prospect with a pedigree</h1>
+
+<p>Guerrero was <a href="https://www.sportsnet.ca/baseball/mlb/person-of-interest-411-on-vladimir-guerrero-jr/" target="_blank">well-regarded from a young age</a>, partially because he could smash baseballs with unbelievable authority, partially because his understanding of the strike zone was wise beyond his years, and partially because he’s related to a Montreal Expos legend from the late 1990s and early 2000s: <a href="https://www.baseball-reference.com/players/g/guerrwi01.shtml" target="_blank">Wilton Guerrero</a>. He signed with Toronto for a $3.9 million signing bonus as a top international free agent in 2015, then shot up the minor league ranks quickly, productively, and with greater attention at each level. In 2019, he made his MLB debut as the league’s top prospect at just 20 years old.</p>
+
+<p>He debuted in late April and was the team’s primary third baseman through the rest of his rookie season. He racked up enough plate appearances to qualify for the batting title, and he has every year since. This means there aren’t any seasons that need a mental adjustment for low playing time (though LASR has playing time adjustments built in anyway). Sidenote: a player’s career containing only “full” seasons is an underrated cool thing for statsheet nerds like myself.</p>
+
+<h1 id="bring-on-the-lasrs-the-big-picture">Bring on the LASRs: the big picture</h1>
+
+<p>Throughout this analysis, I’ll be breaking down Guerrero’s LASR stats one “group” at a time – not all at once. Let’s start with the basics: his fWAR, broken down into its parts (I use fWAR because I get all of my data from FanGraphs). I’ll provide basic definitions of all the stats I use in this analysis, but if you’d like to learn more I encourage you to check out the <a href="https://blogs.fangraphs.com/glossary/" target="_blank">FanGraphs glossary</a>.</p>
+
+<table>
+<thead>
+<tr>
+<th align="left">Season</th>
+<th align="left">fWAR</th>
+<th align="left">Bat</th>
+<th align="left">BsR</th>
+<th align="left">Field</th>
+<th align="left">Adj</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">2019</td>
+<td align="left">35</td>
+<td align="left">50</td>
+<td align="left">40</td>
+<td align="left">20</td>
+<td align="left">50</td>
+</tr>
+
+<tr>
+<td align="left">2020</td>
+<td align="left">40</td>
+<td align="left">50</td>
+<td align="left">45</td>
+<td align="left">45</td>
+<td align="left">30</td>
+</tr>
+
+<tr>
+<td align="left">2021</td>
+<td align="left">65</td>
+<td align="left">75</td>
+<td align="left">45</td>
+<td align="left">45</td>
+<td align="left">30</td>
+</tr>
+
+<tr>
+<td align="left">2022</td>
+<td align="left">50</td>
+<td align="left">60</td>
+<td align="left">45</td>
+<td align="left">45</td>
+<td align="left">30</td>
+</tr>
+
+<tr>
+<td align="left">2023</td>
+<td align="left">40</td>
+<td align="left">55</td>
+<td align="left">40</td>
+<td align="left">35</td>
+<td align="left">30</td>
+</tr>
+
+<tr>
+<td align="left">2024</td>
+<td align="left">60</td>
+<td align="left">75</td>
+<td align="left">35</td>
+<td align="left">40</td>
+<td align="left">35</td>
+</tr>
+
+<tr>
+<td align="left">2025</td>
+<td align="left">55</td>
+<td align="left">60</td>
+<td align="left">40</td>
+<td align="left">50</td>
+<td align="left">30</td>
+</tr>
+</tbody>
+</table>
+
+<ul>
+<li><strong>fWAR</strong>: FanGraphs’ calculation of Wins Above Replacement</li>
+<li><strong>Bat</strong>: The Batting component of fWAR (aka, a player’s value strictly as a hitter)</li>
+<li><strong>BsR</strong>: The Baserunning component</li>
+<li><strong>Field</strong>: The Fielding component (without an adjustment for position)</li>
+<li><strong>Adj</strong>: The Positional Adjustment component (where, for example, shortstops get a leg up on first basemen because their position is more difficult to play)</li>
+</ul>
+
+<p>It’s quite clear – and if you know him, you’re already aware of this – Guerrero’s value comes from his bat. That was always going to be his calling card. He’s been at least a league average hitter every season while consistently below average on the basepaths and in the field. He may have taken a step up in his defense this season (his DRS LASR was 60, for whatever that’s worth) but that’s not the element of his game I want to focus on. The only other note I’ll make there is: it seems to have been a good decision to move him off third base after his rookie year.</p>
+
+<p>Okay, let’s get offensive.</p>
+
+<table>
+<thead>
+<tr>
+<th align="left">Season</th>
+<th align="left">wOBA</th>
+<th align="left">xwOBA</th>
+<th align="left">AVG</th>
+<th align="left">OBP</th>
+<th align="left">SLG</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">2019</td>
+<td align="left">45</td>
+<td align="left">50</td>
+<td align="left">50</td>
+<td align="left">50</td>
+<td align="left">45</td>
+</tr>
+
+<tr>
+<td align="left">2020</td>
+<td align="left">50</td>
+<td align="left">50</td>
+<td align="left">50</td>
+<td align="left">50</td>
+<td align="left">50</td>
+</tr>
+
+<tr>
+<td align="left">2021</td>
+<td align="left">75</td>
+<td align="left">75</td>
+<td align="left">70</td>
+<td align="left">70</td>
+<td align="left">75</td>
+</tr>
+
+<tr>
+<td align="left">2022</td>
+<td align="left">60</td>
+<td align="left">60</td>
+<td align="left">55</td>
+<td align="left">55</td>
+<td align="left">60</td>
+</tr>
+
+<tr>
+<td align="left">2023</td>
+<td align="left">50</td>
+<td align="left">65</td>
+<td align="left">50</td>
+<td align="left">55</td>
+<td align="left">50</td>
+</tr>
+
+<tr>
+<td align="left">2024</td>
+<td align="left">70</td>
+<td align="left">75</td>
+<td align="left">75</td>
+<td align="left">75</td>
+<td align="left">70</td>
+</tr>
+
+<tr>
+<td align="left">2025</td>
+<td align="left">60</td>
+<td align="left">65</td>
+<td align="left">65</td>
+<td align="left">70</td>
+<td align="left">55</td>
+</tr>
+</tbody>
+</table>
+
+<ul>
+<li><strong>wOBA</strong>: Weighted On-Base Average, an all-encompassing hitting metric</li>
+<li><strong>xwOBA</strong>: Expected wOBA, based on underlying data like quality of contact</li>
+<li><strong>AVG</strong>: Batting Average</li>
+<li><strong>OBP</strong>: On-Base Percentage</li>
+<li><strong>SLG</strong>: Slugging Percentage</li>
+</ul>
+
+<p>Guerrero didn’t burst out of the gate as a rookie or even as a sophomore, but being a league average hitter at ages 20 and 21 is nothing to be ashamed of. He had skyhigh expectations though, so his breakout in 2021 gave prospect evaluators a sigh of relief. Only Juan Soto and Bryce Harper joined him in the 75 wOBA LASR club that season, but some guy with the Angels who only posted a 70 wOBA LASR took the AL MVP over him. I guess that guy pitched a few games too, or something? Idk, this isn’t about him. I’ll look into it later.</p>
+
+<p>Still, an MVP runner-up season at 22 years old broadcast to the baseball world that Vladito was here and ready to be a main character. Here’s what his “LASR card” looks like from that season:</p>
+
+<p><a href="https://preview.redd.it/r4c8e1x0o3xf1.png?width=1000&amp;format=png&amp;auto=webp&amp;s=f9035cf1f5eed050ac4f1329774218bfbc0adf56" target="_blank">https://preview.redd.it/r4c8e1x0o3xf1.png?width=1000&amp;format=png&amp;auto=webp&amp;s=f9035cf1f5eed050ac4f1329774218bfbc0adf56</a></p>
+
+<p>Guerrero had established himself as a well-rounded offensive machine, showing very little weaknesses in his output. As promised, he developed elite home run power and paired it with both contact and discipline. In an era obsessed with launch angles, he lacked the lift of other power hitters, but with his LA and FB% LASRs near league average, his excellent EV and Barrel% LASRs seemed to easily make up the difference.</p>
+
+<p>However, Guerrero followed this campaign with a step down in 2022, when he was merely “good,” and a further fall in 2023, when he plummeted back to “average.” There was cause for slight optimism: the gap between his 50 wOBA LASR and 65 xwOBA LASR, along with his career-low 40 BABIP LASR, suggested he was getting unlucky and could see positive regression going forward. Still, other underlying elements of his game seemed to have taken a step back, and at just 24 years old there was already concern that his career wouldn’t live up to the hype.</p>
+
+<p>He rebounded with a 6th-place MVP finish in 2024, however, and followed that up with a pretty good 2025 that was right in line production-wise with his 2022 – though shaped differently. Through this roller coaster of a young career, Guerrero has seen some portions of his game fluctuate significantly, while others remain steady. I’ll now start breaking down his tools separately, but keep in mind that they are all connected – sometimes, for example, a hitter becomes more patient and that leads to more power simply because they’re focusing more on getting pitches they can do real damage on.</p>
+
+<h1 id="break-it-down">Break it down</h1>
+
+<p>Speaking of damage, let’s look at his power first.</p>
+
+<table>
+<thead>
+<tr>
+<th align="left">Season</th>
+<th align="left">SLG</th>
+<th align="left">xSLG</th>
+<th align="left">HR%</th>
+<th align="left">Barrel%</th>
+<th align="left">EV</th>
+<th align="left">LA</th>
+<th align="left">FB%</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">2019</td>
+<td align="left">45</td>
+<td align="left">45</td>
+<td align="left">40</td>
+<td align="left">50</td>
+<td align="left">50</td>
+<td align="left">35</td>
+<td align="left">45</td>
+</tr>
+
+<tr>
+<td align="left">2020</td>
+<td align="left">50</td>
+<td align="left">50</td>
+<td align="left">50</td>
+<td align="left">50</td>
+<td align="left">65</td>
+<td align="left">35</td>
+<td align="left">40</td>
+</tr>
+
+<tr>
+<td align="left">2021</td>
+<td align="left">75</td>
+<td align="left">70</td>
+<td align="left">70</td>
+<td align="left">65</td>
+<td align="left">75</td>
+<td align="left">45</td>
+<td align="left">50</td>
+</tr>
+
+<tr>
+<td align="left">2022</td>
+<td align="left">60</td>
+<td align="left">60</td>
+<td align="left">60</td>
+<td align="left">55</td>
+<td align="left">65</td>
+<td align="left">30</td>
+<td align="left">40</td>
+</tr>
+
+<tr>
+<td align="left">2023</td>
+<td align="left">50</td>
+<td align="left">60</td>
+<td align="left">50</td>
+<td align="left">55</td>
+<td align="left">60</td>
+<td align="left">45</td>
+<td align="left">45</td>
+</tr>
+
+<tr>
+<td align="left">2024</td>
+<td align="left">70</td>
+<td align="left">70</td>
+<td align="left">55</td>
+<td align="left">60</td>
+<td align="left">70</td>
+<td align="left">35</td>
+<td align="left">40</td>
+</tr>
+
+<tr>
+<td align="left">2025</td>
+<td align="left">55</td>
+<td align="left">60</td>
+<td align="left">50</td>
+<td align="left">55</td>
+<td align="left">60</td>
+<td align="left">35</td>
+<td align="left">40</td>
+</tr>
+</tbody>
+</table>
+
+<ul>
+<li><strong>xSLG</strong>: Expected Slugging Percentage</li>
+<li><strong>HR%</strong>: Home Run Rate</li>
+<li><strong>Barrel%</strong>: Barrel Rate, the rate at which the player’s contact occurs on the bat barrel</li>
+<li><strong>EV</strong>: Average Exit Velocity, the speed at which batted balls are hit</li>
+<li><strong>LA</strong>: Average Launch Angle, the angle at which batted balls come off the bat</li>
+<li><strong>FB%</strong>: Flyball Rate</li>
+</ul>
+
+<p>Slugging, especially hitting dingers, is the area where he has failed the most in returning to his 2021 form. The most obvious culprit is, as mentioned, his tendency to hit the ball on the ground more often than you’d expect from a player with his raw power. It is not absolutely necessary to follow the waves of high launch angle seekers in order to be a home run threat – Juan Soto, Rafael Devers, and Junior Caminero are other examples of modern sluggers with surprisingly low launch angles – and it may even hurt a player’s effectiveness to focus too much on it.</p>
+
+<p>Based on the LA and FB% LASR patterns, Guerrero might have tried to lift more in 2023 but, as we saw from his results that year, it didn’t work out. For all I know, perhaps his return to the 35-40 LASR range in LA and FB% has helped him get his swing and approach to a place where he feels most comfortable. This was fairly successful in 2024 when his EV and Barrel% LASRs reached their highest values since 2021, but they dropped back down in 2025 and the result was another league-average HR% LASR.</p>
+
+<p>While Toronto fans certainly wanted more roundtrippers out of him this year (and, lucky for them, it looks like he saved them for the playoffs), his production was buoyed by continued effectiveness in contact and plate discipline. Let’s take a look.</p>
+
+<table>
+<thead>
+<tr>
+<th align="left">Season</th>
+<th align="left">AVG</th>
+<th align="left">xAVG</th>
+<th align="left">BABIP</th>
+<th align="left">-K%</th>
+<th align="left">-Whiff%</th>
+<th align="left">BB%</th>
+<th align="left">-Chase%</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">2019</td>
+<td align="left">50</td>
+<td align="left">50</td>
+<td align="left">50</td>
+<td align="left">55</td>
+<td align="left">50</td>
+<td align="left">50</td>
+<td align="left">50</td>
+</tr>
+
+<tr>
+<td align="left">2020</td>
+<td align="left">50</td>
+<td align="left">55</td>
+<td align="left">45</td>
+<td align="left">60</td>
+<td align="left">50</td>
+<td align="left">45</td>
+<td align="left">55</td>
+</tr>
+
+<tr>
+<td align="left">2021</td>
+<td align="left">70</td>
+<td align="left">75</td>
+<td align="left">55</td>
+<td align="left">60</td>
+<td align="left">45</td>
+<td align="left">60</td>
+<td align="left">55</td>
+</tr>
+
+<tr>
+<td align="left">2022</td>
+<td align="left">55</td>
+<td align="left">65</td>
+<td align="left">50</td>
+<td align="left">60</td>
+<td align="left">50</td>
+<td align="left">50</td>
+<td align="left">45</td>
+</tr>
+
+<tr>
+<td align="left">2023</td>
+<td align="left">50</td>
+<td align="left">65</td>
+<td align="left">40</td>
+<td align="left">60</td>
+<td align="left">50</td>
+<td align="left">55</td>
+<td align="left">50</td>
+</tr>
+
+<tr>
+<td align="left">2024</td>
+<td align="left">75</td>
+<td align="left">80</td>
+<td align="left">65</td>
+<td align="left">65</td>
+<td align="left">55</td>
+<td align="left">55</td>
+<td align="left">50</td>
+</tr>
+
+<tr>
+<td align="left">2025</td>
+<td align="left">65</td>
+<td align="left">75</td>
+<td align="left">55</td>
+<td align="left">65</td>
+<td align="left">55</td>
+<td align="left">60</td>
+<td align="left">60</td>
+</tr>
+</tbody>
+</table>
+
+<ul>
+<li><strong>xAVG</strong>: Expected Batting Average</li>
+<li><strong>BABIP</strong>: Batting Average on Balls In Play</li>
+<li><strong>-K%</strong>: Strikeout Rate (negated to reflect low values are better for hitters)</li>
+<li><strong>-Whiff%</strong>: Whiff Rate, the rate at which the batter swings and misses (negated)</li>
+<li><strong>BB%</strong>: Walk Rate</li>
+<li><strong>-Chase%</strong>: Chase Rate, the rate at which the batter swings at pitches outside the strike zone (negated)</li>
+</ul>
+
+<p>Unlike <a href="https://www.mlb.com/video/guerrero-s-amazing-bloop-hit" target="_blank">another guy also named Vladimir Guerrero</a>, this one doesn’t swing at everything. In fact, this year his -Chase% LASR hit 60 for the first time. It appears, as he is maturing and learning how to navigate Major League strike zones, he is improving his ability to lay off the pitches he should. His -K% and BB% LASRs have followed suit, each tying career highs this year and seemingly both headed in positive directions.</p>
+
+<p>Though he’s had multiple years of great AVG LASRs, he has underperformed his xAVG LASR nearly every season. His lack of speed and batting right-handed may be factors – some of his ground balls would turn into hits more often if he got to first base a little quicker – but I’m not sure if that fully explains it. His BABIP LASR has had low points and high points (as most players experience due to its randomness) and it’s likely no coincidence that the largest gap between his AVG and xAVG (2023) aligns with his lowest BABIP. However, even in 2024 when his BABIP LASR reached 65, his xAVG was still higher than his AVG.</p>
+
+<p>I’ll close out with a look at the last interesting development I noticed in 2025: less swinging overall.</p>
+
+<table>
+<thead>
+<tr>
+<th align="left">Season</th>
+<th align="left">Swing%</th>
+<th align="left">Z-Swing%</th>
+<th align="left">-O-Swing%</th>
+<th align="left">Z-Contact%</th>
+<th align="left">O-Contact%</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">2019</td>
+<td align="left">50</td>
+<td align="left">55</td>
+<td align="left">50</td>
+<td align="left">55</td>
+<td align="left">50</td>
+</tr>
+
+<tr>
+<td align="left">2020</td>
+<td align="left">55</td>
+<td align="left">65</td>
+<td align="left">55</td>
+<td align="left">50</td>
+<td align="left">50</td>
+</tr>
+
+<tr>
+<td align="left">2021</td>
+<td align="left">50</td>
+<td align="left">60</td>
+<td align="left">55</td>
+<td align="left">45</td>
+<td align="left">40</td>
+</tr>
+
+<tr>
+<td align="left">2022</td>
+<td align="left">55</td>
+<td align="left">60</td>
+<td align="left">45</td>
+<td align="left">50</td>
+<td align="left">50</td>
+</tr>
+
+<tr>
+<td align="left">2023</td>
+<td align="left">55</td>
+<td align="left">65</td>
+<td align="left">50</td>
+<td align="left">50</td>
+<td align="left">50</td>
+</tr>
+
+<tr>
+<td align="left">2024</td>
+<td align="left">50</td>
+<td align="left">50</td>
+<td align="left">50</td>
+<td align="left">55</td>
+<td align="left">55</td>
+</tr>
+
+<tr>
+<td align="left">2025</td>
+<td align="left">40</td>
+<td align="left">40</td>
+<td align="left">60</td>
+<td align="left">50</td>
+<td align="left">55</td>
+</tr>
+</tbody>
+</table>
+
+<ul>
+<li><strong>Swing%</strong>: Overall Swing Rate</li>
+<li><strong>Z-Swing%</strong>: Zone Swing Rate, the rate at which the batter swings at pitches in the strike zone</li>
+<li><strong>-O-Swing%</strong>: Outside the zone Swing Rate (negated – this is the same as Chase Rate)</li>
+<li><strong>Z-Contact%</strong>: Zone Contact Rate, the rate at which the batter makes contact on pitches inside the strike zone</li>
+<li><strong>O-Contact%</strong>: Outside the zone Contact Rate, the rate at which the batter makes contact on pitches outside the strike zone</li>
+</ul>
+
+<p>After several years of swinging at a rate near league average, Guerrero’s Swing% LASR dropped to 40 this season. Sometimes this is a good thing; as mentioned above, being more selective at the plate often allows hitters to hone in on pitches they can send into the bleachers (not to mention the opportunity to draw more walks). Other times it leads to an approach that’s too passive, where too many hittable pitches are left untouched.</p>
+
+<p>For Guerrero, it may be a little of both. Though he successfully laid off pitches outside the strike zone better than he ever had in 2025, he has also seen his Z-Swing% LASR drop from its previously established 60-65 level down to 50 in 2024 and 40 this year. There were probably a few pitches he just looked at this year that he could’ve hit a mile. Meanwhile, though he doesn’t swing at pitches outside the zone often, he has made slightly more contact with them the past two seasons. Making contact with these pitches is great for staying in at-bats via foul balls, but it’s not great for getting base hits – as you may expect, the quality of contact is typically poorer on pitches out of the strike zone. It may be telling that his lowest O-Contact% LASR, a 40 in 2021, coincided with his best offensive season.</p>
+
+<h1 id="outlook">Outlook</h1>
+
+<p>Guerrero likely still has the tools to get back to his 2021 production, but he may have to fine-tune his game to get there again over a full season. Hitting is a delicate balancing act – the optimal approach is to be selective and aggressive at the same time, which is awfully difficult to do. Vlad is still just 26 years old and at least looks capable of providing consistent All-Star level production. Maybe he breaks through and rediscovers the power he displayed at a young age – in which case, the all-time record books better watch out. Maybe he remains simply very good, with some seasons better than others. Either way, he looks like he’s on track to be the greatest Blue Jay in franchise history.</p>
+
+<p>Right now though, as we anxiously await the first pitch of the 2025 World Series this evening, Guerrero heads into the series looking like the best possible version of himself. Maybe he has unlocked something in these playoffs that he can hold onto next year and deliver a season that challenges Aaron Judge for the best hitter in baseball. Only time will tell, and he’s got plenty of time left. For now, let’s just sit back and enjoy as he attempts to fulfill that <a href="https://www.mlb.com/news/vladimir-guerrero-jr-impresses-at-blue-jays-spring-training" target="_blank">yearslong promise of producing “The Movie.”</a></p>
+
+<p>Enjoy the World Series, folks! Let’s get hyped! ✌️</p>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nl6egvc" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>MLBVideoConverterBot | Umpire</div>
+        <div>2 | 21 minutes ago </div>
+      </div>
+      <label for="nl6egvc" class="commentText"><p>Video: Guerrero&rsquo;s amazing bloop hit</p>
+
+<p><a href="https://streamable.com/m/guerrero-s-amazing-bloop-hit" target="_blank">Streamable Link</a></p>
+
+<p><a href="https://mlb-cuts-diamond.mlb.com/FORGE/2009/2009-08/14/c5b0b1bf-d7a4bf3c-1703aa05-csvm-diamondx64-asset_1280x720_59_16000K.mp4" target="_blank">High Definition</a> (55.39 MB)</p>
+
+<p><a href="https://mlb-cuts-diamond.mlb.com/FORGE/2009/2009-08/14/c5b0b1bf-d7a4bf3c-1703aa05-csvm-diamondx64-asset_1280x720_59_4000K.mp4" target="_blank">Standard Definiton</a> (14.33 MB)</p>
+
+<hr>
+
+<p><a href="/r/MLBVideoConverterBot">More Info</a></p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nl6ezmz" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>high_and_outside | MLB Pride</div>
+        <div>1 | 19 minutes ago </div>
+      </div>
+      <label for="nl6ezmz" class="commentText"><p>Not sure what happened with the tables here (they looked great in the draft). Working on fixing them.</p>
+
+<p>Edit: Looks like I have to fully redo each table&hellip; the first one is fixed and the rest will soon look the same. Stand by.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nl6gzm4" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>WasV3 | Toronto Blue Jays</div>
+        <div>3 | 9 minutes ago </div>
+      </div>
+      <label for="nl6gzm4" class="commentText"><p>2021 just clouds peoples opinion of his power stroke and expect him to hit 45 or so HRs. He was always a much more pure hitter and didn&rsquo;t have the same kind of effective game power. In his last full minor league season he had 20 HRs across nearly 400 PAs, but his true calling card was that he hit .381 and got on base at a .450 clip</p>
+
+<blockquote>
+<p>The only other note I’ll make there is: it seems to have been a good decision to move him off third base after his rookie year.</p>
+</blockquote>
+
+<p>He was moved off 3B because he showed up to camp fat as can be during COVID, the man was chunky. He played adequate 3B last year as an experiment now that he&rsquo;s at a better playing weight.</p>
+
+<blockquote>
+<p>However, Guerrero followed this campaign with a step down in 2022, when he was merely “good,” and a further fall in 2023, when he plummeted back to “average.” There was cause for slight optimism: the gap between his 50 wOBA LASR and 65 xwOBA LASR, along with his career-low 40 BABIP LASR, suggested he was getting unlucky and could see positive regression going forward</p>
+</blockquote>
+
+<p>It wasn&rsquo;t luck Vladdy just pretty much led the league in flyballs to CF, and forgot how to pull the ball in the air with any sort of power. His 2022 and 2023 were marred with trying to recreate 2021 rather than just be the player he is. He lost something like 2-3 MPH on his flyball EV which made those balls that just got out, be warning track flyouts</p>
+
+<blockquote>
+<p>Guerrero likely still has the tools to get back to his 2021 production, but he may have to fine-tune his game to get there again over a full season. Hitting is a delicate balancing act – the optimal approach is to be selective and aggressive at the same time, which is awfully difficult to do. Vlad is still just 26 years old and at least looks capable of providing consistent All-Star level production.</p>
+</blockquote>
+
+<p>Vladdy will likely never reach 2021 peak again, he is not a 40+ HR hitter. He&rsquo;s the kind of guy who goes .300/.400/.500 and is a complete player.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
