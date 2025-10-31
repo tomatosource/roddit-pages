@@ -1,0 +1,806 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.selfPostImage {
+  width: 100%;
+  height: auto;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/baseball/comments/1ol1k6g/oc_small_market_economics_and_competitiveness_in/"><p>[OC] Small Market Economics and Competitiveness in Baseball (Long)</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <p>I posted a similar in r/mlb a bit ago and the discussion was  good, well thought, and helpful for people to understand some of the basic dynamics at play for big and small markets in baseball.</p>
+
+<p>I realize this is a charged topic, but I only ask you give it a read and engage in good faith.</p>
+
+<p>TLDR: How markets work and why small markets like Milwaukee&rsquo;s are handicapped</p>
+
+<p>In general in the MLB when it comes to the discussion of financing it boils down to some key ideas:</p>
+
+<ul>
+<li>What is the market power you have to sign top-talent free agents</li>
+<li>What is the market power you have to trade+extend promising talent</li>
+<li>What is the market power you have to extend promising home grown talent</li>
+<li>How many &ldquo;shots&rdquo; can you take</li>
+<li>Can you absorb errors/misjudgements</li>
+</ul>
+
+<p>Those first three are what most people think of when they think of big/small markets but that last one is secretly the most important. Anyone can identify a top player and pay them, but the stronger your finances are the more shots you can take and the more you can miss without sinking the team/organization - it really cannot be stated enough the impact of that.</p>
+
+<p>Everyone focuses on those first three because they&rsquo;re obvious, you can measure it and put a $ to it. You can&rsquo;t as easily measure or communicate as freely the risk of missing. This is where small markets lose in the conversation.</p>
+
+<p>So then, let&rsquo;s talk about payroll. At the end of the day you have to start with a few assumptions:</p>
+
+<ul>
+<li>A club is a business</li>
+<li>The business has a market</li>
+<li>Each market has an addressable market (easily gotten fan $s - local area or metro) and a max opportunity (various definitions, but if youre a venture capitalist you&rsquo;re saying all people globally, and if youre not an idiot you&rsquo;re saying &ldquo;people with Milwaukee or Wisconsin ties)</li>
+<li>Owner net worth is NOT owner free cash</li>
+<li>Principal owners may not be free to spend as much as they want due to ownership agreements (minority owner stakes)</li>
+</ul>
+
+<p>The ball club does not need to be profitable in a given year, but no one should expect that it will sustain losses indefinitely. An owner COULD BE a good samaritan who will gladly lose money every year for a shot at something which is pure pride and status for them. But the long arc of history should tell you that this just isnt how humanity works - so let&rsquo;s aside an assumption that an owner could spend more, for an assumption that an owner WILL spend more if there is a reasonable opportunity to do so, and will spend less if there is significant risk.</p>
+
+<ul>
+<li>Risk = low(er) revenues</li>
+<li>Opportunity = high(er) revenues</li>
+</ul>
+
+<p>In general, a club&rsquo;s revenues are determined by its addressable market + media deals, advertising, profit sharing (league growth), etc. Its important to note that when it comes to revenue sharing, things like regional media contracts (Dodgers, Cubs, Mets, Yankees) or district revenues (Braves) are not shared. Many teams have no such media contracts, and only the Braves have such a district at this time. As with much of what you&rsquo;ll see, the opportunities these offer scale with the size of the market (meaning it advantages larger markets).</p>
+
+<p>The biggest component to a club&rsquo;s revenues is &ldquo;core&rdquo; - ticket, merchandise, concessions, etc - basically you, a fan, buying in and going to the game.</p>
+
+<p>For Milwaukee, in game attendance is going to be some formula where the variables are</p>
+
+<ul>
+<li>Population</li>
+<li>Population density</li>
+<li>Cost of Living</li>
+<li>Logistics (how easy it is to go)</li>
+<li>Ticket prices (related to cost of living)</li>
+<li>Substitute options</li>
+<li>etc</li>
+</ul>
+
+<p>The greater your metro population and the better you can convert that population to fans who will spend scarce <span class="math inline">\( on the Brewers vs alternates (Packers, Bucks, Badgers, theater tickets, concerts, etc... its just entertainment/social ventures) the more opportunity you have. Similarly, the greater the economic conditions of the area, the greater the willingness to spend \)</span> and the higher you can charge on tickets. Obviously there is a lot of nuance to pricing but the general trend is that more affluent populations equals more opportunity.</p>
+
+<p>We can walk this out in a lot of ways, but the biggest variable to core opportunity is simply population and population density. Fans in Madison (~1 hour from American Family) are likely to attend fewer games than fans in Milwaukee. Moreover, the more fans in a geographic area, the more individuals you have to draw on to fill a fixed number of seats.</p>
+
+<p>This is where the <em>structural</em> disadvantage of small markets and the MLB lies, the cross roads of:</p>
+
+<ul>
+<li>Lower population/density</li>
+<li>Lower cost of living (lower prices)</li>
+</ul>
+
+<p>All of it fundamentally impacts the top line number: revenue.</p>
+
+<p>When it comes to mitigants, profit sharing and luxury tax payments (half of which goes to player benefits, not teams) does not come close to making up the difference between large and small markets, and there are incentive strings attached.</p>
+
+<p>When it comes to costs, data is not easily available, but any cost discussion starts with fixed vs variable. Payroll is variable, costs go up or down based on your decision. Stadium, maintenance, required staffing, loan repayments, etc - these are fixed. This is something that no matter what you do, play the game or dont play the game, you are required to pay. There is a chart that floats around showing team payroll as a % of revenue that is highly misleading. This is because it only accounts for payroll (one variable cost) and not the fixed cost of operations which are assumed to relatively similar across the league. The reason this matters is because teams with greater opportunity and thereby greater revenues have the luxury of spending a greater % of their revenue on payroll.</p>
+
+<p>To illustrate why this is with a crude analogy, assume you make <span class="math inline">\(100 and a friend makes \)</span>1000 in a day. You want to get dinner and they suggest a restaurant nearby. You each order your food and it cost <span class="math inline">\(30 each. This order represents a fixed cost - you now have \)</span>70 remaining or 70% of your income to spend on variable cost items. However, your friend has $930 or 93% of their income. This is the fundamental lie at the heart of that graphic.</p>
+
+<p>So what does it all mean? Well a few things:</p>
+
+<ul>
+<li>There is a tier of talent that is <em>only</em> accessible to the largest teams and otherwise off limits to smaller markets (a talent like Ohtani could never play in a Milwaukee, Kansas City, Minnesota, etc because they simply cannot afford him)</li>
+<li>Small market teams are at greater risk of revenue declines. A losing season and thereby falling core revenues and losses on the year can result in a &lsquo;death spiral&rsquo; that often results in sustained poor performance or eventual sales of the team.</li>
+<li>Most of the advantages are structural, meaning that small markets have no choice in the matter when it comes to revenues.</li>
+</ul>
+
+<p>Of course, MLB knows this - its why there is a long history dating to the 90s haveseeking to level the financial playing field, and its been a core topic of each CBA. There is so, so much more to this as we start to expand out but thats another topic altogether.</p>
+
+<p>I&rsquo;ll leave with this - a core goal of MLB is to create equity in playing fields between franchises, and the biggest challenge to that presently is the big vs small dynamic. It is important to MLB because ultimately MLB wants to grow the sport and compete for the same scarce $ nationally and globally vs alternative entertainment options,and it correctly identifies that growing only the largest markets leaves about half of its addressable market out of the picture.</p>
+
+<p>Thanks for coming to my TED talk.</p>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nmeujsn" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>The_Astros_Cheated | Los Angeles Dodgers • Detroit Tigers</div>
+        <div>11 | an hour ago </div>
+      </div>
+      <label for="nmeujsn" class="commentText"><p>OP I will commend you for an actual effort post and well structured argument. You make a lot of good points.</p>
+
+<p>One thing that I think is missing from your thesis is that ownership of Major League Baseball franchises is structured on a case by case basis. While you list a ton of examples and effectively lay out the economic environment for smaller market teams, along with its challenges, I don’t think this can be universally applied.</p>
+
+<p>The reason being is that it all comes down to the owner or ownership group at the end of the day.</p>
+
+<p>It’s easy to argue that owners are the biggest obstacle to success. People like Arte Moreno (or Frank McCourt if we want to use a Dodgers example) treat their franchises as personal banks to siphon earnings from. They’re not interested in competition and long term economic growth. They treat their teams as status symbols. Some owners, like John Fisher, will even weaponize their ownership to bleed municipalities of public tax dollars against them under the guise of stadium renovation. Baseball is a tool for their own personal avarice and greed.</p>
+
+<p>Which is why, despite some of the challenges you list, smaller market teams CAN be competitive and establish success with the right owners. It wasn’t too long ago that the Detroit Tigers were a legitimate championship contender during a decade long time period. That was because Mike Illitch, the father of the current owner of the team and also the co-owner of the Red Wings, deeply cared about building a winner. He invested in the Tigers and his reward was a very good baseball club. The jury is still out on whether Chris will follow in his dad’s footsteps, but I digress.</p>
+
+<p>It’s hard for me to agree with you that smaller markets face an insurmountable obstacle to achieving success, when ultimately it boils down to whether or not the owner of a franchise is willing to put money into their team.</p>
+
+<p>The ownership group of the Dodgers for example invested about 2 billion into the franchise when they bought it from Frank McCourt. 12 years later and the franchise is worth 7 billion and produces a 1 billion dollar annual profit. That didn’t happen solely because LA has inherent advantages in size and name recognition.</p>
+
+<p>It takes good faith investment and dedication to actualizing a vision.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nmez18i" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>wompwump | Baltimore Orioles</div>
+        <div>11 | an hour ago </div>
+      </div>
+      <label for="nmez18i" class="commentText"><blockquote>
+<p>It’s hard for me to agree with you that smaller markets face an insurmountable obstacle to achieving success</p>
+</blockquote>
+
+<p>I don’t think OP is arguing it’s insurmountable, and if OP is saying it’s insurmountable, that’s obviously incorrect. The argument is that there are <em>inequitable</em> obstacles.</p>
+
+<p>Consider this reframe: a rule is passed that the Dodgers start every game down 1-0. Is that an insurmountable obstacle to winning? No. Is it a major, inequitable disadvantage. Yes.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nmf1kxs" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>LegitiamateSalvage | Milwaukee Brewers</div>
+        <div>5 | 32 minutes ago </div>
+      </div>
+      <label for="nmf1kxs" class="commentText"><p>Said much more concisely than I did, thank you.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="nmextuq" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>LegitiamateSalvage | Milwaukee Brewers</div>
+        <div>7 | an hour ago </div>
+      </div>
+      <label for="nmextuq" class="commentText"><p>Thank you for your thoughtful response.</p>
+
+<p>I do want to highlight what I think is a core misconception in these arguments.</p>
+
+<p>It is not that a small market cannot be competitive. It is that the deck is stacked against them, and <em>sustained</em> competitiveness becomes more and more unlikely the greater the structural disadvantage is.</p>
+
+<p>We should not cite individual examples of success as a sign everything is good - rather we should examine the trend:</p>
+
+<ul>
+<li>What and how many</li>
+<li>What happened before succees</li>
+<li>What happened after success</li>
+</ul>
+
+<p>One thing that remains true over the last 30 years is that over 90% of World Series teams are top-10 payrolls and a greater % won it. No one would look at that in any other context and say that because 10% made it, payroll has no impact or that it&rsquo;s fine.</p>
+
+<p>They <em>might</em> say that you just need to be a top-10 payroll, but that&rsquo;s why I made this post.</p>
+
+<p>Taking your Dodgers for example, there is <em>no world</em> that the Brewers can lock in a <span class="math inline">\(350 million *annual* media contract (growing to \)</span>500 miilion) for the next 14 years. There is no option in their market for anything even close to it.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="nmf3fl8" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>realparkingbrake</div>
+        <div>4 | 23 minutes ago </div>
+      </div>
+      <label for="nmf3fl8" class="commentText"><blockquote>
+<p>That didn’t happen solely because LA has inherent advantages in size and name recognition.</p>
+</blockquote>
+
+<p>But it could not have happened without those inherent advantages.  Guggenheim would not have bought the Dodgers if they played in a small market because in that situation they wouldn&rsquo;t have an eight-billion-dollar cable deal and the best attendance in MLB.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nmet6iv" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>penguinopph | Chicago Cubs • RCH-Pinguins</div>
+        <div>11 | an hour ago </div>
+      </div>
+      <label for="nmet6iv" class="commentText"><blockquote>
+<p>a core goal of MLB is to create equity in playing fields between franchises</p>
+</blockquote>
+
+<p>Is it? No one from the League offices seems to be acting like that&rsquo;s true.</p>
+
+<blockquote>
+<p>its why there is a long history dating to the 90s haveseeking to level the financial playing field, and its been a core topic of each CBA.</p>
+</blockquote>
+
+<p>Their push for a salary cap has never been about the playing field in any way, shape or form; it&rsquo;s always been about restricting salaries.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nmevxxn" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>aschwan41 | Toronto Blue Jays</div>
+        <div>12 | an hour ago </div>
+      </div>
+      <label for="nmevxxn" class="commentText"><p>Prior to the NHL salary cap being implemented, the highest given salary for a player was Fedorov&rsquo;s <span class="math inline">\(28 million in 1997-98. Second was Sakic's \)</span>17 million in the same year. The cap was implemented in the 2005-06 season, and we <em>just</em> saw the first contract that matches Sakic&rsquo;s contract, not even Fedorov&rsquo;s. The salary cap suppressed wages to the point where it took 20 years to get back to the same values we saw prior to the cap, ignoring that Fedorov&rsquo;s contract would be worth $51 million today.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nmeznfb" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>jiminytaverns</div>
+        <div>3 | 42 minutes ago </div>
+      </div>
+      <label for="nmeznfb" class="commentText"><p>A cap/floor system is intended to have wages conform on average around whatever the target rate is (% of revenues, whatever). Total dollars spent on payroll in the NHL has a trend line since 05/06 - a strong upward trend, well beyond inflation, only interrupted by COVID. That’s great for the players, even though we are never going to see another outlier Fedorov contract again.</p>
+
+<p>The problem with the current MLB discussion is the owners are proposing a cap, and the players are telling them to fuck off. We can only guess as to why they have yet to counter with a demand for a floor fairly close to the cap.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nmf4wqg" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>realparkingbrake</div>
+        <div>2 | 15 minutes ago </div>
+      </div>
+      <label for="nmf4wqg" class="commentText"><blockquote>
+<p>We can only guess as to why they have yet to counter with a demand for a floor fairly close to the cap.</p>
+</blockquote>
+
+<p>The owners did propose a floor not long ago.  But it was so low that only a handful of teams would have had to increase payroll.  And it came with a demand for a cap significantly lower than today&rsquo;s soft cap.</p>
+
+<p>It&rsquo;s a safe bet that if the owner&rsquo;s got a cap and their payrolls were reduced, the price of a beer at the ballpark would not drop by a dime.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="nmexxj8" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>DonForgo</div>
+        <div>2 | an hour ago </div>
+      </div>
+      <label for="nmexxj8" class="commentText"><p>But for the rest of the league, players salaries grew, game grew in cities that didn&rsquo;t have a strong fan base.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="nmf4e8u" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ridethedeathcab | Cincinnati Reds</div>
+        <div>2 | 18 minutes ago </div>
+      </div>
+      <label for="nmf4e8u" class="commentText"><p>Ok that’s two players. What about the league as a whole? How does the average player compare? Just comparing the top earners is not a fair picture to how a cap impacts the players as a whole.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="nmf0qyh" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>wompwump | Baltimore Orioles</div>
+        <div>2 | 37 minutes ago </div>
+      </div>
+      <label for="nmf0qyh" class="commentText"><p>Can we not separate the <em>is</em> from the <em>ought</em>? Regardless of how hard the league office pushes for it, can we not agree that equity (which is not the same thing as equality or parity) is something we should strive for in baseball?</p>
+
+<p>Equity is fundamental to every game. In baseball, it’s why the rules are the same for every team. Outside of baseball, it’s why the competitors in Monopoly, Chess, Checkers, you name it, start with the same pieces. But arguably, MLB teams don’t start with the same pieces.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="nmf45bx" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>realparkingbrake</div>
+        <div>1 | 19 minutes ago </div>
+      </div>
+      <label for="nmf45bx" class="commentText"><blockquote>
+<p>Their push for a salary cap has never been about the playing field in any way, shape or form; it&rsquo;s always been about restricting salaries.</p>
+</blockquote>
+
+<p>In theory the soft cap is supposed to discourage big market teams from buying up all the best talent.  But the lack of a payroll floor to force cheap owners to field competitive teams shows that MLB isn&rsquo;t very concerned about competitive balance.  Other sports have both a cap and a floor, that MLB can&rsquo;t manage to achieve that points to profit being their motive, not the good of the sport.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="nmetxjx" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>LegitiamateSalvage | Milwaukee Brewers</div>
+        <div>-2 | an hour ago </div>
+      </div>
+      <label for="nmetxjx" class="commentText"><p>Not only have they acted like that is true at every CBA, its why the current luxury tax system exists and has been tweaked or wholly reformed since the mid-90s.</p>
+
+<p>Individual owners have a profit motive, yes, but MLB as a whole is also desiring to grow and those interests often align. MLB knows a league where significant portions have uneven competitiveness as a result of <em>structural</em> elements will not grow (inrelation to alternatives) in those local markets - and it is reflected by every major sport outgrowing the MLB considerably, even the NFL which has a MUCH larger revenue base to grow from(making its &amp;gt;2x growth % that much more impressive)</p>
+
+<p>E: your edit is pure speculation as to motive. I&rsquo;d respond by stating that an objective of profitability and an objective of league growth are not only NOT mutually exclusive, they are in fact positively correlated.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nmf2nhc" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>realparkingbrake</div>
+        <div>7 | 27 minutes ago </div>
+      </div>
+      <label for="nmf2nhc" class="commentText"><blockquote>
+<p>Owner net worth is NOT owner free cash</p>
+</blockquote>
+
+<p>It cracks me up how many fans think that because a team is worth two billion dollars that must mean there is that much money in a vault under the ballpark so ownership should use that money to sign top free agents.</p>
+
+<p>The ballpark itself is part of that value, and it&rsquo;s not like they can break off pieces and deposit them in the bank.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nmf1ozq" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Hungry_Drama_1015 | Oakland Athletics</div>
+        <div>5 | 32 minutes ago </div>
+      </div>
+      <label for="nmf1ozq" class="commentText"><p>This post should not be downvoted. Whether you agree or not, this is a legit and well thought out argument. </p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nmf0xwy" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>immoralsupport_ | Chicago Cubs</div>
+        <div>4 | 36 minutes ago </div>
+      </div>
+      <label for="nmf0xwy" class="commentText"><p>One thing I think is worth noting is that objectively, not every team can spend like the Dodgers. They actually cannot all afford to do that.</p>
+
+<p>But the Dodgers have a much larger payroll than even other top payroll teams. Now, look at a team like the Blue Jays. The Jays have a top-5 payroll that is still nearly $50 million a year less than the Dodgers. That’s more than the AAV of the second-highest paid MLB player’s contract.</p>
+
+<p>The Jays (and other teams like the Rangers and Padres) are much closer to what MLB teams should be aspiring to do than the Dodgers. Every MLB team should be able to, if maybe not run a payroll quite as high as the Jays’, to take a similar approach: extend stars, pick and choose a handful of top free agents to offer top-market deals to, draft and develop well. We’ve wasted so much time on debating whether the Dodgers are good for the game, and acting like the Blue Jays are basically the Pirates, that we’ve missed the lesson right in front of us about the Blue Jays being the team that others should be emulating if we want a healthy sport</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nmf6m6o" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>saltface14 | Toronto Blue Jays</div>
+        <div>1 | 6 minutes ago </div>
+      </div>
+      <label for="nmf6m6o" class="commentText"><p>The Jays total payroll when you factor in tax payments is actually only 51% of the Dodgers total payroll + tax bill. Jays pay approx <span class="math inline">\(289 million (5th in MLB) and the Dodgers pay \)</span>585 million.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nmeuhg5" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>DonForgo</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="nmeuhg5" class="commentText"><p>The way the league is set up, 162 games, 12 team playoffs, makes a lot of garbage time games for teams that don&rsquo;t make the playoffs.</p>
+
+<p>And garbage time games does not excite casual fans, nor will it attract new fans.</p>
+
+<p>The only way to address it is, is to introduce a salary floor, perhaps a cap or luxury tax system, and increase revenue sharing, so that smaller revenue teams can grow their revenue through being competitive.</p>
+
+<p>The NHL has a hard cap system, and I believe it truly worked to increase parity, and although still flawed by allowing the luckiest teams in the draft, but it has allowed two teams in Florida now to have small dynasties. Florida, ice.</p>
+
+<p>Hard cap might not work well in baseball, because of history. But even a cap floor increasing parity will help the league.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nmf5how" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>realparkingbrake</div>
+        <div>1 | 12 minutes ago </div>
+      </div>
+      <label for="nmf5how" class="commentText"><blockquote>
+<p>and increase revenue sharing,</p>
+</blockquote>
+
+<p>The NFL was smart enough to recognize that the growth of cable TV would benefit the big market teams and leave small market teams as also-ran teams.  Their response was to pool TV revenue and split it up equally.  Imagine someone proposing that to the Dodges or Yankees with their multi-billion-dollar TV revenue.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nmeym1q" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>oogieball | Dumpster Fire • New York Mets</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="nmeym1q" class="commentText"><p>The off-season could literally be tomorrow.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nmf6czr" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Used-Refrigerator984 | Major League Baseball</div>
+        <div>1 | 8 minutes ago </div>
+      </div>
+      <label for="nmf6czr" class="commentText"><p>people should focus more on the ratio of revenue to amount spent on salaries rather than total salary because some teams just can&rsquo;t generate the same profit. for example, people praise the brewers for performing so well despite not being big spenders. but if they only spend 40-50% of their revenue on salaries, then i look at them in a different light. they are artificially suppressing their salaries</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nmf6sff" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>LegitiamateSalvage | Milwaukee Brewers</div>
+        <div>1 | 5 minutes ago </div>
+      </div>
+      <label for="nmf6sff" class="commentText"><p>My guy, I wrote an entire section on this and included an analogy to address why this poorly thought out but seemingly intuitive.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
