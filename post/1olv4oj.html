@@ -1,0 +1,903 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.selfPostImage {
+  width: 100%;
+  height: auto;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/nba/comments/1olv4oj/kings_have_a_130_drtg_in_339_minutes_with_derozan/"><p>Kings have a 130 DRTG in 339 Minutes with Derozan and Lavine on and Keegan Murray off. This DRTG would be the LEAGUE WORST All-Time duo in NBA History. And Vivek went to MIT.</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <p>Kangz are painful. I am not even sure if I can keep watching this team because the defense looks like they are playing pick-up basketball when Derozan and Lavine are on the court together. They just are looking to get shots up, and they don&rsquo;t care about grabbing rebounds and loose balls. Heck, they don&rsquo;t even commit non-shooting fouls to prevent easy layups.</p>
+
+<p>Let&rsquo;s look at the stats.</p>
+
+<p><a href="https://www.pbpstats.com/wowy-combos/nba?TeamId=1610612758&amp;Season=2025-26,2024-25&amp;SeasonType=Regular%2BSeason&amp;PlayerIds=201942,203897,1631099" target="_blank">PBPStats for 2024-2026 Season.</a></p>
+
+<table>
+<thead>
+<tr>
+<th align="left">Players On</th>
+<th align="left">Players Off</th>
+<th align="left">Minutes</th>
+<th align="left">DefRtg</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">Derozan, Keegan</td>
+<td align="left">Lavine</td>
+<td align="left">1286</td>
+<td align="left">115.16</td>
+</tr>
+
+<tr>
+<td align="left" colspan="2">Derozan, Keegan, Lavine</td>
+<td align="left">670</td>
+<td align="left">119.57</td>
+</tr>
+
+<tr>
+<td align="left">Derozan</td>
+<td align="left">Keegan, Lavine</td>
+<td align="left">655</td>
+<td align="left">113.65</td>
+</tr>
+
+<tr>
+<td align="left">Keegan</td>
+<td align="left">Derozan, Lavine</td>
+<td align="left">520</td>
+<td align="left">112.13</td>
+</tr>
+
+<tr>
+<td align="left">Derozan, Lavine</td>
+<td align="left">Keegan</td>
+<td align="left">339</td>
+<td align="left">130.49</td>
+</tr>
+
+<tr>
+<td align="left">Lavine</td>
+<td align="left">Derozan, Keegan</td>
+<td align="left">211</td>
+<td align="left">117.25</td>
+</tr>
+
+<tr>
+<td align="left">Lavine, Keegan</td>
+<td align="left">Derozan</td>
+<td align="left">134</td>
+<td align="left">120.57</td>
+</tr>
+</tbody>
+</table>
+<p>Vivek just look at the stats man. It&rsquo;s crystal clear.</p>
+
+<p>Derozan actually has decent Defensive Ratings without Keegan and Lavine. The defense is actually not bad without Lavine.</p>
+
+<p>Zach Lavine. Come on man. Every lineup is terrible. Every defensive rating lineup is above 117 Defensive Rating.</p>
+
+<p>The worst is Derozan and Lavine together without Keegan at 130.49. This would be the league worst for minutes above 300. The worst duo in defensive history.</p>
+
+<p>Let&rsquo;s look at the league worst. <a href="https://www.nba.com/stats/lineups/advanced?CF=MIN*G*300&amp;GroupQuantity=2&amp;Season=2024-25&amp;dir=D&amp;slug=advanced&amp;sort=DEF_RATING" target="_blank">Source: NBA.com. </a>Minutes above 300.</p>
+
+<table>
+<thead>
+<tr>
+<th align="left">Duo</th>
+<th align="left">Season</th>
+<th align="left">Min</th>
+<th align="left">DEFRTG</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">Q Grimes and J Edwards</td>
+<td align="left">24-25</td>
+<td align="left">412</td>
+<td align="left">129.1</td>
+</tr>
+
+<tr>
+<td align="left">K Olynyk and B Brown</td>
+<td align="left">23-24</td>
+<td align="left">347</td>
+<td align="left">125.9</td>
+</tr>
+
+<tr>
+<td align="left">A Nembhard and J Nwora</td>
+<td align="left">22-23</td>
+<td align="left">332</td>
+<td align="left">128.4</td>
+</tr>
+
+<tr>
+<td align="left">R Gay and M Conley</td>
+<td align="left">07-08</td>
+<td align="left">1157</td>
+<td align="left">117.3</td>
+</tr>
+</tbody>
+</table>
+<p>I went to the 2007-2008 season for fun. It&rsquo;s pretty clear Lavine and Derozan are the worst duo on defense.</p>
+
+<p>What happened with these two? Everything started in <strong>2023-2024 season</strong> when they decided to just horse around and not play defense.</p>
+
+<p><a href="https://www.pbpstats.com/wowy-combos/nba?TeamId=1610612741&amp;Season=2023-24&amp;SeasonType=Regular%2BSeason&amp;PlayerIds=201942,203897" target="_blank">Source: PBPStats</a></p>
+
+<table>
+<thead>
+<tr>
+<th align="left">Player On</th>
+<th align="left">Player Off</th>
+<th align="left">Min</th>
+<th align="left">Def RTG</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">Derozan</td>
+<td align="left">Lavine</td>
+<td align="left">2409</td>
+<td align="left">116.79</td>
+</tr>
+
+<tr>
+<td align="left">Lavine, Derozan</td>
+<td align="left">715</td>
+<td align="left">116.09</td>
+<td align="left"></td>
+</tr>
+
+<tr>
+<td align="left" colspan="2">Derozan, Lavine</td>
+<td align="left">579</td>
+<td align="left">122.23</td>
+</tr>
+
+<tr>
+<td align="left">Lavine</td>
+<td align="left">Derozan</td>
+<td align="left">293</td>
+<td align="left">108.92</td>
+</tr>
+</tbody>
+</table>
+<p>There&rsquo;s something wrong here. These guys aren&rsquo;t serious when they play together. That&rsquo;s my hypothesis.</p>
+
+<p>Derozan and Lavine just are &ldquo;having fun&rdquo; if they can play together like it is pick-up basketball.</p>
+
+<p>When one of them subs out, they are forced to actually &ldquo;not have fun&rdquo;. The defense gets better.</p>
+
+<p>Anyway, Vivek went to MIT. This stuff is just sad. Kangz.</p>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nmknmsa" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Successful-Sky4411</div>
+        <div>37 | an hour ago </div>
+      </div>
+      <label for="nmknmsa" class="commentText"><p>Why did the kings recreate the Bulls?</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nmkqiqi" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>shualton | Warriors</div>
+        <div>18 | 42 minutes ago </div>
+      </div>
+      <label for="nmkqiqi" class="commentText"><p>“Wdym, the Bulls are 5-0! This is clearly part of the plan”</p>
+
+<p>Vivek next summer</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nmkr2ky" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Successful-Sky4411</div>
+        <div>-1 | 39 minutes ago </div>
+      </div>
+      <label for="nmkr2ky" class="commentText"><p>I lived to see the day when NBA make divisions irrelevant, I may soon see when they do the same to conferences</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="nmkpoqu" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>KarrotMovies | LAL</div>
+        <div>7 | an hour ago </div>
+      </div>
+      <label for="nmkpoqu" class="commentText"><p>They saw the annual Demar and Lavine play-in games and thought that meant Kings would be locks for the West play-in</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="nmkwmp1" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>JimChillyDogBob | Kings</div>
+        <div>1 | 10 minutes ago </div>
+      </div>
+      <label for="nmkwmp1" class="commentText"><p>They&rsquo;re nothing like us.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nmkoafx" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>woosh_yourecool | SAC</div>
+        <div>28 | an hour ago </div>
+      </div>
+      <label for="nmkoafx" class="commentText"><p>Your Westbrook fandom about to go through the ultimate test</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nmkwjad" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>LongTimesGoodTimes</div>
+        <div>1 | 10 minutes ago </div>
+      </div>
+      <label for="nmkwjad" class="commentText"><p>It&rsquo;s not fandom, it&rsquo;s blind faith that cannot be challenged. He&rsquo;s more like MAGAWestbrook in that sense</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nmkoodo" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>lovemason1</div>
+        <div>18 | an hour ago </div>
+      </div>
+      <label for="nmkoodo" class="commentText"><p>Sadly MITWestbrook is going to find out this year how little anyone cares about the Kings</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nmkpwh7" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>OverallGeneral7129 | Cavaliers</div>
+        <div>11 | an hour ago </div>
+      </div>
+      <label for="nmkpwh7" class="commentText"><p>HE SWITCHED FLAIRS LETS GOOO</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nmko228" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>lakers082433 | Lakers</div>
+        <div>7 | an hour ago </div>
+      </div>
+      <label for="nmko228" class="commentText"><p>Man the warriors really sent the kings back to the shadow realm 😂</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nmkoqcq" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>FailedAwards | Warriors</div>
+        <div>2 | an hour ago </div>
+      </div>
+      <label for="nmkoqcq" class="commentText"><p>We’re just really good at beating fraudulent high seeded teams</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nmkpx5q" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>chickenripp | Suns</div>
+        <div>5 | an hour ago </div>
+      </div>
+      <label for="nmkpx5q" class="commentText"><p>I didn&rsquo;t know they taught basketball at MIT</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nmkrc0r" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>WeAlreadyReddit | Bulls</div>
+        <div>6 | 37 minutes ago </div>
+      </div>
+      <label for="nmkrc0r" class="commentText"><p>Billy Donovan doesn&rsquo;t get enough credit for getting a top 5 defensive rating with this pairing in 2022-23.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nmktkce" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>RyouBestGirl | Japan</div>
+        <div>1 | 26 minutes ago </div>
+      </div>
+      <label for="nmktkce" class="commentText"><p>Caruso carried those two bums</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nmkwbuw" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>superman853</div>
+        <div>1 | 12 minutes ago </div>
+      </div>
+      <label for="nmkwbuw" class="commentText"><p>Healthy Lonzo helped too</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nmkq7e8" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>TuqiDuque12 | Pistons</div>
+        <div>3 | 43 minutes ago </div>
+      </div>
+      <label for="nmkq7e8" class="commentText"><p>No matter what you think about each of these individual players, any sane person would tell you that a Schroder - Lavine - Derozan - Russ - Sabonis line up is an abomination.</p>
+
+<p>Heck even just 4 of those 5 together in the same line up with a PERFECT 5th guy would be awful.</p>
+
+<p>Sabonis need athleticism and help defense + guys to play the DHO game next to him they have none</p>
+
+<p>Russ needs spacing and a switchy line up, they can&rsquo;t do that (at least he&rsquo;s a vet min guy so it&rsquo;s a bit unfair to include him but he&rsquo;s starting)</p>
+
+<p>Derozan needs spacing AND guys to protect him on defense, they don&rsquo;t have it</p>
+
+<p>Schroder is the most inexplicable signing of the offseason, both Monk and Ellis are WAY better fit next to the other players (and honestly are probably just better players)</p>
+
+<p>Lavine in theory should be a good fit next to all those guys because of his shooting and athleticism but in realilty he too wants to be on the ball way more then he should be</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nmkq93g" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>YoHoochIsCrazy | Bulls</div>
+        <div>2 | 43 minutes ago </div>
+      </div>
+      <label for="nmkq93g" class="commentText"><p>derozan has always been a guy who passes the initial eye test on D. watch him for long enough tho and you start to see he’s almost always going to be the weak point on a rotation or a close out.</p>
+
+<p>lavine has always been able to play solid defense when he wants to… but once he has it in his mind to be “the scorer” on offense, he stops caring about the little pieces of the game. which is rly a shame bc he had stretches for the bulls where he would play rly solid defense, rebound, and pass.</p>
+
+<p>what a shame that these two are together again. it does them both a disservice. zach especially, because he’s still young enough and has all the tools to be a winning player.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nmkt9gi" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>No_Pop_5719</div>
+        <div>1 | 27 minutes ago </div>
+      </div>
+      <label for="nmkt9gi" class="commentText"><p>The mentality to actually play winning basketball just isn&rsquo;t there with Lavine.</p>
+
+<p>He can&rsquo;t even bother to try being consistently average in the little parts of the game because it would &lsquo;take away&rsquo; from his scoring numbers.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nmkvbh3" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>zeek215 | Lakers</div>
+        <div>1 | 17 minutes ago </div>
+      </div>
+      <label for="nmkvbh3" class="commentText"><p>I&rsquo;ve always thought of him - perhaps unfairly - as an empty stats guy, as in he&rsquo;ll score a bunch of points on a team that&rsquo;s going no where.  Case in point, against us he scored a bunch of points, showed no defense and had zero assists.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nmkqjqc" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ontheru171 | Knicks</div>
+        <div>3 | 42 minutes ago </div>
+      </div>
+      <label for="nmkqjqc" class="commentText"><p>It&rsquo;s been 5 games.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nmkuafg" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>MITWestbrook | Kings</div>
+        <div>1 | 22 minutes ago </div>
+      </div>
+      <label for="nmkuafg" class="commentText"><p>This includes 2023-2024 season</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nmkv5yq" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>JimChillyDogBob | Kings</div>
+        <div>1 | 18 minutes ago </div>
+      </div>
+      <label for="nmkv5yq" class="commentText"><p>Welcome to Sacramento buddy. (Glad you finally changed your flair).</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nmkvb8e" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Ok-Tree4365</div>
+        <div>1 | 17 minutes ago </div>
+      </div>
+      <label for="nmkvb8e" class="commentText"><p>It would not be the worst DRTG in history because the way we talk about that stat is over the course of 82 games. I am POSITIVE pairings of players have had far worse DRTG over a 5-game span than 130</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nmktqoi" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>imperialmoose | Bulls</div>
+        <div>1 | 25 minutes ago </div>
+      </div>
+      <label for="nmktqoi" class="commentText"><p>They&rsquo;re so miserable. Between the my-turn your-turn offense and the total of 0 shits given, it&rsquo;s a wonder anyone looked at the drudgery that was the last 2 Bulls seasons and thought they should replicate it. </p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nmkw8z1" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>IrishPorpoise</div>
+        <div>1 | 12 minutes ago </div>
+      </div>
+      <label for="nmkw8z1" class="commentText"><p>lol</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nmkp275" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>GoodbyeToAWorld- | Lakers</div>
+        <div>0 | an hour ago </div>
+      </div>
+      <label for="nmkp275" class="commentText"><p>Westbrook is on the Kings now homie no one gives a shit about these posts anymore</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nmkvolu" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>JimChillyDogBob | Kings</div>
+        <div>1 | 15 minutes ago </div>
+      </div>
+      <label for="nmkvolu" class="commentText"><p>Least surprising r/nba Lakers comment.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
