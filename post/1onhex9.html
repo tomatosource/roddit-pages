@@ -1,0 +1,668 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.selfPostImage {
+  width: 100%;
+  height: auto;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/nba/comments/1onhex9/intuit_dome_tried_to_charge_me_105_for_food_i/"><p>Intuit Dome tried to charge me $105 for food I didn’t buy two days after the Clippers–Pelicans game</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <p>Went to the Clippers vs. Pelicans at Intuit Dome (great game with the buzzer beater, amazing atmosphere). The app experience that night was <em>mostly</em> fine—some minor hiccups but nothing crazy.</p>
+
+<p>Two days later I get a notification that my payment was <strong>declined</strong> for <strong>$105.84</strong>. That shocked me because I used a <strong>virtual card</strong> with &amp;lt; <span class="math inline">\(100 on it (I only use it for online purchases). I open the Intuit Dome app to see what on earth it is, and there’s an “order” with a long list of items I never touched. I only grabbed **one bottle of water (\)</span>7.50)** at the arena.</p>
+
+<p>What the app shows on the “declined” bill (screenshot attached):</p>
+
+<ul>
+<li>1 Coca-Cola — $7.50</li>
+<li>1 Bourbon Glazed Gulf Skewers — $14.50</li>
+<li><strong>2 Slow-Smoked BBQ Beef — $34.00 each</strong></li>
+<li>1 Classic Popcorn — $9.50</li>
+<li>1 Pepperoni Pizza — $16.50</li>
+<li>1 Coke Zero — $7.50</li>
+<li>1 Buncha Crunch — <span class="math inline">\(6.50 Subtotal \)</span>96.00 + Taxes <span class="math inline">\(9.84 = **\)</span>105.84**</li>
+</ul>
+
+<p>It looks like my account got linked to someone else’s order—maybe a facial recognition / AI mix-up or whatever system they’re using for checkout.</p>
+
+<p>I emailed support. The reply was basically: since the transaction was declined, there’s nothing they can do. Meanwhile, the bogus bill is still sitting in my account and the app won’t let me add funds or a new payment method; I’m worried that the moment I do, this wrong charge will go through. I just want them to <strong>revoke/remove the bill</strong> so I can use the app again.</p>
+
+<p>Has anyone else run into this at Intuit Dome? Any tips for getting a human who can actually remove the charge (team/arena/vendor contact, escalation path, etc.)? I’m happy to share the screenshot and whatever details they need. This kind of “AI convenience” is exactly what I was worried about—didn’t expect to be the unlucky test case. TL;DR below.</p>
+
+<p><strong>TL;DR:</strong> Two days after the Clippers–Pelicans game, Intuit Dome app showed a <strong>$105.84</strong> order full of food I never bought; my <strong>virtual card</strong> decline triggered it. Support said they can’t help because it was declined, but now I’m effectively locked out of adding a card because I’m afraid the bad charge will go through. Please <strong>revoke the bill</strong> and fix whatever mis-attributed my account to someone else’s order.</p>
+
+<p><a href="https://preview.redd.it/wxnwkxubq2zf1.png?width=1180&amp;format=png&amp;auto=webp&amp;s=9311caa0b1715dcbb07e5651ffb52729f8a1a196" target="_blank">https://preview.redd.it/wxnwkxubq2zf1.png?width=1180&amp;format=png&amp;auto=webp&amp;s=9311caa0b1715dcbb07e5651ffb52729f8a1a196</a></p>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nmwqpjh" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>TEAM_SGA</div>
+        <div>1 | 19 minutes ago </div>
+      </div>
+      <label for="nmwqpjh" class="commentText"><p>Is this facial recognition stuff even worth the &ldquo;convenience&rdquo;? Paying for stuff barely takes any time and being tracked like this is just creepy</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nmwrib7" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>gerardguey | Bulls</div>
+        <div>1 | 15 minutes ago </div>
+      </div>
+      <label for="nmwrib7" class="commentText"><p>this is the kind of innovation AI is bring us, new ways to experience the same problems while putting more onus onto the consumer</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="nmwrpt8" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>jcheeseball | Heat</div>
+        <div>1 | 14 minutes ago </div>
+      </div>
+      <label for="nmwrpt8" class="commentText"><p>Just wait for digital ID that gets tied in with the facial recognition then gives you a social score.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="nmwrvl9" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Delicious_Series3869 | Lakers</div>
+        <div>1 | 14 minutes ago </div>
+      </div>
+      <label for="nmwrvl9" class="commentText"><p>Nope, it never was. But companies that have invested heavily into AI need to cram it into every single service, in order to justify the costs.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nmws8k2" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Proud_Lawfulness_567</div>
+        <div>1 | 12 minutes ago </div>
+      </div>
+      <label for="nmws8k2" class="commentText"><p>Man. The bubble bursting will be terrifying..</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nmwtbce" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Ok-Salad-7799</div>
+        <div>1 | 7 minutes ago </div>
+      </div>
+      <label for="nmwtbce" class="commentText"><p>ELI5 pls</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nmwu1xq" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>driatic | Wizards</div>
+        <div>1 | 3 minutes ago </div>
+      </div>
+      <label for="nmwu1xq" class="commentText"><p>It&rsquo;s like the internet bubble.</p>
+
+<p>People and companies poured money into it until they realized some thing had no value.</p>
+
+<p>AI has some value but not the kind of monetary investment some companies have made. Its just a matter of time before that bubble bursts too.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="nmwtpf9" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>yayspurs | Spurs</div>
+        <div>1 | 5 minutes ago </div>
+      </div>
+      <label for="nmwtpf9" class="commentText"><p>Spurs put in new self serve equipment last year and everything takes waaaaaaaay longer now. People are confused how they work. The scanners don’t read items fast and two attendants have to stand there to help with machines anyway. Awful all around.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nmwqogl" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>nezaposlen</div>
+        <div>1 | 19 minutes ago </div>
+      </div>
+      <label for="nmwqogl" class="commentText"><p>poor steve ballmer needs to extort money from fans to give more to players under the table</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nmwqvra" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ManOnFire26</div>
+        <div>1 | 18 minutes ago </div>
+      </div>
+      <label for="nmwqvra" class="commentText"><p>$7.50 for water is fucking insane, even Nestle would find that shameless</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nmwsvvd" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Proud_Lawfulness_567</div>
+        <div>1 | 9 minutes ago </div>
+      </div>
+      <label for="nmwsvvd" class="commentText"><p>The same Nestle that asked its sales person to dress up as Nurses and visit Hospitals in developing countries to promote formula ?</p>
+
+<p>Intuit dome is bad but Nestle is something else.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nmwqpxz" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>NYCSportsFan</div>
+        <div>1 | 19 minutes ago </div>
+      </div>
+      <label for="nmwqpxz" class="commentText"><p>They need to pay Kawhi lol</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nmwsbbl" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Odd_Firefighter_5407</div>
+        <div>1 | 12 minutes ago </div>
+      </div>
+      <label for="nmwsbbl" class="commentText"><p>Go to the Arena again during business hours and ask to speak to a customer service representative</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nmwrup5" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>grandmasterfunk | Rockets</div>
+        <div>1 | 14 minutes ago </div>
+      </div>
+      <label for="nmwrup5" class="commentText"><p>Feels like it&rsquo;d be better to post this on the Clippers sub or /r/LosAngeles</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nmwsdt5" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>GHGBrothers</div>
+        <div>1 | 11 minutes ago </div>
+      </div>
+      <label for="nmwsdt5" class="commentText"><p>Thanks—tried r/LAClippers but my new account can’t post yet (looks like karma restrictions).</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nmws1e1" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Dangerous-Return-802</div>
+        <div>1 | 13 minutes ago </div>
+      </div>
+      <label for="nmws1e1" class="commentText"><p>It&rsquo;s so strange going to a Clippers game. I live a couple hours away so I went to 3 last year. You are forced track your bio metrics and face ID to enter stores. It&rsquo;s ripe for random people to get charged if you&rsquo;re standing nearby a machine.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nmwrz89" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>t3h_KiNgKoNg</div>
+        <div>1 | 13 minutes ago </div>
+      </div>
+      <label for="nmwrz89" class="commentText"><p>If you&rsquo;ll add funds you&rsquo;ll pay for this, 100%. Don&rsquo;t.</p>
+
+<p>Also, 7.50$ for a bottle of water? Is this even legal?</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nmwu4ci" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>lambopanda | Rockets</div>
+        <div>1 | 3 minutes ago </div>
+      </div>
+      <label for="nmwu4ci" class="commentText"><p>Is that how it work? Isn’t decline means decline? That means this transaction is invalid. Why is OP still paying it?</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nmwtceg" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>wholewheatwithPB | Knicks</div>
+        <div>1 | 7 minutes ago </div>
+      </div>
+      <label for="nmwtceg" class="commentText"><p>Get Pablo on it he’ll chase it down</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nmwrscp" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Obvious_Parsley3238</div>
+        <div>1 | 14 minutes ago </div>
+      </div>
+      <label for="nmwrscp" class="commentText"><p>Do you bear a resemblance to Zion?</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nmwtu7g" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>MeMeRevieweR_23 | West</div>
+        <div>1 | 4 minutes ago </div>
+      </div>
+      <label for="nmwtu7g" class="commentText"><p>They probably needed it to pay Kawhi next month</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nmwu06y" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Focused_Sky</div>
+        <div>1 | 4 minutes ago </div>
+      </div>
+      <label for="nmwu06y" class="commentText"><p>Is this an AI post? Seems like it</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nmwu1od" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>SurpriseDonovanMcnab | Pistons</div>
+        <div>1 | 3 minutes ago </div>
+      </div>
+      <label for="nmwu1od" class="commentText"><p>You just became an investor in Aspiration.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
