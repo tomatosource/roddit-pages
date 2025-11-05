@@ -1,0 +1,871 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.selfPostImage {
+  width: 100%;
+  height: auto;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/nba/comments/1opd1wu/so_far_this_season_the_los_angeles_lakers_have_a/"><p>So far this season the Los Angeles Lakers have a +48.9 net rating when Luka Doncic, Austin Reaves, and Bronny James share the court</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <table>
+<thead>
+<tr>
+<th align="left"><strong>Players On</strong></th>
+<th align="left"><strong>Players Off</strong></th>
+<th align="left"><strong>Minutes</strong></th>
+<th align="left"><strong>NetRtg</strong></th>
+<th align="left"><strong>OffRtg</strong></th>
+<th align="left"><strong>DefRtg</strong></th>
+<th align="left"><strong>2pt FG%</strong></th>
+<th align="left"><strong>3pt FG%</strong></th>
+<th align="left"><strong>Opp. 2pt FG%</strong></th>
+<th align="left"><strong>Opp. 3pt FG%</strong></th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">Austin Reaves</td>
+<td align="left">Luka Dončić, Bronny James</td>
+<td align="left">136</td>
+<td align="left">6.74</td>
+<td align="left">119.72</td>
+<td align="left">112.98</td>
+<td align="left">61.45%</td>
+<td align="left">29.73%</td>
+<td align="left">51.28%</td>
+<td align="left">38.61%</td>
+</tr>
+
+<tr>
+<td align="left">Luka Dončić, Austin Reaves</td>
+<td align="left">Bronny James</td>
+<td align="left">103</td>
+<td align="left">3.73</td>
+<td align="left">126.92</td>
+<td align="left">123.19</td>
+<td align="left">71.88%</td>
+<td align="left">32.91%</td>
+<td align="left">61.70%</td>
+<td align="left">38.37%</td>
+</tr>
+
+<tr>
+<td align="left">Luka Dončić, Austin Reaves, Bronny James</td>
+<td align="left">45</td>
+<td align="left">-7.86</td>
+<td align="left">107.14</td>
+<td align="left">115.00</td>
+<td align="left">60.00%</td>
+<td align="left">34.78%</td>
+<td align="left">65.96%</td>
+<td align="left">22.73%</td>
+<td align="left"></td>
+</tr>
+
+<tr>
+<td align="left">Luka Dončić</td>
+<td align="left">Austin Reaves, Bronny James</td>
+<td align="left">36</td>
+<td align="left">5.70</td>
+<td align="left">122.37</td>
+<td align="left">116.67</td>
+<td align="left">76.67%</td>
+<td align="left">39.29%</td>
+<td align="left">47.22%</td>
+<td align="left">36.36%</td>
+</tr>
+
+<tr>
+<td align="left">Bronny James</td>
+<td align="left">Luka Dončić, Austin Reaves</td>
+<td align="left">33</td>
+<td align="left">-26.15</td>
+<td align="left">96.92</td>
+<td align="left">123.08</td>
+<td align="left">55.88%</td>
+<td align="left">27.78%</td>
+<td align="left">65.71%</td>
+<td align="left">33.33%</td>
+</tr>
+
+<tr>
+<td align="left">Austin Reaves, Bronny James</td>
+<td align="left">Luka Dončić</td>
+<td align="left">18</td>
+<td align="left">27.27</td>
+<td align="left">127.27</td>
+<td align="left">100.00</td>
+<td align="left">70.59%</td>
+<td align="left">31.25%</td>
+<td align="left">50.00%</td>
+<td align="left">31.25%</td>
+</tr>
+
+<tr>
+<td align="left" colspan="2">Luka Dončić, Austin Reaves, Bronny James</td>
+<td align="left">8</td>
+<td align="left">48.90</td>
+<td align="left">131.25</td>
+<td align="left">82.35</td>
+<td align="left">85.71%</td>
+<td align="left">30.00%</td>
+<td align="left">42.86%</td>
+<td align="left">28.57%</td>
+</tr>
+
+<tr>
+<td align="left">Luka Dončić, Bronny James</td>
+<td align="left">Austin Reaves</td>
+<td align="left">6</td>
+<td align="left">-12.64</td>
+<td align="left">123.08</td>
+<td align="left">135.71</td>
+<td align="left">50.00%</td>
+<td align="left">42.86%</td>
+<td align="left">100.00%</td>
+<td align="left">0.00%</td>
+</tr>
+</tbody>
+</table>
+<p>Source: <a href="https://www.pbpstats.com/wowy-combos/nba?TeamId=1610612747&amp;Season=2025-26&amp;SeasonType=Regular%2BSeason&amp;PlayerIds=1629029,1630559,1642355" target="_blank">https://www.pbpstats.com/wowy-combos/nba?TeamId=1610612747&amp;Season=2025-26&amp;SeasonType=Regular%2BSeason&amp;PlayerIds=1629029,1630559,1642355</a></p>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nnaminm" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Splittinghairs7 | Gran Destino</div>
+        <div>78 | 39 minutes ago </div>
+      </div>
+      <label for="nnaminm" class="commentText"><p>Quick it’s still not too late to create an account called MIT_Bronny</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nnamozr" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>doomrider2 | Lakers</div>
+        <div>50 | 38 minutes ago </div>
+      </div>
+      <label for="nnamozr" class="commentText"><p>Isn&rsquo;t it kinda obvious? Great players like Jokic,  SGA, Bronny and Giannis lead their team to greatness.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nnarrwc" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>-Tazriel | Nuggets</div>
+        <div>1 | 13 minutes ago </div>
+      </div>
+      <label for="nnarrwc" class="commentText"><p>Bronny is a great floor raiser, since it’s closer to him than most NBA guards.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nnasi1z" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>baabaabilly | Lakers</div>
+        <div>1 | 10 minutes ago </div>
+      </div>
+      <label for="nnasi1z" class="commentText"><p>Doubles as a height joke</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nnanlaj" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>SUPERSAMMICH6996 | Cavaliers</div>
+        <div>20 | 34 minutes ago </div>
+      </div>
+      <label for="nnanlaj" class="commentText"><p>This post has been up longer than they&rsquo;ve played together.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nnaljd4" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>FailedAwards | Warriors</div>
+        <div>13 | 44 minutes ago </div>
+      </div>
+      <label for="nnaljd4" class="commentText"><p>What the Bronny is carrying trade Luka and Austin away for picks</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nnam97x" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>National-Fold-2375 | United States</div>
+        <div>9 | 40 minutes ago </div>
+      </div>
+      <label for="nnam97x" class="commentText"><p>This sounds like an MITBronny post ngl from the title looool</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nnaos1c" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Afraid-Department-35 | Mavericks</div>
+        <div>1 | 28 minutes ago </div>
+      </div>
+      <label for="nnaos1c" class="commentText"><p>If not OP I’m sure there is a laker fan that’s gunna go full MITBronny at some point.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nnan4cw" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>StayBest5715 | Spurs</div>
+        <div>7 | 36 minutes ago </div>
+      </div>
+      <label for="nnan4cw" class="commentText"><p>soooo basically bronny the next goat</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nnan181" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>PalePilsenDiet | Warriors</div>
+        <div>5 | 36 minutes ago </div>
+      </div>
+      <label for="nnan181" class="commentText"><p>Goat</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nnalxxg" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>zyrumtumtugger | Clippers</div>
+        <div>4 | 42 minutes ago </div>
+      </div>
+      <label for="nnalxxg" class="commentText"><p>Eight minutes. </p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nnalr29" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ChunkyMilkSubstance | Lakers</div>
+        <div>3 | 43 minutes ago </div>
+      </div>
+      <label for="nnalr29" class="commentText"><p>Well obviously</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nnasn1z" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>aws90js</div>
+        <div>1 | 9 minutes ago </div>
+      </div>
+      <label for="nnasn1z" class="commentText"><p>We have a grapist in Lincoln Park</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nnaookx" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>EatingButt4eva</div>
+        <div>1 | 29 minutes ago </div>
+      </div>
+      <label for="nnaookx" class="commentText"><p>Greatest big 3 of all time</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nnaoqth" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>No_Self_9267</div>
+        <div>1 | 28 minutes ago </div>
+      </div>
+      <label for="nnaoqth" class="commentText"><p>Huge sample size too. 8 minutes is really all we need to tell how good someone is</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nnase4b" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>SereneKoala | Lakers</div>
+        <div>1 | 10 minutes ago </div>
+      </div>
+      <label for="nnase4b" class="commentText"><p>People troll here but Bronny has been legitimately a great defender and JJ has been putting him in to play good minutes in the 4th.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nnam282" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>heat_fan_ | Raptors</div>
+        <div>1 | 41 minutes ago </div>
+      </div>
+      <label for="nnam282" class="commentText"><p>He&rsquo;s son of the goat duh </p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nnand6b" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Atl-Fan_FTS | Hawks</div>
+        <div>1 | 35 minutes ago </div>
+      </div>
+      <label for="nnand6b" class="commentText"><p>Where have we seen this before…</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nnany4c" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>NotBigBalls69</div>
+        <div>1 | 32 minutes ago </div>
+      </div>
+      <label for="nnany4c" class="commentText"><p>MIT_Bronny has emerged. Keep it up bro. I honestly miss MIT_Westbrook personally</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nnao2uz" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>NonSpicySamosa | Lakers</div>
+        <div>1 | 31 minutes ago </div>
+      </div>
+      <label for="nnao2uz" class="commentText"><p>Ah yes. The big three of Austin Reaves, Luka, and LeBron James.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nnaoou6" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>dlanod | Slovenia</div>
+        <div>1 | 29 minutes ago </div>
+      </div>
+      <label for="nnaoou6" class="commentText"><p>&ldquo;No, not that one. The good one.&rdquo;</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nnaqtl1" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>homerdonutduffdonut</div>
+        <div>1 | 18 minutes ago </div>
+      </div>
+      <label for="nnaqtl1" class="commentText"><p>Nothing without beautiful nepotism</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nnat9c7" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>bigbadbernard | LAL</div>
+        <div>1 | 6 minutes ago </div>
+      </div>
+      <label for="nnat9c7" class="commentText"><p>Greatest 55th pick of all time</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nnatp4a" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>CliffDraws | Thunder</div>
+        <div>1 | 4 minutes ago </div>
+      </div>
+      <label for="nnatp4a" class="commentText"><p>8 minutes, lol</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nnattpi" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Shmokeshbutt | Magic</div>
+        <div>1 | 4 minutes ago </div>
+      </div>
+      <label for="nnattpi" class="commentText"><p>The new Big 3</p>
+
+<p>Trade that old bum Lebron away for picks and bench players</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nnaly3l" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>tinybathroomfaucet | Supersonics</div>
+        <div>-1 | 42 minutes ago </div>
+      </div>
+      <label for="nnaly3l" class="commentText"><p>…. In 8 minutes. Small sample. Talk to us again in a month</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nnam40f" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>SebastianC1</div>
+        <div>-1 | 41 minutes ago </div>
+      </div>
+      <label for="nnam40f" class="commentText"><p>It’s 8 fucking minute a</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nnaohok" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>jfrodriguez1983 | Mavericks</div>
+        <div>1 | 29 minutes ago </div>
+      </div>
+      <label for="nnaohok" class="commentText"><p>8 minutes, man. C&rsquo;mon!</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nnaop2q" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>lakers082433 | Lakers</div>
+        <div>1 | 28 minutes ago </div>
+      </div>
+      <label for="nnaop2q" class="commentText"><p>8 minutes is a lifetime in certain scenarios my friend. 🥂</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
