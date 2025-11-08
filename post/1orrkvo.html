@@ -224,7 +224,7 @@ body > .commentList {
     <div class="comment">
       <div class="commentHeader">
         <div>Bxk__</div>
-        <div>1 | 16 minutes ago </div>
+        <div>4 | an hour ago </div>
       </div>
       <label for="nnry2zv" class="commentText"><p>Well I can tell you why Razed Fields sucks and it&rsquo;s because of all of the grass and the collision physics.  Usually rendering an outdoors type scene is gonna require more elbow grease because more little doodads.  Indoors, narrow hallway for example, the majority of your screen might just be devoid of anything.  Water is generally intensive, and sometimes that layer is just slapped under everything and even though it&rsquo;s occluded it&rsquo;s still sometimes rendered</p>
 </label>
@@ -242,12 +242,84 @@ body > .commentList {
     <div class="comment">
       <div class="commentHeader">
         <div>PotetoFries</div>
-        <div>1 | 7 minutes ago </div>
+        <div>2 | an hour ago </div>
       </div>
       <label for="nnrznuo" class="commentText"><p>I wish I could give a technical reasoning, but all I know from my long history of playing poe 1 is that GGG always have had this issue. Its a fundamental problem with how they develop. Their strategy is semengly &ldquo;make whatever with no limitations&rdquo; then later when problem occur fix them. Most gaming studieos focus on this during development not after. There is such an abnormly high varience in performence from build to build, map to map its wild. I havent seen any other game have such a varience except maybe physics simulators.</p>
 </label>
     </div>
   </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nns13mn" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>REVATOR</div>
+        <div>3 | an hour ago </div>
+      </div>
+      <label for="nns13mn" class="commentText"><p>I&rsquo;ll try to explain:<br>
+The major culprits are: lighting, particles/VFX, and alpha textures.</p>
+
+<p>3D Models in games are made up of triangles which are then unfolded (similar to the santa wrapping on chocolate santas). Then a texture gets applied.<br>
+The more triangles you have on screen the worse it gets for performance. Hence you need to find some way to omit having many of them.<br>
+Here is where alpha cutout textures come into play - instead of modeling an entire wheat straw which would probably be upwards of 30 tris (note you don&rsquo;t have a single wheat straw, you have 1000s, if not 10000s on screen at the same time) - you apply a texture that has an alpha channel telling the renderer where there are pixels and where there aren&rsquo;t.<br>
+Hence you can get a lot of detail from texture at the small cost of 2 triangles making a square on which the alpha texture can be projected.</p>
+
+<p>Now, the issues of razed fields being unperformant is the following - you have 100s if not 1000s of planes that all overlap each other, and then the renderer needs to figure out which pixels to render and which not. Imagine 3 planes in front of each other slightly shifted though. The renderer now needs to look at which pixels to render on the first plane, then figure out if the second plane is partly overlapping with the first plane, etc. This is quite costly in terms of rendering.</p>
+
+<p>Now not only do these planes display the wheat texture, they also have to be affected by lighting, vfx, particles, etc. This all doesn&rsquo;t happen on Assembly. Assembly is next to 0 alpha textures (I believe the red lines on the floor have alpha textures on them). Hence the performance solely depends on lighting &amp; particles/VFX but next to no alpha textures.</p>
+
+<p>Hope this helps understand it somewhat! :)</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nns1mv9" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>REVATOR</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="nns1mv9" class="commentText"><p>to add: there isn&rsquo;t much that GGG can do either way, other than removing the map. Hardware just isn&rsquo;t cut out for what GGG is aiming for art direction wise. I for one much appreciate the artistic vision they have now, futureproofing the realistic look of it, for when hardware can actually render that stuff easily.</p>
+
+<p>Looking at the last decade of games there hasn&rsquo;t been much of a giant leap in visuals imo. Hence futureproofing your visuals means you can play this game in 10 years time without it looking like poe1 does to us now.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nns2hp7" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>TronCarterAA</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="nns2hp7" class="commentText"><p>Dialing down the particle effects and I guess what you&rsquo;d call the vividness of certain things like the ground effects, abyss, and delirium fog seems like it would be the play, but I&rsquo;m not a game dev. Endgame builds spamming shit all over the screen is probably the biggest culprit. D4 had the issue with lightning spear killing performance in season 5 and remedied it.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
   
 </div>
 
