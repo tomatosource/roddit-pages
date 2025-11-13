@@ -1,0 +1,648 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.selfPostImage {
+  width: 100%;
+  height: auto;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/baseball/comments/1ow7ing/which_players_have_been_traded_for_the_most_war/"><p>Which players have been traded for the most WAR over their careers?</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <p>Jesse Chavez retired earlier this year and it got me thinking about all the players he was traded for over his career. Jesse only accumulated 6.4 career bWAR, but he was traded for 10 players over that time (according to Baseball Reference). I got to wondering how much total bWAR those players were worth. I&rsquo;ve decided to call the sum of these players&rsquo; WAR, TradeWAR or tWAR.</p>
+
+<p>&amp;nbsp;</p>
+
+<p>I&rsquo;ve broken down Jesse&rsquo;s numbers below. The &ldquo;Trade Pieces&rdquo; column lists the number of players Jesse was a part of as part of the trade. For example, Jesse Chavez was traded with Tucker Davidson for Raisel Iglesias. So, the number of trade pieces is 2, and Raisel&rsquo;s 18.60 bWAR is divided by two for a tWAR of 9.30.</p>
+
+<table>
+<thead>
+<tr>
+<th align="center">Player</th>
+<th align="center">Trade Pieces</th>
+<th align="center">bWAR</th>
+<th align="center">TradeWAR</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="center">Kip Wells</td>
+<td align="center">1</td>
+<td align="center">8.000</td>
+<td align="center">8.000</td>
+</tr>
+
+<tr>
+<td align="center">Akinori Iwamura</td>
+<td align="center">1</td>
+<td align="center">4.5</td>
+<td align="center">4.5</td>
+</tr>
+
+<tr>
+<td align="center">Rafael Soriani</td>
+<td align="center">1</td>
+<td align="center">13.800</td>
+<td align="center">13.800</td>
+</tr>
+
+<tr>
+<td align="center">Rick Ankiel</td>
+<td align="center">3</td>
+<td align="center">9.100</td>
+<td align="center">3.033</td>
+</tr>
+
+<tr>
+<td align="center">Kyle Farnsworth</td>
+<td align="center">3</td>
+<td align="center">6.200</td>
+<td align="center">2.067</td>
+</tr>
+
+<tr>
+<td align="center">Liam Hendricks</td>
+<td align="center">1</td>
+<td align="center">9.000</td>
+<td align="center">9.000</td>
+</tr>
+
+<tr>
+<td align="center">Mike Bolsinger</td>
+<td align="center">1</td>
+<td align="center">-1.300</td>
+<td align="center">-1.300</td>
+</tr>
+
+<tr>
+<td align="center">Tyler Thomas</td>
+<td align="center">1</td>
+<td align="center">0.000</td>
+<td align="center">0.000</td>
+</tr>
+
+<tr>
+<td align="center">Sean Newcomb</td>
+<td align="center">1</td>
+<td align="center">4.000</td>
+<td align="center">4.000</td>
+</tr>
+
+<tr>
+<td align="center">Raisel Iglesias</td>
+<td align="center">2</td>
+<td align="center">18.600</td>
+<td align="center">9.300</td>
+</tr>
+</tbody>
+</table>
+<p>As can be seen in the table above, Jesse Chavez has been traded for 52.4 tWAR. This is a full 46 WAR, or one Thurman Munson, more than Jesse&rsquo;s career bWAR.</p>
+
+<p>&amp;nbsp;</p>
+
+<p>What other players might have a significant amount of TradeWAR? They don&rsquo;t even need to have been traded that many times. Just need to have been traded once for the right player. Charlie Chech, for instance, gets 81.8 tWAR just for having been one of two players traded for Cy Young.</p>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="noo1gy6" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>BaseballsNotDead | Seattle Pilots</div>
+        <div>18 | 43 minutes ago </div>
+      </div>
+      <label for="noo1gy6" class="commentText"><p>The winner is $100,000. Traded straight up for Babe Ruth.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="noo6wr8" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>onhalfaheart | Chicago Cubs</div>
+        <div>6 | 16 minutes ago </div>
+      </div>
+      <label for="noo6wr8" class="commentText"><p>I believe his real name is Cash Considerations.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="noo0rzk" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>noruber35393546</div>
+        <div>11 | an hour ago </div>
+      </div>
+      <label for="noo0rzk" class="commentText"><p>Jeff Bagwell has to be up there.  Traded for 22 innings of Larry Andersen and the Astros got his entire career</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="noo12z8" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>BaseballsNotDead | Seattle Pilots</div>
+        <div>11 | 44 minutes ago </div>
+      </div>
+      <label for="noo12z8" class="commentText"><p>Iván de Jesús was traded straight up for Ryne Sandberg (68.0 bWAR) and Larry Bowa (22.8 bWAR).</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="noo1791" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>texoha | Philadelphia Phillies</div>
+        <div>6 | 44 minutes ago </div>
+      </div>
+      <label for="noo1791" class="commentText"><p>Yeah this was the first that came to mind for me too, maybe the worst trade of all time</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="noo4yns" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>DamionMauville | Atlanta Braves</div>
+        <div>1 | 26 minutes ago </div>
+      </div>
+      <label for="noo4yns" class="commentText"><p>Definitely a good one.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="noo7u0d" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>onhalfaheart | Chicago Cubs</div>
+        <div>1 | 12 minutes ago </div>
+      </div>
+      <label for="noo7u0d" class="commentText"><p>But do we care about career WAR or WAR with the team that acquired them? Bowa&rsquo;s WAR with the Cubs was around 1.0 or 1.5.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="noo1qw0" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Sensitive_Caramel856 | Toronto Blue Jays</div>
+        <div>5 | 41 minutes ago </div>
+      </div>
+      <label for="noo1qw0" class="commentText"><p>I&rsquo;d imagine Glenn Davis is up there if we&rsquo;re talking WAR the players accumulated after the trade.</p>
+
+<p>Finley 43.5</p>
+
+<p>Schilling 80.2</p>
+
+<p>Harnisch 17.3</p>
+
+<p>That&rsquo;s 141 WAR.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="noo64tq" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>DamionMauville | Atlanta Braves</div>
+        <div>1 | 20 minutes ago </div>
+      </div>
+      <label for="noo64tq" class="commentText"><p>For simplicity&rsquo;s sake, I was counting all career WAR, both before and after the trade. So Glenn Davis could definitely be a contender.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="noo25cn" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>pspahn | Sell</div>
+        <div>4 | 39 minutes ago </div>
+      </div>
+      <label for="noo25cn" class="commentText"><p>Rick Wise was traded for Steve Carlton, Reggie Smith, and Dennis Eckersley. That&rsquo;s like 140 bWAR or some shit.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="noo2df0" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>pcksprts</div>
+        <div>5 | 38 minutes ago </div>
+      </div>
+      <label for="noo2df0" class="commentText"><p>Juan Soto, perhaps?</p>
+
+<p>He’s clearly going to be more valuable than the sum of his parts, but he’s been traded for using Mackenzie Gore (5.6), CJ Abrams (10.1), James Wood (4.8), Luke Voit (0.1), Michael King (who I’m struggling to calculate) and the value is still collecting in most of these players. That’s 20.6 worth of WAR plus whatever Kings total sum is, before the total amount to be attained is even calculated.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="noo36du" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>PhilDiggety | Oakland Athletics</div>
+        <div>3 | 34 minutes ago </div>
+      </div>
+      <label for="noo36du" class="commentText"><p>Eric Plunk was traded for Rickey Henderson twice - is that 222.4 WAR right there?</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="noo4l2w" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>DamionMauville | Atlanta Braves</div>
+        <div>1 | 27 minutes ago </div>
+      </div>
+      <label for="noo4l2w" class="commentText"><p>Unfortunately, he was traded with four other players the first time and two other players the second. So Rickey&rsquo;s WAR gets pretty significantly diluted and Plunk only ends up with 59.25 career tWAR. Which isn&rsquo;t nothing, but definitely less than if it had been a one-to-one trade.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="noo36r6" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Rock_man_bears_fan | Chicago White Sox</div>
+        <div>2 | 34 minutes ago </div>
+      </div>
+      <label for="noo36r6" class="commentText"><p>That play the Red Sox owner wanted to finance with the money he got for Babe Ruth</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="noo5nc2" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Impressive-Newt5587 | Minnesota Twins</div>
+        <div>3 | 22 minutes ago </div>
+      </div>
+      <label for="noo5nc2" class="commentText"><p>I know its not the same thing, but this makes me think of the Rays and the Delmon Young trade tree that ia still going. Glad somebody has kept track for us- delmonyoungtradetree.com</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="noo67xa" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>carvinmandle</div>
+        <div>2 | 19 minutes ago </div>
+      </div>
+      <label for="noo67xa" class="commentText"><p>I&rsquo;d be interested to see a deeper dive on this where you look at the WAR each team accumulated by trading a player, not just career totals. So for example, in the Jesse Chavez for Kip Wells trade, the Rangers only actually got -0.1 WAR out of the trade, as Wells only played for the Rangers for a couple games in 2006 before leaving in free agency. Meanwhile in the Soriano trade, the Rays actually accumulated 2.1 WAR from Soriano in the time they had him. I feel like this would potentially be a more interesting statistic: how much actual value did teams accumulate by using X player as a trade chip.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="noo6hkh" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>DamionMauville | Atlanta Braves</div>
+        <div>2 | 18 minutes ago </div>
+      </div>
+      <label for="noo6hkh" class="commentText"><p>I definitely agree that it would paint a more interesting picture! I just wanted to keep it simple. But I&rsquo;d absolutely also be interested in seeing that.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="noo79cu" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>carvinmandle</div>
+        <div>2 | 14 minutes ago </div>
+      </div>
+      <label for="noo79cu" class="commentText"><p>Oh yeah for sure! It&rsquo;s a good thought exercise as is, I just started going down a rabbit hole there&ndash;the way I suggested feels like it would take ages to sus out season-by-season stats and transactions anyway lol.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
