@@ -1,0 +1,768 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.selfPostImage {
+  width: 100%;
+  height: auto;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/baseball/comments/1p6o7es/2025_is_the_first_mlb_season_in_the_pitchtracking/"><p>2025 is the first MLB season in the pitch-tracking era (Since 2008) that every team had a pitcher record a pitch of at least 100 MPH</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <table>
+<thead>
+<tr>
+<th align="right">Rank</th>
+<th align="left">Team</th>
+<th align="left">Pitcher</th>
+<th align="right">Velocity</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="right">1</td>
+<td align="left">SD</td>
+<td align="left">Mason Miller</td>
+<td align="right">104.2</td>
+</tr>
+
+<tr>
+<td align="right">2</td>
+<td align="left">ATH</td>
+<td align="left">Mason Miller</td>
+<td align="right">104.1</td>
+</tr>
+
+<tr>
+<td align="right">3</td>
+<td align="left">NYM</td>
+<td align="left">Ryan Helsley</td>
+<td align="right">103.8</td>
+</tr>
+
+<tr>
+<td align="right">4</td>
+<td align="left">BOS</td>
+<td align="left">Aroldis Chapman</td>
+<td align="right">103.8</td>
+</tr>
+
+<tr>
+<td align="right">5</td>
+<td align="left">STL</td>
+<td align="left">Ryan Helsley</td>
+<td align="right">103.4</td>
+</tr>
+
+<tr>
+<td align="right">6</td>
+<td align="left">COL</td>
+<td align="left">Seth Halvorsen</td>
+<td align="right">103.3</td>
+</tr>
+
+<tr>
+<td align="right">7</td>
+<td align="left">LAD</td>
+<td align="left">Edgardo Henriquez</td>
+<td align="right">103.3</td>
+</tr>
+
+<tr>
+<td align="right">8</td>
+<td align="left">PHI</td>
+<td align="left">Jhoan Duran</td>
+<td align="right">103.3</td>
+</tr>
+
+<tr>
+<td align="right">9</td>
+<td align="left">LAA</td>
+<td align="left">Ben Joyce</td>
+<td align="right">103.2</td>
+</tr>
+
+<tr>
+<td align="right">10</td>
+<td align="left">MIN</td>
+<td align="left">Jhoan Duran</td>
+<td align="right">102.7</td>
+</tr>
+
+<tr>
+<td align="right">11</td>
+<td align="left">DET</td>
+<td align="left">Tarik Skubal</td>
+<td align="right">102.6</td>
+</tr>
+
+<tr>
+<td align="right">12</td>
+<td align="left">MIL</td>
+<td align="left">Jacob Misiorowski</td>
+<td align="right">102.6</td>
+</tr>
+
+<tr>
+<td align="right">13</td>
+<td align="left">CHC</td>
+<td align="left">Daniel Palencia</td>
+<td align="right">102.5</td>
+</tr>
+
+<tr>
+<td align="right">14</td>
+<td align="left">AZ</td>
+<td align="left">Justin Martinez</td>
+<td align="right">102.4</td>
+</tr>
+
+<tr>
+<td align="right">15</td>
+<td align="left">CIN</td>
+<td align="left">Hunter Greene</td>
+<td align="right">102.2</td>
+</tr>
+
+<tr>
+<td align="right">16</td>
+<td align="left">CWS</td>
+<td align="left">Grant Taylor</td>
+<td align="right">102.2</td>
+</tr>
+
+<tr>
+<td align="right">17</td>
+<td align="left">TB</td>
+<td align="left">Mason Montgomery</td>
+<td align="right">102.2</td>
+</tr>
+
+<tr>
+<td align="right">18</td>
+<td align="left">SF</td>
+<td align="left">Joel Peguero</td>
+<td align="right">102.1</td>
+</tr>
+
+<tr>
+<td align="right">19</td>
+<td align="left">CLE</td>
+<td align="left">Emmanuel Clase</td>
+<td align="right">102.0</td>
+</tr>
+
+<tr>
+<td align="right">20</td>
+<td align="left">MIA</td>
+<td align="left">Eury Pérez</td>
+<td align="right">101.5</td>
+</tr>
+
+<tr>
+<td align="right">21</td>
+<td align="left">KC</td>
+<td align="left">Steven Cruz</td>
+<td align="right">101.3</td>
+</tr>
+
+<tr>
+<td align="right">22</td>
+<td align="left">SEA</td>
+<td align="left">Andrés Muñoz</td>
+<td align="right">101.3</td>
+</tr>
+
+<tr>
+<td align="right">23</td>
+<td align="left">NYY</td>
+<td align="left">Camilo Doval</td>
+<td align="right">101.2</td>
+</tr>
+
+<tr>
+<td align="right">24</td>
+<td align="left">PIT</td>
+<td align="left">Bubba Chandler</td>
+<td align="right">100.9</td>
+</tr>
+
+<tr>
+<td align="right">25</td>
+<td align="left">WSH</td>
+<td align="left">Jose A. Ferrer</td>
+<td align="right">100.7</td>
+</tr>
+
+<tr>
+<td align="right">26</td>
+<td align="left">ATL</td>
+<td align="left">Daysbel Hernández</td>
+<td align="right">100.6</td>
+</tr>
+
+<tr>
+<td align="right">27</td>
+<td align="left">TEX</td>
+<td align="left">Jack Leiter</td>
+<td align="right">100.5</td>
+</tr>
+
+<tr>
+<td align="right">28</td>
+<td align="left">HOU</td>
+<td align="left">Bryan Abreu</td>
+<td align="right">100.5</td>
+</tr>
+
+<tr>
+<td align="right">29</td>
+<td align="left">TOR</td>
+<td align="left">Louis Varland</td>
+<td align="right">100.3</td>
+</tr>
+
+<tr>
+<td align="right">30</td>
+<td align="left">BAL</td>
+<td align="left">Seranthony Domínguez</td>
+<td align="right">100.1</td>
+</tr>
+</tbody>
+</table>
+<p>It is also almost certainly the first time in MLB history that this feat was accomplished</p>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nqroi3m" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Lucky_Alternative965 | Los Angeles Dodgers</div>
+        <div>22 | 32 minutes ago </div>
+      </div>
+      <label for="nqroi3m" class="commentText"><p>102 is the new 100. It&rsquo;s really just not that impressive or eye popping to see 100 anymore, as crazy as it is to say.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nqrpnx8" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>97jordan | Los Angeles Dodgers</div>
+        <div>13 | 27 minutes ago </div>
+      </div>
+      <label for="nqrpnx8" class="commentText"><p>It still is just as arm popping though.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="nqrtpxw" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>cooljammer00 | New York Yankees</div>
+        <div>2 | 7 minutes ago </div>
+      </div>
+      <label for="nqrtpxw" class="commentText"><p>And yet the TV graphic still has the flames come up when they throw like, 95MPH</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nqrr3r8" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>sicsemperyanks</div>
+        <div>8 | 20 minutes ago </div>
+      </div>
+      <label for="nqrr3r8" class="commentText"><p>What are you even supposed to do with a 104 mph pitch?</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nqrshg7" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>DetectiveTrickyCad | San Francisco Giants</div>
+        <div>11 | 13 minutes ago </div>
+      </div>
+      <label for="nqrshg7" class="commentText"><p>Wait for ball four and express condolences for their next TJ stint.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="nqrsr31" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Charming_Squirrel_13</div>
+        <div>1 | 12 minutes ago </div>
+      </div>
+      <label for="nqrsr31" class="commentText"><p>get your swing started early and hope you guessed right.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="nqrstic" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>zgibs125 | Arizona Diamondbacks</div>
+        <div>1 | 11 minutes ago </div>
+      </div>
+      <label for="nqrstic" class="commentText"><p><a href="https://youtu.be/QDRhOvPteT4?si=QS_roKiIVy6u9NO1" target="_blank">Hit a home run, duh.</a></p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nqrql47" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Drummallumin | New York Mets</div>
+        <div>5 | 22 minutes ago </div>
+      </div>
+      <label for="nqrql47" class="commentText"><p>I’m honestly surprised it hadn’t been done before</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nqronqk" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>DarkRoastRebel</div>
+        <div>4 | 32 minutes ago </div>
+      </div>
+      <label for="nqronqk" class="commentText"><p>They&rsquo;re really getting serious about this whole &ldquo;speed up the game&rdquo; thing.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nqrrpun" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Mutabilitie | Boston Red Sox</div>
+        <div>2 | 17 minutes ago </div>
+      </div>
+      <label for="nqrrpun" class="commentText"><p>Decide you’re swinging no matter what because you can’t react to it and decide if it’s a strike</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nqrs02y" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>pages10</div>
+        <div>2 | 15 minutes ago </div>
+      </div>
+      <label for="nqrs02y" class="commentText"><p>I love watching mason miller pitch I can’t imagine what 105 looks like in the batters box</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nqrsy10" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Charming_Squirrel_13</div>
+        <div>2 | 11 minutes ago </div>
+      </div>
+      <label for="nqrsy10" class="commentText"><p>Miller forces some really ugly cuts by some great hitters</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nqrqfm5" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>WoodpeckerTrick3290 | Atlanta Braves</div>
+        <div>1 | 23 minutes ago </div>
+      </div>
+      <label for="nqrqfm5" class="commentText"><p>I thought Miz hit over 103 in the postseason?  I know these are regular season numbers, but I thought he threw a little harder than 102ish.</p>
+
+<ol>
+<li><p>That&rsquo;s dumb to even be talking about.</p></li>
+
+<li><p>Lower the mound please.</p></li>
+</ol>
+
+<p>Side note, I wonder if Toronto would not have made the list had they not traded for Varland?</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nqrs4dk" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>trgreg | Toronto Blue Jays</div>
+        <div>1 | 15 minutes ago </div>
+      </div>
+      <label for="nqrs4dk" class="commentText"><p>We wouldn&rsquo;t. Unless Seranthony did it but I don&rsquo;t recall him coming that close (I&rsquo;m surprised he did it with Bal); but we got both at the deadline.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="nqrt2qs" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>altfillischryan | Chicago Cubs</div>
+        <div>1 | 10 minutes ago </div>
+      </div>
+      <label for="nqrt2qs" class="commentText"><p>Miz hit 104 I believe 6 times in the postseason.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="nqrtwwj" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>shiny__things | San Francisco Giants</div>
+        <div>1 | 6 minutes ago </div>
+      </div>
+      <label for="nqrtwwj" class="commentText"><p>Dominguez had one pitch of 100.0 even:</p>
+
+<p><a href="https://baseballsavant.mlb.com/sporty-videos?playId=4891366b-9b9a-325b-90a9-e0d6cf6ab43f" target="_blank">https://baseballsavant.mlb.com/sporty-videos?playId=4891366b-9b9a-325b-90a9-e0d6cf6ab43f</a></p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nqrtslo" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>filterorreality</div>
+        <div>1 | 7 minutes ago </div>
+      </div>
+      <label for="nqrtslo" class="commentText"><p>Dudes out here playing catch with lightning bolts crazy speeds</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nqrp5it" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>PanDaScHem</div>
+        <div>0 | 29 minutes ago </div>
+      </div>
+      <label for="nqrp5it" class="commentText"><p>Grant Taylor&rsquo;s throwing absolute missiles out there. Future hall of flamer maybe?</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
