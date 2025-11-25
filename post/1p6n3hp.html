@@ -1,0 +1,492 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.selfPostImage {
+  width: 100%;
+  height: auto;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/baseball/comments/1p6n3hp/i_created_a_roster_of_the_most_underappreciated/"><p>I created a roster of the most under-appreciated players in baseball history - twenty-six guys who never made an All-Star game or received a single vote for any major award.</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <p>One of the dumbest areas of discourse in sports is the debate of which players are the most underrated or the most overrated. Rating players is already tricky and subjective enough, so when you start rating the way you’re rating players, you’re starting to wade into a knee-high swamp of subjectivity muck, and at that point it’s probably best to remember the wise words of Gollum - “Don’t follow the lights.”</p>
+
+<p>That said, I recently started thinking - <em>is</em> there a way to use some measure of objectivity to determine a players’ underratedness? I mean, there isn’t a stat for how a player is perceived, but there <em>is</em> something else - awards. An objective measure of the subjective recognition received by players. Baseball-reference even lists it right on players’ pages as if it were a stat - the awards column, which shows not only the winners, but simply the vote-getters of baseball’s most hallowed prizes - MVPs, Cy Youngs, All-Stars, Rookie of the Years, Silver Sluggers, and Gold Gloves. Not long ago I noticed that former longtime Met Brandon Nimmo’s awards column was completely blank - 10 years in the league with a 124 career OPS+ and 4 WAR per 162 games, and he has never been an all-star, never won a gold glove, and never received a single down-ballot MVP vote. I started to wonder, does he have a case for the most underrated player in baseball history? Who else fits these parameters? Could I build an entire roster of players who went completely unrecognized by awards voters? (The answers were no but it’s closer than you’d think, quite a few players, and yes.)</p>
+
+<p>So I started to research. And by research, I mean asked u/double_dose_larry to write a code for me, and then execute the code, and give me a list of players. You know, all the legwork. And it turns out, you could build a pretty dang good roster of players who never received any recognition for their efforts. We limited it to players who debuted after circa 1980, when all of the current awards were established, otherwise we’d just have a bunch of guys named Little Orphan Wilhelm who put up 12 WAR for the Cape Cod Vagabonds in 1896.</p>
+
+<p>So…here it is.</p>
+
+<p><strong><em>THE LINEUP</em></strong></p>
+
+<p><strong>CATCHER</strong> - Francisco Cervelli (2008-2020) <em>14.1 career WAR, 3.1 per 162, career OPS+ of 101.</em> Cervelli enjoyed a very nice career, with his best years with Pittsburgh. His career year came for the 2015 Pirates, one of the best seasons in the last 40 years of Pirates baseball, in which he hit .295/.370/.401 for an OPS+ of 113 and 3.5 WAR. The voters awarded Francisco for this season with a big fat tray of nothing.</p>
+
+<p><strong>FIRST BASE</strong> - Lyle Overbay (2001-2014) <em>16.3 career WAR, 1.7 per 162, career OPS+ of 106.</em> This was a hard position to find a good candidate for, because for first basemen to accrue WAR they typically need to put up particularly good offensive stats to make up for the positional adjustment, and voters loveeeee good offensive stats. But Overbay was just good enough to hang around as a starter for a while, but not good enough for sportswriters or fans to ever give a shit. Between 2004 and 2010 Overbay hit .274/.358/.451 with 2.6 WAR per 162. Nobody noticed.</p>
+
+<p><strong>SECOND BASE</strong> - Randy Velarde (1987-2002) <em>24.9 career WAR, 3.2 per 162, OPS+ of 101.</em> It’s hard to imagine someone who spent the bulk of his career on the Yankees could fly under the radar, but Velarde managed it. His best season, though, came in 1999 when he hit .317 put up 7 WAR between Anaheim and Oakland. That is an MVP-caliber level of production, and he didn’t receive one measly little vote. However, he is the only player on this list to ever be namedropped in an Action Bronson song, so he’s got that to put on his mantle.</p>
+
+<p><strong>THIRD BASE</strong> - Casey Blake (1999-2011) <em>24.9 career WAR, 3.2 per 162, OPS+ of 107.</em> Blake was a very solid, consistent, and well-balanced hitter for several years with the Indians and Dodgers. Too bad there isn’t an award for that! His career year came at the ripe old age of 35 in 2009 when he hit .280/.363/.468 for a Dodgers team that won 95 games and the division.</p>
+
+<p><strong>SHORTSTOP</strong> - Miguel Rojas (2014-present) <em>19.1 career WAR, 2.4 per 162, OPS+ of 86.</em> Much like first base, this was a hard one to parse out, because valuable shortstops pretty much always get recognition. Rojas has been a fairly reliable glove-first shortstop for a while now, but not enough to ever win a Gold Glove. There were a few candidates for the starting shortstop job, but I decided to give it to him thanks to his recent World Series heroics, because I feel he will be a bit of a household name in LA from here on out.</p>
+
+<p><strong>LEFT FIELD</strong> - Bobby Higginson (1995-2005) <em>23.1 career WAR, 2.8 per 162, OPS+ of 113.</em> Bobby is arguably the best hitter to appear on this list, having hit .288/.372/.494 from 1996 to 2001, and although he never represented the Tigers at an All-Star Game, he did represent them in Backyard Baseball 2003 (which, although arguably an even greater honor, does not appear under the awards column on baseball-reference.) Higginson’s career was cut short after only 10 seasons due to elbow injuries, which may have prevented him from ever receiving recognition for his good offense, yet in those 10 seasons he ended his career in the all-time top 20 for the Tigers in games played, at-bats, hits, runs, doubles, home runs, RBI, and steals - a remarkably impressive feat for a franchise that’s been around since 1894.</p>
+
+<p><strong>CENTER FIELD</strong> - Brandon Nimmo (2016-present) <em>26.1 career WAR, 4.0 per 162, OPS+ of 124.</em> When I started writing this post a couple days ago, I specifically mentioned how Brandon Nimmo was likely to be a lifetime Met and end up in the team hall of fame someday. Well….shit. Nimmo’s lack of accolades has been due in large part to poorly-timed injuries, but it’s still mind-boggling to me that he has never been an All-Star or received a single MVP vote in seasons like his 2018, 2022, or 2023. Enjoy him, Texas.</p>
+
+<p><strong>RIGHT FIELD</strong> - Shane Mack (1987-1998) <em>21.6 career WAR, 3.8 per 162, OPS+ of 121.</em> Mack was a first round pick who only played in 9 MLB seasons due partly to injuries, but also spent his age 31 and 32 seasons playing in Japan. Mack is another player with a strong case for the best hitter on this list - from 1991-1994, he hit .306/.372/.483 with an average of 5.5 WAR for the Minnesota Twins, and won a World Series with them. And yet, I had never heard of him until making this, and apparently, neither had any of the awards voters.</p>
+
+<p><strong><em>THE BENCH:</em></strong></p>
+
+<p><em>Catcher</em> - Don Slaught (1982-1997) <em>19.4 career WAR, 2.4 per 162, OPS+ of 104.</em> The only reason Slaught wasn’t the starter on this team was because he was almost exclusively a platoon player behind the dish. That said, his production was very consistently above-average for many years, and he peaked with a 4-year stretch between 1990 and 1993 in which he had a 125 OPS+ and averaged 2.3 WAR in just 91 games per season.</p>
+
+<p><em>Infield</em> - Juan Uribe (2001-2016) <em>22.6 career WAR, 2.0 per 162, OPS+ of 87.</em> Uribe started his career as a very, very light-hitting shortstop for the Rockies and White Sox, but had a bit of an offensive resurgence at the end of his career as a journeyman third baseman, hitting .281/.329/.432 with a 111 OPS+ from 2013-2015.</p>
+
+<p><em>Infield</em> - Craig Counsell (1995-2011) <em>22.4 career WAR, 2.4 per 162, OPS+ of 79.</em> Counsell was a glove-first infielder, but his offensive aura was increased significantly by his batting stance, which was a first-ballot inductee into the Batting Stances That Get You Yelled At By Your Little League Coach For Imitating Hall of Fame. I almost left him off this list because he technically has won an award, as the 2001 NLCS MVP, but it&rsquo;s not in the all-powerful bbref column, so it doesn’t count.</p>
+
+<p><em>Outfield</em> - BJ Upton (2004-2016) <em>16.5 career WAR, 1.8 per 162, OPS+ of 97.</em> Melvin was a surprising one to me, because there was a point in his career when you could’ve made the case that he was one of the most *over*rated players in baseball. At least, he was definitely overvalued by the Atlanta Braves in the 2012-13 offseason. However, he never made an All-Star Team or received any awards votes despite being a #2 overall draft pick, one of the game’s top prospects, having a 4-time All-Star for a brother, and having some very good seasons with Tampa Bay, such as the 7.8 WAR he put up in his first two full seasons in 2007 and 2008.</p>
+
+<p><em>Outfield</em> - Stan Javier (1984-2001) <em>25.5 career WAR, 2.3 per 162, OPS+ of 93.</em> Javier is a bit of a compiler when it comes to his career WAR, having never really had any great seasons, but he did have six separate 2+ WAR seasons in an eleven-year span, which is a pretty long time to be an alright player, and that’s worth something on its own.</p>
+
+<p><strong><em>THE ROTATION</em></strong></p>
+
+<p>Tom Candiotti (1983-1999) <em>42.3 career WAR, 3.3 per 162, ERA+ of 108.</em> Maybe I should have formatted this post to save knuckleballer Tom Candiotti for the end and dramatically crown him the single most underrated player in baseball history, as his WAR dwarfs that of anyone else on this list. The Candyman was someone who spent his whole career underrated and unrecognized - he was undrafted and started in indy ball before being bought by the Royals, a team for whom he never even pitched because they let him get taken in the Rule 5 draft. Candiotti put up ten separate seasons with an ERA+ above 100, getting as high as 159 over 238 innings in 1991, leading the league in HR/9 and posting over 7 WAR, and got nothing in reward for it. Why? Because it was 1991 and he had a 13-13 record. A cruel world.</p>
+
+<p>Hiroki Kuroda (2008-2014) <em>21.6 career WAR, 3.5 per 162, ERA+ of 115.</em> Kuroda’s arrival from Japan and subsequently short-lived Major League career makes him the player with some of the best rate stats on this list. Although he only played in seven MLB seasons, it’s hard to believe he managed to fly under the radar in the awards world when he spent those years on the Dodgers and Yankees, the two teams with the biggest media focus. Kuroda was a picture of health and efficiency, throwing over 190 innings in each of his last five seasons before wrapping up his career with a homecoming in Japan.</p>
+
+<p>Pedro Astacio (1992-2006) <em>28.3 career WAR, 2.6 per 162, ERA+ of 97.</em> There’s a common thread you might start noticing among the pitchers on this roster - time spent pitching in Coors Field. Astacio’s best season came in 1999 when he had 5.9 WAR and an ERA+ of 115, but you’re never gonna get any awards votes when that ERA+ translates to an actual ERA of 5.04.</p>
+
+<p>Chris Bosio (1986-1996) <em>24.4 career WAR, 3.0 per 162, ERA+ of 107.</em> Bosio was simply a reliable, consistent, solid starting pitcher for several years in Milwaukee and Seattle, posting an ERA+ of 117 from 1988-1994, and pitching the second no-hitter in Seattle Mariners history in 1993 (in fact, he nearly had a perfect game, having retired 27 consecutive batters after back-to-back leadoff walks.) Unfortunately, boring dependability does not bring home trophies.</p>
+
+<p>Todd Stottlemyre (1988-2002) <em>21.0 career WAR, 2.0 per 162, ERA+ of 100.</em> Stottlemyre pitched for fourteen seasons and finished with the most perfectly average ERA+ and WAR/162 possible. That in and of itself is almost worthy of an award. Todd’s career on the field was overall rather boring, but as far as I can tell, he’s the only person on this list to have ever been arrested, so he’s got that going for him. Fun fact, he was also once traded for the next person on this list…</p>
+
+<p><strong><em>THE BULLPEN</em></strong></p>
+
+<p>Darren Oliver (1993-2013) <em>21.2 career WAR, 1.4 per 162, ERA+ of 104.</em> For the most part, when compiling this list, I avoided relievers who spent chunks of their careers as starters, but I made an exception for Oliver as the peak of his career came in his late 30s after spending the first half of his career as a very mediocre starter. From 1995-2004, Oliver was a starter and had a 5.14 ERA in 261 games. Yuck! But at age 35, he converted full-time to the pen, and became one of the most quietly effective middle relievers of his era, posting a 2.95 ERA from ages 35 to 42. Yum!</p>
+
+<p>LaTroy Hawkins (1995-2015) <em>18.0 career WAR, 1.1 per 162, ERA+ of 106.</em> Much like Oliver, LaTroy’s success was mostly contained within the second half of his career. In his 20s, Hawkins had an ERA+ of 90. From ages 30 to 42, he had an ERA+ of 133. He had 23 saves for the <em>Colorado Rockies</em> at the age of 41, which might just be the single most impressive feat in this entire post.</p>
+
+<p>Joaquin Benoit (2001-2017) <em>18.0 career WAR, 1.5 per 162, ERA+ of 116.</em> Benoit was yet another fine wine player in this bullpen, who got better with age and dominated in middle relief in his 30s. Fun fact: Mr. Benoit holds the record for the longest save in Major League history, notching a 7 inning save on September 3, 2002.</p>
+
+<p>Steve Reed (1992-2005) <em>17.8 career WAR, 1.5 per 162, ERA+ of 132.</em> Yes, you read that right - a <em>career</em> ERA+ of 132. For context that is a better career ERA+ than Max Scherzer, Gerrit Cole, Justin Verlander, Curt Schilling, Tom Seaver, and many more all-time greats. In 1995, Reed, had an ERA+ of <em>251</em> and over 4 WAR exclusively pitching out of the bullpen. So what gives? Why didn’t anyone ever care about him? Well, that question can be answered in two words: Coors Field.</p>
+
+<p>Adam Ottavino (2010-2025) <em>15.0 career WAR, 1.4 per 162, ERA+ of 128.</em> Once again, I was surprised by just how high of an ERA+ a reliever on this list had put up over his career. And once again, he was a Colorado Rockie. Otto never really got a real shot at being a closer in the major leagues, which is probably the sole reason he never made an All-Star team, because at his peak, he had one of the most devastating sliders in the game.</p>
+
+<p>Alejandro Peña (1981-1996) <em>15.7 career WAR, 1.9 per 162, ERA+ of 119.</em> Of all the failed starters in this theoretical bullpen, Peña had by far the most success starting games. In 1983 and 1984, he started 54 games with a 2.61 ERA, leading the National League in ERA and ERA+ in ‘84, but none of the voters cared because he only had 12 wins and the Dodgers finished below .500 and that’s just how it was back then. Shoulder injuries cut short his time as a starter, and he spent the last decade or so of his career as a very effective reliever, pitching to a 124 ERA+ from age 28 on.</p>
+
+<p>Greg Harris (1981-1995) <em>19.2 career WAR, 1.6 per 162, ERA+ of 112.</em> Greg A. Harris was generally the platonic ideal of a solid, unremarkable, and dependable journeyman middle reliever, save for two random seasons in the middle of his career when the Red Sox decided to stick him in the rotation. The most notable thing about Greg’s career was that he was the first ambidextrous pitcher in baseball history - he was capable of pitching left-handed, but no team would allow him to until the second-to-last game of his career, when the Montreal Expos said fuck it and let him pitch lefty to two batters, both of whom he retired.</p>
+
+<p>Steve Farr (1984-1994) <em>18.1 career WAR, 2.3 per 162, ERA+ of 127.</em> Farr gets the privilege of being crowned the make-believe closer of our make-believe team, as he is the only one on this roster to have had substantial time closing out games in the major leagues, racking up 132 saves between the Royals and Yankees. His best season came in 1992, when he had 30 saves and a stellar 1.56 ERA for New York. Unfortunately, he just couldn’t compete with Dennis Eckersley and Rick Aguilera for the All-Star nod that season, and therefore ended his career with no hardware to show off at parties.</p>
+
+<p>And thus concludes the construction of our roster - the twenty-six most officially, objectively, and undeniably underrated players of the past forty-five years of Major League Baseball. And I think that should just about wrap up that area of discourse for good.</p>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nqrhilc" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Crazy_Baseball3864 | MLB Players Association</div>
+        <div>5 | 9 minutes ago </div>
+      </div>
+      <label for="nqrhilc" class="commentText"><p>Honorable mention to Dodgers CF Willie Davis who finished his career with 60.8 bWAR and was left off the HoF ballot when he became eligible in 1985, probably easily the most bWAR of a player who never appeared on a HoF ballot (in the modern era at least)</p>
+
+<p>A likely explanation is that he went to Japan after the 1976 season for 2 seasons then returned to play in 1979 for a bit at age 39, and by the time he became eligible he had been gone for about 10 years so they forgot about him. Similar to what happened to Dave Stieb being a one and done</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nqrh436" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>pixelSHREDDER | New York Yankees</div>
+        <div>4 | 11 minutes ago </div>
+      </div>
+      <label for="nqrh436" class="commentText"><p>Lotta Yankees on this list&hellip;. hm&hellip;. 🤔</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nqrhd2c" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>smarjorie | New York Mets</div>
+        <div>6 | 9 minutes ago </div>
+      </div>
+      <label for="nqrhd2c" class="commentText"><p>Truly the most under appreciated franchise in sports.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nqrihf4" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>pixelSHREDDER | New York Yankees</div>
+        <div>1 | 4 minutes ago </div>
+      </div>
+      <label for="nqrihf4" class="commentText"><p>That&rsquo;s what I&rsquo;M saying! But in all seriousness I&rsquo;ve often wondered if our historical roster construction, ie building &ldquo;superteams&rdquo; around 1 or 2 players, has essentially blocked otherwise All-Star calibur guys on the team from the team slots, and overshadowed them in fan voting as well. It&rsquo;s a weird problem to have I guess</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nqrhmbe" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Pale-Butterfly6615</div>
+        <div>2 | 8 minutes ago </div>
+      </div>
+      <label for="nqrhmbe" class="commentText"><p>So only going back to ‘86?</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nqridp3" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>smarjorie | New York Mets</div>
+        <div>1 | 4 minutes ago </div>
+      </div>
+      <label for="nqridp3" class="commentText"><p>ish, I think Larry and I had set the cutoff to 1980 because at that point all of the current major awards were established</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nqrig72" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Pale-Butterfly6615</div>
+        <div>1 | 4 minutes ago </div>
+      </div>
+      <label for="nqrig72" class="commentText"><p>Makes sense.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nqri331" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>YakPineapple | Colorado Rockies</div>
+        <div>2 | 6 minutes ago </div>
+      </div>
+      <label for="nqri331" class="commentText"><p>Pedro astacio…</p>
+
+<p><img src="giphy|xzKjC4FVISI9dGIaQJ" alt="gif" /></p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nqrhxyk" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>gnome_ole</div>
+        <div>1 | 7 minutes ago </div>
+      </div>
+      <label for="nqrhxyk" class="commentText"><p>As a Brewers fan I was fully aware that Overbay led the league in doubles one year, and that Chris Bosio threw the first complete game shutout of the 1990s in MLB.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nqriict" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>sabo-metrics</div>
+        <div>1 | 4 minutes ago </div>
+      </div>
+      <label for="nqriict" class="commentText"><p>I&rsquo;ve always thought ERA+ overrated Rockies pitchers</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nqripo4" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>largesonjr</div>
+        <div>1 | 3 minutes ago </div>
+      </div>
+      <label for="nqripo4" class="commentText"><p>Awesome to see Higginson on this list! I believe Kirk Gibson was never an all-star, though he did claim he would skip it for the days off if elected</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
