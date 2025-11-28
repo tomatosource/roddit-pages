@@ -1,0 +1,952 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.selfPostImage {
+  width: 100%;
+  height: auto;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/nba/comments/1p8hnjc/in_2011_kevin_durant_won_the_scoring_title/"><p>In 2011 Kevin Durant won the scoring title averaging 27.7ppg. This season there are 13 players averaging more than that</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <p>KD&rsquo;s 2011 scoring title winning season would rank 14th in 2025-2026</p>
+
+<table>
+<thead>
+<tr>
+<th align="right">Rk</th>
+<th align="left">Player</th>
+<th align="left">Team</th>
+<th align="right">PTSV</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="right">1</td>
+<td align="left">Luka Doncic</td>
+<td align="left">LAL</td>
+<td align="right">35.2</td>
+</tr>
+
+<tr>
+<td align="right">2</td>
+<td align="left">Shai Gilgeous-Alexander</td>
+<td align="left">OKC</td>
+<td align="right">32.6</td>
+</tr>
+
+<tr>
+<td align="right">3</td>
+<td align="left">Tyrese Maxey</td>
+<td align="left">PHI</td>
+<td align="right">32.2</td>
+</tr>
+
+<tr>
+<td align="right">4</td>
+<td align="left">Donovan Mitchell</td>
+<td align="left">CLE</td>
+<td align="right">29.9</td>
+</tr>
+
+<tr>
+<td align="right">5</td>
+<td align="left">Nikola Jokic</td>
+<td align="left">DEN</td>
+<td align="right">29.6</td>
+</tr>
+
+<tr>
+<td align="right">6</td>
+<td align="left">Jalen Brunson</td>
+<td align="left">NYK</td>
+<td align="right">28.6</td>
+</tr>
+
+<tr>
+<td align="right">7</td>
+<td align="left">Lauri Markkanen</td>
+<td align="left">UTA</td>
+<td align="right">28.5</td>
+</tr>
+
+<tr>
+<td align="right">8</td>
+<td align="left">Jaylen Brown</td>
+<td align="left">BOS</td>
+<td align="right">28.2</td>
+</tr>
+
+<tr>
+<td align="right">9</td>
+<td align="left">Cade Cunningham</td>
+<td align="left">DET</td>
+<td align="right">28.1</td>
+</tr>
+
+<tr>
+<td align="right">10</td>
+<td align="left">Anthony Edwards</td>
+<td align="left">MIN</td>
+<td align="right">28.0</td>
+</tr>
+
+<tr>
+<td align="right">11</td>
+<td align="left">James Harden</td>
+<td align="left">LAC</td>
+<td align="right">27.9</td>
+</tr>
+
+<tr>
+<td align="right">12</td>
+<td align="left">Stephen Curry</td>
+<td align="left">GSW</td>
+<td align="right">27.9</td>
+</tr>
+
+<tr>
+<td align="right">13</td>
+<td align="left">Austin Reaves</td>
+<td align="left">LAL</td>
+<td align="right">27.9</td>
+</tr>
+</tbody>
+</table>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nr55xwd" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>6icker</div>
+        <div>42 | an hour ago </div>
+      </div>
+      <label for="nr55xwd" class="commentText"><p>The NBA has changed</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nr5aa96" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Cylindrical_Mandrill</div>
+        <div>15 | 33 minutes ago </div>
+      </div>
+      <label for="nr5aa96" class="commentText"><p>Wild how much the game&rsquo;s changed. That 27.7 would be 14th now is nuts — shows how much offense has exploded. Crazy to think Reaves is matching KD&rsquo;s scoring title season lol</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nr5b6xd" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>_Meece_ | Lakers</div>
+        <div>1 | 26 minutes ago </div>
+      </div>
+      <label for="nr5b6xd" class="commentText"><p>Really not that crazy, 27ppg is a very low scoring title season historically.</p>
+
+<p>Every season lower than this, happened in the 40s/50s except for AIs lockout season scoring title.</p>
+
+<p>Try not to use this as a basis for anything. The season just before this, KD won the title with 30 ppg.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="nr5b5k4" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Vegetable-Tooth8463 | Hornets</div>
+        <div>1 | 26 minutes ago </div>
+      </div>
+      <label for="nr5b5k4" class="commentText"><p>Was defense tougher when KD won?</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="nr5ckhm" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Riskybusiness622</div>
+        <div>1 | 17 minutes ago </div>
+      </div>
+      <label for="nr5ckhm" class="commentText"><p>It’s also styles of offense being a factor the heliocentric every player is there to try and compliment the star(s) style is king now so stats have become more concentrated into those stars, to go with bunch of other factors. </p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nr55l44" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>dizzymidget44 | Pistons</div>
+        <div>22 | an hour ago </div>
+      </div>
+      <label for="nr55l44" class="commentText"><p>It’s not 2011 anymore. Let’s do points per possession.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nr5bt6g" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>gigglios</div>
+        <div>1 | 22 minutes ago </div>
+      </div>
+      <label for="nr5bt6g" class="commentText"><p>Even that isnt accurate lol</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nr56x45" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Dinobot2_ | Raptors</div>
+        <div>22 | an hour ago </div>
+      </div>
+      <label for="nr56x45" class="commentText"><p>There are always a lot of high PPG averages this early in the season. Everything will settle down eventually. Last season, for example, there were three players who averaged more than 27.7 ppg by season&rsquo;s end.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nr5e1kb" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>CofTheEast</div>
+        <div>1 | 6 minutes ago </div>
+      </div>
+      <label for="nr5e1kb" class="commentText"><p>Yeah this same talk happens the beginning of every year</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nr5abcx" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>JorSimpson45</div>
+        <div>1 | 32 minutes ago </div>
+      </div>
+      <label for="nr5abcx" class="commentText"><p>19 games in or so, let’s see how many are still averaging that after 82 games are played.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nr5ba43" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Vegetable-Tooth8463 | Hornets</div>
+        <div>1 | 25 minutes ago </div>
+      </div>
+      <label for="nr5ba43" class="commentText"><p>Reaves did play 82 games one season, but not as a starter for all them.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nr5aj9x" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Rook2Rook</div>
+        <div>1 | 31 minutes ago </div>
+      </div>
+      <label for="nr5aj9x" class="commentText"><p>Back when averaging 20 used to mean something</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nr5dfhn" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>DanTheOmnipotent | Bulls</div>
+        <div>1 | 11 minutes ago </div>
+      </div>
+      <label for="nr5dfhn" class="commentText"><p>Did it stop meaning that they average 20 points a game?</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nr5em65" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>LardHop | Lakers</div>
+        <div>1 | 3 minutes ago </div>
+      </div>
+      <label for="nr5em65" class="commentText"><p>20 pts is not 20 pts, I&rsquo;ll explain later.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nr55usd" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>IntelligentAd5460 | Grizzlies</div>
+        <div>5 | an hour ago </div>
+      </div>
+      <label for="nr55usd" class="commentText"><p>fun fact the last time someone won a scoring title averaging under 30 was westbrook in 2014-2015</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nr5bfva" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Adventurous_Cut_7355</div>
+        <div>1 | 24 minutes ago </div>
+      </div>
+      <label for="nr5bfva" class="commentText"><p>Giannis not play enough games to make the cut?</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nr57dof" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Obvious_Wind7832</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="nr57dof" class="commentText"><p>Volume shooting is becoming pretty boring to watch. Cant play D when their launching shots midcourt.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nr5aneu" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ASK_ABT_MY_USERNAME | Warriors</div>
+        <div>1 | 30 minutes ago </div>
+      </div>
+      <label for="nr5aneu" class="commentText"><p>In 2011 Dorell Wright lead the NBA with 2.4 3s a game.</p>
+
+<p>There are 52 guys this year at or above that level.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nr5bwh7" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>g0000mba</div>
+        <div>1 | 21 minutes ago </div>
+      </div>
+      <label for="nr5bwh7" class="commentText"><p>It’s because the shot clock changed to 14 seconds</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nr56e6n" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>_Meece_ | Lakers</div>
+        <div>0 | an hour ago </div>
+      </div>
+      <label for="nr56e6n" class="commentText"><p>11-13 is just down years for volume scoring</p>
+
+<p>Compare it to 2006.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nr5a984" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Feeling_Lecture</div>
+        <div>0 | 33 minutes ago </div>
+      </div>
+      <label for="nr5a984" class="commentText"><p>Fastest pace in like 60 years will do that</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nr5bnqt" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>_Meece_ | Lakers</div>
+        <div>1 | 23 minutes ago </div>
+      </div>
+      <label for="nr5bnqt" class="commentText"><p>60? Try 5, 2020 has a higher pace than this year.</p>
+
+<p>But before this era at least, the 80s had a pace similar to this.</p>
+
+<p>60s pace is 120&hellip; it&rsquo;s still only around 100.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nr5aiyn" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>rumblegod | Thunder</div>
+        <div>1 | 31 minutes ago </div>
+      </div>
+      <label for="nr5aiyn" class="commentText"><p>Players have gotten better and the competition has gotten deadly. Just how time works, the game has evolved.</p>
+
+<p>It’s why you can’t take top players from the past seriously.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nr55r1b" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>merckx36 | Hornets</div>
+        <div>-8 | an hour ago </div>
+      </div>
+      <label for="nr55r1b" class="commentText"><p>Back then they played this thing called defense.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nr56cp3" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>_Meece_ | Lakers</div>
+        <div>7 | an hour ago </div>
+      </div>
+      <label for="nr56cp3" class="commentText"><p>Nah 11-13 is just three really down years for volume scoring.</p>
+
+<p>Kobe getting old, Lebron and Wade on the Heat, no AI, Russ/Harden coming alive on OKC. Meant that there were no 30 ppg threats in 11-13.</p>
+
+<p>Once Russ got injured in 14, we got another 30ppg threat and I think there&rsquo;s only been one sub 30ppg scoring title winner since!</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nr5cn74" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>smoothsoul23 | Raptors</div>
+        <div>1 | 16 minutes ago </div>
+      </div>
+      <label for="nr5cn74" class="commentText"><p>Yeah especially 11-12 it was the lockout shortened season and the efficiency across the league went down</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="nr56jxl" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>atltimefirst</div>
+        <div>0 | an hour ago </div>
+      </div>
+      <label for="nr56jxl" class="commentText"><p>Not really. Offense was just worse. OKC use play mostly non shooters for example</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nr58liu" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ForneauCosmique | Spurs</div>
+        <div>2 | 44 minutes ago </div>
+      </div>
+      <label for="nr58liu" class="commentText"><p>Let me guess what those non shooters were good at&hellip;..maybe defense?</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="nr56y8v" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Logical-Window543</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="nr56y8v" class="commentText"><p>And the pacing, it was way slower back then.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nr57xui" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>_Meece_ | Lakers</div>
+        <div>3 | an hour ago </div>
+      </div>
+      <label for="nr57xui" class="commentText"><p>This is one of the few seasons without a 30 ppg scorer. Pace isn&rsquo;t the cause of this.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nr58cgc" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Logical-Window543</div>
+        <div>0 | an hour ago </div>
+      </div>
+      <label for="nr58cgc" class="commentText"><p>Actually forgot Jordan averaged +30ppg in 80/90s and Kobe lol. I guess it has nothing to do with offensive scheme, just depends on the sheer amount of volume scorers of that era.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nr58p92" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>_Meece_ | Lakers</div>
+        <div>1 | 44 minutes ago </div>
+      </div>
+      <label for="nr58p92" class="commentText"><p>AI, Lebron, Tmac, Dwade all had 30 ppg season before 2011 too!</p>
+
+<p>But yeah, it&rsquo;s just more down to circumstance than anything else. 2011 was just a year where Kobe was falling off but Lebron/KD/Wade didn&rsquo;t need to score 30 ppg.</p>
+
+<p>Melo never could. AI was washed/out of the league. So there just wasn&rsquo;t anyone who needed 30ppg to win games.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="nr58kyg" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>YKG1998 | Knicks</div>
+        <div>0 | 44 minutes ago </div>
+      </div>
+      <label for="nr58kyg" class="commentText"><p>More like today they do this thing called shoot threes. Also, the pace and space is way up now compared to back then.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
