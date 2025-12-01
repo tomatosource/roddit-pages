@@ -1,0 +1,1244 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.selfPostImage {
+  width: 100%;
+  height: auto;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/baseball/comments/1pbboae/which_mlb_team_would_be_the_best_if_all_the_teams/"><p>Which MLB team would be the best if all the teams could only have &ldquo;hometown&rdquo; players? (Players born closer to that team&rsquo;s stadium than any other)</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <p><a href="https://i.imgur.com/TKHhCO6.jpeg" target="_blank">What if teams could only use players born closer to their stadium than to any other stadium?</a></p>
+
+<p>Turns out this is a question you can answer with some python code!</p>
+
+<p>I ran this <a href="https://www.reddit.com/r/baseball/comments/1gry576/if_teams_could_only_use_hometown_players_whod/" target="_blank">analysis</a> last year for the 2024 season, and now that the 2025 season is over, I&rsquo;ve run it again with updated WAR and a refreshed player pool.</p>
+
+<hr>
+
+<p>##Methodology</p>
+
+<ol>
+<li>Use Baseball Almanac to identify all 1,463 MLB players active in 2025, and where they were born</li>
+<li>Use a geocoder to match their birthplace with a latitude and longitude</li>
+<li>For all 1,463 players, calculate the distance from each birthplace to each of the 30 MLB ballparks</li>
+<li>Assign each of the 1,463 players to the team that plays nearest to their birthplace</li>
+<li>For each team, using that pool of &ldquo;eligible&rdquo; players sorted by 2025 WAR, assign:<br>
+a. 5 starting pitchers<br>
+b. 7 relief pitchers<br>
+c. 1 starter each at all 8 field positions<br>
+d. 1 backup catcher<br>
+e. 2 backup infielders<br>
+f. 1 backup outfielder<br>
+</li>
+<li>Fielders are assigned based on their position as listed in the pybaseball 2025 library, but once players are assigned some can be swapped to fill empty gaps or replace a player with lower WAR:<br>
+a. Outfielders are fungible<br>
+b. Corner infielders are fungible (1B and 3B can swap)<br>
+c. Center infielders are fungible (2B and SS can swap)<br>
+</li>
+<li>After all players are assigned and slots are filled, the DH is assigned as the remaining unused player with the highest OPS.</li>
+</ol>
+
+<p>Note that running the analysis using only players active at the MLB level this season means many, many teams do not even have a full roster. Some teams don&rsquo;t even have a starting 10.</p>
+
+<p>For example, the Giants (who rank quite highly) no longer have an eligible catcher to put on the field (last year they had Curt Casali). The Brewers (who do not rank quite highly) only manage to field 2 infielders and 2 outfielders.</p>
+
+<hr>
+
+<p>##Results</p>
+
+<p>The results are broken into two tables. In one iteration, I placed no limit on distance from birthplace to stadium. This means basically anyone born in the Caribbean or South America is on the Marlins. Anyone born in East Asia is on the Mariners. Anyone born in Europe or Africa is on the Red Sox. And so on. The full list of players for each team that results from this is available in a Google Sheets spreadsheet <a href="https://docs.google.com/spreadsheets/d/1ufvHWydDuw0MZYtODdOSiP8FVITpFcegSRRuxiB8hNk/edit?gid=1867998652#gid=1867998652" target="_blank">here</a>. You can imagine who wins in this iteration:</p>
+
+<table>
+<thead>
+<tr>
+<th>Rank</th>
+<th>Team</th>
+<th>Team WAR</th>
+<th>Best Player</th>
+<th>Best Player Hometown</th>
+<th>Last Year&rsquo;s Rank</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>1</td>
+<td>Miami Marlins</td>
+<td>98.0</td>
+<td>Geraldo Perdomo</td>
+<td>Santo Domingo, D.R.</td>
+<td>1 (0)</td>
+</tr>
+
+<tr>
+<td>2</td>
+<td>Atlanta Braves</td>
+<td>66.5</td>
+<td>Cal Raleigh</td>
+<td>Cullowhee, NC</td>
+<td>2 (0)</td>
+</tr>
+
+<tr>
+<td>3</td>
+<td>Seattle Mariners</td>
+<td>51.6</td>
+<td>Shohei Ohtani</td>
+<td>Oshu, Japan</td>
+<td>5 (+2)</td>
+</tr>
+
+<tr>
+<td>4</td>
+<td>Los Angeles Angels</td>
+<td>50.0</td>
+<td>Paul Skenes</td>
+<td>Fullerton, California</td>
+<td>3 (-1)</td>
+</tr>
+
+<tr>
+<td>5</td>
+<td>Tampa Bay Rays</td>
+<td>42.4</td>
+<td>Kyle Tucker</td>
+<td>Tampa, Florida</td>
+<td>4 (-1)</td>
+</tr>
+
+<tr>
+<td>6</td>
+<td>Los Angeles Dodgers</td>
+<td>38.2</td>
+<td>Pete Crow-Armstrong</td>
+<td>Sherman Oaks, California</td>
+<td>8 (+2)</td>
+</tr>
+
+<tr>
+<td>7</td>
+<td>San Francisco Giants</td>
+<td>32.8</td>
+<td>Tarik Skubal</td>
+<td>Hayward, California</td>
+<td>6 (-1)</td>
+</tr>
+
+<tr>
+<td>8</td>
+<td>Texas Rangers</td>
+<td>30.0</td>
+<td>Bobby Witt Jr.</td>
+<td>Colleyville, Texas</td>
+<td>7 (-1)</td>
+</tr>
+
+<tr>
+<td>9</td>
+<td>Houston Astros</td>
+<td>29.2</td>
+<td>Nathan Eovaldi</td>
+<td>Houston, Texas</td>
+<td>9 (0)</td>
+</tr>
+
+<tr>
+<td>10</td>
+<td>Washington Nationals</td>
+<td>26.7</td>
+<td>Andrew Abbott</td>
+<td>Lynchburg, Virginia</td>
+<td>10 (0)</td>
+</tr>
+
+<tr>
+<td>11</td>
+<td>Arizona Diamondbacks</td>
+<td>23.3</td>
+<td>Cody Bellinger</td>
+<td>Scottsdale, Arizona</td>
+<td>11 (0)</td>
+</tr>
+
+<tr>
+<td>12</td>
+<td>Athletics of West Sacramento</td>
+<td>23.1</td>
+<td>Aaron Judge</td>
+<td>Linden, California</td>
+<td>13 (+1)</td>
+</tr>
+
+<tr>
+<td>13</td>
+<td>Boston Red Sox</td>
+<td>19.7</td>
+<td>Vladimir Guerrero Jr.</td>
+<td>Montreal, Canada</td>
+<td>17 (+4)</td>
+</tr>
+
+<tr>
+<td>14</td>
+<td>San Diego Padres</td>
+<td>19.1</td>
+<td>Alejandro Kirk</td>
+<td>Tijuana, Mexico</td>
+<td>16 (+2)</td>
+</tr>
+
+<tr>
+<td>15</td>
+<td>Detroit Tigers</td>
+<td>18.5</td>
+<td>Hunter Brown</td>
+<td>Detroit, Michigan</td>
+<td>23 (+8)</td>
+</tr>
+
+<tr>
+<td>16</td>
+<td>Cincinnati Reds</td>
+<td>16.2</td>
+<td>Kyle Schwarber</td>
+<td>Middletown, Ohio</td>
+<td>15 (-1)</td>
+</tr>
+
+<tr>
+<td>17</td>
+<td>Colorado Rockies</td>
+<td>15.3</td>
+<td>Kevin Gausman</td>
+<td>Centennial, Colorado</td>
+<td>20 (+3)</td>
+</tr>
+
+<tr>
+<td>18</td>
+<td>New York Yankees</td>
+<td>14.7</td>
+<td>George Springer</td>
+<td>New Britain, Connecticut</td>
+<td>19 (+1)</td>
+</tr>
+
+<tr>
+<td>19</td>
+<td>St. Louis Cardinals</td>
+<td>13.4</td>
+<td>Hunter Goodman</td>
+<td>Arlington, Tennessee</td>
+<td>12 (-7)</td>
+</tr>
+
+<tr>
+<td>20</td>
+<td>Minnesota Twins</td>
+<td>13.3</td>
+<td>Michael Busch</td>
+<td>Inver Grove Heights, Minnesota</td>
+<td>21 (+1)</td>
+</tr>
+
+<tr>
+<td>21</td>
+<td>Philadelphia Phillies</td>
+<td>10.7</td>
+<td>Lawrence Butler</td>
+<td>Burlington, New Jersey</td>
+<td>14 (-7)</td>
+</tr>
+
+<tr>
+<td>22</td>
+<td>Toronto Blue Jays</td>
+<td>9.7</td>
+<td>Ernie Clement</td>
+<td>Rochester, New York</td>
+<td>24 (+2)</td>
+</tr>
+
+<tr>
+<td>23</td>
+<td>Cleveland Guardians</td>
+<td>9.7</td>
+<td>Dillon Dingler</td>
+<td>Massillon, Ohio</td>
+<td>29 (+6)</td>
+</tr>
+
+<tr>
+<td>24</td>
+<td>Pittsburgh Pirates</td>
+<td>9.3</td>
+<td>TJ Friedl</td>
+<td>Sewickley, Pennsylvania</td>
+<td>27 (+3)</td>
+</tr>
+
+<tr>
+<td>25</td>
+<td>Kansas City Royals</td>
+<td>7.9</td>
+<td>Adrian Houser</td>
+<td>Tahlequah, Oklahoma</td>
+<td>18 (-7)</td>
+</tr>
+
+<tr>
+<td>26</td>
+<td>Chicago Cubs</td>
+<td>7.6</td>
+<td>Michael Wacha</td>
+<td>Iowa City, Iowa</td>
+<td>30 (+4)</td>
+</tr>
+
+<tr>
+<td>27</td>
+<td>New York Mets</td>
+<td>6.8</td>
+<td>Xavier Edwards</td>
+<td>Mineola, New York</td>
+<td>22 (-5)</td>
+</tr>
+
+<tr>
+<td>28</td>
+<td>Baltimore Orioles</td>
+<td>6.1</td>
+<td>Jackson Merrill</td>
+<td>Baltimore, Maryland</td>
+<td>25 (-3)</td>
+</tr>
+
+<tr>
+<td>29</td>
+<td>Milwaukee Brewers</td>
+<td>4.7</td>
+<td>Mitch Keller</td>
+<td>Cedar Rapids, Iowa</td>
+<td>26 (-3)</td>
+</tr>
+
+<tr>
+<td>30</td>
+<td>Chicago White Sox</td>
+<td>3.8</td>
+<td>Carson Kelly</td>
+<td>Chicago, Illinois</td>
+<td>28 (-2)</td>
+</tr>
+</tbody>
+</table>
+<p>In the second iteration (<a href="https://docs.google.com/spreadsheets/d/1gdYOtStExBgjMFneumfrFrN8GUp8TIvkge0RozG63Ck/edit?usp=sharing" target="_blank">google sheets link here</a>), we limit it to 150 miles to get closer to a roster of people who&rsquo;d actually presumably have seen that team in real life as a kid based on their birthplace (notwithstanding John Fisher douchery or other team moves since the players were actually kids):</p>
+
+<table>
+<thead>
+<tr>
+<th>Rank</th>
+<th>Team</th>
+<th>Team WAR</th>
+<th>Best Player</th>
+<th>Best Player Hometown</th>
+<th>Last Year&rsquo;s Rank</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>1</td>
+<td>Los Angeles Angels</td>
+<td>47.4</td>
+<td>Paul Skenes</td>
+<td>Fullerton, California</td>
+<td>1 (0)</td>
+</tr>
+
+<tr>
+<td>2</td>
+<td>Atlanta Braves</td>
+<td>46.5</td>
+<td>Cal Raleigh</td>
+<td>Cullowhee, NC</td>
+<td>2 (0)</td>
+</tr>
+
+<tr>
+<td>3</td>
+<td>Tampa Bay Rays</td>
+<td>41.3</td>
+<td>Kyle Tucker</td>
+<td>Tampa, Florida</td>
+<td>3 (0)</td>
+</tr>
+
+<tr>
+<td>4</td>
+<td>Los Angeles Dodgers</td>
+<td>37.0</td>
+<td>Pete Crow-Armstrong</td>
+<td>Sherman Oaks, California</td>
+<td>5 (+1)</td>
+</tr>
+
+<tr>
+<td>5</td>
+<td>San Francisco Giants</td>
+<td>31.2</td>
+<td>Tarik Skubal</td>
+<td>Hayward, California</td>
+<td>4 (-1)</td>
+</tr>
+
+<tr>
+<td>6</td>
+<td>Seattle Mariners</td>
+<td>30.6</td>
+<td>Corbin Carroll</td>
+<td>Seattle, Washington</td>
+<td>7 (+1)</td>
+</tr>
+
+<tr>
+<td>7</td>
+<td>Miami Marlins</td>
+<td>25.4</td>
+<td>Trea Turner</td>
+<td>Boynton Beach, Florida</td>
+<td>6 (-1)</td>
+</tr>
+
+<tr>
+<td>8</td>
+<td>Houston Astros</td>
+<td>24.6</td>
+<td>Nathan Eovaldi</td>
+<td>Houston, Texas</td>
+<td>8 (0)</td>
+</tr>
+
+<tr>
+<td>9</td>
+<td>Athletics of West Sacramento</td>
+<td>23.4</td>
+<td>Aaron Judge</td>
+<td>Linden, California</td>
+<td>10 (+1)</td>
+</tr>
+
+<tr>
+<td>10</td>
+<td>Texas Rangers</td>
+<td>19.2</td>
+<td>Bobby Witt Jr.</td>
+<td>Colleyville, Texas</td>
+<td>9 (-1)</td>
+</tr>
+
+<tr>
+<td>11</td>
+<td>San Diego Padres</td>
+<td>19.1</td>
+<td>Alejandro Kirk</td>
+<td>Tijuana, Mexico</td>
+<td>12 (+1)</td>
+</tr>
+
+<tr>
+<td>12</td>
+<td>Detroit Tigers</td>
+<td>18.5</td>
+<td>Hunter Brown</td>
+<td>Detroit, Michigan</td>
+<td>19 (+7)</td>
+</tr>
+
+<tr>
+<td>13</td>
+<td>Cincinnati Reds</td>
+<td>16.7</td>
+<td>Kyle Schwarber</td>
+<td>Middletown, Ohio</td>
+<td>13 (0)</td>
+</tr>
+
+<tr>
+<td>14</td>
+<td>Colorado Rockies</td>
+<td>15.</td>
+<td>Kevin Gausman</td>
+<td>Centennial, Colorado</td>
+<td>20 (+6)</td>
+</tr>
+
+<tr>
+<td>15</td>
+<td>New York Yankees</td>
+<td>14.7</td>
+<td>George Springer</td>
+<td>New Britain, Connecticut</td>
+<td>16 (+1)</td>
+</tr>
+
+<tr>
+<td>16</td>
+<td>Boston Red Sox</td>
+<td>13.8</td>
+<td>Sal Frelick</td>
+<td>Boston, Massachusetts</td>
+<td>27 (+11)</td>
+</tr>
+
+<tr>
+<td>17</td>
+<td>Minnesota Twins</td>
+<td>11.1</td>
+<td>Michael Busch</td>
+<td>Inver Grove Heights, Minnesota</td>
+<td>23 (+6)</td>
+</tr>
+
+<tr>
+<td>18</td>
+<td>Philadelphia Phillies</td>
+<td>10.7</td>
+<td>Lawrence Butler</td>
+<td>Burlington, New Jersey</td>
+<td>11 (-7)</td>
+</tr>
+
+<tr>
+<td>19</td>
+<td>Washington Nationals</td>
+<td>10.7</td>
+<td>James Wood</td>
+<td>Rockville, Maryland</td>
+<td>18 (-1)</td>
+</tr>
+
+<tr>
+<td>20</td>
+<td>Cleveland Guardians</td>
+<td>9.7</td>
+<td>Dillon Dingler</td>
+<td>Massillon, Ohio</td>
+<td>26 (+6)</td>
+</tr>
+
+<tr>
+<td>21</td>
+<td>Arizona Diamondbacks</td>
+<td>9.5</td>
+<td>Cody Bellinger</td>
+<td>Scottsdale, Arizona</td>
+<td>14 (-7)</td>
+</tr>
+
+<tr>
+<td>22</td>
+<td>Pittsburgh Pirates</td>
+<td>9.3</td>
+<td>TJ Friedl</td>
+<td>Sewickley, Pennsylvania</td>
+<td>24 (+2)</td>
+</tr>
+
+<tr>
+<td>23</td>
+<td>Toronto Blue Jays</td>
+<td>7.5</td>
+<td>Ernie Clement</td>
+<td>Rochester, New York</td>
+<td>21 (-2)</td>
+</tr>
+
+<tr>
+<td>24</td>
+<td>New York Mets</td>
+<td>6.8</td>
+<td>Xavier Edwards</td>
+<td>Mineola, New York</td>
+<td>17 (-7)</td>
+</tr>
+
+<tr>
+<td>25</td>
+<td>Baltimore Orioles</td>
+<td>6.1</td>
+<td>Jackson Merrill</td>
+<td>Baltimore, Maryland</td>
+<td>22 (-3)</td>
+</tr>
+
+<tr>
+<td>26</td>
+<td>St. Louis Cardinals</td>
+<td>4.4</td>
+<td>Devin Williams</td>
+<td>Florissant, Missouri</td>
+<td>15 (-11)</td>
+</tr>
+
+<tr>
+<td>27</td>
+<td>Chicago Cubs</td>
+<td>4.0</td>
+<td>Quinn Priester</td>
+<td>Glendale Heights, Illinois</td>
+<td>30 (+3)</td>
+</tr>
+
+<tr>
+<td>28</td>
+<td>Chicago White Sox</td>
+<td>3.8</td>
+<td>Carson Kelly</td>
+<td>Chicago, Illinois</td>
+<td>25 (-3)</td>
+</tr>
+
+<tr>
+<td>29</td>
+<td>Kansas City Royals</td>
+<td>0.7</td>
+<td>Aaron Ashby</td>
+<td>Kansas City, Missouri</td>
+<td>29 (0)</td>
+</tr>
+
+<tr>
+<td>30</td>
+<td>Milwaukee Brewers</td>
+<td>0.3</td>
+<td>Pete Fairbanks</td>
+<td>Milwaukee, Wisconsin</td>
+<td>28 (-2)</td>
+</tr>
+</tbody>
+</table>
+
+<hr>
+
+<p>There are some limitations here that should be apparent with the methodology:</p>
+
+<ul>
+<li>Sometimes specific players have random combinations of positions they can play. Like Mark Canha who can play infield or outfield. I didn&rsquo;t invest the time and energy to capture all these cases while preserving an apples-to-apples WAR comparison so settled on the much simpler &ldquo;We can swap 1B/3B, 2B/SS, and LF/CF/RF but everyone else gets their pybaseball batting/fielding position preserved&rdquo;.</li>
+<li>There&rsquo;s one guy in particular I had to go in and hard-code in here because my code has an assumption in it I never went in and corrected: that there&rsquo;s never gonna be a starting pitcher who I also have to analyze offensive WAR for (lol).</li>
+<li>Regarding the White Sox/Cubs, birthplace is just city. Not neighborhood and certainly not birth hospital. The White Sox get everyone who was born in Chicago, IL even if they&rsquo;re Northsiders. This is because Rate Field is closer to the pin that OpenStreetMap says is &ldquo;Chicago&rdquo; than Wrigley is. This affects the Mets and Yankees to a lesser extent since the dataset I used cites their birth borough and not just &ldquo;New York City&rdquo;, so at least between Brooklyn/Queens/Bronx/Manhattan/Staten they get sorted, albeit still imprecisely.</li>
+<li>This is just birthplace. Sometimes people are born in one place and then move. (Like, for example, Tarik Skubal who grew up in Arizona but tops the WAR list for the Giants because he was born in the Bay Area.) Identifying the high school for every active MLB player and then programmatically assigning each of those high schools a Latitude/Longitude would be a much bigger project than this and I am considering this good enough.</li>
+<li>This is very literally based on distance from the birthplace to the stadium. This analysis is 100% agnostic of national borders. This means the best player on the Red Sox was born in Montreal and the best player on the Blue Jays was born in Rochester. Sorry, Canada bros.</li>
+</ul>
+
+<hr>
+
+<p>You may be wondering - what do I expect you to do with this information?</p>
+
+<p>Well I&rsquo;m wondering that too. Let me know if you find out.</p>
+
+<p>Happy offseason!</p>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nrp981x" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>avengeds12345 | San Diego Padres</div>
+        <div>51 | an hour ago </div>
+      </div>
+      <label for="nrp981x" class="commentText"><p>Marlins would be a beast if they heavily invest in Caribbean baseball youth</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nrpba1z" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Lost_Bike69 | Los Angeles Dodgers</div>
+        <div>26 | 36 minutes ago </div>
+      </div>
+      <label for="nrpba1z" class="commentText"><p>Miami is the team best positioned to recruit from the Caribbean and they are also a place that young millionaires like to hang out. It’s a wealthy city in a state with one of the fastest growing population in America. They suck because their payroll is like $70m and a lot of MLB owners know there’s just as much money in sucking as there is in putting a competitive team on the field.</p>
+
+<p>Whatever the dodgers are doing to ruin baseball isn’t nearly as bad as the Marlins.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nrpel9s" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Leading-Score9547 | Toronto Blue Jays</div>
+        <div>5 | 14 minutes ago </div>
+      </div>
+      <label for="nrpel9s" class="commentText"><p>I&rsquo;m not American, so I&rsquo;m not 100% familiar with y&rsquo;alls taxes and whatnot, but doesn&rsquo;t the state of Florida not have income tax, or at least very low taxes. I feel like this is something Miami could take advantage of, but refuses to do. This is why i&rsquo;d love for the MLB to implement a Salary floor over a salary cap. Make these teams actually spend money and create competitive teams, instead of trotting out garbage year after year</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="nrpbkfa" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>nior_labotomy | Milwaukee Brewers</div>
+        <div>6 | 34 minutes ago </div>
+      </div>
+      <label for="nrpbkfa" class="commentText"><p>The Brewers have been heavily investing in the Dominican and opened an academy last year. Obviously with Churio it paid off, but with Jesus Made, Luis Peña, Luis Lara, and even more behind them.</p>
+
+<p>So yeah, there&rsquo;s no reason why they shouldn&rsquo;t be&hellip;other than ownership who clearly doesnt care</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nrpgg41" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>avengeds12345 | San Diego Padres</div>
+        <div>1 | a minute ago </div>
+      </div>
+      <label for="nrpgg41" class="commentText"><p>Tbh I never heard of those names apart from Jesus Made. Would be interesting to see this young talents play at MLB level</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nrp9h4w" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>oogieball | Dumpster Fire • New York Mets</div>
+        <div>18 | an hour ago </div>
+      </div>
+      <label for="nrp9h4w" class="commentText"><p>Marlins make perfect sense as the number 1. I didn&rsquo;t realize there were that many ball players from around Atlanta, though.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nrpbf1t" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Lost_Bike69 | Los Angeles Dodgers</div>
+        <div>10 | 35 minutes ago </div>
+      </div>
+      <label for="nrpbf1t" class="commentText"><p>Wealthyish area with year round youth baseball. Makes sense. I would have expected Texas to be top 5 though</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nrpbrp2" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>oogieball | Dumpster Fire • New York Mets</div>
+        <div>1 | 33 minutes ago </div>
+      </div>
+      <label for="nrpbrp2" class="commentText"><p>I have family down in FL, and youth baseball is king there. Never heard anything about GA being that big on it, but I suppose it makes sense.</p>
+
+<p>I think Texas may be a little hamstring by its size.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="nrpc1xe" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Randomizedname1234 | Atlanta Braves</div>
+        <div>1 | 31 minutes ago </div>
+      </div>
+      <label for="nrpc1xe" class="commentText"><p>You can take the ish of wealthy lol</p>
+
+<p>Why do yall think most Braves ticket holders are in Cobb? Where the Braves moved to?</p>
+
+<p>So many travel ball and private teams. There’s no chance a kid without wealthy parents even sees a field unless it’s for school. Which take a back seat a lot of times to the paid leagues.</p>
+
+<p>It sucks so much.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="nrpdcbn" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>p-wing | San Francisco Giants</div>
+        <div>2 | 22 minutes ago </div>
+      </div>
+      <label for="nrpdcbn" class="commentText"><p>The entire South is still Braves territory for the most part, and SEC baseball is huge.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nrpaxl6" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>mosh_pit_nerd | St. Louis Cardinals</div>
+        <div>5 | 38 minutes ago </div>
+      </div>
+      <label for="nrpaxl6" class="commentText"><p>It’s gonna be Florida, California, and Arizona because South/Central America and year round baseball. Maybe whatever MLB city is closest to Vegas too.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nrp9jq9" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Quilber | San Francisco Giants</div>
+        <div>4 | an hour ago </div>
+      </div>
+      <label for="nrp9jq9" class="commentText"><p>On one hand, giants are pretty stacked. On the other hand… no catcher might be an issue.</p>
+
+<p>Also interesting to see how many players we’d lose if the A’s were still in Oakland rather than Sac.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nrpabgw" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>life_is_okay | Los Angeles Dodgers</div>
+        <div>12 | 43 minutes ago </div>
+      </div>
+      <label for="nrpabgw" class="commentText"><p>I’m sure you can find a few catchers in San Francisco, it’s a very friendly town. </p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nrpbmk4" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>tommyjohnpauljones | Chicago Cubs</div>
+        <div>3 | 34 minutes ago </div>
+      </div>
+      <label for="nrpbmk4" class="commentText"><p>So years ago (<sup>2014</sup>&frasl;<sub>15</sub>), I did a project in the StratoMatic computer game building all time teams based on birthplace. I had 40 teams representing 34 states and five countries (Cuba, PR, DR, Venezuela, Canada). California was split into two teams, NorCal and SoCal, and DC was combined with Virginia. </p>
+
+<p>There were some oddities, like George Brett being born in West Virginia or Texas-born Greg Maddux, but for the most part it worked out about how i expected. There were some expected superteams (New York, Pennsylvania, SoCal, Illinois), some surprisingly strong teams (Maryland, Kentucky, Minnesota), some disappointing teams (Florida, DR, Tennessee). It was a lot of work but really fun. I might do it again with an updated version of the all time rosters, and I would be interested to see which states are better now - assuming Florida, Arizona, Texas, Nevada maybe. </p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nrpbq79" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>razzark666 | Toronto Blue Jays</div>
+        <div>3 | 33 minutes ago </div>
+      </div>
+      <label for="nrpbq79" class="commentText"><p>Hell yea, Ernie Clement leading the Blue Jays. Man&hellip; Ernie played so well in Game 7, and was a few feet off of hitting a walk off homer.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nrpc3ep" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>I-Dont-L</div>
+        <div>2 | 30 minutes ago </div>
+      </div>
+      <label for="nrpc3ep" class="commentText"><p>The Sox getting the entirety of Chicago by default and still being four sports worse than the Cubs is&hellip; disheartening</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nrpa47p" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>A_N_T | Texas Rangers</div>
+        <div>1 | 44 minutes ago </div>
+      </div>
+      <label for="nrpa47p" class="commentText"><p>The thought of Nathan Eovaldi on the Astros makes me sick.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nrpb8cw" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>kittysparkles | Los Angeles Dodgers</div>
+        <div>1 | 36 minutes ago </div>
+      </div>
+      <label for="nrpb8cw" class="commentText"><p>This motivates me to keep learning Python.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nrpbq9b" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Captn_UnderPants | Pittsburgh Pirates</div>
+        <div>1 | 33 minutes ago </div>
+      </div>
+      <label for="nrpbq9b" class="commentText"><p>Oh no. We suck again!</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nrpc9q6" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Scadooshy</div>
+        <div>1 | 29 minutes ago </div>
+      </div>
+      <label for="nrpc9q6" class="commentText"><p>Oh, yea we really into the off-season now.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nrpceg2" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Mike2k33 | Milwaukee Brewers</div>
+        <div>1 | 28 minutes ago </div>
+      </div>
+      <label for="nrpceg2" class="commentText"><p>This is inherently biased towards teams that play in climates that are relatively warm year-round</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
