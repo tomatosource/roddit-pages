@@ -1,0 +1,737 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.selfPostImage {
+  width: 100%;
+  height: auto;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/nba/comments/1pbrlxh/the_last_time_each_team_was_games_above_0500/"><p>The last time each team was ___ games above 0.500</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <table>
+<thead>
+<tr>
+<th>Team</th>
+<th>1 game above 0.500</th>
+<th>5 games above 0.500</th>
+<th>10 games above 0.500</th>
+<th>20 games above 0.500</th>
+<th>30 games above 0.500</th>
+<th>40 games above 0.500</th>
+<th>50 games above 0.500</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>Atlanta Hawks</td>
+<td><em>Today</em></td>
+<td><em>Today</em></td>
+<td>2021-05-16</td>
+<td>2015-04-15</td>
+<td>2015-04-15</td>
+<td>2015-04-12</td>
+<td><em>Never</em></td>
+</tr>
+
+<tr>
+<td>Boston Celtics</td>
+<td><em>Today</em></td>
+<td>2025-04-13</td>
+<td>2025-04-13</td>
+<td>2025-04-13</td>
+<td>2025-04-13</td>
+<td>2025-04-13</td>
+<td>2008-04-16</td>
+</tr>
+
+<tr>
+<td>Brooklyn Nets</td>
+<td>2023-12-13</td>
+<td>2023-04-09</td>
+<td>2023-03-12</td>
+<td>2021-05-16</td>
+<td><em>Never</em></td>
+<td><em>Never</em></td>
+<td><em>Never</em></td>
+</tr>
+
+<tr>
+<td>Charlotte Hornets</td>
+<td>2025-10-26</td>
+<td>2022-01-30</td>
+<td>2016-04-13</td>
+<td>1998-04-19</td>
+<td><em>Never</em></td>
+<td><em>Never</em></td>
+<td><em>Never</em></td>
+</tr>
+
+<tr>
+<td>Chicago Bulls</td>
+<td>2025-11-24</td>
+<td>2025-11-04</td>
+<td>2022-04-10</td>
+<td>2012-04-26</td>
+<td>2012-04-26</td>
+<td>2011-04-13</td>
+<td>1997-04-19</td>
+</tr>
+
+<tr>
+<td>Cleveland Cavaliers</td>
+<td><em>Today</em></td>
+<td>2025-11-24</td>
+<td>2025-04-13</td>
+<td>2025-04-13</td>
+<td>2025-04-13</td>
+<td>2025-04-13</td>
+<td>2009-04-15</td>
+</tr>
+
+<tr>
+<td>Dallas Mavericks</td>
+<td>2025-03-05</td>
+<td>2025-02-21</td>
+<td>2024-04-14</td>
+<td>2024-04-10</td>
+<td>2011-04-13</td>
+<td>2007-04-18</td>
+<td>2007-04-18</td>
+</tr>
+
+<tr>
+<td>Denver Nuggets</td>
+<td><em>Today</em></td>
+<td><em>Today</em></td>
+<td>2025-04-13</td>
+<td>2024-04-14</td>
+<td>2024-04-14</td>
+<td><em>Never</em></td>
+<td><em>Never</em></td>
+</tr>
+
+<tr>
+<td>Detroit Pistons</td>
+<td><em>Today</em></td>
+<td><em>Today</em></td>
+<td><em>Today</em></td>
+<td>2008-04-16</td>
+<td>2008-04-16</td>
+<td>2006-04-19</td>
+<td><em>Never</em></td>
+</tr>
+
+<tr>
+<td>Golden State Warriors</td>
+<td><em>Today</em></td>
+<td>2025-04-13</td>
+<td>2025-04-13</td>
+<td>2022-04-10</td>
+<td>2019-04-10</td>
+<td>2017-04-12</td>
+<td>2017-04-12</td>
+</tr>
+
+<tr>
+<td>Houston Rockets</td>
+<td><em>Today</em></td>
+<td><em>Today</em></td>
+<td>2025-04-13</td>
+<td>2025-04-13</td>
+<td>2018-04-11</td>
+<td>2018-04-11</td>
+<td><em>Never</em></td>
+</tr>
+
+<tr>
+<td>Indiana Pacers</td>
+<td>2025-04-13</td>
+<td>2025-04-13</td>
+<td>2025-04-13</td>
+<td>2019-02-23</td>
+<td>2014-04-16</td>
+<td>2004-04-14</td>
+<td><em>Never</em></td>
+</tr>
+
+<tr>
+<td>Los Angeles Clippers</td>
+<td>2025-10-31</td>
+<td>2025-04-13</td>
+<td>2025-04-13</td>
+<td>2024-04-14</td>
+<td>2015-04-14</td>
+<td><em>Never</em></td>
+<td><em>Never</em></td>
+</tr>
+
+<tr>
+<td>Los Angeles Lakers</td>
+<td><em>Today</em></td>
+<td><em>Today</em></td>
+<td><em>Today</em></td>
+<td>2025-03-06</td>
+<td>2020-08-13</td>
+<td>2009-04-14</td>
+<td>2000-04-19</td>
+</tr>
+
+<tr>
+<td>Memphis Grizzlies</td>
+<td>2025-10-29</td>
+<td>2025-04-13</td>
+<td>2025-04-13</td>
+<td>2023-04-09</td>
+<td>2022-04-10</td>
+<td><em>Never</em></td>
+<td><em>Never</em></td>
+</tr>
+
+<tr>
+<td>Miami Heat</td>
+<td><em>Today</em></td>
+<td><em>Today</em></td>
+<td>2024-04-14</td>
+<td>2022-04-10</td>
+<td>2014-04-06</td>
+<td>2013-04-17</td>
+<td>2013-04-17</td>
+</tr>
+
+<tr>
+<td>Milwaukee Bucks</td>
+<td>2025-11-17</td>
+<td>2025-04-13</td>
+<td>2025-04-13</td>
+<td>2023-04-09</td>
+<td>2023-04-09</td>
+<td>2020-08-11</td>
+<td>1971-03-19</td>
+</tr>
+
+<tr>
+<td>Minnesota Timberwolves</td>
+<td><em>Today</em></td>
+<td>2025-11-19</td>
+<td>2025-04-13</td>
+<td>2024-04-14</td>
+<td>2004-04-14</td>
+<td><em>Never</em></td>
+<td><em>Never</em></td>
+</tr>
+
+<tr>
+<td>New Orleans Pelicans</td>
+<td>2024-10-27</td>
+<td>2024-04-14</td>
+<td>2024-04-14</td>
+<td>2009-04-01</td>
+<td>2008-04-16</td>
+<td><em>Never</em></td>
+<td><em>Never</em></td>
+</tr>
+
+<tr>
+<td>New York Knicks</td>
+<td><em>Today</em></td>
+<td><em>Today</em></td>
+<td>2025-04-13</td>
+<td>2025-04-13</td>
+<td>1997-04-19</td>
+<td>1970-03-20</td>
+<td><em>Never</em></td>
+</tr>
+
+<tr>
+<td>Oklahoma City Thunder</td>
+<td><em>Today</em></td>
+<td><em>Today</em></td>
+<td><em>Today</em></td>
+<td>2025-04-13</td>
+<td>2025-04-13</td>
+<td>2025-04-13</td>
+<td>2025-04-13</td>
+</tr>
+
+<tr>
+<td>Orlando Magic</td>
+<td><em>Today</em></td>
+<td>2025-01-12</td>
+<td>2024-04-14</td>
+<td>2011-04-13</td>
+<td>2010-04-14</td>
+<td><em>Never</em></td>
+<td><em>Never</em></td>
+</tr>
+
+<tr>
+<td>Philadelphia 76ers</td>
+<td><em>Today</em></td>
+<td>2024-04-14</td>
+<td>2024-04-14</td>
+<td>2023-04-09</td>
+<td>2001-04-18</td>
+<td>1983-04-17</td>
+<td>1983-04-10</td>
+</tr>
+
+<tr>
+<td>Phoenix Suns</td>
+<td><em>Today</em></td>
+<td>2025-11-26</td>
+<td>2024-04-14</td>
+<td>2022-04-10</td>
+<td>2022-04-10</td>
+<td>2022-04-10</td>
+<td><em>Never</em></td>
+</tr>
+
+<tr>
+<td>Portland Trail Blazers</td>
+<td>2025-11-12</td>
+<td>2022-11-17</td>
+<td>2021-05-16</td>
+<td>2019-04-10</td>
+<td>2000-04-19</td>
+<td>1991-04-21</td>
+<td><em>Never</em></td>
+</tr>
+
+<tr>
+<td>Sacramento Kings</td>
+<td>2025-03-20</td>
+<td>2024-04-14</td>
+<td>2024-04-02</td>
+<td>2004-04-14</td>
+<td>2004-04-11</td>
+<td>2002-04-17</td>
+<td><em>Never</em></td>
+</tr>
+
+<tr>
+<td>San Antonio Spurs</td>
+<td><em>Today</em></td>
+<td><em>Today</em></td>
+<td>2019-04-10</td>
+<td>2017-04-12</td>
+<td>2017-04-12</td>
+<td>2017-04-12</td>
+<td>2016-04-13</td>
+</tr>
+
+<tr>
+<td>Toronto Raptors</td>
+<td><em>Today</em></td>
+<td><em>Today</em></td>
+<td>2022-04-10</td>
+<td>2020-08-14</td>
+<td>2020-08-14</td>
+<td><em>Never</em></td>
+<td><em>Never</em></td>
+</tr>
+
+<tr>
+<td>Utah Jazz</td>
+<td>2025-10-27</td>
+<td>2022-11-21</td>
+<td>2022-04-10</td>
+<td>2021-05-16</td>
+<td>2021-05-16</td>
+<td>1998-04-19</td>
+<td><em>Never</em></td>
+</tr>
+
+<tr>
+<td>Washington Wizards</td>
+<td>2022-11-28</td>
+<td>2021-12-03</td>
+<td>2018-03-17</td>
+<td>1979-04-08</td>
+<td>1975-04-06</td>
+<td><em>Never</em></td>
+<td><em>Never</em></td>
+</tr>
+</tbody>
+</table>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nrsk6mm" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>baconandbobabegger | BOS</div>
+        <div>19 | 2 hours ago </div>
+      </div>
+      <label for="nrsk6mm" class="commentText"><p>Nets never being 30 games above .500 despite joining the nba during the merger is sad. Hornets at least joined later.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nrsm4ql" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>BetweenTheBuzzAndMe | Charlotte Bobcats</div>
+        <div>4 | an hour ago </div>
+      </div>
+      <label for="nrsm4ql" class="commentText"><p>our best since the Bobcats expansion 21 years ago) is only 14 lol</p>
+
+<p>the 1996-97 Hornets did manage to get very close to 30 (54-26)</p>
+
+<p>also the Nets did actually finish a season 32 games over .500 (and got as high as 33) when they were in the ABA</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nrsnuvr" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Celtic_Legend | Celtics</div>
+        <div>3 | an hour ago </div>
+      </div>
+      <label for="nrsnuvr" class="commentText"><p>/u/baconandbobabegger</p>
+
+<p>The nets also finished an equivalent 55-27 in the shortened 20 21 season. They were also one game back of the first seed so who knows maybe they finish the season out stronger and go 8-2 in the missing 10 games to finish 56-26.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="nrsmevu" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>HokageEzio | Knicks</div>
+        <div>3 | an hour ago </div>
+      </div>
+      <label for="nrsmevu" class="commentText"><p>But on the flip side of that, the Nets went to back to back Finals and most of the other teams with all time low win/loss records have barely left the second round.</p>
+
+<p>Nets are just a weird franchise. Their win/loss record is ass but they&rsquo;ve objectively achieved more than Minnesota, the Clippers, the Hornets, and the Grizzlies. Obviously that&rsquo;s ignoring their true peak though which was in the ABA.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nrsnlw7" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Coolcat127 | Wizards</div>
+        <div>10 | an hour ago </div>
+      </div>
+      <label for="nrsnlw7" class="commentText"><p>Wizards not being 20 games over .500 since the 70s seems right </p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nrssq10" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>atlasdtalos | Brian Grant</div>
+        <div>4 | 40 minutes ago </div>
+      </div>
+      <label for="nrssq10" class="commentText"><p>shit they haven&rsquo;t been FIVE games above .500 in four years</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nrstm2t" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Coolcat127 | Wizards</div>
+        <div>4 | 35 minutes ago </div>
+      </div>
+      <label for="nrstm2t" class="commentText"><p>They haven’t been 1 over since  2022 </p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nrsoy6t" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>captain_ahabb | Lakers</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="nrsoy6t" class="commentText"><p>Wizards and Hornets haven&rsquo;t been 20 games over .500 in the 21st Century</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nrssw7b" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>atlasdtalos | Brian Grant</div>
+        <div>1 | 39 minutes ago </div>
+      </div>
+      <label for="nrssw7b" class="commentText"><p>Wizards haven&rsquo;t been 30 games over since &lsquo;75 and neither franchise has ever been 40 above. it&rsquo;s sad, really.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
