@@ -1,0 +1,868 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.selfPostImage {
+  width: 100%;
+  height: auto;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/PathOfExile2/comments/1pftfk4/040_megathread/"><p>0.4.0 Megathread</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <h1 id="useful-links">Useful Links:</h1>
+
+<ul>
+<li><a href="https://www.pathofexile.com/forum/view-thread/3883495" target="_blank">0.4.0 Patch Notes</a></li>
+<li>r/PathOfExile2Builds Build Megathread (will be linked once live)</li>
+<li><a href="https://pathofexile2.com/druids" target="_blank">League Page (with countdown to league start)</a></li>
+<li><a href="https://pathofexile2.com/freeweekend" target="_blank">Free Weekend FAQ</a></li>
+</ul>
+
+<h1 id="videos">Videos:</h1>
+
+<ul>
+<li><a href="https://www.youtube.com/watch?v=7nH1hHyzUSk" target="_blank">0.4.0 Livestream</a></li>
+<li><a href="https://www.youtube.com/watch?v=EyyKfOqzGbs" target="_blank">Post Livestream Q&amp;A</a></li>
+<li><a href="https://www.youtube.com/watch?v=R4c0znfzdBQ" target="_blank">The Last of the Druids Expansion Teaser</a></li>
+<li><a href="https://www.youtube.com/watch?v=HUsjULYd2q8" target="_blank">The Last of the Druids Expansion Trailer</a></li>
+<li><a href="https://www.youtube.com/watch?v=1BDRSedxTpY" target="_blank">Music for The Last of the Druids Expansion Trailer</a></li>
+<li><a href="https://www.youtube.com/watch?v=sxw3m5FyB68" target="_blank">Fate of the Vaal League Teaser</a></li>
+<li><a href="https://www.youtube.com/watch?v=_6hdjBN97mM" target="_blank">Fate of the Vaal League Trailer</a></li>
+</ul>
+
+<h1 id="general-information">General Information</h1>
+
+<ul>
+<li>New Class: The Druid with Shapshifting into a Wolf, Bear, and/or Wyvern</li>
+<li>Two ascendancy classes for the druid: The Shaman and The Oracle</li>
+<li>Over 30 new support Gems</li>
+<li>Substantial balance changes on Unique Items, Lineage Support gems, and more</li>
+<li>New pinnicle boss of Atziri, the Queen of the Vaal</li>
+<li>New league mechanic to allow double corruptions and other crafting options</li>
+<li>Abyss mechanic, introduced in 0.3.0, is going core</li>
+<li>Delirium Fog is less visually annoying and is toned down</li>
+</ul>
+
+<p><em>Good luck and hope you have a great league start!</em></p>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nsm808t" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>B_Nasty21</div>
+        <div>1 | 41 minutes ago </div>
+      </div>
+      <label for="nsm808t" class="commentText"><p>Do I need to buy classes?</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nsm8s83" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>verysimplenames</div>
+        <div>1 | 37 minutes ago </div>
+      </div>
+      <label for="nsm8s83" class="commentText"><ul>
+<li>Last Epoch player</li>
+</ul>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nsmaoos" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>MitchelRN</div>
+        <div>1 | 27 minutes ago </div>
+      </div>
+      <label for="nsmaoos" class="commentText"><p><img src="giphy|12msOFU8oL1eww" alt="gif" /></p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="nsm82y6" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>WarRepresentative702</div>
+        <div>1 | 41 minutes ago </div>
+      </div>
+      <label for="nsm82y6" class="commentText"><p>its not blizzard dude</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="nsm8b19" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Nakatsuni | Sorceress but Goth</div>
+        <div>1 | 39 minutes ago </div>
+      </div>
+      <label for="nsm8b19" class="commentText"><p>This is not made by Blizzard or Krafton, relax</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="nsm8nbp" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Arsalanred</div>
+        <div>1 | 38 minutes ago </div>
+      </div>
+      <label for="nsm8nbp" class="commentText"><p>If you bought the early access supporter pack you&rsquo;re good. When it comes out in 1.0 it will be totally free to play for everyone as well.</p>
+
+<p>The only thing you truly need to buy are the stash tabs in my opinion.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nsm9lkh" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>wolan1337</div>
+        <div>1 | 32 minutes ago </div>
+      </div>
+      <label for="nsm9lkh" class="commentText"><p>Breach/Abyssal stash when 😂, man I love having affinity on every tab and everything sorted out nicely</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="nsmbrol" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>[deleted]</div>
+        <div>1 | 21 minutes ago </div>
+      </div>
+      <label for="nsmbrol" class="commentText"><p>[removed]</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nsm94wd" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Hardyyz</div>
+        <div>1 | 35 minutes ago </div>
+      </div>
+      <label for="nsm94wd" class="commentText"><p>I cant wait to build my giga temple! it looks so cool</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nsmap1f" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>lepip</div>
+        <div>1 | 27 minutes ago </div>
+      </div>
+      <label for="nsmap1f" class="commentText"><p>Lightnight arrow deadeye anyone?</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nsmbnvi" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Atachzy</div>
+        <div>1 | 22 minutes ago </div>
+      </div>
+      <label for="nsmbnvi" class="commentText"><p>Now all cool kids will be playing Lightning arrow Pathfinder</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="nsmdhr5" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>BlueBaladium</div>
+        <div>1 | 12 minutes ago </div>
+      </div>
+      <label for="nsmdhr5" class="commentText"><p>I thought about playing ranger for the first time after my burnout caused by minions and thorns</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="nsmeqbo" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>iiTryhard</div>
+        <div>1 | 5 minutes ago </div>
+      </div>
+      <label for="nsmeqbo" class="commentText"><p>Crossbow deadeye will clear this league</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nsm9ln3" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ribsboi</div>
+        <div>1 | 32 minutes ago </div>
+      </div>
+      <label for="nsm9ln3" class="commentText"><p>Anyone know exactly what happens to Walker of the Wilds passive? They said it&rsquo;s going on a Lineage Gem. So is it just basically a &ldquo;walker of the wilds&rdquo; gem or it&rsquo;s nerfed/has a different name</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nsmett9" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Nietzsche29</div>
+        <div>1 | 4 minutes ago </div>
+      </div>
+      <label for="nsmett9" class="commentText"><p>Pretty sure it&rsquo;s just gone and the support gem is the replacement.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nsmbfvz" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Zeiiji</div>
+        <div>1 | 23 minutes ago </div>
+      </div>
+      <label for="nsmbfvz" class="commentText"><p>Can’t wait to build up a Druid ! It looks so cool.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nsmb9gt" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Dontevenask4</div>
+        <div>1 | 24 minutes ago </div>
+      </div>
+      <label for="nsmb9gt" class="commentText"><p>Will the Surrounded change override legacy Constricting Commands in standard that have (5 fewer enemies to be considered surrounded)?</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nsmcl3k" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ryo3000</div>
+        <div>1 | 17 minutes ago </div>
+      </div>
+      <label for="nsmcl3k" class="commentText"><p>It probably won&rsquo;t affect the item itself, it&rsquo;ll still say 5</p>
+
+<p>But it&rsquo;s a hard limit on the surround itself so it&rsquo;ll affect how it behaves anyway (need 1 enemy)</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nsmcdre" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>BloodOnFire</div>
+        <div>1 | 18 minutes ago </div>
+      </div>
+      <label for="nsmcdre" class="commentText"><p>The shapeshifting is tied to using a talisman as a weapon right?</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nsmd021" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>kapiczek</div>
+        <div>1 | 14 minutes ago </div>
+      </div>
+      <label for="nsmd021" class="commentText"><p>Yes you can play druid with any weapon, and any class with talisman and shapeshifting.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="nsmd2kq" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>INeedAnAdultHalp</div>
+        <div>1 | 14 minutes ago </div>
+      </div>
+      <label for="nsmd2kq" class="commentText"><p>Yeah, each one gives you two forms</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="nsmd3ty" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>exhume87</div>
+        <div>1 | 14 minutes ago </div>
+      </div>
+      <label for="nsmd3ty" class="commentText"><p>Yes.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="nsmd6ns" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>jossief1</div>
+        <div>1 | 13 minutes ago </div>
+      </div>
+      <label for="nsmd6ns" class="commentText"><p>Shapeshifts are the result of using Talisman skills, which all say &ldquo;Shapeshift into an X and do Y.&rdquo;</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nsmeock" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>phly</div>
+        <div>1 | 5 minutes ago </div>
+      </div>
+      <label for="nsmeock" class="commentText"><p>Can the Oracle tell me whether the Buffalo Bills will make it to the Superbowl this year?</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nsmf89x" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>InterpretiveTrail | Druid!!! 🎅</div>
+        <div>1 | 2 minutes ago </div>
+      </div>
+      <label for="nsmf89x" class="commentText"><p><img src="giphy|3orifhNhn840GpMMPm" alt="gif" /></p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nsmc8ln" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Traditional_Common22</div>
+        <div>1 | 18 minutes ago </div>
+      </div>
+      <label for="nsmc8ln" class="commentText"><p>Anyone know if a shield wall warrior would be good?</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nsmcp0z" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>matidiaolo</div>
+        <div>1 | 16 minutes ago </div>
+      </div>
+      <label for="nsmcp0z" class="commentText"><p>Did they balance expedition / breach / ritual ? Do we know?</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nsmd2gc" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>exhume87</div>
+        <div>1 | 14 minutes ago </div>
+      </div>
+      <label for="nsmd2gc" class="commentText"><p>They said something about still needing to do it in the ziggyD interview right after the reveal</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nsme6a9" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>phly</div>
+        <div>1 | 8 minutes ago </div>
+      </div>
+      <label for="nsme6a9" class="commentText"><p>What color is Helltide this season 😡?</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nsm9vso" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Comprehensive-Log804</div>
+        <div>1 | 31 minutes ago </div>
+      </div>
+      <label for="nsm9vso" class="commentText"><p>Do i need to buy endgame?</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nsmap5z" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>theatras</div>
+        <div>1 | 27 minutes ago </div>
+      </div>
+      <label for="nsmap5z" class="commentText"><p>I started having constant stuttering after the most recent update. Usually, after going into a new zone it would take a couple of seconds for shaders to load and then drive usage would go to zero. Now it&rsquo;s spiking constantly. Does anybody know what could cause this?</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nsmf3iu" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Toster283</div>
+        <div>1 | 3 minutes ago </div>
+      </div>
+      <label for="nsmf3iu" class="commentText"><p>perhaps your display settings changed render engine? or nvidia reflex was turned on/off? DirectX 12 was causing big problems for me a while ago, it is fine now but it did work better for a time when I switched to vulkan. If you have an nvidia gpu check if it has dlls or dssl? (not sure what its called) compatibility and turn that on if its off</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nsmanph" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>gengar9277</div>
+        <div>1 | 27 minutes ago </div>
+      </div>
+      <label for="nsmanph" class="commentText"><p>Endgame when?</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nsm82no" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>lemi69</div>
+        <div>1 | 41 minutes ago </div>
+      </div>
+      <label for="nsm82no" class="commentText"><p>When did she come out</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
