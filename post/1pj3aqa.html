@@ -1,0 +1,513 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.selfPostImage {
+  width: 100%;
+  height: auto;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/nba/comments/1pj3aqa/oc_tech_i_built_a_spoilerfree_nba_excitement/"><p>[OC] [Tech] I built a &ldquo;Spoiler-Free&rdquo; NBA Excitement Rater for non-US fans. Seeking feedback on the volatility algorithm logic.</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <p>Hey all,</p>
+
+<p>I’m a European fan who was tired of spoiling games while checking box scores in the morning, so I built a small site that <strong>ranks games by “excitement” without showing scores or winners</strong>.</p>
+
+<p><strong>Site:</strong> <a href="https://replayrank.com" target="_blank">https://replayrank.com</a></p>
+
+<p>Each game gets an <strong>Excitement Score (0–100)</strong> and a label like “MUST WATCH” or “Background Noise”.</p>
+
+<p><strong>How the score works (no spoilers)</strong></p>
+
+<p>It’s a pure rules-based algorithm using play-by-play + box score data:</p>
+
+<p>• <strong>Closeness &amp; margin</strong></p>
+
+<p>Smaller final margin = higher score; blowouts get penalized. Very close games (≤5 pts) get a “Down to the Wire” bonus.</p>
+
+<p>• <strong>Volatility</strong></p>
+
+<p>Lead changes + times tied add to the score. Crazy swings can get tagged as “Back &amp; Forth Battle”.</p>
+
+<p>• <strong>Overtime</strong></p>
+
+<p>Each OT adds a big bonus (multi-OT games tend to land near the top).</p>
+
+<p>• <strong>Star performances</strong></p>
+
+<p>Big scoring nights and triple-double-type lines boost the rating and can trigger tags like “Star Takeover” or “Historic Performance”, without showing the actual stat line on the site.</p>
+
+<p>• <strong>Final-minute drama</strong></p>
+
+<p>The algorithm scans the last minute of the 4th/OT for lead changes and shots that could win or tie the game (including dramatic misses), adding extra clutch bonuses.</p>
+
+<p>• <strong>Game style</strong></p>
+
+<p>High-scoring shootouts get a small bump; low-scoring blowout snoozers can get tagged as “Defensive Struggle”.</p>
+
+<p>All components are combined and then capped so one thing (like a single stat line) doesn’t completely dominate.</p>
+
+<p><strong>What I’m looking for</strong></p>
+
+<p>If you try it, I’d love feedback on:</p>
+
+<p>• Do the <strong>top games feel right</strong>?</p>
+
+<p>• Any games you’d rate very differently?</p>
+
+<p>• Any tags that feel misleading/confusing?</p>
+
+<p>Examples like <em>“[Team A] vs [Team B] on [date] was amazing but your score is too low”</em> are super helpful. Thanks!</p>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ntahgby" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>FRiver | NBA</div>
+        <div>1 | 24 minutes ago </div>
+      </div>
+      <label for="ntahgby" class="commentText"><p>Great idea. Are you able to list say the top-10 games of the season so far? Would be a good way to validate the logic</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="ntaioip" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Kitchen_Animal_2644</div>
+        <div>1 | 17 minutes ago </div>
+      </div>
+      <label for="ntaioip" class="commentText"><p>Thanks, season dashboard is in my ToDo, i already checked this idea as SQL query and result looks interesting. I&rsquo;ll add it soon to the site.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ntahbrr" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Pretend-Pie9487</div>
+        <div>1 | 25 minutes ago </div>
+      </div>
+      <label for="ntahbrr" class="commentText"><p>exactly what I needed dude&hellip; you should also enable a notification system or something. So if I know my team had a exciting game I can actively avoid spoilers</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="ntahr5p" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Pretend-Pie9487</div>
+        <div>1 | 23 minutes ago </div>
+      </div>
+      <label for="ntahr5p" class="commentText"><p>Also you could link to the highlights in the NBA youtube account, those are usually spoiler free</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="ntai7bm" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Kitchen_Animal_2644</div>
+        <div>1 | 20 minutes ago </div>
+      </div>
+      <label for="ntai7bm" class="commentText"><p>Thanks, that’s exactly the kind of use case I had in mind! Pick team and get notification, when their game hits a high excitement score</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ntahgak" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ThePresent_Moment</div>
+        <div>1 | 24 minutes ago </div>
+      </div>
+      <label for="ntahgak" class="commentText"><p>I really like this a lot, nicely done!!</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ntahqsp" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Merkave | NYK</div>
+        <div>1 | 23 minutes ago </div>
+      </div>
+      <label for="ntahqsp" class="commentText"><p>Pretty cool site. I went through the past week of games and the ratings matched what I watched.</p>
+
+<p>One small piece of feedback: for example, the Lakers–Raptors game feels like a clear 100. The Spurs–Pels game was very good, but maybe a few points lower — no game winner, and it was Wemby-less Spurs vs. a weak Pelicans team. It’s a small nuance though; still a great game (and useful site)</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="ntajp0l" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Kitchen_Animal_2644</div>
+        <div>1 | 11 minutes ago </div>
+      </div>
+      <label for="ntajp0l" class="commentText"><p>That’s super helpful, thank you!<br>
+I totally agree with your nuance there – things like <strong>quality of the matchup, missing stars</strong> etc. are still in the “fine-tuning” bucket for the algorithm.<br>
+The main thing I was worried about was: “Do these ratings even make sense to people who actually watched the games?”<br>
+Your comment that the past week mostly lined up with your experience is a huge relief.</p>
+
+<p>I’ll keep iterating on those softer factors like roster strength and missing stars – that’s exactly the kind of edge case that will make the score feel more “human.”</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ntahwqq" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>jabroniski</div>
+        <div>1 | 22 minutes ago </div>
+      </div>
+      <label for="ntahwqq" class="commentText"><p>This is what I needed! As a fellow fan from Europe. Thank you.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ntai70r" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Skank_hunt42 | Thunder</div>
+        <div>1 | 20 minutes ago </div>
+      </div>
+      <label for="ntai70r" class="commentText"><p>I like the idea! Could you make another link that doesn&rsquo;t go to nba.com and maybe the highlights on YouTube or something? I&rsquo;m aware that there&rsquo;s a recap on nba.com, but it&rsquo;s only 2:30. The YT highlights is 16:37.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="ntakw9o" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Kitchen_Animal_2644</div>
+        <div>1 | 5 minutes ago </div>
+      </div>
+      <label for="ntakw9o" class="commentText"><p>Thanks, appreciate it!</p>
+
+<p>I totally agree – the 2:30 recap doesn’t really capture how the game <em>felt</em>. Right now I’m linking to <a href="http://nba.com" target="_blank">nba.com</a> because it’s the most consistent/official destination, but I’m already thinking about adding a second link.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ntajidl" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>rookoo | Hawks</div>
+        <div>1 | 12 minutes ago </div>
+      </div>
+      <label for="ntajidl" class="commentText"><p>Spurs-Pels game from Dec 8 is ranked as a 100.  I watched it, and it was interesting, but it should not be given the highest possible excitement score.  Most of the game was exactly as you&rsquo;d expect, with the Spurs looking like they would win the whole game.  If you look at the win probability chart, they never had a win probability below 40%, the entire game.  The Pels made a valiant effort to come back at the end, but failed.  Watching it, it felt like &ldquo;wow if the Pels can pull this out, this would be quite the come back&rdquo;, but they didn&rsquo;t.</p>
+
+<p>Subjectively, it would be more like an 80 to 85 for me.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ntal2cv" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>carlorovellio</div>
+        <div>1 | 4 minutes ago </div>
+      </div>
+      <label for="ntal2cv" class="commentText"><p>Awesome, thank you!! Maybe add a ‘buy me a coffee’? I’ll gladly buy you a coffee.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
