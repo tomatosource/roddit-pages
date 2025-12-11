@@ -1,0 +1,717 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.selfPostImage {
+  width: 100%;
+  height: auto;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/PathOfExile2/comments/1pka2kc/inevitable_critical_expected_damage_increase/"><p>Inevitable Critical expected damage increase</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <p>I was wondering how much expected more damage multiplier the new inevitable critical node gives based on 2 variables: crit chance and crit damage bonus. Here&rsquo;s the result:</p>
+
+<ul>
+<li>For most crit chances, the greater the crit damage bonus, the greater damage increase the node gives (so I limited my search to 5, aka 500% crit damage bonus).</li>
+<li>For crit chance, the damage increase peaks at around 24%.</li>
+</ul>
+
+<p>The greatest damage increase is <strong>44.02% given by 24.40% crit chance and 500% crit bonus</strong> (although a larger crit bonus would give even more damage increase).</p>
+
+<p>Formula for calculation:</p>
+
+<p>Expected damage with node / expected damage without node</p>
+
+<p>where:</p>
+
+<p>Expected damage with node = sum over k = 0 to 4 of (probability of needing exactly k rerolls * (1 + effective crit damage bonus after k rerolls)), with the probability of k rerolls given by a geometric distribution truncated at 4 (all probability for k ≥ 5 added to k = 4) and effective crit damage bonus for each k calculated as max(0, crit damage bonus * (1 - 0.3 * k))</p>
+
+<p>Expected damage without node = 1 + (crit chance * crit damage bonus)</p>
+
+<p><a href="https://preview.redd.it/vyrlbh2dbn6g1.png?width=691&amp;format=png&amp;auto=webp&amp;s=a5b927c2cb0e74dfd8b9afacea2a30231150aa0b" target="_blank">https://preview.redd.it/vyrlbh2dbn6g1.png?width=691&amp;format=png&amp;auto=webp&amp;s=a5b927c2cb0e74dfd8b9afacea2a30231150aa0b</a></p>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ntjfcpq" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>tktytkty</div>
+        <div>1 | 39 minutes ago </div>
+      </div>
+      <label for="ntjfcpq" class="commentText"><p>Fuck, I should&rsquo;ve stayed in school.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="ntjfr3m" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>playoponly</div>
+        <div>1 | 37 minutes ago </div>
+      </div>
+      <label for="ntjfr3m" class="commentText"><p>at least you reply really fast</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="ntjlaas" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Sprila</div>
+        <div>1 | 8 minutes ago </div>
+      </div>
+      <label for="ntjlaas" class="commentText"><p>Straight for the jugular</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ntjfgl4" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Working_Plastic_8832</div>
+        <div>1 | 38 minutes ago </div>
+      </div>
+      <label for="ntjfgl4" class="commentText"><p>what if you include bifurcated criticals?</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="ntjgn91" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>_Hardric</div>
+        <div>1 | 32 minutes ago </div>
+      </div>
+      <label for="ntjgn91" class="commentText"><p>I&rsquo;m not sure how that works. I think either inevitable critical or bifurcation has to happen first, and depending on which one, it changes what it does.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ntjhn6u" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Ergodic_donkey</div>
+        <div>1 | 27 minutes ago </div>
+      </div>
+      <label for="ntjhn6u" class="commentText"><p>Are we sure that after 4 missed crit rolls the bonus crit damage goes to 0 (aka the Ascendancy node works additively)?</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="ntjhyxt" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>_Hardric</div>
+        <div>1 | 25 minutes ago </div>
+      </div>
+      <label for="ntjhyxt" class="commentText"><p>No. It was just my assumption.</p>
+
+<p>I think it could also go down multiplicatively, but from the wording, I think it&rsquo;s additive.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="ntji99u" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>40kguy69</div>
+        <div>1 | 24 minutes ago </div>
+      </div>
+      <label for="ntji99u" class="commentText"><p>Nothing is ever sure withGGG; but usally the most common result of these poe mechanics that have a more/less  values going up and down depending on conditions are all thrown into one bucket, making 4 rerolls 100% less critical damage bonus not 0.3x0.3x0.3 etc</p>
+
+<p>(an example would be attrition spirit gem, its just a flat X number More multi not 1.01 59 times). Other examples include trinity.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="ntjj03q" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Sven_the_great</div>
+        <div>1 | 20 minutes ago </div>
+      </div>
+      <label for="ntjj03q" class="commentText"><p>Flameblast Stages are an easier example IMO</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="ntjj33q" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>40kguy69</div>
+        <div>1 | 20 minutes ago </div>
+      </div>
+      <label for="ntjj33q" class="commentText"><p>Ya stages those too; forgot about that</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ntjix4h" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>fakedout17</div>
+        <div>1 | 20 minutes ago </div>
+      </div>
+      <label for="ntjix4h" class="commentText"><p>oracle seems like a big bait</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ntjjqvs" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>40kguy69</div>
+        <div>1 | 16 minutes ago </div>
+      </div>
+      <label for="ntjjqvs" class="commentText"><p>I think the fact that everything crits no matter the damage is potentially as or more meaningfull then its damage buff.</p>
+
+<p>Example: now every hit procs CoC. It opens things up like a mace slam CoC build or whatever even though maces are at 5% with zero crit scaling. turning CoC into CoH.</p>
+
+<p>Volls protector stuff maybe also.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ntji3nt" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>lowkeyripper</div>
+        <div>1 | 25 minutes ago </div>
+      </div>
+      <label for="ntji3nt" class="commentText"><p>The X axis is labeled Y and I am getting severely triggered</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ntjhg3l" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>SoulofArtoria</div>
+        <div>1 | 28 minutes ago </div>
+      </div>
+      <label for="ntjhg3l" class="commentText"><p>What are some good sources of things that only increases crit multi a lot? I do like this synergise well with beacon of azis. </p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="ntji8uv" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>RedmundJBeard</div>
+        <div>1 | 24 minutes ago </div>
+      </div>
+      <label for="ntji8uv" class="commentText"><p>adorned</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ntjj99k" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Madnific</div>
+        <div>1 | 19 minutes ago </div>
+      </div>
+      <label for="ntjj99k" class="commentText"><p>Not sure how to word this, sorry my bad in advance: would be possible to compare how much crit chance and damage bonus without the node would be needed to reach the optimum with the node, i.e 22% chance 1000%(or 500)crit bonus?</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ntjfrdk" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>PoetryOk2920</div>
+        <div>1 | 37 minutes ago </div>
+      </div>
+      <label for="ntjfrdk" class="commentText"><p>TLDR you want to have crit chance around 44% and after that it was diminishing returns. At 100% is of course useless. Is that right?</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="ntjg5bm" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>_Hardric</div>
+        <div>1 | 35 minutes ago </div>
+      </div>
+      <label for="ntjg5bm" class="commentText"><p>I would say that TLDR is that the node gets better with higher crit damage bonus, and crit chance around 24%.</p>
+
+<p>* 44% is the expected damge boost by taking the node with those parameters.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="ntjgvrc" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>MiniMik</div>
+        <div>1 | 31 minutes ago </div>
+      </div>
+      <label for="ntjgvrc" class="commentText"><p>I&rsquo;d be more curious about actual endgame scaling potential, because you&rsquo;ll be able to hit something like 800%. I assume the crit needs to be higher there.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="ntjhnpz" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>_Hardric</div>
+        <div>1 | 27 minutes ago </div>
+      </div>
+      <label for="ntjhnpz" class="commentText"><p>I wasn&rsquo;t sure what is the endgame potential of crit damage bonus, so I capped it at 500%.</p>
+
+<p>Anyway, here&rsquo;s the result if I increase the maximum crit damage bonus to 1000%:</p>
+
+<p><a href="https://preview.redd.it/uzdljm6bfn6g1.png?width=691&amp;format=png&amp;auto=webp&amp;s=3b84609c430c7daf612129ad752b14a4d8052b04" target="_blank">https://preview.redd.it/uzdljm6bfn6g1.png?width=691&amp;format=png&amp;auto=webp&amp;s=3b84609c430c7daf612129ad752b14a4d8052b04</a></p>
+
+<p>Maximum is 57.83% (more damage) given by 19.35% crit chance (and ofcourse 1000% crit bonus).</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="ntjj6ip" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>lizafo</div>
+        <div>1 | 19 minutes ago </div>
+      </div>
+      <label for="ntjj6ip" class="commentText"><p>That is the same graph</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="ntjkqxg" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Skaugy</div>
+        <div>1 | 11 minutes ago </div>
+      </div>
+      <label for="ntjkqxg" class="commentText"><p>Would you actually aim for that in a build though? That might maximize that node, but not necessarily maximize your character overall right?</p>
+
+<p>I would guess that your character might still be overall more powerful if you build more than 24 crit chance, even if that individual node is less effective.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="ntjim1g" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Ildona</div>
+        <div>1 | 22 minutes ago </div>
+      </div>
+      <label for="ntjim1g" class="commentText"><p>You&rsquo;re making this with python? Can I make a request?</p>
+
+<p>The actual question is &ldquo;should I take more Crit% or CritDam%&rdquo;? And there&rsquo;s a point where damage will just always go to linear gains when additional crit chance adds nothing.</p>
+
+<p>The current plot shows better gains for crit chance at lower percent damage, shown by the green curve being above the orange curve, and then again lower when red looks like it goes above green. So, before that crossing point, you want more chance - after, you want more damage. But that&rsquo;s pretty hard to read and interpret from the discrete lines.</p>
+
+<p>So, reasonably, we&rsquo;re looking at a 2D plane of possibilities (chance vs damage) and trying to maximize our local slope. That could be plotted as a color map (color = percent damage increase) on a 2D plane, right?</p>
+
+<p>I hope you see what I&rsquo;m looking for!</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="ntjm76h" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>_Hardric</div>
+        <div>1 | 3 minutes ago </div>
+      </div>
+      <label for="ntjm76h" class="commentText"><p>Yes, I&rsquo;m making this with python (numpy and matplotlib).</p>
+
+<p>Here&rsquo;s the heatmap:</p>
+
+<p><a href="https://preview.redd.it/pbw860d3in6g1.png?width=947&amp;format=png&amp;auto=webp&amp;s=09cac6763f3ef637246e42dcd84f61dc4681a2c5" target="_blank">https://preview.redd.it/pbw860d3in6g1.png?width=947&amp;format=png&amp;auto=webp&amp;s=09cac6763f3ef637246e42dcd84f61dc4681a2c5</a></p>
+
+<p>The red line is when X and Y have the same partial derivative with respect to the &ldquo;damage increase function&rdquo; so on one side X has more impact and on other Y has more impact.</p>
+
+<p>I definitely see your point that you want to know which stat gives you more damage (crit chance vs damage). The above heatmap doesn&rsquo;t show that, however, if you follow the gradient, you will try to maximize the damage increase of the node, which doesn&rsquo;t necessarily maximize the damage. Is that what you wanted?</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
