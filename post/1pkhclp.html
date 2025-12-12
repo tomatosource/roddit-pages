@@ -215,9 +215,299 @@ body > .commentList {
     <div class="comment">
       <div class="commentHeader">
         <div>MiniMik</div>
-        <div>1 | 15 minutes ago </div>
+        <div>1 | an hour ago </div>
       </div>
       <label for="ntl1w21" class="commentText"><p>I&rsquo;ve seen more graphs tonight than in my entire life.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="ntl465o" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Sven_the_great</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="ntl465o" class="commentText"><p>The fun part is that they don&rsquo;t agree</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="ntl4v6q" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>MiniMik</div>
+        <div>1 | 43 minutes ago </div>
+      </div>
+      <label for="ntl4v6q" class="commentText"><p>Yeah, I was thinking the same thing, lol. So many graphs and all of them saying different things.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ntl72gf" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Drekor</div>
+        <div>1 | 29 minutes ago </div>
+      </div>
+      <label for="ntl72gf" class="commentText"><p>What exactly did you ask Gemini to do? because the math here doesn&rsquo;t seem accurate</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="ntl7nnw" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>eeeechuta</div>
+        <div>1 | 25 minutes ago </div>
+      </div>
+      <label for="ntl7nnw" class="commentText"><p>I just pasted the ascendancy clarified it and I&rsquo;m pretty sure the reply confirmed. However the above chart is assuming each crit damage reduction is a flat 0.7 if the original, nullifying the bonus (or going negative) if the number of refills exceeds 3. If it is a infinite geometric series approaching zero the damage bonus is a whopping 84%. But I&rsquo;m not reading that math in detail LOL.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="ntl7txp" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>eeeechuta</div>
+        <div>1 | 24 minutes ago </div>
+      </div>
+      <label for="ntl7txp" class="commentText"><pre><code class="language-python?code_reference&code_event_index=2"># Parameters
+P = 0.45  # Critical Chance (45%)
+B = 3.0   # Critical Damage Bonus (300%)
+reduction_factor = 0.7
+
+# --- 1. Calculate Common Ratio (r) ---
+r = (1 - P) * reduction_factor
+print(f&quot;Common Ratio (r): {r}&quot;)
+
+# --- 2. Calculate Expected Bonus ---
+# Expected Bonus = P * B * (1 / (1 - r))
+expected_bonus = P * B * (1 / (1 - r))
+print(f&quot;Expected Bonus: {expected_bonus}&quot;)
+
+# --- 3. Calculate Expected Total Damage Multiplier (E_D_star) ---
+E_D_star = 1.0 + expected_bonus
+print(f&quot;Expected Total Damage Multiplier (E_D_star): {E_D_star}&quot;)
+
+# --- 4. Calculate Baseline Damage Multiplier (E_Base) ---
+# E_Base = 1 + P * B
+E_Base = 1.0 + P * B
+print(f&quot;Baseline Damage Multiplier (E_Base): {E_Base}&quot;)
+
+# --- 5. Calculate Extra Damage Multiplier (Benefit) ---
+extra_damage_multiplier = E_D_star - E_Base
+print(f&quot;Extra Damage Multiplier (Benefit): {extra_damage_multiplier}&quot;)
+
+# Also output the percentage change for user clarity
+extra_damage_percentage = extra_damage_multiplier * 100
+print(f&quot;Extra Damage Multiplier (Benefit) in Percent: {extra_damage_percentage}&quot;)
+
+</code></pre>
+
+<pre><code class="language-text?code_stderr&code_event_index=2">Traceback (most recent call last):
+  File &quot;&amp;lt;string&amp;gt;&quot;, line 39, in &amp;lt;module&amp;gt;
+  File &quot;&amp;lt;string&amp;gt;&quot;, line 14, in E_mod
+ValueError: operands could not be broadcast together with shapes (100,100) (4,) 
+
+</code></pre>
+
+<pre><code class="language-python?code_reference&code_event_index=5"># Define the parameters
+P = 0.45  # Critical Chance (45%)
+B = 3.0   # Critical Damage Bonus (300%)
+reduction_factor = 0.7
+
+# --- 1. Calculate Baseline Average Damage Multiplier (E_Base) ---
+# E_Base = 1 + P * B
+E_base = 1.0 + P * B
+
+# --- 2. Calculate Expected Damage Multiplier with Guaranteed Crit (E_D_star) ---
+
+# Common ratio (r)
+r = (1 - P) * reduction_factor
+
+# Expected Bonus contribution
+# Expected Bonus = P * B * (1 / (1 - r))
+expected_bonus = P * B * (1 / (1 - r))
+
+# Expected Total Damage Multiplier
+E_D_star = 1.0 + expected_bonus
+
+# --- 3. Calculate Extra Damage Multiplier (Benefit) ---
+extra_damage_multiplier = E_D_star - E_base
+
+print(f&quot;P (Crit Chance): {P}&quot;)
+print(f&quot;B (Crit Bonus): {B}&quot;)
+print(f&quot;Common ratio (r): {r}&quot;)
+print(f&quot;Baseline Avg Damage Multiplier (E_Base): {E_base}&quot;)
+print(f&quot;Guaranteed Crit Avg Damage Multiplier (E_D_star): {E_D_star}&quot;)
+print(f&quot;Extra Damage Multiplier (Benefit): {extra_damage_multiplier}&quot;)
+
+</code></pre>
+
+<pre><code class="language-text?code_stdout&code_event_index=5">P (Crit Chance): 0.45
+B (Crit Bonus): 3.0
+Common ratio (r): 0.385
+Baseline Avg Damage Multiplier (E_Base): 2.35
+Guaranteed Crit Avg Damage Multiplier (E_D_star): 3.1951219512195124
+Extra Damage Multiplier (Benefit): 0.8451219512195123
+
+</code></pre>
+
+<p>Based on the updated formula (multiplicative reduction, modeled as an infinite geometric series) and the parameters:</p>
+
+<ul>
+<li><strong>Critical Chance (<span class="math inline">\(P\)</span>):</strong> <span class="math inline">\(45\%\)</span> (<span class="math inline">\(0.45\)</span>)</li>
+<li><strong>Critical Damage Bonus (<span class="math inline">\(B\)</span>):</strong> <span class="math inline">\(300\%\)</span> (<span class="math inline">\(3.0\)</span>)</li>
+<li><strong>Reduction Factor:</strong> <span class="math inline">\(0.7\)</span></li>
+</ul>
+
+<h3 id="calculation"><strong>Calculation</strong></h3>
+
+<ol>
+<li><p><strong>Baseline Average Damage Multiplier (<span class="math inline">\(E_{Base}\)</span>):</strong>
+$<span class="math inline">\(E_{Base} = 1 + P \times B = 1 + 0.45 \times 3.0 = 1 + 1.35 = 2.35\)</span>$</p></li>
+
+<li><p><strong>Common Ratio (<span class="math inline">\(r\)</span>):</strong>
+$<span class="math inline">\(r = (1 - P) \times 0.7 = (1 - 0.45) \times 0.7 = 0.55 \times 0.7 = 0.385\)</span>$</p></li>
+
+<li><p><strong>Guaranteed Crit Average Damage Multiplier (<span class="math inline">\(E_D^*\)</span>):</strong>
+$<span class="math inline">\(E_D^* = 1 + \text{Expected Bonus}\)</span><span class="math inline">\(
+\)</span><span class="math inline">\(\text{Expected Bonus} = P \times B \times \frac{1}{1 - r}\)</span><span class="math inline">\(
+\)</span><span class="math inline">\(\text{Expected Bonus} = 0.45 \times 3.0 \times \frac{1}{1 - 0.385} = 1.35 \times \frac{1}{0.615} \approx 2.19512\)</span><span class="math inline">\(
+\)</span><span class="math inline">\(E_D^* = 1.0 + 2.19512 \approx 3.19512\)</span>$</p></li>
+
+<li><p><strong>Extra Damage Multiplier (Benefit):</strong>
+$<span class="math inline">\(\text{Benefit} = E_D^* - E_{Base} = 3.19512 - 2.35 \approx 0.84512\)</span>$</p></li>
+</ol>
+
+<h3 id="result"><strong>Result</strong></h3>
+
+<p>The <strong>Extra Damage Multiplier</strong> (the additional average damage bonus provided by the &ldquo;Guaranteed Crit&rdquo; modification) at <span class="math inline">\(45\%\)</span> Critical Chance and <span class="math inline">\(300\%\)</span> Critical Damage Bonus is approximately:</p>
+<p><span class="math display">\[\mathbf{0.845}\]</span></p><p>This means the modification gives you an <strong>additional <span class="math inline">\(84.5\%\)</span></strong> average damage bonus compared to your baseline expected damage.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="ntl9vnu" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Primary_Impact_2130</div>
+        <div>1 | 12 minutes ago </div>
+      </div>
+      <label for="ntl9vnu" class="commentText"><p>So how do I get an increase when my crit chance is 0%?</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ntl8hi6" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Primary_Impact_2130</div>
+        <div>1 | 20 minutes ago </div>
+      </div>
+      <label for="ntl8hi6" class="commentText"><p>Hang on, this does NOT look right</p>
+
+<p>You need a TOTAL damage graph, not the bonus to that level of crit chance and crit damage.</p>
+
+<p>At 0% crit&hellip;I do 100% damage, always, rerolling cannot improve it, yet you graph suggest even at 0% I do more damage, that&rsquo;s makes no sense</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="ntl9plu" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>eeeechuta</div>
+        <div>1 | 13 minutes ago </div>
+      </div>
+      <label for="ntl9plu" class="commentText"><p>It&rsquo;s not that 100% crit gives you less damage. It&rsquo;s that you get no bonus from the node. The 65% more damage quote is when you are turning the node on or off.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ntl975l" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ExistToDecist</div>
+        <div>1 | 16 minutes ago </div>
+      </div>
+      <label for="ntl975l" class="commentText"><p>This can&rsquo;t possibly be accurate. Ive seen so many bad AI calculations tonight it&rsquo;s insane  </p>
 </label>
     </div>
   </label>
