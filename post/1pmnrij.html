@@ -1,0 +1,610 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.selfPostImage {
+  width: 100%;
+  height: auto;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/baseball/comments/1pmnrij/in_1920_the_new_york_times_named_two_standout/"><p>In 1920, the New York Times named two stand-out athletes powering a &ldquo;history-making year&rdquo; for sports in the wake of WWI. One was the racehorse Man o&rsquo; War, who was named &ldquo;the outstanding figure of the two&rdquo;. The other was Babe Ruth.</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <p>From the <a href="https://www.nytimes.com/1920/12/26/archives/sport-scales-new-heights-in-1920-man-o-war-and-babe-ruth-leading.html" target="_blank">article</a>(behind paywall):</p>
+
+<blockquote>
+<p>A superman and a superhorse - these were sport&rsquo;s greatest contributions to the history of the year about to close. Some might rate the superhorse, Man o&rsquo; War, as the outstanding figure of the two, for he has passed on from the field of competition and has left a story of achievement which may never be surpassed. The superman of the sport world, Babe Ruth, remains to strive for greater records than those made by him or evolving around him during the year. At any rate, the anomaly of baseball&rsquo;s greatest hitter astride the turf&rsquo;s leading performer for all time provides fitting leadership for the sport parade of 1920 as it passes in review.</p>
+</blockquote>
+
+<p>1920 was a huge year for Babe Ruth. It was his first season as a Yankee and he obliterated his own league record by driving an unprecedented 54 home runs. It was one of the greatest individual seasons in baseball history.</p>
+
+<p>That same year, Man o&rsquo; War was setting his own records, obliterating numerous track and distance time records. To give you a sense of just how absurdly dominant Man o&rsquo; War was, at the 1920 Lawrence Realization Stakes, every other horse was pulled from the race because rival horse owners refused to race against Man o&rsquo; War. The only other horse was a last-minute entry named Hoodwink. Man o&rsquo; War won the race by an absurd 100 lengths, with some contemporary sports writers claiming the real margin was closer to 200 lengths. Later in the year he would win the Belmont Stakes by 20 lengths, a record at the time and is still the 3rd largest margin of victory to this day. In his career, Man o&rsquo; War won 20 out of 21 races, with his only loss coming in 1919 at the <del>hands</del> hooves of the appropriately named Upset.</p>
+
+<p>Their 1920 seasons for comparison:</p>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>1920 Babe Ruth</th>
+<th>1920 Man o&rsquo; War</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>AVG</td>
+<td>.376</td>
+<td>N/A</td>
+</tr>
+
+<tr>
+<td>OBP</td>
+<td>.532</td>
+<td>N/A</td>
+</tr>
+
+<tr>
+<td>SLG</td>
+<td>.847</td>
+<td>N/A</td>
+</tr>
+
+<tr>
+<td>BB</td>
+<td>150</td>
+<td>when he&rsquo;s tired probably</td>
+</tr>
+
+<tr>
+<td>HR</td>
+<td>54</td>
+<td>0</td>
+</tr>
+
+<tr>
+<td>RBI</td>
+<td>135</td>
+<td>0</td>
+</tr>
+
+<tr>
+<td>W-L</td>
+<td>95-59</td>
+<td>11-0</td>
+</tr>
+
+<tr>
+<td>Avg. Margin</td>
+<td>N/A</td>
+<td>15 lengths</td>
+</tr>
+</tbody>
+</table>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nu1b417" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>RunawaYEM | Atlanta Braves</div>
+        <div>68 | a day ago </div>
+      </div>
+      <label for="nu1b417" class="commentText"><p>Man o’ War &amp;gt; Man o’ fWAR</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nu2wzo8" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>jmarinara | Pittsburgh Pirates</div>
+        <div>5 | 21 hours ago </div>
+      </div>
+      <label for="nu2wzo8" class="commentText"><p><img src="giphy|aLdiZJmmx4OVW" alt="gif" /></p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nu1hz8h" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Disused_Yeti | Cleveland Guardians</div>
+        <div>21 | a day ago </div>
+      </div>
+      <label for="nu1hz8h" class="commentText"><p>Who had a better career as a stud though</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nu207cm" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Kenner1979 | Toronto Blue Jays</div>
+        <div>17 | a day ago </div>
+      </div>
+      <label for="nu207cm" class="commentText"><p>Poor Man O&rsquo; War was restricted to about 25 mares per year.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nu2dhfl" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Rankin37 | Boston Red Sox</div>
+        <div>17 | a day ago </div>
+      </div>
+      <label for="nu2dhfl" class="commentText"><p>Is that what they mean by &ldquo;load management&rdquo;</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nu2dr26" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Kenner1979 | Toronto Blue Jays</div>
+        <div>7 | a day ago </div>
+      </div>
+      <label for="nu2dr26" class="commentText"><p>Something something use your best guy at the most important time.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="nu32946" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>maturin_nj</div>
+        <div>1 | 20 hours ago </div>
+      </div>
+      <label for="nu32946" class="commentText"><p>Every single horse in this year&rsquo;s kentucky derby can be traced back to secretariat liniage. Yet not one is even close to him in terms of racing.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nu1cyy5" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>DetectiveTrickyCad | San Francisco Giants</div>
+        <div>21 | a day ago </div>
+      </div>
+      <label for="nu1cyy5" class="commentText"><p>I never knew I needed somebody to really go in depth on Willie Mays and Seabiscuit</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nu1fsvi" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>TheSalmonRoll | Lou Seal • Crazy Crab</div>
+        <div>22 | a day ago </div>
+      </div>
+      <label for="nu1fsvi" class="commentText"><p>Unfortunately Willie Mays&rsquo; professional debut was after Seabiscuit&rsquo;s death.</p>
+
+<p>However, Mays&rsquo; final season was the same year Secretariat won the Triple Crown so there&rsquo;s that.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nu1odkg" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>DetectiveTrickyCad | San Francisco Giants</div>
+        <div>10 | a day ago </div>
+      </div>
+      <label for="nu1odkg" class="commentText"><p>Oh man that’s really tricky. I will fight for Willie being at least a contender for the best baseball player, but secretariat was legendary. I honestly think it’s a close call. I never realized horse x baseball was a legitimate thing to really consider. Thank you for introducing me to this entirely useless conundrum I will now spend too much time considering.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nu1v18k" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Killatrap | Washington Nationals</div>
+        <div>9 | a day ago </div>
+      </div>
+      <label for="nu1v18k" class="commentText"><p>it’s so good that there was a time when horses won athlete of the year— they even have a (terrific) hall of fame!</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nu32u0t" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>maturin_nj</div>
+        <div>11 | 20 hours ago </div>
+      </div>
+      <label for="nu32u0t" class="commentText"><p>The greatest athlete of the 20th century is secretariat.  Not even debatable. </p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nu352d7" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>DarwinYogi | Los Angeles Dodgers</div>
+        <div>2 | 20 hours ago </div>
+      </div>
+      <label for="nu352d7" class="commentText"><p>Not a fan of horse racing but even I know this. Extraordinary performances.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nu22djp" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>NutsyFlamingo | New York Mets</div>
+        <div>1 | a day ago </div>
+      </div>
+      <label for="nu22djp" class="commentText"><p>Hardest thing in sport is hitting a round ball with a round bat.. horse laughs</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nu3uswr" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>draw2discard2</div>
+        <div>1 | 17 hours ago </div>
+      </div>
+      <label for="nu3uswr" class="commentText"><p>What is this, a crossover episode?!?!?!</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nu4lasc" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Bolt_Vanderhuge- | New York Yankees</div>
+        <div>1 | 13 hours ago </div>
+      </div>
+      <label for="nu4lasc" class="commentText"><p>is an horse an athlete?</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nu4utl9" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>I-Dont-L</div>
+        <div>1 | 12 hours ago </div>
+      </div>
+      <label for="nu4utl9" class="commentText"><p>Only three hitters have won the triple crown in the same year a horse did.</p>
+
+<p>In 1930, <a href="https://www.baseball-reference.com/players/w/wellswi99.shtml" target="_blank">Willie &ldquo;the Devil&rdquo; Wells</a> paced the Negro National League with 17 homers, 114 RBI, and a <em>.411</em> batting average. Gallant Fox won the second ever racing triple crown and helped popularize the term as specifically meaning Kentucky Derby + Preakness + Belmont Stakes.</p>
+
+<p>In 1937, War Admiral (sired by Man o&rsquo; War) had an undefeated year and ran a record pace at the Belmont Stakes while splattered in his own blood. Over in human sports, we actually had a pair of greats! <a href="https://www.baseball-reference.com/players/m/medwijo01.shtml" target="_blank">Joe Medwick</a> won a triple crown with the Cardinals (.372/.414/.641, 237 hits, 154 RBI, 31 homers, 8.5 bWAR) and <a href="https://www.baseball-reference.com/players/g/gibsojo99.shtml" target="_blank">Josh Gibson</a> won his second consecutive in the Negro National League with a .417/.500/.974 slashline and the highest OPS in history, 1.474.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
