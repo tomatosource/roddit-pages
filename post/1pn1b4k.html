@@ -1,0 +1,496 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.selfPostImage {
+  width: 100%;
+  height: auto;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/PathOfExile2/comments/1pn1b4k/exploration_needs_to_be_fun_the_main_issue_with/"><p>Exploration needs to be fun - The main issue with the Atlas and how to potentially fix it.</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <p>With tablets now functioning as glorified scarabs, unless you’re actively trying to kill the Arbiter, every map now feels more or less the same, with just a few different league mechanics sprinkled on top. There’s little to no reason to actually <strong>explore</strong> the Atlas, which, in my opinion, is the main reason the endgame feels so bland.</p>
+
+<p>So, how do we make exploration fun? Let’s first look to other games for inspiration.</p>
+
+<p>In titles like *Heroes of Might and Magic* or certain open-world RPGs, each location offers a tangible reward and a unique experience, giving players <strong>a real incentive</strong> to go there</p>
+
+<p><a href="https://preview.redd.it/rkzlhkh55b7g1.png?width=970&amp;format=png&amp;auto=webp&amp;s=9a9edc8568a4e9a7a625b53cb2970744581e58bb" target="_blank">HoMM - You know exactly what you are getting and you plan accordingly.</a></p>
+
+<p><a href="https://preview.redd.it/qyu2uh0qcb7g1.png?width=1659&amp;format=png&amp;auto=webp&amp;s=f779c79a41615c56be18d3e5bfec524211eb7cc6" target="_blank">Points of interest in Cyberpunk 2077</a></p>
+
+<p>How can we apply this to the Atlas? Here’s my solution:</p>
+
+<p>Add more map nodes that offer <strong>deterministic, desirable one time</strong> <strong>rewards</strong> upon completion, tied to their map/terrain type. After defeating the boss, an altar, bench, or special room could appear in the boss arena that offers said rewards. Here are some map types for example:</p>
+
+<ul>
+<li><strong>Forge</strong>: A bench shows up upon completion that grants one meta-crafting option, such as &ldquo;Prefixes/Suffixes Cannot Be Changed,&rdquo; or a normal craft that guarantees a tier <sup>3</sup>&frasl;<sub>4</sub> affix (life, mana, attack speed, etc.).</li>
+<li><strong>Moonwell</strong>: A well that lets you change the resistance type on a piece of gear (e.g., fire to cold).</li>
+<li><strong>Genesis Tree</strong>: A tree that lets you generate a random rare item of your chosen base type.</li>
+<li><strong>Fortress</strong>: Betrayal-style rooms where you can craft an item using unlimited currency for 30 seconds, or retrieve an item in 5.</li>
+</ul>
+
+<p>Ideally, each map type would have its own unique art or icon, and the reward would be displayed in the map node description. This way, you know what you’re getting beforehand and can plan your Atlas path accordingly.</p>
+
+<p>Without reverting the entire system back to the atlas tree in PoE1, this is the best solution I can think of to make the endgame experience both engaging and rewarding. Anyway, food for thought.</p>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nu4cfoi" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>tufffffff</div>
+        <div>5 | an hour ago </div>
+      </div>
+      <label for="nu4cfoi" class="commentText"><p>I think you are right. Exploration feels like theres nothing ti discover</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nu4e5u5" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>spoqster</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="nu4e5u5" class="commentText"><p>I particularly like the idea of making the rewards crafting related. The idea of wanting to change something about your build, like a resistance swap, and having to make your way to a specific node on the atlas to be able to do that sounds fantastic.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nu4feak" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Vanguard-Override</div>
+        <div>1 | 39 minutes ago </div>
+      </div>
+      <label for="nu4feak" class="commentText"><p>Yup, the only way this works is for the player to actually <strong>want</strong> the reward, and crafting is definitely up there in the most wanted list.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nu4csns" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Hardyyz</div>
+        <div>2 | an hour ago </div>
+      </div>
+      <label for="nu4csns" class="commentText"><p>Based on everything I&rsquo;ve heard during the interviews, I think the devs know the core problems and 0.5 will be awesome and it will make the exploration more fun too.<br>
+Ive been kinda against the whole res swap mechanic but the moonwell sounds kinda fun.<br>
+I just hope they make the biomes bigger and give them more of an identity. Right now they might aswell not exist, but I wanna be excited when I see a desert creeping in at the edge of the fog, or rare biomes kinda like how in minecraft you might run into mooshroom island etc.<br>
+Theres so much untapped potential here, when its finally good, it will be one of the endgame loops of all time</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nu4da6i" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Vanguard-Override</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="nu4da6i" class="commentText"><p>Yup, there is so much potential there. Hopefully they can get it right in 0.5</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nu4fh3g" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ArlidenS</div>
+        <div>1 | 39 minutes ago </div>
+      </div>
+      <label for="nu4fh3g" class="commentText"><p>It&rsquo;s a good idea. Maybe they can implement the leagues to biomes.</p>
+
+<p>For example, the Abyss biome: Abyss is more powerful/rewarding in this biome and its a guaranteed spawn chance in this biome.</p>
+
+<p>Most of the league content is greatly nerfed after the end instead of that they can keep their former glory or something closer in these biomes.</p>
+
+<p>I didn&rsquo;t play the 0.3.0, so I will give a POE 1 example. For example, Scourge uniques are completely removed from the core game. Allowing, in some rare conditions, even a watered-down version in the biome will be very exciting.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nu4ib5m" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Vanguard-Override</div>
+        <div>1 | 11 minutes ago </div>
+      </div>
+      <label for="nu4ib5m" class="commentText"><p>That&rsquo;s actually a great idea, and you don&rsquo;t have to make the entire biome like that, maybe just some of those nodes in that biome that offers the &ldquo;old&rdquo; league mechanics, which makes them more exciting and easier to balance.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nu4ilu5" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ArlidenS</div>
+        <div>1 | 8 minutes ago </div>
+      </div>
+      <label for="nu4ilu5" class="commentText"><p>Yeah and they can make these speical maps very deadly so people will have reason to scale their build. Creating inspirational content for the endgame.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nu4g9t4" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>name-secondname</div>
+        <div>1 | 31 minutes ago </div>
+      </div>
+      <label for="nu4g9t4" class="commentText"><p>As a map reward, I would love to be able to reroll the value of one single affix on a piece of gear. That&rsquo;s probably too strong though. </p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nu4gtjt" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Vanguard-Override</div>
+        <div>1 | 26 minutes ago </div>
+      </div>
+      <label for="nu4gtjt" class="commentText"><p>You can make that map as rare as the headhunter and when it finally shows up it would be an epic moment.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nu4hq8h" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Machima_</div>
+        <div>1 | 17 minutes ago </div>
+      </div>
+      <label for="nu4hq8h" class="commentText"><p>A bit too rare in my opinion.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nu4chhk" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>HellaHS</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="nu4chhk" class="commentText"><p>The development progress of PoE2 is literally insane.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nu4dsnp" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>spoqster</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="nu4dsnp" class="commentText"><p>Really good idea!</p>
+
+<p>For balancing: I wouldn’t mind if many rooms give no special reward but then few rooms give really valuable rewards. If they have to struggle to come up with something for every map type and then put useless junk in, that will just lead to decision fatigue we have to deal with at the end of every map.</p>
+
+<p>The main purpose of this idea is to give us small goals to work towards. Big, valuable rewards every 10-20 maps will do that.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
