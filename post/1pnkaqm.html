@@ -1,0 +1,705 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.selfPostImage {
+  width: 100%;
+  height: auto;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/baseball/comments/1pnkaqm/ohtani_has_4_different_contract_valuations_an/"><p>Ohtani has 4 different contract valuations&hellip; an explanation.</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <p>If you go to Spotrac or Baseball Reference, you&rsquo;ll get a bunch of different numbers. There&rsquo;s 10 years <span class="math inline">\(700 million... 10 years \)</span>460 million&hellip; 10 years $282 million&hellip; and there&rsquo;s even a 4th hidden number that&rsquo;s spelled out in the CBA.  I&rsquo;m going to try to explain why&hellip;</p>
+
+<p><strong>1. Actual Cash: $70 million a  year</strong></p>
+
+<p>This is the easiest one to understand.  When all is said and done, the Ohtani will get $700 million in actual cash payments over a 20 year period.</p>
+
+<p><strong>2. Luxury Tax Calculations: $46 million a year</strong></p>
+
+<p>This is the AAV calculation that will be charged against the Dodgers luxury tax payroll each year.  This comes to ~$46 million a year. They calculate this using a discount rate for the deferred money (assume an interest rate).  Whenever a contract with deferred money is signed, they take the federal mid-term rate the month prior to the contract being signed and use that.  For Ohtani, that ended up being 4.43%.</p>
+
+<p><strong>Payroll Calculation: $26.2 million a year</strong></p>
+
+<p>This number doesn&rsquo;t really matter much anymore, but it&rsquo;s still in the CBA.  It&rsquo;s used to find an official salary number for the player to determine the maximum allowable pay cut for that player, separation pay should be be cut while on a non-guaranteed contract (which non-guaranteed contracts almost never have deferred payments, so it doesn&rsquo;t matter for that either), or if they are improperly penalized/suspended and the team needs to pay them back for salary lost.</p>
+
+<p>Baseball Reference uses this number for what they show for salary.  This is a MUCH higher discount/interest rate than the luxury tax calculations, which results in a MUCH lower salary number.  The interest rate is the JP Morgan Chase prime interest rate rounded up to nearest whole number plus 1%.  When Ohtani signed his contract, the prime rate was 8.5%&hellip; round up to 9 and add 1 and you get 10%.  It&rsquo;s more than double the discount rate for luxury tax calculations, so the numbers ends up being MUCH smaller.  Comes to $28.2 million a  year.</p>
+
+<p><strong>Required Annual Funding: $35-43 million a year</strong></p>
+
+<p>This one is hidden and nobody ever talks about it.  Most assume the Dodgers are required to fund the luxury tax number (<span class="math inline">\(44 million a year for the deferred money plus \)</span>2 million of actually salary), but this isn&rsquo;t true.  This uses a different interest rate than either the luxury tax calculations or payroll calculations and unlike  those two, this number is calculated each year depending on current prime rates.</p>
+
+<p>The CBA says this is a flat 5% UNLESS the JP Morgan prime rate is above 7%, which it has been throughout Ohtani&rsquo;s contact until this last week.  In the event it is above 7%, the CBA doesn&rsquo;t say to use the prime rate but instead the parties get together and agree on a new rate for that year.  In this sense, we don&rsquo;t know what the rate has been the last two years.  It could be anywhere from 5-10% which would drastically change the amount of money the Dodgers are required to fund each year.</p>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nu8cctf" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Friendly_Doughnut_51 | Los Angeles Dodgers</div>
+        <div>4 | 25 minutes ago </div>
+      </div>
+      <label for="nu8cctf" class="commentText"><p>Pls keep this post up mods!</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nu8fkmj" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ubernuke | Los Angeles Dodgers</div>
+        <div>4 | 8 minutes ago </div>
+      </div>
+      <label for="nu8fkmj" class="commentText"><p>Very interesting, thanks for the research!</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nu8bt2z" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>jwwin | Atlanta Braves</div>
+        <div>3 | 28 minutes ago </div>
+      </div>
+      <label for="nu8bt2z" class="commentText"><p>He also has a Utah Valuation: A buttload of cash</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nu8eriv" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>No-Donkey-4117 | San Francisco Giants</div>
+        <div>1 | 13 minutes ago </div>
+      </div>
+      <label for="nu8eriv" class="commentText"><p>The luxury tax number makes the most sense.  They basically discount the future value for inflation (with a bit of a premium on the rate for uncertainty.)</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nu8gpg6" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>johnjohnjohn93</div>
+        <div>1 | 2 minutes ago </div>
+      </div>
+      <label for="nu8gpg6" class="commentText"><p>Luxury tax is the number people should be using and it lines up well with what the industry expects. Ohtani probably would’ve got a 10-year <span class="math inline">\(450-\)</span>500 million contract which lines up with the luxury tax.</p>
+
+<p>Most guys that get deferrals wouldn’t have gotten that much if they took it in present day money.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nu8fxq4" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>FoppyRETURNS</div>
+        <div>-1 | 6 minutes ago </div>
+      </div>
+      <label for="nu8fxq4" class="commentText"><p>Dodgers be dodging</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nu8c169" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>LegitimateMoney00 | New York Mets</div>
+        <div>-18 | 27 minutes ago </div>
+      </div>
+      <label for="nu8c169" class="commentText"><p>Don’t forget about “bookie amount”.</p>
+
+<p>Edit: Oh come on guys lighten up lmao</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nu8dzeu" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ih-unh-unh | Los Angeles Dodgers</div>
+        <div>8 | 17 minutes ago </div>
+      </div>
+      <label for="nu8dzeu" class="commentText"><p>The joke didn&rsquo;t land because it was trite.<br>
+Gotta come up with something new.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="nu8gj8w" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ChrisKamanMyEye</div>
+        <div>2 | 3 minutes ago </div>
+      </div>
+      <label for="nu8gj8w" class="commentText"><p>ShoAnon jokes weren&rsquo;t funny at any point</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="nu8evz1" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Recognition_Tricky | New York Yankees</div>
+        <div>-3 | 12 minutes ago </div>
+      </div>
+      <label for="nu8evz1" class="commentText"><p>I laughed and gave you up upvote lol 🫡</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="nu8esnj" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>twosl0w | Texas Rangers</div>
+        <div>-7 | 12 minutes ago </div>
+      </div>
+      <label for="nu8esnj" class="commentText"><p>And the commissary payment for the fall guy too 🤣</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nu8d8bt" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ChipsNDip92 | Chicago Cubs</div>
+        <div>-18 | 21 minutes ago </div>
+      </div>
+      <label for="nu8d8bt" class="commentText"><p>I don&rsquo;t love the deferrals. They seem to give the richer teams even more of an advantage for some reason. However, not counting $70 million against the luxury tax is certifiably crazy in my opinion. Teams are literally getting a discount for deferring money with real dollars AND luxury tax calculations? Seems absurd.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nu8e5uk" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>sfan27 | San Francisco Giants</div>
+        <div>9 | 16 minutes ago </div>
+      </div>
+      <label for="nu8e5uk" class="commentText"><p>Fully disagree. Money in 10 years is worth less than today.</p>
+
+<p>The $46M is calculated in a way that lowers the number far more than it should; but you have to have some NPV calculation for deferrals.</p>
+
+<p>My bigger issue is that signing bonuses don&rsquo;t have the inverse applied to them. Say the Dodgers gave Ohtani <span class="math inline">\(500M the day he signed the contract and \)</span>20M per year over the next 10 years they&rsquo;d see a $70M/yr CBT impact, but should see MORE because of the crazy up-front in that scenario. The same applies to base salary that is uneven over a contract but not &ldquo;deferred&rdquo;.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nu8esjj" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Friendly_Doughnut_51 | Los Angeles Dodgers</div>
+        <div>6 | 12 minutes ago </div>
+      </div>
+      <label for="nu8esjj" class="commentText"><p>Respect you for understanding how deferrals work. Also, totally agree with you about signing bonuses, that&rsquo;s something I feel is more like a loophole.</p>
+
+<p><img src="giphy|lEVZJzy4w15qE" alt="gif" /></p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nu8fsz7" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>sfan27 | San Francisco Giants</div>
+        <div>4 | 7 minutes ago </div>
+      </div>
+      <label for="nu8fsz7" class="commentText"><p>Math supersedes fandom.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nu8fwua" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Friendly_Doughnut_51 | Los Angeles Dodgers</div>
+        <div>3 | 6 minutes ago </div>
+      </div>
+      <label for="nu8fwua" class="commentText"><p>I&rsquo;m not religious, but amen brother</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="nu8fdkc" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>SomeoneGiveMeValid</div>
+        <div>0 | 9 minutes ago </div>
+      </div>
+      <label for="nu8fdkc" class="commentText"><p>I don’t understand, why should an upfront signing bonus be more of a AAV hit than what the actual amount is?</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nu8g39d" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>sfan27 | San Francisco Giants</div>
+        <div>2 | 6 minutes ago </div>
+      </div>
+      <label for="nu8g39d" class="commentText"><p>Because if you get money today it&rsquo;s worth more than money in the 10th year of your contract.</p>
+
+<p>Would you rather <span class="math inline">\(70M/yr (Ohtani's contracts without the deferrals) or \)</span>500M today and $20M every year for 10 years. Obviously you&rsquo;d rather the up-front. It&rsquo;s the same concept as the deferrals, but in reverse.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="nu8e2e7" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>xerostatus | Los Angeles Dodgers</div>
+        <div>5 | 16 minutes ago </div>
+      </div>
+      <label for="nu8e2e7" class="commentText"><p>That&rsquo;s because 70mil in 2034 does not equal 70 mil in 2024.</p>
+
+<p><a href="https://www.investopedia.com/terms/p/presentvalue.asp" target="_blank">Think long and hard about this, bud. I&rsquo;ll wait</a></p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nu8g4fz" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>awmaleg | Arizona Diamondbacks</div>
+        <div>2 | 5 minutes ago </div>
+      </div>
+      <label for="nu8g4fz" class="commentText"><p>Someone passed FIN-301!</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="nu8exu3" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>SomeoneGiveMeValid</div>
+        <div>4 | 12 minutes ago </div>
+      </div>
+      <label for="nu8exu3" class="commentText"><p>If Ohtani signed a normal contract, just 10 years, he wouldn’t have gotten anywhere close to 700mil</p>
+
+<p>In fact, I bet if we go back to 2023 offseason and deferrals aren’t allowed, he probably signs a <sup>10</sup>&frasl;<sub>460</sub> deal. Maybe a little more</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nu8bvfg" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>stickman07738 | New York Yankees</div>
+        <div>-23 | 27 minutes ago </div>
+      </div>
+      <label for="nu8bvfg" class="commentText"><p>I compliment the LA Dodgers for finding a work around and &ldquo;F-ing&rdquo; the CBA and the rest of MLB.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nu8cghy" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Jux_ | Los Angeles Dodgers • Jackie Robinson</div>
+        <div>17 | 25 minutes ago </div>
+      </div>
+      <label for="nu8cghy" class="commentText"><p>A work around of something clearly spelled out and permitted in the CBA and available for all teams to utilize</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nu8gkhl" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>BossAtUCF | Boston Red Sox</div>
+        <div>2 | 3 minutes ago </div>
+      </div>
+      <label for="nu8gkhl" class="commentText"><p>You&rsquo;re telling me it&rsquo;s not a massive loophole just because the CBA explicitly says unlimited deferrals are allowed and details how they should be taxed for CBT purposes? I don&rsquo;t know, I&rsquo;m not buying it. /s</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="nu8f277" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Secret-Sample1683</div>
+        <div>4 | 11 minutes ago </div>
+      </div>
+      <label for="nu8f277" class="commentText"><p>Gee.  It’s a shame the Dodgers found a work around that only they can use and not available to any other team.  /s</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
