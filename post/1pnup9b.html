@@ -1,0 +1,899 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.selfPostImage {
+  width: 100%;
+  height: auto;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/baseball/comments/1pnup9b/finding_the_best_and_worst_streaks_of_every_team/"><p>Finding the Best and Worst Streaks of Every Team in the 2025 Regular Season using the Beta-Binomial Distribution</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <p>Hello folks. It’s the offseason, and I am bored.</p>
+
+<p>Explanation of methodology is at the bottom. If you are here for the table, then here it is:</p>
+
+<h5 id="best-streaks">Best Streaks</h5>
+
+<table>
+<thead>
+<tr>
+<th align="left">Team</th>
+<th align="left">Entering Record</th>
+<th align="left">Game Numbers</th>
+<th align="left">Streak Length</th>
+<th align="left">Streak Record</th>
+<th align="left">Prob</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">Dodgers</td>
+<td align="left">41-29</td>
+<td align="left">Games 71 to 88</td>
+<td align="left">18 Games</td>
+<td align="left">15-3</td>
+<td align="left">3.764%</td>
+</tr>
+
+<tr>
+<td align="left">Diamondbacks</td>
+<td align="left">31-34</td>
+<td align="left">Games 66 to 70</td>
+<td align="left">5 Games</td>
+<td align="left">5-0</td>
+<td align="left">2.896%</td>
+</tr>
+
+<tr>
+<td align="left">Cubs</td>
+<td align="left">2-4</td>
+<td align="left">Games 7 to 11</td>
+<td align="left">5 Games</td>
+<td align="left">5-0</td>
+<td align="left">2.652%</td>
+</tr>
+
+<tr>
+<td align="left">Reds</td>
+<td align="left">3-7</td>
+<td align="left">Games 11 to 17</td>
+<td align="left">7 Games</td>
+<td align="left">6-1</td>
+<td align="left">2.489%</td>
+</tr>
+
+<tr>
+<td align="left">Mets</td>
+<td align="left">55-44</td>
+<td align="left">Games 100 to 106</td>
+<td align="left">7 Games</td>
+<td align="left">7-0</td>
+<td align="left">1.886%</td>
+</tr>
+
+<tr>
+<td align="left">Padres</td>
+<td align="left">55-49</td>
+<td align="left">Games 105 to 121</td>
+<td align="left">17 Games</td>
+<td align="left">14-3</td>
+<td align="left">1.757%</td>
+</tr>
+
+<tr>
+<td align="left">Astros</td>
+<td align="left">26-25</td>
+<td align="left">Games 52 to 90</td>
+<td align="left">39 Games</td>
+<td align="left">29-10</td>
+<td align="left">1.569%</td>
+</tr>
+
+<tr>
+<td align="left">Phillies</td>
+<td align="left">25-18</td>
+<td align="left">Games 44 to 52</td>
+<td align="left">9 Games</td>
+<td align="left">9-0</td>
+<td align="left">1.184%</td>
+</tr>
+
+<tr>
+<td align="left">Yankees</td>
+<td align="left">86-68</td>
+<td align="left">Games 155 to 162</td>
+<td align="left">8 Games</td>
+<td align="left">8-0</td>
+<td align="left">1.072%</td>
+</tr>
+
+<tr>
+<td align="left">Tigers</td>
+<td align="left">0-3</td>
+<td align="left">Games 4 to 11</td>
+<td align="left">8 Games</td>
+<td align="left">7-1</td>
+<td align="left">1.010%</td>
+</tr>
+
+<tr>
+<td align="left">Nationals</td>
+<td align="left">53-83</td>
+<td align="left">Games 137 to 144</td>
+<td align="left">8 Games</td>
+<td align="left">7-1</td>
+<td align="left">0.889%</td>
+</tr>
+
+<tr>
+<td align="left">Rangers</td>
+<td align="left">63-66</td>
+<td align="left">Games 130 to 149</td>
+<td align="left">20 Games</td>
+<td align="left">16-4</td>
+<td align="left">0.724%</td>
+</tr>
+
+<tr>
+<td align="left">Rays</td>
+<td align="left">21-26</td>
+<td align="left">Games 48 to 81</td>
+<td align="left">34 Games</td>
+<td align="left">25-9</td>
+<td align="left">0.666%</td>
+</tr>
+
+<tr>
+<td align="left">Athletics</td>
+<td align="left">42-62</td>
+<td align="left">Games 105 to 135</td>
+<td align="left">31 Games</td>
+<td align="left">21-10</td>
+<td align="left">0.580%</td>
+</tr>
+
+<tr>
+<td align="left">Pirates</td>
+<td align="left">39-61</td>
+<td align="left">Games 101 to 109</td>
+<td align="left">9 Games</td>
+<td align="left">8-1</td>
+<td align="left">0.456%</td>
+</tr>
+
+<tr>
+<td align="left">Blue Jays</td>
+<td align="left">44-38</td>
+<td align="left">Games 83 to 92</td>
+<td align="left">10 Games</td>
+<td align="left">10-0</td>
+<td align="left">0.296%</td>
+</tr>
+
+<tr>
+<td align="left">Giants</td>
+<td align="left">61-68</td>
+<td align="left">Games 130 to 141</td>
+<td align="left">12 Games</td>
+<td align="left">11-1</td>
+<td align="left">0.261%</td>
+</tr>
+
+<tr>
+<td align="left">White Sox</td>
+<td align="left">48-88</td>
+<td align="left">Games 137 to 142</td>
+<td align="left">6 Games</td>
+<td align="left">6-0</td>
+<td align="left">0.242%</td>
+</tr>
+
+<tr>
+<td align="left">Orioles</td>
+<td align="left">16-34</td>
+<td align="left">Games 51 to 93</td>
+<td align="left">43 Games</td>
+<td align="left">27-16</td>
+<td align="left">0.216%</td>
+</tr>
+
+<tr>
+<td align="left">Angels</td>
+<td align="left">17-25</td>
+<td align="left">Games 43 to 50</td>
+<td align="left">8 Games</td>
+<td align="left">8-0</td>
+<td align="left">0.170%</td>
+</tr>
+
+<tr>
+<td align="left">Cardinals</td>
+<td align="left">14-19</td>
+<td align="left">Games 34 to 42</td>
+<td align="left">9 Games</td>
+<td align="left">9-0</td>
+<td align="left">0.145%</td>
+</tr>
+
+<tr>
+<td align="left">Red Sox</td>
+<td align="left">43-45</td>
+<td align="left">Games 89 to 98</td>
+<td align="left">10 Games</td>
+<td align="left">10-0</td>
+<td align="left">0.125%</td>
+</tr>
+
+<tr>
+<td align="left">Marlins</td>
+<td align="left">30-45</td>
+<td align="left">Games 76 to 83</td>
+<td align="left">8 Games</td>
+<td align="left">8-0</td>
+<td align="left">0.112%</td>
+</tr>
+
+<tr>
+<td align="left">Rockies</td>
+<td align="left">9-50</td>
+<td align="left">Games 60 to 127</td>
+<td align="left">68 Games</td>
+<td align="left">28-40</td>
+<td align="left">0.092%</td>
+</tr>
+
+<tr>
+<td align="left">Royals</td>
+<td align="left">8-14</td>
+<td align="left">Games 23 to 40</td>
+<td align="left">18 Games</td>
+<td align="left">16-2</td>
+<td align="left">0.052%</td>
+</tr>
+
+<tr>
+<td align="left">Guardians</td>
+<td align="left">69-70</td>
+<td align="left">Games 140 to 155</td>
+<td align="left">16 Games</td>
+<td align="left">15-1</td>
+<td align="left">0.043%</td>
+</tr>
+
+<tr>
+<td align="left">Brewers</td>
+<td align="left">49-40</td>
+<td align="left">Games 90 to 122</td>
+<td align="left">33 Games</td>
+<td align="left">29-4</td>
+<td align="left">0.039%</td>
+</tr>
+
+<tr>
+<td align="left">Braves</td>
+<td align="left">65-83</td>
+<td align="left">Games 149 to 158</td>
+<td align="left">10 Games</td>
+<td align="left">10-0</td>
+<td align="left">0.039%</td>
+</tr>
+
+<tr>
+<td align="left">Mariners</td>
+<td align="left">73-68</td>
+<td align="left">Games 142 to 159</td>
+<td align="left">18 Games</td>
+<td align="left">17-1</td>
+<td align="left">0.025%</td>
+</tr>
+
+<tr>
+<td align="left">Twins</td>
+<td align="left">13-20</td>
+<td align="left">Games 34 to 46</td>
+<td align="left">13 Games</td>
+<td align="left">13-0</td>
+<td align="left">0.007%</td>
+</tr>
+</tbody>
+</table>
+<p>&amp;nbsp;</p>
+
+<h5 id="worst-streaks">Worst Streaks</h5>
+
+<table>
+<thead>
+<tr>
+<th align="left">Team</th>
+<th align="left">Entering Record</th>
+<th align="left">Game Numbers</th>
+<th align="left">Streak Length</th>
+<th align="left">Streak Record</th>
+<th align="left">Prob</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">Rockies</td>
+<td align="left">1-1</td>
+<td align="left">Games 3 to 29</td>
+<td align="left">27 Games</td>
+<td align="left">3-24</td>
+<td align="left">6.404%</td>
+</tr>
+
+<tr>
+<td align="left">Brewers</td>
+<td align="left">78-44</td>
+<td align="left">Games 123 to 161</td>
+<td align="left">39 Games</td>
+<td align="left">18-21</td>
+<td align="left">3.515%</td>
+</tr>
+
+<tr>
+<td align="left">Marlins</td>
+<td align="left">12-13</td>
+<td align="left">Games 26 to 31</td>
+<td align="left">6 Games</td>
+<td align="left">0-6</td>
+<td align="left">2.994%</td>
+</tr>
+
+<tr>
+<td align="left">Orioles</td>
+<td align="left">15-24</td>
+<td align="left">Games 40 to 47</td>
+<td align="left">8 Games</td>
+<td align="left">0-8</td>
+<td align="left">2.787%</td>
+</tr>
+
+<tr>
+<td align="left">White Sox</td>
+<td align="left">57-90</td>
+<td align="left">Games 148 to 159</td>
+<td align="left">12 Games</td>
+<td align="left">1-11</td>
+<td align="left">2.745%</td>
+</tr>
+
+<tr>
+<td align="left">Reds</td>
+<td align="left">67-60</td>
+<td align="left">Games 128 to 136</td>
+<td align="left">9 Games</td>
+<td align="left">1-8</td>
+<td align="left">1.561%</td>
+</tr>
+
+<tr>
+<td align="left">Red Sox</td>
+<td align="left">40-37</td>
+<td align="left">Games 78 to 83</td>
+<td align="left">6 Games</td>
+<td align="left">0-6</td>
+<td align="left">1.500%</td>
+</tr>
+
+<tr>
+<td align="left">Cubs</td>
+<td align="left">88-64</td>
+<td align="left">Games 153 to 157</td>
+<td align="left">5 Games</td>
+<td align="left">0-5</td>
+<td align="left">1.460%</td>
+</tr>
+
+<tr>
+<td align="left">Blue Jays</td>
+<td align="left">12-8</td>
+<td align="left">Games 21 to 29</td>
+<td align="left">9 Games</td>
+<td align="left">1-8</td>
+<td align="left">1.339%</td>
+</tr>
+
+<tr>
+<td align="left">Braves</td>
+<td align="left">24-23</td>
+<td align="left">Games 48 to 64</td>
+<td align="left">17 Games</td>
+<td align="left">3-14</td>
+<td align="left">1.281%</td>
+</tr>
+
+<tr>
+<td align="left">Mariners</td>
+<td align="left">29-21</td>
+<td align="left">Games 51 to 67</td>
+<td align="left">17 Games</td>
+<td align="left">4-13</td>
+<td align="left">1.168%</td>
+</tr>
+
+<tr>
+<td align="left">Diamondbacks</td>
+<td align="left">26-22</td>
+<td align="left">Games 49 to 58</td>
+<td align="left">10 Games</td>
+<td align="left">1-9</td>
+<td align="left">0.969%</td>
+</tr>
+
+<tr>
+<td align="left">Astros</td>
+<td align="left">55-35</td>
+<td align="left">Games 91 to 98</td>
+<td align="left">8 Games</td>
+<td align="left">1-7</td>
+<td align="left">0.967%</td>
+</tr>
+
+<tr>
+<td align="left">Cardinals</td>
+<td align="left">36-28</td>
+<td align="left">Games 65 to 70</td>
+<td align="left">6 Games</td>
+<td align="left">0-6</td>
+<td align="left">0.939%</td>
+</tr>
+
+<tr>
+<td align="left">Royals</td>
+<td align="left">24-16</td>
+<td align="left">Games 41 to 85</td>
+<td align="left">45 Games</td>
+<td align="left">15-30</td>
+<td align="left">0.914%</td>
+</tr>
+
+<tr>
+<td align="left">Angels</td>
+<td align="left">9-5</td>
+<td align="left">Games 15 to 31</td>
+<td align="left">17 Games</td>
+<td align="left">3-14</td>
+<td align="left">0.644%</td>
+</tr>
+
+<tr>
+<td align="left">Pirates</td>
+<td align="left">64-77</td>
+<td align="left">Games 142 to 154</td>
+<td align="left">13 Games</td>
+<td align="left">1-12</td>
+<td align="left">0.598%</td>
+</tr>
+
+<tr>
+<td align="left">Padres</td>
+<td align="left">14-3</td>
+<td align="left">Games 18 to 73</td>
+<td align="left">56 Games</td>
+<td align="left">25-31</td>
+<td align="left">0.384%</td>
+</tr>
+
+<tr>
+<td align="left">Yankees</td>
+<td align="left">42-25</td>
+<td align="left">Games 68 to 89</td>
+<td align="left">22 Games</td>
+<td align="left">6-16</td>
+<td align="left">0.334%</td>
+</tr>
+
+<tr>
+<td align="left">Giants</td>
+<td align="left">52-43</td>
+<td align="left">Games 96 to 129</td>
+<td align="left">34 Games</td>
+<td align="left">9-25</td>
+<td align="left">0.328%</td>
+</tr>
+
+<tr>
+<td align="left">Rangers</td>
+<td align="left">79-70</td>
+<td align="left">Games 150 to 157</td>
+<td align="left">8 Games</td>
+<td align="left">0-8</td>
+<td align="left">0.291%</td>
+</tr>
+
+<tr>
+<td align="left">Twins</td>
+<td align="left">34-27</td>
+<td align="left">Games 62 to 79</td>
+<td align="left">18 Games</td>
+<td align="left">3-15</td>
+<td align="left">0.270%</td>
+</tr>
+
+<tr>
+<td align="left">Rays</td>
+<td align="left">47-36</td>
+<td align="left">Games 84 to 114</td>
+<td align="left">31 Games</td>
+<td align="left">8-23</td>
+<td align="left">0.248%</td>
+</tr>
+
+<tr>
+<td align="left">Nationals</td>
+<td align="left">30-33</td>
+<td align="left">Games 64 to 74</td>
+<td align="left">11 Games</td>
+<td align="left">0-11</td>
+<td align="left">0.157%</td>
+</tr>
+
+<tr>
+<td align="left">Phillies</td>
+<td align="left">36-19</td>
+<td align="left">Games 56 to 65</td>
+<td align="left">10 Games</td>
+<td align="left">1-9</td>
+<td align="left">0.131%</td>
+</tr>
+
+<tr>
+<td align="left">Dodgers</td>
+<td align="left">56-32</td>
+<td align="left">Games 89 to 95</td>
+<td align="left">7 Games</td>
+<td align="left">0-7</td>
+<td align="left">0.129%</td>
+</tr>
+
+<tr>
+<td align="left">Guardians</td>
+<td align="left">40-38</td>
+<td align="left">Games 79 to 88</td>
+<td align="left">10 Games</td>
+<td align="left">0-10</td>
+<td align="left">0.129%</td>
+</tr>
+
+<tr>
+<td align="left">Mets</td>
+<td align="left">45-24</td>
+<td align="left">Games 70 to 86</td>
+<td align="left">17 Games</td>
+<td align="left">3-14</td>
+<td align="left">0.040%</td>
+</tr>
+
+<tr>
+<td align="left">Tigers</td>
+<td align="left">59-34</td>
+<td align="left">Games 94 to 106</td>
+<td align="left">13 Games</td>
+<td align="left">1-12</td>
+<td align="left">0.014%</td>
+</tr>
+
+<tr>
+<td align="left">Athletics</td>
+<td align="left">22-20</td>
+<td align="left">Games 43 to 63</td>
+<td align="left">21 Games</td>
+<td align="left">1-20</td>
+<td align="left">0.008%</td>
+</tr>
+</tbody>
+</table>
+
+<hr>
+
+<p>Now it is time to explain how this works and add some caveats.</p>
+
+<p>First, the caveat: this does not account for the strength of the opponent, playoff positioning, injuries, etc. It also doesn&rsquo;t account for the pre-season expectations for each team. The only data used was just an in-order list of all wins and losses.</p>
+
+<p>Here is the overview: For each team, iterated through every streak of games in the 2025 season (Starting games 1 to 162, Length 1 to 162, such that start game + length is less than or equal to 163). For each streak, I calculated the Cumulative Beta-Binomial odds that a team would do better or worse than their actual record during the streak. The Alpha and Beta values used were the teams&rsquo; wins and losses plus one, respectively, before the streak. The n was the streak length, and the x was the number of wins in the streak.</p>
+
+<p>Let&rsquo;s work on an example streak to explain, the Tigers&rsquo; Games 4 to 11 streak, where they went 7-1. Before the streak, the Tigers were 0-3 after being swept by the Dodgers. This allows us to calculate the Beta Distribution of their win probability by Game 4. The odds that the Tigers would go 0-3, given some underlying win probability, are (3 choose 0) * p^0 * (1-p)^3. Luckily, we can scale this up by some factor (which in this case is 4) to get a PDF of p such that the integral from p1 to p2 of the PDF(p) with respect to p is the odds that the underlying win probability in any given game for the Tigers is between p1 and p2. In this case, PDF(p) = -4p^3 + 12p^2 - 12p + 4 (such that p is between 0 and 1). This PDF(p) is also Beta(1,4).</p>
+
+<p>Now, using this data, we can calculate the odds of the Tigers winning 7 or more of their next 8 games, which is the probability of winning 7 of 8 plus the odds of winning all 8. In the binomial distribution, this is given as (8 choose 7) * p^7 * (1-p)^1 + (8 choose 8) * p^8 * (1-p)^0. Unfortunately, p is not just a number we can plug in, but a random variable with a distribution Beta(1,4). Luckily, the math works out cleanly, where we can calculate the integral from 0 to 1 of PDF(p) * BinomialDist(x, 8, p) with respect to p to obtain a distribution for x. Calculating this for x = 7 (The odds of the Tigers winning 7 of 8) gives a result of 4 over 495, and doing the same for x = 8 gives 1 over 495. Combined, this tells us the odds of the Tigers going 7-1 or better in their next 8 games after starting 0-3 are 1 in 99, or 1.01%. Luckily, there is a formula to do this entire calculation, which is the Beta-Binomial Distribution. After a little bit of Python and patience, this table is generated.</p>
+
+<p>Hope y&rsquo;all enjoy! If y&rsquo;all have any questions, I&rsquo;d be happy to answer. This was a less-than-serious project, but it did successfully identify some of the best/worst of each team last year.</p>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nuaibrr" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>OtherOrange9621 | Toronto Blue Jays</div>
+        <div>4 | 18 minutes ago </div>
+      </div>
+      <label for="nuaibrr" class="commentText"><p>Really good analysis, it really goes to show the up’s and downs of every team this year… except the Rockies, wow they were bad</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nuaje65" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>randomguy5to8 | Kansas City Royals</div>
+        <div>1 | 8 minutes ago </div>
+      </div>
+      <label for="nuaje65" class="commentText"><p>When I plugged in the data for the Rockies season into my code I knew I was throwing an anvil into a woodchipper.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nuaip9u" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Shot-Tackle-1458 | Toronto Blue Jays</div>
+        <div>2 | 14 minutes ago </div>
+      </div>
+      <label for="nuaip9u" class="commentText"><p>Mariners fans can see the power of the Etsy witch in action here</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nuajvb5" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>j1euny</div>
+        <div>1 | 4 minutes ago </div>
+      </div>
+      <label for="nuajvb5" class="commentText"><p>Why is the dodgers streak not 14-2 by taking out the last two games of the streak?</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nuak2km" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Bitter-Egg6293 | San Diego Padres</div>
+        <div>1 | 2 minutes ago </div>
+      </div>
+      <label for="nuak2km" class="commentText"><p>56 games as a streak?</p>
+
+<p>Idk how I should feel about that</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
