@@ -1,0 +1,674 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.selfPostImage {
+  width: 100%;
+  height: auto;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/PathOfExile2/comments/1pnzoz9/inevitable_critical_damage_calculation/"><p>Inevitable Critical: Damage Calculation, Visualizations, and &ldquo;Always Crit&rdquo; Synergies</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <p><em>(Note: Reposting this because the previous thread was auto-removed by Reddit&rsquo;s filters when I tried to edit my post.)</em></p>
+
+<h1 id="tl-dr">TL;DR:</h1>
+
+<ul>
+<li><strong>Stat Strategy:</strong> Due to diminishing returns, the <strong>Inevitable Critical</strong> mechanic scales best if you keep <strong>Crit Chance low (~20-30%)</strong> and go all-in on <strong>Crit Damage Bonus</strong>.</li>
+<li><strong>Gameplay:</strong> Regardless of your Crit Chance, the reroll mechanic ensures you <strong>Crit on every hit</strong>, making it amazing for triggering Crit-related effects like &ldquo;Cast on Critical&rdquo;.</li>
+</ul>
+
+<h1 id="introduction">Introduction</h1>
+
+<p><strong>Forced Outcome</strong> is an Ascendancy passive skill for the Oracle that grants <strong>Inevitable Critical Hits</strong>, guaranteeing a hit becomes a critical hit by rerolling for critical hit chance until it succeeds. Hits have 30% less Critical Damage Bonus for each time Critical Hit chance was re-rolled. We assume that this penalty stacks <strong>additively</strong>.</p>
+
+<p>I’ve been digging into the math behind the <strong>Inevitable Critical</strong> mechanic to understand how efficient it actually is. The formula for this mechanic is complex because it involves diminishing returns on Critical Hit Chance as you go higher. I wrote a Python script to calculate the exact efficiency and plotted it using interactive graphs.</p>
+
+<p><strong>Clarification:</strong> Please note that increasing your Crit Chance or Crit Damage Bonus will <strong>always</strong> increase your total average damage. The graphs visualize the <strong>Relative Efficiency</strong> (the damage multiplier), not absolute damage.</p>
+
+<ul>
+<li>The <strong>Damage Multiplier</strong> represents how much <strong>extra</strong> damage the &ldquo;Inevitable Critical&rdquo; mechanic gives you <strong>compared to not having it</strong>.</li>
+<li>Even if the damage multiplier goes down (diminishing returns), your actual DPS is still going up—just not as efficiently as before.</li>
+</ul>
+
+<h1 id="visualization-1-the-damage-multiplier-heatmap">Visualization 1: The Damage Multiplier Heatmap</h1>
+
+<p><a href="https://preview.redd.it/7mbqb27hxj7g1.png?width=1122&amp;format=png&amp;auto=webp&amp;s=78d7f016a903f6383bfafe7692db9ece500c3e32" target="_blank">Damage Multiplier Heatmap</a></p>
+
+<p>This heatmap shows the <strong>Damage Multiplier</strong> (how much stronger your hit is compared to a standard baseline) for every possible combination of Crit Chance and % Crit Dmg Bonus.</p>
+
+<ul>
+<li><strong>X-Axis (Horizontal):</strong> Your Critical Hit Chance (0.0 to 1.0).</li>
+<li><strong>Y-Axis (Vertical):</strong> Your % Critical Damage Bonus (0% to 1000%).</li>
+<li><strong>Color (Z-Axis):</strong> The &ldquo;hotter&rdquo; the color (Red/Orange), the higher the damage multiplier.</li>
+</ul>
+
+<p>For example, &ldquo;damage multiplier = 1.5&rdquo; means the &ldquo;Inevitable Critical&rdquo; mechanic provides 50% more damage on average than a build without it.</p>
+
+<p>Hover your mouse over any point. If you have <strong>200% Crit Dmg Bonus</strong> and <strong>50% Crit Chance</strong>, the tooltip will tell you exactly what your damage multiplier is. You can see how the benefits &ldquo;fall off&rdquo; or plateau as you push Crit Chance too high.</p>
+
+<h1 id="visualization-2-the-optimal-strategy-curve">Visualization 2: The Optimal Strategy Curve</h1>
+
+<p><a href="https://preview.redd.it/sljl7orjxj7g1.png?width=1167&amp;format=png&amp;auto=webp&amp;s=a283531bd493fb162dcd6d00fff1adc34d710b20" target="_blank">Optimal Strategy Curve</a></p>
+
+<p>For any given amount of Critical Damage Bonus you have, the graph tells you the <strong>exact Critical Hit Chance</strong> you should aim for to maximize your efficiency.</p>
+
+<ul>
+<li><strong>X-Axis:</strong> Your % Critical Damage Bonus (0% to 1000%).</li>
+<li><strong>Y-Axis:</strong> The mathematically perfect Critical Hit Chance (0.0 to 1.0).</li>
+</ul>
+
+<p>You might notice something counter-intuitive: <strong>As your Crit Damage increases, the optimal Crit Chance actually decreases.</strong> At low Crit Dmg, you want more Crit Chance. But as you approach high Crit Dmg Bonus (e.g., 600%+), the math suggests settling for a lower Crit Chance (around 20-30%) is mathematically superior due to the diminishing returns in the formula.</p>
+
+<p>This means that at high investment levels, the <strong>relative boost</strong> provided by the &lsquo;Inevitable Critical&rsquo; mechanic is strongest when you keep Crit Chance lower, relying on the reroll mechanic to do the heavy lifting. This does not mean adding more Crit Chance reduces your DPS. <strong>More Crit Chance will always increase your total average damage</strong>. The graph simply highlights that past a certain point, you get diminishing returns on the <em>efficiency</em> of the mechanic.</p>
+
+<h1 id="the-math-methodology">The Math &amp; Methodology</h1>
+
+<p>We assume that the penalty of <strong>&ldquo;30% less Critical Damage Bonus for each time Critical Hit chance was re-rolled&rdquo;</strong> stacks <strong>additively</strong>. This results in Critical Damage Bonus multipliers of <strong>1.0, 0.7, 0.4, and 0.1</strong> respectively. Consequently, from the 4th reroll onwards, the Critical Damage Bonus effectively drops to <strong>0</strong>.</p>
+
+<p><strong>1. The Formula:</strong></p>
+
+<p>The function used is a ratio comparing the average damage with &ldquo;Inevitable Critical&rdquo; to the average damage without it:</p>
+<p><span class="math display">\[h(c, b) = \\frac{1 + cb + c(1-c)0.7b + c(1-c)^(2) 0.4b + c(1-c)^(3) 0.1b}{1 + cb}\]</span></p><p>Where:</p>
+
+<ul>
+<li><span class="math inline">\(c =\)</span> Crit Chance (<span class="math inline">\(0\\le c \\le 1\)</span>) (<span class="math inline">\(c = 0.25\)</span> means 25% Crit Chance)</li>
+<li><span class="math inline">\(b =\)</span> Crit Dmg Bonus (<span class="math inline">\(0 \\le b \\le 10\)</span>) (<span class="math inline">\(b = 2.5\)</span> means 250% Crit Dmg Bonus, default at 100%).</li>
+</ul>
+
+<p>For example, a value of <span class="math inline">\(h(c,b) = 1.5\)</span> indicates that the &lsquo;Inevitable Critical&rsquo; mechanic provides <strong>50% more damage on average</strong> relative to the baseline performance without the mechanic.</p>
+
+<p><strong>2. Calculation Method:</strong></p>
+
+<p>I calculated the partial derivative of the function <span class="math inline">\(h\)</span> with respect to <span class="math inline">\(c\)</span> and set it to zero (<span class="math inline">\(\\frac{\\partial h}{\\partial c} = 0\)</span>) to find the local maximum. However, solving this directly for <span class="math inline">\(c\)</span> as a function of <span class="math inline">\(b\)</span> results in a complex 4th-degree polynomial equation that is difficult to solve for a closed-form formula. Instead of trying to find <span class="math inline">\(c(b)\)</span>, it is much easier to find the inverse: <strong><span class="math inline">\(b(c)\)</span></strong>. We can solve for &ldquo;what value of <span class="math inline">\(b\)</span> makes this specific <span class="math inline">\(c\)</span> optimal?&rdquo; and then simply swap the axes when plotting.</p>
+
+<p><strong>3. The Tools:</strong></p>
+
+<p>I used <strong>Python</strong> with <strong>NumPy</strong> for the high-precision array calculations and <strong>Plotly</strong> to generate the visualization, allowing for the interactive tooltips and zooming features you see in the links.</p>
+
+<p>I built this using <strong>Python</strong>. I utilized <strong>NumPy</strong> for high-precision array calculations and <strong>Plotly</strong> to generate the visualizations.</p>
+
+<h1 id="the-always-crit-advantage">The &ldquo;Always Crit&rdquo; Advantage</h1>
+
+<p>While the calculation and visualizations above focus purely on <strong>damage efficiency</strong>, Inevitable Critical offers a massive gameplay advantage: <strong>it guarantees that all of your hits will be Critical Hits.</strong></p>
+
+<p>This provides excellent synergy with mechanics that rely on critical strikes to trigger specific effects. Here are some examples of Crit-related effects that benefit from guaranteed Critical Hits:</p>
+
+<p><strong>Spirit Gems</strong></p>
+
+<ul>
+<li><strong>Cast on Critical:</strong> &ldquo;While active, gains Energy when you Critically Hit enemies and triggers socketed Spells on reaching maximum Energy.&rdquo;</li>
+<li><strong>Mana Remnants:</strong> &ldquo;Spawn a Remnant on Critically Hitting a target affected by an Elemental Ailment.&rdquo;</li>
+</ul>
+
+<p><strong>Support Gems</strong></p>
+
+<ul>
+<li><strong>Mana Flare</strong>: &ldquo;Supported Skills trigger Mana Flare on Critical Hit.</li>
+<li><strong>Eternal Flame III:</strong> &ldquo;Supported Skills have 20% chance to refresh Ignite duration on Critical Hit.&rdquo;</li>
+<li><strong>Volatility:</strong> &ldquo;Supported Skills grant Volatility on Critical Hit.&rdquo;</li>
+<li><strong>Cold Exposure:</strong> &ldquo;Supported Skills inflict Exposure for 8 seconds on Critical Hit with Cold Damage.&rdquo;</li>
+<li><strong>Concussive Spells:</strong> &ldquo;Supported Skills Daze on Critically Hitting enemies with Physical damage.&rdquo;</li>
+<li><strong>Blazing Critical:</strong> &ldquo;Attacks Gain 15% of Damage as Fire Damage for 5 seconds on Critically Hitting with Supported Skills.&rdquo;</li>
+<li><strong>Shocking Leap:</strong> &ldquo;Supported Skills create Shocked Ground for 4 seconds when they Critically Hit.&rdquo;</li>
+<li><strong>Garukhan&rsquo;s Resolve:</strong> &ldquo;Maximum Critical Hit chance with Supported Skills is 50%, Attack Critical Hit Chance with Supported Skills Bifurcates&rdquo; <em>(Note: I am not sure how this interacts with Inevitable Critical).</em></li>
+</ul>
+
+<p><strong>Notable Passives</strong></p>
+
+<ul>
+<li><strong>Cut to the Bone:</strong> &ldquo;Break Armour on Critical Hit with Spells equal to 10% of Physical Damage dealt.&rdquo;</li>
+<li><strong>Bone Chains:</strong> &ldquo;Physical Spell Critical Hits build Pin.&rdquo;</li>
+<li><strong>Aspiring Genius:</strong> &ldquo;10% chance to gain Arcane Surge when you deal a Critical Hit.&rdquo;</li>
+<li><strong>Perfectly Placed Knife:</strong> &ldquo;20% chance to Aggravate Bleeding on targets you Critically Hit with Attacks.&rdquo;</li>
+</ul>
+
+<p><strong>Unique Items</strong></p>
+
+<ul>
+<li><strong>Effigy of Cruelty</strong> (Focus): &ldquo;Critical Hits with Spells apply (1—3) Stacks of Critical Weakness.&rdquo;</li>
+<li><strong>Voll&rsquo;s Protector</strong> (Body Armour): &ldquo;25% chance to gain a Power Charge on Critical Hit.&rdquo;</li>
+<li><strong>Beacon of Azis</strong> (Amulet): &ldquo;Critical Hits ignore Enemy Monster Elemental Resistances.&rdquo;</li>
+<li><strong>Choir of the Storm</strong> (Amulet): &ldquo;Critical Hits Ignore Enemy Monster Lightning Resistance&rdquo; and &ldquo;Trigger Lightning Bolt Skill on Critical Hit.&rdquo;</li>
+<li><strong>Atsak&rsquo;s Sight</strong> (Helmet): &ldquo;Critical Hits Poison the enemy.&rdquo;</li>
+<li><strong>The Black Insignia</strong> (Helmet): &ldquo;Gain Tailwind on Critical Hit, no more than once per second.&rdquo;</li>
+<li><strong>The Smiling Knight</strong> (Helmet): &ldquo;Aggravate Bleeding on targets you Critically Hit with Attacks.&rdquo;</li>
+<li><strong>Atziri&rsquo;s Acuity</strong> (Gloves): &ldquo;Leech from Critical Hits is instant.&rdquo;</li>
+<li><strong>Nightscale</strong> (Gloves): &ldquo;150% increased Mana Regeneration Rate if you&rsquo;ve dealt a Critical Hit Recently.&rdquo;</li>
+<li><strong>Dreadfist</strong> (Gloves): &ldquo;Critical Hits inflict Impale, Critical Hits cannot Extract Impale.&rdquo;</li>
+<li><strong>Blessed Bonds</strong> (Gloves): &ldquo;Inflict Lightning Exposure on Critical Hit.&rdquo;</li>
+<li><strong>Gifts from Above</strong> (Ring): &ldquo;(20—30)% increased Rarity of Items Dropped by Enemies killed with a Critical Hit.&rdquo;</li>
+<li><strong>Hoghunt</strong> (Two Hand Mace): &ldquo;Maim on Critical Hit.&rdquo;</li>
+</ul>
+
+<p>Hope this helps for your builds! Let me know if you have any questions or feedback.</p>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nubg870" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>loopuleasa</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="nubg870" class="commentText"><p>you should add tl;dr at the top</p>
+
+<p>&ldquo;tl;dr: you can keep your crit chance low and get more crit multi instead on an oracle&rdquo;</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nubmdyw" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Ok_Pick_1772</div>
+        <div>1 | 7 minutes ago </div>
+      </div>
+      <label for="nubmdyw" class="commentText"><p>I just added a TL;DR at the top. Thanks for the suggestion.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nubmrsi" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>loopuleasa</div>
+        <div>1 | 4 minutes ago </div>
+      </div>
+      <label for="nubmrsi" class="commentText"><p>having a good &ldquo;tl;dr&rdquo; conclusion of your research at the top of a long post guarantees you get upvotes in 100% of the cases where you would&rsquo;ve otherwise lost them</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nubg3em" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>loopuleasa</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="nubg3em" class="commentText"><p>sucks the old post was removed by reddit AI&hellip;</p>
+
+<p>Excellent research, have my upvote again</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nubgznp" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Noobkaka</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="nubgznp" class="commentText"><p>you forgot mana flare support gem.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nubmhp1" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Ok_Pick_1772</div>
+        <div>1 | 6 minutes ago </div>
+      </div>
+      <label for="nubmhp1" class="commentText"><p>Thanks!</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nubj1rw" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Remeron7</div>
+        <div>1 | 32 minutes ago </div>
+      </div>
+      <label for="nubj1rw" class="commentText"><p>Is there a sweet spot for crit chance? I want to build up CoC as fast as possible instead of gaining the most damage, I’m using coc thunderstorm to water my plants.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nubk0s0" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>First_Loquat_7685</div>
+        <div>1 | 25 minutes ago </div>
+      </div>
+      <label for="nubk0s0" class="commentText"><p>20-30% is the most gain from the ascendancy passive (more chance with less CHD), but the more crit you have the more damage you do, just the ascendancy passive loses &ldquo;value&rdquo; with more crit chance</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nubknvb" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Remeron7</div>
+        <div>1 | 20 minutes ago </div>
+      </div>
+      <label for="nubknvb" class="commentText"><p>So I still stack crit chance if I want faster build up to cast in crit? Thanks for the reply</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nubmq1z" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Miotas</div>
+        <div>1 | 4 minutes ago </div>
+      </div>
+      <label for="nubmq1z" class="commentText"><p>no. all your hits will crit regardless of your crit chance, that&rsquo;s the point of the passive. the only thing that changes is how much damage those crits deal.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="nubmvxf" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>loopuleasa</div>
+        <div>1 | 3 minutes ago </div>
+      </div>
+      <label for="nubmvxf" class="commentText"><p>more crit chance or crit multi is always better</p>
+
+<p>you just get more from the passive itself if you invest less into crit and more into multi</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nubj5cm" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>hayko34500</div>
+        <div>1 | 31 minutes ago </div>
+      </div>
+      <label for="nubj5cm" class="commentText"><p>Nightscale is so confy</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nubk07j" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>UpbeatAnalyst6959</div>
+        <div>1 | 25 minutes ago </div>
+      </div>
+      <label for="nubk07j" class="commentText"><p>Thanks, that&rsquo;s a great in-depth explanation, really helps with the tree as i might reroll to Oracle</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nubk6hw" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>hurricanebones</div>
+        <div>1 | 23 minutes ago </div>
+      </div>
+      <label for="nubk6hw" class="commentText"><p>Almost perfect !</p>
+
+<p>I would add a chart of overall dps increase with crit chance / crit dmg / inevitable.</p>
+
+<p>Because in the end u wanna max out dps step by step, not max out inevitable at all cost.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nubl63m" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>zanzuses</div>
+        <div>1 | 16 minutes ago </div>
+      </div>
+      <label for="nubl63m" class="commentText"><p>Holy thankss</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nublw5g" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ZombieStirto</div>
+        <div>1 | 10 minutes ago </div>
+      </div>
+      <label for="nublw5g" class="commentText"><p>Does anyone know how this interacts with maligaros? If your multi is 250. Does it stay 250 no matter how many times it RR?</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nubms6e" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Ok_Pick_1772</div>
+        <div>1 | 4 minutes ago </div>
+      </div>
+      <label for="nubms6e" class="commentText"><p>Maligaro&rsquo;s Virtuosity has this mod &ldquo;Your Critical Hit Chance cannot be Rerolled&rdquo;, so I think it does not work with Inevitable Critical.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
