@@ -220,6 +220,13 @@ body > .commentList {
 
 <p><a href="https://preview.redd.it/8kc3385iqi7g1.png?width=1167&amp;format=png&amp;auto=webp&amp;s=6be2416c4b4d239b6b8d714ec299480c71ba4437" target="_blank">Optimal Strategy Curve</a></p>
 
+<p><strong>Clarification:</strong> Please note that increasing your Crit Chance or Crit Damage Bonus will <strong>always</strong> increase your total average damage. The graphs visualize the <strong>Relative Efficiency</strong> (the damage multiplier), not absolute damage.</p>
+
+<ul>
+<li>The <strong>Damage Multiplier</strong> represents how much <strong>extra</strong> damage the &ldquo;Inevitable Critical&rdquo; mechanic gives you <strong>compared to not having it</strong>.</li>
+<li>Even if the damage multiplier goes down (diminishing returns), your actual DPS is still going up—just not as efficiently as before.</li>
+</ul>
+
 <h1 id="visualization-1-the-damage-multiplier-heatmap">Visualization 1: The Damage Multiplier Heatmap</h1>
 
 <p>This heatmap shows the <strong>Damage Multiplier</strong> (how much stronger your hit is compared to a standard baseline) for every possible combination of stats.</p>
@@ -233,13 +240,6 @@ body > .commentList {
 <p>For example, &ldquo;damage multiplier = 1.5&rdquo; means the &ldquo;Inevitable Critical&rdquo; mechanic provides 50% more damage on average than a build without it.</p>
 
 <p>Hover your mouse over any point. If you have <strong>200% Crit Dmg Bonus</strong> and <strong>50% Crit Chance</strong>, the tooltip will tell you exactly what your damage multiplier is. You can see how the benefits &ldquo;fall off&rdquo; or plateau as you push Crit Chance too high.</p>
-
-<p><strong>Clarification:</strong> Please note that increasing your Crit Chance or Crit Damage Bonus will <strong>always</strong> increase your total average damage. The graphs visualize the <strong>Relative Efficiency</strong> (the damage multiplier), not absolute damage.</p>
-
-<ul>
-<li>The <strong>Damage Multiplier</strong> represents how much <strong>extra</strong> damage the &ldquo;Inevitable Critical&rdquo; mechanic gives you <strong>compared to not having it</strong>.</li>
-<li>Even if the damage multiplier goes down (diminishing returns), your actual DPS is still going up—just not as efficiently as before.</li>
-</ul>
 
 <h1 id="visualization-2-the-optimal-strategy-curve">Visualization 2: The Optimal Strategy Curve</h1>
 
@@ -280,7 +280,58 @@ body > .commentList {
 
 <p>I built this using <strong>Python</strong>. I utilized <strong>NumPy</strong> for high-precision array calculations and <strong>Plotly</strong> to generate the visualizations. This is what enables the interactive features (like tooltips and zooming) in the links above.</p>
 
-<p>Hope this helps you min-max your builds! Let me know if you have any questions or feedback.</p>
+<h1 id="the-always-crit-advantage">The &ldquo;Always Crit&rdquo; Advantage</h1>
+
+<p>While the calculation and visualizations above focus purely on <strong>damage efficiency</strong>, Inevitable Critical offers a massive gameplay advantage: <strong>it guarantees that all of your hits will be Critical Hits.</strong></p>
+
+<p>This provides excellent synergy with mechanics that rely on critical strikes to trigger specific effects. Here are some examples of Crit-related effects that benefit from guaranteed Critical Hits:</p>
+
+<p><strong>Spirit Gems</strong></p>
+
+<ul>
+<li><strong>Cast on Critical:</strong> &ldquo;While active, gains Energy when you Critically Hit enemies and triggers socketed Spells on reaching maximum Energy.&rdquo;</li>
+<li><strong>Mana Remnants:</strong> &ldquo;Spawn a Remnant on Critically Hitting a target affected by an Elemental Ailment.&rdquo;</li>
+</ul>
+
+<p><strong>Support Gems</strong></p>
+
+<ul>
+<li><strong>Eternal Flame III:</strong> &ldquo;Supported Skills have 20% chance to refresh Ignite duration on Critical Hit.&rdquo;</li>
+<li><strong>Volatility:</strong> &ldquo;Supported Skills grant Volatility on Critical Hit.&rdquo;</li>
+<li><strong>Cold Exposure:</strong> &ldquo;Supported Skills inflict Exposure for 8 seconds on Critical Hit with Cold Damage.&rdquo;</li>
+<li><strong>Concussive Spells:</strong> &ldquo;Supported Skills Daze on Critically Hitting enemies with Physical damage.&rdquo;</li>
+<li><strong>Blazing Critical:</strong> &ldquo;Attacks Gain 15% of Damage as Fire Damage for 5 seconds on Critically Hitting with Supported Skills.&rdquo;</li>
+<li><strong>Shocking Leap:</strong> &ldquo;Supported Skills create Shocked Ground for 4 seconds when they Critically Hit.&rdquo;</li>
+</ul>
+
+<p><strong>Notable Passives</strong></p>
+
+<ul>
+<li><strong>Cut to the Bone:</strong> &ldquo;Break Armour on Critical Hit with Spells equal to 10% of Physical Damage dealt.&rdquo;</li>
+<li><strong>Bone Chains:</strong> &ldquo;Physical Spell Critical Hits build Pin.&rdquo;</li>
+<li><strong>Aspiring Genius:</strong> &ldquo;10% chance to gain Arcane Surge when you deal a Critical Hit.&rdquo;</li>
+<li><strong>Perfectly Placed Knife:</strong> &ldquo;20% chance to Aggravate Bleeding on targets you Critically Hit with Attacks.&rdquo;</li>
+</ul>
+
+<p><strong>Unique Items</strong></p>
+
+<ul>
+<li><strong>Effigy of Cruelty</strong> (Focus): &ldquo;Critical Hits with Spells apply (1—3) Stacks of Critical Weakness.&rdquo;</li>
+<li><strong>Voll&rsquo;s Protector</strong> (Body Armour): &ldquo;25% chance to gain a Power Charge on Critical Hit.&rdquo;</li>
+<li><strong>Beacon of Azis</strong> (Amulet): &ldquo;Critical Hits ignore Enemy Monster Elemental Resistances.&rdquo;</li>
+<li><strong>Choir of the Storm</strong> (Amulet): &ldquo;Critical Hits Ignore Enemy Monster Lightning Resistance&rdquo; and &ldquo;Trigger Lightning Bolt Skill on Critical Hit.&rdquo;</li>
+<li><strong>Atsak&rsquo;s Sight</strong> (Helmet): &ldquo;Critical Hits Poison the enemy.&rdquo;</li>
+<li><strong>The Black Insignia</strong> (Helmet): &ldquo;Gain Tailwind on Critical Hit, no more than once per second.&rdquo;</li>
+<li><strong>The Smiling Knight</strong> (Helmet): &ldquo;Aggravate Bleeding on targets you Critically Hit with Attacks.&rdquo;</li>
+<li><strong>Atziri&rsquo;s Acuity</strong> (Gloves): &ldquo;Leech from Critical Hits is instant.&rdquo;</li>
+<li><strong>Nightscale</strong> (Gloves): &ldquo;150% increased Mana Regeneration Rate if you&rsquo;ve dealt a Critical Hit Recently.&rdquo;</li>
+<li><strong>Dreadfist</strong> (Gloves): &ldquo;Critical Hits inflict Impale, Critical Hits cannot Extract Impale.&rdquo;</li>
+<li><strong>Blessed Bonds</strong> (Gloves): &ldquo;Inflict Lightning Exposure on Critical Hit.&rdquo;</li>
+<li><strong>Gifts from Above</strong> (Ring): &ldquo;(20—30)% increased Rarity of Items Dropped by Enemies killed with a Critical Hit.&rdquo;</li>
+<li><strong>Hoghunt</strong> (Two Hand Mace): &ldquo;Maim on Critical Hit.&rdquo;</li>
+</ul>
+
+<p>Hope this helps for your builds! Let me know if you have any questions or feedback.</p>
 
     </div>
     
@@ -294,7 +345,7 @@ body > .commentList {
     <div class="comment">
       <div class="commentHeader">
         <div>Aperiodic_Tileset</div>
-        <div>1 | an hour ago </div>
+        <div>12 | 2 hours ago </div>
       </div>
       <label for="nuar3cd" class="commentText"><p>Nice data, but I think the reason why is this node so interesting isn&rsquo;t the damage multiplier part, instead it&rsquo;s the synergy with crit-related effects. Like Cast on Crit or Beacon of Azis</p>
 </label>
@@ -309,7 +360,7 @@ body > .commentList {
     <div class="comment">
       <div class="commentHeader">
         <div>Popular-Fennel4167</div>
-        <div>1 | 25 minutes ago </div>
+        <div>3 | an hour ago </div>
       </div>
       <label for="nuaud7n" class="commentText"><p>Mana remnants completely changed my experience as well.</p>
 </label>
@@ -324,7 +375,7 @@ body > .commentList {
     <div class="comment">
       <div class="commentHeader">
         <div>fr3ak393</div>
-        <div>1 | 3 minutes ago </div>
+        <div>1 | an hour ago </div>
       </div>
       <label for="nuawjjz" class="commentText"><p>This. mana remnants is such a useful skill. I am thinking for testing MoM or Harmony within to see if I can make a tanky build later</p>
 </label>
@@ -345,7 +396,7 @@ body > .commentList {
     <div class="comment">
       <div class="commentHeader">
         <div>tooncake</div>
-        <div>1 | 28 minutes ago </div>
+        <div>1 | an hour ago </div>
       </div>
       <label for="nuau1tw" class="commentText"><p>Currently this, example for planters, we&rsquo;re taking advantage of CoC for Thunderstorm, which would easy the play through approach</p>
 </label>
@@ -361,12 +412,32 @@ body > .commentList {
     <div class="comment">
       <div class="commentHeader">
         <div>McButcher2k</div>
-        <div>1 | 6 minutes ago </div>
+        <div>-3 | an hour ago </div>
       </div>
       <label for="nuaw9hq" class="commentText"><p>Yeah, guy wasted all his time getting the data for the crit damage 😅</p>
 </label>
     </div>
   </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nuaz87z" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>BlueMerchant</div>
+        <div>1 | 35 minutes ago </div>
+      </div>
+      <label for="nuaz87z" class="commentText"><p>He did a good job</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
   
 </div>
 
@@ -384,27 +455,9 @@ body > .commentList {
     <div class="comment">
       <div class="commentHeader">
         <div>sagi1246</div>
-        <div>1 | an hour ago </div>
+        <div>4 | 2 hours ago </div>
       </div>
       <label for="nuar2jn" class="commentText"><p>I&rsquo;m a simple man. I see a heat map, I save the post </p>
-</label>
-    </div>
-  </label>
-  
-</div>
-
-        
-      
-        
-          
-<div class="commentAndChildren">
-  <input id="nuarizy" type="checkbox" checked/>
-    <div class="comment">
-      <div class="commentHeader">
-        <div>pongsacha</div>
-        <div>1 | an hour ago </div>
-      </div>
-      <label for="nuarizy" class="commentText"><p>This mean the more critical strike chance and the more critical damage we have will boost the dmg so much right ?</p>
 </label>
     </div>
   </label>
@@ -420,9 +473,65 @@ body > .commentList {
     <div class="comment">
       <div class="commentHeader">
         <div>Ennrius</div>
-        <div>1 | 2 minutes ago </div>
+        <div>3 | an hour ago </div>
       </div>
       <label for="nuawntc" class="commentText"><p>This is awesome thanks!!</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nuaz3nw" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>drallcom3</div>
+        <div>1 | 37 minutes ago </div>
+      </div>
+      <label for="nuaz3nw" class="commentText"><p>A very reasonable 25% crit and 450% bonus is still a nice 40% more damage. Not bad for an ascendancy.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nub0chl" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>PFKRSW</div>
+        <div>1 | 24 minutes ago </div>
+      </div>
+      <label for="nub0chl" class="commentText"><p>Thank you for this.</p>
+
+<p>I am not a professional and not that good with math like this, so I asked Google Gemini on this just earlier today. While the info was not that detailed, I surprisingly got similar answer &mdash; get critical strike chance to 20-30%, and just invest into crit multi/bonus. If all it needs is this amount of base crit chance, I also think it&rsquo;ll be good with items that give lots of crit multi in exchange for critical strike chance.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nuarizy" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>pongsacha</div>
+        <div>0 | 2 hours ago </div>
+      </div>
+      <label for="nuarizy" class="commentText"><p>This mean the more critical strike chance and the more critical damage we have will boost the dmg so much right ?</p>
 </label>
     </div>
   </label>
@@ -438,9 +547,31 @@ body > .commentList {
     <div class="comment">
       <div class="commentHeader">
         <div>ForsakenRow6751 | WorldWorstMerc</div>
-        <div>1 | 39 minutes ago </div>
+        <div>0 | 2 hours ago </div>
       </div>
       <label for="nuasxol" class="commentText"><p><img src="giphy|yJFeycRK2DB4c" alt="gif" /></p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nub161o" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>LordAlfrey</div>
+        <div>1 | 16 minutes ago </div>
+      </div>
+      <label for="nub161o" class="commentText"><p>It&rsquo;s a pretty complicated node, which is fun.</p>
+
+<p>I think what a lot of people get tripped up on is the part where this graph, and others like it, makes it look like you should drop critrate to gain damage. That&rsquo;s not the case, it just looks like it because it&rsquo;s a comparison vs not taking the node. Increasing your crit rate with the node is still a damage increase, but the damage you gain from critrate without the node outpaces the damage gained with it, which makes it looks like a damage loss.</p>
+
+<p>If you can get critrate without sacrificing anything else, it is a damage upgrade. If you can get critrate only at the cost of other stats, like increased damage or crit damage bonus, then it may not be worth it. If your build can relatively easily get a lot of crit rate, you might want to consider taking other nodes instead.</p>
 </label>
     </div>
   </label>
