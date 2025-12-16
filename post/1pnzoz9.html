@@ -202,49 +202,79 @@ body > .commentList {
 
     
     <div class="selfPostContainer">
-      <p><em>(Note: Reposting this because the previous thread was auto-removed by Reddit&rsquo;s filters when I tried to edit my post.)</em></p>
+      <p><em>(Edit: I’ve added visualizations for the total damage multiplier. I can’t include links to the interactive plots due to Reddit’s filters.)</em></p>
 
 <h1 id="tl-dr">TL;DR:</h1>
 
 <ul>
-<li><strong>Stat Strategy:</strong> Due to diminishing returns, the <strong>Inevitable Critical</strong> mechanic scales best if you keep <strong>Crit Chance low (~20-30%)</strong> and go all-in on <strong>Crit Damage Bonus</strong>.</li>
-<li><strong>Gameplay:</strong> Regardless of your Crit Chance, the reroll mechanic ensures you <strong>Crit on every hit</strong>, making it amazing for triggering Crit-related effects like &ldquo;Cast on Critical&rdquo;.</li>
+<li><strong>Always Crit Synergies:</strong> The <strong>Inevitable Critical</strong> mechanic ensures you <strong>Crit on every hit</strong>, making it amazing for triggering <strong>Crit-related effects</strong> like &ldquo;Cast on Critical&rdquo;.</li>
+<li><strong>How to scale Crit Chance and Crit Dmg Bonus to Maximize Damage:</strong>
+
+<ul>
+<li><strong>By default (without Inevitable Critical)</strong>: The optimal scaling path is a balanced increase of Crit Chance and Crit Dmg Bonus. Specifically, <strong>for each 1% Crit Chance you have, you should also have 10% Crit Dmg Bonus.</strong> (Crit Chance and Crit Dmg Bonus refer to their final values after all modifiers and calculations are applied.)</li>
+<li><strong>With Inevitable Critical</strong>: The optimal path shifts. <strong>As your Crit Chance increases, you should prioritize Crit Dmg Bonus more heavily than Crit Chance to maximize damage.</strong> This is because the Inevitable Critical mechanic becomes less effective as Crit Chance increases.</li>
+</ul></li>
 </ul>
 
 <h1 id="introduction">Introduction</h1>
 
 <p><strong>Forced Outcome</strong> is an Ascendancy passive skill for the Oracle that grants <strong>Inevitable Critical Hits</strong>, guaranteeing a hit becomes a critical hit by rerolling for critical hit chance until it succeeds. Hits have 30% less Critical Damage Bonus for each time Critical Hit chance was re-rolled. We assume that this penalty stacks <strong>additively</strong>.</p>
 
-<p>I’ve been digging into the math behind the <strong>Inevitable Critical</strong> mechanic to understand how efficient it actually is. The formula for this mechanic is complex because it involves diminishing returns on Critical Hit Chance as you go higher. I wrote a Python script to calculate the exact efficiency and plotted it using interactive graphs.</p>
+<p>I&rsquo;ve been digging into the math behind the <strong>Inevitable Critical</strong> mechanic to understand how its effectiveness, and how you should balance your investment in Crit Chance and Crit Dmg Bonus to maximize damage with the mechanic.</p>
 
-<p><strong>Clarification:</strong> Please note that increasing your Crit Chance or Crit Damage Bonus will <strong>always</strong> increase your total average damage. The graphs visualize the <strong>Relative Efficiency</strong> (the damage multiplier), not absolute damage.</p>
+<p><strong>Key Definitions:</strong></p>
 
 <ul>
-<li>The <strong>Damage Multiplier</strong> represents how much <strong>extra</strong> damage the &ldquo;Inevitable Critical&rdquo; mechanic gives you <strong>compared to not having it</strong>.</li>
-<li>Even if the damage multiplier goes down (diminishing returns), your actual DPS is still going up—just not as efficiently as before.</li>
+<li><strong>Relative Damage Multiplier</strong> refers to how much more damage your hits deal on average <strong>with Inevitable Critical compared to without it</strong>.</li>
+<li><strong>Total Damage Multiplier</strong> refers to how much more damage your hits deal on average <strong>compared to a non-crit hit</strong>.</li>
 </ul>
 
-<h1 id="visualization-1-the-damage-multiplier-heatmap">Visualization 1: The Damage Multiplier Heatmap</h1>
+<p>For example, &ldquo;Relative Damage Multiplier = 1.5&rdquo; means your hits deal 50% more damage on average with Inevitable Critical than without it. It does NOT mean your hits deal 50% more damage on average compared to a non-crit hit, which would instead correspond to &ldquo;Total Damage Multiplier = 1.5&rdquo;.</p>
 
-<p><a href="https://preview.redd.it/7mbqb27hxj7g1.png?width=1122&amp;format=png&amp;auto=webp&amp;s=78d7f016a903f6383bfafe7692db9ece500c3e32" target="_blank">Damage Multiplier Heatmap</a></p>
+<h1 id="visualization-1-damage-scaling-by-default-without-inevitable-critical">Visualization 1: Damage Scaling by Default (Without Inevitable Critical)</h1>
 
-<p>This heatmap shows the <strong>Damage Multiplier</strong> (how much stronger your hit is compared to a standard baseline) for every possible combination of Crit Chance and % Crit Dmg Bonus.</p>
+<p><a href="https://preview.redd.it/cxslccax3n7g1.png?width=1117&amp;format=png&amp;auto=webp&amp;s=fdd1455146884a72b926462072ed75b96de67bc5" target="_blank">Damage Scaling by Default (Without Inevitable Critical)</a></p>
+
+<ul>
+<li><strong>Colors &amp; Lines:</strong> The colors and contour lines represent levels of <strong>Total Damage Multiplier</strong>. Every point along a single line corresponds to the exact same Total Average Damage. For example, on the line labeled <strong>4</strong>, you deal <strong>4x</strong> (or 400%) of your base non-crit damage.</li>
+<li><strong>Crossing Contour Lines:</strong> When you increase Crit Chance, you move right. When you increase Crit Dmg Bonus, you move up. To maximize your damage, you want to move from the blue/green areas toward the red areas while crossing as many contour lines as possible.</li>
+<li><strong>Default Optimal Path (White Dotted Line):</strong> Notice that the contour lines are <strong>diagonal</strong> (Linear Scaling). To maximize damage, you should increase both Crit Chance and Crit Dmg Bonus at a balanced rate. Specifically, the optimal path follows a <strong>1:10 ratio</strong>, represented by the <strong>white dotted line</strong>. That is, <strong>for each 1% Crit Chance you have, you should also have 10% Crit Dmg Bonus.</strong></li>
+</ul>
+
+<h1 id="visualization-2-damage-scaling-with-inevitable-critical">Visualization 2: Damage Scaling with Inevitable Critical</h1>
+
+<p><a href="https://preview.redd.it/w3dq8hnz3n7g1.png?width=1115&amp;format=png&amp;auto=webp&amp;s=ccf73e19bba77b814573c4f862b854cb870a28d0" target="_blank">Damage Scaling with Inevitable Critical</a></p>
+
+<ul>
+<li><strong>Optimal Path for Inevitable Critical (Red Line):</strong> As you move to the top right, the contour lines <strong>flatten out</strong> and become more horizontal. This means that, as your Crit Chance increases, you should prioritize Crit Dmg Bonus more heavily than Crit Chance. The optimal path for Inevitable Critical is represented by <strong>the red line</strong>, which becomes steeper as Crit Chance increases.</li>
+</ul>
+
+<h1 id="visualization-3-relative-damage-multiplier-heatmap">Visualization 3: Relative Damage Multiplier Heatmap</h1>
+
+<p><a href="https://preview.redd.it/ea3o5jm64n7g1.png?width=1119&amp;format=png&amp;auto=webp&amp;s=0c69110ddda673dbf4e05998be7b4eb039f70d3d" target="_blank">Relative Damage Multiplier Heatmap</a></p>
 
 <ul>
 <li><strong>X-Axis (Horizontal):</strong> Your Critical Hit Chance (0.0 to 1.0).</li>
 <li><strong>Y-Axis (Vertical):</strong> Your % Critical Damage Bonus (0% to 1000%).</li>
-<li><strong>Color (Z-Axis):</strong> The &ldquo;hotter&rdquo; the color (Red/Orange), the higher the damage multiplier.</li>
+<li><strong>Color (Z-Axis):</strong> The &ldquo;hotter&rdquo; the color (Red/Orange), the higher the relative damage multiplier.</li>
 </ul>
 
-<p>For example, &ldquo;damage multiplier = 1.5&rdquo; means the &ldquo;Inevitable Critical&rdquo; mechanic provides 50% more damage on average than a build without it.</p>
+<p>Notice how the heat &ldquo;cools off&rdquo; as you move to the right (higher Crit Chance), visualizing the diminishing returns.</p>
 
 <p>Hover your mouse over any point. If you have <strong>200% Crit Dmg Bonus</strong> and <strong>50% Crit Chance</strong>, the tooltip will tell you exactly what your damage multiplier is. You can see how the benefits &ldquo;fall off&rdquo; or plateau as you push Crit Chance too high.</p>
 
-<h1 id="visualization-2-the-optimal-strategy-curve">Visualization 2: The Optimal Strategy Curve</h1>
+<p><strong>Key Insight:</strong> Please note that increasing your Crit Chance or Crit Damage Bonus will <strong>always</strong> increase your total average damage. The graphs visualize the <strong>Relative Efficiency</strong> (the damage multiplier), not absolute damage.</p>
 
-<p><a href="https://preview.redd.it/sljl7orjxj7g1.png?width=1167&amp;format=png&amp;auto=webp&amp;s=a283531bd493fb162dcd6d00fff1adc34d710b20" target="_blank">Optimal Strategy Curve</a></p>
+<ul>
+<li>The <strong>Relative Damage Multiplier</strong> represents how much <strong>extra</strong> damage the &ldquo;Inevitable Critical&rdquo; mechanic gives you <strong>compared to not having it</strong>.</li>
+<li>Even if the relative damage multiplier goes down (diminishing returns), your actual DPS is still going up, just not as efficiently as before.</li>
+</ul>
 
-<p>For any given amount of Critical Damage Bonus you have, the graph tells you the <strong>exact Critical Hit Chance</strong> you should aim for to maximize your efficiency.</p>
+<h1 id="visualization-4-optimizing-inevitable-critical-effectiveness">Visualization 4: Optimizing Inevitable Critical Effectiveness</h1>
+
+<p><a href="https://preview.redd.it/1pwhymf84n7g1.png?width=1168&amp;format=png&amp;auto=webp&amp;s=8e868a272ad7e5e452c832a0dac2d7d4846a0896" target="_blank">Optimizing Inevitable Critical Effectiveness</a></p>
+
+<p>For any given amount of Critical Damage Bonus you have, the graph tells you the <strong>Optimal Crit Chance</strong> you should aim for to <strong>maximize Inevitable Critical effectiveness</strong>.</p>
 
 <ul>
 <li><strong>X-Axis:</strong> Your % Critical Damage Bonus (0% to 1000%).</li>
@@ -261,15 +291,21 @@ body > .commentList {
 
 <p><strong>1. The Formula:</strong></p>
 
-<p>The function used is a ratio comparing the average damage with &ldquo;Inevitable Critical&rdquo; to the average damage without it:</p>
-<p><span class="math display">\[h(c, b) = \\frac{1 + cb + c(1-c)0.7b + c(1-c)^(2) 0.4b + c(1-c)^(3) 0.1b}{1 + cb}\]</span></p><p>Where:</p>
+<p>Let</p>
 
 <ul>
 <li><span class="math inline">\(c =\)</span> Crit Chance (<span class="math inline">\(0\\le c \\le 1\)</span>) (<span class="math inline">\(c = 0.25\)</span> means 25% Crit Chance)</li>
 <li><span class="math inline">\(b =\)</span> Crit Dmg Bonus (<span class="math inline">\(0 \\le b \\le 10\)</span>) (<span class="math inline">\(b = 2.5\)</span> means 250% Crit Dmg Bonus, default at 100%).</li>
 </ul>
 
-<p>For example, a value of <span class="math inline">\(h(c,b) = 1.5\)</span> indicates that the &lsquo;Inevitable Critical&rsquo; mechanic provides <strong>50% more damage on average</strong> relative to the baseline performance without the mechanic.</p>
+<p>The total damage multiplier by default is: $<span class="math inline">\(f\_0(c, b) = 1 + cb\)</span>$</p>
+
+<p>For example, a value of <span class="math inline">\(f\_0(c,b) = 1.5\)</span> indicates that, by default, you are dealing <strong>50% more damage on average</strong> relative to a non-critical hit. This formula explains why the default optimal path follows a 1:10 ratio of Crit Chance to Crit Dmg Bonus.</p>
+
+<p>The total damage multiplier with &ldquo;Inevitable Critical&rdquo; is: $<span class="math inline">\(f(c, b) = 1 + cb + c(1-c)0.7b + c(1-c)^(2) 0.4b + c(1-c)^(3) 0.1b\)</span>$</p>
+
+<p>The relative damage multiplier comparing Inevitable Critical vs Default is:</p>
+<p><span class="math display">\[h(c, b) = \\frac{f(c,b)}{f\_0(c,b)} = \\frac{1 + cb + c(1-c)0.7b + c(1-c)^(2) 0.4b + c(1-c)^(3) 0.1b}{1 + cb}\]</span></p><p>For example, a value of <span class="math inline">\(h(c,b) = 1.5\)</span> indicates that the &lsquo;Inevitable Critical&rsquo; mechanic provides <strong>50% more damage on average</strong> relative to the baseline performance without the mechanic.</p>
 
 <p><strong>2. Calculation Method:</strong></p>
 
@@ -279,7 +315,7 @@ body > .commentList {
 
 <p>I used <strong>Python</strong> with <strong>NumPy</strong> for the high-precision array calculations and <strong>Plotly</strong> to generate the visualization, allowing for the interactive tooltips and zooming features you see in the links.</p>
 
-<p>I built this using <strong>Python</strong>. I utilized <strong>NumPy</strong> for high-precision array calculations and <strong>Plotly</strong> to generate the visualizations.</p>
+<p>I built this using <strong>Python</strong>. I utilized <strong>NumPy</strong> for high-precision array calculations and <strong>Plotly</strong> to generate the visualizations. This is what enables the interactive features (like tooltips and zooming) in the links above.</p>
 
 <h1 id="the-always-crit-advantage">The &ldquo;Always Crit&rdquo; Advantage</h1>
 
@@ -319,7 +355,7 @@ body > .commentList {
 <p><strong>Unique Items</strong></p>
 
 <ul>
-<li><strong>Effigy of Cruelty</strong> (Focus): &ldquo;Critical Hits with Spells apply (1—3) Stacks of Critical Weakness.&rdquo;</li>
+<li><strong>Effigy of Cruelty</strong> (Focus): &ldquo;Critical Hits with Spells apply (1 - 3) Stacks of Critical Weakness.&rdquo;</li>
 <li><strong>Voll&rsquo;s Protector</strong> (Body Armour): &ldquo;25% chance to gain a Power Charge on Critical Hit.&rdquo;</li>
 <li><strong>Beacon of Azis</strong> (Amulet): &ldquo;Critical Hits ignore Enemy Monster Elemental Resistances.&rdquo;</li>
 <li><strong>Choir of the Storm</strong> (Amulet): &ldquo;Critical Hits Ignore Enemy Monster Lightning Resistance&rdquo; and &ldquo;Trigger Lightning Bolt Skill on Critical Hit.&rdquo;</li>
@@ -348,7 +384,7 @@ body > .commentList {
     <div class="comment">
       <div class="commentHeader">
         <div>loopuleasa</div>
-        <div>109 | 10 hours ago </div>
+        <div>112 | 11 hours ago </div>
       </div>
       <label for="nubg870" class="commentText"><p>you should add tl;dr at the top</p>
 
@@ -365,7 +401,7 @@ body > .commentList {
     <div class="comment">
       <div class="commentHeader">
         <div>Ok_Pick_1772</div>
-        <div>45 | 10 hours ago </div>
+        <div>48 | 11 hours ago </div>
       </div>
       <label for="nubmdyw" class="commentText"><p>I just added a TL;DR at the top. Thanks for the suggestion.</p>
 </label>
@@ -380,7 +416,7 @@ body > .commentList {
     <div class="comment">
       <div class="commentHeader">
         <div>loopuleasa</div>
-        <div>15 | 10 hours ago </div>
+        <div>17 | 11 hours ago </div>
       </div>
       <label for="nubmrsi" class="commentText"><p>having a good &ldquo;tl;dr&rdquo; conclusion of your research at the top of a long post guarantees you get upvotes in 100% of the cases where you would&rsquo;ve otherwise lost them</p>
 </label>
@@ -395,7 +431,7 @@ body > .commentList {
     <div class="comment">
       <div class="commentHeader">
         <div>FilthyFioraMain</div>
-        <div>5 | 3 hours ago </div>
+        <div>8 | 4 hours ago </div>
       </div>
       <label for="nudqrhk" class="commentText"><p>Inevitable upvote</p>
 </label>
@@ -416,7 +452,7 @@ body > .commentList {
     <div class="comment">
       <div class="commentHeader">
         <div>pandahands69</div>
-        <div>3 | 8 hours ago </div>
+        <div>2 | 9 hours ago </div>
       </div>
       <label for="nubxuwn" class="commentText"><p>I just want to point something out because the math could be perfect but the idea is flawed. If you do 20-30% crit and the rest crit multi, then swap the multi for a more balanced crit chance. Your before the node dps is going to sky rocket, so even though the node itself will give you less power, overall your damage will be much higher. You can pob it but the notion of going 20% crit and maximum crit multi is just super flawed.</p>
 </label>
@@ -431,7 +467,7 @@ body > .commentList {
     <div class="comment">
       <div class="commentHeader">
         <div>korzasa</div>
-        <div>1 | 8 hours ago </div>
+        <div>2 | 9 hours ago </div>
       </div>
       <label for="nuc0axb" class="commentText"><p>Yes the efficiency of the node would go down if you swap crit multi for more balanced crit chance. This is just about calculating how much power the node gives if you were to take it, it doesn&rsquo;t factor in opportunity cost of the investment.
 That&rsquo;s how I understand it anyhow.</p>
@@ -458,7 +494,7 @@ That&rsquo;s how I understand it anyhow.</p>
     <div class="comment">
       <div class="commentHeader">
         <div>HiddenoO</div>
-        <div>10 | 8 hours ago </div>
+        <div>9 | 9 hours ago </div>
       </div>
       <label for="nuc3o7h" class="commentText"><p>That is fairly misleading, and so are a bunch of sections in the OP. All of this relates only to making the node as strong as possible, not making your character as strong as possible.</p>
 
@@ -477,7 +513,7 @@ That&rsquo;s how I understand it anyhow.</p>
     <div class="comment">
       <div class="commentHeader">
         <div>loopuleasa</div>
-        <div>2 | 8 hours ago </div>
+        <div>4 | 9 hours ago </div>
       </div>
       <label for="nuc5q05" class="commentText"><p>not sure you understand</p>
 
@@ -506,7 +542,7 @@ That&rsquo;s how I understand it anyhow.</p>
     <div class="comment">
       <div class="commentHeader">
         <div>HiddenoO</div>
-        <div>9 | 7 hours ago </div>
+        <div>9 | 8 hours ago </div>
       </div>
       <label for="nucb4dl" class="commentText"><blockquote>
 <p>not sure you understand</p>
@@ -544,7 +580,7 @@ That&rsquo;s how I understand it anyhow.</p>
     <div class="comment">
       <div class="commentHeader">
         <div>Unarchy</div>
-        <div>2 | 6 hours ago </div>
+        <div>2 | 7 hours ago </div>
       </div>
       <label for="nucrxe6" class="commentText"><p>You are correct and it&rsquo;s an important point to consider. Your example between 40% and 50% more multiplier here uses the same numbers, though. You may have meant to make the crit chance in the latter example 25% to better illustrate your point.</p>
 </label>
@@ -559,7 +595,7 @@ That&rsquo;s how I understand it anyhow.</p>
     <div class="comment">
       <div class="commentHeader">
         <div>HiddenoO</div>
-        <div>2 | 5 hours ago </div>
+        <div>2 | 6 hours ago </div>
       </div>
       <label for="nucuc2j" class="commentText"><p>My bad, it was a copy-paste error, the calculations were done with <sup>900</sup>&frasl;<sub>20</sub> and <sup>700</sup>&frasl;<sub>40</sub>.</p>
 </label>
@@ -580,7 +616,7 @@ That&rsquo;s how I understand it anyhow.</p>
     <div class="comment">
       <div class="commentHeader">
         <div>loopuleasa</div>
-        <div>0 | 7 hours ago </div>
+        <div>0 | 8 hours ago </div>
       </div>
       <label for="nucclfy" class="commentText"><p>Then how would you word the tl;dr</p>
 </label>
@@ -595,7 +631,7 @@ That&rsquo;s how I understand it anyhow.</p>
     <div class="comment">
       <div class="commentHeader">
         <div>HiddenoO</div>
-        <div>8 | 7 hours ago </div>
+        <div>7 | 8 hours ago </div>
       </div>
       <label for="nuce2ej" class="commentText"><p>I know people are used to ignoring nuance nowadays, but a one-sentence tl;dr isn&rsquo;t always appropriate.</p>
 
@@ -612,7 +648,7 @@ That&rsquo;s how I understand it anyhow.</p>
     <div class="comment">
       <div class="commentHeader">
         <div>loopuleasa</div>
-        <div>1 | 7 hours ago </div>
+        <div>1 | 8 hours ago </div>
       </div>
       <label for="nucf6l4" class="commentText"><p>That is more sensible, you should mention that to op</p>
 </label>
@@ -648,7 +684,7 @@ That&rsquo;s how I understand it anyhow.</p>
     <div class="comment">
       <div class="commentHeader">
         <div>WittyConsideration57</div>
-        <div>1 | 6 hours ago </div>
+        <div>1 | 7 hours ago </div>
       </div>
       <label for="nucjejg" class="commentText"><p>But then you just shouldn&rsquo;t pick the node, as there&rsquo;s better options. Maybe a unique that gives you a debuff when you crit, or further increases multi while lowering chance, could change the story.</p>
 </label>
@@ -663,7 +699,7 @@ That&rsquo;s how I understand it anyhow.</p>
     <div class="comment">
       <div class="commentHeader">
         <div>HiddenoO</div>
-        <div>3 | 6 hours ago </div>
+        <div>3 | 7 hours ago </div>
       </div>
       <label for="nuco3gx" class="commentText"><p>You shouldn&rsquo;t pick a node that gives you e.g. 35% more damage just because somebody else would get 45% more damage from the node?</p>
 
@@ -682,7 +718,7 @@ That&rsquo;s how I understand it anyhow.</p>
     <div class="comment">
       <div class="commentHeader">
         <div>WittyConsideration57</div>
-        <div>1 | 6 hours ago </div>
+        <div>1 | 7 hours ago </div>
       </div>
       <label for="nucoeuq" class="commentText"><p>Well if it was 20% anyways </p>
 </label>
@@ -697,7 +733,7 @@ That&rsquo;s how I understand it anyhow.</p>
     <div class="comment">
       <div class="commentHeader">
         <div>HiddenoO</div>
-        <div>2 | 6 hours ago </div>
+        <div>2 | 7 hours ago </div>
       </div>
       <label for="nucovw2" class="commentText"><p>It&rsquo;s not, so what&rsquo;s your point?</p>
 
@@ -714,7 +750,7 @@ That&rsquo;s how I understand it anyhow.</p>
     <div class="comment">
       <div class="commentHeader">
         <div>WittyConsideration57</div>
-        <div>2 | 6 hours ago </div>
+        <div>2 | 7 hours ago </div>
       </div>
       <label for="nucrelt" class="commentText"><p>Well, I guess the simple answer is that the left edge of the red part of the graph is really easy to get into, and the right is really difficult to pass. So realistically yeah just take the ascendancy as 35% DMG and get a better graph.</p>
 </label>
@@ -729,7 +765,7 @@ That&rsquo;s how I understand it anyhow.</p>
     <div class="comment">
       <div class="commentHeader">
         <div>HiddenoO</div>
-        <div>1 | 5 hours ago </div>
+        <div>1 | 6 hours ago </div>
       </div>
       <label for="nucuqen" class="commentText"><p>Going by how strong other ascendancies are, even the teal area would be above-average performance, and you get additional synergy with crit procs on top.</p>
 </label>
@@ -770,7 +806,7 @@ That&rsquo;s how I understand it anyhow.</p>
     <div class="comment">
       <div class="commentHeader">
         <div>slane04</div>
-        <div>1 | 2 hours ago </div>
+        <div>1 | 3 hours ago </div>
       </div>
       <label for="nudvtwd" class="commentText"><p>Also your could add weighting according to the availability of Crit vs Crit dmg on tree and gear. I&rsquo;m not sure how it is in poe2, but crit chance has always been easier to get then crit dmg. So even if crit dmg is weighted higher, you can just get more crit chance to compensate from you gear/tree budget. </p>
 </label>
@@ -786,7 +822,7 @@ That&rsquo;s how I understand it anyhow.</p>
     <div class="comment">
       <div class="commentHeader">
         <div>Juhkure</div>
-        <div>-1 | 7 hours ago </div>
+        <div>-1 | 8 hours ago </div>
       </div>
       <label for="nucd5qu" class="commentText"><p>Right but that&rsquo;s not the topic of discussion</p>
 </label>
@@ -801,7 +837,7 @@ That&rsquo;s how I understand it anyhow.</p>
     <div class="comment">
       <div class="commentHeader">
         <div>HiddenoO</div>
-        <div>7 | 7 hours ago </div>
+        <div>8 | 8 hours ago </div>
       </div>
       <label for="nucfguv" class="commentText"><p>The title is &ldquo;Inevitable Critical: Damage Calculation, Visualizations, and &ldquo;Always Crit&rdquo; Synergies&rdquo;, which doesn&rsquo;t clarify whether it&rsquo;s about total damage calculation with the node allocated or extra damage calculation of allocating the node. The point of a tl;dr is that no further context is needed than the title and the tl;dr, and the former (incorrect) interpretation is inherently more relevant to people.</p>
 
@@ -820,7 +856,7 @@ That&rsquo;s how I understand it anyhow.</p>
     <div class="comment">
       <div class="commentHeader">
         <div>Juhkure</div>
-        <div>1 | 2 hours ago </div>
+        <div>1 | 3 hours ago </div>
       </div>
       <label for="nudxysp" class="commentText"><p>I can equally say that it&rsquo;s insane that you would even have to clarify that &ldquo;Getting 45% instead of 35% more damage from this node isn&rsquo;t worth it when your baseline damage goes down by 20% in the process&rdquo;. We&rsquo;re talking about PoE here. Everything&rsquo;s a tradeoff with something else and that&rsquo;s an assumption that is inherently baked into every discussion. I could just as well say that your critique is fairly misleading since you&rsquo;re equating character power only with the damage they deal instead of the whole picture which includes defenses etc.</p>
 
@@ -880,7 +916,7 @@ That&rsquo;s how I understand it anyhow.</p>
     <div class="comment">
       <div class="commentHeader">
         <div>loopuleasa</div>
-        <div>48 | 10 hours ago </div>
+        <div>53 | 11 hours ago </div>
       </div>
       <label for="nubg3em" class="commentText"><p>sucks the old post was removed by reddit AI&hellip;</p>
 
@@ -897,7 +933,7 @@ That&rsquo;s how I understand it anyhow.</p>
     <div class="comment">
       <div class="commentHeader">
         <div>Hellknightx</div>
-        <div>7 | 9 hours ago </div>
+        <div>8 | 10 hours ago </div>
       </div>
       <label for="nubus94" class="commentText"><p>Reddit&rsquo;s AI automod is actual cancer. I&rsquo;ve been on this site for over 15 years and have never gotten so much as a warning. This year alone, I&rsquo;ve been site banned <em>four</em> times and had to appeal every single one because the automod doesn&rsquo;t understand context.</p>
 </label>
@@ -912,7 +948,7 @@ That&rsquo;s how I understand it anyhow.</p>
     <div class="comment">
       <div class="commentHeader">
         <div>loopuleasa</div>
-        <div>0 | 9 hours ago </div>
+        <div>0 | 10 hours ago </div>
       </div>
       <label for="nubvpff" class="commentText"><p>it had to adapt, we live in the LLM era, and it&rsquo;s much harder to stop spam</p>
 </label>
@@ -940,7 +976,7 @@ That&rsquo;s how I understand it anyhow.</p>
     <div class="comment">
       <div class="commentHeader">
         <div>Noobkaka</div>
-        <div>18 | 10 hours ago </div>
+        <div>19 | 11 hours ago </div>
       </div>
       <label for="nubgznp" class="commentText"><p>you forgot mana flare support gem.</p>
 </label>
@@ -955,7 +991,7 @@ That&rsquo;s how I understand it anyhow.</p>
     <div class="comment">
       <div class="commentHeader">
         <div>Ok_Pick_1772</div>
-        <div>4 | 10 hours ago </div>
+        <div>4 | 11 hours ago </div>
       </div>
       <label for="nubmhp1" class="commentText"><p>Thanks!</p>
 </label>
@@ -978,7 +1014,7 @@ That&rsquo;s how I understand it anyhow.</p>
     <div class="comment">
       <div class="commentHeader">
         <div>QuantityFine8721</div>
-        <div>16 | 9 hours ago </div>
+        <div>16 | 10 hours ago </div>
       </div>
       <label for="nubs2pt" class="commentText"><p>I just love the POE community for this reason. Showed this to a workmate and they where like in what universe is this about a game xD</p>
 </label>
@@ -993,7 +1029,7 @@ That&rsquo;s how I understand it anyhow.</p>
     <div class="comment">
       <div class="commentHeader">
         <div>SleepyCorgiPuppy</div>
-        <div>3 | 8 hours ago </div>
+        <div>3 | 9 hours ago </div>
       </div>
       <label for="nuc0bbk" class="commentText"><p>show them POB 1 and 2 and tell them people work on this for free XD</p>
 </label>
@@ -1016,7 +1052,7 @@ That&rsquo;s how I understand it anyhow.</p>
     <div class="comment">
       <div class="commentHeader">
         <div>hurricanebones</div>
-        <div>10 | 10 hours ago </div>
+        <div>9 | 11 hours ago </div>
       </div>
       <label for="nubk6hw" class="commentText"><p>Almost perfect !</p>
 
@@ -1038,7 +1074,7 @@ That&rsquo;s how I understand it anyhow.</p>
     <div class="comment">
       <div class="commentHeader">
         <div>Planktonboy</div>
-        <div>8 | 8 hours ago </div>
+        <div>8 | 9 hours ago </div>
       </div>
       <label for="nubyp47" class="commentText"><p>Are we sure it&rsquo;s not multipicative? I would assume it is since this avoids anything weird like having 120% less critical bonus in the calculation. It&rsquo;s not 100% clear from the wording though.</p>
 
@@ -1071,7 +1107,7 @@ b=crit bonus</p>
     <div class="comment">
       <div class="commentHeader">
         <div>SingleInfinity</div>
-        <div>8 | 6 hours ago </div>
+        <div>7 | 7 hours ago </div>
       </div>
       <label for="nucn6av" class="commentText"><p>Sources of more and less are always additive with themselves.</p>
 
@@ -1088,7 +1124,7 @@ b=crit bonus</p>
     <div class="comment">
       <div class="commentHeader">
         <div>Nameless-Druid358</div>
-        <div>1 | 5 hours ago </div>
+        <div>1 | 6 hours ago </div>
       </div>
       <label for="nud10mt" class="commentText"><p>Not really, or maybe pob was wrong.</p>
 
@@ -1105,7 +1141,7 @@ b=crit bonus</p>
     <div class="comment">
       <div class="commentHeader">
         <div>SingleInfinity</div>
-        <div>1 | an hour ago </div>
+        <div>1 | 2 hours ago </div>
       </div>
       <label for="nueaorq" class="commentText"><p>Those are two separate sources.</p>
 </label>
@@ -1131,7 +1167,7 @@ b=crit bonus</p>
     <div class="comment">
       <div class="commentHeader">
         <div>korzasa</div>
-        <div>1 | 8 hours ago </div>
+        <div>1 | 9 hours ago </div>
       </div>
       <label for="nuc158h" class="commentText"><p>Yeah I was thinking the same, my assumption would be that less damage is multiplicative as it reads &ldquo;less&rdquo; and not &ldquo;reduced&rdquo; which would make this ascendancy node even more powerful.</p>
 </label>
@@ -1146,7 +1182,7 @@ b=crit bonus</p>
     <div class="comment">
       <div class="commentHeader">
         <div>Anomulus0</div>
-        <div>2 | 7 hours ago </div>
+        <div>2 | 8 hours ago </div>
       </div>
       <label for="nucftb5" class="commentText"><p>For something like &ldquo;deals 30% more damage per charge removed&rdquo; it&rsquo;s additive with itself, i.e. 1+.3*charge removed. which is probably why the assumption of additive was made.</p>
 </label>
@@ -1161,7 +1197,7 @@ b=crit bonus</p>
     <div class="comment">
       <div class="commentHeader">
         <div>Planktonboy</div>
-        <div>2 | 6 hours ago </div>
+        <div>2 | 7 hours ago </div>
       </div>
       <label for="nuckn15" class="commentText"><p>It&rsquo;s a fair point, which is why I wasn&rsquo;t sure. The wording of the skill is phrased like it goes on indefinitely until it hits, which would be silly if it basically cuts off at 4 rolls.</p>
 
@@ -1189,7 +1225,7 @@ b=crit bonus</p>
     <div class="comment">
       <div class="commentHeader">
         <div>bwalk</div>
-        <div>1 | 12 minutes ago </div>
+        <div>1 | an hour ago </div>
       </div>
       <label for="nuehbio" class="commentText"><blockquote>
 <p>x=cb/(0.3+0.7c)</p>
@@ -1212,6 +1248,28 @@ b=crit bonus</p>
     </div>
   </label>
   
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nuesrbv" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Planktonboy</div>
+        <div>1 | 13 minutes ago </div>
+      </div>
+      <label for="nuesrbv" class="commentText"><p>In both cases you can factor out the bonus in the same way, I just found it easier to ignore the base damage so I didn&rsquo;t have to deal with the &ldquo;1+&hellip;&rdquo; part. The optimisation element came from bringing the &ldquo;1+&rdquo; component into the formula.</p>
+
+<p>I find it easier just to think of it in terms of having a higher &ldquo;effective crit chance&rdquo; than the base, similar to how &ldquo;lucky&rdquo; works. If you plot it it looks much the same <a href="https://docs.google.com/spreadsheets/d/1hc6jlnqtULVOmQrzolIMN1Uo4VVuhngE1KF31FocZXU/edit?usp=sharing" target="_blank">either way</a></p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
 </div>
 
     
@@ -1228,7 +1286,7 @@ b=crit bonus</p>
     <div class="comment">
       <div class="commentHeader">
         <div>HiddenoO</div>
-        <div>6 | 7 hours ago </div>
+        <div>7 | 8 hours ago </div>
       </div>
       <label for="nucblqr" class="commentText"><blockquote>
 <p><strong>Stat Strategy:</strong> Due to diminishing returns, the <strong>Inevitable Critical</strong> mechanic scales best if you keep <strong>Crit Chance low (~20-30%)</strong> and go all-in on <strong>Crit Damage Bonus</strong>.</p>
@@ -1252,7 +1310,7 @@ b=crit bonus</p>
     <div class="comment">
       <div class="commentHeader">
         <div>Euphoric_Bath_8785</div>
-        <div>3 | 9 hours ago </div>
+        <div>4 | 10 hours ago </div>
       </div>
       <label for="nubuckr" class="commentText"><p>Now this is a high quality post. Thank you very much for the effort and explanation.</p>
 </label>
@@ -1270,7 +1328,7 @@ b=crit bonus</p>
     <div class="comment">
       <div class="commentHeader">
         <div>Remeron7</div>
-        <div>3 | 10 hours ago </div>
+        <div>3 | 11 hours ago </div>
       </div>
       <label for="nubj1rw" class="commentText"><p>Is there a sweet spot for crit chance? I want to build up CoC as fast as possible instead of gaining the most damage, I’m using coc thunderstorm to water my plants.</p>
 </label>
@@ -1285,7 +1343,7 @@ b=crit bonus</p>
     <div class="comment">
       <div class="commentHeader">
         <div>First_Loquat_7685</div>
-        <div>11 | 10 hours ago </div>
+        <div>12 | 11 hours ago </div>
       </div>
       <label for="nubk0s0" class="commentText"><p>20-30% is the most gain from the ascendancy passive (more chance with less CHD), but the more crit you have the more damage you do, just the ascendancy passive loses &ldquo;value&rdquo; with more crit chance</p>
 </label>
@@ -1300,7 +1358,7 @@ b=crit bonus</p>
     <div class="comment">
       <div class="commentHeader">
         <div>Remeron7</div>
-        <div>1 | 10 hours ago </div>
+        <div>1 | 11 hours ago </div>
       </div>
       <label for="nubknvb" class="commentText"><p>So I still stack crit chance if I want faster build up to cast in crit? Thanks for the reply</p>
 </label>
@@ -1315,7 +1373,7 @@ b=crit bonus</p>
     <div class="comment">
       <div class="commentHeader">
         <div>Miotas</div>
-        <div>15 | 10 hours ago </div>
+        <div>15 | 11 hours ago </div>
       </div>
       <label for="nubmq1z" class="commentText"><p>no. all your hits will crit regardless of your crit chance, that&rsquo;s the point of the passive. the only thing that changes is how much damage those crits deal.</p>
 </label>
@@ -1330,7 +1388,7 @@ b=crit bonus</p>
     <div class="comment">
       <div class="commentHeader">
         <div>Remeron7</div>
-        <div>3 | 9 hours ago </div>
+        <div>3 | 10 hours ago </div>
       </div>
       <label for="nubn2sb" class="commentText"><p>I got it all wrong in my mind then, thanks for correcting me</p>
 </label>
@@ -1351,7 +1409,7 @@ b=crit bonus</p>
     <div class="comment">
       <div class="commentHeader">
         <div>loopuleasa</div>
-        <div>4 | 9 hours ago </div>
+        <div>4 | 10 hours ago </div>
       </div>
       <label for="nubmvxf" class="commentText"><p>more crit chance or crit multi is always better</p>
 
@@ -1374,7 +1432,7 @@ b=crit bonus</p>
     <div class="comment">
       <div class="commentHeader">
         <div>SleepyCorgiPuppy</div>
-        <div>1 | 8 hours ago </div>
+        <div>1 | 9 hours ago </div>
       </div>
       <label for="nubzxq1" class="commentText"><p>if the goal is to trigger coc, does having 100% crit chance but 0% crit damage help at all?</p>
 </label>
@@ -1422,7 +1480,7 @@ b=crit bonus</p>
     <div class="comment">
       <div class="commentHeader">
         <div>ogzogz</div>
-        <div>3 | 7 hours ago </div>
+        <div>3 | 8 hours ago </div>
       </div>
       <label for="nuc6do5" class="commentText"><p>Are there any points in time where Pinpoint critical or supercritical becomes useful?</p>
 </label>
@@ -1437,7 +1495,7 @@ b=crit bonus</p>
     <div class="comment">
       <div class="commentHeader">
         <div>Planktonboy</div>
-        <div>1 | 7 hours ago </div>
+        <div>1 | 8 hours ago </div>
       </div>
       <label for="nuc8kkc" class="commentText"><p>Pinpoint critical won&rsquo;t be aided by this ascendancy, but supercritical will. The effect of the node is effectively to flatten the crit chance, so the less crit chance on supercritical won&rsquo;t lower your DPS by as much (vice versa for pinpoint).</p>
 
@@ -1462,7 +1520,7 @@ b=crit bonus</p>
     <div class="comment">
       <div class="commentHeader">
         <div>Skoopy_590</div>
-        <div>3 | 7 hours ago </div>
+        <div>3 | 8 hours ago </div>
       </div>
       <label for="nuc7x9a" class="commentText"><p>I have a question: for the normal player ITS Always good to take it? If i have like 40% crit and 300 multi i should be fine right?</p>
 </label>
@@ -1477,7 +1535,7 @@ b=crit bonus</p>
     <div class="comment">
       <div class="commentHeader">
         <div>Planktonboy</div>
-        <div>3 | 7 hours ago </div>
+        <div>3 | 8 hours ago </div>
       </div>
       <label for="nuc8vxi" class="commentText"><p>Yes, if the crit rolls successfully you get the bonus damage. If it fails you get less bonus damage, but still more than the 0 you&rsquo;d get without the ascendancy.</p>
 </label>
@@ -1500,7 +1558,7 @@ b=crit bonus</p>
     <div class="comment">
       <div class="commentHeader">
         <div>hayko34500</div>
-        <div>2 | 10 hours ago </div>
+        <div>2 | 11 hours ago </div>
       </div>
       <label for="nubj5cm" class="commentText"><p>Nightscale is so confy</p>
 </label>
@@ -1518,7 +1576,7 @@ b=crit bonus</p>
     <div class="comment">
       <div class="commentHeader">
         <div>UpbeatAnalyst6959</div>
-        <div>2 | 10 hours ago </div>
+        <div>2 | 11 hours ago </div>
       </div>
       <label for="nubk07j" class="commentText"><p>Thanks, that&rsquo;s a great in-depth explanation, really helps with the tree as i might reroll to Oracle</p>
 </label>
@@ -1536,7 +1594,7 @@ b=crit bonus</p>
     <div class="comment">
       <div class="commentHeader">
         <div>Playful-Goat3779</div>
-        <div>2 | 9 hours ago </div>
+        <div>2 | 10 hours ago </div>
       </div>
       <label for="nubnuqf" class="commentText"><p>I think I&rsquo;m just gonna try shaman instead. They get free rage</p>
 </label>
@@ -1551,7 +1609,7 @@ b=crit bonus</p>
     <div class="comment">
       <div class="commentHeader">
         <div>Comfortable_DebtFree</div>
-        <div>2 | 8 hours ago </div>
+        <div>2 | 9 hours ago </div>
       </div>
       <label for="nuc36ru" class="commentText"><p>Oracle is a banger for the talent tree possibility</p>
 </label>
@@ -1566,7 +1624,7 @@ b=crit bonus</p>
     <div class="comment">
       <div class="commentHeader">
         <div>Playful-Goat3779</div>
-        <div>1 | 5 hours ago </div>
+        <div>1 | 6 hours ago </div>
       </div>
       <label for="nud5kgz" class="commentText"><p>Yes the possibility is amazing. Reality is meh.</p>
 
@@ -1596,7 +1654,7 @@ b=crit bonus</p>
     <div class="comment">
       <div class="commentHeader">
         <div>Hellknightx</div>
-        <div>2 | 9 hours ago </div>
+        <div>2 | 10 hours ago </div>
       </div>
       <label for="nububrp" class="commentText"><p>/r/dataisbeautiful</p>
 </label>
@@ -1614,7 +1672,7 @@ b=crit bonus</p>
     <div class="comment">
       <div class="commentHeader">
         <div>henrickaye</div>
-        <div>2 | 8 hours ago </div>
+        <div>2 | 9 hours ago </div>
       </div>
       <label for="nuby7ag" class="commentText"><p>Heads up - the patch notes indicate that bifurcation does not apply when crits are rerolled. So if you have both Inevitable will apply and Maligaro&rsquo;s will not. Great post btw</p>
 </label>
@@ -1632,7 +1690,7 @@ b=crit bonus</p>
     <div class="comment">
       <div class="commentHeader">
         <div>SleepyCorgiPuppy</div>
-        <div>2 | 8 hours ago </div>
+        <div>2 | 9 hours ago </div>
       </div>
       <label for="nubzmyo" class="commentText"><p>If you always crit but your extra crit damage is 0%, do you build any energy at all for coc?</p>
 </label>
@@ -1647,7 +1705,7 @@ b=crit bonus</p>
     <div class="comment">
       <div class="commentHeader">
         <div>frothingnome</div>
-        <div>1 | 7 hours ago </div>
+        <div>1 | 8 hours ago </div>
       </div>
       <label for="nuc7qg3" class="commentText"><p>How much energy is built is based on the power rating of the target and the amount of ailment threshold that the hit deals, so you will build energy if you&rsquo;re still dealing decent good damage. I&rsquo;m wondering how effective it might be to use Lunar Assault for this, because it can easily get up to like 700% freeze effectiveness.</p>
 </label>
@@ -1662,7 +1720,7 @@ b=crit bonus</p>
     <div class="comment">
       <div class="commentHeader">
         <div>SleepyCorgiPuppy</div>
-        <div>2 | 7 hours ago </div>
+        <div>2 | 8 hours ago </div>
       </div>
       <label for="nuc8nbr" class="commentText"><p>your description sounds like cast on ailment, does cast on crit also work off ailment?</p>
 
@@ -1679,7 +1737,7 @@ b=crit bonus</p>
     <div class="comment">
       <div class="commentHeader">
         <div>frothingnome</div>
-        <div>1 | 7 hours ago </div>
+        <div>1 | 8 hours ago </div>
       </div>
       <label for="nucda7m" class="commentText"><p>CoC also works on ailment for some reason. It feels like they wanted it to be mostly used by Monk. </p>
 </label>
@@ -1694,7 +1752,7 @@ b=crit bonus</p>
     <div class="comment">
       <div class="commentHeader">
         <div>SleepyCorgiPuppy</div>
-        <div>1 | 6 hours ago </div>
+        <div>1 | 7 hours ago </div>
       </div>
       <label for="nucjlis" class="commentText"><p>hmm, that would mean elemental focus on coc means no energy at all, but I don’t think that’s the case?  can’t test right now…</p>
 </label>
@@ -1709,7 +1767,7 @@ b=crit bonus</p>
     <div class="comment">
       <div class="commentHeader">
         <div>frothingnome</div>
-        <div>1 | 6 hours ago </div>
+        <div>1 | 7 hours ago </div>
       </div>
       <label for="nuclnij" class="commentText"><p>For reference, I&rsquo;m looking at <a href="https://poe2db.tw/Cast_on_Critical" target="_blank">PoE2db</a></p>
 
@@ -1726,7 +1784,7 @@ b=crit bonus</p>
     <div class="comment">
       <div class="commentHeader">
         <div>yuimiop</div>
-        <div>2 | 5 hours ago </div>
+        <div>2 | 6 hours ago </div>
       </div>
       <label for="nud52bo" class="commentText"><p>I don&rsquo;t think ailment effect would do anything for CoC, but it would utilize the ailment threshold for determining power based on the hit you do.  So if you hit for 1000 when the enemy&rsquo;s ailment threshold is 2000, it would be presumably half (or whatever math formula they use) the power you generated.  Increasing ailment magnitude wouldn&rsquo;t help you.</p>
 
@@ -1776,7 +1834,7 @@ b=crit bonus</p>
     <div class="comment">
       <div class="commentHeader">
         <div>zanzuses</div>
-        <div>1 | 10 hours ago </div>
+        <div>1 | 11 hours ago </div>
       </div>
       <label for="nubl63m" class="commentText"><p>Holy thankss</p>
 </label>
@@ -1794,7 +1852,7 @@ b=crit bonus</p>
     <div class="comment">
       <div class="commentHeader">
         <div>Eltibald</div>
-        <div>1 | 8 hours ago </div>
+        <div>1 | 9 hours ago </div>
       </div>
       <label for="nubxehf" class="commentText"><p>Le dot, awesome research.</p>
 </label>
@@ -1812,7 +1870,7 @@ b=crit bonus</p>
     <div class="comment">
       <div class="commentHeader">
         <div>Dasterr</div>
-        <div>1 | 8 hours ago </div>
+        <div>1 | 9 hours ago </div>
       </div>
       <label for="nubxrv4" class="commentText"><p>awesome post</p>
 </label>
@@ -1830,7 +1888,7 @@ b=crit bonus</p>
     <div class="comment">
       <div class="commentHeader">
         <div>korzasa</div>
-        <div>1 | 8 hours ago </div>
+        <div>1 | 9 hours ago </div>
       </div>
       <label for="nuby5ea" class="commentText"><p>Great stuff, thank you for your efforts!</p>
 
@@ -1850,7 +1908,7 @@ I would&rsquo;ve assumed it to be multiplicative due to it&rsquo;s typical poe w
     <div class="comment">
       <div class="commentHeader">
         <div>Anomulus0</div>
-        <div>1 | 7 hours ago </div>
+        <div>1 | 8 hours ago </div>
       </div>
       <label for="nucg9m2" class="commentText"><p>typically, &ldquo;more damage per X&rdquo; stacks additive with itself.</p>
 
@@ -1875,7 +1933,7 @@ I would&rsquo;ve assumed it to be multiplicative due to it&rsquo;s typical poe w
     <div class="comment">
       <div class="commentHeader">
         <div>Vaan_nuia</div>
-        <div>1 | 8 hours ago </div>
+        <div>1 | 9 hours ago </div>
       </div>
       <label for="nubz0i6" class="commentText"><p>amazing work thx for all the datas!!</p>
 </label>
@@ -1893,7 +1951,7 @@ I would&rsquo;ve assumed it to be multiplicative due to it&rsquo;s typical poe w
     <div class="comment">
       <div class="commentHeader">
         <div>South_Butterfly_6542</div>
-        <div>1 | 8 hours ago </div>
+        <div>1 | 9 hours ago </div>
       </div>
       <label for="nuc1f9b" class="commentText"><p>Thank you. Though, it&rsquo;s kind of telling how few uniques there are to actually capitalize on this passive. Where are the unique weapons that reward crit stacking? Anyway, I had a Voll&rsquo;s drop as an Oracle, but I couldn&rsquo;t equip it to do an infinite oil breath wyvern build because that would entail lowering my ES too much, which is too bad because that sounds like a fun build.</p>
 </label>
@@ -1911,7 +1969,7 @@ I would&rsquo;ve assumed it to be multiplicative due to it&rsquo;s typical poe w
     <div class="comment">
       <div class="commentHeader">
         <div>MisterSnippy</div>
-        <div>1 | 8 hours ago </div>
+        <div>1 | 9 hours ago </div>
       </div>
       <label for="nuc43ij" class="commentText"><p>careful, GGG are gonna see this and nerf crit mult</p>
 </label>
@@ -1947,7 +2005,7 @@ I would&rsquo;ve assumed it to be multiplicative due to it&rsquo;s typical poe w
     <div class="comment">
       <div class="commentHeader">
         <div>JRortine</div>
-        <div>1 | 7 hours ago </div>
+        <div>1 | 8 hours ago </div>
       </div>
       <label for="nuc8tro" class="commentText"><p>Nice</p>
 </label>
@@ -1965,7 +2023,7 @@ I would&rsquo;ve assumed it to be multiplicative due to it&rsquo;s typical poe w
     <div class="comment">
       <div class="commentHeader">
         <div>SingleInfinity</div>
-        <div>1 | 6 hours ago </div>
+        <div>1 | 7 hours ago </div>
       </div>
       <label for="nucmu5h" class="commentText"><p>This is some serious gourmet shit.</p>
 </label>
@@ -1983,7 +2041,7 @@ I would&rsquo;ve assumed it to be multiplicative due to it&rsquo;s typical poe w
     <div class="comment">
       <div class="commentHeader">
         <div>Fyndel_</div>
-        <div>1 | 5 hours ago </div>
+        <div>1 | 6 hours ago </div>
       </div>
       <label for="nucydxi" class="commentText"><p>On avarage, with a normal budget ~20div, what is the max crit dmg we can achieve?</p>
 
@@ -2003,7 +2061,7 @@ I would&rsquo;ve assumed it to be multiplicative due to it&rsquo;s typical poe w
     <div class="comment">
       <div class="commentHeader">
         <div>Nameless-Druid358</div>
-        <div>1 | 5 hours ago </div>
+        <div>1 | 6 hours ago </div>
       </div>
       <label for="nud0er2" class="commentText"><p>Why is the reroll and &ldquo;30% less multi&rdquo;is additive instead of multiplicative?
  Can someone enlighten on this ?  Thanks 🙏</p>
@@ -2022,7 +2080,7 @@ I would&rsquo;ve assumed it to be multiplicative due to it&rsquo;s typical poe w
     <div class="comment">
       <div class="commentHeader">
         <div>wangofjenus</div>
-        <div>1 | 4 hours ago </div>
+        <div>1 | 5 hours ago </div>
       </div>
       <label for="nud9tpt" class="commentText"><p>I love writeups like this, PoE has the best players.</p>
 </label>
@@ -2040,7 +2098,7 @@ I would&rsquo;ve assumed it to be multiplicative due to it&rsquo;s typical poe w
     <div class="comment">
       <div class="commentHeader">
         <div>vault102</div>
-        <div>1 | 4 hours ago </div>
+        <div>1 | 5 hours ago </div>
       </div>
       <label for="nudbebc" class="commentText"><p>did I miss something, where to hover mouse, the images seems static</p>
 </label>
@@ -2076,7 +2134,7 @@ I would&rsquo;ve assumed it to be multiplicative due to it&rsquo;s typical poe w
     <div class="comment">
       <div class="commentHeader">
         <div>ARBZ_AZM</div>
-        <div>1 | 3 hours ago </div>
+        <div>1 | 4 hours ago </div>
       </div>
       <label for="nudn5z5" class="commentText"><p>All of this remains valid only as long as our target is simply standing still, we are pressing the right mouse button without thinking, not dodging, and do not have the possibility to mechanically miss the target&rsquo;s position.</p>
 </label>
@@ -2094,7 +2152,7 @@ I would&rsquo;ve assumed it to be multiplicative due to it&rsquo;s typical poe w
     <div class="comment">
       <div class="commentHeader">
         <div>RhapsodicHotShot</div>
-        <div>1 | 2 hours ago </div>
+        <div>1 | 3 hours ago </div>
       </div>
       <label for="nudzl18" class="commentText"><p>omfg, i hate that is a oracle exclusive skill. like i like playing women but my crit build is basically forced to for this old guy now&hellip;. and the templar is going to be an old guy as well most likely. I wish they added scion back in again.</p>
 </label>
@@ -2112,7 +2170,7 @@ I would&rsquo;ve assumed it to be multiplicative due to it&rsquo;s typical poe w
     <div class="comment">
       <div class="commentHeader">
         <div>AnyFaithlessness7991</div>
-        <div>1 | 2 hours ago </div>
+        <div>1 | 3 hours ago </div>
       </div>
       <label for="nue1ouq" class="commentText"><p>Interesting thanks</p>
 </label>
@@ -2130,7 +2188,7 @@ I would&rsquo;ve assumed it to be multiplicative due to it&rsquo;s typical poe w
     <div class="comment">
       <div class="commentHeader">
         <div>spruceX</div>
-        <div>1 | 38 minutes ago </div>
+        <div>1 | 2 hours ago </div>
       </div>
       <label for="nuec1h0" class="commentText"><p>Would be amazing to see the comparison of taking this vs not taking this.</p>
 </label>
@@ -2148,7 +2206,7 @@ I would&rsquo;ve assumed it to be multiplicative due to it&rsquo;s typical poe w
     <div class="comment">
       <div class="commentHeader">
         <div>vix86</div>
-        <div>1 | 38 minutes ago </div>
+        <div>1 | 2 hours ago </div>
       </div>
       <label for="nuec4si" class="commentText"><p>I&rsquo;m just going to say this for any of the GGG CMs monitoring here.</p>
 
@@ -2168,7 +2226,7 @@ I would&rsquo;ve assumed it to be multiplicative due to it&rsquo;s typical poe w
     <div class="comment">
       <div class="commentHeader">
         <div>distilledwill</div>
-        <div>1 | 34 minutes ago </div>
+        <div>1 | 2 hours ago </div>
       </div>
       <label for="nuecv0n" class="commentText"><p>This is stellar stuff. I&rsquo;ll be taking a look at my chance vs bonus as soon as I log in to make sure I&rsquo;m hitting the right level.</p>
 </label>
@@ -2186,7 +2244,7 @@ I would&rsquo;ve assumed it to be multiplicative due to it&rsquo;s typical poe w
     <div class="comment">
       <div class="commentHeader">
         <div>girlsareicky</div>
-        <div>1 | 25 minutes ago </div>
+        <div>1 | an hour ago </div>
       </div>
       <label for="nueelo3" class="commentText"><p>I am oracle who is taking and using this but</p>
 
@@ -2206,11 +2264,29 @@ I would&rsquo;ve assumed it to be multiplicative due to it&rsquo;s typical poe w
         
           
 <div class="commentAndChildren">
+  <input id="nuepj2h" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Xhunca</div>
+        <div>1 | 30 minutes ago </div>
+      </div>
+      <label for="nuepj2h" class="commentText"><p>Do you have the project on GitHub or something? Would love to see how you did this :)</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
   <input id="nublw5g" type="checkbox" checked/>
     <div class="comment">
       <div class="commentHeader">
         <div>ZombieStirto</div>
-        <div>0 | 10 hours ago </div>
+        <div>0 | 11 hours ago </div>
       </div>
       <label for="nublw5g" class="commentText"><p>Does anyone know how this interacts with maligaros? If your multi is 250. Does it stay 250 no matter how many times it RR?</p>
 </label>
@@ -2225,7 +2301,7 @@ I would&rsquo;ve assumed it to be multiplicative due to it&rsquo;s typical poe w
     <div class="comment">
       <div class="commentHeader">
         <div>Ok_Pick_1772</div>
-        <div>5 | 10 hours ago </div>
+        <div>4 | 11 hours ago </div>
       </div>
       <label for="nubms6e" class="commentText"><p>Maligaro&rsquo;s Virtuosity has this mod &ldquo;Your Critical Hit Chance cannot be Rerolled&rdquo;, so I think it does not work with Inevitable Critical.</p>
 </label>
@@ -2240,7 +2316,7 @@ I would&rsquo;ve assumed it to be multiplicative due to it&rsquo;s typical poe w
     <div class="comment">
       <div class="commentHeader">
         <div>GovernmentRare2027</div>
-        <div>3 | 9 hours ago </div>
+        <div>3 | 10 hours ago </div>
       </div>
       <label for="nubneqm" class="commentText"><p>They added on Maligaro&rsquo;s Virtuosity: &ldquo;Critical hit chance cannot be rerolled&rdquo;</p>
 </label>
@@ -2261,7 +2337,7 @@ I would&rsquo;ve assumed it to be multiplicative due to it&rsquo;s typical poe w
     <div class="comment">
       <div class="commentHeader">
         <div>lefthandgud</div>
-        <div>1 | 9 hours ago </div>
+        <div>1 | 10 hours ago </div>
       </div>
       <label for="nubo2rr" class="commentText"><p>It doesn’t work together since maligaros can’t let you reroll crit and the ascendancy is reroll until you crit</p>
 </label>
