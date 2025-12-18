@@ -1,0 +1,854 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.selfPostImage {
+  width: 100%;
+  height: auto;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/nba/comments/1ppmqpc/despite_terrible_injury_luck_and_no_playable/"><p>Despite terrible injury luck and no playable point guards, the Grizzlies are 6-2 and #6 in net rating over the last 3 weeks</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <p>The Grizzlies are missing:</p>
+
+<ul>
+<li>Ja Morant</li>
+<li>Zach Edey (he did play much of this stretch but is missing another 4 weeks)</li>
+<li>Ty Jerome</li>
+<li>Scottie Pippen Jr</li>
+<li>Brandon Clarke (just made season debut)</li>
+<li>Javon Small</li>
+<li>John Konchar</li>
+</ul>
+
+<p>Teams by net rating since Nov 27 (shoutout to the Nets who are sneakily #8!)</p>
+
+<table>
+<thead>
+<tr>
+<th align="left">TEAM</th>
+<th align="right">W</th>
+<th align="right">L</th>
+<th align="right">OffRtg</th>
+<th align="right">DefRtg</th>
+<th align="right">NetRtg</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">Oklahoma City Thunder</td>
+<td align="right">6</td>
+<td align="right">1</td>
+<td align="right">121</td>
+<td align="right">104.6</td>
+<td align="right">16.5</td>
+</tr>
+
+<tr>
+<td align="left">New York Knicks</td>
+<td align="right">7</td>
+<td align="right">1</td>
+<td align="right">125.5</td>
+<td align="right">112.2</td>
+<td align="right">13.2</td>
+</tr>
+
+<tr>
+<td align="left">Boston Celtics</td>
+<td align="right">5</td>
+<td align="right">3</td>
+<td align="right">125.9</td>
+<td align="right">117.2</td>
+<td align="right">8.6</td>
+</tr>
+
+<tr>
+<td align="left">Denver Nuggets</td>
+<td align="right">6</td>
+<td align="right">2</td>
+<td align="right">128.9</td>
+<td align="right">120.6</td>
+<td align="right">8.3</td>
+</tr>
+
+<tr>
+<td align="left">Houston Rockets</td>
+<td align="right">4</td>
+<td align="right">3</td>
+<td align="right">119.8</td>
+<td align="right">112.9</td>
+<td align="right">6.9</td>
+</tr>
+
+<tr>
+<td align="left">Memphis Grizzlies</td>
+<td align="right">6</td>
+<td align="right">2</td>
+<td align="right">115.6</td>
+<td align="right">108.8</td>
+<td align="right">6.8</td>
+</tr>
+
+<tr>
+<td align="left">Detroit Pistons</td>
+<td align="right">6</td>
+<td align="right">2</td>
+<td align="right">117.8</td>
+<td align="right">111.7</td>
+<td align="right">6</td>
+</tr>
+
+<tr>
+<td align="left">Brooklyn Nets</td>
+<td align="right">4</td>
+<td align="right">4</td>
+<td align="right">113.8</td>
+<td align="right">108.4</td>
+<td align="right">5.4</td>
+</tr>
+
+<tr>
+<td align="left">Philadelphia 76ers</td>
+<td align="right">5</td>
+<td align="right">3</td>
+<td align="right">111.9</td>
+<td align="right">106.6</td>
+<td align="right">5.2</td>
+</tr>
+
+<tr>
+<td align="left">Minnesota Timberwolves</td>
+<td align="right">7</td>
+<td align="right">2</td>
+<td align="right">119.5</td>
+<td align="right">114.6</td>
+<td align="right">4.9</td>
+</tr>
+
+<tr>
+<td align="left">Golden State Warriors</td>
+<td align="right">3</td>
+<td align="right">4</td>
+<td align="right">114.1</td>
+<td align="right">110.7</td>
+<td align="right">3.4</td>
+</tr>
+
+<tr>
+<td align="left">Dallas Mavericks</td>
+<td align="right">5</td>
+<td align="right">3</td>
+<td align="right">119.1</td>
+<td align="right">118.1</td>
+<td align="right">1</td>
+</tr>
+
+<tr>
+<td align="left">Indiana Pacers</td>
+<td align="right">4</td>
+<td align="right">4</td>
+<td align="right">113.5</td>
+<td align="right">112.5</td>
+<td align="right">1</td>
+</tr>
+
+<tr>
+<td align="left">San Antonio Spurs</td>
+<td align="right">6</td>
+<td align="right">2</td>
+<td align="right">120.4</td>
+<td align="right">119.5</td>
+<td align="right">0.9</td>
+</tr>
+
+<tr>
+<td align="left">Charlotte Hornets</td>
+<td align="right">4</td>
+<td align="right">4</td>
+<td align="right">112.6</td>
+<td align="right">111.8</td>
+<td align="right">0.9</td>
+</tr>
+
+<tr>
+<td align="left">Orlando Magic</td>
+<td align="right">4</td>
+<td align="right">3</td>
+<td align="right">109.7</td>
+<td align="right">110</td>
+<td align="right">-0.3</td>
+</tr>
+
+<tr>
+<td align="left">Cleveland Cavaliers</td>
+<td align="right">3</td>
+<td align="right">6</td>
+<td align="right">115</td>
+<td align="right">117</td>
+<td align="right">-2</td>
+</tr>
+
+<tr>
+<td align="left">Atlanta Hawks</td>
+<td align="right">4</td>
+<td align="right">4</td>
+<td align="right">113.1</td>
+<td align="right">115.2</td>
+<td align="right">-2.1</td>
+</tr>
+
+<tr>
+<td align="left">Los Angeles Lakers</td>
+<td align="right">5</td>
+<td align="right">3</td>
+<td align="right">119.9</td>
+<td align="right">122.2</td>
+<td align="right">-2.2</td>
+</tr>
+
+<tr>
+<td align="left">New Orleans Pelicans</td>
+<td align="right">2</td>
+<td align="right">6</td>
+<td align="right">116.5</td>
+<td align="right">119.4</td>
+<td align="right">-2.9</td>
+</tr>
+
+<tr>
+<td align="left">LA Clippers</td>
+<td align="right">1</td>
+<td align="right">7</td>
+<td align="right">111.9</td>
+<td align="right">116.5</td>
+<td align="right">-4.6</td>
+</tr>
+
+<tr>
+<td align="left">Miami Heat</td>
+<td align="right">1</td>
+<td align="right">6</td>
+<td align="right">111.1</td>
+<td align="right">116.1</td>
+<td align="right">-5.1</td>
+</tr>
+
+<tr>
+<td align="left">Milwaukee Bucks</td>
+<td align="right">3</td>
+<td align="right">5</td>
+<td align="right">112.6</td>
+<td align="right">118.6</td>
+<td align="right">-6</td>
+</tr>
+
+<tr>
+<td align="left">Utah Jazz</td>
+<td align="right">5</td>
+<td align="right">3</td>
+<td align="right">115.7</td>
+<td align="right">121.7</td>
+<td align="right">-6.1</td>
+</tr>
+
+<tr>
+<td align="left">Portland Trail Blazers</td>
+<td align="right">2</td>
+<td align="right">5</td>
+<td align="right">112.7</td>
+<td align="right">119</td>
+<td align="right">-6.3</td>
+</tr>
+
+<tr>
+<td align="left">Chicago Bulls</td>
+<td align="right">2</td>
+<td align="right">7</td>
+<td align="right">108.3</td>
+<td align="right">115.6</td>
+<td align="right">-7.4</td>
+</tr>
+
+<tr>
+<td align="left">Toronto Raptors</td>
+<td align="right">2</td>
+<td align="right">6</td>
+<td align="right">108.4</td>
+<td align="right">116.8</td>
+<td align="right">-8.4</td>
+</tr>
+
+<tr>
+<td align="left">Phoenix Suns</td>
+<td align="right">2</td>
+<td align="right">5</td>
+<td align="right">109.8</td>
+<td align="right">120.1</td>
+<td align="right">-10.3</td>
+</tr>
+
+<tr>
+<td align="left">Sacramento Kings</td>
+<td align="right">1</td>
+<td align="right">6</td>
+<td align="right">107.2</td>
+<td align="right">119.4</td>
+<td align="right">-12.2</td>
+</tr>
+
+<tr>
+<td align="left">Washington Wizards</td>
+<td align="right">2</td>
+<td align="right">5</td>
+<td align="right">109.2</td>
+<td align="right">123.9</td>
+<td align="right">-14.6​</td>
+</tr>
+</tbody>
+</table>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nuntktg" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>LongTimesGoodTimes</div>
+        <div>37 | 3 hours ago </div>
+      </div>
+      <label for="nuntktg" class="commentText"><p>Their wins are over: New Orleans, the Clippers 3x, Portland and Sacramento while losing to San Antonio and Utah. Not exactly an impressive schedule.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nunuct9" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>creamjudge | Grizzlies</div>
+        <div>10 | 3 hours ago </div>
+      </div>
+      <label for="nunuct9" class="commentText"><p>It doesn&rsquo;t change your overall point but you left out the Wolves (minus Edwards) who they beat tonight</p>
+
+<p>Consistently beating bad teams is still above expectations given their horrible start &amp; injuries</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="nuntqw6" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>IntelligentStand2729</div>
+        <div>2 | 3 hours ago </div>
+      </div>
+      <label for="nuntqw6" class="commentText"><p>Who cares, they are missing 5 of their best 9
+players right now and one of them is their superstar PG. Still super impressive to see them string together wins like this</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nunty45" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>LongTimesGoodTimes</div>
+        <div>-4 | 3 hours ago </div>
+      </div>
+      <label for="nunty45" class="commentText"><p>I&rsquo;m not impressed and I care who they played. There is 1 good win in that group</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nunzcjv" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>jolliskus</div>
+        <div>9 | 2 hours ago </div>
+      </div>
+      <label for="nunzcjv" class="commentText"><p>Why do I feel if this was the Lakers with the same exact wins whilst missing Luka, Ayton, Reaves, Smart you&rsquo;d be talking way differently.</p>
+
+<p>But I guess only the Grizzlies are supposed to beat all the bad teams whilst missing almost half their squad.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nuo1r92" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Lmao1903 | NBA</div>
+        <div>1 | 2 hours ago </div>
+      </div>
+      <label for="nuo1r92" class="commentText"><p>Lakers are also rightfully criticized for their team and no one really expects them to go all the way or something, even if they are fully healthy. And they are also more top heavy with Luka, Reaves, Ayton all being parts that can not be replaced and Smart being another important piece. You take those 4 guys and they would be the 14th seed</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nunvist" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>riku_80</div>
+        <div>3 | 3 hours ago </div>
+      </div>
+      <label for="nunvist" class="commentText"><p>Iisalo effect.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nuo0sdd" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Main_Pop_7565</div>
+        <div>1 | 2 hours ago </div>
+      </div>
+      <label for="nuo0sdd" class="commentText"><p>Dang I didn’t realize the suns were having a losing streak</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nunv4j6" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>KasherH | Nuggets</div>
+        <div>-10 | 3 hours ago </div>
+      </div>
+      <label for="nunv4j6" class="commentText"><p>I really don&rsquo;t get why people are still clinging to the idea of positions.  Its not like not having a &ldquo;PG&rdquo; means they have to play 4 on 5.  The idea of a PG is completely outdated.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nunvug0" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>MalcolmSupleX | Magic</div>
+        <div>5 | 3 hours ago </div>
+      </div>
+      <label for="nunvug0" class="commentText"><p>Huh 😂</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="nunvhzb" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>creamjudge | Grizzlies</div>
+        <div>4 | 3 hours ago </div>
+      </div>
+      <label for="nunvhzb" class="commentText"><p>It&rsquo;s more the lack of players that can reliably handle the ball and run the offense. Their starting lineup today was - JJJ, Clarke, Aldama, Coward, Wells, meaning the ball is brought up by either our rookie 3&amp;D wing or our sophomore 3&amp;D wing</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nunxh33" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>AashyLarry | MIA</div>
+        <div>1 | 3 hours ago </div>
+      </div>
+      <label for="nunxh33" class="commentText"><p>Cam Spencer?</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nuny8gq" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>J-M-Beno</div>
+        <div>-3 | 3 hours ago </div>
+      </div>
+      <label for="nuny8gq" class="commentText"><p>He was out today personal which pisses me off as i gambled on him in fantasy</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="nunwwjd" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>KasherH | Nuggets</div>
+        <div>-4 | 3 hours ago </div>
+      </div>
+      <label for="nunwwjd" class="commentText"><p>Coward taking the ball up the floor just isn&rsquo;t that big of a deal to me. Cam Spencer too.</p>
+
+<p>Positions don&rsquo;t matter, no matter how much some people still cling to the idea like a Koala on a tree</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="nunvi69" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Broski26of25 | Spain</div>
+        <div>3 | 3 hours ago </div>
+      </div>
+      <label for="nunvi69" class="commentText"><p>I also want to see Curry and Shai play at the 5.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nunywnr" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>nex_eden</div>
+        <div>1 | 2 hours ago </div>
+      </div>
+      <label for="nunywnr" class="commentText"><p>the thunder were actually playing 6&rsquo;5 jalen williams at the 5 while i-hart and chet were both out in november last year.</p>
+
+<p>he held his own and they won some games; shai&rsquo;s an inch taller and 25lb lighter so i reckon they may as well try it, it&rsquo;s not like they have seeding to worry about.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nuo2qkg" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Broski26of25 | Spain</div>
+        <div>2 | an hour ago </div>
+      </div>
+      <label for="nuo2qkg" class="commentText"><p>Yeah and he was getting injuries because he was banging against people significantly heavier than him.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="nuny31z" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>KasherH | Nuggets</div>
+        <div>-2 | 3 hours ago </div>
+      </div>
+      <label for="nuny31z" class="commentText"><p>Small ball is an effective strategy too. Torch those lumbering bigs from 3. Blow past them while making them guard the perimeter.  Positions just don&rsquo;t matter.</p>
+
+<p>Being tall is often an advantage, but it doesn&rsquo;t matter what outdated position name you use.  Jokic is the best playmaker in the league, call him a PG if you want to I guess.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
