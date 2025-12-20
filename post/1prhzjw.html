@@ -1,0 +1,750 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.selfPostImage {
+  width: 100%;
+  height: auto;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/PathOfExile2/comments/1prhzjw/notes_on_ways_to_generate_endurance_power_and/"><p>Notes on Ways to Generate Endurance, Power, and Frenzy Charges in PoE 2</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <h1 id="tl-dr">TL;DR</h1>
+
+<ul>
+<li>Charges can be generated in many ways, but most methods are <strong>conditional, cooldown-gated, or awkward for single-target/boss fights</strong>.</li>
+<li><strong>Resonance (Keystone)</strong> lets you convert one charge type into another, greatly expanding generation options.</li>
+<li><strong>Random charge generation</strong> mainly comes from <strong>Serpent’s Egg (with cultivated mod)</strong>, <strong>Charge Profusion II</strong>, <strong>Hateforge</strong>, <strong>Thaumaturgical Dynamism</strong> (Gemling Legionnaire), and <strong>Saqawal’s Rune of the Sky + Wisdom of the Maji</strong> (Shaman).</li>
+<li><strong>Endurance Charges</strong> can be generated reliably using the <strong>Ferocious Roar + Raging Cry + Enraged Warcry II</strong> combo.</li>
+<li><strong>Power Charges</strong> can be generated reliably using <strong>Voll&rsquo;s Protector</strong>, <strong>Infusion of Power</strong>, the <strong>Profane Ritual + Sacrifice</strong> combo, <strong>Lingering Illusion</strong>, and <strong>Guatelitzi&rsquo;s Ablation</strong>.</li>
+<li><strong>Frenzy Charges</strong> are generally harder to sustain and often rely on <strong>Resonance</strong>, <strong>Sniper&rsquo;s Mark</strong>, <strong>parry mechanics</strong>, or <strong>Combat Frenzy</strong>.</li>
+<li>Overall, I think <strong>the power of charges often does not justify the effort required to generate them</strong>, and the same issue applies to <strong>Elemental Infusions</strong>.</li>
+</ul>
+
+<h1 id="1-introduction">1. Introduction</h1>
+
+<p>Hi everyone! While planning my build, I went through <strong>PoE2Wiki</strong> (<a href="https://www.poe2wiki.net" target="_blank">https://www.poe2wiki.net</a>) and <strong>PoE2DB</strong> (<a href="https://poe2db.tw" target="_blank">https://poe2db.tw</a>) to gather information on how to generate Endurance, Power, and Frenzy Charges. I ended up taking some notes for my own reference and added a few ideas along the way. Since it might be useful for others too, I figured I’d share it here. I might have missed some ways to generate charges, but I hope this helps as a starting point.</p>
+
+<h1 id="2-resonance-keystone">2. Resonance (Keystone)</h1>
+
+<blockquote>
+<p>Gain Power Charges instead of Frenzy Charges<br>
+Gain Frenzy Charges instead of Endurance Charges<br>
+Gain Endurance Charges instead of Power Charges</p>
+</blockquote>
+
+<ul>
+<li>This keystone allows you to gain different charges from what you would normally gain. For example, if you want to gain Endurance Charges, you can find a way that normally generate Power Charges, and with Resonance, you will gain Endurance Charges instead.</li>
+</ul>
+
+<h1 id="3-ways-to-generate-random-charges">3. Ways to Generate Random Charges</h1>
+
+<p><strong>Cultivated Mod on Serpent&rsquo;s Egg (Unique Amulet)</strong></p>
+
+<blockquote>
+<p>50% chance to gain an additional random Charge when you gain a Charge</p>
+</blockquote>
+
+<p><strong>Note:</strong> A <strong>cultivated unique item</strong> is a mutated version of an existing unique item in which one or more of its modifiers replaced with exclusive <strong>cultivation modifiers</strong>. Cultivated unique items are currently exclusive to <strong>Fate of the Vaal league</strong> and can only be obtained by using a <strong>Vaal Cultivation Orb</strong> on a <strong>corrupted Vaal unique</strong> or using the corresponding crafting bench in <strong>Atziri&rsquo;s Temple.</strong></p>
+
+<p><strong>Charge Profusion II (Support Gem)</strong></p>
+
+<blockquote>
+<p>Supports skills that can generate Charges.<br>
+Supported Skills have 30% chance to grant an additional Charge<br>
+Supported Skills have 15% chance to grant an additional random Charge</p>
+</blockquote>
+
+<ul>
+<li>You can use Charge Profusion II with any skill that normally generates charges to have a chance to gain all three types of charges.</li>
+</ul>
+
+<p><strong>Thaumaturgical Dynamism (From Gemling Legionnaire Ascendancy)</strong></p>
+
+<blockquote>
+<p>While Thaumaturgical Dynamism is active, <strong>you passively generate a Power, Frenzy or Endurance Charge once every five seconds.</strong><br>
+The kind of Charge you generate is determined by the Attribute Requirements of the Skills you have socketed in your Skill Gem sockets. The higher the total Strength Requirement total of your socketed Skill Gems, the more likely you will be to generate an Endurance Charge. Higher total Dexterity Requirement corresponds to a higher chance for Frenzy Charges, and Intelligence to Power Charges.</p>
+</blockquote>
+
+<p><strong>Hateforge (Unique Gloves)</strong></p>
+
+<blockquote>
+<p>Gain a random Charge on reaching Maximum Rage, no more than once every (3-6) seconds<br>
+Lose all Rage on reaching Maximum Rage<br>
+(-10-10) to Maximum Rage</p>
+</blockquote>
+
+<p><strong>Allocate Wisdom of the Maji (Shaman Ascendancy node) and use Saqawal’s Rune of the Sky (Augment) on a Martial Weapon</strong></p>
+
+<ul>
+<li>Allocating Wisdom of the Maji allows you to gain the benefits of the Bonded modifier on runes and idols.</li>
+<li>Placing Saqawal’s Rune of the Sky into a martial weapon grants: <strong>8% chance to gain an additional random charge whenever you gain a charge.</strong></li>
+</ul>
+
+<h1 id="4-ways-to-generate-endurance-charges">4. Ways to Generate Endurance Charges</h1>
+
+<p><strong>Allocate the Resonance keystone and use any methods that normally generate Power Charges.</strong></p>
+
+<p><strong>Spend 15 Rage while in Bear form to gain an Endurance Charge</strong></p>
+
+<ul>
+<li>While in Bear form, you <strong>gain an Endurance Charge for every 15 Rage you spend</strong>.</li>
+<li>This enables consistent Endurance Charge generation by spending Rage.</li>
+<li>One reliable way to do this is to use the <strong>[Ferocious Roar + Raging Cry + Enraged Warcry II]</strong> combo. Allocating <strong>Roaring Cries (Notable Node)</strong> allows this combo to work even without nearby enemies.</li>
+</ul>
+
+<p><strong>Perfected Endurance (Support Gem)</strong></p>
+
+<blockquote>
+<p>Supports skills which have a benefit for Perfect Timing.<br>
+Gain an Endurance Charge when hitting an Enemy with Supported Skill when Perfectly Timed</p>
+</blockquote>
+
+<ul>
+<li>Skill which have a benefit for Perfect Timing: Snipe (Bow Skill), Perfect Strike (Mace Skill), Gathering Storm (Quarterstaff Skill).</li>
+</ul>
+
+<p><strong>Enduring Impact II (Support Gem)</strong></p>
+
+<blockquote>
+<p>Supports any skill that Hits enemies, giving it a chance to gain an Endurance Charge when causing a Heavy Stun.<br>
+30% chance to gain an Endurance Charge when Heavily Stunning a non-Unique Enemy with Supported Skills<br>
+Gain 3 Endurance Charges on Heavily Stunning a Unique Enemy with Supported Skill</p>
+</blockquote>
+
+<p><strong>Armour Break III (Support Gem)</strong></p>
+
+<blockquote>
+<p>Supports Skills that Hit Enemies, causing those Hits to Break Armour based on a portion of Physical Damage dealt.<br>
+On Fully Breaking Armour with Supported Skills, you have a chance to gain an Endurance Charge.<br>
+Break Armour equal to 20% of Physical Damage dealt by Supported Skill<br>
+20% chance to gain an Endurance Charge when Supported Skills Fully Break Armour</p>
+</blockquote>
+
+<p><strong>Magma Barrier (Spirit Gem)</strong></p>
+
+<blockquote>
+<p>Reservation: 30 Spirit<br>
+Requires: Level (1-90), (4-157) Str<br>
+Requires: Shields, Bucklers<br>
+While active, increases your Block Chance passively and imbues your Shield with lava over time.<br>
+When fully imbued, your next Block with your Shield raised will expend the lava to create an explosion, granting you an Endurance Charge.<br>
+Fully imbues Shield in 8 seconds<br>
+Grants 25% increased Block chance</p>
+</blockquote>
+
+<p><strong>Cranial Impact (Notable Node)</strong></p>
+
+<blockquote>
+<p>30% increased Stun Buildup<br>
+Gain an Endurance Charge when you Heavy Stun a Rare or Unique Enemy</p>
+</blockquote>
+
+<h1 id="5-ways-to-generate-power-charges">5. Ways to Generate Power Charges</h1>
+
+<p><strong>Allocate the Resonance keystone and use any methods that normally generate Frenzy Charges.</strong></p>
+
+<p><strong>Voll&rsquo;s Protector (Unique Body Armour)</strong></p>
+
+<blockquote>
+<p>Requires: Level 59, 52 Str, 52 Int<br>
+25% chance to gain a Power Charge on Critical Hit</p>
+</blockquote>
+
+<ul>
+<li>With Voll’s Protector, you can quickly generate Power Charges if you can deal critical hits frequently.</li>
+<li>The Inevitable Critical mechanic (from an Oracle Ascendancy node) guarantees that you always deal critical hits, giving it excellent synergy with Voll’s Protector.</li>
+<li><strong>Idea:</strong> I think this allows you to channel Oil Barrage indefinitely, as long as you gain at least one Power Charge every 2 seconds.</li>
+</ul>
+
+<p><strong>Infusion of Power (Notable Node)</strong></p>
+
+<blockquote>
+<p>Gain a Power Charge when you consume an Elemental Infusion</p>
+</blockquote>
+
+<ul>
+<li>One way to quickly generate Elemental Infusions is to <strong>cast Ball Lightning and then cast Lightning Warp on the balls to generate Lightning Infusions.</strong> You can use support gems such as Multishot II, Nova Projectiles II, or Wildshards I to fire multiple balls per cast. If you only cast occasionally, you can also use Unleash Support.</li>
+<li>You can also use <strong>Orb of Storms</strong> to generate  Lightning Infusions, or <strong>Frost Bomb</strong> to generate Cold Infusions.</li>
+<li><strong>Stormweaver</strong> has two ascendancy nodes that increase the amount of Elemental Infusion you generate:
+
+<ul>
+<li><strong>Storm&rsquo;s Recollection</strong> Remnants you create reappear once, 3 seconds after being collected</li>
+<li><strong>Refracted Infusion</strong> When collecting an Elemental Infusion, gain another different Elemental Infusion</li>
+</ul></li>
+<li>Since Elemental Infusions are generated as <strong>remmants</strong> that spawn from certain skills, you can gain benefits from <strong>remnant-related mechanics</strong> such as:
+
+<ul>
+<li><strong>Khatal&rsquo;s Rejuvenation (Lineage Support):</strong> Remnants created by Supported Skills grant Khatal&rsquo;s Rejuvenation when collected. Khatal&rsquo;s Rejuvenation stacks up to 8 times and grants 5% increased Cooldown Recovery Rate per stack. Each stack of Khatal&rsquo;s Rejuvenation lasts for 10 seconds.</li>
+<li><strong>Arcane Remnants (Notable Node):</strong> Recover 3% of Maximum Mana when you collect a Remnant.</li>
+<li><strong>Vigorous Remnants (Notable Node):</strong> Recover 3% of Maximum Life when you collect a Remnant.</li>
+</ul></li>
+<li>With <strong>Infusion of Power</strong>, You can <strong>use any spell that comsume Elemental Infusions to gain Power Charges</strong>. Note that <strong>Firestorm can consume all three types of Elemental Infusion</strong>.</li>
+<li>Note that you can allocate the <strong>Elemental Equilibrium</strong> keystone:
+
+<ul>
+<li>Create <strong>Lightning</strong> Infusion Remnants instead of <strong>Fire</strong></li>
+<li>Create <strong>Cold</strong> Infusion Remnants instead of <strong>Lightning</strong></li>
+<li>Create <strong>Fire</strong> Infusion Remnants instead of <strong>Cold</strong></li>
+</ul></li>
+</ul>
+
+<p><strong>Lingering Illusion (Spirit Gem)</strong></p>
+
+<blockquote>
+<p>Reservation: 30 Spirit<br>
+Requires: Level (1-90), (4-86) Dex, (4-86) Int<br>
+While active, creates a short-lived illusory copy of yourself whenever you dodge roll. The copy can be damaged by enemies, and <strong>copies that are destroyed by an enemy will drop a Remnant that grants you a Power Charge on pickup.</strong><br>
+Illusions have 1% of your maximum Life<br>
+Remnants last for 5 seconds<br>
+Illusion duration is 3 seconds<br>
+(0-76)% chance to create an additional Remnant<br>
+Additional Effects From Quality:<br>
+(0-20)% chance to create an additional Remnant</p>
+</blockquote>
+
+<ul>
+<li>Allocating the Chaos Inoculation keystone sets your maximum Life to 1, so the Illusion can be easily destroyed by enemies.</li>
+<li>You can also allocate these notable nodes:
+
+<ul>
+<li><strong>Empowering Remnants</strong>: 15% chance for Remnants you create to grant their effects twice.</li>
+<li><strong>Remnant Attraction</strong>: 10% chance to create an additional Remnant, Remnants can be collected from 50% further away</li>
+</ul></li>
+<li>Some Support Gems for Lingering Illusion:
+
+<ul>
+<li><strong>Charge Profusion II:</strong> Chance to gain an additional Charge and an additional random Charge.</li>
+<li><strong>Harmonic Remnants II:</strong> Chance to create an additional Remnant, Remnants can be collected from 35% further away.</li>
+<li><strong>Khatal&rsquo;s Rejuvenation:</strong> Remnants created by Supported Skills grant Khatal&rsquo;s Rejuvenation when collected.</li>
+<li><strong>Prolonged Duration II:</strong> Supported Skills have 35% more Skill Effect Duration.</li>
+<li><strong>Empowered Sparks II:</strong> When generating Power Charge with Supported Skills, Empower 3 Attacks to Trigger Spark Projectiles on use.</li>
+</ul></li>
+</ul>
+
+<p><strong>Ailith&rsquo;s Chimes (Lineage Support Gem)</strong></p>
+
+<blockquote>
+<p>Supports Skills which can expend Combo.<br>
+<strong>On expending Combo with Supported Skills, you have a chance to gain Power Charges based on the amount of Combo expended.</strong><br>
+25% Surpassing chance to gain a Power Charge when expending Combo with Supported Skills per Combo expended</p>
+</blockquote>
+
+<ul>
+<li>You can support melee attack skills that do not already gain combo with <strong>Combo Finisher II</strong> or <strong>Culmination II</strong> to allow them to gain combo.</li>
+</ul>
+
+<p><strong>Profane Ritual (Spell)</strong></p>
+
+<blockquote>
+<p>Requires: Level (1-90), (4-157) Int<br>
+Mark a Corpse with a profane rune, dealing Chaos damage over time to nearby enemies.<br>
+<strong>When the ritual is complete the Corpse is consumed and you gain a Power Charge.</strong><br>
+Limit 5 active rituals<br>
+Ritual duration is 2 seconds<br>
+Additional Effects From Quality:<br>
+(0-10)% chance to not destroy Consumed Corpse</p>
+</blockquote>
+
+<ul>
+<li>One way to use Profane Ritual without enemy&rsquo;s corpses is to <strong>activate Sacrifice (Spirit Gem) and cast Profane Ritual on your undead Reviving Minions</strong>.
+
+<ul>
+<li>For example, you can equip a Rattling Sceptre in your second weapon set to summon Skeletal Warriors. Whenever you want to gain Power Charges, swap to the sceptre, then cast Profane Ritual on the Skeletal Warriors to generate Power Charges. After that, swap back to your main weapon set to use your main skills.</li>
+</ul></li>
+<li>Some Support Gems for Profane Ritual: <strong>Charge Profusion II</strong>, <strong>Empowered Sparks II</strong>, <strong>Unleash</strong>, <strong>Corpse Conservation</strong>, <strong>Compressed Duration II</strong>, <strong>Swift Affliction I</strong>, <strong>Overabundance I</strong> (For less Skill Effect Duration), etc</li>
+</ul>
+
+<p><strong>Guatelitzi&rsquo;s Ablation (Lineage Support Gem)</strong></p>
+
+<blockquote>
+<p>Supports Offering Skills.<br>
+Supported Skills Sacrifice 25% of Life on use.<br>
+Offerings from Supported Skills grant you a Power Charge every 4 seconds.<br>
+When an Offering from Supported Skills dies, Regenerate 5% of your Life and Mana per second, for as long as that Offering was alive.</p>
+</blockquote>
+
+<p><strong>Siphoning Strike (Quarterstaves Attack)</strong></p>
+
+<blockquote>
+<p>Requires: Level (1-90), (4-86) Dex, (4-86) Int<br>
+Requires: Quarterstaves<br>
+Dash to a target and Strike them with your Quarterstaff.<br>
+<strong>If the target is Shocked, Consume their Shock to release a Lightning shockwave around the target and grant you a Power Charge.</strong></p>
+</blockquote>
+
+<p><strong>Devour (Wyvern Attack)</strong></p>
+
+<blockquote>
+<p>Requires: Level (1-90), (4-86) Str, (4-86) Int<br>
+Requires: Talismans<br>
+Shapeshift into a Wyvern and devour a Corpse or Cullable enemy, and consume up to 2 additional Corpses near the target.<br>
+<strong>For each enemy or corpse devoured, you regenerate life and gain a Power Charge.</strong><br>
+If the target is far enough away, you will leap to them and damage nearby enemies where you land.<br>
+Targeting nearby enemies or corpses will not perform a leap or a Slam.</p>
+</blockquote>
+
+<p><strong>Power Siphon (Spell)</strong></p>
+
+<blockquote>
+<p>Requires: Level (1-90), (4-157) Int<br>
+Attempt to rip the lifeforce from an enemy.<br>
+<strong>Enemies within Culling range will be highlighted and instantly killed on Hit, granting a Power Charge.</strong><br>
+Can only target Enemies in Culling range.<br>
+(0-76)% chance to grant an additional Power Charge on Cull<br>
+Additional Effects From Quality:<br>
+(0-10)% chance to grant an additional Power Charge on Cull</p>
+</blockquote>
+
+<p><strong>Killing Palm (Quarterstaves Attack)</strong></p>
+
+<blockquote>
+<p>Requires: Level (1-90), (4-86) Dex, (4-86) Int<br>
+Requires: Quarterstaves<br>
+Dash to an enemy and Strike them, Culling enemies if their life is low enough and performing additional dashing Strikes to other Cullable targets in range if your target was Culled.<br>
+<strong>Each enemy killed by this strike grants a Power Charge, with higher Rarity monsters granting additional Charges.</strong><br>
+Enemies around you that can be Culled will be highlighted.<br>
+Can&rsquo;t be Evaded<br>
+Normal and Magic monsters grant 1 Power Charge<br>
+Rare monsters grant 2 Power Charges<br>
+Unique monsters grant 3 Power Charges<br>
+Additional Effects From Quality:<br>
+Recover (0-4)% of maximum Mana over four seconds on Culling an Enemy</p>
+</blockquote>
+
+<p><strong>Wing Blast (Wyvern Attack)</strong></p>
+
+<blockquote>
+<p>Requires: Level (1-90), (4-86) Str, (4-86) Int<br>
+Requires: Talismans<br>
+Shapeshift into a Wyvern and launch yourself backwards with a powerful wingbeat that Knocks Back enemies.<br>
+<strong>Enemies Primed for Heavy Stun will be stunned, release a shockwave, and have a chance to grant you a Power Charge.</strong><br>
+This skill can be used while using other skills to interrupt them.<br>
+Cannot cause Stun buildup<br>
+Knocks Back Enemies<br>
+15% Surpassing chance to grant a Power Charge on Heavy Stun, modified by Monster Power<br>
+Additional Effects From Quality:<br>
+(0-5)% Surpassing chance to grant a Power Charge on Heavy Stun, modified by Monster Power</p>
+</blockquote>
+
+<p><strong>Breath of the Mountains (Sapphire Charm)</strong></p>
+
+<blockquote>
+<p>Used when you take Cold damage from a Hit<br>
+Grants a Power Charge on use</p>
+</blockquote>
+
+<p><strong>Redflare Conduit (Unique Body Armour)</strong></p>
+
+<blockquote>
+<p>Requires: Level 33, 31 Dex, 31 Int<br>
+20% chance to gain a Power Charge on Hit<br>
+Lose all Power Charges on reaching maximum Power Charges<br>
+Shocks you when you reach maximum Power Charges</p>
+</blockquote>
+
+<p><strong>Cultivated Mod on Redflare Conduit (Unique Body Armour)</strong></p>
+
+<blockquote>
+<p>Gain a Power Charge every Second if you haven&rsquo;t lost Power Charges Recently</p>
+</blockquote>
+
+<h1 id="6-ways-to-generate-frenzy-charges">6. Ways to Generate Frenzy Charges</h1>
+
+<p><strong>Allocate the Resonance keystone and use any methods that normally generate Endurance Charges.</strong></p>
+
+<p><strong>Frenzied Riposte (Support Gem)</strong></p>
+
+<blockquote>
+<p>Supports Attacks you use yourself or that you Trigger, causing them to <strong>Consume the Parried Debuff on Hit to grant you a Frenzy Charge.</strong><br>
+Cannot support Skills which already Consume the Parried Debuff.<br>
+Supported Skills Consume Parried Debuff on Hit to grant a Frenzy Charge.</p>
+</blockquote>
+
+<ul>
+<li>You can apply the <strong>Parried Debuff</strong> to enemies by using <strong>Parry (Buckler Attack)</strong> to parry an enemy&rsquo;s Strike or Projectile.</li>
+<li>Note that <strong>blocking hits with Parry builds up the player heavy stun gauge.</strong> The amount the gauge fills depends on the damage and stun value of the hit. If the gauge is fully filled, the player is inflicted with a Heavy Stun.</li>
+</ul>
+
+<p><strong>Disengage (Spear Attack)</strong></p>
+
+<blockquote>
+<p>Cooldown Time: 1.50 s<br>
+Requires: Level (1-90), (4-157) Dex<br>
+Requires: Spears<br>
+Jump back as you rupture the earth in front of you with spearpoints, damaging enemies.<br>
+<strong>Consumes the Parried Debuff on Hitting enemies to release a shockwave and grant you a Frenzy Charge.</strong><br>
+This skill can be used while using other skills, and causes Strikes and Projectiles to miss you while jumping.</p>
+</blockquote>
+
+<p><strong>Sniper&rsquo;s Mark (Mark)</strong></p>
+
+<blockquote>
+<p>Cooldown Time: 6.00 s<br>
+Requires: Level (1-90), (4-157) Dex<br>
+Mark a target. <strong>The next Critical Hit the target receives Activates the Mark, Consuming it to deal extra damage and grant you a Frenzy Charge.</strong><br>
+Limit 1 Marked target<br>
+Maximum Mark duration is 8 seconds</p>
+</blockquote>
+
+<ul>
+<li><strong>Idea:</strong> One combo I can think of is to use <strong>[Pounce + Sniper&rsquo;s Mark + Eternal Mark + Cooldown Recovery II]</strong> on an enemy to apply Sniper&rsquo;s Mark, then use <strong>[Cross Slash + Cooldown Recovery II]</strong> <strong>twice</strong> to activate the mark and gain a Frenzy Charge per use with a low cooldown.
+
+<ul>
+<li>Note that Pounce and Cross Slash are Werewolf attacks.</li>
+<li>Sniper&rsquo;s Mark is socketed into Pounce because Pounce has a lower cooldown than Sniper&rsquo;s Mark.</li>
+<li>Eternal Mark Support is used for: &ldquo;Marks from supported skills are not consumed the first time they activate.&rdquo;</li>
+<li>Cross Slash is used to activate the mark. (Hitting a marked enemy with both gouges will activate the mark and cause an additional shockwave.)</li>
+<li>You can also use <strong>Frenzied Riposte (Support Gem)</strong> to support Pounce, Cross Slash, or other attacks to gain additional Frenzy Charges, but you must first apply the Parried debuff to the enemy.</li>
+</ul></li>
+</ul>
+
+<p><strong>Combat Frenzy (Spirit Gem)</strong></p>
+
+<blockquote>
+<p>Reservation: 30 Spirit<br>
+Requires: Level (1-90), (4-157) Dex<br>
+While active, gain a Frenzy Charge when you Freeze, Electrocute or Pin an enemy, no more than once every (6.1-8) seconds<br>
+Additional Effects From Quality:<br>
+(0-10)% chance when you gain a Charge to gain an additional Charge</p>
+</blockquote>
+
+<ul>
+<li><strong>Some ways to Pin enemies:</strong>
+
+<ul>
+<li>Use <strong>Bone Cage</strong> or <strong>Artillery Ballista</strong></li>
+<li>Use <strong>Pin II Support</strong>: Supports any skill that Hits enemies, allowing its Physical damage to Pin enemies but making it unable to Stun, as well as granting Critial Hit Chance against Immobilised enemies.</li>
+<li>Allocate <strong>Bone Chains (Notable Node)</strong>: Physical Spell Critical Hits build Pin. This has strong synergy with Inevitable Critical from the Oracle Ascendancy. You can use any Physical Spell such as Bonestorm, Detonate Dead, Entangle, or Thrashing Vines.</li>
+<li>Allocate <strong>Right Where We Want Them (Tactician Ascendancy node)</strong>: Pinned enemies cannot perform actions, and Projectile Damage builds Pin.</li>
+</ul></li>
+</ul>
+
+<p><strong>Cull The Weak (Spear Attack)</strong></p>
+
+<blockquote>
+<p>Requires: Level (1-90), (4-157) Dex<br>
+Requires: Spears<br>
+Dash to an enemy and run them through, Culling enemies if their life is low enough.<br>
+<strong>If this Attack kills at least one enemy, it grants you a Frenzy Charge, with higher Rarity monsters granting additional Charges.</strong><br>
+Enemies around you that can be Culled will be highlighted.<br>
+Normal and Magic monsters grant 1 Frenzy Charge.<br>
+Rare monsters grant 2 Frenzy Charges.<br>
+Unique monsters grant 3 Frenzy Charges.<br>
+Additional Effects From Quality:<br>
+(0-20)% chance when you gain a Charge to gain an additional Charge</p>
+</blockquote>
+
+<p><strong>Valako&rsquo;s Roar (Topaz Charm)</strong></p>
+
+<blockquote>
+<p>Used when you take Lightning damage from a Hit<br>
+Grants a Frenzy Charge on use</p>
+</blockquote>
+
+<h1 id="some-other-charge-related-effects">Some Other Charge-Related Effects</h1>
+
+<p>There are many charge-related effects (from items, augments, or the passive skill tree) that can help you generate or spend charges. For example:</p>
+
+<ul>
+<li>Skills have #% chance to not remove Charges but still count as consuming them</li>
+<li>+# to Maximum Endurance/Power/Frenzy Charges</li>
+</ul>
+
+<h1 id="7-my-ideas-for-reliable-charge-generation">7. My Ideas for Reliable Charge Generation</h1>
+
+<p>From above, you can see that there are several ways to generate charges; however, many of them have cooldowns or require conditions that are difficult to meet, especially against a single target or unique boss.</p>
+
+<p>Below are some of my ideas for generating charges without requiring any enemies.</p>
+
+<p><strong>7.1. Ways to Generate Endurance Charges</strong></p>
+
+<blockquote>
+<p>Use the <strong>[Ferocious Roar + Raging Cry + Enraged Warcry II]</strong> combo and allocate <strong>Roaring Cries (Notable Node)</strong>.</p>
+</blockquote>
+
+<ul>
+<li><strong>Ferocious Roar</strong> and <strong>Raging Cry Support</strong> generate Rage based on enemy Power in range.</li>
+<li>Allocate <strong>Roaring Cries (Notable Node)</strong>, which grants <strong>&ldquo;Warcries have a minimum of 10 Power&rdquo;</strong>, allowing Ferocious Roar and Raging Cry Support to generate Rage even without enemies nearby.</li>
+<li><strong>Enraged Warcry II Support</strong> causes Warcries to <strong>spend 15 Rage to bypass their cooldown</strong>, instead of consuming an Endurance Charge. Since you are in <strong>Bear Form</strong> while using Ferocious Roar, you <strong>gain one Endurance Charge for every 15 Rage spent</strong>.</li>
+<li>You can repeatedly use this <strong>[Ferocious Roar + Raging Cry + Enraged Warcry II]</strong> combo to quickly build Rage and generate Endurance Charges with no enemies present!</li>
+<li>If you allocate <strong>Warcaller&rsquo;s Bellow (Warbringer Ascendancy node)</strong>, which grants <strong>&ldquo;Ignore Warcry Cooldowns&rdquo;</strong>, you can drop Enraged Warcry II and spam <strong>[Ferocious Roar + Raging Cry]</strong> to generate Rage more quickly without spending any Rage. However, you still need to <strong>spend Rage</strong> to gain Endurance Charges. One option is to allocate <strong>Invigorating Hate (Notable Node)</strong>, which &ldquo;consumes all Rage when shapeshifting to Human Form to recover 1% of maximum Life per Rage consumed&rdquo;, or to use skills supported by <strong>Rageforged II</strong>, which spend 10 Rage on use.</li>
+<li>Note that You can also <strong>replace Ferocious Roar with other Warcries</strong> (such as <strong>Arctic Howl</strong> or <strong>Seismic Cry</strong>), though this <strong>requires having enough enemy Power nearby</strong>.</li>
+<li>Since this combo generates a large amount of Rage, I want to mention some interesting <strong>Rage-related effects</strong> that can synergize with it:
+
+<ul>
+<li><strong>Primal Hunger (Keystone)</strong>: 100% more Maximum Rage, Regenerate 1 Rage per second per 4 Rage spent Recently, No Rage effect.</li>
+<li><strong>Invigorating Hate (Notable Node)</strong>: Consume all Rage when Shapeshifting to Human form to recover 1% of maximum life per Rage Consumed.</li>
+<li><strong>Berserk (Spirit Gem)</strong>: Reserve 30 Spirit. Grants #% increased Rage effect</li>
+<li><strong>Bhatair&rsquo;s Vengeance (Lineage Support Gem)</strong>: Supports Attacks and Warcries you use yourself. When you Freeze an enemy with supported skills, for each 1 Rage you have, you and allies in your presence gain 1% of Damage as Cold Damage for 20 seconds.</li>
+<li><strong>Tacati&rsquo;s Ire (Lineage Support Gem)</strong>: Supports skills that can cause damaging hits. Poisons inflicted with supported skills deal damage 2% faster per Rage.</li>
+</ul></li>
+<li>Since this combo <strong>spams Warcries frequently</strong>, it&rsquo;s worth mentioning some interesting <strong>Warcry-related effects</strong> that synergize well with it:
+
+<ul>
+<li><strong>Howling Beast (Notable Node)</strong>: Warcries inflict 3 Critical Weakness on Enemies</li>
+<li><strong>Corrupting Cry II (Support Gem)</strong>: Supports Warcries, causing them to inflict Corrupted Blood on enemies in their area of effect.</li>
+<li><strong>Deafening Cries (Notable Node)</strong>: 25% increased Warcry Cooldown Recovery Rate,</li>
+<li>8% increased Damage for each time you&rsquo;ve Warcried Recently</li>
+<li><strong>Guttural Roar (Notable Node)</strong>: 25% increased Warcry Speed, Warcries Debilitate Enemies, Warcry Skills have 25% increased Area of Effect</li>
+<li><strong>Urgent Call (Notable Node)</strong>: Recover 2% of maximum Life and Mana when you use a Warcry, 24% increased Warcry Speed, 18% increased Warcry Cooldown Recovery Rate</li>
+<li><strong>Extinguishing Exhalation (Notable Node)</strong>: Remove Ignite when you Warcry</li>
+<li><strong>Escalation (Notable Node)</strong> 25% increased Warcry Speed, 20% increased Damage for each different Warcry you&rsquo;ve used Recently</li>
+<li><strong>Warcaller&rsquo;s Bellow (Warbringer Ascendancy ndoe)</strong>: Warcries Explode Corpses dealing 25% of their Life as Physical Damage, Ignore Warcry Cooldowns</li>
+</ul></li>
+<li>Unfortunately, <strong>Ferocious Roar</strong> cannot be supported with <strong>Charge Profusion II</strong> to gain random charges. However, you can gain additional random charges in the following ways:
+
+<ul>
+<li><strong>Serpent&rsquo;s Egg (Unique Amulet)</strong> with the cultivated mod &ldquo;50% chance to gain an additional random Charge when you gain a Charge&rdquo;</li>
+<li><strong>Hateforge (Unique Gloves)</strong>: Gain a random Charge on reaching Maximum Rage, no more than once every (3-6) seconds</li>
+<li>Allocate <strong>Wisdom of the Maji (Shaman Ascendancy node)</strong> and use **Saqawal’s Rune of the Sky (Augment) ** on a <strong>Martial Weapon</strong></li>
+</ul></li>
+</ul>
+
+<p><strong>7.2. Ways to Generate Power Charges</strong></p>
+
+<blockquote>
+<p>Allocate <strong>Infusion of Power (Notable Node)</strong> to <strong>gain a Power Charge when you consume an Elemental Infusion</strong>.</p>
+</blockquote>
+
+<ul>
+<li>One way to quickly generate Elemental Infusions is to <strong>cast Ball Lightning and then cast Lightning Warp on the balls to generate Lightning Infusions.</strong></li>
+<li>More details are discussed above.</li>
+</ul>
+
+<blockquote>
+<p>Equip <strong>Serpent&rsquo;s Egg (Unique Amulet)</strong> with the cultivated modifier &ldquo;50% chance to gain an additional random Charge when you gain a Charge&rdquo; and use the <strong>[Ferocious Roar + Raging Cry + Enraged Warcry II]</strong> combo.</p>
+</blockquote>
+
+<ul>
+<li>Note that this method only give you a chance to gain a Power Charge for each use of Ferocious Roar, but you can still spam Ferocious Roar until you gain enough Power Charges.</li>
+</ul>
+
+<blockquote>
+<p><strong>Profane Ritual + Sacrifice</strong></p>
+
+<p><strong>Guatelitzi&rsquo;s Ablation (Lineage Support Gem)</strong></p>
+
+<p><strong>Cultivated Mod on Redflare Conduit (Unique Body Armour)</strong><br>
+Gain a Power Charge every Second if you haven&rsquo;t lost Power Charges Recently</p>
+</blockquote>
+
+<p><strong>7.3. Ways to Generate Frenzy Charges</strong></p>
+
+<blockquote>
+<p>Allocate the <strong>Resonance keystone</strong> and use the <strong>[Ferocious Roar + Raging Cry + Enraged Warcry II]</strong> combo to quickly generate Frenzy Charges instead of Endurance Charges.</p>
+
+<p>Equip <strong>Serpent&rsquo;s Egg (Unique Amulet)</strong> with the cultivated mod &ldquo;50% chance to gain an additional random Charge when you gain a Charge&rdquo; and use the <strong>[Ferocious Roar + Raging Cry + Enraged Warcry II]</strong> combo.</p>
+</blockquote>
+
+<ul>
+<li>Note that this method only give you a chance to gain a Frenzy Charge for each use of Ferocious Roar, but you can still spam Ferocious Roar until you gain enough Frenzy Charges.</li>
+</ul>
+
+<h1 id="8-thoughts-and-feedback">8. Thoughts and Feedback</h1>
+
+<p>That’s everything I’ve found so far. At the current state of the game, I think the benefits of charges are often not worth the investment required to generate them. One possible direction for improvement would be to achieve a <strong>better balance between the power of charges and the effort needed to generate them. The same issue also applies to Elemental Infusions.</strong></p>
+
+<p>Feel free to point out anything I got wrong or add other ways to generate charges. Hope this helps with your build!</p>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+    </div>
+  </body>
+</html>
