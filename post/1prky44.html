@@ -1,0 +1,284 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.selfPostImage {
+  width: 100%;
+  height: auto;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/PathOfExile2/comments/1prky44/how_i_fixed_my_stuttering_problems_in_path_of/"><p>How I fixed my stuttering problems in Path of Exile 2</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <p>Since the game&rsquo;s release, I&rsquo;ve had issues with stuttering and long loading times, but after doing a lot of research, the steps below worked for me and I haven&rsquo;t had any problems since.</p>
+
+<p> </p>
+
+<p>1.      Go to NVIDIA control panel &amp;gt; Manage 3D Settings &amp;gt; Global Settings &amp;gt; Scroll down to <strong>Shader Cache Size</strong> and set it to 100GB. While you&rsquo;re there, under the &ldquo;<strong>Graphics performance preference</strong>&rdquo; section, set the &ldquo;<strong>Choose an app to set preference</strong>&rdquo; dropdown to &ldquo;<strong>Desktop app</strong>&rdquo;. Click the &ldquo;<strong>Browse</strong>&rdquo; button and navigate to the PoE2 application (I did this for both <strong>PathOfExile.exe</strong> and <strong>PathOfExile_x64.exe</strong>). Once the app is added, it would say &ldquo;Let windows decide&rdquo; under it. Click the application to bring up a popup where you can set the Graphics preference. You should see an option for &ldquo;<strong>High Performance</strong>&rdquo; with your graphics card listed under it. Select this option.</p>
+
+<p>2.      Go to the <strong>Disk Cleanup</strong> and <strong><em>Only</em></strong> clean the DirectX Shader Cache</p>
+
+<p>3.      Delete all cached POE shaders. Go to (%appdata%) C:\Users\YOURUSERNAME\AppData\Roaming\Path of Exile 2 and <strong>delete ShaderCacheD3D12</strong> or <strong>ShaderCacheVulkan</strong></p>
+
+<p>4.      Delete cached NVIDIA/AMD shaders. Go to (%appdata%) C: \Users\YOUR_USERNAME\AppData\Local\NVIDIA or AMD , depending on your GPU. Delete the <strong>GLCache</strong> folder, this is the Vulkan/OpenGL shaders that your graphics driver generates. The <strong>DXCache</strong> folder is the DirectX shaders. You probably won&rsquo;t be able to delete the folder itself because it is in use by Windows right now, but you can open the folder, click CTRL+A to select all files and delete the files themselves.</p>
+
+<p>5.      <strong>If you have 2 SSDs or HDDS:</strong></p>
+
+<p>-Go to your other drive and <strong>create a folder named shaderpoe2</strong>. In my case I created D:\shaderpoe2\ </p>
+
+<p>-Open \Documents\My Games\Path of Exile\production_config.ini . Scroll down to <strong>[GENERAL]</strong> and <em>add a new line</em> that specifies the new directory you created. In my case it was: **cache_directory=D:\shaderpoe2\** . Save and exit the file.</p>
+
+<ol>
+<li> <strong>If that doesn&rsquo;t work, install the game through the official launcher</strong>, not Steam, and repeat the steps above; this solved <strong>my problem</strong>. Remember to install it directly on the SSD.</li>
+</ol>
+
+<p> </p>
+
+<p>Credits to <a href="https://www.reddit.com/user/ownednerd1337/" target="_blank">ownednerd1337</a> and <a href="https://www.reddit.com/user/GrimExile/" target="_blank">GrimExile</a> that helped me solve my problem</p>
+
+<p><a href="https://www.reddit.com/r/pathofexile/comments/15icji4/how_i_solved_my_performance_issues_on_an_old/" target="_blank">https://www.reddit.com/r/pathofexile/comments/15icji4/how_i_solved_my_performance_issues_on_an_old/</a></p>
+
+<p><a href="https://www.reddit.com/r/PathOfExile2/comments/1hf1m41/potential_fix_for_poe_2_fps_drops_due_to_shader/" target="_blank">https://www.reddit.com/r/PathOfExile2/comments/1hf1m41/potential_fix_for_poe_2_fps_drops_due_to_shader/</a></p>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nv32b7y" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Ourszor</div>
+        <div>1 | 19 minutes ago </div>
+      </div>
+      <label for="nv32b7y" class="commentText"><p>May or may not be related to shades, but it&rsquo;s my intuition at the moment.</p>
+
+<p>I&rsquo;ve played for the past 12 months on an amd 6800xt. Not the greatest graphics quality, but extremely stable, decent fps, no crash</p>
+
+<p>I&rsquo;ve recently upgraded to an nvidia 5070ti. The game is even prettier! But sometimes it &ldquo;craches&rdquo; and recover. By that I mean screen freezes, goes black after about 30 seconds, spinning wheel appears, and after a minute or so the image comes back, game is paused, I haven&rsquo;t lost anything except a couple of minutes. Just a bit frustrating. From the perf graph in game I can see that the &ldquo;shader&rdquo; bar goes up and stays up during that time, so it feels the problems comes from there.</p>
+
+<p>Anyone experienced that? Any input? I&rsquo;ll try a clean install overnight (I&rsquo;m playing through steam)</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nv35hhk" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>EnthusiasmOrdinary93</div>
+        <div>1 | a minute ago </div>
+      </div>
+      <label for="nv35hhk" class="commentText"><p>This did it for me! The random crashes though just started this league. Seems like the renderer crashes but it will recover.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
