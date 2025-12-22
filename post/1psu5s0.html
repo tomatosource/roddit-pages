@@ -1,0 +1,312 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.selfPostImage {
+  width: 100%;
+  height: auto;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/PathOfExile2/comments/1psu5s0/random_mini_full_freezes_no_crash_no_logs_early/"><p>Random Mini &amp; Full Freezes (No Crash / No Logs) — Early Findings &amp; Workaround</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <p>I wanted to share some early findings around random freezes in PoE2 on NVIDIA, especially during boss fights, temples, and high-effect content. This is not a full, in-depth test, but it has been consistently working for me so far.</p>
+
+<p>Symptoms<br>
+Game randomly freezes or goes “Not Responding”<br>
+No crash dialog<br>
+No useful Event Viewer logs</p>
+
+<p>Reliability Monitor shows:<br>
+PathOfExileSteam.exe stopped interacting with Windows</p>
+
+<p>Happens mostly:<br>
+during bosses<br>
+during heavy particle effects<br>
+sometimes mid-map, sometimes in temples / trials</p>
+
+<p>System:<br>
+NVIDIA GPU<br>
+Occurs across multiple driver versions<br>
+Initially using DX12</p>
+
+<p>Likely Cause<br>
+Based on behavior and testing, this appears related to async shader compilation causing a GPU deadlock under load. When new shaders compile mid-combat (boss abilities, heavy effects), the render thread can stall indefinitely, resulting in a freeze with no clean crash log.</p>
+
+<p>This also explains:</p>
+
+<p>Why freezes feel random<br>
+Why they often occur during bosses<br>
+Why no crash dump is generated<br>
+&ldquo;Confirmed&rdquo; Stable Workaround (So Far)</p>
+
+<p>Switching to DX11 and disabling async shader compilation has fully eliminated freezes for me so far.</p>
+
+<blockquote>
+<p>Steam Launch Options (DX11 – most stable in my testing):</p>
+
+<p>--renderer DirectX11 &ndash;noasync &ndash;waitforpreload</p>
+</blockquote>
+
+<h1 id="results">Results:</h1>
+
+<p>Longer load screens (expected)<br>
+No freezes<br>
+No “Not Responding”<br>
+Bosses, Vaal Temple, and high-effect content completed without issues</p>
+
+<p>DX12 Status (Limited Testing, So Far Positive)<br>
+DX12 has also been working so far when async is disabled, though testing is still limited.</p>
+
+<blockquote>
+<p>Steam Launch Options (DX12 – early testing):</p>
+
+<p>--renderer DirectX12 &ndash;noasync</p>
+</blockquote>
+
+<p>With:</p>
+
+<p>FPS capped (60–90)<br>
+NVIDIA Low Latency Mode OFF<br>
+Overlays disabled</p>
+
+<p>I’ve run a few maps and multiple bosses without issues using this setup, but I wouldn’t consider it fully validated yet. DX11 remains the safer option for longer or heavier sessions.</p>
+
+<p>Important Notes</p>
+
+<p>This is not a full stress test<br>
+Results may vary by system<br>
+Reinstalling the game did not help in my case<br>
+Driver changes alone did not resolve the issue<br>
+This does not appear to be a hardware stability problem</p>
+
+<p>Crashes may not appear in Event Viewer — check Reliability Monitor (perfmon /rel)</p>
+
+<p>Summary / Recommendation<br>
+If you’re experiencing silent freezes or “Not Responding” hangs:<br>
+Try DX11 + &ndash;noasync first<br>
+DX12 may work with async disabled, but results are still early<br>
+Keep FPS capped and overlays disabled</p>
+
+<p>Posting this in case it helps others — happy to update if further testing changes the outcome.</p>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nvc9lz9" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Exoskeleton78</div>
+        <div>1 | 2 hours ago </div>
+      </div>
+      <label for="nvc9lz9" class="commentText"><p>On the ps5 and pro version, we freeze in certain maps when doing multiplayer. We were both using the new sorc ascendency class in t15 maps.</p>
+
+<p>It’s so frequent that we end up soloing and no more freezes</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
