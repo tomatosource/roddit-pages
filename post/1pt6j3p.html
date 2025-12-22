@@ -1,0 +1,917 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.selfPostImage {
+  width: 100%;
+  height: auto;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/nba/comments/1pt6j3p/lebron_james_has_played_in_the_nba_at_the_same/"><p>LeBron James Has Played in the NBA at the Same Time as 14 Father–Son Duos</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <p>I&rsquo;ve always heard the number 9 or 10; so went ahead and did some research on my end. See the notes on the right hand side for reasons that they did not play against.</p>
+
+<p>If there is anyone I missed please don&rsquo;t hesisate to call me out.</p>
+
+<p>Also, I hope the table looks good, I couldn&rsquo;t format it here in Reddit.</p>
+
+<table>
+<thead>
+<tr>
+<th align="left"><strong>#</strong></th>
+<th align="left"><strong>FATHER</strong></th>
+<th align="left" colspan="2"><strong>FIRST MEETING</strong></th>
+<th align="left"><strong>SON</strong></th>
+<th align="left"><strong>FIRST MEETING</strong></th>
+<th align="left"><strong>NOTES</strong></th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left"><strong>1</strong></td>
+<td align="left">Rick Brunson</td>
+<td align="left" colspan="2">12/20/2003</td>
+<td align="left">Jalen Brunson</td>
+<td align="left" colspan="2">10/31/2018</td>
+</tr>
+
+<tr>
+<td align="left"><strong>2</strong></td>
+<td align="left">Anthony Carter</td>
+<td align="left" colspan="2">12/21/2004</td>
+<td align="left">Devin Carter*</td>
+<td align="left">-</td>
+<td align="left">LeBron (Injured) did not play on 10/26/25. Eventually will play in 2026</td>
+</tr>
+
+<tr>
+<td align="left"><strong>3</strong></td>
+<td align="left">Dale Davis</td>
+<td align="left" colspan="2">11/1/2003</td>
+<td align="left">Trayce Jackson-Davis</td>
+<td align="left" colspan="2">1/27/2024</td>
+</tr>
+
+<tr>
+<td align="left"><strong>4</strong></td>
+<td align="left">Adrian Griffin</td>
+<td align="left" colspan="2">2/25/2004</td>
+<td align="left">AJ Griffin</td>
+<td align="left" colspan="2">12/30/2022</td>
+</tr>
+
+<tr>
+<td align="left"><strong>5</strong></td>
+<td align="left">Juwan Howard</td>
+<td align="left" colspan="2">12/25/2003</td>
+<td align="left">Jett Howard</td>
+<td align="left" colspan="2">11/4/2023</td>
+</tr>
+
+<tr>
+<td align="left"><strong>6</strong></td>
+<td align="left">Kenyon Martin</td>
+<td align="left" colspan="2">1/2/2004</td>
+<td align="left">Kenyon Martin Jr.</td>
+<td align="left" colspan="2">1/10/2021</td>
+</tr>
+
+<tr>
+<td align="left"><strong>7</strong></td>
+<td align="left">Gary Payton</td>
+<td align="left" colspan="2">1/12/2004</td>
+<td align="left">Gary Payton II</td>
+<td align="left" colspan="2">10/19/2021</td>
+</tr>
+
+<tr>
+<td align="left"><strong>8</strong></td>
+<td align="left">Scottie Pippen*</td>
+<td align="left" colspan="2">-</td>
+<td align="left">Scotty Pippen Jr.*</td>
+<td align="left">3/27/2024</td>
+<td align="left">Pippen only played 23 games; Scottie missed all 4 games with injury against Cleveland (12/20/03, 12/26/03, 3/1/04, 3/16/04)</td>
+</tr>
+
+<tr>
+<td align="left"><strong>9</strong></td>
+<td align="left">Glen Rice</td>
+<td align="left" colspan="2">1/18/2003</td>
+<td align="left">Glen Rice Jr.*</td>
+<td align="left">-</td>
+<td align="left">Glen Rice Jr. only played 18 NBA games in his career, he was DNP or Inactive for all games against Miami in 13-14. Same thing, was DNP or inactive for all games against Cleveland in 14-15</td>
+</tr>
+
+<tr>
+<td align="left"><strong>10</strong></td>
+<td align="left">Jason Richardson</td>
+<td align="left" colspan="2">1/15/2004</td>
+<td align="left">Jase Richardson*</td>
+<td align="left">-</td>
+<td align="left">Jase gets significant minutes he should be playing against LeBron either on 2/24/26 or 3/21/26</td>
+</tr>
+
+<tr>
+<td align="left"><strong>11</strong></td>
+<td align="left">Glenn Robinson</td>
+<td align="left" colspan="2">12/19/2003</td>
+<td align="left">Glenn Robinson III</td>
+<td align="left" colspan="2">12/23/2014</td>
+</tr>
+
+<tr>
+<td align="left"><strong>12</strong></td>
+<td align="left">Jabari Smith</td>
+<td align="left" colspan="2">12/22/04</td>
+<td align="left">Jabari Smith Jr.</td>
+<td align="left" colspan="2">1/16/2023</td>
+</tr>
+
+<tr>
+<td align="left"><strong>13</strong></td>
+<td align="left">Gary Trent</td>
+<td align="left" colspan="2">11/21/2003</td>
+<td align="left">Gary Trent Jr.</td>
+<td align="left" colspan="2">12/28/2019</td>
+</tr>
+
+<tr>
+<td align="left"><strong>14</strong></td>
+<td align="left">Samaki Walker</td>
+<td align="left" colspan="2">4/9/2004</td>
+<td align="left">Jabari Walker</td>
+<td align="left" colspan="2">11/30/2022</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+</tbody>
+</table>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nvepbol" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Clear_Shoulder_6492</div>
+        <div>63 | 4 hours ago </div>
+      </div>
+      <label for="nvepbol" class="commentText"><p>You missed LeBron/Bronny</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nves3hz" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Zigxy | Pacers Bandwagon</div>
+        <div>45 | 4 hours ago </div>
+      </div>
+      <label for="nves3hz" class="commentText"><p>Forgot LeBron/Toronto</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nvewsn1" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>MrFishAndLoaves | Pelicans</div>
+        <div>14 | 3 hours ago </div>
+      </div>
+      <label for="nvewsn1" class="commentText"><p>Luka/Booker</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nvf5ywj" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>TotalEmployment9996 | Raptors</div>
+        <div>4 | 2 hours ago </div>
+      </div>
+      <label for="nvf5ywj" class="commentText"><p>LDIDBF</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nveuav6" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>WearyTranslator3338</div>
+        <div>41 | 3 hours ago </div>
+      </div>
+      <label for="nveuav6" class="commentText"><p>These are some lazy naming of their children.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nvewtw0" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>submachinegun1 | Raptors</div>
+        <div>2 | 3 hours ago </div>
+      </div>
+      <label for="nvewtw0" class="commentText"><p>Having something to pass on to your children is good</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nveywkx" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Character-Pattern505 | Timberwolves</div>
+        <div>13 | 3 hours ago </div>
+      </div>
+      <label for="nveywkx" class="commentText"><p>A middle name is fine if you must.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nvfl43t" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>hoopaholik91 | West</div>
+        <div>1 | 33 minutes ago </div>
+      </div>
+      <label for="nvfl43t" class="commentText"><p>The genetics is a pretty good one too</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="nvexztn" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>remonnoki | NBA</div>
+        <div>9 | 3 hours ago </div>
+      </div>
+      <label for="nvexztn" class="commentText"><p>Something, sure. Name no. Giving someone your own name is just simply an ego thing.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nvfam9y" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>JeanRalfio | Timberwolves</div>
+        <div>11 | an hour ago </div>
+      </div>
+      <label for="nvfam9y" class="commentText"><p>I listen to the podcast, Crime In Sports and like 80% of the athletes they cover are a Jr or named their kids that.</p>
+
+<p>Definitely an ego thing.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="nvezvnd" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ifuckwithit | Spurs</div>
+        <div>2 | 3 hours ago </div>
+      </div>
+      <label for="nvezvnd" class="commentText"><p>Lmao what - people have passing down names since the beginning of time. It’s not always a self centered move</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nvf0g7a" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>zizzor23 | Pelicans</div>
+        <div>13 | 3 hours ago </div>
+      </div>
+      <label for="nvf0g7a" class="commentText"><p>The dude probably has a last name he got from his dad too. How gay is it to take ANOTHER MAN’s last name</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="nvf0v44" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>rwoteit | Vancouver Grizzlies</div>
+        <div>0 | 3 hours ago </div>
+      </div>
+      <label for="nvf0v44" class="commentText"><p>So what did people only develop the selfcentered gene in the last 100 years lmbo what else could it be the only way its not if it was from someone else too. </p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="nvfdshh" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>jefe_hook</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="nvfdshh" class="commentText"><p>Well you gave them your genes the moment you create them</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="nvfqk0w" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>aninstituteforants</div>
+        <div>1 | 4 minutes ago </div>
+      </div>
+      <label for="nvfqk0w" class="commentText"><p>Isn&rsquo;t that what your last name is for.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nveqhim" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>fuzzythinker | Nuggets</div>
+        <div>7 | 4 hours ago </div>
+      </div>
+      <label for="nveqhim" class="commentText"><p>You forgot Luka/Booker</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nverypz" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Narrow-Formal-6283</div>
+        <div>4 | 4 hours ago </div>
+      </div>
+      <label for="nverypz" class="commentText"><p>HHAHAHHAHAHA</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nvepk0d" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>heat_fan_ | Raptors</div>
+        <div>8 | 4 hours ago </div>
+      </div>
+      <label for="nvepk0d" class="commentText"><p>LeLongivity </p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nvf0qzm" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ElisabethShooIn</div>
+        <div>3 | 3 hours ago </div>
+      </div>
+      <label for="nvf0qzm" class="commentText"><p>LDIDBF</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nvf6kb3" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>CutLonzosHair2017 | LAL</div>
+        <div>2 | 2 hours ago </div>
+      </div>
+      <label for="nvf6kb3" class="commentText"><p>Say Bronny has a kid in the next two years. And someone in the next two draft classes becomes a 20 year vet. It is possible that they’d have played against 3 generations of LeBron James’s family.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nvf0svg" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>KenTrotts | Magic</div>
+        <div>1 | 3 hours ago </div>
+      </div>
+      <label for="nvf0svg" class="commentText"><p>Tim Hardaways too, no?</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nvf3ady" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>DerGovernator</div>
+        <div>2 | 3 hours ago </div>
+      </div>
+      <label for="nvf3ady" class="commentText"><p>The dad retired in 2003, before LeBron got drafted.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="nvf3ixg" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>sarithe | Hornets</div>
+        <div>2 | 3 hours ago </div>
+      </div>
+      <label for="nvf3ixg" class="commentText"><p>Nope. Just missed Hardaway Sr. by a season. Hardaway retired at the end of the 2001-2002 season, but did make a brief comeback at the end of 2002-2003 season. Lebron&rsquo;s rookie year was 2003-2004.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="nvf3o32" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Narrow-Formal-6283</div>
+        <div>1 | 3 hours ago </div>
+      </div>
+      <label for="nvf3o32" class="commentText"><p>LeBron didn&rsquo;t get to play with Hardaway Sr; he retired months before LeBron got drafted</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nvf59oa" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>KenTrotts | Magic</div>
+        <div>1 | 2 hours ago </div>
+      </div>
+      <label for="nvf59oa" class="commentText"><p>Makes sense</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nvf79ln" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>politicians_are_evil</div>
+        <div>1 | 2 hours ago </div>
+      </div>
+      <label for="nvf79ln" class="commentText"><p>Didn&rsquo;t know about Samaki walker&hellip;he was very crappy but his son is not lol.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nvfmcbd" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>afjecj | Magic</div>
+        <div>1 | 26 minutes ago </div>
+      </div>
+      <label for="nvfmcbd" class="commentText"><p>Holy shit samaki walker is such a throwback. Fun fact, he played 10 seasons and I Lt played more than 45 games in 4 of them</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nvfn6y2" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>cambiumkx</div>
+        <div>1 | 22 minutes ago </div>
+      </div>
+      <label for="nvfn6y2" class="commentText"><p>Imagine telling your kid about LeBron, only to have them play against lebron on the court…</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nvf98xp" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>IceyMagoo</div>
+        <div>-1 | 2 hours ago </div>
+      </div>
+      <label for="nvf98xp" class="commentText"><p>Something that has been a bit unfortunate is the game progressively becomes more of a family business, it seems like more and more players that make the league come from NBA families.
+Parentage/familial ties does not mean a player who doesn&rsquo;t deserve to make the league will make the league but they will have greater access to training and opportunities in their formative.</p>
+
+<p>We still see &lsquo;NBA children&rsquo; who do not have the drive to play the game well e.g Dylan Harper&rsquo;s brother is nowhere near as good as him, MJ&rsquo;s kids weren&rsquo;t good at basketball, Seth is an NBA player but he&rsquo;s not close to his father&rsquo;s playing ability let alone his brothers.</p>
+
+<p>Sports do a heavy genetic bias, moreso in basketball arguably as players need to have outlier height. MLB/NFL/Football average height when combined (all 3 player pools together) is ~6ft1, for the NBA it is ~6ft7.
+Furthermore a 2016 report said that almost half of the NBA were related to Pro/National or D1 athletes, compared to only ~18% for NFL &amp; 15% for MLB.</p>
+
+<p>There have always been NBA families, even all time stars like Kobe &amp; Steph who have reached immeasurable heights had NBA parents &amp; there is no way to guarantee a player could have the drive/will &amp; talent to become as amazing as the game as they have, even with the access they would have to the tools and secrets to success.</p>
+
+<p>Shaq, MJ, Bron, Rick Barry, Ewing, Payton, Pippen, Walton, Stockton are all top 75 calibre players and none of their kids have been able to replicate their impactful play.</p>
+
+<p>Although initially I was surprised by the figures of familial ties, I was even more shocked to find out even more of the players with NBA parents. Here&rsquo;s a list of some whose NBa parentage may not be as well-known. Note. That this is only for those who have NBA parents that I was unaware of &amp; the list for other less direct family ties is much much bigger.</p>
+
+<p>Devin Booker, Andrew Wiggins, Jalen Rose, Nick Claxton, Kiki Vandeweghe, Gary Trent Jr, Reed Sheppard, Pistol Pete, Luke Kornet, Kevin Love, Al Horford, Darius Garland, Jae Crowder, Mike Bibby &amp; Cole Anthony</p>
+
+<p>Maybe my initial assessment was invalid, I think my hypothesis was swayed by the other issues of the increasing cost of basketball camps, tryouts &amp; training, which has lead to impoverished upcoming players not being able to get the same access to some of these opportunities as those with more affluent backgrounds. Even then, a 2013 study has shown that basketball players are more likely to come from wealthier, two parent homes as opposed to the old adage of playing for a chance to escape poverty.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nvfeezc" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>HandsomeGemini | Warriors</div>
+        <div>-3 | an hour ago </div>
+      </div>
+      <label for="nvfeezc" class="commentText"><p>You&rsquo;re missing Curry and his son Chris Paul.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
