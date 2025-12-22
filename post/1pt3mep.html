@@ -1,0 +1,805 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.selfPostImage {
+  width: 100%;
+  height: auto;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/nba/comments/1pt3mep/kelel_ware_over_his_last_three_games_247_pts_150/"><p>Kel&rsquo;el Ware over his last three games: 24.7 PTS | 15.0 REB | 1.7 BLK | 71 FG% | 75 3P% | 80% FT | 87 TS% | 30.8 MIN — Has moved up to THIRD in the NBA in 3P%</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <p><strong>Kel&rsquo;el Ware over his last three games:</strong></p>
+
+<ul>
+<li>24.7 PTS | 15.0 REB | 1.7 BLK</li>
+<li>71 FG% | 75 3P% | 80% FT | 87 TS%</li>
+<li>30.8 MIN</li>
+</ul>
+
+<p><strong>vs NYK:</strong></p>
+
+<ul>
+<li>28 PTS | 19 REB | 1 STL</li>
+<li><sup>11</sup>&frasl;<sub>15</sub> FG | <sup>5</sup>&frasl;<sub>7</sub> 3FG | <sup>1</sup>&frasl;<sub>2</sub> FT | 88 TS%</li>
+<li>28 MIN</li>
+</ul>
+
+<p><strong>vs BOS:</strong></p>
+
+<ul>
+<li>24 PTS | 14 REB | 1 BLK</li>
+<li><sup>8</sup>&frasl;<sub>12</sub> FG | <sup>6</sup>&frasl;<sub>7</sub> 3FG | <sup>2</sup>&frasl;<sub>2</sub> FT | 93 TS%</li>
+<li>28 MIN</li>
+</ul>
+
+<p><strong>vs BKN:</strong></p>
+
+<ul>
+<li>22 PTS | 12 REB | 4 BLK</li>
+<li><sup>8</sup>&frasl;<sub>11</sub> FG | <sup>1</sup>&frasl;<sub>2</sub> 3FG | <sup>5</sup>&frasl;<sub>6</sub> FT | 81 TS%</li>
+<li>30 MIN</li>
+</ul>
+
+<p><strong>After last night&rsquo;s game, Kel&rsquo;el Ware has now moved up to THIRD in the NBA in 3P% this season (48% 3P).</strong></p>
+
+<p><a href="https://www.statmuse.com/nba/ask?q=kel%27el+ware+last+3+games" target="_blank">Kel&rsquo;el Ware Stats</a>, <a href="https://www.nba.com/stats/leaders?StatCategory=FG3_PCT&amp;PerMode=Totals" target="_blank">3P% Leaders</a></p>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nve2atd" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>WordTimely8559 | Lakers</div>
+        <div>23 | an hour ago </div>
+      </div>
+      <label for="nve2atd" class="commentText"><p>Dude is him</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nve3m3r" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>TheRealJohnMara | Heat</div>
+        <div>10 | an hour ago </div>
+      </div>
+      <label for="nve3m3r" class="commentText"><p>Kel&rsquo;him Ware</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nve6czi" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>LateGreat_MalikSealy | Wizards</div>
+        <div>9 | an hour ago </div>
+      </div>
+      <label for="nve6czi" class="commentText"><p>You could see the steady progression in his focus…Learning to pick his spot and be confident in it..</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nve8vnd" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>JoJonesy | Celtics</div>
+        <div>10 | 37 minutes ago </div>
+      </div>
+      <label for="nve8vnd" class="commentText"><p>he’s really good, man. obviously his shooting is gonna come back down to earth a bit, but what’s really important is that he’s not afraid to take 5-6 threes a game— if he keeps doing that I love his fit with Bam long-term</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nve98v1" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>TheRealBrownPudding | Clippers</div>
+        <div>6 | 35 minutes ago </div>
+      </div>
+      <label for="nve98v1" class="commentText"><p>That’s my Humble Beast</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nve48lo" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>thepeachgod | Celtics</div>
+        <div>3 | an hour ago </div>
+      </div>
+      <label for="nve48lo" class="commentText"><p>He’s the only one showing heart on that team every night</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nve4sdn" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>EnochofPottsfield | Heat</div>
+        <div>16 | an hour ago </div>
+      </div>
+      <label for="nve4sdn" class="commentText"><p>Davion slander won&rsquo;t he tolerated</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nve582u" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>thepeachgod | Celtics</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="nve582u" class="commentText"><p>That’s fair, I forgot he existed cause he missed the Boston game</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nve9x78" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>DeAndre_ROY_Ayton | Suns</div>
+        <div>1 | 32 minutes ago </div>
+      </div>
+      <label for="nve9x78" class="commentText"><p>You would imagine he finally keeps that starting spot</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nvefiaz" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>WorthExcellent6628</div>
+        <div>1 | 4 minutes ago </div>
+      </div>
+      <label for="nvefiaz" class="commentText"><p>How is his defense? These sum crazy stats. If he plays good defense, I don’t see how he isn’t a top 7 center at the least.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nve3f7v" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>WhoUCuh</div>
+        <div>0 | an hour ago </div>
+      </div>
+      <label for="nve3f7v" class="commentText"><p>Heat fans say they wouldn&rsquo;t trade him for Giannis.</p>
+
+<p>So at some point I&rsquo;m expecting him to be a top 5 player.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nve5n9h" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Muted_Dog7317 | Heat</div>
+        <div>12 | an hour ago </div>
+      </div>
+      <label for="nve5n9h" class="commentText"><p>I don’t think he will ever be as good as prime Giannis but part of the calculation is your trading a 21 year old for a 31 year old who may not have a lot of prime years left.</p>
+
+<p>I’d do Ware plus salary filler and a couple picks for Giannis, but not much else. That may not be enough for the Bucks but I don’t think it’s worth it to trade a haul for Giannis and not have enough left to contend.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nve9oqo" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>JoJonesy | Celtics</div>
+        <div>4 | 33 minutes ago </div>
+      </div>
+      <label for="nve9oqo" class="commentText"><p>Yeah, it’s not about whether Ware + Herro + whatever will ever be better than Giannis in aggregate, it’s about whether Giannis + whatever the Heat have left after the trade constitutes a real top-level contender. I’m not sure it does.</p>
+
+<p>Like, let’s say the deal is Herro + Ware + Jaquez + 2-3 picks. Here’s your depth chart:</p>
+
+<ul>
+<li>PG - Davion Mitchell</li>
+<li>SG - Norm Powell</li>
+<li>SF - Andrew Wiggins</li>
+<li>PF - Giannis</li>
+<li>C - Bam</li>
+<li>Bench - Larson, Fontecchio, Jovic, Smith</li>
+</ul>
+
+<p>…honestly, I like that a lot better than I thought I would, but is it the best team in the East? I kind of don’t think so. The defense is nasty, but you’re relying a lot on Davion and Wiggins for tertiary ballhandling, and as good as Norm’s been I’m not sure he’s a championship-caliber #2 guy. They’d have the best player in a matchup with the Knicks, but I don’t think they’re the better team.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nvefapi" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Muted_Dog7317 | Heat</div>
+        <div>1 | 5 minutes ago </div>
+      </div>
+      <label for="nvefapi" class="commentText"><p>I don’t think it’s good enough. The defense would be elite and Spo could go on a run with that group but there is no consistent spacing outside of the Powell on the team and no shot creation coming off the bench. Fontechio and Jovic have been awful lately and shouldn’t be rotation players on a contender. Jakuciones is talented and could maybe provide some ball handling and playmaking but he’s a young rookie who probably isn’t ready yet</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="nve97tt" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>WhoUCuh</div>
+        <div>1 | 36 minutes ago </div>
+      </div>
+      <label for="nve97tt" class="commentText"><p>That&rsquo;s fair</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="nve4za6" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Obvious_Young_6169</div>
+        <div>4 | an hour ago </div>
+      </div>
+      <label for="nve4za6" class="commentText"><p>I mean it wouldnt just be him, hypothetically speaking if itds a 1 for 1 then yes of course you do it</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nve3yry" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>OblivionNA | Heat</div>
+        <div>-5 | an hour ago </div>
+      </div>
+      <label for="nve3yry" class="commentText"><p>It feels crazy to say but his potential is pretty much Wemby offensively in my eyes if he puts it all together. Wemby just put it all together earlier.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nve4n7v" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Obvious_Young_6169</div>
+        <div>6 | an hour ago </div>
+      </div>
+      <label for="nve4n7v" class="commentText"><p>Wemby on defense alone will make Wares potential not Wemby tbh coming from a heat fan</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="nve4ozd" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Lie2gether | Heat</div>
+        <div>6 | an hour ago </div>
+      </div>
+      <label for="nve4ozd" class="commentText"><p>Slow down my friend</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="nve717g" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>MadPatagonian | Heat</div>
+        <div>4 | an hour ago </div>
+      </div>
+      <label for="nve717g" class="commentText"><p>Whoa now relax.</p>
+
+<p>He’s a stud and ridiculously talented and should not be traded.</p>
+
+<p>He will not be a generational player like Wemby, though.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nveclpc" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>JoJonesy | Celtics</div>
+        <div>1 | 19 minutes ago </div>
+      </div>
+      <label for="nveclpc" class="commentText"><p>I’ve heard people call him “Temu Wemby” and honestly I think his potential is higher than that. He’s not quite as good, but he’s more than a cheap knockoff.</p>
+
+<p>…Best Buy Wemby? Aldi’s Wemby? He’s in Miami, so maybe Publix Wemby? You get what I mean</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nved2fu" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>elbenji | MIA</div>
+        <div>1 | 16 minutes ago </div>
+      </div>
+      <label for="nved2fu" class="commentText"><p>Publix brand Wemby is a great one ngl.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="nve78y2" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Lobster15s | Heat</div>
+        <div>3 | an hour ago </div>
+      </div>
+      <label for="nve78y2" class="commentText"><p>He ain&rsquo;t Wemby but his ceiling is generational regardless.  That&rsquo;s good enough for me.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="nve7euu" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>WheeinSpace</div>
+        <div>0 | an hour ago </div>
+      </div>
+      <label for="nve7euu" class="commentText"><p>Crazy take. Ware has like zero impact on a game defensively.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nve8cuc" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>AashyLarry | MIA</div>
+        <div>1 | 40 minutes ago </div>
+      </div>
+      <label for="nve8cuc" class="commentText"><p>KAT 2 pts, 6 reb and MitchRob 9 pts 7 reb last night btw</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nve8xz5" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>EfficiencyFew6864 | Heat</div>
+        <div>2 | 37 minutes ago </div>
+      </div>
+      <label for="nve8xz5" class="commentText"><p>I like Ware but Bam was the one locking down KAT</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nve94tu" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>AashyLarry | MIA</div>
+        <div>1 | 36 minutes ago </div>
+      </div>
+      <label for="nve94tu" class="commentText"><p>Both did. Ware played a lot of minutes without Bam in the lineup.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="nved424" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>WheeinSpace</div>
+        <div>1 | 16 minutes ago </div>
+      </div>
+      <label for="nved424" class="commentText"><p>Wiggins and Bam were the ones guarding KAT lol. Ware really doesn&rsquo;t do anything on defense except chase blocks and that&rsquo;s Spo&rsquo;s biggest reason for not playing him. Did you not see the Celtics game? They were targeting him the way teams target Tyler.</p>
+
+<p>I love everything he&rsquo;s doing offensively of course but his defense needs a TON of work.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nvednp3" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>AashyLarry | MIA</div>
+        <div>1 | 13 minutes ago </div>
+      </div>
+      <label for="nvednp3" class="commentText"><p>Ware’s weakness is with fast guards. He had trouble with Derrick White in the Boston game, but he is good matching up with big men. Saying he “does nothing” on defense is ridiculous.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
