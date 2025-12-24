@@ -1,0 +1,944 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.selfPostImage {
+  width: 100%;
+  height: auto;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/nba/comments/1pu926k/sportradar_lowest_fg_allowed_as_the_defender_on/"><p>[Sportradar] Lowest FG% allowed as the defender on shots in the paint (min. 100 FG defended in paint): Hartenstein (44.6%), Huff (44.9%), Stewart (44.9%), Holmgren (45.3%), White (46.9%), Gobert (47.1%), Davis (48.6%), Porzingis (49.1%), Wembanyama (49.2%), Queta (49.7%), Zubac (49.8%), Flagg (50%)</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <p><a href="https://i.imgur.com/wr3pP7I.png" target="_blank">Source: Sportradar (Picture)</a></p>
+
+<p>Didn&rsquo;t include in the title but the stat specifies &ldquo;closest&rdquo; defender</p>
+
+<p>&amp;nbsp;</p>
+
+<ol>
+<li><p>Isaiah Hartenstein (44.6%)</p></li>
+
+<li><p>Jay Huff (44.9%)</p></li>
+
+<li><p>Isaiah Stewart (44.9%)</p></li>
+
+<li><p>Chet Holmgren (45.3%)</p></li>
+
+<li><p>Derrick White (46.9%)</p></li>
+
+<li><p>Rudy Gobert (47.1%)</p></li>
+
+<li><p>Anthony Davis (48.6%)</p></li>
+
+<li><p>Kristaps Porzingis (49.1%)</p></li>
+
+<li><p>Victor Wembanyama (49.2%)</p></li>
+
+<li><p>Neemias Queta (49.7%)</p></li>
+
+<li><p>Ivica Zubac (49.8%)</p></li>
+
+<li><p>Cooper Flagg (50.0%)</p></li>
+
+<li><p>Ryan Kalkbrenner (50.6%)</p></li>
+
+<li><p>Wendell Carter Jr. (50.7%)</p></li>
+
+<li><p>Draymond Green (50.7%)</p></li>
+
+<li><p>Donovan Clingan (50.7%)</p></li>
+</ol>
+
+<p>Am I only posting this because Derrick White is the lone guard on this list? Yes.</p>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nvmtw63" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>CrissCrossAppleSos</div>
+        <div>30 | 42 minutes ago </div>
+      </div>
+      <label for="nvmtw63" class="commentText"><p>As a fellow Derrick White Supremacist, I condone this</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nvmufn0" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Main_Pop_7565</div>
+        <div>11 | 39 minutes ago </div>
+      </div>
+      <label for="nvmufn0" class="commentText"><p>You condone <em>white supremacy</em>?</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nvmzth0" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Kaladin_Depressed | Thunder</div>
+        <div>1 | 7 minutes ago </div>
+      </div>
+      <label for="nvmzth0" class="commentText"><p>The Derrick kind</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nvmusiz" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>BBallHunter | Thunder</div>
+        <div>19 | 37 minutes ago </div>
+      </div>
+      <label for="nvmusiz" class="commentText"><p>Hartenstein is absolutely elite.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nvmyb0p" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>HOFredditor | Warriors</div>
+        <div>1 | 16 minutes ago </div>
+      </div>
+      <label for="nvmyb0p" class="commentText"><p>I still remember playing him as the goofy sophomore in 2k20 against the rockets. He was so easy to score on. Idk what happened in 2023, but he really took off that first year in NY, became a very solid guy in 2024 and just exploded when he came to your team. I&rsquo;d have loved to pick him up in 2021 when Gasol decided to go to the Lakers and Wiseman was already hurt and couldn&rsquo;t play.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nvmty99" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>heat_fan_ | Raptors</div>
+        <div>8 | 42 minutes ago </div>
+      </div>
+      <label for="nvmty99" class="commentText"><p>Flagg is only 19 and he&rsquo;s a dawg already </p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nvmv7mu" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>go0sKC | Thunder</div>
+        <div>15 | 35 minutes ago </div>
+      </div>
+      <label for="nvmv7mu" class="commentText"><p>Like Chet and Hart, he and Davis benefit each other in this stat </p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="nvmxj2j" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>UnreasonableHater | Lakers</div>
+        <div>1 | 21 minutes ago </div>
+      </div>
+      <label for="nvmxj2j" class="commentText"><p>Thanks u/heat<em>fan</em></p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nvmw80k" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Professional-Pen2928 | Australia</div>
+        <div>1 | 28 minutes ago </div>
+      </div>
+      <label for="nvmw80k" class="commentText"><p>Second year in a row of Stew being at the top of this stat despite being a 6’8 centre.</p>
+
+<p>Hopefully he can keep up his 23 minute average so he can qualify for an all defensive team this time around.</p>
+
+<p>Still only 24 years old as well which is easy to forget considering he plays the role of vet for the younger guys he’s still technically apart of the Pistons young core.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nvmx6tb" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>MattPatriciasFUPA | Pistons</div>
+        <div>1 | 23 minutes ago </div>
+      </div>
+      <label for="nvmx6tb" class="commentText"><p>Also shooting 38.7% from 3.  He&rsquo;s an elite defender who can also stretch the floor and plays hard every game on a very reasonable contract.  Hope he starts getting the recognition he deserves and people realize how great he is instead of the normal &ldquo;but he&rsquo;s a meathead and all he does is fight!&rdquo; ignorant takes that are so prevalent.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nvmzlqa" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Diaxmond</div>
+        <div>1 | 8 minutes ago </div>
+      </div>
+      <label for="nvmzlqa" class="commentText"><p>Ever since he ran through the tunnels like a Xenomorph to go get LeBron I don’t think he’s beating the stereotypes 😭✌️</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="nvmz279" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Relo_bate</div>
+        <div>1 | 11 minutes ago </div>
+      </div>
+      <label for="nvmz279" class="commentText"><p>dude is legit ben wallace with dreads</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="nvmzqpm" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Several_Hour_347</div>
+        <div>1 | 7 minutes ago </div>
+      </div>
+      <label for="nvmzqpm" class="commentText"><p>Wait, he’s 24? I could have sworn he was 30+ 😂</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nvmukv6" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>go0sKC | Thunder</div>
+        <div>6 | 38 minutes ago </div>
+      </div>
+      <label for="nvmukv6" class="commentText"><p>We need to sit Chet and iHart until Q2 tonight </p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nvmwejm" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Dio-genies</div>
+        <div>1 | 27 minutes ago </div>
+      </div>
+      <label for="nvmwejm" class="commentText"><p>Derrick White is 6&rsquo;4, when you look at the rest of this list that makes this even more wild</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nvmxn04" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>noahlylesusa | Rockets</div>
+        <div>1 | 20 minutes ago </div>
+      </div>
+      <label for="nvmxn04" class="commentText"><p>Dude is an absolute dawg. I love me some White, and how much effort he gives every play.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nvmumnp" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>fireglz | Hawks</div>
+        <div>3 | 38 minutes ago </div>
+      </div>
+      <label for="nvmumnp" class="commentText"><p>God I miss our make-believe center.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nvmx3lh" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>mambamentality29</div>
+        <div>1 | 23 minutes ago </div>
+      </div>
+      <label for="nvmx3lh" class="commentText"><p>Wait what? I was told all Isaiah Stewart did was fight people 🤔</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nvmz2oc" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>preddevils6 | Grizzlies</div>
+        <div>1 | 11 minutes ago </div>
+      </div>
+      <label for="nvmz2oc" class="commentText"><p>My boy trip has been struggling on D this year. Need Edey back so badly.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nvmub84" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>[deleted]</div>
+        <div>-1 | 40 minutes ago </div>
+      </div>
+      <label for="nvmub84" class="commentText"><p>[deleted]</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nvmuwbh" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>The1Drumheller | Thunder</div>
+        <div>8 | 36 minutes ago </div>
+      </div>
+      <label for="nvmuwbh" class="commentText"><p>Don&rsquo;t blame the CBA for a rule that is over 40 years old at this point.  The Knicks only offered him a 2-year contract and did not acquire Hartenstein&rsquo;s Bird Rights.</p>
+
+<p>Your organization could have done the exact same thing the Thunder did by offering him a 2+1 contract with a Team Option.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nvmvi92" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>[deleted]</div>
+        <div>-4 | 33 minutes ago </div>
+      </div>
+      <label for="nvmvi92" class="commentText"><p>[deleted]</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nvmxtnd" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Medical_Sample2738</div>
+        <div>1 | 19 minutes ago </div>
+      </div>
+      <label for="nvmxtnd" class="commentText"><p>You shouldn’t be able to just resign guys without worrying about cap or cost, that removes half the skill of being a GM finding players, managing assets, negotiating and trading well.</p>
+
+<p>If anything players who resigned with a team after rookie contract or being drafted should get a cap reduction in terms of what they take up. Teams should be rewarded by developing guys and being smart in drafting or trading for them. But no team should get any extra favors for poaching away an already skilled or valuable player.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nvmyqov" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>[deleted]</div>
+        <div>1 | 13 minutes ago </div>
+      </div>
+      <label for="nvmyqov" class="commentText"><p>[deleted]</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nvmzvpp" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>44bottles | Thunder</div>
+        <div>1 | 6 minutes ago </div>
+      </div>
+      <label for="nvmzvpp" class="commentText"><p>You can still offer more than the early bird amount if you have the cap space, exactly like a free agent. The early bird amount just gives you an alternative if you are over the cap (or under by less than that early bird amount)</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="nvn0afb" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>The1Drumheller | Thunder</div>
+        <div>1 | 4 minutes ago </div>
+      </div>
+      <label for="nvn0afb" class="commentText"><p>You were restricted by a rule that&rsquo;s 40 years old.  The Knicks knew about the rule when they offered him his two-year contract - including how much they could potentially pay him in year three if they wanted to re-sign him.  Your organization undervalued him with his original contract.  That&rsquo;s their fault.  OKC had the cap space, correctly estimated Hartensteins&rsquo; value and impact to the team, came in swinging with an offer, and won a championship off it.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="nvmzq3z" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>TheBigBomma | Thunder</div>
+        <div>1 | 7 minutes ago </div>
+      </div>
+      <label for="nvmzq3z" class="commentText"><p>A 2 year deal is what any team would’ve given him…. Except the guy had a hot market and the Thunder forked out what a lot of redditors were calling an overpay at the time.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nvmzzth" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>[deleted]</div>
+        <div>1 | 6 minutes ago </div>
+      </div>
+      <label for="nvmzzth" class="commentText"><p>[deleted]</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nvn096t" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>TheBigBomma | Thunder</div>
+        <div>1 | 4 minutes ago </div>
+      </div>
+      <label for="nvn096t" class="commentText"><p>Oh right my bad</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="nvmuznt" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>budubum | Thunder</div>
+        <div>6 | 36 minutes ago </div>
+      </div>
+      <label for="nvmuznt" class="commentText"><p>Well he’s def about to leave us for the same reasons lol we can not afford him after this season</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nvmy0sz" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>mangabalanga | Thunder</div>
+        <div>1 | 18 minutes ago </div>
+      </div>
+      <label for="nvmy0sz" class="commentText"><p>That’s not a certainty like it was w the Knicks but I do dread his potential departure</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="nvmvksd" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>dameplsrunfromgrind</div>
+        <div>1 | 32 minutes ago </div>
+      </div>
+      <label for="nvmvksd" class="commentText"><p>The Clippers were actually the one who truly took the chance on and developed him</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nvmwreh" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>squabblegod</div>
+        <div>1 | 25 minutes ago </div>
+      </div>
+      <label for="nvmwreh" class="commentText"><p>yea, Hartenstein got on my radar as a high-impact player relative to minutes and salary when he was with the Clips </p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="nvmzfpm" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Relo_bate</div>
+        <div>1 | 9 minutes ago </div>
+      </div>
+      <label for="nvmzfpm" class="commentText"><p>he didn&rsquo;t really improve, he just fit better on the Thunder where he doesn&rsquo;t need to carry much defensive load</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="nvmzvn1" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>AlThorntonTruther | San Diego Clippers</div>
+        <div>1 | 6 minutes ago </div>
+      </div>
+      <label for="nvmzvn1" class="commentText"><p>The clippers found him. We just couldn&rsquo;t pay him first. (Or we chose Wall over him if he was willing to take a paycut)</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nvmxew4" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>noahlylesusa | Rockets</div>
+        <div>1 | 21 minutes ago </div>
+      </div>
+      <label for="nvmxew4" class="commentText"><p>I feel like this is a little misleading, Wemby a lot of times isn&rsquo;t on a man in particular, more just roaming around the paint, preventing drives and helping out wherever it is needed. That being said, credits to Flagg for being on here before he can drink alcohol</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nvmyaub" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>SASpursFan14 | Spurs</div>
+        <div>1 | 16 minutes ago </div>
+      </div>
+      <label for="nvmyaub" class="commentText"><p>Also players don’t even take shots near Wemby unless they know it’s not getting swatted. A lot of these attempts come after he’s already contested another shot and they get the easy putback.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
