@@ -1,0 +1,827 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.selfPostImage {
+  width: 100%;
+  height: auto;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/nba/comments/1pw92jb/westbrook_is_top_9_in_3fg_at_436_with_3pa_80/"><p>Westbrook is Top 9 in 3FG % at 43.6% with 3PA &amp;gt; 80 (Westbrook at 101 attempts) and Wide Open. His ranking is higher than Derrick White, Lamelo, Trey Murphy, Naz Reid, etc. Call him Wetbrook - his shot is Wet this year.</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <p>from <a href="https://www.nba.com/stats/players/shots-closest-defender?CF=FG3A*G*80&amp;CloseDefDistRange=6%20%20Feet%20-%20Wide%20Open&amp;PerMode=Totals&amp;dir=D&amp;sort=FG3_PCT" target="_blank">NBA.com</a></p>
+
+<table>
+<thead>
+<tr>
+<th align="left">Player</th>
+<th align="left">3PA</th>
+<th align="left">3P%</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">Reed Sheppard</td>
+<td align="left">81</td>
+<td align="left">53.1</td>
+</tr>
+
+<tr>
+<td align="left">Jamal Murray</td>
+<td align="left">90</td>
+<td align="left">50</td>
+</tr>
+
+<tr>
+<td align="left">Tyrese Maxey</td>
+<td align="left">143</td>
+<td align="left">46.2</td>
+</tr>
+
+<tr>
+<td align="left">Collin Gillespie</td>
+<td align="left">119</td>
+<td align="left">46.2</td>
+</tr>
+
+<tr>
+<td align="left">Lauri Markkanen</td>
+<td align="left">83</td>
+<td align="left">45.8</td>
+</tr>
+
+<tr>
+<td align="left">Cam Johnson</td>
+<td align="left">97</td>
+<td align="left">45.4</td>
+</tr>
+
+<tr>
+<td align="left">Grayson Allen</td>
+<td align="left">84</td>
+<td align="left">45.2</td>
+</tr>
+
+<tr>
+<td align="left">Josh Giddey</td>
+<td align="left">94</td>
+<td align="left">44.7</td>
+</tr>
+
+<tr>
+<td align="left">Russell Westbrook</td>
+<td align="left">101</td>
+<td align="left">43.6</td>
+</tr>
+</tbody>
+</table>
+<p>This is an impressive group for Westbrook to be in at high volume.</p>
+
+<p>It is possible to fix your shot in the NBA. We&rsquo;ve seen Jason Kidd become &ldquo;Ason&rdquo; back to &ldquo;Jason&rdquo; after fixing his shot.</p>
+
+<p>We gotta call Russell Westbrook - &ldquo;Wetbrook&rdquo; - take out the &ldquo;s&rdquo;. His shot is so Wet this year.</p>
+
+<p>Congrats to Josh Giddey also. He&rsquo;s become a reliable wide open 3 point shooter.</p>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nw1rr0g" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>A_MASSIVE_PERVERT | Mavericks</div>
+        <div>1 | 27 minutes ago </div>
+      </div>
+      <label for="nw1rr0g" class="commentText"><p>Honestly free him</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nw1s223" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>MainAd2728 | Washington Bullets</div>
+        <div>1 | 26 minutes ago </div>
+      </div>
+      <label for="nw1s223" class="commentText"><p>Nah he&rsquo;s perfect on the Kings. Very entertaining as a tank commander</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="nw1sla7" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Little_little_e</div>
+        <div>1 | 23 minutes ago </div>
+      </div>
+      <label for="nw1sla7" class="commentText"><p>Free him ? (You gonna be kidding 🥴)
+No one sign him until the Kings……</p>
+
+<p>And Russ is a great mentor to those rookies.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="nw1t2gz" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>lalakingmalibog | Mavericks</div>
+        <div>1 | 20 minutes ago </div>
+      </div>
+      <label for="nw1t2gz" class="commentText"><p>Russ for AD + Max Christie, who says no</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="nw1upjl" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>BerriesAndWhatElse | Kings</div>
+        <div>1 | 11 minutes ago </div>
+      </div>
+      <label for="nw1upjl" class="commentText"><p>He’s legitimately one of our best players.  I think DeMar and Keon are the only two players a contender could use though (Saboner is good enough too, but he’s too expensive).</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="nw1w5z7" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Ok-Reaction-6748 | Lakers</div>
+        <div>1 | 4 minutes ago </div>
+      </div>
+      <label for="nw1w5z7" class="commentText"><p>Come home Westbrook</p>
+
+<p>—LeBron</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nw1sxsu" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>SubcooledBoiling | NBA</div>
+        <div>1 | 21 minutes ago </div>
+      </div>
+      <label for="nw1sxsu" class="commentText"><p>Knew who OP was before checking the username lol</p>
+
+<p>Also, Lakers should consider trading for him</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nw1t9zf" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>JoJonesy | Celtics</div>
+        <div>1 | 19 minutes ago </div>
+      </div>
+      <label for="nw1t9zf" class="commentText"><p>like a phoenix from the ashes, u/MITWestbrook rises whenever Russ has a stretch of good games. honestly curious what they&rsquo;re gonna do once he retires</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="nw1wbt0" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Adventurous-Bee-5934 | Lakers</div>
+        <div>1 | 3 minutes ago </div>
+      </div>
+      <label for="nw1wbt0" class="commentText"><p>Read the title and immediately checked the username lmao</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nw1sklf" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Cool_Recognition_848</div>
+        <div>1 | 23 minutes ago </div>
+      </div>
+      <label for="nw1sklf" class="commentText"><p>I can’t believe people are back to saying he would be good on a contender. No contender wants him and he’s only doing ok this year because he has the ball so much for one of the worst teams in the league.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nw1sqgw" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>TP_Cornetto</div>
+        <div>1 | 22 minutes ago </div>
+      </div>
+      <label for="nw1sqgw" class="commentText"><p>He did fine last year too.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nw1ttuh" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Cool_Recognition_848</div>
+        <div>1 | 16 minutes ago </div>
+      </div>
+      <label for="nw1ttuh" class="commentText"><p>Westbrook in the playoffs last year
+11.7 PPG on 50.5 TS%, 2.6 APG, 2.3 TOs, 3.2 Fouls</p>
+
+<p>No contender is signing up for this. Do you know how I know this? Because no contender, including the team he was on last year, wanted Westbrook and he signed with the Kings.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="nw1u4n0" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>AreYouAPizzaGuy</div>
+        <div>1 | 15 minutes ago </div>
+      </div>
+      <label for="nw1u4n0" class="commentText"><p>Did so well last year, he was on his way to Asia until the kings offered the vet min.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="nw1w8po" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Ok-Reaction-6748 | Lakers</div>
+        <div>1 | 3 minutes ago </div>
+      </div>
+      <label for="nw1w8po" class="commentText"><p>YOU DOTH PROTEST TOO MUCH</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nw1ryw1" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Ilikesporks_ | Lakers</div>
+        <div>1 | 26 minutes ago </div>
+      </div>
+      <label for="nw1ryw1" class="commentText"><p>he still&rsquo;s not respected as a shooter cause of how wide open he is but good for him</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nw1rppt" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>heat_fan_ | Raptors</div>
+        <div>1 | 27 minutes ago </div>
+      </div>
+      <label for="nw1rppt" class="commentText"><p>A contender could absolutely use him </p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nw1rw65" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>MainAd2728 | Washington Bullets</div>
+        <div>1 | 26 minutes ago </div>
+      </div>
+      <label for="nw1rw65" class="commentText"><p>Get him on the Lakers cuz that would be funny</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nw1w8pu" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>brnccnt7</div>
+        <div>1 | 3 minutes ago </div>
+      </div>
+      <label for="nw1w8pu" class="commentText"><p>Just what they need, more guys who dominate the ball and don’t do anything off ball</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="nw1tv5x" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Huge_Cost_870</div>
+        <div>1 | 16 minutes ago </div>
+      </div>
+      <label for="nw1tv5x" class="commentText"><p>please be serious</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nw1rtrw" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>LordWemby | Spurs</div>
+        <div>1 | 27 minutes ago </div>
+      </div>
+      <label for="nw1rtrw" class="commentText"><p>That’s pretty damn good, good on Russ for hitting the open buckets. </p>
+
+<p>(that’s no sarcasm btw LOL, I just saw how it could look like that)</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nw1t87e" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>lalakingmalibog | Mavericks</div>
+        <div>1 | 19 minutes ago </div>
+      </div>
+      <label for="nw1t87e" class="commentText"><blockquote>
+<p>We gotta call Russell Westbrook - &ldquo;Wetbrook&rdquo;</p>
+
+<p>His shot is so Wet this year.</p>
+</blockquote>
+
+<p>bars</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nw1tjah" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Fun-Piglet-7007 | Lakers</div>
+        <div>1 | 18 minutes ago </div>
+      </div>
+      <label for="nw1tjah" class="commentText"><p>I&rsquo;m pretty sure Westbrook led the league in three-point percentage shooting the second half of one of his seasons in Washington.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nw1tt8f" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>kungfoojesus</div>
+        <div>1 | 16 minutes ago </div>
+      </div>
+      <label for="nw1tt8f" class="commentText"><p>Name a player more hot and cold than Westbrook. I’ll wait</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nw1webd" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Ok-Reaction-6748 | Lakers</div>
+        <div>1 | 3 minutes ago </div>
+      </div>
+      <label for="nw1webd" class="commentText"><p>Papa Thermodynamics</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nw1ulnx" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>WillingandGable | Mavericks</div>
+        <div>1 | 12 minutes ago </div>
+      </div>
+      <label for="nw1ulnx" class="commentText"><p>Was wondering where my King has been at. Good to see him posting this season</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nw1vrzr" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Remarkable_Fun440</div>
+        <div>1 | 6 minutes ago </div>
+      </div>
+      <label for="nw1vrzr" class="commentText"><p>he shooting wide open shots, nobody concerned about him lol</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nw1wg8l" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Ok-Reaction-6748 | Lakers</div>
+        <div>1 | 2 minutes ago </div>
+      </div>
+      <label for="nw1wg8l" class="commentText"><p>Sun Tzu level strategy erupting</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nw1vxle" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Ok-Reaction-6748 | Lakers</div>
+        <div>1 | 5 minutes ago </div>
+      </div>
+      <label for="nw1vxle" class="commentText"><p>FIX ME RUSS</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nw1w3ao" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Ok-Reaction-6748 | Lakers</div>
+        <div>1 | 4 minutes ago </div>
+      </div>
+      <label for="nw1w3ao" class="commentText"><p>Lakers could use some of that right about now :(</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
