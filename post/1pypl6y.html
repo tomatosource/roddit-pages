@@ -1,0 +1,1109 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.selfPostImage {
+  width: 100%;
+  height: auto;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/nba/comments/1pypl6y/oc_we_always_say_jokic_secures_the_bag_for_his/"><p>[OC] We always say Jokic secures the bag for his teammates. I looked at it and found who NEEDS bag-securing shooters most</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <p>We all talk about how Nikola Jokic gets his teammates PAID. And how some of them move on to brick playing for other teams (shoutout KCP). Now as a Deni Avdija stan the amount of assists his teammates are fumbling got me to flip the question: which of the top playmakers are creating tons of opportunities that their teammates are bricking?</p>
+
+<p>If you&rsquo;re a shooter looking to secure the bag, who should you try to play with?</p>
+
+<p>Disclaimer - I&rsquo;m not a stats wizard, and used some AI to crunch these numbers. The formulas used here are pretty basic and don&rsquo;t factor in advanced stuff like weights, shot difficulty, etc.</p>
+
+<h1 id="some-glossary-first">Some glossary first</h1>
+
+<table>
+<thead>
+<tr>
+<th align="left">Stat</th>
+<th align="left">Definition</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left"><strong>PA</strong> (Potential Assists)</td>
+<td align="left">Any pass to a teammate who shoots within 1 dribble of receiving the ball</td>
+</tr>
+
+<tr>
+<td align="left"><strong>ACR%</strong> (Assist Conversion Rate)</td>
+<td align="left">Percentage of PA actually converted</td>
+</tr>
+
+<tr>
+<td align="left"><strong>Wasted</strong></td>
+<td align="left">Number of PA that didn&rsquo;t go in</td>
+</tr>
+
+<tr>
+<td align="left"><strong>exWasted</strong></td>
+<td align="left">Expected Wasted at league average ACR%</td>
+</tr>
+
+<tr>
+<td align="left"><strong>SMH</strong> (Shots Missed by Homies)</td>
+<td align="left">Wasted minus exWasted - essentially how many more/less AST you would&rsquo;ve had at league avg</td>
+</tr>
+
+<tr>
+<td align="left"><strong>BAG</strong> (literally bag)</td>
+<td align="left">Where to get your bag. Average rank of PA/Wasted/SMH</td>
+</tr>
+</tbody>
+</table>
+
+<h1 id="the-bag-rank">The BAG Rank</h1>
+
+<p><strong>BAG</strong> tells you who shooters should want to play with if they want to get paid.</p>
+
+<p>It&rsquo;s the average of three rankings:</p>
+
+<ol>
+<li><strong>PA Rank</strong> - who creates the most opportunities</li>
+<li><strong>Wasted Rank</strong> - who has the most wasted opportunities</li>
+<li><strong>SMH Rank</strong> - who has the most AST to gain from better shooters</li>
+</ol>
+
+<p>Showing better opportunity for a shooter to come in and feast.</p>
+
+<p>Example:</p>
+
+<ul>
+<li><strong>Josh Giddey</strong>: #3 in the league in PA and Wasted shots, but his teammates shoot slightly above average. BAG = 7.3 for solid #5.</li>
+<li><strong>Nikola Jokic</strong>: Creates tons of opportunities too, but his teammates already convert at elite rates. so while having almost the lowest SMH, the sheer amount of opportunities created and wasted still give him a #8 <strong>BAG</strong> of 10.7</li>
+</ul>
+
+<h1 id="the-results">The Results</h1>
+
+<p>Filtered by minimum 15 games, 10 potential assists per game - resulting in top 27 PA dishers. League avg ACR% = 54.7%. Table is sorted by BAG</p>
+
+<table>
+<thead>
+<tr>
+<th align="left">Rank</th>
+<th align="left">Player</th>
+<th align="left">Team</th>
+<th align="left">AST</th>
+<th align="left">PA</th>
+<th align="left">Wasted</th>
+<th align="left">exWasted</th>
+<th align="left">ACR%</th>
+<th align="left">SMH</th>
+<th align="left">BAG</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">1</td>
+<td align="left">Deni Avdija</td>
+<td align="left">POR</td>
+<td align="left">6.6</td>
+<td align="left">14.2</td>
+<td align="left">7.6</td>
+<td align="left">6.4</td>
+<td align="left">46.5%</td>
+<td align="left">+1.2</td>
+<td align="left">2.7</td>
+</tr>
+
+<tr>
+<td align="left">2</td>
+<td align="left">Cade Cunningham</td>
+<td align="left">DET</td>
+<td align="left">9.7</td>
+<td align="left">18.4</td>
+<td align="left">8.7</td>
+<td align="left">8.3</td>
+<td align="left">52.7%</td>
+<td align="left">+0.4</td>
+<td align="left">3.0</td>
+</tr>
+
+<tr>
+<td align="left">3</td>
+<td align="left">Shai Gilgeous-Alexander</td>
+<td align="left">OKC</td>
+<td align="left">6.5</td>
+<td align="left">13.3</td>
+<td align="left">6.8</td>
+<td align="left">6.0</td>
+<td align="left">48.9%</td>
+<td align="left">+0.8</td>
+<td align="left">5.3</td>
+</tr>
+
+<tr>
+<td align="left">4</td>
+<td align="left">Devin Booker</td>
+<td align="left">PHX</td>
+<td align="left">6.5</td>
+<td align="left">13.2</td>
+<td align="left">6.7</td>
+<td align="left">6.0</td>
+<td align="left">49.2%</td>
+<td align="left">+0.7</td>
+<td align="left">6.7</td>
+</tr>
+
+<tr>
+<td align="left">5</td>
+<td align="left">Josh Giddey</td>
+<td align="left">CHI</td>
+<td align="left">9.2</td>
+<td align="left">16.4</td>
+<td align="left">7.2</td>
+<td align="left">7.4</td>
+<td align="left">56.1%</td>
+<td align="left">-0.2</td>
+<td align="left">7.3</td>
+</tr>
+
+<tr>
+<td align="left">6</td>
+<td align="left">Jalen Johnson</td>
+<td align="left">ATL</td>
+<td align="left">8.4</td>
+<td align="left">14.8</td>
+<td align="left">6.4</td>
+<td align="left">6.7</td>
+<td align="left">56.8%</td>
+<td align="left">-0.3</td>
+<td align="left">9.3</td>
+</tr>
+
+<tr>
+<td align="left">7</td>
+<td align="left">Jamal Murray</td>
+<td align="left">DEN</td>
+<td align="left">6.8</td>
+<td align="left">13.0</td>
+<td align="left">6.2</td>
+<td align="left">5.9</td>
+<td align="left">52.3%</td>
+<td align="left">+0.3</td>
+<td align="left">9.7</td>
+</tr>
+
+<tr>
+<td align="left">8</td>
+<td align="left">Nikola Jokić</td>
+<td align="left">DEN</td>
+<td align="left">11.1</td>
+<td align="left">18.1</td>
+<td align="left">7.0</td>
+<td align="left">8.2</td>
+<td align="left">61.3%</td>
+<td align="left">-1.2</td>
+<td align="left">10.7</td>
+</tr>
+
+<tr>
+<td align="left">9</td>
+<td align="left">Andrew Nembhard</td>
+<td align="left">IND</td>
+<td align="left">6.9</td>
+<td align="left">13.0</td>
+<td align="left">6.1</td>
+<td align="left">5.9</td>
+<td align="left">53.1%</td>
+<td align="left">+0.2</td>
+<td align="left">10.7</td>
+</tr>
+
+<tr>
+<td align="left">10</td>
+<td align="left">Isaiah Collier</td>
+<td align="left">UTA</td>
+<td align="left">6.3</td>
+<td align="left">12.3</td>
+<td align="left">6.0</td>
+<td align="left">5.6</td>
+<td align="left">51.2%</td>
+<td align="left">+0.4</td>
+<td align="left">11.3</td>
+</tr>
+
+<tr>
+<td align="left">11</td>
+<td align="left">Darius Garland</td>
+<td align="left">CLE</td>
+<td align="left">6.7</td>
+<td align="left">12.7</td>
+<td align="left">6.0</td>
+<td align="left">5.8</td>
+<td align="left">52.8%</td>
+<td align="left">+0.2</td>
+<td align="left">12.0</td>
+</tr>
+
+<tr>
+<td align="left">12</td>
+<td align="left">Jalen Brunson</td>
+<td align="left">NYK</td>
+<td align="left">6.4</td>
+<td align="left">12.3</td>
+<td align="left">5.9</td>
+<td align="left">5.6</td>
+<td align="left">52.0%</td>
+<td align="left">+0.3</td>
+<td align="left">12.7</td>
+</tr>
+
+<tr>
+<td align="left">13</td>
+<td align="left">Tyrese Maxey</td>
+<td align="left">PHI</td>
+<td align="left">7.0</td>
+<td align="left">12.9</td>
+<td align="left">5.9</td>
+<td align="left">5.8</td>
+<td align="left">54.3%</td>
+<td align="left">+0.1</td>
+<td align="left">13.0</td>
+</tr>
+
+<tr>
+<td align="left">14</td>
+<td align="left">Donovan Mitchell</td>
+<td align="left">CLE</td>
+<td align="left">5.4</td>
+<td align="left">11.2</td>
+<td align="left">5.8</td>
+<td align="left">5.1</td>
+<td align="left">48.2%</td>
+<td align="left">+0.7</td>
+<td align="left">14.0</td>
+</tr>
+
+<tr>
+<td align="left">15</td>
+<td align="left">Jimmy Butler III</td>
+<td align="left">GSW</td>
+<td align="left">4.9</td>
+<td align="left">10.8</td>
+<td align="left">5.9</td>
+<td align="left">4.9</td>
+<td align="left">45.4%</td>
+<td align="left">+1.0</td>
+<td align="left">14.0</td>
+</tr>
+
+<tr>
+<td align="left">16</td>
+<td align="left">Keyonte George</td>
+<td align="left">UTA</td>
+<td align="left">6.8</td>
+<td align="left">12.5</td>
+<td align="left">5.7</td>
+<td align="left">5.7</td>
+<td align="left">54.4%</td>
+<td align="left">+0.0</td>
+<td align="left">15.3</td>
+</tr>
+
+<tr>
+<td align="left">17</td>
+<td align="left">James Harden</td>
+<td align="left">LAC</td>
+<td align="left">8.0</td>
+<td align="left">13.4</td>
+<td align="left">5.4</td>
+<td align="left">6.1</td>
+<td align="left">59.7%</td>
+<td align="left">-0.7</td>
+<td align="left">15.7</td>
+</tr>
+
+<tr>
+<td align="left">18</td>
+<td align="left">Luka Dončić</td>
+<td align="left">LAL</td>
+<td align="left">8.7</td>
+<td align="left">14.0</td>
+<td align="left">5.3</td>
+<td align="left">6.3</td>
+<td align="left">62.1%</td>
+<td align="left">-1.0</td>
+<td align="left">16.3</td>
+</tr>
+
+<tr>
+<td align="left">19</td>
+<td align="left">Giannis Antetokounmpo</td>
+<td align="left">MIL</td>
+<td align="left">5.8</td>
+<td align="left">11.1</td>
+<td align="left">5.3</td>
+<td align="left">5.0</td>
+<td align="left">52.3%</td>
+<td align="left">+0.3</td>
+<td align="left">18.0</td>
+</tr>
+
+<tr>
+<td align="left">20</td>
+<td align="left">De&rsquo;Aaron Fox</td>
+<td align="left">SAS</td>
+<td align="left">6.1</td>
+<td align="left">11.3</td>
+<td align="left">5.2</td>
+<td align="left">5.1</td>
+<td align="left">54.0%</td>
+<td align="left">+0.1</td>
+<td align="left">18.3</td>
+</tr>
+
+<tr>
+<td align="left">21</td>
+<td align="left">Davion Mitchell</td>
+<td align="left">MIA</td>
+<td align="left">7.2</td>
+<td align="left">12.3</td>
+<td align="left">5.1</td>
+<td align="left">5.6</td>
+<td align="left">58.5%</td>
+<td align="left">-0.5</td>
+<td align="left">19.3</td>
+</tr>
+
+<tr>
+<td align="left">22</td>
+<td align="left">Stephon Castle</td>
+<td align="left">SAS</td>
+<td align="left">7.0</td>
+<td align="left">12.1</td>
+<td align="left">5.1</td>
+<td align="left">5.5</td>
+<td align="left">57.9%</td>
+<td align="left">-0.4</td>
+<td align="left">20.3</td>
+</tr>
+
+<tr>
+<td align="left">23</td>
+<td align="left">LaMelo Ball</td>
+<td align="left">CHA</td>
+<td align="left">8.5</td>
+<td align="left">13.0</td>
+<td align="left">4.5</td>
+<td align="left">5.9</td>
+<td align="left">65.4%</td>
+<td align="left">-1.4</td>
+<td align="left">21.0</td>
+</tr>
+
+<tr>
+<td align="left">24</td>
+<td align="left">Immanuel Quickley</td>
+<td align="left">TOR</td>
+<td align="left">6.4</td>
+<td align="left">11.1</td>
+<td align="left">4.7</td>
+<td align="left">5.0</td>
+<td align="left">57.7%</td>
+<td align="left">-0.3</td>
+<td align="left">22.0</td>
+</tr>
+
+<tr>
+<td align="left">25</td>
+<td align="left">Russell Westbrook</td>
+<td align="left">SAC</td>
+<td align="left">7.2</td>
+<td align="left">11.9</td>
+<td align="left">4.7</td>
+<td align="left">5.4</td>
+<td align="left">60.5%</td>
+<td align="left">-0.7</td>
+<td align="left">22.3</td>
+</tr>
+
+<tr>
+<td align="left">26</td>
+<td align="left">Alperen Sengun</td>
+<td align="left">HOU</td>
+<td align="left">6.8</td>
+<td align="left">11.4</td>
+<td align="left">4.6</td>
+<td align="left">5.2</td>
+<td align="left">59.6%</td>
+<td align="left">-0.6</td>
+<td align="left">22.7</td>
+</tr>
+
+<tr>
+<td align="left">27</td>
+<td align="left">Ryan Rollins</td>
+<td align="left">MIL</td>
+<td align="left">5.8</td>
+<td align="left">10.0</td>
+<td align="left">4.2</td>
+<td align="left">4.5</td>
+<td align="left">58.0%</td>
+<td align="left">-0.3</td>
+<td align="left">24.3</td>
+</tr>
+</tbody>
+</table>
+<p>As you can see, the data confirms my suspicions - <strong>Deni</strong>&rsquo;s teammates are converting at a <strong>disgusting 46.5% rate</strong> which is 2nd worst in the league behind Jimmy and <strong>8.2%</strong> below league average. Having <strong>14.2 PA</strong> (#5 in the league) and <strong>+1.2 SMH</strong> (#1) makes him the top destination for bag chasers at <strong>2.7 BAG</strong>.</p>
+
+<p>Right below him is <strong>Cade</strong> with <strong>3.0 BAG</strong> - League leader in both potential and wasted assists, with teammates shooting below average. Malik Beasley punching air rn.</p>
+
+<p>Surprisingly <strong>SGA</strong> is ranked #3 with <strong>5.3</strong> <strong>BAG</strong>. is OKC more dependent on him than previously thought? i guess so based on the past 2 weeks.</p>
+
+<p>The only team with 2 top 10 BAGers is <strong>Denver</strong> with <strong>Murray</strong> and <strong>Jokic</strong> at #7 and #8, still might be the top tier bag destination. Other teams with 2 players in the list: CLE (#11, #14), UTA (#10, #16), MIL (#19, #27), SAS (#20, #22)</p>
+
+<p><strong>Who&rsquo;s teammates are already eating:</strong></p>
+
+<p>negative SMH means teammates are missing less than expected, essentially giving you more AST than usual.</p>
+
+<ul>
+<li><strong>LaMelo Ball (lowest SMH at -1.4)</strong> - his CHA teammates convert way above average (65.4% ACR), the Kon effect?</li>
+<li><strong>Jokic and Luka at #2 and #3</strong></li>
+<li><strong>Westbrook at #4!</strong></li>
+</ul>
+
+<p>Sources: <a href="https://www.nba.com/stats/players/passing?CF=GP*G*15:POTENTIAL_AST*G*10&amp;dir=D&amp;sort=POTENTIAL_AST" target="_blank">https://www.nba.com/stats/players/passing?CF=GP*G*15:POTENTIAL_AST*G*10&amp;dir=D&amp;sort=POTENTIAL_AST</a></p>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nwkc7kr" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Parallel-Quality</div>
+        <div>1 | 21 minutes ago </div>
+      </div>
+      <label for="nwkc7kr" class="commentText"><p>OKC&rsquo;s half court offense is basically just &ldquo;hope SGA finds a way out of the double team.&rdquo;</p>
+
+<p>They rely on him so much offensively. If he has a bad game they look lost.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nwkd5t6" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>AashyLarry | MIA</div>
+        <div>1 | 17 minutes ago </div>
+      </div>
+      <label for="nwkd5t6" class="commentText"><p>Best way to beat them. If you can forced Lu Dort or Alex Caruso to put up shots instead of SGA then you’re golden.</p>
+
+<p>The harder thing is trying to score on that defense without turning the ball over.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nwkezcg" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>NeverNotOnceEver | Warriors</div>
+        <div>1 | 8 minutes ago </div>
+      </div>
+      <label for="nwkezcg" class="commentText"><p>I think SA laid out a non-Wemby reliant blueprint to beat the Thunder. So did the Pacers. Both teams have multiple guys who can get in the paint. Even though Chet is a good rim protector, he’s laterally slow and can be blown by and a physical finisher can move him pretty easily. I don’t think OKC makes the finals. I think they finish with a great regular season record. But the TWolves, Nuggets, Rockets, and Spurs could all beat them in the playoffs.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nwkflc5" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>AashyLarry | MIA</div>
+        <div>1 | 5 minutes ago </div>
+      </div>
+      <label for="nwkflc5" class="commentText"><p>Everybody has known about how to defend them. Doubling/tripling SGA happened the last 2 years in the playoffs and it works decently in the halfcourt.</p>
+
+<p>Limiting turnovers is the thing that most teams can’t replicate. The Spurs have been able to do it this year which has limited OKC’s fastbreaks and forced them to play half-court. Most teams find it impossible to limit their turnovers vs OKC, but that’s the real way to beat them.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="nwkepyc" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>First_Inspection_478 | Bucks</div>
+        <div>1 | 9 minutes ago </div>
+      </div>
+      <label for="nwkepyc" class="commentText"><p>Pretty much. To his credit, he&rsquo;s really good at navigating double teams. either sees it early and gives up the ball or dribbles out of the trap.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nwk8td2" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>kikimaru024 | Spurs</div>
+        <div>10 | 38 minutes ago </div>
+      </div>
+      <label for="nwk8td2" class="commentText"><p>This is the kind of stat-nerd analysis that belongs in r/NBAtalk where it will be appreciated properly! Nice post.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nwkcqsu" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>edin_dzekson</div>
+        <div>1 | 19 minutes ago </div>
+      </div>
+      <label for="nwkcqsu" class="commentText"><p>Stopped reading at &lsquo;Deni Avdija stan&rsquo;</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nwkcx2f" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>AashyLarry | MIA</div>
+        <div>1 | 18 minutes ago </div>
+      </div>
+      <label for="nwkcx2f" class="commentText"><p>Nobody’s better at securing the bag for players than…</p>
+
+<p>ERIK SPOELSTRA.</p>
+
+<p>The amount of players that crash down to earth immediately after they leave the Heat is hilarious.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nwkel2g" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>LeadfaucetDigital</div>
+        <div>1 | 10 minutes ago </div>
+      </div>
+      <label for="nwkel2g" class="commentText"><p>All-time great coach. Getting to the finals twice with Jimmy Butler as your #1 option is pretty amazing</p>
+
+<p>I love Jimmy but he&rsquo;s not THAT great</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nwkfxq1" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>JazzLobster | Warriors</div>
+        <div>1 | 4 minutes ago </div>
+      </div>
+      <label for="nwkfxq1" class="commentText"><p>He really isn’t.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nwka6j4" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>KasherH | Nuggets</div>
+        <div>1 | 31 minutes ago </div>
+      </div>
+      <label for="nwka6j4" class="commentText"><p>Got to admit, I thought this was going to be about how much guys got paid after leaving in Free Agency and how much their stats did or did not regress.</p>
+
+<p>To me that is getting someone a bag, only for it to be a mirage.  Maybe just second contract is the measure.  Like Bruce brown getting his big contract and is now on a minimum salary deal was Jokic getting him a bag.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nwkdhyq" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>royalewlthcheese | Australia</div>
+        <div>1 | 15 minutes ago </div>
+      </div>
+      <label for="nwkdhyq" class="commentText"><p>OKC&rsquo;s entire offensive structure is dependent on Shai.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nwkdivn" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>innisfree50 | Warriors</div>
+        <div>1 | 15 minutes ago </div>
+      </div>
+      <label for="nwkdivn" class="commentText"><p>Surprised Steph isn’t on here</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nwkdm8l" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Lstark5642 | Thunder</div>
+        <div>1 | 15 minutes ago </div>
+      </div>
+      <label for="nwkdm8l" class="commentText"><p>The OKC offense is practically shai drive in a 5 out set and if they crash and kick to the three. The problem is they can’t fucking shoot.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nwkdrc8" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>charlesokstate | 24</div>
+        <div>1 | 14 minutes ago </div>
+      </div>
+      <label for="nwkdrc8" class="commentText"><p>Really cool breakdown!</p>
+
+<p>Okc needs Shai so badly on offense. They are a terrible 3 point shooting team and none of the guards can create their own shot. The average redditor just wants to discredit him whenever they can. Okc offense is shai or forced turnover turned basket.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nwk92pk" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Dabli | Nuggets</div>
+        <div>-1 | 36 minutes ago </div>
+      </div>
+      <label for="nwk92pk" class="commentText"><p>This is why you don’t trust AI and don’t make up statistics. Passing grenades constantly gives you higher “wasted” assists, averaging those made up stats and not weighting them properly, not looking at how those assists are generated, not looking at average time on shot clock to remove grenades, etc</p>
+
+<p>A better analysis would be looking at how new players on a team shoot when sharing the floor with X player and how they do after leaving the team, as assists aren’t necessarily why they’re getting better shots</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nwkbh86" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>rwoteit | Vancouver Grizzlies</div>
+        <div>1 | 25 minutes ago </div>
+      </div>
+      <label for="nwkbh86" class="commentText"><p>Least angry Denfan when supreme leader isn&rsquo;t 1 in a stat. </p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nwkflqc" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Dabli | Nuggets</div>
+        <div>1 | 5 minutes ago </div>
+      </div>
+      <label for="nwkflqc" class="commentText"><p>What about this analysis is actually solid? It’s analyzing something that might be interesting in a way that doesn’t actually work. It’s like looking at how many cheeseburgers each player eats per week before the age of 18 and projecting that out to whether or not a player will be good in the NBA. Y’all see numbers and go crazy but these aren’t numbers that mean anything</p>
+
+<p>Steph and Ant with their gravity will create far better shots for someone than Nembhard would for instance, and you will notice that they’re conspicuously absent from this list while Nembhard is #9</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nwkb3et" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>WhoUCuh</div>
+        <div>1 | 27 minutes ago </div>
+      </div>
+      <label for="nwkb3et" class="commentText"><p>I have a bigger concern for Denver.</p>
+
+<p>Why are they not winning championships with Jokic?</p>
+
+<p>His career is becoming more about his amazing stats than competing for championships. </p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nwkeavn" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>LeadfaucetDigital</div>
+        <div>1 | 11 minutes ago </div>
+      </div>
+      <label for="nwkeavn" class="commentText"><p>Starters are injured too much. That&rsquo;s really it. Aaron Gordon was playing on a bad hamstring &amp; MPJ with a bad shoulder last playoffs and they took the defending champs to 7 with Jokic averaging 28-14-6</p>
+
+<p>Or the time Murray was injured against the warriors in 2022 and Jokic dropped 31-13-6 and Nuggets lost 4-1</p>
+
+<p>If the Nuggets had better injury luck they might have 1 more chip</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="nwkeagv" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>charlesokstate | 24</div>
+        <div>1 | 12 minutes ago </div>
+      </div>
+      <label for="nwkeagv" class="commentText"><p>Winning a championship is incredibly tough. Tbf he probably would’ve won a second ring if they could’ve beat the Thunder last season.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="nwkfu48" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Pikuturtle1 | Nuggets</div>
+        <div>1 | 4 minutes ago </div>
+      </div>
+      <label for="nwkfu48" class="commentText"><p>literally just injuries tbh</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
