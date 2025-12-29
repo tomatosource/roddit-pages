@@ -1,0 +1,989 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.selfPostImage {
+  width: 100%;
+  height: auto;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/PathOfExile2/comments/1py8064/im_honestly_so_tired_of_the_hidden_stat_bs_that/"><p>I&rsquo;m honestly SO TIRED of the Hidden Stat BS that is EVERYWHERE in the Game!</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <p>I spent my free time yesterday to theorycraft what looked like a solid Sunder build, and started leveling it today. After finally making my way to Giant&rsquo;s Blood, I was met with yet another massive hidden (!) attack speed penalty that isn&rsquo;t explained anywhere in the game! I&rsquo;m so tired of this BS! Seriously!</p>
+
+<p>Just look at this!</p>
+
+<p>What the game tells me (I&rsquo;m holding ALT):</p>
+
+<p><a href="https://preview.redd.it/lo1mh88ri1ag1.png?width=1363&amp;format=png&amp;auto=webp&amp;s=eeefae569e73ccfd2d04ce62c14df08d1e7b36d8" target="_blank">Sunder in-game</a></p>
+
+<p><a href="https://preview.redd.it/dcq9ku5ti1ag1.png?width=1162&amp;format=png&amp;auto=webp&amp;s=e9f3fe453ec592a1e7d330698047e92b5648547a" target="_blank">Giant&rsquo;s Blood in-game</a></p>
+
+<p>What PoE2DB tells me (after scrolling down to skill stats):</p>
+
+<p><a href="https://preview.redd.it/fkev71awi1ag1.png?width=1732&amp;format=png&amp;auto=webp&amp;s=5680d1057be346d65098979ead94ade05a7c78a1" target="_blank">Sunder poe2db</a></p>
+
+<p>I was wondering why I could no longer break armour. BUT THE GAME DOESN&rsquo;T TELL YOU.</p>
+
+<p>There&rsquo;s no entry on the wiki about this, either, so I just basically wasted my time, effort and currency. This is definitely, hands down, the biggest gripe I have with the game.</p>
+
+<p>On a sidenote, that probably explains why even a good Bringer of Rain is so cheap.</p>
+
+<p>Here, I recorded a brief video to show what absolute bullshit this is: <a href="https://www.reddit.com/user/HoldMySoda/comments/1py7mys/sunder_giants_blood_bullsht_hidden_attack_speed/?utm_source=share&amp;utm_medium=web3x&amp;utm_name=web3xcss&amp;utm_term=1&amp;utm_content=share_button" target="_blank">video</a></p>
+
+<p><a href="https://youtu.be/VH6K2LVUfvk?si=U4RFKCFTLPcljlZv" target="_blank">Palsteron himself recently released another video</a> showing how broken Ancestral Warrior Totem is due to - you guessed it - a massive hidden attack time penalty aka. &ldquo;lockout period&rdquo;. He even says in the video that everybody should scroll down on the poe2db page before making a build around a skill gem. I wish I had done that.</p>
+
+<p>Heart to heart: this has to stop. It&rsquo;s incredibly unfair and annoying, if not outright disrespectful.</p>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nwgplmy" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>TimidApocalypse</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="nwgplmy" class="commentText"><p>Payoff skills generally cannot cause the effect they &ldquo;payoff.&rdquo; While not exactly &ldquo;hidden&rdquo;, it isn&rsquo;t very clear.
+Edit: I think it does say so if you hover over &ldquo;payoff&rdquo; in-game</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nwgqyll" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>HoldMySoda</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="nwgqyll" class="commentText"><p>Aye, it has the line:</p>
+
+<blockquote>
+<p>Payoff Skills cannot inflict the Debuff they interact with</p>
+</blockquote>
+
+<p>Thanks for pointing this out, but my point still stands. It&rsquo;s not directly shown on the gem, and if you don&rsquo;t know where to look for it, it&rsquo;s extremely easy to miss. By definition, this interaction is still &ldquo;hidden&rdquo;, so my post is still fair game, imo. ;)</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nwgrvie" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>TimidApocalypse</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="nwgrvie" class="commentText"><p>Yeah, it would make a lot more sense te remove the tag and just put that line in the skill text. Unless they intend on having some interaction with &ldquo;Payoff&rdquo;. I only know this at all because I had the same issue with High-Velocity Rounds.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nwgwcif" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>O_Toole50</div>
+        <div>1 | 20 minutes ago </div>
+      </div>
+      <label for="nwgwcif" class="commentText"><p>Might as well remove all tags at that point. This extra hand holdy shit has to stop. It says RIGHT on the gem what scales the damage and relevant tags for the skill, same with every skill. I dont need 12 extra lines of text saying &ldquo;scales with melee damage&rdquo; &ldquo; scales with attack damage&rdquo;.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nwgxnwr" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>TimidApocalypse</div>
+        <div>1 | 13 minutes ago </div>
+      </div>
+      <label for="nwgxnwr" class="commentText"><p>But every other tag HAS scaling, interaction, and notices on things other than the gem itself. I&rsquo;d rather have a &ldquo;payoff&rdquo; cluster on the skill tree. Or maybe an (otherwise crappy) unique item with &ldquo;Payoff skills can apply their debuff.&rdquo;</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nwgy03l" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>O_Toole50</div>
+        <div>1 | 11 minutes ago </div>
+      </div>
+      <label for="nwgy03l" class="commentText"><p>Brother it doesnt even tell you the aoe radius on the skill gem. This is way more important than something that is already covered on the gem tags. At least suggest something proactive</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nwgyucy" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>TimidApocalypse</div>
+        <div>1 | 6 minutes ago </div>
+      </div>
+      <label for="nwgyucy" class="commentText"><p>Or, hear me out, both? Having one suggestion doesn&rsquo;t mean that&rsquo;s the only thing that could be improved. It also does in fact give &ldquo;wave length&rdquo;, which is the aoe.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="nwgrtw8" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>vid_23</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="nwgrtw8" class="commentText"><p>You can hover over the word so it&rsquo;s not hidden. Let&rsquo;s be fair here for a bit. You blamed ggg for something you didn&rsquo;t do.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nwgsm57" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>HoldMySoda</div>
+        <div>1 | 42 minutes ago </div>
+      </div>
+      <label for="nwgsm57" class="commentText"><p>Don&rsquo;t be silly. Look at the size of the tags. Then specifically (and intuitively) look for what it says. Then, as a new player (I am not), try to understand that Fully Broken Armour is a debuff (it does not tell you in-game). Show me where the game has the line &ldquo;debuff&rdquo; in that category. It says &ldquo;Sundered Armour&rdquo; is a debuff in its category, but that debuff stacks with Fully Broken Armour, which it also tells you.</p>
+
+<p><a href="https://preview.redd.it/a8mzp6a2o1ag1.png?width=846&amp;format=png&amp;auto=webp&amp;s=a9f5572a21bd65accdaab9d6a8be2f7af875cdb2" target="_blank">https://preview.redd.it/a8mzp6a2o1ag1.png?width=846&amp;format=png&amp;auto=webp&amp;s=a9f5572a21bd65accdaab9d6a8be2f7af875cdb2</a></p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nwgwh9e" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>O_Toole50</div>
+        <div>1 | 20 minutes ago </div>
+      </div>
+      <label for="nwgwh9e" class="commentText"><p>You just doubling back on yourself because you didnt know the very thing you bitch about is in the game.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nwgxgsy" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>HoldMySoda</div>
+        <div>1 | 14 minutes ago </div>
+      </div>
+      <label for="nwgxgsy" class="commentText"><p>No, open the game and see for yourself. The &ldquo;Sundered Armour&rdquo; section lists it as a debuff. The &ldquo;Fully Broken Armour&rdquo; section opens up &ldquo;Armour Break&rdquo;, in which it does not say it is a debuff. Yet, in-game it has a red border, same as all debuffs, on the wiki it says it&rsquo;s a debuff. It tells you that it stacks with Sundered Armour, that is all. And since it lists &ldquo;Sundered Armour&rdquo; as a debuff but not &ldquo;Armour Break&rdquo;, the &ldquo;payoff&rdquo; tag&rsquo;s line makes even less sense overall (no need to tell me the difference, I am aware).</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nwgxkze" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>O_Toole50</div>
+        <div>1 | 13 minutes ago </div>
+      </div>
+      <label for="nwgxkze" class="commentText"><p>You havent played sunder and it shows. Global armour break anything does not work on sunder.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nwgu2qv" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ApprehensiveJurors</div>
+        <div>1 | 34 minutes ago </div>
+      </div>
+      <label for="nwgu2qv" class="commentText"><p>yeah the payoff skills are fashioned to force you to play the build they already imagined</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nwgps3m" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>compchief</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="nwgps3m" class="commentText"><p>Herald of blood has this as well, i see people put bleed 3 in build guides for it (fubguns poison thingy for example), yet it has the tag that it &ldquo;Cannot cause Bleeding&rdquo;, so even the most hardcore of players get this wrong. I&rsquo;ve also tried it myself, doesnt cause bleed at all.</p>
+
+<p>GGG, you have to fix these kinds of things. Ironically, it is because you introduce these kinds of &ldquo;on rails&rdquo;-mechanics in order to force multiple skill uses but you don&rsquo;t give players clear information about it so we end up like OP - not great imo.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nwgsnv5" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Klabbo</div>
+        <div>1 | 42 minutes ago </div>
+      </div>
+      <label for="nwgsnv5" class="commentText"><p>Herald of blood itself can&rsquo;t inflict bleed but socketed triggered effects can, like bursting plague. You socket bleed/poison on HoB so it will chain off itself with bursting plague. The blood explosion poisons which triggers plague burst which bleeds and triggers another blood explosion. Try it yourself!</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nwgu0ei" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>sausagesizzle</div>
+        <div>1 | 34 minutes ago </div>
+      </div>
+      <label for="nwgu0ei" class="commentText"><p>Wait that still works? I haven&rsquo;t played bleed since 0.2 and figured that interaction was too fun to still be in the game.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="nwgwpo3" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Rentahamster</div>
+        <div>1 | 18 minutes ago </div>
+      </div>
+      <label for="nwgwpo3" class="commentText"><p>If Plague Burst is in there too, that can cause bleeding. </p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="nwgsslm" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>getsmurfed</div>
+        <div>1 | 41 minutes ago </div>
+      </div>
+      <label for="nwgsslm" class="commentText"><p>How the hell do you get bleed to even work early on? I&rsquo;ve been trying to get a rake Amazon going, and the damage just feels horrendous. At the point I get Blood Hunt it&rsquo;s useless because the blood loss is so slow and ineffective to build up. I found with 0 investment explosive spear w parry disengage was far more effective damage.</p>
+
+<p>Sorry for the side rant, builds seem very convoluted and not easy to understand. The good builds appear to be the ones that just simply work.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nwguzdx" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Pengothing</div>
+        <div>1 | 28 minutes ago </div>
+      </div>
+      <label for="nwguzdx" class="commentText"><p>You don&rsquo;t do it early. You start with lightning spear pivot to it after 2-3 ascendancies when you have the whole lot of skills you need.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="nwgvp77" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ConstructionAway8920</div>
+        <div>1 | 24 minutes ago </div>
+      </div>
+      <label for="nwgvp77" class="commentText"><p>It&rsquo;s easy early. Put bleed on both spear stab/throw. Ensure that when you rake, you are gap closing. It&rsquo;s damage sucks otherwise. As soon as you hit with rake, disengage then hit rake again. Rinse and repeat. Also grab physical nodes, and keep a high phys spear. That&rsquo;s what bleed scales from. I have had absolutely no issues leveling bleed Amazon. It decimates bosses</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="nwgyl2u" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>rexolf101</div>
+        <div>1 | 7 minutes ago </div>
+      </div>
+      <label for="nwgyl2u" class="commentText"><p>If you could inflict and consume debuffs with the same skill, that would be even more railroading imo because then why would you ever use a separate skill to consume it? I think it could have worked with the old support gems if they took the consumption and infliction of debuffs off of skills and made them support gems instead but now the support gems are more broad so I don&rsquo;t think it would work. I just think it would be really shallow and uninteresting if you could build up broken armor and then consume it over and over with the same skill. That seems much more limiting to buildcraft</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nwgue0a" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>TheNocturnalAngel</div>
+        <div>1 | 32 minutes ago </div>
+      </div>
+      <label for="nwgue0a" class="commentText"><p>The hard rules are such an antithesis to Poe that it’s been really depressing for me.</p>
+
+<p>I am a long time poe1 player and my main draw to the game was the ability to make all kinds of crazy and unique builds with all the interactions in the game.</p>
+
+<p>Poe2 they hard code almost every skill to limit it to one way.</p>
+
+<p>And if there is any that makes it through, they nerf it the next update!</p>
+
+<p>In order to break Armour on sunder you would need either a specific jewel mod, the Bear specific war cry, or the Warbringer ascendancy.</p>
+
+<p>Surely that is enough opportunity cost and they don’t have to block the skill from breaking Armour entirely.</p>
+
+<p>The whole world if build making is built on pairing affixes that synergize or finding a unique way to solve a problem.</p>
+
+<p>Except in poe2 the only solution is the one that they want you to use and if you find a different one they take it away.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nwgvo2y" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>HoldMySoda</div>
+        <div>1 | 24 minutes ago </div>
+      </div>
+      <label for="nwgvo2y" class="commentText"><blockquote>
+<p>I am a long time poe1 player and my main draw to the game was the ability to make all kinds of crazy and unique builds with all the interactions in the game.</p>
+</blockquote>
+
+<p>Same. Been playing PoE 1 for nearly 13 years now. I love to make off-meta builds that explore a random concept that popped into my head. Everytime I try that with PoE 2, I&rsquo;m met with some form of roadblock that completely ruins the whole idea. It&rsquo;s&hellip; frustrating, to say the least.</p>
+
+<p>Like, I understand now why it doesn&rsquo;t work, but I find it stupid how hidden it is and that it once again requires pre-acquired knowledge. I won&rsquo;t make this same mistake again, but it does leave a sour taste.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="nwgwqz6" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>O_Toole50</div>
+        <div>1 | 18 minutes ago </div>
+      </div>
+      <label for="nwgwqz6" class="commentText"><p>Sunder cannot break with any of these given. Its unable to break armour through any method even breaking on stun or pin.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nwgpu2e" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>MiniMik</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="nwgpu2e" class="commentText"><p>Every time I think of some cool gem to slot in a skill, I go put it in, and it doesn&rsquo;t work.</p>
+
+<p>At this point, I&rsquo;m convinced that there are more things that don&rsquo;t work than things that work. Trying to set up anything in this game is a headache.</p>
+
+<p>What makes it worse are the hidden penalties they don&rsquo;t tell you about. Or the broken tooltips that are straight up lying.</p>
+
+<p>What happened to the sandbox poe1 is? I wanna build sky castles, not ikea furniture.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nwgu4is" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Teeblie</div>
+        <div>1 | 33 minutes ago </div>
+      </div>
+      <label for="nwgu4is" class="commentText"><p>It&rsquo;s easy. You can&rsquo;t do this because while you have that, the other skills can&rsquo;t do the other thing, also if you want this you will need at least 150 spirit and 8 supports to make it work, but if you manage to gain all those things while prone and unseen you have the privilege of these things that you can spend all at once, or,  you can run around aimlessly and pick up the little thingys (better option becuase each second spent running around doing nothing builds your character). ONLY THEN, may you activate this, after which, it goes on cooldown for 35 seconds.</p>
+
+<p>Repeat from step one.</p>
+
+<p>The design of this game is really dumb right now imo. It will get better, though, I hope.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nwgv84p" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Kuraku94</div>
+        <div>1 | 27 minutes ago </div>
+      </div>
+      <label for="nwgv84p" class="commentText"><p>&ldquo;Attack speed: 40% of base&rdquo; - Payoff is a keyword to learn and once you know it, you know to look for it.</p>
+
+<p>These aren&rsquo;t hidden, but there is a lot of information to consider and only so many ways to present them. If each skill becomes a novel, the average player will tune out that information or be overwhelmed and quit.</p>
+
+<p>You can have insane amounts of customization and player expression or you can have everything streamlined. You can&rsquo;t do both.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nwgvh1g" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>AbelardsChainsword</div>
+        <div>1 | 25 minutes ago </div>
+      </div>
+      <label for="nwgvh1g" class="commentText"><p>I was new to POE last year when EA started. I’ve enjoyed the game from the jump but also noticed that very little is ever explained outright. It’s made the game frustrating at times. For example, I didn’t realize that you received elemental resistance penalties as you progress until like my third character. I was very confused as to where my resistances had gone when I got to maps</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nwgvzxp" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>nexetpl | L &#43; Thunderstorm &#43; Lunar Assault &#43; Shred &#43; Cross Slash &#43; Pounce</div>
+        <div>1 | 22 minutes ago </div>
+      </div>
+      <label for="nwgvzxp" class="commentText"><p>At the beginning of each act there&rsquo;s a -10% resistances popup</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nwgw54h" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>AbelardsChainsword</div>
+        <div>1 | 22 minutes ago </div>
+      </div>
+      <label for="nwgw54h" class="commentText"><p>I was legit having so much fun on the grind that I completely missed it</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="nwgwkgf" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>HoldMySoda</div>
+        <div>1 | 19 minutes ago </div>
+      </div>
+      <label for="nwgwkgf" class="commentText"><p>Yeah, that pop-up lasts not long enough and in my opinion should stay on the screen until you manually click to close it. Then it&rsquo;s really on the player for not reading.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nwgw0sj" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Doonot</div>
+        <div>1 | 22 minutes ago </div>
+      </div>
+      <label for="nwgw0sj" class="commentText"><p>This game makes you do a lot of digging and studying, enough to rival the makings of several English class assignments.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nwgs7gp" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>biliboberman</div>
+        <div>1 | 44 minutes ago </div>
+      </div>
+      <label for="nwgs7gp" class="commentText"><p>Guys poe2 is sadly dogshiieeeet. Its boring, slow driven, clunky, not fun, designed for elders and diaabled people.. visual clarity is worse then in poe1. The devs lost their Touch to reality. And they wont even Provide 2 factor authenticator.. and they got hacked múltiple times already&hellip;</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nwgt13z" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>yo_les_noobs</div>
+        <div>1 | 39 minutes ago </div>
+      </div>
+      <label for="nwgt13z" class="commentText"><p>Dang. biliboberman from reddit thinks PoE2 sucks? It&rsquo;s over for GGG. I hope you&rsquo;re happy.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="nwgt2f0" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Aphemia1</div>
+        <div>1 | 39 minutes ago </div>
+      </div>
+      <label for="nwgt2f0" class="commentText"><p>Hey grandpa go back and play your one button ARPG.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nwgtgn4" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>biliboberman</div>
+        <div>1 | 37 minutes ago </div>
+      </div>
+      <label for="nwgtgn4" class="commentText"><p>it was Harder to get 40 challenges in legendary Mode in where winds meet first 2 week. But yeah you guys just proves that poe2 is for hardstuck gold players. 😅. Poe2 is even on hc way too easy and boring .</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nwgubuh" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>NeganJoestar</div>
+        <div>1 | 32 minutes ago </div>
+      </div>
+      <label for="nwgubuh" class="commentText"><p>You&rsquo;re so cool and hardcore! Please leave some ladies for the rest of us</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="nwgvmx9" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>nexetpl | L &#43; Thunderstorm &#43; Lunar Assault &#43; Shred &#43; Cross Slash &#43; Pounce</div>
+        <div>1 | 24 minutes ago </div>
+      </div>
+      <label for="nwgvmx9" class="commentText"><p>🥱🥱🥱</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
