@@ -1,0 +1,784 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.selfPostImage {
+  width: 100%;
+  height: auto;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/baseball/comments/1pzs8n5/oc_are_slumps_inevitable_a_deep_dive_using_every/"><p>[OC] Are Slumps Inevitable? A Deep Dive Using Every Batting Champ Since 1949</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <h1 id="background">Background</h1>
+
+<p>Back in June, these stories<a href="https://nypost.com/2025/06/19/sports/what-aaron-judge-thinks-about-his-sudden-slump-and-yankees-woes/" target="_blank">^(1)</a>^(,)<a href="https://www.nj.com/yankees/2025/06/how-aaron-judges-slump-is-taking-down-rest-of-yankees-klapisch.html" target="_blank">^(2)</a>^(,)<a href="https://www.si.com/mlb/aaron-judge-yankees-slump-comments" target="_blank">^(3)</a> were published during Aaron Judge&rsquo;s &ldquo;slump&rdquo;.</p>
+
+<blockquote>
+<p>&ldquo;That&rsquo;s baseball,&rdquo; Judge said, per ESPN&rsquo;s Jorge Castillo. &ldquo;We know what we signed up for. You&rsquo;re going to play 162. You&rsquo;re going to hit a little rut like this, but you can&rsquo;t give up. You can&rsquo;t mope about it. You just got to show up the next day and you got to be ready to play.&rdquo;</p>
+</blockquote>
+
+<p>I wanted to do a deep dive into slumps to see if Aaron Judge was correct when he said, <em>“that’s baseball.”</em></p>
+
+<p>On the surface, it makes sense. With 600–700 at-bats per season, of course a hitter will go through a slump. People here will remember Chris Davis’ <a href="https://www.highheatstats.com/2019/04/hitless-wonders-the-0-for-40-club/" target="_blank">historical </a>54 at-bat hitless streak in 2018–19, but that got me wondering:</p>
+
+<p><strong>What should we expect from baseball’s</strong> <strong><em>best hitter</em></strong> <strong>each year?</strong></p>
+
+<h1 id="method">Method</h1>
+
+<p><strong>Theoretical approach</strong></p>
+
+<p>To get a general feel for how long of a hitless streak I should expect, I wrote a Python simulation and looked into the math behind longest streaks. I’m not a math major, so I used Perplexity:</p>
+
+<p>The expected length of a player’s longest hitless streak can be approximated as:</p>
+
+<blockquote>
+<p>E[max streak] ≈ ln(1−BA)/-ln(n)</p>
+</blockquote>
+
+<p>where:</p>
+
+<ul>
+<li><em>n</em> = number of at-bats</li>
+<li><em>BA</em> = batting average</li>
+</ul>
+
+<p><strong>Worked example</strong></p>
+
+<p>Ichiro Suzuki, 2004</p>
+
+<ul>
+<li>BA: .372</li>
+<li>ABs: 704</li>
+</ul>
+
+<p>Using the formula, we’d expect a longest hitless streak of <strong>~14 at-bats</strong>.<br>
+His actual longest slump was <strong>12 at-bats</strong>.</p>
+
+<p>The Python simulations pointed in the same direction, so I moved on to real data.</p>
+
+<p><strong>Empirical approach</strong></p>
+
+<p>I used <a href="https://www.retrosheet.org/" target="_blank">Retrosheet </a>play-by-play data to pull every plate appearance from <strong>1949–2025</strong>. Seasons before 1949 were excluded due to incomplete data.</p>
+
+<p>For each season:</p>
+
+<ul>
+<li>I identified the batting average leader</li>
+<li>Tracked all at-bats</li>
+<li>Found the <strong>first occurrence</strong> of their longest hitless streak</li>
+<li>Logged the results in an Excel table</li>
+</ul>
+
+<h1 id="results">Results</h1>
+
+<p>The <a href="https://www.reddit.com/user/eaglesfan1234/comments/1pzr915/full_table_for_batting_title_winner_slumps/" target="_blank">full table </a>is posted on my profile. Here are snippets&hellip;</p>
+
+<p><strong>Shortest hitless slumps (Top 10)</strong></p>
+
+<table>
+<thead>
+<tr>
+<th align="left">Year</th>
+<th align="left">Player</th>
+<th align="left">Average</th>
+<th align="left">retroID</th>
+<th align="left">Longest Slump</th>
+<th align="left">Start Date</th>
+<th align="left">End Date</th>
+<th align="left">PA</th>
+<th align="left">AB</th>
+<th align="left">H</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">1987</td>
+<td align="left">Tony Gwynn</td>
+<td align="left">0.3701</td>
+<td align="left">gwynt001</td>
+<td align="left">8</td>
+<td align="left">7/30/1987</td>
+<td align="left">8/1/1987</td>
+<td align="left">680</td>
+<td align="left">589</td>
+<td align="left">218</td>
+</tr>
+
+<tr>
+<td align="left">1994</td>
+<td align="left">Tony Gwynn</td>
+<td align="left">0.3938</td>
+<td align="left">gwynt001</td>
+<td align="left">9</td>
+<td align="left">7/18/1994</td>
+<td align="left">7/20/1994</td>
+<td align="left">475</td>
+<td align="left">419</td>
+<td align="left">165</td>
+</tr>
+
+<tr>
+<td align="left">1977</td>
+<td align="left">Rod Carew</td>
+<td align="left">0.3880</td>
+<td align="left">carer001</td>
+<td align="left">9</td>
+<td align="left">4/24/1977</td>
+<td align="left">4/27/1977</td>
+<td align="left">694</td>
+<td align="left">616</td>
+<td align="left">239</td>
+</tr>
+
+<tr>
+<td align="left">2020</td>
+<td align="left">DJ LeMahieu</td>
+<td align="left">0.3641</td>
+<td align="left">lemad001</td>
+<td align="left">10</td>
+<td align="left">9/4/2020</td>
+<td align="left">9/7/2020</td>
+<td align="left">216</td>
+<td align="left">195</td>
+<td align="left">71</td>
+</tr>
+
+<tr>
+<td align="left">2013</td>
+<td align="left">Miguel Cabrera</td>
+<td align="left">0.3477</td>
+<td align="left">cabrm001</td>
+<td align="left">10</td>
+<td align="left">9/8/2013</td>
+<td align="left">9/11/2013</td>
+<td align="left">652</td>
+<td align="left">555</td>
+<td align="left">193</td>
+</tr>
+
+<tr>
+<td align="left">2001</td>
+<td align="left">Larry Walker</td>
+<td align="left">0.3501</td>
+<td align="left">walkl001</td>
+<td align="left">10</td>
+<td align="left">6/25/2001</td>
+<td align="left">6/29/2001</td>
+<td align="left">601</td>
+<td align="left">497</td>
+<td align="left">174</td>
+</tr>
+
+<tr>
+<td align="left">1988</td>
+<td align="left">Wade Boggs</td>
+<td align="left">0.3664</td>
+<td align="left">boggw001</td>
+<td align="left">10</td>
+<td align="left">5/8/1988</td>
+<td align="left">5/10/1988</td>
+<td align="left">719</td>
+<td align="left">584</td>
+<td align="left">214</td>
+</tr>
+
+<tr>
+<td align="left">1985</td>
+<td align="left">Wade Boggs</td>
+<td align="left">0.3675</td>
+<td align="left">boggw001</td>
+<td align="left">10</td>
+<td align="left">4/15/1985</td>
+<td align="left">4/18/1985</td>
+<td align="left">758</td>
+<td align="left">653</td>
+<td align="left">240</td>
+</tr>
+
+<tr>
+<td align="left">1984</td>
+<td align="left">Tony Gwynn</td>
+<td align="left">0.3515</td>
+<td align="left">gwynt001</td>
+<td align="left">10</td>
+<td align="left">4/29/1984</td>
+<td align="left">5/3/1984</td>
+<td align="left">675</td>
+<td align="left">606</td>
+<td align="left">213</td>
+</tr>
+
+<tr>
+<td align="left">1976</td>
+<td align="left">Bill Madlock</td>
+<td align="left">0.3385</td>
+<td align="left">madlb001</td>
+<td align="left">10</td>
+<td align="left">6/8/1976</td>
+<td align="left">6/11/1976</td>
+<td align="left">588</td>
+<td align="left">514</td>
+<td align="left">174</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Longest hitless slumps (Top 10)</strong></p>
+
+<table>
+<thead>
+<tr>
+<th align="left">Year</th>
+<th align="left">Player</th>
+<th align="left">Average</th>
+<th align="left">retroID</th>
+<th align="left">Longest Slump</th>
+<th align="left">Start Date</th>
+<th align="left">End Date</th>
+<th align="left">PA</th>
+<th align="left">AB</th>
+<th align="left">H</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">2006</td>
+<td align="left">Joe Mauer</td>
+<td align="left">0.3474</td>
+<td align="left">mauej001</td>
+<td align="left">16</td>
+<td align="left">8/25/2006</td>
+<td align="left">9/1/2006</td>
+<td align="left">608</td>
+<td align="left">521</td>
+<td align="left">181</td>
+</tr>
+
+<tr>
+<td align="left">1986</td>
+<td align="left">Wade Boggs</td>
+<td align="left">0.3569</td>
+<td align="left">boggw001</td>
+<td align="left">16</td>
+<td align="left">7/26/1986</td>
+<td align="left">7/30/1986</td>
+<td align="left">693</td>
+<td align="left">580</td>
+<td align="left">207</td>
+</tr>
+
+<tr>
+<td align="left">1989</td>
+<td align="left">Kirby Puckett</td>
+<td align="left">0.3386</td>
+<td align="left">puckk001</td>
+<td align="left">17</td>
+<td align="left">6/2/1989</td>
+<td align="left">6/6/1989</td>
+<td align="left">684</td>
+<td align="left">635</td>
+<td align="left">215</td>
+</tr>
+
+<tr>
+<td align="left">1979</td>
+<td align="left">Keith Hernandez</td>
+<td align="left">0.3443</td>
+<td align="left">hernk001</td>
+<td align="left">17</td>
+<td align="left">4/28/1979</td>
+<td align="left">5/2/1979</td>
+<td align="left">698</td>
+<td align="left">610</td>
+<td align="left">210</td>
+</tr>
+
+<tr>
+<td align="left">1970</td>
+<td align="left">Rico Carty</td>
+<td align="left">0.3661</td>
+<td align="left">cartr101</td>
+<td align="left">17</td>
+<td align="left">9/5/1970</td>
+<td align="left">9/9/1970</td>
+<td align="left">560</td>
+<td align="left">478</td>
+<td align="left">175</td>
+</tr>
+
+<tr>
+<td align="left">1965</td>
+<td align="left">Roberto Clemente</td>
+<td align="left">0.3294</td>
+<td align="left">clemr101</td>
+<td align="left">18</td>
+<td align="left">8/13/1965</td>
+<td align="left">8/17/1965</td>
+<td align="left">642</td>
+<td align="left">589</td>
+<td align="left">194</td>
+</tr>
+
+<tr>
+<td align="left">2022</td>
+<td align="left">Jeff McNeil</td>
+<td align="left">0.3265</td>
+<td align="left">mcnej002</td>
+<td align="left">19</td>
+<td align="left">7/16/2022</td>
+<td align="left">7/26/2022</td>
+<td align="left">589</td>
+<td align="left">533</td>
+<td align="left">174</td>
+</tr>
+
+<tr>
+<td align="left">2015</td>
+<td align="left">Miguel Cabrera</td>
+<td align="left">0.3380</td>
+<td align="left">cabrm001</td>
+<td align="left">20</td>
+<td align="left">9/10/2015</td>
+<td align="left">9/16/2015</td>
+<td align="left">511</td>
+<td align="left">429</td>
+<td align="left">145</td>
+</tr>
+
+<tr>
+<td align="left">1978</td>
+<td align="left">Dave Parker</td>
+<td align="left">0.3339</td>
+<td align="left">parkd001</td>
+<td align="left">24</td>
+<td align="left">7/23/1978</td>
+<td align="left">7/29/1978</td>
+<td align="left">642</td>
+<td align="left">581</td>
+<td align="left">194</td>
+</tr>
+
+<tr>
+<td align="left">1958</td>
+<td align="left">Richie Ashburn</td>
+<td align="left">0.3496</td>
+<td align="left">ashbr101</td>
+<td align="left">28</td>
+<td align="left">7/1/1958</td>
+<td align="left">7/6/1958</td>
+<td align="left">725</td>
+<td align="left">615</td>
+<td align="left">215</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Statistical Summary (1949–2025)</strong></p>
+
+<p><strong>Players analyzed:</strong> 77</p>
+
+<p><strong>Actual longest slumps</strong></p>
+
+<ul>
+<li>Mean: 12.96 AB</li>
+<li>Median: 12.0 AB</li>
+<li>Min: 8 AB (Tony Gwynn, 1987)</li>
+<li>Max: 28 AB (Richie Ashburn, 1958)</li>
+</ul>
+
+<p><strong>Expected longest slumps</strong></p>
+
+<ul>
+<li>Mean: 14.57 AB</li>
+<li>Median: 14.69 AB</li>
+</ul>
+
+<p><strong>Difference (Actual − Expected)</strong></p>
+
+<ul>
+<li>Mean: −1.60 AB</li>
+<li>75.3% of players had <em>shorter</em> slumps than expected</li>
+</ul>
+
+<p><strong>Correlation (Expected vs Actual):</strong> 0.264</p>
+
+<p><a href="https://preview.redd.it/5piczc1cbeag1.png?width=1844&amp;format=png&amp;auto=webp&amp;s=8f14d9cfc7a0c70adc5a926d590412ccb59052b3" target="_blank">https://preview.redd.it/5piczc1cbeag1.png?width=1844&amp;format=png&amp;auto=webp&amp;s=8f14d9cfc7a0c70adc5a926d590412ccb59052b3</a></p>
+
+<h1 id="analysis">Analysis</h1>
+
+<p><strong>Finding #1: Tony Gwynn</strong></p>
+
+<p>This stood out the most.</p>
+
+<p>Tony Gwynn won <strong>five batting titles</strong>, and his average longest hitless streak was <strong>9.8 at-bats</strong>, well below the dataset average of ~13.</p>
+
+<p>He owns <strong>two of the three shortest slumps ever</strong> by a batting average leader:</p>
+
+<ul>
+<li>8 ABs in 1987</li>
+<li>9 ABs in 1994</li>
+</ul>
+
+<p>Other multi-title hitters like Miguel Cabrera and Wade Boggs typically fell in the 12–14 AB range.</p>
+
+<p><strong>Finding #2: The 1958 Richie Ashburn outlier</strong></p>
+
+<p>Richie Ashburn’s 1958 season produced the <strong>longest hitless slump in the dataset</strong>:</p>
+
+<ul>
+<li>28 at-bats</li>
+<li>Nearly double what his batting average would predict</li>
+<li>~4.6% of his season spent in one hitless stretch</li>
+</ul>
+
+<h1 id="conclusion">Conclusion</h1>
+
+<p>Nothing here completely overturns how we think about slumps, but that was kind of the point.</p>
+
+<p>Even the best hitter in baseball:</p>
+
+<ul>
+<li>Will usually go <strong>12–15 at-bats without a hit</strong></li>
+<li>Occasionally reach 20+</li>
+<li>And very rarely avoid slumps altogether</li>
+</ul>
+
+<p>I mostly came away appreciating how good Retrosheet’s data is, and how absurd Tony Gwynn’s consistency really was—especially after seeing some discussion recently about him being overrated.</p>
+
+<h1 id="tl-dr">TL;DR</h1>
+
+<p>That&rsquo;s baseball.</p>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nwsgqa4" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>eaglesfan1234</div>
+        <div>6 | 18 minutes ago </div>
+      </div>
+      <label for="nwsgqa4" class="commentText"><p>I can&rsquo;t format reddit posts to save my life. This looks like shit but the data is correct at least.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nwsinu8" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>OhtaniStanMan | Los Angeles Angels</div>
+        <div>1 | 9 minutes ago </div>
+      </div>
+      <label for="nwsinu8" class="commentText"><p>That linear regression is horrendous</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nwsg3ch" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>DollarStoreThor12</div>
+        <div>4 | 21 minutes ago </div>
+      </div>
+      <label for="nwsg3ch" class="commentText"><p>This feels AI generated… Regardless, if the outputs are correct, it answers an interesting question.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nwsha76" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ShirlLotJack</div>
+        <div>2 | 16 minutes ago </div>
+      </div>
+      <label for="nwsha76" class="commentText"><p>The definition of a &ldquo;slump&rdquo; includes more than hitless streaks.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nwsihxq" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>thediesel26 | New York Yankees</div>
+        <div>3 | 10 minutes ago </div>
+      </div>
+      <label for="nwsihxq" class="commentText"><p>Interesting using Judge as an example here, cuz a bad month for him would be the best month of most other guys’ lives. Judge’s worst month last year was August, when he OPS’d .923 while playing through a UCL strain. By September he seemed to be recovered and he OPS’d 1.292.</p>
+
+<p>I’d posit that many guys who slump are playing through injuries that we’re unaware of.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nwsg62y" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>davehasopinions | Toronto Blue Jays</div>
+        <div>1 | 21 minutes ago </div>
+      </div>
+      <label for="nwsg62y" class="commentText"><p>Someone tell Susyn.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nwsj5kj" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>DecoyOne | San Diego Padres</div>
+        <div>1 | 7 minutes ago </div>
+      </div>
+      <label for="nwsj5kj" class="commentText"><p>Um excuse me, Gwynn won <em>eight</em> batting titles</p>
+
+<p>It’s fine if you’re combining the leagues, but he won eight, not five</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
