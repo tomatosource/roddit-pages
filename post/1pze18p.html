@@ -1,0 +1,835 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.selfPostImage {
+  width: 100%;
+  height: auto;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/nba/comments/1pze18p/lebron_james_turns_41_today_in_56_games_at_40/"><p>LeBron James turns 41 today. In 56 games at 40 years old, he averaged 23.9 PPG on 61% TS, 7.1 REB and 7.4 AST. His single-game highs were 42/17/13/3/3. Here&rsquo;s how those averages and highs compare to all other 40+ year old HoFers in NBA history:</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <p>First, if anyone was curious how much his averages have dropped these last few years:</p>
+
+<table>
+<thead>
+<tr>
+<th align="left">Player</th>
+<th align="left">Pts/Reb/Ast</th>
+<th align="left">TS%</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">LeBron James (Age 37)</td>
+<td align="left">30.<sup>1</sup>&frasl;<sub>8</sub>.<sup>5</sup>&frasl;<sub>6</sub>.2</td>
+<td align="left">59.8%</td>
+</tr>
+
+<tr>
+<td align="left">LeBron James (Age 38)</td>
+<td align="left">27.<sup>5</sup>&frasl;<sub>8</sub>.<sup>1</sup>&frasl;<sub>7</sub>.2</td>
+<td align="left">61.1%</td>
+</tr>
+
+<tr>
+<td align="left">LeBron James (Age 39)</td>
+<td align="left">25.0/7.<sup>4</sup>&frasl;<sub>8</sub>.9</td>
+<td align="left">61.0%</td>
+</tr>
+
+<tr>
+<td align="left">LeBron James (Age 40)</td>
+<td align="left">23.<sup>9</sup>&frasl;<sub>7</sub>.<sup>1</sup>&frasl;<sub>7</sub>.4</td>
+<td align="left">60.9%</td>
+</tr>
+</tbody>
+</table>
+<p>Now P/R/A and efficiency compared to other HoFers, ONLY age 40 stats so it doesn&rsquo;t reduce averages of others who played longer.</p>
+
+<p>LeBron leads in PPG and TS%, while Stockton leads in assists and Malone leads in rebounds.</p>
+
+<table>
+<thead>
+<tr>
+<th align="left">Player</th>
+<th align="left">Pts/Reb/Ast</th>
+<th align="left">TS%</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left"><strong>LeBron James</strong></td>
+<td align="left"><strong>23.9</strong>/7.<sup>1</sup>&frasl;<sub>7</sub>.4</td>
+<td align="left"><strong>60.9%</strong></td>
+</tr>
+
+<tr>
+<td align="left">Michael Jordan</td>
+<td align="left">22.<sup>4</sup>&frasl;<sub>7</sub>.<sup>2</sup>&frasl;<sub>3</sub>.4</td>
+<td align="left">50.3%</td>
+</tr>
+
+<tr>
+<td align="left">K. Abdul-Jabbar</td>
+<td align="left">14.<sup>5</sup>&frasl;<sub>6</sub>.0/1.7</td>
+<td align="left">56.7%</td>
+</tr>
+
+<tr>
+<td align="left"><strong>Karl Malone</strong></td>
+<td align="left">13.2/<strong>8.7</strong>/3.9</td>
+<td align="left">55.5%</td>
+</tr>
+
+<tr>
+<td align="left"><strong>John Stockton</strong></td>
+<td align="left">12.0/2.6/<strong>7.9</strong></td>
+<td align="left">59.9%</td>
+</tr>
+
+<tr>
+<td align="left">Robert Parish</td>
+<td align="left">11.<sup>7</sup>&frasl;<sub>7</sub>.<sup>3</sup>&frasl;<sub>1</sub>.1</td>
+<td align="left">53.0%</td>
+</tr>
+
+<tr>
+<td align="left">Manu Ginobili</td>
+<td align="left">9/2/3</td>
+<td align="left">55.3%</td>
+</tr>
+
+<tr>
+<td align="left">Dirk Nowitzki</td>
+<td align="left">7/3/1</td>
+<td align="left">46.9%</td>
+</tr>
+
+<tr>
+<td align="left">Steve Nash</td>
+<td align="left">7/2/6</td>
+<td align="left">58.2%</td>
+</tr>
+
+<tr>
+<td align="left">Vince Carter</td>
+<td align="left">6/2/2</td>
+<td align="left">53.4%</td>
+</tr>
+
+<tr>
+<td align="left">Jason Kidd</td>
+<td align="left">4/5/3</td>
+<td align="left">48.6%</td>
+</tr>
+
+<tr>
+<td align="left">Grant Hill</td>
+<td align="left">3/2/1</td>
+<td align="left">42.8%</td>
+</tr>
+
+<tr>
+<td align="left"><em>Chris Paul</em></td>
+<td align="left">3/2/3</td>
+<td align="left">41.3%</td>
+</tr>
+</tbody>
+</table>
+<p>Next game-highs in the five major statistics, age 40+.</p>
+
+<p><strong>Points.</strong> LeBron and MJ dominate this list.</p>
+
+<table>
+<thead>
+<tr>
+<th align="left">Player</th>
+<th align="left">Points (TS%)</th>
+<th align="left">Date</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left"><strong>Michael Jordan</strong></td>
+<td align="left"><strong>43</strong> (64.1%)</td>
+<td align="left">2/21/2003</td>
+</tr>
+
+<tr>
+<td align="left">LeBron James</td>
+<td align="left">42 (71.4%)</td>
+<td align="left">2/6/2025</td>
+</tr>
+
+<tr>
+<td align="left">LeBron James</td>
+<td align="left">40 (72.7%)</td>
+<td align="left">2/20/2025</td>
+</tr>
+
+<tr>
+<td align="left">Michael Jordan</td>
+<td align="left">39 (68.2%)</td>
+<td align="left">3/9/2003</td>
+</tr>
+
+<tr>
+<td align="left">LeBron James</td>
+<td align="left">38 (73.4%)</td>
+<td align="left">1/2/2025</td>
+</tr>
+
+<tr>
+<td align="left">(31-37 Points)</td>
+<td align="left" colspan="2">Jordan 1x, LeBron 8x</td>
+</tr>
+
+<tr>
+<td align="left">Dirk Nowitzki</td>
+<td align="left">30 (46.4%)</td>
+<td align="left">4/9/2019</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Assists.</strong> Similar to points, it&rsquo;s LeBron and Stockton.</p>
+
+<table>
+<thead>
+<tr>
+<th align="left">Player</th>
+<th align="left">Assists</th>
+<th align="left">Date</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left"><strong>John Stockton</strong></td>
+<td align="left"><strong>14</strong></td>
+<td align="left">3/30/2002</td>
+</tr>
+
+<tr>
+<td align="left">LeBron James</td>
+<td align="left">13</td>
+<td align="left">1/21/2025</td>
+</tr>
+
+<tr>
+<td align="left">John Stockton</td>
+<td align="left">13</td>
+<td align="left">1/4/2003</td>
+</tr>
+
+<tr>
+<td align="left">12 Assists</td>
+<td align="left" colspan="2">LeBron 4x, Stockton 2x</td>
+</tr>
+
+<tr>
+<td align="left">11 Assists</td>
+<td align="left" colspan="2">LeBron 4x, Stockton 11x</td>
+</tr>
+
+<tr>
+<td align="left">Steve Nash</td>
+<td align="left">11</td>
+<td align="left">3/21/2014</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Rebounds:</strong></p>
+
+<table>
+<thead>
+<tr>
+<th align="left">Player</th>
+<th align="left">Rebounds</th>
+<th align="left">Date</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">Dikembe Mutombo</td>
+<td align="left">22</td>
+<td align="left">3/2/2007</td>
+</tr>
+
+<tr>
+<td align="left">Dikembe Mutombo</td>
+<td align="left">19</td>
+<td align="left">x2</td>
+</tr>
+
+<tr>
+<td align="left">Karl Malone</td>
+<td align="left">19</td>
+<td align="left">11/6/2003</td>
+</tr>
+
+<tr>
+<td align="left">Dikembe Mutombo</td>
+<td align="left">18</td>
+<td align="left">1/13/2007</td>
+</tr>
+
+<tr>
+<td align="left">Karl Malone</td>
+<td align="left">18</td>
+<td align="left">11/21/2003</td>
+</tr>
+
+<tr>
+<td align="left">LeBron James</td>
+<td align="left">17</td>
+<td align="left">x2</td>
+</tr>
+
+<tr>
+<td align="left">Robert Parish</td>
+<td align="left">17</td>
+<td align="left">x3</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Blocks:</strong></p>
+
+<table>
+<thead>
+<tr>
+<th align="left">Player</th>
+<th align="left">Blocks</th>
+<th align="left">Age</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">Robert Parish</td>
+<td align="left">7</td>
+<td align="left">42-216d</td>
+</tr>
+
+<tr>
+<td align="left">K. Abdul-Jabbar</td>
+<td align="left">6</td>
+<td align="left">41-279d</td>
+</tr>
+
+<tr>
+<td align="left">Dikembe Mutombo</td>
+<td align="left">5</td>
+<td align="left">2x</td>
+</tr>
+
+<tr>
+<td align="left">Vince Carter</td>
+<td align="left">4</td>
+<td align="left">40-11d</td>
+</tr>
+
+<tr>
+<td align="left">Karl Malone</td>
+<td align="left">4</td>
+<td align="left">40-109d</td>
+</tr>
+
+<tr>
+<td align="left">LeBron James</td>
+<td align="left">3</td>
+<td align="left">2x</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Steals:</strong></p>
+
+<table>
+<thead>
+<tr>
+<th align="left">Player</th>
+<th align="left">Steals</th>
+<th align="left">Age</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">John Stockton</td>
+<td align="left">6</td>
+<td align="left">40-333d</td>
+</tr>
+
+<tr>
+<td align="left">Jason Terry</td>
+<td align="left">5</td>
+<td align="left">40-193</td>
+</tr>
+
+<tr>
+<td align="left">Robert Parish</td>
+<td align="left">5</td>
+<td align="left">40-153</td>
+</tr>
+
+<tr>
+<td align="left">Jason Kidd</td>
+<td align="left">4</td>
+<td align="left">2x</td>
+</tr>
+
+<tr>
+<td align="left">Dikembe Mutombo</td>
+<td align="left">4</td>
+<td align="left">40-230</td>
+</tr>
+
+<tr>
+<td align="left">Kevin Willis</td>
+<td align="left">4</td>
+<td align="left">40-191</td>
+</tr>
+
+<tr>
+<td align="left">Michael Jordan</td>
+<td align="left">4</td>
+<td align="left">40-323</td>
+</tr>
+
+<tr>
+<td align="left">K. Abdul-Jabbar</td>
+<td align="left">4</td>
+<td align="left">41-306</td>
+</tr>
+
+<tr>
+<td align="left">LeBron James</td>
+<td align="left">3</td>
+<td align="left">4x</td>
+</tr>
+
+<tr>
+<td align="left">Chris Paul</td>
+<td align="left">3</td>
+<td align="left">2x</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Playoff Points:</strong></p>
+
+<table>
+<thead>
+<tr>
+<th align="left">Player</th>
+<th align="left">Points</th>
+<th align="left">Playoff Opponent</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">LeBron James</td>
+<td align="left">38 (74.8%)</td>
+<td align="left">2025 R1, vs. Timberwolves</td>
+</tr>
+
+<tr>
+<td align="left">K. Abdul-Jabbar</td>
+<td align="left">32 (71.4%)</td>
+<td align="left">1987 Finals, vs. Celtics</td>
+</tr>
+
+<tr>
+<td align="left">Karl Malone</td>
+<td align="left">30 (68.7%)</td>
+<td align="left">2004 R1, vs. Rockets</td>
+</tr>
+
+<tr>
+<td align="left">Tim Duncan</td>
+<td align="left">19 (57.1%)</td>
+<td align="left">2016 WCSF, vs. Thunder</td>
+</tr>
+
+<tr>
+<td align="left">Manu Ginobili</td>
+<td align="left">17 (68%)</td>
+<td align="left">2018 R1, vs. Warriors</td>
+</tr>
+</tbody>
+</table>
+<p>Hope you learned something new from these lists, because I sure as shit didn&rsquo;t know 7ft center Kevin Willis, who was nicknamed &ldquo;T-Rex&rdquo; specifically because he had a shorter wingspan, had a 4-steal game at 40 with the Spurs. LeBron aside, that&rsquo;s nuts.</p>
+
+<p><a href="https://www.statmuse.com/nba/ask/highest-ppg-as-a-40-year-old" target="_blank">source</a> 1, <a href="https://screwball.com/search?q=most+points+by+a+player+age+40+or+older+nba" target="_blank">2</a></p>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nwphn1e" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>LakersAreForever | Lakers</div>
+        <div>1 | 18 minutes ago </div>
+      </div>
+      <label for="nwphn1e" class="commentText"><p>You gotta drop this during a peak time big dawg, this is a hit</p>
+
+<p>But it’s 4am central</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nwpfgol" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>OverallGeneral7129 | Cavaliers</div>
+        <div>6 | 38 minutes ago </div>
+      </div>
+      <label for="nwpfgol" class="commentText"><p>Chris Paul age 40 stats makes me sad</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nwph8zq" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>S2Sliferjam | Suns</div>
+        <div>1 | 22 minutes ago </div>
+      </div>
+      <label for="nwph8zq" class="commentText"><p>Seeing all those names makes me sad.. ends of eras</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="nwpheye" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>kurruchi | Minneapolis Lakers</div>
+        <div>1 | 20 minutes ago </div>
+      </div>
+      <label for="nwpheye" class="commentText"><p>It&rsquo;s natural alongside other guys his age, but I expected a Stockton type year because he looked very serviceable last year. And it&rsquo;s not abnormal for guys to fall off suddenly one year.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nwpf7xo" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>DiddysOilDealer | NBA</div>
+        <div>3 | 40 minutes ago </div>
+      </div>
+      <label for="nwpf7xo" class="commentText"><p>Very impressive tbh</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nwpfwis" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Jayjaybingz | OKC</div>
+        <div>2 | 34 minutes ago </div>
+      </div>
+      <label for="nwpfwis" class="commentText"><p>I saw a reccent interview where tony parker jokingly commented that the difficulty as you grow older is the recovery time and seeing lebron still look like a top 5 athlete on the court any night really puts into perspective the discipline he puts in to maintain his body</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nwph30g" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Andrew_Waples</div>
+        <div>1 | 23 minutes ago </div>
+      </div>
+      <label for="nwph30g" class="commentText"><p>Did you see his two dunks from last night? Insane.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nwpi6gx" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>BasicSet6933</div>
+        <div>1 | 13 minutes ago </div>
+      </div>
+      <label for="nwpi6gx" class="commentText"><p>Those Malone/Jordan/Stockton numbers were in the dead ball era. So comparing them to averages they are much more impressive; beating Lebron&rsquo;s PPG/TS(even more if you consider position).</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nwpia4t" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Snapphane88</div>
+        <div>1 | 12 minutes ago </div>
+      </div>
+      <label for="nwpia4t" class="commentText"><p>Glazing a bit here, but MJ doing what he was doing in such a low scoring era is pretty sick. Sure he was on a shit team and could chuck all he wanted, but still very impressive after being retired for a couple of years.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
