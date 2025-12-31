@@ -1,0 +1,459 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.selfPostImage {
+  width: 100%;
+  height: auto;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/baseball/comments/1q0dr7c/lame_or_hall_of_fame_game/"><p>Lame or Hall of Fame Game</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <p>Hello r/baseball. I want to play a game.</p>
+
+<p>Listed below are the career stat lines for 12 pitchers:</p>
+
+<table>
+<thead>
+<tr>
+<th align="left">Player</th>
+<th align="left">Wins</th>
+<th align="left">ERA</th>
+<th align="left">Strikeouts</th>
+<th align="left">WAR</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">A</td>
+<td align="left">224</td>
+<td align="left">3.26</td>
+<td align="left">2012</td>
+<td align="left">36.3</td>
+</tr>
+
+<tr>
+<td align="left">B</td>
+<td align="left">214</td>
+<td align="left">3.37</td>
+<td align="left">2015</td>
+<td align="left">68.1</td>
+</tr>
+
+<tr>
+<td align="left">C</td>
+<td align="left">245</td>
+<td align="left">3.70</td>
+<td align="left">2149</td>
+<td align="left">49.3</td>
+</tr>
+
+<tr>
+<td align="left">D</td>
+<td align="left">288</td>
+<td align="left">3.34</td>
+<td align="left">2245</td>
+<td align="left">62.1</td>
+</tr>
+
+<tr>
+<td align="left">E</td>
+<td align="left">222</td>
+<td align="left">3.36</td>
+<td align="left">2556</td>
+<td align="left">57.0</td>
+</tr>
+
+<tr>
+<td align="left">F</td>
+<td align="left">222</td>
+<td align="left">3.49</td>
+<td align="left">2080</td>
+<td align="left">56.5</td>
+</tr>
+
+<tr>
+<td align="left">G</td>
+<td align="left">266</td>
+<td align="left">3.25</td>
+<td align="left">2581</td>
+<td align="left">65.2</td>
+</tr>
+
+<tr>
+<td align="left">H</td>
+<td align="left">239</td>
+<td align="left">4.13</td>
+<td align="left">2201</td>
+<td align="left">53.6</td>
+</tr>
+
+<tr>
+<td align="left">I</td>
+<td align="left">243</td>
+<td align="left">2.89</td>
+<td align="left">2303</td>
+<td align="left">61.8</td>
+</tr>
+
+<tr>
+<td align="left">J</td>
+<td align="left">200</td>
+<td align="left">3.66</td>
+<td align="left">2488</td>
+<td align="left">43.5</td>
+</tr>
+
+<tr>
+<td align="left">K</td>
+<td align="left">240</td>
+<td align="left">3.66</td>
+<td align="left">2773</td>
+<td align="left">57.1</td>
+</tr>
+
+<tr>
+<td align="left">L</td>
+<td align="left">269</td>
+<td align="left">4.25</td>
+<td align="left">2441</td>
+<td align="left">50.0</td>
+</tr>
+</tbody>
+</table>
+<p>Among this group there are three current Hall of Fame pitchers, two Hall of Very Good pitchers that I have seen people on here argue this offseason have Hall of Fame cases, and six pitchers that I don&rsquo;t think anyone has ever argued should be in the Hall of Fame. Can you pick the studs from the duds?</p>
+
+<p>ANSWERS:</p>
+
+<p>A: &amp;gt;!CATFISH HUNTER!&amp;lt;</p>
+
+<p>B: &amp;gt;!RICK REUSCHEL!&amp;lt;</p>
+
+<p>C: &amp;gt;!DENNIS MARTINEZ!&amp;lt;</p>
+
+<p>D: &amp;gt;!TOMMY JOHN!&amp;lt;</p>
+
+<p>E: &amp;gt;!JERRY KOOSMAN!&amp;lt;</p>
+
+<p>F: &amp;gt;!TIM HUDSON!&amp;lt;</p>
+
+<p>G: &amp;gt;!BOB FELLER!&amp;lt;</p>
+
+<p>H: &amp;gt;!DAVID WELLS!&amp;lt;</p>
+
+<p>I: &amp;gt;!JUAN MARICHAL!&amp;lt;</p>
+
+<p>J: &amp;gt;!JON LESTER!&amp;lt;</p>
+
+<p>K: &amp;gt;!FRANK TANANA!&amp;lt;</p>
+
+<p>L: &amp;gt;!JAMIE MOYER!&amp;lt;</p>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nwwyubo" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>AerieElectrical3546 | Boston Red Sox</div>
+        <div>2 | 24 minutes ago </div>
+      </div>
+      <label for="nwwyubo" class="commentText"><p>Had no idea Hunter’s WAR was so low lol</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nwwzpye" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Constant_Gardner11 | New York Yankees • MVPoster</div>
+        <div>4 | 19 minutes ago </div>
+      </div>
+      <label for="nwwzpye" class="commentText"><p>Hunter pitched in the 60s and 70s. So while his career ERA (3.26) looks great to us, it was basically league average for the time (104 ERA+).</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="nwwz1yu" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>WhiteSoxChartGuy | Chicago White Sox</div>
+        <div>3 | 22 minutes ago </div>
+      </div>
+      <label for="nwwz1yu" class="commentText"><p>I know right? But he&rsquo;s got a 75 WAR nickname to make up for it.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="nwwzecg" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>TeqMunee885 | St. Louis Cardinals</div>
+        <div>2 | 20 minutes ago </div>
+      </div>
+      <label for="nwwzecg" class="commentText"><p>He piled up wins by basically getting the decision in every game he pitched, but his career was functionally over at 30.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nwwzxrw" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>involmasturb | MLB Players Association</div>
+        <div>3 | 17 minutes ago </div>
+      </div>
+      <label for="nwwzxrw" class="commentText"><p>Catfish made the HoF almost entirely from being on championship teams. Don&rsquo;t get me wrong, he was the ace on those great 70s Oakland teams but by the time he was in New York, after 1 excellent year and a reasonably good 1976, he was starting to fade but has 5 rings, a Cy Young Award and a perfect game</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nwx02dk" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Swimming_Elk_3058 | Philadelphia Phillies</div>
+        <div>2 | 17 minutes ago </div>
+      </div>
+      <label for="nwx02dk" class="commentText"><p>It would be interesting to list the innings pitched here. Several of these guys are guys who achieved high counting stats by pitching for a really long time.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
