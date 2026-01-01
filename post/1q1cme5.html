@@ -1,0 +1,898 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.selfPostImage {
+  width: 100%;
+  height: auto;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/nba/comments/1q1cme5/number_of_games_played_by_nba_mvps_since_195556/"><p>Number of Games Played by NBA MVP&rsquo;s Since 1955-56</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <p>Posting to add some context in regards to mounting injuries to award candidates this season.</p>
+
+<p>Specifically, this is a list of MVP winners since the 50&rsquo;s (merger was summer of 1976).</p>
+
+<p>I have added the percentages played in the last column and have made adjustments due to shorter seasons in the 50&rsquo;s/60&rsquo;s, lockouts and the pandemic (asterisks by years denote non-82 game seasons).</p>
+
+<p>The 65 game minimum requirement (approximately <strong>79%</strong> of the NBA games available) was introduced prior to the 2023-24 season.</p>
+
+<table>
+<thead>
+<tr>
+<th align="left"><strong>SEASON</strong></th>
+<th align="left"><strong>PLAYER</strong></th>
+<th align="left"><strong>GAMES PLAYED</strong></th>
+<th align="left"><strong>% OF AVAIL. GAMES PLAYED</strong></th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left"><strong>2024-25</strong></td>
+<td align="left">Shai Gilgeous-Alexander</td>
+<td align="left">76</td>
+<td align="left">92.68%</td>
+</tr>
+
+<tr>
+<td align="left"><strong>2023-24</strong></td>
+<td align="left">Nikola Jokić</td>
+<td align="left">79</td>
+<td align="left">96.34%</td>
+</tr>
+
+<tr>
+<td align="left"><strong>2022-23</strong></td>
+<td align="left">Joel Embiid</td>
+<td align="left">66</td>
+<td align="left">80.49%</td>
+</tr>
+
+<tr>
+<td align="left"><strong>2021-22</strong></td>
+<td align="left">Nikola Jokić</td>
+<td align="left">74</td>
+<td align="left">90.24%</td>
+</tr>
+
+<tr>
+<td align="left"><strong>2020-21</strong>*</td>
+<td align="left">Nikola Jokić</td>
+<td align="left">72</td>
+<td align="left">100.00%</td>
+</tr>
+
+<tr>
+<td align="left"><strong>2019-20</strong>*</td>
+<td align="left">Giannis Antetokounmpo</td>
+<td align="left">63</td>
+<td align="left">87.50%</td>
+</tr>
+
+<tr>
+<td align="left"><strong>2018-19</strong></td>
+<td align="left">Giannis Antetokounmpo</td>
+<td align="left">72</td>
+<td align="left">87.80%</td>
+</tr>
+
+<tr>
+<td align="left"><strong>2017-18</strong></td>
+<td align="left">James Harden</td>
+<td align="left">72</td>
+<td align="left">87.80%</td>
+</tr>
+
+<tr>
+<td align="left"><strong>2016-17</strong></td>
+<td align="left">Russell Westbrook</td>
+<td align="left">81</td>
+<td align="left">98.78%</td>
+</tr>
+
+<tr>
+<td align="left"><strong>2015-16</strong></td>
+<td align="left">Stephen Curry</td>
+<td align="left">79</td>
+<td align="left">96.34%</td>
+</tr>
+
+<tr>
+<td align="left"><strong>2014-15</strong></td>
+<td align="left">Stephen Curry</td>
+<td align="left">80</td>
+<td align="left">97.56%</td>
+</tr>
+
+<tr>
+<td align="left"><strong>2013-14</strong></td>
+<td align="left">Kevin Durant</td>
+<td align="left">81</td>
+<td align="left">98.78%</td>
+</tr>
+
+<tr>
+<td align="left"><strong>2012-13</strong></td>
+<td align="left">LeBron James</td>
+<td align="left">76</td>
+<td align="left">92.68%</td>
+</tr>
+
+<tr>
+<td align="left"><strong>2011-12</strong>*</td>
+<td align="left">LeBron James</td>
+<td align="left">62</td>
+<td align="left">93.94%</td>
+</tr>
+
+<tr>
+<td align="left"><strong>2010-11</strong></td>
+<td align="left">Derrick Rose</td>
+<td align="left">81</td>
+<td align="left">98.78%</td>
+</tr>
+
+<tr>
+<td align="left"><strong>2009-10</strong></td>
+<td align="left">LeBron James</td>
+<td align="left">76</td>
+<td align="left">92.68%</td>
+</tr>
+
+<tr>
+<td align="left"><strong>2008-09</strong></td>
+<td align="left">LeBron James</td>
+<td align="left">81</td>
+<td align="left">98.78%</td>
+</tr>
+
+<tr>
+<td align="left"><strong>2007-08</strong></td>
+<td align="left">Kobe Bryant</td>
+<td align="left">82</td>
+<td align="left">100.00%</td>
+</tr>
+
+<tr>
+<td align="left"><strong>2006-07</strong></td>
+<td align="left">Dirk Nowitzki</td>
+<td align="left">78</td>
+<td align="left">95.12%</td>
+</tr>
+
+<tr>
+<td align="left"><strong>2005-06</strong></td>
+<td align="left">Steve Nash</td>
+<td align="left">79</td>
+<td align="left">96.34%</td>
+</tr>
+
+<tr>
+<td align="left"><strong>2004-05</strong></td>
+<td align="left">Steve Nash</td>
+<td align="left">75</td>
+<td align="left">91.46%</td>
+</tr>
+
+<tr>
+<td align="left"><strong>2003-04</strong></td>
+<td align="left">Kevin Garnett</td>
+<td align="left">82</td>
+<td align="left">100.00%</td>
+</tr>
+
+<tr>
+<td align="left"><strong>2002-03</strong></td>
+<td align="left">Tim Duncan</td>
+<td align="left">81</td>
+<td align="left">98.78%</td>
+</tr>
+
+<tr>
+<td align="left"><strong>2001-02</strong></td>
+<td align="left">Tim Duncan</td>
+<td align="left">82</td>
+<td align="left">100.00%</td>
+</tr>
+
+<tr>
+<td align="left"><strong>2000-01</strong></td>
+<td align="left">Allen Iverson</td>
+<td align="left">71</td>
+<td align="left">86.59%</td>
+</tr>
+
+<tr>
+<td align="left"><strong>1999-00</strong></td>
+<td align="left">Shaquille O&rsquo;Neal</td>
+<td align="left">79</td>
+<td align="left">96.34%</td>
+</tr>
+
+<tr>
+<td align="left"><strong>1998-99</strong>*</td>
+<td align="left">Karl Malone</td>
+<td align="left">49</td>
+<td align="left">98.00%</td>
+</tr>
+
+<tr>
+<td align="left"><strong>1997-98</strong></td>
+<td align="left">Michael Jordan</td>
+<td align="left">82</td>
+<td align="left">100.00%</td>
+</tr>
+
+<tr>
+<td align="left"><strong>1996-97</strong></td>
+<td align="left">Karl Malone</td>
+<td align="left">82</td>
+<td align="left">100.00%</td>
+</tr>
+
+<tr>
+<td align="left"><strong>1995-96</strong></td>
+<td align="left">Michael Jordan</td>
+<td align="left">82</td>
+<td align="left">100.00%</td>
+</tr>
+
+<tr>
+<td align="left"><strong>1994-95</strong></td>
+<td align="left">David Robinson</td>
+<td align="left">81</td>
+<td align="left">98.78%</td>
+</tr>
+
+<tr>
+<td align="left"><strong>1993-94</strong></td>
+<td align="left">Hakeem Olajuwon</td>
+<td align="left">80</td>
+<td align="left">97.56%</td>
+</tr>
+
+<tr>
+<td align="left"><strong>1992-93</strong></td>
+<td align="left">Charles Barkley</td>
+<td align="left">76</td>
+<td align="left">92.68%</td>
+</tr>
+
+<tr>
+<td align="left"><strong>1991-92</strong></td>
+<td align="left">Michael Jordan</td>
+<td align="left">80</td>
+<td align="left">97.56%</td>
+</tr>
+
+<tr>
+<td align="left"><strong>1990-91</strong></td>
+<td align="left">Michael Jordan</td>
+<td align="left">82</td>
+<td align="left">100.00%</td>
+</tr>
+
+<tr>
+<td align="left"><strong>1989-90</strong></td>
+<td align="left">Magic Johnson</td>
+<td align="left">79</td>
+<td align="left">96.34%</td>
+</tr>
+
+<tr>
+<td align="left"><strong>1988-89</strong></td>
+<td align="left">Magic Johnson</td>
+<td align="left">77</td>
+<td align="left">93.90%</td>
+</tr>
+
+<tr>
+<td align="left"><strong>1987-88</strong></td>
+<td align="left">Michael Jordan</td>
+<td align="left">82</td>
+<td align="left">100.00%</td>
+</tr>
+
+<tr>
+<td align="left"><strong>1986-87</strong></td>
+<td align="left">Magic Johnson</td>
+<td align="left">80</td>
+<td align="left">97.56%</td>
+</tr>
+
+<tr>
+<td align="left"><strong>1985-86</strong></td>
+<td align="left">Larry Bird</td>
+<td align="left">82</td>
+<td align="left">100.00%</td>
+</tr>
+
+<tr>
+<td align="left"><strong>1984-85</strong></td>
+<td align="left">Larry Bird</td>
+<td align="left">80</td>
+<td align="left">97.56%</td>
+</tr>
+
+<tr>
+<td align="left"><strong>1983-84</strong></td>
+<td align="left">Larry Bird</td>
+<td align="left">79</td>
+<td align="left">96.34%</td>
+</tr>
+
+<tr>
+<td align="left"><strong>1982-83</strong></td>
+<td align="left">Moses Malone</td>
+<td align="left">78</td>
+<td align="left">95.12%</td>
+</tr>
+
+<tr>
+<td align="left"><strong>1981-82</strong></td>
+<td align="left">Moses Malone</td>
+<td align="left">81</td>
+<td align="left">98.78%</td>
+</tr>
+
+<tr>
+<td align="left"><strong>1980-81</strong></td>
+<td align="left">Julius Erving</td>
+<td align="left">82</td>
+<td align="left">100.00%</td>
+</tr>
+
+<tr>
+<td align="left"><strong>1979-80</strong></td>
+<td align="left">Kareem Abdul-Jabbar</td>
+<td align="left">82</td>
+<td align="left">100.00%</td>
+</tr>
+
+<tr>
+<td align="left"><strong>1978-79</strong></td>
+<td align="left">Moses Malone</td>
+<td align="left">82</td>
+<td align="left">100.00%</td>
+</tr>
+
+<tr>
+<td align="left"><strong>1977-78</strong></td>
+<td align="left">Bill Walton</td>
+<td align="left">58</td>
+<td align="left">70.73%</td>
+</tr>
+
+<tr>
+<td align="left"><strong>1976-77</strong></td>
+<td align="left">Kareem Abdul-Jabbar</td>
+<td align="left">82</td>
+<td align="left">100.00%</td>
+</tr>
+
+<tr>
+<td align="left"><strong>1975-76</strong></td>
+<td align="left">Kareem Abdul-Jabbar</td>
+<td align="left">82</td>
+<td align="left">100.00%</td>
+</tr>
+
+<tr>
+<td align="left"><strong>1974-75</strong></td>
+<td align="left">Bob McAdoo</td>
+<td align="left">82</td>
+<td align="left">100.00%</td>
+</tr>
+
+<tr>
+<td align="left"><strong>1973-74</strong></td>
+<td align="left">Kareem Abdul-Jabbar</td>
+<td align="left">81</td>
+<td align="left">98.78%</td>
+</tr>
+
+<tr>
+<td align="left"><strong>1972-73</strong></td>
+<td align="left">Dave Cowens</td>
+<td align="left">82</td>
+<td align="left">100.00%</td>
+</tr>
+
+<tr>
+<td align="left"><strong>1971-72</strong></td>
+<td align="left">Kareem Abdul-Jabbar</td>
+<td align="left">81</td>
+<td align="left">98.78%</td>
+</tr>
+
+<tr>
+<td align="left"><strong>1970-71</strong></td>
+<td align="left">Kareem Abdul-Jabbar</td>
+<td align="left">82</td>
+<td align="left">100.00%</td>
+</tr>
+
+<tr>
+<td align="left"><strong>1969-70</strong></td>
+<td align="left">Willis Reed</td>
+<td align="left">81</td>
+<td align="left">98.78%</td>
+</tr>
+
+<tr>
+<td align="left"><strong>1968-69</strong></td>
+<td align="left">Wes Unseld</td>
+<td align="left">82</td>
+<td align="left">100.00%</td>
+</tr>
+
+<tr>
+<td align="left"><strong>1967-68</strong></td>
+<td align="left">Wilt Chamberlain</td>
+<td align="left">82</td>
+<td align="left">100.00%</td>
+</tr>
+
+<tr>
+<td align="left"><strong>1966-67</strong>*</td>
+<td align="left">Wilt Chamberlain</td>
+<td align="left">81</td>
+<td align="left">100.00%</td>
+</tr>
+
+<tr>
+<td align="left"><strong>1965-66</strong>*</td>
+<td align="left">Wilt Chamberlain</td>
+<td align="left">79</td>
+<td align="left">98.75%</td>
+</tr>
+
+<tr>
+<td align="left"><strong>1964-65</strong>*</td>
+<td align="left">Bill Russell</td>
+<td align="left">78</td>
+<td align="left">97.50%</td>
+</tr>
+
+<tr>
+<td align="left"><strong>1963-64</strong>*</td>
+<td align="left">Oscar Robertson</td>
+<td align="left">79</td>
+<td align="left">98.75%</td>
+</tr>
+
+<tr>
+<td align="left"><strong>1962-63</strong>*</td>
+<td align="left">Bill Russell</td>
+<td align="left">78</td>
+<td align="left">97.50%</td>
+</tr>
+
+<tr>
+<td align="left"><strong>1961-62</strong>*</td>
+<td align="left">Bill Russell</td>
+<td align="left">76</td>
+<td align="left">95.00%</td>
+</tr>
+
+<tr>
+<td align="left"><strong>1960-61</strong>*</td>
+<td align="left">Bill Russell</td>
+<td align="left">78</td>
+<td align="left">98.73%</td>
+</tr>
+
+<tr>
+<td align="left"><strong>1959-60</strong>*</td>
+<td align="left">Wilt Chamberlain</td>
+<td align="left">72</td>
+<td align="left">96.00%</td>
+</tr>
+
+<tr>
+<td align="left"><strong>1958-59</strong>*</td>
+<td align="left">Bob Pettit</td>
+<td align="left">72</td>
+<td align="left">100.00%</td>
+</tr>
+
+<tr>
+<td align="left"><strong>1957-58</strong>*</td>
+<td align="left">Bill Russell</td>
+<td align="left">69</td>
+<td align="left">95.83%</td>
+</tr>
+
+<tr>
+<td align="left"><strong>1956-57</strong>*</td>
+<td align="left">Bob Cousy</td>
+<td align="left">64</td>
+<td align="left">88.89%</td>
+</tr>
+
+<tr>
+<td align="left"><strong>1955-56</strong>*</td>
+<td align="left">Bob Pettit</td>
+<td align="left">72</td>
+<td align="left">100.00%</td>
+</tr>
+</tbody>
+</table>
+<p>source: basketball-reference</p>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nx4ksl3" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>sctthuynh | GSW</div>
+        <div>17 | 2 hours ago </div>
+      </div>
+      <label for="nx4ksl3" class="commentText"><p>So aside from Bill Walton in 1978 who won the MVP despite playing only 70% of games, no previous MVP had played lower than 80% of their games.</p>
+
+<p>2023 Embiid came close with 66 games and 80%.</p>
+
+<p>2001 Iverson is the third lowest at 71 games and 86%.</p>
+
+<p>80% seems like a reasonable threshold since its been met in <strong><em>69</em></strong> of the 70 previous years.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nx53v6h" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>lazard96 | Spurs</div>
+        <div>1 | 20 minutes ago </div>
+      </div>
+      <label for="nx53v6h" class="commentText"><p>for individual awards i think its ok. no player deserves a individual award if they play less than that, for all nba/defensive it should be lower imo</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="nx54mjh" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>irespectwomenlol</div>
+        <div>1 | 16 minutes ago </div>
+      </div>
+      <label for="nx54mjh" class="commentText"><p>&amp;gt; 80% seems like a reasonable threshold since its been met in 69 of the 70 previous years.</p>
+
+<p>Whether it&rsquo;s a reasonable threshold or not that works in most circumstances doesn&rsquo;t imply that a threshold should exist or that it won&rsquo;t be bad in exceptional circumstances.</p>
+
+<p>Imagine if somebody played 64 games who only missed 18 games because some dirty player tripped them and broke their leg, their team won 62 games with them and only 3 without them, they put 34ppg on great shooting, 12 assists, 10 rebounds, and a fistful of stocks.</p>
+
+<p>Given the circumstances, shouldn&rsquo;t that person be a strong contender for MVP regardless of what an arbitrary threshold says?</p>
+
+<p>If you can create an exception to the rule that doesn&rsquo;t work, what does that say about the rule itself?</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="nx55c99" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>thismayoffendyou6006</div>
+        <div>1 | 12 minutes ago </div>
+      </div>
+      <label for="nx55c99" class="commentText"><p>Nice</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nx4kft8" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Savahoodie | Nuggets</div>
+        <div>12 | 2 hours ago </div>
+      </div>
+      <label for="nx4kft8" class="commentText"><p>If there is a Adam silver lining in the jokic injury it’s that I won’t have to see 500 posts about why he shouldn’t win MVP</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nx4qzfp" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Main_Pop_7565</div>
+        <div>5 | an hour ago </div>
+      </div>
+      <label for="nx4qzfp" class="commentText"><p>I bet thunder fans feels the same way about Shai lmao</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="nx4y0g1" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Spemanz92 | Thunder</div>
+        <div>3 | an hour ago </div>
+      </div>
+      <label for="nx4y0g1" class="commentText"><p>Mvp race about to be 20x less toxic</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nx4nr4t" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Admirable_Let_2961</div>
+        <div>3 | 2 hours ago </div>
+      </div>
+      <label for="nx4nr4t" class="commentText"><p>Meeting Bill Walton at a Celtics home game was really special. Particularly since he died shortly after. What a legend</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nx56fqj" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Kryptos33</div>
+        <div>1 | 7 minutes ago </div>
+      </div>
+      <label for="nx56fqj" class="commentText"><p>The games played rule is a weak solution to a problem that doesn&rsquo;t exist as it&rsquo;s been presented.  It&rsquo;s the league trying to paint load management as a player issue when for the most part it&rsquo;s a team and schedule issue.  It&rsquo;s why all the fines associated with &lsquo;gaming&rsquo; who plays on a night to night basis are team fines.  Talking heads just ignore it to carry water for their partners.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
