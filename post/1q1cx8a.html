@@ -1,0 +1,415 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.selfPostImage {
+  width: 100%;
+  height: auto;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/nba/comments/1q1cx8a/i_created_a_new_metric_to_try_and_explain_okcs/"><p>I created a new metric to try and explain OKC&rsquo;s defensive strategy to foul more.</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <p>A few weeks ago, u/refreshing_yogurt made a <a href="https://www.reddit.com/r/nba/comments/1p8tdui/through_272_games_22_of_the_2526_season_fouls_and/" target="_blank">post</a> highlighting a new strategy in which teams are teaching their players to reach more to generate turnovers at the expense of fouling more.</p>
+
+<p>I spent some time trying to quantify this strategy with a metric I created called Turnover Efficiency (TOE). It represents the expected points gained off turnovers minus expected points lost to opponent free throws per 100 possessions.</p>
+
+<p>As it turns out, the numbers match the eye test. You can read the full analysis and see some charts in this <a href="https://basketballnerd.substack.com/p/why-the-nbas-foul-problem-is-here" target="_blank">substack post</a>, but here&rsquo;s a summary of what I found:</p>
+
+<ol>
+<li>OKC Turnover Efficiency has been on the rise over the last 5 seasons, going from 14^(th) in the league in 2020-21 to 1^(st) in the league in 2024, 2025, and 2026.</li>
+<li>At +7.06, OKC currently has the highest TOE of all time, dating back to 2004. This can be interpreted as OKC generating an advantage of +7.06 points per 100 possessions against a league average team by forcing turnovers (with the cost of free throws allowed factored in).</li>
+<li>TOE has no correlation to scoring or win percentage. One interesting example is the 2022 Raptors who currently hold the all-time record for TOE in a season at +5.84 (soon to be broken by OKC). The Raptors finished 41-41 that season.</li>
+<li>The Suns made the single biggest jump in TOE from last season and are a team to watch for adopting this new strategy.</li>
+<li>TOE data is noisy in the playoffs but it seems like the trend holds and is potentially amplified by the increased physicality. OKC had a TOE of +8.11 in their playoff run last season.</li>
+<li>Less of a finding and more of a prediction: more teams will be adopting this strategy over the next couple of seasons, so barring officiating changes, free throw attempt might continue to rise.</li>
+</ol>
+
+<p>I realize there are other factors besides this defensive strategy leading to the uptick in free throws, and while I&rsquo;m personally annoyed by the increase, it&rsquo;s cool to see the league still pioneering these new micro-advantages.</p>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nx4mebx" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>texasphotog | Pelicans</div>
+        <div>13 | an hour ago </div>
+      </div>
+      <label for="nx4mebx" class="commentText"><p>The strategy:</p>
+
+<ol>
+<li>We are insanely deep (in case someone gets in foul trouble)</li>
+<li>They won&rsquo;t call them all</li>
+<li>We get the benefit of the doubt because refs know we are great</li>
+</ol>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nx4ni8e" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>NOHITJEROME | Cavaliers</div>
+        <div>8 | an hour ago </div>
+      </div>
+      <label for="nx4ni8e" class="commentText"><p>Worked for the Seahawks back in the day in the nfl too</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="nx4ncte" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>b-squiggle_</div>
+        <div>5 | an hour ago </div>
+      </div>
+      <label for="nx4ncte" class="commentText"><p>Yeah you hit the nail on the head. This doesn&rsquo;t work for teams like the Wizards.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="nx4sijo" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>PretentiousPanda | Bucks</div>
+        <div>1 | 20 minutes ago </div>
+      </div>
+      <label for="nx4sijo" class="commentText"><p>It&rsquo;s legion of boom all over again. Dare the refs to call it. </p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="nx4rxvo" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Kvsav57</div>
+        <div>1 | 23 minutes ago </div>
+      </div>
+      <label for="nx4rxvo" class="commentText"><p>2 is the most important. The refs are employees of a business that doesn&rsquo;t want the game known for being fast-paced to be ground to a halt by foul calls (leaving aside the ends of games) so they don&rsquo;t call them. They aren&rsquo;t there to ensure a fair game. They&rsquo;re there to ensure the health of the business.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nx4qsu5" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>thetalkinghawk | Thunder</div>
+        <div>1 | 29 minutes ago </div>
+      </div>
+      <label for="nx4qsu5" class="commentText"><p>TOE up from the floor up</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nx4qgfg" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>First_Inspection_478 | Bucks</div>
+        <div>1 | 30 minutes ago </div>
+      </div>
+      <label for="nx4qgfg" class="commentText"><p>I like it. You&rsquo;ll get much better responses in r/nbadiscussion</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nx4ofij" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>referee-superfan | Trail Blazers</div>
+        <div>-8 | 41 minutes ago </div>
+      </div>
+      <label for="nx4ofij" class="commentText"><p>Now do one of Lu Dort’s strategy of intentionally trying to hurt other players</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nx4qtvy" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>awntawn | Lakers</div>
+        <div>1 | 29 minutes ago </div>
+      </div>
+      <label for="nx4qtvy" class="commentText"><p>Time to factor in flagrant fouls and ejections versus points lost from opponent&rsquo;s minutes missed due to injury into the formula lol</p>
+
+<p>Diving into a guy&rsquo;s knees is statistically the most efficient play in basketball</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="nx4qjgh" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>_Wash | Timberwolves</div>
+        <div>1 | 30 minutes ago </div>
+      </div>
+      <label for="nx4qjgh" class="commentText"><p>no way. dort is definitely not a dirty player</p>
+
+<p>just ignore the times with Ingram, PG, Kyrie, Ja, Harden, etc…</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
