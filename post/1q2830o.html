@@ -1,0 +1,726 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.selfPostImage {
+  width: 100%;
+  height: auto;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/nba/comments/1q2830o/currently_1015_20232024_allnba_team_members_are/"><p>Currently, <sup>10</sup>&frasl;<sub>15</sub> 2023-2024 All-NBA Team members are on track to miss the 65-game minimum for end-of-season awards</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <h1 id="first-team">First Team:</h1>
+
+<p>Giannis Antetokounmpo - on pace to play <strong><sup>48</sup>&frasl;<sub>82</sub></strong> games [X]</p>
+
+<p>Luka Doncic - on pace to play <strong><sup>63</sup>&frasl;<sub>82</sub></strong> games [X]</p>
+
+<p>Shai Gilgeous-Alexander - on pace to play <strong><sup>79</sup>&frasl;<sub>82</sub></strong> games [✓]</p>
+
+<p>Nikola Jokic - on pace to play <strong><sup>55</sup>&frasl;<sub>82</sub></strong> games [X]</p>
+
+<p>Jayson Tatum - tore Achilles, <strong>return date unknown</strong> [X]</p>
+
+<h1 id="second-team">Second Team:</h1>
+
+<p>Jalen Brunson - on pace to play <strong><sup>74</sup>&frasl;<sub>82</sub></strong> games [✓]</p>
+
+<p>Anthony Davis - on pace to play <strong><sup>39</sup>&frasl;<sub>82</sub></strong> games [X]</p>
+
+<p>Kevin Durant - on pace to play <strong><sup>76</sup>&frasl;<sub>82</sub></strong> games [✓]</p>
+
+<p>Anthony Edwards - on pace to play <strong><sup>65</sup>&frasl;<sub>82</sub></strong> games [✓]</p>
+
+<p>Kawhi Leonard - on pace to play <strong><sup>57</sup>&frasl;<sub>82</sub></strong> games [X]</p>
+
+<h1 id="third-team">Third Team:</h1>
+
+<p>Devin Booker - on pace to play <strong><sup>74</sup>&frasl;<sub>82</sub></strong> games [✓]</p>
+
+<p>Stephen Curry - on pace to play <strong><sup>60</sup>&frasl;<sub>82</sub></strong> games [X]</p>
+
+<p>Tyrese Haliburton - tore Achilles, <strong>out for the year</strong> [X]</p>
+
+<p>LeBron James - on pace to play <strong><sup>39</sup>&frasl;<sub>82</sub></strong> games [X]</p>
+
+<p>Domantas Sabonis - on pace to play <strong><sup>26</sup>&frasl;<sub>82</sub></strong> games [X]</p>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nxb2ruh" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>pmurt007 | Lakers</div>
+        <div>43 | an hour ago </div>
+      </div>
+      <label for="nxb2ruh" class="commentText"><p>The only time people are mad about the 65 game req for regular season awards is if it affects their guy.  Missing over 20% of the season should disqualify a player regardless of how well they are playing, plain and simple.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nxb3kt8" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>brnccnt7</div>
+        <div>18 | an hour ago </div>
+      </div>
+      <label for="nxb3kt8" class="commentText"><p>I agree with you 100%</p>
+
+<p>Until this goes against my guy ;)</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nxb5nxz" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ClydeSprucewood | Magic</div>
+        <div>8 | 40 minutes ago </div>
+      </div>
+      <label for="nxb5nxz" class="commentText"><p>Paolo needs to miss a few more games so I can act like he would’ve made it</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="nxb5ms4" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Imaginary-Cycle-1977 | Spurs</div>
+        <div>7 | 40 minutes ago </div>
+      </div>
+      <label for="nxb5ms4" class="commentText"><p>My team would benefit from our guy being ineligible and I think it’s dumb. Haliburton playing a bunch of games for just barely 20 mins a few years ago was ridiculous. Let the voters decide if they played enough or not.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nxb85ei" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>robbyiballs | Knicks</div>
+        <div>1 | 28 minutes ago </div>
+      </div>
+      <label for="nxb85ei" class="commentText"><p>No. That was the old method, and everyone sat a ton of games. The best guys are playing more consistently as a result of this rule. </p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="nxb4pkw" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>roybringus | Timberwolves</div>
+        <div>5 | an hour ago </div>
+      </div>
+      <label for="nxb4pkw" class="commentText"><p>I am SO close to being mad about this requirement</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="nxb6c9s" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Krillin113 | 76ers</div>
+        <div>1 | 37 minutes ago </div>
+      </div>
+      <label for="nxb6c9s" class="commentText"><p>Includes the media</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="nxb78zf" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Safe-Wasabi7339</div>
+        <div>1 | 32 minutes ago </div>
+      </div>
+      <label for="nxb78zf" class="commentText"><p>I agree there should be some threshold for games played.  I&rsquo;m not sure I agree that 20% of the games missed should be the threshold</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="nxbanqj" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ajteitel | Suns</div>
+        <div>1 | 16 minutes ago </div>
+      </div>
+      <label for="nxbanqj" class="commentText"><p>I&rsquo;ve long since stopped caring about awards. I just don&rsquo;t like how the awards are tied into future contracts</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nxb1fth" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Dependent-Effect6077 | Nuggets</div>
+        <div>10 | an hour ago </div>
+      </div>
+      <label for="nxb1fth" class="commentText"><p>The game getting quicker and quicker definitely leads to more injuries than in the past players run around and risk tweaking something as a result way more than they did in the 1990s and 2000s</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nxb1ri5" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>the-big-dingo</div>
+        <div>4 | an hour ago </div>
+      </div>
+      <label for="nxb1ri5" class="commentText"><p>Don’t forget players come into the league with like 3x more mileage on their bodies since they play ball like year round in AAU</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nxbcf1q" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Time_Waits_For_Me | Rockets</div>
+        <div>1 | 7 minutes ago </div>
+      </div>
+      <label for="nxbcf1q" class="commentText"><p>So you need to have now more playoff caliber players,more rotational guys</p>
+
+<p>Thats good</p>
+
+<p>I hope the ridiculousness of unavailable guys get paid max contracts and their replacements who do all the work through regular get paid under 10m must stop</p>
+
+<p>Plus the NBA should be headed to be more team oriented than stars/players oriented.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nxbcxss" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>the-big-dingo</div>
+        <div>1 | 4 minutes ago </div>
+      </div>
+      <label for="nxbcxss" class="commentText"><p>Basket has always team oriented lol why type of comment is that?</p>
+
+<p>Sure you’re always going to have a #1 option or a star but like even MJ had Steve Kerr coming off the bench hitting clutch shots.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nxb4eow" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>RunThePnR | NBA</div>
+        <div>9 | an hour ago </div>
+      </div>
+      <label for="nxb4eow" class="commentText"><p>2nd and 3rd team needs less games requirement.</p>
+
+<p>I don’t want Wemby to have such little honors for his career lol. He could genuinely always be around 70 games even at his healthiest years bc Spurs are so careful with him (as they should be ofc).</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nxb6ax1" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Several_Hour_347</div>
+        <div>5 | 37 minutes ago </div>
+      </div>
+      <label for="nxb6ax1" class="commentText"><p>Why?</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nxb73ud" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>RyuSunn | Lakers</div>
+        <div>6 | 33 minutes ago </div>
+      </div>
+      <label for="nxb73ud" class="commentText"><p>because 60 games of Wemby is way better than 70 games of a lesser player that would be NBA 5th team if everyone was healthy, let voters take games into account instead of setting a hard cap</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="nxb6ssj" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>RunThePnR | NBA</div>
+        <div>1 | 35 minutes ago </div>
+      </div>
+      <label for="nxb6ssj" class="commentText"><p>Because I like Wemby.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="nxb6o2l" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Krillin113 | 76ers</div>
+        <div>4 | 35 minutes ago </div>
+      </div>
+      <label for="nxb6o2l" class="commentText"><p>Nah you’ll get weird situations were nba 3rd team is like Jokic-Wemby-Embiid (plz)-Luka-Ant or some shit.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nxb7g4p" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>RunThePnR | NBA</div>
+        <div>1 | 31 minutes ago </div>
+      </div>
+      <label for="nxb7g4p" class="commentText"><p>Well if they all play less games in general (imo 60 games for 2nd team and 55 for 3rd team)  then yeah that’s fair. At least better than none.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="nxb5rkj" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ClydeSprucewood | Magic</div>
+        <div>3 | 39 minutes ago </div>
+      </div>
+      <label for="nxb5rkj" class="commentText"><p>That’s an interesting idea, I think I like it</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="nxb8za7" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Spiritual_Wall_2309</div>
+        <div>1 | 24 minutes ago </div>
+      </div>
+      <label for="nxb8za7" class="commentText"><p>They are pros.  They need to play.  80% is laughable for any annual awards.  We treat them like 6th graders.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="nxb78no" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>BUSean | Celtics</div>
+        <div>2 | 32 minutes ago </div>
+      </div>
+      <label for="nxb78no" class="commentText"><p>3rd team should have no requirement whatsoever. You went bonkers for 23 games, voter wants to reward it, what the hell</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nxba7q9" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Kvsav57</div>
+        <div>1 | 18 minutes ago </div>
+      </div>
+      <label for="nxba7q9" class="commentText"><p>How are these numbers calculated? It seems like you&rsquo;re using worst-case scenario as a projection, from the ones I&rsquo;ve checked, except for having SGA play 79.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nxba903" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>i-piss-excellence32 | Knicks</div>
+        <div>1 | 18 minutes ago </div>
+      </div>
+      <label for="nxba903" class="commentText"><p>Jalen Brunson for MVP</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nxbaki7" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>coocoach | Vancouver Grizzlies</div>
+        <div>1 | 16 minutes ago </div>
+      </div>
+      <label for="nxbaki7" class="commentText"><p>This shouldn’t lead the league to change this rule of minimum games. This should lead the league to change something to prevent injuries better. Right now, if you tune into a game, there is an extremely high chance there is someone missing in the starters. It’s not a good entertainment product. If you go pay to see the Rolling Stones and mick jagger misses half the concerts, you’re gonna unsatisfied. There needs to be something changing in the team’s medical programs to help these players play more games if the league isn’t going to cut down on regular season games.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nxbby1w" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>AnkitPancakes | Thunder</div>
+        <div>1 | 9 minutes ago </div>
+      </div>
+      <label for="nxbby1w" class="commentText"><p>the number of games these guys are on pace to play is genuinely pathetic lol. they are rightfully gonna not receive awards, idc</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
