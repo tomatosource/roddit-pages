@@ -1,0 +1,733 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.selfPostImage {
+  width: 100%;
+  height: auto;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/baseball/comments/1q29n7p/ranking_the_mlb_teams_according_to_how_cool_it/"><p>Ranking the MLB teams according to how cool it would be to play their name during a game of Scrabble</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <p>Hello and Happy New Year to r/baseball. It is 2026, pitchers and catchers start reporting in a little over a month, and our hearts collectively gleam with <del>cholesterol buildup</del> hope that this will be the year that greatness happens. By which I of course mean successfully playing an interesting MLB team name in a game of Scrabble*.</p>
+
+<p>A few notes that many of you won&rsquo;t read:</p>
+
+<ul>
+<li>For those of you who may not be familiar with Scrabble (and/or play with so many house rules that you&rsquo;ve completely forgotten the actual rules of the game), a play is made by using the 7 tiles in your tile rack to construct a single legal word on the board, where that word must be in a spot where it connects to at least one other word (unless you are going first) and where it does not result in the creation of any illegal words.</li>
+<li>In deciding whether or not a word is legal, I am using the <a href="https://scrabble.merriam.com/" target="_blank">official Scrabble dictionary</a>. If you want to gripe about whether or not your team&rsquo;s name is allowed, for the love of all that is holy please direct those comments to them and not to me.</li>
+<li>I will be using the teams&rsquo; official names as stated on <a href="http://mlb.com/" target="_blank">mlb.com</a>, and no short versions or nicknames, with two caveats. First, where a team name is two words, I am ignoring the spacing if doing so results in an otherwise-playable word, so Toronto fans finally catch a break. Second, I am open to using either the singular or plural of each team name to the extent it might matter.</li>
+<li>I am only considering plays of the team name, and not situations where the team name might be incidentally formed by playing a different word. This means that we are only considering playing the word &ldquo;met&rdquo; as such, and not playing something like &ldquo;quartz&rdquo; off of &ldquo;me&rdquo; and incidentally forming &ldquo;met&rdquo; as a consequence.</li>
+<li>While &ldquo;cool&rdquo;-ness is inherently subjective, I consider in this calculation the Scrabble score for the team name, the likelihood of getting the 50-point bonus for using all 7 letters, any exotic/high-point letters in the team name, and such other factors as I will describe in probably too much detail below. Listed scores are for the pluralized official team name unless otherwise indicated.</li>
+<li>As always, these rankings are just for fun, and do not necessarily reflect my feelings vis-a-vis these teams, their players, their ownership, or their fans (unless I explicitly say otherwise).</li>
+</ul>
+
+<p>* Scrabble is a registered trademark of Hasbro, Inc. in the U.S. and Canada, but I&rsquo;m not going to try to type the &reg; symbol every time, so Hasbro can just go bite me.</p>
+
+<p><strong>Tier One: Not Legal Scrabble Words</strong> (but I&rsquo;ll rank &lsquo;em anyway)</p>
+
+<p><strong>30: Houston Astros</strong> (6 points) &ndash; Neither &ldquo;<a href="https://scrabble.merriam.com/finder/astro" target="_blank">astro</a>&rdquo; nor &ldquo;<a href="https://scrabble.merriam.com/finder/astros" target="_blank">astros</a>&rdquo; is recognized as a legal Scrabble word; and moreover it isn&rsquo;t even worth fighting about because it would be such a crappy play.</p>
+
+<p><strong>29: Philadelphia Phillies</strong> (13 points) &ndash; None of &ldquo;<a href="https://scrabble.merriam.com/finder/phil" target="_blank">phil</a>,&rdquo; &ldquo;<a href="https://scrabble.merriam.com/finder/philly" target="_blank">philly</a>,&rdquo; &ldquo;<a href="https://scrabble.merriam.com/finder/phillie" target="_blank">phillie</a>,&rdquo; or &ldquo;<a href="https://scrabble.merriam.com/finder/phillies" target="_blank">phillies</a>&rdquo; are legal, to what I hope is no one&rsquo;s surprise. Before anyone asks, I&rsquo;m not going to consider &ldquo;filly.&rdquo; And do you really want to be fillies, guys? Young female horses generally considered too young to breed despite being sexually mature? Is that what you REALLY want?</p>
+
+<p><strong>28: New York Yankees</strong> (14 points) &ndash; Neither &ldquo;<a href="https://scrabble.merriam.com/finder/yankee" target="_blank">yankee</a>&rdquo; nor &ldquo;<a href="https://scrabble.merriam.com/finder/yankees" target="_blank">yankees</a>&rdquo; is playable, which I admit I was moderately surprised to learn. If I relaxed the rules and allowed &ldquo;yank,&rdquo; that would jump them all the way up to Tier 4, but this isn&rsquo;t Vietnam. This is r/baseball and we have rules. And that rug really tied the room together.</p>
+
+<p><strong>27: Boston Red Sox</strong> (14 points)</p>
+
+<p><strong>26: Chicago White Sox</strong> (21 points) &ndash; In what will be fantastic news for Bostonian and Southsider Scrabble enthusiasts, &ldquo;sox,&rdquo; standing alone, is indeed <a href="https://scrabble.merriam.com/finder/sox" target="_blank">Scrabble-legal</a>. However, no singular or plural permutation of whitesock/x or redsock/x is similarly playable. Which is really too bad for the White Sox in particular, which otherwise would be a fantastic Scrabble play.</p>
+
+<p><strong>Tier Two: How My Idiot Sister Plays Scrabble</strong></p>
+
+<p><strong>25: Cincinnati Reds</strong> (5 points) &ndash; Literally the lowest-possible Scrabble score for a full team name.</p>
+
+<p><strong>24: New York Mets</strong> (met) (5 points) &ndash; &ldquo;Mets&rdquo; is not a legal play, so the score listed is for &ldquo;met,&rdquo; which is the type of word one plays to communicate that they are not interested in playing Scrabble anymore.</p>
+
+<p><strong>23: San Francisco Giants</strong> (7 points)</p>
+
+<p><strong>22: Los Angeles Angels</strong> (7 points) &ndash; Fun fact: I got nearly all the way to the end of these rankings before realizing I had forgotten the Angels. Anyway, the Angels&rsquo; run of dominance is finally over, which is a funny sentence to type.</p>
+
+<p><strong>21: Detroit Tigers</strong> (7 points) &ndash; The potentially good news with these three words is that you nearly cleared your rack. The bad news is you wasted a lot of useful letters while only managing to match the score of your 6-year-old child&rsquo;s last play. I can&rsquo;t think of a single objective rationale for putting either the Giants or the Angels ahead of the other, so the Angels win because I&rsquo;m a Dodgers fan; while the Tigers get an edge over both of them because of the scientific fact that tigers are inherently cool.</p>
+
+<p><strong>Tier Three: Unremarkable Words that are Nevertheless too Complex for my Idiot Sister</strong></p>
+
+<p><strong>20: San Diego Padres</strong> (9 points) &ndash; Yes, &ldquo;padres&rdquo; is a <a href="https://scrabble.merriam.com/finder/padres" target="_blank">playable word</a>. English is a linguistic melting pot and all that. Congratulations and enjoy your 9 points.</p>
+
+<p><strong>19: Kansas City Royals</strong> (9 points) &ndash; Royals get the nod over the Padres for the high-value letter, and (to a much lesser extent) because of the Lorde song.</p>
+
+<p><strong>Tier Four: Emergency Plays for Emergency Situations</strong></p>
+
+<p><strong>18: Tampa Bay Rays</strong> (7 points) &ndash; Sometimes you have to deal with an unforgiving board. &ldquo;Rays&rdquo; offers nearly as many points as the duo above, but in significantly fewer letters, which means this might be a smart strategic play on some boards (although obviously you would usually prefer to save the S). Plus the Y offers potential for double-letter/triple-letter shenanigans. This is what you should have played instead of &ldquo;Royals,&rdquo; Lorde be damned.</p>
+
+<p><strong>17: Minnesota Twins</strong> (8 points) &ndash; Eh. The W is nice enough, but why aren&rsquo;t you playing &ldquo;wit&rdquo; instead? Or &ldquo;nit,&rdquo; and save the W for a better opportunity? You&rsquo;re playing like my idiot sister. Whom I should stress does not have a developmental disability or anything like that, and is just a regular idiot.</p>
+
+<p><strong>16: Chicago Cubs</strong> (8 points) &ndash; Solid bang for your buck here, with C and B worth 3 points each. On a bad board with a tray full of vowels, you could do worse. Like &ldquo;met.&rdquo; Or &ldquo;red.&rdquo; Or trying to argue for &ldquo;astro.&rdquo;</p>
+
+<p><strong>Tier Five: The Braves Tier</strong></p>
+
+<p><strong>15: Atlanta Braves</strong> (11 points) &ndash; A borderline play in a vacuum, but juuuust good enough to keep them out of Tier 3. If anyone is curious, the Scrabble dictionary recognizes &ldquo;braves,&rdquo; but only in the sense of how someone braves danger.</p>
+
+<p><strong>Tier Six: The Rockies Tier</strong></p>
+
+<p><strong>14: Colorado Rockies</strong> (rocky) (14 points) &ndash; &ldquo;Rockies&rdquo; is <a href="https://scrabble.merriam.com/finder/rockies" target="_blank">not playable</a>, but &ldquo;rocky&rdquo; sure is, for a solid 14 points and the best possible score for a team name that does not offer the possibility of landing that sweet 50-point bonus. Speaking of which &hellip;</p>
+
+<p><strong>Tier Seven: Seven-Letter Names That are Otherwise Pretty Crappy</strong></p>
+
+<p><strong>13: Baltimore Orioles</strong> (7 points) &ndash; In a vacuum &ldquo;orioles&rdquo; is about as crappy of a Scrabble word as it gets, without a single letter worth more than one point. But for this and all subsequent team names, the 50-point bonus for using all seven letters has now become a possibility. This is why S&rsquo;s are so valuable in Scrabble, since you can just lay out &ldquo;orioles&rdquo; in its entirety right off the end of your idiot sister&rsquo;s play of &ldquo;red,&rdquo; creating two crappy words plus that 50-point bonus and causing her to flip the board over and go running to Mom to demand that I stop cheating.</p>
+
+<p><strong>12: Texas Rangers</strong> (8 points) &ndash; Better get that 50 points, because otherwise what a waste of great letters.</p>
+
+<p><strong>11: Miami Marlins</strong> (9 points)</p>
+
+<p><strong>10: Pittsburgh Pirates</strong> (9 points) &ndash; Nothing much interesting to say between these two. Pirates are badass sea criminals and marlins are fairly badass giant sport fish. Slight edge to pirates in the cool department, but if you want to argue the reverse I won&rsquo;t squawk.</p>
+
+<p><strong>9: Los Angeles Dodgers</strong> (10 points) &ndash; There are only 4 D&rsquo;s in the whole tile bag, and you somehow got two of them at the same time. It&rsquo;s unfair! Baseball is ruined!</p>
+
+<p><strong>8: Milwaukee Brewers</strong> (12 points) &ndash; If I make MLB team rankings for another 100 offseasons, I will never live down the fiasco of Brewer Hicklen. And also I suppose this would be a reasonably respectable Scrabble play.</p>
+
+<p><strong>Tier Eight: They Will Talk About This Play For Years</strong></p>
+
+<p><strong>7: Seattle Mariners</strong> (10 points) &ndash; The Mariners juuuuust squeak into this tier by virtue of requiring one more letter than you could possibly have on your rack, meaning that you&rsquo;d have to have at least one letter free on the board to accommodate this play. Luckily almost every letter in &ldquo;mariners&rdquo; shouldn&rsquo;t be too hard to find on the board, although it is amusing to me to imagine someone with &ldquo;mariner&rdquo; sitting in their rack waiting for an open S to play it on.</p>
+
+<p><strong>6: Washington Nationals</strong> (9 points) &ndash; Like the Orioles, the Nationals&rsquo; team name is about as bad as it gets, consisting entirely of 1-point letters. However, it would still make for a rather cool play, since &ldquo;nationals&rdquo; is a nine-letter word, which means that you&rsquo;d have to find a 2-letter word such as &ldquo;on&rdquo; or &ldquo;at&rdquo; to build it around, and thereby turn a tray of nothing into a pretty sweet turn &ndash; circumstances unique enough that I&rsquo;m bumping the Nats one place ahead of the Mariners. At least until your opponent pounces on that open S on their next turn.</p>
+
+<p><strong>5: Cleveland Guardians</strong> (11 points) &ndash; &ldquo;Ar&rdquo; and &ldquo;an&rdquo; are both playable words you could build this off of. And boy oh boy it would be fun to lay this down after mom just helped my idiot sister play &ldquo;ar.&rdquo;</p>
+
+<p><strong>4: St. Louis Cardinals</strong> (12 points) &ndash; &ldquo;Ar,&rdquo; &ldquo;in,&rdquo; &ldquo;na,&rdquo; and &ldquo;al&rdquo; are all potential entry points here, but I&rsquo;m running out of things to say about 2-letter Scrabble words. How about that Masyn Winn, Cards fans? That kid sure looks great. And also what a great Scrabble name. I mean, he&rsquo;s no Jazz Chisholm, but still&hellip;</p>
+
+<p><strong>Tier Nine: Finally Some Wholly Better Plays</strong> <strong>than &ldquo;Rocky&rdquo;</strong></p>
+
+<p><strong>3: The Philadelphia Athletics of Sacramento</strong> (14 points) &ndash; Ummmm, how about that Masyn Winn, A&rsquo;s fans?</p>
+
+<p><strong>2: Toronto Blue Jays</strong> (bluejays) (20 points) &ndash; &ldquo;Bluejay&rdquo; is a FANTASTIC Scrabble word, and also perhaps finally Toronto fans won&rsquo;t yap at me for not allowing &ldquo;jay&rdquo; on its own. Congratulations, Toronto fans, you&rsquo;ve finally done it. Looks like you&rsquo;ve got this one all wrapped up. No possible event could foreseeably prevent you from winning this&ndash;</p>
+
+<p><strong>Tier Ten: Why&rsquo;d it Have to be Snakes?</strong></p>
+
+<p><strong>1: Arizona Diamondbacks</strong> (24 points) &ndash; There are those other two D&rsquo;s! Maybe baseball isn&rsquo;t broken after all. What makes &ldquo;diamondbacks&rdquo; such a cool Scrabble play isn&rsquo;t its length or point total (although those certainly help); it&rsquo;s that the only way you could play it would be if either &ldquo;diamond&rdquo; or &ldquo;backs&rdquo; was already on the board. A once-in-lifetime circumstance for a fantastic play.</p>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nxbe0vd" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>AerieElectrical3546 | Boston Red Sox</div>
+        <div>54 | an hour ago </div>
+      </div>
+      <label for="nxbe0vd" class="commentText"><p>this is elite offseason content </p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nxbergd" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>zgibs125 | Arizona Diamondbacks</div>
+        <div>37 | an hour ago </div>
+      </div>
+      <label for="nxbergd" class="commentText"><p>I hope OP&rsquo;s sister sees this</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nxbhp3n" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>sadolddrunk | Los Angeles Dodgers</div>
+        <div>40 | 38 minutes ago </div>
+      </div>
+      <label for="nxbhp3n" class="commentText"><p>It would probably get her pretty steamed if she knew how to read.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nxbemxn" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>nebrivor1 | Toronto Blue Jays</div>
+        <div>13 | an hour ago </div>
+      </div>
+      <label for="nxbemxn" class="commentText"><p>I see that today you&rsquo;ve chosen violence.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nxbgh6y" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>One-Mall-624 | Toronto Blue Jays</div>
+        <div>13 | 44 minutes ago </div>
+      </div>
+      <label for="nxbgh6y" class="commentText"><p>Man woke up and chose violence against his sister</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nxbi47f" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>mrdannyg21</div>
+        <div>5 | 36 minutes ago </div>
+      </div>
+      <label for="nxbi47f" class="commentText"><p>And against the Jays. The ‘no possible event could foreseeably prevent you from winning’ right before Rojas’ing the DBacks in there was a stab in the heart.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nxbf4zt" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>From_Adam | Minnesota Twins</div>
+        <div>11 | an hour ago </div>
+      </div>
+      <label for="nxbf4zt" class="commentText"><p>So, your sister is an idiot?</p>
+
+<p>Completely unrelated question, how was the holidays with the family?</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nxbhy2l" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>sadolddrunk | Los Angeles Dodgers</div>
+        <div>3 | 37 minutes ago </div>
+      </div>
+      <label for="nxbhy2l" class="commentText"><p>Our holidays were not spent with my family (and somewhat related they were very nice, thank you for asking).</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nxbe31r" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Crazy_Baseball3864 | MLB Players Association</div>
+        <div>8 | an hour ago </div>
+      </div>
+      <label for="nxbe31r" class="commentText"><p>This is why non-plural team names are superior, the S is the most valuable non-blank piece you can have so you don&rsquo;t want to waste them for 1 extra point, like a lot of teams do.</p>
+
+<p>Also, playing a bingo (all of your letters in one turn) is a 50 point bonus so 7+ letter names are also much more superior to short names.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nxbgvam" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>papermarioguy02 | Toronto Blue Jays</div>
+        <div>5 | 42 minutes ago </div>
+      </div>
+      <label for="nxbgvam" class="commentText"><p>Okay now I want to know if the international Scrabble dictionary (famously different and more permissive than the US/Canada one) makes any more of these legal.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nxbi1i7" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>sadolddrunk | Los Angeles Dodgers</div>
+        <div>4 | 36 minutes ago </div>
+      </div>
+      <label for="nxbi1i7" class="commentText"><p>No matter what I do, I can&rsquo;t seem to please Toronto fans.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nxbmwhr" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>AZPD | Arizona Diamondbacks</div>
+        <div>3 | 13 minutes ago </div>
+      </div>
+      <label for="nxbmwhr" class="commentText"><p>Although &ldquo;yankees&rdquo; is not an acceptable word in American Scrabble, it is in the international word list used outside of North America. Go figure. For American play, you&rsquo;ll have to settle for &ldquo;yanquis,&rdquo; which is apparently the Spanish version of the word, which is acceptable for some reason.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nxbo6t3" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>sadolddrunk | Los Angeles Dodgers</div>
+        <div>1 | 7 minutes ago </div>
+      </div>
+      <label for="nxbo6t3" class="commentText"><p>Great note! &ldquo;Yanquis&rdquo; would be a fantastic Scrabble play, with the added bonus that it&rsquo;d almost assuredly result in a free turn because it would almost assuredly be (unsuccessfully) challenged.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nxbisef" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>loungehead | Milwaukee Brewers</div>
+        <div>2 | 33 minutes ago </div>
+      </div>
+      <label for="nxbisef" class="commentText"><p>There&rsquo;s also &ldquo;Scrabble: Major League Baseball Edition.&rdquo; It comes with a dictionary extension, which, iirc, permits team names that would otherwise be illegal. </p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nxbnyrh" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>jymmyisgroovy | Boston Red Sox</div>
+        <div>2 | 8 minutes ago </div>
+      </div>
+      <label for="nxbnyrh" class="commentText"><p>Chicago White Sox get Murakami AND gets ranked above Boston.</p>
+
+<p>They have it so easy&hellip;</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nxbop3l" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>sadolddrunk | Los Angeles Dodgers</div>
+        <div>1 | 4 minutes ago </div>
+      </div>
+      <label for="nxbop3l" class="commentText"><p>Sure, but on the other hand learning that &ldquo;sox&rdquo; is Scrabble-legal and &ldquo;yankees&rdquo; isn&rsquo;t is absolutely going to make the offseason for a bunch of guys named Murph and Sully.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nxbi0qr" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>my_one_and_lonely | New York Mets</div>
+        <div>1 | 36 minutes ago </div>
+      </div>
+      <label for="nxbi0qr" class="commentText"><p>how the fuck is yankee not a playable scrabble word?</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nxbiqmu" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Tbplayer59 | Los Angeles Angels</div>
+        <div>1 | 33 minutes ago </div>
+      </div>
+      <label for="nxbiqmu" class="commentText"><p>I&rsquo;m guessing Yankee is not allowed because it&rsquo;s a proper name and requires capitalization.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nxbntsq" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>CrispyVibes | Los Angeles Dodgers</div>
+        <div>1 | 8 minutes ago </div>
+      </div>
+      <label for="nxbntsq" class="commentText"><blockquote>
+<p>The Philadelphia Athletics of Sacramento</p>
+</blockquote>
+
+<p>The what</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nxbota3" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Good_Nyborg | Seattle Mariners</div>
+        <div>1 | 4 minutes ago </div>
+      </div>
+      <label for="nxbota3" class="commentText"><p>Been so long since I played Scrabble that I didn&rsquo;t know proper nouns were legal now.</p>
+
+<p>Would&rsquo;ve been nice to see this list without the city/state names included.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nxbp1g6" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Antikickback_Paul | Boston Red Sox</div>
+        <div>1 | 2 minutes ago </div>
+      </div>
+      <label for="nxbp1g6" class="commentText"><blockquote>
+<p>There are only 4 D&rsquo;s in the whole tile bag, and you somehow got two of them at the same time. It&rsquo;s unfair! Baseball is ruined!</p>
+</blockquote>
+
+<p><em>Dodgers flair</em></p>
+
+<p>Just know that someone reading this appreciates a good catty bitch.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nxbp42r" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Luis_Severino | New York Yankees</div>
+        <div>1 | 2 minutes ago </div>
+      </div>
+      <label for="nxbp42r" class="commentText"><p>How can I play this guys sister in scrabble</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
