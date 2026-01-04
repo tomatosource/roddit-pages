@@ -1,0 +1,727 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.selfPostImage {
+  width: 100%;
+  height: auto;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/baseball/comments/1q39r28/fwar_vs_bwar_for_relief_pitchers/"><p>fWAR vs. bWAR for relief pitchers</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <p>So I was looking at random relievers on Baseball-Reference and FanGraphs and for the most part the numbers they have for WAR match up closely, but for certain relievers WAR can vary wildly:</p>
+
+<table>
+<thead>
+<tr>
+<th align="left">Baseball-Reference</th>
+<th align="left">FanGraphs</th>
+<th align="left"></th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">Steven Okert</td>
+<td align="left"><a href="https://www.baseball-reference.com/players/o/okertst01.shtml" target="_blank">1.5</a></td>
+<td align="left"><a href="https://www.fangraphs.com/players/steven-okert/13580/stats/pitching" target="_blank">1.6</a></td>
+</tr>
+
+<tr>
+<td align="left">Yariel Rodriguez</td>
+<td align="left"><a href="https://www.baseball-reference.com/players/r/rodriya01.shtml" target="_blank">1.4</a></td>
+<td align="left"><a href="https://www.fangraphs.com/players/yariel-rodriguez/33838/stats/pitching" target="_blank">0.1</a></td>
+</tr>
+
+<tr>
+<td align="left">Devin Williams</td>
+<td align="left"><a href="https://www.baseball-reference.com/players/w/willide03.shtml" target="_blank">-0.3</a></td>
+<td align="left"><a href="https://www.fangraphs.com/players/devin-williams/15816/stats/pitching" target="_blank">1.4</a></td>
+</tr>
+</tbody>
+</table>
+<p>Does anyone know specifically why certain relievers are favored better for fWAR or bWAR? Moreover, how can WAR be trusted if different calculations can range between &ldquo;below replacement level&rdquo; all the way to &ldquo;better than average&rdquo;?</p>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nxj526g" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>immoralsupport_ | Chicago Cubs</div>
+        <div>16 | an hour ago </div>
+      </div>
+      <label for="nxj526g" class="commentText"><p>I honestly don’t really think WAR is a good stat for relievers, whether fWAR or bWAR. The samples are too small.</p>
+
+<p>If you’re looking for a “story stat” (aka, describes the season the reliever is having/already had in the past) I like WPA (win probability added). This is like the really advanced version of saves/blown saves, it describes how well the reliever did at adding to their team’s probability of winning games.</p>
+
+<p>If you’re looking at a predictive stat to predict how well the pitcher will do in the future, I like K-BB%. I think it’s better than FIP for lower innings totals. And having high strikeout totals is more important for relievers than starters.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nxj3wuc" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Lucky_Alternative965 | Los Angeles Dodgers</div>
+        <div>11 | an hour ago </div>
+      </div>
+      <label for="nxj3wuc" class="commentText"><p>Fangrpahs = FIP</p>
+
+<p>Devin Williams for example had a 2.68 FIP so his fWAR looks decent.</p>
+
+<p>Reference = more in line with actual results</p>
+
+<p>Yariel rodriguez had a 4.40 FIP, but his actual results were considerably better than Williams.</p>
+
+<p>And Okert had a good FIP and good results, therefore he&rsquo;s mostly the same. As Trevor May said in his fWAR vs bWAR video. bWAR is what actually happens and fWAR is more predictive of future production.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nxj4pvs" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Crazy_Baseball3864 | MLB Players Association</div>
+        <div>5 | an hour ago </div>
+      </div>
+      <label for="nxj4pvs" class="commentText"><p>I noticed that Williams had an identical FIP in his 2023 all-star season (and 2 MVP votes) and his 2025 season too</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nxjd71l" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>BigAmbassador22</div>
+        <div>1 | 22 minutes ago </div>
+      </div>
+      <label for="nxjd71l" class="commentText"><p>..trying to peer into the mind of sterns has become a pastime unto itself hah</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="nxj9ey6" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Rashpootin | San Diego Padres</div>
+        <div>2 | 42 minutes ago </div>
+      </div>
+      <label for="nxj9ey6" class="commentText"><p>fWAR is more predictive of future results because it more accurately reflects real life performance of a pitcher with other elements removed.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nxj3xbz" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Disused_Yeti | Cleveland Guardians</div>
+        <div>8 | an hour ago </div>
+      </div>
+      <label for="nxj3xbz" class="commentText"><p>It’s all about how well they play the TTO game</p>
+
+<p>Rodriguez doesn’t strike guys out and walks a lot. Williams has a crazy k rate</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nxj9rj1" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Ancient_Practice_232</div>
+        <div>-5 | 40 minutes ago </div>
+      </div>
+      <label for="nxj9rj1" class="commentText"><p>It’s why fWAR is so trash.  K rate doesn’t mean anything when you’re ass and Williams was ass last year </p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nxjafun" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Doyce_7 | Houston Astros</div>
+        <div>9 | 36 minutes ago </div>
+      </div>
+      <label for="nxjafun" class="commentText"><p>Imo, fangraphs is better for projecting who will be good, bref is better at showing you what happened</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="nxjb5ec" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ChaimBloom</div>
+        <div>1 | 32 minutes ago </div>
+      </div>
+      <label for="nxjb5ec" class="commentText"><p>Fwiw, bWAR isn’t great either. WAR in general for pitchers isn’t as great as a stat as it is for position players.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="nxja6wh" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Disused_Yeti | Cleveland Guardians</div>
+        <div>-1 | 38 minutes ago </div>
+      </div>
+      <label for="nxja6wh" class="commentText"><p>i can&rsquo;t stand it.  patrick corbin was objectively one of the bottom 5 starters for years and never had a negative fwar</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nxj44av" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>DavidRFZ | Minnesota Twins</div>
+        <div>4 | an hour ago </div>
+      </div>
+      <label for="nxj44av" class="commentText"><p>The two WAR’s handle pitching differently.  fWAR uses DIPS (or FIP) while bWAR uses RA/9 with a team-fielding correction.</p>
+
+<p>Both work better with larger samples which relief pitchers don’t have.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nxj53xb" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Zraknul | Toronto Blue Jays</div>
+        <div>2 | an hour ago </div>
+      </div>
+      <label for="nxj53xb" class="commentText"><p>ERA (bWAR) vs FIP (fWAR) is the bulk of it.</p>
+
+<p>Yariel was 3.08 ERA vs 4.40 FIP.  FIP is on the same scale as ERA, so the difference is huge.  FIP wants more strikeouts and less walks from him.*</p>
+
+<p>Devin Williams was 4.79 ERA and 2.68 FIP. His FIP is pretty in line with prior years, when his ERA was much better.</p>
+
+<p>Okert 3.01 vs 2.76.  He&rsquo;s had ERA a few years ago but FIP thinks it&rsquo;s earned more this time because he cut his walk rate ~in half vs the last time.</p>
+
+<p>*Yariel moved from starter to reliever, similar FIP, a few more innings.  I&rsquo;m not sure why WAR is so much higher.  More credit for more innings per game?</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nxj8b7i" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Zraknul | Toronto Blue Jays</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="nxj8b7i" class="commentText"><p>In an somewhat important distinction for pitchers: bWAR is probably better for what happened (ie: giving out awards).  fWAR is probably better for predicting future performance.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nxj3px4" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Revolutionary_Dog777 | St. Louis Cardinals</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="nxj3px4" class="commentText"><p>I never noticed.  This is wild.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nxj4g90" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>thiccboiwaluigi | New York Mets</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="nxj4g90" class="commentText"><p>fWAR uses FIP bWAR uses runs allowed with an adjustment for defense, etc.</p>
+
+<p>WAR for relievers in general is kinda dubious for how small samples of innings they’re pitching</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nxjdajk" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>BaltimoreBaja | Baltimore Orioles</div>
+        <div>1 | 21 minutes ago </div>
+      </div>
+      <label for="nxjdajk" class="commentText"><p>The better WAR is the one that supports my argument at a given moment</p>
+
+<p>That notwithstanding bWAR is king because it&rsquo;s easier to look up</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nxjgpx3" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>eclectic-up-north</div>
+        <div>1 | 3 minutes ago </div>
+      </div>
+      <label for="nxjgpx3" class="commentText"><p>The 2 freely available WARs handle defense differently.</p>
+
+<p>The FanGraphs approach: even for a starter, the noise in defense is so large, we are better off ignoring it. Use FIP as an ERA estimator. FIP is a function only of strikeout rate, walk rate, and homerun-allowed rate. FIP based WAR takes i to account inning pitched of course. For starters, it is arguably the beat WAR.</p>
+
+<p>The Baseball Reference approach: correct ERA based on how good the defense is behind the pitcher. So for example, if a pitcher has a really good defense behind them, the D is given a share of how well the pitcher does, so the pitcher WAR is lowered. Conversely, if the D sucka, the pitcher gets a bonus.</p>
+
+<p>Both have a park factor correction.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nxj49zg" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>GKRForever | New York Mets</div>
+        <div>0 | an hour ago </div>
+      </div>
+      <label for="nxj49zg" class="commentText"><p>Not just RP, but SP too.</p>
+
+<p>Fangraphs uses FIP, so abstract some real baseball away and think more “expected numbers”</p>
+
+<p>Baseball reference uses the actual outcome stats from games</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nxj4zkm" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Massive-Ear3150 | San Francisco Giants</div>
+        <div>0 | an hour ago </div>
+      </div>
+      <label for="nxj4zkm" class="commentText"><p>With how few innings relievers pitch it’s hard to get a great value measurement of them. Devin Williams ERA vs FIP difference is something I would expect to stabilize over time, and the same for Yariel Rodriguez the other way.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nxj70z8" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>forgivemeisuck | Texas Rangers</div>
+        <div>-2 | an hour ago </div>
+      </div>
+      <label for="nxj70z8" class="commentText"><p>bWAR is what happened. fWAR is what should have happened.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nxjbl4h" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Dinobot2_ | Boston Red Sox • Canada</div>
+        <div>4 | 30 minutes ago </div>
+      </div>
+      <label for="nxjbl4h" class="commentText"><p>More like bWAR is what happened while fWAR is what would have happened if those dastardly ground balls went to this part of the field instead of that part of the field.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nxj6smw" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>MattinglyDineen | New York Yankees</div>
+        <div>-3 | an hour ago </div>
+      </div>
+      <label for="nxj6smw" class="commentText"><p>Any calculation that claims Devin Williams was worth 1.4 WAR this season is suspect.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nxj8gfu" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Crazy_Baseball3864 | MLB Players Association</div>
+        <div>2 | an hour ago </div>
+      </div>
+      <label for="nxj8gfu" class="commentText"><p>His FIP was identical to his 2023 all-star season so a calculation that uses FIP is going to say that.</p>
+
+<p>(The comparison is 1.4 fWAR for 2025 and 1.8 fWAR for 2023)</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nxjc4a2" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Ancient_Practice_232</div>
+        <div>-2 | 27 minutes ago </div>
+      </div>
+      <label for="nxjc4a2" class="commentText"><p>Right and that’s why fWAR is useless.  Williams was not good as good as his 2023 season</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
