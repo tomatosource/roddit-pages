@@ -1,0 +1,1412 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.selfPostImage {
+  width: 100%;
+  height: auto;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/baseball/comments/1q4zd05/what_if_we_relocated_all_us_based_mlb_teams_to/"><p>What if we relocated all US based MLB teams to Canada?</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <p>Baseball fans often wish that Montreal or another Canadian city could have an MLB team again. But what if we took it a step further and moved every USA team north? What could that look like realistically?</p>
+
+<p>In order to be fair to the owners when relocating their team, we will relocate each team based on their Metropolitan Statistical Area to the Canadian metro area of the same rank. For example: Philadelphia, PA is the 9th largest MSA in America so they will move to Hamilton, ON which is the 9th largest in Canada. We will also relocate the Blue Jays south of the border for fairness. Check out below to see what city and division your favorite team now plays in:</p>
+
+<table>
+<thead>
+<tr>
+<th align="left"><strong>Canadian League West</strong></th>
+<th align="left"><strong>Canadian League Central</strong></th>
+<th align="left"><strong>Canadian League East</strong></th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">Victoria Twins</td>
+<td align="left">Windsor Tigers</td>
+<td align="left">New York Blue Jays</td>
+</tr>
+
+<tr>
+<td align="left">Vancouver White Sox</td>
+<td align="left">London Red Sox</td>
+<td align="left">Montreal Angels of Longueuil</td>
+</tr>
+
+<tr>
+<td align="left">Calgary Rangers</td>
+<td align="left">Toronto Yankees</td>
+<td align="left">Athletics (Saguenay)*</td>
+</tr>
+
+<tr>
+<td align="left">Saskatoon Bay-Less Rays</td>
+<td align="left">Oshawa Mariners</td>
+<td align="left">Saint John Royals</td>
+</tr>
+
+<tr>
+<td align="left">Thunder Bay Guardians</td>
+<td align="left">Ottawa Astros</td>
+<td align="left">Dildo Orioles (Saint John&rsquo;s)**</td>
+</tr>
+</tbody>
+
+<tfoot>
+<tr>
+<td align="left"><strong>National League West</strong></td>
+<td align="left"><strong>National League Central</strong></td>
+<td align="left"><strong>National League East</strong></td>
+</tr>
+
+<tr>
+<td align="left">Vancouver Cubs</td>
+<td align="left">Chatham Brewers</td>
+<td align="left">Montreal Dodgers</td>
+</tr>
+
+<tr>
+<td align="left">Abbotsford Cardinals</td>
+<td align="left">Ontario Diamondbacks (Kitchener, ON)</td>
+<td align="left">Trois-Rivières Pirates</td>
+</tr>
+
+<tr>
+<td align="left">Edmonton Marlins</td>
+<td align="left">Brantford Reds</td>
+<td align="left">Sherbrooke Rockies</td>
+</tr>
+
+<tr>
+<td align="left">Regina Padres</td>
+<td align="left">Hamilton Phillies</td>
+<td align="left">Québec City Nationals</td>
+</tr>
+
+<tr>
+<td align="left">Winnipeg Braves</td>
+<td align="left">Toronto Mets</td>
+<td align="left">Halifax Giants***</td>
+</tr>
+</tfoot>
+</table>
+<p>*Based on current location in Sacramento. Upon moving to Vegas this would be Moncton, NB<br>
+**The Orioles have relocated to Saint John&rsquo;s NL. To prevent confusion with Saint John, NB, the home of the Royals, we instead use the name of a nearby town since the Angles are allowed to do this IRL.<br>
+***Technically this should be St. Catharines Ontario but this spreads the teams out a little more and it is only off by 1 MSA rank.</p>
+
+<p><a href="https://preview.redd.it/ygdclg5kqlbg1.png?width=1308&amp;format=png&amp;auto=webp&amp;s=05adbd7acc725f2ad85ec6278774c77f4804771b" target="_blank">Eastern Teams</a></p>
+
+<p><a href="https://preview.redd.it/6d5rbwaoqlbg1.png?width=1115&amp;format=png&amp;auto=webp&amp;s=41154c933399d97b2345d1b17fb2c9aaf9781186" target="_blank">Central Teams</a></p>
+
+<p><a href="https://preview.redd.it/01asnw0rqlbg1.png?width=1287&amp;format=png&amp;auto=webp&amp;s=4be7e0f03bf0e689d966e15eb46f0c73b418f95c" target="_blank">Western Teams</a></p>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nxw97tl" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Beginning-Wind-371 | Major League Baseball</div>
+        <div>60 | 34 minutes ago </div>
+      </div>
+      <label for="nxw97tl" class="commentText"><p>The Dildo Orioles</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nxw9v3c" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Basic_Bichette | Toronto Blue Jays • New York Mets</div>
+        <div>15 | 31 minutes ago </div>
+      </div>
+      <label for="nxw9v3c" class="commentText"><p>Near Come-by-Chance, west of Conception Bay.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nxwdr5l" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>thenimblevagrant | San Diego Padres • Seattle Mariners</div>
+        <div>4 | 12 minutes ago </div>
+      </div>
+      <label for="nxwdr5l" class="commentText"><p>South of Heart&rsquo;s Content and Heart&rsquo;s Delight</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="nxweh4w" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>the-au-jasmin</div>
+        <div>1 | 9 minutes ago </div>
+      </div>
+      <label for="nxweh4w" class="commentText"><p>It&rsquo;s almost as if this joke was at the heart of the entire idea</p>
+
+<p><img src="giphy|9UqRcQHzBou6A" alt="gif" /></p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nxwam82" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Hungry-Room7057 | Toronto Blue Jays</div>
+        <div>50 | 27 minutes ago </div>
+      </div>
+      <label for="nxwam82" class="commentText"><blockquote>
+<p>Toronto Yankees</p>
+
+<p>New York Blue Jays</p>
+</blockquote>
+
+<p>Good work. I’m going to go throw up now.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nxw9fbf" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Baseball-Fan-10</div>
+        <div>18 | 33 minutes ago </div>
+      </div>
+      <label for="nxw9fbf" class="commentText"><p>Man oh man do I NOT want to see the Orioles’ new City Connect jerseys.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nxwes05" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Anal_Analysis420</div>
+        <div>2 | 7 minutes ago </div>
+      </div>
+      <label for="nxwes05" class="commentText"><p>I do tf</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nxw9i1b" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>the-au-jasmin</div>
+        <div>17 | 32 minutes ago </div>
+      </div>
+      <label for="nxw9i1b" class="commentText"><p>Exquisite shit posting. Well played</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nxw9iaf" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>UsErNaMeS_aR_DuMb | Baltimore Orioles</div>
+        <div>14 | 32 minutes ago </div>
+      </div>
+      <label for="nxw9iaf" class="commentText"><p>Well with a name like that, we might as well go fuck oursel-</p>
+
+<p>Ooooooooh.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nxw9b3a" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Basic_Bichette | Toronto Blue Jays • New York Mets</div>
+        <div>8 | 33 minutes ago </div>
+      </div>
+      <label for="nxw9b3a" class="commentText"><p>Nice to see Calgary and Edmonton in different leagues, which reduces the risk of nuclear warfare.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nxwelf0" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>GuyOnTheMike | Kansas City Royals</div>
+        <div>2 | 8 minutes ago </div>
+      </div>
+      <label for="nxwelf0" class="commentText"><p>I&rsquo;d say &ldquo;this guy hockeys&rdquo; but your flair already told me that&rsquo;s probably the case</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nxwa4ru" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>OldBoringWeirdo | Baltimore Orioles</div>
+        <div>6 | 29 minutes ago </div>
+      </div>
+      <label for="nxwa4ru" class="commentText"><p>Some of these cities are so small a significant portion of the population would be employed by the team. Who&rsquo;s left to go to games?</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nxwb21b" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>A_N_T | Texas Rangers</div>
+        <div>14 | 25 minutes ago </div>
+      </div>
+      <label for="nxwb21b" class="commentText"><p>If you build it they will come.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nxwc21n" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Blitzdog416 | Toronto Blue Jays</div>
+        <div>0 | 20 minutes ago </div>
+      </div>
+      <label for="nxwc21n" class="commentText"><p>is this thread now about CES and sex robots?</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nxwc90e" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>A_N_T | Texas Rangers</div>
+        <div>1 | 19 minutes ago </div>
+      </div>
+      <label for="nxwc90e" class="commentText"><p>It is a quote from a movie about baseball posted in the baseball subreddit</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nxwckjx" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Blitzdog416 | Toronto Blue Jays</div>
+        <div>0 | 18 minutes ago </div>
+      </div>
+      <label for="nxwckjx" class="commentText"><p>im aware. was hijacking</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nxwbqyo" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>EdiesDaddy | Toronto Blue Jays</div>
+        <div>6 | 22 minutes ago </div>
+      </div>
+      <label for="nxwbqyo" class="commentText"><p>As a Jays&rsquo; fan who is very much enjoying the spending spree that can be directly related to the Jays being &ldquo;Canada&rsquo;s team,&rdquo; please, MLB, stay right where you are.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nxwce97" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>UnknownFiddler | St. Louis Cardinals</div>
+        <div>3 | 19 minutes ago </div>
+      </div>
+      <label for="nxwce97" class="commentText"><p>Yes, but now you are &ldquo;America&rsquo;s Team&rdquo;</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nxwcj3w" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>EdiesDaddy | Toronto Blue Jays</div>
+        <div>2 | 18 minutes ago </div>
+      </div>
+      <label for="nxwcj3w" class="commentText"><p>Damn it!</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nxw9mq5" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>chosenbrew</div>
+        <div>5 | 32 minutes ago </div>
+      </div>
+      <label for="nxw9mq5" class="commentText"><p>so Brantford gets a team, but not Sudbury?</p>
+
+<p>And the Mariners dont play in the Maritimes?</p>
+
+<p>also Dildo Orioles?</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nxw9ynn" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>UnknownFiddler | St. Louis Cardinals</div>
+        <div>2 | 30 minutes ago </div>
+      </div>
+      <label for="nxw9ynn" class="commentText"><p>Sudbury is the 25th largest MSA. The 25th largest MSA in the US is the Austin, TX area so there&rsquo;s no MLB team match unfortunately.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nxwbzm1" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Hollow_Rant | Philadelphia Phillies</div>
+        <div>5 | 21 minutes ago </div>
+      </div>
+      <label for="nxwbzm1" class="commentText"><p>There’s an impossible number of attractive women in Sudbury.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="nxwbbl9" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>chosenbrew</div>
+        <div>1 | 24 minutes ago </div>
+      </div>
+      <label for="nxwbbl9" class="commentText"><p>But Brantford is 30? and what about chatham?</p>
+
+<p>anyway its lots of fun, thanks for throwing it together.</p>
+
+<p>And cant start the post off mentioning the Expos, without renaming the Nationals back to the Expos :P</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nxwc5wg" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>UnknownFiddler | St. Louis Cardinals</div>
+        <div>0 | 20 minutes ago </div>
+      </div>
+      <label for="nxwc5wg" class="commentText"><p>Brantford is 30 and so is Cincinnati so they get the Reds. The only exception I made was with Halifax</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="nxwepnn" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Sea-Fennel9087</div>
+        <div>2 | 7 minutes ago </div>
+      </div>
+      <label for="nxwepnn" class="commentText"><p>Mariners not playing in the Maritimes is a fair point</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nxwbcok" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Aethelflaed_ | Toronto Blue Jays</div>
+        <div>5 | 24 minutes ago </div>
+      </div>
+      <label for="nxwbcok" class="commentText"><p>I wouldn&rsquo;t put the braves in Winnipeg.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nxwc78b" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Basic_Bichette | Toronto Blue Jays • New York Mets</div>
+        <div>10 | 20 minutes ago </div>
+      </div>
+      <label for="nxwc78b" class="commentText"><p>As a resident of Winnipeg, I can see no reason why a city that&rsquo;s 25-30% indigenous and extremely prone to political protests would harbour any objections to a team name that plays on stereotypes about indigenous peoples.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nxwdk64" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Aethelflaed_ | Toronto Blue Jays</div>
+        <div>2 | 13 minutes ago </div>
+      </div>
+      <label for="nxwdk64" class="commentText"><p>Also a Winnipegger! 🤝</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="nxwfi8f" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>innermongoose69 | Atlanta Braves</div>
+        <div>1 | 3 minutes ago </div>
+      </div>
+      <label for="nxwfi8f" class="commentText"><p>The Braves do a yearly festival with the Eastern Band of Cherokee and seem to have a good relationship with them, which threw me for a loop considering… y’know</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="nxwec20" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Ok_Whatever999 | Atlanta Braves</div>
+        <div>1 | 9 minutes ago </div>
+      </div>
+      <label for="nxwec20" class="commentText"><p>Why not? We already lost a team to Winnipeg IRL….</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nxwd6lu" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Spaghettiboobin | Detroit Tigers</div>
+        <div>5 | 15 minutes ago </div>
+      </div>
+      <label for="nxwd6lu" class="commentText"><p>Cool, we just have to cross the Detroit river.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nxwby6q" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>6000ChickenFajardos | Seattle Mariners</div>
+        <div>4 | 21 minutes ago </div>
+      </div>
+      <label for="nxwby6q" class="commentText"><p>First off, Thunder Bay Rays was right there, pointing out the fact that Saskatoon is landlocked was unnecessary</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nxwaap1" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>MortimerBall</div>
+        <div>3 | 29 minutes ago </div>
+      </div>
+      <label for="nxwaap1" class="commentText"><p>I wasn’t ready for the personal violence against me in removing St Catharines. RIP. 
+I kept searching the list for the name. </p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nxwcwc0" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>aardvarkllama_69 | New York Mets</div>
+        <div>3 | 16 minutes ago </div>
+      </div>
+      <label for="nxwcwc0" class="commentText"><p>The Pirates are still on a river, the Giants can still hit homers into the ocean. Mets Yankees and Cubs Cardinals rivalries are still intact. The Orioles will still have a very strange logo!</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nxwd9pn" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Scone_Of_Arc | New York Mets</div>
+        <div>3 | 14 minutes ago </div>
+      </div>
+      <label for="nxwd9pn" class="commentText"><p>Pitchers and catchers report in just a little over 5 weeks.  Try to stay sane until then&hellip;</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nxwe5x0" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Ok_Whatever999 | Atlanta Braves</div>
+        <div>4 | 10 minutes ago </div>
+      </div>
+      <label for="nxwe5x0" class="commentText"><p>Winnipeg…. I feel attacked.</p>
+
+<p>If you were trying to make me cry then you have succeeded.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nxwae5m" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>samthewisetarly | New York Yankees</div>
+        <div>2 | 28 minutes ago </div>
+      </div>
+      <label for="nxwae5m" class="commentText"><p>Movies of the Blue Jays to NYC instead of Buffalo or something is so funny</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nxwakp1" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>UnknownFiddler | St. Louis Cardinals</div>
+        <div>3 | 27 minutes ago </div>
+      </div>
+      <label for="nxwakp1" class="commentText"><p>Put them in Brooklyn on the map so the Mets and Yankees fans could hate them equally</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nxwao9d" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Disused_Yeti | Cleveland Guardians</div>
+        <div>2 | 27 minutes ago </div>
+      </div>
+      <label for="nxwao9d" class="commentText"><p>should be the Dildo Braves</p>
+
+<p>PAIGE NO</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nxwbpps" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>thenimblevagrant | San Diego Padres • Seattle Mariners</div>
+        <div>2 | 22 minutes ago </div>
+      </div>
+      <label for="nxwbpps" class="commentText"><p>Padres with that pronunciation of Regina doesn&rsquo;t feel right.  Send the Rangers or Pirates there instead.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nxwfn48" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>GuyOnTheMike | Kansas City Royals</div>
+        <div>1 | 3 minutes ago </div>
+      </div>
+      <label for="nxwfn48" class="commentText"><p>The Pirates would be perfect. They would feel right at home when they see the Jolly Roger on Regina&rsquo;s mighty shore&hellip;</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nxwcrso" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>sinzspawn | Toronto Blue Jays</div>
+        <div>2 | 17 minutes ago </div>
+      </div>
+      <label for="nxwcrso" class="commentText"><p>im surprised Hamilton didnt get stuck with the pirates with the steel city connection but ill take it.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nxwd8r6" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>butyoulikesports | Toronto Blue Jays</div>
+        <div>2 | 15 minutes ago </div>
+      </div>
+      <label for="nxwd8r6" class="commentText"><p>Love offseason posts! This one is on my top 10 all time. Well done!</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nxwdhsk" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>GruffyMcGuiness | Atlanta Braves</div>
+        <div>2 | 13 minutes ago </div>
+      </div>
+      <label for="nxwdhsk" class="commentText"><p>FUCK Winnipeg</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nxwerks" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>alxndrblack | Toronto Blue Jays • Detroit Tigers</div>
+        <div>2 | 7 minutes ago </div>
+      </div>
+      <label for="nxwerks" class="commentText"><p>They&rsquo;re basically already the Windsor Tigers, IYKYK</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nxwexgh" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>UnknownFiddler | St. Louis Cardinals</div>
+        <div>2 | 6 minutes ago </div>
+      </div>
+      <label for="nxwexgh" class="commentText"><p>Tigers fans definitely got the best deal out of this whole thing.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nxwfcsy" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>alxndrblack | Toronto Blue Jays • Detroit Tigers</div>
+        <div>1 | 4 minutes ago </div>
+      </div>
+      <label for="nxwfcsy" class="commentText"><p>New Pontchartrain shall rise.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nxw8z43" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Whiplash227 | Toronto Blue Jays</div>
+        <div>1 | 35 minutes ago </div>
+      </div>
+      <label for="nxw8z43" class="commentText"><p>Who is we</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nxwapeo" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Supersoaker_11 | Seattle Mariners</div>
+        <div>1 | 27 minutes ago </div>
+      </div>
+      <label for="nxwapeo" class="commentText"><p>Kelowna <em>still</em> can&rsquo;t get a team while Vancouver gets 3. Ouch</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nxwfagf" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>GuyOnTheMike | Kansas City Royals</div>
+        <div>1 | 4 minutes ago </div>
+      </div>
+      <label for="nxwfagf" class="commentText"><p>Well, it seems like they&rsquo;re <a href="https://baseball.pointstreak.com/attendance.html?leagueid=145&amp;seasonid=34070#:~:text=Kelowna%20Falcons,509" target="_blank">not exactly supporting</a> the one they have&hellip;</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nxwbecp" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ChasingEchoes11 | Philadelphia Phillies</div>
+        <div>1 | 23 minutes ago </div>
+      </div>
+      <label for="nxwbecp" class="commentText"><p>Do we become the Hammies and change our signature food to some kind of ham sandwich?</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nxwbs4y" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>maggie320 | New York Mets</div>
+        <div>1 | 22 minutes ago </div>
+      </div>
+      <label for="nxwbs4y" class="commentText"><p>Move the Twins to Tuktoyaktuk.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nxwdepq" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>wikipuff | Washington Nationals</div>
+        <div>1 | 14 minutes ago </div>
+      </div>
+      <label for="nxwdepq" class="commentText"><p>Expand to St. Catherine&rsquo;s and name the team the knife fighters.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nxwfreg" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Thesyckid | Toronto Blue Jays</div>
+        <div>1 | 2 minutes ago </div>
+      </div>
+      <label for="nxwfreg" class="commentText"><p>St Catharines*</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nxwfewr" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>SomeoneNamedGem | Miami Marlins</div>
+        <div>2 | 4 minutes ago </div>
+      </div>
+      <label for="nxwfewr" class="commentText"><p>if you thought that the Yankees spending was obnoxious then get ready for America&rsquo;s Team, the New York Blue Jays</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nxwfhi0" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>wiser212</div>
+        <div>2 | 4 minutes ago </div>
+      </div>
+      <label for="nxwfhi0" class="commentText"><p>Spring training would suck</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nxwfiak" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>_evenflow</div>
+        <div>2 | 3 minutes ago </div>
+      </div>
+      <label for="nxwfiak" class="commentText"><p>How many days to Spring Training?</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nxwfpyt" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>BigMeatyProlapse | Atlanta Braves</div>
+        <div>1 | 2 minutes ago </div>
+      </div>
+      <label for="nxwfpyt" class="commentText"><p>Some people have pointed out issues with the host cities even being able to financially support these teams and this is entirely valid when you consider just two facts:</p>
+
+<ol>
+<li><p>Canada&rsquo;s entire population is estimated at 41.5 million as of 2025 per Wikipedia</p></li>
+
+<li><p>This total is eclipsed by the top 3 US MSA&rsquo;s alone (NYC, LA, CHI) at an estimated 42.3 million as of 2024 per Wikipedia</p></li>
+</ol>
+
+<p>This would leave a second tier team like the Hamilton Phillies trying to survive off of an MSA GDP of about <span class="math inline">\(29.9B USD compared to Philadelphia's MSA GDP of roughly \)</span>131.9B. As a Braves fan this pleases me.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
