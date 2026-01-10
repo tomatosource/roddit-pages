@@ -1,0 +1,594 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.selfPostImage {
+  width: 100%;
+  height: auto;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/baseball/comments/1q8ufq8/do_you_like_to_scout_prospects_and_do_you/"><p>Do you like to scout prospects (and do you consider yourself good at it? If so, what’s your process? What metrics are you looking at?</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <p><em>Very recently</em> got into a bit of prospect scouting, but I’m still new to it, so if anyone could I would love to hear any advice you have. I don’t use any paid platforms so my data is fully derived between FanGraphs and ProspectSavant. With that being said, here are the stats I like to look at</p>
+
+<p>Hitters:</p>
+
+<ul>
+<li>EV/MaxEV</li>
+<li>.ISO</li>
+<li>wRC+</li>
+<li>BB/K</li>
+<li>Spd</li>
+<li>BABIP</li>
+<li>Pull%, FB%, GB%, &amp; LD%</li>
+<li>HR/FB</li>
+<li>LA</li>
+<li>Hard Hit%</li>
+<li>Barrel%</li>
+<li>O-Swing%</li>
+<li>Z-Contact%</li>
+<li>SwStr%</li>
+</ul>
+
+<p>Pitchers:</p>
+
+<ul>
+<li>BB%</li>
+<li>K%</li>
+<li>K-BB%</li>
+<li>BB/K</li>
+<li>xBA</li>
+<li>xSLG</li>
+<li>Hard Hit%</li>
+<li>FIP</li>
+<li>xFIP</li>
+<li>O-Swing%</li>
+<li>Z-Contact%</li>
+<li>SwStr%</li>
+<li>SKUBAL (Coined by a Youtuber I watch called “I Like Numbers”) - a stuff-based metric determined by subracting Z-Contact% from their O-Swing%, with a lower total being better and more indicative of success)</li>
+</ul>
+
+<p>Is this combo of metrics a good baseline for evaluation or would you say I’m completely off?</p>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nyqdv3a" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>CDFReditum | Los Angeles Angels</div>
+        <div>4 | an hour ago </div>
+      </div>
+      <label for="nyqdv3a" class="commentText"><p>My scouting is playing OOTP and seeing how the prospects in that game do</p>
+
+<p>Juan Then WILL get a cy young, I swear…</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nyqdo7c" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>silk_from_a_pig | Chicago White Sox</div>
+        <div>3 | an hour ago </div>
+      </div>
+      <label for="nyqdo7c" class="commentText"><p>I like all the stats here but you need to watch footage to get the full picture for a prospect. Are a high power/low contact guy&rsquo;s swing shape, operation in the box, stance all things that are easily adjustable, or will hold up at higher levels? It takes time but if you can do the advance stats piece AND actually watch game footage well, then you&rsquo;ll be a pretty good scout.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nyqe6oe" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Murky-Preparation-61 | Milwaukee Brewers</div>
+        <div>2 | an hour ago </div>
+      </div>
+      <label for="nyqe6oe" class="commentText"><p>Definitely something I’m looking to do/improve on. I’ve been watching baseball for close to 20 years (and played for awhile) but until very recently I never really paid attention to stance/swing related stuff so it’s something I gotta work on</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nyqel54" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>silk_from_a_pig | Chicago White Sox</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="nyqel54" class="commentText"><p>You&rsquo;ll pick it up quick then. I like to read what scout reports say about mechanics of a particular player, THEN watch the video of that player to see what they mean by it</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nyqhnjz" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>dreddnought | Baltimore Orioles</div>
+        <div>3 | 32 minutes ago </div>
+      </div>
+      <label for="nyqhnjz" class="commentText"><p>You&rsquo;ve covered a lot of the good standards, so I&rsquo;ll add a couple thoughts:</p>
+
+<ul>
+<li>o-swing% (or chase%) can be murky due to premeditated takes, i.e., if a guy in a 0 or 1 strike count won&rsquo;t make a &ldquo;proper&rdquo; swing decision. Eric Longenhagen therefore frequently uses <strong>two-strike chase%</strong> as a means of filtering true ball-strike/secondary recognition ability.</li>
+<li>EL also occasionally references capability against <strong>velocity (93 or 94+ mph)</strong>, which I think is self-explanatory. It comes up in particular with players coming from NPB or KBO, where gas is less common.</li>
+<li>90th percentile exit velocity (<strong>EV90</strong>) in particular is a common benchmark for game power, but it depends on the writer.</li>
+<li>Less a metric thing, but watch the patters of how teams acquire and develop their players. Consider this video about <a href="https://www.youtube.com/watch?v=qsWOfA8aQzw" target="_blank"><strong>cut fastballs and arsenals</strong></a> by Lance Brozdowski, and how smart teams (I&rsquo;m mostly thinking Mets here, but they&rsquo;re not the only ones) acquire tip-of-the-iceberg guys or guys with fewer miles on the arm: think two-way-players or cold weather guys.</li>
+<li>Just my opinion: the guy who said to watch their mechanics is right. A lot of the data that&rsquo;s available in the minors always has an asterisk, because the quality of play in the minors is dramatically worse than the majors. You can have guys who perform at a high level, including at stuff under the hood (batted ball data &amp; contact), but the reason they performed well is because they never faced, for example, higher fastball velo or better command (guys who have holes in their swing generally start getting pants&rsquo;d in AA, but sometimes it&rsquo;s not obvious even until they get to MLB). For that reason, I usually take the ERA estimators (FIP and xFIP) with a grain of salt for minor league pitchers, and even K% for batters can be very misleading.</li>
+<li>I&rsquo;ve never seen much writing on the subject, but Baseball Prospectus will publish their <a href="https://www.baseballprospectus.com/player/157134/levi-wells/" target="_blank"><strong>stuff model numbers</strong></a> for minor leaguers with Statcast data. Negative is better.</li>
+<li>On the subject of pitch shape (think induced vertical and horizontal break) and release traits (extension, release height), I&rsquo;m not sure where I am anymore on this. It feels like teams are rapidly playing around with these (see above commentary on shitty cut fastballs) such that they no longer directly mean what they seem to mean. Broz <a href="https://www.youtube.com/watch?v=bQRCKKAnAhI" target="_blank">again</a> mentions teams are maybe moving towards less outlier characteristics and honing in on standard <sup>3</sup>&frasl;<sub>4</sub> deliveries and seeing what variations they can tease out of &ldquo;&ldquo;plain.&rdquo;&rdquo;</li>
+<li>If you want to play with minor league Statcast data, Baseball Savant has an <a href="https://baseballsavant.mlb.com/statcast-search-minors" target="_blank">okay search function</a> that includes mostly AAA, but also FSL (low-A).</li>
+</ul>
+
+<p>Re: Prospect Savant, Duke himself (u/Oriolebird9) frequents this sub, in case you had questions for him specifically.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nyqijxb" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Murky-Preparation-61 | Milwaukee Brewers</div>
+        <div>2 | 26 minutes ago </div>
+      </div>
+      <label for="nyqijxb" class="commentText"><p>This is great thank you. I’ve seen EV90 but never really knew what it meant, I’ll definitely use that from now on. As far as two-strike chase% is that something I’m able to see on FG? It very well could be but I haven’t seen anything like that on there</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nyqk2yu" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>dreddnought | Baltimore Orioles</div>
+        <div>1 | 15 minutes ago </div>
+      </div>
+      <label for="nyqk2yu" class="commentText"><blockquote>
+<p>As far as two-strike chase% is that something I’m able to see on FG? It very well could be but I haven’t seen anything like that on there</p>
+</blockquote>
+
+<p>Good question - when you read an top 100 or org report on FG, two-strike chase% will come up if it&rsquo;s a red/yellow flag for a hitter.</p>
+
+<p>If you use the Baseball Savant minor league search, you can do a couple of rough chop filters: Count (two strikes), Pitch Type (any secondary: Colton Cowser is particularly plagued by changeups), Attack Zone (shadow or chase or both).</p>
+
+<p>I&rsquo;ve never done the research (I&rsquo;m sure someone here knows), but I assume two-strike chase% is generically worse than overall chase% because guys are defending against borderline called strike 3, but it should be obvious if it&rsquo;s particularly bad.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nyqcqkr" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Hot-Conference-9129</div>
+        <div>2 | an hour ago </div>
+      </div>
+      <label for="nyqcqkr" class="commentText"><p>Those are solid metrics to start with, especially the plate discipline stuff like SwStr% and O-Swing%. BABIP can be tricky with prospects since sample sizes are usually small and park factors mess with it</p>
+
+<p>One thing I&rsquo;d add is looking at their age relative to the league - a 19 year old putting up decent numbers in A+ is way more impressive than a 22 year old doing the same thing. Also keep an eye on how they perform after moving up levels, that&rsquo;s usually when you see who&rsquo;s legit</p>
+
+<p>SKUBAL sounds interesting, never heard that term before but the concept makes sense</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nyqdrem" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Murky-Preparation-61 | Milwaukee Brewers</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="nyqdrem" class="commentText"><p>Actually don’t know why I included BABIP I only really use that if I wanna see if there’s any indication of a hitter (or pitcher) getting lucky/unlucky in their results compared to what the underlying metrics suggest</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nyqfx1e" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ledbetterus | World Baseball Classic</div>
+        <div>2 | 44 minutes ago </div>
+      </div>
+      <label for="nyqfx1e" class="commentText"><p>Read Mike Trout&rsquo;s scouting report to get an idea what some scouts are looking at besides raw numbers.</p>
+
+<p><a href="http://projectprospect.com/article/2010/10/12/mike-trout-scouting-report/index.html" target="_blank">http://projectprospect.com/article/2010/10/12/mike-trout-scouting-report/index.html</a></p>
+
+<p>Exerpt:</p>
+
+<blockquote>
+<p>Adjustments</p>
+
+<p>In high school, Trout held his bat on his shoulder with the bat head wrapped around the backside of his helmet. He would not move his hands much while loading his swing, but he would wrap the bat around his helmet bit more than he did in 2010. Because he has strong wrists and good bat speed he was able to get away with this in high school.</p>
+
+<p>One of the first adjustments the Angels organization made with Trout was to get his hands up off of his shoulder and get his bat angle vertical rather than wrapped around his helmet. This has created a straighter path to the ball, though Trout still wraps the bat behind his helmet during the loading portion of his swing, just not as drastically. This is something I’m sure he and the coaches will continue to work on. Then again, if it&rsquo;s not broke why fix it?</p>
+</blockquote>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nyqi5qr" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Murky-Preparation-61 | Milwaukee Brewers</div>
+        <div>1 | 28 minutes ago </div>
+      </div>
+      <label for="nyqi5qr" class="commentText"><p>This sounds pretty similar to Brice Turang’s stance adjustment from 2024 to 2025. Went from having the bat resting on his shoulder with a narrow, closed base and more weight distributed onto his front foot with a minimal leg kick to having his bat pre-loaded im his stance with his hands more elevated and a wider base and more weight distributed onto his back foot alongside a more pronounced leg kick which is what led to his sudden power surge last year</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nyqk2vd" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ledbetterus | World Baseball Classic</div>
+        <div>1 | 15 minutes ago </div>
+      </div>
+      <label for="nyqk2vd" class="commentText"><p>I like this part too:</p>
+
+<blockquote>
+<p>Since he’s already well built with broad shoulders, the chances of him growing out of his speed are lessened, but he may still lose a bit as he grows into his mid-twenties. Still, Trout’s speed is an 80 on the 20-80 scale and should continue to be a tremendous asset throughout his career.</p>
+</blockquote>
+
+<p>It&rsquo;s almost like you need to study muscle physiology and a load of other things to really understand what you&rsquo;re looking at. OR just watch a TON of baseball at all levels and have fun doing it :)</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nyqjq1f" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>fatboy1776 | Washington Nationals</div>
+        <div>3 | 18 minutes ago </div>
+      </div>
+      <label for="nyqjq1f" class="commentText"><p>Nice try, White Sox front office. Do your own work.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nyqi1db" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>mysterysackerfice | Los Angeles Angels • Dumpster Fire</div>
+        <div>1 | 29 minutes ago </div>
+      </div>
+      <label for="nyqi1db" class="commentText"><p>I was a scout a few years back.  I was told to scout some guy that was making headlines in Japan.  Everyone claimed he was the Japanese Babe Ruth.  I watched him for 1 inning and immediately noted:  high school hitter.</p>
+
+<p>No idea if that dude ever panned out because I stopped scouting and got into selling Incan Matrimonial Head Masks</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nyql4ls" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>brett_baty_is_him</div>
+        <div>1 | 8 minutes ago </div>
+      </div>
+      <label for="nyql4ls" class="commentText"><p><a href="https://www.baseballprospectus.com/news/article/87395/best-of-bp-quantifying-the-corey-seager-approach/" target="_blank">SEAGER</a> + Z contact % = hit tool</p>
+
+<p>90th percentile + Max EV = Power</p>
+
+<p>Also like good pulled fly ball rates.</p>
+
+<p>If a guy is 90th percentile in all or most of those stats and is younger than the division he’s in, he’s probably an elite prospect.</p>
+
+<p>Honestly, pitchers I just default to the pitching models stuff+ and control+. Velo. Sometimes k-bb% is easy to look at. SKUBAL sounds interesting.</p>
+
+<p>The key is you can’t use results based metrics. But I’m not a scout I just follow my own teams prospects.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
