@@ -1,0 +1,421 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.selfPostImage {
+  width: 100%;
+  height: auto;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/PathOfExile2/comments/1q8nywe/new_command_line_parameters_most_old_ones_dont/"><p>new command line parameters (most old ones don&rsquo;t work anymore)</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <p>I tried making my in-game experience a bit smoother by trying the tried and true &ndash;waitforpreload and &ndash;noasync parameters, but couldn&rsquo;t see any difference. Looking through the game log file located in &amp;lt;POE2 install folder&amp;gt;\logs\LatestClient.txt also confirms with entries such as</p>
+
+<pre><code>\[CMD\]\[Unrecognized\] --waitforpreload  
+\[CMD\]\[Unrecognized\] --noasync
+</code></pre>
+
+<p>So I dug through the executable using ProcessExplorer and found the following:</p>
+
+<p>Disable NVidia related functionality (DLSS/Reflex/etc)</p>
+
+<pre><code>\--no-nv
+</code></pre>
+
+<p>The login server port</p>
+
+<pre><code>\--login-port
+</code></pre>
+
+<p>The patching server that should be patched from</p>
+
+<pre><code>\--patching-server
+</code></pre>
+
+<p>Override basic auth used for for patching content</p>
+
+<pre><code>\--patching-auth
+</code></pre>
+
+<p>Before running wait for this process id to exit.</p>
+
+<pre><code>\--prev-proc-id
+</code></pre>
+
+<p>Require that the user press the launch button in the patcher before entering game</p>
+
+<pre><code>\--require-launch
+</code></pre>
+
+<p>Fail horribly</p>
+
+<pre><code>\--fail
+</code></pre>
+
+<p>Disables the creation of the audio device</p>
+
+<pre><code>\--nosound
+</code></pre>
+
+<p>Forces use of generic software audio device</p>
+
+<pre><code>\-swa  
+\--softwareaudio
+</code></pre>
+
+<p>The handle to an inherited event object that will be signaled when startup has successfully been completed</p>
+
+<pre><code>\--success-event
+</code></pre>
+
+<p>Disables the 24H2 Single Threaded Loading workaround</p>
+
+<pre><code>\--24h2-mt
+</code></pre>
+
+<p>Use many more job queues to test contention</p>
+
+<pre><code>\--test-job-many-queues
+</code></pre>
+
+<p>Disable D3D12 render separate transfer queue</p>
+
+<pre><code>\--test-disable-transfer-queue
+</code></pre>
+
+<p>Disable the custom memory allocator and use the standard allocator instead</p>
+
+<pre><code>\--test-std-alloc
+</code></pre>
+
+<p>Add extra checks when finding binding sets</p>
+
+<pre><code>\--test-validate-bindings
+</code></pre>
+
+<p>Synchronize CPU and GPU work</p>
+
+<pre><code>\--test-single-buffered
+</code></pre>
+
+<p>Forces UI to be updated before other jobs</p>
+
+<pre><code>\--test-synchronous-ui
+</code></pre>
+
+<p>Forces simulation to be updated before other jobs</p>
+
+<pre><code>\--test-synchronous-simulation
+</code></pre>
+
+<p>Disable engine frame move high jobs</p>
+
+<pre><code>\--test-disable-frame-move-jobs
+</code></pre>
+
+<p>Disable engine frame render high jobs</p>
+
+<pre><code>\--test-disable-frame-render-jobs
+</code></pre>
+
+<p>Batches descriptor copies per frame</p>
+
+<pre><code>\--test-batch-descriptors
+</code></pre>
+
+<p>Force the use of the safe frame graph</p>
+
+<pre><code>\--force-safe-frame-graph
+</code></pre>
+
+<p>Enable the device resource manager</p>
+
+<pre><code>\--device-resource-manager
+</code></pre>
+
+<p>Disable static entities prefetching</p>
+
+<pre><code>\--disable-static-entities
+</code></pre>
+
+<p>Keep all resources alive for existing descriptor sets</p>
+
+<pre><code>\--descriptors-keep-alive
+</code></pre>
+
+<p>Validate descriptor lifetimes</p>
+
+<pre><code>\--descriptors-validate
+</code></pre>
+
+<p>Flush descriptor set cache frequently</p>
+
+<pre><code>\--flush-descriptors
+</code></pre>
+
+<p>Flush resources caches frequently</p>
+
+<pre><code>\--flush-resources
+</code></pre>
+
+<p>Disables render device recovery in case of a device lost error</p>
+
+<pre><code>\--no-device-recovery
+</code></pre>
+
+<p>Skips intro video</p>
+
+<pre><code>\--nologo
+</code></pre>
+
+<p>Launch game with kakao authentication</p>
+
+<pre><code>\--kakao
+</code></pre>
+
+<p>Disable the custom assert mesage box</p>
+
+<pre><code>\--disable-assert-box
+</code></pre>
+
+<p>Used by Epic Games Store launcher<br>
+Sets the language based on the given language name or language code</p>
+
+<pre><code>\-lang  
+\--language
+</code></pre>
+
+<p>Will always use default settings set in the settings.cpp</p>
+
+<pre><code>\--use-defaults
+</code></pre>
+
+<p>Disables the automatic client switching that occurs when the wrong client is started for the current user DirectX setting</p>
+
+<pre><code>\--dcs  
+\--disable-client-switching
+</code></pre>
+
+<p>Since the old fan favorites like &ndash;waitforpreload and &ndash;noasync aren&rsquo;t listed, it&rsquo;s safe to say they don&rsquo;t work anymore (at least with the version of the game available at the time of this posting).</p>
+
+<p>As for the new parameters, I have no idea what most of them do and the description supplied isn&rsquo;t of much help, at least to me. Perhaps some of you have the knowledge or experience or exploratory drive to figure this out.</p>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nyoy1el" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>TheSirDante</div>
+        <div>2 | 3 hours ago </div>
+      </div>
+      <label for="nyoy1el" class="commentText"><p>this info dump is very good, thank you . I wonder what happens if we use them all :D /sarcasm</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
