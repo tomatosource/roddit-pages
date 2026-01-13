@@ -1,0 +1,990 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.selfPostImage {
+  width: 100%;
+  height: auto;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/PathOfExile2/comments/1qc36z8/tiers_in_this_game_are_really_unintuitive_to_me/"><p>Tiers in this game are really un-intuitive to me.</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <ul>
+<li><p>For mods on items, tier 1 is the best tier. The higher the tier goes, the worse it gets. Every individual mod also has an individual amount of different tiers. Some have tier 1-3, others tier 1-10, etc. There is zero ingame indicator about that range, btw. You could roll a tier 4 mod and have no way to know based on ingame information if that&rsquo;s tier 4 out of 4, or tier 4 out of 13.</p></li>
+
+<li><p>For unidentified item drops, tier 5 is the best tier. The higher the tier goes, the better it gets. (Also: Why 5? That&rsquo;s so random). Identifying a tier 5 item can also roll bad tiers. I&rsquo;ve heard there are some mods and tier ranges that are cut from high tier numbers, but yet again: zero ingame manual / explanation for concrete information.</p></li>
+
+<li><p>For waystones, tier 1 is the lowest level zone. The higher the tier goes, the more difficult/reward/better it gets. Waystones can roll up to tier <sup>16</sup>&frasl;<sub>17</sub> (?).</p></li>
+
+<li><p>For uncut gems, tier 1 is the lowest and 20 the highest.</p></li>
+
+<li><p>For league bosses (Breach, Delirium, Ritual), tier 1 is the easiest and tier 3 is the most difficult version.</p></li>
+</ul>
+
+<p>Isn&rsquo;t there a more elegant way to design and unify tier numbers? Especially one that doesn&rsquo;t, by design, makes it mandatory to use 3rd party sources like poe2db and craftofexile somewhere outside the game to get crucial information?</p>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nzf6ire" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>thewarguy</div>
+        <div>1 | 24 minutes ago </div>
+      </div>
+      <label for="nzf6ire" class="commentText"><p>Generally, higher is better/stronger. They recently switched the affix tiers to T1 being the best on items like how they have it in PoE1 because of this point - how do I know what&rsquo;s best? When some affixes have 13 tiers, some 8, others 3. With that flipped, you know if you get 6 T1, it can&rsquo;t get any higher than that, and those are the best you&rsquo;re going to get for those affixes. </p>
+
+<p>They&rsquo;re all different systems. You can&rsquo;t really compare gear affixes to boss tiers. But the bottom 4 all work the same. Higher = better. </p>
+
+<p>How would you change this? </p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nzf7zst" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Kain7979</div>
+        <div>1 | 17 minutes ago </div>
+      </div>
+      <label for="nzf7zst" class="commentText"><p>Exactly they changed it back how it should be, how is this an issue?</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nzfadcx" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Burstrampage</div>
+        <div>1 | 6 minutes ago </div>
+      </div>
+      <label for="nzfadcx" class="commentText"><p>It’s an issue to players unaware to the tier system I think. For example t1 maps are the lowest maps you can run but t1 on gear is the highest a mod can go while tier 1-5 gear can drop but tier 5 in that instance is the best. The easiest way to solve this is to have t1 be the best possible every step of the way in game.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="nzf7opo" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>coupl4nd</div>
+        <div>1 | 19 minutes ago </div>
+      </div>
+      <label for="nzf7opo" class="commentText"><p>Make them max at tier 10?</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nzf8asw" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Tsunamie101</div>
+        <div>1 | 16 minutes ago </div>
+      </div>
+      <label for="nzf8asw" class="commentText"><p>How would every mod have 10 tiers? If a t1 +gem level mod is +1, then what is t10? Also means that if they want to add tiers for balance reasons later one, they&rsquo;d have to add to every one of them.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="nzf8nnx" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>AltruisticPea6925</div>
+        <div>1 | 14 minutes ago </div>
+      </div>
+      <label for="nzf8nnx" class="commentText"><blockquote>
+<p>How would you change this?</p>
+</blockquote>
+
+<ol>
+<li><p>Waystones still tier 1 to 15, starting with tier 15 (the lowest) climbing in difficulty/reward til tier 1 (the highest). As such, it&rsquo;s the same order as item mods.</p></li>
+
+<li><p>Unify the potential tier ranges: All mods can roll from tier 1 to tier 15, with 1 the best and tier 15 the worst. Unique item mods that don&rsquo;t have a range, obviously still don&rsquo;t. &ldquo;+X to level&rdquo; can be ignored, since those mods should (imo) be removed from rare non-unique items anyway. As such, the number of tiers is unified between item mods and waystone mods.</p></li>
+
+<li><p>Make unidentified drop tiers follow the same order: Tier 1-15, with 1 the best and 15 the worst. If an item drops with an unidentified tier X, guarantee that it actually has at least one mod with tier X (why else have the separate number?)</p></li>
+
+<li><p>Uncut gem tiers from tier 1 to tier 15 so that it follows the same range as item mods and waystone tiers. This can be done in the same update that removes all those +X to level mods. Tier 15 the worst, tier 1 the best.</p></li>
+
+<li><p>Boss tiers &hellip; well okay. You got me there.</p></li>
+</ol>
+
+<hr>
+
+<blockquote>
+<p>Now all tiers are intuitive with unified ranges from tier 1 (best) to 15 (worst) across the entire game. When something has a tier, you know immediately without having to look anything up how good it is.</p>
+</blockquote>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nzf9os3" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Da_Bigmek</div>
+        <div>1 | 9 minutes ago </div>
+      </div>
+      <label for="nzf9os3" class="commentText"><p>Ehhhh, I&rsquo;d rather they just keep it how it is now</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nzfabnf" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>AltruisticPea6925</div>
+        <div>1 | 6 minutes ago </div>
+      </div>
+      <label for="nzfabnf" class="commentText"><p>that&rsquo;s fine, everyone&rsquo;s got different taste. For me, I prefer elegant design that&rsquo;s intuitive even if it requires one re-adjacement patch.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nzfb4gm" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Da_Bigmek</div>
+        <div>1 | 3 minutes ago </div>
+      </div>
+      <label for="nzfb4gm" class="commentText"><p>I think it&rsquo;s more intuitive right now.</p>
+
+<p>Affix Tiers are the only ones that go to T0, which indicates it behaves more like a system with S,A,B,C tiers.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="nzf9511" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Prace_Ace | SSF to feel the Weight™</div>
+        <div>1 | 12 minutes ago </div>
+      </div>
+      <label for="nzf9511" class="commentText"><p>Yep, that&rsquo;d be great.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="nzf9kho" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>butt_raid</div>
+        <div>1 | 10 minutes ago </div>
+      </div>
+      <label for="nzf9kho" class="commentText"><p>Not all mods have 15 possible values (+ to skills)</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nzf9p78" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>AltruisticPea6925</div>
+        <div>1 | 9 minutes ago </div>
+      </div>
+      <label for="nzf9p78" class="commentText"><p>That&rsquo;s why those missing ranges are added to unify it. The only mods that would break this are &ldquo;+X to level&rdquo; (commented above) and unique mods (that either don&rsquo;t have a tier range at all, or can be shown as roll ranges like they already do anyway, meaning unique items don&rsquo;t even need any tiers to begin with).</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nzfb4v0" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Kevlar917_</div>
+        <div>1 | 3 minutes ago </div>
+      </div>
+      <label for="nzfb4v0" class="commentText"><p>That&rsquo;s a lot of work you&rsquo;re asking for, to resolve an issue that 99.99999% of players can intuitively resolve on their own without even giving it a second thought.  Maybe not the best use of their resources, at the very least.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="nzfb8jt" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Rookie_numba_uno</div>
+        <div>1 | 2 minutes ago </div>
+      </div>
+      <label for="nzfb8jt" class="commentText"><blockquote>
+<p>That&rsquo;s why those missing ranges are added to unify it</p>
+</blockquote>
+
+<p>No reason to do that. Too much homogenization here will only hurt the game&rsquo;s itemisation as not every affix needs to have the same number of possible tiers that it can roll</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="nzfb8v2" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>deviant324</div>
+        <div>1 | 2 minutes ago </div>
+      </div>
+      <label for="nzfb8v2" class="commentText"><p>Realistically they would just have to make multiple tiers of + gem levels all be the same value, if you make 15 tiers of that affix that all give an extra level each you’re completely devaluing every other affix even more than this mod already does. Otherwise you would need to hyperinflate all the other mods (or make gem levels worthless which completely breaks the game’s balancing)</p>
+
+<p>Some mods don’t have useful increments to meaningfully fill in 15 different tiers</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="nzfa8ba" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>beta_1457</div>
+        <div>1 | 7 minutes ago </div>
+      </div>
+      <label for="nzfa8ba" class="commentText"><p>An issue with this is that some mods don&rsquo;t have enough wiggle room to have 15 ranges. An example, say all res goes up to 18%. If you give that 15 tiers you have some weird break points and just over a percentage point per tier. So now you have it where you&rsquo;re not really rolling within a tier but the tier itself.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nzfaoqn" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>AltruisticPea6925</div>
+        <div>1 | 5 minutes ago </div>
+      </div>
+      <label for="nzfaoqn" class="commentText"><p>If a mod has such a small maximum range that it couldn&rsquo;t be divided into 15 tiers, why have multiple tiers to begin with instead of one (1-18)% roll (like GGG does for the majority of unique mods)?</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="nzfb07n" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>defyingphysics1</div>
+        <div>1 | 3 minutes ago </div>
+      </div>
+      <label for="nzfb07n" class="commentText"><p>Personally I don&rsquo;t like this. Why does it matter knowing that there are worse mods? It&rsquo;s good to know you have room to grow. Unifying mods nerfs divining items. It&rsquo;s a ton of work and rebalance for what gain?? So that you know  how much shittier mods you could have gotten?</p>
+
+<p>Open up poedb and it will answer your questions</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="nzfb578" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>FridgeBaron</div>
+        <div>1 | 3 minutes ago </div>
+      </div>
+      <label for="nzfb578" class="commentText"><p>they literally could have just had tier <sup>7</sup>&frasl;<sub>8</sub> so when you see <sup>8</sup>&frasl;<sub>8</sub> you know its the best and the items and it would have been fine. Its also fine with t1 being the best just for item mods.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="nzfbb06" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Earthboundplayer</div>
+        <div>1 | a minute ago </div>
+      </div>
+      <label for="nzfbb06" class="commentText"><p>That&rsquo;s a lot of headache to fix an incredibly minor and not very impactful inconsistency. Like it&rsquo;s really not that hard to remember &ldquo;higher tier stronger, except for item mods&rdquo;. We have Poe2db to tell us all of the more detailed information. Maybe it&rsquo;s best to make an in-game Poe2db so you don&rsquo;t have to go to a separate website. I don&rsquo;t care either way personally.</p>
+
+<blockquote>
+<p>Unify the potential tier ranges: All mods can roll from tier 1 to tier 15,</p>
+</blockquote>
+
+<p>Having to figure out 15 tiers for each mod you add is a nightmare. You&rsquo;re also devaluing divine orbs since the range of a tier is going to shrink.</p>
+
+<blockquote>
+<p>. &ldquo;+X to level&rdquo; can be ignored, since those mods should (imo) be removed from rare non-unique items anyway.</p>
+</blockquote>
+
+<p>Does this not cause you to reflect on how brittle your idea is? What about crossbows &ldquo;loads an additional bolt&rdquo;?</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nzf6uyd" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Maximum-Ice-9054</div>
+        <div>1 | 23 minutes ago </div>
+      </div>
+      <label for="nzf6uyd" class="commentText"><p>The tiering for item mods was initially consistent with the others, but had the same issue you described. With an unknown number of tiers for each possible mod, and even different tiers for each mod based on the item type, it was impossible to know if an item was any good at a glance (t13 mana but only t6 physical damage? That&rsquo;s terrible probably, or maybe great). 
+To fix this problem, and it&rsquo;s a big problem when you have 50 random items to identify and check, they inverted the item tiers so you could always see if you had something great on your hands pending useful mods. This alas caused the inconsistency you mentioned. 
+Maybe there is a better solution to the problem, but at least the current system is better than looking up every item mod on poe2db for every drop. </p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nzf7xj0" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>deeplywoven</div>
+        <div>1 | 17 minutes ago </div>
+      </div>
+      <label for="nzf7xj0" class="commentText"><p>They should honestly just get rid of tiered gear altogether. 99% of T4 and T5 rare items I pick up are absolute trash. They usually have a high roll of some terrible stat you&rsquo;d never use.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nzf7jof" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>cori2996</div>
+        <div>1 | 19 minutes ago </div>
+      </div>
+      <label for="nzf7jof" class="commentText"><p>The affix tiers on items used to be the other way around, but people hated it. Because in poe1 t1 also is the best tier. Also you never knew if you had the best tier of a mod before without looking it up on poedb.</p>
+
+<p>Cool, this bow has t6 phys damage? Is there a t7? T8? How high does it go? Game doesnt tell you.</p>
+
+<p>T1 being the best is better in that regard, I like it that way.</p>
+
+<p>As for map tiers, tiered ground loot etc: yes, its all a bit unintuitive, but the game introduces these things slowly, so you get used to them naturally. You start on t1 maps, then eventually drop a t2 waystone. A normal person will make the assumption that this is a progression step up.</p>
+
+<p>Same with skill gems. You start with a level 1, then drop higher ones.</p>
+
+<p>Tiered loot isnt well introduced, but if you use a lootfilter (which everyone absolutely should be doing), the worthwhile stuff gets highlighted for you anyway.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nzf8t41" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Significant_Apple904</div>
+        <div>1 | 13 minutes ago </div>
+      </div>
+      <label for="nzf8t41" class="commentText"><p>It&rsquo;s intuitive to have higher tier being better/more difficult.</p>
+
+<p>The only anomaly is item affix, and that&rsquo;s because you can&rsquo;t tell if a t5 affix is high or low, there could be a t6 or t7, while making t1 the best makes it very plain to see.</p>
+
+<p>It&rsquo;s annoying at first but once you get used to it, it&rsquo;s a non-problem.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nzf7039" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Nev3rKnowsBest</div>
+        <div>1 | 22 minutes ago </div>
+      </div>
+      <label for="nzf7039" class="commentText"><p>Originally, affix tier aligned with the rest where t1 was the worst and higher values were better. There were a lot of complaints from the community because it made it harder to look at an item and determine if it had the highest tier level (since nothing in game indicates how many tiers each affix had).</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nzf73ym" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>jaderwind2</div>
+        <div>1 | 21 minutes ago </div>
+      </div>
+      <label for="nzf73ym" class="commentText"><p>Initially it was higher tier=better on mods too, but it was even more unintuitive, because you never knew what the highest tier was, which matters the most. They changed it because of feedback, but somehow didn‘t consider adding a way to view mod tiers ingame so now it’s a bit of a mess for newer players.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nzf8e7j" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>anaveragedave</div>
+        <div>1 | 15 minutes ago </div>
+      </div>
+      <label for="nzf8e7j" class="commentText"><p>I think you could replace &ldquo;tiers&rdquo; with almost any mechanic lol. I love the game&rsquo;s complexity, but I&rsquo;d reaaaaally appreciate an in-game means of learning wtf I&rsquo;m doing. I guess I AM helping a bunch yt channels though&hellip;</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nzf8f7v" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ElPikouik</div>
+        <div>1 | 15 minutes ago </div>
+      </div>
+      <label for="nzf8f7v" class="commentText"><p>tbh mod tiers going reverse actually makes knowing the &ldquo;maximum&rdquo; tier of a mod type irrelevant, since you know that tier 4 is the 4th worst. Going the other way, then you would not know if getting tier 7 is like the best or mid-way up.</p>
+
+<p>All the others makes going up in tier be better, and for some it also allows to upgrade them to the superior tier (via corruption -thought idk if it&rsquo;s already implemented for gems. PoE1 had gems going to lvl 21 iirc). Calling them &ldquo;levels&rdquo; would maybe put it in line with &ldquo;levels going up good, tiers going down good&rdquo; but hey.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nzf8ut9" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Sharp-Philosophy-555</div>
+        <div>1 | 13 minutes ago </div>
+      </div>
+      <label for="nzf8ut9" class="commentText"><p>As far as I can tell &ldquo;Tier X items&rdquo; basically have that as a bonus to the rolls, making them guarenteed better mods?   Reduces the chance of REALLY bad mods&hellip; doesn&rsquo;t necessarily mean really GOOD mods.  :)</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nzf9454" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>envix625</div>
+        <div>1 | 12 minutes ago </div>
+      </div>
+      <label for="nzf9454" class="commentText"><p>Dmg / main defense stats t1/2 or im not gonna use it. Others you can probably get away with t3 but t3 and lower consider downgrade to me</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nzfa5xd" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>microdis</div>
+        <div>1 | 7 minutes ago </div>
+      </div>
+      <label for="nzfa5xd" class="commentText"><p>everyone seems to forget there are more words to convey the concept of a tier.. the systems and orders dont need to change at all if you just use different wording for different systems</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nzfa5xu" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>redfm8</div>
+        <div>1 | 7 minutes ago </div>
+      </div>
+      <label for="nzfa5xu" class="commentText"><p>I&rsquo;m curious, did you get introduced to the various tier systems purely by playing the game and encountering all of it naturally or were you also reading about tiers this and tiers that before you had context for what people were talking about?</p>
+
+<p>The reason I ask is because on the face of it, for sure, they&rsquo;re mixing and matching left and right, but contextually I think the game teaches you which are high = good and which are low = good considering you don&rsquo;t really make any significant leaps across the spectrum when you&rsquo;re first introduced to tiered mechanics. When you first start dropping items, they all have shitty tiers. When you first dropping maps, they all have low tiers. When you&ndash;you get it. Like, I&rsquo;m not sure I quite understand how anybody would get confused if a tier 13 map is high or low if they&rsquo;re actually playing the game and progressing through it, regardless of what other items say,</p>
+
+<p>That&rsquo;s not to say there isn&rsquo;t room to clean all of this up, but it&rsquo;s also the kind of thing where there&rsquo;s already a whole past game with a history of doing it this way (although on a smaller scale) and for the newer people, I don&rsquo;t think it&rsquo;s necessarily a problem on a large enough scale that they&rsquo;re gonna care about upending it all and causing confusion again. Anecdotally speaking, I&rsquo;ve barely seen anybody bring it up to the extent that you just did and 99% of the confusion I ever saw was around item tiers specifically but that wasn&rsquo;t even anything to do with those in relation to other tiered items, just confusion around how good your affixes are supposed to be when you don&rsquo;t know how many tiers exist.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nzfajas" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>stiffgordons</div>
+        <div>1 | 5 minutes ago </div>
+      </div>
+      <label for="nzfajas" class="commentText"><p>I can’t be the only one for whom seeing a T5 item on the ground means “oh great, 35% reduced attribute requirements”.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nzfanue" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Obvious-Jacket-3770</div>
+        <div>1 | 5 minutes ago </div>
+      </div>
+      <label for="nzfanue" class="commentText"><p>They had all tiers start at 1 at launch. Problem was that some mods had T13 being best, some were T6 being best.</p>
+
+<p>They should have, before launch, made all tiers even. So you have 10 tiers, as an example, on each mod. Then you could always go up, now we have that odd system of crafting being reversed where everything else is the same.</p>
+
+<p>Tiered gear would be fine but it can still be shit mods. Reverse the gear tier on drops and let T1 drop with T1-3 affixes. Save the headache.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nzfb0ad" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>plusFour-minusSeven</div>
+        <div>1 | 3 minutes ago </div>
+      </div>
+      <label for="nzfb0ad" class="commentText"><p>Colloquially tiers go UP in quality or reward. Tier 3 service, for example&hellip; Or C , B, A, and S tier.</p>
+
+<p>All GGG really needs to do here is to think of a different word for affixes than tier. Maybe rank? Or class? &ldquo;This bow has rank 1 phys damage&rdquo;.</p>
+
+<p>I dunno. I don&rsquo;t think anybody would be happy no matter how they do it.</p>
+
+<p>But using the same word &ldquo;tier&rdquo; for things that go in opposite directions is indeed confusing.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nzf6hpv" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Kevlar917_</div>
+        <div>1 | 24 minutes ago </div>
+      </div>
+      <label for="nzf6hpv" class="commentText"><p>There&rsquo;s only one anomaly, and it&rsquo;s the item tiers.  Seems like you figured it out well enough, anyway.  Those actually followed the same pattern originally, and most players hated it.  GGG took the feedback and reversed the tier order on items.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nzf6p8q" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Chaori</div>
+        <div>1 | 23 minutes ago </div>
+      </div>
+      <label for="nzf6p8q" class="commentText"><p>They should swap to using letters for tiers that are better lower (S, A, B, C, D) and numbers for tiers that get better the higher it goes</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nzfb1cy" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>AltruisticPea6925</div>
+        <div>1 | 3 minutes ago </div>
+      </div>
+      <label for="nzfb1cy" class="commentText"><p>PoE2 in some years: Look guys, I&rsquo;ve got a SSS++ item!</p>
+
+<p>God please no, have mercy.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
