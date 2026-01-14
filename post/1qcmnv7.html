@@ -1,0 +1,923 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.selfPostImage {
+  width: 100%;
+  height: auto;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/nba/comments/1qcmnv7/halfway_through_the_season_shai_gilgeousalexander/"><p>Halfway through the season, Shai Gilgeous-Alexander has the most 25+ point games on 60+ TS%, with 27 games (69.2% of his games)</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <p>Shai Gilgeous-Alexander has the most 25+ point games on 60+ TS% this season, with 27 games (69.2% of his games)</p>
+
+<p>Top 10 so far:</p>
+
+<table>
+<thead>
+<tr>
+<th>Rank</th>
+<th>Player Name</th>
+<th>Games with 25+ PTS &amp; 60% TS</th>
+<th>Total Games Played</th>
+<th>Percentage (%)</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>1</td>
+<td>Shai Gilgeous-Alexander</td>
+<td>27</td>
+<td>39</td>
+<td>69.2</td>
+</tr>
+
+<tr>
+<td>2</td>
+<td>Donovan Mitchell</td>
+<td>21</td>
+<td>37</td>
+<td>56.8</td>
+</tr>
+
+<tr>
+<td>3</td>
+<td>Michael Porter Jr.</td>
+<td>19</td>
+<td>30</td>
+<td>63.3</td>
+</tr>
+
+<tr>
+<td>4</td>
+<td>Nikola Jokić</td>
+<td>19</td>
+<td>32</td>
+<td>59.4</td>
+</tr>
+
+<tr>
+<td>5</td>
+<td>Giannis Antetokounmpo</td>
+<td>18</td>
+<td>26</td>
+<td>69.2</td>
+</tr>
+
+<tr>
+<td>6</td>
+<td>Anthony Edwards</td>
+<td>18</td>
+<td>33</td>
+<td>54.5</td>
+</tr>
+
+<tr>
+<td>7</td>
+<td>Kevin Durant</td>
+<td>18</td>
+<td>35</td>
+<td>51.4</td>
+</tr>
+
+<tr>
+<td>8</td>
+<td>Luka Dončić</td>
+<td>17</td>
+<td>31</td>
+<td>54.8</td>
+</tr>
+
+<tr>
+<td>9</td>
+<td>Deni Avdija</td>
+<td>17</td>
+<td>40</td>
+<td>42.5</td>
+</tr>
+
+<tr>
+<td>10</td>
+<td>Lauri Markkanen</td>
+<td>16</td>
+<td>33</td>
+<td>48.5</td>
+</tr>
+</tbody>
+</table>
+<p><a href="https://www.statmuse.com/ask?q=most+25%2B+point+games+with+60%2B+ts%25+25-2026&amp;l=nba" target="_blank">Source</a></p>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nzj8qvm" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Kaizerx20 | Timberwolves</div>
+        <div>41 | 3 hours ago </div>
+      </div>
+      <label for="nzj8qvm" class="commentText"><p>I tried to edit that statmuse query in a way that doesn&rsquo;t favor SGA, but he leads if you sort by 50 FG%, 50 eFG% or 50 TS%.</p>
+
+<p>Ethical hating is not possible I&rsquo;m afraid.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nzja7if" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>StrikeElectrical9400 | Nuggets</div>
+        <div>21 | 3 hours ago </div>
+      </div>
+      <label for="nzja7if" class="commentText"><p>Yea learnt that last year just enjoying the ride this year twin. Life too short to hate on such greatness</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nzjndvn" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Skank_hunt42 | Thunder</div>
+        <div>10 | an hour ago </div>
+      </div>
+      <label for="nzjndvn" class="commentText"><p>I learned this too late with Curry, (Probably because of the whole KD thing), but after I stopped hating&hellip;.man is he fun to watch. That Olympics was just incredible.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nzjph6b" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>StrikeElectrical9400 | Nuggets</div>
+        <div>3 | 40 minutes ago </div>
+      </div>
+      <label for="nzjph6b" class="commentText"><p>Same with shai, I find okc tough to watch sometimes except SGA. He&rsquo;s a gem to watch. He is honestly so fun to watch his bag and footwork</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="nzjtbog" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>banjosandtattoos | Thunder</div>
+        <div>1 | 21 minutes ago </div>
+      </div>
+      <label for="nzjtbog" class="commentText"><p>Basketball is more fun that way. I’ll watch joker anytime I’m not watching thunder basketball.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="nzjv68y" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Zeeron1 | Thunder</div>
+        <div>1 | 12 minutes ago </div>
+      </div>
+      <label for="nzjv68y" class="commentText"><p>I will never understand people that spend their time hating needlessly. I say the same with the older generation. If you aren&rsquo;t enjoying LeBron and Steph while we have them, that&rsquo;s your loss&hellip;</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nzjbiz7" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>carsmello | Knicks</div>
+        <div>15 | 2 hours ago </div>
+      </div>
+      <label for="nzjbiz7" class="commentText"><p>Hilarious how it took him getting Finals MVP, MVP and ring to start being &ldquo;in discussions&rdquo; with Luka, who has none of them. SGA and Jokic are more like a Judge/Ohtani or Sinner/Alcaraz where there&rsquo;s a distinct separation between those two and the rest right now.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nzjbyxg" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>primepierce34 | BOS</div>
+        <div>2 | 2 hours ago </div>
+      </div>
+      <label for="nzjbyxg" class="commentText"><p>Ohtani and Sinner/Alcaraz are in way different conversations from every other player mentioned.</p>
+
+<p>Those 3 have straight GOAT trajectory potential.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nzjcvhz" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>carsmello | Knicks</div>
+        <div>3 | 2 hours ago </div>
+      </div>
+      <label for="nzjcvhz" class="commentText"><p>I agree, I&rsquo;m almost irrational when it comes to Ohtani I think he&rsquo;s the greatest athlete alive today. Still though, Judge has clearly separated himself from every non-Ohtani player in baseball, peak Judge is probably the best non steroid, fully post interpretation hitter ever.</p>
+
+<p>Anyway while I agree with your assessment of their actual talents, I was more just highlighting the gap between the two best players and the rest in their sports, not necessarily how large the gap is comparatively.</p>
+
+<p>*integration not interpretation. </p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nzjmzvl" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Skank_hunt42 | Thunder</div>
+        <div>3 | an hour ago </div>
+      </div>
+      <label for="nzjmzvl" class="commentText"><blockquote>
+<p>the best non steroid, fully post interpretation hitter ever.</p>
+</blockquote>
+
+<p>Tony Gwynn</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nzjvakh" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Chewbones9 | Thunder</div>
+        <div>1 | 12 minutes ago </div>
+      </div>
+      <label for="nzjvakh" class="commentText"><p>Yeah Tony Gwynn is the best all-around hitter of all time most likely. Judge is better with the long ball, though.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="nzjs1mw" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>azuredota</div>
+        <div>1 | 28 minutes ago </div>
+      </div>
+      <label for="nzjs1mw" class="commentText"><p>Luka also gets all of that as the Thunder PG</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nzjwqaw" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>AnkitPancakes | Thunder</div>
+        <div>1 | 5 minutes ago </div>
+      </div>
+      <label for="nzjwqaw" class="commentText"><p>At this point I doubt it. Defensive liability and poor ball security combined with the fact that Shai is the best iso player in the nba for the last 3 years makes me sincerely doubt he could lead this Thunder the same way</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nzjwxqw" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>azuredota</div>
+        <div>1 | 4 minutes ago </div>
+      </div>
+      <label for="nzjwxqw" class="commentText"><p><a href="https://www.nba.com/playoffs/2024/west-semifinal-1" target="_blank">https://www.nba.com/playoffs/2024/west-semifinal-1</a></p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="nzjsy2a" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>HitboxOfASnail | Thunder</div>
+        <div>1 | 23 minutes ago </div>
+      </div>
+      <label for="nzjsy2a" class="commentText"><p>the only thing Luka would get as the Thunder PG is hunted relentlessly on defense</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nzju93o" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>azuredota</div>
+        <div>1 | 17 minutes ago </div>
+      </div>
+      <label for="nzju93o" class="commentText"><p>Not if he has Dort and Caruso to take out a collarbone or two</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="nzjhdd1" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Dat_Boi_John | Slovenia</div>
+        <div>-9 | an hour ago </div>
+      </div>
+      <label for="nzjhdd1" class="commentText"><p>Hi, it&rsquo;s because Luka already has more 1st team All-NBAs than Curry, hope that helps!</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nzjo64v" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>No-wait-theres-more | Celtics</div>
+        <div>6 | an hour ago </div>
+      </div>
+      <label for="nzjo64v" class="commentText"><p>Hope he enjoys them without the ring</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nzjqwai" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>FuckLebumFlukaGayker | Spurs</div>
+        <div>1 | 33 minutes ago </div>
+      </div>
+      <label for="nzjqwai" class="commentText"><p>Dmitch has also been absolutely balling out get that man some help</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nzjwf3y" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>AnkitPancakes | Thunder</div>
+        <div>1 | 6 minutes ago </div>
+      </div>
+      <label for="nzjwf3y" class="commentText"><p>Field goal merchant</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nzjb33i" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>agdrs</div>
+        <div>-6 | 2 hours ago </div>
+      </div>
+      <label for="nzjb33i" class="commentText"><p>Can&rsquo;t stand him but the guy is one of the best scorers ever.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nzjbki1" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Vizwieklz | Thunder</div>
+        <div>11 | 2 hours ago </div>
+      </div>
+      <label for="nzjbki1" class="commentText"><p>One of the nicest and most respectful NBA superstars ever lmao</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nzjdg0a" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>agdrs</div>
+        <div>-5 | 2 hours ago </div>
+      </div>
+      <label for="nzjdg0a" class="commentText"><p>Outside of basketball I like him butI don&rsquo;t like he&rsquo;s play style and okc in general. They are Great tho</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="nzjbrzu" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>primepierce34 | BOS</div>
+        <div>-5 | 2 hours ago </div>
+      </div>
+      <label for="nzjbrzu" class="commentText"><p>You know why some of us can’t stand him it’s the foul baiting.</p>
+
+<p>Same reason Luka and Harden gets on people’s nerves</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nzjbvcs" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Vizwieklz | Thunder</div>
+        <div>9 | 2 hours ago </div>
+      </div>
+      <label for="nzjbvcs" class="commentText"><p>Every superstar foul baits. Wemby did it last night way more and way worse than Shai did.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nzjclkk" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>primepierce34 | BOS</div>
+        <div>-7 | 2 hours ago </div>
+      </div>
+      <label for="nzjclkk" class="commentText"><p>I don’t think JT, Bron, Curry, Kyrie, Kawhi, Booker, and Ant really have foul baited much in their careers.</p>
+
+<p>Superstars or stars can perform without foul baiting, I hate it when they take the easy way out and make a mockery of the game.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nzjcre5" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Vizwieklz | Thunder</div>
+        <div>7 | 2 hours ago </div>
+      </div>
+      <label for="nzjcre5" class="commentText"><p>There are dozens of clips for each of those players foul baiting😂aside from maybe Ant but only because he hasn’t played very long.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nzjujqv" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>15b17 | Thunder</div>
+        <div>1 | 15 minutes ago </div>
+      </div>
+      <label for="nzjujqv" class="commentText"><p>Ants on like year 6 lol, he just finishes so strong guys bounce off him making it look like no foul</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="nzjvx8l" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Kitchen_Roof7236 | Thunder</div>
+        <div>1 | 9 minutes ago </div>
+      </div>
+      <label for="nzjvx8l" class="commentText"><p>Nah ant flops his head back and screams AYYYYY louder then anyone in the nba bro it’s an iconic head throw back that im honestly shocked so few people recognize lmao</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="nzjd8ew" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>primepierce34 | BOS</div>
+        <div>-7 | 2 hours ago </div>
+      </div>
+      <label for="nzjd8ew" class="commentText"><p>That’s an awful argument, baiting rarely (which is the case for the players i mentioned) is very different than a Luka or SGA.</p>
+
+<p>You can’t tell me with a straight face that these players bait often, it isn’t really part of their process</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nzjie0q" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Academic-Factor-4551</div>
+        <div>7 | an hour ago </div>
+      </div>
+      <label for="nzjie0q" class="commentText"><p>Lebron has flopped his entire career, lol</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="nzjlzqx" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Simple-Dingo6721 | Thunder</div>
+        <div>5 | an hour ago </div>
+      </div>
+      <label for="nzjlzqx" class="commentText"><p>Ain’t no way you just said Ant doesn’t foul bait 🤣🤣🤣</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
