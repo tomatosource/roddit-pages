@@ -1,0 +1,994 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.selfPostImage {
+  width: 100%;
+  height: auto;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/baseball/comments/1qen89e/the_death_of_the_14year_megadeal/"><p>The death of the 14-year megadeal?</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <p>The way free agent megadeals have mostly worked is: you pay $25M per year for like 12 years. At the beginning of the deal you get a steal. At the end, the contract is underwater and hampers your team. That&rsquo;s the ultimate root cause of &ldquo;competitive windows&rdquo;.</p>
+
+<p>LAD and NYM ask: &ldquo;Why should it work like that?&rdquo;</p>
+
+<p>Well, the player can get <span class="math inline">\(300M on the open market. And you're a billionaire, so you can pay him that. But you can't pay him what he's worth in his good years. In his good years he's worth like 6-8 WAR. That'd be \)</span>50-70M per year. You can&rsquo;t pay that.</p>
+
+<p>LAD and NYM: &ldquo;Why not?&rdquo;</p>
+
+<p>You&rsquo;d spend 25% of your payroll before the luxury tax on one player. And you have to have 25 other guys. A baseball team needs like 5 star-level players to win. After you built the rest of the roster, the luxury tax bill would be insane. So you need to distribute the $300M out over a long time.</p>
+
+<p>LAD and NYM: &ldquo;But we have so much money, we don&rsquo;t care about luxury tax penalties.</p>
+
+<p>&hellip;</p>
+
+<p>LAD and NYM: &ldquo;So if we just pay the players what they&rsquo;re worth in only their good years&hellip; then we only have players&rsquo; peaks&hellip; and our roster never needs to be weighed down by expensive declining players.&rdquo;</p>
+
+<p>28 other owners:</p>
+
+<p><a href="https://preview.redd.it/oa6w9x3z2rdg1.png?width=1594&amp;format=png&amp;auto=webp&amp;s=a5ddc5d98043b2addf17b08c01b45b5dae9aa969" target="_blank">28 other billionaires panicking about how much of their portfolio is liquid</a></p>
+
+<p>(Am I crazy, or are the short-term high AAV contracts getting more common? The Verlander and Scherzer Mets deals were the prototypes, followed by Bregman&rsquo;s deal, and now Tucker and Bichette too. Is the 14-year megadeal dying? Is MLB gonna have NBA contracts now?)</p>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nzyn5cp" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Sensitive_Caramel856 | Toronto Blue Jays</div>
+        <div>39 | 29 minutes ago </div>
+      </div>
+      <label for="nzyn5cp" class="commentText"><p>There&rsquo;s less clarity of what is the new normal until the CBA is finalized.</p>
+
+<p>I believe we are seeing short term deals because of that uncertainty at the moment.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nzynanj" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>jujubats10 | Los Angeles Dodgers</div>
+        <div>11 | 28 minutes ago </div>
+      </div>
+      <label for="nzynanj" class="commentText"><p>You would think that the uncertainty would make players to lock up their huge long term contracts now</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nzynkf4" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>captain_ahabb | Los Angeles Dodgers</div>
+        <div>4 | 27 minutes ago </div>
+      </div>
+      <label for="nzynkf4" class="commentText"><p>That suggests to me that the players don&rsquo;t think a salary cap is happening</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="nzyo1e6" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Sensitive_Caramel856 | Toronto Blue Jays</div>
+        <div>2 | 25 minutes ago </div>
+      </div>
+      <label for="nzyo1e6" class="commentText"><p>Not really.</p>
+
+<p>If you look what happened when the NHL introduced their salary cap, there was a blanket ~24% roll back on all salaries, regardless of the length of the deal.</p>
+
+<p>You have many teams likely under what would be a minimum cap number who might be forced to spend money on players to reach that threshold. So they could potentially end up making more money (albeit likely on a different team) if they wait out the uncertainty.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nzyodhk" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>jujubats10 | Los Angeles Dodgers</div>
+        <div>4 | 23 minutes ago </div>
+      </div>
+      <label for="nzyodhk" class="commentText"><p>I can just guarantee you that there’s no reality where the players agree to void or reduce their guaranteed salaries</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nzyopt2" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Sensitive_Caramel856 | Toronto Blue Jays</div>
+        <div>2 | 22 minutes ago </div>
+      </div>
+      <label for="nzyopt2" class="commentText"><p>NHL players were saying the same thing. It happened, with an entire season cancelled because of it.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="nzyqpcc" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Prestigious_Team3134 | Colorado Rockies</div>
+        <div>1 | 13 minutes ago </div>
+      </div>
+      <label for="nzyqpcc" class="commentText"><p>Right now that’s true but if the owners are willing to not play in 2027 and beyond the players don’t have much choice. It only happened in the nhl because the strike was about to enter its second season.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="nzysath" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>captain_ahabb | Los Angeles Dodgers</div>
+        <div>1 | 6 minutes ago </div>
+      </div>
+      <label for="nzysath" class="commentText"><p>Well there has to be some kind of phase in. They&rsquo;re not going to start the cap at $400m.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="nzyo684" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>brotherhoodsquare</div>
+        <div>9 | 24 minutes ago </div>
+      </div>
+      <label for="nzyo684" class="commentText"><p>This makes sense but also I think the Dodgers and Mets basically broke the system by proving you can just eat luxury tax forever if you&rsquo;re rich enough</p>
+
+<p>The other owners are probably losing their minds watching LA sign everyone for stupid money while they&rsquo;re still trying to be &ldquo;fiscally responsible&rdquo; lmao</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nzyq08i" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ard8 | Los Angeles Dodgers</div>
+        <div>9 | 16 minutes ago </div>
+      </div>
+      <label for="nzyq08i" class="commentText"><p>The problem is so many owners aren’t losing their minds. They just don’t care.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="nzysppn" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ThaddiusOrBigBob</div>
+        <div>1 | 4 minutes ago </div>
+      </div>
+      <label for="nzysppn" class="commentText"><p>It’s not just “rich enough” - the penalties impact your draft and IFA capabilities and these teams still have good farm systems. What do the penalties matter if you can succeed in spite of them?</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nzyniuy" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>floon | Seattle Mariners</div>
+        <div>11 | 27 minutes ago </div>
+      </div>
+      <label for="nzyniuy" class="commentText"><p>14+ year mega deals have happened three times, and two of them happened last year. It&rsquo;s not like it&rsquo;s a thing that has been around and is only now changing.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nzypfg0" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Bermut-Nundaloy | Seattle Mariners</div>
+        <div>3 | 18 minutes ago </div>
+      </div>
+      <label for="nzypfg0" class="commentText"><p>OK, 14 is an exaggeration, but we&rsquo;ve been doing 8-year deals for 30-year olds with toxic back halves for a long time. Pujols, Fielder, Cano&hellip;</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nzyqljd" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>floon | Seattle Mariners</div>
+        <div>2 | 13 minutes ago </div>
+      </div>
+      <label for="nzyqljd" class="commentText"><p>And those are still happening. I think you&rsquo;re observing the emergence of the &ldquo;2 Year Megadeal&rdquo; kind of contract, which appears to be a fairly recent thing. It also appears to be more common for guys who have aged suspiciously well, more than for guys in their primes.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="nzysqtf" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>BaseballsNotDead | Seattle Pilots</div>
+        <div>2 | 4 minutes ago </div>
+      </div>
+      <label for="nzysqtf" class="commentText"><blockquote>
+<p>we&rsquo;ve been doing 8-year deals&hellip; for a long time</p>
+</blockquote>
+
+<p>Number of 8+ year deals by decade&hellip;</p>
+
+<p>1970s: 2<br>
+1980s: 1<br>
+1990s: 0<br>
+2000s: 11<br>
+2010s: 27<br>
+2020s: 27</p>
+
+<p>Long deals have very clearly been on the rise in recent years.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="nzysdbq" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Unhelpfulperson | Durham Bulls</div>
+        <div>1 | 5 minutes ago </div>
+      </div>
+      <label for="nzysdbq" class="commentText"><p>Something happens once and some people point to it and declare that everything is going to be like that forever. A different thing happens once and those same people again declare that everything is going to be like that new thing forever.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nzyn7ao" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>AerieElectrical3546 | Boston Red Sox</div>
+        <div>10 | 28 minutes ago </div>
+      </div>
+      <label for="nzyn7ao" class="commentText"><p>Long-term contracts used to be insurance for players, buying the rest of their careers essentially - and at a good price!</p>
+
+<p>With the boom of hyperinflated short-term deals driving AAV standards up, though, I don’t think long contracts will be advantageous to a player anymore.</p>
+
+<p>By the time Bryce Harper’s “enormous” contract is up, any modestly good player will be making 50-100% more annually than he is.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nzyse6o" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>captain_ahabb | Los Angeles Dodgers</div>
+        <div>3 | 5 minutes ago </div>
+      </div>
+      <label for="nzyse6o" class="commentText"><p>Harper&rsquo;s contract is an excellent example of how inflation punishes people on fixed income.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="nzypmwv" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>baseballCatastrophe | Toronto Blue Jays</div>
+        <div>2 | 17 minutes ago </div>
+      </div>
+      <label for="nzypmwv" class="commentText"><p>Ive been thinking this the last few years. These 40M AAVs arw gonna be chump change the next time Bo and Tucker are on the market</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nzynpcf" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>IHasGreatGrammar | Baltimore Orioles</div>
+        <div>6 | 26 minutes ago </div>
+      </div>
+      <label for="nzynpcf" class="commentText"><p>Some of it comes down to the player - guys like Harper and Bregman stated they wanted the stability of a long-term contract. Other players want these new high AAV deals with opt-outs because they want to bet on themselves. </p>
+
+<p>It is interesting that Correa and Bergman did the short term high AAV and immediately locked into long-term deals the next year - gave them guaranteed deals in the face of injuries. </p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nzynsy6" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>who_are_you_people24 | New York Mets</div>
+        <div>6 | 26 minutes ago </div>
+      </div>
+      <label for="nzynsy6" class="commentText"><p>It&rsquo;s not dead. Just exceedingly rare. Soto got 15 because he was so young for FA. Most guys who are in FA are 29-31 years old. The majority of that kind of contract would have players well past their primes playing and being paid big bucks. It&rsquo;s why you usually see 4, 5 and 6 year deals. Anything 10+ is rare because it carries more risk of ending up as a bad contract. You need to be exceptionally young to get that kind of deal.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nzyqpug" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>OldBoringWeirdo | Baltimore Orioles</div>
+        <div>2 | 13 minutes ago </div>
+      </div>
+      <label for="nzyqpug" class="commentText"><p>People saying &ldquo;it&rsquo;s dead&rdquo; forgot about last year, and the year before, and the year before.<br>
+It&rsquo;s just the last week.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nzysk01" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Unhelpfulperson | Durham Bulls</div>
+        <div>1 | 5 minutes ago </div>
+      </div>
+      <label for="nzysk01" class="commentText"><p>The important thing is that whatever happened most recently is the trendline that the rest of history will follow</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nzynusx" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>MarinerMooseismydad | Seattle Mariners</div>
+        <div>4 | 25 minutes ago </div>
+      </div>
+      <label for="nzynusx" class="commentText"><p>Julio’s contract is a damn STEAL is all I know</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nzypqzg" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Baconpoopotato | New York Mets</div>
+        <div>2 | 17 minutes ago </div>
+      </div>
+      <label for="nzypqzg" class="commentText"><p>Thats how most pre-arb contracts work.  Acuna&rsquo;s is even more egregious.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="nzyq7jb" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>MarinerMooseismydad | Seattle Mariners</div>
+        <div>1 | 15 minutes ago </div>
+      </div>
+      <label for="nzyq7jb" class="commentText"><p>That’s a fact, also a ln amazing deal (especially if he can get healthy and play full time)</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nzyn516" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>FatherEsmoquin | Arizona Diamondbacks</div>
+        <div>3 | 29 minutes ago </div>
+      </div>
+      <label for="nzyn516" class="commentText"><p>Kyle Tucker is 28. Bregman is 31. Verlander, Scherzer, Bichette are all Mets. I think it’s mostly that.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nzyo39k" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Eo292 | Los Angeles Dodgers</div>
+        <div>3 | 24 minutes ago </div>
+      </div>
+      <label for="nzyo39k" class="commentText"><p>It’s generally been better players than Tucker and Bichette signing those megadeals (no shade to Tucker and Bichette).</p>
+
+<p>Every player to have signed for 12+</p>
+
+<p>Soto, Vlad, Tatis, Harper, Stanton, Trout, Betts, Yoshi</p>
+
+<p>With the exception of Yoshi, and maybe Vlad, every single one of those players were indisputably top 10 players when they signed.</p>
+
+<p>Bo and Tucker both have serious question marks that were always going to rule out a 10+ year deal for them.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nzynboo" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Top-Structure-1116 | New York Mets</div>
+        <div>2 | 28 minutes ago </div>
+      </div>
+      <label for="nzynboo" class="commentText"><p>If Juan Soto was a free agent again this year he would get another 14 year mega deal</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nzypiw9" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Baconpoopotato | New York Mets</div>
+        <div>2 | 18 minutes ago </div>
+      </div>
+      <label for="nzypiw9" class="commentText"><p>Verlander and Scherzer where like 37-38 when they got their contracts.  They arent in this conversation.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nzynqb7" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Disused_Yeti | Cleveland Guardians</div>
+        <div>1 | 26 minutes ago </div>
+      </div>
+      <label for="nzynqb7" class="commentText"><p>only a few players can command that - young superstars.  no one is paying a guy to play to 45</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nzyovng" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>SilverRoyce</div>
+        <div>1 | 21 minutes ago </div>
+      </div>
+      <label for="nzyovng" class="commentText"><blockquote>
+<p>(Am I crazy, or are the short-term high AAV contracts getting more common?)</p>
+</blockquote>
+
+<p>They basically didn&rsquo;t exist for normal aged players at the top end of the market. The Dodgers tried to do with with Bryce Harper and a few other players and everyone said no until Trever Bauer signed with them. The (rejected) Harper deal was the prototype pr perhaps you can take the Bauer deal as a prototype but Verlander/Scherzer are simply too old to be used as comps here.</p>
+
+<blockquote>
+<p>followed by Bregman&rsquo;s deal, and now Tucker and Bichette too.</p>
+</blockquote>
+
+<p>Yeah, there&rsquo;s a clear trend.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nzyp39o" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>superhappyfuntime13 | Houston Astros</div>
+        <div>1 | 20 minutes ago </div>
+      </div>
+      <label for="nzyp39o" class="commentText"><p>Fool me once, shame on you.</p>
+
+<p>Fool me 12 times….</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nzypdvn" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>DaBusDriva2 | Los Angeles Dodgers</div>
+        <div>1 | 19 minutes ago </div>
+      </div>
+      <label for="nzypdvn" class="commentText"><p>I want to disagree but if Tucker was a free agent when Xander and Trea got 11 year deals like candy then he would have too</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nzyq54b" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Strider755 | Atlanta Braves</div>
+        <div>1 | 15 minutes ago </div>
+      </div>
+      <label for="nzyq54b" class="commentText"><p>This was such a problem in the NHL that they put term limits on contracts to prevent it. Look at the Rick DiPietro contract.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nzyqghp" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Pandaman_323 | More flair options at /r/baseball/w/flair!</div>
+        <div>1 | 14 minutes ago </div>
+      </div>
+      <label for="nzyqghp" class="commentText"><p>It depends on if there is a salary cap implemented or not. If there is a salary cap implemented - then long term deals will still be the standard. If not, then yeah I&rsquo;d imagine Bo&rsquo;s &amp; Tucker&rsquo;s deals become the standard.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nzysuyq" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Jon_ofAllTrades | Los Angeles Dodgers</div>
+        <div>1 | 3 minutes ago </div>
+      </div>
+      <label for="nzysuyq" class="commentText"><p>The fact that baseball even has deals lasting longer than 5 years (not even touching the 10+ year deals) is so crazy to me as someone who primarily watches basketball. 5 years is an eternity and I don’t know how teams justify anchoring themselves to that long of a deal.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nzysv1n" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>raystheroof1 | yankee stadium is a dump</div>
+        <div>1 | 3 minutes ago </div>
+      </div>
+      <label for="nzysv1n" class="commentText"><p>You know Cohen and Guggenheim dont need you to carry their water, right? They probably already have people they pay six figures or more to do that.</p>
+
+<p>A single team can pay the good players what they are rightfully worth and it can also be annoying. Both things are allowed to happen.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="nzyn76d" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>AKV55</div>
+        <div>0 | 28 minutes ago </div>
+      </div>
+      <label for="nzyn76d" class="commentText"><p>Long live the short term, high AAV contract!</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
