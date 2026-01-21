@@ -1,0 +1,629 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.selfPostImage {
+  width: 100%;
+  height: auto;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/baseball/comments/1qii0mo/franchises_by_of_seasons_with_at_least_one/"><p>Franchises by % of seasons with at least one Hall-of-Famer on their roster</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <p>Percentages calculated from the franchise&rsquo;s first year of ML play through most recent year of HOF eligibility (2020). Team is credited with a HOFer for that season if the player made at least one appearance during the regular season.</p>
+
+<p>Only individuals <strong>inducted as players</strong> are considered; managers/executives/umpires are not, even if they once played in the majors.</p>
+
+<table>
+<thead>
+<tr>
+<th>Franchise</th>
+<th>% yrs w/HOFer</th>
+<th>Most HOFers in a year</th>
+<th>Most recent active HOFer</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>Boston Red Sox (1901)</td>
+<td>91.7%</td>
+<td>5 (last 1982)</td>
+<td>David Ortiz 2016</td>
+</tr>
+
+<tr>
+<td>New York Yankees (1903)</td>
+<td>89.8%</td>
+<td>9 (last 1933)</td>
+<td>CC Sabathia 2019</td>
+</tr>
+
+<tr>
+<td>Chicago White Sox (1901)</td>
+<td>85.8%</td>
+<td>6 (1925)</td>
+<td>Andruw Jones 2010</td>
+</tr>
+
+<tr>
+<td>Minnesota Twins (1901)</td>
+<td>85%</td>
+<td>5 (last 1973)</td>
+<td>Joe Mauer 2018</td>
+</tr>
+
+<tr>
+<td>Atlanta Braves (1876)</td>
+<td>82.1%</td>
+<td>6 (last 1997)</td>
+<td>Chipper Jones 2012</td>
+</tr>
+
+<tr>
+<td>St. Louis Cardinals (1882)</td>
+<td>81.3%</td>
+<td>7 (1933)</td>
+<td>Carlos Beltran 2013</td>
+</tr>
+
+<tr>
+<td>Detroit Tigers (1901)</td>
+<td>80.8%</td>
+<td>5 (1936)</td>
+<td>Ivan Rodriguez 2008</td>
+</tr>
+
+<tr>
+<td>Chicago Cubs (1876)</td>
+<td>79.3%</td>
+<td>5 (last 1970)</td>
+<td>Greg Maddux 2006</td>
+</tr>
+
+<tr>
+<td>Cincinnati Reds (1882)</td>
+<td>78.4%</td>
+<td>4 (last 1935)</td>
+<td>Scott Rolen 2012</td>
+</tr>
+
+<tr>
+<td>San Francisco Giants (1883)</td>
+<td>78.3%</td>
+<td>7 (last 1929)</td>
+<td>Carlos Beltran 2011</td>
+</tr>
+
+<tr>
+<td>Baltimore Orioles (1901)</td>
+<td>76.7%</td>
+<td>4 (last 1998)</td>
+<td>Jim Thome 2012</td>
+</tr>
+
+<tr>
+<td>Cleveland Guardians (1901)</td>
+<td>75%</td>
+<td>8 (1949)</td>
+<td>Jim Thome 2011</td>
+</tr>
+
+<tr>
+<td>Philadelphia Phillies (1883)</td>
+<td>74.6%</td>
+<td>5 (last 1917)</td>
+<td>Roy Halladay 2013</td>
+</tr>
+
+<tr>
+<td>Los Angeles Dodgers (1884)</td>
+<td>73.7%</td>
+<td>7 (1956)</td>
+<td>Jim Thome 2009</td>
+</tr>
+
+<tr>
+<td>San Diego Padres (1969)</td>
+<td>69.2%</td>
+<td>4 (last 1979)</td>
+<td>Trevor Hoffman, Greg Maddux 2008</td>
+</tr>
+
+<tr>
+<td>Seattle Mariners (1977)</td>
+<td>68.2%</td>
+<td>4 (1994)</td>
+<td>Ichiro Suzuki 2019</td>
+</tr>
+
+<tr>
+<td>Colorado Rockies (1993)</td>
+<td>67.9%</td>
+<td>2 (last 2004)</td>
+<td>Todd Helton 2013</td>
+</tr>
+
+<tr>
+<td>New York Mets (1962)</td>
+<td>67.8%</td>
+<td>4 (last 2007)</td>
+<td>Carlos Beltran 2011</td>
+</tr>
+
+<tr>
+<td>Pittsburgh Pirates (1882)</td>
+<td>66.9%</td>
+<td>7 (1934)</td>
+<td>Dave Parker 1983</td>
+</tr>
+
+<tr>
+<td>Houston Astros (1962)</td>
+<td>66.1%</td>
+<td>4 (last 2004)</td>
+<td>Carlos Beltran 2017</td>
+</tr>
+
+<tr>
+<td>Washington Nationals (1969)</td>
+<td>61.5%</td>
+<td>3 (last 1997)</td>
+<td>Ivan Rodriguez 2011</td>
+</tr>
+
+<tr>
+<td>Itinerant Athletics (1901)</td>
+<td>60.8%</td>
+<td>7 (last 1928)</td>
+<td>Frank Thomas 2008</td>
+</tr>
+
+<tr>
+<td>Texas Rangers (1961)</td>
+<td>55%</td>
+<td>3 (1991)</td>
+<td>Adrian Beltre 2018</td>
+</tr>
+
+<tr>
+<td>Kansas City Royals (1969)</td>
+<td>53.8%</td>
+<td>2 (last 1983)</td>
+<td>Carlos Beltran 2004</td>
+</tr>
+
+<tr>
+<td>Toronto Blue Jays (1977)</td>
+<td>50%</td>
+<td>4 (last 1993)</td>
+<td>Roy Halladay, Scott Rolen 2009</td>
+</tr>
+
+<tr>
+<td>Los Angeles Angels (1961)</td>
+<td>50%</td>
+<td>3 (1985)</td>
+<td>Vladimir Guerrero 2009</td>
+</tr>
+
+<tr>
+<td>Milwaukee Brewers (1969)</td>
+<td>44.2%</td>
+<td>5 (last 1984)</td>
+<td>Trevor Hoffman 2010</td>
+</tr>
+
+<tr>
+<td>Arizona Diamondbacks (1998)</td>
+<td>34.8%</td>
+<td>2 (2004)</td>
+<td>Randy Johnson 2008</td>
+</tr>
+
+<tr>
+<td>Miami Marlins (1993)</td>
+<td>32.1%</td>
+<td>1</td>
+<td>Ichiro Suzuki 2017</td>
+</tr>
+
+<tr>
+<td>Tampa Bay Rays (1998)</td>
+<td>21.7%</td>
+<td>2 (last 1999)</td>
+<td>Fred McGriff 2004</td>
+</tr>
+</tbody>
+</table>
+
+<hr>
+
+<p><strong>Increases due to this year&rsquo;s class (seasons the team did not previously have HOF representation):</strong></p>
+
+<ul>
+<li>Royals +12.6% (Beltran 1998-2004)<br>
+</li>
+<li>Mets +7.5% (Kent 1994-96, Beltran 2010-11)</li>
+<li>Giants +4.5% (Kent 1997-2002, Beltran 2011)</li>
+<li>Dodgers +0.9% (Kent 2005, 07)</li>
+<li>Cardinals +0.9% (Beltran 2012-13)</li>
+<li>Astros +0.6% (Beltran 2017)</li>
+<li>White Sox +0.1% (Jones 2010)</li>
+</ul>
+
+<hr>
+
+<p><strong>Defunct franchises operating for multiple seasons with HOF representation in 100% of their seasons:</strong></p>
+
+<ul>
+<li>Providence Grays 1878-85</li>
+<li>Detroit Wolverines 1881-88</li>
+<li>Buffalo Bisons 1879-85</li>
+<li>Troy Trojans 1879-82</li>
+<li>Kansas City Cowboys 1888-89</li>
+<li>Boston Reds 1890-91</li>
+<li>Baltimore Orioles 1901-02^1</li>
+<li>Chicago Chi-Feds 1914-15</li>
+<li>Newark Pepper 1914-15</li>
+<li>St. Louis Terriers 1914-15</li>
+<li>Detroit Stars 1920-31</li>
+<li>Harrisburg Giants 1924-37</li>
+<li>Pittsburgh Crawfords 1933-40</li>
+<li>Newark Dodgers 1934-35</li>
+<li>Newark Eagles 1935-48</li>
+</ul>
+
+<p>^1 Some sources still link this Baltimore team to the Yankees; if you wish to do so, the Yankees&rsquo; percentage would be 90%.</p>
+
+<hr>
+
+<p><strong>Other notable teams:</strong></p>
+
+<ul>
+<li>Cleveland Spiders (1887-99) 69.2%</li>
+<li>Baltimore Orioles (1882-99) 44.4%</li>
+<li>Louisville Colonels (1882-99) 50.0%</li>
+<li>New York Metropolitans (1883-87) 40%</li>
+<li>Washington Senators (1891-99) 22.2%</li>
+<li>Homestead Grays (1928-48) 80.95%</li>
+<li>Kansas City Monarchs (1920-48) 75.86%</li>
+</ul>
+
+<hr>
+
+<p><strong>Championship teams with no HOF players at <em>any</em> point in their season (<em>italics</em> denotes team&rsquo;s manager is in the HOF):</strong></p>
+
+<ul>
+<li><em>1981 Dodgers</em></li>
+<li><em>1997 Marlins</em></li>
+<li>2002 Angels</li>
+<li>2008 Phillies</li>
+<li>2010-12 Giants/<em>Cardinals</em>/Giants</li>
+<li>2014-16 Giants/Royals/Cubs</li>
+<li>2018-20 Red Sox/Nationals/Dodgers (and beyond)</li>
+<li>Beltran&rsquo;s election removes the 2017 Astros from this list.</li>
+</ul>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o0riixp" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>AerieElectrical3546 | Boston Red Sox</div>
+        <div>5 | an hour ago </div>
+      </div>
+      <label for="o0riixp" class="commentText"><p>take that yankees (27 championships who)</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o0rjvas" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>HemlockMartinis | Los Angeles Dodgers</div>
+        <div>3 | 40 minutes ago </div>
+      </div>
+      <label for="o0rjvas" class="commentText"><p>I don’t think we’ll ever see a 1981 Dodger in the HOF. The committee numbers weren’t promising for Fernando Valenzuela a few months ago.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="o0rpedp" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>jmalex | Philadelphia Phillies</div>
+        <div>1 | 10 minutes ago </div>
+      </div>
+      <label for="o0rpedp" class="commentText"><p>2002 Angels and 2015 Royals feel like they&rsquo;re going to stay on this list too.</p>
+
+<p>Sheffield feels like he could get in via the committee for 97 Marlins, and 2016 Cubs have Lester as their best shot, I think.</p>
+
+<p>I&rsquo;m assuming Utley, Pujols, and Posey take care of the others prior to 2016. And Scherzer, Betts, Verlander, Freeman take care of the rest.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o0rn3m0" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>DeusExHyena | New York Yankees</div>
+        <div>2 | 22 minutes ago </div>
+      </div>
+      <label for="o0rn3m0" class="commentText"><p>Beltran most recent for 3 teams.</p>
+
+<p>However. </p>
+
+<p>We can game this out.</p>
+
+<p>What teams have had hof on their team since their most recent?</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="o0roboi" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>miclugo | Philadelphia Phillies</div>
+        <div>1 | 16 minutes ago </div>
+      </div>
+      <label for="o0roboi" class="commentText"><p>For the Phillies and Dodgers, Chase Utley; for the Mariners, Félix Hernández.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o0rofpc" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>mcolwander90 | Detroit Tigers</div>
+        <div>1 | 15 minutes ago </div>
+      </div>
+      <label for="o0rofpc" class="commentText"><p>Tigers (and Marlins) will make a big jump once Miggy gets in.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
