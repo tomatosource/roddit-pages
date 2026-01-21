@@ -1,0 +1,298 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.selfPostImage {
+  width: 100%;
+  height: auto;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/PathOfExile2/comments/1qivxm1/guide_fix_blink_accidentally_triggering_sprint/"><p>[Guide] Fix Blink accidentally triggering Sprint / character stopping (AutoHotkey double-space fix)</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <p>If you’re using <strong>Blink</strong> and you’ve noticed that <strong>after blinking it sometimes triggers Sprint and makes your character stop</strong>, this simple AutoHotkey fix completely removes the accidental Sprint activation.</p>
+
+<h1 id="what-this-does">✅ What this does</h1>
+
+<p>It makes <strong>Spacebar always press twice</strong> (very fast), but <strong>ONLY while Path of Exile 2 is focused</strong>.<br>
+<a href="https://www.youtube.com/watch?v=08riEU076cg" target="_blank">https://www.youtube.com/watch?v=08riEU076cg</a></p>
+
+<p>So:</p>
+
+<ul>
+<li>Blink works normally</li>
+<li>Sprint doesn’t accidentally trigger and stop you</li>
+<li>Alt+Tab out = script does nothing outside the game</li>
+</ul>
+
+<h1 id="step-1-install-autohotkey-v1-1-37-02">Step 1: Install AutoHotkey (v1.1.37.02)</h1>
+
+<p>Download AutoHotkey <strong>v1.1.37.02</strong> (not v2):</p>
+
+<ul>
+<li><a href="https://www.autohotkey.com/download/1.1/AutoHotkey_1.1.37.02.zip" target="_blank">https://www.autohotkey.com/download/1.1/AutoHotkey_1.1.37.02.zip</a></li>
+</ul>
+
+<h1 id="step-2-create-the-script">Step 2: Create the script</h1>
+
+<ol>
+<li>Right click Desktop → <strong>New → AutoHotkey Script</strong></li>
+<li>Name it something like: <code>poe2_blink_fix.ahk</code></li>
+<li>Right click it → <strong>Edit Script</strong></li>
+<li>Paste this:</li>
+</ol>
+
+<p>​</p>
+
+<pre><code>#NoEnv
+#SingleInstance Force
+SendMode Input
+
+; Only while POE2 is the ACTIVE window
+#IfWinActive, ahk_exe PathOfExileSteam.exe
+
+$Space::
+Send {Space}
+Sleep 50
+Send {Space}
+return
+
+#IfWinActive
+
+; Optional: press F12 to close the script
+F12::ExitApp
+</code></pre>
+
+<ol>
+<li>Save and close.</li>
+</ol>
+
+<h1 id="step-3-run-it">Step 3: Run it</h1>
+
+<p>Double click the <code>.ahk</code> script to run it.</p>
+
+<p>You’ll see a green <strong>H</strong> icon in your taskbar tray → that means it’s running.</p>
+
+<h1 id="step-4-optional-auto-run-when-windows-starts">✅ Step 4 (Optional): Auto-run when Windows starts</h1>
+
+<p>If you want this to always run automatically:</p>
+
+<h1 id="method-startup-folder">Method: Startup folder</h1>
+
+<ol>
+<li>Press <strong>Win + R</strong></li>
+<li>Type:shell:startup</li>
+<li>Press Enter (this opens the Windows Startup folder)</li>
+<li>Copy/paste your script <code>poe2_blink_fix.ahk</code> into that folder</li>
+</ol>
+
+<p>It will now auto-run after reboot / login.</p>
+
+<h1 id="important-notes">Important Notes</h1>
+
+<p>✅ Works only inside PoE2 (Steam): <code>PathOfExileSteam.exe</code><br>
+✅ Does <em>nothing</em> outside the game<br>
+✅ No toggle needed, always active only in-game<br>
+⚠️ If you use a different PoE2 exe (non-Steam), check Task Manager → Details for the correct name.<br>
+✅ You can just Ignore everything in this post and just press spacebar twice manually</p>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+    </div>
+  </body>
+</html>
