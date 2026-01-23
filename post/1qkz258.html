@@ -1,0 +1,593 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.selfPostImage {
+  width: 100%;
+  height: auto;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/baseball/comments/1qkz258/mlb_networks_top_100_players_positional_breakdown/"><p>MLB Network&rsquo;s Top 100 Players - Positional Breakdown [OC]</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <p>Here is a table of the <a href="https://www.mlb.com/news/top-100-mlb-players-for-2026-by-mlb-network" target="_blank">MLB Top 100 Players</a>, <strong>broken down by their primary position</strong>:</p>
+
+<table>
+<thead>
+<tr>
+<th>Position</th>
+<th># of Players</th>
+<th>Top Player</th>
+<th>Median Pos. Rank</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>C</td>
+<td>8</td>
+<td>Cal Raleigh, #4</td>
+<td>83rd</td>
+</tr>
+
+<tr>
+<td>1B</td>
+<td>11</td>
+<td>Vlad Guerrero Jr, #10</td>
+<td>33rd</td>
+</tr>
+
+<tr>
+<td>2B</td>
+<td>3</td>
+<td>Ketel Marte, #19</td>
+<td>61st</td>
+</tr>
+
+<tr>
+<td>3B</td>
+<td>7</td>
+<td>Jose Ramirez, #5</td>
+<td>39th</td>
+</tr>
+
+<tr>
+<td>SS</td>
+<td>14</td>
+<td>Bobby Witt Jr, #3</td>
+<td>38th</td>
+</tr>
+
+<tr>
+<td>LF</td>
+<td>10</td>
+<td>Cody Bellinger, #43</td>
+<td>63rd</td>
+</tr>
+
+<tr>
+<td>CF</td>
+<td>4</td>
+<td>Julio Rodriguez, #16</td>
+<td>41st</td>
+</tr>
+
+<tr>
+<td>RF</td>
+<td>12</td>
+<td>Aaron Judge, #2</td>
+<td>31st</td>
+</tr>
+
+<tr>
+<td>DH</td>
+<td>3</td>
+<td>Kyle Schwarber, #17</td>
+<td>28th</td>
+</tr>
+
+<tr>
+<td>SP</td>
+<td>24</td>
+<td>Paul Skenes, #7</td>
+<td>51st</td>
+</tr>
+
+<tr>
+<td>RP</td>
+<td>3</td>
+<td>Mason Miller, #60</td>
+<td>83rd</td>
+</tr>
+
+<tr>
+<td>TWP</td>
+<td>1</td>
+<td>Shohei Ohtani, #1</td>
+<td>1st</td>
+</tr>
+</tbody>
+</table>
+<p>First things I notice right off the bat:</p>
+
+<ul>
+<li><p>Only 24 (25 counting Ohtani) out of 100 players are starting pitchers (only 27 pitchers total).  I feel like there are a number of good pitchers around the league that a lot of organizations would want for the 2026 season over plenty of the positional players on this list</p></li>
+
+<li><p>1B is generally considered the least valuable/important position on the diamond - and yet 11 of the 73 positional players on this list are first basemen.  Compare that to only 4 CF, 7 3B, and 3 2B.  LF is the second-least valuable/important position on the diamond and they have 10 players listed.  WAR definitely goes out the window in order to justify a ranking system like this.</p></li>
+
+<li><p>SS gets a lot of love - rightfully so, that is generally where the best ballplayers end up.  But it is interesting that there are so few CF by comparison.</p></li>
+</ul>
+
+<p>Here is the <strong>total accumulation of fWAR by position last season</strong>:</p>
+
+<table>
+<thead>
+<tr>
+<th>Position</th>
+<th>fWAR</th>
+<th>PAs</th>
+<th>wRC+</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>C</td>
+<td>82.7</td>
+<td>19,150</td>
+<td>95</td>
+</tr>
+
+<tr>
+<td>1B</td>
+<td>48.2</td>
+<td>20,279</td>
+<td>109</td>
+</tr>
+
+<tr>
+<td>2B</td>
+<td>53.8</td>
+<td>19,639</td>
+<td>90</td>
+</tr>
+
+<tr>
+<td>3B</td>
+<td>64</td>
+<td>19,618</td>
+<td>96</td>
+</tr>
+
+<tr>
+<td>SS</td>
+<td>102.5</td>
+<td>20,231</td>
+<td>101</td>
+</tr>
+
+<tr>
+<td>LF</td>
+<td>48.3</td>
+<td>20,240</td>
+<td>102</td>
+</tr>
+
+<tr>
+<td>CF</td>
+<td>71</td>
+<td>19,467</td>
+<td>93</td>
+</tr>
+
+<tr>
+<td>RF</td>
+<td>62.1</td>
+<td>20,081</td>
+<td>105</td>
+</tr>
+
+<tr>
+<td>DH</td>
+<td>33.1</td>
+<td>20,418</td>
+<td>110</td>
+</tr>
+</tbody>
+</table>
+<p>Starting pitchers put up <strong>336 rWAR in 25,212 IP</strong> while relief pitchers put up <strong>94 rWAR in 17,863 IP</strong>.</p>
+
+<p>Nothing too surprising - the up-the-middle positions provide the most value, and 1B/LF/DH provide the least value.</p>
+
+<p>Does this change how you view this list at all?  Do you think the list is seriously undervaluing defensive impact?</p>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o1ad4fr" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>futhatsy | New York Mets • Durham Bulls</div>
+        <div>4 | 38 minutes ago </div>
+      </div>
+      <label for="o1ad4fr" class="commentText"><p>I&rsquo;m with you on them undervaluing defense. <a href="https://www.reddit.com/r/baseball/comments/1qkszmc/full_list_of_mlb_networks_top_100_players_for_2026/o196o7f/?context=3" target="_blank">I listed a bunch of guys I thought they were too low on in another post</a> and looking back at it, a common theme is a lot of them are elite defenders.</p>
+
+<p>And that kind of makes sense, right? They are trying to appeal to as many baseball fans as possible, so of course they are going to prioritize guys that are elite in easier to understand stats, and that tends to be the offensive stats rather than defensive.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o1ahiu2" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ChenYakumo2hu | Los Angeles Dodgers</div>
+        <div>1 | 18 minutes ago </div>
+      </div>
+      <label for="o1ahiu2" class="commentText"><p>I like how shohei is listed as TWP separately from DH and SP</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="o1aho9i" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Traditional_Half842 | Boston Red Sox</div>
+        <div>1 | 17 minutes ago </div>
+      </div>
+      <label for="o1aho9i" class="commentText"><p>He breaks a lot of things.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="o1ahqyt" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ChenYakumo2hu | Los Angeles Dodgers</div>
+        <div>0 | 17 minutes ago </div>
+      </div>
+      <label for="o1ahqyt" class="commentText"><p>Shohei too broken please nerf</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o1ac89c" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>VideoGangsta | Philadelphia Phillies</div>
+        <div>1 | 42 minutes ago </div>
+      </div>
+      <label for="o1ac89c" class="commentText"><p>This is sorta off topic but all of the data you posted is really reaffirming my belief that WAR is broken for shortstops and first basemen and needs to be fixed.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="o1adqq9" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Traditional_Half842 | Boston Red Sox</div>
+        <div>6 | 35 minutes ago </div>
+      </div>
+      <label for="o1adqq9" class="commentText"><p>The key is to think of the &ldquo;drop off&rdquo; value.  There are a lot of players you could plug in at first base who could mash, and even if they didn&rsquo;t play great defense they would still be a productive player.  First basemen might have to make one &ldquo;tough&rdquo; play a game that typically only great defensive players make routinely.  Not a lot of balls get hit to first base, and almost anyone good enough to make it to the Major Leagues is probably good enough to catch throws at 1B.  There are probably hundreds of players in the MLB right now who could be productive first basemen.</p>
+
+<p>That is not true at all of the shortstop position.  A lot of balls get hit to short / up the middle, these guys have to turn double plays, they have to move pretty far to hold runners on, they always have to be incredibly aware of the baserunners and game situations, and they have to make some of the toughest throws on the diamond.  The drop off between a good defensive SS and a bad one is <strong>huge</strong> and it will impact multiple plays per game.  There are fewer than 30 players in the MLB right now who can be a productive shortstop.</p>
+
+<p>That is the key to WAR.  It&rsquo;s not &ldquo;how good is this player?&rdquo;  It&rsquo;s &ldquo;how big is the drop off from this player to another guy who can play his position?&rdquo;</p>
+
+<p>Take Vlad for example - he is obviously a good player who had a great year last year.  But his OPS was 26th-highest in baseball.  And looking at the 25 guys above him, there are maybe 2-3 guys who couldn&rsquo;t play an adequate first base.  Most of those guys play more important positions than Vlad - but if they all played first base, then Vlad wouldn&rsquo;t stand out at all as a particularly special player.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="o1aebzz" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>DolphinRodeo | St. Louis Cardinals • Seattle Mariners</div>
+        <div>4 | 32 minutes ago </div>
+      </div>
+      <label for="o1aebzz" class="commentText"><p>What would you change?</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="o1akrnz" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Panguin9 | Arizona Diamondbacks • Mariner Moose</div>
+        <div>1 | 2 minutes ago </div>
+      </div>
+      <label for="o1akrnz" class="commentText"><p>Well the people who made this list agree with you, but the way teams actually pay/value players doesn&rsquo;t. Personally I&rsquo;m more compelled to follow the money</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o1acd84" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>RapsareChamps_Suckit | Toronto Blue Jays</div>
+        <div>1 | 41 minutes ago </div>
+      </div>
+      <label for="o1acd84" class="commentText"><p>ughhh too much math, just show me</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o1akt7r" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>capmar</div>
+        <div>1 | 2 minutes ago </div>
+      </div>
+      <label for="o1akt7r" class="commentText"><p>Shohei one of one.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
