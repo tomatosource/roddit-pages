@@ -1,0 +1,338 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.selfPostImage {
+  width: 100%;
+  height: auto;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/baseball/comments/1qlml5a/the_hidden_trap_in_fastball_velocity_data/"><p>The hidden trap in fastball velocity data (FanGraphs vs Savant)</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <p><strong>Intro</strong> Hi everyone! I am a huge fantasy baseball fan from China. I know baseball isn&rsquo;t huge in my country yet, but the community here loves digging into the data just as much as you guys.</p>
+
+<p>Recently, while preparing for my draft, I stumbled upon something that confused me—and I think it misleads a lot of us when we just glance at player pages.</p>
+
+<p><strong>The Problem: &ldquo;How fast does he throw?&rdquo;</strong> Let&rsquo;s look at <strong>Max Fried</strong>.</p>
+
+<ul>
+<li><strong>FanGraphs Dashboard:</strong> Shows <code>vFA</code> as <strong>95.8 mph</strong>. (Wow, lefty fireballer!)</li>
+</ul>
+
+<p><a href="https://preview.redd.it/3mjd6e4yjafg1.png?width=1080&amp;format=png&amp;auto=webp&amp;s=bad5067c4db26d2ce8d5effb5cab5c0843631ca4" target="_blank">https://preview.redd.it/3mjd6e4yjafg1.png?width=1080&amp;format=png&amp;auto=webp&amp;s=bad5067c4db26d2ce8d5effb5cab5c0843631ca4</a></p>
+
+<ul>
+<li><strong>Baseball Savant:</strong> Shows <code>Fastball Velo</code> as <strong>94.8 mph</strong>. (“Huh? Why is it a full 1 mph slower?)</li>
+</ul>
+
+<p><a href="https://preview.redd.it/4janzz10kafg1.png?width=1080&amp;format=png&amp;auto=webp&amp;s=8735734f82462c256a0717152eaef5aa11c2d71e" target="_blank">https://preview.redd.it/4janzz10kafg1.png?width=1080&amp;format=png&amp;auto=webp&amp;s=8735734f82462c256a0717152eaef5aa11c2d71e</a></p>
+
+<p>That&rsquo;s a full 1 mph difference. In pro ball, that&rsquo;s a tier difference. Which one is real? The answer is: <strong>They are both &ldquo;real&rdquo;, but they are both misleading.</strong></p>
+
+<p><strong>1. The FanGraphs Trap: The Legacy Logic</strong> FanGraphs&rsquo; dashboard is a bit old-school. The <code>vFA</code> column usually does one of two things:</p>
+
+<ul>
+<li>It grabs the <strong>4-Seam Fastball</strong> velocity only.</li>
+<li>Or it stays blank if it thinks the pitcher is a Sinkerballer (like Kyle Bradish).</li>
+</ul>
+
+<p><a href="https://preview.redd.it/mjlwhnl3kafg1.png?width=1080&amp;format=png&amp;auto=webp&amp;s=3ec9f4fc37409583c960d29291c54704fc1f83dd" target="_blank">Kyle Bradish&rsquo; Dashboard</a></p>
+
+<p>This creates a huge blind spot: Not all pitchers rely on the 4-Seamer. Especially with current trends, more and more pitchers are mixing multiple types of fastballs.</p>
+
+<p><strong>Error A derived from this:</strong> Brayan Bello is a typical &ldquo;Sinker Warrior.&rdquo; His Sinker usage is extremely high, averaging around 95-96 mph. But he also throws a 4-Seamer about 15% of the time.</p>
+
+<p><a href="https://preview.redd.it/qb7k47rclafg1.png?width=1080&amp;format=png&amp;auto=webp&amp;s=705e45ae8dfc73fc8a5372102af63372863d3cf8" target="_blank">https://preview.redd.it/qb7k47rclafg1.png?width=1080&amp;format=png&amp;auto=webp&amp;s=705e45ae8dfc73fc8a5372102af63372863d3cf8</a></p>
+
+<p>FanGraphs, confusingly, grabs the velocity of that 15% usage 4-Seamer to display on the dashboard.</p>
+
+<p><strong>Error B derived from this:</strong> Let&rsquo;s go back to Max Fried. He is an example where the FanGraphs algorithm completely fails. In the 2024-25 season, he drastically reduced his 4-Seamer usage (down to only 12%), pivoting to a Cutter (28%) and Sinker (18%) heavy approach.</p>
+
+<p><a href="https://preview.redd.it/mlrxet8plafg1.png?width=1080&amp;format=png&amp;auto=webp&amp;s=41f74a682ad5ccc0760296903b3d7fd230bfb199" target="_blank">https://preview.redd.it/mlrxet8plafg1.png?width=1080&amp;format=png&amp;auto=webp&amp;s=41f74a682ad5ccc0760296903b3d7fd230bfb199</a></p>
+
+<p>But FanGraphs stubbornly displays the max velocity of that 12% usage 4-Seamer (95.8 mph) on the dashboard. This tricks you into thinking he’s blazing 96 mph all game, when in reality, <strong>that’s just a weapon he uses occasionally for surprise.</strong></p>
+
+<p><strong>2. The Savant Side: The &ldquo;Composite&rdquo; Velocity</strong> So Savant must be better, right? Well, they go to the other extreme. Savant&rsquo;s top-level &ldquo;Fastball Velo&rdquo; is a <strong>weighted average</strong> of ALL fastball types (4-Seam, Sinker, Cutter).</p>
+
+<p>This creates a velocity that &ldquo;physically does not exist.&rdquo;</p>
+
+<p><strong>Why this matters:</strong> Suppose a pitcher throws a 97 mph 4-Seamer and a 90 mph Cutter, 50% usage for each. Savant will tell you his fastball average is 93.5 mph. But in a real game, the batter never sees a 93.5 mph pitch.</p>
+
+<p><a href="https://preview.redd.it/z0tulil8mafg1.png?width=1080&amp;format=png&amp;auto=webp&amp;s=3a369cdfb5048bac5106a1339f034059498d5478" target="_blank">https://preview.redd.it/z0tulil8mafg1.png?width=1080&amp;format=png&amp;auto=webp&amp;s=3a369cdfb5048bac5106a1339f034059498d5478</a></p>
+
+<p>He either faces the heat of 97 or the movement of 90. This 93.5 mph figure has absolutely no tactical value for analyzing his pitch mix or dominance.</p>
+
+<p><strong>Why does Savant do this?</strong></p>
+
+<ul>
+<li><strong>To cater to casual fans:</strong> Casual fans don’t want to distinguish between Cutters and Sinkers; they just want to know &ldquo;Does this guy throw fast?&rdquo;</li>
+<li><strong>A macro indicator for arm health:</strong> Although the number isn&rsquo;t precise tactically, if this average drops from 94 last year to 92 this year, it serves as a useful &ldquo;injury warning&rdquo; regarding the pitcher’s overall power output.</li>
+<li><strong>UI Aesthetics:</strong> To unify the layout and fill that percentile ranking bar, they are forced to merge metrics.</li>
+</ul>
+
+<p>Since the dashboards are lying, how should we look at it? It’s actually simple. Just click your mouse a few more times.</p>
+
+<p><strong>When checking velocity, follow these steps:</strong></p>
+
+<ul>
+<li>1. Ignore the summary data at the top.</li>
+<li>2. Scroll down to the &ldquo;Pitch Type &amp; Velo&rdquo; table (using FanGraphs as an example). Find the fastball-type pitch with the highest usage percentage. The average velocity of THAT pitch is the pitcher’s &ldquo;True Velocity.&rdquo;</li>
+</ul>
+
+<p>It was precisely because I saw the velocity anomaly on Max Fried’s dashboard today that I thought of writing this article. And it was through this method that I discovered the true terror of Max Fried.</p>
+
+<p>If we only look at FanGraphs, we’d think he’s a 96 mph fireball lefty. If we only look at Savant’s summary, we’d think he’s a generic 95 mph lefty.</p>
+
+<p><strong>But when we dissect his arsenal, we find he is a &ldquo;Unicorn&rdquo;:</strong></p>
+
+<ul>
+<li><strong>Primary Weapon:</strong> A Cutter averaging <strong>93.6 mph</strong>.</li>
+<li><strong>Secondary Weapon:</strong> A Sinker at <strong>94.0 mph</strong>.</li>
+<li><strong>Chase Weapon:</strong> A 4-Seamer at <strong>95.8 mph</strong></li>
+</ul>
+
+<p>Comparing him to Corbin Burnes (who also relies on a Cutter but doesn’t use a 4-Seamer), Max Fried is surprisingly ramping his Cutter up to nearly 94 mph, while still keeping a 94 mph Sinker and a 96 mph 4-Seamer in his back pocket.</p>
+
+<p>The terror and rarity of this &ldquo;Three-Fastball System&rdquo; can be truly seen after clearing the fog of velocity data !</p>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o1f52vg" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Acceptable_Risk203</div>
+        <div>3 | 19 minutes ago </div>
+      </div>
+      <label for="o1f52vg" class="commentText"><p>This is some next level analysis bro, really appreciate you breaking down how the sites calculate this stuff differently</p>
+
+<p>The Fried discovery is wild - didn&rsquo;t realize he was basically running three different heaters at those velos. Makes way more sense why he&rsquo;s been so effective lately when you see the actual arsenal breakdown instead of just that misleading dashboard number</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o1f7qj6" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>jdbolick | Baltimore Orioles</div>
+        <div>1 | 2 minutes ago </div>
+      </div>
+      <label for="o1f7qj6" class="commentText"><p>Kudos on a superb illustration of this issue, but I don&rsquo;t think either site is being deliberately misleading. It&rsquo;s a difficult problem to model due to the variety of fastballs that pitchers throw.</p>
+
+<p>I would like FanGraphs to use the abbreviation v4FA instead of just vFA to be a bit more precise, but other than that I prefer how they do it because I&rsquo;m mostly using fastball velocity to look for changes that indicate potential fatigue or injury.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
