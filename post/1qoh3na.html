@@ -1,0 +1,2416 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.selfPostImage {
+  width: 100%;
+  height: auto;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/PathOfExile2/comments/1qoh3na/ultimate_guide_to_bloodmage_coc_minmax_endleague/"><p>Ultimate Guide to Bloodmage CoC Min-Max + EndLeague Giveaway</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <p>Hey Exile — it’s been a fun league. With currency dropping like crazy, my main goal was to see how far I could push the Bloodmage CoC build that’s been dominating poe.ninja all league. I ended up going way deeper than I expected, and I honestly think I’ve landed on what might be the “final form” version of the build. As you can see from <a href="https://poe.ninja/poe2/profile/Yukkuri-6816/character/YukkuriWitch" target="_blank">poe.ninja</a>, my character is simultaneously the highest rarity and DPS variation of this build.</p>
+
+<p>This post is me documenting the upgrade path, what problems showed arose, and what fixes actually worked in practice.</p>
+
+<p>Disclaimer: this guide assumes you’re already starting from fubgun’s Bloodmage guide and you’ve already obtained the following gear:</p>
+
+<ul>
+<li>+4 Vertex helm</li>
+<li>Temporalis</li>
+<li>Mirror-tier wand</li>
+<li>140%+ Adorned</li>
+<li>Level 20 Choir</li>
+<li>3-socket gloves</li>
+</ul>
+
+<p>That’s already around 7-8 mirrors worth of gear, so none of what I’m describing is required to clear content in this game. You can complete basically everything in the game long before this point, including 6-man temple. The whole point of min-maxing is to improve two things: speed and drops.</p>
+
+<p>Improvements over the Fubgun build include:</p>
+
+<ul>
+<li>Automated fire infusions (no need to press spellslinger)</li>
+<li>20% faster clear speed in 6 man juiced temples</li>
+<li>40% more raw divs dropped due to rarity increase</li>
+<li>3x tooltip DPS for bragging rights</li>
+<li>significantly higher likelihood of mirror/lock drops - I’ve dropped 2 mirrors and over a dozen hinekora locks in the last 100 temples or so.</li>
+</ul>
+
+<hr>
+
+<ol>
+<li><strong>Rarity</strong></li>
+</ol>
+
+<p>The first direction I went was rarity. My theory was that Temple already has so much quant/rarity built in that even a small amount of extra rarity on your gear could translate into a bigger jump than you’d expect, because of how multiplicative drop scaling works.</p>
+
+<p>The biggest upgrade here was swapping my rare gold ring to an Andvarius. That alone was basically +100% rarity compared to what I was wearing. BIS rare gold rings aren’t doing much for the build besides cast speed and resists, which we can move elsewhere.</p>
+
+<p>To fix your resists:</p>
+
+<ul>
+<li>Push resists onto double-corrupted jewels</li>
+<li>Max resists on boots, and ideally double corrupt them for additional socket + res</li>
+<li>Look for double-corrupted Headhunters with resist implicits (which can be replaced later for % max ES as more resists are placed on jewels)</li>
+<li>If you can’t cap immediately, don’t worry — HH buffs cover a lot, just play safer until buffs start rolling</li>
+</ul>
+
+<p>You can also grab the rarity enchant on Choir for an extra 15%. Around here you should be sitting at roughly ~270% total rarity before your gold charm. If DPS/resists feels too low, you can run Andvarius alongside your rare ring and drop Kalandra’s Touch for a while.</p>
+
+<hr>
+
+<p><strong>2) Bringing damage back with jewels + sanct wand</strong></p>
+
+<p>Once I did the rarity swap, the next challenge was fixing damage without giving up the rarity setup.</p>
+
+<ul>
+<li>Start by using <sup>15</sup>&frasl;<sub>15</sub> spell damage + crit chance jewels until you’re comfortably 95%+ crit. Elemental damage is not as ideal as it does not buff chaos dmg from the dreamer scepter. After we replace dreamer later on, ele dmg is on par with spell dmg.</li>
+<li>transition into <sup>15</sup>&frasl;<sub>20</sub> spell damage + crit damage jewels once crit chance is solved</li>
+<li>For min-maxing, make sure jewels are double-corrupted with practical mods (resists + str/int)</li>
+<li>+3 Comet Prism of Belief will nearly double your damage (we remove this later as we further minmax the build)</li>
+</ul>
+
+<p>Note: ES on jewels isn’t actually a priority here since we are running Headhunter. There isn’t a great way to instant-leech ES without giving HH up, and in Temple you basically get infinite respawns anyway. In practice I was dying so rarely that it felt like a non-issue.</p>
+
+<p>Finally obtaining a sanct wand with +5 and other positive rolls is a huge dps upgrade (approx. 40% more dmg than a mirror wand)</p>
+
+<hr>
+
+<p><strong>3) Next QoL: spirit to run AA + Siphon Elements (or wolf pack anamamu tech)</strong></p>
+
+<p>To run Arctic Armor and Siphon Elements together you need an additional combined 53 spirit between your sceptre and helm, assuming dialla’s desire in CoC. Alternatively, you can also do the wolf pack anamamu tech with the same 53 spirit. However I couldn’t stand listing to the sound of dying wolves all day so I quickly swapped away from that.</p>
+
+<p>Arctic Armor is a nice extra safety layer, and Siphon Elements is huge because it semi-automates fire infusions for Comets. When you have infusion up, it basically doubles your comet damage. The problem is infusion uptime didn’t feel as reliable as I wanted, which is what pushed me into the next major change: Cast on Elemental Ailment.</p>
+
+<hr>
+
+<p><strong>4) The big pivot: Cast on Elemental Ailment (CoEA)</strong></p>
+
+<p>To run CoEA properly, you need a 145 spirit Sacred Flame and a gold amulet. The gold amulet ended up being one of the best upgrades in the entire project because it gives spell levels, cast speed, damage, and most importantly, rarity. Choir LB isn’t a huge loss as your dps should be good enough to blow everything up anyway at this point.</p>
+
+<p>Here are the key breakpoints that matter:</p>
+
+<ul>
+<li>145 spirit Sacred Flame</li>
+<li>52 spirit on the amulet so you can run: CoC + CoEA + Blink + Elemental Conflux + Arctic Armor</li>
+</ul>
+
+<p>Ideally you can hit a Sanct roll on the amulet that gives you +4 spells and 52 spirit at the same time. If you don’t hit that you might have to swap to a spirit implicit amulet, drop Arctic Armor, or slot in an Against the Darkness with spirit. Once CoEA is up and running, you will have constant uptime on automated fire infusions and an additional comet, resulting in a massive overall DPS increase.</p>
+
+<p>At this point your CoC Comet should be extremely overleveled (around level 42). I removed the +3 Comet PoB jewel and replaced it with another corrupted jewel with spell damage and crit damage. It only dropped my CoC comet DPS by a couple percent (lvl 42-&amp;gt;39, cap is 40), but it boosted the rest of the build’s damage output and gave more room for res, which was worth it.</p>
+
+<hr>
+
+<p><strong>5) Solving the “cannot regen above 50%” problem</strong></p>
+
+<p>The next issue I ran into was life cost. When your comet is that high level, the life cost per cast gets stupid — I was around 1.6k life per cast — and that creates a really annoying edge case with rares that have the mod “cannot regen life/ES above 50%.” If you dip under 50% HP, you can get locked out of casting comet unless your max life is high enough (need to be 3.2k+). I tried Efficiency support, but it’s not ideal as it takes the place of dialla’s or rakiatas. I began looking for another solution – here’s what I came up with:</p>
+
+<p>First, we stack life wherever possible:</p>
+
+<ul>
+<li>Put life/STR double corrupt on Headhunter</li>
+<li>Swap ascendancy node from Gore Spike → Crimson Power</li>
+<li>Get T1 max life on gloves</li>
+<li>Use Greater Body runes in helm and boots</li>
+<li>Make sure you have Tecrod’s Gaze in gloves and Idol of Eeshta in helm</li>
+</ul>
+
+<p>Depending on your exact gem levels and whether you’re still using 120% cost multiplier support, it still might not be enough.</p>
+
+<p>What finally solved it cleanly was replacing Boundless Energy with Snap in CoC. Snap causes ailments to be instantly consumed, which lets you reapply them immediately, and that massively increases CoEA uptime. CoEA comets are lower level (38 – no dialla’s) and don’t have the 120% multiplier of rakiatas, so the life cost stays low enough that you can still cast even when you’re stuck under that “above 50%” regen restriction.</p>
+
+<p>Snap also creates additional infusions, and when used alongside living bomb in CoEA, you will be swimming in them.</p>
+
+<p>One more note: at a certain point you’re hard-capped by trigger rate anyway. From what I’ve read, CoC and CoEA have a max tick rate around one trigger per 500ms, so once your spark DPS is high enough, you stop being limited by energy gain and start being limited by that hard cap, which makes Boundless Energy kind of pointless. I believe that happens somewhere around 200k spark tooltip DPS, but I’m not 100% sure on the exact breakpoint.</p>
+
+<hr>
+
+<p><strong>Giveaway</strong></p>
+
+<p>Thanks for reading. This ended up being a really fun project and I learned a ton pushing the build into weird edge cases. I’m going to be giving away the rest of my currency (2+ mirrors worth) to random players — drop a comment with feedback related to this post, or tell me what build you are running (so I can filter out the bots)</p>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o216cig" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>KiefScoop</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="o216cig" class="commentText"><p>Beans AND sauce Yo!</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o215v4o" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Waste_Department_255</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="o215v4o" class="commentText"><p>This is a really nice written guide that i will be saving i understand better when i read things like this so thank you exile for both the guide and giveaway!</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o2160t3" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Celibacy69</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="o2160t3" class="commentText"><p>Hey there fellow exiler! Appreciate the giveaway. May whoever earns something from this enjoy the rest of the league!</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o2165pz" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Idiotwithadegree</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="o2165pz" class="commentText"><p>Hi, GL</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o216b01" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Sifhart</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="o216b01" class="commentText"><p>Thank you man for the kind explanation, I didn’t fully read it to be honest but I’m trying to pivot from an ED+C Witch to Bloodmage so I saved it in case !</p>
+
+<p>I would love to join the giveaway since it’s a big struggle here so that would help me so much to get the gear lol, thank you for your kindness !</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o216owj" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Ludiciummm</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="o216owj" class="commentText"><p>Leaving the comment here to fund my spanking new bloodmage</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o216tdy" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>StrafeGetIt</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="o216tdy" class="commentText"><p>Running Blackflame Fireball Bloodmage</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o21710d" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Meowdinii</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="o21710d" class="commentText"><p>Oh shit, i always wanted to play a build like this.
+Gl all!</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o2172va" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Key_Cut975</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="o2172va" class="commentText"><p>I&rsquo;m running a the Oracle gardener build and I&rsquo;m having fun with it. I&rsquo;m only at around 130 divs right now which in this season is nothing. I know once my temple gets bigger I&rsquo;ll probably start to see how weak I am. Maybe I can try the CoC Comet build eventually.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o2177zo" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Nater999</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="o2177zo" class="commentText"><p>Hi!  GL to everyone and congrats to whoever wins the giveaway!</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o217djj" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>QueefingLatifa</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="o217djj" class="commentText"><p>Running Icewerewolf. Just hit 94. Kinda at a build stop bc of price for upgraded gear. Spent my last 35 div upgrading my boots</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o217jyg" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Starsky7</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="o217jyg" class="commentText"><p>Solving the 50% was really helpful. Would have been great to know last league too. Anyways, I’m currently running a meteor bear in temple</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o217pzy" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>SharjeelTariq</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="o217pzy" class="commentText"><p>Any chance of donating temporalis? I have pretty much everything else from this build(except the +1s from sanctified item) so a tempo would be appreciated xD</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o217u86" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>TransportationFee</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="o217u86" class="commentText"><p>Been running a rarity bot (slave) for a few weeks. I have been thinking of transitioning for awhile.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o217uq0" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>lilloet</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="o217uq0" class="commentText"><p>I ran a cold wolf druid and it was fun but I joined a few temple runs as a leacher and almost always I saw carries running a build similar to yours. I&rsquo;ve never played a caster build and want to give it a try. Thanks for the detailed post and giving back to community.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o217w10" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>YGurka</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="o217w10" class="commentText"><p>Im running Poison PF, want to switch to either ritualist or BM after finishing temple on current char</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o217xq6" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>zombiekoalas</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="o217xq6" class="commentText"><p>LOL build is wicked, 2m CoC and rarity.</p>
+
+<p>Puts my build to shame, running Invoker Crit Wolf and got nowhere near you did!</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o2180i9" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>WalkTheDoug</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="o2180i9" class="commentText"><p>awesome guide! I blew all my currency taking my poison pathfinder and plant watering druid to the moon. I’ve seen several CoC comet videos, as it’s the build I want to try next, but you added some valuable, unique info. Would madly appreciate some divs to get my CoC started. Thanks either way!</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o2183s5" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ComfortableDemand539</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="o2183s5" class="commentText"><p>I&rsquo;d run a CoC blood mage but I&rsquo;m poor. Currently running a plant druid because it&rsquo;s cheap. Just got my first few divs this weekend.</p>
+
+<p>I&rsquo;d absolutely love some free currency (after work) if there&rsquo;s any left to go around. I see people asking constantly in global, but that doesn&rsquo;t feel right. This almost doesn&rsquo;t feel right lol</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o21840r" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>CreepyDrunkUncle</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="o21840r" class="commentText"><p>Insane detailed write up. Would put the gear to good use.  I’m building the temple an following the same build guide.  Hopefully I can be blasting 6 man temples soon.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o2188hw" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Southern-Wave-7539</div>
+        <div>1 | 44 minutes ago </div>
+      </div>
+      <label for="o2188hw" class="commentText"><p>He’ll yea I’m running a recoup plant chronomancer and some currency would be PEAK!</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o218pif" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>RobbingHoody</div>
+        <div>1 | 42 minutes ago </div>
+      </div>
+      <label for="o218pif" class="commentText"><p>Wow you really put in work on this post, props to you man! My son and I love playing PoE! This is our first season together and I recently have taken interest in the CoC builds as I started with Bear/Wolf and just didn&rsquo;t seem too &ldquo;scratch the itch&rdquo; per say. Last night we sat on the couch and watched so many different videos on how to make the variations of CoC builds and slowly realizing its beyond our budget to really make the class pop. So moving forward we are so stoked to try it together hoping to get strong before the end of league. Regardless of who wins the giveaway portion of this post, your kindness with help someone enjoy the pleasures of the game you created!</p>
+
+<p>From a dad gamer:
+o7</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o218xph" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>watermeloons10</div>
+        <div>1 | 41 minutes ago </div>
+      </div>
+      <label for="o218xph" class="commentText"><p>Hi thanks the the detailed guide. I&rsquo;m currently running a oracle coc. Slowly but surely a casual dad gamer that loves poe2 since 0.1.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o21912j" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>PieDifficult2143</div>
+        <div>1 | 41 minutes ago </div>
+      </div>
+      <label for="o21912j" class="commentText"><p>Wow!! I randomly pulled this up while in-between meetings in the office!</p>
+
+<p>I was thinking about rolling a plant oracle with coc comet (just started league less than 2 weeks ago), but if I happen to get lucky with this giveaway (please lol), I’d for sure have the time of my life!</p>
+
+<p>On that note, any thoughts/feedback on bloodmage vs oracle entangle coc? I know I could never afford a temporalis or a +3 comet prism.</p>
+
+<p>I never beat pinnacle bosses in previous leagues so I can’t tell you how hopeful I am to get lucky with this!! Thank you so much doing this.</p>
+
+<p>For feedback/thoughts on the build: as a casual parent gamer, this blew my mind!! Some things I didn’t even understand LOL!</p>
+
+<p>To me it sounded like pushing some resistances on jewels is a great idea I never thought of before so if I can ever afford those, I’d definitely keep that idea in mind for all future builds in general.</p>
+
+<p>Ok time to refresh this every hour now for the hopeful lottery win of my gaming life!!</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o2192fj" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>AntonAbi92</div>
+        <div>1 | 41 minutes ago </div>
+      </div>
+      <label for="o2192fj" class="commentText"><p>Currently running Adonias Ego Stormweaver (basically CoC) but I would gladly level up a Bloodmage if I get every lucky to win this giveaway (#neverlucky).</p>
+
+<p>Played a crit Spark Bloodmage with Atziris Acuity in 0.1 and it was fun af 👌</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o219ap4" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>sophiefleets</div>
+        <div>1 | 40 minutes ago </div>
+      </div>
+      <label for="o219ap4" class="commentText"><p>Running a plant druid but bricked a few items so would be sick to play coc</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o219g7n" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>mrcu42431</div>
+        <div>1 | 39 minutes ago </div>
+      </div>
+      <label for="o219g7n" class="commentText"><p>Running a bear shaman build, pretty strong but lack currency to take it to the next lvl, bossing still needs some improving</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o219jdm" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>nguyen573</div>
+        <div>1 | 39 minutes ago </div>
+      </div>
+      <label for="o219jdm" class="commentText"><p>Hey I’m running CoC Spark PF and kinda insane what you changed to optimized it. I hope the best for you</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o219jnb" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ELDIABLIU</div>
+        <div>1 | 39 minutes ago </div>
+      </div>
+      <label for="o219jnb" class="commentText"><p>Improving on established builds is fun but I prefer to use my limited knowledge ( basically non I&rsquo;m new to the game) and time (new dad) to try and self cook a build instead. Tried a whirling assault stat stacking max rage shaman/oracle with crown of eyes and spend all my gold respeccing here and there I ended having no goal to trade for items lol. Created another druid going plant build and getting into endgame soon</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o219nu7" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>wildtrail</div>
+        <div>1 | 38 minutes ago </div>
+      </div>
+      <label for="o219nu7" class="commentText"><p>I see a lot of end league characters going blood mage. Is Bloodmage a secondary char or is it ok to league start with it?</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o219pgk" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>thejiang</div>
+        <div>1 | 38 minutes ago </div>
+      </div>
+      <label for="o219pgk" class="commentText"><p>I&rsquo;ve been farming for a temporalis since 0.3 and never gotten one. I&rsquo;ve finished my temple and farmed 1 mirror with 2 locks so far. With about 4k divine sitting.</p>
+
+<p>Just&hellip; Another 2 mirrors. GL!</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o219sat" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>TlgTrael</div>
+        <div>1 | 38 minutes ago </div>
+      </div>
+      <label for="o219sat" class="commentText"><p>I want to win because I&rsquo;ve never won anything in a raffle.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o219u6b" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>no_names_open</div>
+        <div>1 | 37 minutes ago </div>
+      </div>
+      <label for="o219u6b" class="commentText"><p>Nice guide</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o219wng" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>asteroidblues777</div>
+        <div>1 | 37 minutes ago </div>
+      </div>
+      <label for="o219wng" class="commentText"><p>Bloodmage doedre coc. Honestly just here for the give away i could use upgrades</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o219xde" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>G-Yeet</div>
+        <div>1 | 37 minutes ago </div>
+      </div>
+      <label for="o219xde" class="commentText"><p>Cool info, I&rsquo;ve been playing this build (not this juiced) and loving it</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o219zfv" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Puzzleheaded-Job497</div>
+        <div>1 | 37 minutes ago </div>
+      </div>
+      <label for="o219zfv" class="commentText"><p>my doedre&rsquo;s undoing setup isnt nearly as impressive with comet showers but it gets the job done. mostly.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o21a3fi" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>comcast_hater1</div>
+        <div>1 | 36 minutes ago </div>
+      </div>
+      <label for="o21a3fi" class="commentText"><p>I really enjoyed your solutions breakdown. That&rsquo;s the hardest part once people have learned how to understand and follow popular builds </p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o21ades" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Osteinum</div>
+        <div>1 | 35 minutes ago </div>
+      </div>
+      <label for="o21ades" class="commentText"><p>I was so happy when my stormweaver spark tool tip damage got over 20k, lol, man I roll around in awe looking at your pob. :)</p>
+
+<p>Btw, your passive tree is fascinating. I have never seen so many jewels equipped before. How do you manage stun/ailment threshold? Or is it just irrelevant because your damage is so insane that lo monster ever touches you?
+My build has a ton of threshold nodes, or else 70%of my spells are aborted.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o21aeec" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>alvadawq</div>
+        <div>1 | 35 minutes ago </div>
+      </div>
+      <label for="o21aeec" class="commentText"><p>im running exactly the same build, no budget for your kind of gear tho, so any of your items would help hehe right now have about 300div invested</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o21afus" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>vault40</div>
+        <div>1 | 35 minutes ago </div>
+      </div>
+      <label for="o21afus" class="commentText"><p>Im currently upgrading along a similar path with CoC bloodmage and would definitely benefit from an influx of currency. The atziris chest piece I need is very hard to afford without cutting my defenses in half</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o21b0tm" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Shyde1991</div>
+        <div>1 | 32 minutes ago </div>
+      </div>
+      <label for="o21b0tm" class="commentText"><p>Just got my toon leveled today. Gear would be mind blowing</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o21b3uu" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>DefoneESP541</div>
+        <div>1 | 32 minutes ago </div>
+      </div>
+      <label for="o21b3uu" class="commentText"><p>Yo I made a balrog smith of kitava build, I started a coc comet build similar but the entry point for gear was too high for me</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o21b4dt" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>bloodugo</div>
+        <div>1 | 32 minutes ago </div>
+      </div>
+      <label for="o21b4dt" class="commentText"><p>Got a stormweaver with very very small CoC compared to this lol.
+Trying to gear up poison pathfinder next, just got to maps on it last night.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o21b5x5" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Shorfafu</div>
+        <div>1 | 32 minutes ago </div>
+      </div>
+      <label for="o21b5x5" class="commentText"><p>Fun read, made me think of some tweaks for my build! Wish I had the time to farm the currency for a build like this! Currently running a CoC/Comet + Frostbolt Disciple; recently swapped from CoEA Ice Nova (had mostly Spell/Ele dmg, now crit rate to 60%). Frostbolt dps at 110k, comet at 297k idle, but usually one shots t15+ bosses. Doesn’t rain down comets, couldn’t see the screen if it did, lol. But it’s feeling nice, first league with a character over 90, hooked again!</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o21bexm" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Autokrator_Vlad</div>
+        <div>1 | 31 minutes ago </div>
+      </div>
+      <label for="o21bexm" class="commentText"><p>Extremely well-put thread. Reading it was extremely interesting.</p>
+
+<p>Good luck.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o21bhio" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>David_OSRS</div>
+        <div>1 | 30 minutes ago </div>
+      </div>
+      <label for="o21bhio" class="commentText"><p>I actually appreciate the insight, I&rsquo;m running a different blood mage build (one button ele weakness CoC) but a lot of what you said can probably be applied to nearly every build in the game, so I&rsquo;m going to give it a shot.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o21bhvi" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Tooth-decay</div>
+        <div>1 | 30 minutes ago </div>
+      </div>
+      <label for="o21bhvi" class="commentText"><p>Praise the bloodmage. Praise the sun. Solid write up.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o21bijr" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Opening-Radio6734</div>
+        <div>1 | 30 minutes ago </div>
+      </div>
+      <label for="o21bijr" class="commentText"><p>So keen to try this build, haven’t had a chance to play POE2 in the last couple months but I’ve got a little more free time now!</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o21bq2c" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>FloorSubstantial8630</div>
+        <div>1 | 29 minutes ago </div>
+      </div>
+      <label for="o21bq2c" class="commentText"><p>I would love to try the plant watering build but didn&rsquo;t have the currency to start :&amp;lt;</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o21br4n" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>FRFM</div>
+        <div>1 | 29 minutes ago </div>
+      </div>
+      <label for="o21br4n" class="commentText"><p>That’s crazy work man. Thanks for showcasing what true min-max can look like. Could never get to a point where I can buy that type of perfect rolls at every slot, but we all fantasize about it and chase it so it’s cool to see. And to hear your logic behind it.</p>
+
+<p>Snap in coea was especially creative. Congrats on actually taking your build all the way</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o21brbs" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ErrorMessage</div>
+        <div>1 | 29 minutes ago </div>
+      </div>
+      <label for="o21brbs" class="commentText"><p>I ran a wyvern shaman until about lvl 89 then tried a plant oracle but stopped at lvl 87. Now I&rsquo;m thinking about picking up the shaman again and trying walking calamity bear but I need to try and get some currency to make the switch. I made about 15 Divs total this season and put those into my gear already.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o21ceo9" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Put_CORN_in_prison</div>
+        <div>1 | 26 minutes ago </div>
+      </div>
+      <label for="o21ceo9" class="commentText"><p>I&rsquo;m hoping to push a Doedre&rsquo;s Undoing version to the edge like you did with this one</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o21ck3v" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Flying_Mage</div>
+        <div>1 | 25 minutes ago </div>
+      </div>
+      <label for="o21ck3v" class="commentText"><blockquote>
+<p>this guide assumes you’re already starting from fubgun’s Bloodmage guide and you’ve already obtained the following gear&hellip;</p>
+</blockquote>
+
+<p>Bold assumption.</p>
+
+<p>My BM kinda sucks ass atm and I could use some gear. Any piece will do, cause I&rsquo;m wearing literally rags.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o21ckr8" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Manny19871</div>
+        <div>1 | 25 minutes ago </div>
+      </div>
+      <label for="o21ckr8" class="commentText"><p>Frostbolt stormweaver CoC</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o21cs6w" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>skie1994</div>
+        <div>1 | 25 minutes ago </div>
+      </div>
+      <label for="o21cs6w" class="commentText"><p>I&rsquo;m running an infernalist lightning warp so I could CoEA without expensive gear - it&rsquo;s been fun but super irritating with constant downtime if you miss casting and ramp ups. I&rsquo;m getting the survivability and damage in temples but if I don&rsquo;t cast for a few seconds, I lose all damage. Plus, my biggest enemies by far are doors - can&rsquo;t warp thru them , have to dodge roll.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o21csvb" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>chengofl3x</div>
+        <div>1 | 24 minutes ago </div>
+      </div>
+      <label for="o21csvb" class="commentText"><p>Holy moly, what a post! Thanks for the info. Even if it’s massively out of budget, it’s still super cool to see.</p>
+
+<p>Running pathfinder poison and rampage bear for funsies! Thanks for your generosity :)</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o21d1qg" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>DeeJay_Majistik</div>
+        <div>1 | 23 minutes ago </div>
+      </div>
+      <label for="o21d1qg" class="commentText"><p>I started Oracle CoC build. So far I’m liking it could use some gear though to push thru.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o21d9z3" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>dingle_berri</div>
+        <div>1 | 22 minutes ago </div>
+      </div>
+      <label for="o21d9z3" class="commentText"><p>Cool guide, will definitely reread when I get home from work! Your gear sounds unobtainable to a full time dad 😅</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o21dd7h" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>dogdog696969</div>
+        <div>1 | 22 minutes ago </div>
+      </div>
+      <label for="o21dd7h" class="commentText"><p>Gl and thanks!</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o21ddj9" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>EhrenISnuts</div>
+        <div>1 | 22 minutes ago </div>
+      </div>
+      <label for="o21ddj9" class="commentText"><p>Really impressive stuff. There&rsquo;s so much tech at play here, it&rsquo;s the proof of how complex min maxing can get and that the ceiling is always a little bit higher. Think the highlight here is moving resists to corrupted jewels and double corrupted HH. Having large wealth accumulate from just playing the game and not profit crafting, and then seeing where you can eek out even just an extra percentage or two with a very large budget is super interesting. The balancing act to get all of this together, hat is off to you!</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o21dfr7" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Yorsky</div>
+        <div>1 | 22 minutes ago </div>
+      </div>
+      <label for="o21dfr7" class="commentText"><p>I have only played frostbolt blood mage so far but would love to try spark as well. Never had a temporalis tho :(</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o21dh3j" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Corneilius86</div>
+        <div>1 | 22 minutes ago </div>
+      </div>
+      <label for="o21dh3j" class="commentText"><p>It always amazes me how much effort people put into this game. This is not a dig! It’s really freaking cool and I love seeing posts like this.</p>
+
+<p>I am running a Cold Wolfbro build.</p>
+
+<p>Some currency would be cool to have in order to flesh out the build and also help my best friend, as he is FRESH to PoE2. I know some people think you should fight through the game and all, but that can be a huge turnoff for many people as well.</p>
+
+<p>Hope the currency finds a good home!!!</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o21dklr" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Lailaflowers</div>
+        <div>1 | 21 minutes ago </div>
+      </div>
+      <label for="o21dklr" class="commentText"><p>Hey I’m playing CoC spark/arc. Still crafting some good stuff but no one is buying bc less players so I’m broke waiting to sell some good gear in the meantime. My BIS items are my amulet (only +3 skills not 4) and my wand is missing a good suffix but thats next best. Been having a blast this league! Good luck everyone</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o21dm67" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>J1np3ng</div>
+        <div>1 | 21 minutes ago </div>
+      </div>
+      <label for="o21dm67" class="commentText"><p>Is there a pob for the build? Nice guide btw, am running temporalis setup with everything but the temporalis so kinda struggling</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o21dn6f" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Bender222</div>
+        <div>1 | 21 minutes ago </div>
+      </div>
+      <label for="o21dn6f" class="commentText"><p>This thread was pretty interesting to read. It’s useful seeing just what goes into a top build and how your thought process differs from others. I attempted to make a temple but I ended up with just a garrison&amp;gt;spymaster&amp;gt;garrison&amp;gt;armoury….. chain along the outside that I mistakenly looped near the end (fixable) but I got bored running countless temples trying to get the needed rooms to show up before i could continue while getting less then a divine each run.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o21drhs" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Hefty-Lawfulness4568</div>
+        <div>1 | 20 minutes ago </div>
+      </div>
+      <label for="o21drhs" class="commentText"><p>I&rsquo;m running Rax plant build and have been wanting to switch over to CoC oracle but the price point really has been hard to overcome.  I would love to try this build and with this new information you have provided i definitely have a better understanding. With so many variations, I was pretty confused.  I know it&rsquo;s a long shot at winning but I&rsquo;ll be hopeful.  Thanks for your generosity!</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o21dsww" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>NLTuds</div>
+        <div>1 | 20 minutes ago </div>
+      </div>
+      <label for="o21dsww" class="commentText"><p>Nice post. If I can muster the time (or win this giveaway) will try implementing something similar on my CoC-enjoyer BM.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o21dvei" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>HotHamWater</div>
+        <div>1 | 20 minutes ago </div>
+      </div>
+      <label for="o21dvei" class="commentText"><p>Just rolled up a storm lance/lightning spear Ritualist to try something different. I missed the Huntress league, configured it was time to give it a try. Thanks for the giveaway!</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o21dyio" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>tarpex</div>
+        <div>1 | 19 minutes ago </div>
+      </div>
+      <label for="o21dyio" class="commentText"><p>This looks awesome as heck, would love an opportunity to try out a true endgame destroyer for once after 700 hours and miserably failing to obtain these insane levels of currency needed for builds such as this. Playing a honest hardworking ed/c lich, which is the furthest thing from a spectacle like yours.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o21dyw0" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>octopusslover</div>
+        <div>1 | 19 minutes ago </div>
+      </div>
+      <label for="o21dyw0" class="commentText"><p>I&rsquo;m a new player and am running bloodmage, can&rsquo;t say for sure if its fubguns or not, I just scoured tons of builds on ninja for general direction and tbh I&rsquo;m really struggling with it. I guess your guide is not for me because my gear is not even 1000 divs total.</p>
+
+<p>Not hoping for a hand out but instead if you could maybe take a look at my ninja and outline what I should work on or even jump into discord some time with me to just explain what&rsquo;s going on to me that would be amazing.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o21e251" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>MonteiroMaravilha</div>
+        <div>1 | 19 minutes ago </div>
+      </div>
+      <label for="o21e251" class="commentText"><p>Running similar build, but on way lower budget. I&rsquo;m amazed at how much my character could grow, thanks for the guide</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o21e9we" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>CBAken</div>
+        <div>1 | 18 minutes ago </div>
+      </div>
+      <label for="o21e9we" class="commentText"><p>I&rsquo;m currently trying out bloodmage, as I am the only one of my friends who currently plays a bit more serious then the others, i&rsquo;m trying to help them boost them a bit in my temple, though without success at the moment.</p>
+
+<p>Thank you for your nice eplanation!</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o21edop" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>gumbo_ix</div>
+        <div>1 | 18 minutes ago </div>
+      </div>
+      <label for="o21edop" class="commentText"><p>I&rsquo;m running COC Sparkacle. My damage is decent but still struggle to kill tankier bosses. I&rsquo;m also trying to spec out a totem Shaman build but the jewel I need jumped up to 400d due to the popularity of the build. Thanks for the write up, I love watching/ reading about other people&rsquo;s builds. Trying to learn more about the game.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o21edvq" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>eksimo</div>
+        <div>1 | 18 minutes ago </div>
+      </div>
+      <label for="o21edvq" class="commentText"><p>Huge guide, been considering a CoC build and this might be the ticket to get me trying it. Played Frost Wolf and Poison Pathfinder this league.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o21eeb0" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>The_Firefly</div>
+        <div>1 | 17 minutes ago </div>
+      </div>
+      <label for="o21eeb0" class="commentText"><p>Good luck all! I’m running a CoEA adonia build as my current alt, and it’s been a lot of fun</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o21efk1" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Mr_Vertikal</div>
+        <div>1 | 17 minutes ago </div>
+      </div>
+      <label for="o21efk1" class="commentText"><p>I love reading posts like this! Problem solving builds is time consuming, but also very rewarding at the end. 🥳 Thank you for sharing such a indepth story about what you did and needed to solve🤩</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o21elde" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>PoEEnjoyer1893</div>
+        <div>1 | 17 minutes ago </div>
+      </div>
+      <label for="o21elde" class="commentText"><p>Great rundown of all the improvements that can be done to the build, will be saving this post since I&rsquo;m currently working towards a Temporalis for this exact build. Thanks for doing the giveaway and good luck everyone 🤞.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o21emcp" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>TrailSnails</div>
+        <div>1 | 17 minutes ago </div>
+      </div>
+      <label for="o21emcp" class="commentText"><p>Impressive, i would love some currency but at the same time i honestly think it would make me get bored of the game, farming currency +upgrading is what keeps me hooked.</p>
+
+<p>Playing PF Spark CoC comet</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o21ey0l" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>DemonicOwl</div>
+        <div>1 | 15 minutes ago </div>
+      </div>
+      <label for="o21ey0l" class="commentText"><p>Been running monk and sorc. Enjoying so far. I always try to do a bloodmage at league end - this could be fun</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o21eyha" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Drshadowbox</div>
+        <div>1 | 15 minutes ago </div>
+      </div>
+      <label for="o21eyha" class="commentText"><p>Just swapped from spark to doedres and it felt like a huge boost. Good to know what others are pushing. Seems a lot of build diversity if you ignore comets being in them all lol</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o21ezc8" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>puerile23</div>
+        <div>1 | 15 minutes ago </div>
+      </div>
+      <label for="o21ezc8" class="commentText"><p>Nice post, I’m running a glacial lance explosive spear Pathfinder build, but I’m stuck since the next upgrade will cost me 1000+ divines</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o21f085" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Gunplayy559</div>
+        <div>1 | 15 minutes ago </div>
+      </div>
+      <label for="o21f085" class="commentText"><p>I&rsquo;m also running a blood mage coc would love to get my hands on this build to push it even further</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o21f2mp" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Spartyx117</div>
+        <div>1 | 15 minutes ago </div>
+      </div>
+      <label for="o21f2mp" class="commentText"><p>Currently trying min max my bloodmage will definitely look into some the lse items, the mirror would definitely help get there. Good luck exiles!</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o21f4hx" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>stdchecker</div>
+        <div>1 | 14 minutes ago </div>
+      </div>
+      <label for="o21f4hx" class="commentText"><p>Sick build and items! Gl everyone</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o21f9v4" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>RUMadBrow</div>
+        <div>1 | 14 minutes ago </div>
+      </div>
+      <label for="o21f9v4" class="commentText"><p>Omg dream bulld im shaking</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o21fotb" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>wtfreddit0013</div>
+        <div>1 | 12 minutes ago </div>
+      </div>
+      <label for="o21fotb" class="commentText"><p>Interesting read, I have been running Poison pathfinder but the comet builds are crazy!!! Congrats in the build and really pushing it</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o21fp5w" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>BlazzyB</div>
+        <div>1 | 12 minutes ago </div>
+      </div>
+      <label for="o21fp5w" class="commentText"><p>I don&rsquo;t know if it is a visual bug or not but my uhtred wouldn&rsquo;t work with boundless at least for coc so I haven&rsquo;t been running it.
+Pretty cool build tho :)</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o21fprn" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>gusty214</div>
+        <div>1 | 12 minutes ago </div>
+      </div>
+      <label for="o21fprn" class="commentText"><p>Im too poor to have even read this! Gl all!</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o21frvq" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Ok_Competition_8778</div>
+        <div>1 | 12 minutes ago </div>
+      </div>
+      <label for="o21frvq" class="commentText"><p>Goodluck to all, to be able to reach this level of building and minmaxing is my goal with poe2</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o21fs4j" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>EssDub8 | Are you dead yet, exile?</div>
+        <div>1 | 11 minutes ago </div>
+      </div>
+      <label for="o21fs4j" class="commentText"><p>I&rsquo;m still leveling my bloodmage for this build, albeit with much less valuable gear - in interludes, so nearly ready to blast!
+Your generous irection is much appreciated as I near endgame.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o21fscl" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Infinite-Ad5464</div>
+        <div>1 | 11 minutes ago </div>
+      </div>
+      <label for="o21fscl" class="commentText"><p>hi there, running 0 duration titan with bloodmagic</p>
+
+<p>fun, but much slower!!!</p>
+
+<p>would love to pilot such high end gear!!</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o21fuku" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>SuViSaK</div>
+        <div>1 | 11 minutes ago </div>
+      </div>
+      <label for="o21fuku" class="commentText"><p>Feedback: Include a link to the build. Want to see that sweet gear.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o21fyfo" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Mass_Defect</div>
+        <div>1 | 11 minutes ago </div>
+      </div>
+      <label for="o21fyfo" class="commentText"><p>Thank you for the insight into this build - it looks fantastic! I’m heavily invested into an Oracle Werewolf - currently grinding from level 97 to 98 - when I get it to it’s ‘final form’ this might be the next build I try if there’s time left in the league. I’ve really been itching to play a Bloodmage (my Oracle is using Blood Magic).</p>
+
+<p>I’d like to enter the giveaway. Thank you for doing this - both the guide and the giveaway.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o21fzgh" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>The_Dreaded_Keywork</div>
+        <div>1 | 11 minutes ago </div>
+      </div>
+      <label for="o21fzgh" class="commentText"><p>I had been looking for another class to start with, and I&rsquo;ve never played anything comet related yet. But then I got to the <sup>7</sup>&frasl;<sub>8</sub> mirrors worth of gear part 😅 good luck to everyone and have fun whoever wins</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o21g24o" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>beginnerlifts</div>
+        <div>1 | 10 minutes ago </div>
+      </div>
+      <label for="o21g24o" class="commentText"><p>gl gl all</p>
+
+<p>running doedre&rsquo;s coc myself atm</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o21g40n" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Nonavailable21</div>
+        <div>1 | 10 minutes ago </div>
+      </div>
+      <label for="o21g40n" class="commentText"><p>I tried to minmax this&hellip; but couldnt due to irl requirement&hellip; i set a stupid goal for myself which is temporalis&hellip; and no matter what i do it just keeps slipping aeay&hellip;</p>
+
+<p>Im 1 mirror in, with a push its going to be my final project (hopefully) done faster.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o21g7p0" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ahcjewpac</div>
+        <div>1 | 10 minutes ago </div>
+      </div>
+      <label for="o21g7p0" class="commentText"><p>Right now I&rsquo;m running a killing palm/ staggering palm combo with flicker strike for bosses, I&rsquo;ve hit a bit of a wall and would love to try something new</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o21g9dd" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>No_Contribution6416</div>
+        <div>1 | 9 minutes ago </div>
+      </div>
+      <label for="o21g9dd" class="commentText"><p>Nice work getting there and min maxing the rarity. I would like to join the giveaway.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o21gd9d" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>meekiagehiang</div>
+        <div>1 | 9 minutes ago </div>
+      </div>
+      <label for="o21gd9d" class="commentText"><p>Amazing insights especially on the sacred flame part. If I win this giveaway I&rsquo;ll definitely tweak my oracle with some of the tips I learnt here.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o21ge10" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Marftulok</div>
+        <div>1 | 9 minutes ago </div>
+      </div>
+      <label for="o21ge10" class="commentText"><p>Yo! I am currently relocating and can’t play much but I got an unoptimized CoC BM that I would love to push further (no temporalis yet, only +<sup>2</sup>&frasl;<sub>3</sub> vertex). I would love to get some more hours out of this league since I didn’t hav that much time due to IRL stuff.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o21gfto" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Aggravating_Day3457</div>
+        <div>1 | 9 minutes ago </div>
+      </div>
+      <label for="o21gfto" class="commentText"><p>Witchunter permafrost bolts!! Level 65 would love to upgrade</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o21glsb" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>eonline3</div>
+        <div>1 | 8 minutes ago </div>
+      </div>
+      <label for="o21glsb" class="commentText"><p>Very in depth guide. Thanks for sharing. I wish I could afford a build like this.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o21h3ni" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>NefNeferteri</div>
+        <div>1 | 6 minutes ago </div>
+      </div>
+      <label for="o21h3ni" class="commentText"><p>I loved the details on how you improved your build! I&rsquo;m currently working on Woolies witch hunter build,  which is fun.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o21h6t9" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Xzanddro</div>
+        <div>1 | 5 minutes ago </div>
+      </div>
+      <label for="o21h6t9" class="commentText"><p>I would like yo try that build lol 😆</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o21hdor" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Lohrheim37</div>
+        <div>1 | 5 minutes ago </div>
+      </div>
+      <label for="o21hdor" class="commentText"><p>Been running Oracle Plants been kind of rough not getting any drops.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o21how1" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>RiGzZeR</div>
+        <div>1 | 3 minutes ago </div>
+      </div>
+      <label for="o21how1" class="commentText"><p>Gonna try some of this out, appreciate it thanks!</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o21hphl" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ajhaar</div>
+        <div>1 | 3 minutes ago </div>
+      </div>
+      <label for="o21hphl" class="commentText"><p>Glgl!</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o21hsnb" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>PrometheusIX</div>
+        <div>1 | 3 minutes ago </div>
+      </div>
+      <label for="o21hsnb" class="commentText"><p>Currently running mirage tactician with galvanic and shock burst. It’s pretty good but definitely has its limitations. Seeing this build perform has been wild this season, would love to give it a spin</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o21hxkj" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ellariah</div>
+        <div>1 | 2 minutes ago </div>
+      </div>
+      <label for="o21hxkj" class="commentText"><p>I looped my temple and gave away my gear. Regret it so a giveaway might get me back into it haha. Want to try a big blood mage boy </p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o21hxwx" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Angelorush</div>
+        <div>1 | 2 minutes ago </div>
+      </div>
+      <label for="o21hxwx" class="commentText"><p>Thanks for doing this, i just started levelling a Stormweaver wanted to try to get a poor guy spark going</p>
+
+<p>Also whats your secret farming?</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o21hyi9" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>magikow1989</div>
+        <div>1 | 2 minutes ago </div>
+      </div>
+      <label for="o21hyi9" class="commentText"><p>Rend wyvern, started a CoC BM cause of the hype lol.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o21i1zm" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>GoIntercourseUrself</div>
+        <div>1 | a minute ago </div>
+      </div>
+      <label for="o21i1zm" class="commentText"><p>Have a BM spark coc but for the life of me i cant get it to clear t15 properly. I know its mostly gear but im too broke to buy any of the item needed to farm consistently and also kill pinnacle bosses.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
