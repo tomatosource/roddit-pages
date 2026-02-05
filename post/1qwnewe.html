@@ -1,0 +1,610 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.selfPostImage {
+  width: 100%;
+  height: auto;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/nba/comments/1qwnewe/kevin_durant_makes_more_money_by_himself_547m/"><p>Kevin Durant makes more money by himself (<span class="math inline">\(54.7M) than all 11 Celtics that played last night combined (\)</span>54.0M). BOS won by 21.</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <p>No shade at KD, just extremely impressed by the job coach Mazzulla has done with this roster.</p>
+
+<p>Udoka not being able to keep it in his pants was the best thing to happen to the Celtics since the Brooklyn trade.</p>
+
+<table>
+<thead>
+<tr>
+<th align="left"><em>Player</em></th>
+<th align="left"> <strong><em>Salary</em></strong> </th>
+<th align="left"><strong><em>Draft Position</em></strong></th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">Baylor Scheierman</td>
+<td align="left">2,619,000</td>
+<td align="left">30th</td>
+</tr>
+
+<tr>
+<td align="left">Luka Garza</td>
+<td align="left">2,461,463</td>
+<td align="left">52nd</td>
+</tr>
+
+<tr>
+<td align="left">Neemias Queta</td>
+<td align="left">2,349,578</td>
+<td align="left">39th</td>
+</tr>
+
+<tr>
+<td align="left">Derrick White</td>
+<td align="left">28,100,000</td>
+<td align="left">29th</td>
+</tr>
+
+<tr>
+<td align="left">Ron Harper Jr</td>
+<td align="left">636,435</td>
+<td align="left">Undrafted</td>
+</tr>
+
+<tr>
+<td align="left">Payton Pritchard</td>
+<td align="left">7,232,143</td>
+<td align="left">26th</td>
+</tr>
+
+<tr>
+<td align="left">Jordan Walsh</td>
+<td align="left">2,221,677</td>
+<td align="left">38th</td>
+</tr>
+
+<tr>
+<td align="left">Josh Minott</td>
+<td align="left">2,378,870</td>
+<td align="left">45th</td>
+</tr>
+
+<tr>
+<td align="left">Hugo Gonzalez</td>
+<td align="left">2,783,880</td>
+<td align="left">28th</td>
+</tr>
+
+<tr>
+<td align="left">Xavier Tillman</td>
+<td align="left">2,546,675</td>
+<td align="left">35th</td>
+</tr>
+
+<tr>
+<td align="left">Max Shulga</td>
+<td align="left">636,434</td>
+<td align="left">57th</td>
+</tr>
+
+<tr>
+<td align="left"><strong>Total</strong></td>
+<td align="left"><strong>53,966,155</strong></td>
+<td align="left"><strong>40th (avg)</strong></td>
+</tr>
+</tbody>
+</table>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o3q4xdv" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>AvengingHero2012 | Rockets</div>
+        <div>35 | 36 minutes ago </div>
+      </div>
+      <label for="o3q4xdv" class="commentText"><p>KD is also the only consistent scorer on the team since they went all in on defense. It’s a clear problem.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="o3q6iu4" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Thorlolita | Rockets</div>
+        <div>1 | 28 minutes ago </div>
+      </div>
+      <label for="o3q6iu4" class="commentText"><p>Defense does not win championships</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="o3q6txh" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Majestic_Reindeer439</div>
+        <div>1 | 27 minutes ago </div>
+      </div>
+      <label for="o3q6txh" class="commentText"><p>Nico: This can&rsquo;t be true</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="o3q7ylm" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>vindictivejazz | Thunder</div>
+        <div>1 | 21 minutes ago </div>
+      </div>
+      <label for="o3q7ylm" class="commentText"><p>Yeah but defense plus one (1) elite scorer does</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="o3q6s4n" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Efficient_Art_1144 | Celtics</div>
+        <div>1 | 27 minutes ago </div>
+      </div>
+      <label for="o3q6s4n" class="commentText"><p>He doesn’t look like he signed up to be an entire offense at this stage of his career. Not can you win consistently with just a guy as good as he may be</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="o3q6l7e" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Lucky13200 | Celtics</div>
+        <div>1 | 28 minutes ago </div>
+      </div>
+      <label for="o3q6l7e" class="commentText"><p>The whole Rockets team did not pass at all last night. The Celtics like to swarm the ball on defense. Every time you passed you got a good shot. But the ball just did not move. I think was the opening possesion of 2nd half Reed just sat of top key til the shot clock was under 10 before he did anything. They consistently have a player that does not need to guarded at the 3pt line so you just have person sit in the paint. The answer then is using that guy to screen but Amen and Sengun screens were not great last night. Just a pathetic performance.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="o3q7kt5" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>junkit33</div>
+        <div>1 | 23 minutes ago </div>
+      </div>
+      <label for="o3q7kt5" class="commentText"><p>How has Jabari not figured his shit out yet?  It&rsquo;s year 4 and the guy is still seemingly allergic to 20 point games.  He&rsquo;s an athletic 7 footer with a decent shot - he should be destroying teams by now.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="o3q8g2p" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Thorlolita | Rockets</div>
+        <div>1 | 18 minutes ago </div>
+      </div>
+      <label for="o3q8g2p" class="commentText"><p>He never gets the ball. If you watch our offense it’s KD and Sengun playing iso ball while 3 other guys stand around and watch.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="o3q930r" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>jdoe1234566</div>
+        <div>1 | 15 minutes ago </div>
+      </div>
+      <label for="o3q930r" class="commentText"><p>That’s what it was like watching the KD suns for the past two years. Just constant iso ball. Except the suns had no defenders like the rockets so they were just getting torched on the other end</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="o3qalwe" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ThunderBobMajerle | Suns</div>
+        <div>1 | 8 minutes ago </div>
+      </div>
+      <label for="o3qalwe" class="commentText"><p>I was told your offense would be fine by taking the keys away from Green and giving them to Thompson</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o3q76ua" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Gandalf_from_3 | Celtics</div>
+        <div>1 | 25 minutes ago </div>
+      </div>
+      <label for="o3q76ua" class="commentText"><p>Guys I feel like maybe Boston might be a good franchise</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o3q5w0s" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>JoJonesy | Celtics</div>
+        <div>1 | 31 minutes ago </div>
+      </div>
+      <label for="o3q5w0s" class="commentText"><p>damn i can’t believe Payton Pritchard is the highest drafted player we played last night</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="o3q8jl4" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>nicklovin508 | Celtics</div>
+        <div>1 | 18 minutes ago </div>
+      </div>
+      <label for="o3q8jl4" class="commentText"><p>Bro should have went 25 spots higher</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o3q8n3k" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>lialialia20 | Timberwolves</div>
+        <div>1 | 18 minutes ago </div>
+      </div>
+      <label for="o3q8n3k" class="commentText"><p>Derrick White makes more money by himself (<span class="math inline">\(28.1M) than all 10 other Celtics that played last night combined (\)</span>25.9M)</p>
+
+<p>it&rsquo;s so obvious that the players representatives are always pulling the weight for the minority of the more talented players rather than the majority of players, contracts are ridiculous.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o3q5wne" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>browndude10 | United States</div>
+        <div>1 | 31 minutes ago </div>
+      </div>
+      <label for="o3q5wne" class="commentText"><p>One is old as shit and all of those guys are not</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="o3q6v1i" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>oochiewallyWallyserb | Knicks</div>
+        <div>1 | 26 minutes ago </div>
+      </div>
+      <label for="o3q6v1i" class="commentText"><p>I heard their combined age is more than Durants solo age tho.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o3q5vls" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>tastybizkitz | Cavaliers</div>
+        <div>1 | 31 minutes ago </div>
+      </div>
+      <label for="o3q5vls" class="commentText"><p>Basketball is a team sport.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
