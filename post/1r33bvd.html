@@ -1,0 +1,650 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.selfPostImage {
+  width: 100%;
+  height: auto;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/baseball/comments/1r33bvd/joey_votto_in_2015_had_a_very_unique_season/"><p>Joey Votto in 2015 had a very unique season.</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <p>While I know pitchers and catchers have reported, it&rsquo;s still the offseason in a way. I recently got a stathead subscription and have been playing around with different statistical silliness out of boredom, when I discovered something interest, observe the following table.</p>
+
+<table>
+<thead>
+<tr>
+<th align="left">Player</th>
+<th align="right">OPS</th>
+<th align="right">SLG</th>
+<th align="left">Season</th>
+<th align="left">Team</th>
+<th align="left">Lg</th>
+<th align="right">G</th>
+<th align="right">PA</th>
+<th align="right">AB</th>
+<th align="right">R</th>
+<th align="right">H</th>
+<th align="right">1B</th>
+<th align="right">2B</th>
+<th align="right">3B</th>
+<th align="right">HR</th>
+<th align="right">RBI</th>
+<th align="right">BB</th>
+<th align="right">SO</th>
+<th align="right">BA</th>
+<th align="right">OBP</th>
+<th align="right">SLG</th>
+<th align="right">OPS</th>
+<th align="right">OPS+</th>
+<th align="right">TB</th>
+<th align="right">HBP</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">Joey Votto</td>
+<td align="right">1.000</td>
+<td align="right">.541</td>
+<td align="left">2015</td>
+<td align="left">CIN</td>
+<td align="left">NL</td>
+<td align="right">158</td>
+<td align="right">695</td>
+<td align="right">545</td>
+<td align="right">95</td>
+<td align="right">171</td>
+<td align="right">107</td>
+<td align="right">33</td>
+<td align="right">2</td>
+<td align="right">29</td>
+<td align="right">80</td>
+<td align="right">143</td>
+<td align="right">135</td>
+<td align="right">.314</td>
+<td align="right">.459</td>
+<td align="right">.541</td>
+<td align="right">1.000</td>
+<td align="right">174</td>
+<td align="right">295</td>
+<td align="right">5</td>
+</tr>
+
+<tr>
+<td align="left">Ty Cobb</td>
+<td align="right">1.004</td>
+<td align="right">.549</td>
+<td align="left">1910</td>
+<td align="left">DET</td>
+<td align="left">AL</td>
+<td align="right">140</td>
+<td align="right">598</td>
+<td align="right">508</td>
+<td align="right">106</td>
+<td align="right">194</td>
+<td align="right">138</td>
+<td align="right">35</td>
+<td align="right">13</td>
+<td align="right">8</td>
+<td align="right">91</td>
+<td align="right">64</td>
+<td align="right">46</td>
+<td align="right">.382</td>
+<td align="right">.455</td>
+<td align="right">.549</td>
+<td align="right">1.004</td>
+<td align="right">205</td>
+<td align="right">279</td>
+<td align="right">4</td>
+</tr>
+
+<tr>
+<td align="left">Jesse Burkett</td>
+<td align="right">1.002</td>
+<td align="right">.541</td>
+<td align="left">1896</td>
+<td align="left">CLV</td>
+<td align="left">NL</td>
+<td align="right">133</td>
+<td align="right">647</td>
+<td align="right">586</td>
+<td align="right">160</td>
+<td align="right">240</td>
+<td align="right">191</td>
+<td align="right">27</td>
+<td align="right">16</td>
+<td align="right">6</td>
+<td align="right">72</td>
+<td align="right">49</td>
+<td align="right">19</td>
+<td align="right">.410</td>
+<td align="right">.461</td>
+<td align="right">.541</td>
+<td align="right">1.002</td>
+<td align="right">157</td>
+<td align="right">317</td>
+<td align="right">7</td>
+</tr>
+
+<tr>
+<td align="left">Joe Kelley</td>
+<td align="right">1.013</td>
+<td align="right">.543</td>
+<td align="left">1896</td>
+<td align="left">BLN</td>
+<td align="left">NL</td>
+<td align="right">131</td>
+<td align="right">627</td>
+<td align="right">519</td>
+<td align="right">148</td>
+<td align="right">189</td>
+<td align="right">131</td>
+<td align="right">31</td>
+<td align="right">19</td>
+<td align="right">8</td>
+<td align="right">100</td>
+<td align="right">91</td>
+<td align="right">19</td>
+<td align="right">.364</td>
+<td align="right">.469</td>
+<td align="right">.543</td>
+<td align="right">1.013</td>
+<td align="right">164</td>
+<td align="right">282</td>
+<td align="right">12</td>
+</tr>
+
+<tr>
+<td align="left">Jesse Burkett</td>
+<td align="right">1.001</td>
+<td align="right">.519</td>
+<td align="left">1895</td>
+<td align="left">CLV</td>
+<td align="left">NL</td>
+<td align="right">132</td>
+<td align="right">644</td>
+<td align="right">555</td>
+<td align="right">153</td>
+<td align="right">225</td>
+<td align="right">185</td>
+<td align="right">22</td>
+<td align="right">13</td>
+<td align="right">5</td>
+<td align="right">83</td>
+<td align="right">74</td>
+<td align="right">32</td>
+<td align="right">.405</td>
+<td align="right">.482</td>
+<td align="right">.519</td>
+<td align="right">1.001</td>
+<td align="right">152</td>
+<td align="right">288</td>
+<td align="right">8</td>
+</tr>
+
+<tr>
+<td align="left">Joe Kelley</td>
+<td align="right">1.003</td>
+<td align="right">.546</td>
+<td align="left">1895</td>
+<td align="left">BLN</td>
+<td align="left">NL</td>
+<td align="right">131</td>
+<td align="right">617</td>
+<td align="right">518</td>
+<td align="right">148</td>
+<td align="right">189</td>
+<td align="right">134</td>
+<td align="right">26</td>
+<td align="right">19</td>
+<td align="right">10</td>
+<td align="right">134</td>
+<td align="right">77</td>
+<td align="right">29</td>
+<td align="right">.365</td>
+<td align="right">.456</td>
+<td align="right">.546</td>
+<td align="right">1.003</td>
+<td align="right">154</td>
+<td align="right">283</td>
+<td align="right">10</td>
+</tr>
+
+<tr>
+<td align="left">Billy Hamilton</td>
+<td align="right">1.044</td>
+<td align="right">.523</td>
+<td align="left">1894</td>
+<td align="left">PHI</td>
+<td align="left">NL</td>
+<td align="right">132</td>
+<td align="right">702</td>
+<td align="right">558</td>
+<td align="right">198</td>
+<td align="right">225</td>
+<td align="right">181</td>
+<td align="right">25</td>
+<td align="right">15</td>
+<td align="right">4</td>
+<td align="right">90</td>
+<td align="right">128</td>
+<td align="right">19</td>
+<td align="right">.403</td>
+<td align="right">.521</td>
+<td align="right">.523</td>
+<td align="right">1.044</td>
+<td align="right">157</td>
+<td align="right">292</td>
+<td align="right">9</td>
+</tr>
+
+<tr>
+<td align="left">Pete Browning</td>
+<td align="right">1.011</td>
+<td align="right">.547</td>
+<td align="left">1887</td>
+<td align="left">LOU</td>
+<td align="left">AA</td>
+<td align="right">134</td>
+<td align="right">610</td>
+<td align="right">547</td>
+<td align="right">137</td>
+<td align="right">220</td>
+<td align="right">165</td>
+<td align="right">35</td>
+<td align="right">16</td>
+<td align="right">4</td>
+<td align="right">118</td>
+<td align="right">55</td>
+<td align="right">39</td>
+<td align="right">.402</td>
+<td align="right">.464</td>
+<td align="right">.547</td>
+<td align="right">1.011</td>
+<td align="right">177</td>
+<td align="right">299</td>
+<td align="right">8</td>
+</tr>
+</tbody>
+</table>
+<p>Provided by <a href="https://www.sports-reference.com/sharing.html?utm_source=direct&amp;utm_medium=Share&amp;utm_campaign=ShareTool" target="_blank">Stathead</a>: <a href="https://www.sports-reference.com/stathead/baseball/player-batting-season-finder.cgi?utm_source=direct&amp;utm_medium=Share&amp;utm_campaign=ShareTool" target="_blank">Found with Stathead. See Full Results.</a>
+Generated 2/12/2026.</p>
+
+<p>I was curious, bored, and wanted to see how many players have managed to have an OPS of over 1000 while having a slugging below .550. Mostly a curiosity, you usually have to be a great power hitter to get to an OPS of 1000, while being a good walker. I was curious to see what hitters achieved this mark while being less impressive power hitters.</p>
+
+<p>I expected the results to skew heavily toward the dead-ball era, and they did. What I <em>didn’t</em> expect was just how rare this becomes in modern baseball. Only two seasons on this list have occurred in the modern era (1900–present), and only one has happened in the live-ball era (1920–present).</p>
+
+<p><strong>And that one season belongs to Joey Votto.</strong></p>
+
+<p>Votto’s 2015 season is basically a statistical unicorn: the only player in the last 115 years to thread this needle, largely because of his absolutely unhinged 20.6% walk rate, which led all of MLB. His second-half patience that year has become the stuff of legend.</p>
+
+<p>But it raises a fun question:</p>
+
+<p>If he was that locked in, why wasn’t the slugging higher?</p>
+
+<p><strong>1. He wasn’t an absolute home run slugger. He hit good but didn&rsquo;t have gaudy power.</strong></p>
+
+<p>Votto hit 29 homers. That’s a great season! But it’s not the typical profile of a 1.000 OPS hitter, where you’re expecting 35–45 bombs and a pile of extra-base hits. And the 33 doubles isn&rsquo;t exactly eyepopping either.</p>
+
+<p><strong>2. Much of his value that year came from getting on base and quality contact rather than simply pounding the ball over fences.</strong></p>
+
+<p>He had more than 140 walks that year, an impressive amount. But this also matters because it keeps his total number of bases does, which in turn boosts his slugging percentage despite the total bases not even hitting 300. He had 695 PA but only 545 AB! This is just sort of a quirk inherent with OPS and how the two different numbers are calculated.</p>
+
+<p>All in all, this shows why Joey Votto&rsquo;s 2015 season wasn&rsquo;t just impressive, but structurally weird in a very cool way!</p>
+
+<p>Now, in the grand scheme of things, is this actually all that crazy? Probably not, there are probably a lot of hitters in the .950-.995 OPS range that have similar stories.</p>
+
+<p>But Votto is the only guy in the last century-plus to hit that exact sweet spot: 1.000 OPS with sub-.550 slugging. And I think that&rsquo;s really neat!</p>
+
+<p>Not exactly world shattering analysis here, I know. But I just wanted to share because I thought it was really cool!</p>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o51chug" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>TDeLo | Cincinnati Reds</div>
+        <div>8 | an hour ago </div>
+      </div>
+      <label for="o51chug" class="commentText"><blockquote>
+<p>Much of his value that year came from getting on base and quality contact rather than simply pounding the ball over fences.</p>
+</blockquote>
+
+<p>This basically just describes Joey&rsquo;s entire career.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="o51cxgw" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>sloppyjo12 | Rosie Red • Dayton Dragons</div>
+        <div>7 | 44 minutes ago </div>
+      </div>
+      <label for="o51cxgw" class="commentText"><p>Until late in his career when he said fuck it and started really banging for the hell of it</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="o51d87x" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>TDeLo | Cincinnati Reds</div>
+        <div>6 | 43 minutes ago </div>
+      </div>
+      <label for="o51d87x" class="commentText"><p>That 2021 season was wild.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="o51f9zq" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ngerb_5 | Cincinnati Reds</div>
+        <div>5 | 33 minutes ago </div>
+      </div>
+      <label for="o51f9zq" class="commentText"><p>Votto still bangs</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="o51cuwx" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Dragonknight247 | St. Louis Cardinals</div>
+        <div>2 | an hour ago </div>
+      </div>
+      <label for="o51cuwx" class="commentText"><p>You got me there, I guess what makes it cool is that it&rsquo;s the most Joey Votto season Votto ever had.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o51g0d8" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Redsfan42 | Cincinnati Reds</div>
+        <div>4 | 29 minutes ago </div>
+      </div>
+      <label for="o51g0d8" class="commentText"><p>It’s stuff like this that reminds me why he deserves to be a hall of famer one day</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o51ctm3" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Past-Affect3210</div>
+        <div>2 | an hour ago </div>
+      </div>
+      <label for="o51ctm3" class="commentText"><p>actually wild find</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o51d3z4" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Bright-Pressure-5787</div>
+        <div>3 | 43 minutes ago </div>
+      </div>
+      <label for="o51d3z4" class="commentText"><p>Yeah, Joey Votto was never really regarded as a power hitter despite hitting nearly 400 homers in his career.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
