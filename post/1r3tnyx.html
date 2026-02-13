@@ -1,0 +1,2120 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.selfPostImage {
+  width: 100%;
+  height: auto;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/nba/comments/1r3tnyx/all_star_break_rnba_community_stats_which_team/"><p>All Star Break r/NBA community stats: which team has the most fans active on this subreddit, who gets downvoted the most, who complains about the refs the most, and more!</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <h1 id="what-is-this">What is this?</h1>
+
+<p>Now that it’s officially the All Star break, I thought I’d share a fun side project I’ve been doing: storing and analyzing every single submission and comment posted on r/NBA during this season.</p>
+
+<p>It’s a good way to practice data stuff, but it’s also neat because it lets me answer questions like:</p>
+
+<ul>
+<li>Which fan bases are most common on here? Which fans comment the most, swear the most, complain about refs the most, etc?</li>
+<li>Which players and teams are talked about the most? Which ones are the most beloved, which are the most hated?</li>
+<li>What users on here most desperately need to touch grass (besides me)?</li>
+</ul>
+
+<p>So far, I have collected 1,641,342 total comments from 14,423 posts, starting from 12PM midnight on 10/21/2025 (the day of the opening game) and continuing on through midnight of last night (when my data collection setup ran last). If you’re curious, I collected the data using the <a href="https://praw.readthedocs.io/en/stable/" target="_blank">Python Reddit API wrapper PRAW</a>, I stored the data in a Postgres database, and I did most of the actual analysis with R. Also, <a href="https://old.reddit.com/r/CFB/comments/1qpdsqv/the_202526_rcfb_rapt_a_year_in_review/" target="_blank">I already did this for r/CFB</a>, so you can check that out too if you’re also a college football fan.</p>
+
+<p>I haven’t had time to sift through all of it yet, but now that I have a large chunk of data to work with and there’s no basketball to watch, I thought I’d share a “flair census” to celebrate the ASB: this is a breakdown of every user who has posted on r/NBA so far this season by their <strong>primary flair</strong>, i.e. what team they’re a fan of. This should finally give us some quantitative, empirical evidence that there are simply too many Lakers fans.</p>
+
+<h2 id="results-team-flairs">Results: Team Flairs</h2>
+
+<h3 id="how-many-people-are-in-each-fanbase-on-here">How many people are in each fanbase on here?</h3>
+
+<p>I started by cleaning the flairs up a bit to make sure I’m capturing each team’s entire fanbase:</p>
+
+<ul>
+<li>I combined the various different versions of each team’s flairs together.</li>
+<li>If your flair is “[CLE] Kyrie Irving”, I counted you as a Cavs fan, since you went out of your way to use the “[CLE]” tagged one.</li>
+<li>If your flair is just “Kyrie Irving”, however, I counted you as a Mavs fan, since that’s who he currently / most recently plays for. This is one of the few parts of this process I did by hand, so there might be a few mistakes.</li>
+<li>If your flair is anything else – a country massively I then calculated A) the total number of unique users / comments, and B) some fun summary statistics to tell us more about each fanbase.</li>
+</ul>
+
+<p>Let’s start with the 30 actual current NBA teams, ranked by total users:</p>
+
+<table>
+<thead>
+<tr>
+<th align="left">Rank</th>
+<th align="left">Team</th>
+<th align="left">Total Users</th>
+<th align="left">Total Comments</th>
+<th align="right">Comments per User</th>
+<th align="left">Avg Score</th>
+<th align="left">P Downvoted</th>
+<th align="left">Avg Words</th>
+<th align="right">Swears per 100 Words</th>
+<th align="left">P Ref Complaints</th>
+<th align="left">Top Poster</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">#1</td>
+<td align="left">Lakers</td>
+<td align="left">5,398</td>
+<td align="left">121,676</td>
+<td align="right">22.54</td>
+<td align="left">28.46</td>
+<td align="left">13.05%</td>
+<td align="left">20.44</td>
+<td align="right">0.73</td>
+<td align="left">2.07%</td>
+<td align="left">ThaRealSunGod (1,631 comments)</td>
+</tr>
+
+<tr>
+<td align="left">#2</td>
+<td align="left">Warriors</td>
+<td align="left">3,357</td>
+<td align="left">63,371</td>
+<td align="right">18.88</td>
+<td align="left">22.66</td>
+<td align="left">12.00%</td>
+<td align="left">21.87</td>
+<td align="right">0.59</td>
+<td align="left">2.62%</td>
+<td align="left">Akipella (3,733 comments)</td>
+</tr>
+
+<tr>
+<td align="left">#3</td>
+<td align="left">Celtics</td>
+<td align="left">3,096</td>
+<td align="left">45,805</td>
+<td align="right">14.79</td>
+<td align="left">22.65</td>
+<td align="left">11.16%</td>
+<td align="left">24.25</td>
+<td align="right">0.53</td>
+<td align="left">2.24%</td>
+<td align="left">archerarcher0 (927 comments)</td>
+</tr>
+
+<tr>
+<td align="left">#4</td>
+<td align="left">Knicks</td>
+<td align="left">2,799</td>
+<td align="left">55,933</td>
+<td align="right">19.98</td>
+<td align="left">26.35</td>
+<td align="left">11.34%</td>
+<td align="left">20.13</td>
+<td align="right">0.66</td>
+<td align="left">1.93%</td>
+<td align="left">HokageEzio (2,071 comments)</td>
+</tr>
+
+<tr>
+<td align="left">#5</td>
+<td align="left">Raptors</td>
+<td align="left">2,703</td>
+<td align="left">53,276</td>
+<td align="right">19.71</td>
+<td align="left">27.17</td>
+<td align="left">9.79%</td>
+<td align="left">19.90</td>
+<td align="right">0.67</td>
+<td align="left">1.96%</td>
+<td align="left">heat_fan_ (4,237 comments)</td>
+</tr>
+
+<tr>
+<td align="left">#6</td>
+<td align="left">Spurs</td>
+<td align="left">2,594</td>
+<td align="left">71,116</td>
+<td align="right">27.42</td>
+<td align="left">23.77</td>
+<td align="left">8.62%</td>
+<td align="left">20.09</td>
+<td align="right">0.71</td>
+<td align="left">2.77%</td>
+<td align="left">LAMonkeyWithAShotgun (1,549 comments)</td>
+</tr>
+
+<tr>
+<td align="left">#7</td>
+<td align="left">Thunder</td>
+<td align="left">2,428</td>
+<td align="left">96,573</td>
+<td align="right">39.77</td>
+<td align="left">14.98</td>
+<td align="left">16.75%</td>
+<td align="left">20.03</td>
+<td align="right">0.72</td>
+<td align="left">2.56%</td>
+<td align="left">Old_Supermarket_7575 (1,678 comments)</td>
+</tr>
+
+<tr>
+<td align="left">#8</td>
+<td align="left">Timberwolves</td>
+<td align="left">2,167</td>
+<td align="left">48,400</td>
+<td align="right">22.34</td>
+<td align="left">23.80</td>
+<td align="left">10.32%</td>
+<td align="left">20.37</td>
+<td align="right">0.65</td>
+<td align="left">3.45%</td>
+<td align="left">dys0n_giddey (2,285 comments)</td>
+</tr>
+
+<tr>
+<td align="left">#9</td>
+<td align="left">Nuggets</td>
+<td align="left">2,045</td>
+<td align="left">52,379</td>
+<td align="right">25.61</td>
+<td align="left">20.69</td>
+<td align="left">12.44%</td>
+<td align="left">21.06</td>
+<td align="right">0.58</td>
+<td align="left">2.82%</td>
+<td align="left">KasherH (1,517 comments)</td>
+</tr>
+
+<tr>
+<td align="left">#10</td>
+<td align="left">Bulls</td>
+<td align="left">1,951</td>
+<td align="left">23,292</td>
+<td align="right">11.94</td>
+<td align="left">26.96</td>
+<td align="left">10.30%</td>
+<td align="left">22.72</td>
+<td align="right">0.61</td>
+<td align="left">2.05%</td>
+<td align="left">Constant_Charge_4528 (1,042 comments)</td>
+</tr>
+
+<tr>
+<td align="left">#11</td>
+<td align="left">76ers</td>
+<td align="left">1,883</td>
+<td align="left">23,214</td>
+<td align="right">12.33</td>
+<td align="left">26.75</td>
+<td align="left">10.51%</td>
+<td align="left">21.68</td>
+<td align="right">0.64</td>
+<td align="left">2.08%</td>
+<td align="left">Krillin113 (649 comments)</td>
+</tr>
+
+<tr>
+<td align="left">#12</td>
+<td align="left">Mavericks</td>
+<td align="left">1,866</td>
+<td align="left">29,551</td>
+<td align="right">15.84</td>
+<td align="left">28.20</td>
+<td align="left">10.75%</td>
+<td align="left">22.55</td>
+<td align="right">0.71</td>
+<td align="left">2.08%</td>
+<td align="left">StefonDiggsHS (823 comments)</td>
+</tr>
+
+<tr>
+<td align="left">#13</td>
+<td align="left">Cavaliers</td>
+<td align="left">1,534</td>
+<td align="left">18,855</td>
+<td align="right">12.29</td>
+<td align="left">22.62</td>
+<td align="left">10.84%</td>
+<td align="left">21.25</td>
+<td align="right">0.63</td>
+<td align="left">2.59%</td>
+<td align="left">OverallGeneral7129 (882 comments)</td>
+</tr>
+
+<tr>
+<td align="left">#14</td>
+<td align="left">Heat</td>
+<td align="left">1,506</td>
+<td align="left">26,422</td>
+<td align="right">17.54</td>
+<td align="left">28.24</td>
+<td align="left">9.82%</td>
+<td align="left">22.92</td>
+<td align="right">0.59</td>
+<td align="left">1.96%</td>
+<td align="left">cl353 (1,297 comments)</td>
+</tr>
+
+<tr>
+<td align="left">#15</td>
+<td align="left">Trail Blazers</td>
+<td align="left">1,497</td>
+<td align="left">22,345</td>
+<td align="right">14.93</td>
+<td align="left">21.87</td>
+<td align="left">11.60%</td>
+<td align="left">22.69</td>
+<td align="right">0.61</td>
+<td align="left">2.83%</td>
+<td align="left">SeismicRipFart (1,341 comments)</td>
+</tr>
+
+<tr>
+<td align="left">#16</td>
+<td align="left">Rockets</td>
+<td align="left">1,491</td>
+<td align="left">29,080</td>
+<td align="right">19.50</td>
+<td align="left">21.82</td>
+<td align="left">12.48%</td>
+<td align="left">20.62</td>
+<td align="right">0.70</td>
+<td align="left">2.66%</td>
+<td align="left">sorendiz (1,475 comments)</td>
+</tr>
+
+<tr>
+<td align="left">#17</td>
+<td align="left">Pistons</td>
+<td align="left">1,485</td>
+<td align="left">25,821</td>
+<td align="right">17.39</td>
+<td align="left">24.36</td>
+<td align="left">10.15%</td>
+<td align="left">21.54</td>
+<td align="right">0.63</td>
+<td align="left">2.72%</td>
+<td align="left">dizzymidget44 (1,356 comments)</td>
+</tr>
+
+<tr>
+<td align="left">#18</td>
+<td align="left">Bucks</td>
+<td align="left">1,396</td>
+<td align="left">23,217</td>
+<td align="right">16.63</td>
+<td align="left">24.51</td>
+<td align="left">11.58%</td>
+<td align="left">23.86</td>
+<td align="right">0.62</td>
+<td align="left">2.52%</td>
+<td align="left">First_Inspection_478 (906 comments)</td>
+</tr>
+
+<tr>
+<td align="left">#19</td>
+<td align="left">Suns</td>
+<td align="left">1,338</td>
+<td align="left">24,334</td>
+<td align="right">18.19</td>
+<td align="left">23.43</td>
+<td align="left">10.76%</td>
+<td align="left">20.13</td>
+<td align="right">0.72</td>
+<td align="left">3.13%</td>
+<td align="left">ajteitel (1,228 comments)</td>
+</tr>
+
+<tr>
+<td align="left">#20</td>
+<td align="left">Pacers</td>
+<td align="left">1,146</td>
+<td align="left">16,724</td>
+<td align="right">14.59</td>
+<td align="left">19.56</td>
+<td align="left">13.77%</td>
+<td align="left">22.89</td>
+<td align="right">0.66</td>
+<td align="left">2.28%</td>
+<td align="left">Funny-Transition7869 (919 comments)</td>
+</tr>
+
+<tr>
+<td align="left">#21</td>
+<td align="left">Kings</td>
+<td align="left">1,015</td>
+<td align="left">14,294</td>
+<td align="right">14.08</td>
+<td align="left">27.81</td>
+<td align="left">9.83%</td>
+<td align="left">23.72</td>
+<td align="right">0.66</td>
+<td align="left">1.99%</td>
+<td align="left">MostlyMellow123 (491 comments)</td>
+</tr>
+
+<tr>
+<td align="left">#22</td>
+<td align="left">Hawks</td>
+<td align="left">925</td>
+<td align="left">15,513</td>
+<td align="right">16.77</td>
+<td align="left">31.66</td>
+<td align="left">8.88%</td>
+<td align="left">22.89</td>
+<td align="right">0.63</td>
+<td align="left">1.94%</td>
+<td align="left">amidon1130 (809 comments)</td>
+</tr>
+
+<tr>
+<td align="left">#23</td>
+<td align="left">Wizards</td>
+<td align="left">754</td>
+<td align="left">10,711</td>
+<td align="right">14.21</td>
+<td align="left">25.53</td>
+<td align="left">8.20%</td>
+<td align="left">22.22</td>
+<td align="right">0.65</td>
+<td align="left">1.69%</td>
+<td align="left">Kennyc1234 (892 comments)</td>
+</tr>
+
+<tr>
+<td align="left">#24</td>
+<td align="left">Magic</td>
+<td align="left">749</td>
+<td align="left">15,197</td>
+<td align="right">20.29</td>
+<td align="left">24.54</td>
+<td align="left">9.73%</td>
+<td align="left">19.23</td>
+<td align="right">0.64</td>
+<td align="left">1.99%</td>
+<td align="left">bubbasnub (573 comments)</td>
+</tr>
+
+<tr>
+<td align="left">#25</td>
+<td align="left">Clippers</td>
+<td align="left">725</td>
+<td align="left">14,052</td>
+<td align="right">19.38</td>
+<td align="left">26.04</td>
+<td align="left">12.23%</td>
+<td align="left">22.72</td>
+<td align="right">0.62</td>
+<td align="left">1.56%</td>
+<td align="left">KL2ConspireLLC (1,908 comments)</td>
+</tr>
+
+<tr>
+<td align="left">#26</td>
+<td align="left">Grizzlies</td>
+<td align="left">709</td>
+<td align="left">14,009</td>
+<td align="right">19.76</td>
+<td align="left">24.59</td>
+<td align="left">12.31%</td>
+<td align="left">24.81</td>
+<td align="right">0.50</td>
+<td align="left">1.94%</td>
+<td align="left">rwoteit (851 comments)</td>
+</tr>
+
+<tr>
+<td align="left">#27</td>
+<td align="left">Hornets</td>
+<td align="left">674</td>
+<td align="left">14,422</td>
+<td align="right">21.40</td>
+<td align="left">21.46</td>
+<td align="left">14.68%</td>
+<td align="left">20.19</td>
+<td align="right">0.71</td>
+<td align="left">1.85%</td>
+<td align="left">Vegetable-Tooth8463 (1,928 comments)</td>
+</tr>
+
+<tr>
+<td align="left">#28</td>
+<td align="left">Nets</td>
+<td align="left">636</td>
+<td align="left">10,408</td>
+<td align="right">16.36</td>
+<td align="left">32.67</td>
+<td align="left">9.89%</td>
+<td align="left">24.45</td>
+<td align="right">0.53</td>
+<td align="left">1.81%</td>
+<td align="left">rabidantidentyte (360 comments)</td>
+</tr>
+
+<tr>
+<td align="left">#29</td>
+<td align="left">Pelicans</td>
+<td align="left">533</td>
+<td align="left">8,521</td>
+<td align="right">15.99</td>
+<td align="left">37.04</td>
+<td align="left">11.11%</td>
+<td align="left">19.88</td>
+<td align="right">0.56</td>
+<td align="left">1.74%</td>
+<td align="left">legend023 (607 comments)</td>
+</tr>
+
+<tr>
+<td align="left">#30</td>
+<td align="left">Jazz</td>
+<td align="left">507</td>
+<td align="left">6,693</td>
+<td align="right">13.20</td>
+<td align="left">29.25</td>
+<td align="left">8.25%</td>
+<td align="left">23.37</td>
+<td align="right">0.55</td>
+<td align="left">2.72%</td>
+<td align="left">FERFreak731 (529 comments)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Chart versions:</strong></p>
+
+<ul>
+<li><a href="https://imgur.com/URKuLfR" target="_blank">Chart: total users per team fanbase</a></li>
+<li><a href="https://imgur.com/zKgeRyE" target="_blank">Chart: total comments per team fanbase</a></li>
+<li><a href="https://imgur.com/K2COWVj" target="_blank">Chart: comments per user, by team fanbase</a></li>
+</ul>
+
+<p><strong>Observations:</strong></p>
+
+<ul>
+<li><p>There are, in fact, a lot of Lakers fans! Over 5,000 of them in fact, which is over 2,000 more than any other fanbase. I would be really curious to be able to compare this to previous years, to see if there was a big spike when LeBron / Luka arrived, but it was not a surprise at all to see them at the top of the list.</p></li>
+
+<li><p>I am also not shocked to see the Warriors, Celtics, and Knicks near the top. The Raptors are the first real surprise here to me – I guess they just get a bump from being the default team of Canadians? I also think it’s funny that their #1 poster is named “heat fan”.</p></li>
+
+<li><p>The Spurs / Thunder rivalry continues even here, with the Spurs taking the edge in fanbase size but the Thunder winning in comments per user. The Spurs’ engagement numbers are actually the second highest at 27.42 comments per user, but OKC is #1 by a huge margin – they’re posting at rates more than double those of some other teams, enough to actually put them at #2 when it comes to total comments in the dataset.</p></li>
+
+<li><p>Looking at the bottom of the list we see the pits of despair, i.e. the teams with nothing fun to talk about these days. Shoutout to the Kings fans for still showing up this season, and condolences to the Jazz fans for… yeah.</p></li>
+</ul>
+
+<p>We can also see the average comment score, % of comments downvoted, number of words per comment, swear rate, and ref complaint rate of each fanbase. This should give us some insight into how good each fanbase is at posting (or at least how r/NBA feels about them).</p>
+
+<ul>
+<li>Thunder fans’ comments have the lowest avg. scores by a pretty big margin, while Pelicans fans have the highest. There definitely seems to be a “fewer comments total = higher average score” effect happening, judging by the bottom of the list. But the Thunder are also the clear #1 in downvote rate (i.e. comments with scores &amp;lt; 1), so I think we can safely say OKC is the most frowned upon fanbase this season. I, for one, am shocked!</li>
+<li>Memphis fans write the longest comments and swear the least – nerd alert??</li>
+<li>Lakers fans, Thunder fans, and Suns fans claim the top 3 spots in swear rate, with 0.7%ish of the words in their comments being some form of profanity. Great work!</li>
+<li>I also searched for comments complaining about the refs – this is a very basic regex search, so if you wrote “I love the refs, they’re doing a great job and that was a valid whistle” it would still get flagged, but it works pretty well. Judging by this metric, the Clippers, Wizards, and Pels do the least complaining about the refs (what have they really had to complain about tbf), while the Timberwolves (Chris Finch just reported this post to the mods for pointing it out), Suns, and Blazers do the most.</li>
+<li>Soon, I am hoping to be able to break this down by game thread too, like “what specific games or what team’s games feature the most complaining about the refs?”</li>
+</ul>
+
+<p>You can also see the user from each fanbase who has made the most comments thus far. Y’all should either feel very proud of yourselves, or maybe take this as a sign to go caress some grass, your choice. If you feel bad about the number of reddit comments you made, just remember that at least you’re not me, a guy who has a database full of <em>other peoples’</em> reddit comments. It could be worse.</p>
+
+<h3 id="what-about-the-other-flairs">What about the other flairs?</h3>
+
+<p>I also ran these same numbers for the flairs that aren’t a real NBA team – mostly countries like “Slovenia”, or defunct teams like “Supersonics” or “Bullets”. Here is the top 10 of that list:</p>
+
+<table>
+<thead>
+<tr>
+<th align="left">Rank</th>
+<th align="left">Team</th>
+<th align="left">Total Users</th>
+<th align="left">Total Comments</th>
+<th align="right">Comments per User</th>
+<th align="left">Avg Score</th>
+<th align="left">P Downvoted</th>
+<th align="left">Avg Words</th>
+<th align="right">Swears per 100 Words</th>
+<th align="left">P Ref Complaints</th>
+<th align="left">Top Poster</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">#1</td>
+<td align="left">Unflaired</td>
+<td align="left">80,074</td>
+<td align="left">571,812</td>
+<td align="right">7.14</td>
+<td align="left">17.33</td>
+<td align="left">15.58%</td>
+<td align="left">23.53</td>
+<td align="right">0.53</td>
+<td align="left">2.48%</td>
+<td align="left">AutoModerator (4,628 comments)</td>
+</tr>
+
+<tr>
+<td align="left">#2</td>
+<td align="left">NBA</td>
+<td align="left">1,005</td>
+<td align="left">22,592</td>
+<td align="right">22.48</td>
+<td align="left">24.86</td>
+<td align="left">11.57%</td>
+<td align="left">26.67</td>
+<td align="right">0.45</td>
+<td align="left">2.11%</td>
+<td align="left">Lmao1903 (1,130 comments)</td>
+</tr>
+
+<tr>
+<td align="left">#3</td>
+<td align="left">Supersonics</td>
+<td align="left">851</td>
+<td align="left">13,670</td>
+<td align="right">16.06</td>
+<td align="left">24.57</td>
+<td align="left">10.97%</td>
+<td align="left">23.75</td>
+<td align="right">0.65</td>
+<td align="left">2.26%</td>
+<td align="left">cancercureall (686 comments)</td>
+</tr>
+
+<tr>
+<td align="left">#4</td>
+<td align="left">Slovenia</td>
+<td align="left">189</td>
+<td align="left">4,379</td>
+<td align="right">23.17</td>
+<td align="left">24.38</td>
+<td align="left">11.44%</td>
+<td align="left">23.74</td>
+<td align="right">0.57</td>
+<td align="left">1.99%</td>
+<td align="left">Cassandrae_Gemini (279 comments)</td>
+</tr>
+
+<tr>
+<td align="left">#5</td>
+<td align="left">West</td>
+<td align="left">141</td>
+<td align="left">3,582</td>
+<td align="right">25.40</td>
+<td align="left">15.62</td>
+<td align="left">11.86%</td>
+<td align="left">19.77</td>
+<td align="right">0.90</td>
+<td align="left">1.81%</td>
+<td align="left">facundo-campazzo (1,061 comments)</td>
+</tr>
+
+<tr>
+<td align="left">#6</td>
+<td align="left">Bullets</td>
+<td align="left">131</td>
+<td align="left">2,014</td>
+<td align="right">15.37</td>
+<td align="left">34.58</td>
+<td align="left">8.99%</td>
+<td align="left">21.03</td>
+<td align="right">0.59</td>
+<td align="left">1.69%</td>
+<td align="left">MainAd2728 (358 comments)</td>
+</tr>
+
+<tr>
+<td align="left">#7</td>
+<td align="left">Huskies</td>
+<td align="left">127</td>
+<td align="left">2,331</td>
+<td align="right">18.35</td>
+<td align="left">40.11</td>
+<td align="left">8.58%</td>
+<td align="left">20.62</td>
+<td align="right">0.66</td>
+<td align="left">1.80%</td>
+<td align="left">DavidSugarbush (237 comments)</td>
+</tr>
+
+<tr>
+<td align="left">#8</td>
+<td align="left">United States</td>
+<td align="left">114</td>
+<td align="left">3,523</td>
+<td align="right">30.90</td>
+<td align="left">29.88</td>
+<td align="left">18.45%</td>
+<td align="left">17.90</td>
+<td align="right">0.68</td>
+<td align="left">1.82%</td>
+<td align="left">Jarxzz (467 comments)</td>
+</tr>
+
+<tr>
+<td align="left">#9</td>
+<td align="left">East</td>
+<td align="left">83</td>
+<td align="left">991</td>
+<td align="right">11.94</td>
+<td align="left">24.87</td>
+<td align="left">13.72%</td>
+<td align="left">19.26</td>
+<td align="right">0.62</td>
+<td align="left">1.01%</td>
+<td align="left">matthitsthetrails (175 comments)</td>
+</tr>
+
+<tr>
+<td align="left">#10</td>
+<td align="left">Canada</td>
+<td align="left">81</td>
+<td align="left">5,200</td>
+<td align="right">64.20</td>
+<td align="left">17.84</td>
+<td align="left">5.88%</td>
+<td align="left">18.12</td>
+<td align="right">1.16</td>
+<td align="left">4.06%</td>
+<td align="left">CrippledBanana (2,976 comments)</td>
+</tr>
+</tbody>
+</table>
+
+<ul>
+<li>Unflaired users have made over half a million comments so far, damn! There’s a lot of these guys.
+
+<ul>
+<li>You can also use their numbers as a kind of low baseline – for example, unflaired users were downvoted under a score of 1 around 15% of the time, which is worse than almost every actual NBA team flair. The only exception is Thunder fans: their number was 16.7%.</li>
+</ul></li>
+<li>There are actually more “Supersonics” and “NBA” flairs than there are Wizards, Magic, Clippers, Grizzlies, Hornets, Nets, Pelicans, or Jazz flairs. I found this very surprising, but I guess both are used to mean “I like the NBA but I don’t care about any particular team”? Or maybe there really are just that many embittered Seattle NBA fans on here. Adam Silver if you’re seeing this, it’s even more evidence to support bringing them back. The data doesn’t lie!</li>
+<li>Slovenia is the most common country flair by a pretty big margin, for obvious reasons. The rarest country flairs are Turkey and the Czech Republic, which each have just two users.</li>
+</ul>
+
+<hr>
+
+<p>I hope you enjoyed, thanks for reading! I am working on a few more little writeups of this data, which I will hopefully also have time to post during the ASB or the offseason. If you have any suggestions / requests, I’d love to hear them!</p>
+
+<h3 id="preview-for-the-next-installment">Preview for the next installment:</h3>
+
+<p>I am crunching the numbers on [Highlight] posts to figure out what specific players get the most attention on here, and which are the most beloved / controversial (by finding the average upvote ratios, scores, etc).</p>
+
+<ul>
+<li>Can you guess which two players from the Western conference are massively <strong>controversial</strong> outliers, with <strong>lots of highlights posted</strong> but <strong>very low scores / upvote ratios?</strong> Tune in next time to find out who they are!</li>
+</ul>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o56w6bj" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>GiantGreenCrayon | Raptors</div>
+        <div>33 | an hour ago </div>
+      </div>
+      <label for="o56w6bj" class="commentText"><p>So Canadians swear more and are downvoted less. The Raptors/leagues most comments is a heat fan.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="o56xqk4" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>MountainTwo3845 | Rockets</div>
+        <div>8 | 39 minutes ago </div>
+      </div>
+      <label for="o56xqk4" class="commentText"><p>Canadians also invented half of the war crimes out there too. People should be terrified of y&rsquo;all. But you&rsquo;re also nice AF. Conundrum.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="o5702jv" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>PrayForMojo_ | Raptors</div>
+        <div>1 | 27 minutes ago </div>
+      </div>
+      <label for="o5702jv" class="commentText"><p>Fuckin eh.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o56x0we" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>CoulibalyMVP | Wizards</div>
+        <div>26 | 42 minutes ago </div>
+      </div>
+      <label for="o56x0we" class="commentText"><p>there&rsquo;s also the obvious unflaired lakers fans like ciark who post here 500 times a day</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="o574enw" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>TitanTigers | Grizzlies</div>
+        <div>1 | 6 minutes ago </div>
+      </div>
+      <label for="o574enw" class="commentText"><p>The number 1 grizzlies fan is just a Thunder fan in disguise. That’s actually hilarious.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o56w79t" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>moby323 | 76ers</div>
+        <div>19 | an hour ago </div>
+      </div>
+      <label for="o56w79t" class="commentText"><p>This is awesome keep doing this</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o56wish" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>moby323 | 76ers</div>
+        <div>17 | an hour ago </div>
+      </div>
+      <label for="o56wish" class="commentText"><blockquote>
+<p>“Why does the media always talk about the Lakers!?”</p>
+</blockquote>
+
+<p>“Oh. Right. That’s why.”</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o56wjz9" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>NotWD | Raptors</div>
+        <div>14 | 44 minutes ago </div>
+      </div>
+      <label for="o56wjz9" class="commentText"><p>Our team sub is pretty huge, and a lot of Canadians are very online, so us being at #5 is less of a surprise than you&rsquo;d think tbh</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="o56xho8" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Adorable-News-9364 | Spurs</div>
+        <div>14 | 40 minutes ago </div>
+      </div>
+      <label for="o56xho8" class="commentText"><p>Y’all are getting carried by a bot though smh</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="o56ym8i" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>NotWD | Raptors</div>
+        <div>8 | 35 minutes ago </div>
+      </div>
+      <label for="o56ym8i" class="commentText"><p>Tell me about it. Fuckin chatgpt ass loser</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="o571ja5" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>OverallGeneral7129 | Cavaliers</div>
+        <div>1 | 20 minutes ago </div>
+      </div>
+      <label for="o571ja5" class="commentText"><p>Heat Fan posts the most nothing comments of all time under every single post. Like he’ll comment on every game and stat thread and he very clearly watched none of them</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="o572ax0" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>MusclyArmPaperboy | Raptors</div>
+        <div>1 | 17 minutes ago </div>
+      </div>
+      <label for="o572ax0" class="commentText"><p>Toronto is also the 4th most populated city in North America (Mexico City, NYC, LA ahead of us) which is funny because we&rsquo;re never considered a &ldquo;large market team&rdquo;.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="o5717xr" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Successful-Pie6759</div>
+        <div>1 | 22 minutes ago </div>
+      </div>
+      <label for="o5717xr" class="commentText"><p>Raptors def kicking above their weight. Or is it Canada raptors and a lot of Canadians default to it?</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="o571tsy" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Broski28of25 | France</div>
+        <div>1 | 19 minutes ago </div>
+      </div>
+      <label for="o571tsy" class="commentText"><p>Like the other comment said. It&rsquo;s a bot that posts the most generic comment based on the headlines on every post.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="o57216u" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Successful-Pie6759</div>
+        <div>1 | 18 minutes ago </div>
+      </div>
+      <label for="o57216u" class="commentText"><p>Can&rsquo;t ban it? Or just keeps on changing their name?</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="o5724cp" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Broski28of25 | France</div>
+        <div>1 | 17 minutes ago </div>
+      </div>
+      <label for="o5724cp" class="commentText"><p>Don&rsquo;t think people care other than a select few.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="o5736lv" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Adorable-News-9364 | Spurs</div>
+        <div>1 | 12 minutes ago </div>
+      </div>
+      <label for="o5736lv" class="commentText"><p>It’s completely inconsequential. I just thought it would be funny to poke fun at</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="o573nb2" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Tangentkoala | Clippers</div>
+        <div>1 | 10 minutes ago </div>
+      </div>
+      <label for="o573nb2" class="commentText"><p>Im surprised you Canadians use reddit a lot.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o56z7u1" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>KL2ConspireLLC | San Diego Clippers</div>
+        <div>1 | 32 minutes ago </div>
+      </div>
+      <label for="o56z7u1" class="commentText"><blockquote>
+<p>KL2ConspireLLC (1,908 comments)</p>
+</blockquote>
+
+<p>Lol holy sh*t, that&rsquo;s too many.  I&rsquo;m going to stay off reddit for the rest of the month.  Thanks OP.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="o573ind" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>WalrusInMySheets | LAL</div>
+        <div>1 | 11 minutes ago </div>
+      </div>
+      <label for="o573ind" class="commentText"><p>How are u seeing this part</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="o574tyz" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>GreenEggs-12 | Spurs</div>
+        <div>1 | 4 minutes ago </div>
+      </div>
+      <label for="o574tyz" class="commentText"><p>It&rsquo;s time for an intervention !</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o56zesy" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>cjparloe | Timberwolves</div>
+        <div>1 | 31 minutes ago </div>
+      </div>
+      <label for="o56zesy" class="commentText"><blockquote>
+<p>Thunder fans’ comments have the lowest avg. scores by a pretty big margin, while Pelicans fans have the highest.</p>
+</blockquote>
+
+<p><a href="https://imgur.com/a/OhOsF5D" target="_blank">https://imgur.com/a/OhOsF5D</a> lol</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="o574njy" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>TheAerial | Magic</div>
+        <div>1 | 5 minutes ago </div>
+      </div>
+      <label for="o574njy" class="commentText"><p>Hang it in the Louvre 😂</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o56xoa0" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Vicentesteb | Timberwolves</div>
+        <div>9 | 39 minutes ago </div>
+      </div>
+      <label for="o56xoa0" class="commentText"><p>Why do the Pacers and Hornets get downvoted so much lol.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="o571lab" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>hasselhoffman91 | Pacers</div>
+        <div>1 | 20 minutes ago </div>
+      </div>
+      <label for="o571lab" class="commentText"><p>The Pacers is because Thunder fans are little crybabies and Pacers point out the Thunder got officiated differently so they mass down vote. Idk why the hornets.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="o573f57" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>heat_00 | Raptors</div>
+        <div>1 | 11 minutes ago </div>
+      </div>
+      <label for="o573f57" class="commentText"><p>This. This right here is why you are downvoted</p>
+
+<p>Can’t call them crybabies as you sit here crying lol</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="o574x9q" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Piradrad_16 | Raptors</div>
+        <div>1 | 4 minutes ago </div>
+      </div>
+      <label for="o574x9q" class="commentText"><p>Victim card on full display</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="o5750qg" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>GreenEggs-12 | Spurs</div>
+        <div>1 | 3 minutes ago </div>
+      </div>
+      <label for="o5750qg" class="commentText"><p>Hornets, I am assuming related to Bridges.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o56xllg" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Odoaiden | Timberwolves</div>
+        <div>8 | 39 minutes ago </div>
+      </div>
+      <label for="o56xllg" class="commentText"><p>Not shocked that U/Dyson_Giddey has complained about refs over 2000 times</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o570kgw" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>LordOfLimbos | Pistons</div>
+        <div>1 | 25 minutes ago </div>
+      </div>
+      <label for="o570kgw" class="commentText"><p>Goddamn thunder fans talk a shitload lol, that’s really interesting</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="o5722xn" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Simple-Dingo6721 | Thunder</div>
+        <div>1 | 18 minutes ago </div>
+      </div>
+      <label for="o5722xn" class="commentText"><p>It’s because we constantly have to defend ourselves against ad nauseam allegations including but not limited to: refs being on our side, Thunder tanking 4 years ago (despite one of the quickest recoveries back to championship contention), SGA being a FT merchant, Dort being a hacker and flopper (kinda true tbh), Chet being a fraud (untrue but he is getting paid too much), and the state of Oklahoma being illiterate (very true)</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o56xv4f" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Odoaiden | Timberwolves</div>
+        <div>6 | 38 minutes ago </div>
+      </div>
+      <label for="o56xv4f" class="commentText"><p>Old supermarket has to be responsible for half the downvotes on thunder fans</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="o571ixx" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Simple-Dingo6721 | Thunder</div>
+        <div>1 | 20 minutes ago </div>
+      </div>
+      <label for="o571ixx" class="commentText"><p>What is that?</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o56xj75" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>MountainTwo3845 | Rockets</div>
+        <div>5 | 40 minutes ago </div>
+      </div>
+      <label for="o56xj75" class="commentText"><p>I&rsquo;m interested to see next year how the flair changes if LeBron leaves. Great work.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o56xi2w" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>k1ngkoala | Lakers</div>
+        <div>4 | 40 minutes ago </div>
+      </div>
+      <label for="o56xi2w" class="commentText"><p>Pretty interesting breakdown. More people should use the flairs so we can get a better results. Also not surprised OKC fans are the most hated this season. Is that typical for the team coming off the championship? Or is this year&rsquo;s OKC just uniquely aggravating.</p>
+
+<p>I&rsquo;m gonna take a swing and guess Deni Advija is one of those controversial outliers you mentioned in your <em>Next installment</em> section.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="o56yapo" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>captain_ahabb | Lakers</div>
+        <div>6 | 36 minutes ago </div>
+      </div>
+      <label for="o56yapo" class="commentText"><p>Fanbases that just won a title are always annoying.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="o572jo5" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Simple-Dingo6721 | Thunder</div>
+        <div>1 | 15 minutes ago </div>
+      </div>
+      <label for="o572jo5" class="commentText"><p>I think there’s something to be said about how every fanbase coming off a championship has to constantly defend themselves because there is always the question of whether 1) they deserved the last chip and 2) whether they’ll win another one soon</p>
+
+<p>There’s also the fact that many fans of other teams are jealous, or at least upset, because it’s safe to say many Thunder fans are overly cocky now. That’s how I felt about Nuggets fans after they won their chip</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o56xpt4" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>OverallGeneral7129 | Cavaliers</div>
+        <div>4 | 39 minutes ago </div>
+      </div>
+      <label for="o56xpt4" class="commentText"><p>Guess I’m the number 1 Cavs fan. Cool</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o56z5kp" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>nbaistheworst</div>
+        <div>1 | 32 minutes ago </div>
+      </div>
+      <label for="o56z5kp" class="commentText"><p>Cool concept/execution. Kudos!</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o56x2cd" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>RapsareChamps_Suckit | Clippers</div>
+        <div>3 | 42 minutes ago </div>
+      </div>
+      <label for="o56x2cd" class="commentText"><p>how much more betrayal can I take?!</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o56z2ft" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>roar_rawr42 | Knicks</div>
+        <div>1 | 32 minutes ago </div>
+      </div>
+      <label for="o56z2ft" class="commentText"><p>Send this to Adam silver as support for bringing back the sonics</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o5703om" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>angelansbury</div>
+        <div>1 | 27 minutes ago </div>
+      </div>
+      <label for="o5703om" class="commentText"><p>This rules. Really feels like the Bullets should be included as Wizards fans though </p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o571chm" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Rudy_Gobert | Jazz</div>
+        <div>1 | 21 minutes ago </div>
+      </div>
+      <label for="o571chm" class="commentText"><p>Yes, this means that we get the first pick in the draft since we are dead last, right? right?</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o56w8jx" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>BedDazzling7545</div>
+        <div>2 | an hour ago </div>
+      </div>
+      <label for="o56w8jx" class="commentText"><p>So if your a thunder you have the highest chance to get downvoted. I wonder why is that&hellip; 😂</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o56yoh4" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>obxtalldude | Washington Bullets</div>
+        <div>2 | 34 minutes ago </div>
+      </div>
+      <label for="o56yoh4" class="commentText"><p>Interesting downvote stat.</p>
+
+<p>I guess since the Wizards / Bullets fans have suffered for so long, we are the least cocky?</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o56zp6e" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Pop_Zestyclose | Spurs</div>
+        <div>1 | 29 minutes ago </div>
+      </div>
+      <label for="o56zp6e" class="commentText"><p>Hell yeah!  We are representing!</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o5711ln" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>chief1555 | Knicks</div>
+        <div>1 | 23 minutes ago </div>
+      </div>
+      <label for="o5711ln" class="commentText"><p>Cannot think of a better encapsulation of the NYC/New England sports rivalry than the Knicks having 99 fewer fans than Boston but those fans making almost 10,000 more comments than the Boston fans</p>
+
+<p>You can’t shut us up</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o571icr" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>PassMeTheBackwood | Knicks</div>
+        <div>1 | 20 minutes ago </div>
+      </div>
+      <label for="o571icr" class="commentText"><p>Oh thank god Hokage is more terminally online than me</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o571xn9" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>MrBuckBuck | Trail Blazers</div>
+        <div>1 | 18 minutes ago </div>
+      </div>
+      <label for="o571xn9" class="commentText"><p>The amount of people who comment here without a flair. Damn, it&rsquo;s bigger than I imagined.</p>
+
+<p>Wondering how many of them are bots, how many of them are just casuals.</p>
+
+<blockquote>
+<p>There are actually more “Supersonics” and “NBA” flairs than there are Wizards, Magic, Clippers, Grizzlies, Hornets, Nets, Pelicans, or Jazz flairs.</p>
+</blockquote>
+
+<p>Adam Silver, you&rsquo;d better bring Seattle Supersopnics back!</p>
+
+<p>Great breakdown!</p>
+
+<p>Edit:</p>
+
+<blockquote>
+<p>Can you guess which two players from the Western conference are massively <strong>controversial</strong> outliers, with <strong>lots of highlights posted</strong> but <strong>very low scores / upvote ratios?</strong> Tune in next time to find out who they are!</p>
+</blockquote>
+
+<p>I&rsquo;d say Shai Gilgeous-Alexander and Draymond Green?</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o5721qa" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>wowlock_taylan | Spurs</div>
+        <div>1 | 18 minutes ago </div>
+      </div>
+      <label for="o5721qa" class="commentText"><p>Man, Lakers talk A LOT huh?</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o572kk4" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>JakGrealish | Nuggets</div>
+        <div>1 | 15 minutes ago </div>
+      </div>
+      <label for="o572kk4" class="commentText"><p>The Spurs are the keanu reaves/fedora hat of the nba reddit community</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="o573b82" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>pr0ject_84 | Thunder</div>
+        <div>1 | 12 minutes ago </div>
+      </div>
+      <label for="o573b82" class="commentText"><p>Very accurate</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o56zki0" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Adorable-News-9364 | Spurs</div>
+        <div>1 | 30 minutes ago </div>
+      </div>
+      <label for="o56zki0" class="commentText"><p>Probably 400 of u/MostlyMellow123 ‘s comments are in Spurs game threads hating on De’Aaron Fox</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o56ztre" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ilikekittens2018 | Nuggets</div>
+        <div>1 | 29 minutes ago </div>
+      </div>
+      <label for="o56ztre" class="commentText"><p>I&rsquo;m guessing the two players are Shai and&hellip; uh&hellip; maybe Jokic? His highlights haven&rsquo;t gotten many upvotes lately. Both very &ldquo;controversial&rdquo; lol. Otherwise maybe Luka.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="o5736yc" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Simple-Dingo6721 | Thunder</div>
+        <div>1 | 12 minutes ago </div>
+      </div>
+      <label for="o5736yc" class="commentText"><p>I rly wish the current stars didn’t get as much hate as they do. It’s like Andy from The Office saying “I wish there was a way to know you’re in the good times before you’ve left them.” Jokic and SGA are once in a lifetime stars and we should appreciate their skill no matter how much they flop or complain to refs or whatever it is ppl always complain about.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o572ybc" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ReyesRun7 | Knicks</div>
+        <div>1 | 13 minutes ago </div>
+      </div>
+      <label for="o572ybc" class="commentText"><p>The audacity of blazers fans to complain about the refs</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o5733oi" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>doordaesh | Super 8</div>
+        <div>1 | 13 minutes ago </div>
+      </div>
+      <label for="o5733oi" class="commentText"><p>&amp;gt;There are, in fact, a lot of Lakers fans! </p>
+
+<p>and yet there are no true lakers fans</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o573c1d" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>bigvahe33 | Supersonics</div>
+        <div>1 | 12 minutes ago </div>
+      </div>
+      <label for="o573c1d" class="commentText"><p>just leaving out the sonics huh</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o573i6v" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>SomeKilljoy | Suns</div>
+        <div>1 | 11 minutes ago </div>
+      </div>
+      <label for="o573i6v" class="commentText"><p>The prevailing message I’ve gained from this analysis is “flair up, coward”</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o574lma" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>rayquan36 | Wizards</div>
+        <div>1 | 5 minutes ago </div>
+      </div>
+      <label for="o574lma" class="commentText"><p>Bullets should be counted with the wizards</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o56zc6v" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>my_twin_towne</div>
+        <div>1 | 31 minutes ago </div>
+      </div>
+      <label for="o56zc6v" class="commentText"><p>So r/Lakers with 1.6M joined but only 5k contribute/talk/post? That right?</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="o572vqj" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>WalrusInMySheets | LAL</div>
+        <div>1 | 14 minutes ago </div>
+      </div>
+      <label for="o572vqj" class="commentText"><p>I can&rsquo;t speak for other Lakers fans but I have that shithole muted</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="o573i55" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>jaybean562 | Lakers</div>
+        <div>1 | 11 minutes ago </div>
+      </div>
+      <label for="o573i55" class="commentText"><p>These numbers are pulled from r/nba. Not from team subreddits.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="o573na9" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>my_twin_towne</div>
+        <div>1 | 10 minutes ago </div>
+      </div>
+      <label for="o573na9" class="commentText"><p>Oh right. Duh. Got it!</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
