@@ -1,0 +1,714 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.selfPostImage {
+  width: 100%;
+  height: auto;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/nba/comments/1r6eqsb/oc_which_player_has_victimized_the_most_rookies/"><p>[OC] Which player has &ldquo;victimized&rdquo; the most rookies this season? Conversely, which player has been &ldquo;victimized&rdquo; the most by rookies?</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <h1 id="introduction">Introduction</h1>
+
+<p>The first time an NBA rookie checks into a game marks the end of a long, grueling journey. Just as inevitable is the humbling “welcome to the league” moment that follows. Whether it’s Kobe dunking on <a href="https://www.youtube.com/watch?v=xilW4WiS1Qo" target="_blank">Dwight</a> or <a href="https://www.youtube.com/watch?v=QDwWf58TQaU" target="_blank">Yao</a>, Rip Hamilton hanging 44 on <a href="https://www.youtube.com/watch?v=HcscN0sDL7o" target="_blank">LeBron</a>, or Kevin Durant showing Julius Randle <a href="https://www.youtube.com/watch?v=fcEC5dHKTl4" target="_blank">every move he&rsquo;s got</a>, every rookie gets that lesson sooner or later.</p>
+
+<p>I wanted to see which player has &ldquo;victimized&rdquo; rookies the most this year.</p>
+
+<h1 id="process">Process</h1>
+
+<p>First, we have to define a &ldquo;victimization&rdquo;. I took it to be one of three direct actions:</p>
+
+<ul>
+<li>stealing from a player</li>
+<li>blocking a player</li>
+<li>getting fouled by a player and subsequently shooting free throws
+
+<ul>
+<li>Unfortunately I can&rsquo;t include non-shooting fouls that happened prior to the bonus because play by play doesn&rsquo;t list the fouled player.</li>
+</ul></li>
+</ul>
+
+<p>We can filter NBA play-by-play data and use the fact that the opposite actions happen at the exact same in-game time (a turnover to a steal, a missed field goal attempt to a block, and a foul to a free throw attempt) to create a table where one column lists the perpetrator and another lists the victim.</p>
+
+<h1 id="results-as-of-february-12">Results (as of February 12)</h1>
+
+<p>First, let&rsquo;s take a look at the players that have put rookies through the wringer most often.</p>
+
+<table>
+<thead>
+<tr>
+<th align="left">player</th>
+<th align="left">Steals From Rookie</th>
+<th align="left">Fouled By Rookie</th>
+<th align="left">Blocks Against Rookie</th>
+<th align="left">Positive Events Against Rookies</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">Luka Dončić</td>
+<td align="left">6</td>
+<td align="left">37</td>
+<td align="left">1</td>
+<td align="left">44</td>
+</tr>
+
+<tr>
+<td align="left">James Harden</td>
+<td align="left">6</td>
+<td align="left">31</td>
+<td align="left">3</td>
+<td align="left">40</td>
+</tr>
+
+<tr>
+<td align="left">Shai Gilgeous-Alexander</td>
+<td align="left">5</td>
+<td align="left">27</td>
+<td align="left">2</td>
+<td align="left">34</td>
+</tr>
+
+<tr>
+<td align="left">Amen Thompson</td>
+<td align="left">10</td>
+<td align="left">17</td>
+<td align="left">6</td>
+<td align="left">33</td>
+</tr>
+
+<tr>
+<td align="left">Keyonte George</td>
+<td align="left">1</td>
+<td align="left">26</td>
+<td align="left">3</td>
+<td align="left">30</td>
+</tr>
+
+<tr>
+<td align="left">Devin Booker</td>
+<td align="left">9</td>
+<td align="left">19</td>
+<td align="left">2</td>
+<td align="left">30</td>
+</tr>
+</tbody>
+</table>
+<p>This list is dominated by players who are able to get rookies to foul them. Next, let&rsquo;s see the opposite side: which players have been victimized by rookies most often.</p>
+
+<table>
+<thead>
+<tr>
+<th align="left">player</th>
+<th align="left">Steals By Rookie</th>
+<th align="left">Fouled Rookie</th>
+<th align="left">Blocked By Rookie</th>
+<th align="left">Negative Events Against Rookies</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">Scottie Barnes</td>
+<td align="left">17</td>
+<td align="left">6</td>
+<td align="left">4</td>
+<td align="left">27</td>
+</tr>
+
+<tr>
+<td align="left">Luka Dončić</td>
+<td align="left">18</td>
+<td align="left">4</td>
+<td align="left">4</td>
+<td align="left">26</td>
+</tr>
+
+<tr>
+<td align="left">Kyle Filipowski</td>
+<td align="left">9</td>
+<td align="left">11</td>
+<td align="left">5</td>
+<td align="left">25</td>
+</tr>
+
+<tr>
+<td align="left">Matas Buzelis</td>
+<td align="left">7</td>
+<td align="left">10</td>
+<td align="left">6</td>
+<td align="left">23</td>
+</tr>
+
+<tr>
+<td align="left">Deni Avdija</td>
+<td align="left">8</td>
+<td align="left">7</td>
+<td align="left">8</td>
+<td align="left">23</td>
+</tr>
+</tbody>
+</table>
+<p>Luka shows up second in the negative top-5 after topping the leaderboard in the positive top 5. A lot of these players play heavy minutes and thus have more opportunities to play against rookies, so let&rsquo;s take a look at normalizing per 36 minutes. We will also filter for players who have played at least 50% of their team&rsquo;s games and at least 12 minutes per game to alleviate small sample size concerns. First, the positive events per 36:</p>
+
+<table>
+<thead>
+<tr>
+<th align="left">player</th>
+<th align="left">GP</th>
+<th align="left">MPG</th>
+<th align="left">Steals From Rookie Per 36</th>
+<th align="left">Fouled By Rookie Per 36</th>
+<th align="left">Blocks Against Rookie Per 36</th>
+<th align="left">Positive Events Against Rookies Per 36</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">Austin Reaves</td>
+<td align="left">28</td>
+<td align="left">33.5</td>
+<td align="left">0.2684</td>
+<td align="left">0.6903</td>
+<td align="left">0.1150</td>
+<td align="left">1.0738</td>
+</tr>
+
+<tr>
+<td align="left">Luka Dončić</td>
+<td align="left">42</td>
+<td align="left">35.5</td>
+<td align="left">0.1448</td>
+<td align="left">0.8927</td>
+<td align="left">0.0241</td>
+<td align="left">1.0616</td>
+</tr>
+
+<tr>
+<td align="left">Noah Penda</td>
+<td align="left">38</td>
+<td align="left">13.7</td>
+<td align="left">0.2773</td>
+<td align="left">0.4852</td>
+<td align="left">0.1386</td>
+<td align="left">0.9011</td>
+</tr>
+
+<tr>
+<td align="left">Joel Embiid</td>
+<td align="left">31</td>
+<td align="left">31.3</td>
+<td align="left">0.0000</td>
+<td align="left">0.7411</td>
+<td align="left">0.1482</td>
+<td align="left">0.8893</td>
+</tr>
+
+<tr>
+<td align="left">James Harden</td>
+<td align="left">47</td>
+<td align="left">35.2</td>
+<td align="left">0.1304</td>
+<td align="left">0.6739</td>
+<td align="left">0.0652</td>
+<td align="left">0.8696</td>
+</tr>
+</tbody>
+</table>
+<p>Doncic and Harden remain from the raw-totals top 5. Penda is the &ldquo;polar bear in Arlington, Texas&rdquo; meme in this top 5, being a rookie himself and only playing 13.7 minutes a game.</p>
+
+<p>Now, the negative events per 36:</p>
+
+<table>
+<thead>
+<tr>
+<th align="left">player</th>
+<th align="left">GP</th>
+<th align="left">MPG</th>
+<th align="left">Steals By Rookie Per 36</th>
+<th align="left">Fouled Rookie Per 36</th>
+<th align="left">Blocked By Rookie Per 36</th>
+<th align="left">Negative Events Against Rookies Per 36</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">Cole Anthony</td>
+<td align="left">35</td>
+<td align="left">15.0</td>
+<td align="left">0.4785</td>
+<td align="left">0.5469</td>
+<td align="left">0.0000</td>
+<td align="left">1.0254</td>
+</tr>
+
+<tr>
+<td align="left">Kyle Filipowski</td>
+<td align="left">55</td>
+<td align="left">22.1</td>
+<td align="left">0.2664</td>
+<td align="left">0.3256</td>
+<td align="left">0.1480</td>
+<td align="left">0.7400</td>
+</tr>
+
+<tr>
+<td align="left">Jaden Ivey</td>
+<td align="left">37</td>
+<td align="left">18.1</td>
+<td align="left">0.1611</td>
+<td align="left">0.3223</td>
+<td align="left">0.2148</td>
+<td align="left">0.6982</td>
+</tr>
+
+<tr>
+<td align="left">Dylan Harper</td>
+<td align="left">43</td>
+<td align="left">21.7</td>
+<td align="left">0.2700</td>
+<td align="left">0.1157</td>
+<td align="left">0.3086</td>
+<td align="left">0.6943</td>
+</tr>
+
+<tr>
+<td align="left">John Konchar</td>
+<td align="left">34</td>
+<td align="left">15.1</td>
+<td align="left">0.2108</td>
+<td align="left">0.2810</td>
+<td align="left">0.1405</td>
+<td align="left">0.6323</td>
+</tr>
+</tbody>
+</table>
+<p>Cole Anthony is the only one to average over 1 negative rookie victimization event per 36 minutes. We&rsquo;ve got another rookie showing up here in Dylan Harper. Finally, let&rsquo;s take a look at net events per 36 to see who&rsquo;s dishing it but not taking it.</p>
+
+<h1 id="the-welcome-to-the-league-rook-award">The &ldquo;Welcome to the League, Rook&rdquo; Award</h1>
+
+<table>
+<thead>
+<tr>
+<th align="left">player</th>
+<th align="left">GP</th>
+<th align="left">MPG</th>
+<th align="left">Positive Events Against Rookies Per 36</th>
+<th align="left">Negative Events Against Rookies Per 36</th>
+<th align="left">Net Events Against Rookies Per 36</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">Austin Reaves</td>
+<td align="left">28</td>
+<td align="left">33.5</td>
+<td align="left">1.0738</td>
+<td align="left">0.3451</td>
+<td align="left">0.7286</td>
+</tr>
+
+<tr>
+<td align="left">Caris LeVert</td>
+<td align="left">36</td>
+<td align="left">19.6</td>
+<td align="left">0.8663</td>
+<td align="left">0.1529</td>
+<td align="left">0.7134</td>
+</tr>
+
+<tr>
+<td align="left">Patrick Williams</td>
+<td align="left">51</td>
+<td align="left">19.2</td>
+<td align="left">0.6622</td>
+<td align="left">0.0368</td>
+<td align="left">0.6254</td>
+</tr>
+
+<tr>
+<td align="left">Daniel Gafford</td>
+<td align="left">38</td>
+<td align="left">21.4</td>
+<td align="left">0.8408</td>
+<td align="left">0.2213</td>
+<td align="left">0.6196</td>
+</tr>
+
+<tr>
+<td align="left">Mitchell Robinson</td>
+<td align="left">39</td>
+<td align="left">19.6</td>
+<td align="left">0.8464</td>
+<td align="left">0.2351</td>
+<td align="left">0.6113</td>
+</tr>
+</tbody>
+</table>
+<p>Austin Reaves is your lead rookie victimizer per 36, while also playing at least 10 minutes more per game than anyone else in the top 5.</p>
+
+<h1 id="the-the-future-is-now-old-man-award">The &ldquo;The Future is Now, Old Man&rdquo; Award</h1>
+
+<table>
+<thead>
+<tr>
+<th align="left">player</th>
+<th align="left">GP</th>
+<th align="left">MPG</th>
+<th align="left">Positive Events Against Rookies Per 36</th>
+<th align="left">Negative Events Against Rookies Per 36</th>
+<th align="left">Net Events Against Rookies Per 36</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">Cole Anthony</td>
+<td align="left">35</td>
+<td align="left">15.0</td>
+<td align="left">0.3418</td>
+<td align="left">1.0254</td>
+<td align="left">-0.6836</td>
+</tr>
+
+<tr>
+<td align="left">Jordan Poole</td>
+<td align="left">28</td>
+<td align="left">25.4</td>
+<td align="left">0.1014</td>
+<td align="left">0.6085</td>
+<td align="left">-0.5071</td>
+</tr>
+
+<tr>
+<td align="left">Nique Clifford</td>
+<td align="left">52</td>
+<td align="left">21.3</td>
+<td align="left">0.1301</td>
+<td align="left">0.5855</td>
+<td align="left">-0.4554</td>
+</tr>
+
+<tr>
+<td align="left">Quinten Post</td>
+<td align="left">55</td>
+<td align="left">17.0</td>
+<td align="left">0.1538</td>
+<td align="left">0.4998</td>
+<td align="left">-0.3460</td>
+</tr>
+
+<tr>
+<td align="left">Tyler Kolek</td>
+<td align="left">48</td>
+<td align="left">13.3</td>
+<td align="left">0.2828</td>
+<td align="left">0.6222</td>
+<td align="left">-0.3394</td>
+</tr>
+</tbody>
+</table>
+<p>Cole Anthony brings up the rear in net rookie victimization events per 36. Nique Clifford is third from the bottom while also being a rookie himself.</p>
+
+<p>Hope y&rsquo;all enjoyed reading! Here&rsquo;s a link to a <a href="https://docs.google.com/spreadsheets/d/1I3PPTOhz1krbdDKO1Y2xKNiEErY_qjQxXDzGWSepxiM/edit?usp=sharing" target="_blank">Google Sheet</a>, as well as a <a href="https://github.com/sumitrodatta/bluesky-visualizations/tree/main/Rookie%20Victimization" target="_blank">GitHub link</a>!</p>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o5pkl6i" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Select-Profit-7725 | Lakers</div>
+        <div>7 | 44 minutes ago </div>
+      </div>
+      <label for="o5pkl6i" class="commentText"><p>high quality post</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o5pp3oc" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Quality_Cucumber | GSW</div>
+        <div>1 | 24 minutes ago </div>
+      </div>
+      <label for="o5pp3oc" class="commentText"><p>Austin Reeves only good because he plays against noobs confirmed.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o5ppi50" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>mmatoe24 | Lakers</div>
+        <div>1 | 22 minutes ago </div>
+      </div>
+      <label for="o5ppi50" class="commentText"><p>This the type of shitpost we deserve. Appreciate it</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o5pl8i5" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>CutLonzosHair2017 | LAL</div>
+        <div>2 | 41 minutes ago </div>
+      </div>
+      <label for="o5pl8i5" class="commentText"><p>Every Luka v Reaves breakdown basically ends with the same conclusion. And this does essentially come down to the same. Reaves is just crazy efficient.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="o5ppj6u" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>DeliciousSession2735</div>
+        <div>1 | 22 minutes ago </div>
+      </div>
+      <label for="o5ppj6u" class="commentText"><p>lol Lakers fan trying to force this narrative. Reaves is too inconsistent to be in those convos.</p>
+
+<p>Dude also regularly struggles against lanky physical defense like OKCs</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
