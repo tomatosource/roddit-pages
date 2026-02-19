@@ -1,0 +1,474 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.selfPostImage {
+  width: 100%;
+  height: auto;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/baseball/comments/1r99cwg/grouping_the_last_plays_of_every_world_series/"><p>grouping the last plays of every world series</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <p>the 1926 world series went to game seven and ended with this play:</p>
+
+<blockquote>
+<p>Babe Ruth Caught Stealing 2B (C-2B)</p>
+</blockquote>
+
+<p>which got me meandering over to the glorious play by play logs of <a href="https://www.retrosheet.org/game.htm" target="_blank">retrosheet</a>.</p>
+
+<p>this is a tally of every last play of the 121 world series:</p>
+
+<table>
+<thead>
+<tr>
+<th align="left">play category</th>
+<th align="center">runs?</th>
+<th align="center">count</th>
+<th align="center">perc</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left" colspan="2">flyout</td>
+<td align="center">39</td>
+<td align="center">32%</td>
+</tr>
+
+<tr>
+<td align="left" colspan="2">groundout</td>
+<td align="center">37</td>
+<td align="center">31%</td>
+</tr>
+
+<tr>
+<td align="left" colspan="2">strikeout</td>
+<td align="center">25</td>
+<td align="center">21%</td>
+</tr>
+
+<tr>
+<td align="left">single</td>
+<td align="center">run scored</td>
+<td align="center">5</td>
+<td align="center">4%</td>
+</tr>
+
+<tr>
+<td align="left" colspan="2">double play</td>
+<td align="center">3</td>
+<td align="center">2%</td>
+</tr>
+
+<tr>
+<td align="left" colspan="2">lineout</td>
+<td align="center">3</td>
+<td align="center">2%</td>
+</tr>
+
+<tr>
+<td align="left">double</td>
+<td align="center">run scored</td>
+<td align="center">2</td>
+<td align="center">2%</td>
+</tr>
+
+<tr>
+<td align="left" colspan="2">bunt</td>
+<td align="center">2</td>
+<td align="center">2%</td>
+</tr>
+
+<tr>
+<td align="left">home run</td>
+<td align="center">run scored</td>
+<td align="center">2</td>
+<td align="center">2%</td>
+</tr>
+
+<tr>
+<td align="left">sac fly</td>
+<td align="center">run scored</td>
+<td align="center">1</td>
+<td align="center">1%</td>
+</tr>
+
+<tr>
+<td align="left">wild pitch</td>
+<td align="center">run scored</td>
+<td align="center">1</td>
+<td align="center">1%</td>
+</tr>
+
+<tr>
+<td align="left" colspan="2">caught stealing like a ninny</td>
+<td align="center">1</td>
+<td align="center">1%</td>
+</tr>
+</tbody>
+
+<tfoot>
+<tr>
+<td align="left" colspan="2">Grand Total</td>
+<td align="center">121</td>
+<td align="center">100%</td>
+</tr>
+</tfoot>
+</table>
+<p>and some sub-category level details:</p>
+
+<ul>
+<li>flyout: 7 of 39 were foul ball flyouts</li>
+<li>groundout: 6 were force outs, 3 were unassisted</li>
+<li>K: 14 swinging,  5 looking, 5 unknown, 1 was dropped third strike (c-1b)</li>
+</ul>
+
+<p>in the table are 11 world series where the team clinched on a walk-off.  <a href="https://www.mlb.com/news/world-series-walk-off-clinches" target="_blank">THIS ARTICLE</a> from mlb gives details.</p>
+
+<p>and lastly, i looked at the positions involved in the final play.  this doesn&rsquo;t add up to 121 because some plays had multiple players and others had no positions players:</p>
+
+<table>
+<thead>
+<tr>
+<th align="center">position</th>
+<th align="center">number of plays</th>
+<th align="center">number of strikeouts (pitcher)</th>
+<th align="center">perc</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="center">3</td>
+<td align="center" colspan="2">35</td>
+<td align="center">28%</td>
+</tr>
+
+<tr>
+<td align="center">4</td>
+<td align="center" colspan="2">20</td>
+<td align="center">16%</td>
+</tr>
+
+<tr>
+<td align="center">6</td>
+<td align="center" colspan="2">19</td>
+<td align="center">15%</td>
+</tr>
+
+<tr>
+<td align="center">7</td>
+<td align="center" colspan="2">12</td>
+<td align="center">10%</td>
+</tr>
+
+<tr>
+<td align="center">5</td>
+<td align="center" colspan="2">10</td>
+<td align="center">8%</td>
+</tr>
+
+<tr>
+<td align="center">8</td>
+<td align="center" colspan="2">10</td>
+<td align="center">8%</td>
+</tr>
+
+<tr>
+<td align="center">1</td>
+<td align="center">8</td>
+<td align="center">25</td>
+<td align="center">6%</td>
+</tr>
+
+<tr>
+<td align="center">9</td>
+<td align="center" colspan="2">6</td>
+<td align="center">5%</td>
+</tr>
+
+<tr>
+<td align="center">2</td>
+<td align="center" colspan="2">5</td>
+<td align="center">4%</td>
+</tr>
+</tbody>
+</table>
+
+<ul>
+<li>for the record, 1 world series had three position players involved (643 double play), 37 had 2 players involved, 48 had 1, and 35 had none (11 walkoffs and 24 strikeouts excl dropped 3rd strike)</li>
+<li>i didn&rsquo;t give pitchers credit for strikeouts in the count, but i do show the # of K&rsquo;s for interest</li>
+<li>only one play involved three position players - 643 double play in 1947.  there were two other other double plays but of the 43 variety</li>
+<li>the five plays that involved C were CS, dropped third strike, and three foul popouts</li>
+</ul>
+
+<p>last couple of snide remarks:</p>
+
+<blockquote>
+<p>America has rolled by like an army of steamrollers. It&rsquo;s been erased like a blackboard, rebuilt, and erased again. But baseball has marked the time.  except for that jagoff selig who screwed it all up</p>
+</blockquote>
+
+<ul>
+<li><p>there are only 2 missed world series from 1903 thru 2025 - otherwise it is an unblemished timeline of america even amidst world wars and depressions.  1904 was missed because it would have been only the second but the &ldquo;red sox&rdquo; (boston americans at the time) whined and didn&rsquo;t wanna play.  and the 1994 world series which was cancelled by hall of famer bud 756* selig because he sucks.</p></li>
+
+<li><p>and harkening back to the very first point of this post, i mean, today fanduel-ists would have a collective aneurism trying to post awful human garbage posts&hellip;.  thanks to the partnership made in hell between u/mlbofficial and u/fanduel</p></li>
+</ul>
+
+<p>happy spring training!</p>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o6aqqdo" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>_cski | Los Angeles Dodgers</div>
+        <div>3 | 37 minutes ago </div>
+      </div>
+      <label for="o6aqqdo" class="commentText"><p>Ruth attempting to steal with Meusel at the plate and Gehrig on deck is a baffling decision. “Like a ninny” is right haha.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o6atwp3" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>RuleNine | Texas Rangers</div>
+        <div>2 | 22 minutes ago </div>
+      </div>
+      <label for="o6atwp3" class="commentText"><p>Fun! By the way <em>every</em> out involves at least one position. The catcher gets credit for the putout on the vast majority of strikeouts. A strikeout isn&rsquo;t complete without some kind of catch or tag (or he gets automatic credit when first base is occupied with less than two outs, which of course wouldn&rsquo;t be the final out of a game).</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o6au15h" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>1990Buscemi | St. Louis Cardinals</div>
+        <div>1 | 21 minutes ago </div>
+      </div>
+      <label for="o6au15h" class="commentText"><p>Babe Ruth with the TOOTBLAN heard &lsquo;round the world.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
