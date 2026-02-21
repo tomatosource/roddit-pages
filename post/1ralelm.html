@@ -1,0 +1,807 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.selfPostImage {
+  width: 100%;
+  height: auto;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/nba/comments/1ralelm/20yearold_rookie_kon_knueppel_led_the_league_with/"><p>20-year-old rookie Kon Knueppel led the league with 193 three-pointers this season, shooting an impressive 43.3% from deep. This efficiency is so elite that not a single player among the league&rsquo;s top 48 leaders in three-pointers made holds a higher shooting percentage.</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <table>
+<thead>
+<tr>
+<th align="left">1. Kon Knueppel</th>
+<th align="left"><sup>193</sup>&frasl;<sub>446</sub></th>
+<th align="left">43.3%</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">2. Donovan Mitchell</td>
+<td align="left"><sup>189</sup>&frasl;<sub>503</sub></td>
+<td align="left">37.9%</td>
+</tr>
+
+<tr>
+<td align="left">3. Tyrese Maxey</td>
+<td align="left"><sup>178</sup>&frasl;<sub>470</sub></td>
+<td align="left">37.9%</td>
+</tr>
+
+<tr>
+<td align="left">4. Stephen Curry</td>
+<td align="left"><sup>175</sup>&frasl;<sub>448</sub></td>
+<td align="left">39.1%</td>
+</tr>
+
+<tr>
+<td align="left">5. Donte DiVincenzo</td>
+<td align="left"><sup>174</sup>&frasl;<sub>452</sub></td>
+<td align="left">38.5%</td>
+</tr>
+
+<tr>
+<td align="left">6. Nickeil Alexander-Walker</td>
+<td align="left"><sup>170</sup>&frasl;<sub>456</sub></td>
+<td align="left">37.3%</td>
+</tr>
+
+<tr>
+<td align="left">7. Trey Murphy III</td>
+<td align="left"><sup>168</sup>&frasl;<sub>445</sub></td>
+<td align="left">37.8%</td>
+</tr>
+
+<tr>
+<td align="left">8. Jamal Murray</td>
+<td align="left"><sup>166</sup>&frasl;<sub>389</sub></td>
+<td align="left">42.7%</td>
+</tr>
+
+<tr>
+<td align="left">9. Collin Gillespie</td>
+<td align="left"><sup>165</sup>&frasl;<sub>393</sub></td>
+<td align="left">42.0%</td>
+</tr>
+
+<tr>
+<td align="left">10. Anthony Edwards</td>
+<td align="left"><sup>160</sup>&frasl;<sub>399</sub></td>
+<td align="left">40.1%</td>
+</tr>
+
+<tr>
+<td align="left">11. Tim Hardaway Jr.</td>
+<td align="left"><sup>159</sup>&frasl;<sub>390</sub></td>
+<td align="left">40.8%</td>
+</tr>
+
+<tr>
+<td align="left">12. LaMelo Ball</td>
+<td align="left"><sup>158</sup>&frasl;<sub>443</sub></td>
+<td align="left">35.7%</td>
+</tr>
+
+<tr>
+<td align="left">13. Royce O&rsquo;Neale</td>
+<td align="left"><sup>156</sup>&frasl;<sub>385</sub></td>
+<td align="left">40.5%</td>
+</tr>
+
+<tr>
+<td align="left">14. Duncan Robinson</td>
+<td align="left"><sup>152</sup>&frasl;<sub>378</sub></td>
+<td align="left">40.2%</td>
+</tr>
+
+<tr>
+<td align="left">14. Michael Porter Jr.</td>
+<td align="left"><sup>152</sup>&frasl;<sub>405</sub></td>
+<td align="left">37.5%</td>
+</tr>
+
+<tr>
+<td align="left">16. AJ Green</td>
+<td align="left"><sup>151</sup>&frasl;<sub>354</sub></td>
+<td align="left">42.7%</td>
+</tr>
+
+<tr>
+<td align="left">17. Derrick White</td>
+<td align="left"><sup>149</sup>&frasl;<sub>464</sub></td>
+<td align="left">32.1%</td>
+</tr>
+
+<tr>
+<td align="left">17. Jalen Brunson</td>
+<td align="left"><sup>149</sup>&frasl;<sub>397</sub></td>
+<td align="left">37.5%</td>
+</tr>
+
+<tr>
+<td align="left">17. Luka Dončić</td>
+<td align="left"><sup>149</sup>&frasl;<sub>432</sub></td>
+<td align="left">34.5%</td>
+</tr>
+
+<tr>
+<td align="left">20. James Harden</td>
+<td align="left"><sup>148</sup>&frasl;<sub>416</sub></td>
+<td align="left">35.6%</td>
+</tr>
+
+<tr>
+<td align="left">20. Toumani Camara</td>
+<td align="left"><sup>148</sup>&frasl;<sub>403</sub></td>
+<td align="left">36.7%</td>
+</tr>
+
+<tr>
+<td align="left">22. Anfernee Simons</td>
+<td align="left"><sup>146</sup>&frasl;<sub>378</sub></td>
+<td align="left">38.6%</td>
+</tr>
+
+<tr>
+<td align="left">23. Klay Thompson</td>
+<td align="left"><sup>143</sup>&frasl;<sub>382</sub></td>
+<td align="left">37.4%</td>
+</tr>
+
+<tr>
+<td align="left">24. Payton Pritchard</td>
+<td align="left"><sup>142</sup>&frasl;<sub>393</sub></td>
+<td align="left">36.1%</td>
+</tr>
+
+<tr>
+<td align="left">25. CJ McCollum</td>
+<td align="left"><sup>139</sup>&frasl;<sub>359</sub></td>
+<td align="left">38.7%</td>
+</tr>
+
+<tr>
+<td align="left">25. Immanuel Quickley</td>
+<td align="left"><sup>139</sup>&frasl;<sub>370</sub></td>
+<td align="left">37.6%</td>
+</tr>
+
+<tr>
+<td align="left">25. Naz Reid</td>
+<td align="left"><sup>139</sup>&frasl;<sub>359</sub></td>
+<td align="left">38.7%</td>
+</tr>
+
+<tr>
+<td align="left">28. Sam Hauser</td>
+<td align="left"><sup>136</sup>&frasl;<sub>342</sub></td>
+<td align="left">39.8%</td>
+</tr>
+
+<tr>
+<td align="left">29. Norman Powell</td>
+<td align="left"><sup>132</sup>&frasl;<sub>336</sub></td>
+<td align="left">39.3%</td>
+</tr>
+
+<tr>
+<td align="left">30. Julian Champagnie</td>
+<td align="left"><sup>130</sup>&frasl;<sub>352</sub></td>
+<td align="left">36.9%</td>
+</tr>
+
+<tr>
+<td align="left">30. Moses Moody</td>
+<td align="left"><sup>130</sup>&frasl;<sub>324</sub></td>
+<td align="left">40.1%</td>
+</tr>
+
+<tr>
+<td align="left">32. Reed Sheppard</td>
+<td align="left"><sup>129</sup>&frasl;<sub>336</sub></td>
+<td align="left">38.4%</td>
+</tr>
+
+<tr>
+<td align="left">32. Ryan Rollins</td>
+<td align="left"><sup>129</sup>&frasl;<sub>310</sub></td>
+<td align="left">41.6%</td>
+</tr>
+
+<tr>
+<td align="left">34. Max Christie</td>
+<td align="left"><sup>123</sup>&frasl;<sub>289</sub></td>
+<td align="left">42.6%</td>
+</tr>
+
+<tr>
+<td align="left">35. Keyonte George</td>
+<td align="left"><sup>120</sup>&frasl;<sub>320</sub></td>
+<td align="left">37.5%</td>
+</tr>
+
+<tr>
+<td align="left">36. Egor Dëmin</td>
+<td align="left"><sup>119</sup>&frasl;<sub>306</sub></td>
+<td align="left">38.9%</td>
+</tr>
+
+<tr>
+<td align="left">37, Brandon Miller</td>
+<td align="left"><sup>118</sup>&frasl;<sub>333</sub></td>
+<td align="left">35.4%</td>
+</tr>
+
+<tr>
+<td align="left">37. Kevin Durant</td>
+<td align="left"><sup>118</sup>&frasl;<sub>292</sub></td>
+<td align="left">40.4%</td>
+</tr>
+
+<tr>
+<td align="left">37. Mikal Bridges</td>
+<td align="left"><sup>118</sup>&frasl;<sub>309</sub></td>
+<td align="left">38.2%</td>
+</tr>
+
+<tr>
+<td align="left">40. Grayson Allen</td>
+<td align="left"><sup>117</sup>&frasl;<sub>317</sub></td>
+<td align="left">36.9%</td>
+</tr>
+
+<tr>
+<td align="left">40. Jabari Smith Jr.</td>
+<td align="left"><sup>117</sup>&frasl;<sub>324</sub></td>
+<td align="left">36.1%</td>
+</tr>
+
+<tr>
+<td align="left">42. Dillon Brooks</td>
+<td align="left"><sup>116</sup>&frasl;<sub>338</sub></td>
+<td align="left">34.3%</td>
+</tr>
+
+<tr>
+<td align="left">42. Isaiah Joe</td>
+<td align="left"><sup>116</sup>&frasl;<sub>278</sub></td>
+<td align="left">41.7%</td>
+</tr>
+
+<tr>
+<td align="left">44. Lauri Markkanen</td>
+<td align="left"><sup>114</sup>&frasl;<sub>314</sub></td>
+<td align="left">36.3%</td>
+</tr>
+
+<tr>
+<td align="left">44. Vít Krejčí</td>
+<td align="left"><sup>114</sup>&frasl;<sub>278</sub></td>
+<td align="left">41.0%</td>
+</tr>
+
+<tr>
+<td align="left">46. Bub Carrington</td>
+<td align="left"><sup>113</sup>&frasl;<sub>293</sub></td>
+<td align="left">38.6%</td>
+</tr>
+
+<tr>
+<td align="left">46. Matas Buzelis</td>
+<td align="left"><sup>113</sup>&frasl;<sub>311</sub></td>
+<td align="left">36.3%</td>
+</tr>
+
+<tr>
+<td align="left">48. Miles Bridges</td>
+<td align="left"><sup>112</sup>&frasl;<sub>342</sub></td>
+<td align="left">32.7%</td>
+</tr>
+
+<tr>
+<td align="left"><strong>48. Sam Merrill</strong></td>
+<td align="left"><strong><sup>112</sup>&frasl;<sub>239</sub></strong></td>
+<td align="left"><strong>46.9%</strong></td>
+</tr>
+
+<tr>
+<td align="left"><strong>50. Cam Spencer</strong></td>
+<td align="left"><strong><sup>111</sup>&frasl;<sub>248</sub></strong></td>
+<td align="left"><strong>44.8%</strong></td>
+</tr>
+</tbody>
+</table>
+<p>Kon Kneppel is the current NBA leader in three-pointers made, having connected on 193 of his 446 attempts. In second place is Donovan Mitchell, who has made 189 out of 503 attempts. Aside from these two, no one has reached the 180-mark, and only five players in the entire league have even hit 170.</p>
+
+<p>Remarkably, you have to look as far down as 48th in the total makes rankings to find a player with a higher three-point percentage than Kneppel. Sam Merrill—who has 112 makes on 239 attempts—is the first player on that list to boast a higher shooting percentage than the league leader.</p>
+
+<p>Kon Knueppel already ranks second in NBA history for three-pointers made in a rookie season. Barring any injuries, he is on pace to finish the year with approximately 280 to 300 makes. The current all-time NBA rookie record is held by Keegan Murray, who connected on 206 triples.</p>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o6kigcp" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Fireslug87</div>
+        <div>11 | an hour ago </div>
+      </div>
+      <label for="o6kigcp" class="commentText"><p>But can he beat Jesus Christ in three-pointers for the season?</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="o6kizcw" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>go0sKC | Thunder</div>
+        <div>6 | an hour ago </div>
+      </div>
+      <label for="o6kizcw" class="commentText"><p>Jesus only hit like four threes in his whole life: the cock crowed thrice at Peter; he was crucified with two other dudes; he was resurrected after three days; and he was/is one person in the Holy Trinity</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="o6kqldu" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>jataba115 | OKC</div>
+        <div>1 | 7 minutes ago </div>
+      </div>
+      <label for="o6kqldu" class="commentText"><p>Jesus is alive, he’s been hitting 3s at my gym</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o6kigon" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Lmaobruh4465 | Toronto Huskies</div>
+        <div>10 | an hour ago </div>
+      </div>
+      <label for="o6kigon" class="commentText"><p>His efficiency and volume are insane for a rookie. He’d be the clear favourite ROTY in a lot of recent classes including last years</p>
+
+<p>For me him and Flagg are 40-40 with VJ at 20% (fanbases don’t come at me pls I don’t want them a ton)</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="o6kk6rf" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Intelligent-Web-8017</div>
+        <div>9 | an hour ago </div>
+      </div>
+      <label for="o6kk6rf" class="commentText"><p>if flagg is out for more games then kon prob takes it ngl. hornets also are the better team and likely make playoffs</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="o6kmhlm" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>RiloAlDente | Spurs</div>
+        <div>3 | an hour ago </div>
+      </div>
+      <label for="o6kmhlm" class="commentText"><p>For a rookie?</p>
+
+<p>These numbers are good in general.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="o6knaff" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>basch152 | Pistons</div>
+        <div>4 | 40 minutes ago </div>
+      </div>
+      <label for="o6knaff" class="commentText"><p>I dont think theres a team in the nba that wouldn&rsquo;t take a guy thats 1.5% from a 50/40/90 season averaging 19 ppg</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="o6kpxe7" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>bwehx</div>
+        <div>1 | 14 minutes ago </div>
+      </div>
+      <label for="o6kpxe7" class="commentText"><p>I&rsquo;m pretty sure every contender would love to have Kon on their team right now. He just fits so well in any type of team construction</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="o6kkgz8" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>linkthelink</div>
+        <div>-3 | an hour ago </div>
+      </div>
+      <label for="o6kkgz8" class="commentText"><p>Flagg&rsquo;s gotten better the past month, while Kon has continued at his still excellent level, Flagg&rsquo;s the favorite.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o6kifbv" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>DarkoDragicevic</div>
+        <div>4 | an hour ago </div>
+      </div>
+      <label for="o6kifbv" class="commentText"><p>Americans made biggest progress past decade in 3pt shooting. World players catching them in athleticism, rebounding, killer mentality and skills, but USA producing on all positions good defenders and shooters.  Kon so refreshful shooting guard, pure bucket. Franchise man for CHA! Already top30 in terms of basketball IQ</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o6kmitd" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>roastedhambone | Thunder</div>
+        <div>3 | an hour ago </div>
+      </div>
+      <label for="o6kmitd" class="commentText"><p>*leads the league</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="o6kr0gd" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>sirvey23 | Rockets</div>
+        <div>1 | 3 minutes ago </div>
+      </div>
+      <label for="o6kr0gd" class="commentText"><p>I’m over here like “ the season is over??”</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o6kjelc" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>moby323 | 76ers</div>
+        <div>3 | an hour ago </div>
+      </div>
+      <label for="o6kjelc" class="commentText"><p>Bill Simmons is like “I can’t just call him an uber, he’s shooting over 43%!”</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o6kkdhs" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Certain_Cranberry_77</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="o6kkdhs" class="commentText"><p>Y&rsquo;all should start talking to Jesus Christ more. It should at least make you pee more accurately in the toilet bowl. Makes your woman happy.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="o6knv53" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>BiteyHorse | Warriors</div>
+        <div>0 | 34 minutes ago </div>
+      </div>
+      <label for="o6knv53" class="commentText"><p>Yeah lets all talk more to the imaginary sky guy in our heads. That&rsquo;ll help everything!</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
