@@ -1,0 +1,660 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.selfPostImage {
+  width: 100%;
+  height: auto;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/nba/comments/1rb21xj/oc_i_statistically_analyzed_every_play_of_the/"><p>[OC] I statistically analyzed every play of the season to determine who was the biggest Foul Merchant</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <p>Since I have been seeing so much discussion around who is the biggest foul merchant especially with SGA&rsquo;s MVP I decided to try and dig into it statistically to see who in fact is the biggest foul merchant.</p>
+
+<p>To do this I grabbed every play from this season (and last season) and built a Merchant Index based on their shot profile, how often they get fouled, non shooting fouls, and offensive fouls.</p>
+
+<p>I built a site to explain and list all the methodology here - <a href="https://nbafoulmerchant.com/" target="_blank">https://nbafoulmerchant.com/</a>  - no ads or anything just made for fun.</p>
+
+<p>The main way I calculated is by analyzing every single shot attempt by each player, then categorizing them into different areas, Restricted area, paint, mid range, corner 3, and above the break 3. Each of these attempts has a different likelihood of ending in a foul - something like a corner 3 gets fouled extremely rarely compared to in the restricted area. Then using that I built an &ldquo;average&rdquo; expected amount of free throws for each player to get given where they shoot and how often they shoot. Then looked at how many ACTUAL free throws they have been getting in the games. Clearly some are getting the whistle more than average&hellip;</p>
+
+<h1 id="the-current-top-6-are">The current top 6 are:</h1>
+
+<ol>
+<li>Luka Dončić</li>
+<li>Austin Reaves</li>
+<li>Shai Gilgeous-Alexander</li>
+<li>Jimmy Butler III</li>
+<li>Deni Avdija</li>
+<li>Nikola Jokić</li>
+</ol>
+
+<h1 id="my-takeaways">My takeaways:</h1>
+
+<ul>
+<li>Luka definitely consistently gets way more fouls than others - he has the 2nd highest free throw per 36, highest FTA/xFTA ratio, and constantly getting ~11 free throw attempts per game. Maybe not the subreddit&rsquo;s most hated but his whining does seem to work.</li>
+<li>Brunson is getting way less calls this year - last year he was 99 (top 5) in this metric but this year he is significantly lower (rank #54). I expected him to be #1 tbh but I guess this year he isnt getting as much calls.</li>
+<li>SGA gets to the free throw line a lot (10 per game) but part of why is cause he shoots so much and shoots so much inside the arch. (15th in FTA/xFTA). But still a foul merchant.</li>
+<li><a href="https://nbafoulmerchant.com/players/175" target="_blank">Harden </a>isn&rsquo;t as high as i expected but does rank high in a lot of the metrics. Especially funny to see his washington game with 13 points on 12 FTA.</li>
+</ul>
+
+<p>If you want to take a look at the full list, look up any player, or look at the players shot charts you can see it <a href="https://nbafoulmerchant.com/" target="_blank">here at the site!</a></p>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o6nvtky" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Little_Sherbet5775</div>
+        <div>11 | 34 minutes ago </div>
+      </div>
+      <label for="o6nvtky" class="commentText"><p>The issue with this is that it doesn&rsquo;t account for how a player shoots. Some players are much better at generating contact and thus free throws than others in certain areas. Tatum (I&rsquo;m a Celtics fan) used to drive a lot, and the defense used to foul him a lot in the paint, since if they don&rsquo;t, he&rsquo;s likely to hit the layup. Other guys on the team used to drive a decent amount, and the defense didn&rsquo;t foul since they knew those players were much less likely to hit a shot near the rim,m so they didn&rsquo;t need to foul compared to with Tatum. Good players often get fouled a lot since they are much larger threats to score anyways while driving or something. If shot contact data existed, then this would be cooler. Really good website though. Super nicely designed.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="o6nwt59" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>spellsy | Warriors</div>
+        <div>1 | 29 minutes ago </div>
+      </div>
+      <label for="o6nwt59" class="commentText"><p>thanks :) yeah i think there is a better way with more data - I think some of this data is actually tracked and distributed via sources like sports radar. But those data streams require big $$ and since this was mostly for r/NBA fun i wasnt gonna pay for api keys haha.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o6nxh6f" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Markthebaptist</div>
+        <div>1 | 25 minutes ago </div>
+      </div>
+      <label for="o6nxh6f" class="commentText"><p>Ehh the results fit with my expectations and include a handful of players I don&rsquo;t really like, so I&rsquo;m choosing to view this as a scientific study</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="o6o19wy" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>sunpar1 | Nets</div>
+        <div>1 | 5 minutes ago </div>
+      </div>
+      <label for="o6o19wy" class="commentText"><p>Same</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o6nvxe7" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>SlowGrass1424</div>
+        <div>6 | 34 minutes ago </div>
+      </div>
+      <label for="o6nvxe7" class="commentText"><p>Good explanation of why the Lakers are miserable to watch</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="o6nx8ys" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>jakekerr | Lakers</div>
+        <div>1 | 27 minutes ago </div>
+      </div>
+      <label for="o6nx8ys" class="commentText"><p>I really enjoy watching them!</p>
+
+<p>Ignore my flair.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="o6o07mo" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Ok-Tree4365</div>
+        <div>1 | 11 minutes ago </div>
+      </div>
+      <label for="o6o07mo" class="commentText"><p>It’s bad ball</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="o6nznfb" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>WingsOnWednesday</div>
+        <div>1 | 14 minutes ago </div>
+      </div>
+      <label for="o6nznfb" class="commentText"><p>Lol</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o6nwys4" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>DontTedOnMe | MIN</div>
+        <div>1 | 28 minutes ago </div>
+      </div>
+      <label for="o6nwys4" class="commentText"><p>u/spellsy I HAVE BEEN STUDYING YOUR GAME, SIR, AND I AM IMPRESSED. YOU&rsquo;VE STUDIED HARD, PUT THE WORK IN, AND NOW YOU&rsquo;RE SHOWING THE WORLD WHAT YOU CAN DO! YOUR DATA IS IMPECCABLE AND YOUR STYLE IS IMMACULATE! I SALUTE YOU, MR. u/spellsy! </p>
+
+<p>-Doris Burke</p>
+
+<p>But for real, this is good stuff, thanks for putting it together.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o6nxmn8" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>jakekerr | Lakers</div>
+        <div>1 | 25 minutes ago </div>
+      </div>
+      <label for="o6nxmn8" class="commentText"><p>This website is the bomb. Holy shit, it&rsquo;s nice.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o6ny0z2" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Kindly-Chemistry5149 | Kings</div>
+        <div>1 | 22 minutes ago </div>
+      </div>
+      <label for="o6ny0z2" class="commentText"><p>Interesting there are two Lakers players. Does this mean the Lakers get more foul calls? Or do they just have the two biggest foul baiters?</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o6nzg1v" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>MWiatrak2077 | Pistons</div>
+        <div>1 | 15 minutes ago </div>
+      </div>
+      <label for="o6nzg1v" class="commentText"><p>The UI and quality of this website is insanely good</p>
+
+<p>Great job man</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o6nzy0f" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Old_Supermarket_7575 | Thunder</div>
+        <div>1 | 12 minutes ago </div>
+      </div>
+      <label for="o6nzy0f" class="commentText"><p>Shai over jimmy butler means your calculations are wrong</p>
+
+<p>Getting blocking fouls bc you’re the best guard driver in nba history is different than jumping onto somebody on the free throw line for 8 of your 15 points</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o6o160z" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>survivaltactics2</div>
+        <div>1 | 6 minutes ago </div>
+      </div>
+      <label for="o6o160z" class="commentText"><p>Is there any way you could do this historically or is that data not there</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o6o1e72" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>rusty512 | Pistons</div>
+        <div>1 | 5 minutes ago </div>
+      </div>
+      <label for="o6o1e72" class="commentText"><p>website looks great</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o6nulf6" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Mundane-Structure148</div>
+        <div>-1 | 41 minutes ago </div>
+      </div>
+      <label for="o6nulf6" class="commentText"><p>Surprised Jimmy isn&rsquo;t one (as a warriors fan)</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="o6nv89k" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>spellsy | Warriors</div>
+        <div>3 | 37 minutes ago </div>
+      </div>
+      <label for="o6nv89k" class="commentText"><p>haha he is top 5 &hellip; he also is one of the highest superstars in non shooting fouls drawn per 36 min &hellip; which isnt a good look</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="o6nvjiq" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>nonresponsive</div>
+        <div>1 | 36 minutes ago </div>
+      </div>
+      <label for="o6nvjiq" class="commentText"><p>Uh, he&rsquo;s at number 4.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="o6nwlws" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Mundane-Structure148</div>
+        <div>1 | 30 minutes ago </div>
+      </div>
+      <label for="o6nwlws" class="commentText"><p>which isn’t number 1</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o6nv5mn" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>DuckDucks | Knicks</div>
+        <div>-6 | 38 minutes ago </div>
+      </div>
+      <label for="o6nv5mn" class="commentText"><p>You expected Brunson to be number one because you watched a couple of egregious highlights and called it a day. Maybe try watching some games next time</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="o6nyv7e" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>MWiatrak2077 | Pistons</div>
+        <div>1 | 18 minutes ago </div>
+      </div>
+      <label for="o6nyv7e" class="commentText"><p>I love this subreddit</p>
+
+<ul>
+<li><p>Guy makes really cool website</p></li>
+
+<li><p>Compliments your star player</p></li>
+
+<li><p>You get mad anyway</p></li>
+</ul>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="o6nw6hf" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>DJayLeno</div>
+        <div>2 | 32 minutes ago </div>
+      </div>
+      <label for="o6nw6hf" class="commentText"><p>He&rsquo;s saying your baby boy is doing better this year. You should be proud.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
