@@ -1,0 +1,266 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.selfPostImage {
+  width: 100%;
+  height: auto;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/PathOfExile2/comments/1rbmky5/teleporting_to_town_during_campaign_should_be/"><p>Teleporting to town during campaign should be faster &ndash; load other players asynchronously</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <p>As in any ARPG, returning to town is a crucial aspect of the game&rsquo;s flow: to look at your inventory, sell &amp; disenchant, craft, browse vendor shops, upgrade, stock up on potions (or refill potions), get new quest updates. It influences how many items you pick up, and thus care about, which in turn influences how much gold or crafting resources you have, which in turn might even influence your build. If returning to town becomes so much of a chore that you do it as little as possible, that completely changes the flow of the game, to the point where you all but completely ignore the aspect, and adapt your playstyle and potentially build to it.</p>
+
+<p>In PoE2 (and PoE1) it is currently a chore to return to town, given how long it takes to load. During the campaign, especially on league start, loading town takes so long that I simply don&rsquo;t do it, and hence I nearly don&rsquo;t pick up any items, thus I almost don&rsquo;t salvage or sell, which influences many aspects of the campaign playthrough.</p>
+
+<p>Additionally, players with a cutting-edge PC get an advantage over players with an older PC (hence, turning the game, to some degree, indirectly, into &lsquo;pay to win&rsquo;).</p>
+
+<p>Given how small towns are, they should theoretically be reasonably fast to load. What&rsquo;s presumably taking so long to load is all the other player characters &amp; their purchased MTX. This has been widely discussed, GGG wouldn&rsquo;t remove other players from town, since if they can&rsquo;t &lsquo;show them off&rsquo;, they&rsquo;d be less inclined to purchase them, which nobody could want.</p>
+
+<p>Is there a compromise? I wonder if it would be possible to, when you TP to town, start by loading just the town, not yet any player or their art; but as soon as you&rsquo;re there, start loading them asynchronously. It might be possible to do this in a smart way so that the players which are near the stash are loaded first, so by the time you arrive there, they will be loaded; then the players near the WP (as you&rsquo;ll often come in through a TP and exit through a WP). Players who are in the same instance but further away can be loaded last, so that they&rsquo;d be loaded once they come running back to the center of town. And of course players TP&rsquo;ing or WP&rsquo;ing in are already loaded asynchronously (I imagine this starts as soon as they initiate the teleport and are assigned the instance, before they have fully loaded the instance).</p>
+
+<p>Once a player&rsquo;s art is loaded, they&rsquo;d just &lsquo;fade in&rsquo; gradually. Only at this point they&rsquo;d start to &lsquo;take up space&rsquo;. If they would intersect with your character or minions, just render them a bit further away on the client; and recalibrate as they move on the server, ideally just have them, on the client, &lsquo;path find&rsquo; their way to the actual server location.</p>
+
+<p>The slight downside of the weirdness of players sometimes &lsquo;appearing out of thin air&rsquo; (although this should be mitigated maximally by being smart about when to load them) should be largely offset by the huge advantage of faster load times.</p>
+
+<p>Anything I&rsquo;m forgetting? Has this been discussed before? Is this technically too difficult with the POE/POE2 engine?</p>
+
+<p>I couldn&rsquo;t help but think about this in the context of D2R, being reminded of how delicious it is to be able to TP to town in under a second, which enables all of the above&hellip;.</p>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o6rubca" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Osteinum</div>
+        <div>1 | 22 minutes ago </div>
+      </div>
+      <label for="o6rubca" class="commentText"><p>One of the good thing about d4. 1 click portal to town. And fast</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o6ruc0f" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Rubsy</div>
+        <div>1 | 22 minutes ago </div>
+      </div>
+      <label for="o6ruc0f" class="commentText"><p>Theres one zone that does this and it always fucks me up how quick you get ported. Its the first zone in act 2 when you kill the hienna boss. But thats because the town and the area where the monsters are are the same zone.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
