@@ -1,0 +1,783 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.selfPostImage {
+  width: 100%;
+  height: auto;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/baseball/comments/1rckwhy/mlb_team_payrolls_2016_opening_day_vs_projected/"><p>MLB Team Payrolls: 2016 Opening Day vs. projected 2026 Opening Day</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <p>Then numbers below are <em>not</em> adjusted for inflation.</p>
+
+<p>The 2016 Opening Day payroll numbers are taken from <a href="https://www.stevetheump.com/Payrolls.htm" target="_blank">MLB Team Payrolls</a>. THe projected 2026 Opening Day payroll numbers are taken from <a href="https://www.fangraphs.com/roster-resource/breakdowns/payroll" target="_blank">Roster Resource</a>.</p>
+
+<p>Mobile users swipe left to see the entire table.</p>
+
+<table>
+<thead>
+<tr>
+<th align="left">Team</th>
+<th align="left">2016 Payroll</th>
+<th align="left">2026 Payroll</th>
+<th align="left">$ Diff</th>
+<th align="left">% Change</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">NYM</td>
+<td align="left">$100M</td>
+<td align="left">$364M</td>
+<td align="left">+$264M</td>
+<td align="left"><strong>+264%</strong></td>
+</tr>
+
+<tr>
+<td align="left">HOU</td>
+<td align="left">$69M</td>
+<td align="left">$237M</td>
+<td align="left">+$168M</td>
+<td align="left"><strong>+243%</strong></td>
+</tr>
+
+<tr>
+<td align="left">ATL</td>
+<td align="left">$88M</td>
+<td align="left">$264M</td>
+<td align="left">+$176M</td>
+<td align="left"><strong>+200%</strong></td>
+</tr>
+
+<tr>
+<td align="left">ARI</td>
+<td align="left">$71M</td>
+<td align="left">$194M</td>
+<td align="left">+$123M</td>
+<td align="left"><strong>+173%</strong></td>
+</tr>
+
+<tr>
+<td align="left">TOR</td>
+<td align="left">$126M</td>
+<td align="left">$287M</td>
+<td align="left">+$161M</td>
+<td align="left"><strong>+128%</strong></td>
+</tr>
+
+<tr>
+<td align="left">PHI</td>
+<td align="left">$133M</td>
+<td align="left">$283M</td>
+<td align="left">+$150M</td>
+<td align="left"><strong>+113%</strong></td>
+</tr>
+
+<tr>
+<td align="left">CHC</td>
+<td align="left">$117M</td>
+<td align="left">$231M</td>
+<td align="left">+$114M</td>
+<td align="left"><strong>+97%</strong></td>
+</tr>
+
+<tr>
+<td align="left">SDP</td>
+<td align="left">$113M</td>
+<td align="left">$221M</td>
+<td align="left">+$108M</td>
+<td align="left"><strong>+96%</strong></td>
+</tr>
+
+<tr>
+<td align="left">LAD</td>
+<td align="left">$223M</td>
+<td align="left">$395M</td>
+<td align="left">+$172M</td>
+<td align="left"><strong>+77%</strong></td>
+</tr>
+
+<tr>
+<td align="left"><em>League</em></td>
+<td align="left"><em>$3.6B</em></td>
+<td align="left"><em>$5.4B</em></td>
+<td align="left"><em>+$1.8B</em></td>
+<td align="left"><strong><em>+49%</em></strong></td>
+</tr>
+
+<tr>
+<td align="left">NYY</td>
+<td align="left">$213M</td>
+<td align="left">$308M</td>
+<td align="left">+$95M</td>
+<td align="left"><strong>+45%</strong></td>
+</tr>
+
+<tr>
+<td align="left">BAL</td>
+<td align="left">$116M</td>
+<td align="left">$166M</td>
+<td align="left">+$50M</td>
+<td align="left"><strong>+43%</strong></td>
+</tr>
+
+<tr>
+<td align="left">MIL</td>
+<td align="left">$99M</td>
+<td align="left">$130M</td>
+<td align="left">+$31M</td>
+<td align="left"><strong>+31%</strong></td>
+</tr>
+
+<tr>
+<td align="left">SEA</td>
+<td align="left">$123M</td>
+<td align="left">$161M</td>
+<td align="left">+$38M</td>
+<td align="left"><strong>+31%</strong></td>
+</tr>
+
+<tr>
+<td align="left">KCR</td>
+<td align="left">$113M</td>
+<td align="left">$146M</td>
+<td align="left">+$33M</td>
+<td align="left"><strong>+29%</strong></td>
+</tr>
+
+<tr>
+<td align="left">TEX</td>
+<td align="left">$144M</td>
+<td align="left">$183M</td>
+<td align="left">+$39M</td>
+<td align="left"><strong>+27%</strong></td>
+</tr>
+
+<tr>
+<td align="left">SFG</td>
+<td align="left">$166M</td>
+<td align="left">$205M</td>
+<td align="left">+$39M</td>
+<td align="left"><strong>+23%</strong></td>
+</tr>
+
+<tr>
+<td align="left">LAA</td>
+<td align="left">$146M</td>
+<td align="left">$180M</td>
+<td align="left">+$34M</td>
+<td align="left"><strong>+23%</strong></td>
+</tr>
+
+<tr>
+<td align="left">COL</td>
+<td align="left">$98M</td>
+<td align="left">$120M</td>
+<td align="left">+$22M</td>
+<td align="left"><strong>+22%</strong></td>
+</tr>
+
+<tr>
+<td align="left">PIT</td>
+<td align="left">$86M</td>
+<td align="left">$105M</td>
+<td align="left">+$19M</td>
+<td align="left"><strong>+22%</strong></td>
+</tr>
+
+<tr>
+<td align="left">DET</td>
+<td align="left">$172M</td>
+<td align="left">$207M</td>
+<td align="left">+$35M</td>
+<td align="left"><strong>+20%</strong></td>
+</tr>
+
+<tr>
+<td align="left">TBR</td>
+<td align="left">$74M</td>
+<td align="left">$88M</td>
+<td align="left">+$14M</td>
+<td align="left"><strong>+19%</strong></td>
+</tr>
+
+<tr>
+<td align="left">SAC</td>
+<td align="left">$80M</td>
+<td align="left">$95M</td>
+<td align="left">+$15M</td>
+<td align="left"><strong>+19%</strong></td>
+</tr>
+
+<tr>
+<td align="left">CIN</td>
+<td align="left">$117M</td>
+<td align="left">$126M</td>
+<td align="left">+$9M</td>
+<td align="left"><strong>+8%</strong></td>
+</tr>
+
+<tr>
+<td align="left">BOS</td>
+<td align="left">$182M</td>
+<td align="left">$195M</td>
+<td align="left">+$13M</td>
+<td align="left"><strong>+7%</strong></td>
+</tr>
+
+<tr>
+<td align="left">MIN</td>
+<td align="left">$108M</td>
+<td align="left">$106M</td>
+<td align="left">-$2M</td>
+<td align="left"><strong>-2%</strong></td>
+</tr>
+
+<tr>
+<td align="left">CLE</td>
+<td align="left">$86M</td>
+<td align="left">$82M</td>
+<td align="left">-$4M</td>
+<td align="left"><strong>-5%</strong></td>
+</tr>
+
+<tr>
+<td align="left">CHW</td>
+<td align="left">$99M</td>
+<td align="left">$86M</td>
+<td align="left">-$13M</td>
+<td align="left"><strong>-13%</strong></td>
+</tr>
+
+<tr>
+<td align="left">MIA</td>
+<td align="left">$85M</td>
+<td align="left">$73M</td>
+<td align="left">-$12M</td>
+<td align="left"><strong>-14%</strong></td>
+</tr>
+
+<tr>
+<td align="left">STL</td>
+<td align="left">$120M</td>
+<td align="left">$99M</td>
+<td align="left">-$21M</td>
+<td align="left"><strong>-18%</strong></td>
+</tr>
+
+<tr>
+<td align="left">WSN</td>
+<td align="left">$166M</td>
+<td align="left">$93M</td>
+<td align="left">-$73M</td>
+<td align="left"><strong>-44%</strong></td>
+</tr>
+</tbody>
+</table>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o6yxgkk" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>chiddie | Washington Nationals • Teddy Roosevelt</div>
+        <div>10 | 40 minutes ago </div>
+      </div>
+      <label for="o6yxgkk" class="commentText"><p>FWIW the rate of inflation since 2016 is 35.5%, and &ldquo;sports inflation&rdquo; is typically greater than the typical inflation calculation. According to this chart, only 12 teams have increased their payroll after adjusting for inflation.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o6yy196" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>st1r | Los Angeles Dodgers</div>
+        <div>7 | 37 minutes ago </div>
+      </div>
+      <label for="o6yy196" class="commentText"><p>As a baseball fan, the Red Sox org since 2018 makes me sad :</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="o6yze6k" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Redbubble89 | Boston Red Sox</div>
+        <div>-1 | 31 minutes ago </div>
+      </div>
+      <label for="o6yze6k" class="commentText"><p>Anthony, Campbell, Rafaela, Bello, Suarez, and Crochet for a combined ~$93.5M AAV for the next 5 years is a damn shame. /s</p>
+
+<p>Edit: It&rsquo;s a very wrong number too, we&rsquo;re over the 2nd tax by a little.</p>
+
+<p>Edit2: That is almost our whole core and all of them are getting paid early in their careers except Ranger.  Story has not been a great contract but he&rsquo;s still contributing a part of this.  Masa is a weird piece but only $18M for 2 more years.  Mayer is not there yet and Durbin still has a ton of years.  Wilyer is still cheap. Narvaez was a 26 year old rookie.  As much as they like Duran, he doesn&rsquo;t fit long term but he&rsquo;s still in arb.  There are young pitchers.  They took on Gray and Contreras money and traded Hicks with some cash to send him away.  Red Sox are spending money.  It&rsquo;s just not to the Yankees who wait for their guys to hit free agency or the Mets/Dodgers to hand out half a billion plus to one guy.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="o6z45jm" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>st1r | Los Angeles Dodgers</div>
+        <div>2 | 9 minutes ago </div>
+      </div>
+      <label for="o6z45jm" class="commentText"><p>I love where the team is with their young talent, it just makes me sad that they used to be one of the juggernauts spending-wise and were always a threat to win the division and compete for the pennant, and now they’re choosing to rely on their young talent to save money, fortunately that young talent is mostly working out enough to make them a competitive, but they could be so much better if their spending increases matched even the league average.</p>
+
+<p>League has increased spending on average 49% over this decade stretch, Sox have only increased by 7% when they very well could be a top 5 spending team. They could have all this young talent <em>AND</em> more big name free agents.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="o6z2cbq" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Dinobot2_ | Boston Red Sox • Canada</div>
+        <div>1 | 17 minutes ago </div>
+      </div>
+      <label for="o6z2cbq" class="commentText"><p>The numbers in the table aren&rsquo;t the AAV payrolls, they&rsquo;re the payrolls based on what&rsquo;s actually being paid out to the players in 2026. The Red Sox have a lot of heavily backloaded contracts.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o6yzh1s" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>SeaBearsFoam | Cleveland Guardians</div>
+        <div>5 | 31 minutes ago </div>
+      </div>
+      <label for="o6yzh1s" class="commentText"><p>Somehow before even opening the post, I knew we&rsquo;d be in the negatives and near the bottom.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o6ywft9" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>HemlockMartinis | Los Angeles Dodgers</div>
+        <div>3 | an hour ago </div>
+      </div>
+      <label for="o6ywft9" class="commentText"><p>What a weird ten-year span for the Nats.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o6yxccm" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>respaaaaaj | Boston Red Sox</div>
+        <div>4 | 41 minutes ago </div>
+      </div>
+      <label for="o6yxccm" class="commentText"><p>The AL central is a disgrace to the sport.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o6yyv40" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>PorousCheese | Seattle Mariners</div>
+        <div>2 | 34 minutes ago </div>
+      </div>
+      <label for="o6yyv40" class="commentText"><p>“SAC”</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o6z05n0" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>mr-nicktobi | New York Mets</div>
+        <div>2 | 28 minutes ago </div>
+      </div>
+      <label for="o6z05n0" class="commentText"><p>we went to the WS in 2015 and there was ZERO investment to try and sustain that winning.<br>
+fuck the wilpons!!!!!</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="o6z2oyv" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ExternalLimp1176 | New York Mets</div>
+        <div>1 | 16 minutes ago </div>
+      </div>
+      <label for="o6z2oyv" class="commentText"><p>Tbf has Steve Cohen gotten us any further despite throwing gobs of money around? Within 1 game of world series in 2024 and then the garbage from last yr. 100 wins in 2021 and a disgusting sub .500 season in 2023. Despite how much you spend you can still create a garbage team. I’m not licking uncle Stevies rim like other fans until I actually see an improvement in results over the Wilpon yrs. (By the way the Wilpons spent prior to the Madoff stuff).</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o6yxgv7" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>TormentedThoughtsToo</div>
+        <div>1 | 40 minutes ago </div>
+      </div>
+      <label for="o6yxgv7" class="commentText"><p>Anybody want to take the time and adjust for inflation. </p>
+
+<p>Because this obviously paints a picture of look some teams are spending more money now.</p>
+
+<p>But like Pittsburgh 86 in 2016 would be 116 now whereas they’re at 105 in 2026. </p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o6yy0nz" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Antique-Guest-1607 | Cleveland Guardians</div>
+        <div>1 | 38 minutes ago </div>
+      </div>
+      <label for="o6yy0nz" class="commentText"><p>I wonder how a few years ago compares to 2016 instead and if it&rsquo;d be closer. I think it is clear that a lot of teams are tightening belts for the upcoming lockout.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o6yzsij" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>RichardNixon345 | Arizona Diamondbacks • Boston Red Sox</div>
+        <div>0 | 29 minutes ago </div>
+      </div>
+      <label for="o6yzsij" class="commentText"><p>Top 4 teams all missed the playoffs last year. #5 made it to the Series.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o6z06s4" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>No_Buy2554 | Cincinnati Reds</div>
+        <div>1 | 27 minutes ago </div>
+      </div>
+      <label for="o6z06s4" class="commentText"><p>A big reason is the RSN collapse.  Most of those teams at the bottom of payroll depended heavily on that RSN money, which started decreasing for a lot of those teams several years ago.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o6z0fgb" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>aesthetics4ever | Los Angeles Dodgers</div>
+        <div>1 | 26 minutes ago </div>
+      </div>
+      <label for="o6z0fgb" class="commentText"><p>Use the geometric average to get a better indication of annual compounded growth rates</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
