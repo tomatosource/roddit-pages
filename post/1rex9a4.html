@@ -1,0 +1,834 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.selfPostImage {
+  width: 100%;
+  height: auto;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/PathOfExile2/comments/1rex9a4/so_have_i_got_this_right_attempting_to_understand/"><p>So Have I got this right? Attempting to understand damage in POE 2</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <p>I think I have this right, but given the complexity and variance in source information, some areas may be wrong. Looking for feedback</p>
+
+<p>So we have 5 basic damage types:</p>
+
+<ul>
+<li>Physical</li>
+<li>Fire</li>
+<li>Cold</li>
+<li>Lightning</li>
+<li>Chaos</li>
+</ul>
+
+<p>And two basic damage delivery methods</p>
+
+<ul>
+<li>Direct</li>
+<li>DoT</li>
+</ul>
+
+<p>And two types of damage skill types</p>
+
+<ul>
+<li>Attack</li>
+<li>Spell</li>
+</ul>
+
+<p>And two source of skills</p>
+
+<ul>
+<li>Gem</li>
+<li>Weapon or other gear (less common)</li>
+</ul>
+
+<p>Every combination of the above is possible, if not implemented in the game, so you can have a physical DoT spell cast from a gem, or a physical direct attack from a weapon, or any other combination (in theory, if not in practice, i.e. there are no rules preventing this)</p>
+
+<p>Skills May have DoT (Damge over time) and/or an ailment/</p>
+
+<p><strong>Physical</strong></p>
+
+<p>Physical DoT is bleed, but so also is corrupted blood, corrupted blood is not considered to be bleeding. Bleeding is not considered to be corrupted blood.</p>
+
+<p>Physical attacks are mitigated by armour, or Phys damage reduction</p>
+
+<p><strong>Elemental (Fire, Cold, Lightning)</strong></p>
+
+<p>&lsquo;Elemental&rsquo; refers only to fire, cold, lightning.</p>
+
+<p>All/specific resistance only effects elemental damage.</p>
+
+<p><strong>Fire</strong></p>
+
+<p>Fire DoT is Burning. Ignite is a type of Fire DoT. Ignite damage does not stack, only the highest source of ignite damage is applied. Burning is also a fire DoT, and while ignite is a type of burning, burning might not be an ignite. e.g. Increasing ignite damage will not affect burning damage. Burning can also be applied to an area i.e. burning ground, that applies fire DoT to any target within the area.</p>
+
+<p>Inflicting any fire DoT has no other effect than additional damage.</p>
+
+<p><strong>Cold</strong></p>
+
+<p>Cold ailments are chill and freeze</p>
+
+<p>Chill slows targets action speed.</p>
+
+<p>Freeze builds with damage, once frozen the target cannot move or attack. A frozen enemy can be shattered, inflicting cold damage to nearby enemies. A player cannot be shattered. This destroys the corpse, removing it from any corpse interaction.</p>
+
+<p>(Apparently, these two ailments are separate, and don&rsquo;t contribute to each other.)</p>
+
+<p><strong>Lightning</strong></p>
+
+<p>Lightning ailments are:</p>
+
+<ul>
+<li>Shock, which increases all damage taken by a target by 20%- 100%. Any lightning skill can shock</li>
+<li>Electrocute, which stuns effected targets. Only specific modifiers add electrocute, must be built up, but is a separate scaling ailment not associated with shock.</li>
+</ul>
+
+<p><strong>Chaos</strong></p>
+
+<p>Chaos damage inflicts double damage on energy shield. Chaos resistance works against all forms of chaos damage; be they direct or DoT.</p>
+
+<p>Chaos DoT is:</p>
+
+<ul>
+<li>Poison. Poison damage bypasses energy shield. Poison is considered an ailment.</li>
+<li>Contagion. Contagion is a spell, that applies a debuff chaos DoT but is not considered poison.</li>
+<li>Decaying Hex applied by a support gem adds yet another type of chaos DoT. It is not considered poison.</li>
+</ul>
+
+<p>Increases to chaos damage will increase poison damage, but the poison damage DoT is based of base, not boosted damage, so you don&rsquo;t &ldquo;double dip&rdquo;</p>
+
+<p><strong>Modifiers</strong></p>
+
+<p>In addition to the above, there are many additional effects that can be utilised. These all have direct effects on either the target, the source, or both. They have many interactions with support gems, other skills, affixes and passives. The description below all assume that no other modifier is being applied.</p>
+
+<p><strong>Armour Break</strong></p>
+
+<p>Armour break reduces armour of a target. It must be specifically selected for, via support gem, specific skill, or affix.</p>
+
+<p>The amount of armour broken (before modifiers) is based off the damage dealt.</p>
+
+<p>If armour break reduces the target&rsquo;s armour to zero, the target&rsquo;s armour is &ldquo;fully broken&rdquo; and they rake 20% additional damage.</p>
+
+<p><strong>Pinning</strong></p>
+
+<p>Pin is an immobilising debuff. Pin builds up, and once a threshold is achieved, the target is pinned. Pinned targets are immobile and have no evasion.</p>
+
+<p>Pin builds (before modifiers) based on damage dealt.</p>
+
+<p><strong>Rage</strong></p>
+
+<p>Rage is a buff that builds to improve the attack damage (not spell damage) capped at 30%</p>
+
+<p>Rage decays over time if the user is not attacking.</p>
+
+<p><strong>Charges (Endurance, Frenzy, Power)</strong></p>
+
+<ul>
+<li><strong>Endurance Charges:</strong> Associated with Strength. Used by Warrior skills (e.g., <strong>Infernal Cry</strong>, <strong>Seismic Cry</strong>) to empower slams or restore life.</li>
+<li><strong>Frenzy Charges:</strong> Associated with Dexterity. Consumed by skills like <strong>Split Shot</strong> or <strong>Wind Serpent</strong> to add projectiles or chain effects.</li>
+<li><strong>Power Charges:</strong> Associated with Intelligence. Used to empower spells or specific elemental infusions.</li>
+</ul>
+
+<p><strong>Scaling Damage</strong></p>
+
+<p><strong>Damage Conversion</strong></p>
+
+<p>Conversion changes one damage type into another (e.g., Physical to Fire) and acts early in the calculation chain. </p>
+
+<p>Converted damage does not &ldquo;remember&rdquo; its origin type. If you convert 100% Physical to Fire, modifiers to &ldquo;Increased Physical Damage&rdquo; will <strong>not</strong> increase your damage; only &ldquo;Increased Fire Damage&rdquo; will.</p>
+
+<p>Conversion from multiple sources works in a specifci order:</p>
+
+<ol>
+<li><strong>Skill-type Conversion:</strong> Conversion listed on skill gems (e.g., inherent on <em>Perfect Strike</em>) happens first.</li>
+<li><strong>Secondary Conversion:</strong> Gear or passive tree conversions (e.g., <em>Avatar of Fire</em>) happen second</li>
+</ol>
+
+<ul>
+<li>Damage cannot exceed 100%</li>
+</ul>
+
+<p><strong>Gain Damage as Extra</strong></p>
+
+<p>Adds additional extra damage to another. This does not change the original damage type.</p>
+
+<p>Scaling one type of damage only effects that specific component.</p>
+
+<p><strong>Critical Damage</strong></p>
+
+<p>Critical damage multiples damage by 200%, increased by both crit chance, and crit damage.</p>
+
+<p>DoT damage cannot crit, but the initial hit can.</p>
+
+<p>Base critical hit chance is determined by either the weapon base critical hit chance, or the spell&rsquo;s critical hit chance.</p>
+
+<p><strong>Attack/Cast Speed</strong></p>
+
+<p>Attack speed increases only attacks</p>
+
+<p>Cast speed only increases spells</p>
+
+<p><strong>Summary of Scaling Order</strong></p>
+
+<ol>
+<li><strong>Base Damage</strong> (from weapon or gem level) + <strong>Flat Added Damage</strong>.</li>
+<li><strong>Conversion</strong> and <strong>Gained as Extra</strong> modifiers.</li>
+<li>Sum of all applicable <strong>Increased Damage</strong> modifiers.</li>
+<li>Product of all <strong>More Damage</strong> multipliers (typically from Support Gems).</li>
+<li><strong>Critical Strikes</strong>, <strong>Double/Triple Damage</strong>, and enemy mitigation (Resistances). </li>
+</ol>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o7fwnde" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>MixPlan</div>
+        <div>6 | an hour ago </div>
+      </div>
+      <label for="o7fwnde" class="commentText"><p>DoT is Damage over time. You cannot use interchangeably with ailments like chill, freeze, shocks, electrocute are not DoT, they are non damaging ailments.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="o7fy1bc" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Primary_Impact_2130</div>
+        <div>3 | an hour ago </div>
+      </div>
+      <label for="o7fy1bc" class="commentText"><p>Ooh, yeah, thanks and corrected!</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o7fvyyc" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>sdmpsychomantis</div>
+        <div>5 | an hour ago </div>
+      </div>
+      <label for="o7fvyyc" class="commentText"><p><em>And two source of skills</em></p>
+
+<ul>
+<li><em>Gem</em></li>
+<li><em>Weapon</em></li>
+</ul>
+
+<p>Should probably change weapon to gear as skills can appear on more then weapons, like there is a pair of boots with a skill among others.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="o7fx7df" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Primary_Impact_2130</div>
+        <div>3 | an hour ago </div>
+      </div>
+      <label for="o7fx7df" class="commentText"><p>Ooh, good catch, thanks!</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="o7g69a4" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>B1tfury</div>
+        <div>1 | 15 minutes ago </div>
+      </div>
+      <label for="o7g69a4" class="commentText"><p>Skills also come from class ascendancies.</p>
+
+<p>Liife Remnants from Blood Mage for a passive example, or Elemental Storm from Stormweaver for an active example.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o7fvr4i" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>froginbog</div>
+        <div>4 | an hour ago </div>
+      </div>
+      <label for="o7fvr4i" class="commentText"><p>Nice summary. The one thing I’d add is the difference between “increased” damage and “more” damage. The base damage etc is multiplied by both separately. Given the relative rarity of “more” it’s super valuable</p>
+
+<p>Never mind you got it!</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o7fygr4" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>FlaMayo</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="o7fygr4" class="commentText"><p>Hmm I didn&rsquo;t think chill and freeze were directly related like that. Does the storm weaver ascendancy that says all damage contributes to chill also make all damage contribute to freeze? I doubt it but I haven&rsquo;t tested it myself.</p>
+
+<p>I thought they both came from cold damage but separately, and that&rsquo;s why there are separate things that increase either chill magnitude or freeze buildup.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="o7fzadq" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Primary_Impact_2130</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="o7fzadq" class="commentText"><blockquote>
+<p>Hmm I didn&rsquo;t think chill and freeze were directly related like that. </p>
+</blockquote>
+
+<p>Yeah, Mobalytics suggests they do, other sources not, once of those areas that I&rsquo;m not sure on.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="o7fzb4b" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>lasagnaman</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="o7fzb4b" class="commentText"><p>You are correct</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="o7g0r6s" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Primary_Impact_2130</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="o7g0r6s" class="commentText"><p>Thanks, corrected, but I have to ask, why? Surely chill leading to Freeze makes sense, and is more manageable, less complicated!</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o7fwn3t" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>perihelion86</div>
+        <div>2 | an hour ago </div>
+      </div>
+      <label for="o7fwn3t" class="commentText"><p>Spells:</p>
+
+<p>+Skills</p>
+
+<p>Martial weapons:</p>
+
+<p>High DPS base weap</p>
+
+<p>+Skills</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o7g0ump" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ClydeTheCamel</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="o7g0ump" class="commentText"><p>Chill doesn&rsquo;t interact with attack speed, but action speed. This includes movement, attacks, and casting.</p>
+
+<p>Otherwise a good summary!</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="o7g3l3y" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Primary_Impact_2130</div>
+        <div>1 | 31 minutes ago </div>
+      </div>
+      <label for="o7g3l3y" class="commentText"><p>Action Speed! Gotcha!</p>
+
+<p>Does anything else effect this action speed? We have cast speed and attacks speed modifiers.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o7g3ibh" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>thatsrealneato</div>
+        <div>1 | 31 minutes ago </div>
+      </div>
+      <label for="o7g3ibh" class="commentText"><p>Mostly correct, but a few things to point out.</p>
+
+<p>“Direct” damage is referred to as hit damage in PoE. All non-DoT damage is hit damage. Armor applies to all physical hits, not just attacks. There’s also a third source of damage aside from attacks and spells which is usually simply referred to as secondary damage but doesn’t really have a name in-game and is less common. Corrupting blood or Witchhunter’s Zealous Inquisition explosions would be an example of this, as they don’t scale with increased attack or spell damage, but do scale with increased physical damage.</p>
+
+<p>Shock doesn’t technically have an upper cap of 100% increased damage taken. It just has a base of 20% and can be scaled up with increases to shock or ailment magnitude.</p>
+
+<p>Ignite is a form of Fire DoT and is also an ailment. We currently only have one source of non-ailment Fire DoT in the game which is herald of ash, but even that is described as an ignite on the gem, even though it does not scale with any modifiers to ailments or ignite. So effectively all Fire DoT in PoE2 is an ignite, including burning ground effects. Ignites normally do not stack but there are two exceptions: incinerate and flame breath. These two skills specifically allow their ignites to stack.</p>
+
+<p>Regarding frenzy charges, there’s nothing in the game called “split shot” so I think your AI hallucinated that.</p>
+
+<p>Regarding attack/cast speed, you left out skill speed which increases both attack and cast speed, and also increases the speed of other non-attack and non-spell skills like warcries and I believe also totem placement speed.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o7fvs18" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Headlyheadlly</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="o7fvs18" class="commentText"><p>I don’t have an answer to your question, but based on all this, you’ve either found the perfect game or your new least favorite. No in between</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o7fz7ie" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>lasagnaman</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="o7fz7ie" class="commentText"><blockquote>
+<p>Fire DoT is Ignite.</p>
+</blockquote>
+
+<p>No, Ignite is (a type of) Fire DoT. As you point out, there are other Fire DoTs that aren&rsquo;t ignite.</p>
+
+<p>I believe burning is literally an alias for &ldquo;Fire DoT&rdquo;.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="o7g1gf6" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>thatsrealneato</div>
+        <div>1 | 43 minutes ago </div>
+      </div>
+      <label for="o7g1gf6" class="commentText"><p>In PoE2 all fire DoT that we’ve seen so far is an ignite with the exception of herald of ash, which the skill gem calls an ignite but doesn’t actually scale with any ignite or ailment modifiers.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="o7g0ejs" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Primary_Impact_2130</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="o7g0ejs" class="commentText"><p>Yeah, added that enhancement, thanks!</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o7g39io" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ClydeTheCamel</div>
+        <div>1 | 32 minutes ago </div>
+      </div>
+      <label for="o7g39io" class="commentText"><p>The Rage section also needs a correction. Rage provides 1% more attack damage per rage, and this is not capped at 30%. The baseline maximum rage for all classes is 30, however the max rage stat can be increased.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o7g3i8a" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>FTMANEMETAL</div>
+        <div>1 | 31 minutes ago </div>
+      </div>
+      <label for="o7g3i8a" class="commentText"><p>Don’t forget “skill speed”. You have attack speed and cast speed which is separate and then skill speed which is essentially both</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o7g6l0u" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>seubbgg</div>
+        <div>1 | 13 minutes ago </div>
+      </div>
+      <label for="o7g6l0u" class="commentText"><p>Shattering a frozen enemy does not have any effect other than destroying the corpse. The aoe component is herald of ice&rsquo;s mechanic.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o7g6t9y" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>tooncake</div>
+        <div>1 | 12 minutes ago </div>
+      </div>
+      <label for="o7g6t9y" class="commentText"><p>They are also adding 2 new ones: Wind and Plants, though Wind by word could be &lsquo;elemental&rsquo; but overall it&rsquo;s pure physical, same goes with Plants, it is its own type of category but in the end it is also a physical spell.</p>
+
+<p>Thunderstorm is another tag but unsure on how to categorized this as it seems to do 2 things: Wet the mobs and plants, and potentially do a shock effect if the requirement/s are met.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
