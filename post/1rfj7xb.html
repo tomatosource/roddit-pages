@@ -1,0 +1,1263 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.selfPostImage {
+  width: 100%;
+  height: auto;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/nba/comments/1rfj7xb/deandre_ayton_currently_has_an_epm_of_negative15/"><p>DeAndre Ayton currently has an EPM of negative-1.5, which ranks #29 in the NBA among starting centers</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <p>Despite all the takes that Ayton was excellent for the Lakers early in the season, it hasn&rsquo;t really caught up to advanced stats yet. Here are rough rankings of starting centers by EPM (some discretion by me for things like slotting Zubac as the starting center for Indiana despite not playing a game there)</p>
+
+<table>
+<thead>
+<tr>
+<th align="left">Rank</th>
+<th align="left">Player</th>
+<th align="left">Team</th>
+<th align="left">EPM</th>
+<th align="left">MPG</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">1</td>
+<td align="left">Nikola Jokic</td>
+<td align="left">DEN</td>
+<td align="left">+8.82</td>
+<td align="left">33.1</td>
+</tr>
+
+<tr>
+<td align="left">2</td>
+<td align="left">Victor Wembanyama</td>
+<td align="left">SAS</td>
+<td align="left">+6.32</td>
+<td align="left">29.9</td>
+</tr>
+
+<tr>
+<td align="left">3</td>
+<td align="left">Joel Embiid</td>
+<td align="left">PHI</td>
+<td align="left">+4.33</td>
+<td align="left">32.5</td>
+</tr>
+
+<tr>
+<td align="left">4</td>
+<td align="left">Jarrett Allen</td>
+<td align="left">CLE</td>
+<td align="left">+3.92</td>
+<td align="left">28.6</td>
+</tr>
+
+<tr>
+<td align="left">5</td>
+<td align="left">Karl-Anthony Towns</td>
+<td align="left">NYK</td>
+<td align="left">+3.77</td>
+<td align="left">30.5</td>
+</tr>
+
+<tr>
+<td align="left">6</td>
+<td align="left">Jalen Duren</td>
+<td align="left">DET</td>
+<td align="left">+3.64</td>
+<td align="left">25.4</td>
+</tr>
+
+<tr>
+<td align="left">7</td>
+<td align="left">Bam Adebayo</td>
+<td align="left">MIA</td>
+<td align="left">+3.51</td>
+<td align="left">30.2</td>
+</tr>
+
+<tr>
+<td align="left">8</td>
+<td align="left">Isaiah Hartenstein</td>
+<td align="left">OKC</td>
+<td align="left">+2.97</td>
+<td align="left">23.3</td>
+</tr>
+
+<tr>
+<td align="left">9</td>
+<td align="left">Donovan Clingan</td>
+<td align="left">POR</td>
+<td align="left">+2.94</td>
+<td align="left">29.4</td>
+</tr>
+
+<tr>
+<td align="left">10</td>
+<td align="left">Rudy Gobert</td>
+<td align="left">MIN</td>
+<td align="left">+2.89</td>
+<td align="left">32.3</td>
+</tr>
+
+<tr>
+<td align="left">11</td>
+<td align="left">Kristaps Porzingis</td>
+<td align="left">GSW</td>
+<td align="left">+2.80</td>
+<td align="left">20.8</td>
+</tr>
+
+<tr>
+<td align="left">12</td>
+<td align="left">Alperen Sengun</td>
+<td align="left">HOU</td>
+<td align="left">+2.37</td>
+<td align="left">32.2</td>
+</tr>
+
+<tr>
+<td align="left">13</td>
+<td align="left">Neemias Queta</td>
+<td align="left">BOS</td>
+<td align="left">+2.03</td>
+<td align="left">24.3</td>
+</tr>
+
+<tr>
+<td align="left">14</td>
+<td align="left">Anthony Davis</td>
+<td align="left">WAS</td>
+<td align="left">+1.59</td>
+<td align="left">33.2</td>
+</tr>
+
+<tr>
+<td align="left">15</td>
+<td align="left">Jalen Smith</td>
+<td align="left">CHI</td>
+<td align="left">+1.42</td>
+<td align="left">23.4</td>
+</tr>
+
+<tr>
+<td align="left">16</td>
+<td align="left">Myles Turner</td>
+<td align="left">MIL</td>
+<td align="left">+1.08</td>
+<td align="left">25.2</td>
+</tr>
+
+<tr>
+<td align="left">17</td>
+<td align="left">Moussa Diabate</td>
+<td align="left">CHA</td>
+<td align="left">+1.08</td>
+<td align="left">27.8</td>
+</tr>
+
+<tr>
+<td align="left">18</td>
+<td align="left">Domantas Sabonis</td>
+<td align="left">SAC</td>
+<td align="left">+0.92</td>
+<td align="left">27.3</td>
+</tr>
+
+<tr>
+<td align="left">19</td>
+<td align="left">Wendell Carter Jr.</td>
+<td align="left">ORL</td>
+<td align="left">+0.73</td>
+<td align="left">30.5</td>
+</tr>
+
+<tr>
+<td align="left">20</td>
+<td align="left">Walker Kessler</td>
+<td align="left">UTA</td>
+<td align="left">+0.47</td>
+<td align="left">29.5</td>
+</tr>
+
+<tr>
+<td align="left">21</td>
+<td align="left">Ivica Zubac</td>
+<td align="left">IND</td>
+<td align="left">+0.40</td>
+<td align="left">29.3</td>
+</tr>
+
+<tr>
+<td align="left">22</td>
+<td align="left">Jakob Poeltl</td>
+<td align="left">TOR</td>
+<td align="left">+0.29</td>
+<td align="left">21.8</td>
+</tr>
+
+<tr>
+<td align="left">23</td>
+<td align="left">Brook Lopez</td>
+<td align="left">LAC</td>
+<td align="left">+0.23</td>
+<td align="left">27.5</td>
+</tr>
+
+<tr>
+<td align="left">24</td>
+<td align="left">Onyeka Okongwu</td>
+<td align="left">ATL</td>
+<td align="left">+0.18</td>
+<td align="left">28.1</td>
+</tr>
+
+<tr>
+<td align="left">25</td>
+<td align="left">Nic Claxton</td>
+<td align="left">BKN</td>
+<td align="left">+0.17</td>
+<td align="left">29.6</td>
+</tr>
+
+<tr>
+<td align="left">26</td>
+<td align="left">Santi Aldama</td>
+<td align="left">MEM</td>
+<td align="left">-0.05</td>
+<td align="left">26.9</td>
+</tr>
+
+<tr>
+<td align="left">27</td>
+<td align="left">Mark Williams</td>
+<td align="left">PHX</td>
+<td align="left">-0.54</td>
+<td align="left">20.3</td>
+</tr>
+
+<tr>
+<td align="left">28</td>
+<td align="left">Daniel Gafford</td>
+<td align="left">DAL</td>
+<td align="left">-0.90</td>
+<td align="left">21.3</td>
+</tr>
+
+<tr>
+<td align="left">29</td>
+<td align="left">Deandre Ayton</td>
+<td align="left">LAL</td>
+<td align="left">-1.49</td>
+<td align="left">27.1</td>
+</tr>
+
+<tr>
+<td align="left">30</td>
+<td align="left">Derik Queen</td>
+<td align="left">NOP</td>
+<td align="left">-1.87</td>
+<td align="left">22.8</td>
+</tr>
+</tbody>
+</table>
+<p><a href="https://dunksandthrees.com/epm?pos=C" target="_blank">Source</a></p>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o7kdcvm" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>BUSean | Celtics</div>
+        <div>1 | 26 minutes ago </div>
+      </div>
+      <label for="o7kdcvm" class="commentText"><p>Humiliayton</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="o7kennt" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>fokood | Cavaliers</div>
+        <div>1 | 20 minutes ago </div>
+      </div>
+      <label for="o7kennt" class="commentText"><p>He is the Ben Simmons of big men </p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="o7kf4fe" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Proof-Umpire-7718 | Lakers</div>
+        <div>1 | 18 minutes ago </div>
+      </div>
+      <label for="o7kf4fe" class="commentText"><p>D’lo of big men</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="o7kffcf" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Tagoony</div>
+        <div>1 | 17 minutes ago </div>
+      </div>
+      <label for="o7kffcf" class="commentText"><p>Don’t even compare DLO to that bum</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o7kdrgw" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>nba2k11er | Warriors</div>
+        <div>1 | 25 minutes ago </div>
+      </div>
+      <label for="o7kdrgw" class="commentText"><p>0.9 assists in 28.2 minutes is crazy work with the current style of play.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="o7kec5a" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Ok_Shop7600 | Lakers</div>
+        <div>1 | 22 minutes ago </div>
+      </div>
+      <label for="o7kec5a" class="commentText"><p>They stopped giving him the ball everytime he gets the ball its a head scratching moment or he gets bitched.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="o7kg3pq" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Electronic_Pea_4845</div>
+        <div>1 | 13 minutes ago </div>
+      </div>
+      <label for="o7kg3pq" class="commentText"><p>Is there any air left in the ball when Luka is done</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="o7kg980" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Ok_Shop7600 | Lakers</div>
+        <div>1 | 13 minutes ago </div>
+      </div>
+      <label for="o7kg980" class="commentText"><p>Lol thats funny when we’ve lost halfs/games strictly trying to get ayton going and he’s complete shit.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="o7kid9x" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>MddlingAges | Knicks</div>
+        <div>1 | 3 minutes ago </div>
+      </div>
+      <label for="o7kid9x" class="commentText"><p>They&rsquo;re not running their offense through him. He doesn&rsquo;t need assists, he&rsquo;s never got assists and this particular team has 3 overqualified guys to run the offense anyway.</p>
+
+<p>Lakers fans love to pick apart every non-star and then the coach, but Ayton simply isn&rsquo;t the issue. Every team has weak points and he&rsquo;s meeting the modest expectations they have for him and his contract. He&rsquo;s almost exactly the same person Rob traded for.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="o7kf1c0" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Mike-XL</div>
+        <div>1 | 18 minutes ago </div>
+      </div>
+      <label for="o7kf1c0" class="commentText"><p>Also consider he gets the ball after Luka or Reaves are blitzed during the pick and roll, and Ayton is working with a man advantage, and just needs to make a simple pass to the open man.  Not in his wheelhouse evidently.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="o7kibds" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>_daftendirekt_</div>
+        <div>1 | 3 minutes ago </div>
+      </div>
+      <label for="o7kibds" class="commentText"><p>Not only the style of play, but also what is considered as an assist.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o7kdrr8" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>NoLimitSoldier31</div>
+        <div>1 | 24 minutes ago </div>
+      </div>
+      <label for="o7kdrr8" class="commentText"><p>Remember week 1 when it was a great move?</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="o7ke99h" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>mw19078 | Lakers</div>
+        <div>1 | 22 minutes ago </div>
+      </div>
+      <label for="o7ke99h" class="commentText"><p>what a great week or two that was</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="o7kelvc" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Proof-Umpire-7718 | Lakers</div>
+        <div>1 | 21 minutes ago </div>
+      </div>
+      <label for="o7kelvc" class="commentText"><p>That early Spurs game had me overjoyed with him.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="o7kdvz9" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>better_every_day14 | Nuggets</div>
+        <div>1 | 24 minutes ago </div>
+      </div>
+      <label for="o7kdvz9" class="commentText"><p>Never gonna forget it lol</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="o7ke60u" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Proof-Umpire-7718 | Lakers</div>
+        <div>1 | 23 minutes ago </div>
+      </div>
+      <label for="o7ke60u" class="commentText"><p>My offseason comments about Ayton aged horrifically.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="o7ked7u" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>better_every_day14 | Nuggets</div>
+        <div>1 | 22 minutes ago </div>
+      </div>
+      <label for="o7ked7u" class="commentText"><p>I don’t blame you for seeing the best in him and wanting to believe. I just always knew we were gonna end up here because he hasn’t changed at all.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="o7kewmr" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>_Wash | Timberwolves</div>
+        <div>1 | 19 minutes ago </div>
+      </div>
+      <label for="o7kewmr" class="commentText"><p>for 8 mil it still is</p>
+
+<p>hayes was untenable</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="o7kfe6c" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Proof-Umpire-7718 | Lakers</div>
+        <div>1 | 17 minutes ago </div>
+      </div>
+      <label for="o7kfe6c" class="commentText"><p>Hayes has been better than him over the past 2 months, but Ayton’s still a better player and more reliable in the playoffs.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o7ke1ss" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>InsideDurian9022</div>
+        <div>1 | 23 minutes ago </div>
+      </div>
+      <label for="o7ke1ss" class="commentText"><p>I mean. Suns fans won&rsquo;t be surprised.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="o7kg4cl" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Justanotherblake | Suns</div>
+        <div>1 | 13 minutes ago </div>
+      </div>
+      <label for="o7kg4cl" class="commentText"><p>I am choosing to stay silent looking at our starting center on that list lol</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="o7kiak5" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Suns_In_420 | Suns</div>
+        <div>1 | 3 minutes ago </div>
+      </div>
+      <label for="o7kiak5" class="commentText"><p>Still higher!</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o7ke71t" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Bitter_Procedure260</div>
+        <div>1 | 22 minutes ago </div>
+      </div>
+      <label for="o7ke71t" class="commentText"><p>DepreciAyton.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o7kedx7" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>GregEgg4President | Wizards</div>
+        <div>1 | 22 minutes ago </div>
+      </div>
+      <label for="o7kedx7" class="commentText"><p>Why is Anthony Davis the Wizards representative on this list?</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="o7kh0ur" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>shit_eating_fan | 76ers</div>
+        <div>1 | 9 minutes ago </div>
+      </div>
+      <label for="o7kh0ur" class="commentText"><p>Wizards legend Anthony Davis</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o7kdyyz" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>CIark</div>
+        <div>1 | 24 minutes ago </div>
+      </div>
+      <label for="o7kdyyz" class="commentText"><p>Is that good</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o7kefj3" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Dio-genies</div>
+        <div>1 | 21 minutes ago </div>
+      </div>
+      <label for="o7kefj3" class="commentText"><p>Quetta is the starting center for the celtics, Vuc comes off the bench</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="o7ketuh" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>JoeBiden2020FTW | Lakers</div>
+        <div>1 | 19 minutes ago </div>
+      </div>
+      <label for="o7ketuh" class="commentText"><p>Fixed, thanks.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o7kep45" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>MyPhillyAccent | Celtics</div>
+        <div>1 | 20 minutes ago </div>
+      </div>
+      <label for="o7kep45" class="commentText"><p>Vuc is not the Celtics starting center, its Queta (EPM 2.0  MPG 24.3).</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o7keuo1" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>_Juntao | Celtics</div>
+        <div>1 | 19 minutes ago </div>
+      </div>
+      <label for="o7keuo1" class="commentText"><p>It was still a good move. Unless you want jaxson hayes to start, getting ayton in a pinch was the best they could do</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="o7kgjc9" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>JoeBiden2020FTW | Lakers</div>
+        <div>1 | 11 minutes ago </div>
+      </div>
+      <label for="o7kgjc9" class="commentText"><p>I don&rsquo;t think so.</p>
+
+<p>If they just blindly followed advanced stats, the targets at the Lakers price-point would have been guys like Day&rsquo;Ron Sharpe or Paul Reed.</p>
+
+<p>These aren&rsquo;t sexy established names, but they would have been way more impactful than Ayton IMO.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o7kekno" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Mike-XL</div>
+        <div>1 | 21 minutes ago </div>
+      </div>
+      <label for="o7kekno" class="commentText"><p>Ayton is mediocre in the best of situations, abysmal in situations that are not ideal.  Pairing him with Luka/LeBron/Reaves was dumb in multiple ways.  Firstly, he can&rsquo;t shoot the 3, so they can&rsquo;t open the lanes up with him in there.  Secondly, he&rsquo;s a terrible defender, and Luka/LeBron/Reaves need all the help they can get on defense.  Lastly, his offensive impact, average as it is, is diminished because he&rsquo;s not going to get an ample amount of touches with those guys out there.</p>
+
+<p>Some people point to his &lsquo;value&rsquo; because he only cost 8 mil, but they&rsquo;d honestly be a better team of they waived him straight up and mixed and matched Hayes, Kleber, and Timme at the 5 depending on matchups and who is playing well.  Ayton is mediocre in the best of situations, and in this situation, he&rsquo;s a clear negative.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o7ketxz" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Paralta | MIA</div>
+        <div>1 | 19 minutes ago </div>
+      </div>
+      <label for="o7ketxz" class="commentText"><p>If that mfer was even just slightly aggresive he would be a problem. He has great touch around the rim though.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o7kezx6" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Ok-Comfortable1111 | Pelicans</div>
+        <div>1 | 19 minutes ago </div>
+      </div>
+      <label for="o7kezx6" class="commentText"><p>30 is exactly who I expected</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="o7khitv" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>sunbomb | Spurs</div>
+        <div>1 | 7 minutes ago </div>
+      </div>
+      <label for="o7khitv" class="commentText"><p>Haven&rsquo;t been paying much attention to the Pels in the last few weeks. What&rsquo;s going on with DQ? I started noticing him a lot after Tim Duncan pointed him out to Sean Elliott as someone that he (Tim) likes.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="o7kid5d" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>BananaRepublic_BR | Spurs</div>
+        <div>1 | 3 minutes ago </div>
+      </div>
+      <label for="o7kid5d" class="commentText"><p>Queen seemed to play well against the Spurs. What&rsquo;s the deal?</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o7kgczk" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>nahwhatever-whynot | Rockets</div>
+        <div>1 | 12 minutes ago </div>
+      </div>
+      <label for="o7kgczk" class="commentText"><p>Never speak on Clint again bum</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o7kdtoj" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>better_every_day14 | Nuggets</div>
+        <div>1 | 24 minutes ago </div>
+      </div>
+      <label for="o7kdtoj" class="commentText"><p>I’m shocked I tell you, shocked. Who could have seen this coming? /s</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o7kg9ve" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>loyola-atherton | Lakers</div>
+        <div>1 | 13 minutes ago </div>
+      </div>
+      <label for="o7kg9ve" class="commentText"><p>Lot of shade thrown at Ayton today for some reason.</p>
+
+<p>He isn’t faultless, but I believe we would have won that last game vs Magics if we played more thru him like we did in the first half.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o7kgc1v" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>waffle-winner | Spurs</div>
+        <div>1 | 12 minutes ago </div>
+      </div>
+      <label for="o7kgc1v" class="commentText"><p>Squirt that DA crunk juice on him! Unleash the beast!😤</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o7kh1ix" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>heat_fan_ | Raptors</div>
+        <div>1 | 9 minutes ago </div>
+      </div>
+      <label for="o7kh1ix" class="commentText"><p>Yeah he&rsquo;s not coming back next year </p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o7khxfq" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>LoggraFloozy | Lakers</div>
+        <div>1 | 5 minutes ago </div>
+      </div>
+      <label for="o7khxfq" class="commentText"><p>Damn is jalen smith really the bulls starting center?</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
