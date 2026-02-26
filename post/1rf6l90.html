@@ -1,0 +1,576 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.selfPostImage {
+  width: 100%;
+  height: auto;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/nba/comments/1rf6l90/i_built_an_app_that_tells_you_which_nba_games_are/"><p>I built an app that tells you which NBA games are worth watching — without spoiling the score</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <p>Hey fellow NBA fans,</p>
+
+<p>One year ago I became a dad. My mornings went from watching full games to having little time for some highlights. The problem: Half that time was spent checking scores, scrolling recaps, trying to figure out if some of last night&rsquo;s games were actually exciting or just a blowout. Especially as a European fan who can&rsquo;t watch live, I needed a better way to pick what&rsquo;s worth my time.</p>
+
+<p>So I built HeatCheckr.</p>
+
+<p><strong>What it does:</strong></p>
+
+<p>The app analyzes every NBA game and gives it an excitement score (0–10). No AI, no black box — the scoring logic is something I built myself as a basketball fan, based on real play-by-play, box score data, standings and more. Things like lead changes, clutch plays and game flow all factor into the score. It&rsquo;s not perfect, still tweaking, but it&rsquo;s been performing pretty well. Beyond the score, labels tell you why a game was exciting. Currently there are around 30 (some pretty rare) but I have many more fun ideas.</p>
+
+<p>If you want under 10min YouTube highlights you can watch them right in the app or alternatively choose to watch the official NBA highlights.</p>
+
+<p>If you want to catch up on a whole week the Heat Report has you covered - it surfaces the most exciting games from the past couple weeks in one place.</p>
+
+<p>You can also opt into push notifications - a quick heads up if an exciting game happened or to follow games of your favourite team.</p>
+
+<p><strong>Where to get it:</strong></p>
+
+<p>The app is available for iOS (link to in comments) and currently in Beta for Android - Google requires a lot of testers and I need more people, DM me if you want access</p>
+
+<p><strong>What&rsquo;s coming:</strong></p>
+
+<p>I have lots of things planned. It’s fun right now to think about new features, from a fan perspective. To outline what I’m working on right now:</p>
+
+<ul>
+<li>More statistics for each game and team</li>
+<li>Weekly top performing players (great for fantasy games)</li>
+<li>Rivalries and storylines baked into the scoring</li>
+<li>Extended historical data</li>
+<li>Playoffs adaption</li>
+</ul>
+
+<p>The app is entirely free right now, it costs me like 15$ to keep running each month, money I am totally willing to pay, I love working on it, its fun and I learn a lot. If you wanna support future development there is a „Buy me a coffee“ link on the website, but no pressure at all, just happy to share it.</p>
+
+<p>Would love honest feedback — things you miss, things you like, games you think were scored wrong. Helps me improve!</p>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o7hty3u" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>seanthemonster | SAS</div>
+        <div>9 | an hour ago </div>
+      </div>
+      <label for="o7hty3u" class="commentText"><p>There&rsquo;s websites that do this</p>
+
+<p>Wikihoops.com</p>
+
+<p>Replyrank.com</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="o7hx55z" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>JDK_92</div>
+        <div>6 | an hour ago </div>
+      </div>
+      <label for="o7hx55z" class="commentText"><p>Yes I am aware of those. They work well. Used them before. Totally fine, there&rsquo;s always different products for the same issue. I liked the idea of having a native app with notificaitons etc. and just start my own project and see where it leads.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o7hpasj" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>JDK_92</div>
+        <div>5 | 3 hours ago </div>
+      </div>
+      <label for="o7hpasj" class="commentText"><p>Link to iOS: <a href="https://apps.apple.com/us/app/heatcheckr/id6757223698" target="_blank">https://apps.apple.com/us/app/heatcheckr/id6757223698</a></p>
+
+<p>Website: <a href="http://www.heatcheckr.com" target="_blank">www.heatcheckr.com</a></p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="o7hq839" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>CleverBunnyThief | Raptors</div>
+        <div>3 | 3 hours ago </div>
+      </div>
+      <label for="o7hq839" class="commentText"><p>This is a problem I have.</p>
+
+<p>I can help you test on Android. Let me know what I need to do to get onboard.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="o7hs2cx" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>JDK_92</div>
+        <div>1 | 2 hours ago </div>
+      </div>
+      <label for="o7hs2cx" class="commentText"><p>Unfortunately I need your email, the one you use to download apps in the PlayStore. I have to add you to the test group. Feel free to DM me. Also let me know if you need testers for your app. Happy to help.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="o7htw6v" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>CleverBunnyThief | Raptors</div>
+        <div>3 | 2 hours ago </div>
+      </div>
+      <label for="o7htw6v" class="commentText"><p>DM sent.</p>
+
+<blockquote>
+<p>Also let me know if you need testers for your app. Happy to help.</p>
+</blockquote>
+
+<p>I meant that I can&rsquo;t watch games live due to time zone and availability of time.</p>
+
+<p>Some YouTube channels spoil their highlights which is really annoying. I gotta say the the official NBA channel has cleaned up their act in this regard.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o7hty8h" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>moby323 | 76ers</div>
+        <div>4 | an hour ago </div>
+      </div>
+      <label for="o7hty8h" class="commentText"><p>Hey man this is an awesome idea. I often watch games on delay because that way I can avoid commercials and watch a lot more basketball since a game only takes about an hour, but it’s hard do know which games I should focus on.</p>
+
+<p>I usually choose the <em>predicted</em> best games but often that is not the best game of the night.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="o7hx9cd" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>JDK_92</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="o7hx9cd" class="commentText"><p>Thanks! Happy if it helps :)</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o7hx60i" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>john124 | Thunder</div>
+        <div>3 | an hour ago </div>
+      </div>
+      <label for="o7hx60i" class="commentText"><p>I just scrolled through, I like the app and could see myself sticking through it. I currently use Wikihoops, but think the user based upvote system could be less efficient than your AI.</p>
+
+<p>One thing I would note, there should eventually be an option to turn off the more spoiler based tags to the game. Like I saw the Magic Suns game had both Buzzer beater and Double OT Marathon. While both of those tags can certainly make a game attractive, in theory knowing those two will spoil the game. When I know there&rsquo;s a buzzer beater I can tell, from the flow of the game or doing math with the scores, what team is going to hit the buzzer beater about a minute or two of gameplay prior to it happening. Of course, neither tag is really an issue for most users, but I could see some users wanting to turn those off.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="o7hy3yj" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>JDK_92</div>
+        <div>4 | an hour ago </div>
+      </div>
+      <label for="o7hy3yj" class="commentText"><p>Thanks for your feedback! Mine is not an AI though, its a fixed logic.</p>
+
+<p>Yes I definitely agree with you. This is on my list and will be fixed in the next couple weeks. Either I rename the labels or provide an option to turn these off. Stay tuned for the update :)</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o7hy0el" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Redditor_1010111001</div>
+        <div>2 | an hour ago </div>
+      </div>
+      <label for="o7hy0el" class="commentText"><p>This is pretty dope</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o7hsry6" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Area51_Spurs</div>
+        <div>1 | 2 hours ago </div>
+      </div>
+      <label for="o7hsry6" class="commentText"><p>There used to be an app/service called thuuz that did this with all sports. They shuttered a while back and got bought out by Stats Perform.</p>
+
+<p>The one problem I see you having is if your app got popular, they could push the product back out or license out to TheScore or something and you’d be SOL.</p>
+
+<p>There’s another service that does this as well.</p>
+
+<p><a href="https://areyouwatchingthis.com" target="_blank">https://areyouwatchingthis.com</a></p>
+
+<p>I think they license to Fox Sports.</p>
+
+<p>These are patented too. So you might want to look at that as well. To make sure you’re not going to get burned.</p>
+
+<p>Personally I don’t know why every single scoreboard app doesn’t have this feature. I wager the reason is they don’t want to pay the licensing for the product and there might be some issues where doing it themselves is some type of litigation risk.</p>
+
+<p>I dunno.</p>
+
+<p>But I hope you’re successful because I really wish this was around again like thuuz back in the day.</p>
+
+<p>The one critique is that I think this is most useful for college football and college sports where there’s a huge number of games that’s unmanageable. That’s what I used it for mostly.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="o7hxh8x" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>JDK_92</div>
+        <div>2 | an hour ago </div>
+      </div>
+      <label for="o7hxh8x" class="commentText"><p>Thanks for making me aware. Yes I am very cautious to not get burned., hence no icons for example. I will keep making my research.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="o7hy879" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Area51_Spurs</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="o7hy879" class="commentText"><p>Good Luck!</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o7i2xds" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>djrelu | Spain</div>
+        <div>1 | 18 minutes ago </div>
+      </div>
+      <label for="o7i2xds" class="commentText"><p>I posted something like this in this sub a while ago and I got hit because they said it was AI :)</p>
+
+<p><a href="https://thematchpulse.com/" target="_blank">The Match Pulse</a></p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
