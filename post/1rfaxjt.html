@@ -1,0 +1,984 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.selfPostImage {
+  width: 100%;
+  height: auto;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/nba/comments/1rfaxjt/ever_wonder_who_was_the_least_experienced_and/"><p>Ever wonder who was the least experienced and most experienced NBA champions? The 2011 Mavericks had an average roster experience of 10.09 years, the highest in the last 45 years.</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <p>The 1981 Celtics are the least experienced team in the last 45 years to win a ring, with an average roster experience of 3.87.  Followed by the OKC Thunder at 4.13.</p>
+
+<p>These numbers are Weighted by Minutes Played.  Older players play more? Average roster experience goes up.</p>
+
+<table>
+<thead>
+<tr>
+<th align="left">1981</th>
+<th align="left">Boston Celtics</th>
+<th align="left">3.87</th>
+<th align="left">Bird</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">2025</td>
+<td align="left">Oklahoma City Thunder</td>
+<td align="left">4.13</td>
+<td align="left">-</td>
+</tr>
+
+<tr>
+<td align="left">1991</td>
+<td align="left">Chicago Bulls</td>
+<td align="left">4.67</td>
+<td align="left">Jordan</td>
+</tr>
+
+<tr>
+<td align="left">1980</td>
+<td align="left">Los Angeles Lakers</td>
+<td align="left">4.69</td>
+<td align="left">Magic</td>
+</tr>
+
+<tr>
+<td align="left">1983</td>
+<td align="left">Philadelphia 76ers</td>
+<td align="left">4.76</td>
+<td align="left">-</td>
+</tr>
+
+<tr>
+<td align="left">1982</td>
+<td align="left">Los Angeles Lakers</td>
+<td align="left">5.39</td>
+<td align="left">Magic</td>
+</tr>
+
+<tr>
+<td align="left">2015</td>
+<td align="left">Golden State Warriors</td>
+<td align="left">5.7</td>
+<td align="left">Steph</td>
+</tr>
+
+<tr>
+<td align="left">1992</td>
+<td align="left">Chicago Bulls</td>
+<td align="left">5.89</td>
+<td align="left">Jordan</td>
+</tr>
+
+<tr>
+<td align="left">2024</td>
+<td align="left">Boston Celtics</td>
+<td align="left">6.13</td>
+<td align="left">-</td>
+</tr>
+
+<tr>
+<td align="left">2022</td>
+<td align="left">Golden State Warriors</td>
+<td align="left">6.14</td>
+<td align="left">Steph</td>
+</tr>
+
+<tr>
+<td align="left">1984</td>
+<td align="left">Boston Celtics</td>
+<td align="left">6.21</td>
+<td align="left">Bird</td>
+</tr>
+
+<tr>
+<td align="left">2019</td>
+<td align="left">Toronto Raptors</td>
+<td align="left">6.44</td>
+<td align="left">-</td>
+</tr>
+
+<tr>
+<td align="left">2004</td>
+<td align="left">Detroit Pistons</td>
+<td align="left">6.54</td>
+<td align="left">-</td>
+</tr>
+
+<tr>
+<td align="left">2017</td>
+<td align="left">Golden State Warriors</td>
+<td align="left">6.58</td>
+<td align="left">Steph</td>
+</tr>
+
+<tr>
+<td align="left">2023</td>
+<td align="left">Denver Nuggets</td>
+<td align="left">6.71</td>
+<td align="left">-</td>
+</tr>
+
+<tr>
+<td align="left">1985</td>
+<td align="left">Los Angeles Lakers</td>
+<td align="left">6.72</td>
+<td align="left">Magic</td>
+</tr>
+
+<tr>
+<td align="left">1994</td>
+<td align="left">Houston Rockets</td>
+<td align="left">6.79</td>
+<td align="left">Hakeem</td>
+</tr>
+
+<tr>
+<td align="left">1987</td>
+<td align="left">Los Angeles Lakers</td>
+<td align="left">6.84</td>
+<td align="left">Magic</td>
+</tr>
+
+<tr>
+<td align="left">2009</td>
+<td align="left">Los Angeles Lakers</td>
+<td align="left">6.85</td>
+<td align="left">Kobe</td>
+</tr>
+
+<tr>
+<td align="left">1993</td>
+<td align="left">Chicago Bulls</td>
+<td align="left">6.92</td>
+<td align="left">Jordan</td>
+</tr>
+
+<tr>
+<td align="left">2021</td>
+<td align="left">Milwaukee Bucks</td>
+<td align="left">7</td>
+<td align="left">-</td>
+</tr>
+
+<tr>
+<td align="left">2018</td>
+<td align="left">Golden State Warriors</td>
+<td align="left">7.16</td>
+<td align="left">Steph</td>
+</tr>
+
+<tr>
+<td align="left">2010</td>
+<td align="left">Los Angeles Lakers</td>
+<td align="left">7.3</td>
+<td align="left">Kobe</td>
+</tr>
+
+<tr>
+<td align="left">1986</td>
+<td align="left">Boston Celtics</td>
+<td align="left">7.36</td>
+<td align="left">Bird</td>
+</tr>
+
+<tr>
+<td align="left">1989</td>
+<td align="left">Detroit Pistons</td>
+<td align="left">7.37</td>
+<td align="left">-</td>
+</tr>
+
+<tr>
+<td align="left">2000</td>
+<td align="left">Los Angeles Lakers</td>
+<td align="left">7.54</td>
+<td align="left">Kobe</td>
+</tr>
+
+<tr>
+<td align="left">1999</td>
+<td align="left">San Antonio Spurs</td>
+<td align="left">7.79</td>
+<td align="left">Duncan</td>
+</tr>
+
+<tr>
+<td align="left">2005</td>
+<td align="left">San Antonio Spurs</td>
+<td align="left">7.9</td>
+<td align="left">Duncan</td>
+</tr>
+
+<tr>
+<td align="left">2012</td>
+<td align="left">Miami Heat</td>
+<td align="left">7.9</td>
+<td align="left">Lebron</td>
+</tr>
+
+<tr>
+<td align="left">1988</td>
+<td align="left">Los Angeles Lakers</td>
+<td align="left">7.91</td>
+<td align="left">Magic</td>
+</tr>
+
+<tr>
+<td align="left">1990</td>
+<td align="left">Detroit Pistons</td>
+<td align="left">7.95</td>
+<td align="left">-</td>
+</tr>
+
+<tr>
+<td align="left">2008</td>
+<td align="left">Boston Celtics</td>
+<td align="left">8.08</td>
+<td align="left">-</td>
+</tr>
+
+<tr>
+<td align="left">2007</td>
+<td align="left">San Antonio Spurs</td>
+<td align="left">8.11</td>
+<td align="left">Duncan</td>
+</tr>
+
+<tr>
+<td align="left">2016</td>
+<td align="left">Cleveland Cavaliers</td>
+<td align="left">8.26</td>
+<td align="left">Lebron</td>
+</tr>
+
+<tr>
+<td align="left">2002</td>
+<td align="left">Los Angeles Lakers</td>
+<td align="left">8.28</td>
+<td align="left">Kobe</td>
+</tr>
+
+<tr>
+<td align="left">2013</td>
+<td align="left">Miami Heat</td>
+<td align="left">8.3</td>
+<td align="left">Lebron</td>
+</tr>
+
+<tr>
+<td align="left">1995</td>
+<td align="left">Houston Rockets</td>
+<td align="left">8.34</td>
+<td align="left">Hakeem</td>
+</tr>
+
+<tr>
+<td align="left">2006</td>
+<td align="left">Miami Heat</td>
+<td align="left">8.52</td>
+<td align="left">-</td>
+</tr>
+
+<tr>
+<td align="left">2003</td>
+<td align="left">San Antonio Spurs</td>
+<td align="left">8.66</td>
+<td align="left">Duncan</td>
+</tr>
+
+<tr>
+<td align="left">2001</td>
+<td align="left">Los Angeles Lakers</td>
+<td align="left">8.69</td>
+<td align="left">Kobe</td>
+</tr>
+
+<tr>
+<td align="left">2014</td>
+<td align="left">San Antonio Spurs</td>
+<td align="left">8.74</td>
+<td align="left">Duncan</td>
+</tr>
+
+<tr>
+<td align="left">1996</td>
+<td align="left">Chicago Bulls</td>
+<td align="left">8.9</td>
+<td align="left">Jordan</td>
+</tr>
+
+<tr>
+<td align="left">2020</td>
+<td align="left">Los Angeles Lakers</td>
+<td align="left">8.91</td>
+<td align="left">Lebron</td>
+</tr>
+
+<tr>
+<td align="left">1997</td>
+<td align="left">Chicago Bulls</td>
+<td align="left">9.08</td>
+<td align="left">Jordan</td>
+</tr>
+
+<tr>
+<td align="left">1998</td>
+<td align="left">Chicago Bulls</td>
+<td align="left">9.37</td>
+<td align="left">Jordan</td>
+</tr>
+
+<tr>
+<td align="left">2011</td>
+<td align="left">Dallas Mavericks</td>
+<td align="left">10.09</td>
+<td align="left">-</td>
+</tr>
+</tbody>
+</table>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o7ilt2r" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Hayabusa_Blacksmith</div>
+        <div>23 | 3 hours ago </div>
+      </div>
+      <label for="o7ilt2r" class="commentText"><p>and whats the significance of the player listed/unlisted?</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="o7inmiq" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Wanluhkygai</div>
+        <div>4 | 3 hours ago </div>
+      </div>
+      <label for="o7inmiq" class="commentText"><p>I was wondering the same</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="o7iopgh" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>heirofsorrows | Clippers</div>
+        <div>6 | 3 hours ago </div>
+      </div>
+      <label for="o7iopgh" class="commentText"><p>Maybe it’s cutest on the roster hee hee</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="o7iqiog" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>GoatmontWaters</div>
+        <div>-22 | 3 hours ago </div>
+      </div>
+      <label for="o7iqiog" class="commentText"><p>I put the players who are goat tier in there as easy reference</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="o7ir6s7" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Hayabusa_Blacksmith</div>
+        <div>10 | 3 hours ago </div>
+      </div>
+      <label for="o7ir6s7" class="commentText"><p>oof, get shit on dirk and shaq</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="o7iuxhm" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Akipella | Warriors</div>
+        <div>3 | 2 hours ago </div>
+      </div>
+      <label for="o7iuxhm" class="commentText"><p>I don&rsquo;t think Kobe over Shaq is that wild of a take, and they have to pick one so it&rsquo;s not that big of a deal. As for Dirk, he&rsquo;s not in discussions for top 10 like all the other players are.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="o7j1n20" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Ok_Hornet_714</div>
+        <div>4 | an hour ago </div>
+      </div>
+      <label for="o7j1n20" class="commentText"><p>While Kobe certainly had a better career than Shaq overall, Shaq was clearly the better player during the 3peat.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="o7j264j" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Akipella | Warriors</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="o7j264j" class="commentText"><p>Yep. I think Kobe can be argued to have the edge due to his MVP/3 Finals/2 titles/2 FMVP run from 2008-2010 while Shaq lacks longevity and by his 4th and final title in 2006 he wasn&rsquo;t really near the best player on that team, Wade was.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="o7itius" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>GoatmontWaters</div>
+        <div>-17 | 2 hours ago </div>
+      </div>
+      <label for="o7itius" class="commentText"><p>You cant help yourself can you lol.  If think those 2 are goat tier then maybe go start your own thread on why they are.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o7ikvca" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>GoatmontWaters</div>
+        <div>8 | 3 hours ago </div>
+      </div>
+      <label for="o7ikvca" class="commentText"><p>League Pace is an exact inverse of Championship Experience.  Dead ball era has the oldest squads, 80s and 2020s have the youngest squads.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="o7ilvwd" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Hayabusa_Blacksmith</div>
+        <div>7 | 3 hours ago </div>
+      </div>
+      <label for="o7ilvwd" class="commentText"><p>those fresh legs</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="o7ilzve" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>moby323 | 76ers</div>
+        <div>3 | 3 hours ago </div>
+      </div>
+      <label for="o7ilzve" class="commentText"><p>And that’s even accounting for the fact that people can play longer at a high level these days due to medicine/training/nutrition.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="o7iofnb" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>GoatmontWaters</div>
+        <div>2 | 3 hours ago </div>
+      </div>
+      <label for="o7iofnb" class="commentText"><p>That was a thought I had also, Sports medicine still isnt enough to replace the fresh legs in todays modern game.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="o7iotsx" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>moby323 | 76ers</div>
+        <div>1 | 3 hours ago </div>
+      </div>
+      <label for="o7iotsx" class="commentText"><p>The flip side is they come in younger though, right?</p>
+
+<p>Guys at 26 have 7 years experience lol</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="o7j1a2h" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>GoatmontWaters</div>
+        <div>0 | an hour ago </div>
+      </div>
+      <label for="o7j1a2h" class="commentText"><p>Very true for these newer teams that is definitely a big factor too.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o7ilqq6" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Quadriporticus | DAL</div>
+        <div>4 | 3 hours ago </div>
+      </div>
+      <label for="o7ilqq6" class="commentText"><p>2nd 3peat bulls were something.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o7iv632" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>JohnnyEnzyme | BRK</div>
+        <div>4 | 2 hours ago </div>
+      </div>
+      <label for="o7iv632" class="commentText"><p>2000 - 2002 Lakers teams were Shaq teams, just for the record.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="o7j0yxw" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>GoatmontWaters</div>
+        <div>-7 | an hour ago </div>
+      </div>
+      <label for="o7j0yxw" class="commentText"><p>Just put Kobe cause hes in more goat talks then shaq no big deal.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="o7j9zh1" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>jizonida</div>
+        <div>1 | 32 minutes ago </div>
+      </div>
+      <label for="o7j9zh1" class="commentText"><blockquote>
+<p>goat talks</p>
+</blockquote>
+
+<p>You have Hakeem, Steph and Duncan in there tho</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="o7jcvo9" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>GoatmontWaters</div>
+        <div>1 | 19 minutes ago </div>
+      </div>
+      <label for="o7jcvo9" class="commentText"><p>That doesnt change anything about how kobe is normally higher up on lists than shaq for the Lakers.  idk man everyone going crazy about these names but this is prety simple shit.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="o7jdnmt" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>jizonida</div>
+        <div>1 | 15 minutes ago </div>
+      </div>
+      <label for="o7jdnmt" class="commentText"><p>Just pointing out that your metric for including them is flawed, not specifically about Kobe vs Shaq, but that you&rsquo;re including non &ldquo;goat talk&rdquo; level players for some teams but not others</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o7im81n" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>moby323 | 76ers</div>
+        <div>3 | 3 hours ago </div>
+      </div>
+      <label for="o7im81n" class="commentText"><p>Is the single OKC win enough to skew it significantly since they are so young?</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o7iojwr" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>GoatmontWaters</div>
+        <div>1 | 3 hours ago </div>
+      </div>
+      <label for="o7iojwr" class="commentText"><p><a href="https://imgur.com/a/uSpsQl6" target="_blank">https://imgur.com/a/uSpsQl6</a></p>
+
+<p>This is a great visual.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
