@@ -1,0 +1,1023 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.selfPostImage {
+  width: 100%;
+  height: auto;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/nba/comments/1rj5jt1/team_ages_weighted_average_by_minutes_played/"><p>Team Ages - Weighted Average by Minutes Played</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <table>
+<thead>
+<tr>
+<th align="left">BRK</th>
+<th align="left">23.48</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">WAS</td>
+<td align="left">23.63</td>
+</tr>
+
+<tr>
+<td align="left">CHO</td>
+<td align="left">23.93</td>
+</tr>
+
+<tr>
+<td align="left">NOP</td>
+<td align="left">24.03</td>
+</tr>
+
+<tr>
+<td align="left">UTA</td>
+<td align="left">24.33</td>
+</tr>
+
+<tr>
+<td align="left">ORL</td>
+<td align="left">24.63</td>
+</tr>
+
+<tr>
+<td align="left">TOR</td>
+<td align="left">24.71</td>
+</tr>
+
+<tr>
+<td align="left">POR</td>
+<td align="left">24.95</td>
+</tr>
+
+<tr>
+<td align="left">ATL</td>
+<td align="left">25.01</td>
+</tr>
+
+<tr>
+<td align="left">MEM</td>
+<td align="left">25.10</td>
+</tr>
+
+<tr>
+<td align="left">OKC</td>
+<td align="left">25.21</td>
+</tr>
+
+<tr>
+<td align="left">PHI</td>
+<td align="left">25.51</td>
+</tr>
+
+<tr>
+<td align="left">SAS</td>
+<td align="left">25.54</td>
+</tr>
+
+<tr>
+<td align="left">CHI</td>
+<td align="left">25.65</td>
+</tr>
+
+<tr>
+<td align="left">DET</td>
+<td align="left">26.01</td>
+</tr>
+
+<tr>
+<td align="left">IND</td>
+<td align="left">26.02</td>
+</tr>
+
+<tr>
+<td align="left">MIA</td>
+<td align="left">26.42</td>
+</tr>
+
+<tr>
+<td align="left">DAL</td>
+<td align="left">26.43</td>
+</tr>
+
+<tr>
+<td align="left">HOU</td>
+<td align="left">26.57</td>
+</tr>
+
+<tr>
+<td align="left">CLE</td>
+<td align="left">26.82</td>
+</tr>
+
+<tr>
+<td align="left">BOS</td>
+<td align="left">26.84</td>
+</tr>
+
+<tr>
+<td align="left">PHO</td>
+<td align="left">27.13</td>
+</tr>
+
+<tr>
+<td align="left">MIL</td>
+<td align="left">27.27</td>
+</tr>
+
+<tr>
+<td align="left">DEN</td>
+<td align="left">27.72</td>
+</tr>
+
+<tr>
+<td align="left">MIN</td>
+<td align="left">27.90</td>
+</tr>
+
+<tr>
+<td align="left">LAL</td>
+<td align="left">27.98</td>
+</tr>
+
+<tr>
+<td align="left">NYK</td>
+<td align="left">28.21</td>
+</tr>
+
+<tr>
+<td align="left">SAC</td>
+<td align="left">28.79</td>
+</tr>
+
+<tr>
+<td align="left">GSW</td>
+<td align="left">28.90</td>
+</tr>
+
+<tr>
+<td align="left">LAC</td>
+<td align="left">30.53</td>
+</tr>
+</tbody>
+</table>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o8au17a" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>illuminatidaddy | Raptors</div>
+        <div>25 | an hour ago </div>
+      </div>
+      <label for="o8au17a" class="commentText"><p>Sacramento being the 3rd oldest is so bleak man</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="o8aw1g6" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>asonkidd</div>
+        <div>10 | an hour ago </div>
+      </div>
+      <label for="o8aw1g6" class="commentText"><p>All those contracts come off the books next year except Sabonis. It&rsquo;s not a big deal tbh especially if they get a good pick this year. It&rsquo;s not as bleak as it seems outside the general idea of having no faith in the organization to move forward lol</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="o8aztfe" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Thunder141</div>
+        <div>1 | 35 minutes ago </div>
+      </div>
+      <label for="o8aztfe" class="commentText"><p>SAC would be fine losing Derozan (36), Lavine (30) and Westbrook (37) though it would hurt a bit. Those three are all over 30, play about 30 mpg each and rank 238, 239 and 241 in EPM, basically pretty average in impact metric.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="o8b17fg" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>JonEnterprise | Timberwolves</div>
+        <div>1 | 28 minutes ago </div>
+      </div>
+      <label for="o8b17fg" class="commentText"><p>Lavine has the same problems as players like Tim Hardaway and Ayo Dosunmu. They literally don’t do anything except put the ball in the basket</p>
+
+<p>Lavine is the worst cuz he’s a starter and makes the most by far. There’s probably a universe where he’s a really good player if he cared</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o8as69b" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Ok-Protection2513 | Hornets</div>
+        <div>7 | an hour ago </div>
+      </div>
+      <label for="o8as69b" class="commentText"><p>Hornets 3rd youngest !</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="o8ax6v6" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>batchez</div>
+        <div>9 | an hour ago </div>
+      </div>
+      <label for="o8ax6v6" class="commentText"><p>Would love to know who chose CHO for our abbreviation.</p>
+
+<p>Why not CLT</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="o8az62v" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>DayComprehensive1078</div>
+        <div>8 | 38 minutes ago </div>
+      </div>
+      <label for="o8az62v" class="commentText"><p>They couldn’t find that one</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="o8b0i49" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>SeizureMode | Pistons</div>
+        <div>1 | 31 minutes ago </div>
+      </div>
+      <label for="o8b0i49" class="commentText"><p>Quite elusive, I&rsquo;ve been told</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="o8b01dp" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>BetweenTheBuzzAndMe | Charlotte Bobcats</div>
+        <div>3 | 34 minutes ago </div>
+      </div>
+      <label for="o8b01dp" class="commentText"><p>bbref differentiates all team name changes, presumably for each of coding.</p>
+
+<p>1988-02 were CHH</p>
+
+<p>2004-14 Bobcats (when bbref was created iirc) were CHA</p>
+
+<p>They went with CHO for the new era but would&rsquo;ve preferred CLT for sure.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="o8b00bw" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>differential32 | Wizards</div>
+        <div>2 | 34 minutes ago </div>
+      </div>
+      <label for="o8b00bw" class="commentText"><p>is the default not CHA?</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="o8azqkc" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Zestyclose_Ad_5719</div>
+        <div>1 | 35 minutes ago </div>
+      </div>
+      <label for="o8azqkc" class="commentText"><p>I think before its CHA? Why its not that anymore?</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o8b1zw5" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Ok-Tree4365</div>
+        <div>1 | 24 minutes ago </div>
+      </div>
+      <label for="o8b1zw5" class="commentText"><p>LAC is trending down pretty significantly. Lopez and Batum are really the only &ldquo;old men&rdquo; on the team (depending on how you define &ldquo;old&rdquo;, Kawhi is 34). Harden and (obviously) CP3 are out. Garland is likely to play the first or second most minutes going forward, Mathurin is getting lots of minutes, and younger guys like Sanders, Miller, and Niederhauser have been taking larger roles.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o8axayb" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>PsychoM | Raptors</div>
+        <div>4 | an hour ago </div>
+      </div>
+      <label for="o8axayb" class="commentText"><p>Kinda surprised how young the Raptors are. I guess it makes sense, players like Ingram, Barrett, Poeltl, Mamu feel old cause they played in the league of a really long time but they&rsquo;re still relatively young.</p>
+
+<p>Great to see it&rsquo;s a bunch of tanking/play-in teams at the top and then Raptors and Magic. Pretty promising.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="o8b0447" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>theuncleiroh | Raptors</div>
+        <div>1 | 33 minutes ago </div>
+      </div>
+      <label for="o8b0447" class="commentText"><p>Also Poeltl hasn&rsquo;t played much, so that&rsquo;s helping out weighted average. This season BI is really the only guy even close to 30 that&rsquo;s played significant minutes, after that it&rsquo;s IQ and Mamu, who are both 26, as our only guys getting regular minutes over 25yo. Jak should push the average up, but not by an insane amount so long as everyone else outside of BI is &amp;lt;26</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o8b0svz" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>BlunderDefect | Spurs</div>
+        <div>1 | 30 minutes ago </div>
+      </div>
+      <label for="o8b0svz" class="commentText"><p>Brooklyn is BKN. Charlotte is CHA. Philly is PHI so I&rsquo;m guessing PHO is Pheonix which is actually PHX. </p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o8b66x8" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>No_Mammoth_4945 | Charlotte Bobcats</div>
+        <div>1 | 2 minutes ago </div>
+      </div>
+      <label for="o8b66x8" class="commentText"><p>Crazy that we’re so young and making a legitimate push. Every other team in the top 5 is hardcore tanking</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o8b67t1" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>mweint18 | Nets</div>
+        <div>1 | 2 minutes ago </div>
+      </div>
+      <label for="o8b67t1" class="commentText"><p>Just as an fyi, it’s typically written BKN not BRK.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o8auooq" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Medical-Picture779 | Nuggets</div>
+        <div>-4 | an hour ago </div>
+      </div>
+      <label for="o8auooq" class="commentText"><p>NBA is way too young.</p>
+
+<p>They put no thought into how many vets theyre pushing out of league with this CBA.</p>
+
+<p>So many teams have like 1 vet</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="o8aww77" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>PrimeTimeInc | Hornets</div>
+        <div>7 | an hour ago </div>
+      </div>
+      <label for="o8aww77" class="commentText"><p>3 of the top 5 on this list are openly tanking. I’m not sure it’s the CBA pushing out vets…</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="o8b00r4" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Medical-Picture779 | Nuggets</div>
+        <div>1 | 34 minutes ago </div>
+      </div>
+      <label for="o8b00r4" class="commentText"><p>Its the cba pushing out vets.</p>
+
+<p>2nd rounders used to get no contracts now they get 3 years guranteed in many cases.
+.thats cause of the cba.</p>
+
+<p>And playoff teams have very few vets too.</p>
+
+<p>Rookie contracts pushed out tons of guys</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="o8awnd8" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>thepeachgod | Celtics</div>
+        <div>2 | an hour ago </div>
+      </div>
+      <label for="o8awnd8" class="commentText"><p>Name those teams</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="o8awys1" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Medical-Picture779 | Nuggets</div>
+        <div>0 | an hour ago </div>
+      </div>
+      <label for="o8awys1" class="commentText"><p>Memphis for example. Like no tenured vets. Utah Charlotte etc..</p>
+
+<p>And the vets are usually 1 year vet mins. Constant roster turnover. NfLization of such a skilled game that takes years to master is very flawed.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="o8aynhd" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>PrimeTimeInc | Hornets</div>
+        <div>2 | 40 minutes ago </div>
+      </div>
+      <label for="o8aynhd" class="commentText"><p>Charlotte has vets. Josh Green, Grant Williams, and Coby White been around. On top of that, like it or not, Lamelo and Miles are in years 5 and 7 with the team (I think). They are vets.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="o8aztn2" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Medical-Picture779 | Nuggets</div>
+        <div>2 | 35 minutes ago </div>
+      </div>
+      <label for="o8aztn2" class="commentText"><p>Those guys are 25 and 27</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="o8b0904" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>PrimeTimeInc | Hornets</div>
+        <div>1 | 32 minutes ago </div>
+      </div>
+      <label for="o8b0904" class="commentText"><p>You don’t magically become a vet at a certain (old) age lol. 5+ years of the grind is plenty to be considered a vet.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="o8b0toe" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Medical-Picture779 | Nuggets</div>
+        <div>1 | 30 minutes ago </div>
+      </div>
+      <label for="o8b0toe" class="commentText"><p>Ya thats what league is missing and my point.</p>
+
+<p>You don&rsquo;t have these old tenured vets anymore in locker rooms, too many rookie deals to fit into 15 man and development too important.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="o8azam8" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Kiriegloom | Bulls</div>
+        <div>2 | 37 minutes ago </div>
+      </div>
+      <label for="o8azam8" class="commentText"><p>Lmao what? Utah has Kevin Love (played in multiple finals, won one, and is in his 17th season), Jusuf Nurkić (11th season), and Lauri (8th season). The average length of an NBA career is 5 years. If those aren&rsquo;t vets, idk what a vet even is</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="o8b068k" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Medical-Picture779 | Nuggets</div>
+        <div>1 | 33 minutes ago </div>
+      </div>
+      <label for="o8b068k" class="commentText"><p>Ya love and nurk counts</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="o8ayvzn" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>thepeachgod | Celtics</div>
+        <div>1 | 39 minutes ago </div>
+      </div>
+      <label for="o8ayvzn" class="commentText"><p>I mean Memphis had JJJ + Ja and Clarke for tenured guys plus KCP and Taj now. Utah came into the year openly tanking but still has Lauri, Nurkic, Love and Svi and Charlotte has Bridges, Connaughton and had Plumlee plus Xavier Tillman, Grant Williams and Josh Green which you could count too</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="o8azs90" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Medical-Picture779 | Nuggets</div>
+        <div>1 | 35 minutes ago </div>
+      </div>
+      <label for="o8azs90" class="commentText"><p>I wouldn&rsquo;t say ja jaren Clarke is vets. But they have kcp now.</p>
+
+<p>Grant Williams and josh green are 25 and 27.</p>
+
+<p>Those are not vets to me.</p>
+
+<p>I think you just wanna argue lol</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="o8b07ep" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>TitanTigers | Grizzlies</div>
+        <div>1 | 33 minutes ago </div>
+      </div>
+      <label for="o8b07ep" class="commentText"><p>JJJ has been in the league 8 years and he&rsquo;s not a vet?</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="o8b0gh8" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Medical-Picture779 | Nuggets</div>
+        <div>1 | 31 minutes ago </div>
+      </div>
+      <label for="o8b0gh8" class="commentText"><p>I dont consider 26 year old stars as &ldquo;vets&rdquo; with how im framing it. As in depth guys for locker room etc..</p>
+
+<p>Haslem, deandre Jordan types etc..</p>
+
+<p>Or squarely how many teams even have guys over 30?</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o8aspau" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>alfi_k | Mavericks</div>
+        <div>-6 | an hour ago </div>
+      </div>
+      <label for="o8aspau" class="commentText"><p>I wouldnt have sorted it alphabetically</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
