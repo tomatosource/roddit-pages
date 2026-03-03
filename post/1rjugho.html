@@ -1,0 +1,706 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.selfPostImage {
+  width: 100%;
+  height: auto;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/PathOfExile2/comments/1rjugho/introducing_the_poe_acronym_bot/"><p>Introducing the PoE Acronym Bot</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <p>Hey exiles,</p>
+
+<p>We&rsquo;ve built a bot for this subreddit that explains acronyms and common terms.
+Path of Exile has a lot of jargon and it can be rough for newer players to understand every term that comes up.</p>
+
+<h2 id="how-it-works">How it works:</h2>
+
+<p>When a new post contains acronyms (DPS, DoT, PoB, etc.), the bot will reply with a quick reference of what each one means and add a wiki link if one exists.<br>
+In comments, you can use bracket syntax like [AoE] or [Headhunter] to summon the bot. The bot will reply with definitions for known acronyms and search the wiki for unknown ones and if there is no acronym it will look for a wiki page with that name.<br>
+The acronym database is synced from the <a href="https://www.poe2wiki.net/wiki/Guide:Community_shorthand" target="_blank">https://www.poe2wiki.net/wiki/Guide:Community_shorthand</a> wiki page occasionally and after curation, so it stays up to date. If you want to add an acronym, the best way is to add it to that wiki page directly.</p>
+
+<h2 id="a-few-other-things">A few other things</h2>
+
+<ul>
+<li>If a bot reply isn&rsquo;t helpful, just downvote it. Replies that reach some downvotes are automatically deleted.</li>
+<li>You can browse the full acronym list or suggest additions at: <a href="https://acronym.sidia.net/acronyms/pathofexile2" target="_blank">https://acronym.sidia.net/acronyms/pathofexile2</a></li>
+<li>Editing in tags will not trigger the bot</li>
+<li>The acronyms list will have small mistakes until we refine it, we fix them as we see them, feel free to ping u/KadekiDev if you spot a mistake</li>
+</ul>
+
+<p>Feedback and Term suggestions are welcome!</p>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o8frg01" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>GR8B0-T</div>
+        <div>1 | 44 minutes ago </div>
+      </div>
+      <label for="o8frg01" class="commentText"><p>I noticed some Path of Exile acronyms in this post:</p>
+
+<ul>
+<li><strong>AoE</strong> - Area of effect (<a href="https://www.poe2wiki.net/wiki/Area_of_effect" target="_blank">Wiki</a>)</li>
+<li><strong>DoT</strong> - Damage over time (<a href="https://www.poe2wiki.net/wiki/Damage_over_time" target="_blank">Wiki</a>)</li>
+<li><strong>PoB</strong> - Path of Building, an external tool used to simulate and plan character builds</li>
+</ul>
+
+<hr>
+
+<p>^(I am a bot.) ^| <a href="https://acronym.sidia.net/acronyms/pathofexile2" target="_blank">^(All acronyms)</a> ^| <a href="https://acronym.sidia.net/suggest/pathofexile2" target="_blank">^(Suggest)</a></p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o8fu8uf" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>GamerKilroy</div>
+        <div>1 | 30 minutes ago </div>
+      </div>
+      <label for="o8fu8uf" class="commentText"><p>Hey, glad this exists! If you don&rsquo;t mind me testing&hellip; [EE] should resolve the Elemental Equilibrium yes?</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="o8fu9e1" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>GR8B0-T</div>
+        <div>1 | 30 minutes ago </div>
+      </div>
+      <label for="o8fu9e1" class="commentText"><p>Here&rsquo;s what I found:</p>
+
+<ul>
+<li><strong>EE</strong> - Elemental Equilibrium keystone passive skill (<a href="https://www.poe2wiki.net/wiki/Elemental_Equilibrium" target="_blank">Wiki</a>)</li>
+</ul>
+
+<hr>
+
+<p>^(I am a bot.) ^| <a href="https://acronym.sidia.net/acronyms/pathofexile2" target="_blank">^(All acronyms)</a> ^| <a href="https://acronym.sidia.net/suggest/pathofexile2" target="_blank">^(Suggest)</a></p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="o8fubf4" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>GamerKilroy</div>
+        <div>1 | 30 minutes ago </div>
+      </div>
+      <label for="o8fubf4" class="commentText"><p>Good bot</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="o8fwk6u" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>TheArhive</div>
+        <div>1 | 19 minutes ago </div>
+      </div>
+      <label for="o8fwk6u" class="commentText"><p>Holy heck this is a great usage example. Like personally I&rsquo;d never need AoE explained to me, but PoE2 absolutely has terms that I need splained.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="o8g03z4" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Apoeip77</div>
+        <div>1 | 3 minutes ago </div>
+      </div>
+      <label for="o8g03z4" class="commentText"><p>I feel the same, but there are new stuff too, like [ehots] or [fbok]</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o8ful1g" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>dbroccoliman</div>
+        <div>1 | 29 minutes ago </div>
+      </div>
+      <label for="o8ful1g" class="commentText"><p>Kudos to the mods, this was a great way to provide the best of both worlds, lowering the on-ramp for newcomers while also letting people use acronyms as they see fit.</p>
+
+<p>Thanks y&rsquo;all!</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o8fuvza" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>qaliar</div>
+        <div>1 | 27 minutes ago </div>
+      </div>
+      <label for="o8fuvza" class="commentText"><p>Just curious how it will handle repeat acronyms like EB for example</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="o8fw5hj" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Jazzy_Jaspy</div>
+        <div>1 | 21 minutes ago </div>
+      </div>
+      <label for="o8fw5hj" class="commentText"><p>Lets find out [EB]</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="o8fw6zx" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>GR8B0-T</div>
+        <div>1 | 21 minutes ago </div>
+      </div>
+      <label for="o8fw6zx" class="commentText"><p>Here&rsquo;s what I found:</p>
+
+<ul>
+<li><strong>EB</strong> - Eldritch Battery keystone passive skill (<a href="https://www.poe2wiki.net/wiki/Eldritch_Battery" target="_blank">Wiki</a>)</li>
+</ul>
+
+<hr>
+
+<p>^(I am a bot.) ^| <a href="https://acronym.sidia.net/acronyms/pathofexile2" target="_blank">^(All acronyms)</a> ^| <a href="https://acronym.sidia.net/suggest/pathofexile2" target="_blank">^(Suggest)</a></p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o8fwdm2" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Alternative_Goat300</div>
+        <div>1 | 20 minutes ago </div>
+      </div>
+      <label for="o8fwdm2" class="commentText"><p>Noice, great idea</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o8fui8o" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>[deleted]</div>
+        <div>1 | 29 minutes ago </div>
+      </div>
+      <label for="o8fui8o" class="commentText"><p>[deleted]</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="o8fuo2p" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>GamerKilroy</div>
+        <div>1 | 28 minutes ago </div>
+      </div>
+      <label for="o8fuo2p" class="commentText"><p>[EB]</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="o8fuom9" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>GR8B0-T</div>
+        <div>1 | 28 minutes ago </div>
+      </div>
+      <label for="o8fuom9" class="commentText"><p>Here&rsquo;s what I found:</p>
+
+<ul>
+<li><strong>EB</strong> - Eldritch Battery keystone passive skill (<a href="https://www.poe2wiki.net/wiki/Eldritch_Battery" target="_blank">Wiki</a>)</li>
+</ul>
+
+<hr>
+
+<p>^(I am a bot.) ^| <a href="https://acronym.sidia.net/acronyms/pathofexile2" target="_blank">^(All acronyms)</a> ^| <a href="https://acronym.sidia.net/suggest/pathofexile2" target="_blank">^(Suggest)</a></p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o8fv5m9" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>abhinav21</div>
+        <div>1 | 26 minutes ago </div>
+      </div>
+      <label for="o8fv5m9" class="commentText"><p>[BAMA]</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o8fwnf4" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>trolledwolf</div>
+        <div>1 | 19 minutes ago </div>
+      </div>
+      <label for="o8fwnf4" class="commentText"><p>What if I say [CC]</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o8fxp46" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Projectgrace</div>
+        <div>1 | 14 minutes ago </div>
+      </div>
+      <label for="o8fxp46" class="commentText"><p>Cool stuff!! As a newbie myself this will be a great help!! Thx!!</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o8fxt2w" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>marqoose</div>
+        <div>1 | 13 minutes ago </div>
+      </div>
+      <label for="o8fxt2w" class="commentText"><p>This is excellent. PoE 2 is the first ARPG Ive ever played, and much of the vocabulary is lost on me.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o8fyzts" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Corsaer</div>
+        <div>1 | 8 minutes ago </div>
+      </div>
+      <label for="o8fyzts" class="commentText"><p>Very cool addition to the sub!</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o8fz60t" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>saywaaaaaaat</div>
+        <div>1 | 7 minutes ago </div>
+      </div>
+      <label for="o8fz60t" class="commentText"><p>What does [CI] mean?</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="o8fzami" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>GR8B0-T</div>
+        <div>1 | 6 minutes ago </div>
+      </div>
+      <label for="o8fzami" class="commentText"><p>Here&rsquo;s what I found:</p>
+
+<ul>
+<li><strong>CI</strong> - Chaos Inoculation keystone passive skill (<a href="https://www.poe2wiki.net/wiki/Chaos_Inoculation" target="_blank">Wiki</a>)</li>
+</ul>
+
+<hr>
+
+<p>^(I am a bot.) ^| <a href="https://acronym.sidia.net/acronyms/pathofexile2" target="_blank">^(All acronyms)</a> ^| <a href="https://acronym.sidia.net/suggest/pathofexile2" target="_blank">^(Suggest)</a></p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o8g019d" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>SteveTheHappyWhale</div>
+        <div>1 | 3 minutes ago </div>
+      </div>
+      <label for="o8g019d" class="commentText"><p>Nice stuff! 🍻</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o8fwgit" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>SoupOfSomeYoungGuy</div>
+        <div>1 | 20 minutes ago </div>
+      </div>
+      <label for="o8fwgit" class="commentText"><p>What is Mageblood an acronym for? Maybe A Good Engineer Blocks Love Of Old Diapers ?</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
