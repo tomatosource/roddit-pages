@@ -1,0 +1,641 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.selfPostImage {
+  width: 100%;
+  height: auto;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/nba/comments/1rkox50/the_sixers_are_the_first_team_in_nba_history_to/"><p>The Sixers are the first team in NBA history to lose 3 home games by 40+ points in a single season</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <p>The 3 losses:</p>
+
+<ul>
+<li><a href="https://www.basketball-reference.com/boxscores/202511250PHI.html" target="_blank">41-point loss to the Magic in November</a></li>
+<li><a href="https://www.basketball-reference.com/boxscores/202602110PHI.html" target="_blank">49-point loss to the Knicks last month</a></li>
+<li><a href="https://www.basketball-reference.com/boxscores/202603030PHI.html" target="_blank">40-point loss to the Spurs last night</a></li>
+</ul>
+
+<p>There are 10 other teams with two such losses in a single season:</p>
+
+<ul>
+<li>1967-68 Rockets (<a href="https://www.sports-reference.com/stathead/tiny/ETmjY/reddit" target="_blank">Box scores</a>)</li>
+<li>1971-72 76ers (<a href="https://www.sports-reference.com/stathead/tiny/YpDIx/reddit" target="_blank">Box scores</a>)</li>
+<li>1988-89 Heat (<a href="https://www.sports-reference.com/stathead/tiny/klx4J/reddit" target="_blank">Box scores</a>)</li>
+<li>1998-99 Bulls (<a href="https://www.sports-reference.com/stathead/tiny/X8Ixl/reddit" target="_blank">Box scores</a>)</li>
+<li>2017-18 Suns (<a href="https://www.sports-reference.com/stathead/tiny/eIDha/reddit" target="_blank">Box scores</a>)</li>
+<li>2022-23 Blazers (<a href="https://www.sports-reference.com/stathead/tiny/jdVhI/reddit" target="_blank">Box scores</a>)</li>
+<li>2023-24 Raptors (<a href="https://www.sports-reference.com/stathead/tiny/bouI4/reddit" target="_blank">Box scores</a>)</li>
+<li>2024-25 Pelicans (<a href="https://www.sports-reference.com/stathead/tiny/XW3ix/reddit" target="_blank">Box scores</a>)</li>
+<li>2024-25 Blazers (<a href="https://www.sports-reference.com/stathead/tiny/L1efp/reddit" target="_blank">Box scores</a>)</li>
+<li>2024-25 Wizards (<a href="https://www.sports-reference.com/stathead/tiny/mFjMy/reddit" target="_blank">Box scores</a>)</li>
+</ul>
+
+<p>(<a href="https://www.sports-reference.com/stathead/tiny/HYemT/reddit" target="_blank">Source</a>)</p>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o8m1k5k" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Nosalis2</div>
+        <div>17 | 2 hours ago </div>
+      </div>
+      <label for="o8m1k5k" class="commentText"><p>Embiid missed every single one of those and PG got himself suspended. They&rsquo;re a very bad team without those two. </p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="o8m4pa4" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>junkit33</div>
+        <div>6 | an hour ago </div>
+      </div>
+      <label for="o8m4pa4" class="commentText"><p>Much more Embiid than PG.</p>
+
+<p>At this point in his career, George will have the occasional hot hand and lean into it, but otherwise he doesn&rsquo;t really give a shit and on most nights he will give you the most low effort 30 minute <sup>15</sup>&frasl;<sub>5</sub> that a player can give.  And that&rsquo;s even when he plays, which is never a given.</p>
+
+<p>Basically this Philly team is only going to go as far as Embiid&rsquo;s health can get them in the postseason.  Which, isn&rsquo;t looking great right about now.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="o8m24wo" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>TheGoatPurdy</div>
+        <div>5 | 2 hours ago </div>
+      </div>
+      <label for="o8m24wo" class="commentText"><p>So you’re telling me embiid is still a difference maker despite people writing him off due to all the injuries?</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="o8m2st2" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Nosalis2</div>
+        <div>3 | 2 hours ago </div>
+      </div>
+      <label for="o8m2st2" class="commentText"><p>I mean Embiid is straight up a Top 10 player impact wise when he plays this season. And looked like he was back to being Top 5 for a brief stretch before he succumbed to the inevitable.</p>
+
+<p>Only an idiot (which this sub is full off) would try to deny that.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="o8m8ctk" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>AgadorFartacus | Celtics</div>
+        <div>-6 | an hour ago </div>
+      </div>
+      <label for="o8m8ctk" class="commentText"><p>Embiid has never been a top five player even when healthy.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="o8meexe" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>kakyointhedonutman | Nuggets</div>
+        <div>4 | 42 minutes ago </div>
+      </div>
+      <label for="o8meexe" class="commentText"><p>He literally won MVP. While I don’t think he was #1 that season, he was absolutely top 5</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="o8m3o8p" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>GGTae | Spurs</div>
+        <div>2 | 2 hours ago </div>
+      </div>
+      <label for="o8m3o8p" class="commentText"><p>not surprising when both of their paycheck stealers combine for more than half of the team cap and don&rsquo;t play, all the rest is converted g leaguers basically</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="o8mcb94" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>TheGoatPurdy</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="o8mcb94" class="commentText"><p>Warriors would like to have a word with</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="o8meev0" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>GGTae | Spurs</div>
+        <div>1 | 42 minutes ago </div>
+      </div>
+      <label for="o8meev0" class="commentText"><p>at least warriors have a coaching identity, sixers are nothing inspiring</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="o8m6dp3" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>BillPaxton4eva | Celtics</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="o8m6dp3" class="commentText"><p>I’m telling you that, despite flashes of brilliance on the occasions he’s on the court, he’s still one of the worst contracts in the nba over the next few years, although not quite as bad as the PG contract.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o8m4cdp" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Jec1027 | Warriors</div>
+        <div>5 | an hour ago </div>
+      </div>
+      <label for="o8m4cdp" class="commentText"><p>Holy fuck</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o8mcj3q" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Danibear285 | Clippers</div>
+        <div>2 | an hour ago </div>
+      </div>
+      <label for="o8mcj3q" class="commentText"><p>Oh wow look! It’s the usual suspects!</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o8m2ff5" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>heat_fan_ | Raptors</div>
+        <div>1 | 2 hours ago </div>
+      </div>
+      <label for="o8m2ff5" class="commentText"><p>Let me guess Embild didn&rsquo;t play in any of them </p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="o8m44gd" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Tofu4070 | 76ers</div>
+        <div>2 | 2 hours ago </div>
+      </div>
+      <label for="o8m44gd" class="commentText"><p>PG didn’t either!</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="o8m54hw" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>hoopycoop | Nuggets</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="o8m54hw" class="commentText"><p>Definitely not</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o8mbpct" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Few_Position_2727 | Lakers</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="o8mbpct" class="commentText"><p>Mitch Johnson had to tell his guys to chill out or else they would have won by 60 lmao</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o8mkd6a" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>AchtCocainAchtBier | Spurs</div>
+        <div>1 | 14 minutes ago </div>
+      </div>
+      <label for="o8mkd6a" class="commentText"><p>You tell me that wasn&rsquo;t the worst game last night? Big ooff.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="o8m6kxj" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>clockwork_purple2</div>
+        <div>-1 | an hour ago </div>
+      </div>
+      <label for="o8m6kxj" class="commentText"><p>With Embiid they have a finals run ceiling, without him they are a lottery team.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="o8m8g4q" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>AgadorFartacus | Celtics</div>
+        <div>5 | an hour ago </div>
+      </div>
+      <label for="o8m8g4q" class="commentText"><p>NCAA finals?</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="o8m75r0" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>jman009 | Clippers</div>
+        <div>5 | an hour ago </div>
+      </div>
+      <label for="o8m75r0" class="commentText"><p>Even with embid they not making a run anymore. Window is closed. The process failed</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="o8m9y7c" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Dont_Doomie_Like_Dat</div>
+        <div>4 | an hour ago </div>
+      </div>
+      <label for="o8m9y7c" class="commentText"><p>I’m sorry <em>what</em></p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="o8mbua7" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Few_Position_2727 | Lakers</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="o8mbua7" class="commentText"><p>Which finals did they ever sniff with Embiid?? 😂😂😂</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
