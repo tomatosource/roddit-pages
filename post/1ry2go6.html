@@ -1,0 +1,276 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.selfPostImage {
+  width: 100%;
+  height: auto;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/baseball/comments/1ry2go6/i_built_a_database_and_website_to_analyze_every/"><p>I built a database and website to analyze every ABS challenge</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <p>With the regular season about to start I wanted to share what I made and some of the more interesting things I&rsquo;ve found from Spring Training.</p>
+
+<p>###The challenge database</p>
+
+<p><a href="https://taptochallenge.com" target="_blank">Taptochallenge.com</a> is built from a database that logs every ABS challenge and surfaces stats for players, teams, umpires, and individual games. I also track missed opportunities (umpire misses that went unchallenged) so you can see how much value your team left on the table. The homepage has a leaderboard while most of the other pages are tabular. Everything comes from Statcast data via MLBs API.</p>
+
+<p>I built this because I wanted a real answer to &ldquo;how much did that challenge actually matter?&rdquo; beyond vibes and a vague memorization of the Run Expectancy charts. Every challenge on the site has a run expectancy delta calculated from the RE288 matrix (the 288 possible base-out-count states mapped to expected runs for the rest of the inning) and a Win Expectancy calc that additionally incorporates the inning and score differential. Unsuccessful challenges are assigned an opportunity cost based on how many future challenges the team is expected to miss out on, the league win rate, and the average value of a successful overturn. If you want the methodology on the RE related stuff I wrote it up <a href="https://taptochallenge.com/blog/understanding-the-run-value-of-abs-challenges" target="_blank">here</a>. I also did my best to build on top of some of Tom Tango&rsquo;s recent work (see his Feb/March <a href="https://tangotiger.com/index.php/site/comments/cost-benefit-analysis-of-making-an-abs-challenge" target="_blank">blog posts</a> about challenge breakeven points).</p>
+
+<p>I trained a couple of logistic regression models to create some &lsquo;Expected&rsquo; metrics. Definitely not reinventing the wheel with either of these, but here they are:</p>
+
+<p><strong>Expected Challenge %</strong> <em>modeled on 2026 Spring Training challenges and will be updated as the season progresses</em> predicts the probability that a given pitch gets challenged based on zone distance and game situation. From this I calculate COE (Challenges Over Expected) to see which teams and players are challenging more or less than the model expects. For defensive challenges there is a 96:4 value assignment split due to the overwhelming prevalence of catchers challenging instead of pitchers while both have the ability to challenge.</p>
+
+<p><strong>Expected Strike %</strong> <em>modeled on 2025 regular season data</em> predicts what an average umpire would call on a given pitch based on location and game situation. This powers xAcc% (expected umpire accuracy given pitch mix difficulty) and AOE (Accuracy Over Expected), which lets you compare umpires on a level playing field.</p>
+
+<hr>
+
+<p>###Pages on the site</p>
+
+<p><strong>Challenges</strong>: every challenge this season, sortable/filterable by date, team, player, role, count, result, inning, and more. Each one links to the pitch&rsquo;s video replay (these are sparse during ST but will have better availability during the season) and a detail page with full game context.</p>
+
+<p><strong>Players, Teams, Umpires</strong>: aggregated stats with per role splits (batter/pitcher/catcher)</p>
+
+<p><strong>Games</strong>: per game breakdown showing each team&rsquo;s challenge results and value</p>
+
+<p><strong>Missed Opportunities</strong>: umpire misses that nobody challenged, also has links to replay</p>
+
+<p><strong>Profile views</strong>: for players, teams, umpires, and single games if you click the link from the respective table.</p>
+
+<p>Everything updates hourly. MLB will occasionally make a mistake with their data input, but as long as they fix it by the end of the next day it&rsquo;ll show as it should on the site.</p>
+
+<hr>
+
+<p>###Some things from ST that I find interesting</p>
+
+<p><strong>Pitchers have been relegated to the dog house</strong>: At the time I started typing this post, there have been 1641 ABS challenges in spring training. 814 by catchers, 762 by batters, and 32 by pitchers (and a handful more that weren&rsquo;t properly tagged in MLBs data output and don&rsquo;t have an easily available video replay for me to chase down). MLB <a href="https://www.mlb.com/news/automated-ball-strike-system-results-mlb-spring-training-2025" target="_blank">posted an article</a> after last year&rsquo;s spring training highlighting the 41% success rate of pitchers and clearly teams noticed.</p>
+
+<p><strong>Challenges can be worth a lot</strong>: Up until a few days ago, the player atop the Run Expectancy leaderboard was Milwaukee&rsquo;s Darrien Miller with a <a href="https://www.taptochallenge.com/players/687152" target="_blank">single overturned pitch</a> that turned a bases loaded walk into a strikeout that ended the inning. The expected run value difference was +1.789, right around the Linear Weight value of a <em>homer</em>. On average though, a successful challenge is worth about .18 runs.</p>
+
+<p><strong>The Dodgers really suck at this</strong>: LA is <sup>15</sup>&frasl;<sub>40</sub> on ABS challenges and 12 of their 25 losses have come in the 4th inning or earlier. Most of this is from <a href="https://www.taptochallenge.com/players/672613" target="_blank">Eliezer Alfonzo</a> going 2 for 10, but Will Smith, Dalton Rushing, and everyone tapping their dome in the batters box have also struggled.</p>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="obbb507" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Sad-Flounder6273</div>
+        <div>2 | 44 minutes ago </div>
+      </div>
+      <label for="obbb507" class="commentText"><p>mate i wasn&rsquo;t even aware this challenge system was happening in spring training but this is absolutely mental in the best way. the fact that you basically built a whole analytics platform around something that&rsquo;s gonna be huge for the game is wild. been designing interfaces for sports stats stuff recently and seeing how clean you&rsquo;ve made all these complex metrics is proper inspiring</p>
+
+<p>that milwaukee pitcher play is insane - turning a bases loaded walk into a K is basically stealing a home run&rsquo;s worth of value. wonder if we&rsquo;re gonna see teams start putting way more emphasis on training their catchers to read the zone better since they&rsquo;re clearly the ones making most of the calls now. poor pitchers getting benched from challenge duty after that 41% success rate probably stings a bit</p>
+
+<p>also the dodgers struggling with timing is hilarious, burning challenges early when they could save them for bigger spots later. definitely checking this out when the season starts, gonna be fascinating to see which teams actually get good at this strategic element vs just winging it</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
