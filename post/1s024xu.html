@@ -1,0 +1,949 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.selfPostImage {
+  width: 100%;
+  height: auto;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/nba/comments/1s024xu/after_tonight_lebron_will_lead_in_every_regular/"><p>After tonight, LeBron will lead in every regular season statistic he can potentially lead&hellip; except for one</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <table>
+<thead>
+<tr>
+<th align="left"><strong>Statistic</strong></th>
+<th align="left"><strong>Leader</strong></th>
+<th align="left"><strong>Total</strong></th>
+<th align="left"><strong>Runner-up</strong></th>
+<th align="left"><strong>Total</strong></th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">Regular-season wins</td>
+<td align="left">Kareem Abdul-Jabbar</td>
+<td align="left">1,074</td>
+<td align="left">LeBron James</td>
+<td align="left">1,040</td>
+</tr>
+
+<tr>
+<td align="left">Points</td>
+<td align="left">LeBron James</td>
+<td align="left">43,229</td>
+<td align="left">Kareem Abdul-Jabbar</td>
+<td align="left">38,387</td>
+</tr>
+
+<tr>
+<td align="left">Minutes played</td>
+<td align="left">LeBron James</td>
+<td align="left">60,677</td>
+<td align="left">Kareem Abdul-Jabbar</td>
+<td align="left">57,446</td>
+</tr>
+
+<tr>
+<td align="left">Field goals made</td>
+<td align="left">LeBron James</td>
+<td align="left">15,884</td>
+<td align="left">Kareem Abdul-Jabbar</td>
+<td align="left">15,837</td>
+</tr>
+
+<tr>
+<td align="left">Win Shares</td>
+<td align="left">LeBron James</td>
+<td align="left">275.620</td>
+<td align="left">Kareem Abdul-Jabbar</td>
+<td align="left">273.410</td>
+</tr>
+
+<tr>
+<td align="left">All-Star selections</td>
+<td align="left">LeBron James</td>
+<td align="left">22</td>
+<td align="left">Kareem Abdul-Jabbar</td>
+<td align="left">19</td>
+</tr>
+
+<tr>
+<td align="left">All-NBA selections</td>
+<td align="left">LeBron James</td>
+<td align="left">21</td>
+<td align="left">Kareem Abdul-Jabbar / Kobe Bryant</td>
+<td align="left">15</td>
+</tr>
+
+<tr>
+<td align="left">All-NBA First Team selections</td>
+<td align="left">LeBron James</td>
+<td align="left">13</td>
+<td align="left">Kobe Bryant</td>
+<td align="left">11</td>
+</tr>
+
+<tr>
+<td align="left">Player of the Month</td>
+<td align="left">LeBron James</td>
+<td align="left">41</td>
+<td align="left">Kobe Bryant</td>
+<td align="left">17</td>
+</tr>
+
+<tr>
+<td align="left">Player of the Week</td>
+<td align="left">LeBron James</td>
+<td align="left">69</td>
+<td align="left">Kobe Bryant</td>
+<td align="left">33</td>
+</tr>
+
+<tr>
+<td align="left">Games played</td>
+<td align="left">LeBron James</td>
+<td align="left">1,611</td>
+<td align="left">Robert Parish</td>
+<td align="left">1,611</td>
+</tr>
+
+<tr>
+<td align="left">Seasons played</td>
+<td align="left">LeBron James</td>
+<td align="left">23</td>
+<td align="left">Vince Carter</td>
+<td align="left">22</td>
+</tr>
+
+<tr>
+<td align="left">MVP Shares</td>
+<td align="left">LeBron James</td>
+<td align="left">8.831</td>
+<td align="left">Michael Jordan</td>
+<td align="left">8.115</td>
+</tr>
+</tbody>
+</table>
+<p>There are of course some regular season statistics LeBron will never lead in. Players most deserving of shout outs (in my opinion):</p>
+
+<p>Tim Duncan leads in double doubles (841), career plus/minus (+8910), and All-Defense Selections (15)</p>
+
+<p>John Stockton leads in career assists (15,806) and steals (3,265)</p>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="obq8v95" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Past-Ad7339 | Mavericks</div>
+        <div>38 | 34 minutes ago </div>
+      </div>
+      <label for="obq8v95" class="commentText"><p>career blocks by hakeem too</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="obqc7bc" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>LaMelonBallz | Hornets</div>
+        <div>1 | 16 minutes ago </div>
+      </div>
+      <label for="obqc7bc" class="commentText"><p>I wonder how close he is to career losses.</p>
+
+<p>Like has to lead in dumb shit likes fg missed and turnovers too</p>
+
+<p>It&rsquo;s just a longevity thing</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="obqcr8q" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>go7denboot</div>
+        <div>1 | 13 minutes ago </div>
+      </div>
+      <label for="obqcr8q" class="commentText"><p>He does already and by the time he retires its going to be by a lot</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="obqdifn" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>LaMelonBallz | Hornets</div>
+        <div>1 | 9 minutes ago </div>
+      </div>
+      <label for="obqdifn" class="commentText"><p>Gen 5&rsquo;s on Zwitter like &ldquo;LeBron the turnover king playing with literal children&rdquo;</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="obqe6mi" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>PrincePascal | Raptors</div>
+        <div>1 | 5 minutes ago </div>
+      </div>
+      <label for="obqe6mi" class="commentText"><p>He’s not even top 25 in career <a href="https://www.statmuse.com/nba/ask/players-with-most-losses-career-regular-season" target="_blank">losses</a></p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="obq9txj" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Technical_Pace_4205 | Knicks</div>
+        <div>1 | 29 minutes ago </div>
+      </div>
+      <label for="obq9txj" class="commentText"><p>This is how my 2K my career stats used to look back in the day. Me and Bron are pretty much the same.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="obqb3ml" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Kauoom</div>
+        <div>1 | 22 minutes ago </div>
+      </div>
+      <label for="obqb3ml" class="commentText"><p>I‘d take you over Bron in my all-time starting five any day of the week.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="obqbl6x" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>pwnd32 | Lakers</div>
+        <div>1 | 19 minutes ago </div>
+      </div>
+      <label for="obqbl6x" class="commentText"><p>I think the GOAT conversations around u/Technical_Pace_4205 are well overdue</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="obqbib8" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Technical_Pace_4205 | Knicks</div>
+        <div>1 | 20 minutes ago </div>
+      </div>
+      <label for="obqbib8" class="commentText"><p>Dawg, we would lose so many fucking games because of me 🥹</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="obqbn67" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>allthatglittersis___ | Lakers</div>
+        <div>1 | 19 minutes ago </div>
+      </div>
+      <label for="obqbn67" class="commentText"><p>u/Technical_Pace_4205 played with lag and was a screen looker. He&rsquo;d never make it in today&rsquo;s league</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="obqb8aa" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>brnccnt7</div>
+        <div>1 | 21 minutes ago </div>
+      </div>
+      <label for="obqb8aa" class="commentText"><p>Thats very impressive, but you left out a LOT of &ldquo;regular season stats&rdquo; he doesn&rsquo;t have or won&rsquo;t have too&hellip; not just the ones notated at the bottom lol</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="obq7eix" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Chakashawn</div>
+        <div>8 | 42 minutes ago </div>
+      </div>
+      <label for="obq7eix" class="commentText"><p>Timmy so slept on</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="obqecxu" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>No-Test6484 | Lakers</div>
+        <div>1 | 4 minutes ago </div>
+      </div>
+      <label for="obqecxu" class="commentText"><p>Really? Everyone puts him in their top 7.
+For me it’s:
+MJ/Bron
+Kareem
+Magic
+Bird
+Duncan
+Wilt
+Shaq
+Kobe
+Steph</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="obqefqm" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Messiahhh</div>
+        <div>1 | 4 minutes ago </div>
+      </div>
+      <label for="obqefqm" class="commentText"><p>He’s in everyone’s top 10 and usually not after 8.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="obqax34" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>cashappmebitch | Wizards</div>
+        <div>1 | 23 minutes ago </div>
+      </div>
+      <label for="obqax34" class="commentText"><p>You know I wasn’t convinced before, but this guy might be pretty decent at basketball</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="obqbero" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>piercelitchhult</div>
+        <div>1 | 20 minutes ago </div>
+      </div>
+      <label for="obqbero" class="commentText"><p>Guess blocks aren&rsquo;t a stat</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="obqc8ms" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>go7denboot</div>
+        <div>1 | 16 minutes ago </div>
+      </div>
+      <label for="obqc8ms" class="commentText"><p>So assists, steals, blocks rebounds and 3pt made arent statistics anymore hun</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="obqaujk" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ironyisdeadish</div>
+        <div>1 | 23 minutes ago </div>
+      </div>
+      <label for="obqaujk" class="commentText"><p>absolutely bananas. definitely looks a <sup>1</sup>&frasl;<sub>2</sub> step slower this season, especially on defense. also, he&rsquo;s played 23 seasons, so what the holy hell. don&rsquo;t mind me. i&rsquo;m going back to my potato chips.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="obqbelj" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>CutLonzosHair2017 | LAL</div>
+        <div>1 | 20 minutes ago </div>
+      </div>
+      <label for="obqbelj" class="commentText"><p>Nah he looks the same. His jump shot fell off of a cliff and that’s been the entire difference.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="obqcbn3" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>killerk13 | Bulls</div>
+        <div>1 | 15 minutes ago </div>
+      </div>
+      <label for="obqcbn3" class="commentText"><p>He’s fell off athletically as well, but that too be expected in year 23.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="obqd3gy" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Iggy_Slayer</div>
+        <div>1 | 11 minutes ago </div>
+      </div>
+      <label for="obqd3gy" class="commentText"><p>Definitely not reaching for cherry picked stats when you go with player of the week. Also mvp &ldquo;shares&rdquo;? How about actual mvps.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="obqdqkm" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Bourkey_94 | Thunder</div>
+        <div>1 | 7 minutes ago </div>
+      </div>
+      <label for="obqdqkm" class="commentText"><p>Lebron also leads all time turnovers, you accidentally left that one off, along with assists, rebounds, 3pt, free throws triple doubles.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="obqe870" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>WanAjin | Lakers</div>
+        <div>1 | 5 minutes ago </div>
+      </div>
+      <label for="obqe870" class="commentText"><p>Player of the week and Player of the month both being double the next closest is pretty insane.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="obq66qw" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Vitex1988 | Thunder</div>
+        <div>-12 | an hour ago </div>
+      </div>
+      <label for="obq66qw" class="commentText"><p>He&rsquo;s also not leading in number of times I&rsquo;ve said he&rsquo;ll finish 2nd in MVP voting, behind Luka Doncic with 78</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="obqaf3q" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>False_Pear1860</div>
+        <div>1 | 25 minutes ago </div>
+      </div>
+      <label for="obqaf3q" class="commentText"><p>Luka has never finished 2nd in MVP voting lol</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="obq6xlj" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Dummmy99 | Lakers</div>
+        <div>-6 | 44 minutes ago </div>
+      </div>
+      <label for="obq6xlj" class="commentText"><p>^ Guy just stays hating since he knows deep down Doncic is better 🤷</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="obq8pp9" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>sunsetpolar</div>
+        <div>-2 | 35 minutes ago </div>
+      </div>
+      <label for="obq8pp9" class="commentText"><p>User name checks out</p>
+
+<p>Deep down luka fans know the guy who has a ring and is about to be back to back mvp is better than the guy who has nothing</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="obq79yu" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>DJ_27 | Lakers</div>
+        <div>-7 | 42 minutes ago </div>
+      </div>
+      <label for="obq79yu" class="commentText"><p>Everyone knows Doncic is better. He&rsquo;s been better since joining the league and every year since, it isn&rsquo;t even close</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="obq7m7v" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Kurokjo__</div>
+        <div>-1 | 40 minutes ago </div>
+      </div>
+      <label for="obq7m7v" class="commentText"><p>SGA is out there breaking a Wilt record and you got people saying he&rsquo;s not even close to luka as a player. Who&rsquo;s hating, again?</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="obq889s" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>15b17 | Thunder</div>
+        <div>-7 | 37 minutes ago </div>
+      </div>
+      <label for="obq889s" class="commentText"><p>This is the lakers new moral victory. Maybe Rui on Shai will work better than on Jokic. Shai would average 40 in a series vs LA lmao</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="obqa81y" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>DJ_27 | Lakers</div>
+        <div>1 | 26 minutes ago </div>
+      </div>
+      <label for="obqa81y" class="commentText"><p>This isn&rsquo;t even about the Lakers, rofl. Luka sent SGA home on a worse Mavs team while playing injured.</p>
+
+<p>The Thunder are a better team</p>
+
+<p>1 for 1 Luka clears Shai&hellip; and he always has. This isnt news.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="obqc3m7" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>CaptainCerealCanada | Nuggets</div>
+        <div>1 | 16 minutes ago </div>
+      </div>
+      <label for="obqc3m7" class="commentText"><p><a href="https://www.basketball-reference.com/playoffs/2024-nba-western-conference-semifinals-mavericks-vs-thunder.html" target="_blank">Series stats</a></p>
+
+<p>Luka: <sup>25</sup>&frasl;<sub>10</sub>.<sup>5</sup>&frasl;<sub>9</sub> on 56.6% TS</p>
+
+<p>SGA: 32/8/7 on 59.9% TS</p>
+
+<p>SGA outplayed Luka that series</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
