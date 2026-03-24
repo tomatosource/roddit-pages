@@ -1,0 +1,2081 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.selfPostImage {
+  width: 100%;
+  height: auto;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/baseball/comments/1s2mp00/i_tracked_data_for_every_mlb_team_subreddit_for/"><p>I tracked data for every MLB team subreddit for 60 days. Here&rsquo;s the Preseason Panic Index.</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <p>I built a website that collects downvote data across every MLB team subreddit. Among other things, I wanted to know: which team subs/fanbases are the most toxic heading into 2026, and more importantly, which ones are getting <em>worse</em> as we approach the 2026 season?</p>
+
+<p>A quick note before the numbers: I missed the r/MiamiMarlins. Tracked the wrong sub for 58 of 60 days. Stop me if you&rsquo;ve heard this before Marlins bros: there&rsquo;s always next year!</p>
+
+<p><strong>How I measured things</strong></p>
+
+<p>The <strong>Toxicity Index</strong> measures how often comments get downvoted, adjusted for subreddit size. Big subs don&rsquo;t get a free pass just for being big. And I&rsquo;m tracking every comment that gets downvoted in each sub, so I&rsquo;ve got the data on hand.</p>
+
+<p><strong>Volatility</strong> tracks day-to-day swings. High volatility = unpredictable fanbase. Low volatility = consistently miserable (or consistently chill).</p>
+
+<p>The 60-day window covers late January through late March, so I have the entire spring training period, plus the full WBC and whatever issues that might have caused.</p>
+
+<p><strong>The Toxicity Rankings</strong></p>
+
+<table>
+<thead>
+<tr>
+<th align="left"><strong>Subreddit</strong></th>
+<th align="left"><strong>Toxicity Index</strong></th>
+<th align="left"><strong>Volatility</strong></th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left"><a href="https://www.downvotedb.com/mlb/RedSox" target="_blank">r/redsox</a></td>
+<td align="left">20.64</td>
+<td align="left">1.95</td>
+</tr>
+
+<tr>
+<td align="left"><a href="https://www.downvotedb.com/mlb/NYYankees" target="_blank">r/NYYankees</a></td>
+<td align="left">17.15</td>
+<td align="left">1.85</td>
+</tr>
+
+<tr>
+<td align="left"><a href="https://www.downvotedb.com/mlb/motorcitykitties" target="_blank">r/motorcitykitties</a></td>
+<td align="left">15.94</td>
+<td align="left">2.54</td>
+</tr>
+
+<tr>
+<td align="left"><a href="https://www.downvotedb.com/mlb/NewYorkMets" target="_blank">r/NewYorkMets</a></td>
+<td align="left">14.06</td>
+<td align="left">1.59</td>
+</tr>
+
+<tr>
+<td align="left"><a href="https://www.downvotedb.com/mlb/phillies" target="_blank">r/phillies</a></td>
+<td align="left">13.93</td>
+<td align="left">1.69</td>
+</tr>
+
+<tr>
+<td align="left"><a href="https://www.downvotedb.com/mlb/Mariners" target="_blank">r/Mariners</a></td>
+<td align="left">13.71</td>
+<td align="left">3.44</td>
+</tr>
+
+<tr>
+<td align="left"><a href="https://www.downvotedb.com/mlb/Buccos" target="_blank">r/Buccos</a></td>
+<td align="left">13.17</td>
+<td align="left">3.07</td>
+</tr>
+
+<tr>
+<td align="left"><a href="https://www.downvotedb.com/mlb/dodgers" target="_blank">r/dodgers</a></td>
+<td align="left">12.83</td>
+<td align="left">2.01</td>
+</tr>
+
+<tr>
+<td align="left"><a href="https://www.downvotedb.com/mlb/sfgiants" target="_blank">r/sfgiants</a></td>
+<td align="left">12.74</td>
+<td align="left">2.08</td>
+</tr>
+
+<tr>
+<td align="left"><a href="https://www.downvotedb.com/mlb/Astros" target="_blank">r/Astros</a></td>
+<td align="left">12.67</td>
+<td align="left">2.79</td>
+</tr>
+
+<tr>
+<td align="left"><a href="https://www.downvotedb.com/mlb/Braves" target="_blank">r/Braves</a></td>
+<td align="left">12.21</td>
+<td align="left">2.47</td>
+</tr>
+
+<tr>
+<td align="left"><a href="https://www.downvotedb.com/mlb/Reds" target="_blank">r/Reds</a></td>
+<td align="left">11.63</td>
+<td align="left">3.50</td>
+</tr>
+
+<tr>
+<td align="left"><a href="https://www.downvotedb.com/mlb/TexasRangers" target="_blank">r/TexasRangers</a></td>
+<td align="left">11.18</td>
+<td align="left">6.48</td>
+</tr>
+
+<tr>
+<td align="left"><a href="https://www.downvotedb.com/mlb/whitesox" target="_blank">r/whitesox</a></td>
+<td align="left">11.08</td>
+<td align="left">2.77</td>
+</tr>
+
+<tr>
+<td align="left"><a href="https://www.downvotedb.com/mlb/CHICubs" target="_blank">r/CHICubs</a></td>
+<td align="left">11.02</td>
+<td align="left">2.91</td>
+</tr>
+
+<tr>
+<td align="left"><a href="https://www.downvotedb.com/mlb/ClevelandGuardians" target="_blank">r/ClevelandGuardians</a></td>
+<td align="left">10.91</td>
+<td align="left">2.44</td>
+</tr>
+
+<tr>
+<td align="left"><a href="https://www.downvotedb.com/mlb/Torontobluejays" target="_blank">r/Torontobluejays</a></td>
+<td align="left">10.82</td>
+<td align="left">1.87</td>
+</tr>
+
+<tr>
+<td align="left"><a href="https://www.downvotedb.com/mlb/Brewers" target="_blank">r/Brewers</a></td>
+<td align="left">10.47</td>
+<td align="left">2.09</td>
+</tr>
+
+<tr>
+<td align="left"><a href="https://www.downvotedb.com/mlb/Orioles" target="_blank">r/Orioles</a></td>
+<td align="left">10.31</td>
+<td align="left">2.80</td>
+</tr>
+
+<tr>
+<td align="left"><a href="https://www.downvotedb.com/mlb/angelsbaseball" target="_blank">r/angelsbaseball</a></td>
+<td align="left">9.84</td>
+<td align="left">2.84</td>
+</tr>
+
+<tr>
+<td align="left"><a href="https://www.downvotedb.com/mlb/azdiamondbacks" target="_blank">r/azdiamondbacks</a></td>
+<td align="left">8.91</td>
+<td align="left">3.18</td>
+</tr>
+
+<tr>
+<td align="left"><a href="https://www.downvotedb.com/mlb/padres" target="_blank">r/padres</a></td>
+<td align="left">8.74</td>
+<td align="left">1.37</td>
+</tr>
+
+<tr>
+<td align="left"><a href="https://www.downvotedb.com/mlb/minnesotatwins" target="_blank">r/minnesotatwins</a></td>
+<td align="left">8.67</td>
+<td align="left">2.92</td>
+</tr>
+
+<tr>
+<td align="left"><a href="https://www.downvotedb.com/mlb/KCRoyals" target="_blank">r/KCRoyals</a></td>
+<td align="left">8.32</td>
+<td align="left">2.89</td>
+</tr>
+
+<tr>
+<td align="left"><a href="https://www.downvotedb.com/mlb/Nationals" target="_blank">r/Nationals</a></td>
+<td align="left">8.20</td>
+<td align="left">2.74</td>
+</tr>
+
+<tr>
+<td align="left"><a href="https://www.downvotedb.com/mlb/Cardinals" target="_blank">r/Cardinals</a></td>
+<td align="left">7.73</td>
+<td align="left">2.60</td>
+</tr>
+
+<tr>
+<td align="left"><a href="https://www.downvotedb.com/mlb/ColoradoRockies" target="_blank">r/ColoradoRockies</a></td>
+<td align="left">6.51</td>
+<td align="left">3.64</td>
+</tr>
+
+<tr>
+<td align="left"><a href="https://www.downvotedb.com/mlb/tampabayrays" target="_blank">r/tampabayrays</a></td>
+<td align="left">4.01</td>
+<td align="left">2.35</td>
+</tr>
+
+<tr>
+<td align="left"><a href="https://www.downvotedb.com/mlb/SacramentoAthletics" target="_blank">r/SacramentoAthletics</a></td>
+<td align="left">2.33</td>
+<td align="left">3.48</td>
+</tr>
+</tbody>
+</table>
+<p>Four of the top five belong to AL and NL East teams. Whether that says something about the division or the type of person who follows east coast baseball online, I&rsquo;ll leave to you.</p>
+
+<p>At the other end, Tampa Bay and Sacramento are in their own quiet tier. The A&rsquo;s relocation has basically ended the A&rsquo;s fandom, at least on Reddit.</p>
+
+<p>Average volatility sits at 2.7. It might look like r/TexasRangers are wildly volatile, but that&rsquo;s due to one news story causing major uproar on an otherwise calm sub: the <a href="https://blogs.fangraphs.com/the-context-of-the-texas-ranger-statue-at-globe-life-field/" target="_blank">the Rangers announcement that they erected a racist statue</a>. That event alone caused a 50x spike in downvotes compared to an average day.</p>
+
+<p><strong>Tempers are cooling off in most MLB team subs, but not in Detroit</strong>, <strong>San Diego or Colorado.</strong></p>
+
+<p>22 of 29 subreddits show declining toxicity from their peak in January to now in March, but that&rsquo;s not the case for <em>every</em> team. </p>
+
+<p>r/motorcitykitties <strong>(+1.18 toxicity from January to now):</strong> It might have to do with lofty expectations. There&rsquo;s also been some drama building around Tarik Skubal, both on the field (WBC participation) and off (contract talks).</p>
+
+<p>r/padres <strong>(+0.93):</strong> Something is bothering Padres fans and it might have to do with recent high expectations falling flat. That, and playing in the same division as the Dodgers.</p>
+
+<p>r/ColoradoRockies <strong>(+0.79):</strong> Rockies fans, you okay? Basement dwellers again and no sign of a reprieve anytime soon still breeds toxicity. You&rsquo;re just as salty as Kris Bryant when he wakes up with back pain. Too soon? Sorry, Kris.</p>
+
+<p>On the other end, r/Orioles dropped 2.69 points from January to March, the biggest cooldown in the entire dataset. And they have the same win projection as the Tigers, which leads me to&hellip;</p>
+
+<p><strong>The Preseason Panic Index</strong></p>
+
+<p>Toxicity alone doesn&rsquo;t tell the whole story. A fanbase can be toxic but <em>improving</em>, which is very different from one that&rsquo;s toxic and getting worse.</p>
+
+<p>So I combined three things:</p>
+
+<p>- current toxicity (40%)</p>
+
+<p>- trend direction over the 60 days (40%)</p>
+
+<p>- Vegas win projections (20%)</p>
+
+<p>The idea being that high expectations + rising anger is a much more combustible situation than misery around a team nobody expected anything from anyway.</p>
+
+<table>
+<thead>
+<tr>
+<th align="left"><strong>Subreddit</strong></th>
+<th align="left"><strong>Panic Index</strong></th>
+<th align="left"><strong>Win Proj</strong></th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left"><a href="https://www.downvotedb.com/mlb/motorcitykitties" target="_blank">r/motorcitykitties</a></td>
+<td align="left">87.4</td>
+<td align="left">85.5</td>
+</tr>
+
+<tr>
+<td align="left"><a href="https://www.downvotedb.com/mlb/padres" target="_blank">r/padres</a></td>
+<td align="left">64.5</td>
+<td align="left">83.5</td>
+</tr>
+
+<tr>
+<td align="left"><a href="https://www.downvotedb.com/mlb/RedSox" target="_blank">r/RedSox</a></td>
+<td align="left">56.9</td>
+<td align="left">87.5</td>
+</tr>
+
+<tr>
+<td align="left"><a href="https://www.downvotedb.com/mlb/Mariners" target="_blank">r/Mariners</a></td>
+<td align="left">54.1</td>
+<td align="left">89.5</td>
+</tr>
+
+<tr>
+<td align="left"><a href="https://www.downvotedb.com/mlb/NYYankees" target="_blank">r/NYYankees</a></td>
+<td align="left">50.7</td>
+<td align="left">90.5</td>
+</tr>
+
+<tr>
+<td align="left"><a href="https://www.downvotedb.com/mlb/ColoradoRockies" target="_blank">r/ColoradoRockies</a></td>
+<td align="left">50.0</td>
+<td align="left">54.5</td>
+</tr>
+
+<tr>
+<td align="left"><a href="https://www.downvotedb.com/mlb/dodgers" target="_blank">r/dodgers</a></td>
+<td align="left">44.9</td>
+<td align="left">103.5</td>
+</tr>
+
+<tr>
+<td align="left"><a href="https://www.downvotedb.com/mlb/NewYorkMets" target="_blank">r/NewYorkMets</a></td>
+<td align="left">44.7</td>
+<td align="left">90.5</td>
+</tr>
+
+<tr>
+<td align="left"><a href="https://www.downvotedb.com/mlb/phillies" target="_blank">r/phillies</a></td>
+<td align="left">44.3</td>
+<td align="left">89.5</td>
+</tr>
+
+<tr>
+<td align="left"><a href="https://www.downvotedb.com/mlb/Astros" target="_blank">r/Astros</a></td>
+<td align="left">41.3</td>
+<td align="left">86.5</td>
+</tr>
+
+<tr>
+<td align="left"><a href="https://www.downvotedb.com/mlb/Braves" target="_blank">r/Braves</a></td>
+<td align="left">40.8</td>
+<td align="left">88.5</td>
+</tr>
+
+<tr>
+<td align="left"><a href="https://www.downvotedb.com/mlb/Buccos" target="_blank">r/Buccos</a></td>
+<td align="left">40.7</td>
+<td align="left">78.5</td>
+</tr>
+
+<tr>
+<td align="left"><a href="https://www.downvotedb.com/mlb/sfgiants" target="_blank">r/sfgiants</a></td>
+<td align="left">40.2</td>
+<td align="left">80.5</td>
+</tr>
+
+<tr>
+<td align="left"><a href="https://www.downvotedb.com/mlb/whitesox" target="_blank">r/whitesox</a></td>
+<td align="left">39.0</td>
+<td align="left">67.5</td>
+</tr>
+
+<tr>
+<td align="left"><a href="https://www.downvotedb.com/mlb/CHICubs" target="_blank">r/CHICubs</a></td>
+<td align="left">38.5</td>
+<td align="left">88.5</td>
+</tr>
+
+<tr>
+<td align="left"><a href="https://www.downvotedb.com/mlb/Torontobluejays" target="_blank">r/Torontobluejays</a></td>
+<td align="left">38.1</td>
+<td align="left">88.5</td>
+</tr>
+
+<tr>
+<td align="left"><a href="https://www.downvotedb.com/mlb/Reds" target="_blank">r/Reds</a></td>
+<td align="left">38.1</td>
+<td align="left">80.5</td>
+</tr>
+
+<tr>
+<td align="left"><a href="https://www.downvotedb.com/mlb/TexasRangers" target="_blank">r/TexasRangers</a></td>
+<td align="left">37.8</td>
+<td align="left">83.5</td>
+</tr>
+
+<tr>
+<td align="left"><a href="https://www.downvotedb.com/mlb/Brewers" target="_blank">r/Brewers</a></td>
+<td align="left">36.6</td>
+<td align="left">84.5</td>
+</tr>
+
+<tr>
+<td align="left"><a href="https://www.downvotedb.com/mlb/ClevelandGuardians" target="_blank">r/ClevelandGuardians</a></td>
+<td align="left">36.5</td>
+<td align="left">79.5</td>
+</tr>
+
+<tr>
+<td align="left"><a href="https://www.downvotedb.com/mlb/Orioles" target="_blank">r/Orioles</a></td>
+<td align="left">36.5</td>
+<td align="left">85.5</td>
+</tr>
+
+<tr>
+<td align="left"><a href="https://www.downvotedb.com/mlb/angelsbaseball" target="_blank">r/angelsbaseball</a></td>
+<td align="left">32.7</td>
+<td align="left">70.5</td>
+</tr>
+
+<tr>
+<td align="left"><a href="https://www.downvotedb.com/mlb/azdiamondbacks" target="_blank">r/azdiamondbacks</a></td>
+<td align="left">32.6</td>
+<td align="left">79.5</td>
+</tr>
+
+<tr>
+<td align="left"><a href="https://www.downvotedb.com/mlb/KCRoyals" target="_blank">r/KCRoyals</a></td>
+<td align="left">32.1</td>
+<td align="left">82.5</td>
+</tr>
+
+<tr>
+<td align="left"><a href="https://www.downvotedb.com/mlb/minnesotatwins" target="_blank">r/minnesotatwins</a></td>
+<td align="left">30.8</td>
+<td align="left">72.5</td>
+</tr>
+
+<tr>
+<td align="left"><a href="https://www.downvotedb.com/mlb/Nationals" target="_blank">r/Nationals</a></td>
+<td align="left">28.5</td>
+<td align="left">65.5</td>
+</tr>
+
+<tr>
+<td align="left"><a href="https://www.downvotedb.com/mlb/Cardinals" target="_blank">r/Cardinals</a></td>
+<td align="left">28.4</td>
+<td align="left">69.5</td>
+</tr>
+
+<tr>
+<td align="left"><a href="https://www.downvotedb.com/mlb/tampabayrays" target="_blank">r/tampabayrays</a></td>
+<td align="left">26.9</td>
+<td align="left">77.5</td>
+</tr>
+
+<tr>
+<td align="left"><a href="https://www.downvotedb.com/mlb/SacramentoAthletics" target="_blank">r/SacramentoAthletics</a></td>
+<td align="left">19.1</td>
+<td align="left">75.5</td>
+</tr>
+</tbody>
+</table>
+<p>That r/motorcitykitties score of <strong>87.4</strong> is not a misprint. It&rsquo;s the only score above 80 in the entire dataset. High expectations, rising toxicity, accelerating trend. Every single factor is pointing in the wrong direction.</p>
+
+<p>r/padres at 64.5 is the quiet surprise. Nobody would flag that fanbase as being in crisis mode, but the data has been consistently moving in one direction for the entire window.</p>
+
+<p>r/RedSox score high almost entirely on toxicity. Most toxic subreddit in MLB by a significant margin. Even a falling trend line can&rsquo;t fully offset that starting point.</p>
+
+<p>r/ColoradoRockies score 50 despite a 54.5 win projection which is worst in the league. Rock bottom expectations and the mood is somehow worse.</p>
+
+<p>And r/Orioles, with the <strong>same win projection as the Tigers</strong>, winds up with a score less than half of r/motorcitykitties. If you want peace heading into Opening Day, go spend some time over there.</p>
+
+<p><strong>tldr</strong>: I tracked downvotes across every MLB team subreddit for 60 days to measure toxicity and trends before Opening Day. r/redsox, r/NYYankees, and r/motorcitykitties are among the most toxic, with the Tigers also showing the highest “panic” due to rising negativity and high expectations. Most fanbases are actually calming down as we approach the season.</p>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="oc986jc" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>DONOTSAYTHENWORD | New York Yankees</div>
+        <div>177 | 37 minutes ago </div>
+      </div>
+      <label for="oc986jc" class="commentText"><p>The actual problem with our subreddit is that nobody there knows ball, whereas I am an elite ball knower so we end up getting into arguments that your data probably docked us on because it didn&rsquo;t realize how right I am.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="oc9cifp" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>DegenerateWaves | Houston Astros</div>
+        <div>19 | 16 minutes ago </div>
+      </div>
+      <label for="oc9cifp" class="commentText"><p>I mean unironically team subs are rife with people who have <em>very</em> strong opinions about how the team should be run, but have never heard of FIP</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="oc9dfms" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>tyler-86 | World Series Trophy • Los Angeles Dod…</div>
+        <div>9 | 12 minutes ago </div>
+      </div>
+      <label for="oc9dfms" class="commentText"><p>Look, I watched as many as eleven games last season and I know that our main problem is that Dave Roberts doesn&rsquo;t always know what&rsquo;s going to happen before it happens. We need to replace him with someone who can see the future.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="oc9e77o" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>badamache</div>
+        <div>1 | 8 minutes ago </div>
+      </div>
+      <label for="oc9e77o" class="commentText"><p>Did he see Kirk hit into a DP?</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="oc9exbf" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>sakeistasty</div>
+        <div>1 | 5 minutes ago </div>
+      </div>
+      <label for="oc9exbf" class="commentText"><p>FIRE DOC!</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="oc9coiz" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>CabbageStockExchange | Los Angeles Dodgers</div>
+        <div>3 | 15 minutes ago </div>
+      </div>
+      <label for="oc9coiz" class="commentText"><p><img src="giphy|99kqebx7coLYE9WpNN" alt="gif" /></p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="oc96240" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Think_fast_no_faster | Boston Red Sox</div>
+        <div>107 | an hour ago </div>
+      </div>
+      <label for="oc96240" class="commentText"><p><img src="giphy|7JgYv9FobG1HzAO8BA" alt="gif" /></p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="oc9aphd" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>dominic_train | Boston Red Sox</div>
+        <div>29 | 25 minutes ago </div>
+      </div>
+      <label for="oc9aphd" class="commentText"><p>Downvoted.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="oc9dz9k" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Laraelias | Boston Red Sox</div>
+        <div>6 | 9 minutes ago </div>
+      </div>
+      <label for="oc9dz9k" class="commentText"><p>Reported.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="oc962z0" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Far_Cry3445 | Boston Red Sox</div>
+        <div>26 | an hour ago </div>
+      </div>
+      <label for="oc962z0" class="commentText"><p>This tracks, man if you even tried to say anything positive from January to when we lost Bregman that was unacceptable</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="oc9cpoq" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>cm167 | Boston Red Sox</div>
+        <div>7 | 15 minutes ago </div>
+      </div>
+      <label for="oc9cpoq" class="commentText"><p>Saying you were glad we didnt pay 150m for a declining Bregman was an instant -50 downvotes ✌️</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="oc962e9" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Woodstonk69 | New York Yankees</div>
+        <div>24 | an hour ago </div>
+      </div>
+      <label for="oc962e9" class="commentText"><p>shocked we’re not higher!</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="oc98ioy" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>KickerOfThyAss | Toronto Blue Jays</div>
+        <div>31 | 35 minutes ago </div>
+      </div>
+      <label for="oc98ioy" class="commentText"><p>The Yankees aren&rsquo;t what they used to be. The fanbase has gone soft.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="oc9ci6x" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>This-is_CMGRI | Major League Baseball</div>
+        <div>5 | 16 minutes ago </div>
+      </div>
+      <label for="oc9ci6x" class="commentText"><p>tell that to the bumfucks who pulled Mookie&rsquo;s arm</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="oc99ap8" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ForsakenRacism | New York Mets</div>
+        <div>1 | 31 minutes ago </div>
+      </div>
+      <label for="oc99ap8" class="commentText"><p>Real fans are Mets fans</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="oc9ax1t" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ItsSniikiBoiWill | Boston Red Sox</div>
+        <div>14 | 24 minutes ago </div>
+      </div>
+      <label for="oc9ax1t" class="commentText"><p>I&rsquo;ll take your word for it ForsakenRacism</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="oc98kj1" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>DONOTSAYTHENWORD | New York Yankees</div>
+        <div>11 | 35 minutes ago </div>
+      </div>
+      <label for="oc98kj1" class="commentText"><p>As someone who is team run-it-back, I am really annoyed by our fanbase&rsquo;s inability to realize how good our offense was/is. We should be ultra calm going into 2026.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="oc9d6s6" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>StinkyStangler | New York Yankees</div>
+        <div>2 | 13 minutes ago </div>
+      </div>
+      <label for="oc9d6s6" class="commentText"><p>If you looked at r/NYYankees and never watched a game or consumed any other baseball media you&rsquo;d think they had the offensive of the White Sox and never know the Yankees have been one of the top offensive teams for a while now</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="oc9awnc" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>DoctorKangaroo | New York Yankees</div>
+        <div>4 | 24 minutes ago </div>
+      </div>
+      <label for="oc9awnc" class="commentText"><p>Our peak toxicity and panic lies in the game day threads</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="oc9cnic" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>SPAGHETTI_CAKE | Boston Red Sox</div>
+        <div>2 | 15 minutes ago </div>
+      </div>
+      <label for="oc9cnic" class="commentText"><p>Haven’t hit your June swoon yet</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="oc9d9ua" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Machomanta | Toronto Blue Jays</div>
+        <div>3 | 13 minutes ago </div>
+      </div>
+      <label for="oc9d9ua" class="commentText"><p>That&rsquo;s because they save it all for brigading during the season!</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="oc96jty" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>einsatzpoopen | San Diego Padres</div>
+        <div>20 | 44 minutes ago </div>
+      </div>
+      <label for="oc96jty" class="commentText"><p>Don’t get the padres panic for real. Either we make the postseason and beat LA or we don’t bro. Overthinkers.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="oc98tj1" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>DONOTSAYTHENWORD | New York Yankees</div>
+        <div>8 | 34 minutes ago </div>
+      </div>
+      <label for="oc98tj1" class="commentText"><blockquote>
+<p><em>and beat LA</em></p>
+</blockquote>
+
+<p>Imagine all of your hopes and dreams have to go through these three words</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="oc9dtx9" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>tyler-86 | World Series Trophy • Los Angeles Dod…</div>
+        <div>1 | 10 minutes ago </div>
+      </div>
+      <label for="oc9dtx9" class="commentText"><p>I don&rsquo;t think any other city has a universal chant like &ldquo;beat LA&rdquo;. It gets used in the NBA and MLB when we&rsquo;re good.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="oc98l10" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>largesonjr | Detroit Tigers</div>
+        <div>7 | 35 minutes ago </div>
+      </div>
+      <label for="oc98l10" class="commentText"><p>Its 50 - 50</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="oc9byle" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>randomredhead | San Diego Padres</div>
+        <div>2 | 19 minutes ago </div>
+      </div>
+      <label for="oc9byle" class="commentText"><p>I think a lot of it is probably coming from the ownership up in the air and our current starting rotation.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="oc9cctm" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>theREALbombedrumbum | San Diego Padres</div>
+        <div>2 | 17 minutes ago </div>
+      </div>
+      <label for="oc9cctm" class="commentText"><p>Here, let me try explaining where the toxicity comes from with a hot take of my own:</p>
+
+<p>&ldquo;The stats show that we should bench Tatis in the postseason&rdquo;</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="oc9a4s9" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>NYdude777 | New York Mets</div>
+        <div>17 | 27 minutes ago </div>
+      </div>
+      <label for="oc9a4s9" class="commentText"><p>Boston, New York, Philly the triangle of toxicity.  It&rsquo;s our fuel to live.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="oc9b8l1" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ItsSniikiBoiWill | Boston Red Sox</div>
+        <div>7 | 22 minutes ago </div>
+      </div>
+      <label for="oc9b8l1" class="commentText"><p><img src="giphy|pHb82xtBPfqEg" alt="gif" /></p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="oc9dodv" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>dsramsey | Boston Red Sox • Philadelphia Phillies</div>
+        <div>6 | 11 minutes ago </div>
+      </div>
+      <label for="oc9dodv" class="commentText"><p>The only thing we hate more than each other is ourselves.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="oc9finf" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ItsSniikiBoiWill | Boston Red Sox</div>
+        <div>1 | a minute ago </div>
+      </div>
+      <label for="oc9finf" class="commentText"><p>But I like the Mets because they are the runner-up in hating the Yankees</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="oc96bbn" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>balinor41</div>
+        <div>16 | an hour ago </div>
+      </div>
+      <label for="oc96bbn" class="commentText"><p>Uh, 4 of the top 5 there aren&rsquo;t in the AL East. 2 NL east and 2 AL East. All teams with well known rabid fan bases lol</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="oc9722d" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>buckets_811</div>
+        <div>10 | 42 minutes ago </div>
+      </div>
+      <label for="oc9722d" class="commentText"><p>Oh yeah, I meant AL East and NL East. Fixed that callout!</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="oc96e89" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Shiforains | Baltimore Orioles</div>
+        <div>15 | an hour ago </div>
+      </div>
+      <label for="oc96e89" class="commentText"><p>good stuff&hellip;</p>
+
+<p>i love data&hellip;</p>
+
+<p>can you compute the exit velocity of the fans that leave each sub too? /s</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="oc96j5c" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Sharp-Room-8235</div>
+        <div>15 | 44 minutes ago </div>
+      </div>
+      <label for="oc96j5c" class="commentText"><p>r/SacramentoAthletics is tiny, so I wouldn&rsquo;t put too much weight on that data. Everything else tracks lol</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="oc9a9o0" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>FitzVale | San Francisco Giants</div>
+        <div>7 | 27 minutes ago </div>
+      </div>
+      <label for="oc9a9o0" class="commentText"><p>It is HEAVILY moderated.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="oc9f3mz" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>dsramsey | Boston Red Sox • Philadelphia Phillies</div>
+        <div>1 | 4 minutes ago </div>
+      </div>
+      <label for="oc9f3mz" class="commentText"><p>Aaaannd you’ve been banned for this comment.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="oc97ghp" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>alliluna24 | Seattle Mariners</div>
+        <div>13 | 40 minutes ago </div>
+      </div>
+      <label for="oc97ghp" class="commentText"><p>I wonder how much of the Mariners downvoting was related to handshakegate</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="oc986br" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>SandmanTX131 | Texas Rangers</div>
+        <div>7 | 37 minutes ago </div>
+      </div>
+      <label for="oc986br" class="commentText"><p>This is fascinating. Thank you!</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="oc9843k" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>dead_monster | Hiroshima Toyo Carp • Detroit Tigers</div>
+        <div>6 | 37 minutes ago </div>
+      </div>
+      <label for="oc9843k" class="commentText"><p>As someone who posts in r/motorcitykitties, part of it is due to the Main Street Sports implosion (if we’re talking past 60 days).</p>
+
+<p>Almost daily posts on unable to watch Tigers games or confused about the subscription options or cable channels.  Only update in weeks on how to watch the Tigers on cable came from <em>the sideline reporter</em>.  I’m not kidding.</p>
+
+<p>The mods finally put up a Megathread a few days ago.  </p>
+
+<p>Also a fair amount of people from r/baseball trying to stir up shit about Skubal and WBC.  But mods had been pretty good at corralling those.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="oc9aqno" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>buckets_811</div>
+        <div>2 | 24 minutes ago </div>
+      </div>
+      <label for="oc9aqno" class="commentText"><p>Interesting context! I admit, I’m sort of correlating comment downvotes with how a fanbase feels about their team, but I admit there could be other reasons a sub is labeled toxic.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="oc97ugb" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>UsErNaMeS_aR_DuMb | Baltimore Orioles</div>
+        <div>6 | 38 minutes ago </div>
+      </div>
+      <label for="oc97ugb" class="commentText"><p>Honestly, r/Orioles is as good now as I’ve ever seen it be. An overall chill and positive vibe with most of the fanbase on the sub now being used to the devastating injury here and there.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="oc98tkr" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>mikemountain | Toronto Blue Jays</div>
+        <div>5 | 34 minutes ago </div>
+      </div>
+      <label for="oc98tkr" class="commentText"><p>Kinda surprised the Jays are “so toxic” considering I think the majority of the fans are pretty excited and hopeful for this upcoming season</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="oc9dn67" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Machomanta | Toronto Blue Jays</div>
+        <div>1 | 11 minutes ago </div>
+      </div>
+      <label for="oc9dn67" class="commentText"><p>There&rsquo;s toxic positivity as well</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="oc9az8q" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>2RINITY | New York Yankees</div>
+        <div>5 | 23 minutes ago </div>
+      </div>
+      <label for="oc9az8q" class="commentText"><p>Finally, statistical proof that Red Sox fans are more annoying than we are</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="oc97csb" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Initial-Air-4941 | Chicago Cubs</div>
+        <div>4 | 40 minutes ago </div>
+      </div>
+      <label for="oc97csb" class="commentText"><p>This is far more interesting to me than it should be. Thanks!</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="oc99cea" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>atchn01 | Seattle Mariners</div>
+        <div>2 | 31 minutes ago </div>
+      </div>
+      <label for="oc99cea" class="commentText"><p>Mariners fans aren’t panicking.  There is something wrong with your methodology,  likely with the toxicity index.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="oc9b8e4" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>immagonnafinnahella | Seattle Mariners</div>
+        <div>9 | 22 minutes ago </div>
+      </div>
+      <label for="oc9b8e4" class="commentText"><p>Guessing handshakegate skewed the numbers, it was pretty crazy there for a couple days</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="oc9clcq" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>buckets_811</div>
+        <div>2 | 16 minutes ago </div>
+      </div>
+      <label for="oc9clcq" class="commentText"><p>Probably accurate. From January to February, the Mariners were cooling, but the sub’s toxicity index increased +0.30 points in March.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="oc9cd3h" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>atchn01 | Seattle Mariners</div>
+        <div>1 | 17 minutes ago </div>
+      </div>
+      <label for="oc9cd3h" class="commentText"><p>Ha!  You might be on be onto something there.  Wait tell I tell my kids that I was there for handshake gate.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="oc9cqkl" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Rube18 | Minnesota Twins</div>
+        <div>3 | 15 minutes ago </div>
+      </div>
+      <label for="oc9cqkl" class="commentText"><p>I guess I learned that everyone collectively hating ownership together makes us less toxic overall.</p>
+
+<p>Toxic ≠ miserable</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="oc9dala" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>RealTripsB | Detroit Tigers</div>
+        <div>3 | 12 minutes ago </div>
+      </div>
+      <label for="oc9dala" class="commentText"><p>Sounds about right. The Tigers subreddit is full of the same constant negativity that the Lions subreddit page has.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="oc9dhlq" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Extension-Pick8310</div>
+        <div>3 | 12 minutes ago </div>
+      </div>
+      <label for="oc9dhlq" class="commentText"><p>So typical. Northeast fanbases having their usual uptight high strung meltdowns.</p>
+
+<p>As an Oakland native, I don&rsquo;t allow our former team&rsquo;s name to be said in our household.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="oc96ig0" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>NewCoffeePlus | Cleveland Guardians</div>
+        <div>2 | 44 minutes ago </div>
+      </div>
+      <label for="oc96ig0" class="commentText"><p>I&rsquo;d panic too if a gaggle of Jose&rsquo;s best friends is just as likely to win the division as my hometowns serious org (with a reigning Cy young pitcher) that signs players for money instead of Malley&rsquo;s bars and a turn on Mario Kart. </p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="oc98iip" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>largesonjr | Detroit Tigers</div>
+        <div>1 | 35 minutes ago </div>
+      </div>
+      <label for="oc98iip" class="commentText"><p>Yeah, Jose is the best and I also dont like him!!</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="oc98b6n" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>speeeeeeeeeeee | Chicago Cubs</div>
+        <div>2 | 36 minutes ago </div>
+      </div>
+      <label for="oc98b6n" class="commentText"><p>Cubs and Sox are in such different places as baseball teams but the same place in terms of culture. We truly are sibling teams.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="oc99lgp" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Busy-Translator-8893 | Tampa Bay Rays</div>
+        <div>2 | 30 minutes ago </div>
+      </div>
+      <label for="oc99lgp" class="commentText"><p>I wonder where Red Sox fans would have rated before they won the World Series in 2004. I have always loved Red Sox fans but there has been a different edge or expectation to them since 2004.  Me, with my Rays fandom just happy to be here, as clearly shown in the stats.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="oc9bcl1" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Flashy_Curve_43 | Texas Rangers</div>
+        <div>2 | 22 minutes ago </div>
+      </div>
+      <label for="oc9bcl1" class="commentText"><p>Thanks for putting the clarifier in for the Rangers lol. Forgot about that. Caused quite the uproar. Just curious, which Marlins group did you track?</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="oc9e97d" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>buckets_811</div>
+        <div>2 | 8 minutes ago </div>
+      </div>
+      <label for="oc9e97d" class="commentText"><p>r/letsgofish</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="oc9f7gt" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Flashy_Curve_43 | Texas Rangers</div>
+        <div>1 | 3 minutes ago </div>
+      </div>
+      <label for="oc9f7gt" class="commentText"><p>I see. Did you happen to look at the subs you were tracking or….</p>
+
+<p><img src="giphy|iD1QQCbrl548I31Qww|downsized" alt="gif" /></p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="oc9d94t" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>LunchThreatener | Detroit Tigers</div>
+        <div>2 | 13 minutes ago </div>
+      </div>
+      <label for="oc9d94t" class="commentText"><p>This is incredibly unsurprising. I don’t envy u/DET_Baseball who spends a lot of effort cleaning up the toxicity.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="oc98bde" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>juggdish | Detroit Tigers</div>
+        <div>1 | 36 minutes ago </div>
+      </div>
+      <label for="oc98bde" class="commentText"><p>This fucker. This is all Al Avila’s fault</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="oc99s2b" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>RicoHavoc | St. Louis Cardinals</div>
+        <div>1 | 29 minutes ago </div>
+      </div>
+      <label for="oc99s2b" class="commentText"><p>What, me worry?</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="oc9a4mm" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>solo_hahn | Minnesota Twins</div>
+        <div>1 | 27 minutes ago </div>
+      </div>
+      <label for="oc9a4mm" class="commentText"><p>I think the Twins panic number is low just because we were checked out by January. No panic when there are no expectations, just apathy</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="oc9b8xf" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Fangscale40K | Baltimore Orioles</div>
+        <div>1 | 22 minutes ago </div>
+      </div>
+      <label for="oc9b8xf" class="commentText"><p>lol I’m so guilty of shitting on the r/Orioles sub for being doomers. I’ll eat my words. Good work, Birdland.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="oc9b9z6" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>dogeatingbanana | Philadelphia Phillies</div>
+        <div>1 | 22 minutes ago </div>
+      </div>
+      <label for="oc9b9z6" class="commentText"><p>I would love to know how you curated this data, what tools you used, and how you developed and quantified the index.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="oc9ctpv" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Th3Greyhound | San Diego Padres</div>
+        <div>1 | 15 minutes ago </div>
+      </div>
+      <label for="oc9ctpv" class="commentText"><p>Ah yes, r/padres, home of the reasonable and grounded takes. Smells about right</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="oc9ctz2" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>InformalInsurance455 | San Francisco Giants</div>
+        <div>1 | 15 minutes ago </div>
+      </div>
+      <label for="oc9ctz2" class="commentText"><p>Love to see r/redsox mentioned, where the following things happen:</p>
+
+<ul>
+<li>people gloating specifically over fans not liking Duran for being a homophobe</li>
+<li>People actively hoping players get injured to prove themselves right</li>
+<li>rampant homophobia and racism</li>
+<li>mods cracking down on comments against select players and leaving up stuff about others!</li>
+</ul>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="oc9cve1" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ActivityImaginary941</div>
+        <div>1 | 14 minutes ago </div>
+      </div>
+      <label for="oc9cve1" class="commentText"><p>As a Red Sox fan, this is validating. People have been so toxic in the off season because we didn&rsquo;t trade one of our best players and we didn&rsquo;t go get every single home run leader, but most people seem to think we have a really good team anyway.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="oc9djzl" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>steve_ample | Peoria Javelinas</div>
+        <div>1 | 11 minutes ago </div>
+      </div>
+      <label for="oc9djzl" class="commentText"><p>I need to know the TAR+ (Toxicity Above Reddit) figures for each sub and WHIP (WHining per Innocuous Post) trending figures - we do pedant sabermetrics here.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="oc9eo3l" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>cogginsmatt | Detroit Tigers • New York Mets</div>
+        <div>1 | 6 minutes ago </div>
+      </div>
+      <label for="oc9eo3l" class="commentText"><p>Oh trust me r/motorcitykitties is like that all the time, even when the team has been very bad. Tigers fans can be, on average, extremely dumb people.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="oc9f7r5" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>BlazmoIntoWowee | Philadelphia Phillies</div>
+        <div>1 | 3 minutes ago </div>
+      </div>
+      <label for="oc9f7r5" class="commentText"><p>Fifth? <em>Fifth?!</em> Frankly, folks, I’m disappointed in you. We should be way higher.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="oc9f80x" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>strangedaze23 | New York Yankees</div>
+        <div>1 | 3 minutes ago </div>
+      </div>
+      <label for="oc9f80x" class="commentText"><p>As a Yankees fan, Red Sox one and Yankees two in toxicity index tracks.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="oc978o5" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Comfortable_Role9836</div>
+        <div>0 | 41 minutes ago </div>
+      </div>
+      <label for="oc978o5" class="commentText"><p>Make the Cubs more toxic than the white sox now!</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="oc98yh8" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>kev11n | Chicago White Sox</div>
+        <div>5 | 33 minutes ago </div>
+      </div>
+      <label for="oc98yh8" class="commentText"><p>I generally agree and think you are right, but it also makes sense that they are more optimistic while we are only just beginning to see the light at the end of the tunnel while still commiserating over Reinsdorfian efforts and three 100 loss seasons. &ldquo;Cautiously toxic&rdquo; is probably a better term for us in 2026</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="oc9f1gl" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Comfortable_Role9836</div>
+        <div>1 | 4 minutes ago </div>
+      </div>
+      <label for="oc9f1gl" class="commentText"><p>Im super optimistic but i always am. I think are offense is gonna be stellar. I am worried about are pitching though. Cubs fans are yuppies lol. </p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="oc9af7z" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ItsSniikiBoiWill | Boston Red Sox</div>
+        <div>0 | 26 minutes ago </div>
+      </div>
+      <label for="oc9af7z" class="commentText"><p>Lol not surprised by this at all but I wonder how we&rsquo;d perform next year. Things like Bregman not getting re-signed shouldn&rsquo;t happen next offseason and that was DEFINITELY the most toxic period of the offseason for our sub.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
