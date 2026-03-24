@@ -1,0 +1,744 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.selfPostImage {
+  width: 100%;
+  height: auto;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/nba/comments/1s2rtvu/the_65_game_rule_has_worked_in_encouraging/"><p>The 65 Game Rule has worked in encouraging players to play, but that doesn&rsquo;t mean there isn&rsquo;t room for tweaks. Adding a 2,000 minute rule as a backup helps with edge cases like Donte DiVincenzo playing 81 games and being ineligible for not staying in a few more seconds in blowouts in 2024.</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <p>The fact that the NBPA is now putting out official statements against the 65 game rule (that they voted for) means that it&rsquo;ll probably get looked at again in the summer. With guys like Cade and Maxey potentially just missing out and Jokic being an ankle turn away from missing out, there&rsquo;s definitely steam picking up about the rule.</p>
+
+<p>I don&rsquo;t inherently disagree with the rule, personally. I think that if you want the awards you should play and if you&rsquo;re injured you shouldn&rsquo;t play. But there were clear edge case issues from the first season this was implemented that are only now being discussed because superstar players are being impacted. <a href="https://www.espn.com/nba/story/_/id/39958166/donte-divincenzo-ineligible-mip-81-games-played" target="_blank">In 2024, Donte DiVincenzo played 81 games averaging 29 minutes a night and was not eligible because he didn&rsquo;t actually play 63 games above the 20 minute threshold.</a> There was also Jonathan Kuminga who media members talked about wanting to vote for Most Improved, just to realize he was <a href="https://sports.yahoo.com/why-kuminga-wasnt-eligible-nbas-004504136.html" target="_blank">also off the ballot for the same reason.</a> He played 74 games, but he missed the 20 minute allowable cutoff by 40 seconds and 27 seconds.</p>
+
+<p>I think that both of those instances are clearly against the spirit of the rule, which is to be out there playing in front of the fans on a consistent basis. Or in the case of Kuminga, he improved throughout the season and started to get more minutes which should contribute to Most Improved Player. My logic for a 2,000 minute cutoff is that it is <em>approximately</em> 30 minutes a night for 65 games (1,950 minutes but easy enough to just round up). That&rsquo;s also roughly the top 100 players in minutes played, at least in 2024.</p>
+
+<p>Going off of the 2024 season when this was first implemented, here&rsquo;s some people who would have made the cut:</p>
+
+<ul>
+<li><p>Donte DiVincenzo - 81 games, 2,360 minutes</p></li>
+
+<li><p>Brandon Ingram - 64 games, 2,103 minutes</p></li>
+
+<li><p>Scottie Barnes - 60 games, 2,094 minutes</p></li>
+
+<li><p>Cade Cunningham - 62 games, 2,074 minutes</p></li>
+
+<li><p>Saddiq Bey - 63 games, 2,062 minutes</p></li>
+
+<li><p>Alperen Sengun - 63 games, 2,046 minutes</p></li>
+
+<li><p>Jimmy Butler - 60 games, 2,042 minutes</p></li>
+
+<li><p>Terry Rozier - 61 games, 2,040 minutes</p></li>
+
+<li><p>Kyrie Irving - 58 games, 2,030 minutes</p></li>
+
+<li><p>Karl-Anthony Towns - 62 games, 2,026 minutes</p></li>
+</ul>
+
+<p>There&rsquo;s definitely some names in there that people would have voted for in something if they made the cutoff. I feel like 2,000 minutes is attainable without being so low that players can just take their foot off the gas 50 games in. For Reference, Amen Thompson is currently playing 37 minutes a night and leading the league in the 2026 season but didn&rsquo;t hit his 2000th minute until Game 55. Anybody who is playing reasonable minutes wouldn&rsquo;t start hitting 2,000 until right around the 65 game threshold anyway, but it allows the rule to not be as rigid as it currently is.</p>
+
+<p>Apparently Bill Simmons proposed this too but that wasn&rsquo;t where I was actually getting it from. I also don&rsquo;t agree with him about dropping it to 62 games, I think any cutoff people will complain about somebody who just misses out. I just disagree with the all or nothing approach of &ldquo;65 game rule is terrible, get rid of it&rdquo; or &ldquo;65 game rule is perfect, stop crying and play&rdquo;. There are clear issues with the rule that can be tweaked like any rule. It just seems like it won&rsquo;t be addressed until it impacts superstar players, which is now happening.</p>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ocaagoz" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>nerdyykidd | Celtics</div>
+        <div>1 | 26 minutes ago </div>
+      </div>
+      <label for="ocaagoz" class="commentText"><p>I’m not against a minutes requirement but I don’t think it will fix the problem. Just kick the can further down the road until the next edge case appears and we do this all over again</p>
+
+<p>These are players are on guaranteed contracts playing for bonuses. If you can’t be on the court for  most of your team’s games, for whatever reason, then tough shit</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="ocab17j" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>HokageEzio | Knicks</div>
+        <div>1 | 23 minutes ago </div>
+      </div>
+      <label for="ocab17j" class="commentText"><p>There will always be edge cases. But this allows more wiggle room and avoids technicalities that are obviously against the spirit of the rule like DiVincenzo missing it in 2024.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="oca9sbc" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>pmurt007 | Lakers</div>
+        <div>1 | 29 minutes ago </div>
+      </div>
+      <label for="oca9sbc" class="commentText"><p>I like the rules as it stands.  65 games played with 20 mins req in each is more than fair to players and fans.  The idea of minutes req sounds good until you start seeing guys play in blowouts more to cheese the min requirement.</p>
+
+<p>The notion that the 65 games played is some ridiculously high standard is insane.  It sucks what happened to Cade but that&rsquo;s the name of the game.  We&rsquo;re seeing Wemby, Luka, Jokic, SGA push through the minor injuries and playing on b2b to make the requirement which is good for fans who spend their hard earned money and time on these games and want to see the best play and not sit out for minor injuries or resting just because they were allowed to prior to this rule.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="ocaagfd" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Professional-Rub152</div>
+        <div>1 | 26 minutes ago </div>
+      </div>
+      <label for="ocaagfd" class="commentText"><p>Then we need to stop being mad when guys don’t sit in blowouts. They need to play at least 20 minutes. If it’s the beginning of the 4th quarter and the 6th man only has 15 minutes played, don’t be mad when he stays in the 4th and breaks a bench scoring record in a blowout.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="ocabpy6" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>FatalFirecrotch</div>
+        <div>1 | 19 minutes ago </div>
+      </div>
+      <label for="ocabpy6" class="commentText"><p>Has anyone been mad that starters are being sat in blowouts?</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="ocac87h" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>pmurt007 | Lakers</div>
+        <div>1 | 17 minutes ago </div>
+      </div>
+      <label for="ocac87h" class="commentText"><p>Dude your strawman made up scenario does not apply here.  Most guys in the running for regular season awards will have played 20 minutes by the time the 4th quarter starts regardless of its a blowout or not.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="ocaakvo" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>HokageEzio | Knicks</div>
+        <div>1 | 25 minutes ago </div>
+      </div>
+      <label for="ocaakvo" class="commentText"><p>I don&rsquo;t think there&rsquo;s a big difference between guys staying in during garbage time to pad their stats and staying in during garbage time to pad their minutes. Same concept, the coach is either going to pull you out the game or not.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ocaaa2y" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>qj1135 | Knicks</div>
+        <div>1 | 27 minutes ago </div>
+      </div>
+      <label for="ocaaa2y" class="commentText"><p>if the players didn&rsquo;t want it they shouldn&rsquo;t have agreed to it. It&rsquo;s their own fault.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="ocaatkf" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>HokageEzio | Knicks</div>
+        <div>1 | 24 minutes ago </div>
+      </div>
+      <label for="ocaatkf" class="commentText"><p>Agreed. That doesn&rsquo;t mean the rule has to stay the way it is forever and there&rsquo;s zero adjustments that can be made to it to make it better.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ocabuw0" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>bdybwyi</div>
+        <div>1 | 19 minutes ago </div>
+      </div>
+      <label for="ocabuw0" class="commentText"><p>I heard Bill Simmons talk about using minutes in his last episode</p>
+
+<p>Mentioned how Maxey is 3rd in the league in total minutes (at the time) and yet he wouldn’t be eligible for any All-NBA teams or awards which is ridiculous.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="ocacvor" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>HokageEzio | Knicks</div>
+        <div>1 | 14 minutes ago </div>
+      </div>
+      <label for="ocacvor" class="commentText"><p>Yeah I don&rsquo;t watch Bill Simmons&rsquo; show but I saw he said the same thing. The logic makes sense though. The rule is to have the players out there in front of the fans, and Maxey is obviously out there in front of the fans all the time given how many minutes he plays.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="oca9z9e" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>WhiteRoseFromPluto</div>
+        <div>1 | 28 minutes ago </div>
+      </div>
+      <label for="oca9z9e" class="commentText"><p>In hindsight it probably should have always been a minutes thing</p>
+
+<p>Honestly if I was Cade and I really wanted to get all nba honors</p>
+
+<p>I’d suit up for one second every game foul then check out lol</p>
+
+<p>If the doctors would allow it</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="ocaa7h1" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>HokageEzio | Knicks</div>
+        <div>1 | 27 minutes ago </div>
+      </div>
+      <label for="ocaa7h1" class="commentText"><p>You only get two allowable games between 15 and 20 minutes to count for your 65. You have to play 63 games above 20 minutes (which he has not done).</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="ocaajkm" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>WhiteRoseFromPluto</div>
+        <div>1 | 25 minutes ago </div>
+      </div>
+      <label for="ocaajkm" class="commentText"><p>Ahh I see</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ocablg4" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>bag-skate65</div>
+        <div>1 | 20 minutes ago </div>
+      </div>
+      <label for="ocablg4" class="commentText"><p>I think it’s so funny that we’ve all got a mental block on solutions that actually make sense and try to think of random thresholds instead where there’s always gonna be edge cases.</p>
+
+<p>It would completely solve the problem to just have everyone vote for who they thought was most deserving on a per game basis, and then some manipulation of percent of games played as an added weight on top of what the vote counts for. I’m also pretty sure we’d all hate it more lol.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ocaat9d" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>thwnd2000 | 76ers</div>
+        <div>1 | 24 minutes ago </div>
+      </div>
+      <label for="ocaat9d" class="commentText"><p>Can we see the list of players that won awards or were All NBA that this rule would have kicked out.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="ocacg3t" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>HokageEzio | Knicks</div>
+        <div>1 | 16 minutes ago </div>
+      </div>
+      <label for="ocacg3t" class="commentText"><p>Anybody who didn&rsquo;t hit the 65 games would have gotten zero votes because they literally wouldn&rsquo;t be on the award ballot, so we wouldn&rsquo;t know who would get voted or how many votes they would get.</p>
+
+<p>But it&rsquo;s not inherently kicking off anybody. I&rsquo;m saying 65 games <em>or</em> 2,000 minutes. So anybody who made it via 65 games is still in.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ocae2uc" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>shinbreaker | Spurs</div>
+        <div>1 | 7 minutes ago </div>
+      </div>
+      <label for="ocae2uc" class="commentText"><p>Isn&rsquo;t it just easier to make some changes to the rubric for these awards? Either tell the media people to take into account a player&rsquo;s game count or penalize their combined score? The people who could win a season award while playing less than 60 games are the ones who are just so ahead of the game for whatever reason like Wemby for DPOY the last two years.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ocabb8s" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ChocolateSunsdae | Suns</div>
+        <div>1 | 21 minutes ago </div>
+      </div>
+      <label for="ocabb8s" class="commentText"><p>Get rid of the rule, but put the number of games played and MPG average on the ballot so voters are consciously aware of what they&rsquo;re voting for.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ocad3k8" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ReignSvpreme</div>
+        <div>1 | 12 minutes ago </div>
+      </div>
+      <label for="ocad3k8" class="commentText"><p>What I don&rsquo;t understand is why we&rsquo;re putting rules on awards that are voted on. Like, do we need to place restrictions on voters? If they think someone is worthy of All-NBA, surely the vote should be enough, regardless of how many games they&rsquo;ve played?</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ocaa0cu" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Dangerous_Ad5039</div>
+        <div>1 | 28 minutes ago </div>
+      </div>
+      <label for="ocaa0cu" class="commentText"><p>If you sit out for load management or rest you should be ineligible for awards. Sitting out for actual injuries should be fair game.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="ocab0hv" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Hydration__Nation | Pistons</div>
+        <div>1 | 23 minutes ago </div>
+      </div>
+      <label for="ocab0hv" class="commentText"><p>Maybe 0.5 games missed due to injury</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="oca9yok" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Dangerous_Ad5039</div>
+        <div>1 | 28 minutes ago </div>
+      </div>
+      <label for="oca9yok" class="commentText"><p>If you sit out for load management or rest you should be ineligible for awards. Sitting out for anything else should be fair game.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="ocaalqo" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ejiggle | Trail Blazers</div>
+        <div>1 | 25 minutes ago </div>
+      </div>
+      <label for="ocaalqo" class="commentText"><p>Surely you see the problem with this kind of mandate</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="ocaasri" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>DaJuggerHobbit | Hawks</div>
+        <div>1 | 24 minutes ago </div>
+      </div>
+      <label for="ocaasri" class="commentText"><p>That sounds good until teams start listing load management as injuries on reports. Suddenly everyone has a back issue, or sore groin, or ailing knee. This is too subjective to work.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="ocaavij" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>JeguePerneta</div>
+        <div>1 | 24 minutes ago </div>
+      </div>
+      <label for="ocaavij" class="commentText"><p>There&rsquo;s basically no way to enforce this, teams will just make up random shit to sit out players</p>
+
+<p>Fixing the schedule should be the priority</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
