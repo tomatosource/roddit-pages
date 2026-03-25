@@ -1,0 +1,603 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.selfPostImage {
+  width: 100%;
+  height: auto;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/baseball/comments/1s3a6ej/oc_every_streak_of_80_games_batting_over_400/"><p>[OC] Every streak of 80+ games batting over .400 since 1941</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <table>
+<thead>
+<tr>
+<th align="left">Name</th>
+<th align="left">Start Date</th>
+<th align="left">End Date</th>
+<th align="left">Games</th>
+<th align="left">PA</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">Tony Gwynn</td>
+<td align="left">1993-06-10</td>
+<td align="left">1995-05-06</td>
+<td align="left">186</td>
+<td align="left">803</td>
+</tr>
+
+<tr>
+<td align="left">Rod Carew</td>
+<td align="left">1977-05-08</td>
+<td align="left">1978-05-21</td>
+<td align="left">167</td>
+<td align="left">749</td>
+</tr>
+
+<tr>
+<td align="left">Wade Boggs</td>
+<td align="left">1985-06-09</td>
+<td align="left">1986-06-07</td>
+<td align="left">163</td>
+<td align="left">759</td>
+</tr>
+
+<tr>
+<td align="left">Hank Aaron</td>
+<td align="left">1958-06-25</td>
+<td align="left">1959-05-24</td>
+<td align="left">129</td>
+<td align="left">565</td>
+</tr>
+
+<tr>
+<td align="left">Larry Walker</td>
+<td align="left">1998-07-18</td>
+<td align="left">1999-07-17</td>
+<td align="left">126</td>
+<td align="left">536</td>
+</tr>
+
+<tr>
+<td align="left">Ichiro Suzuki</td>
+<td align="left">2004-06-30</td>
+<td align="left">2005-05-16</td>
+<td align="left">124</td>
+<td align="left">577</td>
+</tr>
+
+<tr>
+<td align="left">Todd Helton</td>
+<td align="left">2000-04-05</td>
+<td align="left">2000-08-21</td>
+<td align="left">121</td>
+<td align="left">525</td>
+</tr>
+
+<tr>
+<td align="left">George Brett</td>
+<td align="left">1980-05-22</td>
+<td align="left">1981-05-26</td>
+<td align="left">117</td>
+<td align="left">514</td>
+</tr>
+
+<tr>
+<td align="left">Tony Gwynn</td>
+<td align="left">1995-06-04</td>
+<td align="left">1996-04-27</td>
+<td align="left">116</td>
+<td align="left">495</td>
+</tr>
+
+<tr>
+<td align="left">Tony Fernandez</td>
+<td align="left">1998-08-01</td>
+<td align="left">1999-06-21</td>
+<td align="left">115</td>
+<td align="left">478</td>
+</tr>
+
+<tr>
+<td align="left">Ted Williams</td>
+<td align="left">1947-08-07</td>
+<td align="left">1948-06-29</td>
+<td align="left">115</td>
+<td align="left">526</td>
+</tr>
+
+<tr>
+<td align="left">Stan Musial</td>
+<td align="left">1949-07-10</td>
+<td align="left">1950-05-28</td>
+<td align="left">109</td>
+<td align="left">499</td>
+</tr>
+
+<tr>
+<td align="left">John Olerud</td>
+<td align="left">1993-04-07</td>
+<td align="left">1993-08-02</td>
+<td align="left">105</td>
+<td align="left">450</td>
+</tr>
+
+<tr>
+<td align="left">Nomar Garciaparra</td>
+<td align="left">1999-09-03</td>
+<td align="left">2000-07-28</td>
+<td align="left">104</td>
+<td align="left">447</td>
+</tr>
+
+<tr>
+<td align="left">Josh Hamilton</td>
+<td align="left">2010-06-01</td>
+<td align="left">2011-05-24</td>
+<td align="left">98</td>
+<td align="left">414</td>
+</tr>
+
+<tr>
+<td align="left">Mickey Mantle</td>
+<td align="left">1957-05-12</td>
+<td align="left">1957-08-18</td>
+<td align="left">96</td>
+<td align="left">433</td>
+</tr>
+
+<tr>
+<td align="left">Duke Snider</td>
+<td align="left">1953-08-23</td>
+<td align="left">1954-06-23</td>
+<td align="left">96</td>
+<td align="left">423</td>
+</tr>
+
+<tr>
+<td align="left">Dixie Walker</td>
+<td align="left">1943-08-08</td>
+<td align="left">1944-06-12</td>
+<td align="left">94</td>
+<td align="left">403</td>
+</tr>
+
+<tr>
+<td align="left">Barry Bonds</td>
+<td align="left">2003-06-20</td>
+<td align="left">2004-04-29</td>
+<td align="left">92</td>
+<td align="left">373</td>
+</tr>
+
+<tr>
+<td align="left">Tony Gwynn</td>
+<td align="left">1996-09-24</td>
+<td align="left">1997-07-14</td>
+<td align="left">92</td>
+<td align="left">420</td>
+</tr>
+
+<tr>
+<td align="left">Stan Musial</td>
+<td align="left">1957-07-06</td>
+<td align="left">1958-05-25</td>
+<td align="left">92</td>
+<td align="left">388</td>
+</tr>
+
+<tr>
+<td align="left">Manny Ramirez</td>
+<td align="left">2000-08-15</td>
+<td align="left">2001-05-23</td>
+<td align="left">91</td>
+<td align="left">407</td>
+</tr>
+
+<tr>
+<td align="left">Willie Mays</td>
+<td align="left">1963-07-16</td>
+<td align="left">1964-05-13</td>
+<td align="left">90</td>
+<td align="left">388</td>
+</tr>
+
+<tr>
+<td align="left">Rod Carew</td>
+<td align="left">1982-08-11</td>
+<td align="left">1983-05-31</td>
+<td align="left">89</td>
+<td align="left">393</td>
+</tr>
+
+<tr>
+<td align="left">Tommy Holmes</td>
+<td align="left">1944-09-17</td>
+<td align="left">1945-07-08</td>
+<td align="left">88</td>
+<td align="left">418</td>
+</tr>
+
+<tr>
+<td align="left">Chipper Jones</td>
+<td align="left">2007-08-27</td>
+<td align="left">2008-06-11</td>
+<td align="left">88</td>
+<td align="left">387</td>
+</tr>
+
+<tr>
+<td align="left">Chone Figgins</td>
+<td align="left">2007-05-27</td>
+<td align="left">2007-09-22</td>
+<td align="left">84</td>
+<td align="left">384</td>
+</tr>
+
+<tr>
+<td align="left">Ted Williams</td>
+<td align="left">1957-05-17</td>
+<td align="left">1957-08-17</td>
+<td align="left">84</td>
+<td align="left">351</td>
+</tr>
+
+<tr>
+<td align="left">Wade Boggs</td>
+<td align="left">1986-09-21</td>
+<td align="left">1987-06-30</td>
+<td align="left">83</td>
+<td align="left">377</td>
+</tr>
+
+<tr>
+<td align="left">Tito Francona</td>
+<td align="left">1959-06-06</td>
+<td align="left">1959-09-07</td>
+<td align="left">83</td>
+<td align="left">347</td>
+</tr>
+
+<tr>
+<td align="left">Joey Votto</td>
+<td align="left">2016-06-29</td>
+<td align="left">2016-10-02</td>
+<td align="left">82</td>
+<td align="left">357</td>
+</tr>
+
+<tr>
+<td align="left">Luis Arraez</td>
+<td align="left">2022-09-24</td>
+<td align="left">2023-06-27</td>
+<td align="left">81</td>
+<td align="left">343</td>
+</tr>
+</tbody>
+</table>
+<p>A couple weeks ago, I made a post on here about every 80-game stretch where a player batted .400+. A few comments pointed out that this was unfair to anyone who maybe batted over .400 for a longer stretch, but not for exactly 80 games. Here&rsquo;s some justice for Chipper Jones and the rest of the guys who accomplished it. And yes, Chone Figgins returns.</p>
+
+<p>I included the plate appearances column because to qualify for a batting title, you need 3.1 plate appearances per team game. This list is filtered only on qualified streaks. To win a batting title in a162-game season, you of course don&rsquo;t need to play in all 162. You just need 502 plate appearances. With that being said, there are nine streaks here that, if they were somehow extracted out of this stretch of games and became the only games they played in a single season, would have qualified for batting .400 in a full season. I think Todd Helton gets a special shoutout for doing it in a single calendar year.</p>
+
+<p>There&rsquo;s a lot of overlap here with the 80-game list that I put out, but I would say the most surprising addition here is 36-year-old Tony Fernandez.</p>
+
+<p>Tony Gwynn shows up on here three times, so I was curious what his total batting average was from the beginning to the end of those streaks. From 6/10/1993 to 7/14/1997, Gwynn hit .380 (<sup>767</sup>&frasl;<sub>2018</sub>). Pretty unreal in modern times.</p>
+
+<p>If you&rsquo;re curious who had the longest streak, including the old times, that would be Rogers Hornsby, who hit .400 over 786 games from 7/21/1920 to 5/12/1926.</p>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ocdxjcr" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Darcasm</div>
+        <div>3 | 41 minutes ago </div>
+      </div>
+      <label for="ocdxjcr" class="commentText"><p>This is awesome. Really love stuff like this!</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ocdyk3y" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Traditional_Half842 | Boston Red Sox</div>
+        <div>3 | 36 minutes ago </div>
+      </div>
+      <label for="ocdyk3y" class="commentText"><p>A lot of big names so I was wondering who the worst player on this list is.  Tito Francona (Terry Francona&rsquo;s dad) was a solid outfielder for a few years in his mid-twenties, but outside of that he was barely a replacement-level player in his career.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="oce0gs5" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>sabermiketrics | Major League Baseball</div>
+        <div>1 | 26 minutes ago </div>
+      </div>
+      <label for="oce0gs5" class="commentText"><p>Yeah no doubt he and Chone Figgins are the biggest head scratchers here. Tony Fernandez is a shock too, he was a great player but I wouldn’t have expected that late in his career.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ocdwvd6" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>DependentPosition465</div>
+        <div>1 | 44 minutes ago </div>
+      </div>
+      <label for="ocdwvd6" class="commentText"><p>Gwynn hitting 380 over 4 years is absolutley insane - that span would be like having a career year every single season</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="oce34lh" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Blitzdog416 | Toronto Blue Jays</div>
+        <div>1 | 12 minutes ago </div>
+      </div>
+      <label for="oce34lh" class="commentText"><p>Thank you for that memorable year, Olerud! Great career.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="oce46z8" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Theoneiced | Atlanta Braves</div>
+        <div>1 | 7 minutes ago </div>
+      </div>
+      <label for="oce46z8" class="commentText"><p>This Tony Gwynn kid seems decent.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
