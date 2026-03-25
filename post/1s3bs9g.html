@@ -1,0 +1,812 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.selfPostImage {
+  width: 100%;
+  height: auto;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/baseball/comments/1s3bs9g/i_simmed_the_2026_season_in_ootp_50_times_here/"><p>I simmed the 2026 season in OOTP 50 times. Here are my results.</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <p>Parity is one of those things that is talked about a lot, does every team really have a chance to win the world series? We all know that&rsquo;s not entirely true, but I wanted to find out just much hope each team might have.  I have done this occasionally before, <a href="https://www.reddit.com/r/baseball/comments/62n4tg/i_simmed_the_2017_season_in_ootp_50_times_here/" target="_blank">in 2017</a>, <a href="https://www.reddit.com/r/baseball/comments/b44oy2/i_simmed_the_2019_season_in_ootp_50_times_here/" target="_blank">in 2019</a>, and <a href="https://old.reddit.com/r/baseball/comments/125v8qf/i_simmed_the_2023_season_in_ootp_50_times_here/" target="_blank">in 2023</a> and now I&rsquo;m back.</p>
+
+<p>What I did was <a href="https://i.imgur.com/Vyp1tzj.png" target="_blank">simulate the 2026 season 50 times</a> and documented the results. Here they are sorted by each team&rsquo;s average total wins:</p>
+
+<p>|	Team	|	Highest Win Total	|	Lowest Win Total	|	Average Win Total	|	Total Playoff appearances	|	Division Wins	|	Straight to DS	|	Wildcard Series Spots	|	WS wins	|	WS Losses	|
+|	:&ndash;	|	:&ndash;	|	:&ndash;	|	:&ndash;	|	:&ndash;	|	:&ndash;	|	:&ndash;	|	:&ndash;	|	:&ndash;	|	:&ndash;	|
+|	<a href="#f/lad">Los Angeles Dodgers</a> LAD	|	113	|	88	|	101.22	|	50	|	48	|	44	|	6	|	9	|	7	|
+|	<a href="#f/nym">New York Mets</a> NYM	|	111	|	74	|	92.62	|	46	|	28	|	21	|	25	|	7	|	2	|
+|	<a href="#f/chc">Chicago Cubs</a> CHC	|	109	|	74	|	89.92	|	40	|	30	|	13	|	27	|	3	|	6	|
+|	<a href="#f/bos">Boston Red Sox</a> BOS	|	104	|	75	|	88.6	|	39	|	17	|	15	|	24	|	5	|	4	|
+|	<a href="#f/nyy">New York Yankees</a> NYY	|	102	|	72	|	88.46	|	36	|	13	|	12	|	24	|	3	|	6	|
+|	<a href="#f/det">Detroit Tigers</a> DET	|	101	|	67	|	87.82	|	38	|	37	|	21	|	17	|	5	|	5	|
+|	<a href="#f/phi">Philadelphia Phillies</a> PHI	|	101	|	74	|	87.1	|	35	|	11	|	7	|	28	|	3	|	1	|
+|	<a href="#f/bal">Baltimore Orioles</a> BAL	|	99	|	68	|	86.52	|	32	|	11	|	9	|	23	|	2	|	2	|
+|	<a href="#f/sea">Seattle Mariners</a> SEA	|	99	|	71	|	85.8	|	33	|	24	|	14	|	19	|	3	|	2	|
+|	<a href="#f/atl">Atlanta Braves</a> ATL	|	100	|	67	|	85.02	|	33	|	11	|	6	|	27	|	1	|	2	|
+|	<a href="#f/hou">Houston Astros</a> HOU	|	100	|	71	|	84.68	|	28	|	15	|	12	|	16	|	0	|	4	|
+|	<a href="#f/tor">Toronto Blue Jays</a> TOR	|	99	|	66	|	84.46	|	28	|	7	|	6	|	22	|	1	|	2	|
+|	<a href="#f/mil">Milwaukee Brewers</a> MIL	|	98	|	71	|	83.98	|	26	|	14	|	5	|	21	|	1	|	0	|
+|	<a href="#f/sfg">San Francisco Giants</a> SF	|	97	|	69	|	82.46	|	21	|	1	|	1	|	20	|	1	|	0	|
+|	<a href="#f/kcr">Kansas City Royals</a> KC	|	93	|	68	|	80.54	|	12	|	7	|	3	|	9	|	0	|	1	|
+|	<a href="#f/tex">Texas Rangers</a> TEX	|	96	|	63	|	80.14	|	15	|	9	|	4	|	11	|	1	|	0	|
+|	<a href="#f/ari">Arizona Diamondbacks</a> ARI	|	94	|	62	|	79.26	|	13	|	0	|	0	|	13	|	0	|	2	|
+|	<a href="#f/cin">Cincinnati Reds</a> CIN	|	95	|	66	|	78.94	|	9	|	4	|	2	|	7	|	2	|	0	|
+|	<a href="#f/tbr">Tampa Bay Rays</a> TB	|	94	|	63	|	78.52	|	14	|	2	|	2	|	12	|	0	|	1	|
+|	<a href="#f/cle">Cleveland Guardians</a> CLE	|	93	|	63	|	77.58	|	11	|	4	|	1	|	10	|	1	|	1	|
+|	<a href="#f/oak">Oakland Athletics</a> ATH	|	90	|	61	|	76.56	|	4	|	2	|	1	|	3	|	0	|	0	|
+|	<a href="#f/sdp">San Diego Padres</a> SD	|	96	|	60	|	75.58	|	7	|	1	|	1	|	6	|	1	|	0	|
+|	<a href="#f/pit">Pittsburgh Pirates</a> PIT	|	90	|	60	|	74.96	|	8	|	2	|	0	|	8	|	0	|	0	|
+|	<a href="#f/min">Minnesota Twins</a> MIN	|	90	|	63	|	74.32	|	2	|	0	|	0	|	2	|	0	|	0	|
+|	<a href="#f/stl">St. Louis Cardinals</a> STL	|	88	|	55	|	73.44	|	5	|	0	|	0	|	5	|	0	|	2	|
+|	<a href="#f/laa">Los Angeles Angels</a> LAA	|	87	|	56	|	71.8	|	3	|	0	|	0	|	3	|	0	|	0	|
+|	<a href="#f/col">Colorado Rockies</a> COL	|	85	|	59	|	71.64	|	4	|	0	|	0	|	4	|	0	|	0	|
+|	<a href="#f/cws">Chicago White Sox</a> CHW	|	86	|	54	|	71	|	5	|	2	|	0	|	5	|	1	|	0	|
+|	<a href="#f/wsh">Washington Nationals</a> WAS	|	85	|	51	|	69.32	|	2	|	0	|	0	|	2	|	0	|	0	|
+|	<a href="#f/mia">Miami Marlins</a> MIA	|	85	|	55	|	67.74	|	1	|	0	|	0	|	1	|	0	|	0	|</p>
+
+<p>EVERY team managed at least one winning season and managed to make the playoffs at least once (Even the Rockies, Angels, and Marlins!), 23 teams won their division, 23 teams made it to the World Series, and 18 even managed to win it!</p>
+
+<p>I also tracked who won major awards so here&rsquo;s everybody who won the Most Valuable Player, Cy Young, or Rookie of the Year in both leagues and how many times they won them:</p>
+
+<p>|	NL MVP	|	AL MVP	|	NL CY YOUNG	|	AL CY YOUNG	|	NL ROY	|	AL ROY	|
+|	:&ndash;	|	:&ndash;	|	:&ndash;	|	:&ndash;	|	:&ndash;	|	:&ndash;	|
+|	<a href="#f/lad">Los Angeles Dodgers</a> Shohei Ohtani 35	|		<a href="#f/nyy">New York Yankees</a> Aaron Judge 19	|	<a href="#f/phi">Philadelphia Phillies</a> Christopher Sanchez 10	|		<a href="#f/det">Detroit Tigers</a> Tarik Skubal 27	|	<a href="#f/stl">St. Louis Cardinals</a> JJ Wetherholt 16	|		<a href="#f/det">Detroit Tigers</a> Kevin Mcgonigle 15	|
+|	<a href="#f/nym">New York Mets</a> Juan Soto 5	|		<a href="#f/kcr">Kansas City Royals</a> Bobby Witt Jr 6	|	<a href="#f/atl">Atlanta Braves</a> Chris Sale 8	|	<a href="#f/bos">Boston Red Sox</a> Garrett Crochet 13	|	<a href="#f/mia">Miami Marlins</a> Owen Caissie 9	|	<a href="#f/cws">Chicago White Sox</a> Sam Antonacci 9	|
+|	<a href="#f/lad">Los Angeles Dodgers</a> Kyle Tucker 4	|	<a href="#f/sea">Seattle Mariners</a> Julio Rodriguez 5	|	<a href="#f/sfg">San Francisco Giants</a> Logan Webb 6	|		<a href="#f/kcr">Kansas City Royals</a> Cole Ragans 2	|	<a href="#f/wsh">Washington Nationals</a> Harry Ford 9	|		<a href="#f/bal">Baltimore Orioles</a> Dylan Beavers 7	|
+|	<a href="#f/sdp">San Diego Padres</a> Jackson Merrill 2	|	<a href="#f/tbr">Tampa Bay Rays</a> Junior Caminero 3	|	<a href="#f/lad">Los Angeles Dodgers</a> Yoshinobu Yamamoto 6	|	<a href="#f/bos">Boston Red Sox</a> Sonny Gray 2	|	<a href="#f/sdp">San Diego Padres</a> Sung-Mun Song 4	|		<a href="#f/hou">Houston Astros</a> Zach Cole 7	|
+|	<a href="#f/mil">Milwaukee Brewers</a> Jackson Chourio	|	<a href="#f/tor">Toronto Blue Jays</a> Vlad Guerrero Jr 2	|	<a href="#f/pit">Pittsburgh Pirates</a> Paul Skenes 5	|	<a href="#f/tor">Toronto Blue Jays</a> Dylan Cease	|	<a href="#f/phi">Philadelphia Phillies</a> Andrew Painter 3	|	<a href="#f/tbr">Tampa Bay Rays</a> Carson Williams 5	|
+|	<a href="#f/lad">Los Angeles Dodgers</a> Will Smith	|		<a href="#f/det">Detroit Tigers</a> Spencer Torkelson 2	|	<a href="#f/lad">Los Angeles Dodgers</a> Tyler Glasnow 2	|	<a href="#f/sea">Seattle Mariners</a> Logan Gilbert	|	<a href="#f/nym">New York Mets</a> Carson Benge 2	|		<a href="#f/cle">Cleveland Guardians</a> Chase DeLauter 3	|
+|	<a href="#f/atl">Atlanta Braves</a> Ronald Acuna	|	<a href="#f/tex">Texas Rangers</a> Wyatt Langford 2	|	<a href="#f/mil">Milwaukee Brewers</a> Brandon Woodruff 2	|		<a href="#f/nyy">New York Yankees</a> Max Fried	|	<a href="#f/pit">Pittsburgh Pirates</a> Konnor Griffin 2	|	<a href="#f/tbr">Tampa Bay Rays</a> Dom Keegan 2	|
+|	<a href="#f/ari">Arizona Diamondbacks</a> Ketel Marte	|		<a href="#f/bal">Baltimore Orioles</a> Gunnar Henderson 2	|	<a href="#f/nym">New York Mets</a> Clay Holmes 2	|	<a href="#f/bos">Boston Red Sox</a> Ranger Suarez	|	<a href="#f/cin">Cincinnati Reds</a> Sal Stewart 2	|		<a href="#f/min">Minnesota Twins</a> Kaelen Culpepper	|
+|		|		<a href="#f/cle">Cleveland Guardians</a> Jose Ramirez 2	|	<a href="#f/wsh">Washington Nationals</a> Foster Griffin 2	|	<a href="#f/tbr">Tampa Bay Rays</a> Shane McClanahan	|	<a href="#f/col">Colorado Rockies</a> Zac Veen	|		<a href="#f/kcr">Kansas City Royals</a> Carter Jensen	|
+|		|		<a href="#f/nyy">New York Yankees</a> Trent Grisham	|	<a href="#f/mia">Miami Marlins</a> Eury Perez	|	<a href="#f/sea">Seattle Mariners</a> Bryan Woo	|	<a href="#f/lad">Los Angeles Dodgers</a> Alex Freeland	|		|
+|		|	<a href="#f/bal">Baltimore Orioles</a> Pete Alonso	|	<a href="#f/chc">Chicago Cubs</a> Matthew Boyd	|		|	<a href="#f/sfg">San Francisco Giants</a> Bryce Eldridge	|		|
+|		|		<a href="#f/hou">Houston Astros</a> Yordan Alvarez	|	<a href="#f/phi">Philadelphia Phillies</a> Andrew Painter	|		|		|		|
+|		|	<a href="#f/laa">Los Angeles Angels</a> Zach Neto	|	<a href="#f/lad">Los Angeles Dodgers</a> Blake Snell	|		|		|		|
+|		|		<a href="#f/bal">Baltimore Orioles</a> Adley Rutschman	|	<a href="#f/atl">Atlanta Braves</a> Reynaldo Lopez	|		|		|		|
+|		|	<a href="#f/sea">Seattle Mariners</a> Cal Raleigh	|	<a href="#f/chc">Chicago Cubs</a> Shota Imanaga	|		|		|		|
+|		|		<a href="#f/nyy">New York Yankees</a> Jazz Chisholm	|	<a href="#f/atl">Atlanta Braves</a> Spencer Strider	|		|		|		|</p>
+
+<p>So basically what I&rsquo;m saying is that if you are a fan of an MLB team, you have something to hope for and look forward to this season.</p>
+
+<p>As usual, tons of strange baseball things happened in at least one save; multiple teams made the playoffs with losing records (including one save with two in one season), Shohei Ohtani became the starting 3B for the Dodgers, Tarik Skubal had 317 strikeouts, Andrew Abbott led the league in wins, Nathaniel Lowe won a batting title, and the White Sox won the World Series!</p>
+
+<p><a href="https://docs.google.com/spreadsheets/d/1qqm1JXZyHynV8LSQ18fk3RP9IaA58-LRzpeTrvtq0L0/edit?usp=sharing" target="_blank">Here is a link to my Google Sheets doc</a> where I kept all the stats if anyone wants to see it. It also has some interesting things I noticed about certain saves on the fourth sheet.</p>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ocecpjg" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Electrical_Yard_284 | MLB Pride</div>
+        <div>10 | an hour ago </div>
+      </div>
+      <label for="ocecpjg" class="commentText"><p>Will not accept results until they are also simmed on Baseball Mogul, sorry, I am a traditionalist.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="ocej1oh" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Opening_Ad5479 | New York Yankees</div>
+        <div>7 | an hour ago </div>
+      </div>
+      <label for="ocej1oh" class="commentText"><p>I&rsquo;m going to simulate 50 seasons on Strat-O-Matic.  I&rsquo;ll be back with my results in 6 months.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="ocejf30" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Electrical_Yard_284 | MLB Pride</div>
+        <div>2 | an hour ago </div>
+      </div>
+      <label for="ocejf30" class="commentText"><p>Thank you for your service, my friend.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="ocedajw" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>petron5000</div>
+        <div>2 | an hour ago </div>
+      </div>
+      <label for="ocedajw" class="commentText"><p>What happened to baseball mogul</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="oceeqfd" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Electrical_Yard_284 | MLB Pride</div>
+        <div>5 | an hour ago </div>
+      </div>
+      <label for="oceeqfd" class="commentText"><p>Clay is still at it! New one comes out this week. Still a smaller game than OOTP, but does what it does extremely well. Every game up to and including 2021 is free on their website if you haven&rsquo;t played in a while. In recent years he&rsquo;s put together a dice and card Strat style game called Season Ticket, and it is essentially flawless (highest rated baseball game on Board Game Geek last time I checked). Genuinely good dude, too.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="ocegyfs" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>petron5000</div>
+        <div>3 | an hour ago </div>
+      </div>
+      <label for="ocegyfs" class="commentText"><p>BMO was my jam in 2002</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="oceickc" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Electrical_Yard_284 | MLB Pride</div>
+        <div>2 | an hour ago </div>
+      </div>
+      <label for="oceickc" class="commentText"><p>hell yeah brother</p>
+
+<p>or sister</p>
+
+<p>or sibling</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="oceg14z" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Ashamed_Mortgage6497 | Pittsburgh Pirates</div>
+        <div>10 | an hour ago </div>
+      </div>
+      <label for="oceg14z" class="commentText"><p>Find it hilarious the White Sox beat season was 86 wins and they still somehow won their division twice.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="ocelnuh" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>GrapeDoots</div>
+        <div>5 | 36 minutes ago </div>
+      </div>
+      <label for="ocelnuh" class="commentText"><p>That&rsquo;s the magic of the AL Central baby</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ocebl8o" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>SwarthySphere87 | New York Mets</div>
+        <div>6 | an hour ago </div>
+      </div>
+      <label for="ocebl8o" class="commentText"><p>I love all these predictions having the Mets comfortably making the playoffs. Sure would be nice if they could actually do that IRL for once</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ocebdtz" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Boomhauer_007 | Toronto Blue Jays</div>
+        <div>5 | an hour ago </div>
+      </div>
+      <label for="ocebdtz" class="commentText"><p>I love watching people and computers pick the Mets to win a lot of games and make a deep playoff run every year only for them to reset the “highest payroll while missing the playoffs” record</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ocekd7r" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>alxndrblack | Toronto Blue Jays • Detroit Tigers</div>
+        <div>6 | 42 minutes ago </div>
+      </div>
+      <label for="ocekd7r" class="commentText"><p>This isn&rsquo;t marbles</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ocefo0z" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Hempsox | Chicago White Sox</div>
+        <div>4 | an hour ago </div>
+      </div>
+      <label for="ocefo0z" class="commentText"><p>Came to see how badly the sim thought the ChiSox were going to fare this season.</p>
+
+<p>Average wins of 71 even. Nice.</p>
+
+<p>The 1 in the WS win column indicates the OOTP computer needs to be rebooted. Something in the cache memory is faulty.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ocecj33" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>HammerheadBaseball</div>
+        <div>3 | an hour ago </div>
+      </div>
+      <label for="ocecj33" class="commentText"><p>Damn the astros 0 for 4 in the WS. Shame</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="ocei7we" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>DontBlameMe4It</div>
+        <div>-1 | an hour ago </div>
+      </div>
+      <label for="ocei7we" class="commentText"><p>Pretty on point for such a pathetic team and fanbase</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ocega94" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Monkey_Man_Is_King | Los Angeles Dodgers</div>
+        <div>3 | an hour ago </div>
+      </div>
+      <label for="ocega94" class="commentText"><p>Shohei Ohtani at 3rd base is not something I had on my bingo card, but alright</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ocefe1j" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Correct_Sometimes | Baltimore Orioles</div>
+        <div>2 | an hour ago </div>
+      </div>
+      <label for="ocefe1j" class="commentText"><p>Adley with an AL MVP award is quite the career turn around</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ocegben" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>02K30C1 | Milwaukee Brewers</div>
+        <div>2 | an hour ago </div>
+      </div>
+      <label for="ocegben" class="commentText"><p>So you’re saying there’s a chance!</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="oceikde" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>--THRILLHO-- | Los Angeles Angels • Great Britain</div>
+        <div>2 | an hour ago </div>
+      </div>
+      <label for="oceikde" class="commentText"><p>AL MVP Zach Neto, you absolutely love to hear it.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="oceiw6p" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>aredditoraredditor | Cincinnati Reds</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="oceiw6p" class="commentText"><p>Reds: very few playoff apps relative to their average wins 😕</p>
+
+<p>Also Reds: TWO WS WINS WE ARE SO BACK LFG</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ocemk73" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>phiber_optik78 | Milwaukee Brewers</div>
+        <div>1 | 32 minutes ago </div>
+      </div>
+      <label for="ocemk73" class="commentText"><p><img src="giphy|j6uK36y32LxQs" alt="gif" /></p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ocen30j" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>alreadytaken17 | Los Angeles Dodgers</div>
+        <div>1 | 29 minutes ago </div>
+      </div>
+      <label for="ocen30j" class="commentText"><p>looks right to me</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="oceo73y" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>DominicB547 | Dominican Republic • Venezuela</div>
+        <div>1 | 24 minutes ago </div>
+      </div>
+      <label for="oceo73y" class="commentText"><p>Brewers and Guards underrated in these as is tradition.</p>
+
+<p>Though they like the O&rsquo;s. Weird.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="oceqh45" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ClamshellJones | Buffalo Bisons</div>
+        <div>1 | 14 minutes ago </div>
+      </div>
+      <label for="oceqh45" class="commentText"><p>For those interested in this concept, every year BPro runs 100,000 simulations of PECOTA and Rob Mains writes up the outlier results:</p>
+
+<p><a href="https://www.baseballprospectus.com/news/article/105529/veteran-presence-100000-leagues-under-the-pecota-2026/" target="_blank">https://www.baseballprospectus.com/news/article/105529/veteran-presence-100000-leagues-under-the-pecota-2026/</a></p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ocer7ls" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>j1h15233 | Houston Astros</div>
+        <div>1 | 10 minutes ago </div>
+      </div>
+      <label for="ocer7ls" class="commentText"><p>The season when the White Sox won the series must have been quite the simulation</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ocerejs" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>BonSoirRegret | Milwaukee Brewers</div>
+        <div>1 | 9 minutes ago </div>
+      </div>
+      <label for="ocerejs" class="commentText"><p><img src="giphy|ToMjGpKniGqRNLGBrhu" alt="gif" /></p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ocesdjs" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>DalekEvan | Los Angeles Dodgers • Vin Scully</div>
+        <div>1 | 5 minutes ago </div>
+      </div>
+      <label for="ocesdjs" class="commentText"><p>I think I’d like to live in the Will Smith MVP timeline</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="oceefbf" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>MalAddictions</div>
+        <div>0 | an hour ago </div>
+      </div>
+      <label for="oceefbf" class="commentText"><p>By the way, if anyone likes OOTP, you&rsquo;ll probably enjoy WhatifSports Sim League Baseball.</p>
+
+<p><a href="https://www.whatifsports.com/mlb-l/" target="_blank">https://www.whatifsports.com/mlb-l/</a></p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
