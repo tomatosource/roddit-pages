@@ -1,0 +1,1126 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.selfPostImage {
+  width: 100%;
+  height: auto;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/baseball/comments/1s938jv/can_a_baseball_team_actually_go_1620_i_ran_every/"><p>Can a Baseball Team Actually go 162-0? I Ran Every Combination to Find Out.</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <p>Edit: Spelling and formatting</p>
+
+<p>I wanted to know what it would take to produce a 162-0 team. Is it even mathematically possible for a team to go 162-0? If not, what would it take for a team to go 162-0?</p>
+
+<p><strong>TLDR:</strong> Used the Pythagorean Formula to find the combination required to produce a perfect 162-0 season. The winning team requires 2004 Bonds hitting and 2000 Pedro pitching. The opponent is the 2024 Chicago White Sox. The winning combination produces a win probability of 99.85%. A split scenario using the 1930 Philadelphia Phillies pitching staff against Bonds while Pedro faces the White Sox offense pushes win probability even higher to 99.93%.</p>
+
+<p><strong>Assumptions</strong></p>
+
+<p><em>This exercise is purely mathematical and makes the following assumptions:</em></p>
+
+<ol>
+<li><em>No injuries occur at any point during the 162-game season.</em></li>
+<li><em>All nine Bonds and all five Pedros perform identically and consistently — there are no hot or cold streaks, slumps, or outlier performances.</em></li>
+<li><em>All projected stats represent a flat average distributed evenly across all 162 games.</em></li>
+<li><em>Pedro Martinez pitches all 9 innings in every start. No bullpen is used.</em></li>
+<li><em>Defense is considered negligible. Given the combination of a .140 opponent batting average and Pedro&rsquo;s historically dominant strikeout rate, the impact of fielding on outcomes is treated as statistically insignificant.</em></li>
+<li><em>No park factors, weather conditions, or travel fatigue are applied.</em></li>
+<li><em>The opposing lineup and pitching staff perform at their seasonal averages for all 162 games. No adjustments for home/away splits.</em></li>
+</ol>
+
+<p><em>In short: this is a controlled mathematical model, not a simulation. Every result is derived from seasonal averages applied uniformly. Real baseball is messier. That messiness is precisely why 99.85% still isn&rsquo;t 100%.</em></p>
+
+<h1 id="the-method">The Method</h1>
+
+<p>Pythagorean Win Expectation: Win% = RS² ÷ (RS² + RA²)</p>
+
+<p>This is the same formula MLB teams use to evaluate team quality. I projected runs scored and allowed for every hypothetical matchup, and then computed.</p>
+
+<h1 id="the-greatest-teams-vs-the-worst-teams">The Greatest Teams vs The Worst Teams</h1>
+
+<p><strong>The Worst Opponents</strong><br>
+The 2025 Colorado Rockies and 2024 Chicago White Sox are the worst teams in the modern MLB era. Selecting which team is worse depends on what metrics you are using to quantify your argument.</p>
+
+<p>The 2025 Rockies are the worst complete team. The 2024 White Sox are the worst offensive team.</p>
+
+<table>
+<thead>
+<tr>
+<th align="left">Metric</th>
+<th align="left">2025 Rockies</th>
+<th align="left">2024 White Sox</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">Team AVG</td>
+<td align="left">.237</td>
+<td align="left">.219</td>
+</tr>
+
+<tr>
+<td align="left">Runs Scored</td>
+<td align="left">597</td>
+<td align="left">507</td>
+</tr>
+
+<tr>
+<td align="left">ERA</td>
+<td align="left">6.00</td>
+<td align="left">4.89</td>
+</tr>
+
+<tr>
+<td align="left">Runs Allowed</td>
+<td align="left">1,021</td>
+<td align="left">813</td>
+</tr>
+
+<tr>
+<td align="left">Run Differential</td>
+<td align="left">-424 (modern era record)</td>
+<td align="left">-310</td>
+</tr>
+
+<tr>
+<td align="left">Record</td>
+<td align="left">43-119</td>
+<td align="left">41-121</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Real Greatest Teams as Baseline</strong><br>
+I wanted to see how any of the &ldquo;Greatest Teams&rdquo; would fare against these two opponents.</p>
+
+<table>
+<thead>
+<tr>
+<th align="left">Team</th>
+<th align="left">Record</th>
+<th align="left">Run Diff</th>
+<th align="left">vs. 2025 Rockies</th>
+<th align="left">vs. 2024 White Sox</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">1927 Yankees</td>
+<td align="left">110-44</td>
+<td align="left">+376</td>
+<td align="left">143-19 (88.49%)</td>
+<td align="left">141-21 (87.27%)</td>
+</tr>
+
+<tr>
+<td align="left">1939 Yankees</td>
+<td align="left">106-45</td>
+<td align="left">+411</td>
+<td align="left">145-17 (89.80%)</td>
+<td align="left">144-18 (88.68%)</td>
+</tr>
+
+<tr>
+<td align="left">1998 Yankees</td>
+<td align="left">114-48</td>
+<td align="left">+309</td>
+<td align="left">140-22 (86.22%)</td>
+<td align="left">137-25 (84.90%)</td>
+</tr>
+
+<tr>
+<td align="left">2001 Mariners</td>
+<td align="left">116-46</td>
+<td align="left">+300</td>
+<td align="left">141-21 (86.76%)</td>
+<td align="left">138-24 (84.93%)</td>
+</tr>
+</tbody>
+</table>
+<p>Even the &ldquo;Greatest Teams Ever&rdquo; wouldn&rsquo;t be able to pass 145-17. The 1939 Yankees have the best record at 145-17. The difference comes down to their run differential of +411 as it is the highest in modern MLB history. No actual historical team could achieve a perfect season regardless of opponent.</p>
+
+<h1 id="building-the-super-team-chasing-162-0">Building the Super Team Chasing 162-0</h1>
+
+<p><strong>Offense: 9x 2004 Barry Bonds</strong></p>
+
+<p>Argued as the greatest offensive season ever recorded. 2004 Bonds is the only player in MLB history to reach base more times (376) than official at-bats (373) in a single season.</p>
+
+<table>
+<thead>
+<tr>
+<th align="left">Stat</th>
+<th align="left">Value</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">AVG</td>
+<td align="left">.362</td>
+</tr>
+
+<tr>
+<td align="left">OBP</td>
+<td align="left">.609 (all-time record)</td>
+</tr>
+
+<tr>
+<td align="left">OPS</td>
+<td align="left">1.422</td>
+</tr>
+
+<tr>
+<td align="left">Walks</td>
+<td align="left">232 (all-time record)</td>
+</tr>
+
+<tr>
+<td align="left">IBB</td>
+<td align="left">120 (all-time record)</td>
+</tr>
+</tbody>
+</table>
+<p>I compared 2001 Bonds, 2002 Bonds, and Trout during his three peak years and all produced lower win percentages than 2004 Bonds.</p>
+
+<p><strong>Pitchers: 5x 2000 Pedro Martinez</strong></p>
+
+<p>While deGrom&rsquo;s 2021 stats are superior, he only pitched 92 innings before injury ended his season. This makes it impossible to project his performance across a full 162 games. Pedro&rsquo;s 2000 season was 217 innings of filth. His ERA was one-third of the league average that year, a differential no pitcher has achieved before or since. Taking into account that he was pitching at the height of the steroid era against DH lineups at Fenway, 2000 Pedro is the pick.</p>
+
+<h1 id="what-it-takes-to-reach-162-0">What It Takes To Reach 162-0</h1>
+
+<p>The mathematically achievable 162-0 season using one real opponent:</p>
+
+<ul>
+<li>2004 Barry Bonds (offense)</li>
+<li>2000 Pedro Martinez (pitching)</li>
+<li>vs. 2024 Chicago White Sox</li>
+<li>Win probability: 99.85% → 162-0</li>
+</ul>
+
+<p>Even at 99.85%, one game in every ~666 (4.1 seasons) would be lost to pure chance. This is as close to a perfect season as the math allows when limiting to one opponent.</p>
+
+<p><strong>The Offensive Stats</strong></p>
+
+<table>
+<thead>
+<tr>
+<th align="left">Stat</th>
+<th align="left">Per Player</th>
+<th align="left">Team Total (Player X 9)</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">At Bats</td>
+<td align="left">373</td>
+<td align="left">3,357</td>
+</tr>
+
+<tr>
+<td align="left">Runs Scored</td>
+<td align="left">234</td>
+<td align="left">2,106</td>
+</tr>
+
+<tr>
+<td align="left">Hits</td>
+<td align="left">194</td>
+<td align="left">1,746</td>
+</tr>
+
+<tr>
+<td align="left">Doubles</td>
+<td align="left">27</td>
+<td align="left">243</td>
+</tr>
+
+<tr>
+<td align="left">Home Runs</td>
+<td align="left">61</td>
+<td align="left">549</td>
+</tr>
+
+<tr>
+<td align="left">RBI</td>
+<td align="left">183</td>
+<td align="left">1,647</td>
+</tr>
+
+<tr>
+<td align="left">Walks</td>
+<td align="left">295</td>
+<td align="left">2,655</td>
+</tr>
+
+<tr>
+<td align="left">IBB</td>
+<td align="left">153</td>
+<td align="left">1,377</td>
+</tr>
+
+<tr>
+<td align="left">AVG</td>
+<td align="left">.390</td>
+<td align="left">.390</td>
+</tr>
+
+<tr>
+<td align="left">OBP</td>
+<td align="left">.650</td>
+<td align="left">.650</td>
+</tr>
+
+<tr>
+<td align="left">SLG</td>
+<td align="left">.880</td>
+<td align="left">.880</td>
+</tr>
+
+<tr>
+<td align="left">OPS</td>
+<td align="left" colspan="2">~1.530</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Bonds:</strong> 2004 actual stats are scaled up by the ratio of the White Sox pitching (4.89 ERA) to the league average that year (~4.30 ERA). A 14% inflation in offensive output across all categories.</p>
+
+<p><strong>The Pitching Stats</strong></p>
+
+<table>
+<thead>
+<tr>
+<th align="left">Stat</th>
+<th align="left">Per Pitcher</th>
+<th align="left">Staff Total</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">ERA</td>
+<td align="left">0.40</td>
+<td align="left">0.40</td>
+</tr>
+
+<tr>
+<td align="left">WHIP</td>
+<td align="left">0.45</td>
+<td align="left">0.45</td>
+</tr>
+
+<tr>
+<td align="left">Strikeouts</td>
+<td align="left">320</td>
+<td align="left">1,600</td>
+</tr>
+
+<tr>
+<td align="left">Walks Allowed</td>
+<td align="left">18</td>
+<td align="left">90</td>
+</tr>
+
+<tr>
+<td align="left">Hits Allowed</td>
+<td align="left">75</td>
+<td align="left">375</td>
+</tr>
+
+<tr>
+<td align="left">Opponent Avg</td>
+<td align="left">.140</td>
+<td align="left">.140</td>
+</tr>
+
+<tr>
+<td align="left">Runs Allowed/Game</td>
+<td align="left">0.50</td>
+<td align="left">0.50</td>
+</tr>
+
+<tr>
+<td align="left">Season Runs Allowed</td>
+<td align="left">-</td>
+<td align="left">81</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Pedro:</strong> 2000 opponent average of .167 was applied against the White Sox lineup hitting .219. The White Sox hit 24% below league average, so Pedro&rsquo;s low opponent metrics are deflated a further 24%, dropping his ERA from 1.74 to approximately 0.40 and opponent average from .167 to .140.</p>
+
+<h1 id="bonus-the-1930-phillies-wrinkle">Bonus: The 1930 Phillies Wrinkle</h1>
+
+<p>I went looking for a way to push the win probability even higher. Could I get 99.99%?</p>
+
+<p>I found the 1930 Philadelphia Phillies pitching staff - the worst in modern MLB history with a 6.71 ERA. I re-ran 2004 Bonds and 2000 Pedro against the 1930 Phillies and came back with a worse result (159-3 , 98.11% win probability) because the Phillies hit .315, one of the greatest hitting lineups in history. Pedro would surrender ~2.50 runs per game against them.</p>
+
+<p>Key takeaway: A great-hitting opponent hurts you more than a terrible-pitching opponent helps you.</p>
+
+<p>Isolating just their pitching staff against Bonds while Pedro faces the White Sox produces the highest result, a win probability of 99.93%. At 99.93%, one game in every 1,429 (8.8 seasons) would be lost to pure chance.</p>
+
+<p><strong>Bonds vs. 1930 Phillies</strong></p>
+
+<table>
+<thead>
+<tr>
+<th align="left">Stat</th>
+<th align="left">Per Player</th>
+<th align="left">Team Total (Player X 9)</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">At Bats</td>
+<td align="left">373</td>
+<td align="left">3,357</td>
+</tr>
+
+<tr>
+<td align="left">Runs Scored</td>
+<td align="left">342</td>
+<td align="left">3,078</td>
+</tr>
+
+<tr>
+<td align="left">Hits</td>
+<td align="left">243</td>
+<td align="left">2,187</td>
+</tr>
+
+<tr>
+<td align="left">Doubles</td>
+<td align="left">34</td>
+<td align="left">306</td>
+</tr>
+
+<tr>
+<td align="left">Home Runs</td>
+<td align="left">90</td>
+<td align="left">810</td>
+</tr>
+
+<tr>
+<td align="left">RBI</td>
+<td align="left">266</td>
+<td align="left">2,394</td>
+</tr>
+
+<tr>
+<td align="left">Walks</td>
+<td align="left">313</td>
+<td align="left">2,817</td>
+</tr>
+
+<tr>
+<td align="left">IBB</td>
+<td align="left">162</td>
+<td align="left">1,458</td>
+</tr>
+
+<tr>
+<td align="left">AVG</td>
+<td align="left">.420+</td>
+<td align="left">.420+</td>
+</tr>
+
+<tr>
+<td align="left">OBP</td>
+<td align="left">.670+</td>
+<td align="left">.670+</td>
+</tr>
+
+<tr>
+<td align="left">SLG</td>
+<td align="left">.960+</td>
+<td align="left">.960+</td>
+</tr>
+
+<tr>
+<td align="left">OPS</td>
+<td align="left">1.630+</td>
+<td align="left">1.630+</td>
+</tr>
+</tbody>
+</table>
+<p>The 1930 Phillies ERA of 6.71 was 35% worse than the league average of 4.97 that season. Bonds&rsquo; 2004 actual stats were scaled up by 35% across all offensive categories.</p>
+
+<p>Each Bonds projects to hit 90 home runs individually. Team home run total of 810 nearly triples the MLB team record of 307 set by the 2019 Yankees.</p>
+
+<p>The team would score roughly 19 runs per game.</p>
+
+<h1 id="conclusion">Conclusion</h1>
+
+<p>A 162-0 season is mathematically achievable but it&rsquo;s absurd. It requires the greatest offensive season, the greatest pitching season, and the worst offensive team in modern MLB history to exist simultaneously. Thankfully, the universe only had to produce Barry Bonds, and Pedro Martinez. The White Sox donated the third.</p>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="odleu76" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Bobo4037 | New York Mets</div>
+        <div>52 | 2 hours ago </div>
+      </div>
+      <label for="odleu76" class="commentText"><p>This is peak off-season content!</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="odli8hb" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Tea_An_Crumpets</div>
+        <div>7 | 2 hours ago </div>
+      </div>
+      <label for="odli8hb" class="commentText"><p>It’s not even the offseason 😭</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="odljw9j" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>HoneyBadgerPanda | San Diego Padres</div>
+        <div>19 | 2 hours ago </div>
+      </div>
+      <label for="odljw9j" class="commentText"><p>To be fair I started this in the offseason</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="odludw1" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ShatteredAnus | New York Mets</div>
+        <div>2 | 34 minutes ago </div>
+      </div>
+      <label for="odludw1" class="commentText"><p>You are if you&rsquo;re a Pirates&rsquo; fan</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="odlj5mr" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Antithesys | Minnesota Twins • MVPoster</div>
+        <div>39 | 2 hours ago </div>
+      </div>
+      <label for="odlj5mr" class="commentText"><blockquote>
+<p>Conclusion</p>
+
+<p>A 162-0 season is mathematically achievable but it&rsquo;s absurd.</p>
+</blockquote>
+
+<p>Good to know, as that&rsquo;s the assumption I started with.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="odlppf7" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>CasperCackler | Seattle Mariners</div>
+        <div>7 | an hour ago </div>
+      </div>
+      <label for="odlppf7" class="commentText"><p>I love having my biases confirmed by someone else’s hard work too</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="odlhlxw" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>OceanLemur | New York Yankees</div>
+        <div>17 | 2 hours ago </div>
+      </div>
+      <label for="odlhlxw" class="commentText"><p>Lucky for you this question has already been answered by one of the sharpest minds in sports:</p>
+
+<p><a href="https://youtu.be/SE0E-GtuWKw?si=f9Id3zK23X9WD1Cw" target="_blank">Mike Francesa: Caller asks if baseball team can go 162-0</a></p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="odlzymp" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>WarNewsNetwork | American League</div>
+        <div>1 | 3 minutes ago </div>
+      </div>
+      <label for="odlzymp" class="commentText"><p>Sublime radio there</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="odm0aqv" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>azk3000 | New York Yankees</div>
+        <div>1 | a minute ago </div>
+      </div>
+      <label for="odm0aqv" class="commentText"><p>I have yet to find out which Jordan Bulls team went 81-1</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="odlfkns" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>UsErNaMeS_aR_DuMb | Baltimore Orioles</div>
+        <div>7 | 2 hours ago </div>
+      </div>
+      <label for="odlfkns" class="commentText"><p><img src="giphy|ToMjGpKniGqRNLGBrhu" alt="gif" /></p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="odlglya" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>budandfud</div>
+        <div>7 | 2 hours ago </div>
+      </div>
+      <label for="odlglya" class="commentText"><p>.99^162 is .20 or 20%</p>
+
+<p>.75^162 is 0.00000000000000000000575</p>
+
+<p>So it really depends on the relative talent level. 75% is like the highest winning percentage ever in MLB, and the chances of that are basically 0</p>
+
+<p>If you had a crazy talent gap, like maybe MLB vs really good high schools kids, you’d get closer to a 20% chance of going 162-0</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="odlf9xg" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>PvtSherlockObvious | Atlanta Braves • Baltimore Orioles</div>
+        <div>7 | 2 hours ago </div>
+      </div>
+      <label for="odlf9xg" class="commentText"><blockquote>
+<p>Is it even mathematically possible for a team to go 162-0?</p>
+</blockquote>
+
+<p>Yes.  Laughably unlikely, but mathematically possible provided they don&rsquo;t lose one.  Next question. /s</p>
+
+<p>Snark aside, this level of analysis and what really goes into winning a season that way is really impressive.  Very cool breakdown!</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="odlhk3r" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>MusclyArmPaperboy | Toronto Blue Jays</div>
+        <div>5 | 2 hours ago </div>
+      </div>
+      <label for="odlhk3r" class="commentText"><p>We blew it</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="odlstbn" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>sleepystork | Cincinnati Reds</div>
+        <div>2 | 42 minutes ago </div>
+      </div>
+      <label for="odlstbn" class="commentText"><p>Regardless of Pythagorean, every team has a chance of going 162-0.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="odlvx4n" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>eiss0 | Chicago White Sox</div>
+        <div>2 | 25 minutes ago </div>
+      </div>
+      <label for="odlvx4n" class="commentText"><p>Catching strays</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="odlh5yb" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>maturin_nj</div>
+        <div>1 | 2 hours ago </div>
+      </div>
+      <label for="odlh5yb" class="commentText"><p>In actual play, I think both those modern teams wouldn&rsquo;t only perform better against the &lsquo;27 and &lsquo;39 teams, I think theyd be superior.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="odlm2mc" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>swandor | Seattle Mariners</div>
+        <div>0 | an hour ago </div>
+      </div>
+      <label for="odlm2mc" class="commentText"><p>Obviously.   If those games happened,  The Rockies might go 162-0.   Babe Ruth never saw anything close to 100 mph and the Rockies offense would absolutely tee off on the pitchers</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="odlpfi2" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>DineenMattingly | New York Yankees</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="odlpfi2" class="commentText"><blockquote>
+<p>Babe Ruth never saw anything close to 100 mph</p>
+</blockquote>
+
+<p>Babe Ruth played in the same league as Walter Johnson for years and batted .324 off him.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="odlrz27" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>swandor | Seattle Mariners</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="odlrz27" class="commentText"><p>Yeah and by most accounts he topped out around mid 90s.   That&rsquo;s really fast,  but not 100.  I get Ruth was the greatest player amongst his peers but guys back then wouldn&rsquo;t have a chance today without growing up in the modern era</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="odlyrko" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>KoopaKarl</div>
+        <div>1 | 10 minutes ago </div>
+      </div>
+      <label for="odlyrko" class="commentText"><p>I mean I did in The Show 22 so I don&rsquo;t see why not.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="odlz91r" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>desolate_landscapes</div>
+        <div>1 | 7 minutes ago </div>
+      </div>
+      <label for="odlz91r" class="commentText"><p>This is outstanding. I want to hear the voice of Jon Bois reading this to me with charts and a gentle saxophone track playing in the background.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="odlzhdd" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>LetMeStagnate | Boston Red Sox</div>
+        <div>1 | 6 minutes ago </div>
+      </div>
+      <label for="odlzhdd" class="commentText"><p>So next time just write the word “No” to this answer. 116-36 is the record. That’s all you really need to know</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="odlgsr6" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>AgathorKahn | New York Yankees</div>
+        <div>-6 | 2 hours ago </div>
+      </div>
+      <label for="odlgsr6" class="commentText"><p>I mean the Patriots went undefeated so a team as dominant as them could go undefeated in baseball</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="odlpq1p" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>DineenMattingly | New York Yankees</div>
+        <div>3 | an hour ago </div>
+      </div>
+      <label for="odlpq1p" class="commentText"><p>It is hard to tell from the written word if this is sarcasm, so I hope you left the /s off this.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
