@@ -1,0 +1,488 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.selfPostImage {
+  width: 100%;
+  height: auto;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/PathOfExile2/comments/1s9w0az/bestiary_rework_idea_for_poe2_a_regional_hunt/"><p>Bestiary Rework Idea for PoE2 – A Regional Hunt System</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <p>I’ve been thinking about how <strong>Bestiary could be redesigned for PoE2</strong> to better match the slower combat, stronger monsters, and the new Atlas design philosophy. <em>(work with any type of Atlas they may bring in 0.5, whether it’s infinite or not)</em></p>
+
+<p>In PoE1, Bestiary ended up feeling pretty shallow: you just kill a special rare monster and it gets automatically captured. The “hunt” aspect basically disappeared.</p>
+
+<p>But with PoE2’s pacing, I think Bestiary could evolve into something much more interesting: <strong>a regional hunt system that plays out across multiple maps in the Atlas.</strong></p>
+
+<h1 id="1-hunt-discovery">1. Hunt Discovery</h1>
+
+<p>Instead of beasts simply spawning inside maps, the Atlas would show <strong>a Bestiary icon</strong> on a specific map.</p>
+
+<p>Example:</p>
+
+<p>You open the Atlas and see a <strong>beast sighting icon</strong> on one map.</p>
+
+<p>When you run a waystone there:</p>
+
+<ul>
+<li>you find tracks</li>
+<li>encounter packs of beasts</li>
+<li>eventually confront the main beast</li>
+</ul>
+
+<p>At this point the beast could be one of two types:</p>
+
+<h1 id="magic-beast">Magic Beast</h1>
+
+<p>A weaker hunt.</p>
+
+<p>You fight it normally and capture/kill it in the same map.</p>
+
+<h1 id="rare-beast">Rare Beast</h1>
+
+<p>A more dangerous hunt.</p>
+
+<p>When you bring it to low life, <strong>it escapes instead of dying.</strong></p>
+
+<h1 id="2-beasts-escaping-across-maps">2. Beasts Escaping Across Maps</h1>
+
+<p>When a rare beast escapes, it <strong>moves to an adjacent map on the Atlas</strong>.</p>
+
+<p>So the hunt becomes a chain of encounters:</p>
+
+<ol>
+<li>Find the beast</li>
+<li>Fight it</li>
+<li>It escapes</li>
+<li>Track it in the neighboring map</li>
+</ol>
+
+<p>This would make the hunt feel like <strong>a real pursuit across the Atlas</strong>.</p>
+
+<h1 id="3-beast-evolution">3. Beast Evolution</h1>
+
+<p>Every time the beast escapes, it grows stronger.</p>
+
+<p>Example progression:</p>
+
+<p>1st encounter → Rare Beast<br>
+2nd encounter → Alpha Beast<br>
+3rd encounter → Apex Beast<br>
+4th encounter → Legendary Beast</p>
+
+<p>The more times it escapes, the more dangerous and rewarding the encounter becomes.</p>
+
+<p>Eventually the beast could evolve into <strong>a unique boss-level monster with its own abilities and arena.</strong></p>
+
+<h1 id="4-legendary-hunts">4. Legendary Hunts</h1>
+
+<p>If a beast escapes several times, it becomes a <strong>Legendary Hunt</strong>.</p>
+
+<p>At that stage it could:</p>
+
+<ul>
+<li>gain unique abilities</li>
+<li>create its own arena</li>
+<li>have special loot tables</li>
+<li>function almost like a mini boss encounter</li>
+</ul>
+
+<p>This would create memorable moments like:</p>
+
+<blockquote>
+<p>“That beast escaped three times and turned into a crazy boss.”</p>
+</blockquote>
+
+<h1 id="5-player-control-tools">5. Player Control Tools</h1>
+
+<p>One important part would be giving players <strong>tools to control the hunt</strong> so it doesn’t become frustrating.</p>
+
+<p>For example:</p>
+
+<h1 id="lure-items">Lure Items</h1>
+
+<p>Items that attract the escaped beast to the next map you run.</p>
+
+<p>Example item concept:</p>
+
+<p><strong>Hunter’s Pheromone</strong></p>
+
+<p>Forces the hunted beast to appear in the next map you open.</p>
+
+<p>This prevents situations where players are forced to run maps they don’t want just to continue the hunt.</p>
+
+<h1 id="6-atlas-passive-support">6. Atlas Passive Support</h1>
+
+<p>Atlas passives could specialize the system:</p>
+
+<p>Nodes that:</p>
+
+<ul>
+<li>increase chance for beasts to escape</li>
+<li>increase rewards per escape</li>
+<li>add modifiers to hunted beasts</li>
+<li>increase chance of Legendary Hunts</li>
+</ul>
+
+<p>This would allow players to build a <strong>“Beast Hunter” Atlas strategy.</strong></p>
+
+<h1 id="7-evolving-mechanics">7. Evolving Mechanics</h1>
+
+<p>Each time the beast escapes it could also gain new mechanics, not just more HP.</p>
+
+<p>Example:</p>
+
+<p>First encounter<br>
+→ Frost Beast</p>
+
+<p>Second encounter<br>
+→ Gains ice storms and freezing ground</p>
+
+<p>Third encounter<br>
+→ Creates a frozen arena and summons packs</p>
+
+<p>So the fight becomes mechanically richer as the hunt continues.</p>
+
+<h1 id="8-reworking-the-menagerie">8. Reworking the Menagerie</h1>
+
+<p>Instead of just being a crafting menu, the <strong>Menagerie</strong> could become a hub for hunts.</p>
+
+<p>Possible features:</p>
+
+<ul>
+<li>boss arenas</li>
+<li>combining beasts</li>
+<li>special crafting rituals</li>
+<li>unlocking powerful hunts</li>
+</ul>
+
+<p>Players could combine captured beasts to create <strong>unique hybrid bosses</strong> or special crafting opportunities.</p>
+
+<h1 id="why-this-fits-poe2">Why This Fits PoE2</h1>
+
+<p>PoE2 has:</p>
+
+<ul>
+<li>slower combat</li>
+<li>more dangerous monsters</li>
+<li>larger maps</li>
+</ul>
+
+<p>That makes <strong>multi-map hunts actually viable gameplay</strong>, something that would never work in PoE1 because builds clear maps too quickly.</p>
+
+<p>This system would also make the Atlas feel <strong>more alive</strong>, with creatures moving through regions and hunts evolving over time.</p>
+
+<p>Instead of just another league mechanic inside a map, Bestiary could become <strong>a dynamic hunting system across the Atlas.</strong></p>
+
+<p>What do you guys think about something like this? Of course this is just a rough idea that still has a lot of room to be improved and expanded, but I think it could be a solid foundation for a mechanic that directly interacts with Atlas map locations, combat, and crafting.</p>
+
+<p>I’d love to hear your thoughts.</p>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="odrdv7q" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ryo3000</div>
+        <div>1 | 13 minutes ago </div>
+      </div>
+      <label for="odrdv7q" class="commentText"><p>I dislike it simply because I dislike the current infinite expanding atlas and would love to see something else in place</p>
+
+<p>So I find it hard to support anything built on top of the atlas when I want the whole thing tore down and rebuilt</p>
+
+<p>Apart form that it reminds me of the time beast from Last Epoch, which I do like</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="odrep3g" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Scaryloss | In Maven we Trust</div>
+        <div>1 | 9 minutes ago </div>
+      </div>
+      <label for="odrep3g" class="commentText"><p>This system could work with any type of Atlas, whether it’s infinite or not. Astrolabes in the current PoE 1 Expanse already add regional events like this, and the PoE 1 Atlas is finite.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="odrd6f8" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>heir-to-gragflame</div>
+        <div>1 | 16 minutes ago </div>
+      </div>
+      <label for="odrd6f8" class="commentText"><p>monster hunter vibes</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="odrecbm" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Scaryloss | In Maven we Trust</div>
+        <div>1 | 11 minutes ago </div>
+      </div>
+      <label for="odrecbm" class="commentText"><p>Exactly. Imagine the hype of finally catching that Legendary Beast after it escaped four times and turned into a huge boss, packed with loot and potentially offering a powerful crafting option in the Menagerie.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="odrclb7" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>PoE_Acronym_Bot</div>
+        <div>1 | 19 minutes ago </div>
+      </div>
+      <label for="odrclb7" class="commentText"><p>I noticed some Path of Exile keywords in this post:</p>
+
+<ul>
+<li><strong>HP</strong> - Hit Points — colloquial term for Life (<a href="https://www.poe2wiki.net/wiki/Life" target="_blank">Wiki</a>)</li>
+</ul>
+
+<hr>
+
+<p>^(I am a bot.) ^| <a href="https://acronym.sidia.net/acronyms/pathofexile2" target="_blank">^(All acronyms)</a> ^| <a href="https://acronym.sidia.net/suggest/pathofexile2" target="_blank">^(Suggest)</a></p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
