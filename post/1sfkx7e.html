@@ -1,0 +1,735 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.selfPostImage {
+  width: 100%;
+  height: auto;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/nba/comments/1sfkx7e/how_to_solve_nba_tanking_dynamic_beer_pricing/"><p>How to solve NBA Tanking&hellip;. Dynamic beer pricing 🍺</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <p>Attention Adam Silver&hellip;  I just solved tanking. Nevermind lottery odds what if the NBA just tied beer prices to dynamic pricing and wins and losses.</p>
+
+<p>NBA mandates all beers at <span class="math inline">\(10 for all teams at the start of the year.  Teams can increase prices by \)</span>0.35 per win and MUST decrease them by $0.20 per loss. Looking at the current standings :</p>
+
+<h2 id="team-w-l-beer-price">Team                         W‑L         Beer Price</h2>
+
+<p>Oklahoma City Thunder        62‑16       <span class="math inline">\(22.70
+San Antonio Spurs            60‑19       \)</span>21.55
+Detroit Pistons              57‑22       <span class="math inline">\(18.70
+Boston Celtics               53‑25       \)</span>16.55
+New York Knicks              51‑28       <span class="math inline">\(15.95
+Denver Nuggets               51‑28       \)</span>15.95
+Cleveland Cavaliers          50‑29       <span class="math inline">\(15.50
+Los Angeles Lakers           50‑29       \)</span>15.50
+Houston Rockets              49‑29       <span class="math inline">\(15.20
+Minnesota Timberwolves       46‑32       \)</span>13.20
+Atlanta Hawks                45‑34       <span class="math inline">\(12.55
+Phoenix Suns                 43‑35       \)</span>11.95
+Toronto Raptors              43‑35       <span class="math inline">\(11.95
+Philadelphia 76ers           43‑36       \)</span>11.70
+Charlotte Hornets            43‑36       <span class="math inline">\(11.70
+Orlando Magic                43‑36       \)</span>11.70
+Miami Heat                   41‑37       <span class="math inline">\(10.90
+Los Angeles Clippers         40‑38       \)</span>10.40
+Portland Trail Blazers       40‑39       <span class="math inline">\(10.15
+Golden State Warriors        36‑42       \)</span>8.95
+Milwaukee Bucks              31‑47       <span class="math inline">\(6.45
+Chicago Bulls                29‑49       \)</span>5.35
+Dallas Mavericks             25‑53       <span class="math inline">\(3.50
+New Orleans Pelicans         25‑54       \)</span>3.15
+Memphis Grizzlies            25‑54       <span class="math inline">\(3.15
+Brooklyn Nets                19‑59       \)</span>0.75
+Utah Jazz                    21‑58       <span class="math inline">\(1.95
+Sacramento Kings             21‑58       \)</span>1.95
+Indiana Pacers               18‑60       <span class="math inline">\(0.50
+Washington Wizards           17‑61       –\)</span>0.10</p>
+
+<p>Imagine this: every time your NBA team wins, beer prices go up; every time they lose, prices go down. Would you:</p>
+
+<p>Prefer your team hover around mid‑tier pricing for a balanced experience?</p>
+
+<p>Love cheap beers even if your team is tanking?</p>
+
+<p>Hate paying $15+ beers when your squad is dominating?</p>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="oey692f" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>tberriman</div>
+        <div>66 | an hour ago </div>
+      </div>
+      <label for="oey692f" class="commentText"><p>Wizards actively paying their fan (singular) to get drunk because they&rsquo;re so bad, sounds about right</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="oey6l38" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>whenishit-itsbigturd</div>
+        <div>22 | an hour ago </div>
+      </div>
+      <label for="oey6l38" class="commentText"><p>Malice in the palace but it&rsquo;s just one guy getting ejected for throwing his beer and cussing at a guy on crutches </p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="oey98do" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>DidAnyoneElseJustCum | Cavaliers</div>
+        <div>8 | an hour ago </div>
+      </div>
+      <label for="oey98do" class="commentText"><p>We&rsquo;ve <a href="https://en.wikipedia.org/wiki/Ten-Cent_Beer_Night?wprov=sfla1" target="_blank">tried it</a> and it went exactly as you would expect. Maybe a bit better actually.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="oey9k3t" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>BigFatModeraterFupa | Minneapolis Lakers</div>
+        <div>6 | an hour ago </div>
+      </div>
+      <label for="oey9k3t" class="commentText"><p>bring back 10 cent beer night and watch every single nba arena get sold every single night🤣</p>
+
+<p>hell, EVERY sports stadium would be fully packed every night!</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="oey9spw" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>DidAnyoneElseJustCum | Cavaliers</div>
+        <div>5 | an hour ago </div>
+      </div>
+      <label for="oey9spw" class="commentText"><p>&ldquo;There was no question that beer played a part in the riot.&rdquo;</p>
+
+<p>Just an all time quote right there</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="oeyabof" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>BigFatModeraterFupa | Minneapolis Lakers</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="oeyabof" class="commentText"><p>🤣🤣🤣</p>
+
+<p>lmaoooo i frickin love that whole saga🤣</p>
+
+<p>i guess there&rsquo;s a pretty good safety reason why &ldquo;10 cent beer night&rdquo; was never tried again&rdquo;😅😅</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="oey6eqc" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Exius73 | Timberwolves</div>
+        <div>20 | an hour ago </div>
+      </div>
+      <label for="oey6eqc" class="commentText"><p>Alcoholics love this one simple trick</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="oey62dr" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>_evolkybbuhc | Timberwolves</div>
+        <div>16 | 2 hours ago </div>
+      </div>
+      <label for="oey62dr" class="commentText"><p>Fuck yeah 2018-2022 ahh post</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="oey8knq" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Flames_Harden | Lakers</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="oey8knq" class="commentText"><p>Lmao this shit is top tier</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="oey69tj" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>mucho-gusto | CLE</div>
+        <div>7 | an hour ago </div>
+      </div>
+      <label for="oey69tj" class="commentText"><p>Cavs were contracted?</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="oey6ni8" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>darkthemeonly | Cavaliers</div>
+        <div>2 | an hour ago </div>
+      </div>
+      <label for="oey6ni8" class="commentText"><p>I count 28, they forgot someone else too</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="oeyaqmy" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>steakfake1709 | Knicks</div>
+        <div>3 | an hour ago </div>
+      </div>
+      <label for="oeyaqmy" class="commentText"><p>Hornets?</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="oey8dma" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Ok_Possible_5702</div>
+        <div>5 | an hour ago </div>
+      </div>
+      <label for="oey8dma" class="commentText"><p>So the Sixers in 2015-16&hellip; would I have gotten paid to order a beer, on the last few games of the season?</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="oey8uf3" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>kelownafornia6969</div>
+        <div>3 | an hour ago </div>
+      </div>
+      <label for="oey8uf3" class="commentText"><p>Yes.  Maybe they would have played a few more regulars then</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="oey6yag" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>referee-superfan | Trail Blazers</div>
+        <div>4 | an hour ago </div>
+      </div>
+      <label for="oey6yag" class="commentText"><p>Coulda had so much cheap beer if you suggested this 2 years ago</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="oey7re8" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>GlutenfreeHamster | Celtics</div>
+        <div>3 | an hour ago </div>
+      </div>
+      <label for="oey7re8" class="commentText"><p>jokes on you bc beer is always $15+ at TD Garden 🥲</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="oey9391" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Chardoggy1 | Hornets</div>
+        <div>3 | an hour ago </div>
+      </div>
+      <label for="oey9391" class="commentText"><p>over/under for the number of beer cans thrown onto the court at a wizards game</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="oeybe8h" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>SBMVPJustinHerbert | Spurs</div>
+        <div>1 | 43 minutes ago </div>
+      </div>
+      <label for="oeybe8h" class="commentText"><p>I&rsquo;ll pregame if necessary if it means championship contention</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="oeybwsu" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>JScrib325 | Mavericks</div>
+        <div>2 | 38 minutes ago </div>
+      </div>
+      <label for="oeybwsu" class="commentText"><p>Yes&hellip;.let&rsquo;s allow people to get drunk for less than $2.00 in Washington DC&hellip;what could possibly go wrong?</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="oeyciei" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>LuciusCSullaF | Knicks</div>
+        <div>2 | 33 minutes ago </div>
+      </div>
+      <label for="oeyciei" class="commentText"><p>All your eastern conference records are from ten games ago&hellip;in fact most teams&rsquo; records are dated</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="oeycy5a" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>kelownafornia6969</div>
+        <div>1 | 28 minutes ago </div>
+      </div>
+      <label for="oeycy5a" class="commentText"><p>I used chat gpt for the calculations and it got it wrong&hellip; But the point stands</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="oeyd98d" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>LuciusCSullaF | Knicks</div>
+        <div>1 | 26 minutes ago </div>
+      </div>
+      <label for="oeyd98d" class="commentText"><p>Yes it does</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="oeyej7z" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ballthyrm | Spurs</div>
+        <div>1 | 13 minutes ago </div>
+      </div>
+      <label for="oeyej7z" class="commentText"><p>So your beer has an ELO rating ?</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="oeyfjzo" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Vordeo | Jazz</div>
+        <div>1 | 4 minutes ago </div>
+      </div>
+      <label for="oeyfjzo" class="commentText"><p>Beer and alcoholism aren&rsquo;t really in line with the NBA&rsquo;s values.</p>
+
+<p>The obvious solution is that instead of beer they should offer Kalshi discounts.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="oey8cme" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>asuka_blyat</div>
+        <div>-7 | an hour ago </div>
+      </div>
+      <label for="oey8cme" class="commentText"><p>Or, they could do it so if your team is good = beer is cheaper, and if your team is bad = beer is more expensive. Reward fans of good teams and push mediocre teams to do better to lower beer prices</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
