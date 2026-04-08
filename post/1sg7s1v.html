@@ -1,0 +1,930 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.selfPostImage {
+  width: 100%;
+  height: auto;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/nba/comments/1sg7s1v/going_into_jordans_final_game_as_a_wizard_he/"><p>Going into Jordan&rsquo;s final game as a Wizard, he needed to score at least 15 points to ensure he finished with 20.0 ppg for the season, and have a career where he never averaged less than 20ppg in any given season. He ended up playing 28 minutes, shooting <sup>6</sup>&frasl;<sub>15</sub>, and scoring exactly 15 points.</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <table>
+<thead>
+<tr>
+<th align="left">Player</th>
+<th align="right">MP</th>
+<th align="right">FG</th>
+<th align="right">FGA</th>
+<th align="right">FG%</th>
+<th align="right">3P</th>
+<th align="right">3PA</th>
+<th align="right">3P%</th>
+<th align="right">FT</th>
+<th align="right">FTA</th>
+<th align="right">FT%</th>
+<th align="right">ORB</th>
+<th align="right">DRB</th>
+<th align="right">TRB</th>
+<th align="right">AST</th>
+<th align="right">STL</th>
+<th align="right">BLK</th>
+<th align="right">TOV</th>
+<th align="right">PF</th>
+<th align="right">PTS</th>
+<th align="right">+/-</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">Kwame Brown</td>
+<td align="right">42:27</td>
+<td align="right">6</td>
+<td align="right">10</td>
+<td align="right">.600</td>
+<td align="right">0</td>
+<td align="right" colspan="2">0</td>
+<td align="right">5</td>
+<td align="right">6</td>
+<td align="right">.833</td>
+<td align="right">2</td>
+<td align="right">6</td>
+<td align="right">8</td>
+<td align="right">0</td>
+<td align="right">1</td>
+<td align="right">0</td>
+<td align="right">5</td>
+<td align="right">5</td>
+<td align="right">17</td>
+<td align="right">-18</td>
+</tr>
+
+<tr>
+<td align="left">Tyronn Lue</td>
+<td align="right">35:18</td>
+<td align="right">3</td>
+<td align="right">9</td>
+<td align="right">.333</td>
+<td align="right">0</td>
+<td align="right">2</td>
+<td align="right">.000</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">1.000</td>
+<td align="right">0</td>
+<td align="right">2</td>
+<td align="right">2</td>
+<td align="right">8</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">2</td>
+<td align="right">3</td>
+<td align="right">7</td>
+<td align="right">-26</td>
+</tr>
+
+<tr>
+<td align="left">Larry Hughes</td>
+<td align="right">31:59</td>
+<td align="right">5</td>
+<td align="right">12</td>
+<td align="right">.417</td>
+<td align="right">1</td>
+<td align="right">2</td>
+<td align="right">.500</td>
+<td align="right">0</td>
+<td align="right" colspan="2">0</td>
+<td align="right">1</td>
+<td align="right">3</td>
+<td align="right">4</td>
+<td align="right">4</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">3</td>
+<td align="right">6</td>
+<td align="right">11</td>
+<td align="right">-14</td>
+</tr>
+
+<tr>
+<td align="left">Michael Jordan</td>
+<td align="right">28:10</td>
+<td align="right">6</td>
+<td align="right">15</td>
+<td align="right">.400</td>
+<td align="right">0</td>
+<td align="right" colspan="2">0</td>
+<td align="right">3</td>
+<td align="right">4</td>
+<td align="right">.750</td>
+<td align="right">0</td>
+<td align="right">4</td>
+<td align="right">4</td>
+<td align="right">4</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">2</td>
+<td align="right">0</td>
+<td align="right">15</td>
+<td align="right">-12</td>
+</tr>
+
+<tr>
+<td align="left">Christian Laettner</td>
+<td align="right">7:56</td>
+<td align="right">2</td>
+<td align="right">2</td>
+<td align="right">1.000</td>
+<td align="right">0</td>
+<td align="right" colspan="2">0</td>
+<td align="right">0</td>
+<td align="right" colspan="2">0</td>
+<td align="right">0</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">2</td>
+<td align="right">1</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">2</td>
+<td align="right">4</td>
+<td align="right">-3</td>
+</tr>
+
+<tr>
+<td align="left">Bobby Simmons</td>
+<td align="right">27:54</td>
+<td align="right">2</td>
+<td align="right">9</td>
+<td align="right">.222</td>
+<td align="right">0</td>
+<td align="right">1</td>
+<td align="right">.000</td>
+<td align="right">0</td>
+<td align="right" colspan="2">0</td>
+<td align="right">2</td>
+<td align="right">6</td>
+<td align="right">8</td>
+<td align="right">3</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">2</td>
+<td align="right">4</td>
+<td align="right">4</td>
+<td align="right">-1</td>
+</tr>
+
+<tr>
+<td align="left">Juan Dixon</td>
+<td align="right">26:12</td>
+<td align="right">6</td>
+<td align="right">14</td>
+<td align="right">.429</td>
+<td align="right">2</td>
+<td align="right">5</td>
+<td align="right">.400</td>
+<td align="right">0</td>
+<td align="right" colspan="2">0</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">2</td>
+<td align="right">1</td>
+<td align="right">2</td>
+<td align="right">0</td>
+<td align="right">3</td>
+<td align="right">4</td>
+<td align="right">14</td>
+<td align="right">-9</td>
+</tr>
+
+<tr>
+<td align="left">Brendan Haywood</td>
+<td align="right">24:38</td>
+<td align="right">2</td>
+<td align="right">3</td>
+<td align="right">.667</td>
+<td align="right">0</td>
+<td align="right" colspan="2">0</td>
+<td align="right">3</td>
+<td align="right">4</td>
+<td align="right">.750</td>
+<td align="right">2</td>
+<td align="right">2</td>
+<td align="right">4</td>
+<td align="right">0</td>
+<td align="right">1</td>
+<td align="right">3</td>
+<td align="right">0</td>
+<td align="right">1</td>
+<td align="right">7</td>
+<td align="right">-14</td>
+</tr>
+
+<tr>
+<td align="left">Jahidi White</td>
+<td align="right">15:26</td>
+<td align="right">2</td>
+<td align="right">5</td>
+<td align="right">.400</td>
+<td align="right">0</td>
+<td align="right" colspan="2">0</td>
+<td align="right">4</td>
+<td align="right">4</td>
+<td align="right">1.000</td>
+<td align="right">7</td>
+<td align="right">2</td>
+<td align="right">9</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">1</td>
+<td align="right">3</td>
+<td align="right">8</td>
+<td align="right">-3</td>
+</tr>
+
+<tr>
+<td align="left">Charles Oakley</td>
+<td align="right" colspan="16">Did Not Dress</td>
+<td align="right"></td>
+<td align="right"></td>
+<td align="right"></td>
+<td align="right"></td>
+</tr>
+
+<tr>
+<td align="left">Bryon Russell</td>
+<td align="right" colspan="16">Did Not Play</td>
+<td align="right"></td>
+<td align="right"></td>
+<td align="right"></td>
+<td align="right"></td>
+</tr>
+
+<tr>
+<td align="left">Jerry Stackhouse</td>
+<td align="right" colspan="16">Did Not Dress</td>
+<td align="right"></td>
+<td align="right"></td>
+<td align="right"></td>
+<td align="right"></td>
+</tr>
+
+<tr>
+<td align="left">Team Totals</td>
+<td align="right">240</td>
+<td align="right">34</td>
+<td align="right">79</td>
+<td align="right">.430</td>
+<td align="right">3</td>
+<td align="right">10</td>
+<td align="right">.300</td>
+<td align="right">16</td>
+<td align="right">19</td>
+<td align="right">.842</td>
+<td align="right">15</td>
+<td align="right">27</td>
+<td align="right">42</td>
+<td align="right">22</td>
+<td align="right">5</td>
+<td align="right">3</td>
+<td align="right">18</td>
+<td align="right">28</td>
+<td align="right" colspan="2">87</td>
+</tr>
+</tbody>
+</table>
+<p>Provided by <a href="https://www.sports-reference.com/sharing.html?utm_source=direct&amp;utm_medium=Share&amp;utm_campaign=ShareTool" target="_blank">Basketball-Reference.com</a>: <a href="https://www.basketball-reference.com/boxscores/200304160PHI.html?sr&amp;utm_source=direct&amp;utm_medium=Share&amp;utm_campaign=ShareTool#box-WAS-game-basic" target="_blank">View Original Table</a></p>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="of31i2x" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Boring-Razzmatazz703</div>
+        <div>21 | an hour ago </div>
+      </div>
+      <label for="of31i2x" class="commentText"><p>good for him</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="of31rvv" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>rawspeghetti | Celtics</div>
+        <div>20 | an hour ago </div>
+      </div>
+      <label for="of31rvv" class="commentText"><p>Glad something good finally happened to Mike</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="of3240a" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Life_Teaching6499 | Lakers</div>
+        <div>8 | an hour ago </div>
+      </div>
+      <label for="of3240a" class="commentText"><p>Kwame made <sup>6</sup>&frasl;<sub>10</sub> of his shots?  Holy buckets.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="of36t6v" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Ok-Tree4365</div>
+        <div>1 | 26 minutes ago </div>
+      </div>
+      <label for="of36t6v" class="commentText"><p>Not true, no one ever stat padded in the 90&rsquo;s.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="of38xfq" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>KL2ConspireLLC | San Diego Clippers</div>
+        <div>1 | 14 minutes ago </div>
+      </div>
+      <label for="of38xfq" class="commentText"><p>Guess you&rsquo;re right, this happened in 2003.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="of381dc" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>cashnameidk9434</div>
+        <div>1 | 19 minutes ago </div>
+      </div>
+      <label for="of381dc" class="commentText"><p>Guess your right, the statpadding story for mike happened in 89 anyways lmao</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="of36b6l" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>WurstDayEver_7 | Thunder</div>
+        <div>1 | 28 minutes ago </div>
+      </div>
+      <label for="of36b6l" class="commentText"><p>Shai does this with 20 points so I don’t see the harm.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="of31kq9" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Ok_Shop7600 | Lakers</div>
+        <div>2 | an hour ago </div>
+      </div>
+      <label for="of31kq9" class="commentText"><p>Wizards jordan wasn’t even that bad before he got injured and fucked himself up playing into shape , if he conditions himself before that season i whole heartedly believe he’d be doing some of the stuff lebron is right now.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="of36dqq" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>pacgaming | Knicks</div>
+        <div>1 | 28 minutes ago </div>
+      </div>
+      <label for="of36dqq" class="commentText"><p>I did a video on this years ago and the stat was something like:</p>
+
+<p>When rip hamilton and Jordan both played together that season they were like 20-2 heading into the all star break</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="of33893" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>AirFlavoredLemon</div>
+        <div>-2 | an hour ago </div>
+      </div>
+      <label for="of33893" class="commentText"><p>Yeah its not even close. You can see it in vets like Jordan or even Ron Harper - when they want to slash; they&rsquo;re nearly as explosive as they were in their primes. I&rsquo;m talking Wizards jordan here.</p>
+
+<p>Its just that 90%+ of his plays turned from raw brute athleticism towards surgical fadeaways.</p>
+
+<p>Not trying to minimize Lebron&rsquo;s longevity; or deny the fact that Jordan&rsquo;s mileage differed - but both of them still can turn on the athleticism if they needed it.</p>
+
+<p>The Wizards squad was pretty good on paper. I think it was just bad culture, bad injuries, and bad luck.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="of37ex5" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>tkf99 | Celtics</div>
+        <div>1 | 22 minutes ago </div>
+      </div>
+      <label for="of37ex5" class="commentText"><p>Not even close. You can literally see he didn&rsquo;t even have his usual lift on those fadeaways.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="of382ig" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Batman452321</div>
+        <div>1 | 19 minutes ago </div>
+      </div>
+      <label for="of382ig" class="commentText"><p>You are missing the more important stat, in his last game he needed to score x amount so his career ppg was still a fraction higher than wilts and he would stay as nba leasing scorer (by ppg). He also hit that requirement.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="of39516" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Tofu4070 | 76ers</div>
+        <div>1 | 13 minutes ago </div>
+      </div>
+      <label for="of39516" class="commentText"><p>Him still playing 82 games in his final season is still wild.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="of33kg2" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>internallylinked | Hawks</div>
+        <div>0 | 43 minutes ago </div>
+      </div>
+      <label for="of33kg2" class="commentText"><p>I honestly don’t know nothing about Jahidi White and Juan Dixon. Rest of the dudes are basketball heritage.</p>
+
+<p>What college did they go to?</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="of358i8" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>G00dEase</div>
+        <div>4 | 34 minutes ago </div>
+      </div>
+      <label for="of358i8" class="commentText"><p>Dixon was the man at Maryland. So fun to watch. White went to Georgetown I believe back when being a C for the Hoyas was a real big deal</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="of35x7f" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>internallylinked | Hawks</div>
+        <div>1 | 30 minutes ago </div>
+      </div>
+      <label for="of35x7f" class="commentText"><p>Oh dope 2 local guys. Are you a Wiz fan? Thanks for sharing the details!</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="of362x4" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Strangest_Things | Knicks</div>
+        <div>1 | 29 minutes ago </div>
+      </div>
+      <label for="of362x4" class="commentText"><p>Not just the man, literal champion and final fours most outstanding player.  Insane baller in college</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="of370wx" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Lamarera8 | Washington Bullets</div>
+        <div>1 | 24 minutes ago </div>
+      </div>
+      <label for="of370wx" class="commentText"><p>Juan Dixon is a hometown hero in Baltimore. Got Maryland it’s only natty</p>
+
+<p>Shoutouts to Calvert Hall</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="of348lb" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>CurrentRoster</div>
+        <div>-2 | 39 minutes ago </div>
+      </div>
+      <label for="of348lb" class="commentText"><p>this is why jordan stans complaining about stat padding is hilarious to me</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="of35knx" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Romofan88 | Spurs</div>
+        <div>1 | 32 minutes ago </div>
+      </div>
+      <label for="of35knx" class="commentText"><p>Stat padding is when a guy who averaged 37 minutes per game that season played 28? </p>
+
+<p>I say this as someone who is a Jordan Stan who thinks he&rsquo;s the clear goat, the REAL &ldquo;Mike loved to stat pad as much as anyone&rdquo; story is from 1989, when the Bulls moved him to point guard and he had the most triple doubles of anyone between Oscar and Russ. He was so often going to the scorers table to check on his assists and boards that Stern had to tell the stat keepers not to tell him. </p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="of34kai" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Winter-Olive-5832 | Wizards</div>
+        <div>1 | 38 minutes ago </div>
+      </div>
+      <label for="of34kai" class="commentText"><p>because he once scored 15 points</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="of38t1f" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Sartheking | Warriors</div>
+        <div>1 | 15 minutes ago </div>
+      </div>
+      <label for="of38t1f" class="commentText"><p>Huh? In what world is playing 28 minutes stat padding lmao?</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="of35lro" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>HS941317</div>
+        <div>1 | 32 minutes ago </div>
+      </div>
+      <label for="of35lro" class="commentText"><p>I bet you didn’t even watch Jordan’s final game because if you did, you would have known that Jordan was brought out of the game with 13 points in the middle of the 4th quarter because the wizards were getting blown out. The whole arena, the coaches, the media all wanted Jordan to come into the court one last time but he kept refusing until finally he gave the arena what they wanted. He checked in, was immediately fouled by a sixer to take his final 2 free throws and then was immediately checked out for a big ovation.</p>
+
+<p>If he was “stat padding” he would have secured his 15 points and this fake made up 20 ppg streak earlier in the game.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
