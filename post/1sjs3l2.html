@@ -1,0 +1,799 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.selfPostImage {
+  width: 100%;
+  height: auto;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/nba/comments/1sjs3l2/i_made_my_own_mvp_tracker_based_on_voting_history/"><p>I made my own MVP Tracker based on voting history</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <p>Basketball Reference has something called the <a href="https://www.basketball-reference.com/friv/mvp.html" target="_blank">MVP Tracker</a> that, as opposed to the subjective KIA Ladder, gives probability to players&rsquo; chancing of winning the award based on their season averages and team win%, using the players who have won in previous years for precedent. I like the idea of this, though I don&rsquo;t think it&rsquo;s as well done as it could be. So I decided to make my own using the same idea. The idea wasn’t “who deserved MVP,” but: <strong>given what voters have historically valued, who were they most likely to pick?</strong></p>
+
+<ul>
+<li>I measured players in 3 categories: Box score, Advanced Stats, Team Win%</li>
+<li>I looked at the top 5 vote-receivers for each of the last 45 years (when the NBA switched to a media vote)</li>
+<li>I adjusted the model until its margin of error in predicting ranking and vote share was as low as I could get it (to a reasonable degree, this is mostly casual), and got it much lower than Basketball Reference&rsquo;s.</li>
+<li>I also valued team win% less to those who are not the first option on their team.</li>
+</ul>
+
+<p>Here&rsquo;s the results for 2026, with some ineligible players included:</p>
+
+<table>
+<thead>
+<tr>
+<th align="left">Player</th>
+<th align="left">Probability</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">Shai Gilgeous-Alexander</td>
+<td align="left">31.4%</td>
+</tr>
+
+<tr>
+<td align="left">Nikola Jokić</td>
+<td align="left">30.9%</td>
+</tr>
+
+<tr>
+<td align="left">Luka Dončić</td>
+<td align="left">10.5%</td>
+</tr>
+
+<tr>
+<td align="left">Victor Wembanyama</td>
+<td align="left">10.4%</td>
+</tr>
+
+<tr>
+<td align="left">Cade Cunningham</td>
+<td align="left">4.5%</td>
+</tr>
+
+<tr>
+<td align="left">Kawhi Leonard</td>
+<td align="left">2.0%</td>
+</tr>
+
+<tr>
+<td align="left">Donovan Mitchell</td>
+<td align="left">1.7%</td>
+</tr>
+
+<tr>
+<td align="left">Tyrese Maxey</td>
+<td align="left">1.1%</td>
+</tr>
+
+<tr>
+<td align="left">Jaylen Brown</td>
+<td align="left">1.1%</td>
+</tr>
+
+<tr>
+<td align="left">Jalen Brunson</td>
+<td align="left">0.9%</td>
+</tr>
+</tbody>
+</table>
+<p>Well, since my intention was to reflect the voting body, I definitely think I did a better job since I don&rsquo;t have Jokić at 67% like Basketball Reference does.</p>
+
+<p>-&mdash;&ndash;</p>
+
+<p>And as a bonus, here&rsquo;s a breakdown of every player expected to win the award based on this formula since 1970.</p>
+
+<table>
+<thead>
+<tr>
+<th align="left">Player</th>
+<th align="left">Expected</th>
+<th align="left">MVPs</th>
+<th align="left">The Diff</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">Kareem Abdul-Jabbar</td>
+<td align="left">9</td>
+<td align="left">6</td>
+<td align="left">3</td>
+</tr>
+
+<tr>
+<td align="left">Michael Jordan</td>
+<td align="left">8</td>
+<td align="left">5</td>
+<td align="left">3</td>
+</tr>
+
+<tr>
+<td align="left">LeBron James</td>
+<td align="left">5</td>
+<td align="left">4</td>
+<td align="left">1</td>
+</tr>
+
+<tr>
+<td align="left">Nikola Jokić</td>
+<td align="left">4</td>
+<td align="left">3</td>
+<td align="left">1</td>
+</tr>
+
+<tr>
+<td align="left">Larry Bird</td>
+<td align="left">4</td>
+<td align="left">3</td>
+<td align="left">1</td>
+</tr>
+
+<tr>
+<td align="left">Dirk Nowitzki</td>
+<td align="left">3</td>
+<td align="left">1</td>
+<td align="left">2</td>
+</tr>
+
+<tr>
+<td align="left">Giannis Antetokounmpo</td>
+<td align="left">2</td>
+<td align="left">2</td>
+<td align="left">0</td>
+</tr>
+
+<tr>
+<td align="left">Stephen Curry</td>
+<td align="left">2</td>
+<td align="left">2</td>
+<td align="left">0</td>
+</tr>
+
+<tr>
+<td align="left">Tim Duncan</td>
+<td align="left">2</td>
+<td align="left">2</td>
+<td align="left">0</td>
+</tr>
+
+<tr>
+<td align="left">Karl Malone</td>
+<td align="left">2</td>
+<td align="left">2</td>
+<td align="left">0</td>
+</tr>
+
+<tr>
+<td align="left">David Robinson</td>
+<td align="left">2</td>
+<td align="left">1</td>
+<td align="left">1</td>
+</tr>
+
+<tr>
+<td align="left">Shaquille O&rsquo;Neal</td>
+<td align="left">2</td>
+<td align="left">1</td>
+<td align="left">1</td>
+</tr>
+
+<tr>
+<td align="left">George Gervin</td>
+<td align="left">1</td>
+<td align="left">0</td>
+<td align="left">1</td>
+</tr>
+
+<tr>
+<td align="left">Chris Paul</td>
+<td align="left">1</td>
+<td align="left">0</td>
+<td align="left">1</td>
+</tr>
+
+<tr>
+<td align="left">Julius Erving</td>
+<td align="left">1</td>
+<td align="left">1</td>
+<td align="left">0</td>
+</tr>
+
+<tr>
+<td align="left">Kevin Durant</td>
+<td align="left">1</td>
+<td align="left">1</td>
+<td align="left">0</td>
+</tr>
+
+<tr>
+<td align="left">Russell Westbrook</td>
+<td align="left">1</td>
+<td align="left">1</td>
+<td align="left">0</td>
+</tr>
+
+<tr>
+<td align="left">James Harden</td>
+<td align="left">1</td>
+<td align="left">1</td>
+<td align="left">0</td>
+</tr>
+
+<tr>
+<td align="left">Shai Gilgeous-Alexander</td>
+<td align="left">1</td>
+<td align="left">1</td>
+<td align="left">0</td>
+</tr>
+
+<tr>
+<td align="left">Magic Johnson</td>
+<td align="left">1</td>
+<td align="left">3</td>
+<td align="left">-2</td>
+</tr>
+
+<tr>
+<td align="left">Moses Malone</td>
+<td align="left">1</td>
+<td align="left">3</td>
+<td align="left">-2</td>
+</tr>
+
+<tr>
+<td align="left">Bob McAdoo</td>
+<td align="left">1</td>
+<td align="left">1</td>
+<td align="left">0</td>
+</tr>
+
+<tr>
+<td align="left">Bill Walton</td>
+<td align="left">0</td>
+<td align="left">1</td>
+<td align="left">-1</td>
+</tr>
+
+<tr>
+<td align="left">Charles Barkley</td>
+<td align="left">0</td>
+<td align="left">1</td>
+<td align="left">-1</td>
+</tr>
+
+<tr>
+<td align="left">Hakeem Olajuwon</td>
+<td align="left">0</td>
+<td align="left">1</td>
+<td align="left">-1</td>
+</tr>
+
+<tr>
+<td align="left">Allen Iverson</td>
+<td align="left">0</td>
+<td align="left">1</td>
+<td align="left">-1</td>
+</tr>
+
+<tr>
+<td align="left">Kobe Bryant</td>
+<td align="left">0</td>
+<td align="left">1</td>
+<td align="left">-1</td>
+</tr>
+
+<tr>
+<td align="left">Derrick Rose</td>
+<td align="left">0</td>
+<td align="left">1</td>
+<td align="left">-1</td>
+</tr>
+
+<tr>
+<td align="left">Joel Embiid</td>
+<td align="left">0</td>
+<td align="left">1</td>
+<td align="left">-1</td>
+</tr>
+
+<tr>
+<td align="left">Willis Reed</td>
+<td align="left">0</td>
+<td align="left">1</td>
+<td align="left">-1</td>
+</tr>
+
+<tr>
+<td align="left">Dave Cowens</td>
+<td align="left">0</td>
+<td align="left">1</td>
+<td align="left">-1</td>
+</tr>
+
+<tr>
+<td align="left">Steve Nash</td>
+<td align="left">0</td>
+<td align="left">2</td>
+<td align="left">-2</td>
+</tr>
+</tbody>
+</table>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="oftzb7l" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>sunpar1 | Nets</div>
+        <div>1 | 22 minutes ago </div>
+      </div>
+      <label for="oftzb7l" class="commentText"><p>You gotta share the weights and the data or it just looks made up </p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="ofu234f" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>androidrhyme | Spurs</div>
+        <div>1 | 7 minutes ago </div>
+      </div>
+      <label for="ofu234f" class="commentText"><p>Sure.</p>
+
+<p>MVP score = (ADV * 0.23) + (BOX * 0.52) + (WIN * 0.25)</p>
+
+<p>Each result here is divided by the highest of the pool to be a score out of 1.<br>
+ADV = ([Win shares / 48] * 80) + ([LEBRON] * 6)<br>
+BOX = (1.07*PTS) + (0.4*FG) - (0.5*FGM) - (0.4*(FTA-FT)) + (0.7*OREB) + (0.3*DREB) + (0.9*AST) + (STL) + (0.7*BLK) - (0.4*PF) - (TOV)<br>
+WIN = Team winning % - 25%</p>
+
+<p>This is the formula for 2010-present. I changed it slightly for before LEBRON is available.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="ofu2dyv" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Greenwalrus72 | Nuggets</div>
+        <div>1 | 6 minutes ago </div>
+      </div>
+      <label for="ofu2dyv" class="commentText"><p>Do you have a spreadsheet where you already put these players/years into so we can look at it cumulatively? I’d appreciate that</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="ofu28yp" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>sunpar1 | Nets</div>
+        <div>1 | 6 minutes ago </div>
+      </div>
+      <label for="ofu28yp" class="commentText"><p>Thanks dawg </p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="ofu0r9o" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>putdahaakin | Nuggets</div>
+        <div>1 | 14 minutes ago </div>
+      </div>
+      <label for="ofu0r9o" class="commentText"><p>It came to him in a dream</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ofu1cwl" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Greenwalrus72 | Nuggets</div>
+        <div>1 | 11 minutes ago </div>
+      </div>
+      <label for="ofu1cwl" class="commentText"><p>This is interesting, I also thought the BBall ref tracker was just not very good. But it still shows how strong narrative and changing criteria are, as well as fatigue, since at the top end these guys mostly have less MVPs than expected. For recent history’s sake this model again presents the opposite of the idea that criteria changes FOR Jokic every year, according to this model he should be close to Shai this year according to it (won’t be) and should’ve won over Embiid. But a lot of people will tell you criteria changes to support him every year.</p>
+
+<p>Can you supply a spreadsheet with all the results so we can look through and see the top by year?</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ofu0azi" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Business_Number8979</div>
+        <div>1 | 17 minutes ago </div>
+      </div>
+      <label for="ofu0azi" class="commentText"><p>Oh hell yeah, Luka rightfully in third place as he should be. It’s crazy how good these superstars are</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="ofu0tue" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ilikekittens2018 | Nuggets</div>
+        <div>1 | 14 minutes ago </div>
+      </div>
+      <label for="ofu0tue" class="commentText"><p>Uh is he </p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="ofu0woj" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Business_Number8979</div>
+        <div>1 | 14 minutes ago </div>
+      </div>
+      <label for="ofu0woj" class="commentText"><p>Yes he’s third</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="ofu248e" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ilikekittens2018 | Nuggets</div>
+        <div>1 | 7 minutes ago </div>
+      </div>
+      <label for="ofu248e" class="commentText"><p>Crazy edit man come on that’s lame lmao </p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="ofu2cvb" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Business_Number8979</div>
+        <div>1 | 6 minutes ago </div>
+      </div>
+      <label for="ofu2cvb" class="commentText"><p>No edits here my good man, i recognized a mistake and corrected it. Adapt and overcome</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="ofu2kgl" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ilikekittens2018 | Nuggets</div>
+        <div>1 | 5 minutes ago </div>
+      </div>
+      <label for="ofu2kgl" class="commentText"><p>Son 😭 I’m crine </p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="ofu0mlp" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Ok-Street-2473</div>
+        <div>1 | 15 minutes ago </div>
+      </div>
+      <label for="ofu0mlp" class="commentText"><p>He&rsquo;s third lol</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="ofu0u3t" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Business_Number8979</div>
+        <div>1 | 14 minutes ago </div>
+      </div>
+      <label for="ofu0u3t" class="commentText"><p>Yeah I know, my bad</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
