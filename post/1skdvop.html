@@ -1,0 +1,1923 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.selfPostImage {
+  width: 100%;
+  height: auto;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/nba/comments/1skdvop/oc_the_main_awards_have_been_debated_to_death_so/"><p>[OC] The main awards have been debated to death, so let&rsquo;s award some additional players (and groups) for their performances in Part 1 of the 2026 Alt NBA Awards!</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <p>Seven years have flown by running the Alternative Awards: <a href="https://np.reddit.com/r/nba/comments/i098z4/" target="_blank">2020</a>, <a href="https://np.reddit.com/r/nba/comments/nejoum/" target="_blank">2021</a>, <a href="https://np.reddit.com/r/nba/comments/u19fyr/" target="_blank">2022</a>, <a href="https://np.reddit.com/r/nba/comments/12hkxfg/" target="_blank">2023</a>, <a href="https://np.reddit.com/r/nba/comments/1c5izqf/" target="_blank">2024</a> &amp; <a href="https://np.reddit.com/r/nba/comments/1jz38ng/" target="_blank">2025</a> as well as a <a href="https://np.reddit.com/r/nba/comments/vy4hqb/" target="_blank">historical</a> retrospective! Now presenting your candidates for the <em>only awards that matter</em>, the <strong>2026 Alternative NBA Awards</strong>!</p>
+
+<p><strong>New note for this year: as I&rsquo;ve incorporated some people&rsquo;s award suggestions year-over-year, the post has gotten a bit unwieldy (I can&rsquo;t even edit if there&rsquo;s a mistake because I get a &ldquo;more than 10000 characters&rdquo; error, so I have to double &amp; triple-check before posting). Therefore, I&rsquo;m splitting into two parts, with Part 2 being posted tomorrow morning before the play-ins!</strong></p>
+
+<p>*For the awards with an asterisk, there were no stat-trackers that I found, so I had to scrape them myself. Here&rsquo;s the <a href="https://github.com/sumitrodatta/nba-alt-awards" target="_blank">GitHub link</a> for that (a mix of Python and R)!</p>
+
+<h1 id="the-real-sixth-man-of-the-year-presented-by-brent-barry">The Real Sixth Man of the Year (presented by Brent Barry)*</h1>
+
+<p>players who are between sixth and ninth on their team in minutes played per game, must have played 50% of team&rsquo;s games and started less than 50% of games (credit to KokiriEmerald for the reasoning behind re-implementing the starting criteria)</p>
+
+<p>By PPG:</p>
+
+<ol>
+<li>Brice Sensabaugh (14.9)</li>
+<li>Naz Reid (13.6)</li>
+<li>Tim Hardaway Jr. (13.5)</li>
+<li>Keldon Johnson (13.2)</li>
+<li>Malik Monk (12.5)</li>
+</ol>
+
+<p>By VORP:</p>
+
+<ol>
+<li>Sandro Mamukelashvili (2.1)</li>
+<li>Luke Kornet (2.0)</li>
+<li>Kel&rsquo;el Ware (1.8)</li>
+<li>Isaiah Joe (1.7)</li>
+<li>Mitchell Robinson (1.6)</li>
+</ol>
+
+<h1 id="the-deadshot-award-presented-by-ray-allen-reggie-miller">The Deadshot Award (presented by Ray Allen &amp; Reggie Miller)</h1>
+
+<p>best qualifying 3 point percentage, minimum 82 3PM (Basketball-Reference)</p>
+
+<ol>
+<li>Luke Kennard (47.8%)</li>
+<li>Bobby Portis (45.6%)</li>
+<li>Cam Spencer (44.9%)</li>
+<li>Jaylon Tyson (44.6%)</li>
+<li>Rui Hachimura (44.3%)</li>
+</ol>
+
+<h1 id="the-stormtrooper-award">The Stormtrooper Award</h1>
+
+<p>worst qualifying 2 point percentage, minimum 300 FGM (Basketball-Reference)</p>
+
+<ol>
+<li>Bub Carrington (44.3%)</li>
+<li>Collin Gillespie (45.5%)</li>
+<li>Jarace Walker (46.2%)</li>
+<li>LaMelo Ball (46.4%)</li>
+<li>Jeremiah Fears (48%)</li>
+</ol>
+
+<h1 id="the-most-ethical-scorer-award-sponsored-by-immanuel-kant">The Most Ethical Scorer Award (sponsored by Immanuel Kant)*</h1>
+
+<p>lowest percentage of points from free throws, minimum 15 PPG and 70% of games played (credit to adc1369 &amp; yeahright17 for the idea)</p>
+
+<table>
+<thead>
+<tr>
+<th align="left">player</th>
+<th align="left">FTM/G</th>
+<th align="left">PPG</th>
+<th align="left">FT/G % of PPG</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">Nikola Vučević</td>
+<td align="left">1.20</td>
+<td align="left">15.08</td>
+<td align="left">7.98%</td>
+</tr>
+
+<tr>
+<td align="left">Payton Pritchard</td>
+<td align="left">1.53</td>
+<td align="left">17.03</td>
+<td align="left">9.00%</td>
+</tr>
+
+<tr>
+<td align="left">Ryan Rollins</td>
+<td align="left">1.69</td>
+<td align="left">17.31</td>
+<td align="left">9.76%</td>
+</tr>
+
+<tr>
+<td align="left">LaMelo Ball</td>
+<td align="left">2.24</td>
+<td align="left">20.07</td>
+<td align="left">11.14%</td>
+</tr>
+
+<tr>
+<td align="left">Andrew Wiggins</td>
+<td align="left">1.87</td>
+<td align="left">15.37</td>
+<td align="left">12.15%</td>
+</tr>
+</tbody>
+</table>
+<p><strong>The Least Ethical Scorer Award (sponsored by</strong> <strong><del>Enron</del></strong> <strong><del>Aspiration</del></strong> <strong>no one)*</strong></p>
+
+<p>highest percentage of points from free throws, minimum 15 PPG and 70% of games played (credit to Banichi-aiji &amp; yeahright17 for the idea)</p>
+
+<table>
+<thead>
+<tr>
+<th align="left">player</th>
+<th align="left">FTM/G</th>
+<th align="left">PPG</th>
+<th align="left">FT/G % of PPG</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">Deni Avdija</td>
+<td align="left">7.41</td>
+<td align="left">24.21</td>
+<td align="left">30.60%</td>
+</tr>
+
+<tr>
+<td align="left">Paolo Banchero</td>
+<td align="left">6.35</td>
+<td align="left">22.21</td>
+<td align="left">28.58%</td>
+</tr>
+
+<tr>
+<td align="left">James Harden</td>
+<td align="left">6.61</td>
+<td align="left">23.60</td>
+<td align="left">28.03%</td>
+</tr>
+
+<tr>
+<td align="left">Devin Booker</td>
+<td align="left">7.09</td>
+<td align="left">26.06</td>
+<td align="left">27.22%</td>
+</tr>
+
+<tr>
+<td align="left">DeMar DeRozan</td>
+<td align="left">4.86</td>
+<td align="left">18.43</td>
+<td align="left">26.36%</td>
+</tr>
+</tbody>
+</table>
+
+<h1 id="the-if-he-dies-he-dies-award-presented-by-tom-thibodeau-sponsored-by-ivan-drago">The &ldquo;If He Dies, He Dies&rdquo; Award (presented by Tom Thibodeau, sponsored by Ivan Drago)</h1>
+
+<p>most minutes played per game, minimum 70% of games played (Basketball-Reference) (credit to FurryCrew for the idea)</p>
+
+<ol>
+<li>Tyrese Maxey (38)</li>
+<li>Amen Thompson (37.4)</li>
+<li>Kevin Durant (36.4)</li>
+<li>Luka Doncic (35.8)</li>
+<li>Trey Murphy III (35.5)</li>
+</ol>
+
+<p>alternatively: most total minutes played (Basketball-Reference) (credit to FrankEMartindale for the idea)</p>
+
+<ol>
+<li>Amen Thompson (2953)</li>
+<li>Kevin Durant (2840)</li>
+<li>Desmond Bane (2756)</li>
+<li>Toumani Camara (2731)</li>
+<li>Jabari Smith Jr (2705)</li>
+</ol>
+
+<h1 id="the-black-hole-award">The Black Hole Award*</h1>
+
+<p>most FGAs per assist, minimum 50% of games played (credit to Moose4KU for the idea)</p>
+
+<table>
+<thead>
+<tr>
+<th align="left">player</th>
+<th align="left">FGA</th>
+<th align="left">AST</th>
+<th align="left">FGA/AST</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">Khaman Maluach</td>
+<td align="left">105</td>
+<td align="left">6</td>
+<td align="left">17.5000</td>
+</tr>
+
+<tr>
+<td align="left">Rasheer Fleming</td>
+<td align="left">215</td>
+<td align="left">16</td>
+<td align="left">13.4375</td>
+</tr>
+
+<tr>
+<td align="left">Nick Richards</td>
+<td align="left">201</td>
+<td align="left">16</td>
+<td align="left">12.5625</td>
+</tr>
+
+<tr>
+<td align="left">Julian Phillips</td>
+<td align="left">121</td>
+<td align="left">10</td>
+<td align="left">12.1000</td>
+</tr>
+
+<tr>
+<td align="left">Kel&rsquo;el Ware</td>
+<td align="left">649</td>
+<td align="left">56</td>
+<td align="left">11.5893</td>
+</tr>
+</tbody>
+</table>
+
+<h1 id="the-hot-potato-award">The Hot Potato Award*</h1>
+
+<p>least FGAs per assist, minimum 50% of games played (credit to Moose4KU for the idea &amp; ajayod for the name)</p>
+
+<table>
+<thead>
+<tr>
+<th align="left">player</th>
+<th align="left">FGA</th>
+<th align="left">AST</th>
+<th align="left">FGA/AST</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">Jamal Shead</td>
+<td align="left">504</td>
+<td align="left">444</td>
+<td align="left">1.1351</td>
+</tr>
+
+<tr>
+<td align="left">Davion Mitchell</td>
+<td align="left">533</td>
+<td align="left">453</td>
+<td align="left">1.1766</td>
+</tr>
+
+<tr>
+<td align="left">Isaiah Collier</td>
+<td align="left">515</td>
+<td align="left">423</td>
+<td align="left">1.2175</td>
+</tr>
+
+<tr>
+<td align="left">Ryan Nembhard</td>
+<td align="left">390</td>
+<td align="left">316</td>
+<td align="left">1.2342</td>
+</tr>
+
+<tr>
+<td align="left">Craig Porter Jr.</td>
+<td align="left">258</td>
+<td align="left">205</td>
+<td align="left">1.2585</td>
+</tr>
+</tbody>
+</table>
+
+<h1 id="the-most-expendable-player-award-sponsored-by-the-national-basketball-referees-association">The Most Expendable Player Award (sponsored by the National Basketball Referees Association)</h1>
+
+<p>highest personal fouls per 36 minutes, minimum 50% games played &amp; 12 minutes/game (credit to PsychoM &amp; BrightGreenLED for the idea)</p>
+
+<ol>
+<li>Dylan Cardwell (6.3903)</li>
+<li>Isaiah Jackson (5.8282)</li>
+<li>Jonas Valanciunas (5.4971)</li>
+<li>Dwight Powell (5.2965)</li>
+<li>Luka Garza (5.1843)</li>
+</ol>
+
+<h1 id="the-weakest-link-award-sponsored-by-jack-link-s-beef-jerky-presented-by-the-2015-atlanta-hawks-starting-5">The &ldquo;Weakest Link&rdquo; Award (sponsored by Jack Link&rsquo;s Beef Jerky, presented by the 2015 Atlanta Hawks Starting 5)*</h1>
+
+<p>best worst starter by VORP (must have started 50% of a team&rsquo;s games, team must have at least 3 qualifying players) (credit to memeticengineering for the idea)</p>
+
+<ol>
+<li>OG Anunoby (2.3)</li>
+<li>Moussa Diabate &amp; Brandon Miller (1.8)</li>
+<li>Tobias Harris &amp; Duncan Robinson (1.5)</li>
+</ol>
+
+<h1 id="the-this-game-has-always-been-and-will-always-be-about-buckets-https-www-youtube-com-watch-v-xyejfyxt4s-award">The &ldquo;<a href="https://www.youtube.com/watch?v=-xYejfYxT4s" target="_blank">This Game Has Always Been, And Will Always Be, About Buckets</a>&rdquo; Award*</h1>
+
+<p>highest points as percentage of counting stats (rebounds, assists, steals, blocks), minimum 70% of games played</p>
+
+<table>
+<thead>
+<tr>
+<th align="left">player</th>
+<th align="left">PPG</th>
+<th align="left">RPG</th>
+<th align="left">APG</th>
+<th align="left">SPG</th>
+<th align="left">BPG</th>
+<th align="left">Points as % of Other Stats</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">Gary Trent Jr.</td>
+<td align="left">8.1</td>
+<td align="left">1</td>
+<td align="left">1.2</td>
+<td align="left">0.5</td>
+<td align="left">0</td>
+<td align="left">75.00%</td>
+</tr>
+
+<tr>
+<td align="left">Norman Powell</td>
+<td align="left">21.7</td>
+<td align="left">3.5</td>
+<td align="left">2.5</td>
+<td align="left">1.1</td>
+<td align="left">0.2</td>
+<td align="left">74.83%</td>
+</tr>
+
+<tr>
+<td align="left">Tim Hardaway Jr.</td>
+<td align="left">13.5</td>
+<td align="left">2.6</td>
+<td align="left">1.4</td>
+<td align="left">0.5</td>
+<td align="left">0.1</td>
+<td align="left">74.59%</td>
+</tr>
+
+<tr>
+<td align="left">Klay Thompson</td>
+<td align="left">11.7</td>
+<td align="left">2.1</td>
+<td align="left">1.4</td>
+<td align="left">0.5</td>
+<td align="left">0.3</td>
+<td align="left">73.13%</td>
+</tr>
+
+<tr>
+<td align="left">Anthony Edwards</td>
+<td align="left">28.8</td>
+<td align="left">5</td>
+<td align="left">3.7</td>
+<td align="left">1.4</td>
+<td align="left">0.8</td>
+<td align="left">72.54%</td>
+</tr>
+</tbody>
+</table>
+
+<h1 id="the-empty-calorie-stats-award-sponsored-by-pop-tarts">The Empty Calorie Stats Award (sponsored by Pop-Tarts)*</h1>
+
+<p>highest percentile rank within position in usage, descending VORP, descending TS% (minimum 50% of games played and 10 minutes/game) (credit to eewap for the idea)</p>
+
+<table>
+<thead>
+<tr>
+<th align="left">player</th>
+<th align="left">True Shooting %</th>
+<th align="left">Usage %</th>
+<th align="left">VORP</th>
+<th align="left">TS Positional Percentile Rank</th>
+<th align="left">Usage Positional Percentile Rank</th>
+<th align="left">VORP Positional Percentile Rank</th>
+<th align="left">Sum of Positional Percentiles</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">Yang Hansen</td>
+<td align="left">41.30%</td>
+<td align="left">19.9</td>
+<td align="left">-0.6</td>
+<td align="left">100.00%</td>
+<td align="left">75.71%</td>
+<td align="left">98.57%</td>
+<td align="left">274.29%</td>
+</tr>
+
+<tr>
+<td align="left">Ousmane Dieng</td>
+<td align="left">51.60%</td>
+<td align="left">19.7</td>
+<td align="left">-0.5</td>
+<td align="left">98.57%</td>
+<td align="left">74.29%</td>
+<td align="left">97.14%</td>
+<td align="left">270.00%</td>
+</tr>
+
+<tr>
+<td align="left">Nikola Jović</td>
+<td align="left">48.00%</td>
+<td align="left">21.4</td>
+<td align="left">-0.3</td>
+<td align="left">100.00%</td>
+<td align="left">76.56%</td>
+<td align="left">92.19%</td>
+<td align="left">268.75%</td>
+</tr>
+
+<tr>
+<td align="left">Ben Saraf</td>
+<td align="left">48.60%</td>
+<td align="left">21</td>
+<td align="left">-1.2</td>
+<td align="left">94.68%</td>
+<td align="left">75.53%</td>
+<td align="left">95.74%</td>
+<td align="left">265.96%</td>
+</tr>
+
+<tr>
+<td align="left">Cam Thomas</td>
+<td align="left">53.00%</td>
+<td align="left">30.3</td>
+<td align="left">-0.7</td>
+<td align="left">81.91%</td>
+<td align="left">95.74%</td>
+<td align="left">87.23%</td>
+<td align="left">264.89%</td>
+</tr>
+</tbody>
+</table>
+
+<h1 id="the-can-t-win-with-these-cats-award-sponsored-by-scar-from-the-lion-king-presented-by-kevin-durant-in-a-fake-mustache">The &ldquo;Can’t Win With These Cats&rdquo; Award (sponsored by Scar from The Lion King, presented by Kevin Durant in a fake mustache)*</h1>
+
+<p>biggest difference in on/off splits in weighted average with and without best (minimum 50% of games played and 10 minutes/game) (credit to eewap for the idea)</p>
+
+<table>
+<thead>
+<tr>
+<th align="left">player</th>
+<th align="left">team</th>
+<th align="left">Net Plus Minus per 100 Poss</th>
+<th align="left">Team Avg NPM per 100 Poss With</th>
+<th align="left">Team Avg NPM per 100 Poss Without</th>
+<th align="left">NPM Difference</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">Kawhi Leonard</td>
+<td align="left">LAC</td>
+<td align="left">14.5</td>
+<td align="left">1.01</td>
+<td align="left">-0.80</td>
+<td align="left">1.81</td>
+</tr>
+
+<tr>
+<td align="left">Nikola Jokić</td>
+<td align="left">DEN</td>
+<td align="left">13.5</td>
+<td align="left">0.89</td>
+<td align="left">-0.82</td>
+<td align="left">1.71</td>
+</tr>
+
+<tr>
+<td align="left">Victor Wembanyama</td>
+<td align="left">SAS</td>
+<td align="left">16</td>
+<td align="left">3.56</td>
+<td align="left">1.94</td>
+<td align="left">1.62</td>
+</tr>
+
+<tr>
+<td align="left">Ryan Rollins</td>
+<td align="left">MIL</td>
+<td align="left">8.5</td>
+<td align="left">0.17</td>
+<td align="left">-1.35</td>
+<td align="left">1.51</td>
+</tr>
+
+<tr>
+<td align="left">Lauri Markkanen</td>
+<td align="left">UTA</td>
+<td align="left">9.4</td>
+<td align="left">-0.12</td>
+<td align="left">-1.57</td>
+<td align="left">1.45</td>
+</tr>
+</tbody>
+</table>
+
+<h1 id="the-anchors-aweigh-award-presented-by-ron-burgundy">The &ldquo;Anchors Aweigh&rdquo; Award (presented by Ron Burgundy)*</h1>
+
+<p>biggest difference in on/off splits in weighted average with and without worst (minimum 50% of games played and 10 minutes/game) (credit to eewap for the idea)</p>
+
+<table>
+<thead>
+<tr>
+<th align="left">player</th>
+<th align="left">team</th>
+<th align="left">Net Plus Minus per 100 Poss</th>
+<th align="left">Team Avg NPM per 100 Poss With</th>
+<th align="left">Team Avg NPM per 100 Poss Without</th>
+<th align="left">NPM Difference</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">Royce O&rsquo;Neale</td>
+<td align="left">PHO</td>
+<td align="left">-11</td>
+<td align="left">0.33</td>
+<td align="left">2.17</td>
+<td align="left">-1.84</td>
+</tr>
+
+<tr>
+<td align="left">Gary Trent Jr.</td>
+<td align="left">MIL</td>
+<td align="left">-9</td>
+<td align="left">0.17</td>
+<td align="left">1.60</td>
+<td align="left">-1.43</td>
+</tr>
+
+<tr>
+<td align="left">Tre Mann</td>
+<td align="left">CHO</td>
+<td align="left">-19.8</td>
+<td align="left">0.66</td>
+<td align="left">2.06</td>
+<td align="left">-1.40</td>
+</tr>
+
+<tr>
+<td align="left">Jaylen Brown</td>
+<td align="left">BOS</td>
+<td align="left">-4.6</td>
+<td align="left">1.16</td>
+<td align="left">2.45</td>
+<td align="left">-1.29</td>
+</tr>
+
+<tr>
+<td align="left">Brandon Ingram</td>
+<td align="left">TOR</td>
+<td align="left">-5.9</td>
+<td align="left">0.55</td>
+<td align="left">1.79</td>
+<td align="left">-1.25</td>
+</tr>
+</tbody>
+</table>
+
+<h1 id="the-yoink-award-presented-by-the-pink-panther">The Yoink Award (presented by the Pink Panther)*</h1>
+
+<p>highest ratio of stocks to defensive fouls per 36 minutes, minimum 50% of games played (credit to bedlam_au for the idea)</p>
+
+<table>
+<thead>
+<tr>
+<th align="left">player</th>
+<th align="left">STL/36</th>
+<th align="left">BLK/36</th>
+<th align="left">Stocks/36</th>
+<th align="left">Def Fouls/36</th>
+<th align="left">Stock to Def Foul/36</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">Kawhi Leonard</td>
+<td align="left">2.11</td>
+<td align="left">0.47</td>
+<td align="left">2.57</td>
+<td align="left">1.16</td>
+<td align="left">2.22</td>
+</tr>
+
+<tr>
+<td align="left">Victor Wembanyama</td>
+<td align="left">1.27</td>
+<td align="left">3.80</td>
+<td align="left">5.07</td>
+<td align="left">2.47</td>
+<td align="left">2.05</td>
+</tr>
+
+<tr>
+<td align="left">Jordan McLaughlin</td>
+<td align="left">2.55</td>
+<td align="left">0.26</td>
+<td align="left">2.81</td>
+<td align="left">1.40</td>
+<td align="left">2.00</td>
+</tr>
+
+<tr>
+<td align="left">Al Horford</td>
+<td align="left">1.11</td>
+<td align="left">1.89</td>
+<td align="left">3.01</td>
+<td align="left">1.52</td>
+<td align="left">1.98</td>
+</tr>
+
+<tr>
+<td align="left">Robert Williams</td>
+<td align="left">1.25</td>
+<td align="left">3.11</td>
+<td align="left">4.36</td>
+<td align="left">2.46</td>
+<td align="left">1.77</td>
+</tr>
+</tbody>
+</table>
+
+<h1 id="the-i-would-ve-gotten-away-with-it-if-it-wasn-t-for-you-darn-kids-award-presented-by-the-scooby-doo-rogues-gallery">The &ldquo;I Would&rsquo;ve Gotten Away With It If It Wasn&rsquo;t For You Darn Kids&rdquo; Award (presented by the Scooby Doo Rogues Gallery)*</h1>
+
+<p>lowest ratio of stocks to defensive fouls per 36 minutes, minimum 50% of games played (credit to bedlam_au for the idea)</p>
+
+<table>
+<thead>
+<tr>
+<th align="left">player</th>
+<th align="left">STL/36</th>
+<th align="left">BLK/36</th>
+<th align="left">Stocks/36</th>
+<th align="left">Def Fouls/36</th>
+<th align="left">Stock to Def Foul/36</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">Tony Bradley</td>
+<td align="left">0.48</td>
+<td align="left">0.56</td>
+<td align="left">1.04</td>
+<td align="left">4.32</td>
+<td align="left">0.24</td>
+</tr>
+
+<tr>
+<td align="left">Jamison Battle</td>
+<td align="left">0.49</td>
+<td align="left">0.21</td>
+<td align="left">0.70</td>
+<td align="left">2.79</td>
+<td align="left">0.25</td>
+</tr>
+
+<tr>
+<td align="left">Jaden Hardy</td>
+<td align="left">0.64</td>
+<td align="left">0.24</td>
+<td align="left">0.88</td>
+<td align="left">3.45</td>
+<td align="left">0.26</td>
+</tr>
+
+<tr>
+<td align="left">A.J. Green</td>
+<td align="left">0.62</td>
+<td align="left">0.13</td>
+<td align="left">0.75</td>
+<td align="left">2.78</td>
+<td align="left">0.27</td>
+</tr>
+
+<tr>
+<td align="left">Jalen Wilson</td>
+<td align="left">0.92</td>
+<td align="left">0.08</td>
+<td align="left">1.01</td>
+<td align="left">3.39</td>
+<td align="left">0.30</td>
+</tr>
+</tbody>
+</table>
+
+<h1 id="the-spark-plug-award-sponsored-by-lt-surge-presented-by-american-express-ceo-stephen-j-squeri">The Spark Plug Award (sponsored by Lt. Surge, presented by American Express CEO Stephen J Squeri)</h1>
+
+<p>Most charges drawn per 36 minutes, minimum 70% of games played (credit to morron88 for the idea to separate charges &amp; loose balls)</p>
+
+<ol>
+<li>Jaylin Williams (0.4792)</li>
+<li>Marcus Smart (0.4070)</li>
+<li>Jalen Brunson (0.4031)</li>
+<li>Dru Smith (0.3813)</li>
+<li>Brandin Podziemski (0.3549)</li>
+</ol>
+
+<h1 id="the-most-loose-balls-recovered-award-sponsored-by-hungry-hungry-hippos-presented-by-dennis-rodman-nene-s-doctor-https-www-espn-com-nba-news-story-id-3197423">The Most Loose Balls Recovered Award (sponsored by Hungry Hungry Hippos, presented by Dennis Rodman &amp; <a href="https://www.espn.com/nba/news/story?id=3197423" target="_blank">Nene’s doctor</a>)</h1>
+
+<p>Per 36 minutes, minimum 70% of games played</p>
+
+<ol>
+<li>Josh Okogie (1.2684)</li>
+<li>Cedric Coward (1.2165)</li>
+<li>Javonte Green (1.2101)</li>
+<li>Ausar Thompson (1.1772)</li>
+<li>Paul Reed (1.1704)</li>
+</ol>
+
+<h1 id="the-plexiglass-award">The Plexiglass Award</h1>
+
+<p>most deflections per 36 minutes, minimum 70% of games played</p>
+
+<ol>
+<li>Dru Smith (6.2277)</li>
+<li>Ausar Thompson (6.0190)</li>
+<li>Jordan Goodwin (5.9542)</li>
+<li>Cason Wallace (5.9472)</li>
+<li>Javonte Green (5.2185)</li>
+</ol>
+
+<h1 id="the-wes-unseld-memorial-brick-wall-award">The Wes Unseld Memorial Brick Wall Award</h1>
+
+<p>most points generated by screen assists per 36 minutes, minimum 70% of games played</p>
+
+<ol>
+<li>Luke Kornet (13.1916)</li>
+<li>Luka Garza (12.5161)</li>
+<li>Neemias Queta (12.4486)</li>
+<li>Oso Ighodaro (12.2058)</li>
+<li>Marvin Bagley III (12.1998)</li>
+</ol>
+
+<h1 id="the-he-trick-y-all-running-around-doing-nothing-award-sponsored-by-russell-westbrook-presented-by-tony-snell-https-np-reddit-com-r-nba-comments-5w22o2">The “He Trick Y’All, Running Around, Doing Nothing” Award (sponsored by Russell Westbrook, presented by <a href="https://np.reddit.com/r/nba/comments/5w22o2/" target="_blank">Tony Snell</a>)*</h1>
+
+<p>Lowest average of per-36 percentile ranks in the following: charges, contested shots, deflections, defensive boxouts, defensive loose balls recovered (minimum 50% of games played)</p>
+
+<table>
+<thead>
+<tr>
+<th align="left">Player</th>
+<th align="left">Contested 2-Pt Shot Percentile</th>
+<th align="left">Contested 3-Pt Shot Percentile</th>
+<th align="left">Deflections Percentile</th>
+<th align="left">Charges Percentile</th>
+<th align="left">Defensive Loose Balls Recovered Percentile</th>
+<th align="left">Defensive Boxouts percentile</th>
+<th align="left">Average of Percentiles</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">Caleb Love</td>
+<td align="left">5.26%</td>
+<td align="left">17.73%</td>
+<td align="left">35.73%</td>
+<td align="left">21.61%</td>
+<td align="left">5.82%</td>
+<td align="left">6.09%</td>
+<td align="left">15.37%</td>
+</tr>
+
+<tr>
+<td align="left">Klay Thompson</td>
+<td align="left">22.71%</td>
+<td align="left">11.91%</td>
+<td align="left">2.22%</td>
+<td align="left">21.61%</td>
+<td align="left">34.90%</td>
+<td align="left">5.26%</td>
+<td align="left">16.44%</td>
+</tr>
+
+<tr>
+<td align="left">Gary Trent Jr.</td>
+<td align="left">0.83%</td>
+<td align="left">0.28%</td>
+<td align="left">59.28%</td>
+<td align="left">21.61%</td>
+<td align="left">15.51%</td>
+<td align="left">8.03%</td>
+<td align="left">17.59%</td>
+</tr>
+
+<tr>
+<td align="left">Tre Johnson</td>
+<td align="left">18.56%</td>
+<td align="left">18.84%</td>
+<td align="left">30.75%</td>
+<td align="left">21.61%</td>
+<td align="left">6.09%</td>
+<td align="left">17.17%</td>
+<td align="left">18.84%</td>
+</tr>
+
+<tr>
+<td align="left">Tyus Jones</td>
+<td align="left">0.55%</td>
+<td align="left">7.20%</td>
+<td align="left">44.60%</td>
+<td align="left">21.61%</td>
+<td align="left">22.16%</td>
+<td align="left">17.45%</td>
+<td align="left">18.93%</td>
+</tr>
+</tbody>
+</table>
+<p><em>a look at another relevant player</em></p>
+
+<table>
+<thead>
+<tr>
+<th align="left">Player</th>
+<th align="left">Contested 2-Pt Shot Percentile</th>
+<th align="left">Contested 3-Pt Shot Percentile</th>
+<th align="left">Deflections Percentile</th>
+<th align="left">Charges Percentile</th>
+<th align="left">Defensive Loose Balls Recovered Percentile</th>
+<th align="left">Defensive Boxouts percentile</th>
+<th align="left">Average of Percentiles</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">Russell Westbrook</td>
+<td align="left">1.66%</td>
+<td align="left">2.77%</td>
+<td align="left">64.82%</td>
+<td align="left">21.61%</td>
+<td align="left">84.21%</td>
+<td align="left">3.32%</td>
+<td align="left">29.73%</td>
+</tr>
+</tbody>
+</table>
+
+<h1 id="the-got-that-dawg-in-him-award-presented-by-air-bud">The &ldquo;Got that Dawg in Him&rdquo; Award (presented by Air Bud)*</h1>
+
+<p>Highest average of per-36 percentile ranks in the following: charges, contested shots, deflections, defensive boxouts, defensive loose balls recovered (minimum 50% of games played) (credit to memeticengineering for the idea)</p>
+
+<table>
+<thead>
+<tr>
+<th align="left">Player</th>
+<th align="left">Contested 2-Pt Shot Percentile</th>
+<th align="left">Contested 3-Pt Shot Percentile</th>
+<th align="left">Deflections Percentile</th>
+<th align="left">Charges Percentile</th>
+<th align="left">Defensive Loose Balls Recovered Percentile</th>
+<th align="left">Defensive Boxouts percentile</th>
+<th align="left">Average of Percentiles</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">Paul Reed</td>
+<td align="left">94.46%</td>
+<td align="left">91.97%</td>
+<td align="left">98.06%</td>
+<td align="left">63.43%</td>
+<td align="left">79.36%</td>
+<td align="left">87.26%</td>
+<td align="left">85.76%</td>
+</tr>
+
+<tr>
+<td align="left">Mouhamed Gueye</td>
+<td align="left">78.12%</td>
+<td align="left">85.60%</td>
+<td align="left">92.52%</td>
+<td align="left">74.79%</td>
+<td align="left">78.95%</td>
+<td align="left">91.41%</td>
+<td align="left">83.56%</td>
+</tr>
+
+<tr>
+<td align="left">Dwight Powell</td>
+<td align="left">88.92%</td>
+<td align="left">30.47%</td>
+<td align="left">83.66%</td>
+<td align="left">95.29%</td>
+<td align="left">98.06%</td>
+<td align="left">94.18%</td>
+<td align="left">81.76%</td>
+</tr>
+
+<tr>
+<td align="left">Kyshawn George</td>
+<td align="left">74.24%</td>
+<td align="left">92.80%</td>
+<td align="left">72.58%</td>
+<td align="left">91.69%</td>
+<td align="left">76.18%</td>
+<td align="left">71.47%</td>
+<td align="left">79.82%</td>
+</tr>
+
+<tr>
+<td align="left">Jakob Poeltl</td>
+<td align="left">85.04%</td>
+<td align="left">61.22%</td>
+<td align="left">85.87%</td>
+<td align="left">75.35%</td>
+<td align="left">72.58%</td>
+<td align="left">95.01%</td>
+<td align="left">79.18%</td>
+</tr>
+</tbody>
+</table>
+
+<h1 id="the-bbq-chicken-award-presented-by-shaquille-o-neal">The BBQ Chicken Award (presented by Shaquille O&rsquo;Neal)</h1>
+
+<p>worst isolation defenders by points saved compared to league average (0.93 PPP), min 10 MPG &amp; 10 possessions (credit to TitanTigers &amp; RTLT512 for the idea)</p>
+
+<table>
+<thead>
+<tr>
+<th align="left">Player</th>
+<th align="left">Possessions</th>
+<th align="left">Points Per Possession Allowed</th>
+<th align="left">Points Saved Above League Avg</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">Thomas Bryant</td>
+<td align="left">28</td>
+<td align="left">2.071</td>
+<td align="left">-31.968</td>
+</tr>
+
+<tr>
+<td align="left">Kelly Oubre Jr.</td>
+<td align="left">43</td>
+<td align="left">1.395</td>
+<td align="left">-20.023</td>
+</tr>
+
+<tr>
+<td align="left">Spencer Jones</td>
+<td align="left">67</td>
+<td align="left">1.224</td>
+<td align="left">-19.710</td>
+</tr>
+
+<tr>
+<td align="left">Patrick Williams</td>
+<td align="left">45</td>
+<td align="left">1.356</td>
+<td align="left">-19.163</td>
+</tr>
+
+<tr>
+<td align="left">Pascal Siakam</td>
+<td align="left">78</td>
+<td align="left">1.154</td>
+<td align="left">-17.483</td>
+</tr>
+</tbody>
+</table>
+
+<h1 id="the-rotisserie-chicken-award-sponsored-by-costco">The Rotisserie Chicken Award (sponsored by Costco)</h1>
+
+<p>worst PNR ball handler defenders by points saved compared to league average (0.878 PPP), min 10 MPG &amp; 10 possessions (credit to RTLT512 &amp; altu_0002 for the idea)</p>
+
+<table>
+<thead>
+<tr>
+<th align="left">Player</th>
+<th align="left">Possessions</th>
+<th align="left">Points Per Possession Allowed</th>
+<th align="left">Points Saved Above League Avg</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">Ben Sheppard</td>
+<td align="left">165</td>
+<td align="left">1.255</td>
+<td align="left">-62.049</td>
+</tr>
+
+<tr>
+<td align="left">Miles Bridges</td>
+<td align="left">270</td>
+<td align="left">1.052</td>
+<td align="left">-46.807</td>
+</tr>
+
+<tr>
+<td align="left">Maxime Raynaud</td>
+<td align="left">413</td>
+<td align="left">0.983</td>
+<td align="left">-43.182</td>
+</tr>
+
+<tr>
+<td align="left">Jaden McDaniels</td>
+<td align="left">457</td>
+<td align="left">0.969</td>
+<td align="left">-41.528</td>
+</tr>
+
+<tr>
+<td align="left">Jusuf Nurkić</td>
+<td align="left">207</td>
+<td align="left">1.077</td>
+<td align="left">-41.152</td>
+</tr>
+</tbody>
+</table>
+
+<h1 id="the-would-you-mind-coming-with-us-sir-award-sponsored-by-the-tsa-presented-by-paul-blart">The &ldquo;Would You Mind Coming with Us, Sir?&rdquo; Award (sponsored by the TSA, presented by Paul Blart)</h1>
+
+<p>worst screen defenders by points saved compared to league average (0.978 PPP), min 10 MPG &amp; 10 possessions (credit to blackjack_trial for the idea)</p>
+
+<table>
+<thead>
+<tr>
+<th align="left">Player</th>
+<th align="left">Possessions</th>
+<th align="left">Points Per Possession Allowed</th>
+<th align="left">Points Saved Above League Avg</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">Miles Bridges</td>
+<td align="left">52</td>
+<td align="left">1.250</td>
+<td align="left">-14.139</td>
+</tr>
+
+<tr>
+<td align="left">Moses Moody</td>
+<td align="left">36</td>
+<td align="left">1.361</td>
+<td align="left">-13.789</td>
+</tr>
+
+<tr>
+<td align="left">Isaiah Collier</td>
+<td align="left">30</td>
+<td align="left">1.400</td>
+<td align="left">-12.657</td>
+</tr>
+
+<tr>
+<td align="left">Nolan Traore</td>
+<td align="left">18</td>
+<td align="left">1.667</td>
+<td align="left">-12.394</td>
+</tr>
+
+<tr>
+<td align="left">Gary Harris</td>
+<td align="left">15</td>
+<td align="left">1.800</td>
+<td align="left">-12.329</td>
+</tr>
+</tbody>
+</table>
+
+<h1 id="the-trickshot-grenadier-award-presented-by-dude-perfect">The Trickshot Grenadier Award (presented by Dude Perfect)*</h1>
+
+<p>Highest average of percentile ranks in FGA, FGA frequency &amp; eFG% on shots with 4 seconds or less on the shotclock (minimum 50th percentile in FGA) (credit to BehavioralSink &amp; Bylanta for the idea)</p>
+
+<table>
+<thead>
+<tr>
+<th align="left">Player</th>
+<th align="left">FGA Frequency</th>
+<th align="left">FGA</th>
+<th align="left">eFG%</th>
+<th align="left">FGA Freq Percentile</th>
+<th align="left">FGA Percentile</th>
+<th align="left">eFG % Percentile</th>
+<th align="left">Average of Percentiles</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">Kevin Porter Jr.</td>
+<td align="left">16.90%</td>
+<td align="left">87</td>
+<td align="left">54.60%</td>
+<td align="left">95.99%</td>
+<td align="left">92.81%</td>
+<td align="left">83.79%</td>
+<td align="left">90.86%</td>
+</tr>
+
+<tr>
+<td align="left">Payton Pritchard</td>
+<td align="left">18.80%</td>
+<td align="left">206</td>
+<td align="left">49.30%</td>
+<td align="left">97.45%</td>
+<td align="left">100.00%</td>
+<td align="left">68.58%</td>
+<td align="left">88.68%</td>
+</tr>
+
+<tr>
+<td align="left">Brandin Podziemski</td>
+<td align="left">13.10%</td>
+<td align="left">110</td>
+<td align="left">52.30%</td>
+<td align="left">86.70%</td>
+<td align="left">97.36%</td>
+<td align="left">78.23%</td>
+<td align="left">87.43%</td>
+</tr>
+
+<tr>
+<td align="left">Jalen Brunson</td>
+<td align="left">11.10%</td>
+<td align="left">163</td>
+<td align="left">53.70%</td>
+<td align="left">78.69%</td>
+<td align="left">99.27%</td>
+<td align="left">82.33%</td>
+<td align="left">86.76%</td>
+</tr>
+
+<tr>
+<td align="left">Josh Hart</td>
+<td align="left">17.10%</td>
+<td align="left">101</td>
+<td align="left">47.50%</td>
+<td align="left">96.54%</td>
+<td align="left">95.72%</td>
+<td align="left">64.30%</td>
+<td align="left">85.52%</td>
+</tr>
+</tbody>
+</table>
+
+<h1 id="the-imma-make-em-both-award-presented-by-diar-derozan-grant-williams">The &ldquo;Imma Make &lsquo;Em Both&rdquo; Award (presented by Diar DeRozan &amp; Grant Williams)*</h1>
+
+<p>biggest decline from non-clutch FT% to clutch FT%, min 15 clutch FTA (credit to Necessary_Career_253 for the idea and midnightgreen29 for the name)</p>
+
+<table>
+<thead>
+<tr>
+<th align="left">Player</th>
+<th align="left">Clutch FTA</th>
+<th align="left">Clutch FT%</th>
+<th align="left">Non-Clutch FT%</th>
+<th align="left">Differential</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">Reed Sheppard</td>
+<td align="left">15</td>
+<td align="left">60.00%</td>
+<td align="left">84.51%</td>
+<td align="left">-24.51%</td>
+</tr>
+
+<tr>
+<td align="left">Donovan Clingan</td>
+<td align="left">17</td>
+<td align="left">47.06%</td>
+<td align="left">69.89%</td>
+<td align="left">-22.83%</td>
+</tr>
+
+<tr>
+<td align="left">Victor Wembanyama</td>
+<td align="left">38</td>
+<td align="left">63.16%</td>
+<td align="left">84.47%</td>
+<td align="left">-21.31%</td>
+</tr>
+
+<tr>
+<td align="left">Karl-Anthony Towns</td>
+<td align="left">16</td>
+<td align="left">68.75%</td>
+<td align="left">86.50%</td>
+<td align="left">-17.75%</td>
+</tr>
+
+<tr>
+<td align="left">Pascal Siakam</td>
+<td align="left">22</td>
+<td align="left">54.55%</td>
+<td align="left">70.22%</td>
+<td align="left">-15.68%</td>
+</tr>
+</tbody>
+</table>
+
+<h1 id="the-ice-ice-baby-award-sponsored-by-hisense-presented-by-vanilla-ice">The “Ice, Ice, Baby” Award (sponsored by Hisense, presented by Vanilla Ice)*</h1>
+
+<p>biggest improvement from non-clutch FT% to clutch FT%, min 15 clutch FTA</p>
+
+<table>
+<thead>
+<tr>
+<th align="left">Player</th>
+<th align="left">Clutch FTA</th>
+<th align="left">Clutch FT%</th>
+<th align="left">Non-Clutch FT%</th>
+<th align="left">Differential</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">De&rsquo;Aaron Fox</td>
+<td align="left">21</td>
+<td align="left">95.24%</td>
+<td align="left">74.22%</td>
+<td align="left">21.02%</td>
+</tr>
+
+<tr>
+<td align="left">Luka Dončić</td>
+<td align="left">21</td>
+<td align="left">90.48%</td>
+<td align="left">77.56%</td>
+<td align="left">12.91%</td>
+</tr>
+
+<tr>
+<td align="left">Julius Randle</td>
+<td align="left">22</td>
+<td align="left">90.91%</td>
+<td align="left">79.75%</td>
+<td align="left">11.16%</td>
+</tr>
+
+<tr>
+<td align="left">Miles Bridges</td>
+<td align="left">23</td>
+<td align="left">91.30%</td>
+<td align="left">81.30%</td>
+<td align="left">10.00%</td>
+</tr>
+
+<tr>
+<td align="left">Jarrett Allen</td>
+<td align="left">19</td>
+<td align="left">78.95%</td>
+<td align="left">70.25%</td>
+<td align="left">8.70%</td>
+</tr>
+</tbody>
+</table>
+
+<h1 id="the-paint-allergy-award">The “Paint Allergy” Award*</h1>
+
+<p>players with the highest percentage of shots from outside the paint, minimum 150 FGA &amp; minimum 50% of games played (credit to frosiano for the original idea of highest percentage of 3FGA of total FGA, and to Drummallumin for the revised idea of all shots outside of 15 feet)</p>
+
+<ol>
+<li>Nicolas Batum (98.74%)</li>
+<li>AJ Green (93.85%)</li>
+<li>Sam Hauser (91.01%)</li>
+<li>Klay Thompson (87.77%)</li>
+<li>Gabe Vincent (86.11%)</li>
+</ol>
+
+<h1 id="the-lumberjack-award-sponsored-by-paul-bunyan">The “Lumberjack” Award (sponsored by Paul Bunyan)*</h1>
+
+<p>players w/highest % of shots from inside paint: max height of 6’3”, min 150 FGA &amp; minimum 50% of games played (credit to Drummallumin for the idea)</p>
+
+<ol>
+<li>Tre Jones (75.2%)</li>
+<li>Gary Payton II (68.43%)</li>
+<li>Brandon Williams (64.34%)</li>
+<li>Jeremiah Fears (59.74%)</li>
+<li>Craig Porter Jr (57.36%)</li>
+</ol>
+
+<h1 id="the-fuck-outta-here-i-got-that-shit-award-presented-by-carmelo-anthony">The “FUCK OUTTA HERE, I GOT THAT SHIT” Award (presented by Carmelo Anthony)</h1>
+
+<p>Lowest contested rebound percentage, minimum 50% of games played</p>
+
+<ol>
+<li>Tyus Jones (9%)</li>
+<li>Jordan McLaughlin (11.5%)</li>
+<li>Immanuel Quickley (12%)</li>
+<li>Jevon Carter &amp; Luke Kennard (12.8%)</li>
+</ol>
+
+<p>alternatively: restricting to players &amp;gt; 6 foot 6 inches in height</p>
+
+<ol>
+<li>Sam Hauser (19.5%)</li>
+<li>Jarace Walker (19.6%)</li>
+<li>Dillon Brooks (21%)</li>
+<li>Egor Demin (21.2%)</li>
+<li>Anthony Black (21.6%)</li>
+</ol>
+
+<h1 id="the-glass-cleaner-award-presented-by-dennis-rodman-sponsored-by-windex">The &ldquo;Glass Cleaner&rdquo; Award (presented by Dennis Rodman, sponsored by Windex)</h1>
+
+<p>Highest contested rebound percentage, minimum 50% of games played</p>
+
+<ol>
+<li>Luka Garza (61.6%)</li>
+<li>Mitchell Robinson (60.7%)</li>
+<li>Ryan Kalkbrenner (59.8%)</li>
+<li>Clint Capela (57.4%)</li>
+<li>Jakob Poeltl (56.5%)</li>
+</ol>
+
+<p>alternatively: restricting to players &amp;lt; 6 foot 7 inches in height</p>
+
+<ol>
+<li>Zion Williamson (49.6%)</li>
+<li>Jaylen Clark (48.2%)</li>
+<li>Andrew Wiggins (43.2%)</li>
+<li>Julian Phillips (41.3%)</li>
+<li>Keldon Johnson (40.5%)</li>
+</ol>
+
+<h1 id="the-fine-i-ll-do-it-myself-award-sponsored-by-thanos-presented-by-allen-iverson">The “Fine, I’ll Do It Myself” Award (sponsored by Thanos, presented by Allen Iverson)</h1>
+
+<p>Highest percentage of unassisted field goals as portion of total field goals, minimum 50% of games played</p>
+
+<ol>
+<li>Shai Gilgeous-Alexander (80.3%)</li>
+<li>James Harden (75.4%)</li>
+<li>Luka Doncic (72.2%)</li>
+<li>Jalen Brunson (68.9%)</li>
+<li>TJ McConnell (66.5%)</li>
+</ol>
+
+<h1 id="the-you-gotta-feed-me-award-presented-by-joey-chestnut-marcin-gortat">The “You Gotta Feed Me” Award (presented by Joey Chestnut &amp; Marcin Gortat)</h1>
+
+<p>Highest percentage of assisted field goals as portion of total field goals, minimum 50% of games played &amp; 1 FGM per game</p>
+
+<ol>
+<li>Nicolas Batum (99%)</li>
+<li>Jaylin Williams (96.6%)</li>
+<li>Sam Hauser (92.9%)</li>
+<li>Vit Krejci (92.2%)</li>
+<li>Jamison Battle (91.9%)</li>
+</ol>
+
+<p>What are some other awards you&rsquo;d like to see? Feel free to give me feedback on my choices, and Part 2 will drop tomorrow morning!</p>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ofycd21" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>NitroXYZ | UTA</div>
+        <div>6 | an hour ago </div>
+      </div>
+      <label for="ofycd21" class="commentText"><p>Always look forward to this post every year, can&rsquo;t wait to sit down and read it fully at breakfast tomorrow. Thanks for your fun contributions to the subreddit!</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ofydfyl" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>PrimeTimeInc | Hornets</div>
+        <div>8 | an hour ago </div>
+      </div>
+      <label for="ofydfyl" class="commentText"><p>Tre Mann with the -20 per 100. Look what they’ve done to my boy 😭</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ofyeb8q" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Skank_hunt42 | Thunder</div>
+        <div>6 | an hour ago </div>
+      </div>
+      <label for="ofyeb8q" class="commentText"><p>God I loved this post last year. Thanks for putting it together again.</p>
+
+<p>Paint allergy award should be sponsored by Sherwin-Williams, presented by Melo.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ofyehtv" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Piano9717 | POR</div>
+        <div>5 | an hour ago </div>
+      </div>
+      <label for="ofyehtv" class="commentText"><p>My favorite post every year! Awesome work, can’t wait to read it.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ofyejw4" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Interesting_Book_759</div>
+        <div>4 | an hour ago </div>
+      </div>
+      <label for="ofyejw4" class="commentText"><p>I want to see the triple double cocaine bear award</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ofyhvq8" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Due-Dance-9430 | Spurs</div>
+        <div>4 | an hour ago </div>
+      </div>
+      <label for="ofyhvq8" class="commentText"><p>shoutout ryan rollins, on the same list as all stars and top 5 players in the league lol</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ofyi6br" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Pagliaccio13 | 76ers</div>
+        <div>3 | an hour ago </div>
+      </div>
+      <label for="ofyi6br" class="commentText"><p>I like when the eye test and expectations matches the data. BBall Paul winning got that dawg in him award just feels right</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ofykyvk" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>WeBelieveIn4 | Raptors</div>
+        <div>2 | an hour ago </div>
+      </div>
+      <label for="ofykyvk" class="commentText"><p>Amazing as always</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ofyp581" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Skank_hunt42 | Thunder</div>
+        <div>1 | 29 minutes ago </div>
+      </div>
+      <label for="ofyp581" class="commentText"><p><sup>2</sup>&frasl;<sub>5</sub> of the &ldquo;If he dies, he dies&rdquo; award are currently injured. 😭</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ofypqn4" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Complex_Evidence_764 | Rockets</div>
+        <div>1 | 26 minutes ago </div>
+      </div>
+      <label for="ofypqn4" class="commentText"><p>Maybe players with the most 2nd chance points award? Sponsored by Steven Adams.</p>
+
+<p>Great post btw, thanks!</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ofyr0xx" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>donniedarko4141 | Knicks</div>
+        <div>1 | 20 minutes ago </div>
+      </div>
+      <label for="ofyr0xx" class="commentText"><p>Does that shit say 80.3%? And he averaged 31 on .665 true shooting?</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ofyr58x" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Its_Hoggish_Greedly | Kings</div>
+        <div>1 | 20 minutes ago </div>
+      </div>
+      <label for="ofyr58x" class="commentText"><p>He may foul a lot, but Cardwell is hardly expendable. We&rsquo;d all die for that dude.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ofytfj1" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Haberdashery2000</div>
+        <div>1 | 10 minutes ago </div>
+      </div>
+      <label for="ofytfj1" class="commentText"><p>Vucevic winning ethical hooper is hilarious. Should also qualify him for the Stay-Puft Marshmellow Man Award for Least Physical Center.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ofygqyb" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Romofan88 | Spurs</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="ofygqyb" class="commentText"><p>Wait Nicholas Batum is still in the NBA?</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ofyirba" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>DuckDucks | Knicks</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="ofyirba" class="commentText"><p>Jokic has his best supporting cast ever and is still second in &ldquo;Fine I&rsquo;ll do it myself&rdquo; lol</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="ofyjqfh" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Skank_hunt42 | Thunder</div>
+        <div>3 | an hour ago </div>
+      </div>
+      <label for="ofyjqfh" class="commentText"><p>I think you mean &ldquo;Can&rsquo;t win with these cats&rdquo; award. lol</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="ofyrnt1" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>DuckDucks | Knicks</div>
+        <div>1 | 18 minutes ago </div>
+      </div>
+      <label for="ofyrnt1" class="commentText"><p>Oops yep!</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ofyv47l" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Kyler1313</div>
+        <div>1 | 2 minutes ago </div>
+      </div>
+      <label for="ofyv47l" class="commentText"><p>Top 3 guys in screen assists are 2 Celtics and 1 former Celtic 1 year removed.</p>
+
+<p>Come to Boston and they will teach you how to screen.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
