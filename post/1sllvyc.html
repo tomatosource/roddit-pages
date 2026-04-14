@@ -1,0 +1,613 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.selfPostImage {
+  width: 100%;
+  height: auto;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/nba/comments/1sllvyc/this_season_64_players_had_a_true_shooting_of_60/"><p>This season, 64 players had a true shooting of 60%+. For some perspective: 10 years ago, only 14 players accomplished this. 20 years ago, only 7 players did.</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <p>Pretty crazy. I&rsquo;ll be interested to see if this trend levels out a bit in the next few seasons.</p>
+
+<p>I&rsquo;m too lazy to list all <a href="https://www.basketball-reference.com/leagues/NBA_2026_advanced.html" target="_blank">64 players from this season,</a> but here are the players from the other two seasons:</p>
+
+<p><a href="https://www.basketball-reference.com/leagues/NBA_2016_advanced.html" target="_blank">2015-2016</a></p>
+
+<ol>
+<li>Stephen Curry (66.9%)</li>
+<li>Kevin Durant	(63.4%)</li>
+<li>JJ Redick (63.2%)</li>
+<li>Hassan Whiteside (62.9%)</li>
+<li>DeAndre Jordan (62.8%)</li>
+<li>Enes Freedom (62.6%)</li>
+<li>Steven Adams (62.1%)	</li>
+<li>Kawhi Leonard (61.6%)</li>
+<li>Tristan Thompson (61.1%)</li>
+<li>Jonas Valančiūnas (61.1%)</li>
+<li>Dwight Howard (60.4%)</li>
+<li>Ian Mahinmi	29 (60.3%)</li>
+<li>Jared Dudley (60.2%)</li>
+<li>Gorgui Dieng (60.1%)</li>
+</ol>
+
+<p><a href="https://www.basketball-reference.com/leagues/NBA_2006_advanced.html" target="_blank">2005-2006</a></p>
+
+<ol>
+<li>Steve Nash (63.2%)</li>
+<li>Josh Childress (62.6%)</li>
+<li>Chris Wilcox (60.5%)</li>
+<li>Kevin Martin (60.4%)</li>
+<li>Eddy Curry (60.4%)</li>
+<li>Richard Jefferson (60.3%)</li>
+<li>Chauncey Billups (60.2%)</li>
+</ol>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="og7l7cn" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Psychological_Wear_7 | OKC</div>
+        <div>14 | an hour ago </div>
+      </div>
+      <label for="og7l7cn" class="commentText"><p>That&rsquo;s what happens when you swap out long 2s for 3s</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="og7qsnn" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ForneauCosmique | Spurs</div>
+        <div>7 | an hour ago </div>
+      </div>
+      <label for="og7qsnn" class="commentText"><p>And take away defenders ability to defend. Can&rsquo;t touch a player without it being a foul so defenders are essentially forced to not touch a ballhandler attacking the basket, which will force defenders to back off a little while guarding which gives shooters more space to shoot. League needs to allow defenders to be more physical since players are more skilled than ever before</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="og7t9h1" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>pdmalo</div>
+        <div>4 | 34 minutes ago </div>
+      </div>
+      <label for="og7t9h1" class="commentText"><p>And the carrying.  Makes everything much easier.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="og7xqkj" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Alarmed-Candidate422</div>
+        <div>1 | 10 minutes ago </div>
+      </div>
+      <label for="og7xqkj" class="commentText"><p>Aka the SGA gameplan.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="og7liax" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>closing-the-thread | Lakers</div>
+        <div>7 | an hour ago </div>
+      </div>
+      <label for="og7liax" class="commentText"><p>That says a lot about Steve Nash</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="og7rfw9" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>coacoanutbenjamn | Celtics</div>
+        <div>7 | 43 minutes ago </div>
+      </div>
+      <label for="og7rfw9" class="commentText"><p>He should have shot the ball more. Him and D’Antoni have talked about how if they knew then what they know now he would have been taking 20+ shots a games</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="og7lqwe" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Instantcoffees | Warriors</div>
+        <div>4 | an hour ago </div>
+      </div>
+      <label for="og7lqwe" class="commentText"><p>Just a question not an indictment, but does FT rate factor into any of this? Maybe this has always been the case, but the last couple of years I often felt like a lot of star players can&rsquo;t really miss because either they score or they get the foul and it does not count as a miss.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="og7nca9" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Mobile-Entertainer60 | Thunder</div>
+        <div>4 | an hour ago </div>
+      </div>
+      <label for="og7nca9" class="commentText"><p><a href="https://en.wikipedia.org/wiki/True_shooting_percentage" target="_blank">Yes, that&rsquo;s part of the formula.</a></p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="og7o6th" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Instantcoffees | Warriors</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="og7o6th" class="commentText"><p>So, I&rsquo;m old and I forgot everything I ever knew about math. Would your TS percentage then be lower if you have a higher percentage of FTs, or am I reading that wrong?</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="og7ooxz" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>pandaisunbreakable</div>
+        <div>6 | an hour ago </div>
+      </div>
+      <label for="og7ooxz" class="commentText"><p>your TS% would be higher if you have more FT, if you can make most of them</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="og7q28m" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Instantcoffees | Warriors</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="og7q28m" class="commentText"><p>Ah ok. So if a player gets a lot of whistles on their missed FG attempts, this would probably still increase their TS%? That&rsquo;s what I was wondering.</p>
+
+<p>Like, with most star players, I feel like their FG% is a bit inflated because they get bailed out by foul calls when they miss. The first person replying to me seemed to imply that TS% takes that into account, is that not the case then?</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="og7sihb" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Latter_Reserve4657</div>
+        <div>0 | 37 minutes ago </div>
+      </div>
+      <label for="og7sihb" class="commentText"><p>Overall absolutely. The exception would be a guy like Shaq who was bad at free throws and legitimately would have shot over 80% inside 3 feet if not for getting hacked.</p>
+
+<p>If you really want to parse out the effect of getting fouled a ton on efficiency look at a players 2 pt percentage in isolation as compared to their overall efficiency. People bitch about Shai getting a ton of free throws, sometimes rightfully but also exaggerated. But his 2 point efficiency is still insane. You could take away all of his free throws and his TS% would be elite.</p>
+
+<p>If you look at peak Harden that&rsquo;s not the case at all, partially because he would try to draw and oversell contact on three point attempts too, and some of those shots had no chance of going in.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="og7vpzo" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Instantcoffees | Warriors</div>
+        <div>1 | 21 minutes ago </div>
+      </div>
+      <label for="og7vpzo" class="commentText"><p>Alright, thanks! Yeah, it is not about SGA for me. I love watching the top players play, but I have the same issue with how most of them are treated by refs. Sometimes it feels like refs wait to see if a shot misses and when it does, they blow the whistle.</p>
+
+<p>I started noticing it more, but I do not know if that is just me getting older and grumpier or a genuine trend.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="og7ycyc" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Mobile-Entertainer60 | Thunder</div>
+        <div>1 | 7 minutes ago </div>
+      </div>
+      <label for="og7ycyc" class="commentText"><p>The theoretical maximum for 2 pointers is TS% of 100.  For 3 pointers, it&rsquo;s 150.  For free throws, it&rsquo;s 227.  A player would have to shoot &amp;lt;66% on free throws to make shooting free throws less advantageous for TS% than making every single 3 they take.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="og7yl5q" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Instantcoffees | Warriors</div>
+        <div>1 | 6 minutes ago </div>
+      </div>
+      <label for="og7yl5q" class="commentText"><p>Appreciate it.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="og7r5ef" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Latter_Reserve4657</div>
+        <div>1 | 44 minutes ago </div>
+      </div>
+      <label for="og7r5ef" class="commentText"><p>Typically your TS% would be higher with more free throws. Unless you&rsquo;re just terrible at free throws.</p>
+
+<p>Even a good a mid tier free throw shooter hitting 75% of their attempts will have higher overall efficiency at the line than an elite tier 45% three point shooter has on their threes.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="og7qk46" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Latter_Reserve4657</div>
+        <div>2 | an hour ago </div>
+      </div>
+      <label for="og7qk46" class="commentText"><p>Yes but actually the free throw rate has gone down, not up. But teams also shoot fewer two point shots so what you&rsquo;re saying may be partially true. Regardless, it&rsquo;s the increase on 3 point shots and the diminishing rate of long 2s that are mostly responsible.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="og7w2na" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Instantcoffees | Warriors</div>
+        <div>1 | 19 minutes ago </div>
+      </div>
+      <label for="og7w2na" class="commentText"><p>I see. I just feel like too often refs wait to see if a shot goes in and then blow a late whistle when it misses, but maybe I just started noticing it more and it is not an actual new trend.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="og7rdab" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Charles-Baudelaire</div>
+        <div>1 | 43 minutes ago </div>
+      </div>
+      <label for="og7rdab" class="commentText"><p>League TS% is high across the board. Would be interesting to see how many players have a very high rTS% compared to <sup>10</sup>&frasl;<sub>20</sub> years ago like you did.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
