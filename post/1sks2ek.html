@@ -1,0 +1,913 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.selfPostImage {
+  width: 100%;
+  height: auto;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/nba/comments/1sks2ek/and_the_results_are_in_for_lvi_least_valuable/"><p>And the results are in for&hellip; LVI. LEAST Valuable Injury</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <p><a href="https://preview.redd.it/35lbo5agj1vg1.png?width=1170&amp;format=png&amp;auto=webp&amp;s=02ddca417c3d264da15ef18cdab9cfcc24ca13aa" target="_blank">https://preview.redd.it/35lbo5agj1vg1.png?width=1170&amp;format=png&amp;auto=webp&amp;s=02ddca417c3d264da15ef18cdab9cfcc24ca13aa</a></p>
+
+<p>Injuries are often a big talking point during the season, so now the chapter is closed let&rsquo;s have a look at who truly was hit the hardest.<br>
+Injury impact can be viewed in many ways. I&rsquo;ve looked at four criteria for teams across the league. Sparing you the detailed methodology/caveats, here&rsquo;s a quick breakdown:</p>
+
+<ul>
+<li><strong>Games Missed</strong>
+
+<ul>
+<li>The simplest and most obvious. The total number of games players missed due to injury</li>
+</ul></li>
+<li><strong>Salaries Lost</strong>
+
+<ul>
+<li>The salary per game lost by a player sitting due to injury. For an approximation of player value, the biggest contract a player has on the books was used</li>
+</ul></li>
+<li><strong>Player Impact Missed</strong>
+
+<ul>
+<li>EPM (Estimated Plus-Minus) contributions lost based on possessions missed</li>
+</ul></li>
+<li><strong>Wins Missed</strong>
+
+<ul>
+<li>Total wins forgone based on a player&rsquo;s LEBRON WAR (Wins Above Replacement) and games missed</li>
+</ul></li>
+</ul>
+
+<h1 id="5-most-injured-teams">5 Most Injured Teams</h1>
+
+<table>
+<thead>
+<tr>
+<th align="left">Rank</th>
+<th align="left">Games Missed</th>
+<th align="left">Salaries Lost ($M)</th>
+<th align="left">Impact Missed (EPM)</th>
+<th align="left">Wins Missed (WAR)</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">1</td>
+<td align="left">MEM (601)</td>
+<td align="left">DAL (109.2)</td>
+<td align="left">BOS (92.8)</td>
+<td align="left">MEM (23)</td>
+</tr>
+
+<tr>
+<td align="left">2</td>
+<td align="left">IND (418)</td>
+<td align="left">MEM (96.9)</td>
+<td align="left">OKC (90.7)</td>
+<td align="left">DAL (22)</td>
+</tr>
+
+<tr>
+<td align="left">3</td>
+<td align="left">DAL (401)</td>
+<td align="left">IND (94.9)</td>
+<td align="left">MEM (82.3)</td>
+<td align="left">POR (20)</td>
+</tr>
+
+<tr>
+<td align="left">4</td>
+<td align="left">OKC (394)</td>
+<td align="left">SAC (85.9)</td>
+<td align="left">GSW (76.5)</td>
+<td align="left">IND (19)</td>
+</tr>
+
+<tr>
+<td align="left">5</td>
+<td align="left">POR (385)</td>
+<td align="left">OKC (85.1)</td>
+<td align="left">DAL (75.9)</td>
+<td align="left">OKC (18)</td>
+</tr>
+</tbody>
+</table>
+
+<h1 id="5-least-injured-teams">5 Least Injured Teams</h1>
+
+<table>
+<thead>
+<tr>
+<th align="left">Rank</th>
+<th align="left">Games Missed</th>
+<th align="left">Salaries Lost ($M)</th>
+<th align="left">Impact Missed (EPM)</th>
+<th align="left">Wins Missed (WAR)</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">30</td>
+<td align="left">BOS (100)</td>
+<td align="left">MIN (21.0)</td>
+<td align="left">WAS (-42.8)</td>
+<td align="left">MIN (3)</td>
+</tr>
+
+<tr>
+<td align="left">29</td>
+<td align="left">MIN (104)</td>
+<td align="left">SAS (24.1)</td>
+<td align="left">BRK (-26.3)</td>
+<td align="left">BKN (4)</td>
+</tr>
+
+<tr>
+<td align="left">28</td>
+<td align="left">NYK (144)</td>
+<td align="left">BRK (24.9)</td>
+<td align="left">SAC (-10.2)</td>
+<td align="left">WAS (4)</td>
+</tr>
+
+<tr>
+<td align="left">27</td>
+<td align="left">SAS (146)</td>
+<td align="left">WAS (25.4)</td>
+<td align="left">CHI (-8.6)</td>
+<td align="left">CHA (6)</td>
+</tr>
+
+<tr>
+<td align="left">26</td>
+<td align="left">TOR (155)</td>
+<td align="left">NYK (25.8)</td>
+<td align="left">MIA (2.9)</td>
+<td align="left">TOR (6)</td>
+</tr>
+</tbody>
+</table>
+<p>For the most part, these are relatively consistent.<br>
+As it turns out, missing high amounts of salary is a decent determiner of how much value you lose.</p>
+
+<p><a href="https://reddit.com/link/1sks2ek/video/gec7euq1m1vg1/player" target="_blank">https://reddit.com/link/1sks2ek/video/gec7euq1m1vg1/player</a></p>
+
+<p>Games missed less so.</p>
+
+<p><a href="https://reddit.com/link/1sks2ek/video/hbamds86m1vg1/player" target="_blank">https://reddit.com/link/1sks2ek/video/hbamds86m1vg1/player</a></p>
+
+<p>For the hell of it, here&rsquo;s a look at the players themselves</p>
+
+<p><a href="https://reddit.com/link/1sks2ek/video/l2icu71im1vg1/player" target="_blank">https://reddit.com/link/1sks2ek/video/l2icu71im1vg1/player</a></p>
+
+<h1 id="five-takeaways">Five Takeaways:</h1>
+
+<ul>
+<li>Despite missing the least amount of games in the league, Boston ranks 1st for impact lost, almost solely off the back of Tatum. Great to see him back so soon</li>
+<li>Oklahoma City are insane. Being top 5 in every most injured category while having the best record in the league has frankly been underappreciated</li>
+<li>Memphis have had a rough go at it for sure. 200 more games of manpower missed than the runner-up is ridiculous</li>
+<li>San Antonio, New York and Minnesota have been some of the healthiest playoff teams all year. Does that factor into your predictions at all, as more teams are ramping up?</li>
+<li>It&rsquo;s Terry Rozier. Technically on leave, but perhaps we can account for it under brain injuries</li>
+</ul>
+
+<p>^(Sources:) <a href="https://www.spotrac.com/nba/injured/_/year/2025/view/player" target="_blank">^(https://www.spotrac.com/nba/injured/_/year/2025/view/player)</a>^(,) <a href="https://www.spotrac.com/nba/contracts" target="_blank">^(https://www.spotrac.com/nba/contracts)</a>^(,) <a href="https://dunksandthrees.com/epm/actual" target="_blank">^(https://dunksandthrees.com/epm/actual)</a>^(,) <a href="https://dunksandthrees.com/epm" target="_blank">^(https://dunksandthrees.com/epm)</a>^(,) <a href="https://www.basketball-reference.com/leagues/NBA_2026_totals.html" target="_blank">^(https://www.basketball-reference.com/leagues/NBA_2026_totals.html)</a>^(,) <a href="https://www.basketball-reference.com/leagues/NBA_2025_totals.html" target="_blank">^(https://www.basketball-reference.com/leagues/NBA_2025_totals.html)</a>^(,) <a href="https://www.bball-index.com/lebron-application/" target="_blank">^(https://www.bball-index.com/lebron-application/)</a></p>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="og1dv6m" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>safetycommittee | OKC</div>
+        <div>21 | an hour ago </div>
+      </div>
+      <label for="og1dv6m" class="commentText"><p>As a Thunder fan, I will point out that Thomas Sorber missed 82 games and Nikola Topic missed 72. This year rest and recovery were heavily prioritized. Nobody played 82. Dub and IHart only played 81 between them.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="og1pc2a" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>nquisitiv</div>
+        <div>1 | 9 minutes ago </div>
+      </div>
+      <label for="og1pc2a" class="commentText"><p>Topic is only accounted for 55 games worth of injury. Not being played doesn&rsquo;t mean you&rsquo;re out.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="og1db6q" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>darti_me | Mavericks</div>
+        <div>21 | an hour ago </div>
+      </div>
+      <label for="og1db6q" class="commentText"><p>Not playing because youre a dumbass definitely qualifies for a brain injury</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="og1d16w" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>FormalDisastrous2467 | Thunder</div>
+        <div>19 | an hour ago </div>
+      </div>
+      <label for="og1d16w" class="commentText"><p>I&rsquo;ve been looking for this information for awhile, thanks for compiling it.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="og1fw6c" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>nquisitiv</div>
+        <div>6 | an hour ago </div>
+      </div>
+      <label for="og1fw6c" class="commentText"><p>Thanks for the appreciation!</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="og1ke5s" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>TheI3east</div>
+        <div>16 | 37 minutes ago </div>
+      </div>
+      <label for="og1ke5s" class="commentText"><p>Insane that the team with the #1 record in the league this season is also 1. in the harder conference, 2. was one of the worst impacted by injuries according to these stats, and 3. is still one of the younger teams in the league, with a great cap situation, and still has a ton of draft capital.</p>
+
+<p>If they don&rsquo;t get too screwed by injuries in the playoffs over the course of the next few years, we&rsquo;re going to be talking about this OKC dynasty for a long time.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="og1pphu" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Parallel-Quality</div>
+        <div>1 | 6 minutes ago </div>
+      </div>
+      <label for="og1pphu" class="commentText"><p>If you factor in that Chet and J-Dub are still on their rookie deals but just signed maxes, OKC would be #1 in salary lost too.</p>
+
+<p>Even Ajay Mitchell is still on his rookie deal but is easily a 20M player impact at worst.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="og1e2fw" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Carcrusher3 | Trail Blazers</div>
+        <div>8 | an hour ago </div>
+      </div>
+      <label for="og1e2fw" class="commentText"><p>Crazy we finished as well as we did without a PG for 2 months and had our coach get arrested by the FBI</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="og1fsit" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>nowhathappenedwas | NBA</div>
+        <div>3 | an hour ago </div>
+      </div>
+      <label for="og1fsit" class="commentText"><p>Are you using EPM/LEBRON for this season to estimate a player&rsquo;s value?</p>
+
+<p>Why are you using LEBRON WAR but not EPM WAR?</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="og1huvq" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>nquisitiv</div>
+        <div>4 | an hour ago </div>
+      </div>
+      <label for="og1huvq" class="commentText"><p>I didn&rsquo;t know EPM had a WAR stat. Are you referring to their Estimated Wins metric?<br>
+There are a few reasons. I did a lot of searching, but couldn&rsquo;t find anything concrete on what the thing actually measures. Or rather, how it goes about measuring it.</p>
+
+<p>Another reason is relevant to your other question. I used this season&rsquo;s stats if a player had played at least half the season. So actual EPM, LEBRON and possessions per game. If they played less than that, I used their estimated EPM, since it accounts for a broader lens of who the player really is, and last season&rsquo;s WAR and possessions.</p>
+
+<p>So with EW, I didn&rsquo;t have access to previous data, so that ruled it out entirely, if it&rsquo;s mysterious nature hadn&rsquo;t already.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="og1ghmm" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Ok-Tree4365</div>
+        <div>3 | an hour ago </div>
+      </div>
+      <label for="og1ghmm" class="commentText"><p>I genuinely wonder if the Clippers would have had a better or worse season if Beal didn’t break his hip in the first couple weeks. I think worse if he remained a starter, but they’ve had a lack of shooting all season, and if he were in the role Mathurin is in now, I think they could have a few more wins and avoid the play-in.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="og1joft" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Salty_Watermelon | Clippers</div>
+        <div>4 | 41 minutes ago </div>
+      </div>
+      <label for="og1joft" class="commentText"><p>I often forget Beal is a Clipper and will still be a Clipper next season.  I think he&rsquo;ll replace Bogi next year and only see the floor when we&rsquo;re missing multiple guys due to injuries.  Absolutely no reason to feature him in the main rotation.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="og1miaj" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>AynB1and | Thunder</div>
+        <div>1 | 25 minutes ago </div>
+      </div>
+      <label for="og1miaj" class="commentText"><p>okc&rsquo;s WAR (wins missed due to injury) is 18.  they lost exactly 18 games.</p>
+
+<p>if not for injury, they would be 82-0. 🤓</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="og1jo4z" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Its_Hoggish_Greedly | Kings</div>
+        <div>2 | 41 minutes ago </div>
+      </div>
+      <label for="og1jo4z" class="commentText"><p>Kinda surprised the Kings rank so low when Sabonis and Murray missed virtually the entire season. I guess neither are exactly advanced stat darlings, but they&rsquo;re still 40% of our starting rotation.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="og1lptn" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>nomitycs | Warriors</div>
+        <div>1 | 29 minutes ago </div>
+      </div>
+      <label for="og1lptn" class="commentText"><p>I appreciate the effort and presentation! The Warriors not being on here piqued my interest because they were a team that felt the most like injuries ruined their season this year so I did a little dive into your stats (and compared them to OKC who is here everywhere which surprised me - even though they had significant injuries this year, I didn’t think they’d be top 5). Warriors had just 3 of their 10 most important players play more than 60 games… Curry and Butler missed 80 games combined and are both advanced stat darlings, performing better than any non SGA player on either team. I’m very surprised they end up behind a team like the Thunder who had 7 or their top 10 play at least 65 games and only one player miss more than half the season.</p>
+
+<p>I’m curious where you are you getting these games missed numbers from?</p>
+
+<p>OKCs rotation top 11 missed ~200 games, where did the 400 come from? The warriors are messy because of in season trades but they’re at 220 missed games with just their top 8 players (KP + Kuminga = 1 player). Are you just counting every player on the roster with an injury listing for a game, even those who wouldn’t have seen the court regardless?</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="og1pimi" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Original_Seat_6211 | Thunder</div>
+        <div>1 | 8 minutes ago </div>
+      </div>
+      <label for="og1pimi" class="commentText"><p>For OKC, Thomas Sorber missed all 82 games and Nikola Topic missed 72. Neither are guys that particularly stick out, but that is 154 games missed.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="og1od8u" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>motherthrowee | Warriors</div>
+        <div>1 | 14 minutes ago </div>
+      </div>
+      <label for="og1od8u" class="commentText"><p>kind of surprised we are so low here</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="og1olcw" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>VanGrants</div>
+        <div>1 | 13 minutes ago </div>
+      </div>
+      <label for="og1olcw" class="commentText"><p>Knicks being healthy while winning a whopping 2 more games than last year really shows just how amazing a coach Mike Brown is. historically good. really looking forward to the anti-thibs geniuses justifying this season after a 2nd round exit.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="og1p9zn" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Original_Seat_6211 | Thunder</div>
+        <div>1 | 9 minutes ago </div>
+      </div>
+      <label for="og1p9zn" class="commentText"><p>Boston has missed the least games due to injury, but also the most EPM. We might be underrating Jayson Tatum</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="og1m9mk" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>KeyChallenge4562</div>
+        <div>1 | 26 minutes ago </div>
+      </div>
+      <label for="og1m9mk" class="commentText"><p>This is a dumb way to sell a narrative. It punishes young teams who haven’t maxed their stars while rewarding teams who gave out albatross contracts to borderline all stars who aren’t vital to their team’s success.</p>
+
+<p>Case in point Trae Young and Wemby. Trae makes <span class="math inline">\(46 mil while playing 15 games this year. Wemby makes \)</span>13 mil playing 65 games. By your logic the Spurs lost <span class="math inline">\(2.7 mil of value while Wizards lost \)</span>37.6 mil of value. But we both know that the 17 games lost by Wemby impacted his team success significantly more than the 67 games lost by Young.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="og1nasf" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>nquisitiv</div>
+        <div>1 | 20 minutes ago </div>
+      </div>
+      <label for="og1nasf" class="commentText"><p>Everyone knows that. That&rsquo;s why there are multiple stats to compare. Weird take, it sounds like you&rsquo;re the one with the narrative.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="og1d7xd" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>EmployeeNo4241</div>
+        <div>-2 | an hour ago </div>
+      </div>
+      <label for="og1d7xd" class="commentText"><p>Sad how injuries are bigger and bigger part of the game. We need to shorten each quarter to 10 minutes already. </p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="og1e3rr" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>safetycommittee | OKC</div>
+        <div>3 | an hour ago </div>
+      </div>
+      <label for="og1e3rr" class="commentText"><p>The answer is fewer games. Which will never happen.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="og1f3gs" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Gym6DaysAWeek | Warriors</div>
+        <div>5 | an hour ago </div>
+      </div>
+      <label for="og1f3gs" class="commentText"><p>Eliminate back to backs.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="og1p60m" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Headlesshorsman02 | Thunder</div>
+        <div>1 | 10 minutes ago </div>
+      </div>
+      <label for="og1p60m" class="commentText"><p>YES!!!</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="og1pofu" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Original_Seat_6211 | Thunder</div>
+        <div>1 | 7 minutes ago </div>
+      </div>
+      <label for="og1pofu" class="commentText"><p>I think this is a good idea. The question then becomes this: are players and coaches willing to have a shorter offseason?</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="og1f9hu" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>EmployeeNo4241</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="og1f9hu" class="commentText"><p>Agreed but I think it’ll be easier for the NBA executive$ to swallow shorting quarters(and adding commercials)  vs removing money generating games all together. </p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="og1eef5" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Lower_Welcome1297</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="og1eef5" class="commentText"><p>That would.just leave less mins for the bench players, and guys like Maxey will play 37 mins</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
