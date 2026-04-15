@@ -1,0 +1,928 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.selfPostImage {
+  width: 100%;
+  height: auto;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/nba/comments/1sm5hcx/oc_and_the_results_are_in_for_lvp_least_valuable/"><p>[OC] and the results are in for&hellip; LVP. LEAST Valuable Player.</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <p>While the media may focus on the MVP award and other prestigious honors, reddit has the distinct honor of awarding the LVP trophy. <a href="https://www.clarin.com/deportes/facundo-campazzo-real-madrid-nba-gabriel-deck-nicolas-laprovittola-leandro-bolmaro-barcelona-supercopa_0_eBo_hXxDN.html/" target="_blank"><strong>The LEAST Valuable Player</strong></a>. It&rsquo;s a tradition that dates back to 2017, with <a href="https://www.reddit.com/r/nba/comments/64yxyp/forget_mvp_who_should_win_least_valuable_player/" target="_blank">Monta Ellis</a> winning the trophy in what would be his last year in the league. Other winners include: <a href="https://www.reddit.com/r/nba/comments/8ai7pl/the_results_are_in_for_least_valuable_player/" target="_blank">Jamal Crawford</a> in 2018, <a href="https://www.reddit.com/r/nba/comments/b8xut2/the_results_are_in_for_least_valuable_player/" target="_blank">Solomon Hill</a> in 2019, <a href="https://www.reddit.com/r/nba/comments/hukwu8/the_results_are_in_for_least_valuable_player/" target="_blank">Isaiah Thomas</a> in 2020, <a href="https://www.reddit.com/r/nba/comments/nhp7j2/and_the_results_are_in_for_the_least_valuable/" target="_blank">Aron Baynes</a> in 2021, <a href="https://www.reddit.com/r/nba/comments/uiye0u/and_the_results_are_in_for_the_least_valuable/" target="_blank">Facu Campazzo</a> in 2022, <a href="https://www.reddit.com/r/nba/comments/132s7l3/oc_the_results_are_in_for_lvp_least_valuable/" target="_blank">Will Barton</a> in 2023, <a href="https://www.reddit.com/r/nba/comments/1caaegq/oc_and_the_results_are_in_for_lvp_least_valuable/" target="_blank">Jordan Poole</a> in 2024, and <a href="https://www.reddit.com/r/nba/comments/1k1dnhq/the_results_are_in_for_lvp_least_valuable_player/" target="_blank">Terry Rozier</a> last season. Notably, many of those players won the LVP and never saw meaningful minutes again.</p>
+
+<p>Who will join our illustrious list? Before we get to that, let&rsquo;s remember the criteria and caveats:</p>
+
+<p>&mdash; Obviously, the worst players in the league are the ones who sit at the end of the bench and don&rsquo;t get any playing time. However, this award focuses on players who log a decent amount of minutes and consequently affected their team&rsquo;s play the most. Simply put: the more you play, the more damage you can do.</p>
+
+<p>&mdash; And that actual &ldquo;damage&rdquo; is important. If you&rsquo;re on a tanking team, no one cares about your poor play; it may even be a positive. We also tend to ignore young players (under 22) who are still developing and can&rsquo;t be expected to be solid players yet.</p>
+
+<p>&mdash; Similarly, we don&rsquo;t want to judge players within the context of their salary any more than the actual MVP does. We also don&rsquo;t weigh in injuries. If you want to factor in salary and injuries into <em>your</em> LVP ballots, there are no shortage of big name candidates to choose from this season. However, at the LVP offices, we focus on players&rsquo; on-court performance instead.</p>
+
+<p>&mdash; We also wanted to note that this yearly column can come across as a little mean spirited, which is not our intention. Even the worst player in the NBA is in the top 99% percentile at their sport and making more money than most of us could dream about. And to be fair, even the worst player in the league probably costs his team only a couple of games. Hardly anyone has a VORP (&ldquo;value over replacement player&rdquo;) worse than -2, so they shouldn&rsquo;t be the scapegoat for an entire organization. In many cases, they&rsquo;re simply played too much or played in the wrong role. But when the stakes are this high, it&rsquo;s fair to criticize players or their teams for that negative impact.</p>
+
+<hr>
+
+<p>######<strong>NOT QUITE BAD ENOUGH (in alphabetical order)</strong></p>
+
+<p><strong>PF Kyle Kuzma, Milwaukee: 26.2 minutes per game, - 2.3 box plus/minus</strong></p>
+
+<p>At the Academy Awards, the top movies tend to dominate throughout the ceremony: best production design, best cinematography, best editing, etc. In the LVP races, the most &ldquo;mid&rdquo; teams tend to do the same. A small group of teams flood the ballot with candidates. In those terms, the Milwaukee Bucks and Chicago Bulls may have been the <em>One Battle After Another</em> and <em>Sinners</em> of the season, jostling for positioning and the top trophy.</p>
+
+<p>Among them, Milwaukee supplied us with the most candidates: from Cam Thomas to Andre Jackson Jr. to Myles Turner (who won Bill Simmons and Zach Lowe&rsquo;s version of LVP on their podcast). In fact, 18 of the 21 players who suited up for the Bucks graded as negative in box plus/minus. <em>(Box plus/minus is an analytical estimate of a player&rsquo;s impact per 100 possessions, taken from basketball-reference.com)</em></p>
+
+<p>So who is the worst of the worst? Based on volume of minutes, Kyle Kuzma has a case to make. Kuzma finished in the top 5 in last year&rsquo;s LVP voting for the same reason that he&rsquo;ll be mentioned this year. He&rsquo;s somewhat effective as a scoring PF, but when he has to play more SF and away from the basket, his mediocre shooting (34.7% from 3) and his struggles defending in space become more pronounced. He&rsquo;s played 9 seasons in the NBA, and he&rsquo;s graded as a negative defender in BPM in every single one of them (with -1.3 this year).</p>
+
+<p>Predictably, Kuzma played better and scored more later in the season when Giannis Antetokounmpo was out (upping his TS% from 57% to 63% after the break), but the season was lost by that point anyway. And that lost season was particularly damaging for this franchise, as it may have represented their last gasp with the Greek Freak.</p>
+
+<p><strong>SF Isaac Okoro, Chicago: 26.9 minutes per game, - 3.8 box plus/minus</strong></p>
+
+<p>In real life, we tend to have a good idea of the serious MVP candidates in the preseason. Some are saying that LVP may be trending the same way. In our first ever LVP preseason <a href="https://www.reddit.com/r/nba/comments/1o8a81f/preseason_lvp_watchlist/" target="_blank">watch list</a>, we flagged 6 potential contenders, and 3 of those will be included on the ballot today. Those included Kyle Kuzma, and the Bulls wing Isaac Okoro.</p>
+
+<p>Like Kuzma, Okoro has a sizeable role with his team (starting <sup>62</sup>&frasl;<sub>63</sub> games in his case). And like Kuzma, he may have some structural flaws in his game. Okoro isn&rsquo;t a good shooter (33.0% from 3 this season), but that&rsquo;s not a death sentence on its own. There are a few guards and wings that don&rsquo;t reliably hit open threes. However, those starters (like Dyson Daniels, Amen Thompson) need to be ELITE on the other side of the ball.</p>
+
+<p>Okoro gets cast in the role of a &ldquo;stopper&rdquo; in that way, but he&rsquo;s not at that level. He has a strong frame and effort level, but he&rsquo;s not overly long (6&rsquo;5&rdquo; with a 6&rsquo;8&rdquo; wingspan). That limits his ability to disrupt a game (illustrated by modest averages of 0.7 steals and 0.5 blocks) and his overall ceiling as a defender (illustrated by his -0.8 DBPM this season). To be clear, I don&rsquo;t think Kyle Kuzma or Isaac Okoro are <em>bad</em> players, but they&rsquo;ve been miscast given their skill level.</p>
+
+<hr>
+
+<p>######<strong>NOT QUITE ENOUGH MINUTES (in alphabetical order)</strong></p>
+
+<p><strong>PG Lonzo Ball, Cleveland: 20.5 minutes per game, - 1.2 box plus/minus</strong></p>
+
+<p>When new coach Kenny Atkinson arrived in Cleveland last season, he sparked a jolt up to 64-18 and a # 1 seed. A major part of that success was the surprise breakout of Ty Jerome off the bench.</p>
+
+<p>To replace Jerome (who left via free agency), the Cavs brought in another big guard in Lonzo Ball. Many were excited about the move. I&rsquo;m presuming: those people didn&rsquo;t watch Ball play in Chicago the year before. Injuries have sapped whatever aggressiveness he had as a scorer, leaving him impotent on offense. If you&rsquo;re not a threat to score (or to even <em>try</em> to score), it&rsquo;s hard to be an impact passer.</p>
+
+<p>Ball&rsquo;s struggles continued this season. Despite his size at 6&rsquo;5&rdquo;, he was deathly allergic to crossing inside the three-point line. He only attempted 0.8 twos and only 0.6 free throws per game despite a healthy 20.8 minutes a night. That only made him easier to defend from 3, where he shot a career-low 27.2%. All in all, that totaled a 43% true shooting number that&rsquo;s hard to believe in the modern NBA.</p>
+
+<p>Ball&rsquo;s push for LVP hit a snag though: he stopped playing. In fact, he hasn&rsquo;t logged a single minute after the All-Star break. He got stuck at 35 games played, which limited his impact and may have cost him this trophy.</p>
+
+<p><strong>SG Jordan Hawkins, New Orleans: 13.6 minutes per game, - 6.2 box plus/minus</strong></p>
+
+<p>Coming out of UConn, Jordan Hawkins looked the part of a future sniper. As a sophomore, he averaged 16.2 points per game on 38.8% from three and 88.7% from the line, helping the Huskies win the national championship in the process. There may have been limitations in other aspects of his game, but boy, could this kid shoot. He projected as a good 4th/5th starter and spacer.</p>
+
+<p>Instead, Hawkins gave credence to all those old-school scouts who harp on size and athleticism. He simply hasn&rsquo;t been able to generate enough clean looks in the NBA to take advantage of his talents. He can&rsquo;t get to the line &ndash; he can&rsquo;t score inside &ndash; and he&rsquo;s only been average from 3. That&rsquo;s resulted in a 48.0% true-shooting percentage this year, which ranks near the bottom among veterans. His defense is also poor (-3.0 box plus/minus on that end).</p>
+
+<p>Hawkins would be a stronger contender for LVP if he played more. As is, he&rsquo;s only averaged 13.6 minutes per game across 51 games. Even with those limited minutes, he ranks in the bottom 12 among all 582 players in total win shares this year (at negative 0.4). To be fair, Hawkins&rsquo; best month came at the end of the season &ndash; so he&rsquo;s not someone I&rsquo;d totally give up on in the future. But for <em>this</em> year, it wasn&rsquo;t pretty.</p>
+
+<hr>
+
+<p>######<strong>at long last, OUR OFFICIAL LEAST VALUABLE PLAYER BALLOT</strong></p>
+
+<p><strong>(3) PF Nikola Jovic, Miami: 17.2 minutes per game, - 3.5 box plus/minus</strong></p>
+
+<p>In many cases, you can see LVP candidates coming a mile away. But of all the names listed here, Nikola Jovic may be the most surprising party crasher. The young forward was coming off a solid season where he averaged 10.7 points and shot 37.1% from deep. Entering Year 4 (and fresh off an extension), the needle appeared to be pointed up for him, especially given the organization&rsquo;s reputation for player development.</p>
+
+<p>Unfortunately, Erik Spoelstra&rsquo;s secret weapon may have accidentally been set to <em>de</em>-volution (ala the original <em>Super Mario Bros</em> movie) instead. Nagging injuries may have played a role as they tend to do, but Jovic&rsquo;s confidence looked shakier &ndash; and the Heat&rsquo;s confidence in him looked shakier in turn. By the time the dust settled, he had shooting splits of 37-27-68, combining for a true shooting percentage of 48.0% that represented a stark decline from 59.5% the prior year. For a slower-footed player who was never going to be an elite defender, that&rsquo;s a real problem.</p>
+
+<p>You can argue that Jovic should be excused based on his youth (still only 22) or his limited minutes (not much more than Lonzo Ball). However, he grades highly in terms of negative &ldquo;impact&rdquo; on the season. The Bucks and Bulls finished about 10 games off the playoff pace; no decent rotational player was going to save their season. Miami&rsquo;s a different story. The team finished 43-39, landing at the 10th seed. If the Heat could have won a few more games, they could have contended for a seed as high as 5th (with Toronto at 46-36). Instead, they ended up in the play-in for the 4th consecutive year. And for the first time, that stung them.</p>
+
+<p><strong>(2) SG Gary Trent Jr., Milwaukee: 21.2 minutes per game, - 5.4 box plus/minus</strong></p>
+
+<p>It&rsquo;s disappointing to see Gary Trent Jr. on this list as well. It wasn&rsquo;t too long ago that Trent showed promise as a 3+D guard with Portland (in the covid bubble days). He took it up a level from there in Toronto, averaging 18.3 PPG in his age-23 season. He may have never been a stud defender but he had some activity, with averages of 1.7 and 1.6 steals per game in 2021-22 and &lsquo;22-23, respectively.</p>
+
+<p>But now, still only age 27, Trent Jr. hasn&rsquo;t been able to sustain that. The &ldquo;3&rdquo; is still sort of there (36.0% from deep this season), but any sign of the &ldquo;D&rdquo; left the building. There&rsquo;s no &ldquo;B&rdquo; or &ldquo;C&rdquo; or much of anything else either. Despite healthy minutes (21.2 per game, <sup>21</sup>&frasl;<sub>65</sub> starts), Trent Jr. averaged 0.5 steals, 0.0 blocks, and 1.0 rebounds a game. When you&rsquo;re playing over 20 minutes a game, that&rsquo;s hard to do. If you were sitting courtside as a fan, there&rsquo;s a decent chance a ball caroms your way. If you&rsquo;re <em>on</em> the court, you should get 2-3 rebounds by accident alone. It&rsquo;s almost as if Trent Jr. was playing dodgeball out there.</p>
+
+<p>Sure enough, the advanced stats for Trent Jr. are ugly (-5.4 BPM, -1.2 VORP, negative win shares) as they are for most of the Bucks this season. The team may have been undermanned from a roster perspective, but you can&rsquo;t excuse poor effort. Instead of fighting valiantly like Spartans in <em>300</em>, Doc Rivers had his cast playing dead instead.</p>
+
+<p><strong>(1) PF Patrick Williams, Chicago: 20.5 minutes per game, - 4.5 box plus/minus</strong></p>
+
+<p>May you all find someone who believes in you the way (former) Bulls GM Arturas Karnisovas believes in Patrick Williams. In his very first draft with the team, Karsinovas selected Williams with the # 4 pick despite the fact that Williams had started exactly 0/29 games in college. After a few years, Karsinovas gave Williams a healthy extension despite the fact that Williams hadn&rsquo;t shown much in the NBA either. He saw something in the kid that no one else did.</p>
+
+<p>And unfortunately, that&rsquo;s a major reason why Karsinovas is on his way <em>out</em> of the front office and on his way to get LASIK surgery. That vision never became a reality. In fact, Williams somehow got worse than ever in Year 6. He only shot 37.2% from the field (a career low) and only grabbed 3.0 rebounds per game (a career low). And remember, this isn&rsquo;t a little guard here &ndash; this is a forward praised for his athleticism.</p>
+
+<p>The deeper you dive into the numbers, the more jarring it gets. Williams only shot 28.1% from the field&hellip; on attempts from 3-10 feet out. He only shot 50.6%&hellip; on attempts from 0-3 feet out. That means that Shaquille O&rsquo;Neal had a better chance of making a free throw (career 52.7%) than Patrick Williams did of making a shot an arm&rsquo;s length away from the basket this season.</p>
+
+<p>To Billy Donovan&rsquo;s credit, the team finally realized the problem and played Patrick Williams less than usual. They shifted him to the bench and a rotational role. Still, there&rsquo;s a healthy amount of minutes here (20.5 per game for 72 games) and an unhealthy amount of suckiness that&rsquo;s the perfect recipe for an LVP.</p>
+
+<p>Congrats to P-Will and the entire Bulls franchise on the (dis)honor.</p>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ogbkrae" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>majidLuv | Thunder</div>
+        <div>177 | an hour ago </div>
+      </div>
+      <label for="ogbkrae" class="commentText"><p>never stop making these</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ogbky5u" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>nicklovin508 | Celtics</div>
+        <div>79 | an hour ago </div>
+      </div>
+      <label for="ogbky5u" class="commentText"><p>Ya Pat Williams ran away with this dishonor</p>
+
+<p>Bulls about to extend him again on the news</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="ogbrwwj" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>BomberManeuver</div>
+        <div>1 | 16 minutes ago </div>
+      </div>
+      <label for="ogbrwwj" class="commentText"><p>It would be a smart extension. He has nowhere to go but up.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ogbl8jd" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>QuincyPondexter | Bulls</div>
+        <div>69 | an hour ago </div>
+      </div>
+      <label for="ogbl8jd" class="commentText"><p>You can’t hurt me. I thought Tony Snell was gonna be a valuable rotation player. The darkness swallowed me whole a long time ago.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="ogbt7xj" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>DenseBeautiful731</div>
+        <div>1 | 10 minutes ago </div>
+      </div>
+      <label for="ogbt7xj" class="commentText"><p>Lol your username confirms it all</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ogbl8jw" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>braddeus | Heat</div>
+        <div>54 | an hour ago </div>
+      </div>
+      <label for="ogbl8jw" class="commentText"><p>This one feels like a career achievement award. Guys come and go, get hot and get cold, but Williams has been out here not doing his thing for years now.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ogbnigj" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>WarPuig | Celtics</div>
+        <div>36 | 38 minutes ago </div>
+      </div>
+      <label for="ogbnigj" class="commentText"><p>Preseason LVP candidate Jerami Grant finished with a BPM of 0.0. Likely fueled by his FG% bouncing back from .373 to .453, about his career average. Good job, Jerami.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="ogbqjg6" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ZandrickEllison</div>
+        <div>1 | 23 minutes ago </div>
+      </div>
+      <label for="ogbqjg6" class="commentText"><p>Yeah nice little bounceback season from him ! Did well off the bench. And I&rsquo;m guessing switching from Anfernee Simons to Jrue Holiday explains some of that, too.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="ogbtraf" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>WarPuig | Celtics</div>
+        <div>1 | 7 minutes ago </div>
+      </div>
+      <label for="ogbtraf" class="commentText"><p>Looks like he re-learned how to make two pointers. 2P% jumped from .381 to .513 compared to a more modest 3P% increase.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ogblfv4" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>americanbeaver | Bucks</div>
+        <div>19 | an hour ago </div>
+      </div>
+      <label for="ogblfv4" class="commentText"><p>Gary Trent just stopped getting minutes which probably saved him from this one.</p>
+
+<p>Shoutout to The Paw!</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ogbnfh4" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>pahweee | Rockets</div>
+        <div>20 | 39 minutes ago </div>
+      </div>
+      <label for="ogbnfh4" class="commentText"><p>He probably didn&rsquo;t play enough because he started getting DNPs, but I would like to nominate Dorian Finna Miss</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="ogbpkp7" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ZandrickEllison</div>
+        <div>1 | 28 minutes ago </div>
+      </div>
+      <label for="ogbpkp7" class="commentText"><p>Very true. The minutes restriction caveat really does hurt a lot of deserving candidates. Maybe the ones who were SUPPOSED to play heavy minutes should get a pass there.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="ogbslfq" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Spirited_Flan507 | Rockets</div>
+        <div>1 | 13 minutes ago </div>
+      </div>
+      <label for="ogbslfq" class="commentText"><p>I was fully expecting DFS to be on this list. He is HOT TRASH!!!!!</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ogbmnrg" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>burratna | Bulls</div>
+        <div>11 | 43 minutes ago </div>
+      </div>
+      <label for="ogbmnrg" class="commentText"><p>Patrick Williams is the Bulls modern day <a href="https://www.youtube.com/watch?v=018g1-fkn4M" target="_blank">Cristiano Felício</a></p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="ogbtsa0" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>interwebz_explorer | Bulls</div>
+        <div>1 | 7 minutes ago </div>
+      </div>
+      <label for="ogbtsa0" class="commentText"><p>No way. Everyone understood the Big Cris was a meme and limited in every sense of the word. Pat actually fooled us every now and again into having hope, especially early on.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ogbpcjz" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Turbulent_Bed_569</div>
+        <div>1 | 29 minutes ago </div>
+      </div>
+      <label for="ogbpcjz" class="commentText"><p>&ldquo;Ball&rsquo;s push for LVP hit a snag though: he stopped playing. In fact, he hasn&rsquo;t logged a single minute after the All-Star break.&rdquo;</p>
+
+<p>To be fair, Lonzo Ball stopped playing because he was traded to the Jazz&hellip; and then waived&hellip; and then not picked up by any other team. Hard to play any minutes when you aren&rsquo;t on a roster.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ogbop30" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Domainsetter</div>
+        <div>1 | 32 minutes ago </div>
+      </div>
+      <label for="ogbop30" class="commentText"><p>I’d have Gradey as a honourable mention. Was given a long runway on a good team and barely shot 30% from 3. (He shot better in garbage time in March) Yes he got less minutes as the season went on but he barely got up 2.5 3s a game which is not good. While he did do everything else decently for his archetype it’s meaningless if he can’t hit a 3 reliably.</p>
+
+<p>Post ASB he got punted from the rotation and Ja’kobe took his role and likely spot on this Raptors team going forward.</p>
+
+<p>He’s a change of scenery trade candidate.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ogbpji2" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>lwieueei</div>
+        <div>1 | 28 minutes ago </div>
+      </div>
+      <label for="ogbpji2" class="commentText"><p>Nikola JoVIC</p>
+
+<p>Almost gave me a heart attack</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="ogbpvpz" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ZandrickEllison</div>
+        <div>1 | 26 minutes ago </div>
+      </div>
+      <label for="ogbpvpz" class="commentText"><p>Putting Nikola Jokic would have gotten me on First Take. Jokic is the LVP ! He can&rsquo;t even get a top 2 seed!</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ogbpuwb" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>JeremyPudding | Pacers</div>
+        <div>1 | 27 minutes ago </div>
+      </div>
+      <label for="ogbpuwb" class="commentText"><p>“He saw something in the kid that no one else did.</p>
+
+<p>And unfortunately, that&rsquo;s a major reason why Karsinovas is on his way out of the front office and on his way to get LASIK surgery.”</p>
+
+<p>We need some post season writing awards, this would be my nominee.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ogbn216" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Protat0 | Bulls</div>
+        <div>6 | 41 minutes ago </div>
+      </div>
+      <label for="ogbn216" class="commentText"><p>The PAW already stacking accolades I see</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ogbnf5c" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>BUSean | Celtics</div>
+        <div>4 | 39 minutes ago </div>
+      </div>
+      <label for="ogbnf5c" class="commentText"><p>You write well.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ogbo4zn" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Shipoffools1</div>
+        <div>3 | 35 minutes ago </div>
+      </div>
+      <label for="ogbo4zn" class="commentText"><p>But did you consider the halo effect from fact the Bulls had Michael Jordan 30 years ago</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ogbqmvw" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ThrowawayNYCJ | Nets</div>
+        <div>1 | 23 minutes ago </div>
+      </div>
+      <label for="ogbqmvw" class="commentText"><p>This is the content that I’m here for</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ogbsek9" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>eckliptic | NBA</div>
+        <div>1 | 14 minutes ago </div>
+      </div>
+      <label for="ogbsek9" class="commentText"><p>Would love to see one but factoring in contracts</p>
+
+<p>A mediocre player on an albatross contract does even more damage when you consider opportunity cost</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="ogbsxnv" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ZandrickEllison</div>
+        <div>1 | 11 minutes ago </div>
+      </div>
+      <label for="ogbsxnv" class="commentText"><p>I agree although it gets clouded by injuries and buyouts some times. For example, the Bucks are paying Damian Lillard <span class="math inline">\(22M this year. Suns are still paying Bradley Beal \)</span>19M.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="ogbu9bw" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>eckliptic | NBA</div>
+        <div>1 | 4 minutes ago </div>
+      </div>
+      <label for="ogbu9bw" class="commentText"><p>I think those players get emeritus status on the teams that had to buy them out</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="ogbu66p" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>interwebz_explorer | Bulls</div>
+        <div>1 | 5 minutes ago </div>
+      </div>
+      <label for="ogbu66p" class="commentText"><p>I think PWill wins that given the extension. He is not only bad but also moderately expensive and untradeable until he’s gone expiring.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ogbsx3l" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Big-Equal7497 | Warriors</div>
+        <div>1 | 11 minutes ago </div>
+      </div>
+      <label for="ogbsx3l" class="commentText"><p>Read the post title and knew Kuzma would be mentioned </p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ogbtkqv" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>TheKajMahal | Pistons</div>
+        <div>1 | 8 minutes ago </div>
+      </div>
+      <label for="ogbtkqv" class="commentText"><p>I can’t be the only one who did a double take reading Jovic’s name</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ogbqv8i" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>FlipMoBitch | Bucks</div>
+        <div>1 | 21 minutes ago </div>
+      </div>
+      <label for="ogbqv8i" class="commentText"><p>Kuzma was pretty solid this year as a backup forward I have no qualms about the way he played. I think the hate on his game is overblown. GTJ however was absurdly ass, like absurd</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ogbu7q8" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>fortress_sf</div>
+        <div>1 | 5 minutes ago </div>
+      </div>
+      <label for="ogbu7q8" class="commentText"><p>Somehow I’m less surprised by the names and more surprised there are 0 Sacramento Kings on here.</p>
+
+<p>Also, if the reason is that: Patrick Williams is destined to be a Sacramento King then that’s fine I guess because we all know it in our hearts</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ogbu85c" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>coacoanutbenjamn | Celtics</div>
+        <div>1 | 5 minutes ago </div>
+      </div>
+      <label for="ogbu85c" class="commentText"><p>I swear I feel like every year there’s one player that stands out as truly the worst and every year you make the correct selection</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
