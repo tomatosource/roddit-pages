@@ -1,0 +1,252 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.selfPostImage {
+  width: 100%;
+  height: auto;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/PathOfExile2/comments/1spoz6l/inevitable_criticals_from_forced_outcome_i_did/"><p>Inevitable criticals from Forced Outcome: I did the maths.</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <p>So I worked out the expected hit damage while taking Forced Outcome in the Oracle ascendancy and how it compares to normal. Firstly, define</p>
+
+<p>x=pre crit-calculation hit dmg,</p>
+
+<p>y=bonus crit dmg (y&amp;gt;=1),</p>
+
+<p>z=crit chance (0&amp;lt;z&amp;lt;=1).</p>
+
+<p>Basically, the normal expected hit dmg is calculated: D=x*(1+y*z), whereas taking Forced Outcome means your expected hit dmg is: D=x*(1+y*0.7^(1/z)/0.7).</p>
+
+<p>So, you could also think of it as while taking forced outcome, your &lsquo;effective crit chance&rsquo; is 0.7^(1/z)/0.7 instead of z. Therefore, effective crit chance with Forced Outcome is only greater than normal crit given that your normal crit chance is greater than about 16.55% (this is the minimum amount of crit chance for which Forced Outcome will be a buff to expected hit dmg, less crit than this means Forced Outcome is a nerf). Furthermore, the comparative advantage is maximised at a normal crit chance of 50%, at which point Forced Outcome effective crit is 70%.</p>
+
+<p>Next I wanted to know, given that I&rsquo;m using Forced Outcome, what is the comparative value (in terms of increase to expected hit damage) of % crit chance passive nodes vs % bonus crit dmg passive nodes (i.e., what stat to prioritise based on current stats). So considering the expected damage function D=x*(1+y*0.7^(1/z)/0.7), taking a ratio of partial derivatives with respect to z and y, we find a conversion of ln(<sup>1</sup>&frasl;<sub>0</sub>.7)*y/z^2, that is to say:</p>
+
+<p>A +1% increase to your crit chance is worth roughly a +(0.3567*y/z^2)% increase in your bonus crit dmg, where of course z and y are your current crit chance and bonus crit dmg, respectively.</p>
+
+<p>However, here we should note that when you see % increases to crit chance on the passive skill tree, this is referring to adding that percentage of your base crit chance. Let&rsquo;s label base crit chance = b. (0&amp;lt;b&amp;lt;1). Then taking this scaling into account, the above statement would similarly be:</p>
+
+<p>A +1% crit chance increase (on passive skill tree) is worth roughly a +(0.3567*b*y/z^2)% increase in your bonus crit dmg, where z and y are your current crit chance and bonus crit dmg, respectively.</p>
+
+<p>So for example, I had a look at my oracle character and I have (excuse the bad stats) crit chance z=0.1367 (or 13.67%), and bonus crit dmg y=1.7 (or 170%) and base weapon crit b=0.08 (or 8%). So using the above formula, in terms of expected hit dmg, every +1% crit chance on the passive is worth about +2.596% increase to my bonus critical dmg.</p>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="oh1w280" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>The_Jimes</div>
+        <div>1 | 6 minutes ago </div>
+      </div>
+      <label for="oh1w280" class="commentText"><p><img src="giphy|BmmfETghGOPrW" alt="gif" /></p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
