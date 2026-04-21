@@ -1,0 +1,815 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.selfPostImage {
+  width: 100%;
+  height: auto;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/baseball/comments/1srv8d7/players_with_the_same_name_hitting_hr_on_the_same/"><p>players with the same name hitting HR on the same day (max muncy&rsquo;s: 0 times)</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <p>max muncy and max muncy have not hit home runs on the same day yet.</p>
+
+<p>so i went to lahman&rsquo;s database and retrosheet&rsquo;s pbp to see how many times different players with the same name hit HR on the same day (could be the same game or different games)</p>
+
+<ul>
+<li>two ken griffey&rsquo;s is the most famous and they hit theirs back to back.  just bonkers</li>
+<li>alex gonzalez&rsquo;s did this on five days.</li>
+<li>luis gonzalez&rsquo;s did this four times, once in the same game</li>
+<li>hal smith&rsquo;s twice</li>
+</ul>
+
+<table>
+<thead>
+<tr>
+<th align="left">player</th>
+<th align="center">date</th>
+<th align="center">game 1</th>
+<th align="center">game 2</th>
+<th align="left">notes</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left"><a href="https://www.baseball-reference.com/players/c/cartech02.shtml" target="_blank">Chris</a> <a href="https://www.baseball-reference.com/players/c/cartech01.shtml" target="_blank">Carter</a></td>
+<td align="center">2010.10.02</td>
+<td align="center"><a href="https://www.baseball-reference.com/boxes/SEA/SEA201010020.shtml" target="_blank">game1</a></td>
+<td align="center"><a href="https://www.baseball-reference.com/boxes/NYN/NYN201010020.shtml" target="_blank">game2</a></td>
+<td align="left">cris carter was retired from the nfl by then</td>
+</tr>
+
+<tr>
+<td align="left"><a href="https://www.baseball-reference.com/players/g/gonzalu02.shtml" target="_blank">Luis</a> <a href="https://www.baseball-reference.com/players/g/gonzalu01.shtml" target="_blank">Gonzalez</a></td>
+<td align="center">2005.08.30</td>
+<td align="center"><a href="https://www.baseball-reference.com/boxes/SFN/SFN200508300.shtml" target="_blank">game1</a></td>
+<td align="center" colspan="2"><a href="https://www.baseball-reference.com/boxes/SDN/SDN200508300.shtml" target="_blank">game2</a></td>
+</tr>
+
+<tr>
+<td align="left"><a href="https://www.baseball-reference.com/players/g/gonzalu02.shtml" target="_blank">Luis</a> <a href="https://www.baseball-reference.com/players/g/gonzalu01.shtml" target="_blank">Gonzalez</a></td>
+<td align="center">2005.07.28</td>
+<td align="center"><a href="https://www.baseball-reference.com/boxes/COL/COL200507280.shtml" target="_blank">game1</a></td>
+<td align="center" colspan="2"><a href="https://www.baseball-reference.com/boxes/CHN/CHN200507280.shtml" target="_blank">game2</a></td>
+</tr>
+
+<tr>
+<td align="left"><a href="https://www.baseball-reference.com/players/g/gonzalu02.shtml" target="_blank">Luis</a> <a href="https://www.baseball-reference.com/players/g/gonzalu01.shtml" target="_blank">Gonzalez</a></td>
+<td align="center">2005.05.19</td>
+<td align="center"><a href="https://www.baseball-reference.com/boxes/COL/COL200505190.shtml" target="_blank">game1</a></td>
+<td align="center" colspan="2"><a href="https://www.baseball-reference.com/boxes/HOU/HOU200505190.shtml" target="_blank">game2</a></td>
+</tr>
+
+<tr>
+<td align="left"><a href="https://www.baseball-reference.com/players/g/gonzaal02.shtml" target="_blank">Alex</a> <a href="https://www.baseball-reference.com/players/g/gonzaal01.shtml" target="_blank">Gonzalez</a></td>
+<td align="center">2004.08.13</td>
+<td align="center"><a href="https://www.baseball-reference.com/boxes/MIL/MIL200408130.shtml" target="_blank">game1</a></td>
+<td align="center" colspan="2"><a href="https://www.baseball-reference.com/boxes/MON/MON200408130.shtml" target="_blank">game2</a></td>
+</tr>
+
+<tr>
+<td align="left"><a href="https://www.baseball-reference.com/players/g/gonzaal02.shtml" target="_blank">Alex</a> <a href="https://www.baseball-reference.com/players/g/gonzaal01.shtml" target="_blank">Gonzalez</a></td>
+<td align="center">2004.04.28</td>
+<td align="center"><a href="https://www.baseball-reference.com/boxes/COL/COL200404280.shtml" target="_blank">game1</a></td>
+<td align="center" colspan="2"><a href="https://www.baseball-reference.com/boxes/ARI/ARI200404280.shtml" target="_blank">game2</a></td>
+</tr>
+
+<tr>
+<td align="left"><a href="https://www.baseball-reference.com/players/g/gonzalu02.shtml" target="_blank">Luis</a> <a href="https://www.baseball-reference.com/players/g/gonzalu01.shtml" target="_blank">Gonzalez</a></td>
+<td align="center">2004.04.06</td>
+<td align="center"><a href="https://www.baseball-reference.com/boxes/ARI/ARI200404060.shtml" target="_blank">game1</a></td>
+<td align="center"><a href="https://www.baseball-reference.com/boxes/ARI/ARI200404060.shtml" target="_blank">game2</a></td>
+<td align="left">same game</td>
+</tr>
+
+<tr>
+<td align="left"><a href="https://www.baseball-reference.com/players/g/gonzaal02.shtml" target="_blank">Alex</a> <a href="https://www.baseball-reference.com/players/g/gonzaal01.shtml" target="_blank">Gonzalez</a></td>
+<td align="center">2003.09.28</td>
+<td align="center"><a href="https://www.baseball-reference.com/boxes/FLO/FLO200309280.shtml" target="_blank">game1</a></td>
+<td align="center" colspan="2"><a href="https://www.baseball-reference.com/boxes/CHN/CHN200309280.shtml" target="_blank">game2</a></td>
+</tr>
+
+<tr>
+<td align="left"><a href="https://www.baseball-reference.com/players/g/gonzaal02.shtml" target="_blank">Alex</a> <a href="https://www.baseball-reference.com/players/g/gonzaal01.shtml" target="_blank">Gonzalez</a></td>
+<td align="center">2003.05.04</td>
+<td align="center"><a href="https://www.baseball-reference.com/boxes/HOU/HOU200305040.shtml" target="_blank">game1</a></td>
+<td align="center" colspan="2"><a href="https://www.baseball-reference.com/boxes/CHN/CHN200305040.shtml" target="_blank">game2</a></td>
+</tr>
+
+<tr>
+<td align="left"><a href="https://www.baseball-reference.com/players/g/gonzaal02.shtml" target="_blank">Alex</a> <a href="https://www.baseball-reference.com/players/g/gonzaal01.shtml" target="_blank">Gonzalez</a></td>
+<td align="center">2000.06.20</td>
+<td align="center"><a href="https://www.baseball-reference.com/boxes/FLO/FLO200006200.shtml" target="_blank">game1</a></td>
+<td align="center"><a href="https://www.baseball-reference.com/boxes/TOR/TOR200006200.shtml" target="_blank">game2</a></td>
+<td align="left">alex gonzalez hit 2 hr in his game</td>
+</tr>
+
+<tr>
+<td align="left"><a href="https://www.baseball-reference.com/players/g/griffke02.shtml" target="_blank">Ken</a> <a href="https://www.baseball-reference.com/players/g/griffke01.shtml" target="_blank">Griffey</a></td>
+<td align="center">1990.09.14</td>
+<td align="center"><a href="https://www.baseball-reference.com/boxes/CAL/CAL199009140.shtml" target="_blank">game1</a></td>
+<td align="center"><a href="https://www.baseball-reference.com/boxes/CAL/CAL199009140.shtml" target="_blank">game2</a></td>
+<td align="left">same game, same inning, back to back, pa &amp; son</td>
+</tr>
+
+<tr>
+<td align="left"><a href="https://www.baseball-reference.com/players/s/smithha09.shtml" target="_blank">Hal</a> <a href="https://www.baseball-reference.com/players/s/smithha08.shtml" target="_blank">Smith</a></td>
+<td align="center">1959.06.21</td>
+<td align="center"><a href="https://www.baseball-reference.com/boxes/SLN/SLN195906211.shtml" target="_blank">game1</a></td>
+<td align="center" colspan="2"><a href="https://www.baseball-reference.com/boxes/BAL/BAL195906210.shtml" target="_blank">game2</a></td>
+</tr>
+
+<tr>
+<td align="left"><a href="https://www.baseball-reference.com/players/s/smithha09.shtml" target="_blank">Hal</a> <a href="https://www.baseball-reference.com/players/s/smithha08.shtml" target="_blank">Smith</a></td>
+<td align="center">1959.04.17</td>
+<td align="center"><a href="https://www.baseball-reference.com/boxes/SFN/SFN195904170.shtml" target="_blank">game1</a></td>
+<td align="center" colspan="2"><a href="https://www.baseball-reference.com/boxes/CLE/CLE195904170.shtml" target="_blank">game2</a></td>
+</tr>
+</tbody>
+</table>
+<p>this is weird and no one asked for this and please hug your data scientists - we need friends.</p>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ohhf8ym" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>okay_throwaway_today | Chicago Cubs</div>
+        <div>77 | an hour ago </div>
+      </div>
+      <label for="ohhf8ym" class="commentText"><p>The plural of Max is actually Maxen btw</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="ohhi0t4" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>JosephFinn | Chicago White Sox</div>
+        <div>16 | 37 minutes ago </div>
+      </div>
+      <label for="ohhi0t4" class="commentText"><p>Maxii</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="ohhisqn" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>geoffreyisagiraffe | Houston Astros</div>
+        <div>11 | 33 minutes ago </div>
+      </div>
+      <label for="ohhisqn" class="commentText"><p>Maxes Muncey</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="ohhn86g" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>RidleyScotch | New York Mets</div>
+        <div>1 | 12 minutes ago </div>
+      </div>
+      <label for="ohhn86g" class="commentText"><p>This is most correct because similar to Attorneys General, Max is effecting the Muncy. Their title is General/Muncy</p>
+
+<p>What kind of Muncy are they? Max (singular) or Maxes (plural)</p>
+
+<p>Because you will never find a Muncy never at their maximum potential</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="ohhhoii" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Stateside_Observer | Chicago Cubs</div>
+        <div>3 | 38 minutes ago </div>
+      </div>
+      <label for="ohhhoii" class="commentText"><p>Maxen eunt domus!</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ohhfl2z" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>BaltimoreBaja | Baltimore Orioles</div>
+        <div>14 | an hour ago </div>
+      </div>
+      <label for="ohhfl2z" class="commentText"><p>We could have had two Max Muncy on the same team.</p>
+
+<p>Fuck Jeff Fisher!*</p>
+
+<p>*John, lol</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="ohhlwjf" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Youngster_Joey14 | Tampa Bay Devil Rays</div>
+        <div>3 | 18 minutes ago </div>
+      </div>
+      <label for="ohhlwjf" class="commentText"><p>What did the football coach ever do to you?</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="ohhmnlk" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>BaltimoreBaja | Baltimore Orioles</div>
+        <div>4 | 15 minutes ago </div>
+      </div>
+      <label for="ohhmnlk" class="commentText"><p>Boy that&rsquo;s a quality brain fart</p>
+
+<p>But also as a Ravens fan, plenty! Titans were one of our biggest rivals before division re-alignment</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ohhh2kg" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>DavidRFZ | Minnesota Twins</div>
+        <div>13 | 41 minutes ago </div>
+      </div>
+      <label for="ohhh2kg" class="commentText"><p>I believe the George Burnses (Georges Burns?) did it on May 30, 1925.</p>
+
+<p>Just in time, too.  Looks like it was George J’s final home run.</p>
+
+<p>Somehow the Brians Hunter failed to achieve this.  Looks like they homered on consecutive days a few times.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="ohhl2l4" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>fajita43 | Chicago Cubs</div>
+        <div>5 | 22 minutes ago </div>
+      </div>
+      <label for="ohhl2l4" class="commentText"><p>i realize i only have my pbp data back to the 1940&rsquo;s but when i look in retrosheet, i see now they have pbp going way back further.</p>
+
+<p>i should go update going further back now.</p>
+
+<p>how did you pull that?  are you statheading?</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="ohhpbcl" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>DavidRFZ | Minnesota Twins</div>
+        <div>1 | 2 minutes ago </div>
+      </div>
+      <label for="ohhpbcl" class="commentText"><p>Those were the only two pairs of players that I checked.  I pulled up their “home run log” pages at bb-ref and eyeballed them side by side in separate browser windows.</p>
+
+<p>I’ve always been fascinated by the two George Burns.  They’re both HOVG types.  Wouldn have both been all-stars, but no all-star game yet.  They played in opposite leagues.  They won WS in consecutive seasons.  They’re impossible for me to keep straight in my head.  :)</p>
+
+<p>You don’t need full PBP for this question.  You need boxscore/game-log level data.  Might be easier?  I know retrosheet has made strides making their data easier to download.  It used to be a multi-day project loading it into databases and I think there are better csv files for python scripting.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ohhesf1" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>leftysupremacist | World Series Trophy • Los Angeles Dod…</div>
+        <div>6 | an hour ago </div>
+      </div>
+      <label for="ohhesf1" class="commentText"><p>I&rsquo;m gonna need my guy Max Muncy to step it up.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ohhf51x" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>CalebosO4 | Toronto Blue Jays</div>
+        <div>6 | an hour ago </div>
+      </div>
+      <label for="ohhf51x" class="commentText"><p>Hal Smith holds the record for the biggest cWPA hit in MLB history.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ohhkriw" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ham_plane | New York Yankees</div>
+        <div>6 | 24 minutes ago </div>
+      </div>
+      <label for="ohhkriw" class="commentText"><p>Idk if the Chris Carter&rsquo;s count, since both are middle names (Vernon Christopher Carter, and William Christopher Carter)</p>
+
+<p>Or, idk, maybe that should count even more?</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ohhfsxe" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>OzzyBuckshankNA | Toronto Blue Jays</div>
+        <div>5 | an hour ago </div>
+      </div>
+      <label for="ohhfsxe" class="commentText"><p>Surprised no Will Smith</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="ohhjujt" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>AccountantRadiant351</div>
+        <div>17 | 28 minutes ago </div>
+      </div>
+      <label for="ohhjujt" class="commentText"><p>Will Smith did homer off Will Smith though, which is kind of the opposite</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="ohhj3k4" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>nWhm99 | Chinese Taipei • Hokkaido Nippon-Ham Fighte…</div>
+        <div>1 | 31 minutes ago </div>
+      </div>
+      <label for="ohhj3k4" class="commentText"><p>There would be if we count having a slap hit on the same day.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ohhhikc" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>maroonhamster | San Diego Padres • Mariners Bandwagon</div>
+        <div>2 | 39 minutes ago </div>
+      </div>
+      <label for="ohhhikc" class="commentText"><p>Thank you for making us smarter with this weird awesome information.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ohhewts" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>HemlockMartinis | Los Angeles Dodgers</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="ohhewts" class="commentText"><p>This is very cool. Thank you for doing the legwork on it!</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ohhn73m" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>lastminutealways | Seattle Mariners</div>
+        <div>1 | 12 minutes ago </div>
+      </div>
+      <label for="ohhn73m" class="commentText"><p>One of the many reasons I love baseball. This data nerd wannabe loves all of the stats that come with it.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ohhomn4" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>MaskedBandit77 | Pittsburgh Pirates</div>
+        <div>1 | 5 minutes ago </div>
+      </div>
+      <label for="ohhomn4" class="commentText"><p>I assume that those are the same two Alex Gonzalezes and Luis Gonzalezes every time? </p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ohhoqxf" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Bentonium4</div>
+        <div>1 | 5 minutes ago </div>
+      </div>
+      <label for="ohhoqxf" class="commentText"><p>If they manage it they would be the only pair of players with the same name and same birthday drafted by the same team to homer on the same day.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ohhov2r" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>yesiamexisting | Los Angeles Dodgers</div>
+        <div>1 | 4 minutes ago </div>
+      </div>
+      <label for="ohhov2r" class="commentText"><p>Waiting for the day when a team signs Will Smith the pitcher and he somehow gets put in a situation where he can hit a home run.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ohhoxcy" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Equinox772 | Miami Marlins</div>
+        <div>1 | 4 minutes ago </div>
+      </div>
+      <label for="ohhoxcy" class="commentText"><p>Too bad Alex Gonzalez didn&rsquo;t accomplish this in the 2003 NLCS. That would&rsquo;ve been cool.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ohhp63b" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>SeanCaseyBlakeSnell | Montreal Expos</div>
+        <div>1 | 3 minutes ago </div>
+      </div>
+      <label for="ohhp63b" class="commentText"><p>Not quite the same, but on May 2, 1954, Frank Thomas hit a solo home run in the fourth inning in Chicago (Wrigley Field). Exactly 50 years later, on May 2, 2004, Frank Thomas hit a solo home run in the fourth inning in Chicago (whatever they were calling New Comiskey that year). </p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
