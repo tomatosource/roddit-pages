@@ -1,0 +1,435 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.selfPostImage {
+  width: 100%;
+  height: auto;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/bostonceltics/comments/1ss5eps/jaylen_brown_is_the_13th_player_in_nba_history_to/"><p>Jaylen Brown is the 13th player in NBA history to score double-digit points in 100+ straight playoff games</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <table>
+<thead>
+<tr>
+<th align="left">Player</th>
+<th align="left">Streak</th>
+<th align="left">Streak Started</th>
+<th align="left">Streak Ended</th>
+<th align="left">Active</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">Michael Jordan</td>
+<td align="left">179</td>
+<td align="left">1985-04-19</td>
+<td align="left" colspan="2">1998-06-14</td>
+</tr>
+
+<tr>
+<td align="left">Kobe Bryant</td>
+<td align="left">171</td>
+<td align="left">2000-06-19</td>
+<td align="left" colspan="2">2012-05-21</td>
+</tr>
+
+<tr>
+<td align="left">Kevin Durant</td>
+<td align="left">170</td>
+<td align="left">2010-04-18</td>
+<td align="left">2024-04-28</td>
+<td align="left">*</td>
+</tr>
+
+<tr>
+<td align="left">Karl Malone</td>
+<td align="left">147</td>
+<td align="left">1986-04-18</td>
+<td align="left" colspan="2">1999-05-25</td>
+</tr>
+
+<tr>
+<td align="left">LeBron James</td>
+<td align="left">141</td>
+<td align="left">2014-05-30</td>
+<td align="left">2026-04-18</td>
+<td align="left">*</td>
+</tr>
+
+<tr>
+<td align="left">Shaquille ONeal</td>
+<td align="left">137</td>
+<td align="left">1994-04-28</td>
+<td align="left" colspan="2">2004-04-17</td>
+</tr>
+
+<tr>
+<td align="left">Larry Bird</td>
+<td align="left">136</td>
+<td align="left">1981-05-12</td>
+<td align="left" colspan="2">1991-05-17</td>
+</tr>
+
+<tr>
+<td align="left">Stephen Curry</td>
+<td align="left">113</td>
+<td align="left">2016-05-09</td>
+<td align="left">2025-05-06</td>
+<td align="left">*</td>
+</tr>
+
+<tr>
+<td align="left">Hakeem Olajuwon</td>
+<td align="left">111</td>
+<td align="left">1985-04-19</td>
+<td align="left" colspan="2">1996-05-02</td>
+</tr>
+
+<tr>
+<td align="left">Kareem Abdul-Jabbar</td>
+<td align="left">109</td>
+<td align="left">1970-03-25</td>
+<td align="left" colspan="2">1982-06-03</td>
+</tr>
+
+<tr>
+<td align="left">Tim Duncan</td>
+<td align="left">105</td>
+<td align="left">2001-05-27</td>
+<td align="left" colspan="2">2008-04-29</td>
+</tr>
+
+<tr>
+<td align="left">Kevin McHale</td>
+<td align="left">104</td>
+<td align="left">1984-06-12</td>
+<td align="left" colspan="2">1992-05-10</td>
+</tr>
+
+<tr>
+<td align="left">Jaylen Brown</td>
+<td align="left">100</td>
+<td align="left">2019-04-19</td>
+<td align="left">2026-04-21</td>
+<td align="left">*</td>
+</tr>
+</tbody>
+</table>
+<p>Provided by <a href="https://www.sports-reference.com/sharing.html?utm_source=direct&amp;utm_medium=Share&amp;utm_campaign=ShareTool" target="_blank">Stathead</a>: <a href="https://www.sports-reference.com/stathead/tiny/TyzOi?utm_source=direct&amp;utm_medium=Share&amp;utm_campaign=ShareTool" target="_blank">Found with Stathead. See Full Results.</a>
+Generated 4/21/2026.</p>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ohjimwz" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Cold_Ordinary2165</div>
+        <div>24 | an hour ago </div>
+      </div>
+      <label for="ohjimwz" class="commentText"><p>There isn&rsquo;t anyone on that list not in the HOF 👀</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="ohjk9t8" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>rawspeghetti | Thatsa.Tommy.Point</div>
+        <div>7 | 41 minutes ago </div>
+      </div>
+      <label for="ohjk9t8" class="commentText"><p>No there is not 😎</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ohjjvko" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>frauenarzZzt | Ray</div>
+        <div>13 | 43 minutes ago </div>
+      </div>
+      <label for="ohjjvko" class="commentText"><p>One of my peeves is seeing cherry-picked stats, like &ldquo;This player is the second player under 6&rsquo;9&rdquo; to have 27pts, 3 defensive rebounds, 2 offensive fouls, and 12,000 steps in a game <em>since 1991.</em>&ldquo;</p>
+
+<p>Stats like 10+ points in 100 straight playoff games is seriously cool. Being on a list with these players is marvelous.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ohjjjue" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>champagnesupernova10 | Marcus Smart&#39;s Green Hair</div>
+        <div>7 | an hour ago </div>
+      </div>
+      <label for="ohjjjue" class="commentText"><p>MVP</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ohjn8t3" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>DistinctPassenger117</div>
+        <div>1 | 24 minutes ago </div>
+      </div>
+      <label for="ohjn8t3" class="commentText"><p>Certified baller</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ohjqzwm" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>alittleverygagged</div>
+        <div>1 | 2 minutes ago </div>
+      </div>
+      <label for="ohjqzwm" class="commentText"><p>That’s truly amazing</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
