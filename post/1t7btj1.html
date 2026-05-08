@@ -1,0 +1,958 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.selfPostImage {
+  width: 100%;
+  height: auto;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/PathOfExile2/comments/1t7btj1/ziggyd_qa_video_summarized/"><p>ZiggyD Q&amp;A Video Summarized</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <p>If you don&rsquo;t feel like watching the 2h 30min video Q&amp;A, I pulled the youtube transcript and summarized it (used AI to help with formatting):</p>
+
+<h1 id="key-concepts">Key Concepts</h1>
+
+<ul>
+<li><strong>Scope of 0.5 is intentionally a &ldquo;template patch.&rdquo;</strong> GGG bundled the endgame rework + a full crafting league to lock in <em>what an endgame league should feel like</em> in PoE2. Smaller incremental patches couldn&rsquo;t have set that template.</li>
+<li><strong>No new class/weapon in 0.5.</strong> A class takes longer than one cycle. The interim leagues between 0.5 and 1.0 will be &ldquo;month-long event&rdquo; style, so balance fixes can ship without mid-league nerfs.</li>
+<li><strong>Runes of Aldur = a craft-economy ecosystem, not just a mechanic.</strong> Every league must now contain something a player can grind for indefinitely. Aldur layers rune inscriptions on remnants → harder monsters → better loot, plus alloy/rune/forging benches and unique modification.</li>
+<li><strong>The Atlas is now a fixed map of Wraeclast, not a procedural blob.</strong> Landmarks (league hubs, the central Fortress) sit in physical locations; you can pick <em>any</em> compass direction and hit content within ~4 maps.</li>
+<li><strong>&ldquo;Fortress&rdquo; as a quest-driven pinnacle path.</strong> ~300 fortress nodes vs. ~150 atlas points; auto-completion exists so the fortress doesn&rsquo;t become a chore. Completing it ≈ Atlas completion in PoE1.</li>
+<li><strong>Atlas Masters replace the monolithic Atlas tree.</strong> The big tree is now fully allocated by default; per-map &ldquo;Master loadouts&rdquo; carry the choice-based knobs (e.g., shrines on bosses for harder/more reward).</li>
+<li><strong>Runic Ward = a sub-life trade-off resource.</strong> Powers the new colorless <strong>Kalguuran skills</strong> that work across classes and use level (not attribute) requirements.</li>
+<li><strong>Leech rewrite — single source + damage cap on the leech calculation.</strong> Goal: doubling leech% should <em>actually</em> double recovery; damage past a threshold no longer feeds infinite recovery for meta-skill triggering builds.</li>
+<li><strong>Defence buffs from Act 3 → early endgame.</strong> Player EHP at midgame is well below GGG&rsquo;s spreadsheet target; armor/evasion bases, hybrid clusters, and deflection scaling are all being raised.</li>
+<li><strong>Quitting points are a design goal.</strong> Endgame now has progress bars and clear completion goals so players know when to step off — a direct response to the &ldquo;400 hours played, terrible game&rdquo; Steam-review pattern.</li>
+<li><strong>Pinnacle boss attempts are now infinite once the fragment is earned</strong> (across the board, not selective like 0.4).</li>
+<li><strong>In-game build planner ships in 0.5</strong>, with one-click import from community sites (also unlocks console build sharing). GGG explicitly will <em>not</em> ship official build templates.</li>
+</ul>
+
+<h1 id="detailed-analysis">Detailed Analysis</h1>
+
+<h1 id="why-this-expansion-is-so-big">Why this expansion is so big</h1>
+
+<p>In retrospect Jonathan thinks a smaller patch might have been wiser, but the goal was to deliver a single patch that <em>defines</em> what an endgame league looks like in PoE2. The previous endgame had no goals — players hit maps, didn&rsquo;t know what to do, and quit. By shipping all the league reworks, the Atlas overhaul, and Aldur together, GGG sets a &ldquo;this is the bar&rdquo; template. The team building campaign acts is largely separate from the team doing balance/systems, so the act content for 1.0 is on its own track in parallel.</p>
+
+<h1 id="runes-of-aldur-deep-dive">Runes of Aldur deep-dive</h1>
+
+<ul>
+<li><strong>Remnants are the league&rsquo;s atomic unit.</strong> You inscribe <strong>runes</strong> on them; each rune adds monster modifiers (harder = more rewards) and feeds a recipe pool that determines the loot.</li>
+<li><strong>Recipes have hidden internal logic</strong> (e.g., iron-themed runes feed iron-themed crafts) — most players will treat it as a pick-from-list interface, but designers built recipe families.</li>
+<li><strong>Olroth&rsquo;s Legacy</strong> rips a modifier off a <strong>Kalguuran</strong> unique and turns it into a unique rune you can socket into items of the same class.</li>
+<li><strong>Meta-craft runes</strong> can be inserted, used to roll mods, then &ldquo;popped out&rdquo; by a different rune. Mark cites this as a more legible take on PoE1 meta-modding.</li>
+<li><strong>Bonded modifier system:</strong> every new rune participates in the existing Shaman &ldquo;bonded&rdquo; framework, including (intended) the unique-derived runes.</li>
+<li><strong>Grand Expeditions</strong> (formerly log books) let you sail a tile-grid ocean of unique islands with handcrafted oddities. Tablets buff islands; some log books reveal pinnacle-relevant zones.</li>
+<li><strong>&ldquo;Power runes&rdquo;</strong> are tier-2-of-everything rare drops; some appear in the campaign too (e.g., bow rune granting +50% chance for an extra arrow).</li>
+<li><strong>160 total runes</strong>; alloy crafting added on top. Multiple full crafting benches were built to ~80% then cut for time.</li>
+<li>The crafts are deliberately <strong>scoped per slot</strong> (Breach = jewelry/caster/minion focus, Aldur = weapons/armor with runes) so you don&rsquo;t have to learn every system to gear every slot.</li>
+<li><strong>Kalguuran uniques</strong> can be transformed at the Verisium bench — a hybrid base might split into ES, evasion, or strength variants. Targeting &ldquo;3 outcomes per <strong>Kalguuran</strong> unique.&rdquo;</li>
+<li><strong>Runic Ward</strong> is a sub-life pool <em>under</em> normal HP. Designed so it&rsquo;s strictly additive in early bases (no trade) but trade-off in endgame bases (more ward = less other defences). Hand-rolled per base type (&ldquo;a metric ton of metadata&rdquo;); not a formula.</li>
+<li><strong>Kalguuran skills:</strong> weapon-agnostic, no attribute reqs, level-gated only; spend Runic Ward instead of mana. ~25 in this batch with room to grow.</li>
+</ul>
+
+<h1 id="plus-skill-levels-rarity">Plus Skill Levels &amp; Rarity</h1>
+
+<p>Trimming top-end +skill rolls and shifting some of the high tier <em>up</em> the mod ladder rather than removing it. Rarity is still slated for replacement long-term; in the interim, GGG wants leagues to be &ldquo;more economically targetable&rdquo; so players can chase the loot type whose price has spiked.</p>
+
+<h1 id="balance-meta-economy-as-a-design-lever">Balance &amp; Meta — economy as a design lever</h1>
+
+<p>Mark frames PoE1&rsquo;s resilience: when currency price rises, players farm currency-leaning mechanics, dragging it back. PoE2&rsquo;s blanket Rarity boost broke that signal. Letting tablets/league-tree picks bias reward type restores the lever. Greater/Perfect orbs (especially Perfect) drop too easily — transmute and augmentation drop rates will be reduced. Mage Blood teased to exist but not described.</p>
+
+<h1 id="qol-drops">QoL drops</h1>
+
+<ul>
+<li><strong>Build planner</strong> ships in-game; community sites can produce &ldquo;one-click import&rdquo; links (no manual file copying — important for console).</li>
+<li><strong>Mouse+keyboard / controller hot-swap</strong> is &ldquo;the running joke&rdquo; but Jonathan pledges it lands this league.</li>
+<li><strong>Visibility / particle bloat</strong> acknowledged as a real problem (e.g., explosive grenade screen-fill); fix is artist+engine+balance triage, not a transparency slider — Jonathan refuses sliders because they &ldquo;ruin something fundamental.&rdquo;</li>
+<li><strong>Steam Deck Verified</strong> status targeted for launch; UI scaling overhauled across panels. Endgame perf still rough on Deck.</li>
+<li><strong>Campaign signposting:</strong> zones reshaped so monster types funnel you toward objectives (snakes head toward the Venom Crypts; humanoids cluster near the shaman boss room). Some areas were <em>un-linearized</em> to make wayfinding the speedup, not raw size.</li>
+</ul>
+
+<h1 id="skill-levels-in-the-campaign">Skill levels in the campaign</h1>
+
+<p>Some &ldquo;main-skill&rdquo; gems sit too late. Jonathan&rsquo;s preferred fix is rearranging where skills are gained, not compressing the unlock curve.</p>
+
+<h1 id="skills-ascendancies-builds">Skills, Ascendancies &amp; Builds</h1>
+
+<ul>
+<li>New ascendancies (Spirit Walker, Martial Artist) hit a design problem: every existing beast needs a <em>tameable</em> counterpart, every glove mod needs an &ldquo;alloy&rdquo; version. Mark: &ldquo;I&rsquo;m so excited for how much work we&rsquo;ve created for ourselves.&rdquo;</li>
+<li><strong>Tame Beast damage roughly tripled</strong> internally; companion <strong>revive times raised</strong> so you actually feel investment in single high-impact pets vs. swarm builds.</li>
+<li><strong>Martial Artist&rsquo;s Fists of Stone</strong> (gloves → fists) does affect unique gloves and explicit mods; rune/socketed mods generally stay as they are. Skill-granting unique gloves keep their skill — recreating skills for this case is &ldquo;a line that has to be very special to cross.&rdquo;</li>
+</ul>
+
+<h1 id="defence-rewrite">Defence rewrite</h1>
+
+<p>Player EHP between Act 3 and early endgame is significantly below the team&rsquo;s spreadsheet target. Their fix is a buff campaign rather than nerfing monsters:</p>
+
+<ul>
+<li>All armor/evasion <em>base types</em> get more defence up to (but not including) peak endgame.</li>
+<li>Top-end outliers slightly trimmed so rares stay relatively meaningful.</li>
+<li><strong>Deflection formula</strong> is being rebuilt — too rewarding for tiny investment, dead beyond that.</li>
+<li>Hybrid passive clusters are being filled in (the strength/dex border in particular).</li>
+<li>Energy Shield recharge is &ldquo;too easy&rdquo;; Ghost Dance + 1k ES outscales pure-evasion → being toned.</li>
+<li>Armor/ES has the highest death rate by 300% — Jonathan does not yet have the solution; flagged as the next priority.</li>
+</ul>
+
+<h1 id="passive-tree">Passive Tree</h1>
+
+<p>GGG isn&rsquo;t restoring life nodes to the tree (yet). Jonathan&rsquo;s argument: don&rsquo;t compromise the tree to paper over a defence problem; fix defences, runes, body-armor base types, and itemization-side recovery first. Tree work in flight: kill notable clusters that grant a stat <em>but no armor/evasion</em>, add hybrid notables for secondary defences, fill out ascendancy-class-adjacent &ldquo;starter wedges&rdquo; (which are richer than the empty-class wedges). He&rsquo;s confident a slice can be substantially fixed in a day per slice once they have time.</p>
+
+<h1 id="fire-ignite-damage-over-time">Fire / Ignite / Damage-over-Time</h1>
+
+<p>DoT is on Jonathan&rsquo;s &ldquo;top-5 (now top-10) list to fix.&rdquo; Pure-DoT fantasy (e.g., Flame Blast → spreading wildfire ignite) is a goal, not a current reality. Hits-with-ignite-on-top is currently strictly better. Keystones, supports, and itemization to enable pure-DoT are sketched; expected to land in an interim patch before 1.0. <strong>Combat pacing:</strong> average boss kill <em>for the actual median player</em> is dramatically slower than streamer pacing implies (~119s on telemetry vs. designers&rsquo; guess of ~8–20s). Direction: keep the spectrum, but make god-tier require real investment, not free.</p>
+
+<h1 id="recovery-leech-rewrite">Recovery &amp; Leech rewrite</h1>
+
+<ul>
+<li><strong>Single-source leech.</strong> Only the largest hit feeds your active leech buff at any time.</li>
+<li><strong>Leech damage cap.</strong> A capped damage value (number TBD — &ldquo;maybe ~100k or ~1M&rdquo;) is what gets multiplied by your leech %. Above the cap, more damage stops adding recovery. This breaks the meta-skill recovery feedback loop (&ldquo;3M% of life per frame from infinite triggering&rdquo;).</li>
+<li><strong>No more leech resist by monster rarity</strong> (white vs. unique) — leech is now consistent across boss and trash fights.</li>
+<li>Instant leech largely removed (it bypassed the cap).</li>
+<li>Early-game leech values can be <em>raised</em> now that the cap exists, so investment matters earlier.</li>
+</ul>
+
+<h1 id="temple-going-core">Temple going core</h1>
+
+<p>The &ldquo;snake&rdquo; temple strategy is being killed by an algorithmic fix: rooms that the system wants to delete but can&rsquo;t (because deletion would disconnect the temple) are now replaced with empty connector rooms. Snaking was producing &ldquo;1000% unacceptable&rdquo; item drops; GGG didn&rsquo;t mid-league nerf it because pulling the ladder up after early adopters feels worse than letting a strategy run out. Reward rooms post-architect get buffed; Atlas tree applies to the temple; the temple has its own quest line and atlas-mini-tree.</p>
+
+<h1 id="endgame-deep-dive">Endgame Deep Dive</h1>
+
+<ul>
+<li><strong>Atlas as actual world geography.</strong> A real map of Wraeclast — landmarks (league hubs, the Fortress, the ocean for Grand Expeditions) sit in fixed positions roughly matching the campaign&rsquo;s world. Sail far enough into the ocean and you can find Oriath — a pure Easter egg until acts 5–6 ship.</li>
+<li><strong>No direction is wrong.</strong> Pick any direction off the starting ziggurat and within ~4 maps you hit a league content cluster. NPC quest markers spawn within 1–2 maps.</li>
+<li><strong>Fortress = the new Atlas-completion target.</strong> ~300 nodes, ~150 atlas points behind it, all of them designed <em>one-of-a-kind</em> (so auto-completion does have a real opportunity cost). Completing the main quest line (Ziggurat → wall → middle → back) is ~45–50 maps if you path efficiently.</li>
+<li><strong>Atlas Masters</strong> replace big sections of the previous tree. Each has a quest-line that unlocks rows of keystones; you select <em>which</em> master is active per map, like PoE1 map device options. Hilda hunts beasts; Doryani tracks corruption (his quest absorbs the old Doryani questline); Pharaoh, Jin etc. could become future masters as new themes ship.</li>
+<li><strong>Atlas tree fully allocated by default.</strong> Tradeoff: punchier nodes (no fear of &ldquo;wasted points in the wrong biome&rdquo;), but no real &ldquo;build&rdquo; choice on the big tree. Build choice moved into per-map Master loadouts and the league sub-trees (Breach, Delirium, etc.).</li>
+<li><strong>League integration with Atlas mechanics.</strong> Each league has an Atlas-active behavior: Delirium fog spreads spatially; cracks open across the Atlas in Breach; ride-of-the-nameless picks biomes; pinning a tablet <em>locks</em> a tile to one league (preventing other-league spawns).</li>
+<li><strong>Co-op progression preserved.</strong> Fixed Atlas portions complete for the whole party; infinite-farm sections remain personal. Some league progression nodes intentionally don&rsquo;t auto-complete in groups so they don&rsquo;t rob loot.</li>
+<li><strong>Pinnacles tier-restricted, not level-restricted.</strong> You <em>can</em> race straight to a pinnacle if you have the way-stones — infinite attempts per fragment.</li>
+<li><strong>Quitting points by design.</strong> Progress bars on every league + Fortress completion + challenges give players a defined &ldquo;I&rsquo;m done with this league&rdquo; exit. Stated goal: prevent the &ldquo;400 hours, terrible game&rdquo; review.</li>
+<li><strong>Portals/revives:</strong> the team has multiple iterations of &ldquo;minus 1 portal per N modifiers&rdquo; + Master-granted extra revives + Atlas nodes; final rules slightly fuzzy in the live convo but a master-granted extra revive is in.</li>
+<li>Three Ascendancy Trials: not all in 0.5; both existing trials (and ideally the third) targeted to be &ldquo;good&rdquo; by 1.0. The third trial is a coin-flip for 1.0.</li>
+</ul>
+
+<h1 id="boss-design">Boss design</h1>
+
+<ul>
+<li><strong>15ish new bosses</strong> in 0.5. Jonathan&rsquo;s pick: the underground Ritual pinnacle (light-vs-darkness staging). Mark&rsquo;s pick: the new Delirium voiceline-finally-has-a-body boss.</li>
+<li><strong>King of the Mist demoted</strong> from PoE1 pinnacle status to a campaign-side encounter — the bar for &ldquo;pinnacle&rdquo; has moved. The team feels Olroth and friends were just PoE1 ports re-skinned, and 0.5&rsquo;s bosses are the first batch made entirely under PoE2&rsquo;s evolved boss pipeline.</li>
+<li><strong>How a boss gets made</strong> (Mark): three threads — narrative, art-driven, and mechanic-driven — and any can fire first. Concept artists have a constant backlog of unbriefed creature work. The Aldur expedition pinnacle started life as a random Act 5 mini-boss; designers re-themed it with Verisium limbs, tripled scale, and re-animated it. They confirm Delve will eventually return and are already commissioning Crystal King family/successor concept art.</li>
+<li><strong>Rogue Exiles</strong> are getting buffed and gain a &ldquo;nemesis&rdquo; return-and-hunt mechanic.</li>
+</ul>
+
+<h1 id="actionable-takeaways">Actionable Takeaways</h1>
+
+<p>For players planning around 0.5:</p>
+
+<ul>
+<li>Expect <strong>economic targetability</strong>: pick the league/biome whose tablet gives the loot type you actually need.</li>
+<li><strong>Defences scale better mid-game</strong>, but ES/Ghost Dance hybrid stackers and high-end armor outliers are pulled down — don&rsquo;t lock plans around current top-end ratios.</li>
+<li>The leech overhaul means <strong>doubling damage past the cap stops doubling recovery</strong> — meta-skill triggering builds will need re-tuning; flat leech investment becomes more linearly valuable.</li>
+<li>The new <strong>Fortress</strong> is the real Atlas-completion goalpost (~45–50 maps to pinnacle on a beeline for an experienced player).</li>
+<li><strong>One-click build import is real</strong> — when you bookmark a build, prefer creators who publish to a tool that adopts the in-game format.</li>
+<li>Pinnacle attempts being <strong>infinite per fragment</strong> changes farming math: no more over-preparing; first attempt is meant to be hard.</li>
+<li>Parry/evasion/strength outcomes via Verisium bench mean <strong>low-level uniques can graduate into endgame</strong>; collect <strong>Kalguuran</strong> uniques you&rsquo;d previously have shelved.</li>
+<li>Plan <strong>multiple Atlas Master loadouts</strong> for different map types — that&rsquo;s where build choice on the Atlas now lives.</li>
+<li>The team is explicit that <strong>streamers ≠ average pace.</strong> If your boss kills are 30s, you&rsquo;re well above the 119s telemetry median; balance discussions are calibrated to that.</li>
+</ul>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="okns1gp" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>LancingLash</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="okns1gp" class="commentText"><p>They said armor/es hybrid has the highest death rate. Not armor</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="oknu0y7" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>JekoJeko9</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="oknu0y7" class="commentText"><p>While I understand the value gen AI has with making summaries like these quickly, people posting them should take a few minutes to slim read them for fact checking and such. Some points here don&rsquo;t make any sense at all (wtf is &lsquo;I Have Winter&rsquo;)?</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="oknuaof" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Kekke77</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="oknuaof" class="commentText"><p>removed it, was wierdly transcripted by youtube, probably meant &ldquo;eye of winter&rdquo;</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="oknwk8y" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>DiligentIndustry6461</div>
+        <div>1 | 40 minutes ago </div>
+      </div>
+      <label for="oknwk8y" class="commentText"><p>I think they were right on the early scaling of it, when I was playing armor/es on Druid and got it rolling with higher values and armor applies to elemental damage, it felt really tanky. I was a piece of paper early on though and took a lot of playing around with talents and pathing, also probably taking more defensive nodes than other builds</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="okntzr4" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Kekke77</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="okntzr4" class="commentText"><p>thanks, fixed!</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="oknt82d" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Ricenbacker</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="oknt82d" class="commentText"><p><strong>Pinnacle boss attempts are now infinite once the fragment is earned</strong> </p>
+
+<p>YES</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="oknx0zm" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Keljhan</div>
+        <div>1 | 38 minutes ago </div>
+      </div>
+      <label for="oknx0zm" class="commentText"><p>By &ldquo;help with formatting&rdquo; I assume you mean &ldquo;write the entire post&rdquo; right?  Including the part about helping with formatting?</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="oknzhy1" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>saldagmac</div>
+        <div>1 | 27 minutes ago </div>
+      </div>
+      <label for="oknzhy1" class="commentText"><p>at least this one doesn&rsquo;t mention the highly anticipated Druid coming out -_-<br>
+But yeah 99% chance this post was generated by an ai</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="oknzc21" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>M3mentoMori</div>
+        <div>1 | 27 minutes ago </div>
+      </div>
+      <label for="oknzc21" class="commentText"><blockquote>
+<p>Sail far enough into the ocean and you can find Ortho (the &ldquo;apocalypse&rdquo; beast) — a pure Easter egg until acts 5–6 ship.</p>
+</blockquote>
+
+<p>Not &lsquo;Ortho&rsquo;, Oriath. It&rsquo;s the name of the island, not the Beast (which is just called The Beast).</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="oknzq31" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Kekke77</div>
+        <div>1 | 26 minutes ago </div>
+      </div>
+      <label for="oknzq31" class="commentText"><p>ty, updated</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="oknxzc2" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>HappyHateBot</div>
+        <div>1 | 34 minutes ago </div>
+      </div>
+      <label for="oknxzc2" class="commentText"><p>Glad to see the focus on long term game health vs. Short term gains. That&rsquo;s part of what made PoE1 feel good for as long as it did for me, and is honestly a more successful strategy. Cheers for the summary, mate!</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="oko06o3" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>devkdup</div>
+        <div>1 | 24 minutes ago </div>
+      </div>
+      <label for="oko06o3" class="commentText"><p>“A class takes longer than one cycle” is such a horseshit answer considering this last “cycle” was 6 months and they have certainly been working on unreleased classes long before that.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="oko0yhz" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Farnsen</div>
+        <div>1 | 20 minutes ago </div>
+      </div>
+      <label for="oko0yhz" class="commentText"><p>Trading a 2,5 hours long Video for a 1,5 hours long Reddit post. <sup>10</sup>&frasl;<sub>10</sub> would ready again!</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="oko1hbf" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Ok-Blueberry-1412</div>
+        <div>1 | 18 minutes ago </div>
+      </div>
+      <label for="oko1hbf" class="commentText"><p>The possibility of mid season balancing is huge. I really hated how they knew about the snake exploit of the Temple right after it was released, and chose to keep it and fuck the economy for the entire season.</p>
+
+<p>I&rsquo;m also at a loss about the whole life HP thing. Looks like another season of ES. ES regen isn&rsquo;t even the issue, it&rsquo;s that people can get like 50k ES and faceroll the entire game.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="oknt1gu" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Cyony</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="oknt1gu" class="commentText"><p>SICK</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="oknxocw" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Earthboundplayer</div>
+        <div>1 | 35 minutes ago </div>
+      </div>
+      <label for="oknxocw" class="commentText"><p>Tbh I never deep dived into how leech worked. Does leech in 0.4 stack from multiple hits? And now you&rsquo;re only going to have one leech source active at a single time?</p>
+
+<p>I know it was mega op for spell casting but I mostly care about it from an attack pov. It sounds like it should still be pretty good if you&rsquo;re hitting hard. If the cap is 100k and I have a single source of 7% leech that seems like it should pretty instantly recover my mana in most cases.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="oko134b" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>HappyHopping</div>
+        <div>1 | 20 minutes ago </div>
+      </div>
+      <label for="oko134b" class="commentText"><p>Yes, that&rsquo;s how it works currently and part of the reason why the notable Fast Metabolism is so strong. With only one source leech Fast Metabolism will be doing almost nothing. Attacks that cause big hits will give more leech than attacks that do multiple smaller hits.</p>
+
+<p>While this is the targeted nerf for Blood mage this also massively nerfs armour builds. Armour builds will no longer be able to quickly recover damage that they take. It also nerfs mana leech so attack builds that rely on that will become far more mana hungry.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="oko36h0" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Earthboundplayer</div>
+        <div>1 | 10 minutes ago </div>
+      </div>
+      <label for="oko36h0" class="commentText"><p>I guess it depends on the cap but if I can hit for 100k and I have 7% leech that&rsquo;s still like 7k life/mana per second right? That seems like it should be fine for most cases.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="oknym5t" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ValdurElDuren</div>
+        <div>1 | 31 minutes ago </div>
+      </div>
+      <label for="oknym5t" class="commentText"><p>Thx</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="oknzoxr" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Demonkaze</div>
+        <div>1 | 26 minutes ago </div>
+      </div>
+      <label for="oknzoxr" class="commentText"><p>⁠Mouse+keyboard / controller hot-swap is enough for me, I’m truly super happy!</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="oko1ndb" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>vidhartha</div>
+        <div>1 | 17 minutes ago </div>
+      </div>
+      <label for="oko1ndb" class="commentText"><p>They&rsquo;ve said this before. And failed before</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="oko25nm" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>popsmash</div>
+        <div>1 | 15 minutes ago </div>
+      </div>
+      <label for="oko25nm" class="commentText"><p>This whole post was AI generated despite what OP says, but if you go to 48:24 in the video it sounds like Johnathan says it will arrive in 1.0. Little hard to hear but I think that’s what he was saying</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="oko04w4" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Kyoufu2</div>
+        <div>1 | 24 minutes ago </div>
+      </div>
+      <label for="oko04w4" class="commentText"><p>This reads like an AI summary. I recommend watching the Q&amp;A instead.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="oko10jd" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Altec1576</div>
+        <div>1 | 20 minutes ago </div>
+      </div>
+      <label for="oko10jd" class="commentText"><p>It is. That&rsquo;s why there&rsquo;s a billion &ldquo; — &ldquo;</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="oko2bpu" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>BoyMayorOfSecondLife</div>
+        <div>1 | 14 minutes ago </div>
+      </div>
+      <label for="oko2bpu" class="commentText"><p>The initial reveal had me a little worried they were just kind of throwing a bunch of stuff at the wall that felt cool for the endgame revamp without making something super cohesive, but this assuaged a lot of that fear. They&rsquo;re approaching this with a real philosophy to the decisions being made, and I&rsquo;m willing to trust the process and enjoy the ride.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="oknrd65" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>PoE_Acronym_Bot</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="oknrd65" class="commentText"><p>I noticed some Path of Exile keywords in this post:</p>
+
+<ul>
+<li><strong>DoT</strong> - Damage over time (<a href="https://www.poe2wiki.net/wiki/Damage_over_time" target="_blank">Wiki</a>)</li>
+<li><strong>eHP</strong> - Effective Health / Hit Points / Pool — total damage that can be taken before death, after all mitigations (e.g. combination of Life, Energy Shield, damage avoidance and mitigation) (<a href="https://www.poe2wiki.net/wiki/Life" target="_blank">Wiki</a>)</li>
+<li><strong>ES</strong> - Energy Shield (<a href="https://www.poe2wiki.net/wiki/Energy_Shield" target="_blank">Wiki</a>)</li>
+<li><strong>HoT</strong> - Herald of Thunder (<a href="https://www.poe2wiki.net/wiki/Herald_of_Thunder" target="_blank">Wiki</a>)</li>
+<li><strong>HP</strong> - Hit Points — colloquial term for Life (<a href="https://www.poe2wiki.net/wiki/Life" target="_blank">Wiki</a>)</li>
+<li><strong>Ritual</strong> - Ritual endgame mechanic (<a href="https://www.poe2wiki.net/wiki/Ritual" target="_blank">Wiki</a>)</li>
+</ul>
+
+<hr>
+
+<p>^(I am a bot.) ^| <a href="https://acronym.sidia.net/acronyms/pathofexile2" target="_blank">^(All acronyms)</a> ^| <a href="https://acronym.sidia.net/suggest/pathofexile2" target="_blank">^(Suggest)</a></p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="oknxuf6" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>JohmWickkk</div>
+        <div>1 | 34 minutes ago </div>
+      </div>
+      <label for="oknxuf6" class="commentText"><p>Add life to the tree Johnathan. Every other defense can be scaled on the tree. Damn dude.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="oko04c7" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Mr_Poulet</div>
+        <div>1 | 24 minutes ago </div>
+      </div>
+      <label for="oko04c7" class="commentText"><p>Controller keyboard hotswap is big if trully coming this league.</p>
+
+<p>I hope they allow dual input source, like using sticks and mouse at the same time allowing steam deck and controller analog joystick / track pad hybrid gameplay</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="oko1g0z" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>vidhartha</div>
+        <div>1 | 18 minutes ago </div>
+      </div>
+      <label for="oko1g0z" class="commentText"><p>Feels great to be the &ldquo;running joke&rdquo;.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="oko4i7c" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Marsdreamer</div>
+        <div>1 | 4 minutes ago </div>
+      </div>
+      <label for="oko4i7c" class="commentText"><p>Did you have chat GPT watch the video or something? lmao</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="oknsyyc" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>dude123nice</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="oknsyyc" class="commentText"><p>No swords?</p>
+
+<p><a href="https://i.redd.it/2yan6ao7rxzg1.gif" target="_blank">https://i.redd.it/2yan6ao7rxzg1.gif</a></p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
