@@ -1,0 +1,987 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.selfPostImage {
+  width: 100%;
+  height: auto;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/nba/comments/1t99sia/oc_happy_draft_lottery_day_these_are_the_nbas/"><p>[OC] Happy Draft Lottery Day. These are the NBA&rsquo;s luckiest teams.</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <p><a href="https://preview.redd.it/ecrizxjtub0h1.png?width=1440&amp;format=png&amp;auto=webp&amp;s=379ca4db630e3d384ccc14b0362d85395e4b2a3a" target="_blank">https://preview.redd.it/ecrizxjtub0h1.png?width=1440&amp;format=png&amp;auto=webp&amp;s=379ca4db630e3d384ccc14b0362d85395e4b2a3a</a></p>
+
+<p>￼​Reposting from a series of graphics I did in r/NBA_Draft about a month ago <a href="https://www.reddit.com/r/NBA_Draft/comments/1si45vt/oc_the_nets_have_had_the_4th_luckiest_lottery/" target="_blank">here</a>.</p>
+
+<p>TL;DR if you don&rsquo;t want to go into the full methodology, I looked at the full history of the lottery (including changes in how the odds were determined, and who ultimately ended up making a pick) and used this expected value of draft picks based off of estimated plus-minus over replacement. 1st pick has a ARC value of 142.2, 2nd is 117.6, etc.</p>
+
+<p>Then I wrote a regression to figure out where teams statistically would pick (eg. this year the last-place Wizards predicted pick is 2.73) and compared to it where they actually picked. By calculating the difference between the ARC value of the expected pick and the team&rsquo;s actual pick slot, we can really get a sense for who are actually the luckiest teams in the lotto.</p>
+
+<p>In short:</p>
+
+<ul>
+<li>the Sixers, Cavs, and Spurs are the luckiest teams.</li>
+<li>Charlotte is also historically lucky but their luck is super concentrated in the 90s.</li>
+<li>The Spurs are rarely in the lottery, which makes their high score even more of an outlier.</li>
+<li>The Nets and Clips would be much higher, but they gave away most of their high value picks.</li>
+<li>Wiz and Kings may seem cursed, but they are just mediocre</li>
+<li>Mavs still overall &ldquo;unlucky&rdquo; even after getting Flagg last year.</li>
+</ul>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ol0gmz0" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>JoeFortitude | Pistons</div>
+        <div>42 | an hour ago </div>
+      </div>
+      <label for="ol0gmz0" class="commentText"><p>Is Spurs culture based on&hellip; luck?</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="ol0j8vj" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>PhoenixBloodline</div>
+        <div>25 | an hour ago </div>
+      </div>
+      <label for="ol0j8vj" class="commentText"><p>Now imagine if this graph was somehow weighted by strength of #1 picks. Any team drafting David Robinson, Tim Duncan and Wemby is going to have success.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="ol0ilq9" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>stillmebeaches</div>
+        <div>2 | an hour ago </div>
+      </div>
+      <label for="ol0ilq9" class="commentText"><p>Destiny. Everybody knew Pop was gonna get Wemby: outlier C with incredible abilities from a foreign land? It was always goin there</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="ol0ozrk" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>BananaRepublic_BR | Spurs</div>
+        <div>1 | 21 minutes ago </div>
+      </div>
+      <label for="ol0ozrk" class="commentText"><p>Do you just not know that David Robinson and Tim Duncan are Americans?</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="ol0s4k9" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ktpkchu | Mavericks</div>
+        <div>1 | 5 minutes ago </div>
+      </div>
+      <label for="ol0s4k9" class="commentText"><p>duncan is technically american but the virgin islands might as well not be a part of the US lmao</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="ol0jiwi" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>wawacryin21 | Spurs</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="ol0jiwi" class="commentText"><p>like Master Chief</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ol0g65c" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>JaysonDeflatum | Heat</div>
+        <div>10 | an hour ago </div>
+      </div>
+      <label for="ol0g65c" class="commentText"><p>Trust me, we know how unlucky we are</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="ol0oe4x" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Outside-Prize5731 | Lakers</div>
+        <div>1 | 24 minutes ago </div>
+      </div>
+      <label for="ol0oe4x" class="commentText"><p>You know i always saw how you guys said that you are always getting fucked in the lottery, but this&hellip; really puts it in perspective</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ol0e2cr" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>VGstuffed | Lakers</div>
+        <div>6 | an hour ago </div>
+      </div>
+      <label for="ol0e2cr" class="commentText"><blockquote>
+<p>Washington Wizards: Not bad, just cursed at drafting</p>
+</blockquote>
+
+<p>AKA Johnny Davis</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ol0gfj3" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>MoreAbbreviations404</div>
+        <div>7 | an hour ago </div>
+      </div>
+      <label for="ol0gfj3" class="commentText"><p>I’m biased but I’m shocked the Knicks aren’t even lower.  We have been paying for that Ewing lottery for 40 years.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="ol0ofb5" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>HokageEzio | Knicks</div>
+        <div>1 | 23 minutes ago </div>
+      </div>
+      <label for="ol0ofb5" class="commentText"><p>They jumped 2 spots for Ewing. Nuggets and Heat have never jumped. Only difference really.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ol0gqqz" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Drooper99 | Jazz</div>
+        <div>5 | an hour ago </div>
+      </div>
+      <label for="ol0gqqz" class="commentText"><p>I want to see the per draw list</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="ol0jowu" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>capn_trips | Bullets</div>
+        <div>11 | an hour ago </div>
+      </div>
+      <label for="ol0jowu" class="commentText"><p>Sure thing:</p>
+
+<table>
+<thead>
+<tr>
+<th align="left">Selecting franchise</th>
+<th align="left">Lottery picks used</th>
+<th align="left">ARC luck vs expected per pick</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">San Antonio Spurs</td>
+<td align="left">11</td>
+<td align="left">17.7</td>
+</tr>
+
+<tr>
+<td align="left">Los Angeles Lakers</td>
+<td align="left">7</td>
+<td align="left">12.55</td>
+</tr>
+
+<tr>
+<td align="left">Philadelphia Sixers</td>
+<td align="left">20</td>
+<td align="left">12.42</td>
+</tr>
+
+<tr>
+<td align="left">Cleveland Cavaliers</td>
+<td align="left">22</td>
+<td align="left">9.6</td>
+</tr>
+
+<tr>
+<td align="left">Charlotte Hornets</td>
+<td align="left">27</td>
+<td align="left">5.6</td>
+</tr>
+
+<tr>
+<td align="left">New Orleans Pelicans</td>
+<td align="left">14</td>
+<td align="left">5.41</td>
+</tr>
+
+<tr>
+<td align="left">Chicago Bulls</td>
+<td align="left">17</td>
+<td align="left">5.27</td>
+</tr>
+
+<tr>
+<td align="left">Orlando Magic</td>
+<td align="left">24</td>
+<td align="left">4.98</td>
+</tr>
+
+<tr>
+<td align="left">Brooklyn Nets</td>
+<td align="left">13</td>
+<td align="left">4.84</td>
+</tr>
+
+<tr>
+<td align="left">Atlanta Hawks</td>
+<td align="left">18</td>
+<td align="left">4.68</td>
+</tr>
+
+<tr>
+<td align="left">Milwaukee Bucks</td>
+<td align="left">17</td>
+<td align="left">4.11</td>
+</tr>
+
+<tr>
+<td align="left">Oklahoma City Thunder</td>
+<td align="left">19</td>
+<td align="left">3.6</td>
+</tr>
+
+<tr>
+<td align="left">Houston Rockets</td>
+<td align="left">13</td>
+<td align="left">3.58</td>
+</tr>
+
+<tr>
+<td align="left">Los Angeles Clippers</td>
+<td align="left">24</td>
+<td align="left">3.4</td>
+</tr>
+
+<tr>
+<td align="left">Boston Celtics</td>
+<td align="left">16</td>
+<td align="left">2.32</td>
+</tr>
+
+<tr>
+<td align="left">Toronto Raptors</td>
+<td align="left">18</td>
+<td align="left">2.09</td>
+</tr>
+
+<tr>
+<td align="left">Portland Trail Blazers</td>
+<td align="left">14</td>
+<td align="left">1.89</td>
+</tr>
+
+<tr>
+<td align="left">Washington Wizards</td>
+<td align="left">20</td>
+<td align="left">1.8</td>
+</tr>
+
+<tr>
+<td align="left">Memphis Grizzlies</td>
+<td align="left">16</td>
+<td align="left">1.8</td>
+</tr>
+
+<tr>
+<td align="left">Phoenix Suns</td>
+<td align="left">18</td>
+<td align="left">0.4</td>
+</tr>
+
+<tr>
+<td align="left">Sacramento Kings</td>
+<td align="left">28</td>
+<td align="left">0.32</td>
+</tr>
+
+<tr>
+<td align="left">Dallas Mavericks</td>
+<td align="left">15</td>
+<td align="left">-0.28</td>
+</tr>
+
+<tr>
+<td align="left">Indiana Pacers</td>
+<td align="left">13</td>
+<td align="left">-0.91</td>
+</tr>
+
+<tr>
+<td align="left">Golden State Warriors</td>
+<td align="left">23</td>
+<td align="left">-1.36</td>
+</tr>
+
+<tr>
+<td align="left">Utah Jazz</td>
+<td align="left">13</td>
+<td align="left">-1.83</td>
+</tr>
+
+<tr>
+<td align="left">Minnesota Timberwolves</td>
+<td align="left">23</td>
+<td align="left">-1.9</td>
+</tr>
+
+<tr>
+<td align="left">Detroit Pistons</td>
+<td align="left">17</td>
+<td align="left">-2.67</td>
+</tr>
+
+<tr>
+<td align="left">New York Knicks</td>
+<td align="left">13</td>
+<td align="left">-4.55</td>
+</tr>
+
+<tr>
+<td align="left">Denver Nuggets</td>
+<td align="left">14</td>
+<td align="left">-5.42</td>
+</tr>
+
+<tr>
+<td align="left">Miami Heat</td>
+<td align="left">10</td>
+<td align="left">-8.24</td>
+</tr>
+</tbody>
+</table>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ol0fmr7" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>HokageEzio | Knicks</div>
+        <div>6 | an hour ago </div>
+      </div>
+      <label for="ol0fmr7" class="commentText"><p>Look at how rigged the NBA is for the Knicks. It&rsquo;s a conspiracy I tell you.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="ol0lglm" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>testiculardescendant | Knicks</div>
+        <div>3 | 38 minutes ago </div>
+      </div>
+      <label for="ol0lglm" class="commentText"><p>If we could just hit on one of our first round picks instead of 2nd rounders or someone we traded for.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ol0k1a1" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Not_Different | Hornets</div>
+        <div>3 | an hour ago </div>
+      </div>
+      <label for="ol0k1a1" class="commentText"><p>Charlotte Hornets are a distinct franchise from the Charlotte Hornets of now. The Hornets now are lucky enough to get second once in a while if it’s a one man draft behind Dwight, Davis, Wemby and that’s about it </p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ol0onxb" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Outside-Prize5731 | Lakers</div>
+        <div>1 | 22 minutes ago </div>
+      </div>
+      <label for="ol0onxb" class="commentText"><p>You know the Clippers have the chance to do the funniest thing today, considering this graphic</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ol0faib" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Balla_Calla | Heat</div>
+        <div>2 | an hour ago </div>
+      </div>
+      <label for="ol0faib" class="commentText"><p>Love content like this.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ol0izut" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Indy_Darrin | Pacers</div>
+        <div>2 | an hour ago </div>
+      </div>
+      <label for="ol0izut" class="commentText"><p>I&rsquo;m prepared for disappointment.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ol0lbnd" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>berkilak420 | Clippers</div>
+        <div>2 | 39 minutes ago </div>
+      </div>
+      <label for="ol0lbnd" class="commentText"><p>The blurb about the Clips shipping their best picks to other teams better not be some sort of foreshadowing for today.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ol0i6ls" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>stillmebeaches</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="ol0i6ls" class="commentText"><p>I&rsquo;m still pissed off about that Cleveland BS</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ol0ksea" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>zed-reeco | Timberwolves</div>
+        <div>1 | 41 minutes ago </div>
+      </div>
+      <label for="ol0ksea" class="commentText"><p>Can you share no of lottery picks per team too?</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="ol0m40a" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ThinReply2047 | Thunder</div>
+        <div>1 | 35 minutes ago </div>
+      </div>
+      <label for="ol0m40a" class="commentText"><p>OP did in one of the comments</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ol0ndyb" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Frozen_Shades | Celtics</div>
+        <div>1 | 29 minutes ago </div>
+      </div>
+      <label for="ol0ndyb" class="commentText"><p>Trades are doing more heavy lifting than anything else.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ol0nx9w" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ianoble</div>
+        <div>1 | 26 minutes ago </div>
+      </div>
+      <label for="ol0nx9w" class="commentText"><p>Kings: Yikes</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ol0o1eq" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>HolyRomanPrince | Lakers</div>
+        <div>1 | 25 minutes ago </div>
+      </div>
+      <label for="ol0o1eq" class="commentText"><p>Re: Charlotte I kinda just did an informal look at their last 15ish lotteries and they have been incredibly unlucky. Almost every single time they’ve fallen in the draft it was to fall right outside the obvious superstar. If they move up it’s right outside the obvious superstar pick. They’ve made terrible picks but they are like three slots from having a dynasty in the 2010s if they just got lucky and did the most obvious normal thing.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ol0pff6" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Ven0m889 | 76ers</div>
+        <div>1 | 18 minutes ago </div>
+      </div>
+      <label for="ol0pff6" class="commentText"><p>We may be the luckiest with some of these picks but we are also the unluckiest because our two back to back consensus #1 picks became generational busts who couldn’t shoot a basketball if their lives depended on it.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ol0q3lo" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>SDcowboy82 | San Diego Rockets</div>
+        <div>1 | 15 minutes ago </div>
+      </div>
+      <label for="ol0q3lo" class="commentText"><p>Just hit tankathon 1 time. The order:</p>
+
+<p>1 Sac</p>
+
+<p>2 Dal</p>
+
+<p>3 Was</p>
+
+<p>4 GS</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ol0dpha" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Alexcox95 | Heat</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="ol0dpha" class="commentText"><p>Come on Adam do the Heat a solid</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ol0m8m5" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ThinReply2047 | Thunder</div>
+        <div>1 | 34 minutes ago </div>
+      </div>
+      <label for="ol0m8m5" class="commentText"><p>&ldquo;When in doubt, trade with LAC&rdquo; oh boy i&rsquo;m like a kid on Christmas today</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
