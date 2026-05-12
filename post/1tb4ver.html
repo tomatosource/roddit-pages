@@ -1,0 +1,348 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.selfPostImage {
+  width: 100%;
+  height: auto;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/PathOfExile2/comments/1tb4ver/tool_made_a_free_browser_converter_path_of/"><p>[Tool] Made a free browser converter: Path of Building → in-game .build file (PoE2)</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <p>Hey all,</p>
+
+<p>  Built a small browser tool that converts a Path of Building code (or <a href="http://pobb.in" target="_blank">http://pobb.in</a> URL) into the new .build file format the<br>
+  in-game Build Planner reads. Paste, download, drop the file into your BuildPlanner folder, pick it from the in-game<br>
+  menu.</p>
+
+<p>  Live: <a href="https://chesler410.github.io/poe2-build-forge/" target="_blank">https://chesler410.github.io/poe2-build-forge/</a></p>
+
+<p>  What it does</p>
+
+<p>  - Accepts a raw PoB export string or a <a href="http://pobb.in" target="_blank">http://pobb.in</a> URL<br>
+  - Decodes the wire format (URL-safe base64 + zlib XML)<br>
+  - Maps PoB&rsquo;s tree node IDs to GGG&rsquo;s passive skill IDs<br>
+  - Outputs a schema-validated .build JSON file ready for the BuildPlanner folder</p>
+
+<p>  Notes</p>
+
+<p>  - Free, open source (MIT), browser-only — no signup, no backend, no tracking<br>
+  - Conversion is fully client-side; nothing leaves your machine<br>
+  - Source: <a href="https://github.com/chesler410/poe2-build-forge" target="_blank">https://github.com/chesler410/poe2-build-forge</a></p>
+
+<p>  Heads up on the build process: I paired with an AI assistant (Anthropic&rsquo;s Claude) — I drove design and testing, AI<br>
+  wrote most of the TypeScript. Every commit credits the assistant in its message and the repo is fully open if anyone<br>
+  wants to inspect.</p>
+
+<p>  Early days — would love feedback. If something looks off when you try it with your own build, drop a comment or open a<br>
+   GitHub issue. The site footer shows version + commit SHA, which is gold for bug reports.</p>
+
+<p>  Thanks.</p>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ole5pif" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>BelkaMateusz</div>
+        <div>1 | 17 minutes ago </div>
+      </div>
+      <label for="ole5pif" class="commentText"><p>Does it also show the order in which passive tree nodes should be taken in the .build file?</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="ole7b99" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Chesler410</div>
+        <div>1 | 10 minutes ago </div>
+      </div>
+      <label for="ole7b99" class="commentText"><p>Not yet. Currently the converter picks the build&rsquo;s &ldquo;latest&rdquo; tree spec and dumps every allocated passive without per-node ordering. PoB does encode the info via multiple specs per build (Campaign Start, Early Campaign, Endgame, etc.), so the data is there; the converter just doesn&rsquo;t diff them yet to derive level intervals. It&rsquo;s a real feature gap and I&rsquo;ll add it to the queue. Thanks for raising it.</p>
+
+<p>Edit: Just shipped it! v0.4.0 walks all PoB tree specs and derives a level_interval for each passive from the earliest spec it appears in. So if your build has multiple specs (Campaign Start / Mid / Endgame, etc.), nodes added in later specs get tagged with [startLevel, 100] intervals; first-spec nodes stay always-shown. try a build with several specs and expand the JSON preview to see the intervals.</p>
+
+<p>The level distribution is currently dumb-but-honest (evenly across 1–100 by spec index). If your titled specs deserve smarter inference, let me know.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ole2o2h" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>polki92</div>
+        <div>1 | 30 minutes ago </div>
+      </div>
+      <label for="ole2o2h" class="commentText"><p>I don&rsquo;t get how you &ldquo;tested&rdquo; it since new patch including this feature will release in more than 2 weeks ?</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="ole3q7t" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Chesler410</div>
+        <div>1 | 25 minutes ago </div>
+      </div>
+      <label for="ole3q7t" class="commentText"><p>That’s fair. I’m developing against the JSON structure for Build Planner (<a href="https://www.pathofexile.com/developer/docs/game#buildplanner" target="_blank">https://www.pathofexile.com/developer/docs/game#buildplanner</a>). Real in-game testing can’t happen until the 29th, unless GGG shares more detail on the process for PC and console. The forge is essentially a converter for builds.​​​​​​​​​​​​​​​​</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="oldyys8" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>PoE_Acronym_Bot</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="oldyys8" class="commentText"><p>I noticed some Path of Exile keywords in this post:</p>
+
+<ul>
+<li><strong>PoB</strong> - Path of Building, an external tool used to simulate and plan character builds</li>
+</ul>
+
+<hr>
+
+<p>^(I am a bot.) ^| <a href="https://acronym.sidia.net/acronyms/pathofexile2" target="_blank">^(All acronyms)</a> ^| <a href="https://acronym.sidia.net/suggest/pathofexile2" target="_blank">^(Suggest)</a></p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
