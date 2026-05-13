@@ -1,0 +1,631 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.selfPostImage {
+  width: 100%;
+  height: auto;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/PathOfExile2/comments/1tbn17p/my_feedback_so_far_after_playing_warrior_every/"><p>My feedback so far after playing warrior every season.</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <p><strong>Maces vs. Shapeshifter Bear: Design Comparison and Suggestions</strong></p>
+
+<p><strong>Maces</strong></p>
+
+<ul>
+<li>Full of noob traps, both in feel and in reality</li>
+<li>No straightforward paths to power or relevancy</li>
+<li>Effects and gems are hard to quantify (e.g. Aftershock, Ancestral)</li>
+<li>Unnecessary complexity hidden in obscure multi-part interactions</li>
+<li>Easy to invest heavily and get nothing in return</li>
+<li>Hidden debuffs (e.g. dual-wield attack speed penalty) and strange negatives on nodes</li>
+<li>Only viable at extreme wealth (mirrors) or with perfectly optimal pathing</li>
+</ul>
+
+<p><strong>Shapeshifter Bear</strong></p>
+
+<ul>
+<li>Almost no noob traps; everything feels like progress</li>
+<li>Straightforward paths to power and relevancy</li>
+<li>Effects and gems are intuitive (stacking Rage = good; Increased Duration = good; Walking Calamity = good)</li>
+<li>Interactions are obvious and self-contained</li>
+<li>Easy to invest and see massive returns; all nodes feel great</li>
+<li>Essentially no frustration</li>
+<li>Very strong with just one affordable unique; doesn&rsquo;t scale much further with wealth or optimal pathing</li>
+</ul>
+
+<p><strong>Suggestions (Smith of Kitava Main)</strong></p>
+
+<p><strong>1. Bring the Bear&rsquo;s Passive Identity to Warrior</strong></p>
+
+<p>The bear&rsquo;s passive bundle (Rage, Armour applying to Elemental Damage, passive Armour per level, Endurance Charges per Rage spent) was a huge success. Transpose this to Warrior via new skills:</p>
+
+<ul>
+<li><strong>Bear Heart</strong> <em>(100 Spirit)</em> - Grants all passive bear effects when using a mace, sword, axe or shield. Cannot use Bear skills.</li>
+<li><strong>Warrior Strength</strong> <em>(30 Spirit)</em> - If Strength is your highest attribute: +10 Armour per level, +0.05% max life regen per level, 30% Armour applies to Elemental Damage.</li>
+<li><strong>Enduring</strong> <em>(30 Spirit)</em> - If Strength is your highest attribute: gain 1 Endurance Charge per 15 Rage spent.</li>
+<li><strong>Against the Chaos</strong> <em>(30 Spirit)</em> - If Strength is your highest attribute: 33% of Armour applies to Chaos Damage, receive 33% less damage from DoTs.</li>
+<li><strong>Fire Combat</strong> <em>(30 Spirit)</em> - If Strength is your highest attribute: 25% of incoming Physical Damage taken as Fire Damage, gain +25% as extra Fire Damage.</li>
+<li><strong>Shapeshifter Heart</strong> <em>(Keystone)</em> - Always considered in Shapeshifter form without actually transforming. Cannot equip Talismans. +8 maximum Rage.</li>
+</ul>
+
+<p><strong>2. Item Changes for a Bear-Like Progression Feel</strong></p>
+
+<ul>
+<li>New endgame uniques targeting distinct playstyles: Glory, Fire, Fissure, Ancestral Cry, Slam, Jump, etc.</li>
+<li>New meaningful damage sources that scale off <strong><em>base</em></strong> Armour and Strength requirements of gloves, helmet and boots.</li>
+<li>Mace early skills buffed around immediate impact for the average player. Big slams, fast attacks, rage spending for sustained destruction.</li>
+</ul>
+
+<p><strong>3. Smith of Kitava Specific Changes</strong></p>
+
+<ul>
+<li>Allow socketing a unique body armour into the ascendancy tree to copy one of its lines onto your normal body armour. Only 1 line.</li>
+<li>Rework Smith and Companion nodes around Ancestral Cry, Glory, Fire or Thorns.</li>
+<li>Rework Fire Spell on Hit to trigger based on hit power rather than hit frequency. One powerful strike should proc it multiple times, not the current counterintuitive frequency-based model.</li>
+</ul>
+
+<p>So far I think that with those changes a lot of the issues I observe would not exist anymore. There has never been a big patch in this game where armour was not buffed, and I feel Warrior was launched in such a strangely weak state that it surprised me when I saw how good it felt to play Bear compared to Mace. Everything just&hellip; fit together. Then I decided to try Mace again and caught myself in the same loop of buying a ton of items, building a bunch of support gems, and still not dealing the correct damage. Dying too much. Not having enough Strength for this or that, etc.</p>
+
+<p>Its extremely EASY to waste your time with maces. Not so much with Bear. Thank you for reading! This is my feedback!</p>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="olhxfch" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Queen__Natalie</div>
+        <div>1 | 25 minutes ago </div>
+      </div>
+      <label for="olhxfch" class="commentText"><p>Maces were prob the first weapon they made and talismans are the last, and yeah, it shows.</p>
+
+<p>Good post</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="olhy8gi" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>charlescleivin</div>
+        <div>1 | 20 minutes ago </div>
+      </div>
+      <label for="olhy8gi" class="commentText"><p>Thank you so much for reading and commenting!</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="oli1192" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Aeleis</div>
+        <div>1 | a minute ago </div>
+      </div>
+      <label for="oli1192" class="commentText"><p>True true.</p>
+
+<p>They did emphasize wanting to fix what they already have so maybe they&rsquo;ll tackle this in the coming months.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="olhy5nh" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>gertsferds</div>
+        <div>1 | 20 minutes ago </div>
+      </div>
+      <label for="olhy5nh" class="commentText"><p>Only viable with 20 mirrors? Lmao ok</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="olhyeqh" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>charlescleivin</div>
+        <div>1 | 19 minutes ago </div>
+      </div>
+      <label for="olhyeqh" class="commentText"><p>I was considering the current inflated market, i edited the post. Thanks for pointing it out!</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="olhzaqv" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>bamboo_of_pandas</div>
+        <div>1 | 13 minutes ago </div>
+      </div>
+      <label for="olhzaqv" class="commentText"><p>Rolling slam and bone shatter are great level 1 gems for returning players. They feel like absolute bait for new players. Earthquake has zero business being a level 1 gem for anyone.</p>
+
+<p>Also I feel like the best thing bear form did was make the basic attack feel like a skill so players are more willing to weave it into their combo. Maces might need something similar to encourage new players to use mace strike more when they are just starting out.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="olhzja3" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>charlescleivin</div>
+        <div>1 | 12 minutes ago </div>
+      </div>
+      <label for="olhzja3" class="commentText"><p>100%.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="olhzsct" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Local_Food9567</div>
+        <div>1 | 10 minutes ago </div>
+      </div>
+      <label for="olhzsct" class="commentText"><p>EQ and boneshatter are both excellent right from level 1</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="oli01w7" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Local_Food9567</div>
+        <div>1 | 8 minutes ago </div>
+      </div>
+      <label for="oli01w7" class="commentText"><p>I have played Mace&rsquo;s almost exclusively and I think I disagree with every single point lol.</p>
+
+<p>A little bit of reading and testing stuff out as you go answers most of the points you have. Maybe you just don&rsquo;t enjoy them?</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="olhzo6w" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Living_Toe1173</div>
+        <div>1 | 11 minutes ago </div>
+      </div>
+      <label for="olhzo6w" class="commentText"><p>Op this was a well thought out post.  I’m a relative noob when it comes to POE 2.  Maybe some scaling numbers to put things into perspective? Also, how far you got in maps/league compared to the other?<br>
+Also, a possible build would make things easy to see scaling as well.<br>
+Thanks again for the well thought out post</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="oli0cus" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>viscere</div>
+        <div>1 | 6 minutes ago </div>
+      </div>
+      <label for="oli0cus" class="commentText"><p>Based idea of this topic is good. Might have to rethink and turned down some of them but it is better that what we had right now.</p>
+
+<p>All though, im pretty sure this wont stay at is for to long, mace are designed to break armor with heavy strike, once others weapon kind are out, this mechanics migth give really nice open windows.</p>
+
+<p>Lets be patient boys</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="olhvf81" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>[deleted]</div>
+        <div>1 | 38 minutes ago </div>
+      </div>
+      <label for="olhvf81" class="commentText"><p>[deleted]</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="olhw2zm" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>charlescleivin</div>
+        <div>1 | 34 minutes ago </div>
+      </div>
+      <label for="olhw2zm" class="commentText"><p>Comments like this kinda kill the vibe of providing feedback. I wrote this.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="olhxaq5" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Queen__Natalie</div>
+        <div>1 | 26 minutes ago </div>
+      </div>
+      <label for="olhxaq5" class="commentText"><p>This is clearly not ai</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="olhx3v5" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>SwitzerSweet</div>
+        <div>1 | 27 minutes ago </div>
+      </div>
+      <label for="olhx3v5" class="commentText"><p>Bulletin points = AI?</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="olhy4m3" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Howard_Jones</div>
+        <div>1 | 21 minutes ago </div>
+      </div>
+      <label for="olhy4m3" class="commentText"><p>Projecting much?</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="olhw0sj" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>BonezMD</div>
+        <div>1 | 34 minutes ago </div>
+      </div>
+      <label for="olhw0sj" class="commentText"><p>Don&rsquo;t bother GGG doesn&rsquo;t care about melee ATM. If you enjoy melee don&rsquo;t play the season.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="olhy9ft" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Howard_Jones</div>
+        <div>1 | 20 minutes ago </div>
+      </div>
+      <label for="olhy9ft" class="commentText"><p>Laughs in Druid forms&hellip;</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="oli0g6r" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>BonezMD</div>
+        <div>1 | 6 minutes ago </div>
+      </div>
+      <label for="oli0g6r" class="commentText"><p>Check out all the end game builds for Druid Forms. Just spellcasters posing as melee.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
