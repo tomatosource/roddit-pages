@@ -1,0 +1,330 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.selfPostImage {
+  width: 100%;
+  height: auto;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/PathOfExile2/comments/1tdb5ap/trying_to_reverse_engineer_monkeys_slam_damage/"><p>Trying to reverse engineer monkey&rsquo;s slam damage</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <p>First of all, i know i will be wrong, this is just for fun, i&rsquo;m trying to undestand how much Monkey/bosses will deal damage as tamed bosses on 0.5</p>
+
+<p>Second, i&rsquo;m using what is available of information, we got outdated information like 0.4 passive tree vs the 0.5 passive tree that isnt available, so it is a aproximation not a guarantee.</p>
+
+<p>Third i&rsquo;m not league starting it, i&rsquo;m a stormweaver type of guy, but i thought it was something interesting to decypher his damage since some people are saying the monkey is bait.</p>
+
+<p>Lets start with the latest Ascendancy video:</p>
+
+<p><a href="https://www.youtube.com/watch?v=86MS6GHBAOg" target="_blank">https://www.youtube.com/watch?v=86MS6GHBAOg</a></p>
+
+<p>At 6:39 mark, the damage the boss received was &ldquo;1.701.555&rdquo;, right before the monkey big slam.</p>
+
+<p>We will aproximate the damage from a frame to the other since there is too many companion/minions hitting as well.</p>
+
+<p>Next frame it goes around &ldquo;1.900.000~ ish&rdquo; again too many hits at the same time but it fits the big damage from one frame to the other.</p>
+
+<p>The can we that aproximate its final damage to be 200.000~</p>
+
+<p>Lets look to the evidences on the video.</p>
+
+<p>What it doesnt seems to count:</p>
+
+<p>- Silvan&rsquo;s Effigy has the line: &ldquo;Companions deal 91% of increased damage to your marked targets&rdquo; which seems Oloton isnt marked at the the moment of the hit<br>
+- Voltaic mark isnt on cooldown and isnt displayed on the boss debuff aswell<br>
+- Critical hit (5% base chance) and critical weakness of the source</p>
+
+<p>What is still confusing:</p>
+
+<p>- The shock status on the boss is applied on the monkey hit<br>
+- Is the player on the video using <a href="https://poe2db.tw/us/Guided_Tempest_Shrine" target="_blank">Guided Tempest Shrine</a> buff?<br>
+- If the Mighty Silverfist might get the numbers changed on his  &ldquo;GAQuadrillaBossRectSlam&rdquo;<br>
+<a href="https://poe2db.tw/us/Mighty_Silverfist" target="_blank">https://poe2db.tw/us/Mighty_Silverfist</a></p>
+
+<p>What we can infer:</p>
+
+<p>- Wild Protector +20% more minion damage<br>
+- 60% of the &ldquo;&rdquo;&ldquo;Juicy&rdquo;&ldquo;&rdquo; spear attack damage from The Catha&rsquo;s balance for 93~140 additional physical damage and 8~10 additional cold damage<br>
+- Broken armour at the monkey hit moment 8120<br>
+- Companion: Mighty Silverfist &ldquo;Minions deal 100% more damage&rdquo;<br>
+- Support gems from left to right:<br>
+   - Muster (5 minions except silverfist so 35% more damage)<br>
+   - +1 Minion lv<br>
+   - Infernal Legion(?)<br>
+   - Rage (safe to assume it has max stacks so 30% more damage)<br>
+   - Feeding Frenzy (30% more damage)<br>
+- &ldquo;Idolatry&rdquo; 6 idols showed socketed which means 60% increased damage for companions</p>
+
+<p>- Oloton&rsquo;s armour 4,046 <a href="https://poe2db.tw/us/Oloton%2C_the_Remorseless" target="_blank">https://poe2db.tw/us/Oloton%2C_the_Remorseless</a></p>
+
+<p>- 184% of increased damage for companions on the 0.4 passive tree</p>
+
+<p>Speculation:</p>
+
+<p>- Mark on Q&amp;A talked about triple the damage of companions on the passive tree</p>
+
+<p>So here come the calculation</p>
+
+<p>If we got no new interaction like new keystones on the passive tree and by following that mark said we would be talking around 500%~ increased companion damage on the passive tree, with the poe2db entry of the mighty silverfist we will have those numbers:</p>
+
+<p>Base damage: 274–411 Physical</p>
+
+<p>Added damage: +93–140 Physical, +8–10 Cold</p>
+
+<p>Increased damage total: +504,65%</p>
+
+<p>More damage total: ×5,4756</p>
+
+<p>Total damage: 133.602–200.008 each slam</p>
+
+<p>Base damage: 274–411 Physical → Added damage: +93–140 Physical, +8–10 Cold → Slam damage: ×9 (slam multipliers) → Increased damage: +504,65% total → More damage: ×5,4756 → Fully Broken Armour: Physical ×1,20</p>
+
+<p><strong>Total max: ~200.000 each slam</strong></p>
+
+<p>am i missing something to add on this?</p>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="olu280y" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Pale-Horror2089</div>
+        <div>1 | 39 minutes ago </div>
+      </div>
+      <label for="olu280y" class="commentText"><p>&ldquo;If we got no new interaction like new keystones on the passive tree and by following that mark said we would be talking around 500%~&rdquo;</p>
+
+<p>where does this 500 come from?</p>
+
+<p>&ldquo;am i missing something to add on this?&rdquo;</p>
+
+<p>Reverse engineer as much as you please but patchnotes are they only way anyone can answer any of this</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="olu3uzb" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Useful_Wing_3659</div>
+        <div>1 | 31 minutes ago </div>
+      </div>
+      <label for="olu3uzb" class="commentText"><p>I am not really a minion player so please correct me if i am wrong, but isn&rsquo;t the base stats already on poedb?<br>
+<a href="https://poe2db.tw/Mighty_Silverfist" target="_blank">https://poe2db.tw/Mighty_Silverfist</a></p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
