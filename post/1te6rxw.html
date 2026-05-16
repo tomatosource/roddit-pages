@@ -1,0 +1,900 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.selfPostImage {
+  width: 100%;
+  height: auto;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/PathOfExile2/comments/1te6rxw/dx12_grinding_gears_freezepause_vs_vulkan_no_such/"><p>DX12 - &lsquo;Grinding Gears&rsquo; Freeze/pause vs. Vulkan - no such &lsquo;Grinding Gears&rsquo; pause/freeze - How to fix DX12.</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <p>I am playing on 7800X3D + RTX4090 - 4K max settings, DLSS Quality - 1.5Gbps wired LAN connection - Observations below are based on fully built shaders on both DX12 and Vulkan, and having played on either for 2 weeks+ each at a time (without switching).</p>
+
+<p>DX12- I get better performance (or lower GPU power draw when locked to 90 FPS), but once every hour the &lsquo;Grinding Gears&rsquo; pause/freeze issue pops up, from maps to temple to hideout. I have tried a number of things to try and fix this, including increasing Nvidia shader cache to 100GB. This (&lsquo;Grinding Gears&rsquo; pause/freeze issue) also happens on an older secondary PC (4790K + 1080Ti) when using DX12.</p>
+
+<p>Vulkan - slightly worse performance (or higher GPU power draw when locked to 90 FPS) compared to DX12, but there is never - and I mean never - not once - the &lsquo;Grinding Gears&rsquo; pause/freeze I get with DX12. This is why I have been using Vulkan.</p>
+
+<p>I would really appreciate if someone has a solution to this DX12 &lsquo;Grinding Gears&rsquo; pause/freeze on Nvidia GPUs. If you never have this issue on Nvidia GPUs when using DX12, please share the specific Nvidia driver version, so I may be able to test that. Thank you.</p>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="om0fw0x" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ClaviculaNox | Darkness</div>
+        <div>30 | a day ago </div>
+      </div>
+      <label for="om0fw0x" class="commentText"><p>It’s not a server issue, it’s not your connection issue, it’s a game issue.
+The game crashes and GGG workaround to prevent it was to keep the game running and seeing those gears screen is when the game is recovering from the crash.
+I have the exact same”Pause gears” and if you press F1 during this gears screen and you’ll notice after the game recovers it’s recompiling shaders all over again.
+I’ve been playing on Vulkan ever since and had no issues at all.
+But this DX 12 thing is very annoying and Vulkan was stable for me.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="om0w109" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>L0rd_0F_War</div>
+        <div>7 | a day ago </div>
+      </div>
+      <label for="om0w109" class="commentText"><p>Thank you. Yes, that is exactly what happens. Upon recovery, there is a burst of data read from SSD (running the game off a Gen 4 NVME), and Shader compile bar going full green for a few secs. At least I am not the only one suffering from this issue.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="om0wusm" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ClaviculaNox | Darkness</div>
+        <div>2 | a day ago </div>
+      </div>
+      <label for="om0wusm" class="commentText"><p>Yeah it’s not your issue nor it’s a driver issue either.
+It’s the game problem as far as I have experimented.
+Or some weird combination of hardware because not everyone is having the same problem.
+Some run DX 12 smooth with no problems.
+For me Vulkan works perfectly fine. No complains and the game looks great to be honest.
+So stick to Vulkan, uncap your FPS and enjoy the game. No need to cap it to 90 FPS as you wrote in original post.
+And let’s hope 0.5 runs smooth. :)</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="om0zn24" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>L0rd_0F_War</div>
+        <div>2 | 21 hours ago </div>
+      </div>
+      <label for="om0zn24" class="commentText"><p>Thanks. Yes, I&rsquo;ll switch to DX12 and test once 0.5 launches, though I have low hopes for a DX12 fix unless the patch notes address this issue specifically. I generally cap FPS to 90 or 120 in games, for frametime consistency (either CPU or GPU), even though I have Gsync displays on both the PCs I am playing the game on. I also like to run things a bit cool instead of having everything running flat out if I can get a comfortable 90-120 FPS in games.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="om211x5" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>TheTomato2</div>
+        <div>2 | 18 hours ago </div>
+      </div>
+      <label for="om211x5" class="commentText"><p>The nvidia driver crashes and assumedly GGG can&rsquo;t debug what is actually crashing the game specifically so they did the work around.</p>
+
+<p>DX12 will randomly crash and Vulkan has long loading times, it&rsquo;s a pick your poison thing.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="om1ecz5" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Tsunamie101</div>
+        <div>1 | 20 hours ago </div>
+      </div>
+      <label for="om1ecz5" class="commentText"><p>Wasn&rsquo;t that issue related to Nvidia not wanting to work with GGG on optimizing drivers?</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="om1fniz" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Xilarch</div>
+        <div>-1 | 20 hours ago </div>
+      </div>
+      <label for="om1fniz" class="commentText"><p>It is an issue between nVidia and UE5 IIRC</p>
+
+<p>Edit: I did not remember correctly. But it is something outside of the game that they can&rsquo;t control.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="om1ks4d" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Tsunamie101</div>
+        <div>3 | 19 hours ago </div>
+      </div>
+      <label for="om1ks4d" class="commentText"><p>What does UE5 have to do with this?</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="om1ua7b" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Xilarch</div>
+        <div>-2 | 18 hours ago </div>
+      </div>
+      <label for="om1ua7b" class="commentText"><p>Sorry got it crossed with another game. Johnathan mentioned exactly what it was in either the O.2 or 0.3 Q&amp;A with ZiggyD, but it was something that was outside of their control (maybe a Windows issue?).</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="om4w7sb" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Aware_Climate_3210</div>
+        <div>1 | 5 hours ago </div>
+      </div>
+      <label for="om4w7sb" class="commentText"><p>I have 0 confirmation on this but playing borderlands 4 the crashes also seemed very similar.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="om0x75g" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Excaidium</div>
+        <div>9 | a day ago </div>
+      </div>
+      <label for="om0x75g" class="commentText"><p>It&rsquo;s just an NVIDIA driver crash, and they implemented a temporary workaround so the game doesn&rsquo;t crash to the desktop. Instead, it creates a new zone and reloads all data from the previous one. There is no 100% reliable solution other than using Vulkan.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="om0xyuy" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>L0rd_0F_War</div>
+        <div>2 | a day ago </div>
+      </div>
+      <label for="om0xyuy" class="commentText"><p>Thank you for the confirmation. I hope GGG finds a fix. I can&rsquo;t imagine if this is a known/widespread issue with DX12 and Nvidia drivers, there is not more uproar about this. Is everyone just switching to Vulkan and calling it a day?</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="om1dro0" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>bombRIFIC</div>
+        <div>4 | 20 hours ago </div>
+      </div>
+      <label for="om1dro0" class="commentText"><p>So i&rsquo;m going off of memory here but if i remember correctly the &ldquo;problem&rdquo; GGG is having here is that according to them the fix needs to be done on NVIDA&rsquo;s side so they can&rsquo;t directly fix it themselves they have to work with NVIDIA to get it done and thats been problematic, thus why they took the effort to make a work around (the GGG screen reboot)</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="om1fjpg" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>L0rd_0F_War</div>
+        <div>1 | 20 hours ago </div>
+      </div>
+      <label for="om1fjpg" class="commentText"><p>POE2 is plenty popular&hellip; Nvidia should prioritize a fix&hellip;. they release game ready drivers for plenty of far less popular games.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="om1o9pi" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>CantripN</div>
+        <div>4 | 19 hours ago </div>
+      </div>
+      <label for="om1o9pi" class="commentText"><p>They&rsquo;re busy transitioning to AI datacenter work, gaming is like priority #7115 atm for them, so&hellip;</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="om54sab" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>El_Wiggler</div>
+        <div>2 | 4 hours ago </div>
+      </div>
+      <label for="om54sab" class="commentText"><p>The fix needs to be done on Nvidia&rsquo;s end or at the very least they need to work together on it. </p>
+
+<p>Nvidia usually have teams that will go out and work with studios for driver support and feature implementation so it should have happened by now. </p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="om0p6na" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Nearby_Squash_6605</div>
+        <div>5 | a day ago </div>
+      </div>
+      <label for="om0p6na" class="commentText"><p>Happens to me every hour or so on dx12. It&rsquo;s a game issue. </p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="om0a64w" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>NegativeExile</div>
+        <div>4 | a day ago </div>
+      </div>
+      <label for="om0a64w" class="commentText"><p>&rdquo;&lsquo;Grinding Gears&rsquo; pause/freeze issue&rdquo; is actually the game crashing.</p>
+
+<p>They still have not fixed this? I abandoned DX12 all last patch becasue of this problem (9800X3D, RTX5900). Vulkan is stable.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="om0wovi" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>L0rd_0F_War</div>
+        <div>1 | a day ago </div>
+      </div>
+      <label for="om0wovi" class="commentText"><p>Thank you for confirming this. As per another poster, this is a very strange game crashing issue which only happens on DX12 and is masked by the Grinding gears Animation to prevent map progress loss.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="om1n71m" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>sips_white_monster</div>
+        <div>3 | 19 hours ago </div>
+      </div>
+      <label for="om1n71m" class="commentText"><p>I have the exact same problem you described but with a 9800X3D + 5080. I have never been able to fix it other than to simply keep playing Vulkan. Luckily the game runs fine 95% of the time on Vulkan in terms of FPS, so I&rsquo;ll just stick with that until GGG can find out what the problem is.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="om0myae" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>WebPrimary2848</div>
+        <div>1 | a day ago </div>
+      </div>
+      <label for="om0myae" class="commentText"><p>It&rsquo;s a combination of game and driver issue. It&rsquo;s not something you can fix yourself other than just avoiding dx12</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="om1qr6h" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Soapstarboi</div>
+        <div>1 | 19 hours ago </div>
+      </div>
+      <label for="om1qr6h" class="commentText"><p>What does it mean when my game is just stuck on loading screen when on Vulkan?</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="om1wlor" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>rudli_007</div>
+        <div>1 | 18 hours ago </div>
+      </div>
+      <label for="om1wlor" class="commentText"><p>It means the driver you&rsquo;re on is shit :(</p>
+
+<p>Only way is to revert back to before the druid expansion.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="om21tl6" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>WalauShark</div>
+        <div>1 | 18 hours ago </div>
+      </div>
+      <label for="om21tl6" class="commentText"><p>My vulkan Currently having issues of whenever I accidentally adjusted graphic setting , then the whole game crash 😳 happen a lot when I accidentally “mouse scroll” the setting like brightness or bloom.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="om3g0qp" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Bubaru555</div>
+        <div>1 | 11 hours ago </div>
+      </div>
+      <label for="om3g0qp" class="commentText"><p>Same issue here. I just eat the crashes - vulcan perfomance is nonexistant for me. Fingers grossed ggg fixes it sooner or later</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="om25zzn" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>pyrojackelope</div>
+        <div>0 | 17 hours ago </div>
+      </div>
+      <label for="om25zzn" class="commentText"><p>I delete my shader cache every big update.  If I don&rsquo;t, the game tries to melt my pc.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="om0aagh" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Physical-Rough-709</div>
+        <div>-1 | a day ago </div>
+      </div>
+      <label for="om0aagh" class="commentText"><p>You mean the actual animation of gears when you switch scenes?</p>
+
+<p>I&rsquo;ve been getting tons of freezes during actually gameplay/just moving lately, where the game pauses for the duration of the freeze. But I haven&rsquo;t had that issue</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="om0bwry" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>cardosy</div>
+        <div>2 | a day ago </div>
+      </div>
+      <label for="om0bwry" class="commentText"><p>What you&rsquo;re describing is most likely a connection issue. OP issue happens when the game actually crashes, where GGG implemented a workaround to reload the frontend of the game so you don&rsquo;t lose your map progress. That&rsquo;s where the grinding gears loading screen appears.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="om0xalr" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>L0rd_0F_War</div>
+        <div>2 | a day ago </div>
+      </div>
+      <label for="om0xalr" class="commentText"><p>Thank you for this explanation. Generally when playing alone, I can live with this &lsquo;Grinding Gears&rsquo; game crash recovery solution, but when playing in a party, the game doesn&rsquo;t pause during the &lsquo;Grinding Gears&rsquo; animation/recovery, and that can mean death in a map/temple.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="om0cavg" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Physical-Rough-709</div>
+        <div>-1 | a day ago </div>
+      </div>
+      <label for="om0cavg" class="commentText"><p>Weird, my Internet seems fine, a stream I had open didn&rsquo;t so much as stutter (I tried it without the stream running too)</p>
+
+<p>I&rsquo;ll try another server later I guess, thanks for the tip</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="om0cjyy" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>cardosy</div>
+        <div>-1 | a day ago </div>
+      </div>
+      <label for="om0cjyy" class="commentText"><p>Other than keeping using Vulkan, these are the most popular workarounds:</p>
+
+<ul>
+<li><strong>Set CPU Affinity (Prevent Freezes):</strong> If the game locks up your PC, try disabling CPU cores 0 and 1. Open Task Manager -&amp;gt; Details -&amp;gt; Right-click <code>PathofExile2.exe</code> -&amp;gt; Set Affinity -&amp;gt; Uncheck CPU 0 and 1.</li>
+<li><strong>Disable SMT (Ryzen):</strong> Using tools like Process Lasso to disable SMT (Simultaneous Multithreading) for the game can help with stability.</li>
+<li><strong>Roll Back Nvidia Drivers:</strong> If you are on the latest drivers, trying a known stable version like 561.09 has helped users with RTX <sup>40</sup>&frasl;<sub>10</sub> series cards.</li>
+</ul>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="om55ehr" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>El_Wiggler</div>
+        <div>1 | 4 hours ago </div>
+      </div>
+      <label for="om55ehr" class="commentText"><p>Don&rsquo;t do either of the first two. The game leverages SMT heavily, especially since the druid update. </p>
+
+<p>As for disabling cores, this should never be an option.</p>
+
+<p>The issue is driver related, GGG said at the beginning of 0.4 that they know of an issue and they built in a work around but it will be down to Nvidia to fix. </p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="om09m9l" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>PoE_Acronym_Bot</div>
+        <div>-2 | a day ago </div>
+      </div>
+      <label for="om09m9l" class="commentText"><p>I noticed some Path of Exile keywords in this post:</p>
+
+<ul>
+<li><strong>PC</strong> - Price Check</li>
+</ul>
+
+<hr>
+
+<p>^(I am a bot.) ^| <a href="https://acronym.sidia.net/acronyms/pathofexile2" target="_blank">^(All acronyms)</a> ^| <a href="https://acronym.sidia.net/suggest/pathofexile2" target="_blank">^(Suggest)</a></p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="om0bnt3" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Martytiptoes</div>
+        <div>7 | a day ago </div>
+      </div>
+      <label for="om0bnt3" class="commentText"><p>Keep up the great work </p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
