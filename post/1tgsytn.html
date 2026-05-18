@@ -1,0 +1,1328 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.selfPostImage {
+  width: 100%;
+  height: auto;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/nba/comments/1tgsytn/oc_rnba_playoffs_game_thread_analysis_okc_vs/"><p>[OC] r/NBA Playoffs Game Thread Analysis: OKC vs. Lakers sets a new record for ref complaints, and the Detroit Pistons set a new record for foul language in the Second Round!</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <p>Just for fun, I&rsquo;ve been attempting to scrape all the comments and posts from r/NBA throughout this entire season, enabling me to calculate fun stats like:</p>
+
+<ul>
+<li><a href="https://np.reddit.com/r/nba/comments/1r3tnyx/all_star_break_rnba_community_stats_which_team/" target="_blank">How large is each fanbase on here, and who swears the most, complains about refs the most, etc.?</a></li>
+<li><a href="https://np.reddit.com/r/nba/comments/1rjrj4t/rnba_community_stats_ii_finding_this_subs/" target="_blank">Which players highlights are most upvoted and most controversial?</a></li>
+<li><a href="https://np.reddit.com/r/nba/comments/1t7oqz2/oc_rnba_playoffs_game_thread_analysis_which_round/" target="_blank">What have playoff game threads looked like in each series from Round 1?</a></li>
+<li><a href="https://np.reddit.com/r/nba/comments/1tb7reb/oc_rnba_playoffs_game_thread_analysis_wembys/" target="_blank">How did people react to Wemby&rsquo;s <em>gros coude</em> in real time?</a></li>
+</ul>
+
+<p>I&rsquo;m back to share the results from Round 2! Here are the reports from each completed series so far:</p>
+
+<h2 id="2026-nba-playoffs-series-reports">2026 NBA Playoffs — Series Reports</h2>
+
+<h3 id="first-round">First Round</h3>
+
+<table>
+<thead>
+<tr>
+<th>Series</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><a href="https://imgur.com/K14s7X9" target="_blank">Oklahoma City Thunder vs. Phoenix Suns</a></td>
+</tr>
+
+<tr>
+<td><a href="https://imgur.com/JBMhh9a" target="_blank">Portland Trail Blazers vs. San Antonio Spurs</a></td>
+</tr>
+
+<tr>
+<td><a href="https://imgur.com/Ptn7TWK" target="_blank">Atlanta Hawks vs. New York Knicks</a></td>
+</tr>
+
+<tr>
+<td><a href="https://imgur.com/UatVWDO" target="_blank">Denver Nuggets vs. Minnesota Timberwolves</a></td>
+</tr>
+
+<tr>
+<td><a href="https://imgur.com/UAikzry" target="_blank">Houston Rockets vs. Los Angeles Lakers</a></td>
+</tr>
+
+<tr>
+<td><a href="https://imgur.com/K4jYRAK" target="_blank">Boston Celtics vs. Philadelphia 76ers</a></td>
+</tr>
+
+<tr>
+<td><a href="https://imgur.com/H9XiYTy" target="_blank">Cleveland Cavaliers vs. Toronto Raptors</a></td>
+</tr>
+
+<tr>
+<td><a href="https://imgur.com/sXNZUY7" target="_blank">Detroit Pistons vs. Orlando Magic</a></td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="conference-semifinals">Conference Semifinals</h3>
+
+<table>
+<thead>
+<tr>
+<th>Series</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><a href="https://imgur.com/0j9st7G" target="_blank">New York Knicks vs. Philadelphia 76ers</a></td>
+</tr>
+
+<tr>
+<td><a href="https://imgur.com/5TPckOT" target="_blank">Los Angeles Lakers vs. Oklahoma City Thunder</a></td>
+</tr>
+
+<tr>
+<td><a href="https://imgur.com/4j0XGVz" target="_blank">Minnesota Timberwolves vs. San Antonio Spurs</a></td>
+</tr>
+
+<tr>
+<td><a href="https://imgur.com/GS21D1F" target="_blank">Cleveland Cavaliers vs. Detroit Pistons</a></td>
+</tr>
+</tbody>
+</table>
+
+<hr>
+
+<ul>
+<li><p>To the shock of all, the <strong>OKC vs. Lakers</strong> series set a new high water mark for ref complaints. Literally over <strong><sup>1</sup>&frasl;<sub>10</sub></strong> comments throughout the entire series had some mention of &lsquo;refs&rsquo;, &lsquo;flops&rsquo;, &lsquo;whistles&rsquo;, etc., making it the only series thus far to earn a rating of &lsquo;Toxic&rsquo; across the board. Also, I first rendered this report while I was bored on a zoom call for work, and had to go off camera when I read the &lsquo;most downvoted comment&rsquo; because I started visibly laughing at how psycho it is lmao, come on fellow OKC flair you&rsquo;re embarrassing me here!</p></li>
+
+<li><p>The <strong>Pistons vs. Cavs</strong> series finally ended with heartbreaking defeat for Detroit, which is too bad because I was rooting for them. Their fans were clearly upset about it too, because they set a new record for <strong>highest swear rate for a single fanbase in a series</strong> with fully <strong>2.05%</strong> of all the words in their comments being swears of some kind. Interestingly, the highest values for this before now were usually Lakers fans in series where their team wasn&rsquo;t even playing (see Sixers vs. Celtics from Round 1, for example).</p></li>
+
+<li><p><strong>Spurs vs. TWolves</strong> has taken the top spot as the #1 most commented on series of the playoffs so far, even though it only went to six games! Outside of the 4-5 quarters where the Spurs just flattened them, this was a very fun and exciting series so I&rsquo;m not surprised at all. If we&rsquo;re going by comments per game, <strong>OKC vs. Lakers</strong> takes the top spot.</p></li>
+
+<li><p>The Spurs are also leading in another category here, with <strong>Victor Wembanyama</strong> firmly in first place on the <strong>&lsquo;most mentioned player name across all game threads&rsquo;</strong> race. Here are the current top 15:</p></li>
+</ul>
+
+<table>
+<thead>
+<tr>
+<th align="left">Player</th>
+<th align="left">Mentions so far</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">Victor Wembanyama</td>
+<td align="left">9,887</td>
+</tr>
+
+<tr>
+<td align="left">Nikola Jokić</td>
+<td align="left">8,883</td>
+</tr>
+
+<tr>
+<td align="left">Shai Gilgeous-Alexander</td>
+<td align="left">7,622</td>
+</tr>
+
+<tr>
+<td align="left">Joel Embiid</td>
+<td align="left">6,870</td>
+</tr>
+
+<tr>
+<td align="left">LeBron James</td>
+<td align="left">5,909</td>
+</tr>
+
+<tr>
+<td align="left">Austin Reaves</td>
+<td align="left">5,575</td>
+</tr>
+
+<tr>
+<td align="left">Rudy Gobert</td>
+<td align="left">5,114</td>
+</tr>
+
+<tr>
+<td align="left">Anthony Edwards</td>
+<td align="left">4,876</td>
+</tr>
+
+<tr>
+<td align="left">James Harden</td>
+<td align="left">4,463</td>
+</tr>
+
+<tr>
+<td align="left">Cade Cunningham</td>
+<td align="left">3,733</td>
+</tr>
+
+<tr>
+<td align="left">Julius Randle</td>
+<td align="left">3,337</td>
+</tr>
+
+<tr>
+<td align="left">Luka Dončić</td>
+<td align="left">3,140</td>
+</tr>
+
+<tr>
+<td align="left">Jalen Brunson</td>
+<td align="left">3,042</td>
+</tr>
+
+<tr>
+<td align="left">Karl-Anthony Towns</td>
+<td align="left">2,974</td>
+</tr>
+
+<tr>
+<td align="left">De&rsquo;Aaron Fox</td>
+<td align="left">2,819</td>
+</tr>
+</tbody>
+</table>
+<p><em>includes my best attempt at capturing nicknames like &lsquo;Wemby&rsquo; / &lsquo;SGA&rsquo; / &lsquo;Joker&rsquo; / &lsquo;Ant&rsquo; / etc.</em></p>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="omimukp" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Massive-Toe3714 | France</div>
+        <div>72 | 3 hours ago </div>
+      </div>
+      <label for="omimukp" class="commentText"><p>I will probably avoid this sub during the OKC SAS series. There is so much vitriol in the Game threads and I don&rsquo;t want to go through all the complaining when I wake up in the morning.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="omiodrp" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Josheshua | Thunder</div>
+        <div>42 | 3 hours ago </div>
+      </div>
+      <label for="omiodrp" class="commentText"><p>I enjoy the viewing experience astronomically more when I don’t open the game threads</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="omir9ns" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Traditional-Storm645 | Thunder</div>
+        <div>32 | 3 hours ago </div>
+      </div>
+      <label for="omir9ns" class="commentText"><p>Theres been many occasions where ive been like wow this is an amazing basketball game ive been able to watch and then i open reddit and its like walking into fallout 4</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="omisj2a" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Josheshua | Thunder</div>
+        <div>10 | 3 hours ago </div>
+      </div>
+      <label for="omisj2a" class="commentText"><p>Fallout 4 is going easy on it that shit fills me with the same dread as Alien: Isolation</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="omixot3" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>FromSaintsToSellers | Spurs</div>
+        <div>3 | 2 hours ago </div>
+      </div>
+      <label for="omixot3" class="commentText"><p>You&rsquo;re about to witness some real Alien: isolation tonight.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="omj86cf" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>tmanx8 | Thunder</div>
+        <div>3 | an hour ago </div>
+      </div>
+      <label for="omj86cf" class="commentText"><p>Aight that was a good one I respect it</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="omivsju" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>whobroughtmehere | Pistons</div>
+        <div>6 | 3 hours ago </div>
+      </div>
+      <label for="omivsju" class="commentText"><p>Game threads are radioactive. They’re only really better than the threads on illegal streams (not that I’d know) because Reddit has filters against racism, spam, and hate</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="omiuyp2" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Mediocre-County-7648 | Cavaliers</div>
+        <div>6 | 3 hours ago </div>
+      </div>
+      <label for="omiuyp2" class="commentText"><p>It&rsquo;s probably going to be a nice civil discussion between two fanbases that respect eachother</p>
+
+<p>right&hellip;?</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="omj8ds8" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>fattest-fatwa | Spurs</div>
+        <div>2 | an hour ago </div>
+      </div>
+      <label for="omj8ds8" class="commentText"><p>The thing keeping Texas from slipping right into the gulf is how much Oklahoma sucks. </p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="omizoeb" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Clemsontigger16</div>
+        <div>2 | 2 hours ago </div>
+      </div>
+      <label for="omizoeb" class="commentText"><p>My advice is just avoid this sub all the time, it’s so toxic all the time no matter the teams involved. If you care about the series and games, just log off until it’s over.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="omimxvq" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>TheSmokedSalmon420 | Cavaliers</div>
+        <div>33 | 3 hours ago </div>
+      </div>
+      <label for="omimxvq" class="commentText"><p>Harden</p>
+
+<p>Foul</p>
+
+<p>Cade</p>
+
+<p>Duren</p>
+
+<p>Fuckin</p>
+
+<p>Shit</p>
+
+<p>That’s poetry right there you understand</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="omipq8h" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Ok-Tree4365</div>
+        <div>25 | 3 hours ago </div>
+      </div>
+      <label for="omipq8h" class="commentText"><p>I should avoid this sub for the OKC / SAS series. The cognitive dissonance and confirmation bias is going to be too much to bear for a neutral fan.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="omimumy" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Ballknwr | Thunder</div>
+        <div>17 | 3 hours ago </div>
+      </div>
+      <label for="omimumy" class="commentText"><p>Excellent work again! Looking forward to these for the remainder of the playoffs!</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="omin2sf" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>MacJonesisaterrorist | Celtics</div>
+        <div>17 | 3 hours ago </div>
+      </div>
+      <label for="omin2sf" class="commentText"><p>The Lakers hypothetically won game 1</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="omiq8o2" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Comfortable_Cup5107 | Thunder</div>
+        <div>18 | 3 hours ago </div>
+      </div>
+      <label for="omiq8o2" class="commentText"><p>I just know our series will be so fucking toxic lol. Entire NBA vs thunder. Not sure if it will be as bad as Lakers series but I&rsquo;m expecting the worst lol</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="omiroa8" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Thorbuck81</div>
+        <div>-19 | 3 hours ago </div>
+      </div>
+      <label for="omiroa8" class="commentText"><p>Entire nba&hellip;.riiiiiiightt.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="omirxm0" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Comfortable_Cup5107 | Thunder</div>
+        <div>21 | 3 hours ago </div>
+      </div>
+      <label for="omirxm0" class="commentText"><p>I mean the sub hates us, every team wants to beat okc I mean that&rsquo;s just how it is lol.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="omit7gw" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>emcdeezy22 | Lakers</div>
+        <div>-19 | 3 hours ago </div>
+      </div>
+      <label for="omit7gw" class="commentText"><p>Oh you poor victims</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="omixyua" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>RampageTaco | Thunder</div>
+        <div>10 | 2 hours ago </div>
+      </div>
+      <label for="omixyua" class="commentText"><p>No, that&rsquo;s you.  Your team is the poor victims of the darn refs.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="omj6rf4" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>McSlapnut | Thunder</div>
+        <div>3 | an hour ago </div>
+      </div>
+      <label for="omj6rf4" class="commentText"><p>Even had to huddle with them in the middle of the court after a game. lmao</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="omis2xl" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Thorbuck81</div>
+        <div>-24 | 3 hours ago </div>
+      </div>
+      <label for="omis2xl" class="commentText"><p>Not really</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="omiu1ec" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ThunderTime_1</div>
+        <div>8 | 3 hours ago </div>
+      </div>
+      <label for="omiu1ec" class="commentText"><p>Curious how non-thunder fans feel because I’m bias… but this sub has become objectively less fun over the last few years. It’s impossible to have any sort of real discussion. I realize there is a sub dedicated to discussion but still stinks to see what main sub has become.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="omj4uup" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Subtrckt | Magic</div>
+        <div>6 | an hour ago </div>
+      </div>
+      <label for="omj4uup" class="commentText"><p>It&rsquo;s gotten bad. I remember it getting fairly toxic during the playoffs but everyone just seems actually mad all the time now. Especially if SGA, Jokic, or Luka come up. Then we start fighting the race war in the comments.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="omjauoj" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Own-Bee9632 | Timberwolves</div>
+        <div>2 | 43 minutes ago </div>
+      </div>
+      <label for="omjauoj" class="commentText"><p>I would guess part of it is because you have two teams that are so much better than everyone else for the foreseeable future. Getting ass blasted by the same team over and over again gets pretty tiring. Watching the Wolves get ass blasted by GSW with no hope in sight back in the day was incredibly boring.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="omipzhj" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ontheru171 | Knicks</div>
+        <div>5 | 3 hours ago </div>
+      </div>
+      <label for="omipzhj" class="commentText"><p>Hawks fans complained about the refs all throughout the series and then vanished after being eliminated.</p>
+
+<p>Usually you still have the flairs of eliminated teams pestering about for the rest of their eliminators postseason run but it looks like Hawks fans were ready for Cancun after game 6</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="omiujjv" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>tabbrenea | Pistons</div>
+        <div>6 | 3 hours ago </div>
+      </div>
+      <label for="omiujjv" class="commentText"><p>Knicks fans commenting more than the Cavs fans in the Cavs-pistons series absolutely tracks 😂</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ominhrw" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>NeatTry7674</div>
+        <div>3 | 3 hours ago </div>
+      </div>
+      <label for="ominhrw" class="commentText"><p>Donovan Mitchell has no motion it seems</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="omio932" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>CaptainScuttlebottom | Thunder</div>
+        <div>8 | 3 hours ago </div>
+      </div>
+      <label for="omio932" class="commentText"><p>Damn I actually might have just done a poor job capturing his nicknames specifically, I&rsquo;m just now realizing I didn&rsquo;t include &lsquo;Spida&rsquo; which probably throws it off a lot. His name is also a little tough bc I can&rsquo;t just assume all &lsquo;Mitchell&rsquo; references w/ no first name are him and not Ajay Mitchell, but I think I can improve my regex still, I will try to work on that before I run the final numbers at the end!</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="omisb3f" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Brave_Diet5546 | Thunder</div>
+        <div>4 | 3 hours ago </div>
+      </div>
+      <label for="omisb3f" class="commentText"><p>He ultimately lost the meat off</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="omitm2c" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>NeatTry7674</div>
+        <div>2 | 3 hours ago </div>
+      </div>
+      <label for="omitm2c" class="commentText"><p>This is just OKC cope</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="omisy7l" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>young_lions</div>
+        <div>1 | 3 hours ago </div>
+      </div>
+      <label for="omisy7l" class="commentText"><p>Looks that way, Harden&rsquo;s siphoning all the mentions</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="omiygzn" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>TheSmokedSalmon420 | Cavaliers</div>
+        <div>1 | 2 hours ago </div>
+      </div>
+      <label for="omiygzn" class="commentText"><p>He played pretty poorly but the Harden hate train consumes all</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="omip4d1" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Background_Ant3973 | Greece</div>
+        <div>4 | 3 hours ago </div>
+      </div>
+      <label for="omip4d1" class="commentText"><p>that most negative comment in the lakers/okc series. no context so maybe it&rsquo;s not what it seems, but damn, that guy should probably be banned lol</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="omirvgj" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ClockOk7333 | Celtics</div>
+        <div>4 | 3 hours ago </div>
+      </div>
+      <label for="omirvgj" class="commentText"><p>How do you find it?</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="omisua0" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>gmoss101 | Rockets</div>
+        <div>5 | 3 hours ago </div>
+      </div>
+      <label for="omisua0" class="commentText"><p><a href="https://imgur.com/5TPckOT" target="_blank">https://imgur.com/5TPckOT</a></p>
+
+<p>Scroll down to &ldquo;Most Downvoted&rdquo;</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="omiux6r" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ClockOk7333 | Celtics</div>
+        <div>4 | 3 hours ago </div>
+      </div>
+      <label for="omiux6r" class="commentText"><p>Wow only 98 downvotes.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="omiy59r" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>PeeledGrapePie</div>
+        <div>2 | 2 hours ago </div>
+      </div>
+      <label for="omiy59r" class="commentText"><p>I expected far more for the most downvoted</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="omitsqb" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>vindictivejazz | Thunder</div>
+        <div>0 | 3 hours ago </div>
+      </div>
+      <label for="omitsqb" class="commentText"><p>It’s in the links OP posted (they’re all different series overviews).</p>
+
+<p>Some asshole with an OKC flair said: “do it. No one will miss you.” Which is obviously just insanely shitty</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="omirgcn" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Thorbuck81</div>
+        <div>3 | 3 hours ago </div>
+      </div>
+      <label for="omirgcn" class="commentText"><p>Im surprised the pistons didnt shatter the record for complaints</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="omitpa1" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Schumplerton | Thunder</div>
+        <div>3 | 3 hours ago </div>
+      </div>
+      <label for="omitpa1" class="commentText"><p>This truly is the age of advanced analytics</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="omjf7fc" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>iamhollywood | Thunder</div>
+        <div>1 | 20 minutes ago </div>
+      </div>
+      <label for="omjf7fc" class="commentText"><p>LMAO I can&rsquo;t believe my comment was the most downvoted. Taken out context like that it looks awful 😂. But I was replying to the guy who said something like &ldquo;If the refs are gonna blatantly be biased towards OKC, then I&rsquo;m not watching a single more game.&rdquo; And I was saying &ldquo;Go ahead and don&rsquo;t watch, no one will care or notice or miss you.&rdquo; I wasn&rsquo;t telling him to off himself!</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="omiso3w" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Dead_Inside50 | Pistons</div>
+        <div>2 | 3 hours ago </div>
+      </div>
+      <label for="omiso3w" class="commentText"><p>Let the flop-a-thons commence!</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="omj9a0j" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>quickblur | Timberwolves</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="omj9a0j" class="commentText"><p>Surprised to see Randle on that list. Are 99% of his mentions just about how completely ass he is?</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="omimrjd" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>PossibilityFew5967</div>
+        <div>-7 | 3 hours ago </div>
+      </div>
+      <label for="omimrjd" class="commentText"><p>Yeah cause harden flopping <sup>24</sup>&frasl;<sub>7</sub> was some bullshit. </p>
+
+<p>Allen having the smuggest face didn&rsquo;t help </p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="omin5tr" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>NeatTry7674</div>
+        <div>22 | 3 hours ago </div>
+      </div>
+      <label for="omin5tr" class="commentText"><p>Pistons fans are down so bad they’re calling Jarret Allen Smug? lol</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="ominhmb" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>cryolems | Cavaliers</div>
+        <div>7 | 3 hours ago </div>
+      </div>
+      <label for="ominhmb" class="commentText"><p>Also I don’t think they realize the ref comments were from lakers - okc not Cavs - pistons lol</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="ominln8" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>PossibilityFew5967</div>
+        <div>-3 | 3 hours ago </div>
+      </div>
+      <label for="ominln8" class="commentText"><p>Look at that face when he was tripping </p>
+
+<p>Smug mf</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="omipv70" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>UnbiasedExpert | CLE</div>
+        <div>7 | 3 hours ago </div>
+      </div>
+      <label for="omipv70" class="commentText"><p>are you on drugs son?</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="omipz3t" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>PossibilityFew5967</div>
+        <div>-1 | 3 hours ago </div>
+      </div>
+      <label for="omipz3t" class="commentText"><p>I&rsquo;m high on life brother </p>
+
+<p>Pretty sure wedding planning made me pop a blood vessel in my eye </p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
