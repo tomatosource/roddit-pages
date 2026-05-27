@@ -1,0 +1,350 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.selfPostImage {
+  width: 100%;
+  height: auto;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/PathOfExile2/comments/1toir12/poe2s_combat_is_amazing_but_mouse_aiming_has_been/"><p>PoE2&rsquo;s combat is amazing - but mouse aiming has been broken since 0.1: Parallax, Autoaim issues, random cursor bugs</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <p>I originally started this as a reply in the <a href="https://reddit.com/r/PathOfExile2/comments/1tnbptb/poe_2_has_a_serious_aiming_problem" target="_blank">aiming post yesterday</a> but it got long enough that I decided to make a separate post to get more visiblity.</p>
+
+<p><strong>Overview</strong></p>
+
+<p>Most people are aware of the various aiming issues since launch, either from first-hand experience or seeing them discussed on reddit etc. I anticipated there&rsquo;d be no fixes in 0.5 as understandably GGG was all hands on deck fixing the endgame etc. However Mark said that the focus between now and 1.0 will be on skills, balance, new ascendancies, rare mods, combat balance etc. so it&rsquo;s really the perfect time to finally address them, as they fundamentally affect all combat. Before 0.2, Jonathan did an interview (<a href="https://youtu.be/01eP5vTQMvI?t=4972" target="_blank">timestamp</a>) where he covered these aiming related issues in some detail, particularly cursor targeting.</p>
+
+<p>&amp;nbsp;</p>
+
+<p>POE2 currently has 3 main issues with mouse aiming: <strong>Cursor Targeting</strong>, <strong>Cursor Tracking</strong> and <strong>Auto-aim</strong></p>
+
+<p>&amp;nbsp;</p>
+
+<p><strong>1) Cursor vs ground targeting/parallax</strong></p>
+
+<p>Others have explained this well many times so here are two gifs which demonstrate the difference clearly (for <a href="https://jumpshare.com/share/2thIb6tDJ7hAGL1NwiXQ" target="_blank">ranged</a> and <a href="https://jumpshare.com/share/stLmPB2AJhZ6VLM5n8s0" target="_blank">melee</a> respectively). The X-marks show where the attack actually lands. For those who&rsquo;d like a brief explanation:</p>
+
+<p>PoE1 and older ARPGs weren&rsquo;t built for WASD; players move only with mouse input. The character model will move to the point on the <strong>ground</strong> where you click. In fact, the model&rsquo;s orientation is defined as/set to be along this movement &ldquo;vector&rdquo;. This means if you move your cursor in a circle around your character, without clicking, the model will spin around to always be facing the cursor, relative to that point on the ground. No issues so far. Any projectile or melee skill used would therefore now be aimed along this vector. The problem here is the vast majority of melee and ranged skills originate at the model&rsquo;s chest/arms, not the ground - this is what gives rise to the parallax issue of projectiles not lining up with the cursor. You literally have to aim at the monster&rsquo;s feet.</p>
+
+<p>Incidentally, the parallax is worse the closer the cursor is to the player, which is why ALL melee weapons (not just maces) feel especially janky: when a mob is right next to you, as is the case for melee, the angle difference in screenspace between the mob&rsquo;s feet and centre-mass is larger than when they&rsquo;re half a screen away (see above gifs).</p>
+
+<p>&amp;nbsp;</p>
+
+<p>Jonathan&rsquo;s theory for why this wasn&rsquo;t a major complaint in PoE1 was that everytime the player clicked to move on the ground they were subconciously reinforcing that ground-based perspective, so would automatically account for the aim parallax during skill usage. The switch to WASD-movement makes this discrepancy glaringly obvious since the all the WASD-player sees is that their projectiles don&rsquo;t go to the cursor, often outright missing their intended target.</p>
+
+<p>There&rsquo;s merit to the theory; I booted up POE1 for a quick test and I see what he means but honestly it still feels super bad to me. More likely, the standard for combat and polish in ARPGs was lower back then and most people just didn&rsquo;t care/know any better. GGG have raised the bar in all other respects for combat in PoE2, so this stands out - especially to new players coming from modern isometric action games (not just arpgs) which have WASD movement with chest-aiming (e.g. Hades <sup>1</sup>&frasl;<sub>2</sub>, D4 when using WASD etc.). Ironically, Last Epoch, which didn&rsquo;t even support WASD at launch (added in update April last year), is bizzarely knee-height as Jonathan points out. Chest-aiming (also known as Target Cursor) just makes the most sense for most skills.</p>
+
+<p>&amp;nbsp;</p>
+
+<p><strong><em>Vertically-challenged mobs/objects</em></strong></p>
+
+<p>Short/small mobs like ants/spiders/scarabs in Act 2, flying mosquitos Act 3, crabs Act 4 etc. are notoriously difficult to target. It is not solely due to this parallax issue and there does seem to be various issues with their hitboxes as even when aiming at their feet they&rsquo;re not highlighted/targeted and you&rsquo;ll often see the projectile whiff.</p>
+
+<p>Tempest Bell and Frozen Locus are also infamously hard to aim at but parallax is only half the picture, with jank autoaim the other half.</p>
+
+<p>&amp;nbsp;</p>
+
+<p><strong><em>Ground skills exception</em></strong></p>
+
+<p>Some skills genuinely do target the ground or travel along the ground to the cursor (e.g. Fire Wall, Vine Arrow, Glacial Gascade, Tempest Bell, Frozen Locus, Gas Arrow, Mortars/Totems etc). There&rsquo;s not a straightforward solution for what to do with these if implementing chest-aiming. Specifically, the character&rsquo;s orientation is determined by the LAST skill used so if you alternate between a chest-height skill and a ground skill the model will rotate before every skill, even with a completely static cursor.</p>
+
+<p>&amp;nbsp;</p>
+
+<p><strong><em>In-game setting</em></strong></p>
+
+<p>Following the interview, 0.2 added three <strong>Aiming Mode</strong> options: <strong>Target Cursor</strong>, <strong>Target Cursor in WASD only</strong> and <strong>Target Ground</strong> (the default
+the game launched with). This should in theory fix all of the above; unfortunately <strong>Target Cursor</strong> has been bugged since day one and does <strong>NOT</strong> work for <em>ranged</em> attacks at all - only <em>melee</em> attacks. All ground-based skils use <strong>Target Ground</strong> regardless of the setting.</p>
+
+<p><a href="https://www.youtube.com/watch?v=mi3tFfLHIbg" target="_blank">Huntress is especially affected whose kit mixes melee and ranged skills</a>. Further jank can be observed when <a href="https://www.youtube.com/watch?v=jUzfcE8DurY" target="_blank">the cursor is near the character, even with a completely static cursor</a>. There are no mobs on screen, so it&rsquo;s not caused by autoaim (which carries its own host of problems). I&rsquo;m also individual clicking each skill so it&rsquo;s not issues with Cursor Tracking (held input) either. Ultimately the setting does actually already exist ingame so GGG just needs to fix it.</p>
+
+<p>&amp;nbsp;</p>
+
+<p><strong>EDIT: Still broken as of the update yesterday (May 25th)</strong></p>
+
+<p>&amp;nbsp;</p>
+
+<p><strong>2) Cursor Tracking/namelocking</strong></p>
+
+<p>Concidentally, I noticed GGG literally just <a href="https://i.postimg.cc/qv4RWKsF/cursor-tracking-setting.png" target="_blank">stealth added this setting in a update yesterday</a> while I was writing this post. Currently, the game by default uses <strong>With Held Input</strong> meaning once you aquire a target (indicated by their healthbar appearing at the top), as long as you hold the skill button down it will autotrack until it dies.</p>
+
+<p>The problem is anytime you click on a mob with your main clearing skill and then want to adjust target (let&rsquo;s say a rare jumps on you from elsewhere or a hundred other situations) you have to release the button, move the cursor, then press the button again. This feels truly awful, starting in Clearfell at Lvl 2 all the way to clicking on dense packs/rares in juiced t15s with inc monster movespeed mods.</p>
+
+<p>This doesn&rsquo;t even include the many bugs that occur when this system inconsistently engages/disengages if you move the cursor on/off a mob during the skill animation, causing projectiles to fly off in random directions (this might have been the cause of the sargetwo snipe clip linked at the beginning). Mobs simply do not move fast enough in this game that tracking them would be an issue for the majority of players, to the point that they need autotracking - certainly not at the expense of combat responsiveness. Keep it as an option who prefer the convenience.</p>
+
+<p>&amp;nbsp;</p>
+
+<p><strong>Hilariously, the &lsquo;Always Update&rsquo; option which was added yesterday should have fixed this but like Target Cursor it is also broken and currently does nothing lmao.</strong> It&rsquo;s obviously a good sign though that GGG intend to fix it and hopefully both settings work by leaguestart.</p>
+
+<p>&amp;nbsp;</p>
+
+<p><strong>3) Autoaim</strong></p>
+
+<p>The funny thing is, GGG is no doubt aware that requiring the player to aim at a mob&rsquo;s feet is weird - most player&rsquo;s natural impulse will be to hover the cursor over centre-mass. Hence, all attacks will autotaim if your cursor is close enough to a mob; it will be highlighted red, with it&rsquo;s healthbar displayed, and selected for autoaim targeting. It&rsquo;s a necessary consequence of the parallax issue but it&rsquo;s a solution to a problem that simply does not need to exist.</p>
+
+<p>Not to mention it causes far more problems than it solves due to bugs and inconsistencies with target highlighting/cursor tracking above that I do not anticipate being easily fixed because the game has to interpret/guess the player intention when the cursor is next to several overlapping mobs or mobs at different terrain elevations.</p>
+
+<p>It feels so random sometimes how it decides to select a target depending on your cursor position, both when the mob is alone but particularly in a dense pack with multiple overlapping mobs/rares, or bosses with tempest bell, glacial cascade trying to hit frozen locus in a pack of mobs etc. It also really struggles selecting small mobs as highlighted earlier. Particularly egregious is trying to use 80% of mace/quarterstaff strike skills where the autoaim can straight up cause you to be 90deg or more off your intended direction for rolling slam, sunder, ice strike etc. Alongside ground-targeting, auto-aim is the single biggest source for jank in melee combat.</p>
+
+<p>&amp;nbsp;</p>
+
+<p><strong>Ultimately it just creates a disconnect between player input and ingame actions that adds this floaty, random feel to the combat which is at total odds to the otherwise excellent, tactile and responsive feeling combat.</strong>
+Like with Aiming Mode and Cursor Tracking, my hope is GGG will add an toggleable option so those who prefer the QoL can keep it on. However in the interview Jonathan seemed more hesistent about removing autoaim, unlike adding Target Cursor, as I&rsquo;m guessing it would require revisting every single skill gem in the game, which were designed from the ground up to be used with autoaim in mind. It remains to be seen but I&rsquo;m hopeful: after accounting for edge cases like potential issues with flying/jumping mobs, small critters and mobs at different terrain elevations, I&rsquo;m convinced the combat would feel vastly improved without autoaim.</p>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="oo1egxe" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>AutoModerator</div>
+        <div>1 | 6 hours ago </div>
+      </div>
+      <label for="oo1egxe" class="commentText"><p>Please make sure you check the <a href="https://www.pathofexile.com/forum/view-thread/3594260" target="_blank">Known Issues List</a> or the <a href="https://www.pathofexile.com/forum/view-forum/2214" target="_blank">Bug Report Forums</a> for any pre-existing bug reports related to your issue. Duplicate reports on Reddit may be removed.</p>
+
+<p><em>I am a bot, and this action was performed automatically. Please <a href="/message/compose/?to=/r/PathOfExile2">contact the moderators of this subreddit</a> if you have any questions or concerns.</em></p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="oo2ur2z" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Beneficial_Matter251</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="oo2ur2z" class="commentText"><p>Still same, exile?</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="oo31kzf" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>bigeyez</div>
+        <div>1 | 11 minutes ago </div>
+      </div>
+      <label for="oo31kzf" class="commentText"><p>There is definitely something strange going on with enemy hitboxes. With the flies and other very small enemies projectiles will sometimes just get shot into the ground. Its super noticeable with the shotguns because when it happens all your fragments that usually pierce enemies will just go straight into the ground where the fly is.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
