@@ -1,0 +1,936 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.selfPostImage {
+  width: 100%;
+  height: auto;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/baseball/comments/1tr6bv3/baseball_reference_updates_negro_leagues_dataset/"><p>Baseball Reference updates Negro Leagues dataset, which includes thousands of incremental improvements</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <p>Thanks to our partnership with the <a href="https://www.seamheads.com/NegroLgs/index.php" target="_blank">Seamheads</a> Negro League database, we have released an update to our Negro Leagues dataset. Our last update, in April of 2023, was covered in this <a href="https://www.sports-reference.com/blog/2023/03/updated-negro-leagues-data-on-baseball-reference/" target="_blank">blog post</a>. Like last time around, this update includes thousands of incremental improvements. The most significant new data revolves around expanded fielding statistics and refinement around the presentation of team records. Additionally, lots of new biographical data has been added. Here&rsquo;s a rundown of some of the improvements <a href="https://www.baseball-reference.com/?__hstc=213859787.38492422e1943fbee3995216c1f1d656.1735836843895.1779993119953.1780065468330.784&amp;__hssc=213859787.38.1780065468330&amp;__hsfp=6ace1bb19e43ce05e95330f8e897db3d" target="_blank">Baseball Reference</a> users will now see:</p>
+
+<p>There are 54 fewer players in the major Negro League data from 1920-1948 thanks to the addition of 69 players and removal of 123 (generally through identity mergers). This also means that debut numbers for thousands of players throughout history have now been adjusted.</p>
+
+<p>Here&rsquo;s some notable player movement in various statistics (in NLB play only):</p>
+
+<p><a href="https://www.baseball-reference.com/players/s/steartu99.shtml?utm_medium=linker&amp;utm_source=www.sports-reference.com&amp;utm_campaign=2026-05-26_br&amp;__hstc=213859787.38492422e1943fbee3995216c1f1d656.1735836843895.1779993119953.1780065468330.784&amp;__hssc=213859787.38.1780065468330&amp;__hsfp=6ace1bb19e43ce05e95330f8e897db3d" target="_blank">Turkey Stearnes</a>: +5.5 WAR (largest increase of all players)</p>
+
+<p><a href="https://www.baseball-reference.com/search/search.fcgi?pid=wellswi99,wellswi01&amp;search=Willie+Wells&amp;utm_medium=linker&amp;utm_source=www.sports-reference.com&amp;utm_campaign=2026-05-26_br&amp;__hstc=213859787.38492422e1943fbee3995216c1f1d656.1735836843895.1779993119953.1780065468330.784&amp;__hssc=213859787.38.1780065468330&amp;__hsfp=6ace1bb19e43ce05e95330f8e897db3d" target="_blank">Willie Wells</a>: +5.4 WAR, +40 games, +186 PA, +8 HR</p>
+
+<p><a href="https://www.baseball-reference.com/players/r/roganbu99.shtml?utm_medium=linker&amp;utm_source=www.sports-reference.com&amp;utm_campaign=2026-05-26_br&amp;__hstc=213859787.38492422e1943fbee3995216c1f1d656.1735836843895.1779993119953.1780065468330.784&amp;__hssc=213859787.38.1780065468330&amp;__hsfp=6ace1bb19e43ce05e95330f8e897db3d" target="_blank">Bullet Rogan</a>: -3.5 WAR (largest decrease of all players). Rogan is one of several player from the early 1920s who had some games removed through data quality efforts.</p>
+
+<p><a href="https://www.baseball-reference.com/search/search.fcgi?pid=,gibsojo99,gibson005jos&amp;search=Josh+Gibson&amp;utm_medium=linker&amp;utm_source=www.sports-reference.com&amp;utm_campaign=2026-05-26_br&amp;__hstc=213859787.38492422e1943fbee3995216c1f1d656.1735836843895.1779993119953.1780065468330.784&amp;__hssc=213859787.38.1780065468330&amp;__hsfp=6ace1bb19e43ce05e95330f8e897db3d" target="_blank">Josh Gibson</a>: +2.81WAR</p>
+
+<p><a href="https://www.baseball-reference.com/players/p/paigesa01.shtml?utm_medium=linker&amp;utm_source=www.sports-reference.com&amp;utm_campaign=2026-05-26_br&amp;__hstc=213859787.38492422e1943fbee3995216c1f1d656.1735836843895.1779993119953.1780065468330.784&amp;__hssc=213859787.38.1780065468330&amp;__hsfp=6ace1bb19e43ce05e95330f8e897db3d" target="_blank">Satchel Paige</a>: +2.1 WAR, +8 games, +8 wins</p>
+
+<p>Here&rsquo;s some other notable leaderboard changes&hellip;</p>
+
+<ul>
+<li><a href="https://www.baseball-reference.com/players/k/keyesro01.shtml?utm_medium=linker&amp;utm_source=www.sports-reference.com&amp;utm_campaign=2026-05-26_br&amp;__hstc=213859787.38492422e1943fbee3995216c1f1d656.1735836843895.1779993119953.1780065468330.784&amp;__hssc=213859787.38.1780065468330&amp;__hsfp=6ace1bb19e43ce05e95330f8e897db3d" target="_blank">Robert Keyes</a> is no longer the single-season ERA record holder as his 1944 ERA rises from 0.64 to 1.50 thanks to the discovery of some additional innings pitched. We also cleaned up an issue in our leaderboard qualifications and Keyes no longer qualifies for the leaderboard. The single season leader is once again <a href="https://www.baseball-reference.com/players/k/keefeti01.shtml?utm_medium=linker&amp;utm_source=www.sports-reference.com&amp;utm_campaign=2026-05-26_br&amp;__hstc=213859787.38492422e1943fbee3995216c1f1d656.1735836843895.1779993119953.1780065468330.784&amp;__hssc=213859787.38.1780065468330&amp;__hsfp=6ace1bb19e43ce05e95330f8e897db3d" target="_blank">Tim Keefe</a> (0.86 in 1880). <a href="https://www.baseball-reference.com/players/v/vargate01.shtml?utm_medium=linker&amp;utm_source=www.sports-reference.com&amp;utm_campaign=2026-05-26_br&amp;__hstc=213859787.38492422e1943fbee3995216c1f1d656.1735836843895.1779993119953.1780065468330.784&amp;__hssc=213859787.38.1780065468330&amp;__hsfp=6ace1bb19e43ce05e95330f8e897db3d" target="_blank">Tetelo Vargas</a> remains the single-season batting champion.</li>
+<li><a href="https://www.baseball-reference.com/players/b/bauertr01.shtml?utm_medium=linker&amp;utm_source=www.sports-reference.com&amp;utm_campaign=2026-05-26_br&amp;__hstc=213859787.38492422e1943fbee3995216c1f1d656.1735836843895.1779993119953.1780065468330.784&amp;__hssc=213859787.38.1780065468330&amp;__hsfp=6ace1bb19e43ce05e95330f8e897db3d" target="_blank">Trevor Bauer</a> was previously the single-season record holder for fewest hits allowed per 9 IP (5.2 in 2020). That record now belongs to <a href="https://www.baseball-reference.com/players/b/brownda02.shtml?utm_medium=linker&amp;utm_source=www.sports-reference.com&amp;utm_campaign=2026-05-26_br&amp;__hstc=213859787.38492422e1943fbee3995216c1f1d656.1735836843895.1779993119953.1780065468330.784&amp;__hssc=213859787.38.1780065468330&amp;__hsfp=6ace1bb19e43ce05e95330f8e897db3d" target="_blank">Dave Brown</a> (4.9 in 1920).</li>
+</ul>
+
+<p>Additionally, we have changed the presentation of team records in various places. While we previously listed one record for each team, we now present three unique numbers. Let&rsquo;s use the <a href="https://www.baseball-reference.com/teams/PC/1933.shtml?__hstc=213859787.38492422e1943fbee3995216c1f1d656.1735836843895.1779993119953.1780065468330.784&amp;__hssc=213859787.38.1780065468330&amp;__hsfp=6ace1bb19e43ce05e95330f8e897db3d" target="_blank">1933 Pittsburgh Crawfords</a> as an example&hellip;</p>
+
+<p>The league record of 38-16 is representative of official &ldquo;league&rdquo; games played by the Crawfords, thanks to painstaking research by our friends at Seamheads. This number is used for standings purposes. The overall record that follows it is the club&rsquo;s record in all games against other teams in the Seamheads database. Finally, the record in games we have stats for is exactly that. It is how the team performed in the games for which stats have been discovered and added to the database. In parentheses we also note what percentage of the team&rsquo;s total games (against all clubs in the dB) this represents.</p>
+
+<p>Additionally, a few team changes were made. The 1930 Louisville Black Caps were found to be just &lsquo;associate&rsquo; members of the Negro National League and have been deleted. The 1933 Cleveland Giants were found to be the same club as the Akron Grays. They played one game as the Cleveland Giants and ten as the Akron Grays and are now merged as one team.</p>
+
+<p>If you have any questions about this data, please check out our updated <a href="http://baseball-reference.com/about/negro-leagues-data.shtml" target="_blank">Negro League Data FAQ</a>.</p>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="oolevji" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>AerieElectrical3546 | Boston Red Sox</div>
+        <div>45 | an hour ago </div>
+      </div>
+      <label for="oolevji" class="commentText"><p>you’re doing great work, thank you so much! bringing this era of baseball into public focus is really very important 🙏</p>
+
+<p>(plus, eight wins for Paige! The legend grows)</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ooli4e4" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>upvoter222 | New York Yankees</div>
+        <div>35 | an hour ago </div>
+      </div>
+      <label for="ooli4e4" class="commentText"><p>I knew Satchel Paige played for a long time, but I really thought he&rsquo;d be done earning WAR by now.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="oolibp1" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>dunhout | Netherlands</div>
+        <div>27 | an hour ago </div>
+      </div>
+      <label for="oolibp1" class="commentText"><p>Oh no Trevor Bauer lost a record</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="ooljl5n" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ExpirjTec | Houston Astros • Houston Astros</div>
+        <div>11 | an hour ago </div>
+      </div>
+      <label for="ooljl5n" class="commentText"><p>pop the champagne</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="oolky2u" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Aggravating-Bug2032 | Toronto Blue Jays</div>
+        <div>3 | an hour ago </div>
+      </div>
+      <label for="oolky2u" class="commentText"><p>One more grievance for the Trevor Truthers.</p>
+
+<p>And one more league he couldn’t compete in</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="ooln1iz" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>LibraryNo7025</div>
+        <div>2 | an hour ago </div>
+      </div>
+      <label for="ooln1iz" class="commentText"><p>Didn&rsquo;t he win a cy young in the mlb though?  I&rsquo;m not sure what a Trevor truther is but idk what your problem is with him either.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="oolo4r1" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>GoBlueAndOrange | Puerto Rico</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="oolo4r1" class="commentText"><p>During the 60 game COVID season when he was cheating ya.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="ooloulj" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>LibraryNo7025</div>
+        <div>0 | 42 minutes ago </div>
+      </div>
+      <label for="ooloulj" class="commentText"><p>he was? I didn&rsquo;t know about that.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="oolk9a0" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ContinuumGuy | Major League Baseball</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="oolk9a0" class="commentText"><p>Anyway&hellip;</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="oolmqnm" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>The_Throwback_King | Seattle Mariners</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="oolmqnm" class="commentText"><p>I read this in George Constanza’s voice from the Moops episode</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="oolmu5z" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>LibraryNo7025</div>
+        <div>-5 | an hour ago </div>
+      </div>
+      <label for="oolmu5z" class="commentText"><p>Why the hate for Bauer am I missing something??</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="oolnsni" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>noruber35393546</div>
+        <div>5 | an hour ago </div>
+      </div>
+      <label for="oolnsni" class="commentText"><p>He&rsquo;s the most unlikable person in MLB history</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="ooloec4" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>LibraryNo7025</div>
+        <div>0 | 44 minutes ago </div>
+      </div>
+      <label for="ooloec4" class="commentText"><p>Huh fair enough I heard he had issues in the clubhouse and I know this isn&rsquo;t a great metric to tell what kind of person somebody is but I actually really like his YouTube channel it&rsquo;s really informative and he seems like he&rsquo;s really thriving where he is.  That being said that&rsquo;s probably a shared opinion at least with redditors seeing as the thread is full of people agreeing with you.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="oolvuqx" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>jorleeduf | Philadelphia Phillies</div>
+        <div>-1 | 12 minutes ago </div>
+      </div>
+      <label for="oolvuqx" class="commentText"><p>Generally, only far-right groups are fond of him.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="oolwy6g" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>LibraryNo7025</div>
+        <div>2 | 7 minutes ago </div>
+      </div>
+      <label for="oolwy6g" class="commentText"><p>Seems like as a person on reddit you don&rsquo;t have a great grasp on what right or left even is lmao</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="oolp6w3" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>darthstupidious | Seattle Mariners</div>
+        <div>3 | 41 minutes ago </div>
+      </div>
+      <label for="oolp6w3" class="commentText"><p>I mean, regardless of anything else, Bauer is/was a colossal tool:</p>
+
+<ul>
+<li><p>He was credibly accused of sexual assault by multiple women (don&rsquo;t @ me, Bauer fans, not interested in having this debate for the thousandth time)</p></li>
+
+<li><p>He tried to act like he was bullied back in high school and college, when in reality, he was just a weirdo and a prick who treated other people like shit and was surprised when they treated him the same way</p></li>
+
+<li><p>He threw temper tantrums during games, including chucking the ball over the wall when he was pulled</p></li>
+
+<li><p>He constantly acted like an edgelord online and would harass people when they disagreed or pushed back against him</p></li>
+</ul>
+
+<p>Dude&rsquo;s just been a toxic prick his entire life but constantly tries to pretend he&rsquo;s some victim. This is one of those &ldquo;you encounter assholes all day long, you must just be the asshole&rdquo; situations.</p>
+
+<p>The only season he was truly great was the year in which he flaunted using sticky stuff, but the reality is that if he was half as good as he thinks he is, some team would have bent over backwards to sign him after the allegation stuff quieted down. But he&rsquo;s not, so they didn&rsquo;t.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="oolpl7l" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>LibraryNo7025</div>
+        <div>-6 | 39 minutes ago </div>
+      </div>
+      <label for="oolpl7l" class="commentText"><p>Everything here is fine except the abuse allegations which are completely debunked stop spreading lies.  You could have just shared the other stuff and it would have gotten the point accross instead you took the opportunity to lie and then say don&rsquo;t @ me which shows you knew you were lying and decided to try to escape the culpability of it.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="oolt3qf" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>darthstupidious | Seattle Mariners</div>
+        <div>1 | 24 minutes ago </div>
+      </div>
+      <label for="oolt3qf" class="commentText"><p>Nah, it&rsquo;s just a pointless conversation that almost always results in the thread being locked. It&rsquo;s why he was originally suspended from the league and I didn&rsquo;t expand upon the validity of the claims, just pointed out why he was originally suspended and why other orgs don&rsquo;t wanna touch him with a ten foot pole.</p>
+
+<p>He was accused of sexual assault by four women, one of which he settled with and later took to court, alleging he breached their settlement (nothing to do with the allegations itself, just their settlement). Another woman was charged with defrauding Bauer, but he also paid her $10,000 for &ldquo;medical expenses, prenatal vitamins, and car services&rdquo; related to a pregnancy. The other two remain allegations and he filed lawsuits against the outlets which reported them, but those lawsuits were dropped.</p>
+
+<p>None of the allegations have been &ldquo;debunked.&rdquo; Bauer&rsquo;s court victory (the $300,000 he was awarded in a default victory against a claimant) had nothing to do with the allegations, but rather, breach of their initial settlement.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="oolt60x" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>romanticynicist | Philadelphia Phillies</div>
+        <div>0 | 23 minutes ago </div>
+      </div>
+      <label for="oolt60x" class="commentText"><p>🙄</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="ooltuhh" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>drunkenviking | Pittsburgh Pirates</div>
+        <div>-1 | 21 minutes ago </div>
+      </div>
+      <label for="ooltuhh" class="commentText"><p>Trevor is not going to let you hit, bro. </p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="oolwuxg" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>LibraryNo7025</div>
+        <div>1 | 8 minutes ago </div>
+      </div>
+      <label for="oolwuxg" class="commentText"><p>That was a really good one man you got me!</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="ooloelu" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Sthrax | New York Yankees</div>
+        <div>2 | 44 minutes ago </div>
+      </div>
+      <label for="ooloelu" class="commentText"><p>You can google the details, but it falls under abuse of women.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="oolp07r" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>LibraryNo7025</div>
+        <div>-8 | 41 minutes ago </div>
+      </div>
+      <label for="oolp07r" class="commentText"><p>I&rsquo;m well aware he never abused any women the woman in question was proven beyond a doubt to be lying about that and was asking for exactly what she got again and again and again with great gusto.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="oolqmwt" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Sthrax | New York Yankees</div>
+        <div>4 | 34 minutes ago </div>
+      </div>
+      <label for="oolqmwt" class="commentText"><p>That is not what the MLB&rsquo;s investigation found.  Whether or not he was criminally charged, he still is a POS.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="ools78a" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>LibraryNo7025</div>
+        <div>-4 | 28 minutes ago </div>
+      </div>
+      <label for="ools78a" class="commentText"><p>I&rsquo;m sorry Maybe I didn&rsquo;t understand but did you just say you trust the MLB investigation more than criminal courts?  You realize it was uncovered that the woman in question was literally asking for it many many times and was turned on and stated she was by the interactions.    You are unfortunately the definition of ignorance willfully so.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="ooluxqh" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Sthrax | New York Yankees</div>
+        <div>0 | 16 minutes ago </div>
+      </div>
+      <label for="ooluxqh" class="commentText"><p>Lack of criminal charges does not make one innocent.  Just look at the current occupant of the White House.  Bauer violated the terms of the MLB&rsquo;s Domestic and Sexual Abuse Policy, and was treated accordingly.  That policy has nothing to do with the California Penal Code or the DA&rsquo;s willingness to charge or not charge someone with a crime.</p>
+
+<p>Ignorant, maybe.  But at least I&rsquo;m not willingly defending an abuser of women.  You are barely better than Bauer.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="oolg11r" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>double_dose_larry | Tampa Bay Rays</div>
+        <div>18 | an hour ago </div>
+      </div>
+      <label for="oolg11r" class="commentText"><p>I can only imagine the amount of work that went in to compiling this. Amazing. Thank you so much</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="oolhnvd" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>aRadioKid | Tampa Bay Rays</div>
+        <div>12 | an hour ago </div>
+      </div>
+      <label for="oolhnvd" class="commentText"><p>Thank you so much for continuing to explore the wonderful world of Negro League Baseball.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="oolf2pi" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Namzeh011 | Seattle Mariners</div>
+        <div>10 | an hour ago </div>
+      </div>
+      <label for="oolf2pi" class="commentText"><p>very cool
+thanks baseball reference</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="oolk3va" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>csavastio</div>
+        <div>10 | an hour ago </div>
+      </div>
+      <label for="oolk3va" class="commentText"><p>Josh Gibson, welcome to the Career &amp;gt;40 WAR/Hall of Fame cross on my Immaculate Grid</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="oolg221" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>I_Am_A_Sock_AMA | Los Angeles Dodgers</div>
+        <div>8 | an hour ago </div>
+      </div>
+      <label for="oolg221" class="commentText"><p>Jesus turkey stearnes was good</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="oolnfqf" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Sufficient_Role3650</div>
+        <div>2 | an hour ago </div>
+      </div>
+      <label for="oolnfqf" class="commentText"><p>Is that 1933 Crawfords team the most talented ever?</p>
+
+<p>Josh Gibson and Oscar Charleston are two of the best ever. You&rsquo;ve also got Cool Papa Bell, Jud &ldquo;Boojum&rdquo; Wilson, Biz Mackey and Judy Johnson, all four of them Hall of Famers. And the cherry on top, Satchel Paige as your pitcher.</p>
+
+<p>The only team I can think of that competes with this is the 1928&rsquo;s Athletics, who have Ty Cobb, Tris Speaker, Eddie Collins, Jimmie Foxx and Lefty Grove.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="oolrpg0" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Rock_man_bears_fan | Chicago White Sox</div>
+        <div>2 | 30 minutes ago </div>
+      </div>
+      <label for="oolrpg0" class="commentText"><p>The 1927 Yankees had 6 hall of famers and the 1928 Yankees had 9 (one was inducted for what he did as a manager after his playing career, so it was really 8 HOF players). I don’t think there’s any team better than the Murderers Row era Yankees</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="oolt9pv" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Sufficient_Role3650</div>
+        <div>1 | 23 minutes ago </div>
+      </div>
+      <label for="oolt9pv" class="commentText"><p>Ruth and Gehrig is probably the best duo but some of the guys after that are kinda weak, especially the pitchers like Herb Pennock and Waite Hoyt.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="oolw7w2" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>James-K-Polka | Atlanta Braves</div>
+        <div>1 | 10 minutes ago </div>
+      </div>
+      <label for="oolw7w2" class="commentText"><p>Cool Papa Bell should get +10 WAR for having the sickest nickname of all time.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ooll3p6" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>dafinsrock | Baltimore Orioles</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="ooll3p6" class="commentText"><p>You guys are doing incredible work. Thank you so much</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
