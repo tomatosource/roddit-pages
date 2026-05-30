@@ -1,0 +1,789 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.selfPostImage {
+  width: 100%;
+  height: auto;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/nba/comments/1ts7hbd/teams_that_swept_their_previous_round_are_151/"><p>Teams that swept their previous round are 15-1 when facing teams that went to game 7 in their previous round.</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <p>There have been 16 matchups in NBA history between teams that swept their previous round and teams that went to game 7. Teams that got the extra rest are 15-1. They are 12-4 in their game 1s.</p>
+
+<p>This will also be the first time in NBA history that a team swept their conference finals and will match up against a team that went to Game 7 in their conference finals.</p>
+
+<table>
+<thead>
+<tr>
+<th align="left">Year</th>
+<th align="left">Round</th>
+<th align="left">Team that swept</th>
+<th align="left">Team that went to game 7</th>
+<th align="left">Winner</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">1981</td>
+<td align="left">Conf. Finals</td>
+<td align="left">Boston Celtics</td>
+<td align="left">Philadelphia 76ers</td>
+<td align="left">Rested Team</td>
+</tr>
+
+<tr>
+<td align="left">2004</td>
+<td align="left">Conf. Semis</td>
+<td align="left">Indiana Pacers</td>
+<td align="left">Miami Heat</td>
+<td align="left">Rested Team</td>
+</tr>
+
+<tr>
+<td align="left">2005</td>
+<td align="left">Conf. Semis</td>
+<td align="left">Phoenix Suns</td>
+<td align="left">Dallas Mavericks</td>
+<td align="left">Rested Team</td>
+</tr>
+
+<tr>
+<td align="left">2009</td>
+<td align="left">Conf. Semis</td>
+<td align="left">Cleveland Cavaliers</td>
+<td align="left">Atlanta Hawks</td>
+<td align="left">Rested Team</td>
+</tr>
+
+<tr>
+<td align="left">2009</td>
+<td align="left">Conf. Finals</td>
+<td align="left">Cleveland Cavaliers</td>
+<td align="left">Orlando Magic</td>
+<td align="left">Tired Team</td>
+</tr>
+
+<tr>
+<td align="left">2010</td>
+<td align="left">Conf. Semis</td>
+<td align="left">Orlando Magic</td>
+<td align="left">Atlanta Hawks</td>
+<td align="left">Rested Team</td>
+</tr>
+
+<tr>
+<td align="left">2011</td>
+<td align="left">Conf. Finals</td>
+<td align="left">Dallas Mavericks</td>
+<td align="left">Oklahoma City</td>
+<td align="left">Rested Team</td>
+</tr>
+
+<tr>
+<td align="left">2012</td>
+<td align="left">Conf. Semis</td>
+<td align="left">San Antonio Spurs</td>
+<td align="left">L.A. Clippers</td>
+<td align="left">Rested Team</td>
+</tr>
+
+<tr>
+<td align="left">2012</td>
+<td align="left">Conf. Semis</td>
+<td align="left">OKC Thunder</td>
+<td align="left">L.A. Lakers</td>
+<td align="left">Rested Team</td>
+</tr>
+
+<tr>
+<td align="left">2013</td>
+<td align="left">Conf. Semis</td>
+<td align="left">Miami Heat</td>
+<td align="left">Chicago Bulls</td>
+<td align="left">Rested Team</td>
+</tr>
+
+<tr>
+<td align="left">2014</td>
+<td align="left">Conf. Semis</td>
+<td align="left">Miami Heat</td>
+<td align="left">Brooklyn Nets</td>
+<td align="left">Rested Team</td>
+</tr>
+
+<tr>
+<td align="left">2016</td>
+<td align="left">Conf. Finals</td>
+<td align="left">Cleveland Cavaliers</td>
+<td align="left">Toronto Raptors</td>
+<td align="left">Rested Team</td>
+</tr>
+
+<tr>
+<td align="left">2017</td>
+<td align="left">Conf. Semis</td>
+<td align="left">Golden State Warriors</td>
+<td align="left">Utah Jazz</td>
+<td align="left">Rested Team</td>
+</tr>
+
+<tr>
+<td align="left">2017</td>
+<td align="left">Conf. Finals</td>
+<td align="left">Cleveland Cavaliers</td>
+<td align="left">Boston Celtics</td>
+<td align="left">Rested Team</td>
+</tr>
+
+<tr>
+<td align="left">2025</td>
+<td align="left">Conf. Semis</td>
+<td align="left">OKC Thunder</td>
+<td align="left">Denver Nuggets</td>
+<td align="left">Rested Team</td>
+</tr>
+
+<tr>
+<td align="left">2026</td>
+<td align="left">Conf. Finals</td>
+<td align="left">New York Knicks</td>
+<td align="left">Cleveland Cavaliers</td>
+<td align="left">Rested Team</td>
+</tr>
+</tbody>
+</table>
+<p>Dataset used: <a href="https://www.kaggle.com/datasets/eoinamoore/historical-nba-data-and-player-box-scores?resource=download" target="_blank">https://www.kaggle.com/datasets/eoinamoore/historical-nba-data-and-player-box-scores?resource=download</a></p>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="oot1czi" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Academic-Screen4213</div>
+        <div>1 | 14 minutes ago </div>
+      </div>
+      <label for="oot1czi" class="commentText"><p>New York knicks guaranteed nba champs nothing could go wrong</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="oot2kje" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>YerrrKnicks | Knicks</div>
+        <div>1 | 8 minutes ago </div>
+      </div>
+      <label for="oot2kje" class="commentText"><p>We&rsquo;ve won every series we won Game 1 of so all we need is to get the first game to guarantee victory🤞🏿</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="oot17tz" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>BoxyNeat | Spurs</div>
+        <div>1 | 14 minutes ago </div>
+      </div>
+      <label for="oot17tz" class="commentText"><p>Congratulations to the New York Knicks. Nothing could possibly keep you from winning.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="oot1bt8" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Either_Imagination_9 | Knicks</div>
+        <div>1 | 14 minutes ago </div>
+      </div>
+      <label for="oot1bt8" class="commentText"><p>…</p>
+
+<p>I see what you’re doing here</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="oot1y1k" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Rushman0 | Knicks</div>
+        <div>1 | 11 minutes ago </div>
+      </div>
+      <label for="oot1y1k" class="commentText"><p>HES TRYING TO JINX US</p>
+
+<p>GO WEMBY WE LOVE ALIENS AND NUNS AND THOSE BUSTY SA GIRLS BEHIND THE BENCH</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="oot2ggd" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>gdtdoomer | Spurs</div>
+        <div>1 | 8 minutes ago </div>
+      </div>
+      <label for="oot2ggd" class="commentText"><p>JALEN BRUNSON HEAD AINT THAT BIG AND WE LOVE TIMBS </p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="oot1m3e" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ScoutFinch127</div>
+        <div>1 | 12 minutes ago </div>
+      </div>
+      <label for="oot1m3e" class="commentText"><p>Flair does not check out</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="oot33jb" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>thejetssuckbigtime | Knicks</div>
+        <div>1 | 5 minutes ago </div>
+      </div>
+      <label for="oot33jb" class="commentText"><p>Is Chuck on Reddit?</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="oot3b43" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>jak_d_ripr</div>
+        <div>1 | 4 minutes ago </div>
+      </div>
+      <label for="oot3b43" class="commentText"><p>Does the jinx work when it&rsquo;s on purpose?</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="oot1m8z" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>farmer15erf | Lakers</div>
+        <div>1 | 12 minutes ago </div>
+      </div>
+      <label for="oot1m8z" class="commentText"><p>So 10 in the second round and not once in the finals is what Im seeing</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="oot1vdt" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>onelastshot001</div>
+        <div>1 | 11 minutes ago </div>
+      </div>
+      <label for="oot1vdt" class="commentText"><p>Id think it&rsquo;d be even worse for a team in the finals since you&rsquo;re adding even more stress and fatigue. Meanwhile Knicks have had back to back sweeps.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="oot1pqy" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>onelastshot001</div>
+        <div>1 | 12 minutes ago </div>
+      </div>
+      <label for="oot1pqy" class="commentText"><p>They&rsquo;re actually 16-0, the cavs analytically won that series.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="oot1qt7" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Select-Profit-7725 | Lakers</div>
+        <div>1 | 12 minutes ago </div>
+      </div>
+      <label for="oot1qt7" class="commentText"><p>This will also be the first time in NBA history that a team swept their conference finals and will match up against a team that went to Game 7 in their conference finals.</p>
+
+<p>2023?</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="oot2hgl" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>BoxyNeat | Spurs</div>
+        <div>1 | 8 minutes ago </div>
+      </div>
+      <label for="oot2hgl" class="commentText"><p>Great catch, I&rsquo;ll update my post. Somehow missed that one.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="oot2p52" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>CountFew6186 | Knicks</div>
+        <div>1 | 7 minutes ago </div>
+      </div>
+      <label for="oot2p52" class="commentText"><p>Yeah, but the finals have more rest than previous rounds.  Plenty of time for the west team to rest, and three days between travel games during the series.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="oot1c9n" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>whatssenguntoagoblin | Alperen Sengun</div>
+        <div>1 | 14 minutes ago </div>
+      </div>
+      <label for="oot1c9n" class="commentText"><p>lol Cavs</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="oot1d52" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Dymatizeee | Knicks</div>
+        <div>1 | 14 minutes ago </div>
+      </div>
+      <label for="oot1d52" class="commentText"><p>Nice</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="oot1uls" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Unable-Resort5314</div>
+        <div>1 | 11 minutes ago </div>
+      </div>
+      <label for="oot1uls" class="commentText"><p>Not having cavs warriors 2016 in here is definitely weird</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="oot2fm2" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>hiimred2 | CLE</div>
+        <div>1 | 8 minutes ago </div>
+      </div>
+      <label for="oot2fm2" class="commentText"><p>Cavs beat Toronto 4-2, why would it be on here?</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="oot2dx8" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>FunnyLoud3067</div>
+        <div>1 | 9 minutes ago </div>
+      </div>
+      <label for="oot2dx8" class="commentText"><p>Nice</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="oot2fao" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>elgringon414</div>
+        <div>1 | 8 minutes ago </div>
+      </div>
+      <label for="oot2fao" class="commentText"><p>Let’s go Knicks !!! The videos of NY melting down are going to live in infamy for years. Cant wait.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="oot38w8" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Sine_Habitus | Spurs</div>
+        <div>1 | 4 minutes ago </div>
+      </div>
+      <label for="oot38w8" class="commentText"><p>Win or lose the city of New York is in peril</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="oot37by" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>transizzle | SAC</div>
+        <div>1 | 4 minutes ago </div>
+      </div>
+      <label for="oot37by" class="commentText"><p>There’s a whole lot built into that stat such as how good the team’s competition is. Knicks haven’t played a team half as good as OKC or SA.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
