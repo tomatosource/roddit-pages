@@ -1,0 +1,689 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.selfPostImage {
+  width: 100%;
+  height: auto;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/nba/comments/1tu1gp9/oc_rnba_playoffs_game_thread_analysis_thunder_vs/"><p>[OC] r/NBA Playoffs Game Thread Analysis: Thunder vs. Spurs sets new records in total comments, comments per game, swear word rate, and single most up voted / down voted comments for the 2026 playoffs. Also there was a series in the East too I think. See reports on both here!</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <p>Just for fun, I&rsquo;ve been attempting to scrape all the comments and posts from r/NBA throughout this entire season, enabling me to calculate fun stats like:</p>
+
+<ul>
+<li><a href="https://np.reddit.com/r/nba/comments/1r3tnyx/all_star_break_rnba_community_stats_which_team/" target="_blank">How large is each fanbase on here, and who swears the most, complains about refs the most, etc.?</a></li>
+<li><a href="https://np.reddit.com/r/nba/comments/1rjrj4t/rnba_community_stats_ii_finding_this_subs/" target="_blank">Which players highlights are most upvoted and most controversial?</a></li>
+<li>I&rsquo;ve also been making these <a href="https://np.reddit.com/r/nba/comments/1tgsytn/oc_rnba_playoffs_game_thread_analysis_okc_vs/" target="_blank"><strong>series summary reports</strong></a>, which provide a lot of fun stats about the game threads on this subreddit as the playoffs have gone on.</li>
+</ul>
+
+<p>I am sad about how they shook out, but I&rsquo;m back nonetheless to share the results from the Conference Finals! Here are the reports from each completed series so far:</p>
+
+<h2 id="2026-nba-playoffs-series-reports">2026 NBA Playoffs — Series Reports</h2>
+
+<h3 id="first-round">First Round</h3>
+
+<table>
+<thead>
+<tr>
+<th>Series</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><a href="https://imgur.com/K14s7X9" target="_blank">Oklahoma City Thunder vs. Phoenix Suns</a></td>
+</tr>
+
+<tr>
+<td><a href="https://imgur.com/JBMhh9a" target="_blank">Portland Trail Blazers vs. San Antonio Spurs</a></td>
+</tr>
+
+<tr>
+<td><a href="https://imgur.com/Ptn7TWK" target="_blank">Atlanta Hawks vs. New York Knicks</a></td>
+</tr>
+
+<tr>
+<td><a href="https://imgur.com/UatVWDO" target="_blank">Denver Nuggets vs. Minnesota Timberwolves</a></td>
+</tr>
+
+<tr>
+<td><a href="https://imgur.com/UAikzry" target="_blank">Houston Rockets vs. Los Angeles Lakers</a></td>
+</tr>
+
+<tr>
+<td><a href="https://imgur.com/K4jYRAK" target="_blank">Boston Celtics vs. Philadelphia 76ers</a></td>
+</tr>
+
+<tr>
+<td><a href="https://imgur.com/H9XiYTy" target="_blank">Cleveland Cavaliers vs. Toronto Raptors</a></td>
+</tr>
+
+<tr>
+<td><a href="https://imgur.com/sXNZUY7" target="_blank">Detroit Pistons vs. Orlando Magic</a></td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="conference-semifinals">Conference Semifinals</h3>
+
+<table>
+<thead>
+<tr>
+<th>Series</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><a href="https://imgur.com/0j9st7G" target="_blank">New York Knicks vs. Philadelphia 76ers</a></td>
+</tr>
+
+<tr>
+<td><a href="https://imgur.com/5TPckOT" target="_blank">Los Angeles Lakers vs. Oklahoma City Thunder</a></td>
+</tr>
+
+<tr>
+<td><a href="https://imgur.com/4j0XGVz" target="_blank">Minnesota Timberwolves vs. San Antonio Spurs</a></td>
+</tr>
+
+<tr>
+<td><a href="https://imgur.com/GS21D1F" target="_blank">Cleveland Cavaliers vs. Detroit Pistons</a></td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="conference-finals">Conference Finals</h3>
+
+<table>
+<thead>
+<tr>
+<th>Series</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><a href="https://imgur.com/BaPyzXv" target="_blank">New York Knicks vs. Cleveland Cavaliers</a></td>
+</tr>
+
+<tr>
+<td><a href="https://imgur.com/y19tRyO" target="_blank">Oklahoma City Thunder vs. San Antonio Spurs</a></td>
+</tr>
+</tbody>
+</table>
+
+<hr>
+
+<p>The <strong>Thunder / Spurs</strong> series has clearly cemented itself as the #1 series of the playoffs so far, at least going by this data. After game 7, it&rsquo;s at the top of the leaderboard in total comments (218,932), comments per game (31,276), and profane language (1.95 swears per 100 words). All five of the busiest 10-minute stretches of the playoffs so far (see <a href="https://np.reddit.com/r/nba/comments/1tb7reb/oc_rnba_playoffs_game_thread_analysis_wembys/" target="_blank">this post</a> for an earlier look) are also now from Game 1 or Game 7 of this series.</p>
+
+<ul>
+<li>The most upvoted and most downvoted comments of the playoffs thus far also happened in this series. I gotta admit I see why, the one about the allies landing at Normandy was very funny even though it doesn&rsquo;t really paint me personally in the best light as an OKC fan lol.</li>
+<li>Interestingly, it fell just a bit short on ref complaints. OKC vs. Lakers barely retained the crown in that department, with 10.2% of comments mentioning the refs vs. 9.6% in this one.</li>
+<li>This series also required me to figure out a way to handle threads being locked for the first time, which is a good sign of how toxic it got.</li>
+</ul>
+
+<p>The <strong>Knicks / Cavs</strong> series actually set one new record as well: it was dead last in ref complaints, clocking in at just over 3%. There wasn&rsquo;t really much to complain about given how much of a beatdown it was.</p>
+
+<ul>
+<li>And as you can see from the graphs, there actually weren&rsquo;t really a lot of Cavs fans showing up to the game threads by the end. It was very close to setting a new record for most one-sided series as well, with 79.1% of comments in the series coming from Knicks fans. That falls just short of the record from OKC vs. Suns (80.4%).</li>
+</ul>
+
+<hr>
+
+<p>I am gonna do one last post once the offseason starts, which will include the finals report and the final standings on what teams commented the most, complained the most, etc. Thanks for reading!</p>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="op6ckuf" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Good_NewsEveryone | Pelicans</div>
+        <div>34 | 33 minutes ago </div>
+      </div>
+      <label for="op6ckuf" class="commentText"><p>Everyone in those game threads should be submitted for psych evals</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="op6cwd6" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Skank_hunt42 | Thunder</div>
+        <div>1 | 31 minutes ago </div>
+      </div>
+      <label for="op6cwd6" class="commentText"><p>The top Spurs words kinda make their own sentence: Wemby foul SGA, fucking refs, fuck lmao.</p>
+
+<p>lol</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="op6eufc" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>shish-bish | Thunder</div>
+        <div>1 | 20 minutes ago </div>
+      </div>
+      <label for="op6eufc" class="commentText"><p>lmao shit chet play</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="op6cvkl" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>atribecalled506 | Knicks</div>
+        <div>1 | 32 minutes ago </div>
+      </div>
+      <label for="op6cvkl" class="commentText"><p>Great job with this.</p>
+
+<p>Mobley not being in the top 10 words for either Knicks fans or Cavs fans says all we need to know about his play in the ECF, yikes.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="op6ciz5" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Hopsalong | Nuggets</div>
+        <div>8 | 34 minutes ago </div>
+      </div>
+      <label for="op6ciz5" class="commentText"><p>There was an East series?</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="op6d54u" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>FERFreak731 | Jazz</div>
+        <div>1 | 30 minutes ago </div>
+      </div>
+      <label for="op6d54u" class="commentText"><p>Yeah. Cavs took a 2-1 series lead after the first 3 games</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="op6gtfu" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Clever-Innuendo | Knicks</div>
+        <div>1 | 9 minutes ago </div>
+      </div>
+      <label for="op6gtfu" class="commentText"><p>I still haven’t analytically recovered from that</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="op6divb" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>LeFraudNugget | Nuggets</div>
+        <div>1 | 28 minutes ago </div>
+      </div>
+      <label for="op6divb" class="commentText"><p>I loved the whole series. We need more rivalries.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="op6df8l" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>VeniceRapture | Spurs</div>
+        <div>1 | 28 minutes ago </div>
+      </div>
+      <label for="op6df8l" class="commentText"><p>How did you determine if the comment is a ref complaint? If it had the word ref in them?</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="op6ebrj" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>CaptainScuttlebottom | Thunder</div>
+        <div>1 | 23 minutes ago </div>
+      </div>
+      <label for="op6ebrj" class="commentText"><p>Basically yeah, I have a bunch of regex that looks for any kind of phrase like &ldquo;refs&rdquo;, &ldquo;whistles&rdquo;, &ldquo;flops&rdquo;, &ldquo;rigged&rdquo;, &ldquo;terrible call&rdquo;, etc. It&rsquo;s not super elegant and it is pretty broad / will definitely catch some false positives, but it&rsquo;s been working pretty well I think. Here it is if you&rsquo;re curious (this is an R function that just returns the regex):</p>
+
+<pre><code>#' Ref complaints (NBA)
+#' @export
+ref_strings_nba &amp;lt;- paste(
+  &quot;(?i)\\b(ref(s|erees|effing|efball|))\\b&quot;, # ref, refs, referees, reffing, refball, etc.
+  &quot;\\b(officials)\\b&quot;, # officials (singular has too many FPs)
+  &quot;\\b(whistle(s|))\\b&quot;, # whistle(s)
+  &quot;\\b(rigging|rig|rigged)\\b&quot;, # rig, rigged, rigging
+  &quot;\\bfix(ed)?\\s+(is|was)\\s+in\\b&quot;, # &quot;fix is in&quot;, &quot;fix was in&quot; 
+  &quot;\\bhosed\\b&quot;, # hosed
+  &quot;\\bzebras?\\b&quot;, # zebra(s) 
+  &quot;\\bmake[- ]?up\\s+(no[- ]?)?calls?\\b&quot;, # makeup call / make-up no call
+  &quot;\\bno[- ]?calls?\\b&quot;, # no call / no-calls
+  # any kind of 'bad call' / 'horrible whistle' etc:
+  &quot;(?i)\\b(terrible|awful|worst|garbage|bullshit|bs|horrible|horrendous)\\b[^.!?\\n]{0,30}(?&amp;lt;!play[- ])(?&amp;lt;!play )\\b(call|whistle)s?\\b&quot;, # eg &quot;terrible call&quot;
+  &quot;(?i)\\b(reffing|refereeing|officiating|referee)\\s+crew\\b&quot;, # reffing/officiating crew
+  &quot;(?i)\\bref[- ]?ball\\b&quot;, # ref ball / ref-ball / refball
+  &quot;(?i)\\bflop(s|ped|ping|per|pers|py)?\\b&quot;, # flop, flopping, flopper
+  &quot;(?i)\\bfoul[- ]?bait(s|ing|ed|er|ers)?\\b&quot;, # foul baiting 
+  &quot;(?i)\\bbait(ed|ing|s)?\\b[^.!?\\n]{0,15}\\b(foul|call|ref)&quot;, # broader &quot;bait a foul / bait calls&quot;
+  &quot;(?i)\\b(ft|free[- ]?throw)s?\\s+(disparity|advantage|differential|gap)\\b&quot;, # FT disparity 
+  &quot;(?i)\\b(swallow(ed|ing|s)?|blow(ing|s|n)?)\\b[^.!?\\n]{0,15}\\bwhistle&quot;, # swallowed/blew the whistle
+  sep = &quot;|&quot;
+)
+</code></pre>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="op6es52" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Good_NewsEveryone | Pelicans</div>
+        <div>1 | 20 minutes ago </div>
+      </div>
+      <label for="op6es52" class="commentText"><p>Do you just hate yourself?</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="op6g6it" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>A_Mellow_Fellow | Cavaliers</div>
+        <div>1 | 12 minutes ago </div>
+      </div>
+      <label for="op6g6it" class="commentText"><blockquote>
+<p>there wasnt alot of Cavs fans showing up</p>
+</blockquote>
+
+<p>I only watched game 1 lol. That was the first time I&rsquo;ve ever seen a team lose an entire series in one game.</p>
+
+<p>Knew it was a sweep at that point. Spent my extra time playing BG3 and it was time well spent.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="op6cgks" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>KL2ConspireLLC | San Diego Clippers</div>
+        <div>1 | 34 minutes ago </div>
+      </div>
+      <label for="op6cgks" class="commentText"><p>How many of those were bots?</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="op6eame" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Fixhotep</div>
+        <div>1 | 23 minutes ago </div>
+      </div>
+      <label for="op6eame" class="commentText"><p>how does this account for the amount of flair changing that happened?</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="op6eod6" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>CaptainScuttlebottom | Thunder</div>
+        <div>1 | 21 minutes ago </div>
+      </div>
+      <label for="op6eod6" class="commentText"><p>Everyone&rsquo;s flair in this data is set to match the flair on their latest comment in the dataset / across the sub. So if you change your flair from Nuggets -&amp;gt; OKC or something, that would retroactively move you from the former to the latter in all these reports.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="op6f6b3" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Lyranx</div>
+        <div>1 | 18 minutes ago </div>
+      </div>
+      <label for="op6f6b3" class="commentText"><p>They must&rsquo;ve been on the level of illegal stream chats</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="op6hlus" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>paulridby | Spurs</div>
+        <div>1 | 4 minutes ago </div>
+      </div>
+      <label for="op6hlus" class="commentText"><p>Amazing work like always, thanks OP. Mind linking the Normandy comment? I haven&rsquo;t seen that lmao</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
