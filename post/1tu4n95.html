@@ -1,0 +1,782 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.selfPostImage {
+  width: 100%;
+  height: auto;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/nba/comments/1tu4n95/oc_david_and_goliath_an_analysis_of_the_height_of/"><p>OC: David and Goliath, an analysis of the height of finals team&rsquo;s leaders through NBA history.</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <p>I had the realization that Wemby and Brunson, the two best players in the Finals and the best player for each team, were at least 14 inches apart from each other. Given Brunson is 6’2” and Wemby is 7’4”. I actually think it’s maybe like 16-18 inches, as Brunson is probably 6’1”, and Wemby appears 7’5” at least.</p>
+
+<p>Anyways, I was curious to see if that had ever happened before, and about which team that would favor historically, so I went on basketballreference and decided to look at the height gaps between the best player on each team in the Finals throughout NBA history, and this is all the data that I collected. Enjoy!</p>
+
+<p>Some fun facts:</p>
+
+<p>14 inches is the biggest gap of this kind in history. The next biggest gap is one instance of 13 inches, which was in the 2001 finals with Shaq at 7&rsquo;1&rdquo; being 13 inches taller than Iverson at 6&rsquo;0&rdquo;.</p>
+
+<p>The average gap is 4.225 inches.</p>
+
+<p>Here&rsquo;s the amount each height gap has occurred<br>
+0 inch gap - 5 occurrences<br>
+1 inch gap - 12 occurrences<br>
+2 inch gap - 12 occurrences<br>
+3 inch gap - 11 occurrences<br>
+4 inch gap - 5 occurrences<br>
+5 inch gap - 8 occurrences<br>
+6 inch gap - 8 occurrences<br>
+7 inch gap - 8 occurrences<br>
+8 inch gap - 5 occurrences<br>
+9 inch gap - 3 occurrences<br>
+10 inch gap - 0 occurrences<br>
+11 inch gap - 1 occurrence<br>
+12 inch gap - 0 occurrences<br>
+13 inch gap - 1 occurrence<br>
+14 inch gap - 1 occurrence</p>
+
+<p>The tallest player on the list is Wemby at 7&rsquo;4&rdquo;. The shortest is Allen Iverson at 6&rsquo;0&rdquo; <em>(though there are a couple other 6&rsquo;0&rdquo; players listed as HMs to be their team&rsquo;s best player)</em></p>
+
+<p>The average best player on a Finals team is 6&rsquo;7.8&rdquo;. For Finals winners it&rsquo;s 6&rsquo;8.5&rdquo;, for Finals losers it&rsquo;s 6&rsquo;7.1&rdquo;.</p>
+
+<p>Ignoring instances where teams&rsquo; best players were the same height, the team with the taller leader won <sup>47</sup>&frasl;<sub>74</sub> times, or about 64% of the time. In cases where the gap was at least 9 inches, the team with the taller leader has won <sup>4</sup>&frasl;<sub>5</sub> times. (After this series it will either be <sup>5</sup>&frasl;<sub>6</sub> or <sup>4</sup>&frasl;<sub>6</sub>)</p>
+
+<p>Below is the full list of height gaps between each team&rsquo;s best player in Finals history. The best player on the winning team is listed first for each year.</p>
+
+<p>“Best player” is obviously subjective, so I tried to streamline it by using the metric of either leading scorer in that post season or leader in WS that postseason, with some exceptions. I did make some judgement calls and go away from those stats, but very rarely, and in older years I pretty much just went by those stats as I don&rsquo;t have much knowledge to pull from.</p>
+
+<p>I put an asterisk next to a name in cases where the &ldquo;best player&rdquo; given for a team wasn&rsquo;t overwhelmingly clear based on consensus, WS, leading scorer and FMVP voting. In cases where I had to pick one of those metrics only and I don&rsquo;t have knowledge on consensus, I leaned towards leading scorer of that playoff run.</p>
+
+<p><strong>The 1947 BAA Finals;</strong> Joe Fulks (Philadelphia Warriors) at 6&rsquo;5&rdquo; tall vs *Chick Halbert (Chicago Stags) at 6&rsquo;9&rdquo; tall. Difference of 4&rdquo;.<br>
+<em>*Max Zaslofsky led the Stags in WS in the playoffs. At 6&rsquo;2&rdquo; the difference would have been 3&rdquo;</em></p>
+
+<p><strong>The 1948 BAA Finals;</strong> Connie Simmons (Baltimore Bullets) at 6&rsquo;8&rdquo; tall vs Joe Fulks (Philadelphia Warriors) at 6&rsquo;5&rdquo; tall, a difference of 3&rdquo;.  </p>
+
+<p><strong>The 1949 BAA Finals;</strong> George Mikan (Minneapolis Lakers) at 6&rsquo;10&rdquo; tall vs Jack Nichols (Washington Capitols) at 6&rsquo;7&rdquo; tall, a difference of 3&rdquo;.</p>
+
+<p><strong>The 1950 Finals;</strong> George Mikan (Minneapolis Lakers) at 6&rsquo;10&rdquo; tall vs Dolph Schayes (Syracuse Nationals) at 6&rsquo;8&rdquo; tall, a difference of 2&rdquo;.</p>
+
+<p><strong>The 1951 Finals;</strong> *Arnie Risen (Rochester Royals) at 6&rsquo;9&rdquo; tall vs *Max Zaslofsky (New York Knicks) at 6&rsquo;2&rdquo; tall, a difference of 7&rdquo;.<br>
+<em>*Bobby Wanzer and *Vince Boryla were the leaders in playoff WS for the Royals and Knicks respectively. At 6&rsquo;0&rdquo; and 6&rsquo;5&rdquo; the difference is 5&rdquo;</em></p>
+
+<p><strong>The 1952 Finals;</strong> George Mikan (Minneapolis Lakers) at 6&rsquo;10&rdquo; tall vs *Max Zaslofsky (New York Knicks) at 6&rsquo;2&rdquo; tall, a difference of 8&rdquo;.<br>
+<em>*Connie Simmons led the Knicks in WS in the playoffs. At 6&rsquo;8&rdquo; the difference would have been 2&rdquo;</em></p>
+
+<p><strong>The 1953 Finals;</strong> George Mikan (Minneapolis Lakers) at 6&rsquo;10&rdquo; tall vs *Carl Braun (New York Knicks) at 6&rsquo;5&rdquo; tall, a difference of 5&rdquo;.<br>
+<em>*Ernie Vandeweghe led the Knicks in WS in the playoffs. At 6&rsquo;3&rdquo; the difference would have been 7&rdquo;</em></p>
+
+<p><strong>The 1954 Finals;</strong> George Mikan (Minneapolis Lakers) at 6&rsquo;10&rdquo; tall vs Dolph Schayes (Syracuse Nationals) at 6&rsquo;8&rdquo; tall, a difference of 2&rdquo;.</p>
+
+<p><strong>The 1955 Finals;</strong> Dolph Schayes (Syracuse Nationals) at 6&rsquo;8&rdquo; tall vs George Yardley (Fort Wayne Pistons) at 6&rsquo;5&rdquo; tall, a difference of 3&rdquo;.</p>
+
+<p><strong>The 1956 Finals;</strong> Paul Arizin (Philadelphia Warriors) at 6&rsquo;4&rdquo; tall vs George Yardley (Fort Wayne Pistons) at 6&rsquo;5&rdquo; tall, a difference of 1&rdquo;.</p>
+
+<p><strong>The 1957 Finals;</strong> *Bill Russell (Boston Celtics) at 6&rsquo;10&rdquo; tall vs Bob Pettit (St. Louis Hawks) at 6&rsquo;9&rdquo; tall, a difference of 1&rdquo;.<br>
+<em>*Tom Heinsohn led the Celtics in scoring in the playoffs and Cousy was in consideration for being their best player. Heinsohn was 6&rsquo;7&rdquo; and Cousy was 6&rsquo;1&rdquo;, so the difference could have also been 2&rdquo; or 8&rdquo;.</em></p>
+
+<p><strong>The 1958 Finals;</strong> *Bob Pettit (St. Louis Hawks) at 6&rsquo;9&rdquo; tall vs *Bill Russell (Boston Celtics) at 6&rsquo;10&rdquo; tall, a difference of 1&rdquo;.<br>
+<em>*Cousy, 6&rsquo;1&rdquo; led the Celtics in WS, and Bill Sharman, 6&rsquo;1&rdquo;, led in scoring. Cliff Hagan, 6&rsquo;4</em>&rdquo; <em>led in scoring for the Hawks. So the difference between the teams&rsquo; best players could have also been   8&rdquo;, 6&rdquo;, or 3&rdquo;.</em></p>
+
+<p><strong>The 1959 Finals;</strong> *Bill Russell (Boston Celtics) at 6&rsquo;10&rdquo; tall vs Elgin Baylor (Minneapolis Lakers) at 6&rsquo;5&rdquo; tall, a difference of 5&rdquo;.<br>
+<em>*Frank Ramsey, 6&rsquo;3&rdquo;, led the Celtics in scoring</em>. <em>Difference of 2&rdquo;.</em></p>
+
+<p><strong>The 1960 Finals;</strong> *Bill Russell (Boston Celtics) at 6&rsquo;10&rdquo; tall vs Bob Pettit (St. Louis Hawks) at 6&rsquo;9&rdquo; tall, a difference of 1&rdquo;.<br>
+<em>*Tom Heinsohn led in scoring for the Celtics. At 6&rsquo;7&rdquo;, that&rsquo;s a 2&rdquo; difference.</em></p>
+
+<p><strong>The 1961 Finals;</strong> *Bill Russell (Boston Celtics) at 6&rsquo;10&rdquo; tall vs Bob Pettit (St. Louis Hawks) at 6&rsquo;9&rdquo; tall, a difference of 1&rdquo;.<br>
+<em>*Tom Heinsohn led in scoring for the Celtics. At 6&rsquo;7&rdquo;, that&rsquo;s a 2&rdquo; difference.</em></p>
+
+<p><strong>The 1962 Finals;</strong> Bill Russell (Boston Celtics) at 6&rsquo;10&rdquo; tall vs *Elgin Baylor (Los Angeles Lakers) at 6&rsquo;5&rdquo; tall, a difference of 5&rdquo;.<br>
+<em>*Jerry West led the Lakers in WS that postseason, and at 6&rsquo;3&rdquo; the difference between him and Russel is 7&rdquo;.</em></p>
+
+<p><strong>The 1963 Finals;</strong> *Bill Russell (Boston Celtics) at 6&rsquo;10&rdquo; tall vs *Elgin Baylor (Los Angeles Lakers) at 6&rsquo;5&rdquo; tall, a difference of 5&rdquo;.<br>
+<em>*Jerry West led in WS for the Lakers. at 6&rsquo;3&rdquo;, that&rsquo;s a difference of 7&rdquo;.</em></p>
+
+<p><strong>The 1964 Finals;</strong> *Bill Russell (Boston Celtics) at 6&rsquo;10&rdquo; tall vs Wilt Chamberlain (San Francisco Warriors) at 7&rsquo;1&rdquo; tall, a difference of 3&rdquo;.<br>
+<em>*Sam Jones, 6&rsquo;4&rdquo;, led the Celtics in scoring. 9&rdquo; difference.</em></p>
+
+<p><strong>The 1965 Finals;</strong> *Bill Russell (Boston Celtics) at 6&rsquo;10&rdquo; tall vs Jerry West (Los Angeles Lakers) at 6&rsquo;3&rdquo; tall, a difference of 7&rdquo;.<br>
+<em>*Sam Jones, 6&rsquo;4&rdquo;, led the Celtics in scoring. 1&rdquo; difference.</em></p>
+
+<p><strong>The 1966 Finals;</strong> *Bill Russell (Boston Celtics) at 6&rsquo;10&rdquo; tall vs Jerry West (Los Angeles Lakers) at 6&rsquo;3&rdquo; tall, a difference of 7&rdquo;.<br>
+<em>*Sam Jones, 6&rsquo;4&rdquo;, led the Celtics in scoring. 1&rdquo; difference.</em></p>
+
+<p><strong>The 1967 Finals;</strong> *Wilt Chamberlain (Philadelphia 76ers) at 7&rsquo;1&rdquo; tall vs *Rick Barry (San Francisco Warriors) at 6&rsquo;7&rdquo; tall, a difference of 6&rdquo;.<br>
+*<em>Hal Greer led in scoring for the 76ers. He was 6&rsquo;2&rdquo;. Nate Thurmond led in WS for the Warriors and was 6&rsquo;11&rdquo;. The difference could have also been 9&rdquo;, 5&rdquo; or 3&rdquo;.</em></p>
+
+<p><strong>The 1968 Finals;</strong> *John Havlicek (Boston Celtics) at 6&rsquo;5&rdquo; tall vs Jerry West (Los Angeles Lakers) at 6&rsquo;3&rdquo; tall, a difference of 2&rdquo;.<br>
+<em>*Bill Russell was still considered the Celtics best player, though Havlicek led in WS and scoring for this postseason. Russell was 6&rsquo;10&rdquo;, difference of 7&rdquo;.</em></p>
+
+<p><strong>The 1969 Finals;</strong> John Havlicek (Boston Celtics) at 6&rsquo;5&rdquo; tall vs Jerry West (Los Angeles Lakers) at 6&rsquo;3&rdquo; tall, a difference of 2&rdquo;.</p>
+
+<p><strong>The 1970 Finals;</strong> *Willis Reed (New York Knicks) at 6&rsquo;10&rdquo; tall vs Jerry West (Los Angeles Lakers) at 6&rsquo;3&rdquo; tall, a difference of 7&rdquo;.<br>
+<em>*Walt Frazier led the Knicks in WS and was 6&rsquo;4&rdquo;, so would have been a difference of 1”.</em></p>
+
+<p><strong>The 1971 Finals;</strong> Kareem Abdul-Jabbar (Milwaukee Bucks) at 7&rsquo;2&rdquo; tall vs *Earl Monroe (Baltimore Bullets) at 6&rsquo;3&rdquo; tall, a difference of 11&rdquo;.<br>
+<em>*Wes Unseld led the Bullets in WS and was 6&rsquo;7&rdquo;, so a difference of 7&rdquo;.</em></p>
+
+<p><strong>The 1972 Finals;</strong> *Wilt Chamberlain (Los Angeles Lakers) at 7&rsquo;1&rdquo; tall vs Walt Frazier (New York Knicks) at 6&rsquo;4&rdquo; tall, a difference of 9&rdquo;.<br>
+<em>*Gail Goodrich at 6&rsquo;1&rdquo; led the Lakers in scoring. A difference of 3&rdquo;.</em></p>
+
+<p><strong>The 1973 Finals;</strong> Walt Frazier (New York Knicks) at 6&rsquo;4&rdquo; tall vs *Jerry West (Los Angeles Lakers) at 6&rsquo;3&rdquo; tall, a difference of 1&rdquo;.<br>
+<em>*Wilt led in WS for the Lakers and was 7&rsquo;1&rdquo;. A difference of 9&rdquo;.</em></p>
+
+<p><strong>The 1974 Finals;</strong> John Havlicek (Boston Celtics) at 6&rsquo;5&rdquo; tall vs Kareem Abdul-Jabbar (Milwaukee Bucks) at 7&rsquo;2&rdquo; tall, a difference of 9&rdquo;.</p>
+
+<p><strong>The 1975 Finals;</strong> Rick Barry (Golden State Warriors) at 6&rsquo;7&rdquo; tall vs *Elvin Hayes (Washington Bullets) at 6&rsquo;9&rdquo; tall, a difference of 2&rdquo;.<br>
+<em>*Wes Unseld led the Bullets in WS. At 6’7”, that would be a difference of 0”.</em></p>
+
+<p><strong>The 1976 Finals;</strong> *Jo Jo White (Boston Celtics) at 6&rsquo;3&rdquo; tall vs Paul Westphal (Phoenix Suns) at 6&rsquo;4&rdquo; tall, a difference of 1&rdquo;.<br>
+*<em>Dave Cowens led the Celtics in WS. At 6’9”, that would be a difference of 5”.</em></p>
+
+<p><strong>The 1977 Finals;</strong> *Bill Walton (Portland Trail Blazers) at 6&rsquo;11&rdquo; tall vs Julius Erving (Philadelphia 76ers) at 6&rsquo;7&rdquo; tall, a difference of 4&rdquo;.<br>
+<em>*Maurice Lucas at 6&rsquo;9&rdquo; led in scoring for the Blazers. That would make the difference 2”</em></p>
+
+<p><strong>The 1978 Finals;</strong> Elvin Hayes (Washington Bullets) at 6&rsquo;9&rdquo; tall vs Gus Williams (Seattle SuperSonics) at 6&rsquo;2&rdquo; tall, a difference of 7&rdquo;.<br>
+*<em>Wes Unseld, 6&rsquo;7&rdquo;, won FMVP for the Bullets. That would be a difference of 5&rdquo;.</em></p>
+
+<p><strong>The 1979 Finals;</strong> *Gus Williams (Seattle SuperSonics) at 6&rsquo;2&rdquo; tall vs Bob Dandridge (Washington Bullets) at 6&rsquo;6&rdquo; tall, a difference of 4”.<br>
+<em>*Dennis Johnson, at 6’4”, won FMVP for the Sonics. That would be a difference of 2”.</em></p>
+
+<p><strong>The 1980 Finals;</strong> *Kareem Abdul-Jabbar (Los Angeles Lakers) at 7&rsquo;2&rdquo; tall vs Julius Erving (Philadelphia 76ers) at 6&rsquo;7&rdquo; tall, a difference of 7&rdquo;.<br>
+<em>*Magic Johnson, at 6’9”, won FMVP for the Lakers. That would be a difference of 2”</em></p>
+
+<p><strong>The 1981 Finals;</strong> *Larry Bird (Boston Celtics) at 6&rsquo;9&rdquo; tall vs Moses Malone (Houston Rockets) at 6&rsquo;10&rdquo; tall, a difference of 1&rdquo;.<br>
+*<em>Cedric Maxwell at 6’8” won FMVP for the Celtics. That would make a difference of 2”</em></p>
+
+<p><strong>The 1982 Finals;</strong> *Magic Johnson (Los Angeles Lakers) at 6&rsquo;9&rdquo; tall vs Julius Erving (Philadelphia 76ers) at 6&rsquo;7&rdquo; tall, a difference of 2&rdquo;.<br>
+*<em>Norm Nixon, at 6’2”, led the Lakers in playoff points. That would be a difference of 5”.</em></p>
+
+<p><strong>The 1983 Finals;</strong> Moses Malone (Philadelphia 76ers) at 6&rsquo;10&rdquo; tall vs *Kareem Abdul-Jabbar (Los Angeles Lakers) at 7&rsquo;2&rdquo; tall, a difference of 4&rdquo;.<br>
+*<em>Magic is also of discussion for best Lakers player this year, at 6’9” that would be a different of 1”.</em></p>
+
+<p><strong>The 1984 Finals;</strong> Larry Bird (Boston Celtics) at 6&rsquo;9&rdquo; tall vs *Magic Johnson (Los Angeles Lakers) at 6&rsquo;9&rdquo; tall, a difference of 0&rdquo;.<br>
+*<em>Kareem led in scoring, Magic led in WS. Kareem to Bird is a 5” difference.</em></p>
+
+<p><strong>The 1985 Finals;</strong> *Kareem Abdul-Jabbar (Los Angeles Lakers) at 7&rsquo;2&rdquo; tall vs *Larry Bird (Boston Celtics) at 6&rsquo;9&rdquo; tall, a difference of 5&rdquo;.<br>
+*<em>Magic, 6’9” led in WS for the Lakers and Kevin McHale, 6’10”, led in WS for the Celtics.</em></p>
+
+<p><strong>The 1986 Finals;</strong> Larry Bird (Boston Celtics) at 6&rsquo;9&rdquo; tall vs Hakeem Olajuwon (Houston Rockets) at 7&rsquo;0&rdquo; tall, a difference of 3&rdquo;.</p>
+
+<p><strong>The 1987 Finals;</strong> *Magic Johnson (Los Angeles Lakers) at 6&rsquo;9&rdquo; tall vs Larry Bird (Boston Celtics) at 6&rsquo;9&rdquo; tall, difference of 0&rdquo;.<br>
+*<em>James Worthy, at 6’9”, led the Lakers in scoring this postseason. Still a difference of 0”.</em></p>
+
+<p><strong>The 1988 Finals;</strong> James Worthy (Los Angeles Lakers) at 6&rsquo;9&rdquo; tall vs Isiah Thomas (Detroit Pistons) at 6&rsquo;1&rdquo; tall, a difference of 8&rdquo;.<br>
+*<em>Magic, 6’9” led in WS for the Lakers. Still a difference of 8”.</em></p>
+
+<p><strong>The 1989 Finals;</strong> *Isiah Thomas (Detroit Pistons) at 6&rsquo;1&rdquo; tall vs *Magic Johnson (Los Angeles Lakers) at 6&rsquo;9&rdquo; tall, a difference of 8&rdquo;.<br>
+*<em>Joe Dumars at 6’3” led the Pistons in WS and won FMVP. James Worthy, 6’9”, led the Lakers in scoring and was tied with Magic in WS. Difference of 6”</em></p>
+
+<p><strong>The 1990 Finals;</strong> Isiah Thomas (Detroit Pistons) at 6&rsquo;1&rdquo; tall vs Clyde Drexler (Portland Trail Blazers) at 6&rsquo;7&rdquo; tall, a difference of 6&rdquo;.</p>
+
+<p><strong>The 1991 Finals;</strong> Michael Jordan (Chicago Bulls) at 6&rsquo;6&rdquo; tall vs Magic Johnson (Los Angeles Lakers) at 6&rsquo;9&rdquo; tall, a difference of 3&rdquo;.<br>
+*<em>Worthy also of note for Lakers, 6’9”.</em></p>
+
+<p><strong>The 1992 Finals;</strong> Michael Jordan (Chicago Bulls) at 6&rsquo;6&rdquo; tall vs Clyde Drexler (Portland Trail Blazers) at 6&rsquo;7&rdquo; tall, a difference of 1&rdquo;.</p>
+
+<p><strong>The 1993 Finals;</strong> Michael Jordan (Chicago Bulls) at 6&rsquo;6&rdquo; tall vs Charles Barkley (Phoenix Suns) at 6&rsquo;6&rdquo; tall, a difference of 0&rdquo;.</p>
+
+<p><strong>The 1994 Finals;</strong> Hakeem Olajuwon (Houston Rockets) at 7&rsquo;0&rdquo; tall vs Patrick Ewing (New York Knicks) at 7&rsquo;0&rdquo; tall, a difference of 0&rdquo;.</p>
+
+<p><strong>The 1995 Finals;</strong> Hakeem Olajuwon (Houston Rockets) at 7&rsquo;0&rdquo; tall vs Shaquille O&rsquo;Neal (Orlando Magic) at 7&rsquo;1&rdquo; tall, a difference of 1&rdquo;.</p>
+
+<p><strong>The 1996 Finals;</strong> Michael Jordan (Chicago Bulls) at 6&rsquo;6&rdquo; tall vs Gary Payton (Seattle SuperSonics) at 6&rsquo;4&rdquo; tall, a difference of 2&rdquo;.</p>
+
+<p><strong>The 1997 Finals;</strong> Michael Jordan (Chicago Bulls) at 6&rsquo;6&rdquo; tall vs *Karl Malone (Utah Jazz) at 6&rsquo;9&rdquo; tall, a difference of 3&rdquo;.<br>
+*<em>John Stockton at 6’1” led the Jazz in WS. A difference of 5” to Jordan.</em></p>
+
+<p><strong>The 1998 Finals;</strong> Michael Jordan (Chicago Bulls) at 6&rsquo;6&rdquo; tall vs Karl Malone (Utah Jazz) at 6&rsquo;9&rdquo; tall, a difference of 3&rdquo;.</p>
+
+<p><strong>The 1999 Finals;</strong> Tim Duncan (San Antonio Spurs) at 6’11&rdquo; tall vs *Latrell Sprewell (New York Knicks) at 6&rsquo;5&rdquo; tall, a difference of 6&rdquo;.<br>
+*<em>Marcus Camby, at 6’11”, led in WS. A difference of 0” to Duncan.</em></p>
+
+<p><strong>The 2000 Finals;</strong> Shaquille O&rsquo;Neal (Los Angeles Lakers) at 7&rsquo;1&rdquo; tall vs Reggie Miller (Indiana Pacers) at 6&rsquo;7&rdquo; tall, a difference of 6&rdquo;.</p>
+
+<p><strong>The 2001 Finals;</strong> *Shaquille O&rsquo;Neal (Los Angeles Lakers) at 7&rsquo;1&rdquo; tall vs Allen Iverson (Philadelphia 76ers) at 6&rsquo;0&rdquo; tall, a difference of 13&rdquo;.<br>
+**Kobe Bryant, at 6’6”, led the Lakers in WS. A difference of 6” to Iverson.* </p>
+
+<p><strong>The 2002 Finals;</strong> Shaquille O&rsquo;Neal (Los Angeles Lakers) at 7&rsquo;1&rdquo; tall vs Jason Kidd (New Jersey Nets) at 6&rsquo;4&rdquo; tall, a difference of 9&rdquo;.</p>
+
+<p><strong>The 2003 Finals;</strong> Tim Duncan (San Antonio Spurs) at 6&rsquo;11&rdquo; tall vs Jason Kidd (New Jersey Nets) at 6&rsquo;4&rdquo; tall, a difference of 7&rdquo;.</p>
+
+<p><strong>The 2004 Finals;</strong> ***Richard Hamilton (Detroit Pistons) at 6&rsquo;6&rdquo; tall vs *Shaquille O&rsquo;Neal (Los Angeles Lakers) at 7&rsquo;1&rdquo; tall, a difference of 7&rdquo;.<br>
+*<em>Picking the best player on this Pistons team, and also between Kobe and Shaq this year is by far the hardest decision of any year so far. I decided to cop out to scoring leader for the Pistons since that’s the main metric I’m using, and because WS was very close between all the candidates. Billups, at 6’3”, led in WS and won FMVP for the Pistons. Ben Wallace, 6’9”, was second in WS for the Pistons, right behind Billups. Kobe, 6’6” led the Lakers in total points while Shaq led in WS. I don’t want to list all the possible differences for this one…</em></p>
+
+<p><strong>The 2005 Finals;</strong> *Tim Duncan (San Antonio Spurs) at 6’11&rdquo; tall vs *Chauncey Billups (Detroit Pistons) at 6&rsquo;3&rdquo; tall, a difference of 8&rdquo;.<br>
+*<em>Richard Hamilton, 6’6”, led the Pistons in total points. Manu Ginóbili, 6’6”, led in WS for the Spurs. Could be a difference of 5”, 3” or 0&rdquo;</em></p>
+
+<p><strong>The 2006 Finals;</strong> Dwyane Wade (Miami Heat) at 6&rsquo;4&rdquo; tall vs Dirk Nowitzki (Dallas Mavericks) at 7&rsquo;0&rdquo; tall, a difference of 8&rdquo;.</p>
+
+<p><strong>The 2007 Finals;</strong> Tim Duncan (San Antonio Spurs) at 6’11&rdquo; tall  vs LeBron James (Cleveland Cavaliers) at 6&rsquo;9&rdquo; tall, a difference of 2&rdquo;.<br>
+* <em>Tony Parker won FMVP at 6&rsquo;2&rdquo; tall, a difference of 7” to LeBron.</em></p>
+
+<p><strong>The 2008 Finals;</strong> *Kevin Garnett (Boston Celtics) at 6&rsquo;11&rdquo; tall vs Kobe Bryant (Los Angeles Lakers) at 6&rsquo;6&rdquo; tall, a difference of 5&rdquo;.<br>
+*<em>Paul Pierce, 6’7”, won FMVP. Difference of 1”.</em></p>
+
+<p><strong>The 2009 Finals;</strong> Kobe Bryant (Los Angeles Lakers) at 6&rsquo;6&rdquo; tall vs Dwight Howard (Orlando Magic) at 6&rsquo;10&rdquo; tall, a difference of 4&rdquo;.</p>
+
+<p><strong>The 2010 Finals;</strong> *Kobe Bryant (Los Angeles Lakers) at 6&rsquo;6&rdquo; tall vs *Paul Pierce (Boston Celtics) at 6&rsquo;7&rdquo; tall, a difference of 1&rdquo;.<br>
+*<em>Pau Gasol, 7’0”, and Rajon Rondo, 6’1”, led the Lakers and Celtics respectively in WS.</em></p>
+
+<p><strong>The 2011 Finals;</strong> Dirk Nowitzki (Dallas Mavericks) at 7&rsquo;0&rdquo; tall vs *LeBron James (Miami Heat) at 6&rsquo;9&rdquo; tall, a difference of 3&rdquo;.<br>
+**Dwyane Wade, 6’4”, led the Heat in scoring. Difference of 8”* </p>
+
+<p><strong>The 2012 Finals;</strong> LeBron James (Miami Heat) at 6&rsquo;9&rdquo; tall vs Kevin Durant (Oklahoma City Thunder) at 6&rsquo;11&rdquo; tall, a difference of 2&rdquo;.</p>
+
+<p><strong>The 2013 Finals;</strong> LeBron James (Miami Heat) at 6&rsquo;9&rdquo; tall vs *****Tim Duncan (San Antonio Spurs) at 6’11&rdquo; tall, a difference of 2”<br>
+ <em>*Tony Parker, 6&rsquo;2&rdquo; led the Spurs in scoring and Kawhi Leonard, 6’6”, led the Spurs in WS. Could be differences of 7” or 3”.</em></p>
+
+<p><strong>The 2014 Finals;</strong> *Tim Duncan (San Antonio Spurs) at 6’11&rdquo; tall vs LeBron James (Miami Heat) at 6&rsquo;9&rdquo; tall, a difference of 2&rdquo;.<br>
+*<em>Kawhi Leonard, 6’6”, won FMVP for the Spurs and Tony Parker, 6&rsquo;2&rdquo; led the Spurs in scoring.</em> <em>Could be differences of 7” or 3”.</em></p>
+
+<p><strong>The 2015 Finals;</strong> *Stephen Curry (Golden State Warriors) at 6&rsquo;3&rdquo; tall vs LeBron James (Cleveland Cavaliers) at 6&rsquo;9&rdquo; tall, a difference of 6”.<br>
+<em>*Andre Iguodala, 6’6” won FMVP for the Warriors (as a Steph fan I feel compelled to add that Steph led the league this playoffs in WS and was second to LeBron in total points) difference of 3”</em></p>
+
+<p><strong>The 2016 Finals;</strong> LeBron James (Cleveland Cavaliers) at 6&rsquo;9&rdquo; tall vs *Stephen Curry (Golden State Warriors) at 6&rsquo;3&rdquo; tall, a difference of 6&rdquo;.<br>
+<em>*Draymond Green, 6’6”, and Klay Thomson, 6’6” led the Warriors in WS and scoring respectively. Could be a difference of 3”</em></p>
+
+<p><strong>The 2017 Finals;</strong> *Stephen Curry (Golden State Warriors) at 6&rsquo;3&rdquo; tall vs LeBron James (Cleveland Cavaliers) at 6&rsquo;9&rdquo; tall, a difference of 6&rdquo;.<br>
+<em>*While Steph led in WS and scoring for the Warriors, Kevin Durant, 6’11”, won FMVP for the team. Could be a difference of 2”</em></p>
+
+<p><strong>The 2018 Finals;</strong> Kevin Durant (Golden State Warriors) at 6&rsquo;11&rdquo; tall vs LeBron James (Cleveland Cavaliers) at 6&rsquo;9&rdquo; tall, a difference of 2&rdquo;.</p>
+
+<p><strong>The 2019 Finals;</strong> Kawhi Leonard (Toronto Raptors) at 6&rsquo;6&rdquo; tall vs Stephen Curry (Golden State Warriors) at 6&rsquo;3&rdquo; tall, a difference of 3”. </p>
+
+<p><strong>The 2020 Finals;</strong> *LeBron James (Los Angeles Lakers) at 6&rsquo;9&rdquo; tall vs Jimmy Butler (Miami Heat) at 6&rsquo;6&rdquo; tall, a difference of 3&rdquo;.<br>
+*<em>While essentially tied, Anthony Davis, 6’10”, technically led the Lakers in both WS and scoring. Difference of 4”.</em></p>
+
+<p><strong>The 2021 Finals;</strong> Giannis Antetokounmpo (Milwaukee Bucks) at 6&rsquo;11&rdquo; tall vs *Devin Booker (Phoenix Suns) at 6&rsquo;5&rdquo; tall, a difference of 6&rdquo;.<br>
+<em>*Deandre Ayton…, 7’0”, and Chris Paul, 6’0”, both had more WS than the Suns than Booker, though Booker led in scoring. Could be a 1&rdquo; or 11&rdquo; difference as well.</em></p>
+
+<p><strong>The 2022 Finals;</strong> Stephen Curry (Golden State Warriors) at 6&rsquo;3&rdquo; tall vs *Jayson Tatum (Boston Celtics) at 6&rsquo;8&rdquo; tall, a difference of 5&rdquo;.<br>
+*<em>Jaylen Brown, 6’6” and Al Horford, 6’8”, led the Celtics in WS. Could be differences of 3” or 5”.</em></p>
+
+<p><strong>The 2023 Finals;</strong> Nikola Jokić (Denver Nuggets) at 6&rsquo;11&rdquo; tall vs Jimmy Butler (Miami Heat) at 6&rsquo;6&rdquo; tall, a difference of 5&rdquo;.</p>
+
+<p><strong>The 2024 Finals;</strong> *Jayson Tatum (Boston Celtics) at 6&rsquo;8&rdquo; tall vs Luka Dončić (Dallas Mavericks) at 6&rsquo;8&rdquo; tall, a difference of 0”.<br>
+*<em>Jaylen Brown, 6’6”, won FMVP for the Celtics, and Derrick White, 6’4”, led in WS for the Celtics. Could be a gap of 2” or 4”.</em></p>
+
+<p><strong>The 2025 Finals;</strong> Shai Gilgeous-Alexander (Oklahoma City Thunder) at 6&rsquo;6&rdquo; tall vs *Tyrese Haliburton (Indiana Pacers) at 6&rsquo;5&rdquo; tall, a difference of 1&rdquo;.<br>
+<em>*Siakam, 6’8”, had more total points and WS than Haliburton, while Hali had better VORP and BPM. Could be a difference of 2”.</em></p>
+
+<p><strong>The 2026 Finals;</strong> *Jalen Brunson (New York Knicks) at 6&rsquo;2&rdquo; tall vs Victor Wembanyama (San Antonio Spurs) at 7&rsquo;4&rdquo; tall, a difference of <strong><em>14”!</em></strong><br>
+<em>*Karl-Anthony Towns, 7’0” leads the Knicks in WS.</em></p>
+
+<p>This is all based on stats from BBref. If Brunson was say, 6’1” btw and Wemby was 7’5”, that gap would be an insane 16”.</p>
+
+<p>Hope you enjoyed reading! This took me way too long to compile lmao.</p>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="op72ptc" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Upstairs_Display_697</div>
+        <div>8 | 7 hours ago </div>
+      </div>
+      <label for="op72ptc" class="commentText"><p>Tbf 2001 O&rsquo;Neal-Iverson is close, especially when many consider Iverson overstated his height.</p>
+
+<p>Although I suppose the gap between Wemby and O&rsquo;Neal is still too large, as weird as it feels to say about O&rsquo;Neal.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="op73isg" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Hellschampion | Warriors [GSW] #1 Warriors Bandwagon</div>
+        <div>3 | 7 hours ago </div>
+      </div>
+      <label for="op73isg" class="commentText"><p>Yeah, Iverson was probably 5&rsquo;11 which would bring that to a 14 inch heigh difference to tie this Wemby/Brunson one. But if you say Brunson is 6&rsquo;1 and Wemby is 7&rsquo;5, which both appear to be true then this years would jump up to 16 inches, which is pretty insane lol. I just went by the height BBref has listed for each player though.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="op752sp" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Good_NewsEveryone | Pelicans</div>
+        <div>7 | 7 hours ago </div>
+      </div>
+      <label for="op752sp" class="commentText"><p>now do dick size</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="op75v2p" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Hellschampion | Warriors [GSW] #1 Warriors Bandwagon</div>
+        <div>8 | 7 hours ago </div>
+      </div>
+      <label for="op75v2p" class="commentText"><p>There&rsquo;s a 81 inch Johnson listed here a few times</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="op79kuy" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Black-----Manta | Timberwolves</div>
+        <div>5 | 7 hours ago </div>
+      </div>
+      <label for="op79kuy" class="commentText"><p>This would&rsquo;ve done numbers in the off season</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="op7df4x" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Hellschampion | Warriors [GSW] #1 Warriors Bandwagon</div>
+        <div>3 | 6 hours ago </div>
+      </div>
+      <label for="op7df4x" class="commentText"><p>I might revisit it once we have the data from this series to add</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="op773d3" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Chao-Z | Knicks</div>
+        <div>4 | 7 hours ago </div>
+      </div>
+      <label for="op773d3" class="commentText"><p>*Best offensive player.</p>
+
+<p>KAT has a very strong argument for best overall player on the Knicks.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="op77maa" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Hellschampion | Warriors [GSW] #1 Warriors Bandwagon</div>
+        <div>2 | 7 hours ago </div>
+      </div>
+      <label for="op77maa" class="commentText"><p>He has led in Win Shares so far in the playoffs</p>
+
+<p>Edit: (KAT)</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="op7832h" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>SSBM_DangGan | Spurs</div>
+        <div>3 | 7 hours ago </div>
+      </div>
+      <label for="op7832h" class="commentText"><p>Good post</p>
+
+<p>You have Wemby 6&rsquo;5 in the first paragraph</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="op79tl6" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Hellschampion | Warriors [GSW] #1 Warriors Bandwagon</div>
+        <div>1 | 7 hours ago </div>
+      </div>
+      <label for="op79tl6" class="commentText"><p>Fixed, thank you!</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="op7kzzl" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>stoneape314 | Raptors</div>
+        <div>2 | 6 hours ago </div>
+      </div>
+      <label for="op7kzzl" class="commentText"><p>That height difference distribution needs a graph!</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="op7w29p" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>LogDogan8</div>
+        <div>2 | 5 hours ago </div>
+      </div>
+      <label for="op7w29p" class="commentText"><p>The best player on the 04 Pistons was clearly one of Ben Wallace or Billups. Sheed was 3, 4 and 5 were Rip and Prince or vise versa. Hamilton was definitely not #1.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="op7yvq7" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Hellschampion | Warriors [GSW] #1 Warriors Bandwagon</div>
+        <div>1 | 4 hours ago </div>
+      </div>
+      <label for="op7yvq7" class="commentText"><p>You&rsquo;re probably right, Billups was my first instinct. I just defaulted to leading scorer though since that was the metric I was relying on the most generally.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="op76qlg" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>darryn_peterson | Celtics</div>
+        <div>-5 | 7 hours ago </div>
+      </div>
+      <label for="op76qlg" class="commentText"><p>This pots seems a little ai don’t know why</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="op773ih" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Hellschampion | Warriors [GSW] #1 Warriors Bandwagon</div>
+        <div>7 | 7 hours ago </div>
+      </div>
+      <label for="op773ih" class="commentText"><p>That’s pretty offensive ngl. I spent like 4 hours writing this out 😭</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="op79kg3" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ar_an_cheann</div>
+        <div>5 | 7 hours ago </div>
+      </div>
+      <label for="op79kg3" class="commentText"><p>The wemby height error helped me believe you</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
