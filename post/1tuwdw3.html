@@ -1,0 +1,1137 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.selfPostImage {
+  width: 100%;
+  height: auto;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/baseball/comments/1tuwdw3/this_season_shohei_ohtanis_batting_has_produced_a/"><p>This season, Shohei Ohtani’s batting has produced a higher-volume offense over the innings he pitches than the entire opposing team</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <p>I was looking at Ohtani’s overall season stats, and the historical data trends show a new milestone: he is matching entire Major League offenses by himself. This anomaly just widened even further following his most recent game on Monday against the Arizona Diamondbacks. Ohtani went <strong>3-for-4 with a double</strong>, extending his active on-base streak to 18 games. Over this stretch, he is batting an absurd <strong>.415/.506/.723</strong>.</p>
+
+<p>I took his updated year-to-date full-season hitting average and his dominant full-season pitching baseline, and projected the volume of his exact plate appearances against the innings he pitches.</p>
+
+<p>I tracked this contextually using Linear Weights—a historical framework built on decades of MLB game data that calculates the average run value of specific plays based on how they shift run expectancy (e.g., a Walk is worth roughly +0.33 runs, a Single is +0.46, a Home Run is +1.40, and Outs naturally penalize the baseline).</p>
+
+<p>Following his latest 3-hit night, Ohtani&rsquo;s individual bat has officially surpassed the output of the collective offenses he faced as a pitcher this season.</p>
+
+<p><strong>1. What the Opposing Team Produces Against His Full-Season Pitching Baseline</strong></p>
+
+<table>
+<thead>
+<tr>
+<th align="left"><strong>Metric</strong></th>
+<th align="left"><strong>Value / Impact</strong></th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left"><strong>Average Innings Per Start</strong></td>
+<td align="left">6.1 Innings</td>
+</tr>
+
+<tr>
+<td align="left"><strong>Opponent Seasonal OPS</strong></td>
+<td align="left">.447 OPS</td>
+</tr>
+
+<tr>
+<td align="left"><strong>Run Expectancy Per Inning</strong></td>
+<td align="left">0.08 Runs</td>
+</tr>
+
+<tr>
+<td align="left"><strong>Total Opponent Run Output</strong></td>
+<td align="left"><strong>0.49 Expected Runs</strong> (6.1 Innings × 0.08)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>2. What Ohtani Produces Based on His Full-Season Hitting Average</strong></p>
+
+<table>
+<thead>
+<tr>
+<th align="left"><strong>Metric</strong></th>
+<th align="left"><strong>Value / Impact</strong></th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left"><strong>Average Plate Appearances (PAs)</strong></td>
+<td align="left">3 PAs (During his own 6.1-inning pitching window)</td>
+</tr>
+
+<tr>
+<td align="left"><strong>Ohtani Seasonal OPS</strong></td>
+<td align="left">.909 OPS</td>
+</tr>
+
+<tr>
+<td align="left"><strong>Run Expectancy Per PA</strong></td>
+<td align="left">0.167 Runs Created (Via Linear Weights)</td>
+</tr>
+
+<tr>
+<td align="left"><strong>Total Ohtani Run Output</strong></td>
+<td align="left"><strong>0.50 Expected Runs</strong> (3 PAs × 0.167)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>The Advanced Analytics Reality Check</strong></p>
+
+<p>To make sure standard OPS wasn&rsquo;t skewing the run values, I cross-referenced this math using Weighted On-Base Average (<strong>wOBA</strong>)—the exact advanced linear weights tool used by platforms like <a href="https://library.fangraphs.com/offense/woba/" target="_blank">FanGraphs</a> to weigh offensive events precisely.</p>
+
+<p>Interestingly, Ohtani’s current seasonal ratio of walks, singles, and extra-base hits mean that his <strong>.388 wOBA</strong> and his .909 OPS happen to land on the exact same run-expectancy baseline. Normally, these two metrics diverge because OPS overvalues pure slugging, but Ohtani is hitting for high average, drawing walks, and crushing for power simultaneously. This statistical coincidence mathematically locks both metrics into the exact same conclusion: his individual bat isolates <strong>0.167 runs</strong> per plate appearance, resulting in <strong>0.50 runs created</strong> over 3 PAs.</p>
+
+<p><strong>The Historical Breakdown</strong></p>
+
+<p>The magic threshold I found is that the scales have officially tipped, unlocking a literal statistical impossibility in modern baseball history.</p>
+
+<table>
+<thead>
+<tr>
+<th align="left"><strong>Matchup Window</strong></th>
+<th align="left"><strong>Ohtani Solo Bat Output</strong></th>
+<th align="left"><strong>Entire Opposing Lineup Output</strong></th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left"><strong>Before Monday Night</strong></td>
+<td align="left">0.48 Expected Runs</td>
+<td align="left">0.48 Expected Runs</td>
+</tr>
+
+<tr>
+<td align="left"><strong>After 3-for-4 Game</strong></td>
+<td align="left"><strong>0.50 Expected Runs</strong></td>
+<td align="left"><strong>0.49 Expected Runs</strong></td>
+</tr>
+</tbody>
+</table>
+<p>The numbers tell the story that <strong>whenever Ohtani has stepped onto the rubber this season, he limits a Major League roster so thoroughly that his lone bat generates more net offensive volume than he gives up to the entire opposing team combined.</strong></p>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="opcj5c8" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>randomnate</div>
+        <div>97 | an hour ago </div>
+      </div>
+      <label for="opcj5c8" class="commentText"><p>I know that sustaining a sub-1 ERA all season is almost certainly not going to happen—his peripherals are very good, but not <em>that</em> good—but if he somehow did put together a full season where his OPS was higher than his ERA (which is currently the case, even with his bat lagging slightly behind the output of the last couple years) it wouldn&rsquo;t just be the best baseball season ever, I think it would be arguably the most impressive achievement in the history of professional sports.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="opck3r3" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>K3B1N | Los Angeles Dodgers</div>
+        <div>33 | an hour ago </div>
+      </div>
+      <label for="opck3r3" class="commentText"><p>Like you said, it’s not likely to happen, but I would never bet against Shohei. The guy just seems to manifest a goal and then goes out and achieves it.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="opcn3uv" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>markjay6 | Los Angeles Dodgers</div>
+        <div>11 | an hour ago </div>
+      </div>
+      <label for="opcn3uv" class="commentText"><p>I can&rsquo;t find it right now, but I saw a good analysis recently on why Shohei&rsquo;s performance is better than his peripherals (basically his career ERA &amp;lt; xERA &amp;lt; FIP &amp;lt; xFIP.</p>
+
+<p>Basically he ramps up the speed and movement of his pitches in high pressure situations (runners on base, high stress counts, later in games) much more than typical pitchers. This thus allows him to be especially effective in preventing runs being scored.</p>
+
+<p>I&rsquo;m not saying that he will end up with an ERA under 1.0 &ndash; but the fact that his ERA is better than his peripherals is not a surprise and is reflective of his career stats.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="opcoewm" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Salvalicious252 | Major League Baseball</div>
+        <div>9 | an hour ago </div>
+      </div>
+      <label for="opcoewm" class="commentText"><p>Yeah, throughout Ohtani&rsquo;s career as a pitcher he has consistently overperformed his peripherals. It&rsquo;s why I think fangraphs war and the standard FIP based pitching war underestimates his pitching value. Because over a large enough sample size and with the clear velo and movement uptick in high-leverage situations, I feel like we can pretty confidently say his overperformance of peripherals isn&rsquo;t just luck.</p>
+
+<p>his FIP fwar is 1.9</p>
+
+<p>his RA/9 fwar is 3.2</p>
+
+<p>his <sup>50</sup>&frasl;<sub>50</sub> split fwar is 2.5</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="opcrrbl" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>markjay6 | Los Angeles Dodgers</div>
+        <div>2 | 34 minutes ago </div>
+      </div>
+      <label for="opcrrbl" class="commentText"><p>That RA/9 number is crazy, when combined with his hitting WAR, puts him on the path to having the highest (RA/9) fWAR in the last 100 years.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="opcvzue" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Unhappy-Gur5544</div>
+        <div>1 | 16 minutes ago </div>
+      </div>
+      <label for="opcvzue" class="commentText"><p>This. I watch every single start and when a runner gets into scoring position, he suddenly starts hitting 100 mph. Also at the end of games when he&rsquo;s nearing 100 pitches and knows he&rsquo;s getting pulled: 100 mph.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="opck9wr" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>SirPsychoSquints | Boston Red Sox</div>
+        <div>10 | an hour ago </div>
+      </div>
+      <label for="opck9wr" class="commentText"><p>What would even be the competition, for your last sentence? Bonds didn’t blow anyone away by such a margin, nor did Mays, or Brady…</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="opcl1k3" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>tyler-86 | World Series Trophy • Los Angeles Dod…</div>
+        <div>18 | an hour ago </div>
+      </div>
+      <label for="opcl1k3" class="commentText"><p>It&rsquo;d be like Brady making more interceptions as a defensive back than he threw as a QB.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="opcn6pf" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Timewhilewaiting | Los Angeles Dodgers</div>
+        <div>10 | an hour ago </div>
+      </div>
+      <label for="opcn6pf" class="commentText"><p>While also throwing 25 TD and leading the league in yards</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="opcryvi" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>tyler-86 | World Series Trophy • Los Angeles Dod…</div>
+        <div>4 | 33 minutes ago </div>
+      </div>
+      <label for="opcryvi" class="commentText"><p>It&rsquo;s Brady, that was implied.</p>
+
+<p><img src="giphy|jwKpxz0uGrqcTjDKvs" alt="gif" /></p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="opcl7cq" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>baribigbird06 | Los Angeles Dodgers • World Baseball Classic</div>
+        <div>16 | an hour ago </div>
+      </div>
+      <label for="opcl7cq" class="commentText"><p>I think you’d have to start looking at the multi-sports guys like Deion Sanders or Bo Jackson for comparisons.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="opcpg0k" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>SirPsychoSquints | Boston Red Sox</div>
+        <div>8 | 44 minutes ago </div>
+      </div>
+      <label for="opcpg0k" class="commentText"><p>Neither of them were good enough at baseball to compete in this, IMO.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="opcm51u" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>randomnate</div>
+        <div>6 | an hour ago </div>
+      </div>
+      <label for="opcm51u" class="commentText"><p>I think you&rsquo;d have to look beyond baseball, to sports where one guy just unequivocally dusts all competition and put up numbers no one will ever touch ala Bradman in Cricket or Gretzky in Hockey. Like the stat that if you took away all of Gretzky&rsquo;s goals he&rsquo;s still the NHL&rsquo;s all time points leader on assists alone&hellip;but even then, there isn&rsquo;t the crazy unique factor of being a two-way player in a sport where no one else is.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="opcppwz" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>SirPsychoSquints | Boston Red Sox</div>
+        <div>0 | 43 minutes ago </div>
+      </div>
+      <label for="opcppwz" class="commentText"><p>While Gretzky blows people away similar to how Ruth did his contemporaries, he also played in a very high scoring era. I don’t think it compares to Shohei in this hypothetical.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="opcl7v9" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>puffie300</div>
+        <div>3 | an hour ago </div>
+      </div>
+      <label for="opcl7v9" class="commentText"><p>Wayne Gretzky</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="opclzgn" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>GanjasTriforce</div>
+        <div>6 | an hour ago </div>
+      </div>
+      <label for="opclzgn" class="commentText"><p>He&rsquo;s due for a regression of some sort as the league gets more looks overall at post-TJ #2 Shohei Ohtani, but what&rsquo;s impressive to me is that he&rsquo;s suppressing hard contact so well. Even if he didn&rsquo;t have an elite infield backing him he&rsquo;s still limiting his opponents to a <strong>0.231 OBP.</strong></p>
+
+<p>He&rsquo;s obviously got control issues now and then that leads to walkfests but which pitcher doesn&rsquo;t?</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="opcnbln" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ConscientiousObsrvrr</div>
+        <div>2 | an hour ago </div>
+      </div>
+      <label for="opcnbln" class="commentText"><p>tbh, a lot of the peripherals underrate the ability to create poor contact, and with ABS framing, the chances of a dominant pitching season are a lot higher right now with reduction of referee failure and reduced impact of framing.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="opckk5u" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>HairAncient5500 | Washington Nationals</div>
+        <div>39 | an hour ago </div>
+      </div>
+      <label for="opckk5u" class="commentText"><p>Well that’s because Shohei the hitter has not had to face Shohei the pitcher. Clearly his hitting stats wouldn’t be as good if he had to face himself as pitcher</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="opcmlik" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>baribigbird06 | Los Angeles Dodgers • World Baseball Classic</div>
+        <div>7 | an hour ago </div>
+      </div>
+      <label for="opcmlik" class="commentText"><p>I played this out as a little mental exercise while on my porcelain throne the other day, and I think pitcher Shohei in his current form beats hitter Shohei.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="opcn8uq" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>HairAncient5500 | Washington Nationals</div>
+        <div>5 | an hour ago </div>
+      </div>
+      <label for="opcn8uq" class="commentText"><p>Are you thinking in a single at bat or over a large sample size? I feel like we’d need 100 at bats to really know</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="opcnt5o" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>baribigbird06 | Los Angeles Dodgers • World Baseball Classic</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="opcnt5o" class="commentText"><p>Single game, 3 AB. His pitch mix is just too good and I could be wrong, but I don’t think Shohei has hit a 100 mph fastball yet this year, at least not recently.</p>
+
+<p>Though Junetani is coming/here.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="opcqwpl" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>SirPsychoSquints | Boston Red Sox</div>
+        <div>2 | 38 minutes ago </div>
+      </div>
+      <label for="opcqwpl" class="commentText"><p>4 pitches over 100, 3 more over 99.5</p>
+
+<p><a href="https://baseballsavant.mlb.com/statcast_search?hfPT=&amp;hfAB=&amp;hfGT=R%7C&amp;hfPR=&amp;hfZ=&amp;hfStadium=&amp;hfBBL=&amp;hfNewZones=&amp;hfPull=&amp;hfC=&amp;hfSea=2026%7C&amp;hfSit=&amp;player_type=pitcher&amp;hfOuts=&amp;home_road=&amp;pitcher_throws=&amp;batter_stands=&amp;hfSA=&amp;hfEventOuts=&amp;hfEventRuns=&amp;hfABSFlag=&amp;game_date_gt=&amp;game_date_lt=&amp;hfMo=&amp;hfTeam=&amp;hfOpponent=&amp;hfRO=&amp;position=&amp;hfInfield=&amp;hfOutfield=&amp;hfInn=&amp;hfBBT=&amp;batters_lookup%5B%5D=660271&amp;hfFlag=&amp;metric_1=api_p_release_speed&amp;metric_1_gt=99&amp;metric_1_lt=&amp;group_by=name&amp;min_pitches=0&amp;min_results=0&amp;min_pas=0&amp;sort_col=pitches&amp;player_event_sort=api_p_release_speed&amp;sort_order=desc#results" target="_blank">https://baseballsavant.mlb.com/statcast_search?hfPT=&amp;hfAB=&amp;hfGT=R%7C&amp;hfPR=&amp;hfZ=&amp;hfStadium=&amp;hfBBL=&amp;hfNewZones=&amp;hfPull=&amp;hfC=&amp;hfSea=2026%7C&amp;hfSit=&amp;player_type=pitcher&amp;hfOuts=&amp;home_road=&amp;pitcher_throws=&amp;batter_stands=&amp;hfSA=&amp;hfEventOuts=&amp;hfEventRuns=&amp;hfABSFlag=&amp;game_date_gt=&amp;game_date_lt=&amp;hfMo=&amp;hfTeam=&amp;hfOpponent=&amp;hfRO=&amp;position=&amp;hfInfield=&amp;hfOutfield=&amp;hfInn=&amp;hfBBT=&amp;batters_lookup%5B%5D=660271&amp;hfFlag=&amp;metric_1=api_p_release_speed&amp;metric_1_gt=99&amp;metric_1_lt=&amp;group_by=name&amp;min_pitches=0&amp;min_results=0&amp;min_pas=0&amp;sort_col=pitches&amp;player_event_sort=api_p_release_speed&amp;sort_order=desc#results</a></p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="opcro7n" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>baribigbird06 | Los Angeles Dodgers • World Baseball Classic</div>
+        <div>1 | 35 minutes ago </div>
+      </div>
+      <label for="opcro7n" class="commentText"><p>Those are only ones thrown to him right? Still need to filter for in-play? So <sup>2</sup>&frasl;<sub>8</sub> <a href="https://baseballsavant.mlb.com/statcast_search?hfPT=&amp;hfAB=&amp;hfGT=R%7C&amp;hfPR=hit%5C.%5C.into%5C.%5C.play%7C&amp;hfZ=&amp;hfStadium=&amp;hfBBL=&amp;hfNewZones=&amp;hfPull=&amp;hfC=&amp;hfSea=2026%7C&amp;hfSit=&amp;player_type=pitcher&amp;hfOuts=&amp;home_road=&amp;pitcher_throws=&amp;batter_stands=&amp;hfSA=&amp;hfEventOuts=&amp;hfEventRuns=&amp;hfABSFlag=&amp;game_date_gt=&amp;game_date_lt=&amp;hfMo=&amp;hfTeam=&amp;hfOpponent=&amp;hfRO=&amp;position=&amp;hfInfield=&amp;hfOutfield=&amp;hfInn=&amp;hfBBT=&amp;batters_lookup%5B%5D=660271&amp;hfFlag=&amp;metric_1=api_p_release_speed&amp;metric_1_gt=99&amp;metric_1_lt=&amp;group_by=name&amp;min_pitches=0&amp;min_results=0&amp;min_pas=0&amp;sort_col=pitches&amp;player_event_sort=api_p_release_speed&amp;sort_order=desc" target="_blank">https://baseballsavant.mlb.com/statcast_search?hfPT=&amp;hfAB=&amp;hfGT=R%7C&amp;hfPR=hit%5C.%5C.into%5C.%5C.play%7C&amp;hfZ=&amp;hfStadium=&amp;hfBBL=&amp;hfNewZones=&amp;hfPull=&amp;hfC=&amp;hfSea=2026%7C&amp;hfSit=&amp;player_type=pitcher&amp;hfOuts=&amp;home_road=&amp;pitcher_throws=&amp;batter_stands=&amp;hfSA=&amp;hfEventOuts=&amp;hfEventRuns=&amp;hfABSFlag=&amp;game_date_gt=&amp;game_date_lt=&amp;hfMo=&amp;hfTeam=&amp;hfOpponent=&amp;hfRO=&amp;position=&amp;hfInfield=&amp;hfOutfield=&amp;hfInn=&amp;hfBBT=&amp;batters_lookup%5B%5D=660271&amp;hfFlag=&amp;metric_1=api_p_release_speed&amp;metric_1_gt=99&amp;metric_1_lt=&amp;group_by=name&amp;min_pitches=0&amp;min_results=0&amp;min_pas=0&amp;sort_col=pitches&amp;player_event_sort=api_p_release_speed&amp;sort_order=desc</a></p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="opcsrgm" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>SirPsychoSquints | Boston Red Sox</div>
+        <div>1 | 30 minutes ago </div>
+      </div>
+      <label for="opcsrgm" class="commentText"><p>Right, those two are in my search (I believe?)</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="opcu4p8" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>baribigbird06 | Los Angeles Dodgers • World Baseball Classic</div>
+        <div>1 | 24 minutes ago </div>
+      </div>
+      <label for="opcu4p8" class="commentText"><p>Hmm looks like it’s missing when I clicked your link. If you check my link, applying the filter gave me two rows: Juan Morillo and Sandy.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="opcsaqx" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>SirPsychoSquints | Boston Red Sox</div>
+        <div>1 | 32 minutes ago </div>
+      </div>
+      <label for="opcsaqx" class="commentText"><p>Two of those four pitches were from Duran - one out, none on, bottom 9th, down a run. Swinging strike on a curve, took a fastball for a ball, swung through a fastball, took a curve for a ball, and grounded out on a curve.</p>
+
+<p>Two of them were from Vodnik - two outs, man on first, top 9th, down a run. Took a fastball for a strike, then another for a ball, then singled off a changeup through the right side of the infield.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="opcw88x" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>jsdodgers | Los Angeles Dodgers</div>
+        <div>5 | 15 minutes ago </div>
+      </div>
+      <label for="opcw88x" class="commentText"><p>Thing is Ohtani knows exactly how Shohei thinks on the mound, so he knows exactly what&rsquo;s coming. However! Shohei knows that Ohtani knows what he&rsquo;s thinking, so he&rsquo;ll change up the at-bat and throw something unexpected. However! Ohtani knows this and still knows exactly what to expect. However!&hellip;</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="opcl2s5" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>alxndrblack | Toronto Blue Jays • Detroit Tigers</div>
+        <div>22 | an hour ago </div>
+      </div>
+      <label for="opcl2s5" class="commentText"><p>Remember when a bunch of crisis actors in blue jays gear said &ldquo;we don&rsquo;t need you&rdquo; to the best all around player the game has ever seen?</p>
+
+<p>That would have been really embarrassing if it was actually Jays fans</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="opcm54w" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>GanjasTriforce</div>
+        <div>14 | an hour ago </div>
+      </div>
+      <label for="opcm54w" class="commentText"><blockquote>
+<p>crisis actors</p>
+</blockquote>
+
+<p>🤔</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="opct8t4" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Djov | Toronto Blue Jays</div>
+        <div>6 | 28 minutes ago </div>
+      </div>
+      <label for="opct8t4" class="commentText"><p>Telling superstars that we actually don&rsquo;t need them when we absolutely 100% do is a time honored Toronto sports fan tradition</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="opciik4" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Objective_Brief_1953</div>
+        <div>11 | an hour ago </div>
+      </div>
+      <label for="opciik4" class="commentText"><p>Guess I&rsquo;ll do it myself</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="opckc99" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>GanjasTriforce</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="opckc99" class="commentText"><p>How many gems do you think he&rsquo;s packing atm</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="opck01t" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Parametric_Or_Treat</div>
+        <div>9 | an hour ago </div>
+      </div>
+      <label for="opck01t" class="commentText"><p>Is that good</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="opcm5uv" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>JiveChicken00 | Philadelphia Phillies</div>
+        <div>7 | an hour ago </div>
+      </div>
+      <label for="opcm5uv" class="commentText"><p>We really should just skip the paperwork and elect him to the Hall of Fame now. The ancient Romans had a term for what he is: Sui generis.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="opckgsc" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>schermerhorse</div>
+        <div>4 | an hour ago </div>
+      </div>
+      <label for="opckgsc" class="commentText"><p>This guy is pretty good at baseball</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="opcmo1x" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>weguccino | Los Angeles Dodgers</div>
+        <div>4 | an hour ago </div>
+      </div>
+      <label for="opcmo1x" class="commentText"><p><img src="giphy|0NTG9ffrXT870Wt9qv" alt="gif" /></p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="opct1o5" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Hipster-Link | Los Angeles Dodgers</div>
+        <div>3 | 29 minutes ago </div>
+      </div>
+      <label for="opct1o5" class="commentText"><p>It’s cool to know that I’m living at the same time as the same player that will inevitably go down as the hands-down undisputed greatest player to ever set foot in the diamond. The phrase Greatest of all Time has been diluted and memed so much in the last few years but is there really any other athlete that represents that? Anyway, great analysis. I already forwarded it to one of my friends to read over. </p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="opclvrt" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>twl221 | Chicago Cubs</div>
+        <div>2 | an hour ago </div>
+      </div>
+      <label for="opclvrt" class="commentText"><p>Ai slop 🤢</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="opct8oh" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>PuzzleheadedCash3638</div>
+        <div>2 | 28 minutes ago </div>
+      </div>
+      <label for="opct8oh" class="commentText"><p>It&rsquo;s obvious, not sure why you are downvoted</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="opcvmhw" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>twl221 | Chicago Cubs</div>
+        <div>1 | 17 minutes ago </div>
+      </div>
+      <label for="opcvmhw" class="commentText"><p>I’m a bit perplexed on the lack of pushback on this post. It is very clearly ai generated text. At best someone actually did research and fed it into an llm to make a post, but…</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="opcwihi" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Electrical_Yard_284 | MLB Pride</div>
+        <div>3 | 14 minutes ago </div>
+      </div>
+      <label for="opcwihi" class="commentText"><p>This is 100% AI.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="opcn6qs" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Tyler123839 | Baltimore Orioles</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="opcn6qs" class="commentText"><p>Why did the opposing lineup’s expected runs go up after Monday without Ohtani pitching? Was the league offense just extra bad that day so it tipped it over from .48 to .49?</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="opcnzj2" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ConscientiousObsrvrr</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="opcnzj2" class="commentText"><p>lemme double check&hellip;</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>

@@ -1,0 +1,671 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.selfPostImage {
+  width: 100%;
+  height: auto;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/baseball/comments/1tuxeyl/oc_qualified_hitters_with_obp_slg/"><p>[OC] Qualified hitters with OBP &amp;gt; SLG</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <table>
+<thead>
+<tr>
+<th align="left">Player</th>
+<th align="right">OBP</th>
+<th align="right">SLG</th>
+<th align="right">OPS+</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">Vladimir Guerrero Jr.</td>
+<td align="right">0.392</td>
+<td align="right">0.385</td>
+<td align="right">116</td>
+</tr>
+
+<tr>
+<td align="left">Taylor Ward</td>
+<td align="right">0.396</td>
+<td align="right">0.346</td>
+<td align="right">114</td>
+</tr>
+
+<tr>
+<td align="left">Austin Martin</td>
+<td align="right">0.365</td>
+<td align="right">0.354</td>
+<td align="right">102</td>
+</tr>
+
+<tr>
+<td align="left">Fernando Tatis Jr.</td>
+<td align="right">0.340</td>
+<td align="right">0.318</td>
+<td align="right">89</td>
+</tr>
+
+<tr>
+<td align="left">Isaac Collins</td>
+<td align="right">0.332</td>
+<td align="right">0.315</td>
+<td align="right">85</td>
+</tr>
+
+<tr>
+<td align="left">Luke Keaschall</td>
+<td align="right">0.320</td>
+<td align="right">0.318</td>
+<td align="right">79</td>
+</tr>
+
+<tr>
+<td align="left">Jakob Marsee</td>
+<td align="right">0.319</td>
+<td align="right">0.299</td>
+<td align="right">79</td>
+</tr>
+
+<tr>
+<td align="left">Steven Kwan</td>
+<td align="right">0.329</td>
+<td align="right">0.259</td>
+<td align="right">69</td>
+</tr>
+
+<tr>
+<td align="left">Nasim Nuñez</td>
+<td align="right">0.287</td>
+<td align="right">0.216</td>
+<td align="right">48</td>
+</tr>
+</tbody>
+</table>
+<p>Data Source: <a href="https://www.sports-reference.com/stathead/tiny/gSr1b" target="_blank">https://www.sports-reference.com/stathead/tiny/gSr1b</a></p>
+
+<hr>
+
+<p>Interesting how Taylor Ward was a low OBP, high SLG guy and is now facing a power outage, but still a productive hitter.</p>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="opcr6kb" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>MagicalPizza21 | New York Yankees</div>
+        <div>19 | 37 minutes ago </div>
+      </div>
+      <label for="opcr6kb" class="commentText"><p>Guerrero surprises me. Isn&rsquo;t he supposed to be a 30+ homer guy?</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="opcrf7y" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>askingJeevs | Toronto Blue Jays</div>
+        <div>31 | 36 minutes ago </div>
+      </div>
+      <label for="opcrf7y" class="commentText"><p>He’s more a 25 HR guy who could/should be 35-40. Insane power, launch angle often leads to loud hits instead of HR’s. He’s also been in a slump this year</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="opcrn0l" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>TheBagpipesman | Toronto Blue Jays</div>
+        <div>24 | 35 minutes ago </div>
+      </div>
+      <label for="opcrn0l" class="commentText"><p>His career suggests he’s more a 25-30 hr guy, but having only 3 home runs on June 1 is definitely odd.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="opcspnz" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>DolphinRodeo | St. Louis Cardinals • Seattle Mariners</div>
+        <div>14 | 30 minutes ago </div>
+      </div>
+      <label for="opcspnz" class="commentText"><p>The last four seasons he’s been between 23 and 32. It seems likely that the 48 homer season was the outlier. I think people tend to expect him to be more of a power hitter than he is because of his name and physique. Obviously it’s a slow start, but his power has often been streaky and it’s not out of the question that he gets hot and ends up in the low to mid 20s</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="opcsqsd" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>mrdannyg21</div>
+        <div>8 | 30 minutes ago </div>
+      </div>
+      <label for="opcsqsd" class="commentText"><p>More like 20-30, he’s always had crazy exit velo but never launch angle. Ignoring 2021 (Jays mostly played home games in minor league stadiums due to COVID, and Vlad hit <sup>2</sup>&frasl;<sub>3</sub> of his homers in those parks), he has had 23-32.</p>
+
+<p>He’s also having a real down year, with much worse chase rates and worse exit velo than usual.He is typically a slow starter so might see those numbers tick up in the summer.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="opcuxsa" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>BenWatchesBaseball | Toronto Blue Jays</div>
+        <div>4 | 20 minutes ago </div>
+      </div>
+      <label for="opcuxsa" class="commentText"><p>It is definitely surprising that he’s been slugging so little this year and surely he will pick things up, but aside from his 48 homer season he’s pretty much established himself as more of an OBP/line drive guy than a home run guy.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="opcv2ga" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>nath999</div>
+        <div>1 | 20 minutes ago </div>
+      </div>
+      <label for="opcv2ga" class="commentText"><p>Only in the post season. Lyle Overbay in the regular season.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="opcs8v9" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>BeyondRetarded97 | Toronto Blue Jays</div>
+        <div>-13 | 32 minutes ago </div>
+      </div>
+      <label for="opcs8v9" class="commentText"><p>He got his bag and doesn&rsquo;t care anymore.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="opctmrq" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>MagicalPizza21 | New York Yankees</div>
+        <div>10 | 26 minutes ago </div>
+      </div>
+      <label for="opctmrq" class="commentText"><p>Did you even watch the playoffs last year?</p>
+
+<p>ETA: username checks out.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="opcu1kf" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Mike_with_Wings | Atlanta Braves</div>
+        <div>5 | 24 minutes ago </div>
+      </div>
+      <label for="opcu1kf" class="commentText"><p>You earned that username, huh</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="opcryam" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>AnExtraordinaire | Florida Marlins</div>
+        <div>10 | 33 minutes ago </div>
+      </div>
+      <label for="opcryam" class="commentText"><p>will never understand vladdy year to year</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="opcybz0" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>moonl1ghtgraham</div>
+        <div>1 | 6 minutes ago </div>
+      </div>
+      <label for="opcybz0" class="commentText"><p>he never had consistent power so it  adds up. potential is there but seems like he can only put it all together in short spurts.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="opcsgoe" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Traditional_Half842 | Boston Red Sox</div>
+        <div>5 | 31 minutes ago </div>
+      </div>
+      <label for="opcsgoe" class="commentText"><p>I&rsquo;m not bashing Vlad, he is obviously a good player and he was great in the postseason last year.  But I couldn&rsquo;t believe how many publications/analysts/talking heads/etc listed him as the consensus best first baseman and a top 10-15 player in all of the MLB this past offseason.  To me that was entirely insulting to Matt Olson who has just been a model of consistency for years and years.  For Vlad I feel like people focus way too much one really great season (2021) and one great playoff run.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="opcumyz" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Chemical_Rodent | Baltimore Orioles</div>
+        <div>7 | 22 minutes ago </div>
+      </div>
+      <label for="opcumyz" class="commentText"><p>Vladdy had an insane 2024 as well. He has 4+ seasons over 4 bWAR as a first baseman which is pretty impressive. He’s just kind of a player to have a pretty good year and then a REALLY good year off and on. Completely agree with the Matt Olsen take though, literally a top tier hitter/defender yet very few people talk about it. He is easily the most underrated player in baseball and by far the best 1B.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="opcv6pi" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Traditional_Half842 | Boston Red Sox</div>
+        <div>2 | 19 minutes ago </div>
+      </div>
+      <label for="opcv6pi" class="commentText"><p>I agree Vlad&rsquo;s 2024 was also very good, I guess when I cited 2021 I was referring to the fact that people focus on his 48 HRs (and .601 SLG) that year and think that&rsquo;s the kind of player he is.  He&rsquo;s been a 20-30 HR guy since.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="opcuh1e" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>BNKalt | MLB Pride</div>
+        <div>4 | 22 minutes ago </div>
+      </div>
+      <label for="opcuh1e" class="commentText"><p>The Braves going from Freeman to Olson is kinda insane.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="opcwobm" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>MiEzRo | Houston Astros</div>
+        <div>2 | 13 minutes ago </div>
+      </div>
+      <label for="opcwobm" class="commentText"><p>Had to check out Olson’s bbref page after reading your comment. Dude has been damn good! Also I remember he hit a bunch of homers that one year, but was still surprised to see 54</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="opcyrlq" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>AnExtraordinaire | Florida Marlins</div>
+        <div>1 | 4 minutes ago </div>
+      </div>
+      <label for="opcyrlq" class="commentText"><p>ok olson is good but in consistency, yes he plays every game but he&rsquo;s the absolute poster child for 1 year on, 1 year off</p>
+
+<p>2020/2022/2024 avg war: 2.0 (2.3 if making 2020 162 games)</p>
+
+<p>2021/2023/2025 avg war: 5.0</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="opcs0zz" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>StealthStaminaKills</div>
+        <div>2 | 33 minutes ago </div>
+      </div>
+      <label for="opcs0zz" class="commentText"><p>Wonder who would be the least surprising and most surprising member of this list?</p>
+
+<p>Might be Tatis, depending on who you ask.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="opcuiq5" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>radioactivez0r | Minnesota Twins</div>
+        <div>1 | 22 minutes ago </div>
+      </div>
+      <label for="opcuiq5" class="commentText"><p>Aw fuck, we&rsquo;re going to trade Austin Martin aren&rsquo;t we.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="opcvj3g" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>askaale92 | Athletics • Sell</div>
+        <div>1 | 18 minutes ago </div>
+      </div>
+      <label for="opcvj3g" class="commentText"><p>Funny to see no Meidroth on here, his triple slash last year was a work of art.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
