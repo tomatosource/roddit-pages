@@ -1,0 +1,568 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.selfPostImage {
+  width: 100%;
+  height: auto;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/PathOfExile2/comments/1tvv9q0/this_map_reset_thing_for_respawning_the_boss_has/"><p>This map reset thing for respawning the boss has to go</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <p>This is the third time today this has happened to me. The map has a sub-objective to complete all the breaches, which I did&hellip;but since I died on the boss, the map reset to a blank slate that&rsquo;s incompletable because there&rsquo;s no breach to complete now!</p>
+
+<p>As a fellow software developer, the fact that this map reset design decision is &ldquo;intended&rdquo; just reeks of a workaround. If you needed to do a workaround just to get this to work and break things this badly, maybe just keep the respawn at portal we had in PoE1? Players can put one down before the boss if they want.</p>
+
+<p>EDIT: Added screenshots showing the portal isn&rsquo;t showing completed, the world map node isn&rsquo;t showing completed, and I don&rsquo;t have my atlas point.</p>
+
+<p><a href="https://preview.redd.it/63azgf2kk35h1.png?width=602&amp;format=png&amp;auto=webp&amp;s=e06026a736a5d1498b0d80ec2533a52f1f9c0c91" target="_blank">https://preview.redd.it/63azgf2kk35h1.png?width=602&amp;format=png&amp;auto=webp&amp;s=e06026a736a5d1498b0d80ec2533a52f1f9c0c91</a></p>
+
+<p><a href="https://preview.redd.it/78cuphlen35h1.png?width=1207&amp;format=png&amp;auto=webp&amp;s=60c26f1deac0aea5c0487c69826d40844bb65c19" target="_blank">https://preview.redd.it/78cuphlen35h1.png?width=1207&amp;format=png&amp;auto=webp&amp;s=60c26f1deac0aea5c0487c69826d40844bb65c19</a></p>
+
+<p><a href="https://preview.redd.it/xlkgkoagn35h1.png?width=3840&amp;format=png&amp;auto=webp&amp;s=226f5b25298ab258ac8e297b95cf0159e268f112" target="_blank">https://preview.redd.it/xlkgkoagn35h1.png?width=3840&amp;format=png&amp;auto=webp&amp;s=226f5b25298ab258ac8e297b95cf0159e268f112</a></p>
+
+<p><a href="https://preview.redd.it/hf0wp7wln35h1.png?width=387&amp;format=png&amp;auto=webp&amp;s=a646ccfd3d3cccd479a057283d7fa18f0a29c4ee" target="_blank">https://preview.redd.it/hf0wp7wln35h1.png?width=387&amp;format=png&amp;auto=webp&amp;s=a646ccfd3d3cccd479a057283d7fa18f0a29c4ee</a></p>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="opjrfa7" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Bealina</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="opjrfa7" class="commentText"><p>More documentation to show how bad this is. The map hides itself on reset so I went around and revealed it all and got it on my screen. Notice I don&rsquo;t have the breach atlas skill point for completing the map at the bottom of my screen and there&rsquo;s no breach objective to complete the map objective now listed.</p>
+
+<p><a href="https://preview.redd.it/486g59a5n35h1.png?width=3840&amp;format=png&amp;auto=webp&amp;s=c102ec74a60007d2b73317798d93198699434cfb" target="_blank">https://preview.redd.it/486g59a5n35h1.png?width=3840&amp;format=png&amp;auto=webp&amp;s=c102ec74a60007d2b73317798d93198699434cfb</a></p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="opjvhuv" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Konrow</div>
+        <div>1 | 41 minutes ago </div>
+      </div>
+      <label for="opjvhuv" class="commentText"><p>The only saving grace is you can rerun the map with a new waystone, it just treats it as a failed map which sucks. The whole things sucks though and needs to go away if they&rsquo;re gonna make league mechanics like ritual and deli that require you getting to the boss, and rushing it in deli&rsquo;s case.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="opjz0qh" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Ok-Skin-3699</div>
+        <div>1 | 26 minutes ago </div>
+      </div>
+      <label for="opjz0qh" class="commentText"><p>This is a workaround, but its a workaround for the map content and monsters being refarmable on reset. Leading to people doing everything, dying, doing it all again, repeat for x portals.</p>
+
+<p>Id genuinely like to hear if you have a solution for that problem.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="opk3haw" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Affectionate_Eye1437</div>
+        <div>1 | 7 minutes ago </div>
+      </div>
+      <label for="opk3haw" class="commentText"><p>I think the issue is if you complete the breach, die to the boss, and then respawn, you lose the completed breach objective which bricks the map for receiving atlas tree points. So the fix would be to remove the content on respawn but still get the completed objective for breaches so you can still get the atlas skill point.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="opk3sed" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Joxss</div>
+        <div>1 | 5 minutes ago </div>
+      </div>
+      <label for="opk3sed" class="commentText"><p>what if, hear me out, it works exactly as it does when you die on literally everywhere else outside the boss?</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="opk4jtl" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>xLapsed</div>
+        <div>1 | a minute ago </div>
+      </div>
+      <label for="opk4jtl" class="commentText"><p>Boss arenas should be a separate instance, that way, the boss arena can reset without resetting the entire zone.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="opjp9q1" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>TheRedWoman57</div>
+        <div>-3 | an hour ago </div>
+      </div>
+      <label for="opjp9q1" class="commentText"><p>Pretty sure you still get credit for completing the map if you kill the boss after this happens, no?</p>
+
+<p>If so, this is essentially a visual bug.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="opjpr9g" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Bealina</div>
+        <div>11 | an hour ago </div>
+      </div>
+      <label for="opjpr9g" class="commentText"><p>No because you need to complete all the objectives listed. I don&rsquo;t have the breach atlas point for completing the map.</p>
+
+<p>The objectives were open all breaches and kill the boss. On map reset the boss requirement went away and just the breach objective remained (which I did and was crossed off already prior to dying). But now there&rsquo;s no breach to complete.</p>
+
+<p><a href="https://preview.redd.it/33d5ot0vl35h1.png?width=1736&amp;format=png&amp;auto=webp&amp;s=569534a3f638043637e89f9c5a49ac6377113a12" target="_blank">https://preview.redd.it/33d5ot0vl35h1.png?width=1736&amp;format=png&amp;auto=webp&amp;s=569534a3f638043637e89f9c5a49ac6377113a12</a></p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="opjq7i0" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>TheRedWoman57</div>
+        <div>-3 | an hour ago </div>
+      </div>
+      <label for="opjq7i0" class="commentText"><p>Ah there you go, wasn’t sure. So you need to make sure you kill boss first time then, noted.</p>
+
+<p>Are we sure this is intended though? It’s not like that for anything else</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="opjqsya" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Bealina</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="opjqsya" class="commentText"><p>The map resetting is intended according to what I read. It&rsquo;s a necessary thing to respawn you at the boss (which it doesn&rsquo;t even do some times, it&rsquo;ll kick you back to start if you&rsquo;re unlocky). It will wipe the entire map including any mechanics on it like breaches.</p>
+
+<p>The problem is if one of the sub objectives is completing those things, it won&rsquo;t count even if you did them, sticking you in limbo.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="opjrpec" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>TheRedWoman57</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="opjrpec" class="commentText"><p>Yeah the map resetting is fine imo. Your issue is not getting the reward for what you’ve done, which doesn’t align with their stated philosophy and so is either an oversight or not intended</p>
+
+<p>In your example, you should still get your progress on the atlas even if you died once at the boss (given you kill him at all of course) based on what I understood their argument to be</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="opjsewo" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Bealina</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="opjsewo" class="commentText"><p>The problem is that resetting the whole map introduces so many potential issues just to get the checkpoint respawn to work. It isn&rsquo;t worth it.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="opjtoo1" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>TheRedWoman57</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="opjtoo1" class="commentText"><p>What would you need checkpoints to work if the only content still available is the boss?</p>
+
+<p>Like i said, your issue can be resolved without changing the philosophy they have (ie they want you to lose the content of the map if you die at the boss)</p>
+
+<p>-they need to remove the side quests objective prompt and it shouldn’t be reset, you get the reward for completing the side quest if you finish the map boss and it solves the issue</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="opju4ud" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Bealina</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="opju4ud" class="commentText"><p>The problem with that logic is the reset wipes all the content besides the boss that you haven&rsquo;t done yet.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="opjuwx4" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>TheRedWoman57</div>
+        <div>1 | 44 minutes ago </div>
+      </div>
+      <label for="opjuwx4" class="commentText"><p>And what is your issue with that? Do you not read my comments? Your complaints is that it didn’t give you progress and I said it should based on their stated intent. It does for everything else</p>
+
+<p>The only thing that should change is you have to do all the content you want before attempting the boss</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="opjwccv" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Konrow</div>
+        <div>1 | 37 minutes ago </div>
+      </div>
+      <label for="opjwccv" class="commentText"><p>It does not as these maps have two objectives and dying to the boss bricks the other one. It isn&rsquo;t a visual bug, it&rsquo;s a change in how the game works. If they want us to save bosses for the very end and reset the entire map at one death, irregardless of attempts you have, they should have communicated that change properly. With how certain league mechanics work I can&rsquo;t tell if it&rsquo;s intentional or not. Feels weird that every delirium run comes with a risk of losing all other content on the map.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="opjwuys" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>TheRedWoman57</div>
+        <div>1 | 35 minutes ago </div>
+      </div>
+      <label for="opjwuys" class="commentText"><p>I said “if so” . If it’s not then it’s not a just a visual bug. It should still give credit for completion. I don’t believe that is intended because it’s like that only for this That’s what I’ve been saying</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
