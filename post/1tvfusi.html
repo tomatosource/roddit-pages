@@ -1,0 +1,716 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.selfPostImage {
+  width: 100%;
+  height: auto;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/nba/comments/1tvfusi/combining_math_film_study_the_best_nba_players_of/"><p>Combining Math + Film Study: The Best NBA Players of 2025-26 (and a new #1!)</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <p>With the 2025-26 season nearly complete and the Finals now underway, my player evaluations for the year are essentially concluded. This post is my ranking of the best players in the NBA this season, measured by estimated championship value.</p>
+
+<p>The core question is straightforward:</p>
+
+<p><em>How much does this player increase a good team’s probability of winning the championship?</em></p>
+
+<p>That framing is the organizing principle behind the project. It weights regular-season impact, playoff translation, opponent-specific resilience, playoff and role portability, scalability next to other high-end talent, and the ability to remain valuable across a range of roster constructions.</p>
+
+<p>I’ve now done this exercise for every NBA season since the merger. The purpose is not only to evaluate the current league, but to place each player-season into a broader historical framework of championship equity. Across the full project, I’m trying to estimate player value in the setting that matters most: high-leverage basketball against elite competition.</p>
+
+<p>My background informs the structure of the project. I’ve played, coached, and scouted basketball at multiple levels, worked in NBA front office environments, and have a professional inferential statistics background. The evaluation process is built around integrating quantitative signals with film-based analysis in a way that accounts for uncertainty, context, and historical comparability.</p>
+
+<h1 id="methodology">Methodology</h1>
+
+<p>The evaluation process is a Bayesian synthesis of statistical evidence, film study, and historical comparison. The goal is to estimate each player’s true championship-level value as accurately as possible, using every meaningful signal available.</p>
+
+<p>The statistical side includes RAPM and RAPM-family impact metrics, luck-adjusted on/off data, EPM, DARKO, LEBRON, box-score production, efficiency indicators, play-by-play data, and postseason samples where available. These signals help capture a player’s measurable impact: how teams perform with him on the floor, how resilient that impact is across lineups, how much value shows up outside the box score, and how stable the profile appears across different samples.</p>
+
+<p>The film side is equally central. I’m looking at how the value is actually being created: advantage generation, pressure response, counters, defensive recognition, off-ball value, spacing effects, passing windows, rim pressure, shot quality, matchup dependence, and how opponents try to solve the player over the course of a series. The film helps interpret the data, but it also generates its own evidence. Some skills are visible before they fully show up in the numbers; some statistical signals are real but context-bound; some box-score production is more portable than other box-score production.</p>
+
+<p>The process is iterative. Statistical signals inform what to look for on film, film observations inform how to interpret the statistical profile, and both are checked against historical precedent and playoff translation. I’m trying to update toward the best overall estimate using all available evidence.</p>
+
+<p>The main questions are:</p>
+
+<ul>
+<li>How much does this player increase a good team’s title odds?</li>
+<li>How well does his value survive against elite playoff rosters?</li>
+<li>How portable is his impact across different teammates, schemes, and matchups?</li>
+<li>How much of his production is context-dependent versus broadly scalable?</li>
+<li>How reliable is the value when opponent game plans become more specific and more physical?</li>
+</ul>
+
+<p>Regular-season value matters, but championship value is ultimately filtered through the playoffs. The players at the top of this list are the players whose impact is most likely to hold up, scale, and remain decisive in the highest-leverage environments.</p>
+
+<h1 id="scoring">Scoring</h1>
+
+<p>Each player is listed in the following format:</p>
+
+<p>Player — OFF / DEF / NET</p>
+
+<p><strong>The offensive, defensive, and total impact estimates are measured roughly in points per game of impact contribution to a random team, adjusted to calibrate the proxy to added championship probability.</strong></p>
+
+<p>Each player also has a confidence interval around his net point estimate. These ranges reflect uncertainty from role, health, sample size, statistical noise, team context, and ambiguity in film interpretation. <em>A player with a range (X-Y) means that holding the evaluations of other players constant, I could see an argument for the player to be as high as the X-th best player or as low as the Y-th best player just by making slightly more optimistic or pessimistic assumptions than I have made in my center estimates.</em></p>
+
+<p>This ranking assumes full health.</p>
+
+<p>General interpretation of NET estimates:</p>
+
+<ul>
+<li>7.0+ — GOAT-level peak, top ~3 peak ever</li>
+<li>6.0+ — All-time great peak, top ~12 peak ever</li>
+<li>5.4-6.0 — Strong MVP-level season</li>
+<li>4.6-5.4 — Solid MVP-level season</li>
+<li>4.0-4.6 — Weak MVP-level season</li>
+<li>3.0+ — Solid All-NBA-level season, approximately top 10-15 in a typical NBA season</li>
+<li>1.5+ — All-Star-level season</li>
+</ul>
+
+<p>The point estimates should be read as estimated central values, not exact measurements. The confidence intervals are especially important; many players have overlapping &lsquo;probability distributions&rsquo; and are difficult to separate cleanly. Not all confidence intervals are of the same width &ndash; some players are inherently fuzzier to evaluate than others.</p>
+
+<h1 id="2025-26-final-ranking">2025-26 Final Ranking</h1>
+
+<p><strong>1. Victor Wembanyama</strong> — 2.4 / 3.9 / 6.3 <strong>(1-2)</strong> -- All-time great</p>
+
+<p><strong>2. Nikola Jokic</strong> — 5.8 / 0.2 / 6.0 <strong>(1-3)</strong> -- All-time great // Strong MVP</p>
+
+<p><strong>3. Shai Gilgeous-Alexander</strong> — 5.2 / 0.4 / 5.6 <strong>(2-3)</strong> -- Strong MVP</p>
+
+<p><strong>4. Giannis Antetokounmpo</strong> — 3.5 / 1.5 / 5.0 <strong>(4)</strong> -- Solid MVP</p>
+
+<p><strong>5. Kawhi Leonard</strong> — 3.9 / 0.4 / 4.3 <strong>(5-8)</strong> -- Weak MVP</p>
+
+<p><strong>T6. Luka Doncic</strong> — 4.5 / -0.3 / 4.2 <strong>(5-8)</strong> -- Weak MVP</p>
+
+<p><strong>T6. Stephen Curry</strong> — 4.4 / -0.2 / 4.2 <strong>(5-8)</strong> -- Weak MVP</p>
+
+<p><strong>8. Cade Cunningham</strong> — 2.9 / 0.7 / 3.6 <strong>(5-13)</strong> -- Solid All-NBA</p>
+
+<p><strong>9. Jalen Brunson</strong> — 3.6 / -0.4 / 3.2 <strong>(8-14)</strong> -- Solid All-NBA</p>
+
+<p><strong>10. Anthony Edwards</strong> — 2.8 / 0.4 / 3.2 <strong>(8-14)</strong> -- Solid All-NBA</p>
+
+<h1 id="honorable-mentions">Honorable Mentions:</h1>
+
+<p>The following are the players who did not make the final top 10, but have high-end evaluations that, holding all other players constant, would land them in the top 10:</p>
+
+<p><strong>Jaylen Brown</strong></p>
+
+<p><strong>Tyrese Maxey</strong></p>
+
+<p><strong>Donovan Mitchell</strong></p>
+
+<p><strong>Jamal Murray</strong></p>
+
+<h1 id="historical-winners-since-2000">Historical Winners Since 2000</h1>
+
+<p>Because this project covers every season since the merger, I use past season winners as an anchoring mechanism. The league environment changes substantially across eras, but the underlying question remains consistent: who provided the most championship value in that season? Here are my winners for every season since the merger, with Victor Wembanyama ending Nikola Jokic&rsquo;s 4-year run.</p>
+
+<ul>
+<li><strong>1999-00: Shaquille O&rsquo;Neal</strong> - 7.0 &ndash; GOAT-level peak</li>
+<li><strong>2000-01: Shaquille O&rsquo;Neal</strong> - 6.8 &ndash; All-time great</li>
+<li><strong>2001-02: Shaquille O&rsquo;Neal</strong> - 6.5 &ndash; All-time great</li>
+<li><strong>2002-03: Tim Duncan</strong> - 6.15 &ndash; All-time great</li>
+<li><strong>2003-04: Kevin Garnett</strong> - 6.3 &ndash; All-time great</li>
+<li><strong>2004-05: Steve Nash</strong> - 5.4 &ndash; Strong MVP // Solid MVP</li>
+<li><strong>2005-06: Dwyane Wade</strong> - 5.6 &ndash; Strong MVP</li>
+<li><strong>2006-07: Kobe Bryant</strong> - 5.6 &ndash; Strong MVP</li>
+<li><strong>2007-08: Kevin Garnett</strong> - 5.7 &ndash; Strong MVP</li>
+<li><strong>2008-09: LeBron James</strong> - 7.0 &ndash; GOAT-level peak</li>
+<li><strong>2009-10: LeBron James</strong> - 6.9 &ndash; All-time great</li>
+<li><strong>2010-11: LeBron James</strong> - 6.6 &ndash; All-time great</li>
+<li><strong>2011-12: LeBron James</strong> - 7.1 &ndash; GOAT-level peak</li>
+<li><strong>2012-13: LeBron James</strong> - 7.2 &ndash; GOAT-level peak</li>
+<li><strong>2013-14: LeBron James</strong> - 6.7 &ndash; All-time great</li>
+<li><strong>2014-15: LeBron James</strong> - 5.8 &ndash; Strong MVP</li>
+<li><strong>2015-16: LeBron James</strong> - 6.6 &ndash; All-time great</li>
+<li><strong>2016-17: LeBron James</strong> - 6.5 &ndash; All-time great</li>
+<li><strong>2017-18: Stephen Curry</strong> - 5.9 &ndash; Strong MVP</li>
+<li><strong>2018-19: Stephen Curry</strong> - 5.8 &ndash; Strong MVP</li>
+<li><strong>2019-20: LeBron James</strong> - 6.0 &ndash; All-time great</li>
+<li><strong>2020-21: Stephen Curry</strong> - 5.7 &ndash; Strong MVP</li>
+<li><strong>2021-22: Nikola Jokic</strong> - 5.9 &ndash; Strong MVP</li>
+<li><strong>2022-23: Nikola Jokic</strong> - 6.25 &ndash; All-time great</li>
+<li><strong>2023-24: Nikola Jokic</strong> - 6.1 &ndash; All-time great</li>
+<li><strong>2024-25: Nikola Jokic</strong> - 6.4 &ndash; All-time great</li>
+<li><strong>2025-26: Victor Wembanyama</strong> - 6.3 &ndash; All-time great</li>
+</ul>
+
+<p><strong>Open to answering any questions people may have!</strong></p>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="opgl5xr" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>SharpsExposure | Spurs</div>
+        <div>1 | 30 minutes ago </div>
+      </div>
+      <label for="opgl5xr" class="commentText"><p>What’s wild about this ranking is how high Wemby’s defensive meter is versus the other current top. If his offense gets above 4 he’ll shatter GOAT metrics using your system. </p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="opglpmw" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Frosty_Salamander_94</div>
+        <div>1 | 26 minutes ago </div>
+      </div>
+      <label for="opglpmw" class="commentText"><p>Yup! As I mentioned in another comment, I&rsquo;ve long considered Hakeem the best defender of the modern era, and I think Wemby right now is roughly on par with Hakeem&rsquo;s best defensive seasons. Maybe a little better, maybe a little worse; hard to say for sure yet.</p>
+
+<p>Edit: His aging curve will be interesting &ndash; I do suspect his offense will get significantly better, but whether that coincides with his defense still being near this good will determine the answer to the GOAT peak question. Often, defense-heavy players peak younger since defense is more about work capacity / energy whereas offense is more about skill development. It&rsquo;s an interesting question though &ndash; just as easily as I could see him becoming the GOAT, it&rsquo;s possible that he&rsquo;s at or near his peak right now depending on where the defense goes from here.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="opgl5vp" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ManRug13</div>
+        <div>1 | 30 minutes ago </div>
+      </div>
+      <label for="opgl5vp" class="commentText"><p>This is awesome. Looking back, has anyone had a defensive impact as large as Wemby this year?</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="opgli9o" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Frosty_Salamander_94</div>
+        <div>1 | 28 minutes ago </div>
+      </div>
+      <label for="opgli9o" class="commentText"><p>Thank you! I think he&rsquo;s roughly on par with Hakeem&rsquo;s best defensive seasons, and I&rsquo;ve long considered Hakeem the best defender since the merger. It might take another season or two of playoff matchups to get enough information to say for sure exactly where he lands, but he&rsquo;s in the ballpark of peak Hakeem and I wouldn&rsquo;t be shocked if he&rsquo;s a little bit better.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="opglo65" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ManRug13</div>
+        <div>1 | 26 minutes ago </div>
+      </div>
+      <label for="opglo65" class="commentText"><p>Thanks for the response. Again, this is great content</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="opgm0o5" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Frosty_Salamander_94</div>
+        <div>1 | 24 minutes ago </div>
+      </div>
+      <label for="opgm0o5" class="commentText"><p>Thank you!</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="opglf1r" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>TheDrunkenWhatever | Bucks</div>
+        <div>1 | 28 minutes ago </div>
+      </div>
+      <label for="opglf1r" class="commentText"><p>Super cool work. Would love a little bit more detail about your model (but totally cool if you don’t want to share)</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="opgm9wj" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Ok-Street-2473</div>
+        <div>1 | 22 minutes ago </div>
+      </div>
+      <label for="opgm9wj" class="commentText"><p>This model saying that Curry wasn&rsquo;t the most impactful player of the 2016 regular season just proves its way off. 2016 Curry had the best advanced stats of all time and won 73 games. No argument for Lebron over him during that season unless you are using biased judgement instead of stats (which is how you ended up with Jokic over SGA).</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="opgmjbr" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Frosty_Salamander_94</div>
+        <div>1 | 20 minutes ago </div>
+      </div>
+      <label for="opgmjbr" class="commentText"><p>&ldquo;This model saying that Curry wasn&rsquo;t the most impactful player of the 2016 regular season just proves its way off.&rdquo;</p>
+
+<p>It&rsquo;s not a <em>descriptive</em> regular season model. It&rsquo;s a <em>predictive</em> championship equity model. You&rsquo;re measuring a different thing.</p>
+
+<p>Now descriptively, without a doubt Curry deserved MVP and was the most impactful regular season player. He had possibly the best offensive regular season ever. But my model centers around predictive playoff impact, since the regular season is only a relatively small driver of championship equity (insofar as it determines seeding).</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="opgle6y" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>herroyung</div>
+        <div>1 | 29 minutes ago </div>
+      </div>
+      <label for="opgle6y" class="commentText"><p>I&rsquo;m like 90% sure this is a prompted response from AI, which may or may not contain actual analysis, but it&rsquo;s weird that you presented it as you having done the work yourself.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="opgnlwk" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>lucarioburrito | Suns</div>
+        <div>1 | 12 minutes ago </div>
+      </div>
+      <label for="opgnlwk" class="commentText"><p>Sometimes people do cool things, and sometimes people are good writers. And maybe he had AI help him synthesize the results. Why does it matter?</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="opgnqu1" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>nowhathappenedwas | NBA</div>
+        <div>1 | 10 minutes ago </div>
+      </div>
+      <label for="opgnqu1" class="commentText"><p>I also lean towards the numbers being entirely made up.</p>
+
+<blockquote>
+<p>&ldquo;I use all the best advanced metrics. But I equally use &lsquo;film study&rsquo; to to quantify impact in ways I&rsquo;m neither capable nor willing to explain.&rdquo;</p>
+</blockquote>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="opglb82" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Legitimate_Cow_4166 | Warriors</div>
+        <div>1 | 29 minutes ago </div>
+      </div>
+      <label for="opglb82" class="commentText"><p>Cade being behind 4 guys who didnt win a single playoff game seems just not right.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="opgmc85" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Frosty_Salamander_94</div>
+        <div>1 | 21 minutes ago </div>
+      </div>
+      <label for="opgmc85" class="commentText"><p>That’s not what the list is measuring. I’m not ranking team playoff success or assigning value based on how far a player’s team advanced. I’m estimating individual championship equity: how much value the player WOULD predictively add to a random good team, assuming full health.</p>
+
+<p>Cade’s team outcome matters as evidence, but it’s only one piece of evidence, and it’s heavily confounded by roster context, matchup, luck, and opponent quality. The question for me is not “did his team win a playoff game?” but “how good was his actual player profile?”</p>
+
+<p>Regardless, as I said in the post, I think you could make the case that he&rsquo;s as high as 5th.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="opgmpj8" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Legitimate_Cow_4166 | Warriors</div>
+        <div>1 | 18 minutes ago </div>
+      </div>
+      <label for="opgmpj8" class="commentText"><p>So do number of games played don’t matter?  Surely a 60 game player is better than a 40 game one?</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="opgnfl2" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Frosty_Salamander_94</div>
+        <div>1 | 13 minutes ago </div>
+      </div>
+      <label for="opgnfl2" class="commentText"><p>Games played matter, but they’re not the same thing as per-game player quality. This list is mostly estimating healthy, predictive championship impact &ndash; basically how good the player is when available &ndash; not total season value accumulated over 82 games.</p>
+
+<p>If I were ranking total regular-season value, then yes, 60 games from a slightly worse player can easily beat 40 games from a better one.</p>
+
+<p>I said in the post that this list assumes full health. I’m trying to estimate how much value the player adds to a good team when actually on the floor, not simply how many total games of value he happened to bank this season.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="opgnw3f" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>smebis | Lithuania</div>
+        <div>1 | 9 minutes ago </div>
+      </div>
+      <label for="opgnw3f" class="commentText"><p>&lsquo;assuming full health&rsquo; so it doenst matter. Regular season is not that important in this model. PO games matter the most.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="opgohpv" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Uberballer | Lakers</div>
+        <div>1 | 5 minutes ago </div>
+      </div>
+      <label for="opgohpv" class="commentText"><p>That LeBron James guy had a pretty good stretch there.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="opgmye5" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Ok_Power_2816</div>
+        <div>1 | 17 minutes ago </div>
+      </div>
+      <label for="opgmye5" class="commentText"><p>This proves Lebron is better than Jordan</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
