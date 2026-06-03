@@ -1,0 +1,1620 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.selfPostImage {
+  width: 100%;
+  height: auto;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/nba/comments/1tvluyk/according_to_a_metric_derived_from/"><p>According to a metric derived from FiveThirtyEight&rsquo;s RAPTOR model, here are the top players by WAR</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <p>This might be interesting as we head into the Finals.</p>
+
+<p><a href="https://neilpaine.substack.com/p/2025-26-nba-elo-forecast-and-player" target="_blank">Neil Paine&rsquo;s LAKER metric</a> is a modified version of the RAPTOR model - it maintains running schedule-adjusted ratings for each team based on how they&rsquo;ve performed on offense and defense (per 100 possessions), the locations of each game and the quality of their opponents.</p>
+
+<p>Something interesting that both RAPTOR and LAKER does is separating playoff Elo from regular season performance, recognizing that teams can be playoff risers or droppers.</p>
+
+<p>With that, here are the top 10 most impactful players this postseason based on its model (a nitty gritty explanation can be seen <a href="https://github.com/Neil-Paine-1/NBA-elo" target="_blank">here</a>). <em>This takes into account both offensive and defensive impact</em>.</p>
+
+<p>1 - Victor Wembanyama | WAR: 3.0</p>
+
+<p>2 - OG Anunoby | WAR: 2.7</p>
+
+<p>3 - Karl-Anthony Towns | WAR: 2.6</p>
+
+<p>4 - Julian Champagnie | WAR: 2.4</p>
+
+<p>5 - Jalen Brunson | WAR: 2.3</p>
+
+<p>6 - Devin Vassell | WAR: 2.0</p>
+
+<p>7 - Mikal Bridges | WAR: 1.9</p>
+
+<p>8 - Dylan Harper | WAR: 1.9</p>
+
+<p>9 - Cason Wallace | WAR: 1.8</p>
+
+<p>10 - Alex Caruso | WAR: 1.7</p>
+
+<p>You can check out the first link for the full list, but something interesting is that before the OKC-SAS series, Victor was actually below OG. He&rsquo;s since elevated to take the top spot, and we&rsquo;ll see if he continues to &lsquo;level up&rsquo; over the course of the Finals.</p>
+
+<p>As for series odds, the pure statistical odds has both teams neck and neck: <strong>51.8% for a Knicks win and 48.2% for a Spurs win</strong>.</p>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ophpjeb" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Regnum_Caelorum</div>
+        <div>85 | an hour ago </div>
+      </div>
+      <label for="ophpjeb" class="commentText"><p>WAR ! Huh ?</p>
+
+<p>What is it good for ?</p>
+
+<p>E: is Rush Hour really that old ? Damn.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="ophsbnf" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>HiroNase | Spurs</div>
+        <div>18 | 41 minutes ago </div>
+      </div>
+      <label for="ophsbnf" class="commentText"><p>Absolutely nothing</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="ophpt2v" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>NotWD | Raptors</div>
+        <div>15 | an hour ago </div>
+      </div>
+      <label for="ophpt2v" class="commentText"><p>WAR.</p>
+
+<p>WAR never changes.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="ophutmw" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Davtorious | Trail Blazers</div>
+        <div>1 | 25 minutes ago </div>
+      </div>
+      <label for="ophutmw" class="commentText"><p>For me and for you the world is a ghetto</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="ophthhu" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Lazy-Idea-553 | Pistons</div>
+        <div>9 | 33 minutes ago </div>
+      </div>
+      <label for="ophthhu" class="commentText"><p>We’re old man, we’re old</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="ophpw0j" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Ingr1d | Thunder</div>
+        <div>6 | an hour ago </div>
+      </div>
+      <label for="ophpw0j" class="commentText"><p>It’s good for wasting money.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="ophudrf" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>rogozh1n</div>
+        <div>1 | 28 minutes ago </div>
+      </div>
+      <label for="ophudrf" class="commentText"><p>And covering up files that you don&rsquo;t want released.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="ophuust" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Artimusjones88 | Raptors</div>
+        <div>1 | 25 minutes ago </div>
+      </div>
+      <label for="ophuust" class="commentText"><p>And the song was 30 years old then.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="ophtj2y" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>RealPrinceJay | </div>
+        <div>4 | 33 minutes ago </div>
+      </div>
+      <label for="ophtj2y" class="commentText"><p>ABSOLUTELY NOTNIN</p>
+
+<p>Stunned how many comments missed the boat here…</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="ophv1ch" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>spundred | Supersonics</div>
+        <div>1 | 24 minutes ago </div>
+      </div>
+      <label for="ophv1ch" class="commentText"><p>That&rsquo;s a lot older than Rush Hour 🤣</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="ophvhb7" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>SquimJim | Celtics</div>
+        <div>1 | 21 minutes ago </div>
+      </div>
+      <label for="ophvhb7" class="commentText"><p>I think some people didn&rsquo;t understand the words that were coming out of your mouth</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="ophxbmz" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Regnum_Caelorum</div>
+        <div>1 | 10 minutes ago </div>
+      </div>
+      <label for="ophxbmz" class="commentText"><p>Hmm, do you think it&rsquo;s because I sound like a karate movie ?</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="ophw06e" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>elbenji | MIA</div>
+        <div>1 | 18 minutes ago </div>
+      </div>
+      <label for="ophw06e" class="commentText"><p>That song was old when rush hour came out</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="ophrb32" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Uberballer | Lakers</div>
+        <div>0 | an hour ago </div>
+      </div>
+      <label for="ophrb32" class="commentText"><p>It&rsquo;s not unusual&hellip; to be asking that question in all honesty.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ophr9fb" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Yasdamp | Spurs</div>
+        <div>66 | an hour ago </div>
+      </div>
+      <label for="ophr9fb" class="commentText"><p>This new model is brought to you by the Julian glazers syndicate</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="ophy1k3" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>your_grammars_bad | Warriors</div>
+        <div>1 | 5 minutes ago </div>
+      </div>
+      <label for="ophy1k3" class="commentText"><p>I love that 1 Wembanyama is equal to 2 Carusos stacked on top of each other</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ophrku3" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Several_Chapter969 | Spurs</div>
+        <div>34 | an hour ago </div>
+      </div>
+      <label for="ophrku3" class="commentText"><p>Just looking at the numbers my bet is it’s punishing castle pretty hard for those two 10+ turnover games he played without Fox.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="opht9ke" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>deino1703 | Rockets</div>
+        <div>53 | 35 minutes ago </div>
+      </div>
+      <label for="opht9ke" class="commentText"><p>is it punishing or just accounting for lol</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="ophti83" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ositola | Lakers</div>
+        <div>13 | 33 minutes ago </div>
+      </div>
+      <label for="ophti83" class="commentText"><p>Both really</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="ophv6cl" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>bit_pusher | Spurs</div>
+        <div>1 | 23 minutes ago </div>
+      </div>
+      <label for="ophv6cl" class="commentText"><p>Just the one swan actually</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="ophuxqx" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Robinsonirish | Finland</div>
+        <div>1 | 24 minutes ago </div>
+      </div>
+      <label for="ophuxqx" class="commentText"><p>It&rsquo;s pushing every player still left in the post season, meaning it&rsquo;s cumulative, not per game basis, which makes it flawed in my eyes. There is no scenario where like 5 Knicks players are the most impactful players in the league.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="ophws1c" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>musclememory</div>
+        <div>1 | 13 minutes ago </div>
+      </div>
+      <label for="ophws1c" class="commentText"><p>wait, I don&rsquo;t have the time or energy to research the stat, but are you saying the longer you play (in the post season) the higher your stat is, holding other things equal?</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="ophxqg9" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Robinsonirish | Finland</div>
+        <div>1 | 7 minutes ago </div>
+      </div>
+      <label for="ophxqg9" class="commentText"><p>I don&rsquo;t know. I just see 4 Knicks, and 4 Spurs players there, and there is no way that maths out with reality.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="ophtlnf" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>RaiseFold100</div>
+        <div>1 | 33 minutes ago </div>
+      </div>
+      <label for="ophtlnf" class="commentText"><p>A ten turnover game has to be a 20 point swing over zero turnovers right? Or let’s say 14 points over a more standard three turnovers.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ophs718" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>snirpie</div>
+        <div>24 | 42 minutes ago </div>
+      </div>
+      <label for="ophs718" class="commentText"><blockquote>
+<p> something interesting is that before the OKC-SAS series, Victor was actually below OG. He&rsquo;s since elevated to take the top spot</p>
+</blockquote>
+
+<p>He&rsquo;s also played 75% more games in the latest series, which factors into WAR. It&rsquo;s a cumulative stat, not a per-game stat</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="ophswsa" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ForneauCosmique | Spurs</div>
+        <div>7 | 37 minutes ago </div>
+      </div>
+      <label for="ophswsa" class="commentText"><p>Idk bro I think OG is better than Wemby</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ophpu6j" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>RealPrinceJay | </div>
+        <div>25 | an hour ago </div>
+      </div>
+      <label for="ophpu6j" class="commentText"><p>Yeah… this looks useless</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="ophrj7v" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Im_a_Knob | WAS</div>
+        <div>11 | an hour ago </div>
+      </div>
+      <label for="ophrj7v" class="commentText"><p>r/nba doing everything except watching the actual games</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="opht63q" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Kantei | Knicks</div>
+        <div>1 | 35 minutes ago </div>
+      </div>
+      <label for="opht63q" class="commentText"><p>this is what us junkies do when we go three days without basketball</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="ophtt8x" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>RaiseFold100</div>
+        <div>1 | 31 minutes ago </div>
+      </div>
+      <label for="ophtt8x" class="commentText"><p>I’d rather have this than the trillionth Kobe Glazing/Hating post.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ophqxoj" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>popps_c | Lakers</div>
+        <div>18 | an hour ago </div>
+      </div>
+      <label for="ophqxoj" class="commentText"><p>So tired of these dumb new stats and analytics.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="ophsxtb" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>camboats | Celtics</div>
+        <div>13 | 37 minutes ago </div>
+      </div>
+      <label for="ophsxtb" class="commentText"><p>Wins above replacement is really really old</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="ophuim5" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>popps_c | Lakers</div>
+        <div>1 | 27 minutes ago </div>
+      </div>
+      <label for="ophuim5" class="commentText"><p>Oh yea 100%, I’m just saying these ones named after teams and players, them shits too new and niche for me.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="ophst3v" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Kantei | Knicks</div>
+        <div>5 | 38 minutes ago </div>
+      </div>
+      <label for="ophst3v" class="commentText"><p>This is actually a hella old stat and was straight up just made for fun, even in its FiveThirtyEight days</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="ophx63o" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>musclememory</div>
+        <div>1 | 11 minutes ago </div>
+      </div>
+      <label for="ophx63o" class="commentText"><p>analytically this post is the most interesting, useful and popular of all time</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ophs7ro" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>beiherhund | Thunder</div>
+        <div>6 | 42 minutes ago </div>
+      </div>
+      <label for="ophs7ro" class="commentText"><p>Is it strongly tied to games played or something? Noticeable that it basically only has players from the four conference finalists in the top 20</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="ophtgxv" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>aurum_pur</div>
+        <div>9 | 34 minutes ago </div>
+      </div>
+      <label for="ophtgxv" class="commentText"><p>WAR is a cumulative stat, so yes</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="ophuk2e" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>rogozh1n</div>
+        <div>1 | 27 minutes ago </div>
+      </div>
+      <label for="ophuk2e" class="commentText"><p>Is there also WAR per 36 or per game?</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="ophvizn" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>beiherhund | Thunder</div>
+        <div>1 | 20 minutes ago </div>
+      </div>
+      <label for="ophvizn" class="commentText"><p>Thanks, makes sense then. Though I don&rsquo;t really see the value in it for such a small sample size.</p>
+
+<p>We&rsquo;ve got the Spurs starting 5, Knicks starting 5 and OKC starting 3 + first 2 rotations (due to injures their starting 5 has been inconsistent anyway).</p>
+
+<p>The teams who won their conferences are essentially the top 10, the one team who lost all their CF are barely represented. I&rsquo;m not really sure this is telling me a whole lot. Unless you&rsquo;re absolutely terrible (<em>cough</em> Dort), you&rsquo;d make this list being a starting player on a team who won some games deep into the playoffs.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="ophsm3h" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Kantei | Knicks</div>
+        <div>-4 | 39 minutes ago </div>
+      </div>
+      <label for="ophsm3h" class="commentText"><p>The 11th spot is notably Ausar Thompson, whose team was eliminated in the second round.</p>
+
+<p>Tatum is also in the top 20, even above players from teams who made it to the conference finals, despite his team losing in the first round.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="ophvo6r" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>beiherhund | Thunder</div>
+        <div>1 | 20 minutes ago </div>
+      </div>
+      <label for="ophvo6r" class="commentText"><p>According to the other person who replied, and ChatGPT, it is a cumulative metric. That makes sense now and why the Spurs+Knicks starting 5 almost round out the top 10, followed by OKC&rsquo;s starting 5, and then the Cavs barely represented as they got swept.</p>
+
+<p>I&rsquo;m not seeing the value here personally.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="ophwu7o" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Kantei | Knicks</div>
+        <div>1 | 13 minutes ago </div>
+      </div>
+      <label for="ophwu7o" class="commentText"><p>As you pointed out in another comment, that still provides value in showing who&rsquo;s on the list despite how far their team went. For example, Ausar and Tatum being that high can reflect how valuable.</p>
+
+<p>Even for the two finalists, it does give insight into how it values players from each team. Would most people have put Champagnie as the 2nd best Spurs player? Would Brunson have been considered only the third most impactful player on the Knicks?</p>
+
+<blockquote>
+<p>Cavs barely represented as they got swept.</p>
+</blockquote>
+
+<p>But the Cavs played the same amount of games as the Knicks, so cumulatively, they are rated equally.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="ophxzqi" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>beiherhund | Thunder</div>
+        <div>1 | 6 minutes ago </div>
+      </div>
+      <label for="ophxzqi" class="commentText"><p>It also ranks Caruso and Wallace above SGA, I think it&rsquo;s incorporating too much bus-riding into the metric.</p>
+
+<p>Don&rsquo;t get me wrong, I&rsquo;m not a SGA fanboy who thinks he&rsquo;s the best player ever and didn&rsquo;t have a somewhat mid WCF performance, but the other OKC players were largely propped up by the attention on SGA. Similarly, some of the Spurs players here are ranked higher than they would&rsquo;ve been on a team with Chet instead of Wemby.</p>
+
+<p>So that&rsquo;s where I&rsquo;m failing to see the value. Though I agree it does highlight Tatum&rsquo;s and Ausar&rsquo;s performances.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ophsjz7" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Jorge_Ho_1135 | Knicks</div>
+        <div>5 | 39 minutes ago </div>
+      </div>
+      <label for="ophsjz7" class="commentText"><h1 id="limitations-of-the-model">Limitations of the model</h1>
+
+<p>No model can perfectly capture how a team’s true strength evolves over a long season. This system focuses only on the scoreboard — who won, by how much, and where the game was played — and doesn’t yet account for lineup changes, trades or injuries in real time.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ophptqm" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Comin4datrune | Mavericks</div>
+        <div>2 | an hour ago </div>
+      </div>
+      <label for="ophptqm" class="commentText"><p>I dont know sht about numbers but hell yeah I&rsquo;d go to war for Wemby</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ophsp1r" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>BuckeyeStrider | Knicks</div>
+        <div>2 | 39 minutes ago </div>
+      </div>
+      <label for="ophsp1r" class="commentText"><p>r/baseball has begun its invasion of this sub, they do not come in peace</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ophs0zg" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Blitzkreeg21</div>
+        <div>1 | 43 minutes ago </div>
+      </div>
+      <label for="ophs0zg" class="commentText"><p>just watch the games bro</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="ophscki" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Sumeriandawn | Lakers</div>
+        <div>-1 | 41 minutes ago </div>
+      </div>
+      <label for="ophscki" class="commentText"><p>Never heard of second screening?</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ophsf4f" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>lawroter | Knicks</div>
+        <div>2 | 40 minutes ago </div>
+      </div>
+      <label for="ophsf4f" class="commentText"><p>interesting but I think BBM’s model is way more accurate, the fact that there are no players other than SAS/OKC guys is a big immediate tell for me that this is overvaluing wins.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ophujr4" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>NIN10DOXD | Hornets</div>
+        <div>1 | 27 minutes ago </div>
+      </div>
+      <label for="ophujr4" class="commentText"><p>First Napoleon, now Wemby. The French stay winning at WAR.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ophuxmi" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>carsmello | Knicks</div>
+        <div>1 | 24 minutes ago </div>
+      </div>
+      <label for="ophuxmi" class="commentText"><p>Yamamoto Finals MVP</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ophwsbq" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>George_Constanza | NBA</div>
+        <div>1 | 13 minutes ago </div>
+      </div>
+      <label for="ophwsbq" class="commentText"><p>How can it be a good metric if Wallace has a better score than SGA ? Not found of SGA and Wallace is good, but come on. There isnt even the need to argue</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ophxovd" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>StichCarbo</div>
+        <div>1 | 7 minutes ago </div>
+      </div>
+      <label for="ophxovd" class="commentText"><p>Champagnie at 4 is wild but the model actually makes sense. His two-way consistency doesnt show up in raw plus-minus the way it does in schedule-adjusted WAR. Playoff context really changes what impact means</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ophswyj" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Sea-Card-6586 | 76ers</div>
+        <div>0 | 37 minutes ago </div>
+      </div>
+      <label for="ophswyj" class="commentText"><p>We’re still doing these vague useless formula based advanced stats huh?</p>
+
+<p>Lets leave this shit in 2020 lmao pretending these gimmick models matter has been going on far too long.</p>
+
+<p>Advanced analytic peddling has became the modern day box score watching for casuals who can’t be fucked to watch a game and form an opinion of their own</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="ophtg3y" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>BuckeyeStrider | Knicks</div>
+        <div>2 | 34 minutes ago </div>
+      </div>
+      <label for="ophtg3y" class="commentText"><p>I like referencing them when my favorite players are in the lead, and ignoring them for all other occasions</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="ophtulx" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Sea-Card-6586 | 76ers</div>
+        <div>1 | 31 minutes ago </div>
+      </div>
+      <label for="ophtulx" class="commentText"><p>They are all built around confirmation bias anyway.</p>
+
+<p>Any “advanced model” that doesn’t end up confirming shit we already know is just tweaked until it does.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="ophtvv9" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Kantei | Knicks</div>
+        <div>1 | 31 minutes ago </div>
+      </div>
+      <label for="ophtvv9" class="commentText"><p>look it&rsquo;s a free country, but the purpose of these &lsquo;vague formulas&rsquo; is to specifically try and bridge the gap between what box scores can&rsquo;t capture and watching the games</p>
+
+<p>nobody&rsquo;s forcing people to take these as gospel, but I don&rsquo;t see the difference between this and comparing players by basic stats and PPG. if anything, this is more anti-casual because it does more un-fun shit with math and testing</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="ophu7r7" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Sea-Card-6586 | 76ers</div>
+        <div>1 | 29 minutes ago </div>
+      </div>
+      <label for="ophu7r7" class="commentText"><p>That’s the problem. There is no difference in using advanced stats as opposed to box score stats except the fact that they are extremely contrived and pretentious and an absolute waste of fucking time at this point trying to keep up with everyones “expert analysis” just regurgitating WAR and LEBRON and VORP and all this meaningless shit instead of going in depth on anything that actually happens on the court leading to the stats that actually do mean something.</p>
+
+<p>Now everyone wants to be “Thinking Basketball” and completely drowns out any legitimate thought provoking analysis with their “I built a model 🤓” decimal point filled useless trash</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="ophw0x8" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Kantei | Knicks</div>
+        <div>1 | 17 minutes ago </div>
+      </div>
+      <label for="ophw0x8" class="commentText"><p>Not sure who you&rsquo;re directing that towards, because nobody&rsquo;s claiming to provide expert analysis based on this. Nor did sites like 538 ever did when they were running this.</p>
+
+<p>These projects are quite literally just for fun references that have almost never been cited by talking heads, content creators, or any serious analysis.</p>
+
+<p>The real analytics, if we want to get into it, comes from aggregated matchups and actions, like how good a certain player does against drop defense. That gets into things like &lsquo;points per possession per 100 when X action is ran&rsquo; which is far more granular and specific, but is also literally how teams and scouts professionally cover the sport. That gets thrown into extremely paywalled / exclusive models that measure how well that player synergizes with different playstyles, and formula-driven measurements are spat out.</p>
+
+<p>If these expensive models were hypothetically free and public, would you be opposed to using that as part of discussions? Sure, the eye test always comes first, but using this as an <em>additive</em> to the discourse shouldn&rsquo;t be something so controversial.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ophqi0c" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>blueneuronDOTnet | Celtics</div>
+        <div>-3 | an hour ago </div>
+      </div>
+      <label for="ophqi0c" class="commentText"><p>From just your description alone, this metric sounds like it would inflate the Knicks numbers since they played far weaker teams than the Spurs. Teams will naturally perform better on offense and defense against the likes of the Cavs and Sixers than they will against the likes of OKC and the TWolves.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="ophqusb" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Ill-Enthusiasm-5530</div>
+        <div>6 | an hour ago </div>
+      </div>
+      <label for="ophqusb" class="commentText"><p>If you read the description you would see it takes into account strength of opponent</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="ophrce1" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>blueneuronDOTnet | Celtics</div>
+        <div>2 | an hour ago </div>
+      </div>
+      <label for="ophrce1" class="commentText"><p>Where do you see that? All I see specified is that it&rsquo;s schedule-adjusted based on playoff ELO (which seems to have been added in an edit a couple of minutes ago), and that just runs into the same problem, because how do you calculate an accurate ELO for teams with that kind of sample size?</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="ophrkkh" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Weary_Cabinet_8123</div>
+        <div>-1 | an hour ago </div>
+      </div>
+      <label for="ophrkkh" class="commentText"><p>He’s a Celtics fan who skims the posts and sees something that supports the Knicks players playing well, why read when you can just make an uneducated argument against the Knicks?</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="ophrxqb" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>blueneuronDOTnet | Celtics</div>
+        <div>3 | 43 minutes ago </div>
+      </div>
+      <label for="ophrxqb" class="commentText"><p>The post was edited one minute before I made my comment. I&rsquo;m asking a perfectly valid question given the information given. If you&rsquo;re salty about the banner disparity, just say that.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="ophu5au" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>RaiseFold100</div>
+        <div>1 | 29 minutes ago </div>
+      </div>
+      <label for="ophu5au" class="commentText"><p>Ouch</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="ophr25v" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Kantei | Knicks</div>
+        <div>0 | an hour ago </div>
+      </div>
+      <label for="ophr25v" class="commentText"><p>Not quite, as this metric specifically looks at the strength of each team and matchup, measured by its Elo rating. Basically, a ~10 point win against an elite team would mean more than a ~15 point win against a weak team.</p>
+
+<p>That also affects the individual player ratings. Before going against OKC, Wemby was only the 2nd best ranked player, but the metric recognizes that his contributions against the Thunder, even if they weren&rsquo;t always insane by box score standards, were enough to push him to the top spot.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="ophrojf" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>blueneuronDOTnet | Celtics</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="ophrojf" class="commentText"><p>Right, but since that ELO is playoff-only, your sample size is very limited &ndash; and runs into the same problem since you (presumably) weigh wins over deeply flawed rosters like Detroit and Boston more heavily than ought be appropriated, doubly so given the kinds of wins seen in the West.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="ophs5ii" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Kantei | Knicks</div>
+        <div>1 | 42 minutes ago </div>
+      </div>
+      <label for="ophs5ii" class="commentText"><p>I very clearly linked to the original creator of the metric for curious folks to get more into the weeds.</p>
+
+<p>But to make things easier, this is how they explain it:</p>
+
+<p>&rdquo;(&hellip;) instead of a rating based on rolling efficiency ratings, I now track two versions of Elo for every team — one tuned for the regular season and another for the playoffs.</p>
+
+<p>The regular-season Elo evolves primarily based on regular-season games. It’s designed to reflect teams’ day-to-day form — the things that fluctuate across an 82-game grind, with all the scheduling, injuries and random swings that come with it. These ratings react a bit more quickly to new information, giving extra weight to recent games while still accounting for margin of victory and opponent strength.</p>
+
+<p>The playoff Elo, meanwhile, updates more heavily from postseason games and moves more slowly during the regular season. This track captures a longer-term view of team quality — the kind that tends to matter in May and June, when rotations tighten and effort levels spike. It places more emphasis on playoff performance and continuity, rewarding teams that have proven themselves under postseason conditions.</p>
+
+<p>The two systems also interact. Regular-season results slightly influence playoff ratings (and vice versa), so that each track informs the other without hurting their different purposes. Over time, this helps the model distinguish between teams that are built to thrive in the regular season versus those that are better suited for playoff basketball.&rdquo;</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="ophu68j" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>blueneuronDOTnet | Celtics</div>
+        <div>1 | 29 minutes ago </div>
+      </div>
+      <label for="ophu68j" class="commentText"><blockquote>
+<p>I very clearly linked to the original creator of the metric for curious folks to get more into the weeds.</p>
+</blockquote>
+
+<p>Which is why I specified that I was going off of your description alone, which suggested a playoff-only ELO rather than a weighted total ELO.</p>
+
+<p>The system your quote specifies also seems like it&rsquo;d inflate the Knicks numbers &ndash; take just the Sixers rating, for example. They beat Boston, which should have an elite playoff ELO given that they made six of the last 10 conference finals, and also an elite regular season ELO. Yet Boston was not actually an elite team this postseason.</p>
+
+<p>Generally speaking, ELO is going to inflate the numbers of teams in the weaker conference &ndash; and you can see that on the linked page, where the Pistons have the third highest ELO rating despite obviously not being as robust of an opponent as the #12 TWolves. I mean, just to really drive this point home, Paine&rsquo;s playoff rating gives the TWolves just a one point advantage over the Lakers.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="ophv8wh" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>SannySen</div>
+        <div>1 | 22 minutes ago </div>
+      </div>
+      <label for="ophv8wh" class="commentText"><p>Cleveland was 2-0 against the Spurs this season.  </p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="ophx12k" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>blueneuronDOTnet | Celtics</div>
+        <div>1 | 11 minutes ago </div>
+      </div>
+      <label for="ophx12k" class="commentText"><p>&hellip;This proves my point about the flawed nature of this ELO-based approach, if anything. You really think Cleveland should carry the relative weight of a team that can sweep the Spurs just because they beat the Spurs twice in the dead days of December, once without Wemby and once on December 29th, less than a week after the Spurs scored double dubs on OKC in back-to-back games?</p>
+
+<p>If we&rsquo;re not going to use context and critical thinking in our analyses then the whole exercise is moot IMO.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
