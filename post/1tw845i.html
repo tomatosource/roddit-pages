@@ -1,0 +1,399 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.selfPostImage {
+  width: 100%;
+  height: auto;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://i.redd.it/jid546ukw55h1.png"><p>Pour One Out For The Bug Team</p>
+</a>
+    </h2>
+
+    
+	<div class="selfPostContainer">
+		<img class="selfPostImage" src="https://i.redd.it/jid546ukw55h1.png" />
+	</div>
+  
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="opmemg3" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ShaneZD</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="opmemg3" class="commentText"><p>Looks like max integer lol</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="opmh5va" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Aket-ten</div>
+        <div>1 | 35 minutes ago </div>
+      </div>
+      <label for="opmh5va" class="commentText"><p>Haha it does, fun fact it&rsquo;s only around 0.47% below the ceiling of the signed 32 bit max of 2,147,483,647.</p>
+
+<p>It could be a wraparound result, signed/unsigned miscast, but in all honestly it likely is just a legitimately large integer&hellip;</p>
+
+<p>Looking at other bug ref numbers, they&rsquo;re all in the 1 to 2.1 billion range, which suggests GGG is storing these as signed 32 bit int.</p>
+
+<p>Inb4 migration to bigint 64bit. Was thinking why not ulid or uuid but it&rsquo;s not really a security concern here, uuid /ulid value props also not really necessary here either wrt indexed/ performance / and no need for distributed id generation.</p>
+
+<p>It likely is some technical debt from them setting it up in 2013. It will never reach 2billion is more than reasonable when developing your first indie game a decade ago. I mean bug reports should be assumed to be write-infrequent relative to concurrent player.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="opmix0p" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Julien_Black</div>
+        <div>1 | 25 minutes ago </div>
+      </div>
+      <label for="opmix0p" class="commentText"><p>I have 0 ideea what you said but I like how you said it</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="opmj55o" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Fantastic-Phrase-348</div>
+        <div>1 | 24 minutes ago </div>
+      </div>
+      <label for="opmj55o" class="commentText"><p>Took the words right out of my mouth lol</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="opmdpir" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>AutoModerator</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="opmdpir" class="commentText"><p>Please make sure you check the <a href="https://www.pathofexile.com/forum/view-thread/3594260" target="_blank">Known Issues List</a> or the <a href="https://www.pathofexile.com/forum/view-forum/2214" target="_blank">Bug Report Forums</a> for any pre-existing bug reports related to your issue. Duplicate reports on Reddit may be removed.</p>
+
+<p><em>I am a bot, and this action was performed automatically. Please <a href="/message/compose/?to=/r/PathOfExile2">contact the moderators of this subreddit</a> if you have any questions or concerns.</em></p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="opmdrkr" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>PoE_Acronym_Bot</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="opmdrkr" class="commentText"><p>I noticed some Path of Exile keywords in this post:</p>
+
+<ul>
+<li><strong>DPS</strong> - Damage per Second</li>
+</ul>
+
+<hr>
+
+<p>^(I am a bot.) ^| <a href="https://acronym.sidia.net/acronyms/pathofexile2" target="_blank">^(All acronyms)</a> ^| <a href="https://acronym.sidia.net/suggest/pathofexile2" target="_blank">^(Suggest)</a></p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="opmdxxg" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>purinikos</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="opmdxxg" class="commentText"><p>These are cumulative with 13 years of poe1, I think.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="opmi1uo" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Fantastic-Phrase-348</div>
+        <div>1 | 30 minutes ago </div>
+      </div>
+      <label for="opmi1uo" class="commentText"><p>If it&rsquo;s just from this league, with 400k concurrent players assume maybe 1m playing (high estimate?), that would mean every player would have submitted 2,000 reports - it HAS to be cumulative lol</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="opmenh7" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>mandox1</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="opmenh7" class="commentText"><p>Doubt. Did /bug twice and the number went from like 600m to over 2t</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
