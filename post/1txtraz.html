@@ -1,0 +1,640 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.selfPostImage {
+  width: 100%;
+  height: auto;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/baseball/comments/1txtraz/how_much_of_gm_skill_actually_measurable_a/"><p>How much of GM skill actually measurable? A research question turned website</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <p>This started as a question I&rsquo;ve always wondered: when a GM gets credit for a great run, how much of it is skill vs. inheriting a stacked farm system, a top-5 payroll, or plain luck?</p>
+
+<p>To answer that you have to strip out the stuff GMs don&rsquo;t control. So I controlled for payroll, split every roster into how it was built (draft / international / trade / free agency), and then looked for things that actually repeat year over year, because a skill that doesn&rsquo;t persist is just noise with a good story.</p>
+
+<p>One of the few that holds up is a stat I&rsquo;ve been calling &lsquo;Acquisition Leverage&rsquo;: this simply measures how much your team&rsquo;s playoff odds increase for each WAR you acquire. It&rsquo;s not about just acquiring wins cheaply, but acquiring them at the right time, buying when you&rsquo;re a contender and the marginal win matters, not when you&rsquo;re 12 games back. A perennial seller can look &ldquo;efficient&rdquo; on a cost-per-win basis while creating zero actual leverage in terms of their playoff odds. Separating those two is where GMs can distinguish themselves.</p>
+
+<p>But to truly credit (or blame) a GM for a trade, I also needed to grade each trade by what it was reasonably expected to return at the time, not with hindsight. So I built a Bayesian valuation for every player in every deal: pedigree (draft slot / prospect rank) + recent performance + the years of team control acquired, producing an expected WAR with an honest uncertainty band.</p>
+
+<p>Then I ran it on all ~4,500 trades since 1985 and checked it against what actually happened, here&rsquo;s what I found:</p>
+
+<p>Trades are basically an efficient market. The model is well-calibrated, its expected values land within about 2 WAR of reality roughly 75% of the time, and yet which side actually comes out ahead is close to a coin flip. Most trade outcomes are genuinely unforeseeable at the moment of the deal. The huge uncertainty band on a prospect is the story, not a flaw in the model.</p>
+
+<p>That trade model kinda took over the project so now I have this:</p>
+
+<ul>
+<li>Every trade, 1985-present, filterable/sortable, each with its own page showing how each player&rsquo;s expected value was built (pedigree to recent form to control horizon) vs. what he actually produced</li>
+<li>A trade calculator: build any hypothetical deal and see the model&rsquo;s read on each side</li>
+<li>The GM and draft analysis that kicked the whole thing off: every front office and scouting director since 1985 ranked on the stuff above (Acquisition Leverage, payroll-adjusted wins, draft value over slot)</li>
+</ul>
+
+<p>It&rsquo;s free, nothing is paywalled and there&rsquo;s no signup required, genuinely just a research project that got out of hand cause I&rsquo;m a psycho: <a href="http://rosternomics.com" target="_blank">rosternomics.com</a></p>
+
+<p>Big caveats: it&rsquo;s mostly descriptive, not gospel. It&rsquo;s WAR-based, so it inherits any of WAR&rsquo;s blind spots. Which side &ldquo;wins&rdquo; a trade is nearly unforeseeable at the time, and the tool says so on every page rather than pretending otherwise. I&rsquo;m one person, I&rsquo;m sure there are mistakes I&rsquo;ve made that I haven&rsquo;t noticed so feel free to poke holes.</p>
+
+<p>TLDR: Tried to measure whether GM skill is real (&lsquo;Acquisition Leverage&rsquo; looks like one of the few repeatable ones). Had to grade every trade ever to do it, found that trades are a near-efficient market where even a well-calibrated model can barely beat a coin flip at calling the winner, and the trade-grader ballooned into a public database + calculator: <a href="http://rosternomics.com" target="_blank">rosternomics.com</a></p>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="opyesyn" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>xHao1 | Los Angeles Dodgers</div>
+        <div>12 | an hour ago </div>
+      </div>
+      <label for="opyesyn" class="commentText"><p>Great stuff. It would be nice to split GM&rsquo;s by teams, or at least have a filter to do so.  Stearns and Friedman are good examples to bifurcate given the very different approaches they&rsquo;ve had.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="opygyt8" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>xHao1 | Los Angeles Dodgers</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="opygyt8" class="commentText"><p>sorry as I play more, is there a sort error or a weight for sorting? 1-2 year GMs like Preston Mattingly or Buster Posey are stuck at the bottom for me regardless if I go high low or low high for Acq Lev and active GMs</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="opye9qz" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>FunBike7712 | Los Angeles Angels</div>
+        <div>6 | an hour ago </div>
+      </div>
+      <label for="opye9qz" class="commentText"><p>This is really cool </p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="opyfm8d" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>UseGroundbreaking399 | Pittsburgh Pirates</div>
+        <div>4 | an hour ago </div>
+      </div>
+      <label for="opyfm8d" class="commentText"><p>boy that ben cherington sure is something</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="opypk0u" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>thecountoncleats | Pittsburgh Pirates</div>
+        <div>1 | 17 minutes ago </div>
+      </div>
+      <label for="opypk0u" class="commentText"><p>You too huh 😂</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="opyh3ja" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ajteitel | Arizona Diamondbacks</div>
+        <div>4 | an hour ago </div>
+      </div>
+      <label for="opyh3ja" class="commentText"><p>Instantly bookmarked. Also the downloaded CSV should be called the Rosternomicon</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="opyf1gs" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>IllUnderstanding8813</div>
+        <div>3 | an hour ago </div>
+      </div>
+      <label for="opyf1gs" class="commentText"><p>damn this is wild, you basically built sabermetrics for front office moves</p>
+
+<p>the acquisition leverage thing makes total sense - buying high when you&rsquo;re already good vs just hoarding cheap talent when you&rsquo;re rebuilding. feels like something that should be obvious but never seen anyone actually quantify it before</p>
+
+<p>gonna waste so much time on that trade calculator now</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="opyjym7" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>DegenerateWaves | Houston Astros</div>
+        <div>3 | 44 minutes ago </div>
+      </div>
+      <label for="opyjym7" class="commentText"><blockquote>
+<p>But to truly credit (or blame) a GM for a trade, I also needed to grade each trade by what it was reasonably expected to return at the time, not with hindsight. So I built a Bayesian valuation for every player in every deal: pedigree (draft slot / prospect rank) + recent performance + the years of team control acquired, producing an expected WAR with an honest uncertainty band.</p>
+</blockquote>
+
+<p>I&rsquo;ve frequently had a similar thought, but I also think there&rsquo;s likely some hidden information that we <em>should</em> credit a GM for. You could imagine a GM builds a great pitching development team and then leverages that to acquire pitchers with upside. The model here would underestimate the pitcher&rsquo;s expected WAR, but the success (as surprising as it might be to us) should still go to credit the GM&rsquo;s acquisition talent.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="opyisnk" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>bergyd | St. Louis Cardinals</div>
+        <div>2 | an hour ago </div>
+      </div>
+      <label for="opyisnk" class="commentText"><p>Great work, this is amazing.</p>
+
+<p>For those searching names, searches are bound by accent marks. Wasn&rsquo;t getting a result for Tatis and Tatís brings them up.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="opyfwpt" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Rbase96</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="opyfwpt" class="commentText"><p>This is insane! Definitely need to take some time to play around with this</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="opygkkk" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Tulidian13 | St. Louis Cardinals</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="opygkkk" class="commentText"><p>This is awesome</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="opyh8zg" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Windog2</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="opyh8zg" class="commentText"><p>This is absolutely incredible.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="opyiu45" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Epochalyptic | Major League Baseball</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="opyiu45" class="commentText"><p>This is awesome work.  I can already tell I&rsquo;m going to be spending so much time in this data.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="opyl1my" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>volta_verve | Seattle Mariners</div>
+        <div>1 | 39 minutes ago </div>
+      </div>
+      <label for="opyl1my" class="commentText"><p>This is amazing. Great work.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="opym6nk" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>volta_verve | Seattle Mariners</div>
+        <div>1 | 33 minutes ago </div>
+      </div>
+      <label for="opym6nk" class="commentText"><p>My only complaint is that this website could use a search bar for the all time GM rankings page. But seriously, great work.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="opym5yt" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>thecountoncleats | Pittsburgh Pirates</div>
+        <div>1 | 33 minutes ago </div>
+      </div>
+      <label for="opym5yt" class="commentText"><p>Yeah I just want to know why and how my team’s GM sucks as much as I think he does.</p>
+
+<p>(This is actually super interesting, well done)</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="opyohzi" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ohkaycue | Florida Marlins</div>
+        <div>1 | 22 minutes ago </div>
+      </div>
+      <label for="opyohzi" class="commentText"><p>I&rsquo;m guessing there&rsquo;s multiple situations like this (because of how hard this information would be to pull), but Larry Beinfest&rsquo;s listed years are 2002-2007 - but he was promoted to POBO then, and held that position until the end of the 2013 season. Considering Benedix is POBO and still listed (with the GM Kapler also listed), I would assume Beinfest&rsquo;s years should also cover his years as a POBO</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="opyqwcg" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Orochimaru_sama123</div>
+        <div>1 | 10 minutes ago </div>
+      </div>
+      <label for="opyqwcg" class="commentText"><p>yeah this is a cool approach but i wonder how much it can really isolate skill when ownership and market size still dictate so much of the baseline. like even with payroll controlled, some teams just have way more runway to absorb a bad signing than others. haven&rsquo;t seen the full site yet but acquisition leverage sounds like it could be noisy year to year anyway.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="opyqyks" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Redbubble89 | Boston Red Sox</div>
+        <div>1 | 10 minutes ago </div>
+      </div>
+      <label for="opyqyks" class="commentText"><p>I would have to look into this deeper.  What Mike Elias is trying to achieve is different from what Dombrowski or Preller have done over their career.</p>
+
+<p>The small market GMs are always going to have a surplus because they are selling off good talent with 1 or 2 years left and get good prospect back.  Both team end up winning.</p>
+
+<p>Trades are beyond money and WAR improvement and more based on what the team was trying to accomplish.  MIA won the Beckett trade +$322.4M surplus which iIs not personally how I view that one.  <a href="https://rosternomics.com/trade/p3jtpi01p" target="_blank">https://rosternomics.com/trade/p3jtpi01p</a></p>
+
+<p>I think it is an interesting tool and I am not sure how it can improve.  It lacks a lot of nuance in places.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="opyscn4" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>KamartyMcFlyweight | Miami Marlins • Anaheim Angels</div>
+        <div>1 | 3 minutes ago </div>
+      </div>
+      <label for="opyscn4" class="commentText"><p>I gotta say, the leaderboard lines up very tightly with what I&rsquo;d expect lol</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="opyjbjy" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>delscorch0 | Los Angeles Dodgers</div>
+        <div>0 | an hour ago </div>
+      </div>
+      <label for="opyjbjy" class="commentText"><p>AJ Preller.  So very low.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
