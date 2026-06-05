@@ -1,0 +1,823 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.selfPostImage {
+  width: 100%;
+  height: auto;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/PathOfExile2/comments/1tx4omp/new_elemental_nodes/"><p>New Elemental Nodes</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <p>For anyone looking for the new Elemental Nodes, here are all 40.</p>
+
+<p>West End Jewel Socket:</p>
+
+<ul>
+<li><p>4 Points: Stormkeeper (20% Lightning Damage, 30% Reduced Shock on You, 15% Shock Magnitude)</p></li>
+
+<li><p>4 Points: Flamekeeper (20% Fire Damage, 30% Reduced Ignite on You, 15% Ignite Magnitude)</p></li>
+</ul>
+
+<p>Middle Druid Jewel Socket:</p>
+
+<ul>
+<li>9 Points: Rhythm of Ice (20% Cold Damage, 6% Cast Speed per recent Spell Echoed up to 30%) and Rhythm of Fire (20% Fire Damage, 5% chance for Slam Skills to cause an additional Aftershock)</li>
+</ul>
+
+<p>Northwest End Jewel Socket:</p>
+
+<ul>
+<li><p>4 Points: Arsonist (20% Fire Damage, 10% Cast Speed while Ignited, 5% reduced Movement Speed Penalty for Fire Skills)</p></li>
+
+<li><p>4 Points: Flurry (20% Cold Damage, 10% Cast Speed while Chilled, 5% reduced Movement Speed Penalty for Cold Skills)</p></li>
+</ul>
+
+<p>Middle Sorc Jewel Socket:</p>
+
+<ul>
+<li>7 Points: Lightning Storm (6% of Lightning Damage as Extra Cold, Unaffected by Shocked Ground) and Ice Storm (6% of Cold Damage as Extra Lightning, Unaffected by Chilled Ground)</li>
+</ul>
+
+<p>Northeast End Jewel Socket:</p>
+
+<ul>
+<li><p>4 Points: Brain Storm (20% Lightning Damage, 15% Mana Cost Efficiency)</p></li>
+
+<li><p>4 Points: Brain Freeze (20% Cold Damage, -8% Cold Res on Frozen Enemies)</p></li>
+</ul>
+
+<p>Other Changes:</p>
+
+<ul>
+<li><p>Empowering Infusions and Everlasting Infusions swapped, meaning Empowering&rsquo;s minors now give a chance to save infusions instead of damage.</p></li>
+
+<li><p>Sudden Escalation has moved from the left side to the right side. It now requires allocating the Critical Chance instead of having the option for Critical Bonus or Critical Chance.</p></li>
+
+<li><p>Convalescence has moved above the Archon cluster instead of below. This puts it in range of From Nothing for Eldritch Battery.</p></li>
+</ul>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="opt8f93" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>fiehm</div>
+        <div>16 | an hour ago </div>
+      </div>
+      <label for="opt8f93" class="commentText"><p>Ice Storm (6% of Cold Damage as Extra Lightning, Unaffected by Chilled Ground)</p>
+
+<p>This one is bugged, you still get affected by chill ground</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="opt8wjz" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Marsdreamer</div>
+        <div>9 | an hour ago </div>
+      </div>
+      <label for="opt8wjz" class="commentText"><p>GGG - Love the new stuff. The patch is great.</p>
+
+<p>Stop adding more stuff for the moment. Fix the the 100 things in the game that don&rsquo;t work atm.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="opt982v" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>skywideopen3</div>
+        <div>2 | an hour ago </div>
+      </div>
+      <label for="opt982v" class="commentText"><p>Mark did say this was the plan, no? This was a huge content update and then there would be a few economy reset patches focussed on just fixing things and balancing things.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="opte2t5" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>artosispylon</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="opte2t5" class="commentText"><p>im guessing the guys working on the passives are not the same guys doing bug fixes and these passives where finished so might as well add them</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="optkl9f" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>JackSpyder</div>
+        <div>1 | 7 minutes ago </div>
+      </div>
+      <label for="optkl9f" class="commentText"><p>There was a huge list of bug fixes too.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="opt8s2v" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Netheri</div>
+        <div>9 | an hour ago </div>
+      </div>
+      <label for="opt8s2v" class="commentText"><p>Overall they seem okay? I&rsquo;m not really sure it&rsquo;s going to change a whole lot for tree pathing, casters generally already spent their time pathing to high value nodes like Secrets of the Orb and crit wheels, not sure any of these are all that outstanding.</p>
+
+<p>Empowering and Everlasting being swapped seems like it could be a change, most casters would take the Empowering side and ignore Everlasting, I wonder if you just drop that entire cluster now.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="opta1ls" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>BioMasterZap</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="opta1ls" class="commentText"><p>I&rsquo;ve already dropped Empowering because of the change. Instead of doing for Deadly Force, I decided to get the Echoing Thunder/Frost/Flame since I am doing a tri-ailment build. The went in Empowering, partly because I was pathing to Orb (usually do +2 Limit on Stormweaver) and wanting the pathing to feel less wasted and partly because it felt kinda bad to play Infusions and never use the Infusion DPS node. But while 4 points for a conditional 54% wasn&rsquo;t bad, 4 points for a conditional 35% is just terrible, especially with the other new options.</p>
+
+<p>That said, Lightning Storm for Shocked Ground immunity and Brain Storm for Mana Cost Efficiency both might make their way into my build. I currently swapped the Empowering points to Brain Storm. Also thinking it might be a bit more practical do to invest less into crit now that there are other Lightning clusters worth considering.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="optb24p" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Mordy_the_Mighty</div>
+        <div>3 | an hour ago </div>
+      </div>
+      <label for="optb24p" class="commentText"><blockquote>
+<p>4 points for a conditional 35% is just terrible, especially with the other new options.</p>
+</blockquote>
+
+<p>Hey, you also have the option of 4 points for a conditional 30% damage! Well I guess if you skip the notable at the end with the 10% chance to not consume an infusion it&rsquo;s only 3 points.</p>
+
+<p>Funny how the left branch is strinctly inferior to the right branch with that change.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="optbs2y" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>BioMasterZap</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="optbs2y" class="commentText"><p>Yup&hellip; It is a shame because I actually thought the 20% Infusion save was one of the better Remnant options. But now that is worse off too. Really hope it was a mistake and they swap them back since the whole cluster feels bad now.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="optcc8t" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Netheri</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="optcc8t" class="commentText"><p>Yeah that&rsquo;s about where my thinking is, I dropped the Infusions wheel but damn does that make pathing to Secrets of the Orb feel bad, seven points (6 if you&rsquo;re taking the exposure nodes and/or Stormbreaker) for it is pretty rough.</p>
+
+<p>Brain Storm does look pretty appealing, especially since you&rsquo;re usually going to be pathing over there regardless for crit/Turn the Clock/Duration or CI.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="optcurm" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>BioMasterZap</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="optcurm" class="commentText"><p>Yah&hellip; Probably is worth for me to run Stormbreaker though, so that helps the pathing not feel wasteful. But if I can get Secrets of the Orb on a jewel or even a second anoint, it would probably be worth saving all those points.</p>
+
+<p>Like Raven-Touched on helm to anoint Secrets of the Orb for +6 Points) instead of the Mana Cost Idol and spend 4 points on Brain Storm does kinda sound worth it, even if others would be more optimal.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="optf9bs" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Vulpix0r</div>
+        <div>1 | 38 minutes ago </div>
+      </div>
+      <label for="optf9bs" class="commentText"><p>Ok someone explain why there are so little downsides to these new nodes? Meanwhile the ones at the warrior are like &ldquo;20% increased attack damage, -200% movement speed&rdquo;?</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="opthhks" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Netheri</div>
+        <div>1 | 25 minutes ago </div>
+      </div>
+      <label for="opthhks" class="commentText"><p>Most tree nodes don&rsquo;t have a downside, and even without downsides these nodes aren&rsquo;t likely to see a lot of play compared to just clicking crit everywhere you can.</p>
+
+<p>Besides caster side does have its share of nodes like that, Overzealous/Casting Cascade/Final Barrage wheel all have downsides, Potent Incantation gives a lot of spell damage but does reduce cast speed (which is kind of irrelevant to be fair, everyone still takes this node) and Careful Assassin is 50% crit chance but reduces crit damage (&hellip;which again, Maligaros lmao).</p>
+
+<p>That&rsquo;s not even to mention entire wheels like the Walker wheel, no one is ever going to spend four points to have 15% added as extra while on chilled/burning/shocked ground.  Caster side has less actively awful nodes, but it does have a lot of them that are so bad you&rsquo;d be better off just taking attributes.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="opt9271" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Maalunar</div>
+        <div>3 | an hour ago </div>
+      </div>
+      <label for="opt9271" class="commentText"><p>Sudden Escalation is now out of range of Blackflame Covenant, a loss for oracle somewhat.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="optbdis" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>BioMasterZap</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="optbdis" class="commentText"><p>For Entwined Realities? Yah, 100% not in range of that anymore. I was checking From Nothing and it was already out of range before so didn&rsquo;t think to mention. At least Everlasting Infusions should be in range of From Nothing Blackflame Covenant. And potentially some new Controlled Metamorphosis options.</p>
+
+<p>Also, From Nothing Blood Magic should be able to reach both Flame Keeper and Storm Keeper. Mind over Matter for Arsonist and Flurry, which is good considering the nerfs to nodes in that area. And Conduit for Brain Storm and Brain Freeze. Might be a few more options with Druid.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="optezzn" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Xilerain</div>
+        <div>1 | 40 minutes ago </div>
+      </div>
+      <label for="optezzn" class="commentText"><p>UNAFFECTED BY CHILLED GROUND?<br>
+not bad</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="optac0x" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>da_Mekboss</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="optac0x" class="commentText"><p>Slam one is nice</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="optaju4" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>penguincs</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="optaju4" class="commentText"><p>I love you</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="optazza" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Neither_Version4821</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="optazza" class="commentText"><p>Hmm interesting. Is flameblast any good?</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="optblfs" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>FormerKerriganmain</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="optblfs" class="commentText"><p>This is cool, but for everyone that is not bloodmage, do we even have more than 5-10 nodes not into crit or defenses?</p>
+
+<p>The breach amulet thing to add crit to fire spells is nice, but unless you have capped out gear, its really tough to cap crit chance.</p>
+
+<p>Maybe this is more for mid tier builds that dont want to go crit at all?</p>
+
+<p>Or maybe the idea is get crit on your time lost and you can take these nodes?</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="optcdaw" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>BioMasterZap</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="optcdaw" class="commentText"><p>I&rsquo;ll need to wait for PoB to see the DPS, but I&rsquo;m considering going less into Crit now for some of these nodes. Probably still better to run Crit, but I didn&rsquo;t have the largest investment already so it might be better to go for other damage.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="optevjs" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>FormerKerriganmain</div>
+        <div>1 | 41 minutes ago </div>
+      </div>
+      <label for="optevjs" class="commentText"><p>This will def help bridge the gap between non crit and crit builds. Might not make sense to switch to crit till ultra high budget now.</p>
+
+<p>POB will show us the way.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="optexwc" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ItWasDumblydore</div>
+        <div>1 | 40 minutes ago </div>
+      </div>
+      <label for="optexwc" class="commentText"><p>None of them say crit damage or crit chance, straight to the bin</p>
+
+<p>Staffs give what 450% / wands give 280% spell damage&hellip; why would you want more spell damage</p>
+
+<p>Why would I invest in increased % damage when what 500% is just an 17% dps increase over 400%, the only worthwhile investments mage wise is extra damage as X, cast speed, + level and crit chance/damage.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="opt6tlp" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ImpressNervous4382</div>
+        <div>-5 | an hour ago </div>
+      </div>
+      <label for="opt6tlp" class="commentText"><p>No physical buff????</p>
+
+<p>Meanwhile Spells just got a huge buff with support gems.</p>
+
+<p>Man I hate this part of the game.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="opt7dnj" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Local_Food9567</div>
+        <div>16 | an hour ago </div>
+      </div>
+      <label for="opt7dnj" class="commentText"><p>Yes the new elemental passive nodes did not buff physical damage.</p>
+
+<p>It&rsquo;s a surprise to us all!</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="opt93y4" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>smorb42</div>
+        <div>4 | an hour ago </div>
+      </div>
+      <label for="opt93y4" class="commentText"><p>Why would they add physical damage nodes? Most physical builds in that part of the tree scale crit, so they have more points to take then they would ever use anyway.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="opt9fcs" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Orthed</div>
+        <div>3 | an hour ago </div>
+      </div>
+      <label for="opt9fcs" class="commentText"><p>As someone currently playing a phys caster: I have already specced out of almost every phys specific node on the tree. Almost all my damage nodes are just crit nodes.</p>
+
+<p>Turns out&hellip; crit good.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="optf7m0" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ImpressNervous4382</div>
+        <div>1 | 39 minutes ago </div>
+      </div>
+      <label for="optf7m0" class="commentText"><p>Because elemental fantasy is not fun for some people. We want pure physicals.</p>
+
+<p>Elemental nodes SHOULD BE NERFED more anyway to account the fact they applies to 3 damage types.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
