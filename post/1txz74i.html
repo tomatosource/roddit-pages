@@ -215,7 +215,7 @@ body > .commentList {
     <div class="comment">
       <div class="commentHeader">
         <div>eekbarbaderkle | Boston Red Sox</div>
-        <div>596 | 10 hours ago </div>
+        <div>603 | 11 hours ago </div>
       </div>
       <label for="opzkd4y" class="commentText"><p>This is both extremely cherrypicked and highly improbable. The best kind of baseball statistic.</p>
 </label>
@@ -230,7 +230,7 @@ body > .commentList {
     <div class="comment">
       <div class="commentHeader">
         <div>Monkey1Fball</div>
-        <div>109 | 9 hours ago </div>
+        <div>117 | 11 hours ago </div>
       </div>
       <label for="opzlyeh" class="commentText"><p>+1.  I also can&rsquo;t imagine how someone would THINK to research a stat like this (or what the SQL query would look like).</p>
 </label>
@@ -245,7 +245,7 @@ body > .commentList {
     <div class="comment">
       <div class="commentHeader">
         <div>sfan27 | San Francisco Giants</div>
-        <div>69 | 9 hours ago </div>
+        <div>71 | 11 hours ago </div>
       </div>
       <label for="opzmldx" class="commentText"><p>I&rsquo;d start with 3 grand slams in 10 game spans, and honestly manually past that might work&hellip;</p>
 </label>
@@ -260,7 +260,7 @@ body > .commentList {
     <div class="comment">
       <div class="commentHeader">
         <div>GoSkers29 | Major League Baseball</div>
-        <div>26 | 8 hours ago </div>
+        <div>27 | 10 hours ago </div>
       </div>
       <label for="oq026bo" class="commentText"><p>Yeah, it&rsquo;s the Pettis stat that really impresses me though. My guess is somebody thought to see if there was any overlap between the 23 Astros and this team. Then when they saw it was a coach they checked the other one.</p>
 </label>
@@ -275,7 +275,7 @@ body > .commentList {
     <div class="comment">
       <div class="commentHeader">
         <div>sfan27 | San Francisco Giants</div>
-        <div>3 | 7 hours ago </div>
+        <div>3 | 9 hours ago </div>
       </div>
       <label for="oq0b6q6" class="commentText"><p>Honestly they proabbly knew all 3 of those. Pettis is news cuz of the recent hire, &lsquo;23 Astros isn&rsquo;t too hard if you know the &lsquo;22 WS coaches, &lsquo;83 Angels they might not have been certain but knew he played for the Angels in the 80s.</p>
 </label>
@@ -301,7 +301,7 @@ body > .commentList {
     <div class="comment">
       <div class="commentHeader">
         <div>Nomahs_Bettah | Boston Red Sox</div>
-        <div>18 | 9 hours ago </div>
+        <div>18 | 11 hours ago </div>
       </div>
       <label for="opzr93b" class="commentText"><p>I know that each broadcast and the league itself have teams of employees and interns who do stats research for just these kinds of moments. I&rsquo;d love to see a team or MLB do a &ldquo;day in the life&rdquo; video segment or feature article on that job.</p>
 </label>
@@ -316,7 +316,7 @@ body > .commentList {
     <div class="comment">
       <div class="commentHeader">
         <div>ThePelicanWalksAgain | Chicago Cubs</div>
-        <div>2 | 4 hours ago </div>
+        <div>2 | 5 hours ago </div>
       </div>
       <label for="oq18jjn" class="commentText"><p>Dream job for me. I just don&rsquo;t have the technical skills for it. I&rsquo;d love to have the &ldquo;superpower&rdquo; to find these types of things quickly!</p>
 </label>
@@ -337,9 +337,59 @@ body > .commentList {
     <div class="comment">
       <div class="commentHeader">
         <div>GreenDavidA | Cleveland Guardians</div>
-        <div>1 | 6 hours ago </div>
+        <div>1 | 8 hours ago </div>
       </div>
       <label for="oq0jun6" class="commentText"><p>The table aliases alone…..</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="oq1zj0e" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>statistexan | Houston Astros</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="oq1zj0e" class="commentText"><p>I mean I imagine this is a NoSQL problem, but if they did use SQL it would probably look something like</p>
+
+<pre><code>WITH three_gs_trips AS (
+    SELECT
+        person.id AS person_id
+        , person.name AS person_name
+        , trip.id AS trip_id
+    FROM person
+    JOIN roster
+        ON roster.person_id = person.id
+    JOIN game AS trip
+        ON trip.id = roster.game_id
+        AND trip.away_team_id = roster.team_id
+        AND trip.away_consec_road = trip.away_trip_length
+    JOIN game AS game
+        ON game.year = trip.year
+        AND game.away_team_game_number &amp;gt; trip.away_team_game_number - trip.away_trip_length
+        AND game.away_team_id = trip.away_team_id
+    JOIN plays
+         ON plays.game_id = game.id
+         AND plays.top_of_inning = TRUE
+         AND plays.runs_scored = 4
+    GROUP BY person.id, person.name, trip.id
+    HAVING COUNT(DISTINCT game.city) = 3
+)
+
+SELECT id, name
+FROM three_gs_trips
+GROUP BY id, name
+HAVING COUNT(DISTINCT trip_id) = (SELECT COUNT(DISTINCT trip_id) FROM three_gs_trips)
+</code></pre>
+
+<p>Query&rsquo;s pretty inefficient, but doable with data they probably keep.</p>
+
+<p>(Also, it&rsquo;s 3AM; please be gentle about any typos or missed edge cases)</p>
 </label>
     </div>
   </label>
@@ -358,7 +408,7 @@ body > .commentList {
     <div class="comment">
       <div class="commentHeader">
         <div>TheInfiniteHour | Pittsburgh Pirates</div>
-        <div>73 | 9 hours ago </div>
+        <div>73 | 11 hours ago </div>
       </div>
       <label for="opzm9n2" class="commentText"><p>There are some people who think outlandishly specific stats like this are pointless and shouldn&rsquo;t be brought up.</p>
 
@@ -375,7 +425,7 @@ body > .commentList {
     <div class="comment">
       <div class="commentHeader">
         <div>88T3_2 | Tampa Bay Devil Rays</div>
-        <div>37 | 9 hours ago </div>
+        <div>40 | 11 hours ago </div>
       </div>
       <label for="opzmxk1" class="commentText"><p>Cherrypicked stats are GOATed because you can use them to explain how a decent slap-hitting utilityman in the steroid era was a better player than several Hall of Famers</p>
 </label>
@@ -390,7 +440,7 @@ body > .commentList {
     <div class="comment">
       <div class="commentHeader">
         <div>Ivotedforher</div>
-        <div>7 | 8 hours ago </div>
+        <div>7 | 10 hours ago </div>
       </div>
       <label for="oq01zvn" class="commentText"><p>Are we talking Joe McEwing here?</p>
 </label>
@@ -405,7 +455,7 @@ body > .commentList {
     <div class="comment">
       <div class="commentHeader">
         <div>MightyCaseyStruckOut | Texas Rangers</div>
-        <div>3 | 7 hours ago </div>
+        <div>4 | 9 hours ago </div>
       </div>
       <label for="oq081pn" class="commentText"><p>Or Frank Catalanotto?</p>
 </label>
@@ -431,7 +481,7 @@ body > .commentList {
     <div class="comment">
       <div class="commentHeader">
         <div>JulyJonesss | Seattle Mariners</div>
-        <div>16 | 9 hours ago </div>
+        <div>19 | 11 hours ago </div>
       </div>
       <label for="opzn6d4" class="commentText"><p>literally my favorite kind of stats are the ones that are so specific they make me roll my eyes and then think about it for a second and realize how crazy it actually is to have it happen</p>
 </label>
@@ -446,12 +496,32 @@ body > .commentList {
     <div class="comment">
       <div class="commentHeader">
         <div>CosmicMiru | Los Angeles Dodgers • Los Angeles Angels</div>
-        <div>2 | 6 hours ago </div>
+        <div>3 | 8 hours ago </div>
       </div>
       <label for="oq0nuw5" class="commentText"><p>I love thinking of the absolute maniac that thinks of some shit like a grand slam in all three legs of a three city road trip to even be a stat then puts in the work to figure it out. I don&rsquo;t think that ones gonna be on the default team page of Fangraph</p>
 </label>
     </div>
   </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="oq1ww66" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>mikeyp83 | Boston Red Sox</div>
+        <div>1 | 2 hours ago </div>
+      </div>
+      <label for="oq1ww66" class="commentText"><p>Probably the same guy that found the footage of Pope Leo standing in the crowd during Game 1 of the 2005 World Series.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
   
 </div>
 
@@ -467,7 +537,7 @@ body > .commentList {
     <div class="comment">
       <div class="commentHeader">
         <div>xHao1 | Los Angeles Dodgers</div>
-        <div>4 | 9 hours ago </div>
+        <div>5 | 11 hours ago </div>
       </div>
       <label for="opznb0f" class="commentText"><p>I don’t think I’m overreacting when I say those people should go straight to jail</p>
 </label>
@@ -483,7 +553,7 @@ body > .commentList {
     <div class="comment">
       <div class="commentHeader">
         <div>akr_13 | Toronto Blue Jays</div>
-        <div>4 | 8 hours ago </div>
+        <div>5 | 10 hours ago </div>
       </div>
       <label for="oq028mn" class="commentText"><p>They&rsquo;re called &ldquo;baseball stats&rdquo; for a reason smh</p>
 </label>
@@ -494,6 +564,22 @@ body > .commentList {
 
     
   </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="oq1w62h" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Ok-Profession5969</div>
+        <div>0 | 2 hours ago </div>
+      </div>
+      <label for="oq1w62h" class="commentText"><p>Right? Feels like the kind of stat that was uncovered at 3am while someone was way too deep into baseball reference. Absolute gem.</p>
+</label>
+    </div>
+  </label>
   
 </div>
 
@@ -511,7 +597,7 @@ body > .commentList {
     <div class="comment">
       <div class="commentHeader">
         <div>xHao1 | Los Angeles Dodgers</div>
-        <div>77 | 10 hours ago </div>
+        <div>79 | 11 hours ago </div>
       </div>
       <label for="opzk230" class="commentText"><p>Wow really kicking Hector Borg while he&rsquo;s down here.</p>
 </label>
@@ -526,9 +612,25 @@ body > .commentList {
     <div class="comment">
       <div class="commentHeader">
         <div>Every-Test8267</div>
-        <div>8 | 10 hours ago </div>
+        <div>9 | 11 hours ago </div>
       </div>
       <label for="opzkk2u" class="commentText"><p>💀</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="oq1vvzz" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Much-Drama7601</div>
+        <div>0 | 2 hours ago </div>
+      </div>
+      <label for="oq1vvzz" class="commentText"><p>Lmao poor Hector can&rsquo;t catch a break even in obscure baseball trivia. At least he&rsquo;s immortalized in a stat, even if it&rsquo;s not a great look.</p>
 </label>
     </div>
   </label>
@@ -549,7 +651,7 @@ body > .commentList {
     <div class="comment">
       <div class="commentHeader">
         <div>sfan27 | San Francisco Giants</div>
-        <div>60 | 10 hours ago </div>
+        <div>59 | 11 hours ago </div>
       </div>
       <label for="opzlbeh" class="commentText"><p>Sadly the Giants have no more 3-city road trips this season.</p>
 </label>
@@ -564,7 +666,7 @@ body > .commentList {
     <div class="comment">
       <div class="commentHeader">
         <div>DominicB547 | ABS • MLB Players Association</div>
-        <div>10 | 7 hours ago </div>
+        <div>10 | 9 hours ago </div>
       </div>
       <label for="oq0b65w" class="commentText"><p>why not are they stupid?</p>
 </label>
@@ -580,7 +682,7 @@ body > .commentList {
     <div class="comment">
       <div class="commentHeader">
         <div>Ok_Library174</div>
-        <div>1 | 7 minutes ago </div>
+        <div>0 | 2 hours ago </div>
       </div>
       <label for="oq1ui1o" class="commentText"><p>Well that&rsquo;s just cruel timing. At least they&rsquo;ve already got their name in the history books for this one, even if they can&rsquo;t add to it now.</p>
 </label>
@@ -603,7 +705,7 @@ body > .commentList {
     <div class="comment">
       <div class="commentHeader">
         <div>Irate_Ibis | Houston Astros • Houston Colt 45s</div>
-        <div>34 | 10 hours ago </div>
+        <div>34 | 11 hours ago </div>
       </div>
       <label for="opzk5ff" class="commentText"><p><img src="giphy|kDqjIP7U4y8gEyuE6a" alt="gif" /><br>
 That’s my windmill man</p>
@@ -619,7 +721,7 @@ That’s my windmill man</p>
     <div class="comment">
       <div class="commentHeader">
         <div>sfan27 | San Francisco Giants</div>
-        <div>20 | 9 hours ago </div>
+        <div>21 | 11 hours ago </div>
       </div>
       <label for="opzm1zf" class="commentText"><p>Giants gave him a day off of windmilling too much by hitting dingers instead.</p>
 
@@ -636,7 +738,7 @@ That’s my windmill man</p>
     <div class="comment">
       <div class="commentHeader">
         <div>Irate_Ibis | Houston Astros • Houston Colt 45s</div>
-        <div>12 | 9 hours ago </div>
+        <div>12 | 11 hours ago </div>
       </div>
       <label for="opznask" class="commentText"><p>Way to ease him back into it.</p>
 </label>
@@ -664,7 +766,7 @@ That’s my windmill man</p>
     <div class="comment">
       <div class="commentHeader">
         <div>The-Young-Lion</div>
-        <div>28 | 10 hours ago </div>
+        <div>28 | 11 hours ago </div>
       </div>
       <label for="opzlb4w" class="commentText"><p>Yeah, but what is his xGSIATLOATCRT?</p>
 </label>
@@ -679,7 +781,7 @@ That’s my windmill man</p>
     <div class="comment">
       <div class="commentHeader">
         <div>mister_cheeks_26</div>
-        <div>20 | 9 hours ago </div>
+        <div>24 | 10 hours ago </div>
       </div>
       <label for="opzua7k" class="commentText"><p>That stat is meaningless, we&rsquo;re using xGSIATLOATCRT+ now</p>
 </label>
@@ -694,7 +796,7 @@ That’s my windmill man</p>
     <div class="comment">
       <div class="commentHeader">
         <div>UraniumDisulfide | Los Angeles Dodgers</div>
-        <div>1 | 11 minutes ago </div>
+        <div>1 | 2 hours ago </div>
       </div>
       <label for="oq1u2ez" class="commentText"><p>If you&rsquo;re into less game results based metrics then you might prefer xFIGSIATLOATCRT+</p>
 </label>
@@ -722,7 +824,7 @@ That’s my windmill man</p>
     <div class="comment">
       <div class="commentHeader">
         <div>turnip_broker | Dinger • Los Angeles Dodgers</div>
-        <div>14 | 10 hours ago </div>
+        <div>15 | 11 hours ago </div>
       </div>
       <label for="opzkjk5" class="commentText"><p>Oh great this is going to make some players even more superstitious about the number 3</p>
 </label>
@@ -740,7 +842,7 @@ That’s my windmill man</p>
     <div class="comment">
       <div class="commentHeader">
         <div>Historical-Truck-948 | Milwaukee Brewers</div>
-        <div>11 | 9 hours ago </div>
+        <div>10 | 11 hours ago </div>
       </div>
       <label for="opzmkkw" class="commentText"><p>Not sure who comes up with this stuff but that is pretty neat</p>
 </label>
@@ -758,7 +860,7 @@ That’s my windmill man</p>
     <div class="comment">
       <div class="commentHeader">
         <div>Slug-65</div>
-        <div>9 | 9 hours ago </div>
+        <div>9 | 11 hours ago </div>
       </div>
       <label for="opzp6yk" class="commentText"><p>Shit. I remember seeing him play in 83. Incredible</p>
 </label>
@@ -773,7 +875,7 @@ That’s my windmill man</p>
     <div class="comment">
       <div class="commentHeader">
         <div>tayloraj42 | Boston Red Sox</div>
-        <div>1 | 5 hours ago </div>
+        <div>1 | 7 hours ago </div>
       </div>
       <label for="oq0uask" class="commentText"><p>What a fun, weird set of skills he had. Lots of walks, lots of strikeouts, and almost no power.</p>
 </label>
@@ -796,7 +898,7 @@ That’s my windmill man</p>
     <div class="comment">
       <div class="commentHeader">
         <div>StandYourGroundhog | Toronto Blue Jays</div>
-        <div>7 | 9 hours ago </div>
+        <div>6 | 11 hours ago </div>
       </div>
       <label for="opznizt" class="commentText"><p>That&rsquo;s extremely specific but in this case I&rsquo;ll allow it</p>
 </label>
@@ -814,7 +916,7 @@ That’s my windmill man</p>
     <div class="comment">
       <div class="commentHeader">
         <div>InstantReco</div>
-        <div>7 | 8 hours ago </div>
+        <div>7 | 10 hours ago </div>
       </div>
       <label for="oq01cnw" class="commentText"><p>Bring back the California Angels</p>
 </label>
@@ -832,7 +934,7 @@ That’s my windmill man</p>
     <div class="comment">
       <div class="commentHeader">
         <div>Lord_Hitachi | Pittsburgh Pirates</div>
-        <div>5 | 9 hours ago </div>
+        <div>4 | 11 hours ago </div>
       </div>
       <label for="opzpcpx" class="commentText"><p>But how many were on Tuesdays during a full moon?</p>
 </label>
@@ -850,27 +952,9 @@ That’s my windmill man</p>
     <div class="comment">
       <div class="commentHeader">
         <div>b_borno | Pittsburgh Pirates</div>
-        <div>4 | 8 hours ago </div>
+        <div>3 | 10 hours ago </div>
       </div>
       <label for="oq02itv" class="commentText"><p>He’s Mister Grand Slam In All Three Legs Of A Three-City Road Trip</p>
-</label>
-    </div>
-  </label>
-  
-</div>
-
-        
-      
-        
-          
-<div class="commentAndChildren">
-  <input id="opzu7db" type="checkbox" checked/>
-    <div class="comment">
-      <div class="commentHeader">
-        <div>Apprehensive_Bid_773 | Seattle Mariners</div>
-        <div>2 | 9 hours ago </div>
-      </div>
-      <label for="opzu7db" class="commentText"><p>Slam wizard</p>
 </label>
     </div>
   </label>
@@ -886,9 +970,27 @@ That’s my windmill man</p>
     <div class="comment">
       <div class="commentHeader">
         <div>James-K-Polka | Atlanta Braves</div>
-        <div>2 | 7 hours ago </div>
+        <div>3 | 9 hours ago </div>
       </div>
       <label for="oq08it6" class="commentText"><p><img src="giphy|enzPQyHVWMfx6|downsized" alt="gif" /></p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="opzu7db" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Apprehensive_Bid_773 | Seattle Mariners</div>
+        <div>2 | 10 hours ago </div>
+      </div>
+      <label for="opzu7db" class="commentText"><p>Slam wizard</p>
 </label>
     </div>
   </label>
@@ -904,7 +1006,7 @@ That’s my windmill man</p>
     <div class="comment">
       <div class="commentHeader">
         <div>BruteSentiment | San Francisco Giants</div>
-        <div>2 | 6 hours ago </div>
+        <div>2 | 8 hours ago </div>
       </div>
       <label for="oq0m4bz" class="commentText"><p>Grand Gary indeed!</p>
 </label>
@@ -922,7 +1024,7 @@ That’s my windmill man</p>
     <div class="comment">
       <div class="commentHeader">
         <div>WorthPlease | New York Mets</div>
-        <div>2 | 4 hours ago </div>
+        <div>2 | 5 hours ago </div>
       </div>
       <label for="oq18jks" class="commentText"><p>There&rsquo;s no fucking way that dude is 72 years old.</p>
 </label>
@@ -940,7 +1042,7 @@ That’s my windmill man</p>
     <div class="comment">
       <div class="commentHeader">
         <div>ifeelatingle</div>
-        <div>2 | 3 hours ago </div>
+        <div>2 | 5 hours ago </div>
       </div>
       <label for="oq1a2f8" class="commentText"><p>This actually a WTF stat</p>
 </label>
@@ -958,7 +1060,7 @@ That’s my windmill man</p>
     <div class="comment">
       <div class="commentHeader">
         <div>talktobigfudge | New York Mets</div>
-        <div>-2 | 9 hours ago </div>
+        <div>-2 | 11 hours ago </div>
       </div>
       <label for="opzo2r0" class="commentText"><p>I don&rsquo;t get it. <a href="https://www.espn.com/mlb/story/_/id/48950258/san-francisco-giants-hire-gary-pettis-their-third-base-coach" target="_blank">Man was just hired on Tuesday</a> and started Wednesday.</p>
 
@@ -975,7 +1077,7 @@ That’s my windmill man</p>
     <div class="comment">
       <div class="commentHeader">
         <div>Ok_fine_Im_here | San Diego Padres • Brooklyn Cyclones</div>
-        <div>13 | 9 hours ago </div>
+        <div>12 | 11 hours ago </div>
       </div>
       <label for="opzr6yl" class="commentText"><p>I dunno, somehow him getting there just in time for the highly unlikely 3rd one makes it even weirder/better to me</p>
 </label>
