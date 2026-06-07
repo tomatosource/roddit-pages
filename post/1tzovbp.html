@@ -1,0 +1,343 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.selfPostImage {
+  width: 100%;
+  height: auto;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/PathOfExile2/comments/1tzovbp/i_made_a_browser_extension_that_adds_tier_pickers/"><p>I made a browser extension that adds tier pickers to the trade site so you stop guessing breakpoints</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <p>Got tired of the loop where I want to search for like T2+ phys damage on a weapon but first I have to go look up what number that actually is, then type it into the min box, then do it again for every other mod I care about. And don&rsquo;t even get me started on flat damage mods where you have to average the two rolls yourself.</p>
+
+<p>So I built <strong>TierFill</strong>. It&rsquo;s a browser extension (Chrome + Firefox) that adds a little tier dropdown to each stat-filter row on the trade site. You add a mod the normal way, pick a tier from the dropdown, and it fills in the correct min value for you. No more breakpoint spreadsheets or second tab with PoEDB open.</p>
+
+<p><a href="https://preview.redd.it/dh63mfybkx5h1.png?width=1280&amp;format=png&amp;auto=webp&amp;s=610f5b359131f4c554ec1eb22667620c2a570068" target="_blank">https://preview.redd.it/dh63mfybkx5h1.png?width=1280&amp;format=png&amp;auto=webp&amp;s=610f5b359131f4c554ec1eb22667620c2a570068</a></p>
+
+<p><strong>What it does:</strong></p>
+
+<ul>
+<li>Adds a tier picker next to the MIN box on stat rows it has data for — pick T1, T2, etc. and it fills the number</li>
+<li>Handles the &ldquo;Adds X to Y&rdquo; flat damage mods automatically (does the averaging math so you don&rsquo;t have to)</li>
+<li>Has Inclusive and Strict modes — Inclusive catches everything at that tier or better, Strict is more precise but won&rsquo;t catch lucky lower-tier rolls</li>
+<li>Badges each mod on your search results with its actual tier and roll quality so you can instantly see if a result is hitting your targets or not</li>
+<li>Works alongside other trade extensions, doesn&rsquo;t break anything</li>
+</ul>
+
+<p><strong>What it doesn&rsquo;t do:</strong></p>
+
+<ul>
+<li>No pseudo mods, implicits, rune mods, crafted, enchants — only explicit prefixes/suffixes on weapons, armour, jewellery. Rows it doesn&rsquo;t have data for just stay as normal number boxes</li>
+<li>Doesn&rsquo;t automate searches or hit GGG&rsquo;s servers at all. You still click Search yourself</li>
+<li>Collects zero data, makes zero network requests, everything is local</li>
+</ul>
+
+<p>It&rsquo;s open source (MIT) and free obviously: <a href="https://github.com/Sknoww/tierfill" target="_blank">GitHub</a></p>
+
+<p><strong>Install:</strong></p>
+
+<ul>
+<li>Chrome / Edge / Brave: <a href="https://chromewebstore.google.com/detail/tierfill-%E2%80%94-poe2-trade-tie/gglcnglencknfbdejeepmfibimnlicjd" target="_blank">Chrome Web Store</a></li>
+<li>Firefox: <a href="https://addons.mozilla.org/en-US/firefox/addon/tierfill-poe2-trade/" target="_blank">Firefox Add-ons</a></li>
+</ul>
+
+<p>If you run into any bugs or have suggestions, issues on GitHub or just reply here. First release so there&rsquo;s probably stuff I missed.</p>
+
+<p>Edit: Right now it only supports PoE 2, but planning to add PoE 1 support soon.</p>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="oqcc0kq" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Comfortable_Eagle304</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="oqcc0kq" class="commentText"><p>So helpful when searching the Poe trade market for specific stat tiers!</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="oqcgrut" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>GoodGanj</div>
+        <div>1 | 34 minutes ago </div>
+      </div>
+      <label for="oqcgrut" class="commentText"><p>This is going to save me so much time.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="oqcj1e4" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>crispfuck</div>
+        <div>1 | 21 minutes ago </div>
+      </div>
+      <label for="oqcj1e4" class="commentText"><p>Great mod. Does it have PoE 1 support?</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="oqcje7z" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Sknowwww</div>
+        <div>1 | 19 minutes ago </div>
+      </div>
+      <label for="oqcje7z" class="commentText"><p>Not yet but I&rsquo;m planning to add it. One of the top priorities for new updates.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="oqcjzgc" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>crispfuck</div>
+        <div>1 | 15 minutes ago </div>
+      </div>
+      <label for="oqcjzgc" class="commentText"><p>Legend. Looking forward to it.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
