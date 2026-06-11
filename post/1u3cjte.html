@@ -1,0 +1,279 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.selfPostImage {
+  width: 100%;
+  height: auto;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/PathOfExile2/comments/1u3cjte/path_of_exile_2_essential_pc_performance/"><p>Path of Exile 2: Essential PC Performance &amp; Optimization Guide</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <p>If you are running Path of Exile 2 on Windows 11 (specifically Build 26200.8655 or later), use these tweaks to stabilize your framerate, fix memory issues, and reduce CPU bottlenecks.</p>
+
+<h1 id="1-driver-cache-maintenance">1. Driver &amp; Cache Maintenance</h1>
+
+<ul>
+<li><strong>Update to NVIDIA Driver 610.52 :</strong> If you are using an NVIDIA GPU, this specific driver addresses several known crashes and memory leaks.</li>
+<li><strong>Clear Your Shader Cache:</strong>
+
+<ol>
+<li>Press <code>Win + R</code>, type <code>%appdata%</code>, and hit Enter.</li>
+<li>Navigate to Path of Exile 2 game data files and delete the <code>ShaderCacheD3D12</code> and/or <code>ShaderCacheVulkan</code> folders. This forces the game to rebuild a clean cache and can eliminate sudden stuttering.</li>
+</ol></li>
+</ul>
+
+<h1 id="2-audio-visual-settings-mandatory-fixes">2. Audio &amp; Visual Settings (Mandatory Fixes)</h1>
+
+<ul>
+<li><strong>Set Sound Channel Count to Low:</strong> This is crucial for performance. High channel counts heavily tax the CPU during dense combat.</li>
+<li><strong>Disable Screen Shake:</strong> Turning this off significantly stabilizes performance during intense particle-heavy encounters (and saves your eyes).</li>
+<li><strong>Lower Shadows &amp; Disable Global Illumination:</strong> Set shadows to <strong>Low Quality</strong> and disable <strong>Global Illumination</strong>. You should do this even if you have a powerful GPU, as these settings heavily bottleneck the CPU when dozens of enemies are on screen.</li>
+<li><strong>Enable Dynamic Culling:</strong> Turn this option on if your GPU is struggling to maintain a stable baseline framerate.</li>
+</ul>
+
+<h1 id="3-upscaling-advanced-tweaks">3. Upscaling &amp; Advanced Tweaks</h1>
+
+<ul>
+<li><strong>Optimize Your Upscaler:</strong> Choose an upscaling preset that fits your hardware. For example, running <strong>DLSS on the Quality Preset at 1440p</strong> works incredibly well as a sweet spot for mid-range cards like the RTX 3060 Ti.</li>
+<li><strong>Force ReBAR:</strong> Use <em>NVIDIA Profile Inspector</em> to manually force <strong>Resizable BAR</strong> on for the PoE2 executable to improve asset streaming efficiency.</li>
+</ul>
+
+<h1 id="4-network-config-file-fixes">4. Network &amp; Config File Fixes</h1>
+
+<ul>
+<li><strong>Switch to Predictive Networking:</strong>
+
+<ol>
+<li>Navigate to <code>Documents\My Games\Path of Exile 2</code>.</li>
+<li>Open the <code>poe2_production_Config.ini</code> file in a text editor.</li>
+<li>Scroll down to the <code>[Network]</code> section and change the line to: <code>networking_type=predictive</code>. <em>(Note: Hopefully, Grinding Gear Games optimizes lockstep mode soon so this workaround isn&rsquo;t necessary!)</em></li>
+</ol></li>
+<li><strong>The &ldquo;Bad Instance&rdquo; Fix:</strong> If you enter a brand-new map and experience massive, sudden ping fluctuations, it is usually a server-side instance creation issue rather than your ISP. Log out to the character selection screen and log back in to resolve it instantly. (GGG why is this issue still not fixed yet, its a known issue for a very long time and many people are quiting the game because of it)</li>
+</ul>
+
+<blockquote>
+<p>Please upvote this guide for visibility, and feel free to add any other performance fixes you have discovered in the comments below!</p>
+</blockquote>
+
+<p>Disclosure: Used Gemini for better formatting and grammer fix.</p>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="or4ajcd" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Krapio</div>
+        <div>1 | 2 minutes ago </div>
+      </div>
+      <label for="or4ajcd" class="commentText"><p>Shouldn’t have to do surgery on my computer to play</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
