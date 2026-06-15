@@ -1,0 +1,791 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.selfPostImage {
+  width: 100%;
+  height: auto;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/nba/comments/1u613eu/discussion_2026_nba_draft/"><p>[Discussion] 2026 NBA Draft</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <table>
+<thead>
+<tr>
+<th>Pick</th>
+<th>Team</th>
+<th>Pick</th>
+<th>Team</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>1</td>
+<td><a href="/WAS"></a> Washington</td>
+<td>31</td>
+<td><a href="/NYK"></a> New York ⬅️ WAS</td>
+</tr>
+
+<tr>
+<td>2</td>
+<td><a href="/UTA"></a> Utah</td>
+<td>32</td>
+<td><a href="/MEM"></a> Memphis ⬅️ IND</td>
+</tr>
+
+<tr>
+<td>3</td>
+<td><a href="/MEM"></a> Memphis</td>
+<td>33</td>
+<td><a href="/BKN"></a> Brooklyn</td>
+</tr>
+
+<tr>
+<td>4</td>
+<td><a href="/CHI"></a> Chicago</td>
+<td>34</td>
+<td><a href="/SAC"></a> Sacramento</td>
+</tr>
+
+<tr>
+<td>5</td>
+<td><a href="/LAC"></a> LA Clippers ⬅️ IND</td>
+<td>35</td>
+<td><a href="/SAS"></a> San Antonio ⬅️ UTA</td>
+</tr>
+
+<tr>
+<td>6</td>
+<td><a href="/BKN"></a> Brooklyn</td>
+<td>36</td>
+<td><a href="/LAC"></a> LA Clippers ⬅️ MEM</td>
+</tr>
+
+<tr>
+<td>7</td>
+<td><a href="/SAC"></a> Sacramento</td>
+<td>37</td>
+<td><a href="/OKC"></a> Oklahoma City ⬅️ DAL</td>
+</tr>
+
+<tr>
+<td>8</td>
+<td><a href="/ATL"></a> Atlanta ⬅️ NOP</td>
+<td>38</td>
+<td><a href="/CHI"></a> Chicago ⬅️ NOP</td>
+</tr>
+
+<tr>
+<td>9</td>
+<td><a href="/DAL"></a> Dallas</td>
+<td>39</td>
+<td><a href="/HOU"></a> Houston ⬅️ CHI</td>
+</tr>
+
+<tr>
+<td>10</td>
+<td><a href="/MIL"></a> Milwaukee</td>
+<td>40</td>
+<td><a href="/BOS"></a> Boston ⬅️ MIL</td>
+</tr>
+
+<tr>
+<td>11</td>
+<td><a href="/GSW"></a> Golden State</td>
+<td>41</td>
+<td><a href="/MIA"></a> Miami ⬅️ GSW</td>
+</tr>
+
+<tr>
+<td>12</td>
+<td><a href="/OKC"></a> Oklahoma City ⬅️ LAC</td>
+<td>42</td>
+<td><a href="/SAS"></a> San Antonio ⬅️ POR</td>
+</tr>
+
+<tr>
+<td>13</td>
+<td><a href="/MIA"></a> Miami</td>
+<td>43</td>
+<td><a href="/BKN"></a> Brooklyn ⬅️ LAC</td>
+</tr>
+
+<tr>
+<td>14</td>
+<td><a href="/CHA"></a> Charlotte</td>
+<td>44</td>
+<td><a href="/SAS"></a> San Antonio ⬅️ MIA</td>
+</tr>
+
+<tr>
+<td>15</td>
+<td><a href="/CHI"></a> Chicago ⬅️ POR</td>
+<td>45</td>
+<td><a href="/SAC"></a> Sacramento ⬅️ CHA</td>
+</tr>
+
+<tr>
+<td>16</td>
+<td><a href="/MEM"></a> Memphis ⬅️ PHX</td>
+<td>46</td>
+<td><a href="/ORL"></a> Orlando</td>
+</tr>
+
+<tr>
+<td>17</td>
+<td><a href="/OKC"></a> Oklahoma City ⬅️ PHI</td>
+<td>47</td>
+<td><a href="/PHX"></a> Phoenix ⬅️ PHI</td>
+</tr>
+
+<tr>
+<td>18</td>
+<td><a href="/CHA"></a> Charlotte ⬅️ ORL</td>
+<td>48</td>
+<td><a href="/DAL"></a> Dallas ⬅️ PHX</td>
+</tr>
+
+<tr>
+<td>19</td>
+<td><a href="/TOR"></a> Toronto</td>
+<td>49</td>
+<td><a href="/DEN"></a> Denver ⬅️ ATL</td>
+</tr>
+
+<tr>
+<td>20</td>
+<td><a href="/SAS"></a> San Antonio ⬅️ ATL</td>
+<td>50</td>
+<td><a href="/TOR"></a> Toronto</td>
+</tr>
+
+<tr>
+<td>21</td>
+<td><a href="/DET"></a> Detroit ⬅️ MIN</td>
+<td>51</td>
+<td><a href="/WAS"></a> Washington ⬅️ MIN</td>
+</tr>
+
+<tr>
+<td>22</td>
+<td><a href="/PHI"></a> Philadelphia ⬅️ HOU</td>
+<td>52</td>
+<td><a href="/LAC"></a> LA Clippers ⬅️ CLE</td>
+</tr>
+
+<tr>
+<td>23</td>
+<td><a href="/ATL"></a> Atlanta ⬅️ CLE</td>
+<td>53</td>
+<td><a href="/HOU"></a> Houston</td>
+</tr>
+
+<tr>
+<td>24</td>
+<td><a href="/NYK"></a> New York</td>
+<td>54</td>
+<td><a href="/GSW"></a> Golden State ⬅️ LAL</td>
+</tr>
+
+<tr>
+<td>25</td>
+<td><a href="/LAL"></a> LA Lakers</td>
+<td>55</td>
+<td><a href="/NYK"></a> New York</td>
+</tr>
+
+<tr>
+<td>26</td>
+<td><a href="/DEN"></a> Denver</td>
+<td>56</td>
+<td><a href="/CHI"></a> Chicago ⬅️ DEN</td>
+</tr>
+
+<tr>
+<td>27</td>
+<td><a href="/BOS"></a> Boston</td>
+<td>57</td>
+<td><a href="/ATL"></a> Atlanta ⬅️ BOS</td>
+</tr>
+
+<tr>
+<td>28</td>
+<td><a href="/MIN"></a> Minnesota ⬅️ DET</td>
+<td>58</td>
+<td><a href="/NOP"></a> New Orleans ⬅️ DET</td>
+</tr>
+
+<tr>
+<td>29</td>
+<td><a href="/CLE"></a> Cleveland ⬅️ SAS</td>
+<td>59</td>
+<td><a href="/MIN"></a> Minnesota ⬅️ SAS</td>
+</tr>
+
+<tr>
+<td>30</td>
+<td><a href="/DAL"></a> Dallas ⬅️ OKC</td>
+<td>60</td>
+<td><a href="/WAS"></a> Washington ⬅️ OKC</td>
+</tr>
+</tbody>
+</table>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="orpc5d1" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Harleytk24 | Lakers</div>
+        <div>1 | 20 minutes ago </div>
+      </div>
+      <label for="orpc5d1" class="commentText"><p>F5 SEASON</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="orp8ylu" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Supreme_God_Bunny | Hornets</div>
+        <div>1 | 39 minutes ago </div>
+      </div>
+      <label for="orp8ylu" class="commentText"><p>Morez Johnson you are a hornet</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="orp5iop" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>BedKlutzy9141 | Knicks</div>
+        <div>8 | an hour ago </div>
+      </div>
+      <label for="orp5iop" class="commentText"><p>We have 3 picks?!</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="orp6uw7" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Derpy_Mc_Burpy | Raptors</div>
+        <div>3 | an hour ago </div>
+      </div>
+      <label for="orp6uw7" class="commentText"><p>Why have 1 Jalen when you can have 3 more?</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="orp4s0l" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Smuckerz4Lyfe | Knicks</div>
+        <div>3 | an hour ago </div>
+      </div>
+      <label for="orp4s0l" class="commentText"><p>What position are we more in need of, Knicks fans? Forward or Center?</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="orp68fx" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Sparrow_Wilson | Knicks</div>
+        <div>2 | an hour ago </div>
+      </div>
+      <label for="orp68fx" class="commentText"><p>I&rsquo;d like a center because I think that&rsquo;s the most likely third stringer to get minutes. Mitch is injury prone and KAT can get into foul trouble</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="orp6brw" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Smuckerz4Lyfe | Knicks</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="orp6brw" class="commentText"><p>Yea, that makes the most sense since Huk is kinda ass, too.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="orp588o" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>NotingAndQuoting | Knicks</div>
+        <div>3 | an hour ago </div>
+      </div>
+      <label for="orp588o" class="commentText"><p>I feel like right now you draft based on who impresses you most and can slot into the team in the next few seasons. We’ve got a lot of players on the team right now to figure out, but I feel a big makes some sense.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="orp3877" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Jack12404 | Bucks</div>
+        <div>8 | an hour ago </div>
+      </div>
+      <label for="orp3877" class="commentText"><p>I have yet to see a team’s fanbase actually like the idea of drafting Nate Ament</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="orp6khy" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>TitanTigers | Grizzlies</div>
+        <div>2 | an hour ago </div>
+      </div>
+      <label for="orp6khy" class="commentText"><p>100% the Reddit landmine of the year</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="orp6gs2" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>shangalang69 | Raptors</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="orp6gs2" class="commentText"><p>guarantee he&rsquo;s a buck</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="orp3412" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>PurpleMiquella | Knicks</div>
+        <div>8 | an hour ago </div>
+      </div>
+      <label for="orp3412" class="commentText"><p>Forget them picks man!</p>
+
+<p>&hellip;but also let&rsquo;s draft some nice rookies</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="orp2qec" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>FERFreak731 | Jazz</div>
+        <div>2 | an hour ago </div>
+      </div>
+      <label for="orp2qec" class="commentText"><p>It&rsquo;s going to be a stressful 9 days worrying that my Jazz will pass on Peterson</p>
+
+<p>Peterson on the Jazz raises the Jazz ceiling a ton, as he&rsquo;d be a perfect backcourt partner for Keyonte</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="orp2igk" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>MammothHistorian5652 | Vancouver Grizzlies</div>
+        <div>3 | an hour ago </div>
+      </div>
+      <label for="orp2igk" class="commentText"><p>OKC having picks #12 and #17 is kind of crazy. If Presti trades up they can get much better</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="orp2f4b" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>TheoMoneyG | Knicks</div>
+        <div>2 | an hour ago </div>
+      </div>
+      <label for="orp2f4b" class="commentText"><p>Which teams are actually willing to trade up this year?</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="orp6zvm" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Aedanwolfe | Thunder</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="orp6zvm" class="commentText"><p>Okc</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="orp2bjf" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Lacabloodclot9 | Grizzlies</div>
+        <div>2 | an hour ago </div>
+      </div>
+      <label for="orp2bjf" class="commentText"><p>I thought the draft was on tonight for a second and was really confused</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="orp65vl" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>BOOZE-CRUISE-CAPTAIN</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="orp65vl" class="commentText"><p>CHOO CHOO</p>
+
+<p>MEMPHIS BOYS GET ON THE STEAM BOAT</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="orp1va4" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>dianeblackeatsass | Grizzlies</div>
+        <div>2 | an hour ago </div>
+      </div>
+      <label for="orp1va4" class="commentText"><p>ok guys discuss</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
