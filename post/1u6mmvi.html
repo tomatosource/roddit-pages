@@ -1,0 +1,4077 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.selfPostImage {
+  width: 100%;
+  height: auto;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/nba/comments/1u6mmvi/i_read_through_each_teams_sub_and_compiled_their/"><p>I read through each team&rsquo;s sub and compiled their initial reactions to the Knicks winning the chip</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <table>
+<thead>
+<tr>
+<th align="left">Team</th>
+<th align="left">Reaction</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">Knicks</td>
+<td align="left">Obvious</td>
+</tr>
+
+<tr>
+<td align="left">Spurs</td>
+<td align="left">Obvious, but also fire Fox and Mitch</td>
+</tr>
+
+<tr>
+<td align="left">Celtics</td>
+<td align="left">Still hate the Knicks, but LOL Spurs</td>
+</tr>
+
+<tr>
+<td align="left">Raptors</td>
+<td align="left">Congrats, OG</td>
+</tr>
+
+<tr>
+<td align="left">Jazz</td>
+<td align="left">Congrats, JC</td>
+</tr>
+
+<tr>
+<td align="left">Timberwolves</td>
+<td align="left">Congrats, KAT</td>
+</tr>
+
+<tr>
+<td align="left">Suns</td>
+<td align="left">Congrats, Mikal</td>
+</tr>
+
+<tr>
+<td align="left">Pelicans</td>
+<td align="left">Congrats, José</td>
+</tr>
+
+<tr>
+<td align="left">Warriors</td>
+<td align="left">Congrats, Mike Brown</td>
+</tr>
+
+<tr>
+<td align="left">Kings</td>
+<td align="left">Congrats, Mike Brown, I guess. Also LOL Fox</td>
+</tr>
+
+<tr>
+<td align="left">Nets</td>
+<td align="left">In-state rivalry bitterness</td>
+</tr>
+
+<tr>
+<td align="left">Rockets</td>
+<td align="left">In-state rivalry bitterness</td>
+</tr>
+
+<tr>
+<td align="left">Thunder</td>
+<td align="left">Chet has more rings than Wemby</td>
+</tr>
+
+<tr>
+<td align="left">Trail Blazers</td>
+<td align="left">What does this mean for Dame&rsquo;s legacy?</td>
+</tr>
+
+<tr>
+<td align="left">Lakers</td>
+<td align="left">What does this mean for Luka&rsquo;s legacy?</td>
+</tr>
+
+<tr>
+<td align="left">Cavaliers</td>
+<td align="left">This is not good for Mitchell&rsquo;s legacy</td>
+</tr>
+
+<tr>
+<td align="left">Pistons</td>
+<td align="left">This&rsquo;ll be us soon</td>
+</tr>
+
+<tr>
+<td align="left">Magic</td>
+<td align="left">This&rsquo;ll be us soon</td>
+</tr>
+
+<tr>
+<td align="left">Hornets</td>
+<td align="left">Will this ever be us?</td>
+</tr>
+
+<tr>
+<td align="left">Nuggets</td>
+<td align="left">This was us</td>
+</tr>
+
+<tr>
+<td align="left">Clippers</td>
+<td align="left">Apathy</td>
+</tr>
+
+<tr>
+<td align="left">Bulls</td>
+<td align="left">Apathy</td>
+</tr>
+
+<tr>
+<td align="left">Pacers</td>
+<td align="left">Disgust</td>
+</tr>
+
+<tr>
+<td align="left">Bucks</td>
+<td align="left">Let&rsquo;s just get this Giannis trade over with</td>
+</tr>
+
+<tr>
+<td align="left">Heat</td>
+<td align="left">Let&rsquo;s just get this Giannis trade over with</td>
+</tr>
+
+<tr>
+<td align="left">Grizzlies</td>
+<td align="left">Let&rsquo;s just get this Ja trade over with</td>
+</tr>
+
+<tr>
+<td align="left">Wizards</td>
+<td align="left">Let&rsquo;s just get to the draft</td>
+</tr>
+
+<tr>
+<td align="left">Hawks</td>
+<td align="left">We beat these guys twice, maybe we are good</td>
+</tr>
+
+<tr>
+<td align="left">Mavericks</td>
+<td align="left"><em>Sigh</em></td>
+</tr>
+
+<tr>
+<td align="left">Sixers</td>
+<td align="left">We&rsquo;re all dead and this is Hell</td>
+</tr>
+</tbody>
+</table>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ortm34y" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>itssensei | Cavaliers</div>
+        <div>2729 | 9 hours ago </div>
+      </div>
+      <label for="ortm34y" class="commentText"><p>LOL your summaries are pretty funny 🤣 well done. Just the order of “This will be us soon” “Will this ever be us” “This was us” gold.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="ortob7s" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>wwants | Knicks</div>
+        <div>768 | 9 hours ago </div>
+      </div>
+      <label for="ortob7s" class="commentText"><p>This whole table is gold. I’d love to see this for future NBA-wide events that every fan base might react differently to</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="ortqjjp" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>wanna_be_liquid | Knicks</div>
+        <div>202 | 9 hours ago </div>
+      </div>
+      <label for="ortqjjp" class="commentText"><p>imagine the draft lottery</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="ortvkal" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>wwants | Knicks</div>
+        <div>117 | 8 hours ago </div>
+      </div>
+      <label for="ortvkal" class="commentText"><p>Hey fuck them picks</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="orula5a" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>idosade | Knicks</div>
+        <div>18 | 6 hours ago </div>
+      </div>
+      <label for="orula5a" class="commentText"><p>We actually have 2 decent picks this time around so not yet</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="oruhpmt" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ajteitel | Suns</div>
+        <div>18 | 7 hours ago </div>
+      </div>
+      <label for="oruhpmt" class="commentText"><p>Oh that&rsquo;s easy:</p>
+
+<p>Everyone with a 1st round pick: We got the steal of the draft</p>
+
+<p>Everyone with a 2nd round pick: We got the steal of the draft</p>
+
+<p>Everyone without a pick: zzzz</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="orts1aq" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Lmaobruh4465 | Toronto Huskies</div>
+        <div>286 | 9 hours ago </div>
+      </div>
+      <label for="orts1aq" class="commentText"><p>And the legacy part.</p>
+
+<p>“What does this mean for Luka/Dame’s legacy?”</p>
+
+<p>“This is uhhh… not good for Mitchell’s legacy.”</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="ortudsj" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>itssensei | Cavaliers</div>
+        <div>92 | 8 hours ago </div>
+      </div>
+      <label for="ortudsj" class="commentText"><p>LOL yeah, OP got great execution.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="oru837q" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>protelrius | Rockets</div>
+        <div>60 | 7 hours ago </div>
+      </div>
+      <label for="oru837q" class="commentText"><p>OP knew what they were doing putting us and Nets together: &ldquo;In-state rivalry bitterness&rdquo; LOL. I was looking for Mavs too and didn&rsquo;t remember the Brunson connection until I saw them all the way at the bottom with <em>sigh</em></p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="ortrtg6" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Lmaobruh4465 | Toronto Huskies</div>
+        <div>134 | 9 hours ago </div>
+      </div>
+      <label for="ortrtg6" class="commentText"><p>Yea I liked the “Congrats” section. Felt like half the league was pulling for the Knicks on account of former fan favourites</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="ortx7cv" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Less-Tax5637 | Knicks</div>
+        <div>51 | 8 hours ago </div>
+      </div>
+      <label for="ortx7cv" class="commentText"><p>Meanwhile Spurs have likable newbies, so no cross-league fans, but vets that are… well… uh………</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="oru2g6o" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>IcansavemiselfDEEN | Celtics</div>
+        <div>63 | 8 hours ago </div>
+      </div>
+      <label for="oru2g6o" class="commentText"><p>My precious angel Luke Kornet would like a (very polite and thoughtful) word.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="oru5icj" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>nicehax_</div>
+        <div>13 | 8 hours ago </div>
+      </div>
+      <label for="oru5icj" class="commentText"><p>2016 cavaliers legend harrison barnes</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="oru0bok" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Undercover_Dave</div>
+        <div>55 | 8 hours ago </div>
+      </div>
+      <label for="oru0bok" class="commentText"><p>Missing the Sonics sub &ldquo;Thank god it wasn&rsquo;t OKC&rdquo;</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="oru1fmo" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Mediocre-County-7648 | Cavaliers</div>
+        <div>52 | 8 hours ago </div>
+      </div>
+      <label for="oru1fmo" class="commentText"><p>I love how a third of the teams just happy they have a former player on this roster lol, this Knicks team represents the whole NBA not just NY</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="oru2esi" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>itssensei | Cavaliers</div>
+        <div>48 | 8 hours ago </div>
+      </div>
+      <label for="oru2esi" class="commentText"><p>They represented the health of NBA IMO.</p>
+
+<p>Knicks winning restored a lot of things, kind of like when the 04 Pistons and 11 Mavs won. I am happy they won (Dolan aside).</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="oruyhn7" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>southpaytechie | Knicks</div>
+        <div>11 | 5 hours ago </div>
+      </div>
+      <label for="oruyhn7" class="commentText"><p>Listen no one but Dolan is happy about Dolan winning.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="oru7s8s" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>notmoleliza | Warriors</div>
+        <div>12 | 7 hours ago </div>
+      </div>
+      <label for="oru7s8s" class="commentText"><p>We have the mfing coach.  Yeah my boy coach brown got his chip!</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="ortu3qb" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>thedanbeforetime | Knicks</div>
+        <div>32 | 8 hours ago </div>
+      </div>
+      <label for="ortu3qb" class="commentText"><p>Agree, this is the content I didn&rsquo;t know I needed until reading it.  Excellent work, OP.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ortlz2n" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>gundam1983 | Kings</div>
+        <div>1331 | 9 hours ago </div>
+      </div>
+      <label for="ortlz2n" class="commentText"><p>Kings sub was probably the most hyped after the Knicks. This was our <sup>12</sup>&frasl;<sub>25</sub>.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="ortpllm" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>azure275 | Knicks</div>
+        <div>808 | 9 hours ago </div>
+      </div>
+      <label for="ortpllm" class="commentText"><p>Idk you should have seen the Thunder sub LMAO</p>
+
+<p>One of the top voted posts of the month is titled something like HAHA&hellip;..HAHA</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="orttgpe" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>CoolAsTheUnthawed | OKC</div>
+        <div>380 | 8 hours ago </div>
+      </div>
+      <label for="orttgpe" class="commentText"><p>It was an all time great hate watch, I woke up the next morning smiling ready to take on the day 😂</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="ortvvyo" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Gamerghost44 | Thunder</div>
+        <div>90 | 8 hours ago </div>
+      </div>
+      <label for="ortvvyo" class="commentText"><p>It was like a cosmic version of Russ saying &ldquo;He trick y&rsquo;all&rdquo; about Bev. A karmic realignment</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="oruhiyr" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>PanthalassaRo | Knicks</div>
+        <div>70 | 7 hours ago </div>
+      </div>
+      <label for="oruhiyr" class="commentText"><p>Orange and Blue alliance.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="oruo2fd" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>VanGrants | Knicks</div>
+        <div>22 | 6 hours ago </div>
+      </div>
+      <label for="oruo2fd" class="commentText"><p>aint no way bro</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="orutxoy" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>PanthalassaRo | Knicks</div>
+        <div>37 | 6 hours ago </div>
+      </div>
+      <label for="orutxoy" class="commentText"><p>They completed my hate watch last year, we got theirs this year.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="oruxjmd" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>camelclutchcity</div>
+        <div>16 | 6 hours ago </div>
+      </div>
+      <label for="oruxjmd" class="commentText"><p>I hadn’t thought of this; how astute. Reciprocity!</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="oruo6rb" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Agangofhoboz</div>
+        <div>40 | 6 hours ago </div>
+      </div>
+      <label for="oruo6rb" class="commentText"><p>Rockets fans hate watching the Spurs 🤝 Thunder fans hate watching the Spurs. Never thought I’d see the day lmao</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="oru4cwg" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>sorendiz | HOU</div>
+        <div>29 | 8 hours ago </div>
+      </div>
+      <label for="oru4cwg" class="commentText"><p>I was cheesing for like a solid three hours straight afterwards lmfao</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="oru05x2" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>anonahmus | Kings</div>
+        <div>9 | 8 hours ago </div>
+      </div>
+      <label for="oru05x2" class="commentText"><p>That’s how I felt watching the OKC/Spurs series. Fuck OKC. Was smiling ear to ear after that series.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="oru78qt" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>CoolAsTheUnthawed | OKC</div>
+        <div>20 | 7 hours ago </div>
+      </div>
+      <label for="oru78qt" class="commentText"><p>Honestly? Good for you man, glad we all had something to smile about this post season.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="ortx6b1" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>jak_d_ripr</div>
+        <div>58 | 8 hours ago </div>
+      </div>
+      <label for="ortx6b1" class="commentText"><p>Honestly, talk your shit OKC. Hopefully we see a fully healthy rematch next year.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="oru36mx" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>xthegreatsambino</div>
+        <div>21 | 8 hours ago </div>
+      </div>
+      <label for="oru36mx" class="commentText"><p>why tho? they fuckin lost to the Spurs</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="oru3wr0" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>MisterGir | Thunder</div>
+        <div>69 | 8 hours ago </div>
+      </div>
+      <label for="oru3wr0" class="commentText"><p>Absolutely did and the Spurs earned it.</p>
+
+<p>But its not like OKC got beat in 4 or 5. They came up short in 7 without their 2nd best player and their 6MOTY candidate missing 5 games each.</p>
+
+<p>Health has been a huge factor in the last few champs not repeating and it killed the Thunder too</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="oru0kl7" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>zellmerz | Raptors</div>
+        <div>10 | 8 hours ago </div>
+      </div>
+      <label for="oru0kl7" class="commentText"><p>After OKC lost the WCF the sub was almost all hate posts about Wemby and the Spurs. Had to leave the sub as an OKC fan cuz it was just getting ridiculous. I get why ride or die OKC fans would be on such a hate watch though so no judgement.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="oru4slh" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>linux_ape | Thunder</div>
+        <div>8 | 8 hours ago </div>
+      </div>
+      <label for="oru4slh" class="commentText"><p>&amp;gt;OKC fan</p>
+
+<p>&amp;gt;raptors flair</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="ortmssa" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>pgtvgaming</div>
+        <div>135 | 9 hours ago </div>
+      </div>
+      <label for="ortmssa" class="commentText"><p>Can confirm, good friend lives out in Sac-city and he was a lot happier than i thought hed be</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="ortnmby" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>gundam1983 | Kings</div>
+        <div>89 | 9 hours ago </div>
+      </div>
+      <label for="ortnmby" class="commentText"><p>Kings should have lit the beam</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="orugyvp" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>odaal | Kings</div>
+        <div>27 | 7 hours ago </div>
+      </div>
+      <label for="orugyvp" class="commentText"><p>if there was a &ldquo;spirit&rdquo; winner each year in NBA, kings would win this one. hate for fox and genuine happiness for Brown.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="ortqadn" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>The_Halal_Guys | Knicks</div>
+        <div>120 | 9 hours ago </div>
+      </div>
+      <label for="ortqadn" class="commentText"><p>Knicks used to be Kings east man I hope one day the Kings and their fans will have this moment too</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="oru0zfh" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>unpleasantraccoon | Kings</div>
+        <div>64 | 8 hours ago </div>
+      </div>
+      <label for="oru0zfh" class="commentText"><p>Spoiler alert, it&rsquo;s never happening 😭</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="oru6qz8" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>master_scale_tipper | Knicks</div>
+        <div>29 | 7 hours ago </div>
+      </div>
+      <label for="oru6qz8" class="commentText"><p>Never give up the faith! Took 53 years but we finally got another, anything is possible (even if it definitely didn’t seem that way in the 2000s)</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="oruadcu" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Zyrinj | Warriors</div>
+        <div>14 | 7 hours ago </div>
+      </div>
+      <label for="oruadcu" class="commentText"><p>King’s ownership is HOF levels of self sabotage, they have good lineups but do dumb stuff to them. Don’t really see it changing unless the ownership miraculously learns to hire a good FO and GTFO of the way, or sells the team to someone willing to do that and open the checkbooks</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="orulr12" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>chickenBUTTlet | Knicks</div>
+        <div>18 | 6 hours ago </div>
+      </div>
+      <label for="orulr12" class="commentText"><p>James Dolan was arguably the worst owner in sports for a long time and all it took was getting the right executive in to change things around.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="orurps5" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Hovercraft1143 | Knicks</div>
+        <div>11 | 6 hours ago </div>
+      </div>
+      <label for="orurps5" class="commentText"><p>Ok let&rsquo;s be honest&hellip;James Dolan is still inarguably the worst owner in sports. The Knicks FO absolutely deserves infinite amounts of praise but let&rsquo;s not get ahead of ourselves, we can all still agree JD is a douche of the highest order.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="oruvhi3" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>chickenBUTTlet | Knicks</div>
+        <div>9 | 6 hours ago </div>
+      </div>
+      <label for="oruvhi3" class="commentText"><p>He might not even be the worst owner in NY but your point still stands.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="ortssdf" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Ophelia_Of_The_Abyss | Knicks</div>
+        <div>115 | 8 hours ago </div>
+      </div>
+      <label for="ortssdf" class="commentText"><p>The Thunder sub was ready for a parade. I didn&rsquo;t check the Knicks sub at all these past few weeks but the Thunder sub was pure gold after every finals game.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="oruhw3h" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Lowspark1013 | Timberwolves</div>
+        <div>40 | 7 hours ago </div>
+      </div>
+      <label for="oruhw3h" class="commentText"><p>The Spurs and their fans really did a good job of making opposing teams hate them very quickly.</p>
+
+<p>As a wolves fan, I love to hate on the Nuggets as a good rivalry. But its all about the ball. I already fucking hate the Spurs for all the non ball shit, and loved to see them choke.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="oruzq79" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>AoO2ImpTrip | Thunder</div>
+        <div>12 | 5 hours ago </div>
+      </div>
+      <label for="oruzq79" class="commentText"><p>I legitimately never considered myself a hate watcher.</p>
+
+<p>I love the Spurs org from a history standpoint. Pop is probably my favorite coach of all time and Duncan is probably my favorite player of all time. I didn&rsquo;t even really mind the Spurs beat us in the WCF and was ready to root for them against the Knicks.</p>
+
+<p>Then it just&hellip; snowballed and suddenly I&rsquo;m Pro-Knicks and Wemby just keeps getting away with shit. I understood how the rest of r/NBA felt about OKC.</p>
+
+<p>Plus, like, I gotta root for a franchise that hasn&rsquo;t won a ring in 50 years. Seeing videos of NYC celebrating should warm any heart.</p>
+
+<p>Edit: Also, mods why the fuck have the Knicks flairs been updated yet? Give them their god damned flowers.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="ortobas" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Enchanted-2-meet-you | GSW</div>
+        <div>35 | 9 hours ago </div>
+      </div>
+      <label for="ortobas" class="commentText"><p>Funny as hell. I guess fox is really that hated but lmao the fact that Mike Brown won it is just beautiful</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="orttaa8" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Emiya_Sengo</div>
+        <div>24 | 8 hours ago </div>
+      </div>
+      <label for="orttaa8" class="commentText"><p>I enjoyed the Hawks sub reactions the most this playoff.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="ortnt1v" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Timely_Law_1921</div>
+        <div>20 | 9 hours ago </div>
+      </div>
+      <label for="ortnt1v" class="commentText"><p>Im a mavs fan and I feel bad for kings fans</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="ortom4e" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>gundam1983 | Kings</div>
+        <div>45 | 9 hours ago </div>
+      </div>
+      <label for="ortom4e" class="commentText"><p>Don&rsquo;t be. We aren&rsquo;t even fazed even more. But seeing Fox throw up bricks and bounce the ball of his feet gave us a little joy in our shitty existence.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="oru7pm6" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Paladuck | Kings</div>
+        <div>16 | 7 hours ago </div>
+      </div>
+      <label for="oru7pm6" class="commentText"><p>Kings winning a championship is completely unfathomable for me at this point so Mike Brown + Fox bringing one to the Knicks is close enough</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ortnkpj" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Odd-Put-3988</div>
+        <div>805 | 9 hours ago </div>
+      </div>
+      <label for="ortnkpj" class="commentText"><p>&ldquo;Nuggets - This was us&rdquo; fucking had me dying.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="ortwk0a" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>chasingit1 | Nuggets</div>
+        <div>296 | 8 hours ago </div>
+      </div>
+      <label for="ortwk0a" class="commentText"><p>Basically</p>
+
+<p>I feel like Wolverine looking longingly at the picture frame of our championship…</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="oruipij" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Lowspark1013 | Timberwolves</div>
+        <div>60 | 7 hours ago </div>
+      </div>
+      <label for="oruipij" class="commentText"><p>I&rsquo;m happy you guys got one. It&rsquo;s tough out there these days to string anything together.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="oruz1an" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ShibaHellhounds | Knicks</div>
+        <div>19 | 5 hours ago </div>
+      </div>
+      <label for="oruz1an" class="commentText"><p>It&rsquo;s funny because you can think &ldquo;Wow 8 different champs in 8 years, that&rsquo;s never happened! Anybody who hasn&rsquo;t won or hasn&rsquo;t in a long time actually has a chance!&rdquo; and then for the teams who have won recently it&rsquo;s like &ldquo;Can they even win again?&rdquo;</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="ortxuzl" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Jordan-Pushed-Off | Nuggets</div>
+        <div>50 | 8 hours ago </div>
+      </div>
+      <label for="ortxuzl" class="commentText"><p>Jokic-style phrasing </p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="oru62zj" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>o2lsports | Nuggets</div>
+        <div>47 | 8 hours ago </div>
+      </div>
+      <label for="oru62zj" class="commentText"><p>Nosebleeds of Game 5 will always be the greatest purchase of my life. I knew this shit wasn’t gonna last.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="orun6h2" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>der_innkeeper | Nuggets</div>
+        <div>10 | 6 hours ago </div>
+      </div>
+      <label for="orun6h2" class="commentText"><p>Brother&hellip;</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ortlx9z" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>MusclyArmPaperboy | Raptors</div>
+        <div>663 | 9 hours ago </div>
+      </div>
+      <label for="ortlx9z" class="commentText"><p>Yep, we&rsquo;re happy for OG</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="ortq5u9" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Pinheadlarry29 | Knicks</div>
+        <div>170 | 9 hours ago </div>
+      </div>
+      <label for="ortq5u9" class="commentText"><p>Raptor fans were right about this dude not getting attention because where he was playing. Dude is fucking amazing. I’m watching the same thing happen to Scottie Barnes in real time. Not getting the recognition he deserves.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="oru0q6j" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>chippyjoe</div>
+        <div>68 | 8 hours ago </div>
+      </div>
+      <label for="oru0q6j" class="commentText"><p>Same with Siakam and Norm Powell. People said the Raptors overvalued their players and when they&rsquo;re traded and people outside Canada finally see how good they are, it blows their mind.</p>
+
+<p>It really is happening to Scottie now and soon to Collin Murray-Boyles.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="ortm990" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Dr-DDT | Suns</div>
+        <div>161 | 9 hours ago </div>
+      </div>
+      <label for="ortm990" class="commentText"><p>Yeah we&rsquo;re happy for Mikal (and Shamet), but are way more sad and desperate about it lol</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="ortnu7w" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>goblin_welder</div>
+        <div>136 | 9 hours ago </div>
+      </div>
+      <label for="ortnu7w" class="commentText"><p>I think the Raptors fans are genuinely happy for OG because he also won a ring with them</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="ortoqxe" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>LetsGoLesko8 | Raptors</div>
+        <div>142 | 9 hours ago </div>
+      </div>
+      <label for="ortoqxe" class="commentText"><p>Even more than that, it’s because he had an emergency appendectomy and didn’t get to play at all in our run.</p>
+
+<p>He gets to win one now, and be remembered as a central reason why (which we as a fandom always figured he would be), and ultimately as a huge OG fan - that brings me joy, even for a different team.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="ortq3u1" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Somenakedguy | Knicks</div>
+        <div>66 | 9 hours ago </div>
+      </div>
+      <label for="ortq3u1" class="commentText"><p>And what a beast he was too. Before game 5 I really really wanted the FMVP for OG based on how incredible he was games 1-4 (especially 3 and 4)</p>
+
+<p>But of course Brunson did Brunson things game 5 and our glorious short king stole the crown</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="oru1equ" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>musicnothing [OP] | Jazz</div>
+        <div>17 | 8 hours ago </div>
+      </div>
+      <label for="oru1equ" class="commentText"><p>Really crazy that at different times, I would&rsquo;ve believed the FMVP could go to Brunson, KAT, or OG. Each one of those guys made game-winning plays more than once across 4 wins</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="orukxhk" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>dustinthegreat | Slovenia</div>
+        <div>11 | 6 hours ago </div>
+      </div>
+      <label for="orukxhk" class="commentText"><p>Before the series, I got downvoted for saying Wemby would struggle, Spurs would lose, and OG would be the difference maker. And it’s not like I was shitting on the Spurs, it’s just based on what I’ve seen in the playoffs.</p>
+
+<p>But now I am talking shit. Everyone that downvoted me, you don’t know ball, so suck my balls.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="ortv58a" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>bronfmanhigh | Knicks</div>
+        <div>37 | 8 hours ago </div>
+      </div>
+      <label for="ortv58a" class="commentText"><p>crazy how stacked that 2019 squad was to lose a player like OG and still win it all.  without OG we definitely do not win it all lol</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="oru2soc" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>chippyjoe</div>
+        <div>20 | 8 hours ago </div>
+      </div>
+      <label for="oru2soc" class="commentText"><p>Jeremy Lin, Kyle Lowry, Kawhi Leonard, Marc Gasol, Serge Ibaka, Paskal Siakam, OG, Norm Powell, Danny Green and VanFeet</p>
+
+<p>One of the deepest teams of all time</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="oru33g6" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>bronfmanhigh | Knicks</div>
+        <div>25 | 8 hours ago </div>
+      </div>
+      <label for="oru33g6" class="commentText"><p>im cackling at jeremy lin being first on your list hahahah</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="orueox7" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>LetsGoLesko8 | Raptors</div>
+        <div>9 | 7 hours ago </div>
+      </div>
+      <label for="orueox7" class="commentText"><p><a href="https://youtu.be/JdDLlkVebs0?si=WRIyLSIDORqL_VMY" target="_blank">Never forget.</a></p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="oruv3ip" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>cheechw | Raptors</div>
+        <div>10 | 6 hours ago </div>
+      </div>
+      <label for="oruv3ip" class="commentText"><p>That one&rsquo;s for the Knicks fans</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="ortorlq" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Jwarrior521 | Raptors</div>
+        <div>24 | 9 hours ago </div>
+      </div>
+      <label for="ortorlq" class="commentText"><p>Yeah pretty much, also compounded by the fact he missed the 2019 playoffs with a freak injury</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="ortq490" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Dr-DDT | Suns</div>
+        <div>7 | 9 hours ago </div>
+      </div>
+      <label for="ortq490" class="commentText"><p>I&rsquo;m not questioning that, I&rsquo;m simply stating that Suns fans are going through it right now and will more than likely continue to do so indefinitely.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="ortvtdd" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>-Dr_B-</div>
+        <div>15 | 8 hours ago </div>
+      </div>
+      <label for="ortvtdd" class="commentText"><p>I was rooting for the Spurs and even I’m happy for OG. He played amazingly the whole series and did it with composure and grace. That game 4 tip in was the stuff of legends and will live rent free in my head for the rest of my life.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ortm0yl" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>DysonDPOY</div>
+        <div>631 | 9 hours ago </div>
+      </div>
+      <label for="ortm0yl" class="commentText"><p>Hawks fans have convinced ourselves we’re the 2nd best team in the league.</p>
+
+<p>Even though realistically NY should’ve sweeped us, they choked both the games we won.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="ortra4u" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>AltruisticChipmunk53 | Knicks</div>
+        <div>358 | 9 hours ago </div>
+      </div>
+      <label for="ortra4u" class="commentText"><p>A choke is still a loss. And a good team can make another team choke. That doesn’t invalidate what the hawks did imo</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="ortt05g" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>jawndell</div>
+        <div>192 | 8 hours ago </div>
+      </div>
+      <label for="ortt05g" class="commentText"><p>Knicks leveled up because of the Hawks.</p>
+
+<p>Wouldn’t have won the championship if the Hawks didn’t make the best version of the team come out.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="ortuoxp" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>itssensei | Cavaliers</div>
+        <div>83 | 8 hours ago </div>
+      </div>
+      <label for="ortuoxp" class="commentText"><p>As a Cavs fan, I’d like think we gave them that last piece of the missing puzzle in G1 🤣🤣🤣🥲🥲🥲</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="ortx48a" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Rad_platypus7 | Knicks</div>
+        <div>76 | 8 hours ago </div>
+      </div>
+      <label for="ortx48a" class="commentText"><p>You have a point. Before the 2nd half started in game 4 I said to myself “if these guys can come back from down 20 with 7 minutes to go in the 4th, they can claw back from down 29 with a whole half of basketball left to play”</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="ortxmu7" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>itssensei | Cavaliers</div>
+        <div>49 | 8 hours ago </div>
+      </div>
+      <label for="ortxmu7" class="commentText"><p>It definitely helps mentally. Because now that you know you’ve done it, you can do it again.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="ortyzfr" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>adambball | Knicks</div>
+        <div>30 | 8 hours ago </div>
+      </div>
+      <label for="ortyzfr" class="commentText"><p>KAT even referenced it during one of the timeouts when the Knicks were down</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="ortsug9" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>DDBull | Spurs</div>
+        <div>61 | 8 hours ago </div>
+      </div>
+      <label for="ortsug9" class="commentText"><p>I see what you did there</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="ortrlxi" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>TheZombieDudexD | Knicks</div>
+        <div>67 | 9 hours ago </div>
+      </div>
+      <label for="ortrlxi" class="commentText"><p>We love cj</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="orttl4h" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>NotingAndQuoting | Knicks</div>
+        <div>74 | 8 hours ago </div>
+      </div>
+      <label for="orttl4h" class="commentText"><p>He beat us twice ethically and we got better because of it, what a nice guy.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="oruo1y8" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>idosade | Knicks</div>
+        <div>11 | 6 hours ago </div>
+      </div>
+      <label for="oruo1y8" class="commentText"><p>Didn&rsquo;t make himself the main character as well. Just did his job and said &ldquo;I&rsquo;m a family man&rdquo;</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="ortuv08" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>davsyo | Knicks</div>
+        <div>23 | 8 hours ago </div>
+      </div>
+      <label for="ortuv08" class="commentText"><p>I still have nightmares about his baseline step back wet middies. Shit was beautiful.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="orttpqb" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Deebeevee | Knicks</div>
+        <div>35 | 8 hours ago </div>
+      </div>
+      <label for="orttpqb" class="commentText"><p>CJ turned into Halliburton for a few and we almost had a collective stroke about what would happen if we lost thst series. I want the Hawks to be crazy good next year just to show that their playoff performance was not a fluke cause I was stressed.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="ortsk9o" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Somenakedguy | Knicks</div>
+        <div>19 | 8 hours ago </div>
+      </div>
+      <label for="ortsk9o" class="commentText"><p>Well the Spurs choked every single game we beat them in, they’re still wins</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="ortz3h8" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>LutherOfTheRogues | Hawks</div>
+        <div>20 | 8 hours ago </div>
+      </div>
+      <label for="ortz3h8" class="commentText"><p>We also did it without a center.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="oru5ait" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>JAJAJAGuy | Hawks</div>
+        <div>19 | 8 hours ago </div>
+      </div>
+      <label for="oru5ait" class="commentText"><p>Fuck Goga</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="orttgjr" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>LifeIsToughEatBacon</div>
+        <div>17 | 8 hours ago </div>
+      </div>
+      <label for="orttgjr" class="commentText"><p>as a nuggets fan, taking the thunder to 7 felt a lot better when they destroyed the wolves. so, relatable </p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ortngqr" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>dpatel211 | Rockets</div>
+        <div>508 | 9 hours ago </div>
+      </div>
+      <label for="ortngqr" class="commentText"><p>The Pacers sub 😭</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="ortunyu" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>36933693 | Pacers</div>
+        <div>540 | 8 hours ago </div>
+      </div>
+      <label for="ortunyu" class="commentText"><p>A year ago we were going into Game 7 of the NBA finals. The excitement was crazy. Then our franchise player tore his Achilles, we lost, we tanked and then lost our first round pick, and the Knicks won a title. Pacers fandom is cruelty.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="oru79gn" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>AskMeHowIMetYourMom | Pacers</div>
+        <div>125 | 7 hours ago </div>
+      </div>
+      <label for="oru79gn" class="commentText"><p>Legit the worst timeline as a Pacers fan lol. Excited for next season though, I think we’re realistic contenders in the East if we stay healthy </p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="orui46p" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>jjjjford | Knicks</div>
+        <div>40 | 7 hours ago </div>
+      </div>
+      <label for="orui46p" class="commentText"><p>The ending to that series was complete horseshit. Hitting so many banger game winners throughout the playoffs amidst the narrative of &ldquo;voted most overrated player&rdquo; and &ldquo;not a superstar&rdquo;. And then the injury happens.</p>
+
+<p>I was upset when you guys beat us two years in a row but with how the Pacers played I felt like you guys earned it so I can&rsquo;t bring myself to hate Haliburton or that team even if I dread facing them every time. You guys got robbed of the most magical title run, so I&rsquo;d really like to see the Pacers bounce back and win one even if I&rsquo;m a Knicks fan. If another opportunity arises and we&rsquo;re knocked out, I&rsquo;ll be rooting for you guys</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="ortwc1o" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>trulyjerryseinfeld | Pacers</div>
+        <div>113 | 8 hours ago </div>
+      </div>
+      <label for="ortwc1o" class="commentText"><p>the sub is in SHAMBLES lmfao. we are deeply unhappy 💔</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="oru46j9" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>WhoDatBrow | Suns</div>
+        <div>104 | 8 hours ago </div>
+      </div>
+      <label for="oru46j9" class="commentText"><p>If I was a Knicks fan reading the Pacers sub would give me life. Instead, I&rsquo;m a neutral fan, and I felt so bad reading it. Imagine losing game 7 of the Finals AND an entire season cuz your star player got hurt and then in that season you have to watch your biggest rival (who you beat in the playoffs the last year) win the Finals. I&rsquo;d be in pain.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="oru6w8u" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>My_Anus_Is_Bleating | Pacers</div>
+        <div>63 | 7 hours ago </div>
+      </div>
+      <label for="oru6w8u" class="commentText"><p>Yeah imagine that lol. That would really suck&hellip;</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="oruiiq9" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Either_Imagination_9 | Knicks</div>
+        <div>27 | 7 hours ago </div>
+      </div>
+      <label for="oruiiq9" class="commentText"><p>It absolutely gave me life. Every game we won I would go to the Pacers sub and bathe in their tears</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="ortva55" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>gradedonacurve | Knicks</div>
+        <div>82 | 8 hours ago </div>
+      </div>
+      <label for="ortva55" class="commentText"><p>I&rsquo;ll admit I spent some time lurking in a few rival team subs just to drink some tears, and r/pacers was so sad I actually felt bad for those hicks for a minute.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="oru77t0" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>jonsnowKITN | Knicks</div>
+        <div>16 | 7 hours ago </div>
+      </div>
+      <label for="oru77t0" class="commentText"><p>I don&rsquo;t. It was hilarious especially because they keep disrespecting Brunson.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="oruaq57" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>upgrayedd69 | Pacers</div>
+        <div>28 | 7 hours ago </div>
+      </div>
+      <label for="oruaq57" class="commentText"><p>I actually hate Brunson even more for not being a douche nozzle. I hate all the Knicks, but I hate Brunson the most because if he were on any other team he’d be a favorite. If he could like spit on a young fan asking for an autograph or something that would be great.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="ortydz4" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>aimee829 | Pacers</div>
+        <div>28 | 8 hours ago </div>
+      </div>
+      <label for="ortydz4" class="commentText"><p>I was expecting it to be &ldquo;I&rsquo;m glad this season from hell is over&rdquo; or &ldquo;Next game, Haliburton plays&rdquo;. But disgust is apt too. Well done OP!</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="oru3hfb" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>unabiker | Pacers</div>
+        <div>12 | 8 hours ago </div>
+      </div>
+      <label for="oru3hfb" class="commentText"><p>Text to my homie right after the buzzer. &ldquo;I am disgusted&rdquo;</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ortnnjc" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>dirtynashtyfilthy | Slovenia</div>
+        <div>486 | 9 hours ago </div>
+      </div>
+      <label for="ortnnjc" class="commentText"><p>This is, lowkey, S-tier content. Nicely done.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="oru1kf3" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Chendii | Lakers</div>
+        <div>61 | 8 hours ago </div>
+      </div>
+      <label for="oru1kf3" class="commentText"><p>Off season shitposting can&rsquo;t peak this early, please.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="oru583r" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Illustrious-Piano-78</div>
+        <div>12 | 8 hours ago </div>
+      </div>
+      <label for="oru583r" class="commentText"><p>Way too early</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ortmc3i" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>couladewastaken | Warriors</div>
+        <div>317 | 9 hours ago </div>
+      </div>
+      <label for="ortmc3i" class="commentText"><p>still cant believe mike brown won a chip</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="ortn03x" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>IhamAmerican | Jazz</div>
+        <div>185 | 9 hours ago </div>
+      </div>
+      <label for="ortn03x" class="commentText"><p>One of the most dominant post season runs in history too</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="ortq8hv" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>jumpijehosaphat | Spurs</div>
+        <div>83 | 9 hours ago </div>
+      </div>
+      <label for="ortq8hv" class="commentText"><p>you are mistaking 2026 brown with 2006-2012 brown.  2 very different guys</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="ortx86o" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>itssensei | Cavaliers</div>
+        <div>63 | 8 hours ago </div>
+      </div>
+      <label for="ortx86o" class="commentText"><p>One got exposed like Mitch Johnson, the other exposed Mitch Johnson.</p>
+
+<p>But seriously, kudos to Mike Brown, he made amazing progress as a head coach.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="oru0k1y" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>anonahmus | Kings</div>
+        <div>39 | 8 hours ago </div>
+      </div>
+      <label for="oru0k1y" class="commentText"><p>Kings could use a coach like Mike Brown ………</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="oru4f9z" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>jumpijehosaphat | Spurs</div>
+        <div>16 | 8 hours ago </div>
+      </div>
+      <label for="oru4f9z" class="commentText"><p>like mitch, mike was a young guy when he joined the cavs from the spurs.  i say give mitch some time.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="ortr8vy" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Goatlikejordan | Knicks</div>
+        <div>25 | 9 hours ago </div>
+      </div>
+      <label for="ortr8vy" class="commentText"><p>He won one with y&rsquo;all lol</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="ortq76z" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>rauh | Warriors</div>
+        <div>15 | 9 hours ago </div>
+      </div>
+      <label for="ortq76z" class="commentText"><p>he’s won a few</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="ortt8ho" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Either_Imagination_9 | Knicks</div>
+        <div>26 | 8 hours ago </div>
+      </div>
+      <label for="ortt8ho" class="commentText"><p>First as Head Coach</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ortme9x" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>IndividualPlenty5952</div>
+        <div>259 | 9 hours ago </div>
+      </div>
+      <label for="ortme9x" class="commentText"><p>The Mavs reaction is painfully accurate :(</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="ortteva" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ActivBowser9177 | Lakers</div>
+        <div>160 | 8 hours ago </div>
+      </div>
+      <label for="ortteva" class="commentText"><p>You guys had Doncic, Brunson, and Porzingis together at one point and now you guys don&rsquo;t have any of them thanks to Nico Harrison&rsquo;s disaster-class. At least you guys now have Cooper Flagg under a better front office?</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="oru77tf" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>No-Inside2846 | Thunder</div>
+        <div>19 | 7 hours ago </div>
+      </div>
+      <label for="oru77tf" class="commentText"><p>For now</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="orug5r9" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>DIKS_OUT_4_HARAMBE | Slovenia</div>
+        <div>17 | 7 hours ago </div>
+      </div>
+      <label for="orug5r9" class="commentText"><p>Porzingis does not belong in the same sentence. Dude was like the 3rd-4th option on a stacked Celtics team when they won.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="ortsnor" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Ready2Rapture | Knicks</div>
+        <div>57 | 8 hours ago </div>
+      </div>
+      <label for="ortsnor" class="commentText"><p>Now they’re realizing Nico kicked out their elite medical guy in totally fucked up circumstances… and we scooped him up. I feel for them.</p>
+
+<p>At least they have Cooper and time to rebuild what Nico tore down. We made those shitty moves for 2 decades to hang it all on like Emmanuel Mudiay</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="ortt76v" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>GrilledCheeser | Mavericks</div>
+        <div>60 | 8 hours ago </div>
+      </div>
+      <label for="ortt76v" class="commentText"><p>His name is Casey Smith, and to be clear we are not “just now realizing it”; we were pissed when they let him go. He’d been with the team forever.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="orty3ee" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>dirtynashtyfilthy | Slovenia</div>
+        <div>37 | 8 hours ago </div>
+      </div>
+      <label for="orty3ee" class="commentText"><p>Fired him remotely after two decades for “not being a team player” - while he was visiting his gravely ill mother. In addition to being one of the worst GMs in the history of the league, also a scumbag. </p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="ortyzlb" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>GrilledCheeser | Mavericks</div>
+        <div>21 | 8 hours ago </div>
+      </div>
+      <label for="ortyzlb" class="commentText"><p>No argument here. Fuck Nico Harrison</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="oru910p" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Cotillion512 | Mavericks</div>
+        <div>17 | 7 hours ago </div>
+      </div>
+      <label for="oru910p" class="commentText"><p>Such a stupid freaking move. Since firing Casey, Lively has played 43 games over 2 seasons. Cant help but think that&rsquo;s connected</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="ortz8gt" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>IndividualPlenty5952</div>
+        <div>8 | 8 hours ago </div>
+      </div>
+      <label for="ortz8gt" class="commentText"><p>I was about to say this same thing. Firing Casey when he was visiting his mother in her death bed pissed me off just as much as the Luka trade. You just don’t do that to somebody.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="ortxx2p" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>jimenycr1cket | DAL</div>
+        <div>15 | 8 hours ago </div>
+      </div>
+      <label for="ortxx2p" class="commentText"><p>Literally everyone knew kicking Casey out was a big mistake lmao. It was a big story when he was dropped via phone call at his mother’s deathbed.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="ortwjai" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Koussevitzky | Mavericks</div>
+        <div>39 | 8 hours ago </div>
+      </div>
+      <label for="ortwjai" class="commentText"><p>I think a lot of us were rooting for the Knicks to win because of Jalen + the Spurs give us Vietnam flashbacks, but damn does it still hurt. I remember most of the sub having very ??? reactions to the FO not fighting harder to keep JB, he was easily my 2nd favorite player at the time. Life is pain, so happy that he got a ring though</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="oru1kxc" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ActivBowser9177 | Lakers</div>
+        <div>13 | 8 hours ago </div>
+      </div>
+      <label for="oru1kxc" class="commentText"><p>Y&rsquo;all would&rsquo;ve won a ring with Nash in 2003 if Dirk never got hurt against the Spurs in the Western Conference Finals.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="ortx6p6" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>krak_is_bad | Mavericks</div>
+        <div>12 | 8 hours ago </div>
+      </div>
+      <label for="ortx6p6" class="commentText"><p>Dont forget Casey Smith!</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ortmcmb" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ktm1128 | 76ers</div>
+        <div>198 | 9 hours ago </div>
+      </div>
+      <label for="ortmcmb" class="commentText"><p>you nailed the sixers almost. missed fire epstein friend pedophile owner</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="orv10jy" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Black_Dumbledore | 76ers</div>
+        <div>21 | 5 hours ago </div>
+      </div>
+      <label for="orv10jy" class="commentText"><p>Yeah, the vibes are pretty bad. During our “window” pretty much every one of our rivals/title competitors have won a championship and we’re still stuck in the same place we’ve always been.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ortnqfi" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>DarkArisen668 | Knicks</div>
+        <div>182 | 9 hours ago </div>
+      </div>
+      <label for="ortnqfi" class="commentText"><p>OKC sub has been by far the most hilarious. Love those guys there lmfao</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="ortoega" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>okiewxchaser | Thunder</div>
+        <div>101 | 9 hours ago </div>
+      </div>
+      <label for="ortoega" class="commentText"><p>Orange and blue teams have to stick together</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="orttdcj" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Either_Imagination_9 | Knicks</div>
+        <div>59 | 8 hours ago </div>
+      </div>
+      <label for="orttdcj" class="commentText"><p>You guys were by far the fanbase that was pulling for us the most</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="orttw4a" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>CoolAsTheUnthawed | OKC</div>
+        <div>62 | 8 hours ago </div>
+      </div>
+      <label for="orttw4a" class="commentText"><p>We got y&rsquo;all last year, y&rsquo;all had us this year. Back to back years of successful finals hate watches for each of us lmao.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="oru83ap" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Caldris</div>
+        <div>30 | 7 hours ago </div>
+      </div>
+      <label for="oru83ap" class="commentText"><p>I thought it was pretty funny seeing their reactions. And why wouldn&rsquo;t they talk shit? The Spurs led the charge on &ldquo;ethical basketball&rdquo; claims and they were viewed as the ones who would save basketball lol.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="orukhlt" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Lowspark1013 | Timberwolves</div>
+        <div>14 | 6 hours ago </div>
+      </div>
+      <label for="orukhlt" class="commentText"><p>Best part about this, second to KAT getting a ring, is the &ldquo;ethical hoops&rdquo; bullshit died a grisly death in front of all of NBA Fandom.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="ortrd4c" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>YouWereBrained | Thunder</div>
+        <div>26 | 9 hours ago </div>
+      </div>
+      <label for="ortrd4c" class="commentText"><p>We are a bunch of wild and crazy guys.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="oru5e25" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>crypto6g | Hornets</div>
+        <div>22 | 8 hours ago </div>
+      </div>
+      <label for="oru5e25" class="commentText"><p>The Chet vs Wemby memes are so funny on there. I feel like a child laughing at them but they get time every time 😭</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="ortuubi" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>okie_smokie92 | Thunder</div>
+        <div>17 | 8 hours ago </div>
+      </div>
+      <label for="ortuubi" class="commentText"><p>Together ape strong</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="oru1k2z" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>sprtstr14 | Thunder</div>
+        <div>14 | 8 hours ago </div>
+      </div>
+      <label for="oru1k2z" class="commentText"><p>Need more Dillon Jones love</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ortqnlb" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Next-Supermarket9538 | Pacers</div>
+        <div>131 | 9 hours ago </div>
+      </div>
+      <label for="ortqnlb" class="commentText"><p>Disgust is not a strong enough word for what Pacers fans are feeling</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ortml88" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>AirJordan6124 | Celtics</div>
+        <div>96 | 9 hours ago </div>
+      </div>
+      <label for="ortml88" class="commentText"><p>Congrats Knicks but still Fuck you guys lol but that choke job by the Spurs was just hilarious 🤣 I wasn’t convinced even if they were up 15 in Game 5</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="ortpa8o" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ichthyoidoc | Celtics</div>
+        <div>47 | 9 hours ago </div>
+      </div>
+      <label for="ortpa8o" class="commentText"><p>lol, pleasantly surprised that OP nailed our sub reaction. Haven’t had such a mix of pain and laughter in a while.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="orttfoq" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>rockphysicsdude | Celtics</div>
+        <div>12 | 8 hours ago </div>
+      </div>
+      <label for="orttfoq" class="commentText"><p>Yeah, words are spot on.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="ortwho8" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>TheoMoneyG | Knicks</div>
+        <div>17 | 8 hours ago </div>
+      </div>
+      <label for="ortwho8" class="commentText"><p>It&rsquo;s still insane just how many times they blew double digit leads</p>
+
+<p>Like as soon as they were up by 10 in game 5 the entire game thread just knew lol</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="ortw5z6" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Justviewingposts69 | Knicks</div>
+        <div>10 | 8 hours ago </div>
+      </div>
+      <label for="ortw5z6" class="commentText"><p>If it makes you feel any better, seeing Jayson Tatum lift the Lombardi in 2024 made me lose my shit lmao</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="ortzs9m" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>AzulaKahn | Knicks</div>
+        <div>29 | 8 hours ago </div>
+      </div>
+      <label for="ortzs9m" class="commentText"><p>Lombardi is the Super Bowl trophy lol</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="oru1iv1" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Justviewingposts69 | Knicks</div>
+        <div>16 | 8 hours ago </div>
+      </div>
+      <label for="oru1iv1" class="commentText"><p>Fuck man I celebrated too hard this weekend lmao</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ortvwlv" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>lisbon_OH | Cavaliers</div>
+        <div>83 | 8 hours ago </div>
+      </div>
+      <label for="ortvwlv" class="commentText"><p>This is incorrect. Us Cavs fans are preparing for Game 7 of the analytical finals.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ortr7p4" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>samhit_n | Lakers</div>
+        <div>83 | 9 hours ago </div>
+      </div>
+      <label for="ortr7p4" class="commentText"><p>Other than being concerned for Luka’s legacy, Lakers fans are thrilled with how the season ended.</p>
+
+<p>Our biggest rivals choked a 3-1 lead in the 1st round. The team that swept us ended up losing in the WCF to another rival. The rival that won the West lost in the Finals to a likable team, after choking double digit leads in every game.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="oru7klq" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Ok_Daikon_7726 | Lakers</div>
+        <div>24 | 7 hours ago </div>
+      </div>
+      <label for="oru7klq" class="commentText"><p>Nuggets getting embarrassed round 1 was the cherry on top</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="ortx4a6" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>LakerBlue | Lakers</div>
+        <div>10 | 8 hours ago </div>
+      </div>
+      <label for="ortx4a6" class="commentText"><p>Accurate to how I feel. I want specifically rooting against the Spurs so much as I have enjoyed rooting for the Knicks most of the Brunson era.</p>
+
+<p>Although I don’t really care about Luka’s legacy rn.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ortpx6n" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Fluid-Second2163</div>
+        <div>83 | 9 hours ago </div>
+      </div>
+      <label for="ortpx6n" class="commentText"><p>Can you believe that mavericks had luka and brunson?</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="oru228o" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>beezkneez1391 | Mavericks</div>
+        <div>15 | 8 hours ago </div>
+      </div>
+      <label for="oru228o" class="commentText"><p>Yeah, we want to yeet Nico Harrison into the sun. Fans loved both guys and were heartbroken</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ortpynq" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>urasha | Knicks</div>
+        <div>80 | 9 hours ago </div>
+      </div>
+      <label for="ortpynq" class="commentText"><p>The nets sub and sixers sub are probably the saddest of them all.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="ortr9k1" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>JA_MD_311 | Knicks</div>
+        <div>90 | 9 hours ago </div>
+      </div>
+      <label for="ortr9k1" class="commentText"><p>The Nets sub is by far the saddest. A lot of, &ldquo;we&rsquo;re here and we matter!&rdquo; which I get they have fans, but out all the teams in the NY Metro area they have by far the smallest fanbase.</p>
+
+<p>They never will, but they should go back to New Jersey, that was their fanbase and where they belong.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="oru8zbl" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>foofighter1351 | Raptors</div>
+        <div>29 | 7 hours ago </div>
+      </div>
+      <label for="oru8zbl" class="commentText"><p>I was curious and gave the sub a look today and hooooly shit bitterness definitely doesn&rsquo;t cover it. I don&rsquo;t even blame em I guess I mean a new generation of Knicks fans comes from shit like this.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="oru8spg" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>MC_Fap_Commander</div>
+        <div>32 | 7 hours ago </div>
+      </div>
+      <label for="oru8spg" class="commentText"><p>As a Nets enjoyer, it&rsquo;s functionally a funeral for franchise relevance.  There was a white hot moment of &ldquo;The Big 3&rdquo; when people imagined the team supplanting the Knicks as <em>the</em> New York team (especially with the Knicks circling the drain for decades).  Now?  The Nets are below the Mets.  Hell, they&rsquo;re probably sub-Clippers when it comes to &ldquo;two teams in the same city.&rdquo;  There is some absurd hope on the sub that they can magically move back to NJ (not happening, obv).  It&rsquo;s the equivalent of a man in a failing relationship dreaming of &ldquo;going out for a pack of cigarettes&rdquo; to never return.</p>
+
+<p>It&rsquo;s <em>that</em> bad.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="oru8f5j" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Caldris</div>
+        <div>29 | 7 hours ago </div>
+      </div>
+      <label for="oru8f5j" class="commentText"><p>I read the Nets sub and I could only feel sad for them. They really shouldn&rsquo;t be in NYC. I know the potential revenue even as a secondary team is pretty crazy but at the same time its like a constant humiliation ritual. Imagine how bad it&rsquo;d be if the Knicks had the same playoff success as the Lakers.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="ortw5p3" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>MCJSun | Nets</div>
+        <div>13 | 8 hours ago </div>
+      </div>
+      <label for="ortw5p3" class="commentText"><p>The people salty about Mikal winning were wild. Went on there and just rolled my eyes.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ortppei" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>adralv | Mavericks</div>
+        <div>68 | 9 hours ago </div>
+      </div>
+      <label for="ortppei" class="commentText"><p>lol Mavs fan here and that sigh is accurate</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ortlxdf" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Either_Imagination_9 | Knicks</div>
+        <div>60 | 9 hours ago </div>
+      </div>
+      <label for="ortlxdf" class="commentText"><p>The Pacers was my personal favorite</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="ortpmdj" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>FriskyFisky91 | Pacers</div>
+        <div>26 | 9 hours ago </div>
+      </div>
+      <label for="ortpmdj" class="commentText"><p>Looking forward to another ECF matchup next year.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ortmpv9" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>debard69 | Pacers</div>
+        <div>58 | 9 hours ago </div>
+      </div>
+      <label for="ortmpv9" class="commentText"><p>As an Indiana basketball fan, I am disgusted but also congrats OG</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ortqt9v" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ImJeeezus | Kings</div>
+        <div>52 | 9 hours ago </div>
+      </div>
+      <label for="ortqt9v" class="commentText"><p>The Pacers probably experienced one of the most painful years a franchise can experience</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="oru37lv" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>boristheboiler | Pacers</div>
+        <div>12 | 8 hours ago </div>
+      </div>
+      <label for="oru37lv" class="commentText"><p>Man, add on that Daniel Jones on the Colts tore his Achilles right after we were ranked #1 in the league and Caitlyn Clark missed almost the whole year with a leg injury, it&rsquo;s been a bad bad year for Indy pro sports.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ortltp9" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>UnitedRelation6020</div>
+        <div>49 | 9 hours ago </div>
+      </div>
+      <label for="ortltp9" class="commentText"><p>Accurate as a bulls fan</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="ortmksz" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>CRIMS0N-ED | Bulls</div>
+        <div>17 | 9 hours ago </div>
+      </div>
+      <label for="ortmksz" class="commentText"><p>got the blazers coach tho so that’s something</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="oru5pjj" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>HerAirness</div>
+        <div>10 | 8 hours ago </div>
+      </div>
+      <label for="oru5pjj" class="commentText"><p>Apathy is the general tone for the Bulls for the past 10 years</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="orto3np" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>inkyblinkypinkysue | Knicks</div>
+        <div>52 | 9 hours ago </div>
+      </div>
+      <label for="orto3np" class="commentText"><p>LOL at Chet has more rings then Wemby. That’s some petty shit and I’m here for it.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ortoofm" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>dunkinbroccolini24 | Timberwolves</div>
+        <div>38 | 9 hours ago </div>
+      </div>
+      <label for="ortoofm" class="commentText"><p>“this was us” -nuggets<br>
+too good 😭<br>
+these are the analytics I wanna see</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ortpazu" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>trav-senpai | Kings</div>
+        <div>38 | 9 hours ago </div>
+      </div>
+      <label for="ortpazu" class="commentText"><p>The outcome didn’t matter because Fox and Brown immediately meeting in the finals is the biggest middle finger to Vivek. FUCK VIVEK.</p>
+
+<p>Love that Mike Brown got it though.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ortuiq4" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>RedEyedTroll6</div>
+        <div>35 | 8 hours ago </div>
+      </div>
+      <label for="ortuiq4" class="commentText"><p>Interesting that between KAT, OG, Hart, Alvarado, Clarkson, and even Bridges the Knicks traded for/signed some of the most beloved players from their former franchises in the last two decades. It one of the very rare occasions where nice guys finish first.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ortngu1" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>VolumeValuable3537 | Suns</div>
+        <div>33 | 9 hours ago </div>
+      </div>
+      <label for="ortngu1" class="commentText"><p>Mikal won in New York so now he can come back to Phoenix for free right? 🥲</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="ortx03p" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Beautiful_Ninja | Nets</div>
+        <div>29 | 8 hours ago </div>
+      </div>
+      <label for="ortx03p" class="commentText"><p>I think the price for NBA Champion Mikal Bridges starts at 5 first round picks.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ortzeq6" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>rutgersftw | 76ers</div>
+        <div>36 | 8 hours ago </div>
+      </div>
+      <label for="ortzeq6" class="commentText"><p>*chuckles*</p>
+
+<p>*scrolls looking for us*</p>
+
+<p>*resumes staring into the abyss, feeling nothing*</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="orto1ky" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>hoosiertrad</div>
+        <div>26 | 9 hours ago </div>
+      </div>
+      <label for="orto1ky" class="commentText"><p>Pacers should be more like “pain” </p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="orto3qq" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Rad_platypus7 | Knicks</div>
+        <div>24 | 9 hours ago </div>
+      </div>
+      <label for="orto3qq" class="commentText"><p>My favorite one was someone made a post in the pistons sub along the lines of “This Could Have Been Us” and the top comment was “dude now is not the time”</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ortnwjz" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>SAguilar23 | Spurs</div>
+        <div>18 | 9 hours ago </div>
+      </div>
+      <label for="ortnwjz" class="commentText"><p>Poor Sixers fans 🤣</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="orua6p4" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>BrokenManOfSamarkand | 76ers</div>
+        <div>21 | 7 hours ago </div>
+      </div>
+      <label for="orua6p4" class="commentText"><p>It is pretty bad as a Sixers fan.  It&rsquo;s either a consolation or a greater curse that these Knicks are probably the most Philly team <em>ever</em> to win a national title.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ortskh2" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Cmoore4099 | Hornets</div>
+        <div>17 | 8 hours ago </div>
+      </div>
+      <label for="ortskh2" class="commentText"><p>Hornets “will this ever be us”</p>
+
+<p>I wanna laugh and cry at the same time.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ortr6wn" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Carcrusher3 | Trail Blazers</div>
+        <div>16 | 9 hours ago </div>
+      </div>
+      <label for="ortr6wn" class="commentText"><p>Lol. The blazers one is so wrong. No posts about Dame&rsquo;s legacy. Just congratulating hart.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="oru3ks8" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>UndercoverDimension | Heat</div>
+        <div>13 | 8 hours ago </div>
+      </div>
+      <label for="oru3ks8" class="commentText"><p>Whew, good thing the Heat mods deleted most of the whiny posts before you took a look.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ortnf54" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>roseoyl | Pistons</div>
+        <div>12 | 9 hours ago </div>
+      </div>
+      <label for="ortnf54" class="commentText"><p>😹 I love this. I felt like Sixers fans the night it happened, but now its whatever, congrats to them. Cant wait for next season</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ortqm9g" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>genericusernamepls | UTA</div>
+        <div>12 | 9 hours ago </div>
+      </div>
+      <label for="ortqm9g" class="commentText"><p>2 seperate JC appreciation posts he truly is our lord and savior</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ortm4no" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>solo118 | Knicks</div>
+        <div>11 | 9 hours ago </div>
+      </div>
+      <label for="ortm4no" class="commentText"><p>Damn, exactly how I imagined it</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ortngwn" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>OregonJedi | POR</div>
+        <div>8 | 9 hours ago </div>
+      </div>
+      <label for="ortngwn" class="commentText"><p>Blazers reaction was congrats to Josh Hart / Jaylen Brown trades and Hurricanes winning Stanley Cup but ok whatever you say there buddy</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="oru3uln" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>MountainTwo3845 | Rockets</div>
+        <div>10 | 8 hours ago </div>
+      </div>
+      <label for="oru3uln" class="commentText"><p><em>In state rivalry bitterness</em> Yeah that tracks. Fuck them forever.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="orto9he" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>yakitorispelling</div>
+        <div>10 | 9 hours ago </div>
+      </div>
+      <label for="orto9he" class="commentText"><p>This was plastered on every street light on my block sunday morning.  Nets fans, just enjoy this win for NYC.</p>
+
+<p><a href="https://imgur.com/a/v2dpv3o" target="_blank">https://imgur.com/a/v2dpv3o</a></p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ortothm" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Moon-man-80</div>
+        <div>9 | 9 hours ago </div>
+      </div>
+      <label for="ortothm" class="commentText"><p>His is hilarious great work OP</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ortpp8x" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>HenrikCrown | Pelicans</div>
+        <div>8 | 9 hours ago </div>
+      </div>
+      <label for="ortpp8x" class="commentText"><p>Pels fans: Oh boy, happy for another ex-Pels player that contributed to a deep playoff run/title</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ortqisd" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>itsmxjessagain</div>
+        <div>8 | 9 hours ago </div>
+      </div>
+      <label for="ortqisd" class="commentText"><p>This is hysterical. Well done.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ortx3ly" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>todudeornote</div>
+        <div>10 | 8 hours ago </div>
+      </div>
+      <label for="ortx3ly" class="commentText"><p>Warriors fan here - most of us loved Brown and hated to see him leave - he and Kerr seemed to make a great coaching team.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ortsauf" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>CaseyBullfrog | Trail Blazers</div>
+        <div>9 | 8 hours ago </div>
+      </div>
+      <label for="ortsauf" class="commentText"><p>Blazers is for sure &ldquo;Congrats, Hart&rdquo;</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
