@@ -1,0 +1,1240 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.selfPostImage {
+  width: 100%;
+  height: auto;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/baseball/comments/1u7edfk/players_who_share_names_just_reversed/"><p>Players Who Share Names, Just Reversed</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <p>I was looking at the 1901 Milwaukee Brewers roster (long story), and I saw the name Joe Connor. My first thought, naturally, went to Connor Joe who has the same name, just reversed, and from there I started looking into what other pairs of people have the same situation. <a href="https://www.reddit.com/r/baseball/comments/uv182m/fun_fact_connor_joe_and_joe_connor_are_one_of/" target="_blank">This previous post</a> found three cases, but I wanted to see if anything had changed or was missed. Turns out there&rsquo;s quite a few, mostly owing to nicknames and new players. I wrote up a quick Python script to go through Retrosheet&rsquo;s biographical data file and find such cases (using both given names and nicknames), and I came up with twelve pairs of reverse names.</p>
+
+<table>
+<thead>
+<tr>
+<th align="left">Player 1 (MLB career span)</th>
+<th align="left">Player 2 (MLB career span)</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left"><a href="https://www.baseball-reference.com/players/b/bradlto01.shtml" target="_blank">Thomas &ldquo;Tom&rdquo; Bradley</a> (1969–75)</td>
+<td align="left"><a href="https://www.baseball-reference.com/players/t/thomabr01.shtml" target="_blank">Bradley &ldquo;Brad&rdquo; Thomas</a> (2001–11)</td>
+</tr>
+
+<tr>
+<td align="left"><a href="https://www.baseball-reference.com/players/c/charlfr01.shtml" target="_blank">Frank Charles</a> (2000)</td>
+<td align="left"><a href="https://www.baseball-reference.com/players/f/frankch01.shtml" target="_blank">Charles &ldquo;Charlie&rdquo; Frank</a> (1893–94)</td>
+</tr>
+
+<tr>
+<td align="left"><a href="https://www.baseball-reference.com/players/c/connojo03.shtml" target="_blank">Joe Connor</a> (1895–1905)</td>
+<td align="left"><a href="https://www.baseball-reference.com/players/j/joeco01.shtml" target="_blank">Connor Joe</a> (2019–)</td>
+</tr>
+
+<tr>
+<td align="left"><a href="https://www.baseball-reference.com/players/d/danieda01.shtml" target="_blank">Robert Davis Daniel</a> (2023–25)</td>
+<td align="left"><a href="https://www.baseball-reference.com/players/r/roberda11.shtml" target="_blank">Daniel Robert</a> (2024–25)</td>
+</tr>
+
+<tr>
+<td align="left"><a href="https://www.baseball-reference.com/players/e/earlho01.shtml" target="_blank">Howard Earl</a> (1890–91)</td>
+<td align="left"><a href="https://www.baseball-reference.com/players/h/howarea01.shtml" target="_blank">Earl Howard</a> (1918)</td>
+</tr>
+
+<tr>
+<td align="left"><a href="https://www.baseball-reference.com/players/g/georgle01.shtml" target="_blank">Thomas &ldquo;Lefty&rdquo; George</a> (1911–18)</td>
+<td align="left"><a href="https://www.baseball-reference.com/players/t/thomage01.shtml" target="_blank">George Thomas</a> (1957-71)</td>
+</tr>
+
+<tr>
+<td align="left">Thomas Gorman (four people)</td>
+<td align="left"><a href="https://www.baseball-reference.com/players/t/thomago01.shtml" target="_blank">Gorman Thomas</a> (1973–86)</td>
+</tr>
+
+<tr>
+<td align="left"><a href="https://www.baseball-reference.com/players/j/jamesri01.shtml" target="_blank">Richard &ldquo;Rick&rdquo; James</a> (1967)</td>
+<td align="left"><a href="https://www.baseball-reference.com/players/r/richaj.01.shtml" target="_blank">James &ldquo;J. R.&rdquo; Richard</a> (1971–80)</td>
+</tr>
+
+<tr>
+<td align="left"><a href="https://www.baseball-reference.com/players/j/johnto01.shtml" target="_blank">Thomas &ldquo;Tommy&rdquo; John</a> (1963–89)</td>
+<td align="left">John Thomas (two people)</td>
+</tr>
+
+<tr>
+<td align="left"><a href="https://www.baseball-reference.com/players/l/leeto01.shtml" target="_blank">Thomas &ldquo;Tom&rdquo; Lee</a> (1884)</td>
+<td align="left"><a href="https://www.baseball-reference.com/players/t/thomale03.shtml" target="_blank">&ldquo;Lee&rdquo; Thomas</a> (1961–68)</td>
+</tr>
+
+<tr>
+<td align="left">Scott Lewis (two people)</td>
+<td align="left"><a href="https://www.baseball-reference.com/players/s/scottev01.shtml" target="_blank">Lewis Everett Scott </a>(1914–26)</td>
+</tr>
+
+<tr>
+<td align="left"><a href="https://www.baseball-reference.com/players/n/nelsoto01.shtml" target="_blank">Thomas &ldquo;Tommy&rdquo; Nelson</a> (1945)</td>
+<td align="left"><a href="https://www.baseball-reference.com/players/t/thomane01.shtml" target="_blank">Nelson Thomas</a> (1947)</td>
+</tr>
+</tbody>
+</table>
+<p>The four Thomas Gormans are:</p>
+
+<ol>
+<li><p><a href="https://www.baseball-reference.com/players/g/gormato04.shtml" target="_blank">A 1B/LF who played for the 1884 Kansas City Cowboys</a></p></li>
+
+<li><p><a href="https://www.baseball-reference.com/players/g/gormato01.shtml" target="_blank">An RHP (and later, ump) who played for the 1939 New York Giants</a></p></li>
+
+<li><p><a href="https://www.baseball-reference.com/players/g/gormato02.shtml" target="_blank">An RHP who played from 1952 to 1959</a></p></li>
+
+<li><p><a href="https://www.baseball-reference.com/players/g/gormato03.shtml" target="_blank">An LHP who played from 1981 to 1987</a></p></li>
+</ol>
+
+<p>The two John Thomases are:</p>
+
+<ol>
+<li><p><a href="https://www.baseball-reference.com/players/t/thomajo01.shtml" target="_blank">An outfielder who played for the Birmingham Black Barons from 1946 to 1947</a></p></li>
+
+<li><p><a href="https://www.baseball-reference.com/players/t/thomabu02.shtml" target="_blank">&ldquo;Bud&rdquo; Thomas, a shortstop for the 1951 St. Louis Browns</a></p></li>
+</ol>
+
+<p>And the two Scott Lewises are:</p>
+
+<ol>
+<li><p><a href="https://www.baseball-reference.com/players/l/lewissc01.shtml" target="_blank">An RHP who played for the Angels from 1990 to 1994</a></p></li>
+
+<li><p><a href="https://www.baseball-reference.com/players/l/lewissc02.shtml" target="_blank">An LHP who played for the Indians from 2008 to 2009</a></p></li>
+</ol>
+
+<p>If you include not only players, but also every single person in the biographical data file, you also get the pairing of Thomas &ldquo;Tom&rdquo; Connor, AL umpire from 1905 to 1906, and <a href="https://www.baseball-reference.com/players/t/thomaco02.shtml" target="_blank">Connor Thomas</a>, who debuted for the Brewers in 2025 and is now with the Braves. There&rsquo;s also the case of <a href="https://www.baseball-reference.com/players/t/thomato01.shtml" target="_blank">Thomas &ldquo;Tom&rdquo; Thomas</a>, who played from 1894 to 1900 and is his own inverse.</p>
+
+<p>If anyone knows of any more I might&rsquo;ve missed, let me know!</p>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="orzjhfc" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Obvious-Ad-16 | Seattle Mariners</div>
+        <div>121 | an hour ago </div>
+      </div>
+      <label for="orzjhfc" class="commentText"><p>Absolute peak post, Thomas Thomas is my new favorite baseball player</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="orzk7jp" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>j_daniels3w | San Diego Padres</div>
+        <div>26 | an hour ago </div>
+      </div>
+      <label for="orzk7jp" class="commentText"><p>random aside, I knew someone once named: Thomas Nathaniel Thomas.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="orzkncf" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Forsaken_Ad8312 | Houston Astros</div>
+        <div>28 | an hour ago </div>
+      </div>
+      <label for="orzkncf" class="commentText"><p>I hope he went by TNT.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="orzlxe6" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>oogieball | Dumpster Fire • New York Mets</div>
+        <div>14 | an hour ago </div>
+      </div>
+      <label for="orzlxe6" class="commentText"><p>Dynamite.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="orzlfhv" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>QuinceyQuick | Brooklyn Dodgers • Athletics</div>
+        <div>6 | an hour ago </div>
+      </div>
+      <label for="orzlfhv" class="commentText"><p>Sounds like he was the bomb</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="orzks7e" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>revuetext [OP] | Baltimore Orioles</div>
+        <div>8 | an hour ago </div>
+      </div>
+      <label for="orzks7e" class="commentText"><p>Not quite up to par with Japanese MMA fighter and Jon Bois legend Bob Bob, but as far as real baseball names go it&rsquo;s one of my favorites so far 😄</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="orznzdx" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Homie_Slicer</div>
+        <div>4 | 41 minutes ago </div>
+      </div>
+      <label for="orznzdx" class="commentText"><p>I have a friend named Adam Adam. Not Adam Adams. Adam Adam.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="orzmylk" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>bolieve11 | Toronto Blue Jays</div>
+        <div>3 | an hour ago </div>
+      </div>
+      <label for="orzmylk" class="commentText"><p>Joining my favourite athletes along side current hockey player Ivan Ivan</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="orzp8lf" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Lord_Hitachi | Pittsburgh Pirates</div>
+        <div>3 | 35 minutes ago </div>
+      </div>
+      <label for="orzp8lf" class="commentText"><p>Tom Tom Club</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="orzvrp7" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>pixlepize | Boston Red Sox</div>
+        <div>1 | 6 minutes ago </div>
+      </div>
+      <label for="orzvrp7" class="commentText"><p>Good ole Tom Tom. Good ball player, great sense of direction.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="orzk8ea" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Matthewcbayer | Detroit Tigers</div>
+        <div>45 | an hour ago </div>
+      </div>
+      <label for="orzk8ea" class="commentText"><p>This is the most Tim Kurkjian shit I’ve ever seen done by someone not named Tim Kurkjian.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="orzlfu0" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>revuetext [OP] | Baltimore Orioles</div>
+        <div>37 | an hour ago </div>
+      </div>
+      <label for="orzlfu0" class="commentText"><p>You never know, I could be his inverse Kurkjian Tim&hellip;</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="orznw28" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>NerderBirder | Atlanta Braves</div>
+        <div>5 | 42 minutes ago </div>
+      </div>
+      <label for="orznw28" class="commentText"><p>The flair checks out…</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="orzvq46" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ATLjoe93 | Atlanta Braves</div>
+        <div>1 | 6 minutes ago </div>
+      </div>
+      <label for="orzvq46" class="commentText"><p>A certified &ldquo;Quirkijan&rdquo;</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="orzkkat" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>--beaster-- | Boston Red Sox</div>
+        <div>24 | an hour ago </div>
+      </div>
+      <label for="orzkkat" class="commentText"><p>Nomar Garciaparra and Arrapaicrag Ramon</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="orzo2j3" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>namastexinxbed | Atlanta Braves</div>
+        <div>6 | 41 minutes ago </div>
+      </div>
+      <label for="orzo2j3" class="commentText"><p>Nomar is his dad’s name backward (Ramon)</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="orzs8i6" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>MagicalPizza21 | New York Yankees</div>
+        <div>2 | 22 minutes ago </div>
+      </div>
+      <label for="orzs8i6" class="commentText"><p>So is Nora Judge, daughter of Aaron (spelling it Noraa would&rsquo;ve been too weird)</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="orzotes" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>--beaster-- | Boston Red Sox</div>
+        <div>0 | 37 minutes ago </div>
+      </div>
+      <label for="orzotes" class="commentText"><p>that&rsquo;s the joke dot jpg</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="orzpvvn" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>cjrogers227 | Washington Nationals</div>
+        <div>4 | 32 minutes ago </div>
+      </div>
+      <label for="orzpvvn" class="commentText"><p>rolls right off the tongue</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="orzq7ea" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Basquill | Toronto Blue Jays</div>
+        <div>1 | 31 minutes ago </div>
+      </div>
+      <label for="orzq7ea" class="commentText"><p>Boyd Oil Can</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="orzlyr8" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>BrewCityChaserV2 | Milwaukee Brewers</div>
+        <div>24 | an hour ago </div>
+      </div>
+      <label for="orzlyr8" class="commentText"><p>You&rsquo;re supposed to save this stuff for the off season. Oh and a lock out is upcoming too. Hoard it.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="orzw0at" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>bulldg4life | Atlanta Braves</div>
+        <div>1 | 5 minutes ago </div>
+      </div>
+      <label for="orzw0at" class="commentText"><p>He’s going to draw Thomas Thomas 240 times this winter</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="orzjn4n" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>julieputty | Cleveland Guardians</div>
+        <div>17 | an hour ago </div>
+      </div>
+      <label for="orzjn4n" class="commentText"><p>Thomas &ldquo;Tom&rdquo; Thomas is my obvious favorite.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="orzkpzf" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Baseball_is_the_best | New York Yankees</div>
+        <div>15 | an hour ago </div>
+      </div>
+      <label for="orzkpzf" class="commentText"><p>This is peak off-season content</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="orzl49y" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>jet8493 | Seattle Mariners</div>
+        <div>11 | an hour ago </div>
+      </div>
+      <label for="orzl49y" class="commentText"><p>Not the same phenomenon but there’s a Michael Harrison Ford (Mike ford) and a Harrison Michael Ford (Harry ford) who were both on the mariners a couple years ago</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="orzre9s" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>revuetext [OP] | Baltimore Orioles</div>
+        <div>7 | 26 minutes ago </div>
+      </div>
+      <label for="orzre9s" class="commentText"><p>I wrote up a quick amendment to my script to see if I could find more examples of this and - without further filtering and confirmation - I&rsquo;ve found 16, some of the most interesting ones are:</p>
+
+<ol>
+<li><p><a href="https://www.baseball-reference.com/players/j/jacqupa01.shtml" target="_blank">Patrick Thomas &ldquo;Pat&rdquo; Jacquez</a> and <a href="https://www.baseball-reference.com/players/j/jacquth01.shtml" target="_blank">Thomas Patrick &ldquo;Tom&rdquo; Jacquez</a>, according to <a href="https://sabr.org/bioproj/person/pat-jacquez/" target="_blank">SABR</a> they&rsquo;re a father-son combo.</p></li>
+
+<li><p><a href="https://www.baseball-reference.com/register/player.fcgi?id=mcclos001joh" target="_blank">John James McCloskey</a> and <a href="https://www.baseball-reference.com/players/m/mcclojo01.shtml" target="_blank">James John McCloskey</a>, both of whom just went by &ldquo;John&rdquo;. Of note, the former was a terrible manager who had a 190-417 record, while the latter was the first ever MLB player from Wyoming, and also died in a mine tunnel explosion.</p></li>
+
+<li><p>Brothers <a href="https://www.baseball-reference.com/players/m/molinjo01.shtml" target="_blank">José</a> and <a href="https://www.baseball-reference.com/players/m/molinbe01.shtml" target="_blank">Bengie Molina</a>&rsquo;s full names are actually José Benjamin Molina and Benjamin José Molina respectively.</p></li>
+</ol>
+
+<p>And once again we have someone who is his own inverse! <a href="https://www.baseball-reference.com/players/l/lafatjo01.shtml" target="_blank">Joseph Joseph &ldquo;Joe&rdquo; Lafata</a>, now one of my new favorite baseball names along with Thomas Thomas.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="orzvfu2" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>sitboaf | Boston Red Sox</div>
+        <div>2 | 7 minutes ago </div>
+      </div>
+      <label for="orzvfu2" class="commentText"><p>Super Mega Baseball has a father/son combo of Junior Young Sr., and Junior Young Jr.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="orzpq3n" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>namastexinxbed | Atlanta Braves</div>
+        <div>10 | 33 minutes ago </div>
+      </div>
+      <label for="orzpq3n" class="commentText"><p>Raisel Iglesias has a string of 5 letters AISEL in each name going different directions</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="orzjuhs" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>IAmBenIAmStillBig | Chicago White Sox</div>
+        <div>7 | an hour ago </div>
+      </div>
+      <label for="orzjuhs" class="commentText"><p>Hilarious that they’re all named Thomas lol</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="orzo2ox" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>NerderBirder | Atlanta Braves</div>
+        <div>-2 | 41 minutes ago </div>
+      </div>
+      <label for="orzo2ox" class="commentText"><p>I mean except the ones that aren’t…</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="orzo95r" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>IAmBenIAmStillBig | Chicago White Sox</div>
+        <div>6 | 40 minutes ago </div>
+      </div>
+      <label for="orzo95r" class="commentText"><p>Nothing gets by you big dog</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="orzoczm" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>NerderBirder | Atlanta Braves</div>
+        <div>-4 | 39 minutes ago </div>
+      </div>
+      <label for="orzoczm" class="commentText"><p>Yeah bc usually jokes are funny.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="orzoiit" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>IAmBenIAmStillBig | Chicago White Sox</div>
+        <div>2 | 39 minutes ago </div>
+      </div>
+      <label for="orzoiit" class="commentText"><p><img src="giphy|G4ZNYMQVMH6us" alt="gif" /></p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="orzooft" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>[deleted]</div>
+        <div>-5 | 38 minutes ago </div>
+      </div>
+      <label for="orzooft" class="commentText"><p>[deleted]</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="orzovr6" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>IAmBenIAmStillBig | Chicago White Sox</div>
+        <div>2 | 37 minutes ago </div>
+      </div>
+      <label for="orzovr6" class="commentText"><p>You bothered me, you weirdo. Stop crying that no one likes you</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="orzn8o6" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Dennovin | Baltimore Orioles</div>
+        <div>6 | 44 minutes ago </div>
+      </div>
+      <label for="orzn8o6" class="commentText"><p>George &ldquo;Righty&rdquo; Thomas</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="orzptkx" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>unibl0hmer</div>
+        <div>6 | 33 minutes ago </div>
+      </div>
+      <label for="orzptkx" class="commentText"><p>Wait!</p>
+
+<p>Did Stormin Gorman Thomas ever face Thomas Gorman?</p>
+
+<p>Was Thomas Gorman also Stormin?</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="orzq2rp" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>unibl0hmer</div>
+        <div>3 | 32 minutes ago </div>
+      </div>
+      <label for="orzq2rp" class="commentText"><p>Looks like Thomas Gorman was only in the NL.</p>
+
+<p>Booo</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="orzk1uy" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>JuggernautMiddle8829</div>
+        <div>3 | an hour ago </div>
+      </div>
+      <label for="orzk1uy" class="commentText"><p>the rick james / j.r. richard pairing is sending me 💀 like that&rsquo;s genuinely the funniest coincidence on this whole list</p>
+
+<p>also tommy john being on here feels weirdly apropriate given how much his name has taken on a life of its own in baseball vocabulary 😂</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="orzlbln" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>322_Switch</div>
+        <div>3 | an hour ago </div>
+      </div>
+      <label for="orzlbln" class="commentText"><p>You just need to add the HOF Battery of Steve Carlton Fisk from the 1986 CHW</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="orzogwr" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>SqueakyTuna52 | Chicago Cubs</div>
+        <div>3 | 39 minutes ago </div>
+      </div>
+      <label for="orzogwr" class="commentText"><p>“It sounds funny, I know</p>
+
+<p>But it really is so</p>
+
+<p>I’m my own inverse”</p>
+
+<p>— Thomas Thomas</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="orzpotv" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>realnomdeguerre | Los Angeles Dodgers</div>
+        <div>3 | 33 minutes ago </div>
+      </div>
+      <label for="orzpotv" class="commentText"><p>Aww, there&rsquo;s no Early Connelly?</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="orzsb1b" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>revuetext [OP] | Baltimore Orioles</div>
+        <div>2 | 21 minutes ago </div>
+      </div>
+      <label for="orzsb1b" class="commentText"><p>Unfortunately the only early Earlys were Early Wynn and Jake Early. Perhaps we will someday have a later Early to match!</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="orzpv2u" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>sharp_cheddar319 | Atlanta Braves</div>
+        <div>3 | 33 minutes ago </div>
+      </div>
+      <label for="orzpv2u" class="commentText"><p>I thought about stopping after I read “I was looking at the 1901 Milwaukee Brewers roster”, but I’m glad I didn’t.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="orzqb62" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>TJtheShizz | Pittsburgh Pirates • Atlanta Braves</div>
+        <div>3 | 30 minutes ago </div>
+      </div>
+      <label for="orzqb62" class="commentText"><p>This is fun.</p>
+
+<p>If I had made the NFL a post like this coulda been made about me</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="orzsnpm" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>throwaway_37985</div>
+        <div>3 | 20 minutes ago </div>
+      </div>
+      <label for="orzsnpm" class="commentText"><p>Phillip Evans and Evan Phillips deserves an honorable mention here.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="orzot2n" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>eekbarbaderkle | Boston Red Sox</div>
+        <div>2 | 37 minutes ago </div>
+      </div>
+      <label for="orzot2n" class="commentText"><p>So is Thomas Gorman a Vincent Adultman situation?</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="orzrtbl" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>enataca | Texas Rangers</div>
+        <div>2 | 24 minutes ago </div>
+      </div>
+      <label for="orzrtbl" class="commentText"><p>I can’t believe in the middle of all these “normal” names is a boatload of Gormans.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="orzvtfk" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Jerome_Wireman | Cleveland Guardians</div>
+        <div>2 | 6 minutes ago </div>
+      </div>
+      <label for="orzvtfk" class="commentText"><p>We need stuff like this in December. Love it.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
