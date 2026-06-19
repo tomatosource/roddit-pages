@@ -1,0 +1,641 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.selfPostImage {
+  width: 100%;
+  height: auto;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/PathOfExile2/comments/1uaco1e/feedback_ggg_particles_and_lingering_effects_are/"><p>[Feedback] GGG&hellip; Particles and lingering effects are ruining PoE 2&rsquo;s performance, here&rsquo;s why</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <p>I&rsquo;ve been playing a Grim Pillar build, and one thing became very obvious:<br>
+The biggest performance killer is the massive amount of particles and visual effects generated.</p>
+
+<p><a href="https://imgur.com/a/wl6OKOw" target="_blank">Here&rsquo;s some screenshots during my gameplay&hellip;</a></p>
+
+<p>When clearing packs (or even bosses), the build creates an enormous amount of effects.<br>
+As they accumulate, FPS steadily drops, even after the enemies are already dead.<br>
+If I stop moving and simply wait for 20–30 seconds, the effects eventually disappear and performance immediately returns.</p>
+
+<p>The last two screenshots from a boss fight show this perfectly:<br>
+During the fight: 23 FPS<br>
+After the effects disappear: 192 FPS</p>
+
+<p>That&rsquo;s a gain of 169 FPS without changing settings, leaving the area, or reducing monster count.<br>
+The only difference is that the visual effects are gone.</p>
+
+<p>This makes it feel less like a hardware issue and more like particle and effect accumulation.<br>
+The game spends an enormous amount of resources rendering or processing lingering effects.<br>
+The moment the totems shoot out their pillars and I explode them, my graphic&rsquo;s card goes nuts.</p>
+
+<p>PoE 2 looks fantastic, but when builds start generating hundreds of overlapping effects, performance will collapse.<br>
+The fact that standing still for a short time restores FPS suggests that particles and visual effects may not be clearing efficiently or need a massive overhaul.<br>
+The screenshots make the issue pretty clear.</p>
+
+<p>This was tested on:<br>
+CPU: i7 14700k<br>
+GPU: RTX 5060 Ti 16GB<br>
+RAM: 32GB</p>
+
+<p>Having 23 FPS during a boss fight of mapping is not fun.<br>
+And I will not play a different build to &lsquo;fix&rsquo; it because I do like the playstyle of the build.<br>
+It should be optimised more.</p>
+
+<p>Please look into this GGG, it&rsquo;s a massive issue and I assume it will fix a lot of performace issues people are having.</p>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="osn97ea" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>thejewk</div>
+        <div>19 | an hour ago </div>
+      </div>
+      <label for="osn97ea" class="commentText"><p>Performance has been really awful for me this league on my aging 3060 ti i5 12400 setup.  Regularly dips down to 20 FPS in some maps.  I really hope they focus on this some before 1.0.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="osnkp42" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>BottAndPaid</div>
+        <div>1 | 11 minutes ago </div>
+      </div>
+      <label for="osnkp42" class="commentText"><p>Performance is awful for me 1440p 7800x3d 5080. It&rsquo;s a massive issue with Poe2 optimization and lack of setting to tune graphics to a preferred level. They also need to allow for you to tune or disable particles and effect from allies.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="osni30r" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>pupolas999</div>
+        <div>1 | 24 minutes ago </div>
+      </div>
+      <label for="osni30r" class="commentText"><p>me too, im the exact same boat</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="osn8zem" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>HanndeI</div>
+        <div>10 | an hour ago </div>
+      </div>
+      <label for="osn8zem" class="commentText"><p>Another big real issue is that due to this specific problem, you can&rsquo;t use upscalings or frame generators because of the glitter-like effects, id you use them the game ends up looking like a 16bit game but without any real shape</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="osnkl0z" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>tarpex</div>
+        <div>1 | 11 minutes ago </div>
+      </div>
+      <label for="osnkl0z" class="commentText"><p>Dunno, I force dlss4.5 M model via Nvidia app for poe2, running it on 1440p quality and it looks hella sharp. Performance still drops in full screen effects puke as does everyone&rsquo;s, but it still looks fine. With Vulkan renderer the drops are less severe than on DX12 too. Though my rig is pretty good, 13700k and 4080S.</p>
+
+<p>Older dlss models definitely don&rsquo;t perform as satisfactory.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="osnh1us" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>chobolicious88</div>
+        <div>1 | 29 minutes ago </div>
+      </div>
+      <label for="osnh1us" class="commentText"><p>I think poe needs to have something like they did with the sound channel system where you can allocate a pool for particles meaning, new ones make the old ones dissapear and they abide to a max pool limit.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="osna5j2" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>jimidemibb</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="osna5j2" class="commentText"><p>I think it’s straight up CPU load. I can lower my graphics settings all the way to low, turn on performance DLSS, and still have major framerate dips. My 5800X3D can only handle so much…</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="osngvke" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Advanced-Bid-7760</div>
+        <div>1 | 29 minutes ago </div>
+      </div>
+      <label for="osngvke" class="commentText"><p>Yeah I’ve literally ran into CPU temp issues because of this. My GPU is fine but CPU gets absolutely cooked. A side note is I have to basically reboot the game every hour or so or I will get a random freeze at some point in a map, usually leading to a death</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="osncjkg" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>wallzballz89</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="osncjkg" class="commentText"><p>I&rsquo;m playing grim pillars and I have no idea what Is happening on my screen when my totems are popping off. Probably the worst visual clarity of any ability I have used in my 10+ years of Poe. I&rsquo;m probably going to swap to spark totems the first chance I get.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="osnh5lv" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>chobolicious88</div>
+        <div>1 | 28 minutes ago </div>
+      </div>
+      <label for="osnh5lv" class="commentText"><p>Im in this boat.</p>
+
+<p>I added Bitter Dead to have more clear which i do, but the fps tanks even more</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="osn5yo3" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>SUNTZU_JoJo</div>
+        <div>3 | an hour ago </div>
+      </div>
+      <label for="osn5yo3" class="commentText"><p>Running a 9800X3D and 6800XT, it&rsquo;s crazy how I can go from capped 165fos down to mid 40s.</p>
+
+<p>Literally have to change to &ldquo;FSR Balanced&rdquo; to have a playable experience specifically when I&rsquo;m running:</p>
+
+<ul>
+<li>Delirium maps</li>
+</ul>
+
+<p>This seems to compound the effects.</p>
+
+<p>I&rsquo;m using icewall and lightning ball with lightning warp and when I smash a batch of ice walls the performance tanks.</p>
+
+<p>I noticed a good way to minimise the impact is to limit the :</p>
+
+<ul>
+<li>number of unique light sources
+In the graphics settings.</li>
+</ul>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="osn7dgf" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>crueln1n1</div>
+        <div>2 | an hour ago </div>
+      </div>
+      <label for="osn7dgf" class="commentText"><p>CPU: i7 14700k<br>
+GPU: RTX 5070 Ti 16GB<br>
+RAM: 32GB</p>
+
+<p>I&rsquo;m having the same issues, my friend literally cannot play with me since his FPS drop so much (he has 4070 with an ryzen  9 so it&rsquo;s not a bad pc)</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="osnia78" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Krapio</div>
+        <div>1 | 23 minutes ago </div>
+      </div>
+      <label for="osnia78" class="commentText"><p>We need more graphics options to adjusts easy fix. Let us turn off shading completely too</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="osnis9k" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>pixelTirpitz</div>
+        <div>1 | 20 minutes ago </div>
+      </div>
+      <label for="osnis9k" class="commentText"><p>They have gone overboard with the effects. Look at whirling assault, what is the point of it kicking up a ton of dust??? Lots of completely unnecessary effects that don’t really add that much</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="osnj90f" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Mickl193</div>
+        <div>1 | 18 minutes ago </div>
+      </div>
+      <label for="osnj90f" class="commentText"><p>Yeah I haven’t really notice any big drops, I’m on 4080 and r9 7700X, I had the game freeze on me for like 10s a few times tho. What performance are you guys seeing most the time? Are you using dlss? Iirc I’m seeing 120-ish fps with dlss quality</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="osnjoaj" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>unterrosen</div>
+        <div>1 | 16 minutes ago </div>
+      </div>
+      <label for="osnjoaj" class="commentText"><p>my fps drop every time i start running around in hideout (yes, just running, walking is fine)&hellip; issues go way deeper than particle effects.<br>
+performance at the end of 0.4 used to be fine but with 0.5 something regressed again</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="osnlkft" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>whatsurissuebro</div>
+        <div>1 | 6 minutes ago </div>
+      </div>
+      <label for="osnlkft" class="commentText"><p>Also uhh, bodies aren’t culled after any amount of time and I am not sure if there is a limit. Some maps, my fps is tanked off of piles of dead bodies and I’ll drop like 30 fps just walking to areas where the ground is covered.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="osnlwep" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>catsflatsandhats</div>
+        <div>1 | 5 minutes ago </div>
+      </div>
+      <label for="osnlwep" class="commentText"><p>“Here’s why”, proceeds to not explain why at all.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="osnhg8q" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ShadesBlack</div>
+        <div>1 | 27 minutes ago </div>
+      </div>
+      <label for="osnhg8q" class="commentText"><p>Interesting take, I don&rsquo;t have very many issues with frame drops, stuttering, or hiccups during all the particle accumulation, but that might be because I have newer hardware&hellip; so maybe it&rsquo;s a hardware issue?</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="osnkvzo" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>CubesAndSticks [OP]</div>
+        <div>1 | 10 minutes ago </div>
+      </div>
+      <label for="osnkvzo" class="commentText"><p>PoE is the only game I have these issues with, I doubt it&rsquo;s a hardware issue.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
