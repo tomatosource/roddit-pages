@@ -1,0 +1,1240 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.selfPostImage {
+  width: 100%;
+  height: auto;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/nba/comments/1u9ndvy/oc_the_nba_championship_belt_202526_edition/"><p>[OC] The NBA Championship Belt (2025-26 Edition)</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <p>Many longtime members of the subreddit will be familiar with the idea of the NBA Championship Belt. The concept is simple: If you beat the team with the Belt, you now own the Belt. You lose it if you lose a game and the team that beats you then keeps it until they lose.</p>
+
+<p>If the team with the Belt is a playoff team, the Belt will ultimately end up with the team that wins the Finals. Then it should be no surprise that <strong>the New York Knicks are the current wearers of the Belt</strong>. The season usually ends up with the NBA Champion wearing the Belt, but it doesn&rsquo;t always end up that way.</p>
+
+<p>The most recent example of the exception happened when the Phoenix Suns, owners of the Belt at the time, faced off against the Sacramento Kings in what was both of the teams&rsquo; last game of the 2021-22 season. The Suns were the 1 seed out West with 64 wins, and the Kings had no chance of making the playoffs as is often the case. Because both teams&rsquo; destinies were already decided, they rested some guys, and the shorthanded Kings were able to beat the shorter-handed Suns in the last game of the season. Because the Kings season was over, no one had a chance to steal the Belt from them for the remainder of the season, so they held it for the entire offseason.</p>
+
+<h1 id="rules-of-the-belt">Rules of the Belt</h1>
+
+<p>Earlier I stated that the Belt was a simple concept and that there was just one rule. Of course, that rule is the most important, but there are a few distinctions to make.</p>
+
+<p>First, I decided to include all regular season, playoff, play-in, and in-season tournament games as part of the Belt&rsquo;s history. If a team loses a preseason or Summer League game, they get to keep the Belt. If this weren&rsquo;t the case, it would be possible for the Belt to end up overseas, and while it would be interesting to follow the Belt&rsquo;s lineage in that scenario, the differences in documentation for each league would make scraping the data a nightmare.</p>
+
+<p>Another rule is that I started at the 1949-50 season. Technically, the NBA says its first season was the 1946-47 BAA season, before it merged with the NBL, but I disagree with the NBA&rsquo;s removal of NBL history, so I started it where I think it should be. I did let the Lakers, winners of the 1949 BAA championship, start with the Belt, to at least give a little credence to the league’s opinion. This ends up not mattering in the long run since no matter what team starts with the Belt, it ends up converging to the same path in under a season.</p>
+
+<p>Last rule. Some people start the season by automatically giving the Belt to the team that won the Finals the prior season. I don&rsquo;t think this is as fun, because a team like the Kings getting the moral victory of holding the Belt for the entire offseason is a much more interesting talking point. So, I will not be using this rule, however, as I mentioned earlier, it doesn&rsquo;t really matter in the long run as paths converge quite quickly.</p>
+
+<h1 id="2025-26-belt-lineage">2025-26 Belt Lineage</h1>
+
+<p>Since no one is reading a wall of text, I will include a table for your viewing pleasure, and you can feel free to read the prose below it if you so choose.</p>
+
+<table>
+<thead>
+<tr>
+<th align="left">Team</th>
+<th align="left">Games Held</th>
+<th align="left">Date Grabbed</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">Thunder</td>
+<td align="left">9</td>
+<td align="left">6/22/2025</td>
+</tr>
+
+<tr>
+<td align="left">Trail Blazers</td>
+<td align="left">1</td>
+<td align="left">11/5/2025</td>
+</tr>
+
+<tr>
+<td align="left">Heat</td>
+<td align="left">2</td>
+<td align="left">11/8/2025</td>
+</tr>
+
+<tr>
+<td align="left">Cavaliers</td>
+<td align="left">1</td>
+<td align="left">11/12/2025</td>
+</tr>
+
+<tr>
+<td align="left">Raptors</td>
+<td align="left">8</td>
+<td align="left">11/13/2025</td>
+</tr>
+
+<tr>
+<td align="left">Hornets</td>
+<td align="left">1</td>
+<td align="left">11/29/2025</td>
+</tr>
+
+<tr>
+<td align="left">Nets</td>
+<td align="left">2</td>
+<td align="left">12/1/2025</td>
+</tr>
+
+<tr>
+<td align="left">Jazz</td>
+<td align="left">1</td>
+<td align="left">12/4/2025</td>
+</tr>
+
+<tr>
+<td align="left">Knicks</td>
+<td align="left">6</td>
+<td align="left">12/5/2025</td>
+</tr>
+
+<tr>
+<td align="left">76ers</td>
+<td align="left">2</td>
+<td align="left">12/19/2025</td>
+</tr>
+
+<tr>
+<td align="left">Nets</td>
+<td align="left">2</td>
+<td align="left">12/23/2025</td>
+</tr>
+
+<tr>
+<td align="left">Warriors</td>
+<td align="left">2</td>
+<td align="left">12/29/2025</td>
+</tr>
+
+<tr>
+<td align="left">Thunder</td>
+<td align="left">1</td>
+<td align="left">1/2/2026</td>
+</tr>
+
+<tr>
+<td align="left">Suns</td>
+<td align="left">1</td>
+<td align="left">1/4/2026</td>
+</tr>
+
+<tr>
+<td align="left">Rockets</td>
+<td align="left">1</td>
+<td align="left">1/5/2026</td>
+</tr>
+
+<tr>
+<td align="left">Trail Blazers</td>
+<td align="left">2</td>
+<td align="left">1/7/2026</td>
+</tr>
+
+<tr>
+<td align="left">Knicks</td>
+<td align="left">1</td>
+<td align="left">1/11/2026</td>
+</tr>
+
+<tr>
+<td align="left">Kings</td>
+<td align="left">2</td>
+<td align="left">1/14/2026</td>
+</tr>
+
+<tr>
+<td align="left">Trail Blazers</td>
+<td align="left">2</td>
+<td align="left">1/18/2026</td>
+</tr>
+
+<tr>
+<td align="left">Raptors</td>
+<td align="left">2</td>
+<td align="left">1/23/2026</td>
+</tr>
+
+<tr>
+<td align="left">Knicks</td>
+<td align="left">5</td>
+<td align="left">1/28/2026</td>
+</tr>
+
+<tr>
+<td align="left">Pistons</td>
+<td align="left">5</td>
+<td align="left">2/6/2026</td>
+</tr>
+
+<tr>
+<td align="left">Spurs</td>
+<td align="left">3</td>
+<td align="left">2/23/2026</td>
+</tr>
+
+<tr>
+<td align="left">Knicks</td>
+<td align="left">2</td>
+<td align="left">3/1/2026</td>
+</tr>
+
+<tr>
+<td align="left">Thunder</td>
+<td align="left">9</td>
+<td align="left">3/4/2026</td>
+</tr>
+
+<tr>
+<td align="left">Celtics</td>
+<td align="left">3</td>
+<td align="left">3/25/2026</td>
+</tr>
+
+<tr>
+<td align="left">Hawks</td>
+<td align="left">3</td>
+<td align="left">3/30/2026</td>
+</tr>
+
+<tr>
+<td align="left">Knicks</td>
+<td align="left">3</td>
+<td align="left">4/6/2026</td>
+</tr>
+
+<tr>
+<td align="left">Hornets</td>
+<td align="left">2</td>
+<td align="left">4/12/2026</td>
+</tr>
+
+<tr>
+<td align="left">Magic</td>
+<td align="left">2</td>
+<td align="left">4/17/2026</td>
+</tr>
+
+<tr>
+<td align="left">Pistons</td>
+<td align="left">1</td>
+<td align="left">4/22/2026</td>
+</tr>
+
+<tr>
+<td align="left">Magic</td>
+<td align="left">2</td>
+<td align="left">4/25/2026</td>
+</tr>
+
+<tr>
+<td align="left">Pistons</td>
+<td align="left">5</td>
+<td align="left">4/29/2026</td>
+</tr>
+
+<tr>
+<td align="left">Cavaliers</td>
+<td align="left">3</td>
+<td align="left">5/9/2026</td>
+</tr>
+
+<tr>
+<td align="left">Pistons</td>
+<td align="left">1</td>
+<td align="left">5/15/2026</td>
+</tr>
+
+<tr>
+<td align="left">Cavaliers</td>
+<td align="left">1</td>
+<td align="left">5/17/2026</td>
+</tr>
+
+<tr>
+<td align="left">Knicks</td>
+<td align="left">6</td>
+<td align="left">5/19/2026</td>
+</tr>
+
+<tr>
+<td align="left">Spurs</td>
+<td align="left">1</td>
+<td align="left">6/8/2026</td>
+</tr>
+
+<tr>
+<td align="left"><em>Knicks</em></td>
+<td align="left"><em>2</em></td>
+<td align="left"><em>6/10/2026</em></td>
+</tr>
+</tbody>
+</table>
+<p>Above is a list of every Belt stint this season. The Thunder started the year with it by winning the last Finals game last season and won 8 in a row to start the year before losing it to the Trail Blazers, giving them a total &ldquo;Games Held&rdquo; of 9, tied with a later Thunder streak with the longest stint of the year. The Hornets had the Belt going into the post-season but lost it to the Magic in the Play-In Tournament. The Belt entered the playoffs, so it was already a done deal that whoever won the Finals would also hold the Belt for the offseason.</p>
+
+<p>Below is a table of the total number of games each team held the Belt for this season.</p>
+
+<table>
+<thead>
+<tr>
+<th align="left">Team</th>
+<th align="left">Total Games Held</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">Knicks</td>
+<td align="left">25</td>
+</tr>
+
+<tr>
+<td align="left">Thunder</td>
+<td align="left">18</td>
+</tr>
+
+<tr>
+<td align="left">Pistons</td>
+<td align="left">12</td>
+</tr>
+
+<tr>
+<td align="left">Raptors</td>
+<td align="left">10</td>
+</tr>
+
+<tr>
+<td align="left">Cavaliers</td>
+<td align="left">5</td>
+</tr>
+
+<tr>
+<td align="left">Trail Blazers</td>
+<td align="left">5</td>
+</tr>
+
+<tr>
+<td align="left">Spurs</td>
+<td align="left">4</td>
+</tr>
+
+<tr>
+<td align="left">Nets</td>
+<td align="left">4</td>
+</tr>
+
+<tr>
+<td align="left">Magic</td>
+<td align="left">4</td>
+</tr>
+
+<tr>
+<td align="left">Hawks</td>
+<td align="left">3</td>
+</tr>
+
+<tr>
+<td align="left">Hornets</td>
+<td align="left">3</td>
+</tr>
+
+<tr>
+<td align="left">Celtics</td>
+<td align="left">3</td>
+</tr>
+
+<tr>
+<td align="left">Warriors</td>
+<td align="left">2</td>
+</tr>
+
+<tr>
+<td align="left">Kings</td>
+<td align="left">2</td>
+</tr>
+
+<tr>
+<td align="left">Heat</td>
+<td align="left">2</td>
+</tr>
+
+<tr>
+<td align="left">76ers</td>
+<td align="left">2</td>
+</tr>
+
+<tr>
+<td align="left">Suns</td>
+<td align="left">1</td>
+</tr>
+
+<tr>
+<td align="left">Jazz</td>
+<td align="left">1</td>
+</tr>
+
+<tr>
+<td align="left">Rockets</td>
+<td align="left">1</td>
+</tr>
+</tbody>
+</table>
+<p>The Bucks, Bulls, Clippers, Grizzlies, Lakers, Mavericks, Nuggets, Pacers, Pelicans, Timberwolves, and Wizards all failed to win the Belt once this season. Surprisingly, the Kings were able to hold it for two games.</p>
+
+<h1 id="belt-droughts">Belt Droughts</h1>
+
+<p>How long has it been since each team had the Belt? This table answers that question.</p>
+
+<table>
+<thead>
+<tr>
+<th align="left">Team</th>
+<th align="left">Latest Day with Belt</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">Knicks</td>
+<td align="left">Today</td>
+</tr>
+
+<tr>
+<td align="left">Spurs</td>
+<td align="left">6/10/2026</td>
+</tr>
+
+<tr>
+<td align="left">Cavaliers</td>
+<td align="left">5/19/2026</td>
+</tr>
+
+<tr>
+<td align="left">Pistons</td>
+<td align="left">5/17/2026</td>
+</tr>
+
+<tr>
+<td align="left">Magic</td>
+<td align="left">4/29/2026</td>
+</tr>
+
+<tr>
+<td align="left">Hornets</td>
+<td align="left">4/17/2026</td>
+</tr>
+
+<tr>
+<td align="left">Hawks</td>
+<td align="left">4/6/2026</td>
+</tr>
+
+<tr>
+<td align="left">Celtics</td>
+<td align="left">3/30/2026</td>
+</tr>
+
+<tr>
+<td align="left">Thunder</td>
+<td align="left">3/25/2026</td>
+</tr>
+
+<tr>
+<td align="left">Raptors</td>
+<td align="left">1/28/2026</td>
+</tr>
+
+<tr>
+<td align="left">Trail Blazers</td>
+<td align="left">1/23/2026</td>
+</tr>
+
+<tr>
+<td align="left">Kings</td>
+<td align="left">1/18/2026</td>
+</tr>
+
+<tr>
+<td align="left">Rockets</td>
+<td align="left">1/7/2026</td>
+</tr>
+
+<tr>
+<td align="left">Suns</td>
+<td align="left">1/5/2026</td>
+</tr>
+
+<tr>
+<td align="left">Warriors</td>
+<td align="left">1/2/2026</td>
+</tr>
+
+<tr>
+<td align="left">Nets</td>
+<td align="left">12/29/2025</td>
+</tr>
+
+<tr>
+<td align="left">76ers</td>
+<td align="left">12/23/2025</td>
+</tr>
+
+<tr>
+<td align="left">Jazz</td>
+<td align="left">12/5/2025</td>
+</tr>
+
+<tr>
+<td align="left">Heat</td>
+<td align="left">11/12/2025</td>
+</tr>
+
+<tr>
+<td align="left">Pacers</td>
+<td align="left">6/22/2025</td>
+</tr>
+
+<tr>
+<td align="left">Bucks</td>
+<td align="left">4/27/2025</td>
+</tr>
+
+<tr>
+<td align="left">Timberwolves</td>
+<td align="left">4/8/2025</td>
+</tr>
+
+<tr>
+<td align="left">Mavericks</td>
+<td align="left">3/31/2025</td>
+</tr>
+
+<tr>
+<td align="left">Bulls</td>
+<td align="left">3/29/2025</td>
+</tr>
+
+<tr>
+<td align="left">Lakers</td>
+<td align="left">3/27/2025</td>
+</tr>
+
+<tr>
+<td align="left">Nuggets</td>
+<td align="left">3/12/2025</td>
+</tr>
+
+<tr>
+<td align="left">Clippers</td>
+<td align="left">2/20/2025</td>
+</tr>
+
+<tr>
+<td align="left">Grizzlies</td>
+<td align="left">1/27/2025</td>
+</tr>
+
+<tr>
+<td align="left">Pelicans</td>
+<td align="left">11/3/2024</td>
+</tr>
+
+<tr>
+<td align="left">Wizards</td>
+<td align="left">11/17/2021</td>
+</tr>
+</tbody>
+</table>
+<p>Yes, you read that right. The Wizards have not had the Belt since November of 2021 when a starting lineup of Bradley Beal, Spencer Dinwiddie, KCP, Kyle Kuzma, and Daniel Gafford lost 97-87 to the Charlotte Hornets. Every other team has had it at least once in the last two seasons (even the Kings).</p>
+
+<h1 id="top-belt-performers">Top Belt Performers</h1>
+
+<p>These were the best performances in a Belt win this season (by Game Score).</p>
+
+<p><strong>1. Shai Gilgeous-Alexander vs. Pacers - October 23, 2025</strong></p>
+
+<p>55 PTS, 8 REB, 5 AST, 15-31 FG, 23-26 FT</p>
+
+<p><strong>2. Shai Gilgeous-Alexander vs. Nuggets - March 9, 2026</strong></p>
+
+<p>35 PTS, 9 REB, 15 AST, 14-21 FG, Game-Winning 3</p>
+
+<p><strong>3. Shai Gilgeous-Alexander vs. Celtics - March 12, 2026</strong></p>
+
+<p>35 PTS, 6 REB, 9 AST, 13-18 FG</p>
+
+<p><strong>4. Cade Cunningham vs. New York Knicks - February 19, 2026</strong></p>
+
+<p>42 PTS, 8 REB, 13 AST, 17-34 FG</p>
+
+<p><strong>5. Cade Cunningham vs. Orlando Magic (Playoffs) - April 29, 2026</strong></p>
+
+<p>45 PTS, 4 REB, 5 AST, 12-23 FG, 5-8 3P</p>
+
+<p><strong>6. Jalen Brunson vs. San Antonio Spurs (Finals Game 5) - June 13, 2026</strong></p>
+
+<p>45 PTS, 3 REB, 3 AST, 14-27 FG, 4-7 3P</p>
+
+<p><strong>7. Jalen Brunson vs. Denver Nuggets - February 4, 2026</strong></p>
+
+<p>42 PTS, 8 REB, 9 AST, 14-27 FG, 5-12 3P</p>
+
+<p><strong>8. Shai Gilgeous-Alexander vs. LA Clippers - November 4, 2025</strong></p>
+
+<p>30 PTS, 4 REB, 12 AST, 9-15 FG, 4-5 3P</p>
+
+<p><strong>9. Victor Wembanyama vs. New York Knicks (Finals Game 4) - June 8, 2026</strong></p>
+
+<p>32 PTS, 8 REB, 6 AST, 3 BLK, 11-18 FG</p>
+
+<p><strong>10. Donovan Mitchell vs Detroit Pistons (Playoffs) - May 11, 2026</strong></p>
+
+<p>43 PTS, 5 REB, 2 AST, 13-26 FG</p>
+
+<h1 id="2025-26-belt-mvp">2025-26 Belt MVP</h1>
+
+<p>Lastly, let&rsquo;s take a look at which players performed the best in Belt games. Here are some select players&rsquo; averages in all their Belt games this season (min. 5 Belt games).</p>
+
+<p><strong>Shai Gilgeous-Alexander</strong> <strong>(22 games):</strong> 31/4/7, 2.3 TOV, 54% FG, 40% 3P, won 18 of 22 games (81%).</p>
+
+<p><strong>Michael Porter Jr. (7 games):</strong> 29/9/3, 1.4 STL, 2.9 TOV, 50% FG, 47% 3P, won 4 of 7 games (57%).</p>
+
+<p><strong>Deni Avdija (8 games):</strong> 26/7/6, 3.9 TOV, 46% FG, 27% 3P, won 5 of 8 games (63%).</p>
+
+<p><strong>Jalen Brunson (30 games):</strong> 26/4/7, 2.4 TOV, 46% FG, 34% 3P, won 22 of 30 games (73%).</p>
+
+<p><strong>Cade Cunningham (20 games):</strong> 27/6/8, 4.8 TOV, 43% FG, 40% 3P, won 12 of 20 games (60%).</p>
+
+<p><strong>Nickeil Alexander-Walker (6 games):</strong> 24/4/3, 2 TOV, 54% FG, 50% 3P, won 3 of 6 games (50%).</p>
+
+<p><strong>Donovan Mitchell</strong> <strong>(14 games):</strong> 27/5/4, 43% FG, 29% 3P, won 4 of 14 games (29%).</p>
+
+<p><strong>Victor Wembanyama (9 games):</strong> 22/11/3, 3.9 BLK, 3 TOV, 41% FG, 24% 3P, won 4 of 9 games (44%).</p>
+
+<p>SGA and Brunson are your two best candidates for the Belt MVP here, although MPJ and NAW both see their production drastically improve in belt games. Another interesting player in Belt games is Russell Westbrook, who only played in 4 belt games, but averaged 21/5/7 on 51% from the field and 51% from 3.</p>
+
+<h1 id="closing-remarks">Closing Remarks</h1>
+
+<p>I have stats like this for the entirety of NBA history, so if that&rsquo;s something you&rsquo;re interested in seeing in an additional post, do let me know in the comments. Thanks for reading.</p>
+
+<p>Source: <a href="https://pypi.org/project/nba_api/" target="_blank">nba_api</a></p>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="oshlhfw" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>CountFew6186 | Knicks</div>
+        <div>34 | 3 hours ago </div>
+      </div>
+      <label for="oshlhfw" class="commentText"><p>Knicks were also the first holders of the belt.  They won the very first NBA game.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="oshl9q2" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>dunkster91 | Raptors</div>
+        <div>22 | 3 hours ago </div>
+      </div>
+      <label for="oshl9q2" class="commentText"><p>I love the offseason.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="oshmfmr" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>LanceCourtSide</div>
+        <div>16 | 3 hours ago </div>
+      </div>
+      <label for="oshmfmr" class="commentText"><p>this is such a deep cut for longtime r/nba members. love seeing the Belt tracking kept alive — the Kings holding it through the 2022 offseason is still one of my favorite obscure nba factoids</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="oshn7nn" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>RoboTropics | Bulls</div>
+        <div>8 | 3 hours ago </div>
+      </div>
+      <label for="oshn7nn" class="commentText"><p>The Knicks would probably spray paint &ldquo;nWo&rdquo; on it.</p>
+
+<p>Which I&rsquo;m completely all for.</p>
+
+<p>🤘</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="oshrmm4" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>pichukirby | Knicks</div>
+        <div>7 | 3 hours ago </div>
+      </div>
+      <label for="oshrmm4" class="commentText"><p>I enjoyed this post, thanks op</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="oshrwl7" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>bad_fortuneteller [OP]</div>
+        <div>2 | 3 hours ago </div>
+      </div>
+      <label for="oshrwl7" class="commentText"><p>Thanks! Enjoy the Belt while you have it in NYC!</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="oshnbt0" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>gimpisgawd | Trail Blazers</div>
+        <div>4 | 3 hours ago </div>
+      </div>
+      <label for="oshnbt0" class="commentText"><blockquote>
+<p>Last rule. Some people start the season by automatically giving the Belt to the team that won the Finals the prior season. I don&rsquo;t think this is as fun, because a team like the Kings getting the moral victory of holding the Belt for the entire offseason is a much more interesting talking point. So, I will not be using this rule, however, as I mentioned earlier, it doesn&rsquo;t really matter in the long run as paths converge quite quickly.</p>
+</blockquote>
+
+<p>This is why I thought the last time this was tried was dumb as hell. What&rsquo;s the point in the belt if it just goes to whoever wins the finals.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="osht9cv" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>theyoloGod | Tampa Bay Raptors</div>
+        <div>2 | 3 hours ago </div>
+      </div>
+      <label for="osht9cv" class="commentText"><p>Makes sense. Raptors were totally a top 4 team this year</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="osi1xdq" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Dragonboy49</div>
+        <div>2 | an hour ago </div>
+      </div>
+      <label for="osi1xdq" class="commentText"><p>Wow this is very creative 👌 </p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="oshmmkr" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>LanceCourtSide</div>
+        <div>1 | 3 hours ago </div>
+      </div>
+      <label for="oshmmkr" class="commentText"><p>this is a sick deep cut for longtime nba fans. Kings holding the Belt through the 22 offseason is still one of my favorite obscure factoids about that era</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="oshxijc" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>cyanwaw | BOS</div>
+        <div>1 | 2 hours ago </div>
+      </div>
+      <label for="oshxijc" class="commentText"><p>Make this but for the real belt that the Spurs lost to some German team like a decade ago. Where even is it anyway?</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="osi9hkk" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ShawshankException | Knicks</div>
+        <div>1 | 28 minutes ago </div>
+      </div>
+      <label for="osi9hkk" class="commentText"><p>Fuck it, hang another banner</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="oshmtf8" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Smasher31232 | Knicks</div>
+        <div>-5 | 3 hours ago </div>
+      </div>
+      <label for="oshmtf8" class="commentText"><p>I don&rsquo;t think at any point in that wall of text you explain what one has to do to have the belt to begin with. Have the best record?</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="oshp6lx" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Gand0rk</div>
+        <div>5 | 3 hours ago </div>
+      </div>
+      <label for="oshp6lx" class="commentText"><p>&ldquo;If you beat the team with the Belt, you now own the Belt&rdquo;. 1st Paragraph</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="oshqjwf" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>spookyghostface | Hornets</div>
+        <div>2 | 3 hours ago </div>
+      </div>
+      <label for="oshqjwf" class="commentText"><p>I think they&rsquo;re asking how it originated. I think usually it starts with whoever won the first championship in the league. Then it gets passed around each win. Not totally sure that&rsquo;s what method is used here though. They might have just used the first game played in the starting season. </p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="oshpsmt" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Smasher31232 | Knicks</div>
+        <div>1 | 3 hours ago </div>
+      </div>
+      <label for="oshpsmt" class="commentText"><p>And how did the first team get the belt to begin with?</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="oshq8bx" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>bad_fortuneteller [OP]</div>
+        <div>6 | 3 hours ago </div>
+      </div>
+      <label for="oshq8bx" class="commentText"><p>Some people give it to whoever won the first NBA game (Knicks in 1946). I gave it to the Lakers in 1949 since that was the first season of the NBA and they won the previous BAA championship. Ultimately when you go that far back it doesn’t really matter who starts with it because at the end of the season the team who won the chip gets the Belt 90% of the time and it gets basically reset from there.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="oshqc5b" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Smasher31232 | Knicks</div>
+        <div>2 | 3 hours ago </div>
+      </div>
+      <label for="oshqc5b" class="commentText"><p>Got it, thank you.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="oshl217" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Emotional-Peanut-334</div>
+        <div>-14 | 3 hours ago </div>
+      </div>
+      <label for="oshl217" class="commentText"><p>Jesus wall of text</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="oshmceh" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Any-Simple-6570 | Toronto Huskies</div>
+        <div>4 | 3 hours ago </div>
+      </div>
+      <label for="oshmceh" class="commentText"><p>Illeterate ass</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="oshn1jz" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Confident_Ad_5345</div>
+        <div>2 | 3 hours ago </div>
+      </div>
+      <label for="oshn1jz" class="commentText"><p>if he could read this he’d be very upset</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="oshq1pu" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>spookyghostface | Hornets</div>
+        <div>1 | 3 hours ago </div>
+      </div>
+      <label for="oshq1pu" class="commentText"><p>Never read a book huh? </p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
