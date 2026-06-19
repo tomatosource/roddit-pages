@@ -1,0 +1,1514 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.selfPostImage {
+  width: 100%;
+  height: auto;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/nba/comments/1u9ydla/2026_nba_free_agency_contract_value_bigboard/"><p>2026 NBA Free Agency Contract Value BigBoard</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <p><a href="https://basketballvalues.com/2026-nba-free-agency-contract-value-board/" target="_blank">https://basketballvalues.com/2026-nba-free-agency-contract-value-board/</a></p>
+
+<p>AI summary of the article:</p>
+
+<p>I built a FairSalary model to estimate what players should be worth based on production, advanced impact, usage, efficiency, availability, and role.</p>
+
+<p>For this board, I used both the 2024-25 and 2025-26 seasons, then normalized the values to a projected 2026-27 salary cap.</p>
+
+<p><strong>Cap assumptions</strong></p>
+
+<table>
+<thead>
+<tr>
+<th align="left">Season</th>
+<th align="left">Salary cap</th>
+<th align="left">First apron</th>
+<th align="left">Second apron</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">2024-25</td>
+<td align="left">$140.6M</td>
+<td align="left">$178.1M</td>
+<td align="left">$188.9M</td>
+</tr>
+
+<tr>
+<td align="left">2025-26</td>
+<td align="left">$154.6M</td>
+<td align="left">$195.9M</td>
+<td align="left">$207.8M</td>
+</tr>
+
+<tr>
+<td align="left">2026-27 projected</td>
+<td align="left">$165.0M</td>
+<td align="left">$209.0M</td>
+<td align="left">$222.0M</td>
+</tr>
+</tbody>
+</table>
+<p>For most players, the two-year FairSalary signal is weighted:</p>
+
+<p>The goal is not to predict the exact contract. It is to ask: what should this player be worth?</p>
+
+<p><strong>Biggest takeaways</strong></p>
+
+<ul>
+<li>Austin Reaves looks like the strongest non-superstar contract case in the class. I have him as a near-max offensive starter, ideally around <strong>5 years, $190M</strong>, with an expected range of <strong>5 years, <span class="math inline">\(200M to \)</span>220M</strong>.</li>
+<li>Jalen Duren’s model value is massive, but the his archetype and playoff translation make me cautious about a full max. Ideal range: <strong><span class="math inline">\(37M to \)</span>41M per year</strong>.</li>
+<li>Harden and LeBron still grade like stars, but they should be short-term contracts because of age.</li>
+<li>Trae Young is still hard to price. His creation is elite, but he needs a specific roster build. Most likely outcome is an opt-in around <strong>$49M</strong>.</li>
+<li>The best value pockets are club-option bigs, two-way wings, defensive guards, and short veteran deals.</li>
+<li>Biggest overpay risks are expensive player options, one-way scoring guards, older names, and long-term money for players without secure playoff roles.</li>
+</ul>
+
+<p><strong>2026 free agency contract value board</strong></p>
+
+<table>
+<thead>
+<tr>
+<th align="left">Rank</th>
+<th align="left">Player</th>
+<th align="left">Ideal AAV</th>
+<th align="left">Expected outcome</th>
+<th align="left">Best value fit</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">1</td>
+<td align="left">Austin Reaves</td>
+<td align="left"><span class="math inline">\(38M to \)</span>41M</td>
+<td align="left">5 years, <span class="math inline">\(190M to \)</span>220M</td>
+<td align="left">Lakers</td>
+</tr>
+
+<tr>
+<td align="left">2</td>
+<td align="left">Jalen Duren</td>
+<td align="left"><span class="math inline">\(37M to \)</span>41M</td>
+<td align="left">5 years, <span class="math inline">\(180M to \)</span>205M</td>
+<td align="left">Pistons</td>
+</tr>
+
+<tr>
+<td align="left">3</td>
+<td align="left">James Harden</td>
+<td align="left"><span class="math inline">\(38M to \)</span>45M</td>
+<td align="left">2 years, <span class="math inline">\(85M to \)</span>95M</td>
+<td align="left">Cavaliers</td>
+</tr>
+
+<tr>
+<td align="left">4</td>
+<td align="left">LeBron James</td>
+<td align="left">$30M or less</td>
+<td align="left">1+1 year, around $30M annually</td>
+<td align="left">Lakers</td>
+</tr>
+
+<tr>
+<td align="left">5</td>
+<td align="left">Isaiah Hartenstein</td>
+<td align="left"><span class="math inline">\(28M to \)</span>32M</td>
+<td align="left">Option or extension</td>
+<td align="left">Thunder</td>
+</tr>
+
+<tr>
+<td align="left">6</td>
+<td align="left">Trae Young</td>
+<td align="left"><span class="math inline">\(35M to \)</span>42M</td>
+<td align="left">Opt in</td>
+<td align="left">Wizards</td>
+</tr>
+
+<tr>
+<td align="left">7</td>
+<td align="left">Kristaps Porzingis</td>
+<td align="left"><span class="math inline">\(24M to \)</span>30M</td>
+<td align="left">Short protected deal</td>
+<td align="left">Warriors</td>
+</tr>
+
+<tr>
+<td align="left">8</td>
+<td align="left">Walker Kessler</td>
+<td align="left"><span class="math inline">\(23M to \)</span>27M</td>
+<td align="left">4 years, <span class="math inline">\(100M to \)</span>120M</td>
+<td align="left">Lakers</td>
+</tr>
+
+<tr>
+<td align="left">9</td>
+<td align="left">Mark Williams</td>
+<td align="left"><span class="math inline">\(20M to \)</span>24M</td>
+<td align="left">4 years, <span class="math inline">\(85M to \)</span>100M</td>
+<td align="left">Suns</td>
+</tr>
+
+<tr>
+<td align="left">10</td>
+<td align="left">Norman Powell</td>
+<td align="left"><span class="math inline">\(18M to \)</span>22M</td>
+<td align="left">2 years, <span class="math inline">\(40M to \)</span>48M</td>
+<td align="left">Heat</td>
+</tr>
+
+<tr>
+<td align="left">11</td>
+<td align="left">Tobias Harris</td>
+<td align="left"><span class="math inline">\(16M to \)</span>20M</td>
+<td align="left">2 years, <span class="math inline">\(36M to \)</span>44M</td>
+<td align="left">Pistons</td>
+</tr>
+
+<tr>
+<td align="left">12</td>
+<td align="left">C.J. McCollum</td>
+<td align="left"><span class="math inline">\(14M to \)</span>18M</td>
+<td align="left">1 year, <span class="math inline">\(18M to \)</span>22M</td>
+<td align="left">Hawks</td>
+</tr>
+
+<tr>
+<td align="left">13</td>
+<td align="left">Ayo Dosunmu</td>
+<td align="left"><span class="math inline">\(14M to \)</span>17M</td>
+<td align="left">3 years, <span class="math inline">\(48M to \)</span>57M</td>
+<td align="left">Timberwolves</td>
+</tr>
+
+<tr>
+<td align="left">14</td>
+<td align="left">Mitchell Robinson</td>
+<td align="left">Around $15M</td>
+<td align="left">2 years, around $35M</td>
+<td align="left">Knicks</td>
+</tr>
+
+<tr>
+<td align="left">15</td>
+<td align="left">Robert Williams III</td>
+<td align="left"><span class="math inline">\(10M to \)</span>15M</td>
+<td align="left">Protected short deal</td>
+<td align="left">Contender</td>
+</tr>
+
+<tr>
+<td align="left">16</td>
+<td align="left">Tari Eason</td>
+<td align="left"><span class="math inline">\(15M to \)</span>20M</td>
+<td align="left">4 years, <span class="math inline">\(65M to \)</span>85M</td>
+<td align="left">Lakers</td>
+</tr>
+
+<tr>
+<td align="left">17</td>
+<td align="left">Peyton Watson</td>
+<td align="left"><span class="math inline">\(14M to \)</span>18M</td>
+<td align="left">4 years, <span class="math inline">\(80M to \)</span>100M</td>
+<td align="left">Nuggets</td>
+</tr>
+
+<tr>
+<td align="left">18</td>
+<td align="left">Bennedict Mathurin</td>
+<td align="left"><span class="math inline">\(15M to \)</span>18M</td>
+<td align="left">4 years, <span class="math inline">\(80M to \)</span>100M</td>
+<td align="left">Clippers</td>
+</tr>
+
+<tr>
+<td align="left">19</td>
+<td align="left">Anfernee Simons</td>
+<td align="left"><span class="math inline">\(16M to \)</span>20M</td>
+<td align="left">3 years, <span class="math inline">\(60M to \)</span>75M</td>
+<td align="left">Magic</td>
+</tr>
+
+<tr>
+<td align="left">20</td>
+<td align="left">Coby White</td>
+<td align="left"><span class="math inline">\(18M to \)</span>22M</td>
+<td align="left">4 years, <span class="math inline">\(80M to \)</span>96M</td>
+<td align="left">Hornets</td>
+</tr>
+
+<tr>
+<td align="left">21</td>
+<td align="left">Collin Sexton</td>
+<td align="left"><span class="math inline">\(14M to \)</span>18M</td>
+<td align="left">3 years, <span class="math inline">\(45M to \)</span>55M</td>
+<td align="left">Heat or Magic</td>
+</tr>
+
+<tr>
+<td align="left">22</td>
+<td align="left">John Collins</td>
+<td align="left"><span class="math inline">\(12M to \)</span>16M</td>
+<td align="left">3 years, <span class="math inline">\(39M to \)</span>48M</td>
+<td align="left">Bulls or Hornets</td>
+</tr>
+
+<tr>
+<td align="left">23</td>
+<td align="left">Deandre Ayton</td>
+<td align="left"><span class="math inline">\(12M to \)</span>16M</td>
+<td align="left">2 years, <span class="math inline">\(30M to \)</span>36M</td>
+<td align="left">Lakers</td>
+</tr>
+
+<tr>
+<td align="left">24</td>
+<td align="left">Luguentz Dort</td>
+<td align="left"><span class="math inline">\(10M to \)</span>14M</td>
+<td align="left">Option or rework</td>
+<td align="left">Thunder</td>
+</tr>
+
+<tr>
+<td align="left">25</td>
+<td align="left">Quentin Grimes</td>
+<td align="left"><span class="math inline">\(10M to \)</span>15M</td>
+<td align="left">3 years, <span class="math inline">\(33M to \)</span>45M</td>
+<td align="left">Lakers</td>
+</tr>
+
+<tr>
+<td align="left">26</td>
+<td align="left">Dean Wade</td>
+<td align="left"><span class="math inline">\(10M to \)</span>13M</td>
+<td align="left">2 years, <span class="math inline">\(22M to \)</span>28M</td>
+<td align="left">Cavaliers</td>
+</tr>
+
+<tr>
+<td align="left">27</td>
+<td align="left">Luke Kennard</td>
+<td align="left"><span class="math inline">\(8M to \)</span>12M</td>
+<td align="left">2 years, <span class="math inline">\(18M to \)</span>24M</td>
+<td align="left">Lakers or Spurs</td>
+</tr>
+
+<tr>
+<td align="left">28</td>
+<td align="left">Kevin Huerter</td>
+<td align="left"><span class="math inline">\(10M to \)</span>14M</td>
+<td align="left">2 years, <span class="math inline">\(22M to \)</span>28M</td>
+<td align="left">Pistons</td>
+</tr>
+
+<tr>
+<td align="left">29</td>
+<td align="left">Rui Hachimura</td>
+<td align="left"><span class="math inline">\(10M to \)</span>14M</td>
+<td align="left">2 years, <span class="math inline">\(24M to \)</span>32M</td>
+<td align="left">Lakers</td>
+</tr>
+
+<tr>
+<td align="left">30</td>
+<td align="left">Nikola Vucevic</td>
+<td align="left"><span class="math inline">\(12M to \)</span>16M</td>
+<td align="left">1 to 2 years</td>
+<td align="left">Celtics</td>
+</tr>
+
+<tr>
+<td align="left">31</td>
+<td align="left">Fred VanVleet</td>
+<td align="left"><span class="math inline">\(18M to \)</span>24M</td>
+<td align="left">Opt in or short rework</td>
+<td align="left">Rockets</td>
+</tr>
+
+<tr>
+<td align="left">32</td>
+<td align="left">Jonathan Kuminga</td>
+<td align="left"><span class="math inline">\(12M to \)</span>16M</td>
+<td align="left">Option or rework</td>
+<td align="left">Hawks</td>
+</tr>
+
+<tr>
+<td align="left">33</td>
+<td align="left">Sandro Mamukelashvili</td>
+<td align="left"><span class="math inline">\(8M to \)</span>14M</td>
+<td align="left">2 years, <span class="math inline">\(20M to \)</span>28M</td>
+<td align="left">Raptors</td>
+</tr>
+
+<tr>
+<td align="left">34</td>
+<td align="left">Neemias Queta</td>
+<td align="left"><span class="math inline">\(10M to \)</span>15M if UFA</td>
+<td align="left">Option</td>
+<td align="left">Celtics</td>
+</tr>
+
+<tr>
+<td align="left">35</td>
+<td align="left">Day’Ron Sharpe</td>
+<td align="left"><span class="math inline">\(8M to \)</span>12M</td>
+<td align="left">Option</td>
+<td align="left">Nets</td>
+</tr>
+
+<tr>
+<td align="left">36</td>
+<td align="left">Keon Ellis</td>
+<td align="left"><span class="math inline">\(6M to \)</span>10M</td>
+<td align="left">2 years, <span class="math inline">\(14M to \)</span>20M</td>
+<td align="left">Cavaliers or Lakers</td>
+</tr>
+
+<tr>
+<td align="left">37</td>
+<td align="left">Kelly Oubre Jr.</td>
+<td align="left"><span class="math inline">\(6M to \)</span>10M</td>
+<td align="left">1 to 2 years</td>
+<td align="left">76ers</td>
+</tr>
+
+<tr>
+<td align="left">38</td>
+<td align="left">Simone Fontecchio</td>
+<td align="left"><span class="math inline">\(7M to \)</span>10M</td>
+<td align="left">2 years, <span class="math inline">\(14M to \)</span>20M</td>
+<td align="left">Heat</td>
+</tr>
+
+<tr>
+<td align="left">39</td>
+<td align="left">Jaxson Hayes</td>
+<td align="left"><span class="math inline">\(6M to \)</span>10M</td>
+<td align="left">1 to 2 years</td>
+<td align="left">Lakers</td>
+</tr>
+
+<tr>
+<td align="left">40</td>
+<td align="left">Zach Collins</td>
+<td align="left"><span class="math inline">\(5M to \)</span>8M</td>
+<td align="left">1 to 2 years</td>
+<td align="left">Bulls</td>
+</tr>
+
+<tr>
+<td align="left">41</td>
+<td align="left">Jock Landale</td>
+<td align="left"><span class="math inline">\(5M to \)</span>8M</td>
+<td align="left">1 to 2 years</td>
+<td align="left">Hawks</td>
+</tr>
+
+<tr>
+<td align="left">42</td>
+<td align="left">Matisse Thybulle</td>
+<td align="left"><span class="math inline">\(4M to \)</span>7M</td>
+<td align="left">1 year</td>
+<td align="left">Blazers or Lakers</td>
+</tr>
+
+<tr>
+<td align="left">43</td>
+<td align="left">Gary Payton II</td>
+<td align="left"><span class="math inline">\(4M to \)</span>7M</td>
+<td align="left">1 year</td>
+<td align="left">Warriors</td>
+</tr>
+
+<tr>
+<td align="left">44</td>
+<td align="left">Jordan Goodwin</td>
+<td align="left"><span class="math inline">\(4M to \)</span>7M</td>
+<td align="left">1 year</td>
+<td align="left">Suns</td>
+</tr>
+
+<tr>
+<td align="left">45</td>
+<td align="left">Collin Gillespie</td>
+<td align="left"><span class="math inline">\(6M to \)</span>10M</td>
+<td align="left">1 to 2 years</td>
+<td align="left">Suns</td>
+</tr>
+
+<tr>
+<td align="left">46</td>
+<td align="left">Marcus Smart</td>
+<td align="left"><span class="math inline">\(6M to \)</span>10M</td>
+<td align="left">Option or short deal</td>
+<td align="left">Lakers</td>
+</tr>
+
+<tr>
+<td align="left">47</td>
+<td align="left">Bruce Brown Jr.</td>
+<td align="left"><span class="math inline">\(5M to \)</span>8M</td>
+<td align="left">1 year</td>
+<td align="left">Nuggets or Heat</td>
+</tr>
+
+<tr>
+<td align="left">48</td>
+<td align="left">Harrison Barnes</td>
+<td align="left"><span class="math inline">\(8M to \)</span>12M</td>
+<td align="left">1 to 2 years</td>
+<td align="left">Spurs</td>
+</tr>
+
+<tr>
+<td align="left">49</td>
+<td align="left">Al Horford</td>
+<td align="left"><span class="math inline">\(5M to \)</span>8M</td>
+<td align="left">Option or retirement</td>
+<td align="left">Warriors or Celtics</td>
+</tr>
+
+<tr>
+<td align="left">50</td>
+<td align="left">Cam Thomas</td>
+<td align="left"><span class="math inline">\(8M to \)</span>10M</td>
+<td align="left">1-year prove-it</td>
+<td align="left">Bucks or Nets</td>
+</tr>
+
+<tr>
+<td align="left">51</td>
+<td align="left">Kevin Porter Jr.</td>
+<td align="left"><span class="math inline">\(8M to \)</span>14M</td>
+<td align="left">Short prove-it</td>
+<td align="left">Bucks or Clippers</td>
+</tr>
+
+<tr>
+<td align="left">52</td>
+<td align="left">Gary Trent Jr.</td>
+<td align="left"><span class="math inline">\(4M to \)</span>8M</td>
+<td align="left">Option or short deal</td>
+<td align="left">Bucks</td>
+</tr>
+
+<tr>
+<td align="left">53</td>
+<td align="left">Seth Curry</td>
+<td align="left"><span class="math inline">\(4M to \)</span>6M</td>
+<td align="left">1 year</td>
+<td align="left">Warriors or Hornets</td>
+</tr>
+
+<tr>
+<td align="left">54</td>
+<td align="left">Tim Hardaway Jr.</td>
+<td align="left"><span class="math inline">\(5M to \)</span>7M</td>
+<td align="left">1 year</td>
+<td align="left">Nuggets</td>
+</tr>
+
+<tr>
+<td align="left">55</td>
+<td align="left">Russell Westbrook</td>
+<td align="left">Minimum to $4M</td>
+<td align="left">1 year</td>
+<td align="left">Kings or Clippers</td>
+</tr>
+
+<tr>
+<td align="left">56</td>
+<td align="left">Kelly Olynyk</td>
+<td align="left">Minimum to $4M</td>
+<td align="left">1 year</td>
+<td align="left">Spurs</td>
+</tr>
+
+<tr>
+<td align="left">57</td>
+<td align="left">Andre Drummond</td>
+<td align="left"><span class="math inline">\(3M to \)</span>5M</td>
+<td align="left">1 year</td>
+<td align="left">76ers</td>
+</tr>
+
+<tr>
+<td align="left">58</td>
+<td align="left">Tyus Jones</td>
+<td align="left"><span class="math inline">\(4M to \)</span>6M</td>
+<td align="left">1 year</td>
+<td align="left">Nuggets or Lakers</td>
+</tr>
+
+<tr>
+<td align="left">59</td>
+<td align="left">Kyle Anderson</td>
+<td align="left"><span class="math inline">\(4M to \)</span>7M</td>
+<td align="left">1 year</td>
+<td align="left">Wolves or Spurs</td>
+</tr>
+
+<tr>
+<td align="left">60</td>
+<td align="left">Khris Middleton</td>
+<td align="left"><span class="math inline">\(5M to \)</span>9M</td>
+<td align="left">1 year</td>
+<td align="left">Mavericks or Bucks</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Most interesting option decisions</strong></p>
+
+<table>
+<thead>
+<tr>
+<th align="left">Player</th>
+<th align="left">Option context</th>
+<th align="left">My read</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">Zach LaVine</td>
+<td align="left">Around $49M player option</td>
+<td align="left">Should opt in, not close to market value</td>
+</tr>
+
+<tr>
+<td align="left">Andrew Wiggins</td>
+<td align="left">Around $30.2M player option</td>
+<td align="left">Should opt in, useful but overpaid</td>
+</tr>
+
+<tr>
+<td align="left">Draymond Green</td>
+<td align="left">Around $27.7M player option</td>
+<td align="left">Should opt in, system value more than market value</td>
+</tr>
+
+<tr>
+<td align="left">KCP</td>
+<td align="left">Around $21.6M player option</td>
+<td align="left">Should opt in, possible buyout candidate</td>
+</tr>
+
+<tr>
+<td align="left">Fred VanVleet</td>
+<td align="left">Around $25M player option</td>
+<td align="left">Opt in or short rework</td>
+</tr>
+
+<tr>
+<td align="left">Isaiah Hartenstein</td>
+<td align="left">Around $28.5M club option</td>
+<td align="left">Pick up or extend</td>
+</tr>
+
+<tr>
+<td align="left">Jonathan Kuminga</td>
+<td align="left">Around $24.3M club option</td>
+<td align="left">Rework preferred</td>
+</tr>
+
+<tr>
+<td align="left">Neemias Queta</td>
+<td align="left">Around $2.7M club option</td>
+<td align="left">Easy pick up</td>
+</tr>
+
+<tr>
+<td align="left">Day’Ron Sharpe</td>
+<td align="left">Around $6.3M club option</td>
+<td align="left">Easy pick up</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Favorite value bets</strong></p>
+
+<ul>
+<li>Austin Reaves below the full max</li>
+<li>Isaiah Hartenstein around $30M</li>
+<li>Ayo Dosunmu around <span class="math inline">\(16M to \)</span>17M</li>
+<li>Quentin Grimes around <span class="math inline">\(12M to \)</span>14M</li>
+<li>Dean Wade around <span class="math inline">\(11M to \)</span>12M</li>
+<li>Neemias Queta on his club option</li>
+<li>Day’Ron Sharpe on his club option</li>
+<li>Robert Williams on a protected short deal</li>
+<li>Keon Ellis below $10M</li>
+<li>Sandro Mamukelashvili below $14M</li>
+</ul>
+
+<p><strong>Biggest overpay risks</strong></p>
+
+<ul>
+<li>Zach LaVine at $49M</li>
+<li>Draymond Green at $27.7M</li>
+<li>KCP at $21.6M</li>
+<li>Coby White above $25M per year</li>
+<li>Anfernee Simons above $25M per year</li>
+<li>Jonathan Kuminga at long-term option-level money</li>
+</ul>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="osjvqft" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>EmpressBarbiex</div>
+        <div>34 | 3 hours ago </div>
+      </div>
+      <label for="osjvqft" class="commentText"><p>This is the kind of OC that makes this sub great. Nice work!</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="osjwern" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Financial-Monk9400 [OP] | Lakers</div>
+        <div>14 | 3 hours ago </div>
+      </div>
+      <label for="osjwern" class="commentText"><p>thank you!</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="osjvvei" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Guilty_Lab_9508 | Thunder</div>
+        <div>-16 | 3 hours ago </div>
+      </div>
+      <label for="osjvvei" class="commentText"><p>What’s original about its? It’s literally copy and paste AI garbage.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="osjwe5r" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Financial-Monk9400 [OP] | Lakers</div>
+        <div>13 | 3 hours ago </div>
+      </div>
+      <label for="osjwe5r" class="commentText"><p>I made the full model myself, wrote the article myself and made a quick ai summary because it would be way to long for a full reddit post otherwise. But the actual model and numbers are not made by ai</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="oskk2f1" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>barkinginthestreet</div>
+        <div>1 | 24 minutes ago </div>
+      </div>
+      <label for="oskk2f1" class="commentText"><p>would suggest reporting, the article itself seems fine but we need to ban slop from this subreddit.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="oskkv6l" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Guilty_Lab_9508 | Thunder</div>
+        <div>1 | 20 minutes ago </div>
+      </div>
+      <label for="oskkv6l" class="commentText"><p>Well I’m being downvoted, so it appears that slop is being encouraged.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="osjvvsi" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Expensive_Theme9394</div>
+        <div>16 | 3 hours ago </div>
+      </div>
+      <label for="osjvvsi" class="commentText"><p>This is actually sick work. The big takeaway for me is just how underpaid a bunch of high end role guys are compared to the fake “stars” who eat max slots for mid impact.</p>
+
+<p>Also makes it way easier to sanity check future contracts. Like if a GM gives someone 2x their FairSalary after this drops, we all get to clown them in real time 😂</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="osjwh9k" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Financial-Monk9400 [OP] | Lakers</div>
+        <div>1 | 3 hours ago </div>
+      </div>
+      <label for="osjwh9k" class="commentText"><p>haha I hope that happens that would be cool 😄</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="osjw2ra" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>SilvioMascalzone</div>
+        <div>8 | 3 hours ago </div>
+      </div>
+      <label for="osjw2ra" class="commentText"><p>Reeves on $35-40M isn’t crazy if the Lakers add a couple of pieces. There’s still flexibility if they want to trade him next year and he continues to show he can run an offence. </p>
+
+<p>The Lakers need to plan for <sup>28</sup>&frasl;<sub>29</sub> and paying and keeping Reeves allows that. </p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="oski0mf" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>XboxSeriesCancelled | Knicks</div>
+        <div>4 | 35 minutes ago </div>
+      </div>
+      <label for="oski0mf" class="commentText"><p>Imagine trading for a top 10 player in the league in 2025 then saying that the real planning begins 4 seasons from then</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="osjwlm2" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Financial-Monk9400 [OP] | Lakers</div>
+        <div>3 | 3 hours ago </div>
+      </div>
+      <label for="osjwlm2" class="commentText"><p>yeah I agree, especually if you front load the contract because for this season they operate only with him at a 20 million caphold</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="osjx01o" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>SilvioMascalzone</div>
+        <div>2 | 3 hours ago </div>
+      </div>
+      <label for="osjx01o" class="commentText"><p>And seriously. Some max contracts will be 70-80M shortly and if they give him 5 years, maybe even higher toward the end. Given what he’s showed, it’s a great deal for the lakers, it’s just a bad lineup on paper with the three stars being poor defensively. </p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="oskagzn" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>OliviaHoops</div>
+        <div>5 | an hour ago </div>
+      </div>
+      <label for="oskagzn" class="commentText"><p>interesting model — weighting both seasons makes sense since one hot or injured year can really skew the picture. curious how the formula treats guys who missed significant time but were elite when available</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="oskbo5v" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Financial-Monk9400 [OP] | Lakers</div>
+        <div>2 | an hour ago </div>
+      </div>
+      <label for="oskbo5v" class="commentText"><p>Thank you!</p>
+
+<p>It disvalues them a bit but still shows they were great. I am thinking of also adding totals somewhere in the formula to show availability a bit better. But not sure yet as that might also cause someone who plays 82 games to have a higher value than someone who played 60 but is clearly better.</p>
+
+<p>For mow, embiid was valued at 49 million based on last season. Clearly lower than his max but for 38 games still a bit high.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="osjvxex" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Empressmermaidx</div>
+        <div>4 | 3 hours ago </div>
+      </div>
+      <label for="osjvxex" class="commentText"><p>Love seeing data-driven takes instead of hot takes.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="osjwhvf" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Financial-Monk9400 [OP] | Lakers</div>
+        <div>2 | 3 hours ago </div>
+      </div>
+      <label for="osjwhvf" class="commentText"><p>thank you!</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="osk5ufh" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>geroll | Knicks</div>
+        <div>5 | 2 hours ago </div>
+      </div>
+      <label for="osk5ufh" class="commentText"><p>Where is Shamet?</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="osk7d6b" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Financial-Monk9400 [OP] | Lakers</div>
+        <div>1 | 2 hours ago </div>
+      </div>
+      <label for="osk7d6b" class="commentText"><p>That is a good question. He should be in there. I remember checking him. I think I accidentally deleted him</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="osk7twd" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Financial-Monk9400 [OP] | Lakers</div>
+        <div>1 | 2 hours ago </div>
+      </div>
+      <label for="osk7twd" class="commentText"><p>Looked up hos fairsalary number. Thats would be around 5 million</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="osk9rwe" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>geroll | Knicks</div>
+        <div>4 | an hour ago </div>
+      </div>
+      <label for="osk9rwe" class="commentText"><p>Thanks! Seems low compared to the playoff performance he put on -  I wonder how highly that will be valued</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="oskanqw" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Financial-Monk9400 [OP] | Lakers</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="oskanqw" class="commentText"><p>Yeah the model is based on the regular season. I think I might make a playoff version as well to see how that changes things, but that is a bit harder because of the smaller sample sizes and differences in games played etc</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="oskatt5" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Technical_Leader8250</div>
+        <div>3 | an hour ago </div>
+      </div>
+      <label for="oskatt5" class="commentText"><p>I understand why westbrook is min-4mio but still surprises me every time I see him so low on lists.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="oske4h7" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Financial-Monk9400 [OP] | Lakers</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="oske4h7" class="commentText"><p>Same for sure.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="osjy70s" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ILikeWhyteGirlz</div>
+        <div>3 | 3 hours ago </div>
+      </div>
+      <label for="osjy70s" class="commentText"><p>What’s AAV</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="osjymro" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Financial-Monk9400 [OP] | Lakers</div>
+        <div>3 | 3 hours ago </div>
+      </div>
+      <label for="osjymro" class="commentText"><p>Average annual value</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="osk7awc" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Clithzbee | Cavaliers</div>
+        <div>3 | 2 hours ago </div>
+      </div>
+      <label for="osk7awc" class="commentText"><p>Rui under Kevin Huerter?</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="oskdg1w" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Financial-Monk9400 [OP] | Lakers</div>
+        <div>2 | an hour ago </div>
+      </div>
+      <label for="oskdg1w" class="commentText"><p>Yeah thats one of those things where it isnt perfect. Though it does still put rui as slighly better. Right now the model only looks at regular season stats, for now. And rui had bad advanced numbers this season, in part because the lakers ran him in a few lineups that didn&rsquo;t fit his skillset. Which tanked his value a bit. And their regular season numbers were somewhat similar. Rui was obviously more efficiënt scoring wise, but huerter had more assists, rebounds, steals, blocks etc.</p>
+
+<p>Rui would get more from a team right now ofcourse</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="oskcpx8" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>shangalang69 | Raptors</div>
+        <div>3 | an hour ago </div>
+      </div>
+      <label for="oskcpx8" class="commentText"><p>a lakers flair making this and putting ayton’s ideal salary at 12-16m is fucking hilarious</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="oskdw2r" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Financial-Monk9400 [OP] | Lakers</div>
+        <div>2 | an hour ago </div>
+      </div>
+      <label for="oskdw2r" class="commentText"><p>I think lakers should not offer him that. This is purely numbers based. I didn&rsquo;t let my emotions judge that.</p>
+
+<p>And to be fair to ayton. He was very efficiënt and not a bad defender. He was just very inconsistent. Wouldn&rsquo;t be shocked if he would get 12 million in the open market at all</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="oske99g" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>shangalang69 | Raptors</div>
+        <div>2 | an hour ago </div>
+      </div>
+      <label for="oske99g" class="commentText"><p>i would be lol</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="oskg5o4" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Financial-Monk9400 [OP] | Lakers</div>
+        <div>2 | an hour ago </div>
+      </div>
+      <label for="oskg5o4" class="commentText"><p>I get that. But honestly 12 million isn&rsquo;t that much anymore  by nba standards</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="oskmgis" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>HorizonsEdge</div>
+        <div>1 | 11 minutes ago </div>
+      </div>
+      <label for="oskmgis" class="commentText"><p>12m purchase of cancer?</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="oskg6t2" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Sci-Fy_JK13</div>
+        <div>3 | an hour ago </div>
+      </div>
+      <label for="oskg6t2" class="commentText"><p>Mamu! I always loved watching him on the Spurs and was glad to see him cement a role with the Raptors this past year.  He always seemed way better than his numbers; the ball just popped around when he was on the floor.</p>
+
+<p>Glad to see I&rsquo;m not crazy.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="oskhiih" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Financial-Monk9400 [OP] | Lakers</div>
+        <div>1 | 38 minutes ago </div>
+      </div>
+      <label for="oskhiih" class="commentText"><p>You are definately not alone. His number are great! Interested to see what he will get</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
