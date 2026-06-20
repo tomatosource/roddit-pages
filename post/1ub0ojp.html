@@ -1,0 +1,750 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.selfPostImage {
+  width: 100%;
+  height: auto;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/nba/comments/1ub0ojp/since_2009_only_one_player_drafted_in_an/"><p>Since 2009 only one player drafted in an even-numbered position got Finals MVP</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <ul>
+<li>KD is the only Finals MVP since 2009 who was drafted in an even-numbered draft spot.</li>
+<li>It&rsquo;s not even the #1 pick hegemony &ndash; LeBron&rsquo;s the only first pick to win it in that time span.</li>
+</ul>
+
+<table>
+<thead>
+<tr>
+<th align="left">Year</th>
+<th align="left">Player</th>
+<th align="left">Draft position</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">2026</td>
+<td align="left">Jalen Brunson</td>
+<td align="left">33</td>
+</tr>
+
+<tr>
+<td align="left">2025</td>
+<td align="left">Shai Gilgeous-Alexander</td>
+<td align="left">11</td>
+</tr>
+
+<tr>
+<td align="left">2024</td>
+<td align="left">Jaylen Brown</td>
+<td align="left">3</td>
+</tr>
+
+<tr>
+<td align="left">2023</td>
+<td align="left">Nikola Jokić</td>
+<td align="left">41</td>
+</tr>
+
+<tr>
+<td align="left">2022</td>
+<td align="left">Steph Curry</td>
+<td align="left">7</td>
+</tr>
+
+<tr>
+<td align="left">2021</td>
+<td align="left">Giannis Antetokounmpo</td>
+<td align="left">15</td>
+</tr>
+
+<tr>
+<td align="left">2020</td>
+<td align="left">LeBron</td>
+<td align="left">1</td>
+</tr>
+
+<tr>
+<td align="left">2019</td>
+<td align="left">Kawhi Leonard</td>
+<td align="left">15</td>
+</tr>
+
+<tr>
+<td align="left">2018</td>
+<td align="left">Kevin Durant</td>
+<td align="left">2</td>
+</tr>
+
+<tr>
+<td align="left">2017</td>
+<td align="left">Kevin Durant</td>
+<td align="left">2</td>
+</tr>
+
+<tr>
+<td align="left">2016</td>
+<td align="left">LeBron</td>
+<td align="left">1</td>
+</tr>
+
+<tr>
+<td align="left">2015</td>
+<td align="left">Andre Iguodala</td>
+<td align="left">9</td>
+</tr>
+
+<tr>
+<td align="left">2014</td>
+<td align="left">Kawhi Leonard</td>
+<td align="left">15</td>
+</tr>
+
+<tr>
+<td align="left">2013</td>
+<td align="left">LeBron</td>
+<td align="left">1</td>
+</tr>
+
+<tr>
+<td align="left">2012</td>
+<td align="left">LeBron</td>
+<td align="left">1</td>
+</tr>
+
+<tr>
+<td align="left">2011</td>
+<td align="left">Dirk Nowitzki</td>
+<td align="left">9</td>
+</tr>
+
+<tr>
+<td align="left">2010</td>
+<td align="left">Kobe Bryant</td>
+<td align="left">13</td>
+</tr>
+
+<tr>
+<td align="left">2009</td>
+<td align="left">Kobe Bryant</td>
+<td align="left">13</td>
+</tr>
+</tbody>
+</table>
+<p>Why the cut-off at 2009? Why, because 2008 and 2007 Finals MVPs were Paul Pierce (#10), and Tony Parker (#28), of course. But even before that it was D-Wade (#5), Duncan (#1), and Chauncey Billups (#3), so nyeh. And even before <em>that</em> it was a bunch of first overalls and MJ (#3).</p>
+
+<p>You&rsquo;re welcome, Jazz fans!</p>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ossd5o5" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>broncofan1347</div>
+        <div>1 | 31 minutes ago </div>
+      </div>
+      <label for="ossd5o5" class="commentText"><p>Offseason posts are in full swing boys </p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="osse2z9" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Informal_Support1934</div>
+        <div>1 | 27 minutes ago </div>
+      </div>
+      <label for="osse2z9" class="commentText"><p>I don&rsquo;t care what anyone says, someone needs to put the MITWestbrook signal in the sky.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="ossfg0j" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>SelfAwareSausage | Lakers</div>
+        <div>1 | 20 minutes ago </div>
+      </div>
+      <label for="ossfg0j" class="commentText"><p>“Here’s how every team can win the NBA Championship with Westbrook as their primary ball handler”</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ossd423" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Guilty-Cow4325 | Knicks</div>
+        <div>1 | 31 minutes ago </div>
+      </div>
+      <label for="ossd423" class="commentText"><p>This is why you don&rsquo;t go against the odds, the house will always win.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="ossda7q" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Dinobot2_ | Raptors</div>
+        <div>1 | 31 minutes ago </div>
+      </div>
+      <label for="ossda7q" class="commentText"><p>I see what you did there!</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ossdmfm" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Firm_Environment9903</div>
+        <div>1 | 29 minutes ago </div>
+      </div>
+      <label for="ossdmfm" class="commentText"><p>This is the kind of autism I come here for</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="ossdsxs" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>cemereth [OP]</div>
+        <div>1 | 28 minutes ago </div>
+      </div>
+      <label for="ossdsxs" class="commentText"><p>Plenty more where that came from!</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ossdfk0" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>polandspreeng | NYK</div>
+        <div>1 | 30 minutes ago </div>
+      </div>
+      <label for="ossdfk0" class="commentText"><p>Surprisingly the last first overall was LeBron</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ossdhoh" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Jackburton06</div>
+        <div>1 | 30 minutes ago </div>
+      </div>
+      <label for="ossdhoh" class="commentText"><p>Time to close reddit i guess</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ossd829" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>longdogagain</div>
+        <div>1 | 31 minutes ago </div>
+      </div>
+      <label for="ossd829" class="commentText"><p>Welcome to the offseason, fellas</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ossefjs" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>GloryMaelstrom21 | NBA</div>
+        <div>1 | 25 minutes ago </div>
+      </div>
+      <label for="ossefjs" class="commentText"><p>Even the odds are in their favor&hellip;</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ossft5n" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>KnicksWatch</div>
+        <div>1 | 18 minutes ago </div>
+      </div>
+      <label for="ossft5n" class="commentText"><p>this is such an insane stat lol. brunson at 33 being the most recent one is wild — dude was a second rounder putting up fmvp numbers</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="ossgk29" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>cemereth [OP]</div>
+        <div>1 | 14 minutes ago </div>
+      </div>
+      <label for="ossgk29" class="commentText"><p>Two second-rounders in recent history, and half of the past eight FMVPs being drafted outside the lottery! That would have probably been a slightly more high-brow r/nba post. Alas.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ossfuu0" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Bex1218 | Knicks</div>
+        <div>1 | 18 minutes ago </div>
+      </div>
+      <label for="ossfuu0" class="commentText"><p>I will always say this, I love obscure sports facts. They make great trivia questions.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ossi7zd" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>intern3t | Celtics</div>
+        <div>1 | 6 minutes ago </div>
+      </div>
+      <label for="ossi7zd" class="commentText"><p>Thanks for this.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ossdfdl" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Fede113</div>
+        <div>1 | 30 minutes ago </div>
+      </div>
+      <label for="ossdfdl" class="commentText"><p>super relevant stat, thanks for sharing&hellip; said no one ever.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="ossi0ua" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>wistful_grace | Raptors</div>
+        <div>1 | 7 minutes ago </div>
+      </div>
+      <label for="ossi0ua" class="commentText"><p>bro its just a fun fact chill</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="ossiou4" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Fede113</div>
+        <div>1 | 4 minutes ago </div>
+      </div>
+      <label for="ossiou4" class="commentText"><p>Agreed haha</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ossdn5j" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Jack__Flap</div>
+        <div>1 | 29 minutes ago </div>
+      </div>
+      <label for="ossdn5j" class="commentText"><p>illuminati</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="osse2sv" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>part_time_monster</div>
+        <div>1 | 27 minutes ago </div>
+      </div>
+      <label for="osse2sv" class="commentText"><p>Bill Simmons, is that you?</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="osse6vz" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Scared_Ad_1508</div>
+        <div>1 | 26 minutes ago </div>
+      </div>
+      <label for="osse6vz" class="commentText"><p>These are the advanced analytics I&rsquo;m looking for</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ossf9s8" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>PantherDog52</div>
+        <div>1 | 21 minutes ago </div>
+      </div>
+      <label for="ossf9s8" class="commentText"><p>If you don’t love that, you don’t love off-season basketball</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
