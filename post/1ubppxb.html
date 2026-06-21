@@ -1,0 +1,428 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.selfPostImage {
+  width: 100%;
+  height: auto;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/PathOfExile2/comments/1ubppxb/steam_disabling_shaders_precaching_fixed_my/"><p>[Steam] Disabling shaders pre-caching fixed my shader compilation issues</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <p>Hey guys,</p>
+
+<p>As many of you, I have also been struggling with constant shaders recompilation issues. I&rsquo;m using the Steam version of PoE2 with RTX 4070, I&rsquo;m playing both PoE1 and PoE2 (re: Nvidia profiles app names thing), moved my cache directories to SSD M2 with hardlinks, disabled DLSS, dynamic resolution, etc. And still, at game reboot it would still recompile the shaders, hogging CPU etc.</p>
+
+<p>I&rsquo;ve decided to fetch Process Monitor program to see where things are really being written. Despite the DXCache/GLCache/ShaderCacheVulkan directories <em>having</em> some entries, I have noticed the game is still executing <em>a ton</em> of writes to the <code>steamapps/shadercache/2694490/nvidiav1/GLCache/&amp;lt;hash&amp;gt;/&amp;lt;hash&amp;gt;/steamapp_shader_cache0.bin</code> file (which is already 60GB for me). After a bit of googling, the internet says this is created by Steam shader pre-caching FOR DOWNLOADING games. <strong>For some reason, PoE2 uses this path during runtime, too</strong>.</p>
+
+<p>After disabling the Steam shaders pre-caching globally (AFAIR can&rsquo;t do manually, per-app), via Steam =&amp;gt; Settings =&amp;gt; Downloads =&amp;gt; Enable Shader Pre-caching, and re-running PoE2 twice: once to let the shaders compile on login screen, second to double-check, the second run would still have shaders bar full, but only for couple of seconds (presumbly fetching from disk).</p>
+
+<p>This has also been confirmed by deleting both <code>ShaderCacheVulkan</code> and <code>GLCache</code> directories. PoE2 would again take ~minute-two to compile them. Subsequent game launches would be super fast. Process Monitor would show ~50 WriteFile calls instead of ~10k.</p>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="osxruyh" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Satirycon</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="osxruyh" class="commentText"><p>Hello !</p>
+
+<p>Gonna try this today ! I can&rsquo;t play anymore, 20 mins for game to load, 4 min per map and a lot of other shader related issue.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="osxsafn" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Frosty_Cockroach1996</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="osxsafn" class="commentText"><p>This is a serious issue, GGG needs to fix, I mean it&rsquo;s so frustrating coming back from work after a long day and you gotta deal with this shit, for some of us, disable the steam shader cache still does not work, we gotta manually delete the %appdata% and %localappdata%&amp;gt; Nvedia  shader files  every time we log in, I sincerely hope GGG does something about this issue.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="osxrwz6" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>SuBw00FeR37</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="osxrwz6" class="commentText"><p>!remind me 12hours</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="osxs0rn" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>RemindMeBot</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="osxs0rn" class="commentText"><p>I will be messaging you in 12 hours on <a href="http://www.wolframalpha.com/input/?i=2026-06-22%2001:15:48%20UTC%20To%20Local%20Time" target="_blank"><strong>2026-06-22 01:15:48 UTC</strong></a> to remind you of <a href="https://www.reddit.com/r/PathOfExile2/comments/1ubppxb/steam_disabling_shaders_precaching_fixed_my/osxrwz6/?context=3" target="_blank"><strong>this link</strong></a></p>
+
+<p><a href="https://www.reddit.com/message/compose/?to=RemindMeBot&amp;subject=Reminder&amp;message=%5Bhttps%3A%2F%2Fwww.reddit.com%2Fr%2FPathOfExile2%2Fcomments%2F1ubppxb%2Fsteam_disabling_shaders_precaching_fixed_my%2Fosxrwz6%2F%5D%0A%0ARemindMe%21%202026-06-22%2001%3A15%3A48%20UTC" target="_blank"><strong>CLICK THIS LINK</strong></a> to send a PM to also be reminded and to reduce spam.</p>
+
+<p>^(Parent commenter can ) <a href="https://www.reddit.com/message/compose/?to=RemindMeBot&amp;subject=Delete%20Comment&amp;message=Delete%21%201ubppxb" target="_blank">^(delete this message to hide from others.)</a></p>
+
+<p><strong>RemindMeBot is switching to username summons.</strong> Instead of <code>!RemindMe 1 day</code>, use <code>u/RemindMeBot 1 day</code>. <a href="https://www.reddit.com/r/RemindMeBot/comments/1tskg07/remindmebot_is_switching_to_username_summons/" target="_blank">More info.</a></p>
+
+<hr>
+
+<table>
+<thead>
+<tr>
+<th><a href="https://www.reddit.com/r/RemindMeBot/comments/e1bko7/remindmebot_info_v21/" target="_blank">^(Info)</a></th>
+<th><a href="https://www.reddit.com/message/compose/?to=RemindMeBot&amp;subject=Reminder&amp;message=%5BLink%20or%20message%20inside%20square%20brackets%5D%0A%0ARemindMe%21%20Time%20period%20here" target="_blank">^(Custom)</a></th>
+<th><a href="https://www.reddit.com/message/compose/?to=RemindMeBot&amp;subject=List%20Of%20Reminders&amp;message=MyReminders%21" target="_blank">^(Your Reminders)</a></th>
+<th><a href="https://www.reddit.com/message/compose/?to=Watchful1&amp;subject=RemindMeBot%20Feedback" target="_blank">^(Feedback)</a></th>
+</tr>
+</thead>
+
+<tbody>
+</tbody>
+</table>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="osxvmry" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>typoscript</div>
+        <div>1 | 26 minutes ago </div>
+      </div>
+      <label for="osxvmry" class="commentText"><p>Is shader recompilation when the game basically freezes for a while?</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="osxwj3a" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Askriz [OP]</div>
+        <div>1 | 21 minutes ago </div>
+      </div>
+      <label for="osxwj3a" class="commentText"><p>It can be caused by that, yes. Basically, press F1 and see if the green Shaders bar is full. Shaders compilation causes CPU to spike, possibly affecting FPS, too.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="osxy4xg" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>SloppityMcFloppity</div>
+        <div>1 | 12 minutes ago </div>
+      </div>
+      <label for="osxy4xg" class="commentText"><p>Yes, but it&rsquo;s more often caused by ping spikes. Use F1 to open up the performance monitor and check.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="osxwh7e" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Black007lp</div>
+        <div>1 | 21 minutes ago </div>
+      </div>
+      <label for="osxwh7e" class="commentText"><p>Ward</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="osxw5w8" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ivshanevi</div>
+        <div>1 | 23 minutes ago </div>
+      </div>
+      <label for="osxw5w8" class="commentText"><p>I hope this works&hellip;</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="osxxqo6" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Sherlockia</div>
+        <div>1 | 14 minutes ago </div>
+      </div>
+      <label for="osxxqo6" class="commentText"><p>!remind me 20 hours</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
