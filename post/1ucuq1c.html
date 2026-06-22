@@ -1,0 +1,1170 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.selfPostImage {
+  width: 100%;
+  height: auto;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/baseball/comments/1ucuq1c/oc_how_the_2026_fa_signings_have_been_performing/"><p>[OC] How the 2026 FA Signings have been performing so far</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <table>
+<thead>
+<tr>
+<th align="left">Player</th>
+<th align="left">Team</th>
+<th align="right">Years</th>
+<th align="right">Total Contract ($ in millions)</th>
+<th align="right">fWAR</th>
+<th align="right">bWAR</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">Kyle Tucker</td>
+<td align="left">LAD</td>
+<td align="right">4</td>
+<td align="right">240.0</td>
+<td align="right">0.6</td>
+<td align="right">0.8</td>
+</tr>
+
+<tr>
+<td align="left">Dylan Cease</td>
+<td align="left">TOR</td>
+<td align="right">7</td>
+<td align="right">210.0</td>
+<td align="right">2.6</td>
+<td align="right">2.4</td>
+</tr>
+
+<tr>
+<td align="left">Alex Bregman</td>
+<td align="left">CHC</td>
+<td align="right">5</td>
+<td align="right">175.0</td>
+<td align="right">1.4</td>
+<td align="right">2.0</td>
+</tr>
+
+<tr>
+<td align="left">Cody Bellinger</td>
+<td align="left">NYY</td>
+<td align="right">5</td>
+<td align="right">162.5</td>
+<td align="right">2.7</td>
+<td align="right">3.8</td>
+</tr>
+
+<tr>
+<td align="left">Pete Alonso</td>
+<td align="left">BAL</td>
+<td align="right">5</td>
+<td align="right">155.0</td>
+<td align="right">1.8</td>
+<td align="right">1.8</td>
+</tr>
+
+<tr>
+<td align="left">Kyle Schwarber</td>
+<td align="left">PHI</td>
+<td align="right">5</td>
+<td align="right">150.0</td>
+<td align="right">2.5</td>
+<td align="right">2.4</td>
+</tr>
+
+<tr>
+<td align="left">Ranger Suarez</td>
+<td align="left">BOS</td>
+<td align="right">5</td>
+<td align="right">130.0</td>
+<td align="right">2.3</td>
+<td align="right">1.7</td>
+</tr>
+
+<tr>
+<td align="left">Bo Bichette</td>
+<td align="left">NYM</td>
+<td align="right">3</td>
+<td align="right">126.0</td>
+<td align="right">0.8</td>
+<td align="right">-0.3</td>
+</tr>
+
+<tr>
+<td align="left">Framber Valdez</td>
+<td align="left">DET</td>
+<td align="right">3</td>
+<td align="right">115.0</td>
+<td align="right">0.8</td>
+<td align="right">0.9</td>
+</tr>
+
+<tr>
+<td align="left">Josh Naylor</td>
+<td align="left">SEA</td>
+<td align="right">5</td>
+<td align="right">92.5</td>
+<td align="right">0.1</td>
+<td align="right">-0.3</td>
+</tr>
+
+<tr>
+<td align="left">Michael King</td>
+<td align="left">SDP</td>
+<td align="right">3</td>
+<td align="right">75.0</td>
+<td align="right">1.0</td>
+<td align="right">1.6</td>
+</tr>
+
+<tr>
+<td align="left">Edwin Diaz</td>
+<td align="left">LAD</td>
+<td align="right">3</td>
+<td align="right">69.0</td>
+<td align="right">0.0</td>
+<td align="right">-0.5</td>
+</tr>
+
+<tr>
+<td align="left">Devin Williams</td>
+<td align="left">NYM</td>
+<td align="right">3</td>
+<td align="right">51.0</td>
+<td align="right">0.6</td>
+<td align="right">-0.2</td>
+</tr>
+
+<tr>
+<td align="left">JT Realmuto</td>
+<td align="left">PHI</td>
+<td align="right">3</td>
+<td align="right">45.0</td>
+<td align="right">0.5</td>
+<td align="right">0.5</td>
+</tr>
+
+<tr>
+<td align="left">Robert Suarez</td>
+<td align="left">ATL</td>
+<td align="right">3</td>
+<td align="right">45.0</td>
+<td align="right">0.8</td>
+<td align="right">1.7</td>
+</tr>
+
+<tr>
+<td align="left">Merrill Kelly</td>
+<td align="left">ARI</td>
+<td align="right">2</td>
+<td align="right">40.0</td>
+<td align="right">-0.5</td>
+<td align="right">-0.4</td>
+</tr>
+
+<tr>
+<td align="left">Jorge Polanco</td>
+<td align="left">NYM</td>
+<td align="right">2</td>
+<td align="right">40.0</td>
+<td align="right">-0.3</td>
+<td align="right">-0.3</td>
+</tr>
+
+<tr>
+<td align="left">Tyler Rogers</td>
+<td align="left">TOR</td>
+<td align="right">3</td>
+<td align="right">37.0</td>
+<td align="right">0.7</td>
+<td align="right">0.8</td>
+</tr>
+
+<tr>
+<td align="left">Cody Ponce</td>
+<td align="left">TOR</td>
+<td align="right">3</td>
+<td align="right">30.0</td>
+<td align="right">0.1</td>
+<td align="right">0.0</td>
+</tr>
+
+<tr>
+<td align="left">Ryan O&rsquo;Hearn</td>
+<td align="left">PIT</td>
+<td align="right">2</td>
+<td align="right">29.0</td>
+<td align="right">0.4</td>
+<td align="right">0.1</td>
+</tr>
+
+<tr>
+<td align="left">Ryan Helsley</td>
+<td align="left">BAL</td>
+<td align="right">2</td>
+<td align="right">28.0</td>
+<td align="right">-0.3</td>
+<td align="right">-0.2</td>
+</tr>
+
+<tr>
+<td align="left">Mike Yastrzemski</td>
+<td align="left">ATL</td>
+<td align="right">2</td>
+<td align="right">23.0</td>
+<td align="right">0.3</td>
+<td align="right">0.6</td>
+</tr>
+
+<tr>
+<td align="left">Trent Grisham</td>
+<td align="left">NYY</td>
+<td align="right">1</td>
+<td align="right">22.0 (QO)</td>
+<td align="right">0.9</td>
+<td align="right">0.9</td>
+</tr>
+
+<tr>
+<td align="left">Gleyber Torres</td>
+<td align="left">DET</td>
+<td align="right">1</td>
+<td align="right">22.0 (QO)</td>
+<td align="right">0.9</td>
+<td align="right">1.8</td>
+</tr>
+
+<tr>
+<td align="left">Brandon Woodruff</td>
+<td align="left">MIL</td>
+<td align="right">1</td>
+<td align="right">22.0 (QO)</td>
+<td align="right">0.5</td>
+<td align="right">0.5</td>
+</tr>
+
+<tr>
+<td align="left">Zac Gallen</td>
+<td align="left">ARI</td>
+<td align="right">1</td>
+<td align="right">22.0</td>
+<td align="right">0.2</td>
+<td align="right">-1.3</td>
+</tr>
+
+<tr>
+<td align="left">Shota Imanaga</td>
+<td align="left">CHI</td>
+<td align="right">1</td>
+<td align="right">22.0 (QO)</td>
+<td align="right">0.9</td>
+<td align="right">0.1</td>
+</tr>
+
+<tr>
+<td align="left">Adrian Houser</td>
+<td align="left">SFG</td>
+<td align="right">2</td>
+<td align="right">22.0</td>
+<td align="right">-0.2</td>
+<td align="right">-0.8</td>
+</tr>
+
+<tr>
+<td align="left">Brad Keller</td>
+<td align="left">PHI</td>
+<td align="right">2</td>
+<td align="right">22.0</td>
+<td align="right">0.1</td>
+<td align="right">0.5</td>
+</tr>
+
+<tr>
+<td align="left">Luke Weaver</td>
+<td align="left">NYM</td>
+<td align="right">2</td>
+<td align="right">22.0</td>
+<td align="right">0.9</td>
+<td align="right">1.2</td>
+</tr>
+
+<tr>
+<td align="left">Harrison Bader</td>
+<td align="left">SFG</td>
+<td align="right">2</td>
+<td align="right">20.5</td>
+<td align="right">-0.4</td>
+<td align="right">0.2</td>
+</tr>
+
+<tr>
+<td align="left">Emilio Pagán</td>
+<td align="left">CIN</td>
+<td align="right">2</td>
+<td align="right">20.0</td>
+<td align="right">-0.2</td>
+<td align="right">-0.3</td>
+</tr>
+
+<tr>
+<td align="left">Seranthony Domínguez</td>
+<td align="left">CHW</td>
+<td align="right">2</td>
+<td align="right">20.0</td>
+<td align="right">-0.1</td>
+<td align="right">0.4</td>
+</tr>
+
+<tr>
+<td align="left">Ha-Seong Kim</td>
+<td align="left">ATL</td>
+<td align="right">1</td>
+<td align="right">20.0</td>
+<td align="right">-1.0</td>
+<td align="right">-0.9</td>
+</tr>
+
+<tr>
+<td align="left">Kyle Finnegan</td>
+<td align="left">DET</td>
+<td align="right">2</td>
+<td align="right">19.0</td>
+<td align="right">-0.1</td>
+<td align="right">1.4</td>
+</tr>
+
+<tr>
+<td align="left">Chris Bassitt</td>
+<td align="left">BAL</td>
+<td align="right">1</td>
+<td align="right">18.5</td>
+<td align="right">0.3</td>
+<td align="right">0.0</td>
+</tr>
+
+<tr>
+<td align="left">Raisel Iglesias</td>
+<td align="left">ATL</td>
+<td align="right">1</td>
+<td align="right">16.0</td>
+<td align="right">0.8</td>
+<td align="right">1.0</td>
+</tr>
+
+<tr>
+<td align="left">Eugenio Suárez</td>
+<td align="left">CIN</td>
+<td align="right">1</td>
+<td align="right">15.0</td>
+<td align="right">-0.6</td>
+<td align="right">-0.7</td>
+</tr>
+
+<tr>
+<td align="left">Steven Matz</td>
+<td align="left">TBR</td>
+<td align="right">2</td>
+<td align="right">15.0</td>
+<td align="right">-0.1</td>
+<td align="right">-0.4</td>
+</tr>
+</tbody>
+</table>
+<p>Notes: I used the contract values from FanGraphs, there is obviously nuance not captured here, such as Player / Team options, etc.</p>
+
+<p>QO denotes they accepted the qualifying offer.</p>
+
+<p>Sources: <a href="https://www.fangraphs.com/roster-resource/free-agent-tracker" target="_blank">Fangraphs</a></p>
+
+<p><a href="https://www.baseball-reference.com/" target="_blank">Baseball-Reference</a></p>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ot6svc2" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Darkforces134 [OP] | New York Yankees</div>
+        <div>15 | 38 minutes ago </div>
+      </div>
+      <label for="ot6svc2" class="commentText"><p>Random Thoughts</p>
+
+<ul>
+<li><p>Dodgers can easily absorb Tucker&rsquo;s underperformance, and he at least raised their OF floor, and Diaz&rsquo; injury doesn&rsquo;t affect them as long as he&rsquo;s back for playoffs.</p></li>
+
+<li><p>Bichette staying hot will be big for the Mets, but it&rsquo;s hard to see him not opting into $43M next year.</p></li>
+
+<li><p>ATL bullpen signing (Iglesias, and Suarez) have been amazing.</p></li>
+
+<li><p>ARI bringing back their longtime SP&rsquo;s (Gallen, and Kelly) has been terrible.</p></li>
+</ul>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="ot6u2gx" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Big_Caramel_7134</div>
+        <div>7 | 33 minutes ago </div>
+      </div>
+      <label for="ot6u2gx" class="commentText"><p>Tucker to LAD always felt like a depth/upside play for them more than anything, they don&rsquo;t really need him to go nuclear to justify it</p>
+
+<p>the ATL bullpen thing though, Iglesias and Robert Suarez both cooking while Ha-Seong Kim is sitting at -1.0 fWAR is a wild contrast in that roster</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="ot6x4ti" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>morepesa25 | Kansas City Royals</div>
+        <div>7 | 19 minutes ago </div>
+      </div>
+      <label for="ot6x4ti" class="commentText"><p>Imagine money must be so fake that 60 million per year guy is treated as a depth/upside play? That fuck a lot of franchises </p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="ot716tb" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>phieralph | Pittsburgh Pirates</div>
+        <div>1 | a minute ago </div>
+      </div>
+      <label for="ot716tb" class="commentText"><p>DATFUKALO</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="ot70lo2" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Can_Haz_Cheezburger</div>
+        <div>1 | 4 minutes ago </div>
+      </div>
+      <label for="ot70lo2" class="commentText"><p>Not even that. Having him in Dodger blue is a guarantee he can&rsquo;t be somewhere else helping them potentially beat the Dodgers for a chip. It&rsquo;s a smart move, deny everyone else FA talent so they <em>for sure</em> cannot beat you, because nobody can catch lightning in a bottle with <em>that many</em> youngsters at once.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="ot6vhgn" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>futhatsy | New York Mets • Durham Bulls</div>
+        <div>2 | 26 minutes ago </div>
+      </div>
+      <label for="ot6vhgn" class="commentText"><p>I fear the Mets are approaching a very scary scenario with Bo Bichette.</p>
+
+<p>He struggled for the first two months of this year, but the underlying stats were about in line with his career norms. Hitting the ball just as hard, pulling just as many flyballs, chasing the same amount, making the same amount of contact. I could see why a big league front office would write off the first two months of this year as a guy getting unlucky and getting used to a new city, new coaches, and a new position (before being moved back to his old position that he can&rsquo;t really play anymore). If a team really liked him going into the year, I don&rsquo;t think he&rsquo;s been bad enough for them to be out on him now. If he ups his production closer to his career norms moving forward, I could see him opting out at the end of the year and getting a long term deal from someone even if his full season 2026 stats look a bit down.</p>
+
+<p>Now here comes the scary part: which team is most likely to give him a long term deal? That would be the team that was most interested in giving him a long term deal last off-season, the Phillies. If Bo picks it up as the Mets fall out of contention, he could end up playing zero meaningful games as Met, sign with Philly, and tourture us for the next 5+ years. Kind of like how Blake Snell pitched great in a meaningless second half for the 2024 Giants, only to opt out and run to the Dodgers. I&rsquo;m not saying any of this is definitely going to happen, but it does kind of seem like that&rsquo;s where things could be headed.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="ot70rfp" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Can_Haz_Cheezburger</div>
+        <div>1 | 3 minutes ago </div>
+      </div>
+      <label for="ot70rfp" class="commentText"><p>See, you call it scary. I just call it LOLMETS in action</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="ot6udup" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ItsTBaggins | Seattle Mariners</div>
+        <div>1 | 31 minutes ago </div>
+      </div>
+      <label for="ot6udup" class="commentText"><p>Did you miss the story on Bichette wanting to opt out of his deal and everyone clowning him for it?</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ot6v09z" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>10thGenS1 | New York Yankees</div>
+        <div>14 | 29 minutes ago </div>
+      </div>
+      <label for="ot6v09z" class="commentText"><p>Shout out to the Dodgers and Cubs for not re-signing Bellinger</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="ot6x6ev" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>cod_gurl94 | Chicago Cubs</div>
+        <div>9 | 19 minutes ago </div>
+      </div>
+      <label for="ot6x6ev" class="commentText"><p>I love Belli and he’s absolutely deserving of praise, but he has a 206 WRC+ at home and 70 away. He is most likely not playing at an all-star level if he spends half his time in LA or Chicago. Dude was made for the short porch and he’s taking advantage of it in a way that few are capable of.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="ot6z33m" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>1egg40eggs</div>
+        <div>2 | 11 minutes ago </div>
+      </div>
+      <label for="ot6z33m" class="commentText"><p>Bellinger only has 11 HRs and maybe 1 porch job. He&rsquo;s playing much better at home but it&rsquo;s not because of the park dimensions.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="ot70bro" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Either_Imagination_9 | New York Yankees</div>
+        <div>1 | 5 minutes ago </div>
+      </div>
+      <label for="ot70bro" class="commentText"><p>I have never been so happy to be wrong</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ot6tvma" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>no-kangarooreborn | Toronto Blue Jays</div>
+        <div>8 | 33 minutes ago </div>
+      </div>
+      <label for="ot6tvma" class="commentText"><p>I was told by Padres fans that Dylan Cease sucks. Safe to say he certainly doesn&rsquo;t.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ot6tbfz" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ovokramer | Los Angeles Dodgers</div>
+        <div>7 | 36 minutes ago </div>
+      </div>
+      <label for="ot6tbfz" class="commentText"><p>So we should have brought Cody home 🥲</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="ot6xcal" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>chuck212 | New York Yankees</div>
+        <div>3 | 18 minutes ago </div>
+      </div>
+      <label for="ot6xcal" class="commentText"><p>Belli has a 206 wRC+ hitting at Yankee stadium this year, and 70 on the road.<br>
+Dude has turned into a hitter that&rsquo;s absolutely built for our stadium, i don&rsquo;t think he&rsquo;d be nearly as good on any other team.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="ot6xm2j" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>cmgriffith_ | New York Yankees</div>
+        <div>2 | 17 minutes ago </div>
+      </div>
+      <label for="ot6xm2j" class="commentText"><p>We are quite happy Cody James Bellinger</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="ot6xvlj" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>futhatsy | New York Mets • Durham Bulls</div>
+        <div>1 | 16 minutes ago </div>
+      </div>
+      <label for="ot6xvlj" class="commentText"><p>It&rsquo;s kind of crazy that the Dodgers developed two guys around the same time in Bellinger and Seager that looked like they were going to be all-time great Dodgers, only for both players to get hurt and eventually leave (albeit under very different circumstances). And it hasn&rsquo;t held them back at all.</p>
+
+<p>Like, imagine a world where both of those guys stay healthy and the Dodgers lock them up long term prior to hitting free agency. The Dodgers lineup could have 5 Hall of Famers in it right now. And that&rsquo;s before you get to Will Smith and Andy Pages.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="ot6xx1t" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>kloakndaggers | Chicago Cubs</div>
+        <div>1 | 16 minutes ago </div>
+      </div>
+      <label for="ot6xx1t" class="commentText"><p>his splits away from home are pretty terrible</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ot6va99" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>weaponize09 | Cleveland Guardians</div>
+        <div>3 | 27 minutes ago </div>
+      </div>
+      <label for="ot6va99" class="commentText"><p>Lesson: It’s really hard to nail free agent deals. That’s partially why we’re in the situation we’re in - some teams can absorb really bad contracts, and others just can’t. So some teams take a tons of swings at it (and definitely some misses but they can handle those), and others just sit on the sideline.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ot6x6py" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>cmgriffith_ | New York Yankees</div>
+        <div>2 | 19 minutes ago </div>
+      </div>
+      <label for="ot6x6py" class="commentText"><p>Cody Bellinger my 420 👑</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ot6u8qf" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ItsTBaggins | Seattle Mariners</div>
+        <div>1 | 32 minutes ago </div>
+      </div>
+      <label for="ot6u8qf" class="commentText"><p>No Rob Ref?</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ot6vo5y" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>countingouttime | San Francisco Giants</div>
+        <div>1 | 26 minutes ago </div>
+      </div>
+      <label for="ot6vo5y" class="commentText"><p>People have been shitting on the Giants heavily for signing Adrian Houser and Tyler Mahle to fill out their rotation, but honestly it seems like a lot of the starting pitchers from this offseason have performed poorly or not up to expectations, aside from the guys getting paid top dollar.  Seems more like that’s just the state of the free-agent SP market these days.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="ot6xbax" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>False_Concept1300 | New York Mets</div>
+        <div>1 | 18 minutes ago </div>
+      </div>
+      <label for="ot6xbax" class="commentText"><p>Yeah. I’m not a believer in signing these mediocre players to short term deals. I only get it if it’s an older guy (say, Nate Eovaldi) or a QO guy who wants to retest the market. These middling tier SPs are rarely worth the contracts.</p>
+
+<p>Shelling out top dollar is the new market inefficiency.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ot6wb21" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>False_Concept1300 | New York Mets</div>
+        <div>1 | 23 minutes ago </div>
+      </div>
+      <label for="ot6wb21" class="commentText"><p>As a Mets fan who really wanted the Mets to sign Robert Suarez, Alonso, Cease and King but didn’t want any of the players the Mets did sign…I am upset</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ot6x02p" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Irrah | New York Mets</div>
+        <div>1 | 20 minutes ago </div>
+      </div>
+      <label for="ot6x02p" class="commentText"><p>Bo Bichette on pace for 2 WAR after the disaster class start he had would be remarkable. Also Williams and Weaver have actually been underrated signings that have gone unnoticed because of the general dumpster fire.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ot6x2lm" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>agarret83 | New York Mets</div>
+        <div>1 | 19 minutes ago </div>
+      </div>
+      <label for="ot6x2lm" class="commentText"><p>Fascinating that we signed three high profile FAs and they all turned into pumpkins this year</p>
+
+<p>EDIT: this doesn’t even include Peralta because he wasn’t a FA. Peralta/Williams/Bichette/Polanco worth like 11 bWAR combined last year and they’ve put up a combined -0.6 this year</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ot6xqzj" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>KoolKoolKoolio42 | Baltimore Orioles</div>
+        <div>1 | 16 minutes ago </div>
+      </div>
+      <label for="ot6xqzj" class="commentText"><p>Dunno why Dodgers fans are upset with Tucker. I though the did really well over the weekend. 😄</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ot6y23t" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>1egg40eggs</div>
+        <div>1 | 15 minutes ago </div>
+      </div>
+      <label for="ot6y23t" class="commentText"><p>Now include 2026 extensions</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ot6y37g" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Electronic-Power5656 | Houston Astros</div>
+        <div>1 | 15 minutes ago </div>
+      </div>
+      <label for="ot6y37g" class="commentText"><p>Imai so bad he doesn&rsquo;t even make the list.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ot6ycfx" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>PCBangHero | St. Louis Cardinals</div>
+        <div>1 | 14 minutes ago </div>
+      </div>
+      <label for="ot6ycfx" class="commentText"><p>Where is Dustin May?</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ot6z9na" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>JKess207 | Atlanta Braves • Somerset Patriots</div>
+        <div>1 | 10 minutes ago </div>
+      </div>
+      <label for="ot6z9na" class="commentText"><p>Robert Suarez has been a revelation.</p>
+
+<p>Ha-Seong Kim, on the other hand…</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
