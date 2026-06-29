@@ -1,0 +1,4130 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.selfPostImage {
+  width: 100%;
+  height: auto;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/nba/comments/1uj2ovx/statistically_the_three_worst_fmvp_of_alltime/"><p>Statistically, the three worst FMVP of all-time were Jaylen Brown, Wes Unseld and Andre Iguodala</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <p>Given how much weight people put into Finals MVP, it&rsquo;s interesting how small the voting pool is (11 people) and how subjective the voting criteria is.  Sometimes it goes to whoever scored the most points.  Sometimes it&rsquo;s just based on intangible vibes and narrative.</p>
+
+<p>As an example, the year Jaylen Brown won, <a href="https://imgur.com/a/A5Js2YW" target="_blank">the votes were 7-4</a>.  You had people like Doris Burke, Boston&rsquo;s beat writer, and Malika Andrews voting for Tatum while the Dallas beat writer and some guy from Italy were the difference makers for Brown. Tatum had lead the team in points, rebounds, and assists, but Brown came through in some key moments and there&rsquo;s a belief voters were sympathetic to him after not selecting him for any of the all-nba teams that season.</p>
+
+<p>There&rsquo;s other weird years like 2015 where Andre Iguodala received 7 votes with the other 4 going to LeBron James from the losing team.  This despite the fact Steph Curry, statistically, was the obvious choice from the Warriors.</p>
+
+<p>These awards also tend to ignore overall system importance, defensive impact (Ben Wallace and KG may have had cases), how one player&rsquo;s gravity could result in a sidekick scoring more (Maxwell won over Bird), but if you were to just rank all Finals MVPs using basic counting stats, it&rsquo;s interesting to see how these tiny sample size FMVP campaigns stack up against each other.</p>
+
+<p>To make it simple I just looked at the EFF stat (PTS + REB + AST + STL + BLK − Missed FG − Missed FT - TO) / GP).   A couple important notes, though.  The league didn&rsquo;t track steals or blocks until 1973-74.   They didn&rsquo;t track turnovers until 1977.  So anything prior to 1978 is getting a &ldquo;0&rdquo; for those stats.</p>
+
+<table>
+<thead>
+<tr>
+<th align="left"><strong>Rank</strong></th>
+<th align="left"><strong>Year</strong></th>
+<th align="left"><strong>Player</strong></th>
+<th align="left"><strong>Team</strong></th>
+<th align="left"><strong>Calculated EFF</strong></th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left"><strong>1</strong></td>
+<td align="left">2021</td>
+<td align="left">Giannis Antetokounmpo</td>
+<td align="left">MIL</td>
+<td align="left"><strong>41.4</strong></td>
+</tr>
+
+<tr>
+<td align="left"><strong>2</strong></td>
+<td align="left">2023</td>
+<td align="left">Nikola Jokić</td>
+<td align="left">DEN</td>
+<td align="left"><strong>41.0</strong></td>
+</tr>
+
+<tr>
+<td align="left"><strong>3</strong></td>
+<td align="left">1977</td>
+<td align="left">Bill Walton*</td>
+<td align="left">POR</td>
+<td align="left"><strong>40.0</strong></td>
+</tr>
+
+<tr>
+<td align="left"><strong>4</strong></td>
+<td align="left">1971</td>
+<td align="left">Kareem Abdul-Jabbar*</td>
+<td align="left">MIL</td>
+<td align="left"><strong>39.5</strong></td>
+</tr>
+
+<tr>
+<td align="left"><strong>5</strong></td>
+<td align="left">2017</td>
+<td align="left">Kevin Durant</td>
+<td align="left">GSW</td>
+<td align="left"><strong>39.0</strong></td>
+</tr>
+
+<tr>
+<td align="left"><strong>6</strong></td>
+<td align="left">1991</td>
+<td align="left">Michael Jordan</td>
+<td align="left">CHI</td>
+<td align="left"><strong>38.8</strong></td>
+</tr>
+
+<tr>
+<td align="left"><strong>7</strong></td>
+<td align="left">2000</td>
+<td align="left">Shaquille O&rsquo;Neal</td>
+<td align="left">LAL</td>
+<td align="left"><strong>38.8</strong></td>
+</tr>
+
+<tr>
+<td align="left"><strong>8</strong></td>
+<td align="left">2018</td>
+<td align="left">Kevin Durant</td>
+<td align="left">GSW</td>
+<td align="left"><strong>38.6</strong></td>
+</tr>
+
+<tr>
+<td align="left"><strong>9</strong></td>
+<td align="left">2020</td>
+<td align="left">LeBron James</td>
+<td align="left">LAL</td>
+<td align="left"><strong>38.1</strong></td>
+</tr>
+
+<tr>
+<td align="left"><strong>10</strong></td>
+<td align="left">1987</td>
+<td align="left">Magic Johnson</td>
+<td align="left">LAL</td>
+<td align="left"><strong>38.1</strong></td>
+</tr>
+
+<tr>
+<td align="left"><strong>11</strong></td>
+<td align="left">2002</td>
+<td align="left">Shaquille O&rsquo;Neal</td>
+<td align="left">LAL</td>
+<td align="left"><strong>38.0</strong></td>
+</tr>
+
+<tr>
+<td align="left"><strong>12</strong></td>
+<td align="left">1972</td>
+<td align="left">Wilt Chamberlain*</td>
+<td align="left">LAL</td>
+<td align="left"><strong>36.8</strong></td>
+</tr>
+
+<tr>
+<td align="left"><strong>13</strong></td>
+<td align="left">2016</td>
+<td align="left">LeBron James</td>
+<td align="left">CLE</td>
+<td align="left"><strong>36.7</strong></td>
+</tr>
+
+<tr>
+<td align="left"><strong>14</strong></td>
+<td align="left">1993</td>
+<td align="left">Michael Jordan</td>
+<td align="left">CHI</td>
+<td align="left"><strong>36.6</strong></td>
+</tr>
+
+<tr>
+<td align="left"><strong>15</strong></td>
+<td align="left">2001</td>
+<td align="left">Shaquille O&rsquo;Neal</td>
+<td align="left">LAL</td>
+<td align="left"><strong>36.6</strong></td>
+</tr>
+
+<tr>
+<td align="left"><strong>16</strong></td>
+<td align="left">2003</td>
+<td align="left">Tim Duncan</td>
+<td align="left">SAS</td>
+<td align="left"><strong>36.3</strong></td>
+</tr>
+
+<tr>
+<td align="left"><strong>17</strong></td>
+<td align="left">1995</td>
+<td align="left">Hakeem Olajuwon</td>
+<td align="left">HOU</td>
+<td align="left"><strong>34.0</strong></td>
+</tr>
+
+<tr>
+<td align="left"><strong>18</strong></td>
+<td align="left">1969</td>
+<td align="left">Jerry West*</td>
+<td align="left">LAL</td>
+<td align="left"><strong>33.7</strong></td>
+</tr>
+
+<tr>
+<td align="left"><strong>19</strong></td>
+<td align="left">1986</td>
+<td align="left">Larry Bird</td>
+<td align="left">BOS</td>
+<td align="left"><strong>33.7</strong></td>
+</tr>
+
+<tr>
+<td align="left"><strong>20</strong></td>
+<td align="left">1984</td>
+<td align="left">Larry Bird</td>
+<td align="left">BOS</td>
+<td align="left"><strong>33.3</strong></td>
+</tr>
+
+<tr>
+<td align="left"><strong>21</strong></td>
+<td align="left">1983</td>
+<td align="left">Moses Malone</td>
+<td align="left">PHI</td>
+<td align="left"><strong>33.2</strong></td>
+</tr>
+
+<tr>
+<td align="left"><strong>22</strong></td>
+<td align="left">1999</td>
+<td align="left">Tim Duncan</td>
+<td align="left">SAS</td>
+<td align="left"><strong>33.0</strong></td>
+</tr>
+
+<tr>
+<td align="left"><strong>23</strong></td>
+<td align="left">1980</td>
+<td align="left">Magic Johnson</td>
+<td align="left">LAL</td>
+<td align="left"><strong>32.6</strong></td>
+</tr>
+
+<tr>
+<td align="left"><strong>24</strong></td>
+<td align="left">1992</td>
+<td align="left">Michael Jordan</td>
+<td align="left">CHI</td>
+<td align="left"><strong>32.0</strong></td>
+</tr>
+
+<tr>
+<td align="left"><strong>25</strong></td>
+<td align="left">2012</td>
+<td align="left">LeBron James</td>
+<td align="left">MIA</td>
+<td align="left"><strong>31.4</strong></td>
+</tr>
+
+<tr>
+<td align="left"><strong>26</strong></td>
+<td align="left">1985</td>
+<td align="left">Kareem Abdul-Jabbar</td>
+<td align="left">LAL</td>
+<td align="left"><strong>31.3</strong></td>
+</tr>
+
+<tr>
+<td align="left"><strong>27</strong></td>
+<td align="left">1994</td>
+<td align="left">Hakeem Olajuwon</td>
+<td align="left">HOU</td>
+<td align="left"><strong>31.2</strong></td>
+</tr>
+
+<tr>
+<td align="left"><strong>28</strong></td>
+<td align="left">2019</td>
+<td align="left">Kawhi Leonard</td>
+<td align="left">TOR</td>
+<td align="left"><strong>31.1</strong></td>
+</tr>
+
+<tr>
+<td align="left"><strong>29</strong></td>
+<td align="left">2013</td>
+<td align="left">LeBron James</td>
+<td align="left">MIA</td>
+<td align="left"><strong>30.8</strong></td>
+</tr>
+
+<tr>
+<td align="left"><strong>30</strong></td>
+<td align="left">2006</td>
+<td align="left">Dwyane Wade</td>
+<td align="left">MIA</td>
+<td align="left"><strong>30.2</strong></td>
+</tr>
+
+<tr>
+<td align="left"><strong>31</strong></td>
+<td align="left">2022</td>
+<td align="left">Stephen Curry</td>
+<td align="left">GSW</td>
+<td align="left"><strong>29.9</strong></td>
+</tr>
+
+<tr>
+<td align="left"><strong>32</strong></td>
+<td align="left">1997</td>
+<td align="left">Michael Jordan</td>
+<td align="left">CHI</td>
+<td align="left"><strong>28.6</strong></td>
+</tr>
+
+<tr>
+<td align="left"><strong>33</strong></td>
+<td align="left">1995</td>
+<td align="left">Rick Barry*</td>
+<td align="left">GSW</td>
+<td align="left"><strong>28.5</strong></td>
+</tr>
+
+<tr>
+<td align="left"><strong>34</strong></td>
+<td align="left">1990</td>
+<td align="left">Isiah Thomas</td>
+<td align="left">DET</td>
+<td align="left"><strong>28.2</strong></td>
+</tr>
+
+<tr>
+<td align="left"><strong>35</strong></td>
+<td align="left">2009</td>
+<td align="left">Kobe Bryant</td>
+<td align="left">LAL</td>
+<td align="left"><strong>28.2</strong></td>
+</tr>
+
+<tr>
+<td align="left"><strong>36</strong></td>
+<td align="left">1982</td>
+<td align="left">Magic Johnson</td>
+<td align="left">LAL</td>
+<td align="left"><strong>27.8</strong></td>
+</tr>
+
+<tr>
+<td align="left"><strong>37</strong></td>
+<td align="left">2025</td>
+<td align="left">Shai Gilgeous-Alexander</td>
+<td align="left">OKC</td>
+<td align="left"><strong>27.1</strong></td>
+</tr>
+
+<tr>
+<td align="left"><strong>38</strong></td>
+<td align="left">1974</td>
+<td align="left">John Havlicek*</td>
+<td align="left">BOS</td>
+<td align="left"><strong>26.2</strong></td>
+</tr>
+
+<tr>
+<td align="left"><strong>39</strong></td>
+<td align="left">1989</td>
+<td align="left">Joe Dumars</td>
+<td align="left">DET</td>
+<td align="left"><strong>25.9</strong></td>
+</tr>
+
+<tr>
+<td align="left"><strong>40</strong></td>
+<td align="left">2010</td>
+<td align="left">Kobe Bryant</td>
+<td align="left">LAL</td>
+<td align="left"><strong>24.5</strong></td>
+</tr>
+
+<tr>
+<td align="left"><strong>41</strong></td>
+<td align="left">2011</td>
+<td align="left">Dirk Nowitzki</td>
+<td align="left">DAL</td>
+<td align="left"><strong>24.0</strong></td>
+</tr>
+
+<tr>
+<td align="left"><strong>42</strong></td>
+<td align="left">2005</td>
+<td align="left">Tim Duncan</td>
+<td align="left">SAS</td>
+<td align="left"><strong>23.6</strong></td>
+</tr>
+
+<tr>
+<td align="left"><strong>43</strong></td>
+<td align="left">1970</td>
+<td align="left">Willis Reed*</td>
+<td align="left">NYK</td>
+<td align="left"><strong>23.4</strong></td>
+</tr>
+
+<tr>
+<td align="left"><strong>44</strong></td>
+<td align="left">1979</td>
+<td align="left">Dennis Johnson</td>
+<td align="left">SEA</td>
+<td align="left"><strong>23.2</strong></td>
+</tr>
+
+<tr>
+<td align="left"><strong>45</strong></td>
+<td align="left">2026</td>
+<td align="left">Jalen Brunson</td>
+<td align="left">NYK</td>
+<td align="left"><strong>23.0</strong></td>
+</tr>
+
+<tr>
+<td align="left"><strong>46</strong></td>
+<td align="left">1998</td>
+<td align="left">Michael Jordan</td>
+<td align="left">CHI</td>
+<td align="left"><strong>22.8</strong></td>
+</tr>
+
+<tr>
+<td align="left"><strong>47</strong></td>
+<td align="left">1976</td>
+<td align="left">Jo Jo White*</td>
+<td align="left">BOS</td>
+<td align="left"><strong>22.5</strong></td>
+</tr>
+
+<tr>
+<td align="left"><strong>48</strong></td>
+<td align="left">2014</td>
+<td align="left">Kawhi Leonard</td>
+<td align="left">SAS</td>
+<td align="left"><strong>22.4</strong></td>
+</tr>
+
+<tr>
+<td align="left"><strong>49</strong></td>
+<td align="left">1988</td>
+<td align="left">James Worthy</td>
+<td align="left">LAL</td>
+<td align="left"><strong>22.4</strong></td>
+</tr>
+
+<tr>
+<td align="left"><strong>50</strong></td>
+<td align="left">1996</td>
+<td align="left">Michael Jordan</td>
+<td align="left">CHI</td>
+<td align="left"><strong>21.8</strong></td>
+</tr>
+
+<tr>
+<td align="left"><strong>51</strong></td>
+<td align="left">2004</td>
+<td align="left">Chauncey Billups</td>
+<td align="left">DET</td>
+<td align="left"><strong>21.8</strong></td>
+</tr>
+
+<tr>
+<td align="left"><strong>52</strong></td>
+<td align="left">1981</td>
+<td align="left">Cedric Maxwell</td>
+<td align="left">BOS</td>
+<td align="left"><strong>21.5</strong></td>
+</tr>
+
+<tr>
+<td align="left"><strong>53</strong></td>
+<td align="left">1973</td>
+<td align="left">Willis Reed*</td>
+<td align="left">NYK</td>
+<td align="left"><strong>20.4</strong></td>
+</tr>
+
+<tr>
+<td align="left"><strong>54</strong></td>
+<td align="left">2007</td>
+<td align="left">Tony Parker</td>
+<td align="left">SAS</td>
+<td align="left"><strong>20.3</strong></td>
+</tr>
+
+<tr>
+<td align="left"><strong>55</strong></td>
+<td align="left">2024</td>
+<td align="left">Jaylen Brown</td>
+<td align="left">BOS</td>
+<td align="left"><strong>19.8</strong></td>
+</tr>
+
+<tr>
+<td align="left"><strong>56</strong></td>
+<td align="left">1978</td>
+<td align="left">Wes Unseld</td>
+<td align="left">WAS</td>
+<td align="left"><strong>19.6</strong></td>
+</tr>
+
+<tr>
+<td align="left"><strong>57</strong></td>
+<td align="left">2015</td>
+<td align="left">Andre Iguodala</td>
+<td align="left">GSW</td>
+<td align="left"><strong>18.1</strong></td>
+</tr>
+</tbody>
+</table>
+<p>I took this a little further, because I had some questions about specific years.</p>
+
+<p><strong>1969</strong> - Jerry West (33.71) won despite playing for the losing team.  Both John Havlicek (29.86) and Bill Russell (28.57) likely would have been better candidates.  Hondo averaged 28.3 points, 11 rebounds, 4.4 assists while Russell averaged 9.1 points, 21.1 rebounds, 5.1 assists.  Especially when you consider that any blocks Russell had during that series weren&rsquo;t counted.</p>
+
+<p><strong>1978</strong> - Elvin Hayes (24.29) should have won over Unseld (19.57).  This probably explains why Unseld ranks bottom 2.  Unseld averaged 9 points, 11.7 rebounds, 3.9 assists, 0.6 steals, 0.1 blocks while Hayes averaged 20.7 points, 11.9 rebounds, 1.4 assists, 2 blocks, 1.6 steals.  Unseld&rsquo;s selection ranks bottom 3.</p>
+
+<p><strong>1981</strong> - Larry Bird (27.83) should have won over Cedric Maxwell (21.50).  This is one of those classic ones where it&rsquo;s clear defenses were hyper focused on Bird (15.3 points, 15.3 rebounds, 7 assists, 2.3 steals with 42% shooting) which allowed Maxwell to edge him out in points/efficiency (17.7 points, 9.5 rebounds, 2.8 assists, 56.8% shooting).  But fwiw, Maxwell still ranked outside the bottom 5.</p>
+
+<p><strong>1988</strong> - Magic (32.86) should have won over Worth (22.0).  Magic averaged 21.1 points, 5.7 rebounds, 13 assists, 2 steals with 55% shooting.  Worthy averaged 22 points, 7.4 rebounds, 4.4 assists with 49% shooting.  Worthy got this vote, because he had a huge game 7, which is understandable, but it speaks to recency bias of voters. It&rsquo;s not a Game 7 Finals MVP award, it&rsquo;s a Finals MVP award.</p>
+
+<p><strong>1989</strong> - I was curious about Joe Dumars (25.75) winning over Isiah Thomas given Dumars is one example of a team&rsquo;s &ldquo;2nd best player&rdquo; winning, but statistically it seems Dumars deserved his award:  27.3 points, 6 assists with 57.6% shooting vs Isiah averaging 21.3 points, 7.3 assists, 1.5 steals with 48% shooting</p>
+
+<p><strong>2004</strong> - Billups (21.80) seems to have fairly won it over Ben Wallace (17.80).  Billups (21 points, 3.2 rebounds, 5.2 assists) obviously averaged more points than Ben Wallace (10.8 points, 13.6 rebounds, 1.8 steals, 1 block), but I do wonder if the the various beat writers and ESPN talking heads of the time had accurately looked at defensive impact of Wallace and how it drove the engine of that team, if Wallace would have gotten more consideration.</p>
+
+<p><strong>2007</strong> - Duncan (23.0) had a case to win it over Parker (20.25).  This is another good example of the team&rsquo;s actual most valuable player/engine losing votes to the guy who scored more.  Duncan averaged 18.3 points, 11.5 rebounds, 3.8 assists, 1.3 steals, 2.3 blocks with 44.6% shooting.   Parker averaged 24.5 points, 5 rebounds, 3.3 assists with 56.8% shooting.</p>
+
+<p><strong>2008</strong> - Just like the year prior, arguably KG (23.17) had a case over Pierce (20.67) given how important KG was to that team&rsquo;s defensive identity.  KG averaged 18.2 points, 13 rebounds, 3 assists, 1.7 steals, 1 block on 43% shooting.  Pierce averaged 21.8points, 4.5 rebounds, 6.3 assists, 1.2 steals with 43% shooting.</p>
+
+<p><strong>2010</strong> - Pau Gasol(26.14) maybe had a small case over Kobe (24.57).  You can sort of look at this as an inverse of 1988. If Worthy got the nod because of his game 7 performance, should Kobe have gotten knocked for going 6-24 in Game 7?  For the series, Pau averaged 18.6 points, 11.6 rebounds, 3.7 assists, 2.6 blocks with 47.8% shooting.  Kobe scored a lot (28.6 points), but shot 40.5% for the series.</p>
+
+<p><strong>2015</strong> - Steph (23.0) should have won it over Iggy (18.17).  Iggy gets credit for &ldquo;holding&rdquo; LeBron to 35.8 points, 13.3 rebounds, 8.8 assists.  Steph for the series averaged 26 points, 5.2 rebounds, 6.3 assists, 1.8 steals with 44%/38% shooting, but received zero votes while Iggy got 7 and LeBron got 4.  Iggy&rsquo;s selection ranks bottom 3.</p>
+
+<p><strong>2024</strong> - Tatum (23.2) probably should have won it over Brown (19.8).  Tatum averaged 22.2 points, 7.8 rebounds, 7.2 assists (38.8%/26.3% shooting) while Brown averaged 20.8 points, 5.4 rebounds, 5 assists (44%/23.5% shooting).  Neither shot well.  7 voted for Brown.  4 voted for Tatum.  Brown&rsquo;s selection ranks bottom 3.</p>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="oukdlvg" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>PlatinumPlayer | Clippers</div>
+        <div>377 | an hour ago </div>
+      </div>
+      <label for="oukdlvg" class="commentText"><p>I’ll see you on Jaylen Brown’s IG story, buddy</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="oukdxhg" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ShaiFanClub | Thunder</div>
+        <div>72 | an hour ago </div>
+      </div>
+      <label for="oukdxhg" class="commentText"><p>Jaylen made a post yesterday on his IG using on off ratings to defend his play lol. Analytics are only bad when they’re against you apparently</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="oukfrry" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>GreenGorilla8232</div>
+        <div>27 | an hour ago </div>
+      </div>
+      <label for="oukfrry" class="commentText"><p>That&rsquo;s a stat. Analytics are when a stat makes you look bad.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="ouklzvi" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Altruistic_Knee2044 | Celtics</div>
+        <div>10 | 38 minutes ago </div>
+      </div>
+      <label for="ouklzvi" class="commentText"><p>On/off isn’t even really advanced analytics.</p>
+
+<p>It’s less advanced than box score numbers</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="oukf8o3" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Kryptos33</div>
+        <div>3 | an hour ago </div>
+      </div>
+      <label for="oukf8o3" class="commentText"><p>What was the defense because every on off metric murders him.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="oukhh02" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>dafdiego777 | Rockets</div>
+        <div>5 | an hour ago </div>
+      </div>
+      <label for="oukhh02" class="commentText"><p>The offense is half a point better / 100 with him on!</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="ouktkqz" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>NeonVudu | Warriors</div>
+        <div>1 | 5 minutes ago </div>
+      </div>
+      <label for="ouktkqz" class="commentText"><p>WOAT FMVP</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="oukemtt" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>flyinghippos101 | East</div>
+        <div>29 | an hour ago </div>
+      </div>
+      <label for="oukemtt" class="commentText"><p>This man will never eat, sleep or rest now that he has incurred the wrath of Jaylen Brown</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="oukf919" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>LarBrd33 [OP]</div>
+        <div>2 | an hour ago </div>
+      </div>
+      <label for="oukf919" class="commentText"><p>It&rsquo;s not even advanced stats or analytics which probably would have hurt Jaylen&rsquo;s case even more given he literally ranked 7th on that team in win shares (5.9) behind Tatum (10.4), White (8.5), Zingis (7.9), Holiday (6.3), Hroford (6.2) and Pritchard (6.1).  That&rsquo;s the type of stupid shit Bobby Marks was probably referring to.  We all know Jaylen hates money ball.  But i&rsquo;m not talking about advanced stats which show the team played better with Brown off the court. I&rsquo;m purely looking at basic ass back of the basketball card counting stats.  The kind of shit Brown gunned for all season when he was second only to Luka in usage and field goal attempts.   Brown should have no issue with these basic stats (points + rebounds + assists + steals + blocks - missed shots - turnovers), but those stats do show that Tatum should have won.  And yet, this 11 panel Iggy award seems to carry so much weigh that it seems to form the basis for his basketball identity and belief he&rsquo;s the best two way player in the world, his actual legacy, and whether or not he ever makes the hall of fame.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="oukduou" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>TomatoSecure192 | Bulls</div>
+        <div>168 | an hour ago </div>
+      </div>
+      <label for="oukduou" class="commentText"><p>Why don&rsquo;t yall just say Kareem Abdul Jabbar whenever you talk about him pre name change. There&rsquo;s no reason to say Lew Alcinder when he very obviously changed his name so he wasn&rsquo;t called that anymore</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="oukeu2r" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>HokageEzio | Knicks</div>
+        <div>60 | an hour ago </div>
+      </div>
+      <label for="oukeu2r" class="commentText"><p>Depending on where you pull the list from it will say Lew Alcindor because that was his name at the time but put a footnote saying it&rsquo;s Kareem.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="ouko8f1" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>LarBrd33 [OP]</div>
+        <div>1 | 29 minutes ago </div>
+      </div>
+      <label for="ouko8f1" class="commentText"><p>fixed it.  Just had cut and pasted that spreadsheet from the tool and it used his name at the time.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="oukg5jc" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ParisLake2 | Lakers</div>
+        <div>34 | an hour ago </div>
+      </div>
+      <label for="oukg5jc" class="commentText"><p>Same reason why some people use “Cassius Clay” instead of Muhammad Ali I suppose.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="ouki3xm" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Jonjon428 | Heat</div>
+        <div>30 | an hour ago </div>
+      </div>
+      <label for="ouki3xm" class="commentText"><p>Tbf that is one of the coolest names ever</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="oukjjob" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>tcos17 | Magic</div>
+        <div>18 | an hour ago </div>
+      </div>
+      <label for="oukjjob" class="commentText"><p>He and Kareem both had awesome names before and after.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="oukld14" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>LarBrd33 [OP]</div>
+        <div>5 | 41 minutes ago </div>
+      </div>
+      <label for="oukld14" class="commentText"><p>literally shows his name as Kareem in his later awards.  I just cut and paste.  I&rsquo;ll fix it</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="oukjcbf" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ButtMuddAaronBrooks | Bulls</div>
+        <div>5 | an hour ago </div>
+      </div>
+      <label for="oukjcbf" class="commentText"><p>“His momma named him clay so I call him clay”</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="oukjakz" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>dayblaq94 | Bulls</div>
+        <div>-1 | an hour ago </div>
+      </div>
+      <label for="oukjakz" class="commentText"><p>Racism and Xenophobia?</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="oukeu88" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ratedpending3 | Celtics</div>
+        <div>10 | an hour ago </div>
+      </div>
+      <label for="oukeu88" class="commentText"><p>insert zay dupree video here</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="oukh3sp" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Old-University-8813 | Spurs</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="oukh3sp" class="commentText"><p>you know ball lol</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="oukl616" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>LarBrd33 [OP]</div>
+        <div>7 | 42 minutes ago </div>
+      </div>
+      <label for="oukl616" class="commentText"><p>it wasn&rsquo;t that deep.  I use some tools to do a deep dive and it used his name at the time.  I&rsquo;ll change it, dawg.  His name appears as Kareem Abdul Jabbar in the other FMVPS he got later</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="ouko1qg" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Inevitable-Loss7939 | Warriors</div>
+        <div>1 | 29 minutes ago </div>
+      </div>
+      <label for="ouko1qg" class="commentText"><p>He prob used an automated data scraper and on Wikipedia it says lewis alcindor</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="oukh2gy" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Jamesartdo</div>
+        <div>2 | an hour ago </div>
+      </div>
+      <label for="oukh2gy" class="commentText"><p>We don’t use his dead name. He transitioned</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="oukrz3p" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>AfroKyrie | Nets</div>
+        <div>1 | 12 minutes ago </div>
+      </div>
+      <label for="oukrz3p" class="commentText"><p>Lew Alcinder on the game sheet</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="oukfctg" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Fun-Passenger-6915</div>
+        <div>-11 | an hour ago </div>
+      </div>
+      <label for="oukfctg" class="commentText"><p>It&rsquo;s not a big deal&hellip;</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="oukdsrr" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>anonymoususer6407 | Rockets</div>
+        <div>62 | an hour ago </div>
+      </div>
+      <label for="oukdsrr" class="commentText"><p>Iggy only got his FMVP because of Kawhi</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="oukf51n" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Emergency_Bluejay484</div>
+        <div>68 | an hour ago </div>
+      </div>
+      <label for="oukf51n" class="commentText"><p>i always felt them giving the award to iggy was them giving it to lebron without them actually doing so</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="oukj32g" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Round-Revolution-399 | Lakers</div>
+        <div>42 | an hour ago </div>
+      </div>
+      <label for="oukj32g" class="commentText"><p>It was definitely a way to reward LeBron without having the balls to just vote for him, and gatekeep it away from Curry for having a relatively average finals series. There was a lot of “too much too soon” talk regarding Curry in 2015, I think a lot of people were still skeptical that he was actually as good as he seemed</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="oukkqe9" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>NickFierce1</div>
+        <div>13 | 44 minutes ago </div>
+      </div>
+      <label for="oukkqe9" class="commentText"><p>26/6/5 on 5% higher FG% than LeBron shooting harder shots is &ldquo;average&rdquo; only for Curry. The 2015 FMVP is the worst robbery in NBA history.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="oukm36c" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>RCM88x | Cavaliers</div>
+        <div>8 | 38 minutes ago </div>
+      </div>
+      <label for="oukm36c" class="commentText"><p>Only 5% higher is honestly not much of an argument for Curry.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="oukouau" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Creative-Ranger-9978</div>
+        <div>1 | 26 minutes ago </div>
+      </div>
+      <label for="oukouau" class="commentText"><p>Eh thats just fg% Steph actually had 11% higher TS than LeBron facing the infamous Steph defense thats huge</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="ouko6g9" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Chartate101 | Pistons</div>
+        <div>1 | 29 minutes ago </div>
+      </div>
+      <label for="ouko6g9" class="commentText"><p>FG% is massively biased against high volume 3pt shooters</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="oukmjw5" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>NickFierce1</div>
+        <div>4 | 36 minutes ago </div>
+      </div>
+      <label for="oukmjw5" class="commentText"><p>5% is a massive difference in FG%? Especially considering the shots Steph takes.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="oukrdcq" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>froggycbl4 | Nets Bandwagon</div>
+        <div>1 | 15 minutes ago </div>
+      </div>
+      <label for="oukrdcq" class="commentText"><p>lebron was being guarded by 5 people. steph was being guarded by a backup white dude who was complete shit the rest if his career</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="oukmlus" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Adorable-Bike-9689</div>
+        <div>3 | 36 minutes ago </div>
+      </div>
+      <label for="oukmlus" class="commentText"><p>LeBron had to iso damn near all of his shots. They really tried to flex Steph had a higher fg% lmao</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="ouknqka" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Round-Revolution-399 | Lakers</div>
+        <div>1 | 31 minutes ago </div>
+      </div>
+      <label for="ouknqka" class="commentText"><p>The volume and defensive attention that LeBron was dealing with (basically the entire Warriors team) doesn’t really make the efficiency comparison fair. I agree Curry should’ve won the award though.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="ouklxl8" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>n0_planet | San Francisco Warriors</div>
+        <div>2 | 39 minutes ago </div>
+      </div>
+      <label for="ouklxl8" class="commentText"><p>Yup, it’s still a travesty</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="oukou4k" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>informantfuzzydunlop | Spurs</div>
+        <div>1 | 26 minutes ago </div>
+      </div>
+      <label for="oukou4k" class="commentText"><p>That stat line isn’t as impressive as you think it is especially considering who was defending him. It also doesn’t address him being the weakest defender among GSW’s worst defenders.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="oukp6vr" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Luka_Flopic77 | West</div>
+        <div>1 | 24 minutes ago </div>
+      </div>
+      <label for="oukp6vr" class="commentText"><p>It was a robbery but not for Curry</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="oukpmzp" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>HotspurJr</div>
+        <div>1 | 22 minutes ago </div>
+      </div>
+      <label for="oukpmzp" class="commentText"><p>There was a perception that Steph had a bad series. He was only so-so in game one, and was downright bad in game 2.</p>
+
+<p>Steph was a very controversial player at the time and a lot of people were looking for any reason to believe he wasn&rsquo;t all that. So much talk of him being a &ldquo;system player&rdquo; and whatnot. People really didn&rsquo;t think he was that good.</p>
+
+<p>What people ignored was that as soon as Steph got on track, the series was basically no longer competitive. The best way I can explain it is that I am an incredibly nervous watcher of sports, and as a die-hard Warrior fan, I never expected to see them win a title.</p>
+
+<p>And after halftime in game 4 I was like, &ldquo;We&rsquo;ve got this. It&rsquo;s over.&rdquo; Game 5 and game 6 were some of the most chill I&rsquo;ve ever been watching basketball.</p>
+
+<p>But the narrative that he had a bad series didn&rsquo;t go away, facts be damned. You still see it crop up sometimes in posts here, a commentator will talk about how he &ldquo;sucked&rdquo; in that series. He was so dominant in game 5 that the Cavs basically sold out to stop him in game 6, which is why Iguolada scored so many points.</p>
+
+<p>The modern era of needing to &ldquo;asterix&rdquo; every title team started with those Warriors. The only other team that I saw get dismissed so much was the first Hakeem Houston title, where everybody was like &ldquo;Well, if Jordan hadn&rsquo;t retired &hellip;&rdquo; That whole, &ldquo;well, they only won because of health etc&rdquo; <em>flat out didn&rsquo;t happen</em> all the time prior to 2015.</p>
+
+<p>That&rsquo;s part of the reason why getting 72 mattered so much to those Warriors the next year. They were pissed off because they had climbed the mountain and people acted like they had lucked into it. And, of course, pushing so hard for 72 probably contributed to them losing the finals in 2016, so, again, that&rsquo;s why they were like &ldquo;fuck all y&rsquo;all, we want KD.&rdquo;</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="ouks3j4" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Rymasq</div>
+        <div>1 | 11 minutes ago </div>
+      </div>
+      <label for="ouks3j4" class="commentText"><p>Which is dumb as hell because that didn&rsquo;t happen to freaking Brunson, didn&rsquo;t happen to SGA.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="ouknblr" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>xivroton</div>
+        <div>1 | 33 minutes ago </div>
+      </div>
+      <label for="ouknblr" class="commentText"><p>There’s 11 voters and IIRC 4 voted for LeBron and weren’t going to switch.</p>
+
+<p>I think the other 7 were deciding between Curry and Iggy and consolidated otherwise it would have been split with possibly Curry or Iggy tying LeBron for most votes for FMVP</p>
+
+<p>It worked out fine but the chaos would have been amazing to see along with the possibility of FMVP going to a player on the losing team for the first time since 1969</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="ouknpqb" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Emergency_Bluejay484</div>
+        <div>1 | 31 minutes ago </div>
+      </div>
+      <label for="ouknpqb" class="commentText"><p>if they were going to break the trend, this would’ve absolutely been the year to do so.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="oukrxp2" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Rymasq</div>
+        <div>1 | 12 minutes ago </div>
+      </div>
+      <label for="oukrxp2" class="commentText"><p>It should have gone to Curry. He averaged 26-5-6 with 2 stocks on 44-38-88 splits. LeBron was scoring out of volume. 40% efficiency, 31% from 3, 68% from the line. He filled up the raw stats cause no one else was going to. He averaged 36 points on 32.5 shots.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="oukgr08" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>HenrikCrown | Pelicans</div>
+        <div>9 | an hour ago </div>
+      </div>
+      <label for="oukgr08" class="commentText"><p>He finally started mid series is what really happened and opened the Warriors up better </p>
+
+<p>I think he had like 1 or 2 good quarters on defending Bron and that was good enough coupled with Steph never having the signature game to lock it down</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="oukie63" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Emergency_Bluejay484</div>
+        <div>15 | an hour ago </div>
+      </div>
+      <label for="oukie63" class="commentText"><p>shoutout delly for almost dying to prevent a steph finals mvp 😭</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="oukmz39" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Adorable-Bike-9689</div>
+        <div>3 | 34 minutes ago </div>
+      </div>
+      <label for="oukmz39" class="commentText"><p>Delly earned everybody&rsquo;s respect with those games lol. Thank goodness for Iguadala.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="oukp0o9" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Kdot32 | Rockets</div>
+        <div>1 | 25 minutes ago </div>
+      </div>
+      <label for="oukp0o9" class="commentText"><p>I think it was after game 3 when the report of both bron and delly going to the hospital immediately postgame. Thats when I realized they weren’t winning that series</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="oukjkhk" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Round-Revolution-399 | Lakers</div>
+        <div>11 | an hour ago </div>
+      </div>
+      <label for="oukjkhk" class="commentText"><p>Curry had an insane game 5 to take a 3-2 lead, I’m still baffled that didn’t get more consideration from voters</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="oukl6da" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>401john | Cabo Verde</div>
+        <div>7 | 42 minutes ago </div>
+      </div>
+      <label for="oukl6da" class="commentText"><p>Broke the Finals record for 3&rsquo;s in a series and nobody cared lol</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="oukpnf0" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>failbears | Warriors</div>
+        <div>1 | 22 minutes ago </div>
+      </div>
+      <label for="oukpnf0" class="commentText"><p>Curry definitely deserved it over Iguodala for anyone who watched the series. Iguodala did great things on offense and defense but it&rsquo;s a lot easier to do well offensively when you have Curry on your team. I think the narrative behind some of Iguodala&rsquo;s more memorable and &ldquo;surprisingly good&rdquo; moments gave him the edge but realistically Curry deserved it.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="oukm6np" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Altruistic_Knee2044 | Celtics</div>
+        <div>-1 | 38 minutes ago </div>
+      </div>
+      <label for="oukm6np" class="commentText"><p>He got it because media guys absolutely hated Steph til like 2020 outside of Bill Simmons.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ouke17n" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Your__Pal</div>
+        <div>49 | an hour ago </div>
+      </div>
+      <label for="ouke17n" class="commentText"><p>Ah yes, the highly valued EFF stat. In 1996, Jordan put up an ugly EFF value in the finals, so clearly he did not deserve it. /s</p>
+
+<p>Brown&rsquo;s defensive skillset is perfect against Luka and he defended him fairly well. Thats why he won the award. </p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="oukeeqr" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>MainAd2728 | Washington Bullets</div>
+        <div>24 | an hour ago </div>
+      </div>
+      <label for="oukeeqr" class="commentText"><p>Tatum&rsquo;s defensive skillset nullified Luka&rsquo;s PNR game. Without Tatum they would get killed by lobs all series long. Brown&rsquo;s defense could be replaced by Jrue and White</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="oukh0v7" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>BrunsonmyGOAT | Knicks</div>
+        <div>5 | an hour ago </div>
+      </div>
+      <label for="oukh0v7" class="commentText"><p>this. In the front court/half court defense is a team effort. Unless you’re a mobile forward/center like Wemby that can cover infinite amounts of ground on defense</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="oukose6" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>SoaplessTitanic | Celtics</div>
+        <div>1 | 26 minutes ago </div>
+      </div>
+      <label for="oukose6" class="commentText"><p>Funnily enough I’m pretty sure Luka was guarded relatively well by plenty of other Celtics players too. I definitely recall Jrue and White guarding him for a lot of possessions. I believe Tatum guarded him at times too cause we tend to switch a lot. I think the image of Brown picking up Luka at or above half court just stuck in people’s heads</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="oukrmg7" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Legitimate_Cow_4166 | Warriors</div>
+        <div>1 | 13 minutes ago </div>
+      </div>
+      <label for="oukrmg7" class="commentText"><p>It was the switching defense that gassed Luka.  He couldn&rsquo;t hunt mismatches since the Celtics had the best 5 man defensive rotation in the league.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="oukoyvm" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Mammoth-Physics6254 | Mavericks</div>
+        <div>1 | 25 minutes ago </div>
+      </div>
+      <label for="oukoyvm" class="commentText"><p>Tatum and KP were the players I hated most during that series. Prime Tatum is just a defensive master.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="oukfsfj" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Unable-Main4172</div>
+        <div>-15 | an hour ago </div>
+      </div>
+      <label for="oukfsfj" class="commentText"><p>This is the Tatum that had a 50.5% TS in the finals right? </p>
+
+<p>Do you like how I used your own advanced stats against you there, er nah?</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="oukfy0g" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>MainAd2728 | Washington Bullets</div>
+        <div>11 | an hour ago </div>
+      </div>
+      <label for="oukfy0g" class="commentText"><p>I didn&rsquo;t even use advanced stats in my comment lol. What are you talking about</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="oukgwlz" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Unable-Main4172</div>
+        <div>-6 | an hour ago </div>
+      </div>
+      <label for="oukgwlz" class="commentText"><p>Oh my bad. I just assumed you were in advanced stats guy since you were trashing Brown. So you think they should have benched Brown and had Jrue holiday and Derek white on him? Is that the current argument I don&rsquo;t understand it either</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="oukh7iv" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>MainAd2728 | Washington Bullets</div>
+        <div>4 | an hour ago </div>
+      </div>
+      <label for="oukh7iv" class="commentText"><p>I think Tatum was more valuable than Brown. Not trashing on Brown, but he shouldn&rsquo;t have won Finals MVP over Tatum</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="oukhpgu" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Unable-Main4172</div>
+        <div>-3 | an hour ago </div>
+      </div>
+      <label for="oukhpgu" class="commentText"><p>Tatum shot amazingly bad that series. 50.5% TS. And in just regular numbers he was 38% from the field 26% from three. Brown has the primary assignment on Luka and shot marginally better (54% TS). although he struggled from three as well</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="oukpaa8" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Melksss | Kings</div>
+        <div>1 | 24 minutes ago </div>
+      </div>
+      <label for="oukpaa8" class="commentText"><p>When are you gonna start talking about facilitation since you’re a stats guy. Jaylen Brown did nothing to make the offense better while shooting below average, Tatum shot poorly but ran the entire offense. Not even bringing analytics into this Tatum was the mvp from the eye test.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="oukgtln" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>IPissExcellentThrows | 76ers</div>
+        <div>6 | an hour ago </div>
+      </div>
+      <label for="oukgtln" class="commentText"><p>Are the advanced stats they used in the room with us?</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="oukh4g4" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Unable-Main4172</div>
+        <div>-2 | an hour ago </div>
+      </div>
+      <label for="oukh4g4" class="commentText"><p>Yeah, I just assumed he was an advanced stats guy. My bad. </p>
+
+<p>Brown
+ was still the best player in that series for the Celtics pretty easily despite Tatum racking up some counting stats. The stats show him limiting Lukas attempts and field goal percentage when guarding him pretty well</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="oukgbd0" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Then_Fun2933</div>
+        <div>7 | an hour ago </div>
+      </div>
+      <label for="oukgbd0" class="commentText"><p>And his mythical defense hasn’t been seen since!</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="oukgmpw" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>onefootback | Raptors</div>
+        <div>2 | an hour ago </div>
+      </div>
+      <label for="oukgmpw" class="commentText"><p>this can’t be true, i’ve been told jaylen brown is one of the best two way players in the league!</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="oukgjut" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>DrTom | PDX</div>
+        <div>6 | an hour ago </div>
+      </div>
+      <label for="oukgjut" class="commentText"><p>1996 finals is known for GP doing a fantastic job on Jordan. Many believe Seattle would have won had he started guarding him earlier in the series. Either way, he def played well, well below his standards that series. That year having a low rank shouldn&rsquo;t be surprising.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="oukgtiz" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>LarBrd33 [OP]</div>
+        <div>5 | an hour ago </div>
+      </div>
+      <label for="oukgtiz" class="commentText"><p>It&rsquo;s not even advanced stats or analytics which probably would have hurt Jaylen&rsquo;s case even more given he literally ranked 7th on that team in win shares (5.9) behind Tatum (10.4), White (8.5), Zingis (7.9), Holiday (6.3), Hroford (6.2) and Pritchard (6.1). That&rsquo;s the type of stupid shit Bobby Marks was probably referring to. We all know Jaylen hates money ball. But i&rsquo;m not talking about advanced stats which show the team played better with Brown off the court. I&rsquo;m purely looking at basic ass back of the basketball card counting stats. The kind of shit Brown gunned for all season when he was second only to Luka in usage and field goal attempts. Brown should have no issue with these basic stats (points + rebounds + assists + steals + blocks - missed shots - turnovers), but those stats do show that Tatum should have won. And yet, this 11 panel Iggy award seems to carry so much weigh that it seems to form the basis for his basketball identity and belief he&rsquo;s the best two way player in the world, his actual legacy, and whether or not he ever makes the hall of fame.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="oukp8ak" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>PlatosLeftTit | Heat</div>
+        <div>1 | 24 minutes ago </div>
+      </div>
+      <label for="oukp8ak" class="commentText"><p>What does W/S have to do with Finals MVP? It&rsquo;s MVP of that specific series, not of the whole run. Brown was the highest +/- leader of all Celtics starters in the series. Clearly he was the most impactful starter and rightful Finals MVP, we can give Tatum First Round MVP if that makes his stans feel better about him not getting appreciation for that run.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="ouki4te" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>pagny77 | Timberwolves</div>
+        <div>5 | an hour ago </div>
+      </div>
+      <label for="ouki4te" class="commentText"><p>Yeah but luka was injured. Healthy luka doesnt struggle against brown. Tatum also scored more than brown despite being double teamed when brown wasnt. Brown getting FMVP for defending luka and scoring almost as much as Tatum is a robbery when you look at the two caveats that caused it. If luka was healthy and brown double teamed instead of Tatum, brown probably lets luka score 35 a game while scoring like 12 ppg himself</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="oukkvcn" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Clear_Measurement502</div>
+        <div>1 | 43 minutes ago </div>
+      </div>
+      <label for="oukkvcn" class="commentText"><p>The same Brown that got taken off primary Luka duties after he put up 30 something in game 2 then started on fire game 3? Just go back and watch the tape, they switched up the coverage after the first quarter. They switched to team defense on him, Brown had a marginal load after. He still played well in those moments after, but this narrative is sooooo overblown by both the media and this sub.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="oukfqqu" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>KingsElite | Kings</div>
+        <div>31 | an hour ago </div>
+      </div>
+      <label for="oukfqqu" class="commentText"><p>Why is the award voted on by 11 people and one is in Italy?</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="oukgrbh" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>HokageEzio | Knicks</div>
+        <div>19 | an hour ago </div>
+      </div>
+      <label for="oukgrbh" class="commentText"><p>They pick out of some of the reporters/media members who are covering. Reporters from all over come to cover the Finals, it&rsquo;s random-ish.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="oukhupg" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>KingsElite | Kings</div>
+        <div>2 | an hour ago </div>
+      </div>
+      <label for="oukhupg" class="commentText"><p>I see</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="oukojh9" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>LarBrd33 [OP]</div>
+        <div>1 | 27 minutes ago </div>
+      </div>
+      <label for="oukojh9" class="commentText"><p>just whoever is available at the time?   &ldquo;Hey you got a microphone and a notepad&hellip; want to be the source of endless basketball historical arguments?&rdquo;</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="oukdtoc" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Hungry_EatAss_v3 | Knicks</div>
+        <div>27 | an hour ago </div>
+      </div>
+      <label for="oukdtoc" class="commentText"><p>“I FUCKING TOLD Y’ALL!”</p>
+
+<p>— Bobby Mark’s friend while holding a calculator</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="oukg3wj" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>jackswastedtalent | Celtics</div>
+        <div>7 | an hour ago </div>
+      </div>
+      <label for="oukg3wj" class="commentText"><p>&ldquo;80085&rdquo;</p>
+
+<p>- Also Bobby Mark&rsquo;s friend while hold a calculator upside down and smiling</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="oukm7pl" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>preddevils6 | Grizzlies</div>
+        <div>2 | 37 minutes ago </div>
+      </div>
+      <label for="oukm7pl" class="commentText"><p>I’m listening to the new Lowe post episode, and Lowe did say Marks should’ve kept that to himself, but people offended should touch grass. It was a weird victim blame rant.</p>
+
+<p>Lowe, sure, that analytics focused scout was fucking dumb, but analytics guys dog piling on Jalen Brown isn’t new. Brown absolutely has the right to call out how dumb some of their arguments sound.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ouke24h" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>kellydayscruff</div>
+        <div>19 | an hour ago </div>
+      </div>
+      <label for="ouke24h" class="commentText"><p>jb won finals mvp because tatum was shooting tour dates the whole series</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="oukgbq9" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>LurkiLurkerson</div>
+        <div>18 | an hour ago </div>
+      </div>
+      <label for="oukgbq9" class="commentText"><p>But so was Brown.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="oukhogd" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Bouldershoulders12 | Celtics</div>
+        <div>13 | an hour ago </div>
+      </div>
+      <label for="oukhogd" class="commentText"><p>It’s funny cause Tatum TS% was only 1% lower than browns yet Tatum still led the team in all stats</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="oukm4q6" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Ok-Side-1758 | Knicks</div>
+        <div>10 | 38 minutes ago </div>
+      </div>
+      <label for="oukm4q6" class="commentText"><p>Real issue was first 3 games of the series:</p>
+
+<p>Tatum averaged: 22/9/8 on 36 FG%</p>
+
+<p>Brown averaged: 24/6/6 on 55 FG%</p>
+
+<p>After the series was 3-0 voters decided the series was basically over</p>
+
+<p>Game 4 was a blowout by the Mavs and Game 5 was a blowout by the Celtics</p>
+
+<p>The defense by Brown sealed it. I think Tatum should have won because I think 1st options have more responsibility and defensive attention but hard to win the award if you aren’t at least leading the team in scoring and then also you are very inefficient</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="ouko9j1" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Adorable-Bike-9689</div>
+        <div>1 | 28 minutes ago </div>
+      </div>
+      <label for="ouko9j1" class="commentText"><p>You&rsquo;re preaching.  Folks in here all explaining why it was a robbery because they dislike Jaylen.</p>
+
+<p>Eastern Conference Finals MVP and Finals MVP was a robbery? Did Tatum deserve both?</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="oukp8lw" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Ok-Side-1758 | Knicks</div>
+        <div>1 | 24 minutes ago </div>
+      </div>
+      <label for="oukp8lw" class="commentText"><p>ECF MVP definitely could of been Tatum he lead Celtics in points rebounds and assists (30/10/6 compared to Brown 30/5/3) even if he was less efficient</p>
+
+<p>Brown had the huge shot in game 1 to send it to OT though and I guess voters thought since Tatum won it two years ago maybe give Brown some shine (maybe thought Tatum would win FMVP in the next series too since they were favorites).</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="oukqubb" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>TheWumboligist | Knicks</div>
+        <div>1 | 17 minutes ago </div>
+      </div>
+      <label for="oukqubb" class="commentText"><p>As a Celtics hater its all very simple. When it comes time to hate on Jaylen Brown, I just say &ldquo;he&rsquo;s lucky he has Jayson Tatum on his team. He gets carried&rdquo; and when it&rsquo;s time to hate on Tatum I can say &ldquo;He literally has a Finals MVP on his team, his team is stacked&rdquo;</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="oukit4v" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>RomeluBukkake | Pistons</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="oukit4v" class="commentText"><p>Was 3% lower</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="oukmeg7" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Altruistic_Knee2044 | Celtics</div>
+        <div>5 | 37 minutes ago </div>
+      </div>
+      <label for="oukmeg7" class="commentText"><p>They had roughly the same efficiency while Tatum was being doubled and Jaylen was playing 1v1 vs a blissey.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="oukk48k" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>-SixiS-</div>
+        <div>4 | an hour ago </div>
+      </div>
+      <label for="oukk48k" class="commentText"><p>JB was shooting just as bad while getting outperformed by Tatum in every statistical category without having to deal with even a small semblance of the defensive attention Tatum was dealing with.</p>
+
+<p>Jaylen also gets this reputation of “locking up Luka” when that just didn’t happen. Luka put 29/9/5.5 on 47% shooting. His jump shot and free throws suffered but that had more to do with the multiple semi serious injuries he was playing through.</p>
+
+<p>JB was good in that series but he in no way shape of form deserved finals MVP more than Tatum. He only got the award due to narratives and voters feeling bad that Jaylen didn’t make an all nba team that year.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="oukj4s1" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>evd95</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="oukj4s1" class="commentText"><p>And taking horrible shots.</p>
+
+<p>I Have a big on you with ample time to drive? best JT could can do is step back three. (I&rsquo;m not saying that&rsquo;s the case but how often he does it, you&rsquo;d think that he can&rsquo;t drive.)</p>
+
+<p>He should be able to beat anyone to the net yet he settles way to often.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="ouke7iy" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>D1HATER3002 | Thunder</div>
+        <div>-6 | an hour ago </div>
+      </div>
+      <label for="ouke7iy" class="commentText"><p>Bro it’s the finals, everyone is shooting ass</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="oukewbw" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>kellydayscruff</div>
+        <div>9 | an hour ago </div>
+      </div>
+      <label for="oukewbw" class="commentText"><p>thats not true at all. tf are you talking about?</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="oukirbv" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>TheGreatForehead | Celtics</div>
+        <div>3 | an hour ago </div>
+      </div>
+      <label for="oukirbv" class="commentText"><p>for that series, they all were tbf. Brown, Tatum, Luka, Kyrie, they were all playing subpar.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="oukg9p3" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>HokageEzio | Knicks</div>
+        <div>14 | an hour ago </div>
+      </div>
+      <label for="oukg9p3" class="commentText"><blockquote>
+<p>Elvin Hayes (24.29) should have won over Unseld (19.57). This probably explains why Unseld ranks bottom 2. Unseld averaged 9 points, 11.7 rebounds, 3.9 assists, 0.6 steals, 0.1 blocks while Hayes averaged 20.7 points, 11.9 rebounds, 1.4 assists, 2 blocks, 1.6 steals. Unseld&rsquo;s selection ranks bottom 3.</p>
+</blockquote>
+
+<p>Elvin Hayes got ejected during Game 7 which they were lucky didn&rsquo;t cost them the series but likely cost him Finals MVP.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="oukj0ez" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>OffMyEricDickerson | Lakers</div>
+        <div>4 | an hour ago </div>
+      </div>
+      <label for="oukj0ez" class="commentText"><p>Hayes was also noted for being difficult with the press and wasn’t popular with the voters. Unseld was the leader of the team.</p>
+
+<p>Bob Dandridge also had a very strong case for the award and was actually named the MVP at first during the live broadcast of Game 7.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ouke1ck" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Rrypl | Celtics</div>
+        <div>14 | an hour ago </div>
+      </div>
+      <label for="ouke1ck" class="commentText"><p>The worst BJ I ever got was pretty good</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="oukfqgg" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>AcanthocephalaGreen5 | Raptors</div>
+        <div>2 | an hour ago </div>
+      </div>
+      <label for="oukfqgg" class="commentText"><p>Can&rsquo;t (and don&rsquo;t want to) speak for BJs but the worst convention I&rsquo;ve been to was still pretty good. Same goes for pizza.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="oukexdj" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>twovles31</div>
+        <div>9 | an hour ago </div>
+      </div>
+      <label for="oukexdj" class="commentText"><p>No one can take that trophy and honor away from him.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="oukfvoo" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Licoi | Warriors</div>
+        <div>10 | an hour ago </div>
+      </div>
+      <label for="oukfvoo" class="commentText"><p>Sounds about right. Even Iggy admitted that they should’ve given that FMVP to Steph.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="oukn5sa" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>TraderJake09 | Bucks</div>
+        <div>2 | 33 minutes ago </div>
+      </div>
+      <label for="oukn5sa" class="commentText"><p>LeBron James was the MVP of that Finals, even in the loss</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="oukpix4" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Licoi | Warriors</div>
+        <div>1 | 23 minutes ago </div>
+      </div>
+      <label for="oukpix4" class="commentText"><p>Curry outplayed him in the clutch during those finals so nah. You don’t reward MVPs to losers.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="oukec8m" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>MacJonesisaterrorist | Celtics</div>
+        <div>8 | an hour ago </div>
+      </div>
+      <label for="oukec8m" class="commentText"><p>Collective top 4 effort from Tatum/Jrue/White/Brown</p>
+
+<p>I still think Tatum should’ve won it because if you actually watched the series you could see how unbelievable his defense was</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="oukg662" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>nervosuu</div>
+        <div>6 | an hour ago </div>
+      </div>
+      <label for="oukg662" class="commentText"><p>I think part of these results stem from voting circumstances. The fact that media votes either immediately after or before the end of the final buzzer. Having no decompression time means more knee jerk reactions.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="oukgnrt" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>jambr380</div>
+        <div>5 | an hour ago </div>
+      </div>
+      <label for="oukgnrt" class="commentText"><p>Funny how the best players on so many Celtics teams (Bird, KG, and Tatum) lost out to inferior players when they likely should have won. Usually tie goes to the superstar in these circumstances</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="oukecdg" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>bigbackbing</div>
+        <div>4 | an hour ago </div>
+      </div>
+      <label for="oukecdg" class="commentText"><p>Bro posts on Celtics subreddit but is a constant Jaylen brown hater</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="oukig44" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ObiOneKenobae | Knicks</div>
+        <div>4 | an hour ago </div>
+      </div>
+      <label for="oukig44" class="commentText"><p>Celtics fans have spent half his tenure complaining about the guy and wishing for him to get traded. I hear enough of it in real life and online alike.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="oukflbn" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>LarBrd33 [OP]</div>
+        <div>-4 | an hour ago </div>
+      </div>
+      <label for="oukflbn" class="commentText"><p>I love Jaylen Brown.  He&rsquo;s easily a top 5 second options in the league.  Easily.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="oukg101" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>bigbackbing</div>
+        <div>-12 | an hour ago </div>
+      </div>
+      <label for="oukg101" class="commentText"><p>You’re a dumb bitch, he’s a top 15 player and he’s a number 1 option on most teams, please touch grass</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="oukgxrx" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>IPissExcellentThrows | 76ers</div>
+        <div>4 | an hour ago </div>
+      </div>
+      <label for="oukgxrx" class="commentText"><p>Most mature Celtics fan</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="oukh1bl" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>bigbackbing</div>
+        <div>-2 | an hour ago </div>
+      </div>
+      <label for="oukh1bl" class="commentText"><p>Says the Philly fan</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="oukjxal" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>LarBrd33 [OP]</div>
+        <div>0 | an hour ago </div>
+      </div>
+      <label for="oukjxal" class="commentText"><p>Will be interesting to see if any GMs believe that and make a monster trade offer</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ouket8u" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>frostfeint3 | Heat</div>
+        <div>4 | an hour ago </div>
+      </div>
+      <label for="ouket8u" class="commentText"><p>I mean iguodala is a no brainer. Dude won because he was the “LeBron stopper” in the series. He didn’t really stopped LeBron, but that was basically LeBron vs Warriors anyway. Only reason he won was because Kawhi won it with the same narrative.</p>
+
+<p>Jaylen Brown played great imo</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="oukhtt8" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>LightSpecialist804 | Knicks</div>
+        <div>8 | an hour ago </div>
+      </div>
+      <label for="oukhtt8" class="commentText"><p>The Iggy FMVP will go down as one of the worst basketball voter decisions ever. If this was a court case it could be appealed to a higher court and easily overturned.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="ouklmct" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>NickFierce1</div>
+        <div>0 | 40 minutes ago </div>
+      </div>
+      <label for="ouklmct" class="commentText"><p>? It was not a no brainer at all, Curry had a better series period and the Warriors would&rsquo;ve been swept without him. 2015 FMVP was the most egregious robbery of all time and will be unanimously seen as so in the future.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="oukme05" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>frostfeint3 | Heat</div>
+        <div>2 | 37 minutes ago </div>
+      </div>
+      <label for="oukme05" class="commentText"><p>? No brainer as in he deserved to be #1 worst finals MVP.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="ouktwyt" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>chameleon2021 | Pistons</div>
+        <div>1 | 3 minutes ago </div>
+      </div>
+      <label for="ouktwyt" class="commentText"><p>You’re agreeing with them</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="oukdtka" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ChattingToChat</div>
+        <div>3 | an hour ago </div>
+      </div>
+      <label for="oukdtka" class="commentText"><p><em>“I WANT IGUODALA!&rdquo;</em></p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="oukfcbz" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Unable-Main4172</div>
+        <div>2 | an hour ago </div>
+      </div>
+      <label for="oukfcbz" class="commentText"><p>In terms of spreadsheet All-Stars, this is like an Analytics Hall of Fame level submission. </p>
+
+<p>No mention at all that Brown was giving the primary defensive assignment on Luka. Also that he limited his number of attempts while he was guarding him plus lowered his field goal percentage against on the shots he directly contested</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="oukfm73" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>I_Set_3_Alarms | Celtics</div>
+        <div>3 | an hour ago </div>
+      </div>
+      <label for="oukfm73" class="commentText"><p>Man Michael Jordan was clearly trash in 1996 &amp; 1998 finals, what a bum</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="oukgips" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>randomuser051 | Lakers</div>
+        <div>3 | an hour ago </div>
+      </div>
+      <label for="oukgips" class="commentText"><p>What you mean to say is based on an arbitrary stat I chose. Unless you genuinely believe 1996 MJ was statistically a worse FMVP than 1976 Jojo White. An actual statistical analysis would make the argument why your measure of choice is the best and most representative metric to determine who is the “worst”.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ouklnia" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>HikmetLeGuin</div>
+        <div>3 | 40 minutes ago </div>
+      </div>
+      <label for="ouklnia" class="commentText"><p>Statistics don&rsquo;t tell the whole story. If you&rsquo;re trying to measure the impact of a Wes Unseld purely through statistics (and ignoring defensive impact, which is rarely captured in stats), then I think it will miss the point of what Unseld brings to the table.</p>
+
+<p>To a lesser degree, this is probably also true for someone like Brown, who is a strong defender in his own right.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ouko9kr" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Dat_Boi_John | Slovenia</div>
+        <div>1 | 28 minutes ago </div>
+      </div>
+      <label for="ouko9kr" class="commentText"><p>Iggy and Brown got it for defending the actual best players in their respective series, in Lebron and Luka respectively, so it makes sense</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ouke5f3" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>HenrikCrown | Pelicans</div>
+        <div>2 | an hour ago </div>
+      </div>
+      <label for="ouke5f3" class="commentText"><p>Lew Alcindor?</p>
+
+<p>Who dat?</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="oukf8se" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Dusty_Negatives | Trail Blazers</div>
+        <div>2 | an hour ago </div>
+      </div>
+      <label for="oukf8se" class="commentText"><p>Kareem.  Not sure why OP used his birth name</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="oukfb07" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>CartoonOG | Lakers</div>
+        <div>2 | an hour ago </div>
+      </div>
+      <label for="oukfb07" class="commentText"><p>In JB and Iguodala’s defense, their FMVP narratives were due to guarding and slowing down the best player on the opposing team (Luka and LeBron)</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="oukhmhy" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Alone_Description646</div>
+        <div>2 | an hour ago </div>
+      </div>
+      <label for="oukhmhy" class="commentText"><p>Why are these 11 people tasked with making this decision. Has any ever played basketball? Or is this a sheep thing where we do as everyone else. Mims</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="oukhvzj" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>press_Y | Knicks</div>
+        <div>2 | an hour ago </div>
+      </div>
+      <label for="oukhvzj" class="commentText"><p>Unathletic, spreadsheet, xlookup dweebs are at it again</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="oukk9iq" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>SaveHogwarts | Celtics</div>
+        <div>2 | an hour ago </div>
+      </div>
+      <label for="oukk9iq" class="commentText"><p>I don’t claim this Celtics “fan”</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="ouklwr5" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>brnccnt7</div>
+        <div>1 | 39 minutes ago </div>
+      </div>
+      <label for="ouklwr5" class="commentText"><p>Its okay, every fan base has its sub fan bases and stans</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="oukn3lp" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Novel_Board_6813</div>
+        <div>2 | 34 minutes ago </div>
+      </div>
+      <label for="oukn3lp" class="commentText"><p>JB and Iggy were the worst and undeserved</p>
+
+<p>KD freaking owned those finals btw. This might help people who have strong opinions but won’t ever watch those games</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="oukpgk2" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>lava172 | Suns</div>
+        <div>1 | 23 minutes ago </div>
+      </div>
+      <label for="oukpgk2" class="commentText"><p>Idk if Giannis being the undisputed #1 makes me feel better or worse</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="oukqn1z" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Funky_Monkees_ | Suns</div>
+        <div>1 | 18 minutes ago </div>
+      </div>
+      <label for="oukqn1z" class="commentText"><p>Not surprised Giannis is #1, he was bananas in that 2021 finals. Lucky Suns fans get two trips to the finals and one is prime 1993 Jordan, and the other gets prime 2021 Freak.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ouke0on" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>False_Pressure_6324 | Angola</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="ouke0on" class="commentText"><p>&amp;lt;insert pirate meme&amp;gt;</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="oukemv6" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Bacca18121 | Celtics</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="oukemv6" class="commentText"><p>Well there you have it folks; unfortunately EFF never lies 😔</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="oukfz1u" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ParisLake2 | Lakers</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="oukfz1u" class="commentText"><p>Wes Unseld was an absolute baller back in his day, very very physically solid dude, rock hard rebounding machine, you couldn’t move him.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="oukg4dl" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>blinkomatic | Trail Blazers</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="oukg4dl" class="commentText"><p>Advanced stats nerds: &ldquo;And that&rsquo;s when I took it personally&rdquo;</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="oukgk54" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>AFonziScheme</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="oukgk54" class="commentText"><p>I will say, at a certain point regarding scoring, your efficiency gets to a point where leading your team in scoring is a mark against you. For reference, Kyrie gets a lot of blame for his team losing because he completely lost his ability to score in that series (20ppg on .455 eFG%), but Tatum lead his team in scoring (22ppg on .439 eFG%)</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="oukhmbc" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>PogoMarimo</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="oukhmbc" class="commentText"><p>People will say &ldquo;statistically&rdquo; then use the absolute worst and least insightful statistics possible.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ouki1fl" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>One_Seaworthiness323</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="ouki1fl" class="commentText"><p>Shit like this is what people hate analytics. Like, there’s a lot of missing context. Like, the competition</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="oukibvf" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>LoquaciousApotheosis | Pistons</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="oukibvf" class="commentText"><p>In 2004 the Pistons strategy was Ben Wallace defending Shaq one-on-one, while doubling Kobe (knowing that Kobe was FMVP hungry and would not be content feeding Shaq all game and would eventually chuck the Lakers out of games).</p>
+
+<p>As such Shaq had big impressive lines which optically made it harder to see Ben as FMVP, even though he had a case.</p>
+
+<p>Honestly that whole starting 5 should have shared it.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="oukj245" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>shadow_spinner0 | Nets</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="oukj245" class="commentText"><p>Maxwell won because he was more consistent game to game.  Bird had two games where he scored less than 10 points (one of them being a close loss) and another where he scored 12. I think Maxwell won because he scored well throughout the series.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="oukju2y" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>SAguilar23 | Spurs</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="oukju2y" class="commentText"><p>Lmfao damn, can’t say much, Parker one spot above him. Ooof.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="oukkdcu" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Laggo | TOR</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="oukkdcu" class="commentText"><blockquote>
+<p>There&rsquo;s other weird years like 2015 where Andre Iguodala received 7 votes with the other 4 going to LeBron James from the losing team. This despite the fact Steph Curry, statistically, was the obvious choice from the Warriors.</p>
+</blockquote>
+
+<p>You spreadsheet all americans always out yourself, nobody thought Curry was the &ldquo;obvious choice&rdquo; in 2015 if you actually watched the games. For better or worse Igoudala coming in actually changed the series. It was either give it to LeBron (majority of spectators) or Igoudala. Curry did not get one vote for a reason.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="oukpove" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Licoi | Warriors</div>
+        <div>1 | 22 minutes ago </div>
+      </div>
+      <label for="oukpove" class="commentText"><p>When Iggy admitted that curry should’ve gotten the award I’ll listen to him.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ouknflj" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>mikesaninjakillr | Celtics</div>
+        <div>1 | 32 minutes ago </div>
+      </div>
+      <label for="ouknflj" class="commentText"><p>This is why people need to actually watch the games</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ouknhdg" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>dawill_sama</div>
+        <div>1 | 32 minutes ago </div>
+      </div>
+      <label for="ouknhdg" class="commentText"><p>This the stuff they talking about&hellip; nobody gives a f about these numbers. &ldquo;Worst finals mvp?&rdquo; LOL go touch grass&hellip; PLEASE!</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="oukouma" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>solarscopez | Celtics</div>
+        <div>1 | 26 minutes ago </div>
+      </div>
+      <label for="oukouma" class="commentText"><p>The difference in how this post was received on /r/NBA vs on /r/bostonceltics is absolutely fascinating lol</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="oukp18h" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Simple_Purple_4600</div>
+        <div>1 | 25 minutes ago </div>
+      </div>
+      <label for="oukp18h" class="commentText"><p>Frazier got robbed in 73</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="oukp1qu" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>antonimbus | Knicks</div>
+        <div>1 | 25 minutes ago </div>
+      </div>
+      <label for="oukp1qu" class="commentText"><p>but you see, the analytical champion should have been&hellip;</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="oukp2nc" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>fridaze_</div>
+        <div>1 | 25 minutes ago </div>
+      </div>
+      <label for="oukp2nc" class="commentText"><p>This checks out I heard he is like the 7th best player on the team</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="oukrdlj" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>logster2001 | Rockets</div>
+        <div>1 | 15 minutes ago </div>
+      </div>
+      <label for="oukrdlj" class="commentText"><p>Legit my biggest sports pet peeve is them having an mvp for a single series</p>
+
+<p>Especially given that in a bracket the last team you face isn’t necessarily even the best one. “MVP of this series tho each series were equally as important and this just happened to be the last one”</p>
+
+<p>Like you get the championship by beating every team. It’s completely objective and there is no debating who won the championship. That is what is great about it. And then they still have a group of 11 randoms arbitrarily vote on who was the best one. Like what was the point of the entire playoffs if the last trophy awarded is still completely based on opinion</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="oukrj96" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>whatssenguntoagoblin | Alperen Sengun</div>
+        <div>1 | 14 minutes ago </div>
+      </div>
+      <label for="oukrj96" class="commentText"><p>I always find it weird how finals MVP has such a small sample size of voters</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="oukt7bq" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>logster2001 | Rockets</div>
+        <div>1 | 6 minutes ago </div>
+      </div>
+      <label for="oukt7bq" class="commentText"><p>I think it’s weird they even have a finals mvp trophy at all. Like who gives af about who 11 random voters think was the mvp of a 4 game stretch.</p>
+
+<p>Like just let the fans come up with their own opinions</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="oukrtfa" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>batman77-</div>
+        <div>1 | 13 minutes ago </div>
+      </div>
+      <label for="oukrtfa" class="commentText"><p>Brown was better than Tatum <sup>3</sup>&frasl;<sub>5</sub> games. It’s not that crazy he won. It wasn’t some robbery </p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ouksg5s" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>YourWorstNightmare9</div>
+        <div>1 | 10 minutes ago </div>
+      </div>
+      <label for="ouksg5s" class="commentText"><p>If Tatum shot even 40% from the field in the Finals, he easily wins FMVP, but no way they’re gonna give FMVP to someone who only shot 38% from the field and 26% from 3.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ouksgwz" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>starmiesan | Bucks</div>
+        <div>1 | 10 minutes ago </div>
+      </div>
+      <label for="ouksgwz" class="commentText"><p>Holy fuck Giannis really carried huh</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ouksz6p" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>jldtsu | NBA</div>
+        <div>1 | 7 minutes ago </div>
+      </div>
+      <label for="ouksz6p" class="commentText"><p>crazy thing is that you have to be fucking NBA Finals MVP to even qualify</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ouktgab" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>HatefulDan</div>
+        <div>1 | 5 minutes ago </div>
+      </div>
+      <label for="ouktgab" class="commentText"><p>Here we go again.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ouke3r2" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>samhit_n | Lakers</div>
+        <div>0 | an hour ago </div>
+      </div>
+      <label for="ouke3r2" class="commentText"><p>I think Brown won Finals MVP over Tatum because Tatum didn&rsquo;t play much better than him offensively, and Brown was the one who defended Luka for most of the series. But with that logic, Garnett deserved Finals MVP in 2008, and Duncan in 2007.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ouke8ru" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>smkmn13 | Timberwolves</div>
+        <div>0 | an hour ago </div>
+      </div>
+      <label for="ouke8ru" class="commentText"><p>What proportion of winners led in EFF?</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="oukecek" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Pale-Protection5314</div>
+        <div>0 | an hour ago </div>
+      </div>
+      <label for="oukecek" class="commentText"><p>He really got them riled up 😂</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="oukefpc" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>nicklovin508 | Celtics</div>
+        <div>0 | an hour ago </div>
+      </div>
+      <label for="oukefpc" class="commentText"><p>I do think Giannis had the best individual finals statistics ever</p>
+
+<p>And I think the 2024 Celtics were too team centric for any individual to stand out as one of the best finals MVPs ever</p>
+
+<p>That said, EFF stats aren’t exactly painting a great picture in the sense that Brown guarded Luka Doncic 94 feet for 5 straight games, which was the main factor for him winning finals MVP. If it came down to counting stats alone, like EFF is doing here, Tatum would have won it.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="oukegxi" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>80cent | NBA</div>
+        <div>0 | an hour ago </div>
+      </div>
+      <label for="oukegxi" class="commentText"><p>I think the guys who won for guarding LeBron really stood out as obviously low historically ranking. Before Kawhi and Iguodala, I thought Billups was also quite low.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="oukfo5c" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>TheRealMitchConnor</div>
+        <div>0 | an hour ago </div>
+      </div>
+      <label for="oukfo5c" class="commentText"><p>Damn, Iggy catching strays today</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="oukh8dt" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Faded_Astronomer23</div>
+        <div>0 | an hour ago </div>
+      </div>
+      <label for="oukh8dt" class="commentText"><p>Your just going off stats in the 2024 finals. Brown guarded Luka extremely well. It was obvious Luka wanted anybody but brown guarding him. Mavs would waste a ton of clock trying to get switches and it seemed like a big reason they struggled.</p>
+
+<p>He only averaged 1 point less than Tatum. I think the fmvp was warranted. How many guys can check Luka that well on the biggest stage?</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="oukhbbo" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>MichaelT_KC</div>
+        <div>0 | an hour ago </div>
+      </div>
+      <label for="oukhbbo" class="commentText"><p>Not a Jaylen fan at all but these posts are getting real old</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="oukl19d" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>azurricat2010 | Lakers</div>
+        <div>0 | 43 minutes ago </div>
+      </div>
+      <label for="oukl19d" class="commentText"><p>What was Bron in 15 and 18?</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="ouklnnq" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>brnccnt7</div>
+        <div>0 | 40 minutes ago </div>
+      </div>
+      <label for="ouklnnq" class="commentText"><p>I&rsquo;d like to know this as well, should have won FMVP in 15</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="oukm53l" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>NickFierce1</div>
+        <div>0 | 38 minutes ago </div>
+      </div>
+      <label for="oukm53l" class="commentText"><p>Anyone who voted on the 2015 FMVP award should actually be criminally charged. Curry not winning is the most egregious thing i&rsquo;ve ever seen in the past 15 years watching the NBA.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="oukek71" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>BenShelZonah | Nets</div>
+        <div>-1 | an hour ago </div>
+      </div>
+      <label for="oukek71" class="commentText"><p>These Jaylen hate posts are like heroin into my veins, please keep them coming. Energy ✊🏿</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ouker6y" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Ilikesporks_ | Lakers</div>
+        <div>-1 | an hour ago </div>
+      </div>
+      <label for="ouker6y" class="commentText"><p>even tho jaylen brown wasn&rsquo;t crazy good in the finals i would still have chosen him over tatum for FMVP. he played great defense on luka and also was more efficient and clutch than tatum as well. also averaged more ppg if i&rsquo;m not mistaken</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="oukgqd5" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>LurkiLurkerson</div>
+        <div>2 | an hour ago </div>
+      </div>
+      <label for="oukgqd5" class="commentText"><p>You are mistaken. Tatum averaged more points, rebounds, and assists.</p>
+
+<p>Edit: 22.2 to 20.8 to be specific.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="oukh5x0" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Ilikesporks_ | Lakers</div>
+        <div>0 | an hour ago </div>
+      </div>
+      <label for="oukh5x0" class="commentText"><p>ah well that&rsquo;s expected considering the usage he had, he was pretty much playing like a point guard in the finals. he was still horribly inefficient and turnover prone which is why i lean jaylen brown</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="oukhoga" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>LurkiLurkerson</div>
+        <div>-1 | an hour ago </div>
+      </div>
+      <label for="oukhoga" class="commentText"><p>Brown was also horribly inefficient and had 2 fewer turnovers than Tatum who was acting as the primary offensive initiator.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="oukjir2" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Ilikesporks_ | Lakers</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="oukjir2" class="commentText"><p>he shot 44% from the field while tatum shot 38%. a whole 6 point percentage difference. there&rsquo;s inefficiency and whatever the fuck tatum was doing.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="oukfj9h" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Southern_sky | Spurs</div>
+        <div>-1 | an hour ago </div>
+      </div>
+      <label for="oukfj9h" class="commentText"><p>I mean if he&rsquo;s really the 7th best player on the team, analytically speaking, JB actually over performed during those Finals.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="oukgbjc" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>advancedmatt | Nuggets</div>
+        <div>-1 | an hour ago </div>
+      </div>
+      <label for="oukgbjc" class="commentText"><p>“ChatGPT, generate 10,000 words to support my obsessive belief that Jaylen Brown should not have been Finals MVP.”</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="oukdp2m" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>DangerousKick5792 | Raptors</div>
+        <div>-3 | an hour ago </div>
+      </div>
+      <label for="oukdp2m" class="commentText"><p>Jaylen brown the modern day Carmelo?</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="oukee9o" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>alottaspunk</div>
+        <div>2 | an hour ago </div>
+      </div>
+      <label for="oukee9o" class="commentText"><p>Brown actually plays defense so no</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="oukek17" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Burner867867</div>
+        <div>-3 | an hour ago </div>
+      </div>
+      <label for="oukek17" class="commentText"><p>Celtics “fans” believed Brown was a top 5 player in the league and they wouldn’t trade him for Giannis. Now they want to trade him for Scoot Henderson and Jerami Grant.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="oukgbvi" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Ferahgost | Celtics</div>
+        <div>2 | an hour ago </div>
+      </div>
+      <label for="oukgbvi" class="commentText"><p>Nah, all you people want us to trade him for a bag of dirty laundry.</p>
+
+<p>Actual Celtics fans are here laughing wondering what fucking drugs y’all are on.</p>
+
+<p>Online commentary has been trying to split up the Jays since they got drafted lmfao</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="ouklsey" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Burner867867</div>
+        <div>2 | 39 minutes ago </div>
+      </div>
+      <label for="ouklsey" class="commentText"><p>The Celtics sub is celebrating trading for bums and signing Kevon Looney </p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
