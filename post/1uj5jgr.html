@@ -1,0 +1,896 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.selfPostImage {
+  width: 100%;
+  height: auto;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/nba/comments/1uj5jgr/2026_free_agency_tracker/"><p>2026 Free Agency Tracker</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <table>
+<thead>
+<tr>
+<th align="left">Player</th>
+<th align="left">Team</th>
+<th align="left">Details</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">Jaylen Clark</td>
+<td align="left">Minnesota Timberwolves</td>
+<td align="left">3 year/10 million</td>
+</tr>
+
+<tr>
+<td align="left">Jordan Goodwin</td>
+<td align="left">Phoenix Suns</td>
+<td align="left">3 year/19 million</td>
+</tr>
+
+<tr>
+<td align="left">Collin Gillespie</td>
+<td align="left">Phoenix Suns</td>
+<td align="left">4 year/48 million</td>
+</tr>
+
+<tr>
+<td align="left">CJ McCollum</td>
+<td align="left">Atlanta Hawks</td>
+<td align="left">1 year/21 million</td>
+</tr>
+
+<tr>
+<td align="left">Trae Young</td>
+<td align="left">Washington Wizards</td>
+<td align="left">4 year/212 million</td>
+</tr>
+
+<tr>
+<td align="left">Mohamed Diawara</td>
+<td align="left">New York Knicks</td>
+<td align="left">4 year/10 million</td>
+</tr>
+
+<tr>
+<td align="left">Coby White</td>
+<td align="left">Charlotte Hornets</td>
+<td align="left">3 year/74 million</td>
+</tr>
+
+<tr>
+<td align="left">Al Horford</td>
+<td align="left">Golden State Warriors</td>
+<td align="left">2 year/14 million</td>
+</tr>
+
+<tr>
+<td align="left">Ayo Dosunmu</td>
+<td align="left">Minnesota Timberwolves</td>
+<td align="left">5 year/112 million</td>
+</tr>
+
+<tr>
+<td align="left">Jose Alvarado</td>
+<td align="left">New York Knicks</td>
+<td align="left">3 year/14.6 million</td>
+</tr>
+
+<tr>
+<td align="left">Mark Williams</td>
+<td align="left">Phoenix Suns</td>
+<td align="left">3 year/38 million</td>
+</tr>
+
+<tr>
+<td align="left">Austin Reaves</td>
+<td align="left">Los Angeles Lakers</td>
+<td align="left">4 year/185 million</td>
+</tr>
+
+<tr>
+<td align="left">Isaiah Hartenstein</td>
+<td align="left">Oklahoma City Thunder</td>
+<td align="left">3 year/75 million</td>
+</tr>
+
+<tr>
+<td align="left">Ron Harper Jr.</td>
+<td align="left">Boston Celtics</td>
+<td align="left">3 year/9 million</td>
+</tr>
+
+<tr>
+<td align="left">Josh Minott</td>
+<td align="left">Brooklyn Nets</td>
+<td align="left">2 year/9 million</td>
+</tr>
+
+<tr>
+<td align="left">Day&rsquo;Ron Sharpe</td>
+<td align="left">Brooklyn Nets</td>
+<td align="left">2 year/20 million</td>
+</tr>
+
+<tr>
+<td align="left">Andrew Wiggins</td>
+<td align="left">Miami Heat</td>
+<td align="left">3 year/64 million</td>
+</tr>
+
+<tr>
+<td align="left">Thomas Bryant</td>
+<td align="left">Cleveland Cavaliers</td>
+<td align="left">1 year deal</td>
+</tr>
+
+<tr>
+<td align="left">Landry Shamet</td>
+<td align="left">New York Knicks</td>
+<td align="left">4 year/24 million</td>
+</tr>
+
+<tr>
+<td align="left">Julian Champagnie</td>
+<td align="left">San Antonio Spurs</td>
+<td align="left">3 year/45 million</td>
+</tr>
+
+<tr>
+<td align="left">Jusuf Nurkic</td>
+<td align="left">Utah Jazz</td>
+<td align="left">2 year/22 million</td>
+</tr>
+
+<tr>
+<td align="left">Kevin Huerter</td>
+<td align="left">Detroit Pistons</td>
+<td align="left">3 year/27 million</td>
+</tr>
+
+<tr>
+<td align="left">Kristaps Porzingis</td>
+<td align="left">Golden State Warriors</td>
+<td align="left">2 year/40 million</td>
+</tr>
+
+<tr>
+<td align="left">Harrison Barnes</td>
+<td align="left">San Antonio Spurs</td>
+<td align="left">1 year/8 million</td>
+</tr>
+
+<tr>
+<td align="left">Robert Williams</td>
+<td align="left">Portland Trailblazers</td>
+<td align="left">3 year/44 million</td>
+</tr>
+
+<tr>
+<td align="left">Simone Fontecchio</td>
+<td align="left">Miami Heat</td>
+<td align="left">1 year/2.6 million</td>
+</tr>
+
+<tr>
+<td align="left">Jock Landale</td>
+<td align="left">Atlanta Hawks</td>
+<td align="left">1 year/14 million</td>
+</tr>
+
+<tr>
+<td align="left">Ousmane Dieng</td>
+<td align="left">Milwaukee Bucks</td>
+<td align="left">3 year/17.5 million</td>
+</tr>
+
+<tr>
+<td align="left">DeAndre Jordan</td>
+<td align="left">New Orleans Pelicans</td>
+<td align="left">1 year TBA</td>
+</tr>
+
+<tr>
+<td align="left">Bones Hyland</td>
+<td align="left">Minnesota Timberwolves</td>
+<td align="left">TBA</td>
+</tr>
+
+<tr>
+<td align="left">Tim Hardaway Jr</td>
+<td align="left">Miami Heat</td>
+<td align="left">1 year/6.5 million</td>
+</tr>
+
+<tr>
+<td align="left">Branden Carlson</td>
+<td align="left">Portland Trailblazers</td>
+<td align="left">1 year/2.5 million</td>
+</tr>
+
+<tr>
+<td align="left">Kobe Sanders</td>
+<td align="left">Los Angeles Clippers</td>
+<td align="left">4 year/11.2 million</td>
+</tr>
+
+<tr>
+<td align="left">Precious Achiuwa</td>
+<td align="left">Sacramento Kings</td>
+<td align="left">2 year/11.5 million</td>
+</tr>
+
+<tr>
+<td align="left">Keon Ellis</td>
+<td align="left">Brooklyn Nets</td>
+<td align="left">2 year/18 million</td>
+</tr>
+</tbody>
+</table>
+
+<h1 id="notable-trades-news">Notable Trades/News</h1>
+
+<ul>
+<li>Giannis Antetokounmpo and Bobby Portis to the Miami Heat for Tyler Herro, Kel&rsquo;el Ware, Jaime Jaquez Jr., Kasparas Jakucionis, 3 first-round picks (including No. 13), 1 pick swap and 1 second-rounder, per Shams</li>
+<li>LaMelo Ball and Josh Green to the Minnesota Timberwolves for Naz Reid, a 2033 unprotected first-round pick, three first-round pick swaps and three second-round picks</li>
+<li>Hornets trade Miles Bridges, a 2029 first-round pick, and a 2027 second-round pick to the Phoenix Suns in exchange for Grayson Allen, Royce O&rsquo;Neale, and an unprotected 2033 first-round pick</li>
+<li>The Memphis Grizzlies are trading two-time NBA All-Star Ja Morant to the Portland Trail Blazers for Jerami Grant and Kris Murray</li>
+<li>Kawhi Leonard heading to the Toronto Raptors for Brandon Ingram, Gradey Dick, 2 first-round picks, 1 pick swap and 2 second-rounders, per Shams</li>
+</ul>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="oul25jo" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>NoIntroduction2690 | West</div>
+        <div>71 | a day ago </div>
+      </div>
+      <label for="oul25jo" class="commentText"><p>Mods, please pin this</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="oul4lv0" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Montigue | POR</div>
+        <div>4 | a day ago </div>
+      </div>
+      <label for="oul4lv0" class="commentText"><p>They usually do</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="oul3kmw" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Felix_Wyn | Magic</div>
+        <div>16 | a day ago </div>
+      </div>
+      <label for="oul3kmw" class="commentText"><p>Jaylen Clark got re-signed (reportedly) by Minnesota (Ayo Dosunmu as well), Jordan Goodwin &amp; Colin Gillespie by the Suns, Coby White by the Hornets, Al Horford by the Warriors, Mohamed Diawara by the Knicks, Trae Young by the Wizards, and CJ McCollum by the Hawks.</p>
+
+<p>I think those are all the extensions so far that haven&rsquo;t been added.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="oulkl6z" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Crayondy | Timberwolves</div>
+        <div>2 | a day ago </div>
+      </div>
+      <label for="oulkl6z" class="commentText"><p>Jaylen Clark 3 year/10 million</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="oul1wwh" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>TCTInnings</div>
+        <div>9 | a day ago </div>
+      </div>
+      <label for="oul1wwh" class="commentText"><p>Lakers leading free agency in money handed out!</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="oul26kc" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>a_moniker | Hornets</div>
+        <div>6 | a day ago </div>
+      </div>
+      <label for="oul26kc" class="commentText"><p>They must be so much better!</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="oul1k9g" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Either_Imagination_9 | Knicks</div>
+        <div>6 | a day ago </div>
+      </div>
+      <label for="oul1k9g" class="commentText"><p>Leon you’ve done it again!</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="oul3oml" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>toejam_wash | Knicks</div>
+        <div>4 | a day ago </div>
+      </div>
+      <label for="oul3oml" class="commentText"><p>Leon must also be offering these dudes 12 months free rent for a 350 sqft 1bd/1ba apt in midtown Manhattan. No way they would pass that up.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="oul5xv3" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>a_moniker | Hornets</div>
+        <div>3 | a day ago </div>
+      </div>
+      <label for="oul5xv3" class="commentText"><p>Why wouldn’t he? Silver just made circumventing the cap legal!</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="oul2hwy" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>RobbobertoBuii | Knicks</div>
+        <div>1 | a day ago </div>
+      </div>
+      <label for="oul2hwy" class="commentText"><p>TrustInLeon</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="oul3ag0" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>MaxR76 | 76ers</div>
+        <div>1 | a day ago </div>
+      </div>
+      <label for="oul3ag0" class="commentText"><p>Does signing those two mean Robinson is gone? You guys had an expensive ass team as it was. I know Robinson was making $12.5 last year. Not sure what he commands in free agency.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="oul3hcx" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Either_Imagination_9 | Knicks</div>
+        <div>3 | a day ago </div>
+      </div>
+      <label for="oul3hcx" class="commentText"><p>Most likely yeah, unless he chooses to take less pay which I don’t think he’s gonna do.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="oul3ulk" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>MaxR76 | 76ers</div>
+        <div>2 | a day ago </div>
+      </div>
+      <label for="oul3ulk" class="commentText"><p>Damn. Kinda surprised they wouldn’t prioritize him over guard depth given KAT being no stranger to foul trouble and how good he is on the boards</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="oul4fic" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Mean-Plankton-5245 | Knicks</div>
+        <div>3 | a day ago </div>
+      </div>
+      <label for="oul4fic" class="commentText"><p>The problem is the Knicks were gonna have to go into the 2nd apron for him no matter what, which they don’t have to do with shamet. And evidently they don’t want to go into the 2nd apron. Though I’m skeptical that Robinson is gonna get more than like 12 mil a year. He cannot be a starter, even for a desperate team. His ft% and injury concerns mean he simply cannot start. So I think some of the projections for his market are a little high</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="oul50is" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>MaxR76 | 76ers</div>
+        <div>2 | a day ago </div>
+      </div>
+      <label for="oul50is" class="commentText"><p>That makes sense, wouldn’t be the first team to have to sacrifice a player over the second apron.</p>
+
+<p>Maybe the Sixers can sign him and we just pray that his injuries and Embiids occur at different times so it cancels out</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="oul4o9p" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Musa_2050 | Lakers</div>
+        <div>4 | a day ago </div>
+      </div>
+      <label for="oul4o9p" class="commentText"><p>A rare good post.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="oul6d4u" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Presidentclash2</div>
+        <div>3 | a day ago </div>
+      </div>
+      <label for="oul6d4u" class="commentText"><p>Is this an official tracker or a knockoff. There is no link category that takes you to website or tweet of breaking news</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="oul29e1" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>magicbeaned</div>
+        <div>2 | a day ago </div>
+      </div>
+      <label for="oul29e1" class="commentText"><p>305 back on the map. Bring it on.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="oul2mq4" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>matija17k | Timberwolves</div>
+        <div>2 | a day ago </div>
+      </div>
+      <label for="oul2mq4" class="commentText"><p>Wasn&rsquo;t Shamet 4y/24m?</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="oul3dgz" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>MaxR76 | 76ers</div>
+        <div>1 | a day ago </div>
+      </div>
+      <label for="oul3dgz" class="commentText"><p>That would make more sense. I was like damn he got a nice payday</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="outkaeu" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>DMD612 | Heat</div>
+        <div>1 | 24 minutes ago </div>
+      </div>
+      <label for="outkaeu" class="commentText"><p>Yes finally it’s been pinned. Thank you mods</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="outkdoh" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>JLynn943 | Kings</div>
+        <div>1 | 24 minutes ago </div>
+      </div>
+      <label for="outkdoh" class="commentText"><p>Precious Achiuwa got 2 yr/$11.5M to stay in Sacramento</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="oumc7f3" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>YerrrKnicks | Knicks</div>
+        <div>1 | a day ago </div>
+      </div>
+      <label for="oumc7f3" class="commentText"><p>Would be great if we could get their positions too</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="outnky0" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>tpr3 | Nuggets</div>
+        <div>1 | 6 minutes ago </div>
+      </div>
+      <label for="outnky0" class="commentText"><p>This thread is missing Lebron James to the Charlotte Hornets??</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
