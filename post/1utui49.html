@@ -1,0 +1,244 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.selfPostImage {
+  width: 100%;
+  height: auto;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/PathOfExile2/comments/1utui49/why_every_endgame_build_paths_around_the_outer/"><p>Why every endgame build paths around the outer edge of the tree</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <p>I did some tree optimization using brute force solvers and now I understand clearly why every endgame build follows the outer edge.</p>
+
+<p>I looked at a specific case of pathing to Crimson Assault from the Witch starting location and collecting 200% increased critical strike chance. When valuing jewel sockets at 15% crit, it produced the classic shape of going straight to the edge and then hugging it.</p>
+
+<p>When jewel sockets are treated as giving nothing, the path changes to the border of class starting areas. There is a simple reason for this but it is nice to see that it holds up in 100% optimal (according to very unrealistic criteria) pathing.</p>
+
+<p>The tree has 12 straight spokes, 6 of which are aligned with the class starting locations&rsquo; directions. It also has three perfectly symmetric (but drawn wavy) rings of attribute nodes. The inner ring that marks the edge of the class starting areas takes 4 edges from spoke to spoke. The middle ring takes 5 and the outer takes 5.</p>
+
+<p>So the inner ring is the fastest but has very few clusters in exchange. The outer ring has jewel sockets and the most powerful clusters also tend to be on the outer ring.</p>
+
+<p>Another perspective is that jewels with a single crit affix made it worth it to use the outer ring, while the inner ring was used for the pathing to the keystone otherwise. Those jewels can have four more modifiers on top. This really drives home the point that jewel sockets are the only thing that matters, provided you have the budget or patience to acquire them.</p>
+
+<p>Maybe you want to optimize the tree as well? The main insight needed is that pathing on the choosable attribute rings and spokes is optimal. Nodes that offer alternative paths are rare and never offer shortcuts, so they are only worth taking if they have desirable stats. I used Mixed-Integer Linear Programming to optimize a tree graph that was consolidated into just the spoke crossings and clusters of interest but there are most likely more efficient methods. It seems very tractable to me, especially as there is little nonlinear scaling involving just the tree, crit being the one exception.</p>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="owygdh5" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>lionheart832</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="owygdh5" class="commentText"><p>1 crit node on tree is the same as 0.5 affix on a jewel, so 1 jewel is the equivalent of ~7 points. That&rsquo;s why</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
