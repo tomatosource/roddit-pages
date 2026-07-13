@@ -1,0 +1,950 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.selfPostImage {
+  width: 100%;
+  height: auto;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/baseball/comments/1uvjy3f/best_names_of_the_2026_mlb_draft/"><p>Best Names of the 2026 MLB Draft</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <p>Hello r/baseball. We’ve made it once again to the All Star Break, our annual reprieve in which to catch our breath while we reflect on the first half that was and the second half that will be. It is also the time of year where the league ushers in a wave of new talent via the MLB Draft. For some reason this year, MLB and NBC decided they wanted the draft to be held while games were still being played over the weekend before the All Star break, rather than holding the draft during the league’s days off. I don’t know why, I’m not a member of the league office, nor am I an NBC executive.</p>
+
+<p>But that’s all a preamble to my main point, which is that it’s once again time to celebrate some of the best new names that have entered professional baseball via this year’s draft! For those who enjoy this kind of thing, here are the links to previous editions of this list:</p>
+
+<p><a href="https://www.reddit.com/r/baseball/comments/1m0p1z5/best_names_of_the_2025_mlb_draft/" target="_blank">2025</a>, <a href="https://www.reddit.com/r/baseball/comments/1e6k2wl/best_names_of_the_2024_mlb_draft/" target="_blank">2024</a>, <a href="https://www.reddit.com/r/baseball/comments/14zlm53/best_names_of_the_2023_mlb_draft/" target="_blank">2023</a>, <a href="https://www.reddit.com/r/baseball/comments/w3ua4f/best_names_of_the_2022_mlb_draft/" target="_blank">2022</a>, <a href="https://www.reddit.com/r/baseball/comments/ojp0qj/best_names_of_the_2021_mlb_draft/" target="_blank">2021</a>, <a href="https://www.reddit.com/r/baseball/comments/h7vbuz/best_names_of_the_2020_draft/" target="_blank">2020</a>, <a href="https://www.reddit.com/r/baseball/comments/bwspsh/best_names_of_the_2019_draft/" target="_blank">2019</a>, <a href="https://www.reddit.com/r/baseball/comments/8oy8ld/best_names_in_the_2018_draft_class/" target="_blank">2018</a></p>
+
+<p>This year’s draft class was quite deep with some excellent name talent across all the rounds, including a great name right off the bat. So let’s get right into the heavy hitting analysis. Here are some of the very best names that may now belong to professional baseball players. Congratulations to all of them, and may they all find success in their careers.</p>
+
+<hr>
+
+<p><strong>Roch Cholowsky</strong> (Round 1, Pick 1. White Sox) – Per my rankings, Roch Cholowsky is the best name talent taken 1.1 since Adley Rutschman back in 2019. The ChiSox started us off this year by taking a very solid <a href="https://imgur.com/old-japanese-console-game-fighting-baseball-had-some-creative-fake-names-players-KJJOKTS" target="_blank">Fighting Baseball name</a> whose tools as a baseball player should not distract us from how utterly delightful his name is to say.</p>
+
+<p><strong>Coleman Borthwick</strong> (1, 21. Padres) – “Borthwick” is a Hogwarts-sounding last name, and Coleman is also just uncommon enough as a first name to make for a mildly amusing pairing. Not the flashiest name talent in the draft, but a solid pickup in the middle of the first round by AJ Preller &amp; Co.</p>
+
+<p><strong>Cameron Flukey</strong> (1, 22. Tigers) – Poor Cameron will be doomed if he has a short string of success early in his career followed by prolonged struggles. One will have no choice but to wonder if his success was merely an accident of happenstance. Luckily for him, he’s going to an organization that seems to do fairly well at developing pitchers.</p>
+
+<p><strong>Ace Reese</strong> (1, 24. Mariners) – This would be an easy 80-grade name if Ace was a pitcher. Alas, he is a power-hitting infielder from Mississippi State. I still appreciate his name and the inherent swagger that comes with being called “Ace”. Imagine being a middle school bully and trying to pick on a kid named Ace. It can&rsquo;t be done.</p>
+
+<p><strong>Rocco Maniscalco</strong> (2, 11. Cardinals) – If Roch Cholowsky is a Fighting Baseball name, Rocco Maniscalco is perhaps the real life person whose name Cholowsky was based off of. Bonus points for rhyming first and last names, as always.</p>
+
+<p><strong>Caden Bogenpohl</strong> (2, 24. Phillies) – The Phillies have a bit of a history with drafting guys whose names are just sonically kinda funny. Orion Kerkering comes to mind. You try telling me your summer nights for years to come won’t be made a little bit better by seeing the name “Caden Bogenpohl” on the lineup card.</p>
+
+<p><strong>Sawyer Strosnider</strong> (2, 26) – Here is my obligatory Alliteration Pick. Alliterative names are always at least a little bit amusing to me, so I always have to hold back from including <em>every</em> guy with the same first and last initial in these rankings. But some of these names simply demand inclusion. For instance, having a last name like “Strosnider” is bound to get you noticed in a way that “Sawyer Smith” just wouldn’t. I assume it’s pronounced “Strow-snider”, but it could also be “Straw-snider”. Either one deserves its place here.</p>
+
+<p><strong>Mulivai Levu</strong> (CB-B, 4. Reds) – Hawaiian/Polynesian names are always a bit unfair because they’ve always got either a lot of syllables or some pleasing cadence that isn’t typical to our boring Euro-centric ears. But I can’t simply ignore it when a very solid name enters the minor league ranks. Bonus points for having a V in both the first and last name. Really cool.</p>
+
+<p><strong>Dawson Montesa</strong> (CB-B, 6. Cardinals) – Dawson Montesa sounds like a character from a cheap romance novel, or perhaps a secondary character from a YA novel. I can’t decide. Whichever it is, he’ll have to set aside his literary calling to work through the Cardinals’ system as a pitcher, joining such all-time great name draftees in St. Louis as Lars Nootbaar and Tink Hence.</p>
+
+<p><strong>Gabe Gaeckle</strong> (CB-B, 7. A’s) – Completing the trifecta from Competitive Balance Round B, we have Gabe Gaeckle going to Sacra Vegas. This is a remarkable string of name talent for a round that only featured 8 picks overall. As for Gaeckle himself, see my above comments about alliteration.</p>
+
+<p><strong>Gavin Giese</strong> (3, 10. Rays) – Another alliterative appellation that I simply can’t ignore. To my delight, it seems his last name is indeed pronounced “Geese”. Cameron Winter could not be reached for comment, but I did ask an actual goose for its thoughts. It said, “Honk.”</p>
+
+<p><strong>Maxx Yehl</strong> (3, 16. Royals) – What do you do when you need to get somebody’s attention, but they’re all the way on the other side of the room and it’s loud? Max Yell. What do you do when you’re JJ Picollo and you want to draft an under-slot college pitcher in the third round? Maxx Yehl.</p>
+
+<p><strong>Tyner Horn</strong> (3, 19. Reds) – Cincinnati is having a quiet run of solid name picks in this draft. Tyner Horn is, by all accounts, not a typo of “Tyler”. It’s wonky, and yet it’s a simple and sturdy name. I would trust Tyner to get my team out of a jam in the 6th inning.</p>
+
+<p><strong>Ruger Riojas</strong> (3, 25. Phillies) – Another funny name goes to Philly. Riojas isn’t too outrageous, though it is the more common “Rojas” with an extra vowel stuck in it. “Ruger” is uncommon enough to stand out in name evaluations on its own. Throw in a bonus point for alliteration and we’ve got an easy 60+-grade name.</p>
+
+<p><strong>Hudson Calhoun</strong> (4, 14. Rangers) – Here we have our first entry into the category that I like to call &ldquo;Yacht Club Names&rdquo; in this year’s draft. These are names that sound just a little too ostentatious in most walks of life, but, for some reason, feel right at home either on a baseball field or in a yacht club. Second overall pick Grady Emerson could also qualify as a Yacht Club Name, though not to the same degree as Hudson Calhoun.</p>
+
+<p><strong>Shane Sdao</strong> (4, 17. Mets) – Have <em>you</em> ever met a person whose last name starts with the letters “Sd”? I didn’t think so. Sdao’s closest Major League comps as a name talent are <a href="https://www.baseball-reference.com/players/s/sborzjo01.shtml" target="_blank">Josh Sborz</a> and the great <a href="https://www.baseball-reference.com/players/h/hrbekke01.shtml" target="_blank">Kent Hrbek</a>, who boldly started his last name with three non-digraphic consonants in a row.</p>
+
+<p><strong>Will Brick</strong> (4, 28. Blue Jays) – Strong, simple, and to the point. Will Brick is like a wall of some sort behind the dish. There’s no fussing about with this name, but it gets the job done. Now if only we could convince him to go by “Bill”, or better yet, “Billy”. Old Billy Bricks would make for an 80-grade catcher name.</p>
+
+<p><strong>Jaxon Jelkin</strong> (4C, 3. Phillies) – I believe Jaxon is the first person to appear multiple times in this exercise, as he had previously been drafted in both 2023 and 2024. Funny name, alliteration, spelling Jackson with an X. He’s got it all. There’s also mention of a troubling past that saw him get kicked off of Nebraska’s baseball team as a freshman, but I can find no details on that beyond the fact that it happened.</p>
+
+<p><strong>Steele Murdock</strong> (5, 4. Twins) – Once Steele Murdock’s playing days are done, he will no doubt assume his natural place in the universe as the protagonist in an action movie franchise. But for now he’ll work his way up as a relief pitcher in the Minnesota Twins’ organization.</p>
+
+<p><strong>LJ Mercurius</strong> (5, 13. Diamondbacks) – Look, if your last name is derived from the name of a Roman deity then I’m gonna include you on this list. Bonus points for also going by an initialism first name. It’s as simple as that.</p>
+
+<p><strong>Hayden Yost</strong> (5, 27. Mariners) – Another Yacht Club Name. It’s funny how much the first name can reconstitute the overall feel of a name. Ned Yost (no relation) feels like a Salt of the Earth Everyman. Hayden Yost feels like he’s just dying to tell me his father is a lawyer.</p>
+
+<p><strong>Macon Winslow</strong> (6, 26. Phillies) – This is almost a Yacht Club Name, but it’s also a little too flamboyant? It sounds more like the name of a wealthy eccentric character in a southern detective novel. Unrelated, Winslow started his college career at Duke before transferring to UNC. That’s weird, right?</p>
+
+<p><strong>Henry Ford</strong> (6, 27. Mariners) – He’s back from the dead, but instead of revolutionizing personal travel, he’s trying to make his way as a power-hitting infielder. Also of note: the Mariners <em>had</em> Harry Ford, but traded him this past winter, so they obviously had a vacated spot to fill in their organization.</p>
+
+<p><strong>Kide Adetuyi</strong> (7, 21. Red Sox) – I’m entirely unsure how to pronounce this name, which is always good for at least a 60-grade name. I look forward to finding out as he works his way through Craig Breslow’s Pitching Factory (Kide is listed at 6’1”, 190 pounds, and it should go without saying that he is a lefty).</p>
+
+<p><strong>Grant Hill</strong> (7, 28. Brewers) – Surprised to see a man who retired from the NBA over a decade ago attempting a second act as a professional baseball player. Wishing him more success than Michael Jordan in this venture.</p>
+
+<p><strong>Cashel Dugger</strong> (9, 3. Nationals) – Here we have our first entry in the last major category of Baseball Player Names. I was beginning to worry we were about to see an entire draft class without one. But this here is a Star Wars name. “Dugger” is close enough to a common-ish last name (thankfully he’s a letter off from Duggar), but no one in real life is named Cashel. No. Cashel Dugger is a pilot in the Rebel Army. I’m not buying this “catcher out of UCLA” story.</p>
+
+<p><strong>JT Raab</strong> (9, 4. Twins) – Sometimes a name is just fun to say. Give it a try. Initialism plus a one-syllable last name. It’s a fun recipe.</p>
+
+<p><strong>Tazwell Butler</strong> (10, 18. Astros) – Well this one just defies classification altogether. He doesn’t just Taz. He Tazes <em>well</em>.  Baseball-Reference does list him as <a href="https://www.baseball-reference.com/register/player.fcgi?id=butler000taz" target="_blank">Taz Butler</a>, but I really do not wish to deprive him of his full name. Tazwell is an easy 80-grade first name.</p>
+
+<p><strong>Bayram Hot</strong> (10, 25. Yankees) – This may come as a shock to some, but there has actually never been a “Bayram” in Major League history. On top of that, we’ve never seen a Major League player with the last name “Hot”. Incredible, I know. So Mr. Hot has the chance to make history twice over if he can crack the big league roster. It will be a longshot for a 10th round pick, but he did bat .329 in two seasons at Louisville, so there’s a chance. This will be one of the few times in my life I root for a Yankee.</p>
+
+<p><strong>Fabio Bundi</strong> (11, 12. Marlins) – There actually <em>have</em> been two Fabios in Major League history. Fabio Castro, who pitched a total of 43.2 innings from 2006-07 with Texas and Philadelphia, and Fabio Castillo, who got hit hard in an inning and a third with the 2017 Dodgers. But Fabio Bundi’s 80-grade name isn’t even the most interesting thing about him as a baseball prospect. More notably, Bundi is a native of Switzerland. There has been exactly one Swiss player in Major League history, according to Baseball-Reference: <a href="https://www.baseball-reference.com/players/h/hessot01.shtml" target="_blank">Otto Hess</a>, who played from 1902 to 1915.</p>
+
+<p><strong>Ariston Veasey</strong> (11, 24. Cubs) – Is this the birth of a new name category? Because “Ariston” feels more like a Westorosi name than anything else. Are we sure Arison Veasey is a pitcher from Clemson and not some lesser lord from a minor house invented by George RR Martin? I suppose we’ll find out when <em>The Winds of Winter</em> gets published… right?</p>
+
+<p><strong>Drew Titsworth</strong> (11, 26. Phillies) – Grow up, you guys.</p>
+
+<p><strong>Rohan Lettow</strong> (12, 5. Pirates) – Another Fighting Baseball name. I know that Rohan is at least a real name, but it still doesn’t quite feel right as a name whenever I see it. But that might just be Tolkien’s fault.</p>
+
+<p><strong>Jett Johnston</strong> (13, 23. Tigers) – Alliteration and a cartoon-character-sounding name? Easy 60-grade from most name scouts and therefore a great pickup for Detroit late in the draft.</p>
+
+<p><strong>Brayden Bakes</strong> (13, 26. Phillies) – You’re damn right he does.</p>
+
+<p><strong>Zack Konstantinovsky</strong> (14, 3. Nationals) – At 15 letters, Konstantinovsky’s last name is one letter longer than Jarrod Saltalamacchia’s, which was famously, and quite comically, too long to fit on his jersey back in the day. For the sake of convenience, everyone just called Jarrod “Salty”. I wonder how we’ll shorten “Konstantinovsky” when the time comes. Konsty? Or perhaps just Konny.</p>
+
+<p><strong>Banks Wickersham</strong> (14, 16. Royals) – This may be the Yacht Club Name to end all Yacht Club Names. Holy moly. He’s got seven dads and all of them are lawyers. His trust fund has a trust fund. He was even drafted by the Royals, as if his name wasn’t already elitist enough.</p>
+
+<p><strong>Zach Crotchfelt</strong> (14, 17, Mets) – Again, I beg of you to get your mind out of the gutter and grow up.</p>
+
+<p><strong>Ryan Niedzwiedz</strong> (15, 1. Rockies) – Niedzwiedz? Really? The rare internally rhyming last name is a thing to behold, and I commend his family for keeping the line strong and not letting this last name fade into obscurity.</p>
+
+<p><strong>Amp Phillips</strong> (15, 10, Rays) – Look, Mr. and Mrs. Phillips, I don’t have any kids myself, so I’ve never had the responsibility of deciding the name that a person is going to have to go through their whole entire life with. But, if and when I find myself in that position, I am going to start with a long list of options that does not include “Amp”. Granted, a quick look at his Baseball-Reference page tells me that his full name is actually <a href="https://www.baseball-reference.com/register/player.fcgi?id=philli000amp" target="_blank">Ashton Michael Phillips</a>. So the nickname “Amp” is actually just his initials. You know, like Gob Bluth. He is Ashton Michael Phillips Phillips.</p>
+
+<p><strong>Crew McChesney</strong> (17, 2. White Sox) – Roch Cholowsky was going to be lonely if he was the only great name in the 2026 White Sox draft class. Thankfully, he’ll be joined by late-round pick Crew McChesney from American Fork, Utah. That is a fake identity if I’ve ever heard one, but kudos to Crew for fooling everyone thus far in his baseball career.</p>
+
+<p><strong>McCarty English</strong> (17, 10. Rays) – What, did MLB just run out of real people in the 17th round? Because clearly they’re just making up names at this stage. I know 20 rounds is a lot to fill, but come on. You guys can do better than this. And there’s still three rounds to go!</p>
+
+<p><strong>Denton Lord</strong> (17, 22. Padres) – Okay, San Diego dipping back into the Yacht Club registry for their turn in the 17th round. I’m still onto you, MLB.</p>
+
+<p><strong>Jatniel McCloud</strong> (18, 12. Marlins) – Jatniel McCloud scores bonus points for a delightfully discordant name. A quick Google search suggests that the name Jatniel comes from Hebrew, and roughly means “Gift from God.” Okay. “McCloud” is, obviously, a more common Gaelic name typically associated with Scotland and Ireland. Jatniel McCloud was drafted out of Amarillo College in Texas, and is a native of Puerto Rico.</p>
+
+<p><strong>Selden Kolkebeck</strong> (19, 14. Rangers) – A little bit of a Star Wars name, though I’m not sure how well “Kolkebeck” fits into George Lucas’ universe. I know that Hari Seldon is the name of one of the major characters in Foundation (brilliantly portrayed by Jared Harris in the Apple TV series, highly recommended), so maybe this name is more at home in the works of Asimov. Either way, it’s got a very distinct SciFi feel to it.</p>
+
+<p><strong>Ezekiel Zion</strong> (20, 22. Padres) – We’re going double Old Testament in the 20th round. AJ Preller is, as the kids say, in his bag. Did he have a prophetic vision about Zion? Or is he just taking a flyer on a talented high schooler who’s unlikely to sign with his final pick in the draft? Only time will tell.</p>
+
+<hr>
+
+<p>Well that just about does it for the latest crop of elite name talent entering the professional ranks this summer. Please let me know which great names I missed. There were a few that just barely missed the cut, but, believe it or not, I strive for brevity on occasion.</p>
+
+<p>This was a fairly deep class of names with a few elite talents. If I had to choose the #1 name in this draft class right now, I think I’d go with <strong>Bayram Hot</strong>. As always, best of luck to all of this year&rsquo;s draftees, especially those whose names bring me joy.</p>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="oxbq2di" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>imightbehitler | New York Yankees</div>
+        <div>26 | an hour ago </div>
+      </div>
+      <label for="oxbq2di" class="commentText"><blockquote>
+<p><strong>Drew Titsworth</strong> (11, 26. Phillies) – Grow up, you guys.</p>
+</blockquote>
+
+<p>But with slot values for picks, we know exactly how much one Titsworth. So I WON&rsquo;T grow up</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="oxc7dxs" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>_Caed_ | Washington Nationals • Chicago Cubs</div>
+        <div>1 | a few seconds ago </div>
+      </div>
+      <label for="oxc7dxs" class="commentText"><p>i worked in a grad school as a student helper during my first few years of college</p>
+
+<p>one grad student was named T T Titsworth</p>
+
+<p>i don’t wanna give his first name cuz it’ll 100% dox him but there were even more T’s</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="oxbpmej" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ajteitel | Arizona Diamondbacks</div>
+        <div>17 | an hour ago </div>
+      </div>
+      <label for="oxbpmej" class="commentText"><p>Will Brick too low</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="oxbq0a7" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>eekbarbaderkle [OP] | Boston Red Sox</div>
+        <div>20 | an hour ago </div>
+      </div>
+      <label for="oxbq0a7" class="commentText"><p>The names are ordered by draft position, not in ranked order. Will Brick is a great value name for the 4th round, for sure.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="oxbq2ya" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ajteitel | Arizona Diamondbacks</div>
+        <div>6 | an hour ago </div>
+      </div>
+      <label for="oxbq2ya" class="commentText"><p>Statement retracted</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="oxbrcme" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>mannamedlear | Chicago White Sox</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="oxbrcme" class="commentText"><p>Name immediately jumps off the page</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="oxbty66" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Mike_with_Wings | Atlanta Braves</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="oxbty66" class="commentText"><p>Should’ve been a pg</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="oxbv40f" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>eekbarbaderkle [OP] | Boston Red Sox</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="oxbv40f" class="commentText"><p>I did resist the urge to make a mean joke about Marcus Smart in the write-up.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="oxbq16f" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Beginning_Holiday252</div>
+        <div>9 | an hour ago </div>
+      </div>
+      <label for="oxbq16f" class="commentText"><p>lmao i lost it at Drew Titsworth, the phillies really cornered the market on absurd names this year. Caden Bogenpohl and Ruger Riojas in the same draft class is just showing off</p>
+
+<p>also Banks Wickersham is the most made-up yachting name i&rsquo;ve ever heard. that kid definitely has a summer home in the hamptons and his dad is on the board of three different hedge funds</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="oxc2rjf" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>AlmostLucy | Los Angeles Angels</div>
+        <div>2 | 21 minutes ago </div>
+      </div>
+      <label for="oxc2rjf" class="commentText"><p>Years ago the Phillies drafted Cornelius Randolph. I don’t think he made the majors but it was an 80 grade name that I’ve never forgotten.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="oxc4loz" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>eekbarbaderkle [OP] | Boston Red Sox</div>
+        <div>1 | 13 minutes ago </div>
+      </div>
+      <label for="oxc4loz" class="commentText"><p>The Phillies, Cardinals, and Marlins are the franchises that I feel have drafted the funniest names overall in the years that I&rsquo;ve done this.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="oxbr9g5" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>tldr_habit | Detroit Tigers</div>
+        <div>8 | an hour ago </div>
+      </div>
+      <label for="oxbr9g5" class="commentText"><p>Fun fact: besides the fact that it rhymes, &ldquo;Niedzwiedz&rdquo; means &ldquo;bear&rdquo; in Polish (pronounced NYED-zhvyed-zh; both halves of the word sound like  they rhyme with &ldquo;hedge&rdquo;). Seems like a good fit for a Rockies player?</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="oxc02is" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>BorkieDorkie811 | Boston Red Sox</div>
+        <div>4 | 33 minutes ago </div>
+      </div>
+      <label for="oxc02is" class="commentText"><p>I see he&rsquo;s also a 6&rsquo;2&rdquo;, 195 lbs. first baseman who hit a school-record 27 HRs while slugging .768 (the second highest in the Ohio Valley Conference this year).</p>
+
+<p>That profiles well for someone who could potentially be playing his home games at Coors Field. In fact, I&rsquo;d say it gives him the <em>Niedzwiedz edge</em>.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="oxbrzic" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>epic4evr11 | San Francisco Giants</div>
+        <div>8 | an hour ago </div>
+      </div>
+      <label for="oxbrzic" class="commentText"><p>I love how many times OP lambasts the reader for having a dirty mind while being the one to put all of them on the list</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="oxbslky" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>eekbarbaderkle [OP] | Boston Red Sox</div>
+        <div>5 | an hour ago </div>
+      </div>
+      <label for="oxbslky" class="commentText"><p>I am merely performing my duty as a recorder of names.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="oxbu559" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>eagles1990 | Philadelphia Phillies</div>
+        <div>7 | an hour ago </div>
+      </div>
+      <label for="oxbu559" class="commentText"><p>Titsworth vs Crotchfelt. NLCS. Game 7.</p>
+
+<p>Absolute gold.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="oxbrldi" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Academic_Issue4314 | Philadelphia Phillies</div>
+        <div>4 | an hour ago </div>
+      </div>
+      <label for="oxbrldi" class="commentText"><p>I tried to google Brayden bakes ti see a scouting report and i messed up and typed “rayden baked”, and google interpreted that as “raiden naked”</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="oxbt9gc" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>eekbarbaderkle [OP] | Boston Red Sox</div>
+        <div>2 | an hour ago </div>
+      </div>
+      <label for="oxbt9gc" class="commentText"><p>Maybe you should stick to Zach Crotchfelt.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="oxbtjg7" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>warm_warmer_disco</div>
+        <div>4 | an hour ago </div>
+      </div>
+      <label for="oxbtjg7" class="commentText"><p>Genuinely surprised that Crotchfelt didn’t go to Texas A&amp;M</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="oxbvm8p" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>1morenormalperson</div>
+        <div>3 | an hour ago </div>
+      </div>
+      <label for="oxbvm8p" class="commentText"><p>This made my day. Your commentary was great. Thank you.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="oxbsmro" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Jordanos21 | Colorado Rockies</div>
+        <div>2 | an hour ago </div>
+      </div>
+      <label for="oxbsmro" class="commentText"><p>I&rsquo;m backing Fabio Bundi because of the Swiss native thing, hopp to him 🇨🇭</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="oxbzvz7" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>cooljammer00 | New York Yankees</div>
+        <div>2 | 34 minutes ago </div>
+      </div>
+      <label for="oxbzvz7" class="commentText"><p>Bayram Hot actually is attractive, from what I can tell from the one photo I saw of him</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="oxc1mjv" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Just_Trade_8355</div>
+        <div>2 | 26 minutes ago </div>
+      </div>
+      <label for="oxc1mjv" class="commentText"><p>It is constantly proven. More than hard work or even natural talent. In order to go pro you need a Baseball ass Baseball name</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="oxc3259" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>eekbarbaderkle [OP] | Boston Red Sox</div>
+        <div>1 | 20 minutes ago </div>
+      </div>
+      <label for="oxc3259" class="commentText"><p>What, you think Banks Wickersham was born with a silver spoon in his mouth?</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="oxbqty4" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>deebee1020 | Atlanta Braves</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="oxbqty4" class="commentText"><p>Love it. Sad to see the Braves didn&rsquo;t add a spectacular name this year. Best of the lot are Jensen Hirschkorn and Nile Adcock. And no, I will not grow up. Hehe, Titsworth.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="oxbs6fl" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>eekbarbaderkle [OP] | Boston Red Sox</div>
+        <div>3 | an hour ago </div>
+      </div>
+      <label for="oxbs6fl" class="commentText"><p>I almost included both Hirschkorn and Adcock. Jensen Hirschkorn definitely deserves an Honorable Mention.</p>
+
+<p>You do also still have <a href="https://www.baseball-reference.com/register/player.fcgi?id=degran000ced" target="_blank">Cedric De Grandpre</a> in AA, and Hurston Waldrep is an all-timer as well.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="oxbrvlu" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>SnooBooks1243 | Atlanta Braves</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="oxbrvlu" class="commentText"><p>A guy like Hirschkorn becomes a top name if he starts to perform, a la Miz for the Brewers.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="oxbrqkl" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>julieputty | Cleveland Guardians</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="oxbrqkl" class="commentText"><p>JT Raab reminded me of author JD Robb and then I had to go look up just how many &ldquo;In Death&rdquo; books were in that series now and the answer is 64. Started before JT Raab was born. Will likely still be trucking long after all of us are <del>dead</del> in death.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="oxbzb5h" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>dreyan1625 | Texas Rangers</div>
+        <div>1 | 36 minutes ago </div>
+      </div>
+      <label for="oxbzb5h" class="commentText"><p>Banks Wickersham’s name alone makes me feel poor</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="oxc1fw7" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Boring-Baker8761 | San Diego Padres</div>
+        <div>1 | 27 minutes ago </div>
+      </div>
+      <label for="oxc1fw7" class="commentText"><p>If Borthwick is pronounced like the beer, Smithwicks, I think he has to be the 1.01 name</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="oxc4u1v" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>belinck | New York Yankees</div>
+        <div>1 | 12 minutes ago </div>
+      </div>
+      <label for="oxc4u1v" class="commentText"><p>How is Cameron Flukey not on this list&hellip;  The consistency of quality here is lacking.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="oxc5t5e" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>eekbarbaderkle [OP] | Boston Red Sox</div>
+        <div>1 | 8 minutes ago </div>
+      </div>
+      <label for="oxc5t5e" class="commentText"><p>he is</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="oxc7a4z" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>belinck | New York Yankees</div>
+        <div>1 | a minute ago </div>
+      </div>
+      <label for="oxc7a4z" class="commentText"><p>Ack, just glanced through the image and didn&rsquo;t realize there was text.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
