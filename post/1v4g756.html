@@ -1,0 +1,1456 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.selfPostImage {
+  width: 100%;
+  height: auto;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/nba/comments/1v4g756/oc_i_analyzed_james_hardens_performance_in_every/"><p>[OC] I analyzed James Harden’s performance in every NBA city to see if there is a correlation between his scoring and the city’s Bike Score</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <p>Everyone knows James Harden’s game relies heavily on spacing.</p>
+
+<p>Usually, people mean spacing on the basketball court. But I wanted to see whether Harden might also benefit from spacing off the court in the form of bike lanes.</p>
+
+<p>So I compared Harden’s road performance in every NBA city with the city’s Bike Score, which measures how convenient a city is for cycling based on its bike lanes, hills, road connectivity and access to destinations.</p>
+
+<h1 id="methodology">Methodology</h1>
+
+<p>I collected all of Harden’s regular-season road game logs from the 2015–16 through 2018–19 seasons, because those were his prime years.</p>
+
+<p>For each city, I calculated Harden’s scoring averages and the percentage of games in which he reached different scoring thresholds.</p>
+
+<p>I then compared those results with each city’s Bike Score.</p>
+
+<h1 id="results">Results</h1>
+
+<table>
+<thead>
+<tr>
+<th align="left">Harden statistic</th>
+<th align="left">Correlation with Bike Score</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">Percentage of games with 33+ points</td>
+<td align="left">r = .668</td>
+</tr>
+
+<tr>
+<td align="left">Percentage of games with 35+ points</td>
+<td align="left">r = .646</td>
+</tr>
+
+<tr>
+<td align="left">Percentage of games with 40+ points</td>
+<td align="left">r = .570</td>
+</tr>
+
+<tr>
+<td align="left">Season-adjusted average points</td>
+<td align="left">r = .533</td>
+</tr>
+
+<tr>
+<td align="left">Season-adjusted points per 36 minutes</td>
+<td align="left">r = .520</td>
+</tr>
+
+<tr>
+<td align="left">Season-adjusted Game Score</td>
+<td align="left">r = .494</td>
+</tr>
+</tbody>
+</table>
+<p>The strongest relationship was between Bike Score and Harden’s percentage of games with at least 33 points:</p>
+
+<ul>
+<li>Correlation coefficient: r = .668</li>
+<li>Coefficient of determination: r² = .446</li>
+<li>p-value = .0001</li>
+</ul>
+
+<h1 id="results-by-city">Results by city</h1>
+
+<table>
+<thead>
+<tr>
+<th align="left">Team</th>
+<th align="left">City used</th>
+<th align="left">Bike Score</th>
+<th align="left">Harden 33+ point rate</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">Atlanta Hawks</td>
+<td align="left">Atlanta</td>
+<td align="left">41.7</td>
+<td align="left">9.1%</td>
+</tr>
+
+<tr>
+<td align="left">Boston Celtics</td>
+<td align="left">Boston</td>
+<td align="left">69.4</td>
+<td align="left">36.4%</td>
+</tr>
+
+<tr>
+<td align="left">Brooklyn Nets</td>
+<td align="left">New York</td>
+<td align="left">69.3</td>
+<td align="left">22.2%</td>
+</tr>
+
+<tr>
+<td align="left">Charlotte Hornets</td>
+<td align="left">Charlotte</td>
+<td align="left">31.3</td>
+<td align="left">10.0%</td>
+</tr>
+
+<tr>
+<td align="left">Chicago Bulls</td>
+<td align="left">Chicago</td>
+<td align="left">72.2</td>
+<td align="left">30.0%</td>
+</tr>
+
+<tr>
+<td align="left">Cleveland Cavaliers</td>
+<td align="left">Cleveland</td>
+<td align="left">52.3</td>
+<td align="left">20.0%</td>
+</tr>
+
+<tr>
+<td align="left">Dallas Mavericks</td>
+<td align="left">Dallas</td>
+<td align="left">49.3</td>
+<td align="left">25.0%</td>
+</tr>
+
+<tr>
+<td align="left">Denver Nuggets</td>
+<td align="left">Denver</td>
+<td align="left">71.8</td>
+<td align="left">20.0%</td>
+</tr>
+
+<tr>
+<td align="left">Detroit Pistons</td>
+<td align="left">Detroit</td>
+<td align="left">52.1</td>
+<td align="left">18.2%</td>
+</tr>
+
+<tr>
+<td align="left">Golden State Warriors</td>
+<td align="left">San Francisco</td>
+<td align="left">72.3</td>
+<td align="left">21.4%</td>
+</tr>
+
+<tr>
+<td align="left">Houston Rockets</td>
+<td align="left">Houston</td>
+<td align="left">48.6</td>
+<td align="left">0.0%</td>
+</tr>
+
+<tr>
+<td align="left">Indiana Pacers</td>
+<td align="left">Indianapolis</td>
+<td align="left">42.8</td>
+<td align="left">27.3%</td>
+</tr>
+
+<tr>
+<td align="left">Los Angeles Clippers</td>
+<td align="left">Los Angeles</td>
+<td align="left">58.7</td>
+<td align="left">30.8%</td>
+</tr>
+
+<tr>
+<td align="left">Los Angeles Lakers</td>
+<td align="left">Los Angeles</td>
+<td align="left">58.7</td>
+<td align="left">23.5%</td>
+</tr>
+
+<tr>
+<td align="left">Memphis Grizzlies</td>
+<td align="left">Memphis</td>
+<td align="left">41.2</td>
+<td align="left">21.4%</td>
+</tr>
+
+<tr>
+<td align="left">Miami Heat</td>
+<td align="left">Miami</td>
+<td align="left">64.0</td>
+<td align="left">33.3%</td>
+</tr>
+
+<tr>
+<td align="left">Milwaukee Bucks</td>
+<td align="left">Milwaukee</td>
+<td align="left">57.6</td>
+<td align="left">10.0%</td>
+</tr>
+
+<tr>
+<td align="left">Minnesota Timberwolves</td>
+<td align="left">Minneapolis</td>
+<td align="left">83.5</td>
+<td align="left">43.8%</td>
+</tr>
+
+<tr>
+<td align="left">New Orleans Pelicans</td>
+<td align="left">New Orleans</td>
+<td align="left">65.7</td>
+<td align="left">33.3%</td>
+</tr>
+
+<tr>
+<td align="left">New York Knicks</td>
+<td align="left">New York</td>
+<td align="left">69.3</td>
+<td align="left">18.2%</td>
+</tr>
+
+<tr>
+<td align="left">Oklahoma City Thunder</td>
+<td align="left">Oklahoma City</td>
+<td align="left">40.2</td>
+<td align="left">13.3%</td>
+</tr>
+
+<tr>
+<td align="left">Orlando Magic</td>
+<td align="left">Orlando</td>
+<td align="left">56.8</td>
+<td align="left">18.2%</td>
+</tr>
+
+<tr>
+<td align="left">Philadelphia 76ers</td>
+<td align="left">Philadelphia</td>
+<td align="left">66.7</td>
+<td align="left">22.2%</td>
+</tr>
+
+<tr>
+<td align="left">Phoenix Suns</td>
+<td align="left">Phoenix</td>
+<td align="left">55.9</td>
+<td align="left">30.8%</td>
+</tr>
+
+<tr>
+<td align="left">Portland Trail Blazers</td>
+<td align="left">Portland</td>
+<td align="left">82.7</td>
+<td align="left"><strong>50.0%</strong></td>
+</tr>
+
+<tr>
+<td align="left">Sacramento Kings</td>
+<td align="left">Sacramento</td>
+<td align="left">66.9</td>
+<td align="left">37.5%</td>
+</tr>
+
+<tr>
+<td align="left">San Antonio Spurs</td>
+<td align="left">San Antonio</td>
+<td align="left">44.5</td>
+<td align="left">18.8%</td>
+</tr>
+
+<tr>
+<td align="left">Washington Wizards</td>
+<td align="left">Washington, D.C.</td>
+<td align="left">69.5</td>
+<td align="left"><strong>45.5%</strong></td>
+</tr>
+</tbody>
+</table>
+<p><em>Toronto and Salt Lake City were excluded because the city dataset used for the analysis did not contain directly comparable Bike Score values for them.</em></p>
+
+<p>The overall correlation between Bike Score and Harden’s percentage of 33-point road games was:</p>
+
+<ul>
+<li><strong>Correlation coefficient: r = .668</strong></li>
+<li><strong>Coefficient of determination: r² = .446</strong></li>
+<li><strong>p-value = .0001</strong></li>
+</ul>
+
+<p>The two highest Bike Scores in the dataset belonged to Minneapolis and Portland. Harden scored at least 33 points in <strong>43.8%</strong> of his Minnesota road games and <strong>50.0%</strong> of his Portland road games.</p>
+
+<p>Meanwhile, several of the lowest-scoring cycling cities—including Atlanta, Charlotte and Oklahoma City—had some of Harden’s lowest 33-point rates.</p>
+
+<p>There were obviously exceptions. Washington had only the eighth-highest Bike Score but one of Harden’s highest scoring rates, while Denver had an excellent Bike Score without producing the same Harden explosion.</p>
+
+<p>Still, across all 28 opponents, the overall trend was clear.</p>
+
+<h1 id="source">Source</h1>
+
+<p>Bike Score data: Walk Score city rankings and Bike Score methodology.</p>
+
+<p>Bike Score measures cycling suitability on a scale from 0 to 100 using bike lanes, hills, destinations, street connectivity and bicycle commuting levels.</p>
+
+<p>This is a strong positive correlation.</p>
+
+<p>Cities with higher Bike Scores had substantially more major Harden scoring performances.</p>
+
+<p>Approximately 45% of the city-to-city variation in Harden’s 33-point game rate was associated with the city’s Bike Score.</p>
+
+<p>Higher Bike Scores were also associated with more 35-point games, more 40-point games, higher average scoring and better overall box-score performances by game score, etc.</p>
+
+<p>I have proven, to a statistically significant degree, that James Harden performs better in cities with better cycling infrastructure.</p>
+
+<p><strong>Why does Harden perform better in bike-friendly cities?</strong></p>
+
+<p>There may be a conditioning effect. In cities with high Bike Scores, Harden is constantly surrounded by cyclists, which subconsciously reminds him to keep his legs active. This improves his stamina, allowing him to maintain his scoring later into games.</p>
+
+<p>Bike-friendly cities also tend to have flatter terrain. This saves Harden from wasting valuable energy walking uphill before games. Every foot of elevation avoided can instead be redirected toward step-back three-pointers and drawing questionable shooting fouls.</p>
+
+<p>And finally, protected bike lanes create a physical separation between cyclists and drivers. Harden sees this and is reminded of the importance of isolation basketball.</p>
+
+<p><strong>TL;DR</strong></p>
+
+<p>James Harden scores more in bike-friendly cities.</p>
+
+<p>Bike Score had a .668 correlation with the percentage of his road games in which he scored at least 33 points.</p>
+
+<p>James Harden does not just need spacing on the court.</p>
+
+<p>He needs spacing in the streets of his opponents.</p>
+
+<p>Source for bike score: <a href="https://www.walkscore.com/cities-and-neighborhoods/" target="_blank">https://www.walkscore.com/cities-and-neighborhoods/</a> scroll down to bike score</p>
+
+<p>Here&rsquo;s a graph showing all the cities: <a href="https://imgur.com/a/0l3DTNq" target="_blank">https://imgur.com/a/0l3DTNq</a></p>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ozalj8l" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>teardropshot | Cavaliers</div>
+        <div>97 | 2 hours ago </div>
+      </div>
+      <label for="ozalj8l" class="commentText"><p>So dumb, A+. Happy to see that Harden is an urbanist.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="ozb3hw4" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Mr_MoseVelsor | Rockets</div>
+        <div>2 | 39 minutes ago </div>
+      </div>
+      <label for="ozb3hw4" class="commentText"><p>The only data I accept about hardens performance is proximity to strip clubs</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ozambpo" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>itsdrewmiller | Timberwolves</div>
+        <div>72 | 2 hours ago </div>
+      </div>
+      <label for="ozambpo" class="commentText"><p>Classic correlation is not causation error, like ice cream eating and crime - the fact is that strippers love to stay in shape by riding bikes, so they move to cities with high bike scores.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="ozat4st" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>StrategyTop7612 [OP] | Clippers</div>
+        <div>8 | an hour ago </div>
+      </div>
+      <label for="ozat4st" class="commentText"><p>Had me in the first half, NGL</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="ozb6hj5" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>-jaylew-</div>
+        <div>1 | 27 minutes ago </div>
+      </div>
+      <label for="ozb6hj5" class="commentText"><p>Well we already had the stripper correlation study done a few off seasons ago so OP has to keep it novel.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ozamhaw" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Vordeo | Jazz</div>
+        <div>24 | 2 hours ago </div>
+      </div>
+      <label for="ozamhaw" class="commentText"><p>A.) This is some good offseason shitposting.</p>
+
+<p>B.) <em>This</em> is what you&rsquo;re using your college degree for?</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="ozb5gia" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Basilikolumne | Heat</div>
+        <div>1 | 31 minutes ago </div>
+      </div>
+      <label for="ozb5gia" class="commentText"><p>I mean in <em>this</em> economy? They might be FUNemployed</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ozalq5l" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>IWHBYD7</div>
+        <div>14 | 2 hours ago </div>
+      </div>
+      <label for="ozalq5l" class="commentText"><p>Maybe I&rsquo;d rather see more Lebron posts after all</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ozamdhj" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>bigbackbing</div>
+        <div>7 | 2 hours ago </div>
+      </div>
+      <label for="ozamdhj" class="commentText"><p>A report of Hardens drinking ability, and late night outings must mean he doesn’t want to get a dui and prefers biking home, it all makes sense</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="ozarach" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>StrategyTop7612 [OP] | Clippers</div>
+        <div>0 | 2 hours ago </div>
+      </div>
+      <label for="ozarach" class="commentText"><p>Of course, it makes sense</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ozamcdz" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>cleo22270 | Heat</div>
+        <div>6 | 2 hours ago </div>
+      </div>
+      <label for="ozamcdz" class="commentText"><p><em>“Why does Harden perform better in bike-friendly cities.”</em></p>
+
+<p><em>”There may be a conditioning effect. In cities with high Bike Scores,</em> <strong><em>Harden is constantly surrounded by cyclists, which subconsciously reminds him to keep his legs active.</em></strong> <em>This improves his stamina, allowing him to maintain his scoring later into games.”</em></p>
+
+<p><em>”Bike-friendly cities also tend to have flatter terrain. This saves Harden from wasting valuable energy walking uphill before games.</em> <strong><em>Every foot of elevation avoided can instead be redirected toward step-back three-pointers and drawing questionable shooting fouls.”</em></strong></p>
+
+<p><em>”And finally, protected bike lanes create a physical separation between cyclists and drivers.</em> <strong><em>Harden sees this and is reminded of the importance of isolation basketball.”</em></strong></p>
+
+<p>I’m sorry boss, I don’t see this holding up in court.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ozalrzg" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>andyman30 | Nuggets</div>
+        <div>5 | 2 hours ago </div>
+      </div>
+      <label for="ozalrzg" class="commentText"><p>Top tier reporting</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ozaml2f" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>KennyDenn1s | Timberwolves</div>
+        <div>4 | 2 hours ago </div>
+      </div>
+      <label for="ozaml2f" class="commentText"><p>This is how we get through the off-season, people</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ozat1tl" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Successful-Let4361</div>
+        <div>3 | an hour ago </div>
+      </div>
+      <label for="ozat1tl" class="commentText"><p>Why wasn&rsquo;t Toronto on this list? Just because you used the walk/bike score from the list of American cities??? (That website doesn&rsquo;t only list scores for the US.) I need to know how Toronto&rsquo;s bike lanes and strip clubs affect Harden&rsquo;s performances!!!</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="ozazxjg" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>AJtehbest | Raptors</div>
+        <div>2 | an hour ago </div>
+      </div>
+      <label for="ozazxjg" class="commentText"><p>From the strip club post, Harden&rsquo;s best performances were in Toronto, which had the worst strip clubs. Toronto&rsquo;s bike lanes aren&rsquo;t THE worst, especially considering American ones, so its hard to tell what the correlation really is</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ozaovbw" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>rocket_beer | Celtics</div>
+        <div>2 | 2 hours ago </div>
+      </div>
+      <label for="ozaovbw" class="commentText"><p>sheet poast</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ozaqehv" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>DataDrivenPirate | NBA</div>
+        <div>2 | 2 hours ago </div>
+      </div>
+      <label for="ozaqehv" class="commentText"><p>Why would you descretize a continuous variable? Why use an ANOVA for this when you could just use a linear model to predict points using bike score? You could avoid aggregation and use each game as its own record too which would add value. I&rsquo;d be interested to see time zone as a covariate too</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ozan742" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>EaterOfYourSOUL</div>
+        <div>1 | 2 hours ago </div>
+      </div>
+      <label for="ozan742" class="commentText"><p>We are well and truly in the offseason.</p>
+
+<p>Jokes aside, amazing analysis, makes me wonder if other urban metrics like public transport usage show a similar trend with Harden.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ozanb9c" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>restlemur995 | Knicks</div>
+        <div>1 | 2 hours ago </div>
+      </div>
+      <label for="ozanb9c" class="commentText"><p>Is there some quick snapshot takeaway you can show? Like a table with Harden&rsquo;s scoring average in each city and the city&rsquo;s bike score? Or Harden&rsquo;s scoring average in top 5 bike cities vs the average in the other cities?  I feel like that&rsquo;s the easiest visualizer.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="ozarr43" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>StrategyTop7612 [OP] | Clippers</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="ozarr43" class="commentText"><p>Oops, forgot that, the Graph shows most of that, but I’ll add the table when I get the chance.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="ozath0t" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>restlemur995 | Knicks</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="ozath0t" class="commentText"><p>Yes, the graph definitely works. It&rsquo;s just I thought I&rsquo;d ask for a table since I personally have an easier time making sense of it that way.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="ozaxezn" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>StrategyTop7612 [OP] | Clippers</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="ozaxezn" class="commentText"><p>I added it</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="ozb0o5n" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>restlemur995 | Knicks</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="ozb0o5n" class="commentText"><p>Thanks! Last thing - Can you sort by Bike score highest to lowest?</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ozanlgn" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>EstablishmentDry6301</div>
+        <div>1 | 2 hours ago </div>
+      </div>
+      <label for="ozanlgn" class="commentText"><p>Is that a copy from an old post. I could swear ive seen it before</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="ozaoi86" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>EstablishmentDry6301</div>
+        <div>2 | 2 hours ago </div>
+      </div>
+      <label for="ozaoi86" class="commentText"><p>Found it, it was a bit different&hellip; <a href="https://www.reddit.com/r/nba/s/D0kH6ZUEYH" target="_blank">https://www.reddit.com/r/nba/s/D0kH6ZUEYH</a></p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="ozarhf6" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>StrategyTop7612 [OP] | Clippers</div>
+        <div>1 | 2 hours ago </div>
+      </div>
+      <label for="ozarhf6" class="commentText"><p>Yes, it’s a reference to that, cuz that’s a top 3 most upvoted post in this sub’s history </p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ozaojxc" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Medical-Researcher-5</div>
+        <div>1 | 2 hours ago </div>
+      </div>
+      <label for="ozaojxc" class="commentText"><p>Bro is passing that Stats class for sure with this project</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ozaovv8" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>nahwhatever-whynot | Rockets</div>
+        <div>1 | 2 hours ago </div>
+      </div>
+      <label for="ozaovv8" class="commentText"><p>Unfortunately Houston is not bike friendly at all so this boosts him in All time rankings for winning an MVP herr</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ozapq39" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>RLL1977 | Trail Blazers</div>
+        <div>1 | 2 hours ago </div>
+      </div>
+      <label for="ozapq39" class="commentText"><p>Now do this exact thing but with James harden and strip Clubs</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="ozasec1" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Ok-Adeptness-5834</div>
+        <div>2 | an hour ago </div>
+      </div>
+      <label for="ozasec1" class="commentText"><p>The correlation probably comes down to the fact that bike friendly cities have worse strip clubs</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="ozax4l4" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>StrategyTop7612 [OP] | Clippers</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="ozax4l4" class="commentText"><p>Good one</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="ozarzwb" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>StrategyTop7612 [OP] | Clippers</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="ozarzwb" class="commentText"><p>That actually didn’t have a correlation, even the original didn’t, but he used bad stats methodology to find a correlation </p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="ozauvjy" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>DwnvotesMeansImRight | Thunder</div>
+        <div>-4 | an hour ago </div>
+      </div>
+      <label for="ozauvjy" class="commentText"><p>this lame ahh post not gonna bang bro sorry</p>
+
+<blockquote>
+<p>Usually, people mean spacing on the basketball court. But I wanted to see whether Harden might also benefit from spacing off the court in the form of bike lanes.</p>
+</blockquote>
+
+<p>like what is even the correlation, cringe</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ozaqzsa" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Rich-Professional753</div>
+        <div>1 | 2 hours ago </div>
+      </div>
+      <label for="ozaqzsa" class="commentText"><p>Twas the blurst of times</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ozarq9z" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>KneelBeforeCube | Bulls</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="ozarq9z" class="commentText"><p>Deep down I always knew.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ozatknf" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>HucktoMe</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="ozatknf" class="commentText"><p>This is some elite off-season posting game.  Bravo.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ozayrv6" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Eagerbeaver98 | Raptors</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="ozayrv6" class="commentText"><p>Nice research man, I just wish you explained how you reduced confound that could better explain this than bike lanes. I re read your methology and think maybe you didnt mention this. X can imply y but you need to show how you reduced &ldquo; z&rdquo; from implying y.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ozaytbs" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>namescarcity</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="ozaytbs" class="commentText"><p>I think we need one on strip club volume</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ozaz9p6" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>AJtehbest | Raptors</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="ozaz9p6" class="commentText"><p>Now what is the correlation between walkability and amount of strip clubs? need to know how this study relates to that in order to see if the statistical link holds true</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ozb0ir5" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Valhoss | Grizzlies</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="ozb0ir5" class="commentText"><p>Good bike infrastructure makes it easier to travel. Makes sense to me.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ozb6zpd" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>uberdoppel</div>
+        <div>1 | 25 minutes ago </div>
+      </div>
+      <label for="ozb6zpd" class="commentText"><p>well, where&rsquo;s the correction for multiple comparisons?</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="ozb90cy" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>StrategyTop7612 [OP] | Clippers</div>
+        <div>1 | 16 minutes ago </div>
+      </div>
+      <label for="ozb90cy" class="commentText"><p>I plead innocent.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ozb74dk" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Zlasher8</div>
+        <div>1 | 24 minutes ago </div>
+      </div>
+      <label for="ozb74dk" class="commentText"><p>.668 is considered strong correlation? I haven’t done statistics in over 15 years but that sounds insane. What value do you need to NOT have strong correlation on a sample size of about 30?</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ozbahpa" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Jay__Riemenschneider | 76ers</div>
+        <div>1 | 10 minutes ago </div>
+      </div>
+      <label for="ozbahpa" class="commentText"><blockquote>
+<p>James Harden does not just need spacing on the court.</p>
+
+<p>He needs spacing in the streets of his opponents.</p>
+</blockquote>
+
+<p>HOF quote my dude</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ozbb7tb" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>High_Speed_Chicken</div>
+        <div>1 | 7 minutes ago </div>
+      </div>
+      <label for="ozbb7tb" class="commentText"><p>legendary p-hacking</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ozbbvn2" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>wigglebiscuitsjr</div>
+        <div>1 | 4 minutes ago </div>
+      </div>
+      <label for="ozbbvn2" class="commentText"><p>You collected all his road games between 2015-2016 and 2018-2019, but are the Bike Scores also from that time period? It seems like it would be pretty flawed to use the current-day Bike Score for a decade-old game.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ozau4un" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>foogeyzi69 | LAL</div>
+        <div>0 | an hour ago </div>
+      </div>
+      <label for="ozau4un" class="commentText"><p>LMAO. wtf does one has to do with the other.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ozamcdc" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Careless-Stop-9504</div>
+        <div>-4 | 2 hours ago </div>
+      </div>
+      <label for="ozamcdc" class="commentText"><p>Wow this is incredible. Why did you even do this? Not sure I agree with the conclusion of “subconscious need to move legs in bikeable cities.” Feels like a correlation not causation thing but so fun to think about.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
