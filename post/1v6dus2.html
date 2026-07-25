@@ -1,0 +1,620 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.selfPostImage {
+  width: 100%;
+  height: auto;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/nba/comments/1v6dus2/lebron_james_returns_to_the_eastern_conference/"><p>LeBron James returns to the Eastern Conference with a streak of 25 consecutive playoff series wins versus East teams, dating back to 2011</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <table>
+<thead>
+<tr>
+<th align="left">Year</th>
+<th align="left">Round</th>
+<th align="left" colspan="2">Team</th>
+<th align="left">Opponent</th>
+<th align="left">Result</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">2011</td>
+<td align="left">Round 1</td>
+<td align="left">Miami Heat (2)</td>
+<td align="left">vs.</td>
+<td align="left">Philadelphia 76ers (7)</td>
+<td align="left">4-1</td>
+</tr>
+
+<tr>
+<td align="left">2011</td>
+<td align="left">Conf Semis</td>
+<td align="left">Miami Heat (2)</td>
+<td align="left">vs.</td>
+<td align="left">Boston Celtics (3)</td>
+<td align="left">4-1</td>
+</tr>
+
+<tr>
+<td align="left">2011</td>
+<td align="left">Conf Finals</td>
+<td align="left">Miami Heat (2)</td>
+<td align="left">@</td>
+<td align="left">Chicago Bulls (1)</td>
+<td align="left">4-1</td>
+</tr>
+
+<tr>
+<td align="left">2012</td>
+<td align="left">Round 1</td>
+<td align="left">Miami Heat (2)</td>
+<td align="left">vs.</td>
+<td align="left">New York Knicks (7)</td>
+<td align="left">4-1</td>
+</tr>
+
+<tr>
+<td align="left">2012</td>
+<td align="left">Conf Semis</td>
+<td align="left">Miami Heat (2)</td>
+<td align="left">vs.</td>
+<td align="left">Indiana Pacers (3)</td>
+<td align="left">4-2</td>
+</tr>
+
+<tr>
+<td align="left">2012</td>
+<td align="left">Conf Finals</td>
+<td align="left">Miami Heat (2)</td>
+<td align="left">vs.</td>
+<td align="left">Boston Celtics (4)</td>
+<td align="left">4-3</td>
+</tr>
+
+<tr>
+<td align="left">2013</td>
+<td align="left">Round 1</td>
+<td align="left">Miami Heat (1)</td>
+<td align="left">vs.</td>
+<td align="left">Milwaukee Bucks (8)</td>
+<td align="left">4-0</td>
+</tr>
+
+<tr>
+<td align="left">2013</td>
+<td align="left">Conf Semis</td>
+<td align="left">Miami Heat (1)</td>
+<td align="left">vs.</td>
+<td align="left">Chicago Bulls (5)</td>
+<td align="left">4-1</td>
+</tr>
+
+<tr>
+<td align="left">2013</td>
+<td align="left">Conf Finals</td>
+<td align="left">Miami Heat (1)</td>
+<td align="left">vs.</td>
+<td align="left">Indiana Pacers (3)</td>
+<td align="left">4-3</td>
+</tr>
+
+<tr>
+<td align="left">2014</td>
+<td align="left">Round 1</td>
+<td align="left">Miami Heat (2)</td>
+<td align="left">vs.</td>
+<td align="left">Charlotte Bobcats (7)</td>
+<td align="left">4-0</td>
+</tr>
+
+<tr>
+<td align="left">2014</td>
+<td align="left">Conf Semis</td>
+<td align="left">Miami Heat (2)</td>
+<td align="left">vs.</td>
+<td align="left">Brooklyn Nets (6)</td>
+<td align="left">4-1</td>
+</tr>
+
+<tr>
+<td align="left">2014</td>
+<td align="left">Conf Finals</td>
+<td align="left">Miami Heat (2)</td>
+<td align="left">@</td>
+<td align="left">Indiana Pacers (1)</td>
+<td align="left">4-2</td>
+</tr>
+
+<tr>
+<td align="left">2015</td>
+<td align="left">Round 1</td>
+<td align="left">Cleveland Cavaliers (2)</td>
+<td align="left">vs.</td>
+<td align="left">Boston Celtics (7)</td>
+<td align="left">4-0</td>
+</tr>
+
+<tr>
+<td align="left">2015</td>
+<td align="left">Conf Semis</td>
+<td align="left">Cleveland Cavaliers (2)</td>
+<td align="left">vs.</td>
+<td align="left">Chicago Bulls (3)</td>
+<td align="left">4-2</td>
+</tr>
+
+<tr>
+<td align="left">2015</td>
+<td align="left">Conf Finals</td>
+<td align="left">Cleveland Cavaliers (2)</td>
+<td align="left">@</td>
+<td align="left">Atlanta Hawks (1)</td>
+<td align="left">4-0</td>
+</tr>
+
+<tr>
+<td align="left">2016</td>
+<td align="left">Round 1</td>
+<td align="left">Cleveland Cavaliers (1)</td>
+<td align="left">vs.</td>
+<td align="left">Detroit Pistons (8)</td>
+<td align="left">4-0</td>
+</tr>
+
+<tr>
+<td align="left">2016</td>
+<td align="left">Conf Semis</td>
+<td align="left">Cleveland Cavaliers (1)</td>
+<td align="left">vs.</td>
+<td align="left">Atlanta Hawks (4)</td>
+<td align="left">4-0</td>
+</tr>
+
+<tr>
+<td align="left">2016</td>
+<td align="left">Conf Finals</td>
+<td align="left">Cleveland Cavaliers (1)</td>
+<td align="left">vs.</td>
+<td align="left">Toronto Raptors (2)</td>
+<td align="left">4-2</td>
+</tr>
+
+<tr>
+<td align="left">2017</td>
+<td align="left">Round 1</td>
+<td align="left">Cleveland Cavaliers (2)</td>
+<td align="left">vs.</td>
+<td align="left">Indiana Pacers (7)</td>
+<td align="left">4-0</td>
+</tr>
+
+<tr>
+<td align="left">2017</td>
+<td align="left">Conf Semis</td>
+<td align="left">Cleveland Cavaliers (2)</td>
+<td align="left">vs.</td>
+<td align="left">Toronto Raptors (3)</td>
+<td align="left">4-0</td>
+</tr>
+
+<tr>
+<td align="left">2017</td>
+<td align="left">Conf Finals</td>
+<td align="left">Cleveland Cavaliers (2)</td>
+<td align="left">@</td>
+<td align="left">Boston Celtics (1)</td>
+<td align="left">4-1</td>
+</tr>
+
+<tr>
+<td align="left">2018</td>
+<td align="left">Round 1</td>
+<td align="left">Cleveland Cavaliers (4)</td>
+<td align="left">vs.</td>
+<td align="left">Indiana Pacers (5)</td>
+<td align="left">4-3</td>
+</tr>
+
+<tr>
+<td align="left">2018</td>
+<td align="left">Conf Semis</td>
+<td align="left">Cleveland Cavaliers (4)</td>
+<td align="left">@</td>
+<td align="left">Toronto Raptors (1)</td>
+<td align="left">4-0</td>
+</tr>
+
+<tr>
+<td align="left">2018</td>
+<td align="left">Conf Finals</td>
+<td align="left">Cleveland Cavaliers (4)</td>
+<td align="left">@</td>
+<td align="left">Boston Celtics (2)</td>
+<td align="left">4-3</td>
+</tr>
+
+<tr>
+<td align="left">2020</td>
+<td align="left">NBA Finals</td>
+<td align="left">Los Angeles Lakers (1)</td>
+<td align="left">vs.</td>
+<td align="left">Miami Heat (5)</td>
+<td align="left">4-2</td>
+</tr>
+</tbody>
+</table>
+<p><a href="https://www.basketball-reference.com/players/j/jamesle01.html#all_playoffs_series" target="_blank">https://www.basketball-reference.com/players/j/jamesle01.html#all_playoffs_series</a></p>
+
+<p>Will LeBron be able to extend his streak? Is the streak in Jeopardy? Thoughts?</p>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ozpp6x7" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Teh1Minus5 | Trail Blazers</div>
+        <div>1 | 10 minutes ago </div>
+      </div>
+      <label for="ozpp6x7" class="commentText"><p>I’m not gonna lie this is a stat you don’t think about often. Peak off season shenanigans</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ozpp5bp" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>hostidz | Lakers</div>
+        <div>1 | 10 minutes ago </div>
+      </div>
+      <label for="ozpp5bp" class="commentText"><p><sup>26</sup>&frasl;<sub>27</sub> def. achievable, 28 gonna be tough.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ozpp5ox" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Valuable-Average-865</div>
+        <div>1 | 10 minutes ago </div>
+      </div>
+      <label for="ozpp5ox" class="commentText"><blockquote>
+<p>Will LeBron be able to extend his streak? Is the streak in Jeopardy?</p>
+</blockquote>
+
+<p>I don&rsquo;t know</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ozppmn8" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>RepresentativeWise27 | Knicks</div>
+        <div>1 | 7 minutes ago </div>
+      </div>
+      <label for="ozppmn8" class="commentText"><p>wild to think he really terrorized the east for nearly a decade</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ozpphu4" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>wistful_grace | Raptors</div>
+        <div>1 | 8 minutes ago </div>
+      </div>
+      <label for="ozpphu4" class="commentText"><p>we&rsquo;re getting revenge for lebronto this year</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ozppxbv" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>aftemoon_coffee | Knicks</div>
+        <div>1 | 6 minutes ago </div>
+      </div>
+      <label for="ozppxbv" class="commentText"><p>Knicks about to end that</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ozpq8uk" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>DivinationInn</div>
+        <div>1 | 5 minutes ago </div>
+      </div>
+      <label for="ozpq8uk" class="commentText"><p>Technically true, but can you really it a streak if you don&rsquo;t make it out of the west for 7 years?</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ozpqa1y" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Wise_Material_5812</div>
+        <div>1 | 4 minutes ago </div>
+      </div>
+      <label for="ozpqa1y" class="commentText"><p>it’s the sixers, they are jinxed, by mid season you know the players will be injured.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="ozppane" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>CupCharming4931 | Knicks</div>
+        <div>1 | 9 minutes ago </div>
+      </div>
+      <label for="ozppane" class="commentText"><p>All you nephews have homework today. Go on YouTube and search &ldquo;Michael Jordan&rdquo; I know the video quality might not be what you&rsquo;re used to, but just try watching. I guarantee you will learn some very important things</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
