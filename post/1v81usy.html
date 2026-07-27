@@ -1,0 +1,964 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.selfPostImage {
+  width: 100%;
+  height: auto;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/nba/comments/1v81usy/oc_stars_records_as_favorites_and_underdogs/"><p>[OC] Star&rsquo;s records as favorites and underdogs</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <p>I gathered the records as favorites and underdogs for star players from here: <a href="https://www.covers.com/sportsoddshistory/nba-playoffs-series/?y=0000" target="_blank">https://www.covers.com/sportsoddshistory/nba-playoffs-series/?y=0000</a></p>
+
+<p>For series wins over expectation, I removed the vig from the odds to get implied probabilities, and calculated it from there.</p>
+
+<table>
+<thead>
+<tr>
+<th align="left">Player</th>
+<th align="left">As Favorite</th>
+<th align="left">As Underdog</th>
+<th align="left">Series</th>
+<th align="left">Wins Over Expectation</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">LeBron James</td>
+<td align="left">35-5</td>
+<td align="left">7-10</td>
+<td align="left">57</td>
+<td align="left">+5.42</td>
+</tr>
+
+<tr>
+<td align="left">Michael Jordan</td>
+<td align="left">28-1</td>
+<td align="left">2-6</td>
+<td align="left">37</td>
+<td align="left">+4.67</td>
+</tr>
+
+<tr>
+<td align="left">Kobe Bryant</td>
+<td align="left">32-5</td>
+<td align="left">1-5</td>
+<td align="left">43</td>
+<td align="left">+3.25</td>
+</tr>
+
+<tr>
+<td align="left">Steph Curry</td>
+<td align="left">23-3</td>
+<td align="left">1-3</td>
+<td align="left">30</td>
+<td align="left">+2.70</td>
+</tr>
+
+<tr>
+<td align="left">Jimmy Butler</td>
+<td align="left">6-1</td>
+<td align="left">6-10</td>
+<td align="left">23</td>
+<td align="left">+2.56</td>
+</tr>
+
+<tr>
+<td align="left">Hakeem Olajuwon</td>
+<td align="left">9-2</td>
+<td align="left">7-11</td>
+<td align="left">29</td>
+<td align="left">+2.49</td>
+</tr>
+
+<tr>
+<td align="left">Tim Duncan</td>
+<td align="left">31-7</td>
+<td align="left">4-6</td>
+<td align="left">48</td>
+<td align="left">+2.39</td>
+</tr>
+
+<tr>
+<td align="left">Kevin Garnett</td>
+<td align="left">10-0</td>
+<td align="left">3-13</td>
+<td align="left">26</td>
+<td align="left">+2.29</td>
+</tr>
+
+<tr>
+<td align="left">Paul Pierce</td>
+<td align="left">10-4</td>
+<td align="left">6-9</td>
+<td align="left">29</td>
+<td align="left">+2.05</td>
+</tr>
+
+<tr>
+<td align="left">Dwyane Wade</td>
+<td align="left">19-2</td>
+<td align="left">3-8</td>
+<td align="left">32</td>
+<td align="left">+1.88</td>
+</tr>
+
+<tr>
+<td align="left">Shaquille O’Neal</td>
+<td align="left">28-7</td>
+<td align="left">4-6</td>
+<td align="left">45</td>
+<td align="left">+1.54</td>
+</tr>
+
+<tr>
+<td align="left">Luka Dončić</td>
+<td align="left">1-1</td>
+<td align="left">4-4</td>
+<td align="left">10</td>
+<td align="left">+1.24</td>
+</tr>
+
+<tr>
+<td align="left">Nikola Jokić</td>
+<td align="left">6-3</td>
+<td align="left">4-4</td>
+<td align="left">17</td>
+<td align="left">+1.16</td>
+</tr>
+
+<tr>
+<td align="left">Dirk Nowitzki</td>
+<td align="left">7-3</td>
+<td align="left">6-11</td>
+<td align="left">27</td>
+<td align="left">+0.78</td>
+</tr>
+
+<tr>
+<td align="left">Kawhi Leonard</td>
+<td align="left">16-5</td>
+<td align="left">3-4</td>
+<td align="left">28</td>
+<td align="left">+0.70</td>
+</tr>
+
+<tr>
+<td align="left">Allen Iverson</td>
+<td align="left">4-1</td>
+<td align="left">2-7</td>
+<td align="left">14</td>
+<td align="left">+0.38</td>
+</tr>
+
+<tr>
+<td align="left">Russell Westbrook</td>
+<td align="left">9-3</td>
+<td align="left">3-10</td>
+<td align="left">25</td>
+<td align="left">-0.03</td>
+</tr>
+
+<tr>
+<td align="left">Damian Lillard</td>
+<td align="left">0-2</td>
+<td align="left">4-8</td>
+<td align="left">14</td>
+<td align="left">-0.44</td>
+</tr>
+
+<tr>
+<td align="left">Reggie Miller</td>
+<td align="left">10-4</td>
+<td align="left">4-11</td>
+<td align="left">29</td>
+<td align="left">-0.45</td>
+</tr>
+
+<tr>
+<td align="left">Steve Nash</td>
+<td align="left">9-2</td>
+<td align="left">2-10</td>
+<td align="left">23</td>
+<td align="left">-0.52</td>
+</tr>
+
+<tr>
+<td align="left">Paul George</td>
+<td align="left">6-3</td>
+<td align="left">3-9</td>
+<td align="left">21</td>
+<td align="left">-0.61</td>
+</tr>
+
+<tr>
+<td align="left">Kevin Durant</td>
+<td align="left">20-6</td>
+<td align="left">2-6</td>
+<td align="left">34</td>
+<td align="left">-0.86</td>
+</tr>
+
+<tr>
+<td align="left">James Harden</td>
+<td align="left">14-4</td>
+<td align="left">1-12</td>
+<td align="left">31</td>
+<td align="left">-0.99</td>
+</tr>
+
+<tr>
+<td align="left">Charles Barkley</td>
+<td align="left">10-1</td>
+<td align="left">2-12</td>
+<td align="left">25</td>
+<td align="left">-1.09</td>
+</tr>
+
+<tr>
+<td align="left">Joel Embiid</td>
+<td align="left">5-2</td>
+<td align="left">1-6</td>
+<td align="left">14</td>
+<td align="left">-1.24</td>
+</tr>
+
+<tr>
+<td align="left">Giannis Antetokounmpo</td>
+<td align="left">6-3</td>
+<td align="left">2-5</td>
+<td align="left">16</td>
+<td align="left">-1.69</td>
+</tr>
+
+<tr>
+<td align="left">Tracy McGrady</td>
+<td align="left">3-1</td>
+<td align="left">0-7</td>
+<td align="left">11</td>
+<td align="left">-2.21</td>
+</tr>
+
+<tr>
+<td align="left">Chris Paul</td>
+<td align="left">9-6</td>
+<td align="left">3-9</td>
+<td align="left">27</td>
+<td align="left">-2.80</td>
+</tr>
+
+<tr>
+<td align="left">Carmelo Anthony</td>
+<td align="left">3-4</td>
+<td align="left">0-9</td>
+<td align="left">16</td>
+<td align="left">-3.31</td>
+</tr>
+</tbody>
+</table>
+<p>I also split up wins over expected by performance as the fave vs underdog to see what happens:</p>
+
+<table>
+<thead>
+<tr>
+<th align="left">Player</th>
+<th align="left">As-favorite WOE</th>
+<th align="left">As-underdog WOE</th>
+<th align="left">Overall</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">LeBron James</td>
+<td align="left">+3.07</td>
+<td align="left">+2.34</td>
+<td align="left">+5.42</td>
+</tr>
+
+<tr>
+<td align="left">Michael Jordan</td>
+<td align="left">+4.70</td>
+<td align="left">−0.03</td>
+<td align="left">+4.67</td>
+</tr>
+
+<tr>
+<td align="left">Steph Curry</td>
+<td align="left">+2.65</td>
+<td align="left">+0.05</td>
+<td align="left">+2.70</td>
+</tr>
+
+<tr>
+<td align="left">Jimmy Butler</td>
+<td align="left">+0.82</td>
+<td align="left">+1.74</td>
+<td align="left">+2.56</td>
+</tr>
+
+<tr>
+<td align="left">Paul Pierce</td>
+<td align="left">+0.41</td>
+<td align="left">+1.64</td>
+<td align="left">+2.05</td>
+</tr>
+
+<tr>
+<td align="left">Luka Dončić</td>
+<td align="left">−0.28</td>
+<td align="left">+1.52</td>
+<td align="left">+1.24</td>
+</tr>
+
+<tr>
+<td align="left">Nikola Jokić</td>
+<td align="left">−0.34</td>
+<td align="left">+1.49</td>
+<td align="left">+1.16</td>
+</tr>
+
+<tr>
+<td align="left">James Harden</td>
+<td align="left">+1.00</td>
+<td align="left">−1.98</td>
+<td align="left">−0.99</td>
+</tr>
+
+<tr>
+<td align="left">Chris Paul</td>
+<td align="left">−1.90</td>
+<td align="left">−0.90</td>
+<td align="left">−2.80</td>
+</tr>
+
+<tr>
+<td align="left">Carmelo Anthony</td>
+<td align="left">−1.45</td>
+<td align="left">−1.85</td>
+<td align="left">−3.31</td>
+</tr>
+</tbody>
+</table>
+<p>Lebron&rsquo;s the only one that&rsquo;s hugely positive as both a favorite and underdog. Harden&rsquo;s disastrous as an underdog.</p>
+
+<p>Here are the biggest choke by implied probability:</p>
+
+<table>
+<thead>
+<tr>
+<th align="left">Series</th>
+<th align="left">Implied Probability</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">2007 Mavericks vs Warriors: Nowitzki</td>
+<td align="left">92.5%</td>
+</tr>
+
+<tr>
+<td align="left">2020 Clippers vs Nuggets: Kawhi/PG13</td>
+<td align="left">89.8%</td>
+</tr>
+
+<tr>
+<td align="left">2023 Bucks vs Heat: Giannis</td>
+<td align="left">88.7%</td>
+</tr>
+
+<tr>
+<td align="left">2009 Cavaliers vs Magic: LeBron</td>
+<td align="left">85.0%</td>
+</tr>
+
+<tr>
+<td align="left">2004 Lakers vs Pistons: Kobe/Shaq</td>
+<td align="left">84.0%</td>
+</tr>
+
+<tr>
+<td align="left">2026 Rockets vs Lakers: KD</td>
+<td align="left">81.6%</td>
+</tr>
+
+<tr>
+<td align="left">2018 76ers vs Celtics: Embiid</td>
+<td align="left">81.2%</td>
+</tr>
+
+<tr>
+<td align="left">2016 Clippers vs Trail Blazers: CP3/Pierce</td>
+<td align="left">81.2%</td>
+</tr>
+
+<tr>
+<td align="left">2010 Cavaliers vs Celtics: LeBron/Shaq</td>
+<td align="left">79.9%</td>
+</tr>
+
+<tr>
+<td align="left">2020 Bucks vs Heat: Giannis</td>
+<td align="left">78.6%</td>
+</tr>
+</tbody>
+</table>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="p02ebrj" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>2Basketball2Poorious | Pelicans</div>
+        <div>4 | an hour ago </div>
+      </div>
+      <label for="p02ebrj" class="commentText"><p>Interesting that LeBron tops both WOE charts and also appears twice on the biggest choke top ten list—what kind of interpretations can be made there?</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="p02eivg" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>StrategyTop7612 [OP] | Clippers</div>
+        <div>2 | an hour ago </div>
+      </div>
+      <label for="p02eivg" class="commentText"><p>Well I mean a long career usually causes that, gives you lots of chances to choke, but in the long run, Lebron still succeeded.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="p02maqh" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>p_pio</div>
+        <div>1 | 19 minutes ago </div>
+      </div>
+      <label for="p02maqh" class="commentText"><p>Longevity is a big boon for cumulative stats but also increase number of low probability outcomes.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="p02hw42" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Rrypl | Celtics</div>
+        <div>3 | 39 minutes ago </div>
+      </div>
+      <label for="p02hw42" class="commentText"><p>If anyone was curious like me, Jayson Tatum is 13-4 when favored and 2-4 as the underdog. Don&rsquo;t really know the math for Wins over expectancy.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="p02j1ol" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>StrategyTop7612 [OP] | Clippers</div>
+        <div>2 | 33 minutes ago </div>
+      </div>
+      <label for="p02j1ol" class="commentText"><p>Tatum is +0.18 WOE, so nearly average. His biggest positive series was the 2018 upset over Philly that gave +0.81 WOE.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="p02er9f" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>rocpilehardasfuk | Warriors</div>
+        <div>2 | an hour ago </div>
+      </div>
+      <label for="p02er9f" class="commentText"><p>excellent post. Why is Jimmy Butler at the top of the list?</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="p02f6vj" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>hfusa | Heat</div>
+        <div>5 | an hour ago </div>
+      </div>
+      <label for="p02f6vj" class="commentText"><p>probably because the two series where the Heat upset the Bucks.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="p02fm5l" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>StrategyTop7612 [OP] | Clippers</div>
+        <div>2 | an hour ago </div>
+      </div>
+      <label for="p02fm5l" class="commentText"><p>Lots of wins as underdogs</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="p02f9u3" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>the_gargler | Trail Blazers</div>
+        <div>2 | an hour ago </div>
+      </div>
+      <label for="p02f9u3" class="commentText"><p>Could it be scoped closer to a player&rsquo;s prime? This is great but also Carmelo Anthony and Chris Paul played longer than they should&rsquo;ve and it&rsquo;d be interesting to see how their numbers changed.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="p02gbfb" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>StrategyTop7612 [OP] | Clippers</div>
+        <div>2 | an hour ago </div>
+      </div>
+      <label for="p02gbfb" class="commentText"><p>I don&rsquo;t think it would change too much for either, for CP3 up to 2019, he&rsquo;s at -2.14 WOE and was -0.66 from then on.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="p02h75o" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>the_gargler | Trail Blazers</div>
+        <div>2 | 42 minutes ago </div>
+      </div>
+      <label for="p02h75o" class="commentText"><p>Oof lol. Interesting. Thanks for this - very interesting stuff.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="p02hep0" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>StrategyTop7612 [OP] | Clippers</div>
+        <div>1 | 41 minutes ago </div>
+      </div>
+      <label for="p02hep0" class="commentText"><p>You&rsquo;re welcome</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="p02ijei" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Clear_Measurement502</div>
+        <div>1 | 36 minutes ago </div>
+      </div>
+      <label for="p02ijei" class="commentText"><p>What about Pierce before Brooklyn/LA/Wash?</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="p02fu8b" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>MountOliveFig</div>
+        <div>2 | an hour ago </div>
+      </div>
+      <label for="p02fu8b" class="commentText"><p>jimmy butler being up there with all those guys. clutch gene</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="p02h6zs" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>nowhathappenedwas | NBA</div>
+        <div>2 | 42 minutes ago </div>
+      </div>
+      <label for="p02h6zs" class="commentText"><p>Still wild that the Warriors were favorites in 27 of 28 playoff series under Kerr, with the one underdog being last year against the Wolves in the second round.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="p02hd80" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>StrategyTop7612 [OP] | Clippers</div>
+        <div>2 | 41 minutes ago </div>
+      </div>
+      <label for="p02hd80" class="commentText"><p>Yeah, it&rsquo;s crazy</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="p02iuhs" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>nowhathappenedwas | NBA</div>
+        <div>1 | 34 minutes ago </div>
+      </div>
+      <label for="p02iuhs" class="commentText"><p>And on the flip side, Dame only being the favorite twice in his career &ndash; and one of those was as the 6th seed against Denver in 2021.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="p02ia9n" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>freshprince44</div>
+        <div>2 | 37 minutes ago </div>
+      </div>
+      <label for="p02ia9n" class="commentText"><p>KG never losing when favored really helps show how silly the narrative around him is (and was a bit). Carrying bad rosters to the playoffs in the absurd western conference was a feat. Those teams had no chance and they just sat 2-3 guys on KG and made the rest of the team do something, they never could</p>
+
+<p>the instant he had a decent squad around him he won, and literally didn&rsquo;t lose with a favored team a single time lol</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="p02op8x" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>HokageEzio | Knicks</div>
+        <div>1 | 9 minutes ago </div>
+      </div>
+      <label for="p02op8x" class="commentText"><p>What is Brunson at now at this point? Did a brief scan and it looks like the two Indy series and Miami in 2023 are the only losses his team was favored.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
