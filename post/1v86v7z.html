@@ -1,0 +1,703 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.selfPostImage {
+  width: 100%;
+  height: auto;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/nba/comments/1v86v7z/kevin_durant_xpts_and_the_question_of_how_much/"><p>Kevin Durant, xPTS and the question of how much winning impact can Elite Tough Shot Makers have?</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <p>Good morning, y&rsquo;all.</p>
+
+<p>Recently wrote a paper introducing a new metric called xPTS, which essentially quantifies shot quality by measuring the expected value of each field goal using:</p>
+
+<p>Shot location<br>
+Shot family<br>
+Possession context (I.E: Transition, Second Chance, Halfcourt, etc etc)<br>
+Actual defender distance</p>
+
+<p>A dunk at the rim with a defender 2-4 feet away is worth 1.88 points, a cut to the rim from 2-4 feet 1.47, a driving layup with 4-6 feet of space 1.43, a contested layup at 2-4 feet 1.27, and a smothered shot at the rim with a defender inside 2 feet just 0.55, with the league average PPP being 1.09.</p>
+
+<p>With expected points, you can do a lot of cool things, such as:</p>
+
+<ul>
+<li><strong>Player leaderboards</strong></li>
+<li><strong>Team leaderboards and Expected Wins</strong></li>
+<li><strong>a player’s own baseline for over and underperformance. (Curry&rsquo;s PPP from a smothered above-the-break 3 is different from Kuzma)</strong></li>
+<li><strong>Presence and geometry RAPM</strong></li>
+</ul>
+
+<p>Even cooler, you can measure how a player’s presence bends his team’s offensive and defensive geometry, and its chance creation on both ends, a different flavor of regularized adjusted plus-minus.</p>
+
+<p>xpts rapm: a player&rsquo;s regularized on/off impact on their team&rsquo;s shot diet and shot quality as well as suppress the opposing teams&rsquo; shot die-in shot quality</p>
+
+<p>conversion rapm: a player&rsquo;s regularize on/off impact on their team&rsquo;s ability to make and suppress shots above or below expected</p>
+
+<h1 id="kevin-durant">Kevin Durant</h1>
+
+<p>His net xPTS-RAPM is a very interesting story, especially when you pair it with his conversion.</p>
+
+<p>He ranks in the FIRST PERCENTILE, as in his presence contributes to one of, if not the very worst, shot diet and chance creation in the entire league.</p>
+
+<p>His shot-quality impact is among the single worst in the entire league. He provides no rim pressure, there is no transition game, the offense becomes a half-court jousting match every possession.</p>
+
+<p>His influence turns his team into a midrange engine, the quantified worst shot in basketball, at roughly 7% more than league average.</p>
+
+<p>He still rates well in all RAPMs and off metrics, because he is, even at his age, among the most elite converters in the sport.</p>
+
+<p>He ranks in the 99.8th PERCENTILE in conversion RAPM. When he is on the floor, his team&rsquo;s offense converts far more than the chance created would predict. (Even with his average defensive conversion impact)</p>
+
+<p>A whopping 270 points above expected this past season, a bigger gap between him and 2nd Place (Jokic) than between 2nd and 5th.</p>
+
+<p>He makes the poorly graded 8-to-10-foot pull-ups at about 1.21 expected points, versus a league average of 0.94.</p>
+
+<p>Functionally, making what is graded as the worst shot in basketball worth more than a three-pointer taken from the average NBA player.</p>
+
+<h1 id="extreme-dimorphism">Extreme Dimorphism</h1>
+
+<p>His total on-court impact is shown thorugh :</p>
+
+<p><strong>Net RAPM</strong>, the additive sum of xPTS-RAPM and conversion RAPM, which is to say, a pure RAPM with no prior, just basic regularized adjusted plus-minus, where he ranks in the 83rd percentile</p>
+
+<p><strong>ARC</strong> (Adjusted Regularized Contribution), a possession-weighted, box-blended impact, has him in the 92nd percentile</p>
+
+<p>Houston is 3 points better on offense with him on the floor, minus 2 in total due to defense.</p>
+
+<p>My question is, even with his positive impact on Houston&rsquo;s offense, which isn&rsquo;t the most spaced or geometrically balanced, is this the level of shot-making required to have a positive impact when your shot diet is this bad?</p>
+
+<p>It reminds me of a lot of the conversations around DeMar DeRozan and how much of a winning player he is. He has a similar level of poor shot selection with his usage, which bent the whole team&rsquo;s geometry into less efficient and effective shots. He did not have anywhere near the shot-making lift.</p>
+
+<p>Even with this shot-making lift, is it not a self-fulfilling prophecy that there is a limit to how big of an offensive impact a &ldquo;tough&rdquo; shot maker can have?</p>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="p03kvl9" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>AnywhereOk1153</div>
+        <div>21 | an hour ago </div>
+      </div>
+      <label for="p03kvl9" class="commentText"><p>Wake up babe, new NBA stat just dropped</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="p03l618" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>AnywhereOk1153</div>
+        <div>19 | an hour ago </div>
+      </div>
+      <label for="p03l618" class="commentText"><p>But seriously this is sick, makes a ton of sense that this exists based on how soccer uses xGoals. This is prob has way more of a robust data set that&rsquo;s more likely to be stat sig.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="p03odub" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>SloshaPacana</div>
+        <div>3 | an hour ago </div>
+      </div>
+      <label for="p03odub" class="commentText"><p>This type of stat has been around for a while, not every shot is the same, a catch and shoot that you do nothing to create and take is way more efficient than a pull up off the dribble three at the end of a shotclock</p>
+
+<p>Teams probably have way better tracking data too</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="p03k1rq" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Beneficial_Carry_530 [OP] | Lakers</div>
+        <div>12 | an hour ago </div>
+      </div>
+      <label for="p03k1rq" class="commentText"><p>link to full xPTS paper with interactive tables: <a href="https://court-share.com/luma/papers/introducing-xpts" target="_blank">https://court-share.com/luma/papers/introducing-xpts</a></p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="p03rmkw" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>sunpar1 | Nets</div>
+        <div>5 | an hour ago </div>
+      </div>
+      <label for="p03rmkw" class="commentText"><p>I&rsquo;ll read through this later, but my initial impression is that you&rsquo;re conflating what is a &ldquo;bad shot&rdquo; on AVERAGE for what is a bad shot for a specific player.</p>
+
+<p>I&rsquo;ve watched KD a lot (and I&rsquo;m a stats guy by trade), and one of the things that is unique to him is that the shots that he is most comfortable with are not necessarily the ones that you would quantify as being the best on average for players.</p>
+
+<p>But above all, players are taught to &ldquo;get to your spot&rdquo; on the floor and he does that quite well. The shots that you&rsquo;re saying have bad expectation simply are not bad to him. Those mid range shots are where he thrives, and he&rsquo;s long enough to get them off even though everyone knows that&rsquo;s what he&rsquo;s going to take.</p>
+
+<p>I suspect that shot selection is one of those things where you have to mix the results (over time) with the process, even though usually you&rsquo;d say respect the process over the results. That is, if a guy is taking a bunch of tough shots but is making them at a good clip and has a strong record of positive offensive contribution, then you should conclude that his process is correct.</p>
+
+<p>Edit: This specifically is what I have a problem with: &ldquo;Instead of seeing how a player&rsquo;s on-court presence adds to or subtracts from a team&rsquo;s net rating over a huge sample of possessions, you see how a player&rsquo;s on-court presence influences a team&rsquo;s expected point value.&rdquo;</p>
+
+<p>What you&rsquo;re showing is how a player&rsquo;s on-court presence influences a team&rsquo;s shot &ldquo;geometry&rdquo;, then making an inference about what impact that geometry has on their point expectation. However, overall point expectation has, I think, little correlation to individual shot expectation. This is why point guards talk so much about getting the ball to their teammates where THEY like it, and how they like it. Some guys are rhythm shooters off the dribble, some are catch-and-shoot guys. Most are good from the corner, but some guys shoot way better above the break.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="p03kur0" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>[deleted]</div>
+        <div>12 | an hour ago </div>
+      </div>
+      <label for="p03kur0" class="commentText"><p>[removed]</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="p03lekw" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>SloshaPacana</div>
+        <div>11 | an hour ago </div>
+      </div>
+      <label for="p03lekw" class="commentText"><p>The meme is stupid and anyone that actually watched the games of the Cavs and even the Spurs - Knicks should know what analytics mean by that anyway</p>
+
+<p>You still need to make your shots, the goal is to create easy shots but you still need to make them and also need to have the mentality at the end of games to finish games</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="p03u9ht" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Whackedjob | Raptors</div>
+        <div>9 | an hour ago </div>
+      </div>
+      <label for="p03u9ht" class="commentText"><p>Thinking Basketball in their top peaks series last year basically said KD has no impact on his teammate&rsquo;s play but drags up their offensive rating by simply being really good at basketball. They don&rsquo;t make or take significantly more 3s or rim attempts while he&rsquo;s on the court but he just converts his own looks at an elite rate.</p>
+
+<p>Interestingly Shai also has similar signals and you can see this in OKC&rsquo;s offensive struggles in the last 2 playoff runs.</p>
+
+<p>So I would tend to agree that tough shot making can actually create a ceiling for your offense that is lower than what you would expect given the talent of the player. I think we still don&rsquo;t have great ways to measure playmaking and it still remains an undervalued part of the game.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="p03ljiz" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>No-Platypus8257</div>
+        <div>4 | an hour ago </div>
+      </div>
+      <label for="p03ljiz" class="commentText"><p>great work! big soccer fan as well, so very familiar with the concept.
+in soccer, there’s a prevailing consensus that chance creation is more important than conversion given how rare chances are in the first place. curious as to whether this holds in basketball, where every possession results in an attempt, and why shot making is usually more valued in the NBA</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="p03n9yk" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>LetsGetLunch | Warriors</div>
+        <div>2 | an hour ago </div>
+      </div>
+      <label for="p03n9yk" class="commentText"><p>eh, shot-making is somewhat impactful on offense (as a great man once said, &ldquo;you have to score the goals, guys&rdquo;), but the most impactful players on offense are primarily the ones whose presence in one form or another creates a lot of assisted rim attempts (for instance, steph curry&rsquo;s infamous &ldquo;gravity&rdquo; appears in the fact that the warriors had a much higher rate of assisted rim attempts when he was on the court, lapping the other teams in the league, while steve nash basically twisted defenses with his dribbling until there was a breakdown and his teammates could arrive at the rim with a free dunk)</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="p03pgiv" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>idkidk23 | Mavericks</div>
+        <div>3 | an hour ago </div>
+      </div>
+      <label for="p03pgiv" class="commentText"><p>This is also captured in the increase of oTS in the RAPM 6 factor data, not sure if you&rsquo;ve ever seen that data, but Steph and Nash are two of the best ever in that category, so your intuition is correct. The Six and Eight factor data on <a href="http://NBArapm.com" target="_blank">NBArapm.com</a> is fascinating, fun to look back how guys effected team outcomes through the years. The entire top 20 is basically different stretches of Steph and Nash&rsquo;s prime, then there is also some Jokic and LeBron.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="p03qcof" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>bringbackpologrounds</div>
+        <div>4 | an hour ago </div>
+      </div>
+      <label for="p03qcof" class="commentText"><p>This is really cool. Great work and I hope the website keeps progressing.</p>
+
+<p>Only thing is that I couldn&rsquo;t get the searches to work.</p>
+
+<p>As for Durant, it&rsquo;s important to remember that he is almost a decade removed from his peak, when he was a devastating and high-volume driver. It&rsquo;s remarkable that he remains an effective scorer to this day, turning 38 before the season.</p>
+
+<p>I think it&rsquo;s plausible for HOU to contend with him as long as one of Thompson or Sengun step up as the true star, but they need proper PG play.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="p03mtzx" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>curiousML5</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="p03mtzx" class="commentText"><p>Makes sense, I think some vendors have a similar stat already</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="p03qg2h" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>SwizzGod | Lakers</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="p03qg2h" class="commentText"><p>What’s the leaderboards look like?</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="p03s4nc" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>nba2k11er | Warriors</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="p03s4nc" class="commentText"><p>It’s pretty useful on Houston because most of their guys have no bag. Looking at you Sengun.</p>
+
+<p>We’ll have to see if FVV has some impact on that.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="p0418l2" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>rvltnwllbtlvsd | NYK</div>
+        <div>1 | 18 minutes ago </div>
+      </div>
+      <label for="p0418l2" class="commentText"><p>Great post!</p>
+
+<p><a href="https://www.tiktok.com/@bleacherreport/video/7522108658919034143" target="_blank">KD talks about this in his interview with Lebron and Steve Nash.</a>  It&rsquo;s not just that he converts his mid range jumper at a high rate, its that it can collapse the defense to open up 3 point attempts.</p>
+
+<p>A pg and a competent coach could do a lot for the rockets.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="p042fub" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Santiago_Burbano</div>
+        <div>1 | 13 minutes ago </div>
+      </div>
+      <label for="p042fub" class="commentText"><p>&amp;gt; is this the level of shot-making required to have a positive impact when your shot diet is this bad?</p>
+
+<p>yes, that’s why guys with similar playing styles have flamed out over the past decade</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="p0448nf" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Icy_Information_6563 | Suns</div>
+        <div>1 | 5 minutes ago </div>
+      </div>
+      <label for="p0448nf" class="commentText"><blockquote>
+<p>It reminds me of a lot of the conversations around DeMar DeRozan and how much of a winning player he is. He has a similar level of poor shot selection with his usage, which bent the whole team&rsquo;s geometry into less efficient and effective shots. He did not have anywhere near the shot-making lift.</p>
+</blockquote>
+
+<p>Watching KD on the Suns, I agree with everything you said except for your hypothesis above. The problem with KD is not his shot selection because he is damn efficient at it. The problem is that he doesn&rsquo;t force defenses to make a lose-lose decision. He gets guarded 1on1 when he&rsquo;s off-ball because he&rsquo;s easy to box out. On ball, he gets doubled a lot, but struggles to make the right pass fast enough to take advantage, and often turns the ball over. He doesn&rsquo;t really help his teammates on offense as a result. In a way, he&rsquo;s kind of just a high-usage role player on offense.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="p03miid" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>butt_fun | San Diego Clippers</div>
+        <div>0 | an hour ago </div>
+      </div>
+      <label for="p03miid" class="commentText"><p>Very cool</p>
+
+<p>I haven&rsquo;t tweaked with the numbers, but my only critique would be adding another dimension to shot context (&ldquo;regular&rdquo; vs &ldquo;clutch time&rdquo;, however you want to define that), since a lot of the perceived value of these types of players is hitting big shots late in close games</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="p03kwdg" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>MotoMkali | Warriors</div>
+        <div>-1 | an hour ago </div>
+      </div>
+      <label for="p03kwdg" class="commentText"><p>Well yes but KD also has th worst shot diet of any player post 2010 because his athleticism has declined so much and his rim attempts are so miniscule. Comparing KD to anyone else is kind of doing a disservice.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="p03nl5x" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Variation99a</div>
+        <div>-1 | an hour ago </div>
+      </div>
+      <label for="p03nl5x" class="commentText"><p>Have you shown this to Atkinson?</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
