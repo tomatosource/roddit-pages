@@ -1,0 +1,610 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.selfPostImage {
+  width: 100%;
+  height: auto;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/PathOfExile2/comments/1v9gg5p/help_me_understand_the_difference_in_dps/"><p>Help me understand the difference in dps</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <p>I was trying to see what other &ldquo;top&rdquo; players were doing with a setup similar to mine. I&rsquo;m playing eventide MA with shattering palm. I noticed my dps was kinda bad compared to the top guys. Now I imagine they are geared to the teeth, and it makes sense their DPS is higher. But when i look at their gear, its not that much different than mine. Infact, my weapon has more base dps than most of the top player. But even then my damage is less than half of theirs. So I think, ok, maybe the rings are better, the gloves are better &hellip;. naah, barely, if at all. So maybe they have better supports? All those lineage gems &hellip;. naah, they are kinda the same. Now, some of them have more spirit to run more auras and I dont have the currency to do that, but those are conditional, and as far as I know, <a href="http://po2.ninja" target="_blank">po2.ninja</a> dps doesn&rsquo;t account for all the conditional stuff. The only thing I could see was, all the top players have &ldquo;T1 Increased Elemental Damage&rdquo; on their QS, while mine is flat Cold, Lightning and Increased Phys%. So is this the difference.</p>
+
+<p>Does this mean that Increased Ele damage is not calculated on the weapon when showing dps, but only for the skill? That would make sense and explain a lot.</p>
+
+<p>My Build -</p>
+
+<p><a href="https://poe.ninja/poe2/profile/Silver%20Arrows-6662/runesofaldur/character/TheKungFuMaster" target="_blank">https://poe.ninja/poe2/profile/Silver%20Arrows-6662/runesofaldur/character/TheKungFuMaster</a></p>
+
+<p>Top other builds with similar setup</p>
+
+<p><a href="https://poe.ninja/poe2/builds/runesofaldur?class=Martial+Artist&amp;items=Eventide+Petals&amp;skills=Shattering+Palm" target="_blank">https://poe.ninja/poe2/builds/runesofaldur?class=Martial+Artist&amp;items=Eventide+Petals&amp;skills=Shattering+Palm</a></p>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="p0diffb" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>PoE_Acronym_Bot</div>
+        <div>2 | 4 hours ago </div>
+      </div>
+      <label for="p0diffb" class="commentText"><p>I noticed some Path of Exile keywords in this post:</p>
+
+<ul>
+<li><strong>DPS</strong> - Damage per Second</li>
+</ul>
+
+<hr>
+
+<p>^(I am a bot.) ^| <a href="https://acronym.sidia.net/acronyms/pathofexile2" target="_blank">^(All acronyms)</a> ^| <a href="https://acronym.sidia.net/suggest/pathofexile2" target="_blank">^(Suggest)</a></p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="p0dssws" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>smallson_</div>
+        <div>2 | 3 hours ago </div>
+      </div>
+      <label for="p0dssws" class="commentText"><p>For this sort of thing it helps to open both builds in path of building, set up each builds conditionals in the config, then go to &lsquo;calcs,&rsquo; view the skill in question, and look at all the modifiers and multipliers affecting each skill. You should be able to see where the dmg is coming from.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="p0disz4" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>RobotFoxTrot</div>
+        <div>1 | 4 hours ago </div>
+      </div>
+      <label for="p0disz4" class="commentText"><p>Side note: you enjoying eventide? Was thinking of switching to it from falling thunder</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="p0djnww" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>SilverArrows6662 [OP]</div>
+        <div>1 | 4 hours ago </div>
+      </div>
+      <label for="p0djnww" class="commentText"><p>It&rsquo;s a blast&hellip;&hellip; It&rsquo;s only downfall is u need to be in the thick of things and the expedition fights are very hard with it. 200% deli with t16s or 8 mod t15s and all is easy, but those expeditions are kicking my ass.</p>
+
+<p>I actually added falling thunder as a &ldquo;Oh shit I&rsquo;m surrounded and need a nuke&rdquo; option. It has bailed me out a few times. But it can only help so much. Look at my build for ideas.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="p0djzd0" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>wordtnkr</div>
+        <div>1 | 4 hours ago </div>
+      </div>
+      <label for="p0djzd0" class="commentText"><p>PoB has a nice feature that allows you to compare builds. Have you tried it?</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="p0dk7cz" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>SilverArrows6662 [OP]</div>
+        <div>1 | 4 hours ago </div>
+      </div>
+      <label for="p0dk7cz" class="commentText"><p>No didn&rsquo;t know about this. Let me take a look, maybe it can uncover something.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="p0dn75x" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>SomeRandomVietnamese</div>
+        <div>1 | 3 hours ago </div>
+      </div>
+      <label for="p0dn75x" class="commentText"><p>Not a MA player, but the key thing is your quarterstaff.</p>
+
+<p>You usually want either a combination of (%phys, flat phys and hybrid %phys) or (flat eles and %ele) as optimal prefixes. Not sure which is better for your build but you have %phys + flat eles which is not too ideal.</p>
+
+<p>And the jewels you have do not seem to be the optimal 5-mod (with increased effect of suffix). Typically you want 3 x crit chance/damage bonus with high roll increased effect of suffix (as prefix mod) to maximize your damage.</p>
+
+<p>And quite a lot of builds with high dps are specifically optimized for high-dps number (sacrificing some qol/clear speed/defence) or simply multi-mirror min-maxed that is very hard to obtain.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="p0doo8g" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>SilverArrows6662 [OP]</div>
+        <div>1 | 3 hours ago </div>
+      </div>
+      <label for="p0doo8g" class="commentText"><p>For the jewel part, if u look at the top build, he doesn&rsquo;t have a single 5 mod jewel. So while ur right, if I was min maxing&hellip;.. But I&rsquo;m already at 100% crit with my shattering palm, and 600% bonus, which is exactly the same as the top build. But my dps is half. He has 5 jewels, I have 9 jewels. He&rsquo;s not even anointed his helmet. My mageblood has increased damage, his doesn&rsquo;t. Not shitting on his build, just trying to understand how the dps discrepancy is double.</p>
+
+<p>This build I was referencing</p>
+
+<p><a href="https://poe.ninja/poe2/builds/runesofaldur/character/yumao-5989/yumaomao?i=0&amp;search=class%3DMartial%2BArtist%26items%3DEventide%2BPetals" target="_blank">https://poe.ninja/poe2/builds/runesofaldur/character/yumao-5989/yumaomao?i=0&amp;search=class%3DMartial%2BArtist%26items%3DEventide%2BPetals</a></p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="p0doyrn" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>crywyth</div>
+        <div>1 | 3 hours ago </div>
+      </div>
+      <label for="p0doyrn" class="commentText"><p>the thing is you are not looking to top dps build try sorting by dps</p>
+
+<p>this is the top dps and he is doing 14x more dmg then you</p>
+
+<p><a href="https://poe.ninja/poe2/builds/runesofaldur/character/Divine_hyuk-6776/Divine_Martial?i=0&amp;search=class%3DMartial%2BArtist%26items%3DEventide%2BPetals%26skills%3DShattering%2BPalm%26sort%3Ddps" target="_blank">https://poe.ninja/poe2/builds/runesofaldur/character/Divine_hyuk-6776/Divine_Martial?i=0&amp;search=class%3DMartial%2BArtist%26items%3DEventide%2BPetals%26skills%3DShattering%2BPalm%26sort%3Ddps</a></p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="p0dphkw" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>SilverArrows6662 [OP]</div>
+        <div>2 | 3 hours ago </div>
+      </div>
+      <label for="p0dphkw" class="commentText"><p>I don&rsquo;t have mirrors to copy top dps builds 😉😉</p>
+
+<p>Just looking to see how some builds with similar budgets have 2-3 times my dps.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="p0dpywb" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>crywyth</div>
+        <div>1 | 3 hours ago </div>
+      </div>
+      <label for="p0dpywb" class="commentText"><p>you are just looking top level builds they are not optimized</p>
+
+<p>look for top dps ones and try to build them for your budget</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="p0drlh4" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>SilverArrows6662 [OP]</div>
+        <div>2 | 3 hours ago </div>
+      </div>
+      <label for="p0drlh4" class="commentText"><p>I don&rsquo;t believe that&rsquo;s helpful. Like here is a build with 7 mirror tier jewels, a mirror tier QS, 2500 div atd which gives gain extra as. There&rsquo;s too many variables to figure out what is causing the dps spike. I&rsquo;m just looking at builds that have 2-3 times my dps and seeing that their gear is not better than mine, so why is it doubling their dps. I&rsquo;m trying to understand that.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="p0du3lj" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>crywyth</div>
+        <div>3 | 3 hours ago </div>
+      </div>
+      <label for="p0du3lj" class="commentText"><p>okay i tried to look same budget chars and found one for you and looked his build in pob his time lost emeralds nearly triples his damage 170k to 410k ofc his tree is for time lost jewels but maybe his char can give you more ideas</p>
+
+<p><a href="https://poe.ninja/poe2/builds/runesofaldur/character/Moonwhite-1146/Denia_moon?i=8&amp;search=class%3DMartial%2BArtist%26items%3DEventide%2BPetals%26skills%3DShattering%2BPalm" target="_blank">https://poe.ninja/poe2/builds/runesofaldur/character/Moonwhite-1146/Denia_moon?i=8&amp;search=class%3DMartial%2BArtist%26items%3DEventide%2BPetals%26skills%3DShattering%2BPalm</a></p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="p0dwan7" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>SilverArrows6662 [OP]</div>
+        <div>1 | 2 hours ago </div>
+      </div>
+      <label for="p0dwan7" class="commentText"><p>Thanks for doing that. So this is explainable, he got 1000+% bonus multiplier, it makes sense.</p>
+
+<p>The build I linked earlier, it&rsquo;s not optimized, but has similar crit multi and 100% crit chance as mine, why is that double my damage. I need to find that out. To pob we go</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="p0dxz3d" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>SomeRandomVietnamese</div>
+        <div>2 | 2 hours ago </div>
+      </div>
+      <label for="p0dxz3d" class="commentText"><p>Another thing to consider is the build you linked is using + spirit unique time lost, which might allow some more damage spirit gems. Can’t compare in details now as I’m on my phone.</p>
+
+<p>Also, you have different support gems for shattering palm, so maybe that.</p>
+
+<p>Edit: Also, maybe swap around your quarterstaff on PoB, like better prefix combo and +4 melee instead of +3 attack</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="p0eb6gd" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>SilverArrows6662 [OP]</div>
+        <div>1 | 31 minutes ago </div>
+      </div>
+      <label for="p0eb6gd" class="commentText"><p>So i looked at the weapon switch, my weapon is definitely better (for my build). its not the weapon, But you were correct, there is lots going on with spirit, with supports there that are boosting the damage. The main thing tho, its adonias in weapon set 2, thats giving crazy amounts of ignite damage &hellip;. and hence the increased ele damage on the qs is boosting all of that.</p>
+
+<p>POB is cool it can do this. I play on console, and do use it occasionally, but to be able to go so deep is crazy.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="p0dnxso" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>insidiousapricot</div>
+        <div>1 | 3 hours ago </div>
+      </div>
+      <label for="p0dnxso" class="commentText"><p>Isnt there a place you can put another Uber radius jewel with good stats to boost your crit and dmg test some out in PoB.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="p0e0gm6" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>SilverArrows6662 [OP]</div>
+        <div>1 | 2 hours ago </div>
+      </div>
+      <label for="p0e0gm6" class="commentText"><p>Yes the starting &ldquo;lane&rdquo; for the monk has a good spot there for another time-lost. Will definitely look at that as the next upgrade.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
