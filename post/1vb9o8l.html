@@ -1,0 +1,472 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.selfPostImage {
+  width: 100%;
+  height: auto;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/nba/comments/1vb9o8l/i_analyzed_all_5416_nba_player_names_since_1946/"><p>I analyzed all 5,416 NBA player names since 1946 (character lengths, most common names, and a Michael Jordan affect). Graphs in post.</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <p>So I decided to pull every NBA player name from Basketball-Reference.</p>
+
+<p><a href="https://imgur.com/a/7BInQnB" target="_blank">Here is the full name length distribution</a></p>
+
+<p><strong>The shortest name:</strong></p>
+
+<p>Nenê</p>
+
+<p><strong>The three longest names:</strong></p>
+
+<p>Nickeil Alexander-Walker<br>
+Martynas Andriuškevičius<br>
+Kentavious Caldwell-Pope</p>
+
+<p><a href="https://imgur.com/a/QQdrrjN" target="_blank">Here is the first and last name length distribution</a></p>
+
+<p><strong>The longest first name is 15 characters:</strong></p>
+
+<p>Olivier-Maxence (Prosper)</p>
+
+<p><strong>Names are getting longer over time.</strong></p>
+
+<p><a href="https://imgur.com/a/5JaHL3F" target="_blank">Here are name lengths by decade</a></p>
+
+<p>On average, names were shortest during the 1950s and longest during the 2010s.</p>
+
+<p>Full name lengths hold pretty steady from the 1940s through the 1990s, then start creeping up in both median and spread from the 2000s onward, with a lot more long-name outliers in recent decades.</p>
+
+<p><a href="https://imgur.com/a/ol6NWa3" target="_blank">Here is the name length by decade boxplot</a></p>
+
+<p><strong>John is the most common first name of all time. Williams is the most common last name.</strong></p>
+
+<p><a href="https://imgur.com/a/MGz77Ec" target="_blank">Here are the most common names in NBA history</a></p>
+
+<p><strong>The Michael Jordan affect?</strong></p>
+
+<p>There have been 23 players with the first name Jordan in NBA history. All of them debuted <em>after</em> Michael Jordan entered the NBA in 1984. And none debuted before 2000.</p>
+
+<p><a href="https://imgur.com/a/iWjM0GM" target="_blank">Here is the percent of NBA players have the first name Jordan by decade</a></p>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="p0rqvef" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>LizardPoisonsSpock</div>
+        <div>8 | an hour ago </div>
+      </div>
+      <label for="p0rqvef" class="commentText"><p>This is top tier offseason content. Thank you.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="p0rru4t" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>PootieTooGood | Cavaliers</div>
+        <div>6 | an hour ago </div>
+      </div>
+      <label for="p0rru4t" class="commentText"><p>Nene is bullshit. Maybyner Hilário should not get a pass just because he changed his name</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="p0rtoyp" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>StrategyTop7612 | Clippers</div>
+        <div>1 | 42 minutes ago </div>
+      </div>
+      <label for="p0rtoyp" class="commentText"><p>I mean it&rsquo;s scraped from basketball reference, so there&rsquo;s nothing that they can do. </p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="p0ryjyx" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>SpanishCatire</div>
+        <div>1 | 17 minutes ago </div>
+      </div>
+      <label for="p0ryjyx" class="commentText"><p>If actual names were accounted for, Calderón has a name that&rsquo;s longer than the ones presented (José Manuel Calderón Borrallo), while Jorge Garbajosa&rsquo;s full name is 22 characters (without any middle/composite first names) as both the father&rsquo;s family name and the mother&rsquo;s family name are part of spanish full names and are actually used on the daily/when writing ones name on any semi serious document, but since america does not use such a naming convention (other than double-barreled names), their profiles only include their first surnames</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="p0rqv3n" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>OldCardigan | Lakers</div>
+        <div>5 | an hour ago </div>
+      </div>
+      <label for="p0rqv3n" class="commentText"><p>Peak off-season</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="p0rr6nr" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>GloryMaelstrom21 | NBA</div>
+        <div>3 | an hour ago </div>
+      </div>
+      <label for="p0rr6nr" class="commentText"><p>There was a player named John Williams played in the NBA. Most generic name I’ve encountered.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="p0rrmbi" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>StrategyTop7612 | Clippers</div>
+        <div>4 | an hour ago </div>
+      </div>
+      <label for="p0rrmbi" class="commentText"><p>Happens to be one of the most iconic movie composers ever</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="p0rslf0" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>d4nowar | </div>
+        <div>3 | an hour ago </div>
+      </div>
+      <label for="p0rslf0" class="commentText"><p>And he&rsquo;s good at basketball? What are the odds</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="p0rrbzb" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>StrategyTop7612 | Clippers</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="p0rrbzb" class="commentText"><p>We were on a drought of good offseaon content, but this is amazing stuff. Nice work!</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="p0s00y2" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>jeufie</div>
+        <div>1 | 9 minutes ago </div>
+      </div>
+      <label for="p0s00y2" class="commentText"><p>effect*</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="p0s0q38" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>nobody024</div>
+        <div>1 | 5 minutes ago </div>
+      </div>
+      <label for="p0s0q38" class="commentText"><p>The graph  looks off to me, I think I recall there being a Jordan in playing in the 90s.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="p0rxpb6" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Allexandyr | Spurs</div>
+        <div>1 | 21 minutes ago </div>
+      </div>
+      <label for="p0rxpb6" class="commentText"><p>The Jordan name phenomenon is real. Even my little sister was named after him, lol</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
