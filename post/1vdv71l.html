@@ -1,0 +1,240 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.selfPostImage {
+  width: 100%;
+  height: auto;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/PathOfExile2/comments/1vdv71l/undying_hate_literally_breaks_the_game/"><p>Undying Hate literally breaks the game</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <p>A word of warning to anyone playing around with Undying Hate as this jewel will literally break your game leaving you unable to even log in.</p>
+
+<p>When undying hate randomizes your passive tree one of the nodes it can give you is Derogatory Gaze which provides &ldquo;3% reduced Accuracy Rating per 25 Tribute, 5% increased Attack Critical Hit Chance per 10 Tribute&rdquo;</p>
+
+<p>I had 3 Derogatory Gaze notables allocated on my Oracle along with 628 tribute and received 5*62*3=930% increased critical strike chance, along with the base 100% a 9.6% crit chance weapon equipped results in a 98.88% crit chance, pretty nice right? well the -225% accuracy penalty causes a bit of a problem but I figured the Pinpoint Shot notable &ldquo;Attacks gain increased Accuracy Rating equal to their Critical Hit Chance&rdquo; along with some Cat idols was a pretty good solution,  better than the torture of having to use an Akoyan club and being locked into using only mace skills .</p>
+
+<p>Well it turns out there&rsquo;s a bug where if you exceed 100% crit chance with pinpoint shot allocated you get immediately disconnected from the game and restored to an earlier state, If you&rsquo;re really unlucky though you won&rsquo;t get rolled back to before the crash and so you&rsquo;ll be left unable to log in at all which is unfortunately why I&rsquo;m writing this now.</p>
+
+<p>anyway here&rsquo;s the event viewer log from when I was able to play and crashed the game earlier</p>
+
+<p>Faulting application name: PathOfExileSteam.exe, version: <a href="http://0.0.0.0" target="_blank">0.0.0.0</a>, time stamp: 0x6a6afd04<br>
+Faulting module name: PathOfExileSteam.exe, version: <a href="http://0.0.0.0" target="_blank">0.0.0.0</a>, time stamp: 0x6a6afd04<br>
+Exception code: <strong>0xc0000094</strong><br>
+Fault offset: 0x00000000022801b9<br>
+Faulting process id: 0x19a0<br>
+Faulting application start time: 0x01dd22b4c7d296df<br>
+Faulting application path: C:\Program Files (x86)\Steam\steamapps\common\Path of Exile 2\PathOfExileSteam.exe<br>
+Faulting module path: C:\Program Files (x86)\Steam\steamapps\common\Path of Exile 2\PathOfExileSteam.exe<br>
+Report Id: 3fecae30-2e50-420b-ac3f-b553d7bf0e69<br>
+Faulting package full name:<br>
+Faulting package-relative application ID:</p>
+
+<p>and if you want to know what all that means:</p>
+
+<p><strong>0xC0000094</strong><br>
+STATUS_INTEGER_<strong>DIVIDE_BY_ZERO</strong><br>
+{EXCEPTION} Integer <strong>division by zero.</strong></p>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+    </div>
+  </body>
+</html>
