@@ -1,0 +1,250 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.selfPostImage {
+  width: 100%;
+  height: auto;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/PathOfExile2/comments/1vf2f1a/til_apocalypse_doesnt_snapshot_your_build_on_cast/"><p>TIL Apocalypse doesn&rsquo;t snapshot your build on cast. GGG why.</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <p>For context, Apocalypse is a Shaman-exclusive skill that causes hail, meteors and lightning bolts to rain around you for an ridiculously long time at a rate of 1 attack every .75s. It very much lives up to its name in terms of visuals, and the damage output is actually really decent even despite what the title might suggest.</p>
+
+<p>Like with all spells, the Shaman will turn back to human form to cast it. You&rsquo;d think this means it will use your wand/staff&rsquo;s stats to calculate everything&hellip; Well yes, but actually no. All the initial cast does is apply the Apocalypse buff on you, which <em>then</em> will <strong>TRIGGER</strong> strikes every .75s.</p>
+
+<p>And there lies the issue: triggered spells don&rsquo;t turn you back into a human &ndash; which makes sense, but that means they&rsquo;re calculated based on your <em>current</em> weapon set. Meaning, unless you went pure caster Shaman and ditched the shapeshifting aspect of your class entirely, you&rsquo;re basically casting it buck naked.</p>
+
+<p>And yes, I did confirm that it really doesn&rsquo;t snapshot your build. You can slot in a Living Lightning support gem <em>during</em> the effect of Apocalypse and they&rsquo;ll start spawning from the bolts no problem. The same trick doesn&rsquo;t work with Thunderstorm, which is Sustained instead (and Apocalypse somehow isn&rsquo;t). The DPS tab also features numbers for both weapon sets, which is what initially tipped me off. The same thing happens with Cast on Minion Death, which can also trigger spells while you&rsquo;re transformed, so it&rsquo;s probably not a bug nor an Apocalypse-only issue, it&rsquo;s just particularly glaring with the latter because while Cast on Minion Death can fit in plenty of other builds, Apocalypse is a spell exclusive to a class that is <strong>literally intended to be playable as a hybrid caster</strong>. Oh and if the hybrid part wasn&rsquo;t obvious enough, the previous required node literally applies Exposure in your presence.</p>
+
+<p>Honestly, the easiest way to fix this would be to make Apocalypse go from using triggered attacks to being Sustained just like Thunderstorm. I mean, it&rsquo;s not like the strikes have any kind of condition to fulfill in the first place, other than the initial glory cost and waiting .75s between two. I can only assume the reason GGG didn&rsquo;t do that is because the element of each attack is random, which is very cool and all, but if extra chaotic flavor is the price to pay to make the spell work the way it most definitely should, I don&rsquo;t think I&rsquo;ll lose too much sleep over that.</p>
+
+<p>Pretty please?</p>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="p1ln0k2" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>PoE_Acronym_Bot</div>
+        <div>1 | 11 minutes ago </div>
+      </div>
+      <label for="p1ln0k2" class="commentText"><p>I noticed some Path of Exile keywords in this post:</p>
+
+<ul>
+<li><strong>DPS</strong> - Damage per Second</li>
+</ul>
+
+<hr>
+
+<p>^(I am a bot.) ^| <a href="https://acronym.sidia.net/acronyms/pathofexile2" target="_blank">^(All acronyms)</a> ^| <a href="https://acronym.sidia.net/suggest/pathofexile2" target="_blank">^(Suggest)</a></p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
