@@ -1,0 +1,956 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.selfPostImage {
+  width: 100%;
+  height: auto;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/nba/comments/1vfbwf2/the_top_50_greatest_relative_defenses_since_1973/"><p>The top 50 greatest relative defenses since 1973</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <ol>
+<li><p>2003-04 San Antonio Spurs -8.8 rDRtg</p></li>
+
+<li><p>2007-08 Boston Celtics -8.6 rDRtg</p></li>
+
+<li><p>1992-93 New York Knicks -8.3 rDRtg</p></li>
+
+<li><p>1993-94 New York Knicks -8.1 rDRtg</p></li>
+
+<li><p>2025-26 Oklahoma City Thunder -8.1 rDRtg</p></li>
+
+<li><p>2019-20 Milwaukee Bucks -7.7 rDRtg</p></li>
+
+<li><p>2003-04 Detroit Pistons -7.5 rDRtg</p></li>
+
+<li><p>2015-16 San Antonio Spurs -7.4 rDRtg</p></li>
+
+<li><p>2013-14 Indiana Pacers -7.4 rDRtg</p></li>
+
+<li><p>2004-05 San Antonio Spurs -7.3 rDRtg</p></li>
+
+<li><p>1998-99 San Antonio Spurs -7.2 rDRtg</p></li>
+
+<li><p>2010-11 Boston Celtics -7.0 rDRtg</p></li>
+
+<li><p>2010-11 Chicago Bulls -7.0 rDRtg</p></li>
+
+<li><p>2024-25 Oklahoma City Thunder -7.0 rDRtg</p></li>
+
+<li><p>2006-07 Chicago Bulls -6.9 rDRtg</p></li>
+
+<li><p>2005-06 San Antonio Spurs -6.6 rDRtg</p></li>
+
+<li><p>2006-07 San Antonio Spurs -6.6 rDRtg</p></li>
+
+<li><p>1974-75 Washington Bullets -6.4 rDRtg</p></li>
+
+<li><p>2011-12 Boston Celtics -6.4 rDRtg</p></li>
+
+<li><p>2008-09 Orlando Magic -6.4 rDRtg</p></li>
+
+<li><p>2011-12 Chicago Bulls -6.3 rDRtg</p></li>
+
+<li><p>1988-89 Utah Jazz -6.3 rDRtg</p></li>
+
+<li><p>2023-24 Minnesota Timberwolves -6.3 rDRtg</p></li>
+
+<li><p>2013-14 Chicago Bulls -6.2 rDRtg</p></li>
+
+<li><p>1980-81 Phoenix Suns -6.1 rDRtg</p></li>
+
+<li><p>2012-13 Indiana Pacers -6.1 rDRtg</p></li>
+
+<li><p>1996-97 Miami Heat -6.1 rDRtg</p></li>
+
+<li><p>2025-26 Detroit Pistons -6.1 rDRtg</p></li>
+
+<li><p>1980-81 Philadelphia 76ers -6.0 rDRtg</p></li>
+
+<li><p>2008-09 Boston Celtics -6.0 rDRtg</p></li>
+
+<li><p>1999-00 Los Angeles Lakers -5.9 rDRtg</p></li>
+
+<li><p>1997-98 Cleveland Cavaliers -5.9 rDRtg</p></li>
+
+<li><p>2007-08 Houston Rockets -5.9 rDRtg</p></li>
+
+<li><p>2008-09 Cleveland Cavaliers -5.9 rDRtg</p></li>
+
+<li><p>1982-83 New Jersey Nets -5.8 rDRtg</p></li>
+
+<li><p>2004-05 Chicago Bulls -5.8 rDRtg</p></li>
+
+<li><p>2006-07 Houston Rockets -5.8 rDRtg</p></li>
+
+<li><p>1995-96 Chicago Bulls -5.8 rDRtg</p></li>
+
+<li><p>2003-04 Indiana Pacers -5.7 rDRtg</p></li>
+
+<li><p>1996-97 New York Knicks -5.7 rDRtg</p></li>
+
+<li><p>2007-08 San Antonio Spurs -5.7 rDRtg</p></li>
+
+<li><p>1997-98 San Antonio Spurs -5.6 rDRtg</p></li>
+
+<li><p>2012-13 Memphis Grizzlies -5.6 rDRtg</p></li>
+
+<li><p>2019-20 Toronto Raptors -5.6 rDRtg</p></li>
+
+<li><p>2002-03 New Jersey Nets -5.5 rDRtg</p></li>
+
+<li><p>1999-00 San Antonio Spurs -5.5 rDRtg</p></li>
+
+<li><p>1995-96 Seattle SuperSonics -5.5 rDRtg</p></li>
+
+<li><p>2011-12 Philadelphia 76ers -5.4 rDRtg</p></li>
+
+<li><p>1982-83 Washington Bullets -5.4 rDRtg</p></li>
+
+<li><p>2010-11 Orlando Magic -5.3 rDRtg</p></li>
+</ol>
+
+<p>The Spurs are the most represented team post 1973 with 9 in the top 50, a pretty fitting reflection of how consistently elite their defenses were across the coach Pop era. But Boston would have a more ridiculous 13 and 4 of the top 6 if you counted the estimated possession seasons from before 1973–74 which are still meant to be quite accurate</p>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="p1nocnr" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>joebreezy12 | Thunder</div>
+        <div>13 | an hour ago </div>
+      </div>
+      <label for="p1nocnr" class="commentText"><p>the rasheed wallace trade midway through the 03-04 season probably vaults them over the top, but it&rsquo;s crazy that detroit team is talked about as the best defensive team of all time, and they arguably weren&rsquo;t even the best defensive team that <em>season</em></p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="p1nt07h" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>CodymartinSimp [OP]</div>
+        <div>7 | an hour ago </div>
+      </div>
+      <label for="p1nt07h" class="commentText"><p>It was less than 30 games but the post Sheed trade pistons posted a -13.2 rDRtg</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="p1nq5yx" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Fearless_Call_4964</div>
+        <div>2 | an hour ago </div>
+      </div>
+      <label for="p1nq5yx" class="commentText"><p>I was surprised to see 03-04 Pacers on the list as well. Those 2 teams really fucked up with the Malice at the palace, but if their defenses were that good you could imagine the intensity and tenacity all over the court in their matchups. Somehow, the brawl makes so much more sense now.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="p1noxrg" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>lunatocracy | Spurs</div>
+        <div>10 | an hour ago </div>
+      </div>
+      <label for="p1noxrg" class="commentText"><p>I look at this list and SMH that Tim Duncan never won a defensive player of the year award.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="p1nzuwr" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>aaron21hardin | Timberwolves</div>
+        <div>1 | 20 minutes ago </div>
+      </div>
+      <label for="p1nzuwr" class="commentText"><p>Except the best defensive player on some of those teams was David Robinson, plus weren&rsquo;t you guys hyping up Bowen as the best perimiter defender in the league for most of the other years?  it is not like dfense is a team thing where having better defensive teammates made Duncan&rsquo;s job easier compared to his competitors like Ben Wallace and KG, but sure, it is al Duncan and not the whole having great teammates around him.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="p1o31od" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>CodymartinSimp [OP]</div>
+        <div>1 | 7 minutes ago </div>
+      </div>
+      <label for="p1o31od" class="commentText"><p>yes Ben Wallace notoriously surrounded by defensive scrubs</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="p1nvmb4" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>CodymartinSimp [OP]</div>
+        <div>0 | 39 minutes ago </div>
+      </div>
+      <label for="p1nvmb4" class="commentText"><p>Should’ve won Marcus Camby’s and a few of Ben Wallace’s</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="p1no447" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>sharklavapit | Bucks</div>
+        <div>4 | an hour ago </div>
+      </div>
+      <label for="p1no447" class="commentText"><p>2019-2020 Bucks are underrated</p>
+
+<p>(so is 2021)</p>
+
+<p>(edit to clarify: underrated by NBA fans)</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="p1noej5" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>DisciplineAmazing59</div>
+        <div>2 | an hour ago </div>
+      </div>
+      <label for="p1noej5" class="commentText"><p>they&rsquo;re underrated in a statistics-based rating? how is that possible lol</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="p1nomrk" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>sharklavapit | Bucks</div>
+        <div>3 | an hour ago </div>
+      </div>
+      <label for="p1nomrk" class="commentText"><p>Underrated by the general public, I didn&rsquo;t mean underrated in this ranking </p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="p1o3pak" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Key_Fox3289</div>
+        <div>1 | 4 minutes ago </div>
+      </div>
+      <label for="p1o3pak" class="commentText"><p>They were never really the same after the COVID break, which plays a part</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="p1nootx" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>CodymartinSimp [OP]</div>
+        <div>2 | an hour ago </div>
+      </div>
+      <label for="p1nootx" class="commentText"><p>Giannis and Lopez are legit one of the best defensive front court parings of all time who complimented each other’s strengths and weaknesses very well</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="p1np7mb" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>sharklavapit | Bucks</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="p1np7mb" class="commentText"><p>I love Splash Mountain</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="p1noe24" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>chief1555 | Knicks</div>
+        <div>4 | an hour ago </div>
+      </div>
+      <label for="p1noe24" class="commentText"><p>The Riley/Van Gundy era Knicks couldn’t really score but they would beat the shit out of you</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="p1nyjk9" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>765cc_Triple</div>
+        <div>1 | 26 minutes ago </div>
+      </div>
+      <label for="p1nyjk9" class="commentText"><p>It got so ugly that NBA had to change the rules.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="p1nz1o1" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Good_Yogurtcloset609 | Knicks</div>
+        <div>1 | 24 minutes ago </div>
+      </div>
+      <label for="p1nz1o1" class="commentText"><p>The Charles Oakley and Ewing front court was nasty on defense</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="p1no8x1" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>CountFew6186 | Knicks</div>
+        <div>2 | an hour ago </div>
+      </div>
+      <label for="p1no8x1" class="commentText"><p>Man, those 90s Knicks teams….</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="p1nokzq" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Either_Imagination_9 | Knicks</div>
+        <div>3 | an hour ago </div>
+      </div>
+      <label for="p1nokzq" class="commentText"><p>A team that should have won at least 1 finals during that ten year stretch but instead had a string of the most heartbreaking losses in sports history</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="p1o3eh6" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>CountFew6186 | Knicks</div>
+        <div>1 | 5 minutes ago </div>
+      </div>
+      <label for="p1o3eh6" class="commentText"><p>Charles Smith was fouled.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="p1nohuh" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Devh1989</div>
+        <div>2 | an hour ago </div>
+      </div>
+      <label for="p1nohuh" class="commentText"><p>6 Bulls teams on the list and only one dynasty appearance (72-10 Bulls) is a surprise.</p>
+
+<p>Skiles/Thibs era defenses were legit</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="p1nrk6s" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>HokageEzio | Knicks</div>
+        <div>2 | an hour ago </div>
+      </div>
+      <label for="p1nrk6s" class="commentText"><p>2 top 5 defenses ever without a crumb of offense not named Patrick Ewing</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="p1no8r1" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>gentleriser | Toronto Huskies</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="p1no8r1" class="commentText"><p>Why start only at 1973?</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="p1nohu1" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>CodymartinSimp [OP]</div>
+        <div>4 | an hour ago </div>
+      </div>
+      <label for="p1nohu1" class="commentText"><p>Because pre 1973 data only has estimated Possession numbers which are still meant to be quite accurate but they’re not 100 percent so I decided not to include them</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="p1noy51" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>OccidoViper</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="p1noy51" class="commentText"><p>2 Knick 90s teams in the top 5 but couldn’t get past the ECF due to Jordan and the first 3 peat Bulls teams</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="p1nslxb" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>HokageEzio | Knicks</div>
+        <div>2 | an hour ago </div>
+      </div>
+      <label for="p1nslxb" class="commentText"><p>93 Knicks had the 1 seed over Chicago but blew Game 5 and lost 6 back in Chicago. 94 Knicks got past Chicago in 7 (no Jordan), Indiana in 7, but lost Game 7 of the Finals to the Rockets.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="p1npj1b" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>CodymartinSimp [OP]</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="p1npj1b" class="commentText"><p>94 Knicks made the finals while Jordan was serving his gambling suspension but Ewing got punked by the dream and they lost in 7</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="p1npn4s" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>OccidoViper</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="p1npn4s" class="commentText"><p>Ahh my mistake.  Thanks for correction!</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="p1nst8w" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>spaceninj | NYK</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="p1nst8w" class="commentText"><p>Poor Ewing.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="p1nyd38" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>mpmar | Thunder</div>
+        <div>1 | 27 minutes ago </div>
+      </div>
+      <label for="p1nyd38" class="commentText"><p>I&rsquo;m guessing this is sourced from bball-ref?</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="p1nydfl" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>onlyjapanese</div>
+        <div>1 | 27 minutes ago </div>
+      </div>
+      <label for="p1nydfl" class="commentText"><p>That Thunder defense is already entering historic territory, and they&rsquo;re still one of the youngest contenders</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="p1o0xuj" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>nowhathappenedwas | NBA</div>
+        <div>1 | 16 minutes ago </div>
+      </div>
+      <label for="p1o0xuj" class="commentText"><p>Not a huge deal, but worth noting that a -8.0 DRTG is more valuable in a low scoring environment than in a high scoring environment because each marginal point has more value in the low-scoring environment.</p>
+
+<p>That makes the 2004 Spurs even more impressive. And it makes the 2026 Thunder a bit less impressive.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="p1o3g52" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Key_Fox3289</div>
+        <div>1 | 5 minutes ago </div>
+      </div>
+      <label for="p1o3g52" class="commentText"><p>-8.0 rDRTG or better is the sign of a truly historically great defense</p>
+
+<p>Had OP included them, Russell’s Celtics would dominate the top 10 list, showing his dominance on that end</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="p1nteki" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>michaelb5000</div>
+        <div>0 | an hour ago </div>
+      </div>
+      <label for="p1nteki" class="commentText"><p>The 89 pistons are the best defensive team all time so there is something wrong with the methodology. The 2004 pistons were great too but didn’t have the edge that the bad boys brought every night.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="p1nw4ic" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>CodymartinSimp [OP]</div>
+        <div>1 | 37 minutes ago </div>
+      </div>
+      <label for="p1nw4ic" class="commentText"><p>It’s defensive rating compared to league average in that teams season it’s the best way to compare defenses across different era’s</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
