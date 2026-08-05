@@ -1,0 +1,942 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.selfPostImage {
+  width: 100%;
+  height: auto;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/nba/comments/1vgm82x/nytimes_in_2023_exceltics_grizzlies_guard_tony/"><p>[NYTimes] In 2023, Ex-Celtics, Grizzlies guard Tony Allen avoids prison time in scheme to defraud NBA benefits plan</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <p>Been seeing a lot of Tony Allen in the news lately so it seems like a good time to remind people of what he did since it seems like this got brushed under the rug and not many people remember it.</p>
+
+<p>Former NBA guard Tony Allen avoided prison time, receiving community service and three years of supervised probation in August 2023 after pleading guilty to conspiracy to commit health care fraud and wire fraud. He was part of a wider federal case involving 18 former players who scammed the NBA’s health and welfare benefit plan out of roughly $4 million</p>
+
+<ul>
+<li>Allen, who pleaded guilty to conspiracy to commit health care fraud and wire fraud in April, is among the <a href="https://www.nytimes.com/athletic/4195576/2021/10/07/eighteen-ex-nbaers-accused-of-fraudulent-insurance-claims-worth-2-5-million/" target="_blank">18 former NBA players</a> accused of submitting <span class="math inline">\(5 million in fraudulent medical and dental claims from 2017 to 2020, according to court documents. Allen paid back most of the \)</span>420,000 he illegally obtained before he was charged, per Brush.</li>
+<li>Terrence Williams, a first-round draft pick in 2009, was sentenced to 10 years in prison and ordered to forfeit more than <span class="math inline">\(650,000 and pay \)</span>2.5 million in restitution last week for leading the scam, the U.S. Attorney’s Office for the Southern District of New York <a href="https://www.justice.gov/usao-sdny/pr/former-nba-player-terrence-williams-sentenced-10-years-prison-defrauding-nba-players" target="_blank">announced</a>. He pleaded guilty to conspiracy to commit health care and wire fraud and aggravated identity theft.</li>
+<li>Charges were also filed against Allen’s wife, Desiree; another former Celtic, Glen Davis; Shannon Brown, a two-time champion with the <a href="https://www.nytimes.com/athletic/nba/team/lakers/" target="_blank">Lakers</a>; Melvin Ely, who won a title with the <a href="https://www.nytimes.com/athletic/nba/team/spurs/" target="_blank">Spurs</a> in 2007; Sebastian Telfair, one of the most celebrated high school players in history and 12 other former players. Keyon Dooling and Alan Anderson were <a href="https://www.justice.gov/usao-sdny/pr/former-nba-players-keyon-dooling-and-alan-anderson-sentenced-30-and-24-months-prison" target="_blank">sentenced to 30 and 24 months in prison</a> in connection with the case earlier this year.</li>
+</ul>
+
+<p><a href="https://www.nytimes.com/athletic/4759384/2023/08/08/tony-allen-nba-benefits-scam/" target="_blank">https://www.nytimes.com/athletic/4759384/2023/08/08/tony-allen-nba-benefits-scam/</a></p>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="p1y733v" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Paralta | MIA</div>
+        <div>53 | an hour ago </div>
+      </div>
+      <label for="p1y733v" class="commentText"><p>Dude has the Tony allen of lawyers defending him</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="p1y73t4" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>MyTeamsSuck99 | Nets</div>
+        <div>31 | an hour ago </div>
+      </div>
+      <label for="p1y73t4" class="commentText"><p>10 years seems pretty harsh for fraud of 5 million. We have wall street guys defrauding way more and getting off for less.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="p1y8pao" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>WooTerry | Thunder</div>
+        <div>8 | 36 minutes ago </div>
+      </div>
+      <label for="p1y8pao" class="commentText"><p>Yeah he got hit real hard lol</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="p1yadnf" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ynomeye | Warriors</div>
+        <div>1 | 28 minutes ago </div>
+      </div>
+      <label for="p1yadnf" class="commentText"><p>You rob a gas station you get 10 years</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="p1yc2sg" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>MyTeamsSuck99 | Nets</div>
+        <div>1 | 19 minutes ago </div>
+      </div>
+      <label for="p1yc2sg" class="commentText"><p>mostly because there is some physical component to that (gun). white collar crime that seems on the high end</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="p1yee9j" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>PinkZahavi | Charlotte Bobcats</div>
+        <div>1 | 7 minutes ago </div>
+      </div>
+      <label for="p1yee9j" class="commentText"><p>Also too much time</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="p1y8d06" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>[deleted]</div>
+        <div>1 | 38 minutes ago </div>
+      </div>
+      <label for="p1y8d06" class="commentText"><p>[deleted]</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="p1y96f4" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>InevitableAd2436 | Supersonics</div>
+        <div>3 | 34 minutes ago </div>
+      </div>
+      <label for="p1y96f4" class="commentText"><p>Jordan Belfort, Michael Milken, Ivan Boesky off the top of my head</p>
+
+<p>All fraud between <span class="math inline">\(100M to \)</span>1B. None spent more than 2 years in club fed</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="p1y9l5c" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>NoShape0 | Spurs</div>
+        <div>1 | 32 minutes ago </div>
+      </div>
+      <label for="p1y9l5c" class="commentText"><p>Allen criticized Bron and people bring out the long knives against him lol</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="p1y6vvl" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Certain_Cranberry_77</div>
+        <div>17 | an hour ago </div>
+      </div>
+      <label for="p1y6vvl" class="commentText"><p>All Prison team</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="p1y6uy1" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Vegetable-Tooth8463 | Hornets</div>
+        <div>14 | an hour ago </div>
+      </div>
+      <label for="p1y6uy1" class="commentText"><p>No one forgot lol &ndash; the guys were caught and paid the restitution.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="p1y6yqx" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>cigamodnalro | NBA</div>
+        <div>7 | an hour ago </div>
+      </div>
+      <label for="p1y6yqx" class="commentText"><p>In 1962, Ex-Warriors center Wilt Chamberlain scores 100 points in scheme to belittle Kobe Bryant and Bam Adebayo. Seems like this got brushed under the rug and not many people remember it.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="p1y74z1" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Fluffy_Somewhere4305 | Celtics</div>
+        <div>6 | 44 minutes ago </div>
+      </div>
+      <label for="p1y74z1" class="commentText"><p>It&rsquo;s ok because he has a podcast now and does Lebron takes.  /s</p>
+
+<p>Glen Davis and felonies name a more iconic duo.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="p1y997d" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Accomplished-Pin6564 | Pelicans</div>
+        <div>2 | 34 minutes ago </div>
+      </div>
+      <label for="p1y997d" class="commentText"><p>Big Baby had a Blind Side background except he stayed with a rich black family (the Temples) instead of a rich white family.</p>
+
+<p>The Temples are involved in a lot of shady dealings in Baton Rouge so that might be where he learned to be a crook.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="p1y70kh" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Stardust-Unbreaking</div>
+        <div>4 | an hour ago </div>
+      </div>
+      <label for="p1y70kh" class="commentText"><p>Why should I care?</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="p1y84d8" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>agnelortiz</div>
+        <div>4 | 39 minutes ago </div>
+      </div>
+      <label for="p1y84d8" class="commentText"><p>Holy moly terrence williams</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="p1y969c" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>oof_madon | Grizzlies</div>
+        <div>7 | 34 minutes ago </div>
+      </div>
+      <label for="p1y969c" class="commentText"><p>Some serious dork shit on OP’s part.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="p1ya0ua" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>anyavailablenameplz | Lakers</div>
+        <div>1 | 30 minutes ago </div>
+      </div>
+      <label for="p1ya0ua" class="commentText"><p>OP thought they did something lol. Nobody gives a fuck. Hate how this platform has become a bunch of people on their high horse, who act like they don’t do anything wrong and are above everyone else.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="p1ybuv0" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>DisMeDog</div>
+        <div>1 | 20 minutes ago </div>
+      </div>
+      <label for="p1ybuv0" class="commentText"><p>lol op is being petty and I don’t know you from a hole in the wall but me personally I am definitely better than a greedy ass multi millionaire attempting to commit health insurance fraud.</p>
+
+<p>That is such a low bar I like to think most of us are better than that.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="p1yccdd" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>anyavailablenameplz | Lakers</div>
+        <div>1 | 18 minutes ago </div>
+      </div>
+      <label for="p1yccdd" class="commentText"><p>Wasn’t pointing out specifically this case, I’m speaking more about how people try and find dirt on someone just because they’re in the headlines now.</p>
+
+<p>I’d expect plenty of us to have simple moral values and standards, but some people do too much and we all know they don’t live by what they say in their posts or comments.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="p1yawo9" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>brnccnt7</div>
+        <div>1 | 25 minutes ago </div>
+      </div>
+      <label for="p1yawo9" class="commentText"><p>Yup it’s also the timing too</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="p1ydb57" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Several_Hour_347</div>
+        <div>1 | 12 minutes ago </div>
+      </div>
+      <label for="p1ydb57" class="commentText"><p>You think people normally do scum shit? I think you just outed yourself lmao</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="p1y9n47" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>[deleted]</div>
+        <div>1 | 32 minutes ago </div>
+      </div>
+      <label for="p1y9n47" class="commentText"><p>[deleted]</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="p1ybpod" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>LeagueWinningPickup | Raptors</div>
+        <div>1 | 21 minutes ago </div>
+      </div>
+      <label for="p1ybpod" class="commentText"><p>More like for thinking anyone cares about insurance companies finances, they are the biggest crooks out there.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="p1ybrg1" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>anyavailablenameplz | Lakers</div>
+        <div>1 | 21 minutes ago </div>
+      </div>
+      <label for="p1ybrg1" class="commentText"><p>Bro is digging up a 3 year old story because TA is in the headlines right now, that’s absolutely some dork shit.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="p1ybw68" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>TakeItToTheRiver | Grizzlies</div>
+        <div>1 | 20 minutes ago </div>
+      </div>
+      <label for="p1ybw68" class="commentText"><p>Lol “reporting news” that we already know about is hilarious</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="p1ybmn8" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>TakeItToTheRiver | Grizzlies</div>
+        <div>1 | 21 minutes ago </div>
+      </div>
+      <label for="p1ybmn8" class="commentText"><p>First Team All-Defense baby</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="p1yddej" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>onelegonedream | Grizzlies</div>
+        <div>1 | 12 minutes ago </div>
+      </div>
+      <label for="p1yddej" class="commentText"><p>I for one think more people should defraud health insurance companies, they are all evil </p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="p1y9hrg" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>onefootback | Raptors</div>
+        <div>1 | 32 minutes ago </div>
+      </div>
+      <label for="p1y9hrg" class="commentText"><p>people didn’t forget we just moved on. the nba makes billions i don’t care about them getting scammed out of a few millions</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="p1y9l5r" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>SunKing210 | Spurs</div>
+        <div>1 | 32 minutes ago </div>
+      </div>
+      <label for="p1y9l5r" class="commentText"><p>Haven&rsquo;t seen the name &ldquo;Terrence Williams&rdquo; in a very long time. That dude had tremendous talent on the court but I always found it weird how he wouldn&rsquo;t get much playing time and then was on multiple different teams in such a short amount of time. Even back then I knew it had to be a character issue cause he passed the eye test as a player skill wise</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="p1yb9au" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>greyed-tea</div>
+        <div>1 | 23 minutes ago </div>
+      </div>
+      <label for="p1yb9au" class="commentText"><p>get that fraud. you come at the king, you best not miss 😤</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="p1ybleh" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>LeagueWinningPickup | Raptors</div>
+        <div>1 | 21 minutes ago </div>
+      </div>
+      <label for="p1ybleh" class="commentText"><p>Grit and Grind baby, all the way to the bank</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="p1yej9q" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>SurelyNotLikeThis | Vancouver Grizzlies</div>
+        <div>1 | 6 minutes ago </div>
+      </div>
+      <label for="p1yej9q" class="commentText"><p>You&rsquo;re reminding people he did insurance fraud? Literally nobody gives a fuck, insurance companies fucks people every single day nobody bats an eye lmao. What is the point of this post 🤣</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="p1y6vt6" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>LiteraIPenguin</div>
+        <div>1 | an hour ago </div>
+      </div>
+      <label for="p1y6vt6" class="commentText"><p>Heck yeah, snake it till you make it </p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="p1y8t81" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>smez86 | Bulls</div>
+        <div>1 | 36 minutes ago </div>
+      </div>
+      <label for="p1y8t81" class="commentText"><p>Tony&rsquo;s been on some gang shit for a long time in chicago.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="p1ye8o1" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>BigPapaLegba | 76ers</div>
+        <div>1 | 7 minutes ago </div>
+      </div>
+      <label for="p1ye8o1" class="commentText"><p>He talking.  </p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="p1yez4d" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>preddevils6 | Grizzlies</div>
+        <div>1 | 4 minutes ago </div>
+      </div>
+      <label for="p1yez4d" class="commentText"><p>What’s the point of this post? This has already been litigated and reported?</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="p1y9k2h" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>heat_fan_ | Raptors</div>
+        <div>1 | 32 minutes ago </div>
+      </div>
+      <label for="p1y9k2h" class="commentText"><p>He has a podcast,  he&rsquo;s gonna be okay </p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="p1ybqmn" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>GotMoFans | Grizzlies</div>
+        <div>1 | 21 minutes ago </div>
+      </div>
+      <label for="p1ybqmn" class="commentText"><p>What did TA do you to?</p>
+
+<p>He wasn’t the ringleader and he got a light punishment because he paid the money back.</p>
+
+<p>There were lots of guys involved in the scheme and you go after TA?</p>
+
+<p>You gonna talk about the police stop in Arkansas while you’re at it?</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
