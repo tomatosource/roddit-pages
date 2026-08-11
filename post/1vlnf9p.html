@@ -1,0 +1,312 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.selfPostImage {
+  width: 100%;
+  height: auto;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/baseball/comments/1vlnf9p/the_taylor_walls_case_and_understanding_defensive/"><p>The Taylor Walls Case and Understanding Defensive Statistics</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <p>Taylor Walls, the illustrious Rays shortstop, is both good and not good. Baseball Reference&rsquo;s WAR calculation puts him at 2.4 WAR so far this year, which suggests borderline All-Star status. Fangraphs&rsquo; WAR calculation puts him at 0.4 WAR, which suggests borderline replacement level. Baseball Savant suggests his total run value is -15, although with a positional adjustment for being a shortstop this is probably pretty close to how Fangraphs values him. So do we have to throw up our hands and say that we have no idea how good Walls is? Not exactly. The distinction hinges largely on how defense is considered.</p>
+
+<p><strong>Taylor Walls made many more plays than the average shorstop.</strong></p>
+
+<p><strong>The average shortstop would have made many more plays than Taylor Walls.</strong></p>
+
+<p>These statements, which at a glance look contradictory, are both completely true. The reason is that shortstops are not all served identical platters of plays to make.</p>
+
+<p>Imagine having Juan Soto face Jacob Misiorowski for 100 plate appearances, and having the worst regular hitter in baseball (Taylor Walls, in fact) face me for 100 plate appearances. Walls is getting a lot more hits than Soto, but if Soto were to have faced me, he would&rsquo;ve gotten far more hits than Walls did.</p>
+
+<p>The first statement is the basic logic of <strong>Defensive Runs Saved</strong>, or DRS. It measures, essentially, what percentage of balls hit to Walls&rsquo; sector of the field were converted into outs.</p>
+
+<p>The second statement is the basic logic of <strong>Outs Above Average</strong>, or OAA. It calculates the difficulty, based on distance from the ball and time to make the play, of every play Walls attempted, and compares him to what the average player would&rsquo;ve done in the same position.</p>
+
+<p>So what&rsquo;s happening is, on average, Walls is getting a steadier diet of routine plays than your average shortstop. He&rsquo;s converting a lot of them, so DRS says he&rsquo;s doing very well, but the average shortstop would&rsquo;ve converted even more of them, so OAA says he&rsquo;s doing quite poorly.</p>
+
+<p>I&rsquo;m inclined to side with OAA on this one as my preferred stat for how well a defender has played, generally speaking, but there&rsquo;s another question about the <em>predictive</em> vs. <em>descriptive</em> value of a statistic.</p>
+
+<p>When we talk about the value of a stat in sabermetric circles, we&rsquo;re typically talking about its <em>predictive</em> value because we usually talk about sabermetrics in the context of making informed baseball decisions. Defensive stats take multiple seasons to become <em>predictive</em>; however, they are immediately <em>descriptive</em>.</p>
+
+<p>Imagine I hit one fly ball with 70% catch probability to Lawrence Butler and Pete Crow-Armstrong. Butler is having a great day and makes the play; PCA woke up on the wrong side of the bed that day and botches it. Butler is awarded 0.3 OAA for making the play, and PCA is awarded -0.7 OAA. These are immediate accurate descriptions of what happened, but they are not <em>predictive</em> of what PCA and Butler will do going forward.</p>
+
+<p>People tend to conflate these issues of description and prediction, and claim that defensive stats are therefore kinda useless over a full season. But it depends on what question you&rsquo;re asking. If I&rsquo;m asking &lsquo;how good of a defender has Pete Crow-Armstrong been in 2026?&rsquo;, our advanced defensive stats can very capably answer the question: really, really, really good. If I&rsquo;m asking &lsquo;how good of a defender will Pete Crow-Armstrong be in the future?&rsquo;, this is where the thorny predictivity questions come into play.</p>
+
+<p>So if you want to know how good somebody has been this year, trust the stats! But be a bit careful using them to suggest someone will continue to be good, or continue to be bad in the future.</p>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="p32ofow" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>hunjoky | San Diego Padres • MLB Pride</div>
+        <div>4 | 6 minutes ago </div>
+      </div>
+      <label for="p32ofow" class="commentText"><p>Great writeup, I learned something new!</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="p32o918" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>mulrooney13 | Baltimore Orioles</div>
+        <div>3 | 7 minutes ago </div>
+      </div>
+      <label for="p32o918" class="commentText"><p>I always enjoyed when Taylor Walls was up to bat against Tyler Wells</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="p32oy90" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>thebestoflimes | Toronto Blue Jays</div>
+        <div>2 | 4 minutes ago </div>
+      </div>
+      <label for="p32oy90" class="commentText"><p>One of only 4 player combinations in the MLB where they only swap vowels</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="p32pijf" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>WhereTheFallsBegin | Tampa Bay Rays</div>
+        <div>1 | a minute ago </div>
+      </div>
+      <label for="p32pijf" class="commentText"><p>Anytime there&rsquo;s such a stark difference in defensive metrics like this I&rsquo;ll default to the eye test and also the organization. The eye test is very kind to Walls, and an organization like the Rays would not be giving him the everyday gig if he was actually bad on defense.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
