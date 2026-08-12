@@ -1,0 +1,819 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.selfPostImage {
+  width: 100%;
+  height: auto;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/nba/comments/1vm5frc/nba_player_who_scored_the_most_x_amount_of_point/"><p>NBA player who scored the most &ldquo;X&rdquo; amount of point in a game in the regular season</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <ul>
+<li>100 = Wilt Chamberlain (1 game)</li>
+<li>83 = Bam Adebayo (1 game)</li>
+<li>81 = Kobe Bryant (1 game)</li>
+<li>78 = Wilt Chamberlain (1 game)</li>
+<li>73 = Wilt Chamberlain (2 game)</li>
+<li>72 = Wilt Chamberlain (1 game)</li>
+<li>71 = Elgin Baylor, David Robinson, Damian Lillard, Donovan Mitchell (1 game)</li>
+<li>70 = Wilt Chamberlain, Devin Booker, Joel Embiid (1 game)</li>
+<li>69 = Michael Jordan (1 game)</li>
+<li>68 = Wilt Chamberlain, Pete Maravich (1 game)</li>
+<li>67 = Wilt Chamberlain (4 game)</li>
+<li>66 = Wilt Chamberlain (1 game)</li>
+<li>65 = Wilt Chamberlain (3 game)</li>
+<li>64 = Elgin Baylor, Rick Barry, Michael Jordan, Giannis Antetokounmpo (1 game)</li>
+<li>63 = Wilt Chamberlain (2 game)</li>
+<li>62 = Wilt Chamberlain (6 game)</li>
+<li>61 = Wilt Chamberlain (6 game)</li>
+<li>60 = Wilt Chamberlain (3 game)</li>
+<li>59 = Wilt Chamberlain (8 game)</li>
+<li>58 = Wilt Chamberlain (9 game)</li>
+<li>57 = Wilt Chamberlain (3 game)</li>
+<li>56 = Wilt Chamberlain (9 game)</li>
+<li>55 = Wilt Chamberlain (11 game)</li>
+<li>54 = Wilt Chamberlain (4 game)</li>
+<li>53 = Wilt Chamberlain (16 game)</li>
+<li>52 = Wilt Chamberlain (10 game)</li>
+<li>51 = Wilt Chamberlain (7 game)</li>
+<li>50 = Wilt Chamberlain (9 game)</li>
+<li>49 = Wilt Chamberlain and Michael Jordan (10 game)</li>
+<li>48 = Wilt Chamberlain (10 game)</li>
+<li>47 = Wilt Chamberlain and Michael Jordan (9 game)</li>
+<li>46 = Wilt Chamberlain (14 game)</li>
+<li>45 = Michael Jordan (16 game)</li>
+<li>44 = Michael Jordan (17 game)</li>
+<li>43 = Wilt Chamberlain (18 game)</li>
+<li>42 = Kobe Bryant, George Gervin, Wilt Chamberlain (16 game)</li>
+<li>41 = Wilt Chamberlain (28 game)</li>
+<li>40 = Michael Jordan (34 game)</li>
+<li>39 = Wilt Chamberlain (26 game)</li>
+<li>38 = Michael Jordan (33 game)</li>
+<li>37 = Lebron James (40 game)</li>
+<li>36 = Lebron James (39 game)</li>
+<li>35 = Kareem Abdul-Jabaar (42 game</li>
+<li>34 = Lebron James and Karl Malone (47 game)</li>
+<li>33 = Lebron James (62 game)</li>
+<li>32 = Lebron James (77 game)</li>
+<li>31 = Lebron James (74 game)</li>
+<li>30 = Karl Malone (71 game)</li>
+<li>29 = Lebron James (80 game)</li>
+<li>28 = Kevin Durant (76 game)</li>
+<li>27 = Lebron James (82 game)</li>
+<li>26 = Lebron James (90 game)</li>
+<li>25 = Lebron James (97 game)</li>
+<li>24 = Karl Malone (83 game)</li>
+<li>23 = Lebron James and Carmelo Anthony (72 game)</li>
+<li>22 = Kevin Garnett (77 game)</li>
+<li>21 = Dirk Nowitzki and Reggie Miller (74 game)</li>
+<li>20 = Kevin Garnett (88 game)</li>
+<li>19 = Tim Duncan (77 game)</li>
+<li>18 = Robert Parish (95 game)</li>
+<li>17 = Tim Duncan (82 game)</li>
+<li>16 = Robert Parish (91 game)</li>
+<li>15 = Chris Paul (84 game)</li>
+<li>14 = Robert Parish (94 game)</li>
+<li>13 = John Stockton (91 game)</li>
+<li>12 = Horace Grant (102 game)</li>
+<li>11 = Jason Kidd (100 game)</li>
+<li>10 = Charles Oakley (107 game)</li>
+<li>9 = Kyle Korver (91 game)</li>
+<li>8 = P.J Brown (115 game)</li>
+<li>7 = Derek Fisher (86 game</li>
+<li>6 = Michael Cage (144 game)</li>
+<li>5 = Bruce Bowen (97 game)</li>
+<li>4 = T.R Dunn (148 game)</li>
+<li>3 = PJ Tucker (97 game)</li>
+<li>2 = Harvey Catchings (179 game)</li>
+<li>1 = Reggie Evans (58 game)</li>
+<li>0 = Desagana Diop Charles Jones (259 game)</li>
+</ul>
+
+<p>All stats are from Statmuse</p>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="p36qqp6" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Conscious_Ladder_862</div>
+        <div>81 | an hour ago </div>
+      </div>
+      <label for="p36qqp6" class="commentText"><p>58 one point games is hilarious</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="p36uxga" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Maverick_1991 | Hawks</div>
+        <div>1 | 25 minutes ago </div>
+      </div>
+      <label for="p36uxga" class="commentText"><p>58 times not FGM but split FTs is legit impressive AF</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="p36viu4" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>WestleyThe | SEA</div>
+        <div>1 | 21 minutes ago </div>
+      </div>
+      <label for="p36viu4" class="commentText"><p>Hell yeah Reggie haha</p>
+
+<p>That guy was so explosive but so bad at basketball</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="p36rdqt" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>AllOutRaptors | Raptors</div>
+        <div>53 | an hour ago </div>
+      </div>
+      <label for="p36rdqt" class="commentText"><p>259 0 point games is outrageous.  How tf did Diop play over 600 games averaging <sup>2</sup>&frasl;<sub>3</sub>.7/.4 lmao</p>
+
+<p>HIS CAREER HIGH IS 10 POINTS AND HE PLAYED 12 SEASONS</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="p36tzqc" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>theytracemikey | Cavaliers</div>
+        <div>1 | 33 minutes ago </div>
+      </div>
+      <label for="p36tzqc" class="commentText"><p>If you don’t like that, you don’t like pre-LeBron Cavs basketball baby!!</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="p36s0ms" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>chivestheconqueror | Celtics</div>
+        <div>38 | an hour ago </div>
+      </div>
+      <label for="p36s0ms" class="commentText"><p>It’s killing me that you never once thought to make “game” plural</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="p36vcif" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>GiGioP | Nets Bandwagon</div>
+        <div>1 | 22 minutes ago </div>
+      </div>
+      <label for="p36vcif" class="commentText"><p>At the top of the list it was mostly 1 game so he probably got used to it haha.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="p36rs7f" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Advanced_Art_233 | Lakers</div>
+        <div>15 | an hour ago </div>
+      </div>
+      <label for="p36rs7f" class="commentText"><p>Kyle Korver having 91 games where he just hit 3 Three&rsquo;s is  so funny for some reason</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="p36sx5f" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Tiny_Spread5712</div>
+        <div>3 | 41 minutes ago </div>
+      </div>
+      <label for="p36sx5f" class="commentText"><p>He was probably my favorite pickup in fantasy leagues, just automatic points</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="p36qw9f" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Cute-Ad-445</div>
+        <div>13 | an hour ago </div>
+      </div>
+      <label for="p36qw9f" class="commentText"><p>Finally, some records I can personally break if they give me a contract</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="p36rvuo" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>T-T-N | Warriors</div>
+        <div>6 | an hour ago </div>
+      </div>
+      <label for="p36rvuo" class="commentText"><p>And keep yourself in the league for over 3 years and get play time 82 games?</p>
+
+<p>You got dirt on anyone? Or do you know where LeBron parties?</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="p36scot" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>BurnieTheBrony | Grizzlies</div>
+        <div>3 | an hour ago </div>
+      </div>
+      <label for="p36scot" class="commentText"><p>That&rsquo;s Bryce&rsquo;s account</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="p36rl7f" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>melliott2811 | Puerto Rico</div>
+        <div>12 | an hour ago </div>
+      </div>
+      <label for="p36rl7f" class="commentText"><p>wilt had the most overall but jordan with the only 69</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="p36vo1w" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>josephrehall | Suns</div>
+        <div>1 | 19 minutes ago </div>
+      </div>
+      <label for="p36vo1w" class="commentText"><p>Nice</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="p36tef7" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>TerrySaucer69 | Spurs</div>
+        <div>11 | 37 minutes ago </div>
+      </div>
+      <label for="p36tef7" class="commentText"><p>Wilt chamberlain is genuinely some bullshit man</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="p36tzx0" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>SilDaz</div>
+        <div>1 | 33 minutes ago </div>
+      </div>
+      <label for="p36tzx0" class="commentText"><p>Where the fuck is Luka Dondic</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="p36uxn1" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>TheAlmightyConch | Spurs</div>
+        <div>1 | 25 minutes ago </div>
+      </div>
+      <label for="p36uxn1" class="commentText"><p>Too young. He will grab some of these by the end of his career if he keeps it up </p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="p36wq0l" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>foxinthelake</div>
+        <div>1 | 11 minutes ago </div>
+      </div>
+      <label for="p36wq0l" class="commentText"><p>Funnily his 73 doesn&rsquo;t appear because Wilt incredibly hit that number twice. </p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="p36syx7" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>dvztimes</div>
+        <div>4 | 41 minutes ago </div>
+      </div>
+      <label for="p36syx7" class="commentText"><p>PJ Tucker could hit a 3.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="p36vfgb" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>houstonrockets3311</div>
+        <div>1 | 21 minutes ago </div>
+      </div>
+      <label for="p36vfgb" class="commentText"><p>Derek Fisher is definitely the epitome of a 7pt player. One 3pointer, one mid-range jumpshot, one layup.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="p36vuse" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>CMYGQZ | Grizzlies</div>
+        <div>1 | 18 minutes ago </div>
+      </div>
+      <label for="p36vuse" class="commentText"><p>there&rsquo;s really 2 player tied for 0 point games? that&rsquo;s pretty insane coincidence.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="p36qwna" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>TomatoSecure192 | Bulls</div>
+        <div>2 | an hour ago </div>
+      </div>
+      <label for="p36qwna" class="commentText"><p>34 40 pt games DAMN</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="p36t0rq" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>SportsFan8288</div>
+        <div>2 | 40 minutes ago </div>
+      </div>
+      <label for="p36t0rq" class="commentText"><p>This is pretty awesome</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="p36u4a6" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>AscendedMagi</div>
+        <div>1 | 32 minutes ago </div>
+      </div>
+      <label for="p36u4a6" class="commentText"><p>jordan with the single 69 game. nice</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="p36xom6" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>wondering-abdullah</div>
+        <div>1 | 3 minutes ago </div>
+      </div>
+      <label for="p36xom6" class="commentText"><p>Does lebron have the most 7 rebounds and 7 assists, individually aswell.</p>
+
+<p>That&rsquo;ll make never having 27,7,7 while averaging it even more funny. Crazy how stats are.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="p36qv27" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Haunting_Test_5523</div>
+        <div>-9 | an hour ago </div>
+      </div>
+      <label for="p36qv27" class="commentText"><p>You didn&rsquo;t include Luka&rsquo;s 73 point game.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="p36qzdp" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>UD_Mayo [OP] | Lakers</div>
+        <div>21 | an hour ago </div>
+      </div>
+      <label for="p36qzdp" class="commentText"><p>Well he had only one game compare to wilt 2 game. I only include the one who has the most game </p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="p36r3az" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Desperate-Box-8527</div>
+        <div>5 | an hour ago </div>
+      </div>
+      <label for="p36r3az" class="commentText"><p>bcus as u can see wilt has 2 games. luka has 1. so wilt is on the list.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
