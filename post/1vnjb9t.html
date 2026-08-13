@@ -1,0 +1,562 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.selfPostImage {
+  width: 100%;
+  height: auto;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/baseball/comments/1vnjb9t/wpbl_data_is_now_on_baseball_reference_along_with/"><p>WPBL data is now on Baseball Reference, along with a new dedicated page for women’s baseball</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <p>We&rsquo;re very excited to announce that Baseball Reference now has coverage of the <a href="https://www.baseball-reference.com/register/league.cgi?id=b910b711&amp;__hstc=213859787.46520ee2d4b92cc8c28279a5f72b9129.1780932716434.1786630267290.1786644292669.197&amp;__hssc=213859787.2.1786644292669&amp;__hsfp=e2dc802239b595b1fd767be4990fb991" target="_blank">Women&rsquo;s Pro Baseball League</a>! We&rsquo;ll have pitching and batting stats for both teams and players, updating daily, and pages for <a href="https://www.baseball-reference.com/register/player.fcgi?id=benite000den&amp;__hstc=213859787.46520ee2d4b92cc8c28279a5f72b9129.1780932716434.1786630267290.1786644292669.197&amp;__hssc=213859787.2.1786644292669&amp;__hsfp=e2dc802239b595b1fd767be4990fb991" target="_blank">individual players</a> and <a href="https://www.baseball-reference.com/register/team.cgi?id=a8e6ed0d&amp;__hstc=213859787.46520ee2d4b92cc8c28279a5f72b9129.1780932716434.1786630267290.1786644292669.197&amp;__hssc=213859787.2.1786644292669&amp;__hsfp=e2dc802239b595b1fd767be4990fb991" target="_blank">teams</a>.</p>
+
+<p>Additionally, we&rsquo;ve reorganized our women&rsquo;s baseball coverage in one central place: <a href="https://www.baseball-reference.com/register/womens-baseball-stats.shtml" target="_blank">https://www.baseball-reference.com/register/womens-baseball-stats.shtml</a></p>
+
+<p>There, you will be able to find both WPBL coverage, as well as historic data coverage for all 12 seasons of the <a href="https://www.baseball-reference.com/register/league.cgi?id=2de82eb4&amp;__hstc=213859787.46520ee2d4b92cc8c28279a5f72b9129.1780932716434.1786630267290.1786644292669.197&amp;__hssc=213859787.2.1786644292669&amp;__hsfp=e2dc802239b595b1fd767be4990fb991" target="_blank">AAGPBL</a>.</p>
+
+<p>Hope you enjoy! Please let us know if you have any questions.</p>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="p3hz56q" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Admirable_Outcome932 | Toronto Blue Jays</div>
+        <div>28 | 40 minutes ago </div>
+      </div>
+      <label for="p3hz56q" class="commentText"><p>.571/.400/.971 for a player with only one hand and using a prosthetic to bat is AWESOME stuff</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="p3i0p31" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>the_gaymer_girl | Toronto Blue Jays</div>
+        <div>12 | 33 minutes ago </div>
+      </div>
+      <label for="p3i0p31" class="commentText"><p>Leaving your hand behind after getting a knock is so awesome</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="p3hwia7" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>cmgriffith_ | New York Yankees</div>
+        <div>16 | an hour ago </div>
+      </div>
+      <label for="p3hwia7" class="commentText"><p>Time to go look at the slash line of the r/NYHeights and Denae Benites</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="p3hyc2l" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Admirable_Outcome932 | Toronto Blue Jays</div>
+        <div>12 | 43 minutes ago </div>
+      </div>
+      <label for="p3hyc2l" class="commentText"><p>2.484 OPS 😱😱 I mean I know it’s a tiny sample size, and she’s hitting in a league of women who haven’t had the institutional pitching training that men have had since childhood so it’s easier than MLB, but still, awesome stuff. If it were easy, they’d all be doing it.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="p3i1clm" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>kokorrorr | Toronto Blue Jays</div>
+        <div>7 | 30 minutes ago </div>
+      </div>
+      <label for="p3i1clm" class="commentText"><p>The best part is she only hits singles or home runs and when she hits singles she steals second after</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="p3i528n" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>the_gaymer_girl | Toronto Blue Jays</div>
+        <div>4 | 14 minutes ago </div>
+      </div>
+      <label for="p3i528n" class="commentText"><p>She’s just like my RTTS character. The four true outcomes of MLB The Show: homer, strikeout, GIDP, single before stealing second and getting stranded on the basepaths when the player after you grounds out.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="p3hx195" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ContinuumGuy | Major League Baseball</div>
+        <div>11 | an hour ago </div>
+      </div>
+      <label for="p3hx195" class="commentText"><p>I gotta admit&hellip; I didn&rsquo;t realize you had the AAGPBL. Is that new as well?</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="p3hzh4x" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Baseball-Reference [OP] | Baseball Reference • Mod Verified</div>
+        <div>15 | 38 minutes ago </div>
+      </div>
+      <label for="p3hzh4x" class="commentText"><p>The AAGPBL is new!</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="p3hwn7m" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>TightfistedLeasing</div>
+        <div>6 | an hour ago </div>
+      </div>
+      <label for="p3hwn7m" class="commentText"><p>finally, been waiting for this. the aagpbl data is a nice touch too, glad they&rsquo;re keeping it all in one spot</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="p3hyhi1" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ajteitel | Arizona Diamondbacks</div>
+        <div>6 | 42 minutes ago </div>
+      </div>
+      <label for="p3hyhi1" class="commentText"><p>No nicknames yet? Literally unusable</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="p3hyzmx" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Baseball-Reference [OP] | Baseball Reference • Mod Verified</div>
+        <div>8 | 40 minutes ago </div>
+      </div>
+      <label for="p3hyzmx" class="commentText"><p>Agreed. Unacceptable.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="p3hxep7" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>lastminutealways | Seattle Mariners • San Francisco…</div>
+        <div>3 | an hour ago </div>
+      </div>
+      <label for="p3hxep7" class="commentText"><p>Thank you!</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="p3i1ra2" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Leading_Dentist_5563 | Pittsburgh Pirates</div>
+        <div>2 | 28 minutes ago </div>
+      </div>
+      <label for="p3i1ra2" class="commentText"><p><img src="giphy|9yJFbNYA0NiE6Agh14" alt="gif" /></p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="p3i3dww" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>BeefInGR | Detroit Tigers • West Michigan W…</div>
+        <div>2 | 21 minutes ago </div>
+      </div>
+      <label for="p3i3dww" class="commentText"><p>I wish more people knew about the Chicks.</p>
+
+<p>For as successful as the Whitecaps and Griffins have been, for as successful as the Rampage was, the Grand Rapids Chicks are the most successful professional team in our city&rsquo;s history. And there&rsquo;s nothing to really commemorate them&hellip;one stadium is an empty field in an industrial area, the other is a McDonald&rsquo;s and a &ldquo;No-Tell Motel&rdquo;.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="p3i1l1i" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ChaosReignUnderUs</div>
+        <div>1 | 29 minutes ago </div>
+      </div>
+      <label for="p3i1l1i" class="commentText"><p>Could Denae Benites reach to the AAGPBL single season homer run record of 29 set by Joanne Weaver?</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="p3i2qpj" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>no_one_canoe | Detroit Tigers • Detroit Tigers</div>
+        <div>1 | 24 minutes ago </div>
+      </div>
+      <label for="p3i2qpj" class="commentText"><p>If anybody can hit 30 homers in a 15-game season, it&rsquo;s Benites.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="p3i37fd" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Better_Goose_431 | Dumpster Fire</div>
+        <div>1 | 22 minutes ago </div>
+      </div>
+      <label for="p3i37fd" class="commentText"><p>Do you guys do softball stats too?</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="p3i4qsk" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Baseball-Reference [OP] | Baseball Reference • Mod Verified</div>
+        <div>0 | 16 minutes ago </div>
+      </div>
+      <label for="p3i4qsk" class="commentText"><p>We do not.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
