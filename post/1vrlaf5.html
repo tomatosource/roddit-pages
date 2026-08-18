@@ -196,10 +196,52 @@ body > .commentList {
   </head>
   <body>
     <h2>
-      <a class="postTitle" href="/r/pathofexile2builds/comments/1vr195u/shield_wall_clear_speed/"><p>shield wall clear speed?</p>
+      <a class="postTitle" href="https://www.reddit.com/r/PathOfExile2/comments/1vrlaf5/is_a_blink_script_that_disables_wasd_before/"><p>Is a Blink script that disables WASD before blinking allowed?</p>
 </a>
     </h2>
 
+    
+    <div class="selfPostContainer">
+      <p>Something like the following:</p>
+
+<pre><code>#Requires AutoHotkey v2.0
+wasdDisabled := false
+
+$XButton1:: {
+    global wasdDisabled
+    wasdDisabled := true   ; Disable WASD
+    Send(&quot;{w up}{a up}{s up}{d up}&quot;)   ; Release all WASD keys
+    Send(&quot;{XButton1 down}&quot;)   ; Blink after disabling WASD
+}
+
+$XButton1 up:: {
+    global wasdDisabled           
+    Send(&quot;{XButton1 up}&quot;)   ; Release the mouse button 
+    wasdDisabled := false   ; Enable WASD
+
+    ; Continue moving if holding WASD after Blink
+    if GetKeyState(&quot;w&quot;, &quot;P&quot;)
+        Send(&quot;{w down}&quot;)
+    if GetKeyState(&quot;a&quot;, &quot;P&quot;)
+        Send(&quot;{a down}&quot;)
+    if GetKeyState(&quot;s&quot;, &quot;P&quot;)
+        Send(&quot;{s down}&quot;)
+    if GetKeyState(&quot;d&quot;, &quot;P&quot;)
+        Send(&quot;{d down}&quot;)
+}
+
+#HotIf wasdDisabled
+*w::
+*a::
+*s::
+*d::return
+#HotIf
+}
+</code></pre>
+
+<p>I hate blinking in the direction I&rsquo;m moving without analog movement. Have the devs said anything about allowing analog movement + mouse?</p>
+
+    </div>
     
 
     <div class="commentList">
@@ -207,13 +249,31 @@ body > .commentList {
         
           
 <div class="commentAndChildren">
-  <input id="p4czn3x" type="checkbox" checked/>
+  <input id="p4e4dyc" type="checkbox" checked/>
     <div class="comment">
       <div class="commentHeader">
-        <div>rude_ooga_booga</div>
-        <div>1 | 5 hours ago </div>
+        <div>1GrumpyEnglishman</div>
+        <div>1 | 16 minutes ago </div>
       </div>
-      <label for="p4czn3x" class="commentText"><p>Slow</p>
+      <label for="p4e4dyc" class="commentText"><p>1 button press = 1 in game action, so no it&rsquo;s not within ToS!</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="p4e4zaz" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>KingFIippyNipz</div>
+        <div>1 | 12 minutes ago </div>
+      </div>
+      <label for="p4e4zaz" class="commentText"><p>so much no</p>
 </label>
     </div>
   </label>
