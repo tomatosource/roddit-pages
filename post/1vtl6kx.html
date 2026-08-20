@@ -1,0 +1,1718 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.selfPostImage {
+  width: 100%;
+  height: auto;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/nba/comments/1vtl6kx/i_invented_a_basketball_terrorism_score_to_find/"><p>I invented a Basketball Terrorism Score to find the most aesthetically disgusting great games in NBA history</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <p>Eg. A player finishes with 40 points, so at first glance it looks like a monster game. Then you notice he took 37 shots, went 4-for-20 from three, turned it over eight times and spent the rest of the evening committing acts against offensive basketball.</p>
+
+<p>So I made the Basketball Terrorism Score to quantify this.</p>
+
+<p>To qualify, a player has to score at least <strong>30 points</strong>.</p>
+
+<p>The formula is:</p>
+
+<p><strong>3 × missed field goals</strong><br>
+<strong>+ missed threes</strong><br>
+<strong>+ 2 × missed free throws</strong><br>
+<strong>+ 4 × turnovers</strong><br>
+<strong>+ 0.5 × free-throw attempts</strong><br>
+<strong>+ 10 for losing the game</strong></p>
+
+<p>Here are the top 10:</p>
+
+<table>
+<thead>
+<tr>
+<th align="left">Rank</th>
+<th align="left">Player</th>
+<th align="left">Date</th>
+<th align="left">PTS</th>
+<th align="left">FG</th>
+<th align="left">3PT</th>
+<th align="left">FT</th>
+<th align="left">TO</th>
+<th align="left">Result</th>
+<th align="left">Terrorism Score</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left"><strong>1</strong></td>
+<td align="left"><strong>James Harden</strong></td>
+<td align="left">1/8/2020</td>
+<td align="left">41</td>
+<td align="left"><sup>9</sup>&frasl;<sub>34</sub></td>
+<td align="left"><sup>4</sup>&frasl;<sub>20</sub></td>
+<td align="left"><sup>19</sup>&frasl;<sub>23</sub></td>
+<td align="left">8</td>
+<td align="left">W</td>
+<td align="left"><strong>142.5</strong></td>
+</tr>
+
+<tr>
+<td align="left"><strong>2</strong></td>
+<td align="left"><strong>Bam Adebayo</strong></td>
+<td align="left">3/10/2026</td>
+<td align="left">83</td>
+<td align="left"><sup>20</sup>&frasl;<sub>43</sub></td>
+<td align="left"><sup>7</sup>&frasl;<sub>22</sub></td>
+<td align="left"><sup>36</sup>&frasl;<sub>43</sub></td>
+<td align="left">5</td>
+<td align="left">W</td>
+<td align="left"><strong>139.5</strong></td>
+</tr>
+
+<tr>
+<td align="left"><strong>3</strong></td>
+<td align="left"><strong>James Harden</strong></td>
+<td align="left">12/3/2019</td>
+<td align="left">50</td>
+<td align="left"><sup>11</sup>&frasl;<sub>37</sub></td>
+<td align="left"><sup>4</sup>&frasl;<sub>20</sub></td>
+<td align="left"><sup>24</sup>&frasl;<sub>24</sub></td>
+<td align="left">5</td>
+<td align="left">L</td>
+<td align="left"><strong>136.0</strong></td>
+</tr>
+
+<tr>
+<td align="left"><strong>4</strong></td>
+<td align="left"><strong>Kobe Bryant</strong></td>
+<td align="left">11/7/2002</td>
+<td align="left">41</td>
+<td align="left"><sup>17</sup>&frasl;<sub>47</sub></td>
+<td align="left">0/8</td>
+<td align="left"><sup>7</sup>&frasl;<sub>7</sub></td>
+<td align="left">5</td>
+<td align="left">L</td>
+<td align="left"><strong>131.5</strong></td>
+</tr>
+
+<tr>
+<td align="left"><strong>5</strong></td>
+<td align="left"><strong>LaMelo Ball</strong></td>
+<td align="left">11/27/2024</td>
+<td align="left">32</td>
+<td align="left"><sup>11</sup>&frasl;<sub>35</sub></td>
+<td align="left"><sup>7</sup>&frasl;<sub>20</sub></td>
+<td align="left"><sup>3</sup>&frasl;<sub>5</sub></td>
+<td align="left">7</td>
+<td align="left">L</td>
+<td align="left"><strong>129.5</strong></td>
+</tr>
+
+<tr>
+<td align="left"><strong>6</strong></td>
+<td align="left"><strong>Russell Westbrook</strong></td>
+<td align="left">10/28/2016</td>
+<td align="left">51</td>
+<td align="left"><sup>17</sup>&frasl;<sub>44</sub></td>
+<td align="left"><sup>2</sup>&frasl;<sub>10</sub></td>
+<td align="left"><sup>15</sup>&frasl;<sub>20</sub></td>
+<td align="left">5</td>
+<td align="left">W</td>
+<td align="left"><strong>129.0</strong></td>
+</tr>
+
+<tr>
+<td align="left"><strong>7</strong></td>
+<td align="left"><strong>Russell Westbrook</strong></td>
+<td align="left">2/26/2015</td>
+<td align="left">39</td>
+<td align="left"><sup>12</sup>&frasl;<sub>38</sub></td>
+<td align="left"><sup>1</sup>&frasl;<sub>10</sub></td>
+<td align="left"><sup>14</sup>&frasl;<sub>16</sub></td>
+<td align="left">4</td>
+<td align="left">L</td>
+<td align="left"><strong>125.0</strong></td>
+</tr>
+
+<tr>
+<td align="left"><strong>8</strong></td>
+<td align="left"><strong>Cade Cunningham</strong></td>
+<td align="left">11/10/2025</td>
+<td align="left">46</td>
+<td align="left"><sup>14</sup>&frasl;<sub>45</sub></td>
+<td align="left"><sup>2</sup>&frasl;<sub>11</sub></td>
+<td align="left"><sup>16</sup>&frasl;<sub>18</sub></td>
+<td align="left">2</td>
+<td align="left">W</td>
+<td align="left"><strong>123.0</strong></td>
+</tr>
+
+<tr>
+<td align="left"><strong>9</strong></td>
+<td align="left"><strong>James Harden</strong></td>
+<td align="left">11/16/2019</td>
+<td align="left">49</td>
+<td align="left"><sup>16</sup>&frasl;<sub>41</sub></td>
+<td align="left"><sup>8</sup>&frasl;<sub>22</sub></td>
+<td align="left"><sup>9</sup>&frasl;<sub>11</sub></td>
+<td align="left">5</td>
+<td align="left">W</td>
+<td align="left"><strong>118.5</strong></td>
+</tr>
+
+<tr>
+<td align="left"><strong>T-10</strong></td>
+<td align="left"><strong>Kobe Bryant</strong></td>
+<td align="left">4/13/2016</td>
+<td align="left">60</td>
+<td align="left"><sup>22</sup>&frasl;<sub>50</sub></td>
+<td align="left"><sup>6</sup>&frasl;<sub>21</sub></td>
+<td align="left"><sup>10</sup>&frasl;<sub>12</sub></td>
+<td align="left">2</td>
+<td align="left">W</td>
+<td align="left"><strong>117.0</strong></td>
+</tr>
+
+<tr>
+<td align="left"><strong>T-10</strong></td>
+<td align="left"><strong>Allen Iverson</strong></td>
+<td align="left">3/8/2005</td>
+<td align="left">33</td>
+<td align="left"><sup>10</sup>&frasl;<sub>25</sub></td>
+<td align="left"><sup>2</sup>&frasl;<sub>8</sub></td>
+<td align="left"><sup>11</sup>&frasl;<sub>12</sub></td>
+<td align="left">12</td>
+<td align="left">L</td>
+<td align="left"><strong>117.0</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>1. James Harden: 142.5</strong></p>
+
+<p>41 points, <sup>9</sup>&frasl;<sub>34</sub> FG, <sup>4</sup>&frasl;<sub>20</sub> from three, <sup>19</sup>&frasl;<sub>23</sub> FT, 8 turnovers</p>
+
+<p>Forty-one points on 26.5% shooting, with eight turnovers and twenty three-point attempts, in a game your team still won.</p>
+
+<p>Holy moly, prime Harden was something.</p>
+
+<p><strong>2. Bam &ldquo;Wilt Bam Kobe&rdquo; Adebayo 139.5(83 point game)</strong></p>
+
+<p>Bam dropped <strong>83 points</strong> against Washington on March 10, 2026, the second-highest individual scoring game in NBA history.</p>
+
+<p>He had:</p>
+
+<p><strong><sup>20</sup>&frasl;<sub>43</sub> FG</strong><br>
+<strong><sup>7</sup>&frasl;<sub>22</sub> from three</strong><br>
+<strong><sup>36</sup>&frasl;<sub>43</sub> FT</strong><br>
+<strong>5 turnovers</strong></p>
+
+<p>But 23 missed shots, 15 missed threes, seven missed free throws and 43 free-throw attempts still produce 139.5 Terrorism Points.</p>
+
+<p>It is almost impossible to describe an 83-point game as basketball terrorism, and yet the math thinks it is.</p>
+
+<p><strong>3. James Harden 136.0</strong></p>
+
+<p>Harden&rsquo;s other masterpiece came barely a month earlier in December 2019.</p>
+
+<p>Against San Antonio:</p>
+
+<p><strong>50 points</strong><br>
+<strong><sup>11</sup>&frasl;<sub>37</sub> FG</strong><br>
+<strong><sup>4</sup>&frasl;<sub>20</sub> from three</strong><br>
+<strong><sup>24</sup>&frasl;<sub>24</sub> FT</strong><br>
+<strong>5 turnovers</strong></p>
+
+<p>And Houston lost 135-133 in double overtime.</p>
+
+<p>Harden therefore owns 2 of the top 3 spots, they used to call him Hitler for a reason ig.</p>
+
+<p><strong>4. Kobe Bryant 131.5</strong></p>
+
+<p>Against Boston in 2002, Kobe scored 41 points on:</p>
+
+<p><strong><sup>17</sup>&frasl;<sub>47</sub> FG</strong><br>
+<strong>0/8 from three</strong><br>
+<strong><sup>7</sup>&frasl;<sub>7</sub> FT</strong><br>
+<strong>5 turnovers</strong></p>
+
+<p>The Lakers lost 98-95.</p>
+
+<p>Those <strong>30 missed field goals</strong> were the record for any fully tracked game until Cade finally managed to miss 31 in 2025.</p>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="p4ty1l7" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>itsVainglorious</div>
+        <div>1 | 25 minutes ago </div>
+      </div>
+      <label for="p4ty1l7" class="commentText"><p>I am sad I only have one upvote to give this.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="p4tzx2z" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>SoDakZak | Timberwolves</div>
+        <div>1 | 17 minutes ago </div>
+      </div>
+      <label for="p4tzx2z" class="commentText"><p>We are bathing in the afterbirth of greatness.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="p4tycqb" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Stardust-Unbreaking | Knicks</div>
+        <div>1 | 23 minutes ago </div>
+      </div>
+      <label for="p4tycqb" class="commentText"><p>That Kobe game is horrendous bro holy shit</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="p4tzdiv" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>StrategyTop7612 [OP] | Clippers</div>
+        <div>1 | 19 minutes ago </div>
+      </div>
+      <label for="p4tzdiv" class="commentText"><p>and they only lost by 3 in OT, he had 6 points on 3-15 in the 4th too</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="p4u1yxn" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>0hootsson | Warriors</div>
+        <div>1 | 8 minutes ago </div>
+      </div>
+      <label for="p4u1yxn" class="commentText"><p>Killer instinct</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="p4u1f3r" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>D_Simmons | Raptors</div>
+        <div>1 | 10 minutes ago </div>
+      </div>
+      <label for="p4u1f3r" class="commentText"><p>That&rsquo;s just who Kobe was</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="p4u1t91" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>lalakingmalibog | Mavericks</div>
+        <div>1 | 8 minutes ago </div>
+      </div>
+      <label for="p4u1t91" class="commentText"><p>No that was #8. #24 was totally different bro I swear</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="p4u26c2" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>XXISavage</div>
+        <div>1 | 7 minutes ago </div>
+      </div>
+      <label for="p4u26c2" class="commentText"><p>I know it&rsquo;s a common refrain but he really did have to put up all those shitty shots in that game. He had Horry and Fisher but they weren&rsquo;t doing shit.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="p4ty8b7" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Academic_Remove_2650</div>
+        <div>1 | 24 minutes ago </div>
+      </div>
+      <label for="p4ty8b7" class="commentText"><p>Does the Houston Rockets team count as one player? 27 missed threes is just pure offensive terrorism</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="p4tygx2" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>StrategyTop7612 [OP] | Clippers</div>
+        <div>1 | 23 minutes ago </div>
+      </div>
+      <label for="p4tygx2" class="commentText"><p>I mean they called off a few 3s on that span, but I still can&rsquo;t believe they shot that poorly, that game traumatized me. They still only lost by 9.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="p4u06d4" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>LegendaryThunderFish | Knicks</div>
+        <div>1 | 15 minutes ago </div>
+      </div>
+      <label for="p4u06d4" class="commentText"><p>They called off a lot of 3s that were clearly and 1s. Obviously missing 27 threes is insane but the refs were making absolutely sure they got not momentum going</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="p4u221b" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>BurtonAllen-TA</div>
+        <div>1 | 7 minutes ago </div>
+      </div>
+      <label for="p4u221b" class="commentText"><p>A lot? Wasn&rsquo;t it literally one?</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="p4tzlfs" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Your__Pal</div>
+        <div>1 | 18 minutes ago </div>
+      </div>
+      <label for="p4tzlfs" class="commentText"><p>Harden missed 16 himself in one game. Thats why he is an elite BTS player. </p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="p4tzs2l" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>emanuelal99 | Lakers</div>
+        <div>1 | 17 minutes ago </div>
+      </div>
+      <label for="p4tzs2l" class="commentText"><p>Love the concept but your formula needs updating. Based on this, you are saying bam had the second worst game but his efficiency is way better. This punishes people who have missed more shots but doesn’t account how many more they made.</p>
+
+<p>To add to this, how is a <sup>20</sup>&frasl;<sub>43</sub> game worse than a <sup>12</sup>&frasl;<sub>38</sub> game? Doesn’t make sense logically.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="p4u11zx" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>grimsleeper4</div>
+        <div>1 | 12 minutes ago </div>
+      </div>
+      <label for="p4u11zx" class="commentText"><p>Yeah, if only there was a stat that compared total attempt to total makes, like a percentage of field goals someone makes.  We could call it a field goal percentage.  Oh wait &hellip;</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="p4u0x82" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>frozen2665 | Heat</div>
+        <div>1 | 12 minutes ago </div>
+      </div>
+      <label for="p4u0x82" class="commentText"><p>The Wizards that game were extreme terrorism, so I think 2nd place for Bam makes sense (the 4th place Kobe game looks absurd though lol). It was undeniably a terrorism basketball game</p>
+
+<p>As another commenter said: Harden Bam Kobe</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="p4u2ztb" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>iFinesseThePlugg | Knicks</div>
+        <div>1 | 3 minutes ago </div>
+      </div>
+      <label for="p4u2ztb" class="commentText"><p>Several of these games have a TS% of 50% or higher, which is a pretty clear indication this needs refining.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="p4u2zw7" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>BadMofoWallet | Lakers</div>
+        <div>1 | 3 minutes ago </div>
+      </div>
+      <label for="p4u2zw7" class="commentText"><p>Buddy it’s a basketball terrorism score, idk about you, but scoring with free throws is boring as fuck to watch, and Bam took <strong>43 of them.</strong> that shit is unwatchable, idgaf about the efficiency, it’s a terrorism score eg how enjoyable was the actual basketball lol</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="p4tyebj" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>GaryPaytonIII</div>
+        <div>1 | 23 minutes ago </div>
+      </div>
+      <label for="p4tyebj" class="commentText"><p>Harden Bam Kobe</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="p4u0lwg" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>SoDakZak | Timberwolves</div>
+        <div>1 | 14 minutes ago </div>
+      </div>
+      <label for="p4u0lwg" class="commentText"><p>HAM VER BOT for the streets</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="p4u1ctj" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>lalakingmalibog | Mavericks</div>
+        <div>1 | 10 minutes ago </div>
+      </div>
+      <label for="p4u1ctj" class="commentText"><p>Bam couldnt even stop his reign of terrorism out of respect</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="p4u31bn" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Ok_Pineapple_Num | Warriors</div>
+        <div>1 | 3 minutes ago </div>
+      </div>
+      <label for="p4u31bn" class="commentText"><p>Harden. Bam Kobe.  UNBELIEVABLE</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="p4tybyq" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ben3345 | Knicks</div>
+        <div>1 | 24 minutes ago </div>
+      </div>
+      <label for="p4tybyq" class="commentText"><p>Prime Harden had to be one of the worst watches in the history of the sport</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="p4tz5pu" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>StrategyTop7612 [OP] | Clippers</div>
+        <div>1 | 20 minutes ago </div>
+      </div>
+      <label for="p4tz5pu" class="commentText"><p>It was really up and down, depends on if his stepback 3 was going in.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="p4tzj1g" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ben3345 | Knicks</div>
+        <div>1 | 18 minutes ago </div>
+      </div>
+      <label for="p4tzj1g" class="commentText"><p>I hated the step back as much as the foul-baiting</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="p4u2zce" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>JaylenBrownIsDumbDog | 76ers</div>
+        <div>1 | 3 minutes ago </div>
+      </div>
+      <label for="p4u2zce" class="commentText"><p>buddy, I bet you <em>adore</em> watching luka Doncic play basketball. lmao stop it, guy. we know what you are</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="p4tymol" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>DTFIVE</div>
+        <div>1 | 22 minutes ago </div>
+      </div>
+      <label for="p4tymol" class="commentText"><p>this is the off-season content people pray for</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="p4tz55m" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>rejectx | Lakers</div>
+        <div>1 | 20 minutes ago </div>
+      </div>
+      <label for="p4tz55m" class="commentText"><p>so missed 3 is same as turnover? fun list regardless</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="p4u14nj" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>jakobkh0407</div>
+        <div>1 | 11 minutes ago </div>
+      </div>
+      <label for="p4u14nj" class="commentText"><p>To be fair a 3 has a much higher chance of being rebounded by the defense imo</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="p4u268b" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>gman2093 | Bulls</div>
+        <div>1 | 7 minutes ago </div>
+      </div>
+      <label for="p4u268b" class="commentText"><p>&ldquo;players take shots&rdquo;</p>
+
+<ul>
+<li>Kobe &ldquo;bam mamba&rdquo; Bryant </li>
+</ul>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="p4u2ldo" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>iFinesseThePlugg | Knicks</div>
+        <div>1 | 5 minutes ago </div>
+      </div>
+      <label for="p4u2ldo" class="commentText"><p>Yeah that part doesn&rsquo;t make any sense.</p>
+
+<p>The James Harden game in the 9 spot is getting overweighted by missed threes, even though he had okay percentages.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="p4u0dkm" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>topperkt</div>
+        <div>1 | 15 minutes ago </div>
+      </div>
+      <label for="p4u0dkm" class="commentText"><p>What if you subtract points scored from the total terrorism score? Bam&rsquo;s 83 doesn&rsquo;t sound so bad that way</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="p4u0gb9" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>randomguy9722</div>
+        <div>1 | 14 minutes ago </div>
+      </div>
+      <label for="p4u0gb9" class="commentText"><p>Really creative idea OP. My only tweak would be an offset for higher point totals, since huge scoring games naturally come with more shots, misses, FTs, and turnovers.</p>
+
+<p>Maybe subtract 0.25 for every point above 40. Otherwise, at a certain point the stat starts measuring volume as much as basketball terrorism.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="p4tzdo4" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Chardoggy1 | Hornets</div>
+        <div>1 | 19 minutes ago </div>
+      </div>
+      <label for="p4tzdo4" class="commentText"><p>Lamelo making it on the list with only 5 FTAs is ethical basketball terrorism</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="p4u05m6" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>CazOnReddit | Raptors</div>
+        <div>1 | 16 minutes ago </div>
+      </div>
+      <label for="p4u05m6" class="commentText"><p>Box plus/minus? 🤢</p>
+
+<p>Basketball terrorism score? 😎</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="p4u0fyu" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>mfabros | Knicks</div>
+        <div>1 | 14 minutes ago </div>
+      </div>
+      <label for="p4u0fyu" class="commentText"><p>I don&rsquo;t know why, but &ldquo;+10 for losing the game&rdquo; made me laugh</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="p4u0r85" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>bigboybeeperbelly | Spurs</div>
+        <div>1 | 13 minutes ago </div>
+      </div>
+      <label for="p4u0r85" class="commentText"><blockquote>
+<p>and yet the math thinks it is.</p>
+</blockquote>
+
+<p>you mean the formula you picked all the weights for? this is statistical terrorism! treating a linear equation like a black box genie oracle from the underworld</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="p4tz2m0" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>lukeskope | Celtics</div>
+        <div>1 | 20 minutes ago </div>
+      </div>
+      <label for="p4tz2m0" class="commentText"><p>If your suffered through the highlights of that Bam game, it was an actual crime against civilized culture. Absolute terrorism in the second half. That first quarter was an all timer tho.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="p4u173g" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>mas1108 | Lakers</div>
+        <div>1 | 11 minutes ago </div>
+      </div>
+      <label for="p4u173g" class="commentText"><p>“It is almost impossible to describe an 83-point game as basketball terrorism”</p>
+
+<p>No no, that is exactly how you describe that game lol.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="p4u2wot" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Ok_Pineapple_Num | Warriors</div>
+        <div>1 | 4 minutes ago </div>
+      </div>
+      <label for="p4u2wot" class="commentText"><p>The 4th quarter was the most clownish display of basketball I&rsquo;ve ever seen lol.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="p4tztp9" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>HokageEzio | Knicks</div>
+        <div>1 | 17 minutes ago </div>
+      </div>
+      <label for="p4tztp9" class="commentText"><p>The game was fine until he broke Lebron&rsquo;s scoring record (61) at the end of the 3rd, imo. After that it becomes a mess.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="p4tz6ji" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>AryaRemembers | 76ers</div>
+        <div>1 | 20 minutes ago </div>
+      </div>
+      <label for="p4tz6ji" class="commentText"><p>Warms my heart to see Embiid isn&rsquo;t on the list</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="p4tzcie" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>KoalaOnABuilding | Pistons</div>
+        <div>1 | 19 minutes ago </div>
+      </div>
+      <label for="p4tzcie" class="commentText"><p>whew im glad that cade game made it. impressive stuff in a way, but lol. i really can&rsquo;t believe he took that many shots.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="p4u08mf" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Foi_ | Knicks</div>
+        <div>1 | 15 minutes ago </div>
+      </div>
+      <label for="p4u08mf" class="commentText"><p>something would be wrong with the formula if that cade game wasnt in it.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="p4u0q9w" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>stonertboner | Knicks</div>
+        <div>1 | 13 minutes ago </div>
+      </div>
+      <label for="p4u0q9w" class="commentText"><p>I was expecting to see Melo on this list. I’m very disappointed.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="p4u0sgl" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>let_bog | Knicks</div>
+        <div>1 | 13 minutes ago </div>
+      </div>
+      <label for="p4u0sgl" class="commentText"><p>This is the exact content I come to this sub in the offseason for, absolute cinema. That harden 50 piece in a loss was certainly a moment in time</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="p4u0u9m" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>grimsleeper4</div>
+        <div>1 | 13 minutes ago </div>
+      </div>
+      <label for="p4u0u9m" class="commentText"><p>The formula is wrong because you aren&rsquo;t comparing total misses to total attempts.</p>
+
+<p>You have Bam&rsquo;s 43 attempts, 83 points and 23 misses ranks higher than Russ games where he missed a similar number of shots but scores less than half as many points.</p>
+
+<p>FG% exists for a reason - use it.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="p4u0vd7" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>davidystephenson</div>
+        <div>1 | 12 minutes ago </div>
+      </div>
+      <label for="p4u0vd7" class="commentText"><p>But who has the highest scoring single season?</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="p4u1szl" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>mrb4 | Suns</div>
+        <div>1 | 8 minutes ago </div>
+      </div>
+      <label for="p4u1szl" class="commentText"><p>First things I thought of when I saw this were Kobe&rsquo;s final game, Bam and various James Harden games in Houston and damn, I was pretty dead on lol.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="p4u2d4r" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>MrAkbarShabazz</div>
+        <div>1 | 6 minutes ago </div>
+      </div>
+      <label for="p4u2d4r" class="commentText"><p>Get this person a hedge fund to manage ASAP</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="p4tyr8h" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>HokageEzio | Knicks</div>
+        <div>1 | 22 minutes ago </div>
+      </div>
+      <label for="p4tyr8h" class="commentText"><p>3 Harden games in one season to the surprise of nobody.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="p4tyrr5" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>airmarw | Magic</div>
+        <div>1 | 22 minutes ago </div>
+      </div>
+      <label for="p4tyrr5" class="commentText"><p>Off-season content is really peaking this week. First the Half LeBron post then this, we are blessed.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="p4u06yf" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Your__Pal</div>
+        <div>1 | 15 minutes ago </div>
+      </div>
+      <label for="p4u06yf" class="commentText"><p>Bam&rsquo;s 83 point game, Harden missing 16 3s going <sup>9</sup>&frasl;<sub>34</sub>, Kobe and Cade missing 30 shots. </p>
+
+<p>BTS all stars. </p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="p4u0q1s" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>drewu62 | Celtics</div>
+        <div>1 | 13 minutes ago </div>
+      </div>
+      <label for="p4u0q1s" class="commentText"><p>Russell Westbrook not top five. I used to pray for times like this</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="p4u0x3x" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>baseketball | Celtics</div>
+        <div>1 | 12 minutes ago </div>
+      </div>
+      <label for="p4u0x3x" class="commentText"><p>I think the formula needs work. Bam&rsquo;s game was not terrible efficiency-wise. He missed a lot of shots because he took a lot of shots. He did better in every way than Westbrook&rsquo;s #6 game but was penalized because of shots taken.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="p4u1538" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>CurryMVPGOAT30</div>
+        <div>1 | 11 minutes ago </div>
+      </div>
+      <label for="p4u1538" class="commentText"><p>I respect your effort but if Pandemic/PED/Podcast Pete isn&rsquo;t at the top it just isn&rsquo;t legitimate</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="p4u16qq" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>packim0p | 76ers</div>
+        <div>1 | 11 minutes ago </div>
+      </div>
+      <label for="p4u16qq" class="commentText"><p>No Joel games in the top 10? Need to rework that formula kiddo</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="p4u1bk1" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>datruerex</div>
+        <div>1 | 10 minutes ago </div>
+      </div>
+      <label for="p4u1bk1" class="commentText"><p>Oh thank god this was about shorting efficiency. I thought we were going down an antipatriotic rant about nba players and their associations with international gangs</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="p4u1p2l" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>DrScrimble</div>
+        <div>1 | 9 minutes ago </div>
+      </div>
+      <label for="p4u1p2l" class="commentText"><p>Calling Bam and Kobe both basketball terrorists is the type of nuanced controversy that the mainstream media is too afraid to broach. 👏</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="p4u22p5" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>j1h15233 | HOU</div>
+        <div>1 | 7 minutes ago </div>
+      </div>
+      <label for="p4u22p5" class="commentText"><p>I really thought there would be more Iverson here</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="p4u2ndk" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>JaylenBrownIsDumbDog | 76ers</div>
+        <div>1 | 5 minutes ago </div>
+      </div>
+      <label for="p4u2ndk" class="commentText"><p><sup>17</sup>&frasl;<sub>47</sub> shooting is obscenely hilarious</p>
+
+<p>I dont even know how that happens in a game. how do you get up that many shots lmao?</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="p4u2sqz" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>FormerCollegeDJ | 76ers</div>
+        <div>1 | 4 minutes ago </div>
+      </div>
+      <label for="p4u2sqz" class="commentText"><p>There should probably be an adjustment made based on game pace or total points scored in the game.  It is easier to miss more shots and especially 3 point shots in a game with more possessions and where 3 point shooting is emphasized.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="p4u2xrq" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>box_fan_man | Mavericks</div>
+        <div>1 | 4 minutes ago </div>
+      </div>
+      <label for="p4u2xrq" class="commentText"><p>I’m surprise Kobe “Chucker” Bryant isn’t 1 thru 10.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="p4tzk5p" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Confident_Ad_5345</div>
+        <div>1 | 18 minutes ago </div>
+      </div>
+      <label for="p4tzk5p" class="commentText"><p>there should be some sort of luxury tax for each FT taken over a certain threshold. even if you hit every FT, taking <em>43</em> of them is just pure terrorism</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="p4u2a0g" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>IhatePizza230 | Lakers</div>
+        <div>1 | 6 minutes ago </div>
+      </div>
+      <label for="p4u2a0g" class="commentText"><p>The opposing team should be the one accused of terrorism because they kept fouling him.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="p4tzm5w" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>InNerdOfChange</div>
+        <div>1 | 18 minutes ago </div>
+      </div>
+      <label for="p4tzm5w" class="commentText"><p>Take the Kobe 60 game out your mouth. It was his last game right?</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="p4u17gg" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Speedee82 | NBA</div>
+        <div>1 | 11 minutes ago </div>
+      </div>
+      <label for="p4u17gg" class="commentText"><p>I am so glad that it made the list. It was the equivalent of Wrestlecrap. Hilarious but you couldn’t look away. And it in the end he was redeemed because the Jazz gave him too many opportunities. </p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="p4u1c56" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>jakobkh0407</div>
+        <div>1 | 10 minutes ago </div>
+      </div>
+      <label for="p4u1c56" class="commentText"><p>Yes, he did not play particularly good. Even when the defense was not guarding him</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="p4u1ohb" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>AFriendlyAssassin</div>
+        <div>1 | 9 minutes ago </div>
+      </div>
+      <label for="p4u1ohb" class="commentText"><p>Yeah it was iirc, it was hilarious, dudes were wide open and still passed. Such a fun game.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
