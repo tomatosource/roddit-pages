@@ -1,0 +1,1805 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.selfPostImage {
+  width: 100%;
+  height: auto;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/baseball/comments/1vvatf3/cleveland_was_once_named_the_cleveland_naps_after/"><p>Cleveland was once named the Cleveland Naps after Nap Lajoie.  If every team was named after their career WAR leader&rsquo;s nickname:</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <p><strong>AL East</strong></p>
+
+<p>Baltimore Iron Men</p>
+
+<p>Boston Splinters</p>
+
+<p>New York Babes</p>
+
+<p>Tampa Bay Longos</p>
+
+<p>Toronto Sir Davids</p>
+
+<p><strong>AL Central</strong></p>
+
+<p>Chicago Old Aches and Pains</p>
+
+<p>Cleveland Naps</p>
+
+<p>Detroit Georgia Peaches</p>
+
+<p>Kansas City Mullets</p>
+
+<p>Minnesota Big Trains</p>
+
+<p><strong>AL West</strong></p>
+
+<p>Gettysburg Eddies</p>
+
+<p>Houston Bagpipes</p>
+
+<p>Los Angeles Millville Meteors</p>
+
+<p>Seattle Kids</p>
+
+<p>Texas Pudges</p>
+
+<p><strong>NL East</strong></p>
+
+<p>Atlanta Hammers</p>
+
+<p>Miami Bigfoots</p>
+
+<p>New York Tom Terrifics</p>
+
+<p>Philadelphia Schmitties</p>
+
+<p>Washington Teeth</p>
+
+<p><strong>NL Central</strong></p>
+
+<p>Chicago Caps</p>
+
+<p>Cincinnati Charlie Hustles</p>
+
+<p>Milwaukee Rockin&rsquo; Robins</p>
+
+<p>Pittsburgh Flying Dutchmen</p>
+
+<p>St. Louis Stashes</p>
+
+<p><strong>NL West</strong></p>
+
+<p>Arizona Big Units</p>
+
+<p>Colorado Toddfathers</p>
+
+<p>Los Angeles Claws</p>
+
+<p>San Diego Mr. Padres</p>
+
+<p>San Francisco Say Hey Kids</p>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="p57h0oo" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>GetBigMad</div>
+        <div>171 | an hour ago </div>
+      </div>
+      <label for="p57h0oo" class="commentText"><p>Arizona Big Units merch would sell like hot cakes</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="p57m9or" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Jump_The_Five_Yo | State College Spikes…</div>
+        <div>18 | 20 minutes ago </div>
+      </div>
+      <label for="p57m9or" class="commentText"><p>And she’ll like it too….</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="p57omtb" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>TB1289</div>
+        <div>4 | 6 minutes ago </div>
+      </div>
+      <label for="p57omtb" class="commentText"><p>Chicks dig the Big Units</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="p57h5pn" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Same_Dot9698 | New York Yankees</div>
+        <div>113 | an hour ago </div>
+      </div>
+      <label for="p57h5pn" class="commentText"><p>I can get behind New York Babes</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="p57ie5q" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>WabbitCZEN | New York Yankees • Piece of Metal</div>
+        <div>47 | 43 minutes ago </div>
+      </div>
+      <label for="p57ie5q" class="commentText"><p>New York Sultans works, too.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="p57km1z" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Not_Cleaver | New York Yankees</div>
+        <div>14 | 29 minutes ago </div>
+      </div>
+      <label for="p57km1z" class="commentText"><p>Or New York Bambinos.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="p57leux" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Key-Worldliness529 | Minnesota Twins</div>
+        <div>7 | 25 minutes ago </div>
+      </div>
+      <label for="p57leux" class="commentText"><p>The Colossi of Clout!</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="p57ipk8" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Same_Dot9698 | New York Yankees</div>
+        <div>13 | 41 minutes ago </div>
+      </div>
+      <label for="p57ipk8" class="commentText"><p>It’ll just be called sluts. Kind of like Jankees.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="p57mq1p" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>pvdas | Boston Red Sox</div>
+        <div>5 | 17 minutes ago </div>
+      </div>
+      <label for="p57mq1p" class="commentText"><p>Daaaa sluts lose</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="p57hra6" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Buckeye_CFB | Cleveland Guardians</div>
+        <div>96 | an hour ago </div>
+      </div>
+      <label for="p57hra6" class="commentText"><p>&ldquo;Detroit Georgia Peaches&rdquo; would give &ldquo;Hokkaido Nippon Ham Fighters&rdquo; a run for their money for most confusing nickname</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="p57hz8i" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>huck_ [OP] | Philadelphia Phillies</div>
+        <div>54 | an hour ago </div>
+      </div>
+      <label for="p57hz8i" class="commentText"><p>Los Angeles Millville Meteors of Anaheim</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="p57lomd" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Brolympia | Texas Rangers</div>
+        <div>8 | 23 minutes ago </div>
+      </div>
+      <label for="p57lomd" class="commentText"><p>Somehow <em>less</em> of an absurd contrivance than what they currently use</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="p57k9q4" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Randomizedname1234 | Atlanta Braves</div>
+        <div>9 | 31 minutes ago </div>
+      </div>
+      <label for="p57k9q4" class="commentText"><p>It’s even weirder if you’ve ever been where Ty Cobb is from.</p>
+
+<p>It’s still the complete middle of nowhere.</p>
+
+<p>How he came from there to be one of the best all time is crazy.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="p57lxg7" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>mysterysackerfice | Los Angeles Angels • Dumpster Fire</div>
+        <div>14 | 22 minutes ago </div>
+      </div>
+      <label for="p57lxg7" class="commentText"><p>Cy Young was born in Gilmore, Ohio.  The last time I looked it up on Google maps, it was essentially a street with 5 houses.  He&rsquo;s probably the only guy in MLB history whose WAR is higher than the population of his hometown.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="p57msqp" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Randomizedname1234 | Atlanta Braves</div>
+        <div>3 | 17 minutes ago </div>
+      </div>
+      <label for="p57msqp" class="commentText"><p>Like Larry bird from middle of nowhere Indiana</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="p57lgpr" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>J-Goo | New York Yankees</div>
+        <div>5 | 24 minutes ago </div>
+      </div>
+      <label for="p57lgpr" class="commentText"><p>Everyone knows you can only learn baseball in a big city.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="p57mbdf" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>PM_YOUR_SMALLBOOBIES | Los Angeles Angels</div>
+        <div>6 | 19 minutes ago </div>
+      </div>
+      <label for="p57mbdf" class="commentText"><p>Well, at least Hokkaido is in Nippon.</p>
+
+<p>There isn&rsquo;t even a Detroit, GA. Funnily enough, there is an Atlanta, MI.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="p57ihbu" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Capable_Bar_5045 | Pittsburgh Pirates</div>
+        <div>74 | 42 minutes ago </div>
+      </div>
+      <label for="p57ihbu" class="commentText"><blockquote>
+<p>Pittsburgh Flying Dutchmen</p>
+</blockquote>
+
+<p>Perfect, just perfect. </p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="p57h8em" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Prudent_Owl8567</div>
+        <div>56 | an hour ago </div>
+      </div>
+      <label for="p57h8em" class="commentText"><p>Washington Teeth is such an unserious name for a baseball team, I love it. Bigfoots and Bagpipes also go way harder than they have any right to.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="p57nrdf" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ponyrx2 | Toronto Blue Jays</div>
+        <div>2 | 11 minutes ago </div>
+      </div>
+      <label for="p57nrdf" class="commentText"><p>The nickname is the Woodies</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="p57il1p" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>MrDooDooShatz | Atlanta Braves</div>
+        <div>53 | 41 minutes ago </div>
+      </div>
+      <label for="p57il1p" class="commentText"><p>Opinions towards a team called The Atlanta Braves notwithstanding, the Atlanta Hammers goes incredibly hard.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="p57jdsj" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>chaotic_evil_666 | Atlanta Braves</div>
+        <div>20 | 37 minutes ago </div>
+      </div>
+      <label for="p57jdsj" class="commentText"><p>Brought to you by the Home Depot</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="p57lhm6" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>LastWordsWereHuzzah | Atlanta Braves</div>
+        <div>14 | 24 minutes ago </div>
+      </div>
+      <label for="p57lhm6" class="commentText"><p>I&rsquo;ve thought they should rename as the Hammers for years now</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="p57n6jr" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Tsaxen | Toronto Blue Jays</div>
+        <div>12 | 14 minutes ago </div>
+      </div>
+      <label for="p57n6jr" class="commentText"><p>Also you could super easily pivot from the(quite racist) Chop to a swinging a hammer motion</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="p57m9tc" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>atlheel | Atlanta Braves</div>
+        <div>6 | 20 minutes ago </div>
+      </div>
+      <label for="p57m9tc" class="commentText"><p>It&rsquo;d be good business, too. I have all the Braves jerseys I need for the next 10 years or so, but I would run out to get a Hammers jersey. Do a train motif to honor the city history with the conductor holding a hammer. It would be very cool</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="p57n9zq" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>JohnnyFire | Cleveland Guardians</div>
+        <div>6 | 14 minutes ago </div>
+      </div>
+      <label for="p57n9zq" class="commentText"><p>I&rsquo;m gonna piggyback this but it&rsquo;s so funny to me that as much as (a vocal, shitty minority of) the fan base continues to pine for the &ldquo;legacy&rdquo; of the Cleveland Indians, the whole reason we picked the name was to rip off the Braves winning the World Series the year we had to change from the Naps. It was literally just hoping the marketing of having a similar name would attract fans. They later reverse engineered shit about Louis Sockalexis (who was run out of Cleveland) to make it seem like it had any importance. &ldquo;Legacy&rdquo; my entire ass.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="p57h3q4" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>PewpyDewpdyPantz | Toronto Blue Jays</div>
+        <div>43 | an hour ago </div>
+      </div>
+      <label for="p57h3q4" class="commentText"><p>The Toronto Hall of Fame Snubs</p>
+
+<p>Works for both Stieb and Delgado</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="p57hr9q" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Swimming_Elk_3058 | Philadelphia Phillies</div>
+        <div>26 | an hour ago </div>
+      </div>
+      <label for="p57hr9q" class="commentText"><p>If you just went with the first name of each player we could have the “Philadelphia Mikes” face off against the “Los Angeles Mikes”</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="p57jb74" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>miclugo | Philadelphia Phillies</div>
+        <div>13 | 37 minutes ago </div>
+      </div>
+      <label for="p57jb74" class="commentText"><p>At the time Mike Trout was born Mike Schmidt had only been retired for two years, and Trout is from New Jersey and grew up a Phillies fan.  It seems totally plausible that Trout is at least not not named for Schmidt.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="p57lypx" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Brolympia | Texas Rangers</div>
+        <div>2 | 21 minutes ago </div>
+      </div>
+      <label for="p57lypx" class="commentText"><p><em>Artie Lange over the phone</em></p>
+
+<p>Hey Mike, first time long time. Do you ever go out for a pasta dinner with the Philadelphia Mike&rsquo;s and Los Angeles Mikes? Ill hang up and listen</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="p57heqk" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Kashmir79 | New York Yankees</div>
+        <div>18 | an hour ago </div>
+      </div>
+      <label for="p57heqk" class="commentText"><p>It would be New York Bambinos</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="p57hzmx" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>VortistheSlaver</div>
+        <div>20 | an hour ago </div>
+      </div>
+      <label for="p57hzmx" class="commentText"><p>Minnesota Big Trains!!!!!<br>
+<img src="giphy|0KqQBmPcr0nWY3n3Jk" alt="gif" /></p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="p57in39" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>miclugo | Philadelphia Phillies</div>
+        <div>18 | 41 minutes ago </div>
+      </div>
+      <label for="p57in39" class="commentText"><p>When Hank Aaron died the renaming issue was live and people suggested Hammers as a name for the team.  You can even keep the chopping motion.  The current stadium is at 755 Battery Avenue (after his home run count) and the old stadium is at 755 Hank Aaron Drive.</p>
+
+<p>(Fun fact: the Redskins were named after the Braves *and* the Red Sox.  They originally were tenants of the Braves, so they were called the Braves, but then they moved to Fenway and wanted to keep the Native American imagery and have a name that matched their new landlord.  I have oversimplified this, <a href="https://law.marquette.edu/facultyblog/2014/06/why-did-the-washington-redskins-choose-the-name-redskins-in-the-first-place-rather-than-some-other-native-american-name/" target="_blank">here&rsquo;s the long version.</a>)</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="p57p1uv" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>TrapperJean | New York Yankees</div>
+        <div>2 | 4 minutes ago </div>
+      </div>
+      <label for="p57p1uv" class="commentText"><p>Didn&rsquo;t he also not like that nickname and also did not like that people started calling him Hank because he preferred to go by Henry?</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="p57pgj9" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>miclugo | Philadelphia Phillies</div>
+        <div>1 | a minute ago </div>
+      </div>
+      <label for="p57pgj9" class="commentText"><p>I know he didn’t like Hank but I don’t know how he felt about just being the Hammer.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="p57j7eg" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Tulidian13 | St. Louis Cardinals</div>
+        <div>17 | 38 minutes ago </div>
+      </div>
+      <label for="p57j7eg" class="commentText"><p>Alternatively, The St. Louis Mans</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="p57o0s1" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>corpulentFornicator | New York Yankees</div>
+        <div>2 | 10 minutes ago </div>
+      </div>
+      <label for="p57o0s1" class="commentText"><p>St. Louis Men.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="p57h4jv" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ThreePointsPhilly | New York Yankees</div>
+        <div>16 | an hour ago </div>
+      </div>
+      <label for="p57h4jv" class="commentText"><p>Kansas City Mullets jerseys would fly off the shelves, I’m sure.</p>
+
+<p>Cincinnati Hustles is a great idea. And the Colorado Toddfathers made me laugh.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="p57kh3z" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>M-O-N-S-T-R-E | New York Yankees</div>
+        <div>15 | 30 minutes ago </div>
+      </div>
+      <label for="p57kh3z" class="commentText"><p>You gotta save gold like this for the offseason.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="p57lx14" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>p-wing | San Francisco Giants</div>
+        <div>6 | 22 minutes ago </div>
+      </div>
+      <label for="p57lx14" class="commentText"><p>this is platinum, not gold</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="p57kv2h" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Eats_Lots_of_Chicken | St. Louis Cardinals</div>
+        <div>13 | 28 minutes ago </div>
+      </div>
+      <label for="p57kv2h" class="commentText"><p>Pretty sure St. Louis should be the Stans? The Mans? The St. Louis Men.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="p57np2n" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>RayKinsella | St. Louis Cardinals</div>
+        <div>2 | 11 minutes ago </div>
+      </div>
+      <label for="p57np2n" class="commentText"><p>Yeah, this might be a “Hey Chat GPT, are you sure?” situation.  Stash or Stashu were both nicknames for Stan, but “The Man” is a 10000% more common. </p>
+
+<p>The “St Louis Men” is perfect.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="p57kotl" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>strangehitman22 | Seattle Mariners</div>
+        <div>11 | 29 minutes ago </div>
+      </div>
+      <label for="p57kotl" class="commentText"><p>You wasting a good post before the lockout smh</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="p57irrl" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>hangout_wangout | New York Mets • Grand Junc…</div>
+        <div>10 | 40 minutes ago </div>
+      </div>
+      <label for="p57irrl" class="commentText"><p>Chicago Old Aches and Pains is so relatable</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="p57h8mf" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>DarkGreenMazda | Cleveland Guardians</div>
+        <div>8 | an hour ago </div>
+      </div>
+      <label for="p57h8mf" class="commentText"><p>It is funny that San Diego wouldn&rsquo;t really have to change their knickname.</p>
+
+<p>Back when all that was happening, saw a bumper sticker:  &ldquo;Steve Garvey is not my padre&rdquo;</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="p57m5tw" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Appropriate_Lemon921 | Baltimore Orioles • Brooks Robinson</div>
+        <div>7 | 20 minutes ago </div>
+      </div>
+      <label for="p57m5tw" class="commentText"><p>The Say Hey Kids sounds like an obnoxious indie band from the early 2000s</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="p57hnb6" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>GunfighterHefty | Chicago White Sox</div>
+        <div>6 | an hour ago </div>
+      </div>
+      <label for="p57hnb6" class="commentText"><p>I don&rsquo;t own any jerseys&hellip;I might buy a few of these.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="p57n0ao" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>jmarinara | Pittsburgh Pirates</div>
+        <div>6 | 15 minutes ago </div>
+      </div>
+      <label for="p57n0ao" class="commentText"><p>Would be cool if this was how it worked.  I imagine there’d be a lot of buildup and anticipation when someone was about to take over the top spot.  They’d stop the game in the middle, have a big ceremony, reveal the new logo and name, have the players change uniforms.  Would be one of those “I saw a 3000th hit” or “I was at that perfect game” moments for fans.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="p57jvf7" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>miclugo | Philadelphia Phillies</div>
+        <div>5 | 34 minutes ago </div>
+      </div>
+      <label for="p57jvf7" class="commentText"><p>You forgot the Akron Tungsten Arms.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="p57iasa" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>colonial_dan | New York Yankees</div>
+        <div>4 | 43 minutes ago </div>
+      </div>
+      <label for="p57iasa" class="commentText"><p>Kids vs Pudges would certainly be an odd one</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="p57idhr" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ChildhoodGlittering</div>
+        <div>4 | 43 minutes ago </div>
+      </div>
+      <label for="p57idhr" class="commentText"><p>I love Iron Men, Hammers, and Schmitties!  Also like Bagpipes and Big Units</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="p57ifsf" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Queen4Jesus | Los Angeles Dodgers • Hokkaido Nippon-Ham Fig…</div>
+        <div>3 | 42 minutes ago </div>
+      </div>
+      <label for="p57ifsf" class="commentText"><p>If they did this for some kind of throwback weel it would be so cool</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="p57kpyj" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>WhackadoodleSandwich | New York Mets</div>
+        <div>3 | 29 minutes ago </div>
+      </div>
+      <label for="p57kpyj" class="commentText"><p>Washington Teeth novelty items would sell fast.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="p57m7ji" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Brolympia | Texas Rangers</div>
+        <div>1 | 20 minutes ago </div>
+      </div>
+      <label for="p57m7ji" class="commentText"><p><img src="giphy|VmwS9HvV49Xl4yJfBa" alt="gif" /></p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="p57lakq" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>unfknreal | Toronto Blue Jays</div>
+        <div>3 | 25 minutes ago </div>
+      </div>
+      <label for="p57lakq" class="commentText"><blockquote>
+<p>Toronto Sir Davids</p>
+</blockquote>
+
+<p>I know our WAR leader is Dave Stieb, but in my 45+ years of watching the team I never once heard him referred to as &ldquo;Sir David&rdquo;</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="p57nqbj" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>huck_ [OP] | Philadelphia Phillies</div>
+        <div>3 | 11 minutes ago </div>
+      </div>
+      <label for="p57nqbj" class="commentText"><p>it&rsquo;s on Baseball Almanac as his nickname but not Baseball Reference.  I almost went with Toronto Daves but just went with it.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="p57okpv" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>InspectorTiny1952 | Toronto Blue Jays</div>
+        <div>1 | 6 minutes ago </div>
+      </div>
+      <label for="p57okpv" class="commentText"><p>Toronto Daves is great lol </p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="p57luvs" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ActivityImaginary941 | Boston Red Sox</div>
+        <div>3 | 22 minutes ago </div>
+      </div>
+      <label for="p57luvs" class="commentText"><p>Chicago Caps vs Baltimore Iron Men would be a civil war</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="p57nkcl" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>PM_YOUR_SMALLBOOBIES | Los Angeles Angels</div>
+        <div>1 | 12 minutes ago </div>
+      </div>
+      <label for="p57nkcl" class="commentText"><p>Torii &ldquo;Spider-Man&rdquo; Hunter
+Noah &ldquo;Thor&rdquo; Syndergaard
+David &ldquo;Captain America&rdquo; Wright</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="p57lxnu" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>DominicB547 | Chaos Bandwagon • MLB Players Associat…</div>
+        <div>3 | 22 minutes ago </div>
+      </div>
+      <label for="p57lxnu" class="commentText"><p>Prime offseason content&hellip;and we will need as much as we can.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="p57oc5u" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Educational-Bird-515</div>
+        <div>3 | 8 minutes ago </div>
+      </div>
+      <label for="p57oc5u" class="commentText"><p>These need to be jerseys  for one home series a year.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="p57jp6q" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>_inboze | Baltimore Orioles</div>
+        <div>2 | 35 minutes ago </div>
+      </div>
+      <label for="p57jp6q" class="commentText"><p>Hm. I don’t hate it.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="p57ju28" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Maniac_Moxie | Milwaukee Brewers</div>
+        <div>2 | 34 minutes ago </div>
+      </div>
+      <label for="p57ju28" class="commentText"><p>The Milwaukee Robins would be a great alternative name as Robin is our state bird. Just last week there was a fan giveaway of a hat designed by a local artist that had a Robin wearing a Yount jersey.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="p57jx8c" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>McYwP | Chicago Cubs</div>
+        <div>2 | 33 minutes ago </div>
+      </div>
+      <label for="p57jx8c" class="commentText"><p>Seems like the Aches and Pains would be a good band name for the Cubs pitching staff. Damn Southsiders take everything good from us, first a great broadcaster then a great nickname.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="p57k8du" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>IntelligentProfit688 | Cincinnati Reds</div>
+        <div>2 | 32 minutes ago </div>
+      </div>
+      <label for="p57k8du" class="commentText"><p>CHARLIE MOTHERFUCKING HUSTLEEEEEE I LOVE THE REDS I LOVE THE REDS I LOVE JOHNNY BENCH I FUCKING HATE NICK KRALLLLLLLL</p>
+
+<p><a href="https://preview.redd.it/zerjtnux7xkh1.jpeg?width=1080&amp;format=pjpg&amp;auto=webp&amp;s=70d31e32916815587e281ec40a1869252ef76638" target="_blank">https://preview.redd.it/zerjtnux7xkh1.jpeg?width=1080&amp;format=pjpg&amp;auto=webp&amp;s=70d31e32916815587e281ec40a1869252ef76638</a></p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="p57kx55" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Tulidian13 | St. Louis Cardinals</div>
+        <div>2 | 28 minutes ago </div>
+      </div>
+      <label for="p57kx55" class="commentText"><p>Seattle Kids vs Montreal Kids &hellip; Lord of the Flies situation</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="p57mdr3" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Fitz2001 | Philadelphia Phillies</div>
+        <div>2 | 19 minutes ago </div>
+      </div>
+      <label for="p57mdr3" class="commentText"><p>Philadelphia Schmitters could have the sandwich as a mascot.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="p57myu3" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>sevenpixieoverlords | Los Angeles Angels</div>
+        <div>2 | 16 minutes ago </div>
+      </div>
+      <label for="p57myu3" class="commentText"><p>My favorite is the Philadelphia Schmitties.</p>
+
+<p>But I do think you should change the Giants to ‘The San Francisco Willies’.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="p57n7ik" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Saitoh17 | Tampa Bay Devil Rays</div>
+        <div>2 | 14 minutes ago </div>
+      </div>
+      <label for="p57n7ik" class="commentText"><p>Baltimore Iron Men goes hard</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="p57na34" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>bruzzlightyear | New York Yankees</div>
+        <div>2 | 14 minutes ago </div>
+      </div>
+      <label for="p57na34" class="commentText"><p>Milwaukee rockin’ robins has to be a minor league team somewhere</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="p57nrlb" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Murderbot_420 | New York Yankees</div>
+        <div>2 | 11 minutes ago </div>
+      </div>
+      <label for="p57nrlb" class="commentText"><p>Flying Dutchman would be dope!</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="p57j7g8" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Deep-Gain5289 | Toronto Blue Jays</div>
+        <div>1 | 38 minutes ago </div>
+      </div>
+      <label for="p57j7g8" class="commentText"><p>Toronto Mossmen</p>
+
+<p>New York Sultans</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="p57jua6" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>nepstein10 | Boston Red Sox • Boston Hunters</div>
+        <div>1 | 34 minutes ago </div>
+      </div>
+      <label for="p57jua6" class="commentText"><p>Not enough teams named the Ants</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="p57mqz5" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>mindbullet | Kansas City Royals</div>
+        <div>1 | 17 minutes ago </div>
+      </div>
+      <label for="p57mqz5" class="commentText"><p>Oh yeah&hellip; It&rsquo;s Mullet time!!!</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="p57nkbx" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ace32183 | New York Mets</div>
+        <div>1 | 12 minutes ago </div>
+      </div>
+      <label for="p57nkbx" class="commentText"><p>Perhaps the new york franchise?</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="p57npge" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>AnonymousthrowawayW5 | Baltimore Orioles</div>
+        <div>1 | 11 minutes ago </div>
+      </div>
+      <label for="p57npge" class="commentText"><p>Gettysburg Eddies is the name of an actual bar named after Plank</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="p57npjh" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>GlitteringLettuce366 | New York Yankees</div>
+        <div>1 | 11 minutes ago </div>
+      </div>
+      <label for="p57npjh" class="commentText"><p>I love the New York Babes. Have you seen Giancarlo’s ass?</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="p57ozu7" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>TB1289</div>
+        <div>1 | 4 minutes ago </div>
+      </div>
+      <label for="p57ozu7" class="commentText"><p>I wish MLB took a page out of MiLB&rsquo;s playbook and did promotional nights where they changed their names to something fun for a night.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="p57p92q" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>oogieball | Dumpster Fire • New York Mets</div>
+        <div>1 | 3 minutes ago </div>
+      </div>
+      <label for="p57p92q" class="commentText"><p>Mets would be better as the New York Franchise. Give Washington a run for their money.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="p57pjra" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>LIVINGSTONandPARSONS | Puerto Rico</div>
+        <div>1 | a few seconds ago </div>
+      </div>
+      <label for="p57pjra" class="commentText"><p>You posted prime off-season content during the season!</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="p57l6pa" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Brolympia | Texas Rangers</div>
+        <div>0 | 26 minutes ago </div>
+      </div>
+      <label for="p57l6pa" class="commentText"><p>Atlanta Hammers goes hard</p>
+
+<p>The Mets shouldn&rsquo;t be allowed to use Seaver since they gave him away twice. The New York Dark Knights.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
