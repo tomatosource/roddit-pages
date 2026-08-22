@@ -1,0 +1,1350 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.selfPostImage {
+  width: 100%;
+  height: auto;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/nba/comments/1vv3b58/of_the_27_players_in_nba_history_to_have_scored/"><p>Of the 27 players in NBA history to have scored 25,000+ points, Steph Curry ranks last in percentage of points off free throws at 16%. Moses Malone 1st at 31%</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <table>
+<thead>
+<tr>
+<th align="left">Player</th>
+<th align="right">%</th>
+<th align="right">Made / Attempted</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">Moses Malone</td>
+<td align="right">31.1%</td>
+<td align="right">8,531 / 27,409</td>
+</tr>
+
+<tr>
+<td align="left">James Harden</td>
+<td align="right">29.4%</td>
+<td align="right">8,627 / 29,339</td>
+</tr>
+
+<tr>
+<td align="left">Oscar Robertson</td>
+<td align="right">28.8%</td>
+<td align="right">7,694 / 26,710</td>
+</tr>
+
+<tr>
+<td align="left">Jerry West</td>
+<td align="right">28.4%</td>
+<td align="right">7,160 / 25,192</td>
+</tr>
+
+<tr>
+<td align="left">Karl Malone</td>
+<td align="right">26.5%</td>
+<td align="right">9,787 / 36,928</td>
+</tr>
+
+<tr>
+<td align="left">Paul Pierce</td>
+<td align="right">26.2%</td>
+<td align="right">6,918 / 26,397</td>
+</tr>
+
+<tr>
+<td align="left">DeMar DeRozan</td>
+<td align="right">25.9%</td>
+<td align="right">6,923 / 26,711</td>
+</tr>
+
+<tr>
+<td align="left">Kobe Bryant</td>
+<td align="right">24.9%</td>
+<td align="right">8,378 / 33,643</td>
+</tr>
+
+<tr>
+<td align="left">Reggie Miller</td>
+<td align="right">24.7%</td>
+<td align="right">6,237 / 25,279</td>
+</tr>
+
+<tr>
+<td align="left">Kevin Durant</td>
+<td align="right">23.6%</td>
+<td align="right">7,704 / 32,597</td>
+</tr>
+
+<tr>
+<td align="left">Dirk Nowitzki</td>
+<td align="right">22.9%</td>
+<td align="right">7,240 / 31,560</td>
+</tr>
+
+<tr>
+<td align="left">Michael Jordan</td>
+<td align="right">22.7%</td>
+<td align="right">7,327 / 32,292</td>
+</tr>
+
+<tr>
+<td align="left">Russell Westbrook</td>
+<td align="right">22.6%</td>
+<td align="right">6,109 / 27,176</td>
+</tr>
+
+<tr>
+<td align="left">Dominique Wilkins</td>
+<td align="right">22.6%</td>
+<td align="right">6,031 / 26,668</td>
+</tr>
+
+<tr>
+<td align="left">Tim Duncan</td>
+<td align="right">22.3%</td>
+<td align="right">5,896 / 26,496</td>
+</tr>
+
+<tr>
+<td align="left">Carmelo Anthony</td>
+<td align="right">22.3%</td>
+<td align="right">6,320 / 28,289</td>
+</tr>
+
+<tr>
+<td align="left">Shaquille O’Neal</td>
+<td align="right">20.8%</td>
+<td align="right">5,935 / 28,596</td>
+</tr>
+
+<tr>
+<td align="left">LeBron James</td>
+<td align="right">20.4%</td>
+<td align="right">8,882 / 43,440</td>
+</tr>
+
+<tr>
+<td align="left">John Havlicek</td>
+<td align="right">20.3%</td>
+<td align="right">5,369 / 26,395</td>
+</tr>
+
+<tr>
+<td align="left">Hakeem Olajuwon</td>
+<td align="right">20.1%</td>
+<td align="right">5,423 / 26,946</td>
+</tr>
+
+<tr>
+<td align="left">Elvin Hayes</td>
+<td align="right">19.6%</td>
+<td align="right">5,356 / 27,313</td>
+</tr>
+
+<tr>
+<td align="left">Wilt Chamberlain</td>
+<td align="right">19.3%</td>
+<td align="right">6,057 / 31,419</td>
+</tr>
+
+<tr>
+<td align="left">Vince Carter</td>
+<td align="right">18.9%</td>
+<td align="right">4,852 / 25,728</td>
+</tr>
+
+<tr>
+<td align="left">Kevin Garnett</td>
+<td align="right">18.7%</td>
+<td align="right">4,887 / 26,071</td>
+</tr>
+
+<tr>
+<td align="left">Kareem Abdul-Jabbar</td>
+<td align="right">17.5%</td>
+<td align="right">6,712 / 38,387</td>
+</tr>
+
+<tr>
+<td align="left">Alex English</td>
+<td align="right">16.7%</td>
+<td align="right">4,277 / 25,613</td>
+</tr>
+
+<tr>
+<td align="left">Stephen Curry</td>
+<td align="right">16.0%</td>
+<td align="right">4,236 / 26,528</td>
+</tr>
+</tbody>
+</table>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="p560zwm" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Yamato_Naoe | Warriors</div>
+        <div>1 | 31 minutes ago </div>
+      </div>
+      <label for="p560zwm" class="commentText"><p>best free throw shooter of all time takes the least free throws 😭😭😭</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="p561z2o" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Fantastic-Boot-684 | Bulls</div>
+        <div>1 | 24 minutes ago </div>
+      </div>
+      <label for="p561z2o" class="commentText"><p>the NBA have to nerf him somehow</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="p5634f1" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>LebasketBall | Warriors</div>
+        <div>1 | 15 minutes ago </div>
+      </div>
+      <label for="p5634f1" class="commentText"><p>All cause he didn’t choose Nike after Nico Harrison’s lazy dumbass ruined his pitch</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="p5636wt" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Fantastic-Boot-684 | Bulls</div>
+        <div>1 | 14 minutes ago </div>
+      </div>
+      <label for="p5636wt" class="commentText"><p>I don&rsquo;t see you complaining</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="p563m64" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>LebasketBall | Warriors</div>
+        <div>1 | 11 minutes ago </div>
+      </div>
+      <label for="p563m64" class="commentText"><p>What does this even mean? Steph easily would have averaged 35ppg in his mvp year if they called his fouls</p>
+
+<p>Also Nico’s a fucking idiot and it’s great to remind the world of that</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="p563vrp" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ShakeMilton | Warriors</div>
+        <div>1 | 9 minutes ago </div>
+      </div>
+      <label for="p563vrp" class="commentText"><p>I&rsquo;m glad that in recent years after we&rsquo;re more removed from the dominant 5 straight finals warriors that other fanbases have finally agreed that Curry gets an absurdly abysmal whistle(relative to any player, but even more so compared to other stars and superstars).</p>
+
+<p>But now we have people who unironically believe that Draymond setting moving screens offset or even came close to offsetting this</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="p561d81" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Dabeastfeast11 | Pistons</div>
+        <div>1 | 28 minutes ago </div>
+      </div>
+      <label for="p561d81" class="commentText"><p>Best shooter of all time who revolutionized outside in scoring drives to the lane the least out of all times great scores who woulda thought.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="p562bid" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Tall-Archer5957</div>
+        <div>1 | 21 minutes ago </div>
+      </div>
+      <label for="p562bid" class="commentText"><p>lol no it’s the reffing.  Steph is one of the most fouled players ever.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="p563bk4" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Serpent_breath</div>
+        <div>1 | 13 minutes ago </div>
+      </div>
+      <label for="p563bk4" class="commentText"><p>He also runs by far the most every game than any player on this list. If they called every bump, hold, body check correctly he would be at the free throw line way more</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="p564827" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>imperabo | Lakers</div>
+        <div>1 | 6 minutes ago </div>
+      </div>
+      <label for="p564827" class="commentText"><p>It takes a lot to get an off-ball foul</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="p563sk1" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Zealousideal-Dog9350</div>
+        <div>1 | 9 minutes ago </div>
+      </div>
+      <label for="p563sk1" class="commentText"><p>he drives quite often</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="p562g6j" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Ok-Wedding-7853</div>
+        <div>1 | 20 minutes ago </div>
+      </div>
+      <label for="p562g6j" class="commentText"><p>Lol people are slow</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="p560sdh" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>sgtpepperslaststand [OP] | Cavaliers</div>
+        <div>1 | 33 minutes ago </div>
+      </div>
+      <label for="p560sdh" class="commentText"><p>Last column should be Made FT/TOT Points. For some reason it fucks up the table if I fix it</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="p561dsf" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Afraid-Department-35 | Mavericks</div>
+        <div>1 | 28 minutes ago </div>
+      </div>
+      <label for="p561dsf" class="commentText"><p>I was gunna say man, Steph is a career 91% ft guy, I don&rsquo;t think he missed 22k FTs lol.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="p5626hq" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>sgtpepperslaststand [OP] | Cavaliers</div>
+        <div>1 | 22 minutes ago </div>
+      </div>
+      <label for="p5626hq" class="commentText"><p>I don’t have the time yet to do the top 100 scorers like I originally wanted to do. But I wouldn’t be surprised if Curry was still last</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="p560wnu" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>sgtpepperslaststand [OP] | Cavaliers</div>
+        <div>1 | 32 minutes ago </div>
+      </div>
+      <label for="p560wnu" class="commentText"><p>I didn’t realize how often Derozan got to the line</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="p562hon" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>eucldian | Raptors</div>
+        <div>1 | 20 minutes ago </div>
+      </div>
+      <label for="p562hon" class="commentText"><p>Especially early inn his career, elite middy and attacking the basket. Shame he could never reliably add a 3, he would have been one of the greats.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="p560z52" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Charlie_Wax | Warriors</div>
+        <div>1 | 31 minutes ago </div>
+      </div>
+      <label for="p560z52" class="commentText"><p>Under Armour whistle</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="p56150p" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Basic_Mastodon3078 | Knicks</div>
+        <div>1 | 30 minutes ago </div>
+      </div>
+      <label for="p56150p" class="commentText"><p>Its called shooting a lot of threes bro</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="p562ubm" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>fannyfartabdul</div>
+        <div>1 | 17 minutes ago </div>
+      </div>
+      <label for="p562ubm" class="commentText"><p>Yeah of course he doesn’t drive it at all. Definitely doesn’t get fouled</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="p563bje" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Zealousideal-Dog9350</div>
+        <div>1 | 13 minutes ago </div>
+      </div>
+      <label for="p563bje" class="commentText"><p>that’s not all he does bud. he also gets fouled on many of his threes too</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="p563r9x" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>guitarguywh89 | Suns</div>
+        <div>1 | 10 minutes ago </div>
+      </div>
+      <label for="p563r9x" class="commentText"><p>I dislike the warriors on principle based on being in the same conference</p>
+
+<p>Curry goes for the layups and close shots around as much as he goes for the three. He is always moving to the best shot he can take.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="p563qdr" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>dvasquez93 | Warriors</div>
+        <div>1 | 10 minutes ago </div>
+      </div>
+      <label for="p563qdr" class="commentText"><p>Luka shoots just as many 3s per game as Steph does for his career and averages almost twice as many FTAs per game.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="p564hsk" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>imperabo | Lakers</div>
+        <div>1 | 4 minutes ago </div>
+      </div>
+      <label for="p564hsk" class="commentText"><p>Jesus Christ have you ever watched Luka play a Day in his life? Just completely different form of basketball.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="p5613i8" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>freshBlueeyes6391</div>
+        <div>1 | 30 minutes ago </div>
+      </div>
+      <label for="p5613i8" class="commentText"><p>SGA = 25% (of his 13K+ points)    26+% in playoffs</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="p562o2y" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Parallel-Quality</div>
+        <div>1 | 18 minutes ago </div>
+      </div>
+      <label for="p562o2y" class="commentText"><p>The Kobe/SGA parallels just keep piling up.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="p560yyg" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>PubDefLakersGuy</div>
+        <div>1 | 31 minutes ago </div>
+      </div>
+      <label for="p560yyg" class="commentText"><p>Imagine if Shaq could shoot free throws</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="p561gqw" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>skidabs</div>
+        <div>1 | 28 minutes ago </div>
+      </div>
+      <label for="p561gqw" class="commentText"><p>Don&rsquo;t let Paul Pierce see this</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="p562004" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>sgtpepperslaststand [OP] | Cavaliers</div>
+        <div>1 | 23 minutes ago </div>
+      </div>
+      <label for="p562004" class="commentText"><p>I didn’t realize he got to the line so much either</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="p5610vl" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ryrythe3rd</div>
+        <div>1 | 31 minutes ago </div>
+      </div>
+      <label for="p5610vl" class="commentText"><p>Karl Malone and Moses Malone #1 and #2 all time in FTM is a funny coincidence</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="p563ytt" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>NoRequirement1582 | Warriors</div>
+        <div>1 | 8 minutes ago </div>
+      </div>
+      <label for="p563ytt" class="commentText"><p>You missed LeBron and Harden in between them my guy.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="p56466s" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>NotRote | Timberwolves</div>
+        <div>1 | 6 minutes ago </div>
+      </div>
+      <label for="p56466s" class="commentText"><p>They aren’t though? Harden is 2.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="p561h2a" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ChiliKong | 76ers</div>
+        <div>1 | 27 minutes ago </div>
+      </div>
+      <label for="p561h2a" class="commentText"><p>What is embiid?</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="p561xgj" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>jackswastedtalent | Celtics</div>
+        <div>1 | 24 minutes ago </div>
+      </div>
+      <label for="p561xgj" class="commentText"><p>Currently injured.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="p561r9b" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>sgtpepperslaststand [OP] | Cavaliers</div>
+        <div>1 | 25 minutes ago </div>
+      </div>
+      <label for="p561r9b" class="commentText"><p>29.9%</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="p562e3c" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ChiliKong | 76ers</div>
+        <div>1 | 20 minutes ago </div>
+      </div>
+      <label for="p562e3c" class="commentText"><p>Yea I assumed it was high</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="p562x7n" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>sgtpepperslaststand [OP] | Cavaliers</div>
+        <div>1 | 16 minutes ago </div>
+      </div>
+      <label for="p562x7n" class="commentText"><p>SGA 24.9% same as Kobe. Luka Doncic 21.9%,Embiid 29.9% Giannis 24%,</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="p564cz6" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>HeavyApartment1820 | Lakers</div>
+        <div>1 | 5 minutes ago </div>
+      </div>
+      <label for="p564cz6" class="commentText"><p>No one’s gonna talk about KAJ, a center, being third lowest on the list with the second most points ever? That’s crazy impressive</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="p564hoc" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>sgtpepperslaststand [OP] | Cavaliers</div>
+        <div>1 | 4 minutes ago </div>
+      </div>
+      <label for="p564hoc" class="commentText"><p>Yeah that was insane. It’s not like he was taking outside shots lol.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="p560y7u" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>That-Woodpecker6720</div>
+        <div>1 | 31 minutes ago </div>
+      </div>
+      <label for="p560y7u" class="commentText"><p>Jordan was lowkey a flopper ngl the flailing he does with his limbs is crazy</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="p561jmm" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>freshBlueeyes6391</div>
+        <div>1 | 27 minutes ago </div>
+      </div>
+      <label for="p561jmm" class="commentText"><p>bullshit.  He didn&rsquo;t need to.   Refs just called foul if someone breathed on him wrong in the later years.  That&rsquo;s when the NBA really went south on this shit.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="p561606" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Plastic-Pass5397 | Timberwolves</div>
+        <div>1 | 30 minutes ago </div>
+      </div>
+      <label for="p561606" class="commentText"><p>dawg they were beating his ass to the ground trying to stop him😭😭</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="p561izb" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>oneandonlyRedSpirit | Suns</div>
+        <div>1 | 27 minutes ago </div>
+      </div>
+      <label for="p561izb" class="commentText"><p>refs glazed the fuck out of mj. that clip of the ref being like “i believe you michael”</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="p561wf0" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ArrowDiver</div>
+        <div>1 | 24 minutes ago </div>
+      </div>
+      <label for="p561wf0" class="commentText"><p><a href="https://www.reddit.com/r/nba/s/dF2Q3BxNUp" target="_blank">yeah they were &ldquo;beating his ass to the ground&rdquo;</a></p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+      
+<div class="commentAndChildren">
+  <input id="p561i46" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>ChiliKong | 76ers</div>
+        <div>1 | 27 minutes ago </div>
+      </div>
+      <label for="p561i46" class="commentText"><p>That is way overblown</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="p5610ho" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Ok-Wedding-7853</div>
+        <div>1 | 31 minutes ago </div>
+      </div>
+      <label for="p5610ho" class="commentText"><p>Lebron is impressive af. He should have alot more free throws if they actually gave him calls</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="p5634td" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Leading_Log_8321</div>
+        <div>1 | 15 minutes ago </div>
+      </div>
+      <label for="p5634td" class="commentText"><p>Damn didn’t know Big O was a merchant</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="p56395q" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>sgtpepperslaststand [OP] | Cavaliers</div>
+        <div>1 | 14 minutes ago </div>
+      </div>
+      <label for="p56395q" class="commentText"><p>Teams were averaging 40 FTA per game in the 60s</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="p5629nj" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Due-Inevitable-6864</div>
+        <div>1 | 21 minutes ago </div>
+      </div>
+      <label for="p5629nj" class="commentText"><p>He&rsquo;s always sucked at getting to the line. That&rsquo;s not a good thing.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="p563dhz" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Zealousideal-Dog9350</div>
+        <div>1 | 13 minutes ago </div>
+      </div>
+      <label for="p563dhz" class="commentText"><p>no he’s had an awful whistle. u clearly don’t watch him enough</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="p563gxe" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Due-Inevitable-6864</div>
+        <div>1 | 12 minutes ago </div>
+      </div>
+      <label for="p563gxe" class="commentText"><p>No he doesn&rsquo;t lol. He just sucks at getting to the line and he always has. You&rsquo;re a stan.</p>
+</label>
+    </div>
+  </label>
+  
+  <div class="commentList">
+    
+      
+<div class="commentAndChildren">
+  <input id="p563m4c" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Zealousideal-Dog9350</div>
+        <div>1 | 11 minutes ago </div>
+      </div>
+      <label for="p563m4c" class="commentText"><p>you’re an idiot. just cus someone doesn’t go to the free throw line doesn’t mean they suck at drawing fouls. the guys one of the craftiest players of all time u think he doesn’t know how to do that? refs see him fall on the floor all the time while he tries to sell fouls and nothing gets called</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+    
+  </div>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
