@@ -1,0 +1,309 @@
+
+
+<html>
+  <head>
+    <link rel="manifest" href="/manifest.json" />
+    <style>
+       * {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111;
+  color: #ddd;
+  font-family: arial;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 4em;
+  padding: 32px;
+  color: #c39429;
+}
+
+h2 {
+  padding: 24px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 24px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.subName {
+  text-decoration: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.post {
+  width: 100%;
+}
+
+.postLink {
+  border-bottom: 1px solid #555;
+  padding: 32px 0;
+  text-decoration: none;
+  font-size: 42px;
+  color: wheat;
+  display: block;
+  position: relative;
+}
+
+.postLink:visited {
+  color: #806a42;
+  top: 100px;
+}
+
+.postHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.commentList {
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 32px;
+}
+
+body > .commentList {
+  padding-left: 0px;
+}
+
+.commentAndChildren {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.comment {
+  padding: 16px 0;
+  border-bottom: 1px solid #555;
+}
+
+.commentText,
+.commentText * {
+  font-size: 38px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: wheat;
+}
+
+.commentHeader {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: space-between;
+  color: #c39429;
+}
+
+.postTitle {
+  text-decoration: none;
+  color: #c39429;
+}
+
+.commentAndChildren > .commentList {
+  display: none;
+}
+
+.commentAndChildren > input:checked ~ .commentList {
+  display: block;
+}
+
+.commentAndChildren label .comment .commentText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commentAndChildren input:checked ~ label .comment .commentText {
+  white-space: break-spaces;
+  overflow: auto;
+  text-overflow: unset;
+}
+
+.selfPostContainer {
+  font-size: 38px;
+  line-height: 1.5;
+  color: white;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.selfPostContainer * {
+  color: white;
+}
+
+.selfPostImage {
+  width: 100%;
+  height: auto;
+}
+
+.streamableContainer {
+  max-height: 30vh;
+  width: 100vw;
+  left: 0;
+  position: sticky;
+  top: 0;
+  background: #111;
+  padding-bottom: 24px;
+  overflow: visible;
+}
+
+.tweetContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+    </style>
+  </head>
+  <body>
+    <h2>
+      <a class="postTitle" href="https://www.reddit.com/r/PathOfExile2/comments/1vz5blq/i_built_a_free_poe_2_regex_builder_now_available/"><p>I built a free PoE 2 Regex Builder, now available as both a Windows app and web version</p>
+</a>
+    </h2>
+
+    
+    <div class="selfPostContainer">
+      <p>Hey everyone,</p>
+
+<p>I&rsquo;ve been working on a <strong>PoE 2 Regex Builder</strong> designed to make creating useful search regex a lot easier without having to manually figure out the expressions yourself.</p>
+
+<p>The project has grown quite a bit, and I&rsquo;ve now released a <strong>web-based version</strong> alongside the standalone Windows version.</p>
+
+<p>The web version was something I specifically wanted to add because I completely understand people being hesitant to download and run an <code>.exe</code> from some random developer on Reddit. If that&rsquo;s you, you can use the builder directly from the website instead, no download or installation required.</p>
+
+<p><strong>Current features include:</strong></p>
+
+<ul>
+<li>Support for <strong>Items, Jewels, Waystones, Tablets, and Relics</strong></li>
+<li>Weapon-specific modifier pools</li>
+<li>Prefix, Suffix, Desecrated, and other special modifier groups</li>
+<li>Generic, Exact, At Least, At Most, and Range searches</li>
+<li>AND/OR modifier combinations</li>
+<li>Armour, Evasion, and Energy Shield filtering where applicable</li>
+<li>Automatically generated compact regex</li>
+<li>Collision handling for modifiers with similar wording</li>
+<li>Duplicate modifier detection/cleanup</li>
+<li>One-click regex copying</li>
+</ul>
+
+<p>A lot of work has gone into making the generated expressions as short as possible while also trying to prevent one regex from accidentally matching a different affix with similar wording. That&rsquo;s been one of the more interesting problems to solve because GGG really likes reusing the same words across modifiers.</p>
+
+<p>The desktop and web versions use the same modifier data, so the goal is to keep their functionality consistent.</p>
+
+<p><strong>It&rsquo;s completely free to use.</strong></p>
+
+<p>I&rsquo;m also actively working on it, so if you find a modifier that&rsquo;s missing, duplicated, categorized incorrectly, or a regex that highlights something it shouldn&rsquo;t, <strong>please let me know</strong>. Those reports are genuinely useful because there are a ridiculous number of possible modifier interactions to account for.</p>
+
+<p>This started as a tool I wanted for myself and has turned into something I think could be genuinely useful to the wider PoE 2 community, so I figured it was finally time to put it out there.</p>
+
+<p><strong>Web Version:</strong> <a href="https://paragonstudios.dev/software/poe2-regex-builder/web/" target="_blank">here</a></p>
+
+<p><strong>Windows Download / GitHub:</strong> <a href="https://paragonstudios.dev/software/poe2-regex-builder/" target="_blank">here</a></p>
+
+<p>Feedback, bug reports, and suggestions are welcome.</p>
+
+<p>I also have a discord for this as well which can be joined <a href="https://discord.gg/Rpq983wHq" target="_blank">here</a>.</p>
+
+    </div>
+    
+
+    <div class="commentList">
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="p627ur8" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>Rustmonger</div>
+        <div>1 | 44 minutes ago </div>
+      </div>
+      <label for="p627ur8" class="commentText"><p>I’ve only recently discovered that regex is even a thing so I’m excited to try it out. Thanks for the hard work.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="p627wb2" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>egomotiv</div>
+        <div>1 | 44 minutes ago </div>
+      </div>
+      <label for="p627wb2" class="commentText"><p>najz</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+        
+          
+<div class="commentAndChildren">
+  <input id="p62fh9p" type="checkbox" checked/>
+    <div class="comment">
+      <div class="commentHeader">
+        <div>nowx</div>
+        <div>1 | 12 minutes ago </div>
+      </div>
+      <label for="p62fh9p" class="commentText"><p>most poe1 players using poe.re and they also did a poe2 version. <a href="https://poe2.re" target="_blank">https://poe2.re</a></p>
+
+<p>the more the better. thx for sharing.</p>
+</label>
+    </div>
+  </label>
+  
+</div>
+
+        
+      
+    </div>
+  </body>
+</html>
